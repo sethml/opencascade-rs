@@ -999,12 +999,9 @@ fn generate_output(
         symbol_table, all_classes, &collection_type_names, &extra_typedef_names, known_headers, manual_type_names, &handle_able_classes,
     );
 
-    // Compute module→toolkit map if needed for either split mode
-    let needs_toolkit_map = split_config.cpp_split.as_deref() == Some("toolkit")
-        || split_config.ffi_split.as_deref() == Some("toolkit");
-    let module_to_toolkit = if needs_toolkit_map {
-        let occt_src = split_config.occt_source_dir.as_ref()
-            .expect("split.occt_source_dir required for toolkit split");
+    // Compute module→toolkit map (always needed for per-toolkit FFI generation,
+    // and optionally for C++ split)
+    let module_to_toolkit = if let Some(ref occt_src) = split_config.occt_source_dir {
         let occt_source_dir = config_dir.as_ref()
             .expect("config_dir required for toolkit split")
             .join(occt_src);
@@ -1015,62 +1012,36 @@ fn generate_output(
 
     // Track generated files for formatting
     let mut generated_rs_files: Vec<PathBuf> = Vec::new();
-    // 1. Generate ffi.rs (split by toolkit or monolithic)
-    let nested_types = if split_config.ffi_split.as_deref() == Some("toolkit") {
-        println!("Generating split ffi.rs (per-toolkit extern blocks)...");
-        let (ffi_code, nested_types, toolkit_files) = codegen::rust::generate_ffi_split(
-            all_classes,
-            &all_functions,
-            &all_headers_list,
-            &all_collections,
-            symbol_table,
-            &all_bindings,
-            &all_function_bindings,
-            &handle_able_classes,
-            &extra_typedef_names,
-            non_allocatable_classes,
-            &module_to_toolkit,
-        );
-        let ffi_path = args.output.join("ffi.rs");
-        std::fs::write(&ffi_path, &ffi_code)?;
-        generated_rs_files.push(ffi_path.clone());
-        println!("  Wrote: {} (facade)", ffi_path.display());
+    // 1. Generate ffi type definitions and per-toolkit extern blocks
+    println!("Generating ffi_types.rs + per-toolkit extern modules...");
+    let (ffi_code, nested_types, toolkit_files) = codegen::rust::generate_ffi_split(
+        all_classes,
+        &all_functions,
+        &all_headers_list,
+        &all_collections,
+        symbol_table,
+        &all_bindings,
+        &all_function_bindings,
+        &handle_able_classes,
+        &extra_typedef_names,
+        non_allocatable_classes,
+        &module_to_toolkit,
+    );
+    let ffi_path = args.output.join("ffi_types.rs");
+    std::fs::write(&ffi_path, &ffi_code)?;
+    generated_rs_files.push(ffi_path.clone());
+    println!("  Wrote: {} (type definitions)", ffi_path.display());
 
-        // Write per-toolkit extern block files
-        for (toolkit_name, code) in &toolkit_files {
-            let filename = if toolkit_name.starts_with("__") {
-                format!("ffi_extern_{}.rs", &toolkit_name[2..])
-            } else {
-                format!("ffi_extern_{}.rs", toolkit_name)
-            };
-            let path = args.output.join(&filename);
-            std::fs::write(&path, code)?;
-            generated_rs_files.push(path.clone());
-            println!("  Wrote: {}", path.display());
-        }
-        println!("  {} toolkit extern files", toolkit_files.len());
-        nested_types
-    } else {
-        println!("Generating ffi.rs...");
-        let (ffi_code, nested_types) = codegen::rust::generate_ffi(
-            all_classes,
-            &all_functions,
-            &all_headers_list,
-            &all_collections,
-            symbol_table,
-            &all_bindings,
-            &all_function_bindings,
-            &handle_able_classes,
-            &extra_typedef_names,
-            non_allocatable_classes,
-        );
-        let ffi_path = args.output.join("ffi.rs");
-        std::fs::write(&ffi_path, ffi_code)?;
-        generated_rs_files.push(ffi_path.clone());
-        println!("  Wrote: {} ({} classes, {} functions)",
-            ffi_path.display(), all_classes.len(), all_functions.len());
-        nested_types
-    };
+    let split_toolkit_names: Vec<String> = toolkit_files.iter().map(|(name, _)| name.clone()).collect();
+
+    for (toolkit_name, code) in &toolkit_files {
+        let filename = format!("ffi_extern_{}.rs", toolkit_name);
+        let path = args.output.join(&filename);
+        std::fs::write(&path, code)?;
+        generated_rs_files.push(path.clone());
+        println!("  Wrote: {}", path.display());
+    }
+    println!("  {} toolkit extern modules", toolkit_files.len());
 
     // 2. Generate wrappers (split by toolkit or monolithic)
     if split_config.cpp_split.as_deref() == Some("toolkit") {
@@ -1431,7 +1402,14 @@ fn generate_output(
         );
 
         let module_path = args.output.join(format!("{}.rs", module.rust_name));
-        let mut reexport_code = reexport_code;
+        let mut reexport_code = if !split_toolkit_names.is_empty() {
+            let toolkit = module_to_toolkit.get(&module.name)
+                .map(|s| s.as_str())
+                .unwrap_or("misc");
+            codegen::rust::postprocess_ffi_paths(&reexport_code, toolkit)
+        } else {
+            reexport_code
+        };
         if let Some(include) = manual_include_directive(&args.output, &module.rust_name) {
             reexport_code.push_str(&include);
         }
@@ -1474,7 +1452,14 @@ fn generate_output(
                 types,
             );
             let module_path = args.output.join(format!("{}.rs", rust_name));
-            let mut reexport_code = reexport_code;
+            let mut reexport_code = if !split_toolkit_names.is_empty() {
+                let toolkit = module_to_toolkit.get(module_name)
+                    .map(|s| s.as_str())
+                    .unwrap_or("misc");
+                codegen::rust::postprocess_ffi_paths(&reexport_code, toolkit)
+            } else {
+                reexport_code
+            };
             if let Some(include) = manual_include_directive(&args.output, &rust_name) {
                 reexport_code.push_str(&include);
             }
@@ -1514,7 +1499,14 @@ fn generate_output(
             &[],
         );
         let module_path = args.output.join(format!("{}.rs", rust_module));
-        let mut reexport_code = reexport_code;
+        let mut reexport_code = if !split_toolkit_names.is_empty() {
+            let toolkit = module_to_toolkit.get(&cpp_name)
+                .map(|s| s.as_str())
+                .unwrap_or("misc");
+            codegen::rust::postprocess_ffi_paths(&reexport_code, toolkit)
+        } else {
+            reexport_code
+        };
         if let Some(include) = manual_include_directive(&args.output, rust_module) {
             reexport_code.push_str(&include);
         }
@@ -1525,7 +1517,7 @@ fn generate_output(
     }
 
     // 4. Generate lib.rs with module declarations
-    let lib_rs = generate_lib_rs(&generated_modules, &extra_only_modules);
+    let lib_rs = generate_lib_rs(&generated_modules, &extra_only_modules, &split_toolkit_names);
     let lib_rs_path = args.output.join("lib.rs");
     std::fs::write(&lib_rs_path, &lib_rs)?;
     generated_rs_files.push(lib_rs_path.clone());
@@ -1555,14 +1547,21 @@ fn generate_output(
 }
 
 /// Generate lib.rs with module declarations
-fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, String)]) -> String {
+fn generate_lib_rs(modules: &[&module_graph::Module], extra_modules: &[(String, String)], split_toolkits: &[String]) -> String {
     let mut output = String::new();
     output.push_str("// Generated OCCT bindings\n");
     output.push_str("// Nested C++ types use Parent_Child naming, which is intentional\n");
     output.push_str("#![allow(non_camel_case_types)]\n\n");
 
-    output.push_str("// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)\n");
-    output.push_str("pub(crate) mod ffi;\n\n");
+    // FFI type definitions + per-toolkit extern modules
+    output.push_str("// FFI type definitions (opaque structs, POD structs, handles)\n");
+    output.push_str("pub(crate) mod ffi_types;\n\n");
+    output.push_str("// Per-toolkit FFI extern blocks\n");
+    for toolkit in split_toolkits {
+        output.push_str(&format!("pub(crate) mod ffi_extern_{};\n", toolkit));
+    }
+    output.push('\n');
+
     output.push_str("// Per-module re-exports\n");
 
     // Collect all module rust names and sort for deterministic output

@@ -90,13 +90,14 @@
 #include <Approx_MCurvesToBSpCurve.hxx>
 #include <Approx_ParametrizationType.hxx>
 #include <Approx_SameParameter.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <Approx_SweepApproximation.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepBlend_AppFunc.hxx>
 #include <BRepBlend_AppFuncRst.hxx>
 #include <BRepBlend_AppFuncRstRst.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BndLib.hxx>
 #include <BndLib_Add2dCurve.hxx>
 #include <BndLib_Add3dCurve.hxx>
@@ -354,6 +355,7 @@
 #include <ProjLib_SequenceOfHSequenceOfPnt.hxx>
 #include <ProjLib_Sphere.hxx>
 #include <ProjLib_Torus.hxx>
+#include <Prs3d_NListOfSequenceOfPnt.hxx>
 #include <ShapeUpgrade_UnifySameDomain.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_IStream.hxx>
@@ -372,7 +374,6 @@
 #include <TColGeom_HArray1OfBSplineCurve.hxx>
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfInteger.hxx>
@@ -392,7 +393,7 @@
 #include <TColgp_HArray2OfPnt.hxx>
 #include <TColgp_HSequenceOfPnt.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <gce_ErrorType.hxx>
 #include <gce_MakeCirc.hxx>
 #include <gce_MakeCirc2d.hxx>

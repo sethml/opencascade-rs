@@ -25,11 +25,11 @@
 /// * Line
 /// * Parabola
 /// . OffsetCurve
-pub use crate::ffi::GeomToIGES_GeomCurve as GeomCurve;
+pub use crate::ffi_types::GeomToIGES_GeomCurve as GeomCurve;
 
 unsafe impl crate::CppDeletable for GeomCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomToIGES_GeomCurve_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_destructor(ptr);
     }
 }
 
@@ -37,7 +37,9 @@ impl GeomCurve {
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:58 - `GeomToIGES_GeomCurve::GeomToIGES_GeomCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_ctor(),
+            ))
         }
     }
 
@@ -47,7 +49,7 @@ impl GeomCurve {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_ctor_geomentity(GE),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_ctor_geomentity(GE),
             ))
         }
     }
@@ -58,237 +60,155 @@ impl GeomCurve {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_curve_handlegeomcurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomCurve,
+        start: &crate::ffi_types::HandleGeomCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomcurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:71 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomboundedcurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomBoundedCurve,
+        start: &crate::ffi_types::HandleGeomBoundedCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomboundedcurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomboundedcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:75 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeombsplinecurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomBSplineCurve,
+        start: &crate::ffi_types::HandleGeomBSplineCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeombsplinecurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeombsplinecurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:79 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeombeziercurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomBezierCurve,
+        start: &crate::ffi_types::HandleGeomBezierCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeombeziercurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeombeziercurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:83 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomtrimmedcurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomTrimmedCurve,
+        start: &crate::ffi_types::HandleGeomTrimmedCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomtrimmedcurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomtrimmedcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:87 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomconic_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomConic,
+        start: &crate::ffi_types::HandleGeomConic,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomconic_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomconic_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:91 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomcircle_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomCircle,
+        start: &crate::ffi_types::HandleGeomCircle,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomcircle_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomcircle_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:95 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomellipse_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomEllipse,
+        start: &crate::ffi_types::HandleGeomEllipse,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomellipse_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomellipse_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:99 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomhyperbola_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomHyperbola,
+        start: &crate::ffi_types::HandleGeomHyperbola,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomhyperbola_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomhyperbola_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:103 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomline_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomLine,
+        start: &crate::ffi_types::HandleGeomLine,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomline_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomline_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:107 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomparabola_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomParabola,
+        start: &crate::ffi_types::HandleGeomParabola,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomparabola_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomparabola_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomCurve.hxx`:111 - `GeomToIGES_GeomCurve::TransferCurve()`
     pub fn transfer_curve_handlegeomoffsetcurve_real2(
         &mut self,
-        start: &crate::ffi::HandleGeomOffsetCurve,
+        start: &crate::ffi_types::HandleGeomOffsetCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_transfer_curve_handlegeomoffsetcurve_real2(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_transfer_curve_handlegeomoffsetcurve_real2(self as *mut Self, start, Udeb, Ufin)))
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -296,23 +216,30 @@ impl GeomCurve {
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_as_GeomToIGES_GeomEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomCurve_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomCurve_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -320,14 +247,17 @@ impl GeomCurve {
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomCurve_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:51 - `GeomToIGES_GeomEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomCurve_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomCurve_inherited_GetUnit(self as *const Self)
         })
     }
 }
@@ -338,11 +268,11 @@ impl GeomCurve {
 
 /// **Source:** `GeomToIGES_GeomEntity.hxx`:28 - `GeomToIGES_GeomEntity`
 /// provides methods to transfer Geom entity from CASCADE to IGES.
-pub use crate::ffi::GeomToIGES_GeomEntity as GeomEntity;
+pub use crate::ffi_types::GeomToIGES_GeomEntity as GeomEntity;
 
 unsafe impl crate::CppDeletable for GeomEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomToIGES_GeomEntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_destructor(ptr);
     }
 }
 
@@ -351,24 +281,26 @@ impl GeomEntity {
     /// Creates a tool GeomEntity
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomEntity_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
     /// Set the value of "TheModel"
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomEntity_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_set_model(self as *mut Self, model)
         })
     }
 
     /// **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
     /// Returns the value of "TheModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomEntity_get_model(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_get_model(self as *const Self),
             ))
         }
     }
@@ -377,7 +309,7 @@ impl GeomEntity {
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomEntity_set_unit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_set_unit(self as *mut Self, unit)
         })
     }
 
@@ -386,7 +318,7 @@ impl GeomEntity {
     /// in meters.
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomEntity_get_unit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_get_unit(self as *const Self)
         })
     }
 
@@ -394,7 +326,7 @@ impl GeomEntity {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomEntity_to_owned(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomEntity_to_owned(self as *const Self),
             ))
         }
     }
@@ -409,11 +341,11 @@ impl GeomEntity {
 /// to IGES . These are :
 /// . Point
 /// * CartesianPoint
-pub use crate::ffi::GeomToIGES_GeomPoint as GeomPoint;
+pub use crate::ffi_types::GeomToIGES_GeomPoint as GeomPoint;
 
 unsafe impl crate::CppDeletable for GeomPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomToIGES_GeomPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_destructor(ptr);
     }
 }
 
@@ -421,7 +353,9 @@ impl GeomPoint {
     /// **Source:** `GeomToIGES_GeomPoint.hxx`:38 - `GeomToIGES_GeomPoint::GeomToIGES_GeomPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_ctor(),
+            ))
         }
     }
 
@@ -431,7 +365,7 @@ impl GeomPoint {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomPoint_ctor_geomentity(GE),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_ctor_geomentity(GE),
             ))
         }
     }
@@ -441,11 +375,11 @@ impl GeomPoint {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_point_handlegeompoint(
         &mut self,
-        start: &crate::ffi::HandleGeomPoint,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::HandleGeomPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomPoint_transfer_point_handlegeompoint(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_transfer_point_handlegeompoint(
                     self as *mut Self,
                     start,
                 ),
@@ -458,24 +392,21 @@ impl GeomPoint {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_point_handlegeomcartesianpoint(
         &mut self,
-        start: &crate::ffi::HandleGeomCartesianPoint,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::HandleGeomCartesianPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomPoint_transfer_point_handlegeomcartesianpoint(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_transfer_point_handlegeomcartesianpoint(self as *mut Self, start)))
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -483,23 +414,30 @@ impl GeomPoint {
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_as_GeomToIGES_GeomEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomPoint_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomPoint_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -507,14 +445,17 @@ impl GeomPoint {
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomPoint_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:51 - `GeomToIGES_GeomEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomPoint_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomPoint_inherited_GetUnit(self as *const Self)
         })
     }
 }
@@ -540,11 +481,11 @@ impl GeomPoint {
 /// * SurfaceOfLinearExtrusion
 /// * SurfaceOfRevolution
 /// . OffsetSurface
-pub use crate::ffi::GeomToIGES_GeomSurface as GeomSurface;
+pub use crate::ffi_types::GeomToIGES_GeomSurface as GeomSurface;
 
 unsafe impl crate::CppDeletable for GeomSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomToIGES_GeomSurface_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_destructor(ptr);
     }
 }
 
@@ -552,9 +493,9 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:63 - `GeomToIGES_GeomSurface::GeomToIGES_GeomSurface()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::GeomToIGES_GeomSurface_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_ctor(),
+            ))
         }
     }
 
@@ -564,7 +505,7 @@ impl GeomSurface {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_ctor_geomentity(GE),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_ctor_geomentity(GE),
             ))
         }
     }
@@ -575,306 +516,225 @@ impl GeomSurface {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_surface_handlegeomsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomSurface,
+        start: &crate::ffi_types::HandleGeomSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:78 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomboundedsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomBoundedSurface,
+        start: &crate::ffi_types::HandleGeomBoundedSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomboundedsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomboundedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:85 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeombsplinesurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomBSplineSurface,
+        start: &crate::ffi_types::HandleGeomBSplineSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeombsplinesurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeombsplinesurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:92 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeombeziersurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomBezierSurface,
+        start: &crate::ffi_types::HandleGeomBezierSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeombeziersurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeombeziersurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:99 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomrectangulartrimmedsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomRectangularTrimmedSurface,
+        start: &crate::ffi_types::HandleGeomRectangularTrimmedSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomrectangulartrimmedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomrectangulartrimmedsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:106 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomelementarysurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomElementarySurface,
+        start: &crate::ffi_types::HandleGeomElementarySurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomelementarysurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomelementarysurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:113 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomplane_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomPlane,
+        start: &crate::ffi_types::HandleGeomPlane,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomplane_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomplane_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:119 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomcylindricalsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomCylindricalSurface,
+        start: &crate::ffi_types::HandleGeomCylindricalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomcylindricalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomcylindricalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:126 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomconicalsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomConicalSurface,
+        start: &crate::ffi_types::HandleGeomConicalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomconicalsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomconicalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:133 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsphericalsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomSphericalSurface,
+        start: &crate::ffi_types::HandleGeomSphericalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsphericalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsphericalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:140 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomtoroidalsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomToroidalSurface,
+        start: &crate::ffi_types::HandleGeomToroidalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomtoroidalsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomtoroidalsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:147 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsweptsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomSweptSurface,
+        start: &crate::ffi_types::HandleGeomSweptSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsweptsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsweptsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:154 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsurfaceoflinearextrusion_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomSurfaceOfLinearExtrusion,
+        start: &crate::ffi_types::HandleGeomSurfaceOfLinearExtrusion,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceoflinearextrusion_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceoflinearextrusion_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:161 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomsurfaceofrevolution_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomSurfaceOfRevolution,
+        start: &crate::ffi_types::HandleGeomSurfaceOfRevolution,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceofrevolution_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomsurfaceofrevolution_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:168 - `GeomToIGES_GeomSurface::TransferSurface()`
     pub fn transfer_surface_handlegeomoffsetsurface_real4(
         &mut self,
-        start: &crate::ffi::HandleGeomOffsetSurface,
+        start: &crate::ffi_types::HandleGeomOffsetSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_surface_handlegeomoffsetsurface_real4(
-                    self as *mut Self,
-                    start,
-                    Udeb,
-                    Ufin,
-                    Vdeb,
-                    Vfin,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_surface_handlegeomoffsetsurface_real4(self as *mut Self, start, Udeb, Ufin, Vdeb, Vfin)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:175 - `GeomToIGES_GeomSurface::TransferPlaneSurface()`
     pub fn transfer_plane_surface(
         &mut self,
-        start: &crate::ffi::HandleGeomPlane,
+        start: &crate::ffi_types::HandleGeomPlane,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_plane_surface(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_plane_surface(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -889,15 +749,15 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:181 - `GeomToIGES_GeomSurface::TransferCylindricalSurface()`
     pub fn transfer_cylindrical_surface(
         &mut self,
-        start: &crate::ffi::HandleGeomCylindricalSurface,
+        start: &crate::ffi_types::HandleGeomCylindricalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_cylindrical_surface(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_cylindrical_surface(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -912,15 +772,15 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:188 - `GeomToIGES_GeomSurface::TransferConicalSurface()`
     pub fn transfer_conical_surface(
         &mut self,
-        start: &crate::ffi::HandleGeomConicalSurface,
+        start: &crate::ffi_types::HandleGeomConicalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_conical_surface(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_conical_surface(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -935,15 +795,15 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:195 - `GeomToIGES_GeomSurface::TransferSphericalSurface()`
     pub fn transfer_spherical_surface(
         &mut self,
-        start: &crate::ffi::HandleGeomSphericalSurface,
+        start: &crate::ffi_types::HandleGeomSphericalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_spherical_surface(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_spherical_surface(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -958,15 +818,15 @@ impl GeomSurface {
     /// **Source:** `GeomToIGES_GeomSurface.hxx`:202 - `GeomToIGES_GeomSurface::TransferToroidalSurface()`
     pub fn transfer_toroidal_surface(
         &mut self,
-        start: &crate::ffi::HandleGeomToroidalSurface,
+        start: &crate::ffi_types::HandleGeomToroidalSurface,
         Udeb: f64,
         Ufin: f64,
         Vdeb: f64,
         Vfin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_transfer_toroidal_surface(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_transfer_toroidal_surface(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -982,7 +842,7 @@ impl GeomSurface {
     /// Returns the value of "TheLength"
     pub fn length(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_length(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_length(self as *const Self)
         })
     }
 
@@ -990,7 +850,7 @@ impl GeomSurface {
     /// Returns Brep mode flag.
     pub fn get_b_rep_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_get_b_rep_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_get_b_rep_mode(self as *const Self)
         })
     }
 
@@ -998,7 +858,10 @@ impl GeomSurface {
     /// Sets BRep mode flag.
     pub fn set_b_rep_mode(&mut self, flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_set_b_rep_mode(self as *mut Self, flag)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_set_b_rep_mode(
+                self as *mut Self,
+                flag,
+            )
         })
     }
 
@@ -1006,7 +869,9 @@ impl GeomSurface {
     /// Returns flag for writing elementary surfaces
     pub fn get_analytic_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_get_analytic_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_get_analytic_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -1014,16 +879,21 @@ impl GeomSurface {
     /// Setst flag for writing elementary surfaces
     pub fn set_analytic_mode(&mut self, flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_set_analytic_mode(self as *mut Self, flag)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_set_analytic_mode(
+                self as *mut Self,
+                flag,
+            )
         })
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1031,23 +901,30 @@ impl GeomSurface {
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_as_GeomToIGES_GeomEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomSurface_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1055,14 +932,19 @@ impl GeomSurface {
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:51 - `GeomToIGES_GeomEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomSurface_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomSurface_inherited_GetUnit(
+                self as *const Self,
+            )
         })
     }
 }
@@ -1077,11 +959,11 @@ impl GeomSurface {
 /// . Vector
 /// * Direction
 /// * VectorWithMagnitude
-pub use crate::ffi::GeomToIGES_GeomVector as GeomVector;
+pub use crate::ffi_types::GeomToIGES_GeomVector as GeomVector;
 
 unsafe impl crate::CppDeletable for GeomVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomToIGES_GeomVector_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_destructor(ptr);
     }
 }
 
@@ -1089,7 +971,9 @@ impl GeomVector {
     /// **Source:** `GeomToIGES_GeomVector.hxx`:40 - `GeomToIGES_GeomVector::GeomToIGES_GeomVector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomToIGES_GeomVector_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_ctor(),
+            ))
         }
     }
 
@@ -1099,7 +983,7 @@ impl GeomVector {
     pub fn new_geomentity(GE: &GeomEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_ctor_geomentity(GE),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_ctor_geomentity(GE),
             ))
         }
     }
@@ -1110,11 +994,11 @@ impl GeomVector {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_vector_handlegeomvector(
         &mut self,
-        start: &crate::ffi::HandleGeomVector,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeomVector,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_transfer_vector_handlegeomvector(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomvector(
                     self as *mut Self,
                     start,
                 ),
@@ -1125,39 +1009,31 @@ impl GeomVector {
     /// **Source:** `GeomToIGES_GeomVector.hxx`:51 - `GeomToIGES_GeomVector::TransferVector()`
     pub fn transfer_vector_handlegeomvectorwithmagnitude(
         &mut self,
-        start: &crate::ffi::HandleGeomVectorWithMagnitude,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeomVectorWithMagnitude,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_transfer_vector_handlegeomvectorwithmagnitude(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomvectorwithmagnitude(self as *mut Self, start)))
         }
     }
 
     /// **Source:** `GeomToIGES_GeomVector.hxx`:54 - `GeomToIGES_GeomVector::TransferVector()`
     pub fn transfer_vector_handlegeomdirection(
         &mut self,
-        start: &crate::ffi::HandleGeomDirection,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeomDirection,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_transfer_vector_handlegeomdirection(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_transfer_vector_handlegeomdirection(self as *mut Self, start)))
         }
     }
 
     /// Upcast to GeomToIGES_GeomEntity
     pub fn as_geom_entity(&self) -> &GeomEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1165,23 +1041,30 @@ impl GeomVector {
     pub fn as_geom_entity_mut(&mut self) -> &mut GeomEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_as_GeomToIGES_GeomEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:41 - `GeomToIGES_GeomEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomVector_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:44 - `GeomToIGES_GeomEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomToIGES_GeomVector_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1189,14 +1072,17 @@ impl GeomVector {
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:47 - `GeomToIGES_GeomEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomToIGES_GeomVector_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomToIGES_GeomEntity.hxx`:51 - `GeomToIGES_GeomEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomToIGES_GeomVector_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::GeomToIGES_GeomVector_inherited_GetUnit(self as *const Self)
         })
     }
 }

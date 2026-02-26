@@ -17,7 +17,11 @@ pub fn write_shape_charptr_bool(
 ) -> bool {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     crate::check_result(unsafe {
-        crate::ffi::StlAPI_write_shape_charptr_bool(theShape, c_theFile.as_ptr(), theAsciiMode)
+        crate::ffi_extern_TKDESTL::StlAPI_write_shape_charptr_bool(
+            theShape,
+            c_theFile.as_ptr(),
+            theAsciiMode,
+        )
     })
 }
 
@@ -30,11 +34,11 @@ pub fn write_shape_charptr_bool(
 /// Reads STL file and creates a shape composed of triangular faces, one per facet.
 /// IMPORTANT: This approach is very inefficient, especially for large files.
 /// IMPORTANT: Consider reading STL file to Poly_Triangulation object instead (see class RWStl).
-pub use crate::ffi::StlAPI_Reader as Reader;
+pub use crate::ffi_types::StlAPI_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StlAPI_Reader_destructor(ptr);
+        crate::ffi_extern_TKDESTL::StlAPI_Reader_destructor(ptr);
     }
 }
 
@@ -42,7 +46,11 @@ impl Reader {
     /// **Source:** `StlAPI_Reader.hxx` - `StlAPI_Reader::StlAPI_Reader()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StlAPI_Reader_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTL::StlAPI_Reader_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StlAPI_Reader.hxx`:32 - `StlAPI_Reader::Read()`
@@ -51,7 +59,11 @@ impl Reader {
     pub fn read(&mut self, theShape: &mut crate::topo_ds::Shape, theFileName: &str) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StlAPI_Reader_read(self as *mut Self, theShape, c_theFileName.as_ptr())
+            crate::ffi_extern_TKDESTL::StlAPI_Reader_read(
+                self as *mut Self,
+                theShape,
+                c_theFileName.as_ptr(),
+            )
         })
     }
 }
@@ -64,11 +76,11 @@ impl Reader {
 /// This class creates and writes
 /// STL files from Open CASCADE shapes. An STL file can be written to an existing STL file or to a
 /// new one.
-pub use crate::ffi::StlAPI_Writer as Writer;
+pub use crate::ffi_types::StlAPI_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StlAPI_Writer_destructor(ptr);
+        crate::ffi_extern_TKDESTL::StlAPI_Writer_destructor(ptr);
     }
 }
 
@@ -76,7 +88,11 @@ impl Writer {
     /// **Source:** `StlAPI_Writer.hxx`:33 - `StlAPI_Writer::StlAPI_Writer()`
     /// Creates a writer object with default parameters: ASCIIMode.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StlAPI_Writer_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTL::StlAPI_Writer_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StlAPI_Writer.hxx`:39 - `StlAPI_Writer::ASCIIMode()`
@@ -86,7 +102,9 @@ impl Writer {
     /// If the mode returns False, the generated file is a binary file.
     pub fn ascii_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StlAPI_Writer_ascii_mode(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTL::StlAPI_Writer_ascii_mode(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -101,7 +119,7 @@ impl Writer {
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StlAPI_Writer_write(
+            crate::ffi_extern_TKDESTL::StlAPI_Writer_write(
                 self as *mut Self,
                 theShape,
                 c_theFileName.as_ptr(),

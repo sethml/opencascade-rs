@@ -11,11 +11,11 @@
 // ========================
 
 /// **Source:** `LDOMBasicString.hxx`:31 - `LDOMBasicString`
-pub use crate::ffi::LDOMBasicString;
+pub use crate::ffi_types::LDOMBasicString;
 
 unsafe impl crate::CppDeletable for LDOMBasicString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOMBasicString_destructor(ptr);
+        crate::ffi_extern_misc::LDOMBasicString_destructor(ptr);
     }
 }
 
@@ -23,16 +23,18 @@ impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:89 - `LDOMBasicString::LDOMBasicString()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMBasicString_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:101 - `LDOMBasicString::LDOMBasicString()`
     pub fn new_int(aValue: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_ctor_int(
-                aValue,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMBasicString_ctor_int(aValue),
+            ))
         }
     }
 
@@ -41,7 +43,7 @@ impl LDOMBasicString {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOMBasicString_ctor_charptr(c_aValue.as_ptr()),
+                crate::ffi_extern_misc::LDOMBasicString_ctor_charptr(c_aValue.as_ptr()),
             ))
         }
     }
@@ -49,12 +51,12 @@ impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:110 - `LDOMBasicString::LDOMBasicString()`
     pub fn new_charptr_handleldommemmanager(
         aValue: &str,
-        aDoc: &crate::ffi::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::HandleLDOMMemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOMBasicString_ctor_charptr_handleldommemmanager(
+                crate::ffi_extern_misc::LDOMBasicString_ctor_charptr_handleldommemmanager(
                     c_aValue.as_ptr(),
                     aDoc,
                 ),
@@ -66,12 +68,12 @@ impl LDOMBasicString {
     pub fn new_charptr_int_handleldommemmanager(
         aValue: &str,
         aLen: i32,
-        aDoc: &crate::ffi::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::HandleLDOMMemManager,
     ) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOMBasicString_ctor_charptr_int_handleldommemmanager(
+                crate::ffi_extern_misc::LDOMBasicString_ctor_charptr_int_handleldommemmanager(
                     c_aValue.as_ptr(),
                     aLen,
                     aDoc,
@@ -81,27 +83,27 @@ impl LDOMBasicString {
     }
 
     /// **Source:** `LDOMBasicString.hxx`:50 - `LDOMBasicString::Type()`
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::LDOMBasicString_StringType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::LDOMBasicString_StringType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_type_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMBasicString_type_(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOMBasicString.hxx`:52 - `LDOMBasicString::GetInteger()`
     pub fn get_integer(&self, aResult: &mut i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOMBasicString_get_integer(self as *const Self, aResult)
+            crate::ffi_extern_misc::LDOMBasicString_get_integer(self as *const Self, aResult)
         })
     }
 
     /// **Source:** `LDOMBasicString.hxx`:56 - `LDOMBasicString::GetString()`
     pub fn get_string(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::LDOMBasicString_get_string(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_misc::LDOMBasicString_get_string(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -110,16 +112,16 @@ impl LDOMBasicString {
     /// **Source:** `LDOMBasicString.hxx`:63 - `LDOMBasicString::equals()`
     pub fn equals(&self, anOther: &LDOMBasicString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOMBasicString_equals(self as *const Self, anOther)
+            crate::ffi_extern_misc::LDOMBasicString_equals(self as *const Self, anOther)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMBasicString_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMBasicString_to_owned(self as *const Self),
+            ))
         }
     }
 }

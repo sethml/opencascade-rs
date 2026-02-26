@@ -19,11 +19,11 @@
 /// - tore/sphere entre un plan et un cone othogonal,
 ///
 /// - tore entre un plan et une droite orthogonale (rotule).
-pub use crate::ffi::ChFiKPart_ComputeData as ComputeData;
+pub use crate::ffi_types::ChFiKPart_ComputeData as ComputeData;
 
 unsafe impl crate::CppDeletable for ComputeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiKPart_ComputeData_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_destructor(ptr);
     }
 }
 
@@ -32,7 +32,9 @@ impl ComputeData {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiKPart_ComputeData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_ctor(),
+            ))
         }
     }
 
@@ -41,16 +43,16 @@ impl ComputeData {
     /// cases.
     pub fn compute(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &mut crate::ffi::HandleChFiDSSurfData,
-        S1: &crate::ffi::HandleAdaptor3dSurface,
-        S2: &crate::ffi::HandleAdaptor3dSurface,
+        Data: &mut crate::ffi_types::HandleChFiDSSurfData,
+        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::HandleAdaptor3dSurface,
         Or1: crate::top_abs::Orientation,
         Or2: crate::top_abs::Orientation,
-        Sp: &crate::ffi::HandleChFiDSSpine,
+        Sp: &crate::ffi_types::HandleChFiDSSpine,
         Iedge: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute(
+            crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_compute(
                 DStr,
                 Data,
                 S1,
@@ -67,9 +69,9 @@ impl ComputeData {
     /// Computes a toric or spheric corner fillet.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi::HandleChFiDSSurfData,
-        S1: &crate::ffi::HandleAdaptor3dSurface,
-        S2: &crate::ffi::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::HandleChFiDSSurfData,
+        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::HandleAdaptor3dSurface,
         OrFace1: crate::top_abs::Orientation,
         OrFace2: crate::top_abs::Orientation,
         Or1: crate::top_abs::Orientation,
@@ -82,7 +84,7 @@ impl ComputeData {
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
+            crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real2_pnt2d4(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), minRad, majRad, P1S1, P2S1, P1S2, P2S2)
         })
     }
 
@@ -90,9 +92,9 @@ impl ComputeData {
     /// Computes spheric corner fillet with non iso pcurve on S2.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi::HandleChFiDSSurfData,
-        S1: &crate::ffi::HandleAdaptor3dSurface,
-        S2: &crate::ffi::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::HandleChFiDSSurfData,
+        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::HandleAdaptor3dSurface,
         OrFace1: crate::top_abs::Orientation,
         OrFace2: crate::top_abs::Orientation,
         Or1: crate::top_abs::Orientation,
@@ -103,7 +105,7 @@ impl ComputeData {
         P2S2: &crate::gp::Pnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
+            crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface2_orientation4_real_pnt2d3(DStr, Data, S1, S2, OrFace1.into(), OrFace2.into(), Or1.into(), Or2.into(), Rad, PS1, P1S2, P2S2)
         })
     }
 
@@ -111,10 +113,10 @@ impl ComputeData {
     /// Computes a toric corner rotule.
     pub fn compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(
         DStr: &mut crate::top_ope_b_rep_ds::DataStructure,
-        Data: &crate::ffi::HandleChFiDSSurfData,
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        S1: &crate::ffi::HandleAdaptor3dSurface,
-        S2: &crate::ffi::HandleAdaptor3dSurface,
+        Data: &crate::ffi_types::HandleChFiDSSurfData,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::HandleAdaptor3dSurface,
         OfS: crate::top_abs::Orientation,
         OS: crate::top_abs::Orientation,
         OS1: crate::top_abs::Orientation,
@@ -122,7 +124,7 @@ impl ComputeData {
         Radius: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
+            crate::ffi_extern_TKFillet::ChFiKPart_ComputeData_compute_corner_datastructure_handlechfidssurfdata_handleadaptor3dsurface3_orientation4_real(DStr, Data, S, S1, S2, OfS.into(), OS.into(), OS1.into(), OS2.into(), Radius)
         })
     }
 }

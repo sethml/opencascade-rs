@@ -9,7 +9,11 @@
 /// **Source:** `XmlObjMgt.hxx`:40 - `XmlObjMgt::IdString`
 /// Define the name of XMLattribute 'ID' (to be used everywhere)
 pub fn id_string() -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_id_string())) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_id_string(),
+        ))
+    }
 }
 /// **Source:** `XmlObjMgt.hxx`:43 - `XmlObjMgt::SetExtendedString`
 /// Add attribute <theElement extstring="theString" ...>
@@ -17,7 +21,9 @@ pub fn set_extended_string(
     theElement: &mut crate::ldom::Element,
     theString: &crate::t_collection::ExtendedString,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::XmlObjMgt_set_extended_string(theElement, theString) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKXmlL::XmlObjMgt_set_extended_string(theElement, theString)
+    })
 }
 /// **Source:** `XmlObjMgt.hxx`:48 - `XmlObjMgt::GetExtendedString`
 /// Get attribute <theElement extstring="theString" ...>
@@ -25,7 +31,9 @@ pub fn get_extended_string(
     theElement: &crate::ldom::Element,
     theString: &mut crate::t_collection::ExtendedString,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::XmlObjMgt_get_extended_string(theElement, theString) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKXmlL::XmlObjMgt_get_extended_string(theElement, theString)
+    })
 }
 /// **Source:** `XmlObjMgt.hxx`:52 - `XmlObjMgt::GetStringValue`
 /// Returns the first child text node
@@ -33,9 +41,9 @@ pub fn get_string_value(
     theElement: &crate::ldom::Element,
 ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_get_string_value(
-            theElement,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_get_string_value(theElement),
+        ))
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:58 - `XmlObjMgt::SetStringValue`
@@ -49,7 +57,7 @@ pub fn set_string_value(
     isClearText: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::XmlObjMgt_set_string_value(theElement, theData, isClearText)
+        crate::ffi_extern_TKXmlL::XmlObjMgt_set_string_value(theElement, theData, isClearText)
     })
 }
 /// **Source:** `XmlObjMgt.hxx`:64 - `XmlObjMgt::GetTagEntryString`
@@ -60,7 +68,7 @@ pub fn get_tag_entry_string(
     theTagEntry: &mut crate::t_collection::AsciiString,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::XmlObjMgt_get_tag_entry_string(theTarget, theTagEntry)
+        crate::ffi_extern_TKXmlL::XmlObjMgt_get_tag_entry_string(theTarget, theTagEntry)
     })
 }
 /// **Source:** `XmlObjMgt.hxx`:69 - `XmlObjMgt::SetTagEntryString`
@@ -71,7 +79,7 @@ pub fn set_tag_entry_string(
     theTagEntry: &crate::t_collection::AsciiString,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry)
+        crate::ffi_extern_TKXmlL::XmlObjMgt_set_tag_entry_string(theSource, theTagEntry)
     })
 }
 /// **Source:** `XmlObjMgt.hxx`:72 - `XmlObjMgt::FindChildElement`
@@ -80,9 +88,9 @@ pub fn find_child_element(
     theObjId: i32,
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_find_child_element(
-            theSource, theObjId,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_find_child_element(theSource, theObjId),
+        ))
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:75 - `XmlObjMgt::FindChildByRef`
@@ -91,9 +99,9 @@ pub fn find_child_by_ref(
     theRefName: &crate::ldom_string::LDOMString,
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_find_child_by_ref(
-            theSource, theRefName,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_find_child_by_ref(theSource, theRefName),
+        ))
     }
 }
 /// **Source:** `XmlObjMgt.hxx`:78 - `XmlObjMgt::FindChildByName`
@@ -102,9 +110,9 @@ pub fn find_child_by_name(
     theName: &crate::ldom_string::LDOMString,
 ) -> crate::OwnedPtr<crate::ldom::Element> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_find_child_by_name(
-            theSource, theName,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_find_child_by_name(theSource, theName),
+        ))
     }
 }
 
@@ -120,11 +128,11 @@ pub fn find_child_by_name(
 /// of the range of the first element. Then, a C++ for
 /// loop must be written like this
 /// for (i = A->Lower(); i <= A->Upper(); i++)
-pub use crate::ffi::XmlObjMgt_Array1 as Array1;
+pub use crate::ffi_types::XmlObjMgt_Array1 as Array1;
 
 unsafe impl crate::CppDeletable for Array1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlObjMgt_Array1_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_destructor(ptr);
     }
 }
 
@@ -135,9 +143,9 @@ impl Array1 {
     /// when <Up> is less than <Low>.
     pub fn new_int2(Low: i32, Up: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_Array1_ctor_int2(
-                Low, Up,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_ctor_int2(Low, Up),
+            ))
         }
     }
 
@@ -152,7 +160,9 @@ impl Array1 {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlObjMgt_Array1_ctor_element_ldomstring(theParent, theName),
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_ctor_element_ldomstring(
+                    theParent, theName,
+                ),
             ))
         }
     }
@@ -165,7 +175,11 @@ impl Array1 {
         theName: &crate::ldom_string::LDOMString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_Array1_create_array_element(self as *mut Self, theParent, theName)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_create_array_element(
+                self as *mut Self,
+                theParent,
+                theName,
+            )
         })
     }
 
@@ -173,33 +187,41 @@ impl Array1 {
     /// Returns the DOM element of <me>.
     pub fn element(&self) -> &crate::ldom::Element {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlObjMgt_Array1_element(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_element(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XmlObjMgt_Array1.hxx`:59 - `XmlObjMgt_Array1::Length()`
     /// Returns the number of elements of <me>.
     pub fn length(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_Array1_length(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_length(self as *const Self)
+        })
     }
 
     /// **Source:** `XmlObjMgt_Array1.hxx`:62 - `XmlObjMgt_Array1::Lower()`
     /// Returns the lower bound.
     pub fn lower(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_Array1_lower(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_lower(self as *const Self)
+        })
     }
 
     /// **Source:** `XmlObjMgt_Array1.hxx`:65 - `XmlObjMgt_Array1::Upper()`
     /// Returns the upper bound.
     pub fn upper(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_Array1_upper(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_upper(self as *const Self)
+        })
     }
 
     /// **Source:** `XmlObjMgt_Array1.hxx`:68 - `XmlObjMgt_Array1::SetValue()`
     /// Set the <Index>th element of the array to <Value>.
     pub fn set_value(&mut self, Index: i32, Value: &mut crate::ldom::Element) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_Array1_set_value(self as *mut Self, Index, Value)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_set_value(self as *mut Self, Index, Value)
         })
     }
 
@@ -207,10 +229,9 @@ impl Array1 {
     /// Returns the value of <Index>th element of the array.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ldom::Element> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_Array1_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Array1_value(self as *const Self, Index),
+            ))
         }
     }
 }
@@ -221,11 +242,11 @@ impl Array1 {
 
 /// **Source:** `XmlObjMgt_GP.hxx`:26 - `XmlObjMgt_GP`
 /// Translation of gp (simple geometry) objects
-pub use crate::ffi::XmlObjMgt_GP as GP;
+pub use crate::ffi_types::XmlObjMgt_GP as GP;
 
 unsafe impl crate::CppDeletable for GP {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlObjMgt_GP_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlObjMgt_GP_destructor(ptr);
     }
 }
 
@@ -233,7 +254,11 @@ impl GP {
     /// **Source:** `XmlObjMgt_GP.hxx` - `XmlObjMgt_GP::XmlObjMgt_GP()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_GP_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_GP_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `XmlObjMgt_GP.hxx`:31 - `XmlObjMgt_GP::Translate()`
@@ -241,18 +266,18 @@ impl GP {
         aTrsf: &crate::gp::Trsf,
     ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_GP_translate_trsf(
-                aTrsf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_trsf(aTrsf),
+            ))
         }
     }
 
     /// **Source:** `XmlObjMgt_GP.hxx`:33 - `XmlObjMgt_GP::Translate()`
     pub fn translate_mat(aMat: &crate::gp::Mat) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_GP_translate_mat(
-                aMat,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_mat(aMat),
+            ))
         }
     }
 
@@ -261,9 +286,9 @@ impl GP {
         anXYZ: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_GP_translate_xyz(
-                anXYZ,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_xyz(anXYZ),
+            ))
         }
     }
 
@@ -272,7 +297,9 @@ impl GP {
         aStr: &crate::ldom_string::LDOMString,
         T: &mut crate::gp::Trsf,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_trsf(aStr, T) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_ldomstring_trsf(aStr, T)
+        })
     }
 
     /// **Source:** `XmlObjMgt_GP.hxx`:39 - `XmlObjMgt_GP::Translate()`
@@ -280,7 +307,9 @@ impl GP {
         aStr: &crate::ldom_string::LDOMString,
         T: &mut crate::gp::Mat,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_mat(aStr, T) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_ldomstring_mat(aStr, T)
+        })
     }
 
     /// **Source:** `XmlObjMgt_GP.hxx`:41 - `XmlObjMgt_GP::Translate()`
@@ -288,7 +317,9 @@ impl GP {
         aStr: &crate::ldom_string::LDOMString,
         T: &mut crate::gp::XYZ,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_GP_translate_ldomstring_xyz(aStr, T) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_GP_translate_ldomstring_xyz(aStr, T)
+        })
     }
 }
 
@@ -298,11 +329,11 @@ impl GP {
 
 /// **Source:** `XmlObjMgt_Persistent.hxx`:27 - `XmlObjMgt_Persistent`
 /// root for XML-persistence
-pub use crate::ffi::XmlObjMgt_Persistent as Persistent;
+pub use crate::ffi_types::XmlObjMgt_Persistent as Persistent;
 
 unsafe impl crate::CppDeletable for Persistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlObjMgt_Persistent_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_destructor(ptr);
     }
 }
 
@@ -311,7 +342,9 @@ impl Persistent {
     /// empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XmlObjMgt_Persistent_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_ctor(),
+            ))
         }
     }
 
@@ -320,7 +353,7 @@ impl Persistent {
     pub fn new_element(theElement: &crate::ldom::Element) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlObjMgt_Persistent_ctor_element(theElement),
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_ctor_element(theElement),
             ))
         }
     }
@@ -333,7 +366,9 @@ impl Persistent {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlObjMgt_Persistent_ctor_element_ldomstring(theElement, theRef),
+                crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_ctor_element_ldomstring(
+                    theElement, theRef,
+                ),
             ))
         }
     }
@@ -347,7 +382,7 @@ impl Persistent {
         theID: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_Persistent_create_element(
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_create_element(
                 self as *mut Self,
                 theParent,
                 theType,
@@ -359,7 +394,7 @@ impl Persistent {
     /// **Source:** `XmlObjMgt_Persistent.hxx`:47 - `XmlObjMgt_Persistent::SetId()`
     pub fn set_id(&mut self, theId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_Persistent_set_id(self as *mut Self, theId)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_set_id(self as *mut Self, theId)
         })
     }
 
@@ -367,7 +402,9 @@ impl Persistent {
     /// return myElement
     pub fn element(&self) -> &crate::ldom::Element {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlObjMgt_Persistent_element(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_element(
+                self as *const Self,
+            )))
         }
     }
 
@@ -375,7 +412,7 @@ impl Persistent {
     /// return myElement
     pub fn element_mut(&mut self) -> &mut crate::ldom::Element {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::XmlObjMgt_Persistent_element_mut(
+            &mut *(crate::check_result(crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_element_mut(
                 self as *mut Self,
             )))
         }
@@ -383,7 +420,9 @@ impl Persistent {
 
     /// **Source:** `XmlObjMgt_Persistent.hxx`:57 - `XmlObjMgt_Persistent::Id()`
     pub fn id(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::XmlObjMgt_Persistent_id(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXmlL::XmlObjMgt_Persistent_id(self as *const Self)
+        })
     }
 }
 
@@ -396,11 +435,11 @@ impl Persistent {
 /// TColStd_DataMapOfIntegerTransient that stores a handle to the file
 /// header section. With that attribute drivers have access to the file header
 /// section.
-pub use crate::ffi::XmlObjMgt_RRelocationTable as RRelocationTable;
+pub use crate::ffi_types::XmlObjMgt_RRelocationTable as RRelocationTable;
 
 unsafe impl crate::CppDeletable for RRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlObjMgt_RRelocationTable_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_destructor(ptr);
     }
 }
 
@@ -410,18 +449,20 @@ impl RRelocationTable {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlObjMgt_RRelocationTable_ctor(),
+                crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_ctor(),
             ))
         }
     }
 
     /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:31 - `XmlObjMgt_RRelocationTable::GetHeaderData()`
     /// Returns a handle to the header data of the file that is begin read
-    pub fn get_header_data(&self) -> &crate::ffi::HandleStorageHeaderData {
+    pub fn get_header_data(&self) -> &crate::ffi_types::HandleStorageHeaderData {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlObjMgt_RRelocationTable_get_header_data(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_get_header_data(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -429,16 +470,22 @@ impl RRelocationTable {
     /// Sets the storage header data.
     ///
     /// @param theHeaderData header data of the file that is begin read
-    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi::HandleStorageHeaderData) {
+    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::HandleStorageHeaderData) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_RRelocationTable_set_header_data(self as *mut Self, theHeaderData)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_set_header_data(
+                self as *mut Self,
+                theHeaderData,
+            )
         })
     }
 
     /// **Source:** `XmlObjMgt_RRelocationTable.hxx`:38 - `XmlObjMgt_RRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_RRelocationTable_clear(self as *mut Self, doReleaseMemory)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_RRelocationTable_clear(
+                self as *mut Self,
+                doReleaseMemory,
+            )
         })
     }
 }
@@ -452,11 +499,11 @@ impl RRelocationTable {
 /// TColStd_DataMapOfIntegerTransient that stores a handle to the file
 /// header section. With that attribute drivers have access to the file header
 /// section.
-pub use crate::ffi::XmlObjMgt_SRelocationTable as SRelocationTable;
+pub use crate::ffi_types::XmlObjMgt_SRelocationTable as SRelocationTable;
 
 unsafe impl crate::CppDeletable for SRelocationTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlObjMgt_SRelocationTable_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_destructor(ptr);
     }
 }
 
@@ -466,18 +513,20 @@ impl SRelocationTable {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlObjMgt_SRelocationTable_ctor(),
+                crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_ctor(),
             ))
         }
     }
 
     /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:30 - `XmlObjMgt_SRelocationTable::GetHeaderData()`
     /// Returns a handle to the header data of the file that is begin read
-    pub fn get_header_data(&self) -> &crate::ffi::HandleStorageHeaderData {
+    pub fn get_header_data(&self) -> &crate::ffi_types::HandleStorageHeaderData {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlObjMgt_SRelocationTable_get_header_data(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_get_header_data(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -485,16 +534,22 @@ impl SRelocationTable {
     /// Sets the storage header data.
     ///
     /// @param theHeaderData header data of the file that is begin read
-    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi::HandleStorageHeaderData) {
+    pub fn set_header_data(&mut self, theHeaderData: &crate::ffi_types::HandleStorageHeaderData) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_SRelocationTable_set_header_data(self as *mut Self, theHeaderData)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_set_header_data(
+                self as *mut Self,
+                theHeaderData,
+            )
         })
     }
 
     /// **Source:** `XmlObjMgt_SRelocationTable.hxx`:37 - `XmlObjMgt_SRelocationTable::Clear()`
     pub fn clear(&mut self, doReleaseMemory: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlObjMgt_SRelocationTable_clear(self as *mut Self, doReleaseMemory)
+            crate::ffi_extern_TKXmlL::XmlObjMgt_SRelocationTable_clear(
+                self as *mut Self,
+                doReleaseMemory,
+            )
         })
     }
 }

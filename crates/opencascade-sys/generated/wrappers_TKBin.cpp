@@ -11,7 +11,7 @@
 #include <BinLDrivers_DocumentStorageDriver.hxx>
 #include <BinMDF_ADriver.hxx>
 #include <BinMDF_ADriverTable.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinMDataXtd.hxx>
 #include <BinMDataXtd_ConstraintDriver.hxx>
 #include <BinMDataXtd_GeometryDriver.hxx>
@@ -45,7 +45,7 @@
 #include <TColStd_IndexedMapOfTransient.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeMap.hxx>
+#include <TDF_AttributeIndexedMap.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
 

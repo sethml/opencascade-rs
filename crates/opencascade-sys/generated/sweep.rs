@@ -13,11 +13,11 @@
 /// **Source:** `Sweep_NumShape.hxx`:30 - `Sweep_NumShape`
 /// Gives    a  simple  indexed   representation  of a
 /// Directing Edge topology.
-pub use crate::ffi::Sweep_NumShape as NumShape;
+pub use crate::ffi_types::Sweep_NumShape as NumShape;
 
 unsafe impl crate::CppDeletable for NumShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Sweep_NumShape_destructor(ptr);
+        crate::ffi_extern_TKPrim::Sweep_NumShape_destructor(ptr);
     }
 }
 
@@ -25,7 +25,11 @@ impl NumShape {
     /// **Source:** `Sweep_NumShape.hxx`:36 - `Sweep_NumShape::Sweep_NumShape()`
     /// Creates a dummy indexed edge.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Sweep_NumShape_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKPrim::Sweep_NumShape_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:49 - `Sweep_NumShape::Sweep_NumShape()`
@@ -49,7 +53,7 @@ impl NumShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Sweep_NumShape_ctor_int_shapeenum_bool3(
+                crate::ffi_extern_TKPrim::Sweep_NumShape_ctor_int_shapeenum_bool3(
                     Index,
                     Type.into(),
                     Closed,
@@ -139,7 +143,7 @@ impl NumShape {
         EndInf: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Sweep_NumShape_init(
+            crate::ffi_extern_TKPrim::Sweep_NumShape_init(
                 self as *mut Self,
                 Index,
                 Type.into(),
@@ -152,36 +156,44 @@ impl NumShape {
 
     /// **Source:** `Sweep_NumShape.hxx`:73 - `Sweep_NumShape::Index()`
     pub fn index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Sweep_NumShape_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShape_index(self as *const Self)
+        })
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:75 - `Sweep_NumShape::Type()`
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShape_type_(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShape_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:77 - `Sweep_NumShape::Closed()`
     pub fn closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Sweep_NumShape_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShape_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:79 - `Sweep_NumShape::BegInfinite()`
     pub fn beg_infinite(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Sweep_NumShape_beg_infinite(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShape_beg_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:81 - `Sweep_NumShape::EndInfinite()`
     pub fn end_infinite(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Sweep_NumShape_end_infinite(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShape_end_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `Sweep_NumShape.hxx`:83 - `Sweep_NumShape::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShape_orientation(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShape_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -195,11 +207,11 @@ impl NumShape {
 /// This class provides iteration services required by
 /// the   Swept Primitives  for   a Directing NumShape
 /// Line.
-pub use crate::ffi::Sweep_NumShapeIterator as NumShapeIterator;
+pub use crate::ffi_types::Sweep_NumShapeIterator as NumShapeIterator;
 
 unsafe impl crate::CppDeletable for NumShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Sweep_NumShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_destructor(ptr);
     }
 }
 
@@ -207,9 +219,9 @@ impl NumShapeIterator {
     /// **Source:** `Sweep_NumShapeIterator.hxx`:35 - `Sweep_NumShapeIterator::Sweep_NumShapeIterator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::Sweep_NumShapeIterator_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_ctor(),
+            ))
         }
     }
 
@@ -217,21 +229,23 @@ impl NumShapeIterator {
     /// Reset the NumShapeIterator on sub-shapes of <aShape>.
     pub fn init(&mut self, aShape: &NumShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::Sweep_NumShapeIterator_init(self as *mut Self, aShape)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_init(self as *mut Self, aShape)
         })
     }
 
     /// **Source:** `Sweep_NumShapeIterator.hxx`:41 - `Sweep_NumShapeIterator::More()`
     /// Returns True if there is a current sub-shape.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Sweep_NumShapeIterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `Sweep_NumShapeIterator.hxx`:44 - `Sweep_NumShapeIterator::Next()`
     /// Moves to the next sub-shape.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Sweep_NumShapeIterator_next(self as *mut Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_next(self as *mut Self)
         })
     }
 
@@ -239,7 +253,9 @@ impl NumShapeIterator {
     /// Returns the current sub-shape.
     pub fn value(&self) -> &NumShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::Sweep_NumShapeIterator_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -247,7 +263,7 @@ impl NumShapeIterator {
     /// Returns the orientation of the current sub-shape.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeIterator_orientation(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeIterator_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -261,11 +277,11 @@ impl NumShapeIterator {
 /// This class provides  the indexation and  type analysis
 /// services required by  the NumShape Directing Shapes of
 /// Swept Primitives.
-pub use crate::ffi::Sweep_NumShapeTool as NumShapeTool;
+pub use crate::ffi_types::Sweep_NumShapeTool as NumShapeTool;
 
 unsafe impl crate::CppDeletable for NumShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Sweep_NumShapeTool_destructor(ptr);
+        crate::ffi_extern_TKPrim::Sweep_NumShapeTool_destructor(ptr);
     }
 }
 
@@ -277,7 +293,7 @@ impl NumShapeTool {
     pub fn new_numshape(aShape: &NumShape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Sweep_NumShapeTool_ctor_numshape(aShape),
+                crate::ffi_extern_TKPrim::Sweep_NumShapeTool_ctor_numshape(aShape),
             ))
         }
     }
@@ -286,7 +302,7 @@ impl NumShapeTool {
     /// Returns the number of subshapes in the shape.
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_nb_shapes(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_nb_shapes(self as *const Self)
         })
     }
 
@@ -294,7 +310,7 @@ impl NumShapeTool {
     /// Returns the index of <aShape>.
     pub fn index(&self, aShape: &NumShape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_index(self as *const Self, aShape)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_index(self as *const Self, aShape)
         })
     }
 
@@ -302,10 +318,9 @@ impl NumShapeTool {
     /// Returns the Shape at index anIndex
     pub fn shape(&self, anIndex: i32) -> crate::OwnedPtr<NumShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Sweep_NumShapeTool_shape(
-                self as *const Self,
-                anIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKPrim::Sweep_NumShapeTool_shape(self as *const Self, anIndex),
+            ))
         }
     }
 
@@ -313,7 +328,7 @@ impl NumShapeTool {
     /// Returns the type of <aShape>.
     pub fn type_(&self, aShape: &NumShape) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_type_(self as *const Self, aShape)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_type_(self as *const Self, aShape)
         }))
         .unwrap()
     }
@@ -322,7 +337,7 @@ impl NumShapeTool {
     /// Returns the orientation of <aShape>.
     pub fn orientation(&self, aShape: &NumShape) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_orientation(self as *const Self, aShape)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_orientation(self as *const Self, aShape)
         }))
         .unwrap()
     }
@@ -331,7 +346,7 @@ impl NumShapeTool {
     /// Returns true if there is a First Vertex in the Shape.
     pub fn has_first_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_has_first_vertex(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_has_first_vertex(self as *const Self)
         })
     }
 
@@ -339,7 +354,7 @@ impl NumShapeTool {
     /// Returns true if there is a Last Vertex in the Shape.
     pub fn has_last_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Sweep_NumShapeTool_has_last_vertex(self as *const Self)
+            crate::ffi_extern_TKPrim::Sweep_NumShapeTool_has_last_vertex(self as *const Self)
         })
     }
 
@@ -348,7 +363,7 @@ impl NumShapeTool {
     pub fn first_vertex(&self) -> crate::OwnedPtr<NumShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Sweep_NumShapeTool_first_vertex(self as *const Self),
+                crate::ffi_extern_TKPrim::Sweep_NumShapeTool_first_vertex(self as *const Self),
             ))
         }
     }
@@ -358,7 +373,7 @@ impl NumShapeTool {
     pub fn last_vertex(&self) -> crate::OwnedPtr<NumShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Sweep_NumShapeTool_last_vertex(self as *const Self),
+                crate::ffi_extern_TKPrim::Sweep_NumShapeTool_last_vertex(self as *const Self),
             ))
         }
     }

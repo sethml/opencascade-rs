@@ -17,22 +17,18 @@
 /// WARNING :  if   the projection has  failed,   this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
-    C: &crate::ffi::HandleGeomCurve,
+    C: &crate::ffi_types::HandleGeomCurve,
     First: f64,
     Last: f64,
-    S: &crate::ffi::HandleGeomSurface,
+    S: &crate::ffi_types::HandleGeomSurface,
     UFirst: f64,
     ULast: f64,
     VFirst: f64,
     VLast: f64,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
-                C, First, Last, S, UFirst, ULast, VFirst, VLast, Tolerance,
-            ),
-        ))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real5(C, First, Last, S, UFirst, ULast, VFirst, VLast, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:66 - `GeomProjLib::Curve2d`
@@ -46,18 +42,14 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real5(
 /// WARNING :  if   the projection has  failed,   this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real(
-    C: &crate::ffi::HandleGeomCurve,
+    C: &crate::ffi_types::HandleGeomCurve,
     First: f64,
     Last: f64,
-    S: &crate::ffi::HandleGeomSurface,
+    S: &crate::ffi_types::HandleGeomSurface,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real(
-                C, First, Last, S, Tolerance,
-            ),
-        ))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface_real(C, First, Last, S, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:80 - `GeomProjLib::Curve2d`
@@ -70,17 +62,13 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface_real(
 /// WARNING :  if   the projection has  failed,   this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_real2_handlegeomsurface(
-    C: &crate::ffi::HandleGeomCurve,
+    C: &crate::ffi_types::HandleGeomCurve,
     First: f64,
     Last: f64,
-    S: &crate::ffi::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    S: &crate::ffi_types::HandleGeomSurface,
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface(
-                C, First, Last, S,
-            ),
-        ))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_real2_handlegeomsurface(C, First, Last, S)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:91 - `GeomProjLib::Curve2d`
@@ -91,12 +79,14 @@ pub fn curve2d_handlegeomcurve_real2_handlegeomsurface(
 /// WARNING  :  if the   projection has  failed,  this
 /// method returns a null Handle.
 pub fn curve2d_handlegeomcurve_handlegeomsurface(
-    C: &crate::ffi::HandleGeomCurve,
-    S: &crate::ffi::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    C: &crate::ffi_types::HandleGeomCurve,
+    S: &crate::ffi_types::HandleGeomSurface,
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(C, S),
+            crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface(
+                C, S,
+            ),
         ))
     }
 }
@@ -109,19 +99,15 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface(
 /// method returns a null Handle.
 /// can expand a little the bounds of surface
 pub fn curve2d_handlegeomcurve_handlegeomsurface_real4(
-    C: &crate::ffi::HandleGeomCurve,
-    S: &crate::ffi::HandleGeomSurface,
+    C: &crate::ffi_types::HandleGeomCurve,
+    S: &crate::ffi_types::HandleGeomSurface,
     UDeb: f64,
     UFin: f64,
     VDeb: f64,
     VFin: f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real4(
-                C, S, UDeb, UFin, VDeb, VFin,
-            ),
-        ))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real4(C, S, UDeb, UFin, VDeb, VFin)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:115 - `GeomProjLib::Curve2d`
@@ -133,20 +119,16 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real4(
 /// method returns a null Handle.
 /// can expand a little the bounds of surface
 pub fn curve2d_handlegeomcurve_handlegeomsurface_real5(
-    C: &crate::ffi::HandleGeomCurve,
-    S: &crate::ffi::HandleGeomSurface,
+    C: &crate::ffi_types::HandleGeomCurve,
+    S: &crate::ffi_types::HandleGeomSurface,
     UDeb: f64,
     UFin: f64,
     VDeb: f64,
     VFin: f64,
     Tolerance: &mut f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real5(
-                C, S, UDeb, UFin, VDeb, VFin, Tolerance,
-            ),
-        ))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::GeomProjLib_curve2d_handlegeomcurve_handlegeomsurface_real5(C, S, UDeb, UFin, VDeb, VFin, Tolerance)))
     }
 }
 /// **Source:** `GeomProjLib.hxx`:127 - `GeomProjLib::Project`
@@ -155,12 +137,14 @@ pub fn curve2d_handlegeomcurve_handlegeomsurface_real5(
 /// WARNING : if the  projection has failed, returns  a
 /// null Handle.
 pub fn project_handlegeomcurve_handlegeomsurface(
-    C: &crate::ffi::HandleGeomCurve,
-    S: &crate::ffi::HandleGeomSurface,
-) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    C: &crate::ffi_types::HandleGeomCurve,
+    S: &crate::ffi_types::HandleGeomSurface,
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::GeomProjLib_project_handlegeomcurve_handlegeomsurface(C, S),
+            crate::ffi_extern_TKGeomBase::GeomProjLib_project_handlegeomcurve_handlegeomsurface(
+                C, S,
+            ),
         ))
     }
 }
@@ -174,17 +158,19 @@ pub fn project_handlegeomcurve_handlegeomsurface(
 /// It means: proj(C(u)) = PC(u) for each u.
 /// Otherwise, the parametrization may change.
 pub fn project_on_plane(
-    Curve: &crate::ffi::HandleGeomCurve,
-    Plane: &crate::ffi::HandleGeomPlane,
+    Curve: &crate::ffi_types::HandleGeomCurve,
+    Plane: &crate::ffi_types::HandleGeomPlane,
     Dir: &crate::gp::Dir,
     KeepParametrization: bool,
-) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomProjLib_project_on_plane(
-            Curve,
-            Plane,
-            Dir,
-            KeepParametrization,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomBase::GeomProjLib_project_on_plane(
+                Curve,
+                Plane,
+                Dir,
+                KeepParametrization,
+            ),
+        ))
     }
 }

@@ -19,11 +19,11 @@
 /// and another conic.
 /// No tolerance is given for all the intersections: the tolerance
 /// will be the "precision machine".
-pub use crate::ffi::IntAna2d_AnaIntersection as AnaIntersection;
+pub use crate::ffi_types::IntAna2d_AnaIntersection as AnaIntersection;
 
 unsafe impl crate::CppDeletable for AnaIntersection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna2d_AnaIntersection_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_destructor(ptr);
     }
 }
 
@@ -33,7 +33,7 @@ impl AnaIntersection {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor(),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor(),
             ))
         }
     }
@@ -43,7 +43,7 @@ impl AnaIntersection {
     pub fn new_lin2d2(L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d2(L1, L2),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_lin2d2(L1, L2),
             ))
         }
     }
@@ -53,7 +53,7 @@ impl AnaIntersection {
     pub fn new_circ2d2(C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d2(C1, C2),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_circ2d2(C1, C2),
             ))
         }
     }
@@ -63,7 +63,7 @@ impl AnaIntersection {
     pub fn new_lin2d_circ2d(L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_circ2d(L, C),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_lin2d_circ2d(L, C),
             ))
         }
     }
@@ -73,7 +73,7 @@ impl AnaIntersection {
     pub fn new_lin2d_conic(L: &crate::gp::Lin2d, C: &Conic) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_lin2d_conic(L, C),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_lin2d_conic(L, C),
             ))
         }
     }
@@ -83,7 +83,7 @@ impl AnaIntersection {
     pub fn new_circ2d_conic(C: &crate::gp::Circ2d, Co: &Conic) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_circ2d_conic(C, Co),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_circ2d_conic(C, Co),
             ))
         }
     }
@@ -93,7 +93,7 @@ impl AnaIntersection {
     pub fn new_elips2d_conic(E: &crate::gp::Elips2d, C: &Conic) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_elips2d_conic(E, C),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_elips2d_conic(E, C),
             ))
         }
     }
@@ -103,7 +103,7 @@ impl AnaIntersection {
     pub fn new_parab2d_conic(P: &crate::gp::Parab2d, C: &Conic) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_parab2d_conic(P, C),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_parab2d_conic(P, C),
             ))
         }
     }
@@ -113,7 +113,7 @@ impl AnaIntersection {
     pub fn new_hypr2d_conic(H: &crate::gp::Hypr2d, C: &Conic) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_AnaIntersection_ctor_hypr2d_conic(H, C),
+                crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_ctor_hypr2d_conic(H, C),
             ))
         }
     }
@@ -122,7 +122,11 @@ impl AnaIntersection {
     /// Intersection between two lines.
     pub fn perform_lin2d2(&mut self, L1: &crate::gp::Lin2d, L2: &crate::gp::Lin2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_lin2d2(self as *mut Self, L1, L2)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_lin2d2(
+                self as *mut Self,
+                L1,
+                L2,
+            )
         })
     }
 
@@ -130,7 +134,11 @@ impl AnaIntersection {
     /// Intersection between two circles.
     pub fn perform_circ2d2(&mut self, C1: &crate::gp::Circ2d, C2: &crate::gp::Circ2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_circ2d2(self as *mut Self, C1, C2)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_circ2d2(
+                self as *mut Self,
+                C1,
+                C2,
+            )
         })
     }
 
@@ -138,7 +146,11 @@ impl AnaIntersection {
     /// Intersection between a line and a circle.
     pub fn perform_lin2d_circ2d(&mut self, L: &crate::gp::Lin2d, C: &crate::gp::Circ2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_circ2d(self as *mut Self, L, C)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_lin2d_circ2d(
+                self as *mut Self,
+                L,
+                C,
+            )
         })
     }
 
@@ -146,7 +158,11 @@ impl AnaIntersection {
     /// Intersection between a line and a conic.
     pub fn perform_lin2d_conic(&mut self, L: &crate::gp::Lin2d, C: &Conic) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_lin2d_conic(self as *mut Self, L, C)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_lin2d_conic(
+                self as *mut Self,
+                L,
+                C,
+            )
         })
     }
 
@@ -154,7 +170,11 @@ impl AnaIntersection {
     /// Intersection between a circle and another conic.
     pub fn perform_circ2d_conic(&mut self, C: &crate::gp::Circ2d, Co: &Conic) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_circ2d_conic(self as *mut Self, C, Co)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_circ2d_conic(
+                self as *mut Self,
+                C,
+                Co,
+            )
         })
     }
 
@@ -162,7 +182,11 @@ impl AnaIntersection {
     /// Intersection between an ellipse and another conic.
     pub fn perform_elips2d_conic(&mut self, E: &crate::gp::Elips2d, C: &Conic) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_elips2d_conic(self as *mut Self, E, C)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_elips2d_conic(
+                self as *mut Self,
+                E,
+                C,
+            )
         })
     }
 
@@ -170,7 +194,11 @@ impl AnaIntersection {
     /// Intersection between a parabola and another conic.
     pub fn perform_parab2d_conic(&mut self, P: &crate::gp::Parab2d, C: &Conic) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_parab2d_conic(self as *mut Self, P, C)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_parab2d_conic(
+                self as *mut Self,
+                P,
+                C,
+            )
         })
     }
 
@@ -178,7 +206,11 @@ impl AnaIntersection {
     /// Intersection between an hyperbola and another conic.
     pub fn perform_hypr2d_conic(&mut self, H: &crate::gp::Hypr2d, C: &Conic) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_perform_hypr2d_conic(self as *mut Self, H, C)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_perform_hypr2d_conic(
+                self as *mut Self,
+                H,
+                C,
+            )
         })
     }
 
@@ -186,7 +218,7 @@ impl AnaIntersection {
     /// Returns TRUE if the computation was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_is_done(self as *const Self)
         })
     }
 
@@ -197,7 +229,7 @@ impl AnaIntersection {
     /// The element may be parallel in this case.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_is_empty(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_is_empty(self as *const Self)
         })
     }
 
@@ -210,7 +242,9 @@ impl AnaIntersection {
     /// The function returns FALSE in all the other cases.
     pub fn identical_elements(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_identical_elements(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_identical_elements(
+                self as *const Self,
+            )
         })
     }
 
@@ -220,7 +254,9 @@ impl AnaIntersection {
     /// The function returns FALSE in all the other cases.
     pub fn parallel_elements(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_parallel_elements(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_parallel_elements(
+                self as *const Self,
+            )
         })
     }
 
@@ -228,7 +264,7 @@ impl AnaIntersection {
     /// returns the number of IntPoint between the 2 curves.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_AnaIntersection_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_nb_points(self as *const Self)
         })
     }
 
@@ -237,7 +273,7 @@ impl AnaIntersection {
     /// If (N<=0) or (N>NbPoints), an exception is raised.
     pub fn point(&self, N: i32) -> &IntPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna2d_AnaIntersection_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna2d_AnaIntersection_point(
                 self as *const Self,
                 N,
             )))
@@ -252,11 +288,11 @@ impl AnaIntersection {
 /// **Source:** `IntAna2d_Conic.hxx`:33 - `IntAna2d_Conic`
 /// Definition of a conic by its implicit quadaratic equation:
 /// A.X**2 + B.Y**2 + 2.C.X*Y + 2.D.X + 2.E.Y + F = 0.
-pub use crate::ffi::IntAna2d_Conic as Conic;
+pub use crate::ffi_types::IntAna2d_Conic as Conic;
 
 unsafe impl crate::CppDeletable for Conic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna2d_Conic_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna2d_Conic_destructor(ptr);
     }
 }
 
@@ -264,61 +300,63 @@ impl Conic {
     /// **Source:** `IntAna2d_Conic.hxx`:38 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_ctor_circ2d(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_ctor_circ2d(C),
+            ))
         }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:40 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_lin2d(C: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_ctor_lin2d(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_ctor_lin2d(C),
+            ))
         }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:42 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_parab2d(C: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_ctor_parab2d(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_ctor_parab2d(C),
+            ))
         }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:44 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_hypr2d(C: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_ctor_hypr2d(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_ctor_hypr2d(C),
+            ))
         }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:46 - `IntAna2d_Conic::IntAna2d_Conic()`
     pub fn new_elips2d(C: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_ctor_elips2d(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_ctor_elips2d(C),
+            ))
         }
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:49 - `IntAna2d_Conic::Value()`
     /// value of the function F at the point X,Y.
     pub fn value(&self, X: f64, Y: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IntAna2d_Conic_value(self as *const Self, X, Y) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna2d_Conic_value(self as *const Self, X, Y)
+        })
     }
 
     /// **Source:** `IntAna2d_Conic.hxx`:52 - `IntAna2d_Conic::Grad()`
     /// returns the value of the gradient of F at the point X,Y.
     pub fn grad(&self, X: f64, Y: f64) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_Conic_grad(
-                self as *const Self,
-                X,
-                Y,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_Conic_grad(self as *const Self, X, Y),
+            ))
         }
     }
 
@@ -327,7 +365,13 @@ impl Conic {
     /// the point X,Y.
     pub fn val_and_grad(&self, X: f64, Y: f64, Val: &mut f64, Grd: &mut crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_Conic_val_and_grad(self as *const Self, X, Y, Val, Grd)
+            crate::ffi_extern_TKGeomBase::IntAna2d_Conic_val_and_grad(
+                self as *const Self,
+                X,
+                Y,
+                Val,
+                Grd,
+            )
         })
     }
 
@@ -345,7 +389,15 @@ impl Conic {
         F: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_Conic_coefficients(self as *const Self, A, B, C, D, E, F)
+            crate::ffi_extern_TKGeomBase::IntAna2d_Conic_coefficients(
+                self as *const Self,
+                A,
+                B,
+                C,
+                D,
+                E,
+                F,
+            )
         })
     }
 
@@ -365,7 +417,16 @@ impl Conic {
         Axis: &crate::gp::Ax2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_Conic_new_coefficients(self as *const Self, A, B, C, D, E, F, Axis)
+            crate::ffi_extern_TKGeomBase::IntAna2d_Conic_new_coefficients(
+                self as *const Self,
+                A,
+                B,
+                C,
+                D,
+                E,
+                F,
+                Axis,
+            )
         })
     }
 }
@@ -376,11 +437,11 @@ impl Conic {
 
 /// **Source:** `IntAna2d_IntPoint.hxx`:28 - `IntAna2d_IntPoint`
 /// Geometrical intersection between two 2d elements.
-pub use crate::ffi::IntAna2d_IntPoint as IntPoint;
+pub use crate::ffi_types::IntAna2d_IntPoint as IntPoint;
 
 unsafe impl crate::CppDeletable for IntPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna2d_IntPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_destructor(ptr);
     }
 }
 
@@ -392,7 +453,7 @@ impl IntPoint {
     pub fn new_real4(X: f64, Y: f64, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_IntPoint_ctor_real4(X, Y, U1, U2),
+                crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_ctor_real4(X, Y, U1, U2),
             ))
         }
     }
@@ -407,7 +468,7 @@ impl IntPoint {
     pub fn new_real3(X: f64, Y: f64, U1: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna2d_IntPoint_ctor_real3(X, Y, U1),
+                crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_ctor_real3(X, Y, U1),
             ))
         }
     }
@@ -415,7 +476,9 @@ impl IntPoint {
     /// **Source:** `IntAna2d_IntPoint.hxx`:51 - `IntAna2d_IntPoint::IntAna2d_IntPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna2d_IntPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_ctor(),
+            ))
         }
     }
 
@@ -423,7 +486,13 @@ impl IntPoint {
     /// Set the values for a "non-implicit" point.
     pub fn set_value_real4(&mut self, X: f64, Y: f64, U1: f64, U2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_IntPoint_set_value_real4(self as *mut Self, X, Y, U1, U2)
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_set_value_real4(
+                self as *mut Self,
+                X,
+                Y,
+                U1,
+                U2,
+            )
         })
     }
 
@@ -431,21 +500,30 @@ impl IntPoint {
     /// Set the values for an "implicit" point.
     pub fn set_value_real3(&mut self, X: f64, Y: f64, U1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna2d_IntPoint_set_value_real3(self as *mut Self, X, Y, U1)
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_set_value_real3(
+                self as *mut Self,
+                X,
+                Y,
+                U1,
+            )
         })
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:65 - `IntAna2d_IntPoint::Value()`
     /// Returns the geometric point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::IntAna2d_IntPoint_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `IntAna2d_IntPoint.hxx`:68 - `IntAna2d_IntPoint::SecondIsImplicit()`
     /// Returns True if the second curve is implicit.
     pub fn second_is_implicit(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_IntPoint_second_is_implicit(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_second_is_implicit(self as *const Self)
         })
     }
 
@@ -453,7 +531,7 @@ impl IntPoint {
     /// Returns the parameter on the first element.
     pub fn param_on_first(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_IntPoint_param_on_first(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_param_on_first(self as *const Self)
         })
     }
 
@@ -463,7 +541,7 @@ impl IntPoint {
     /// is raised.
     pub fn param_on_second(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna2d_IntPoint_param_on_second(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna2d_IntPoint_param_on_second(self as *const Self)
         })
     }
 }
@@ -473,11 +551,11 @@ impl IntPoint {
 // ========================
 
 /// **Source:** `IntAna2d_Outils.hxx`:24 - `MyDirectPolynomialRoots`
-pub use crate::ffi::MyDirectPolynomialRoots;
+pub use crate::ffi_types::MyDirectPolynomialRoots;
 
 unsafe impl crate::CppDeletable for MyDirectPolynomialRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MyDirectPolynomialRoots_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_destructor(ptr);
     }
 }
 
@@ -486,7 +564,9 @@ impl MyDirectPolynomialRoots {
     pub fn new_real5(A4: f64, A3: f64, A2: f64, A1: f64, A0: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MyDirectPolynomialRoots_ctor_real5(A4, A3, A2, A1, A0),
+                crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_ctor_real5(
+                    A4, A3, A2, A1, A0,
+                ),
             ))
         }
     }
@@ -495,7 +575,7 @@ impl MyDirectPolynomialRoots {
     pub fn new_real3(A2: f64, A1: f64, A0: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MyDirectPolynomialRoots_ctor_real3(A2, A1, A0),
+                crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_ctor_real3(A2, A1, A0),
             ))
         }
     }
@@ -503,28 +583,30 @@ impl MyDirectPolynomialRoots {
     /// **Source:** `IntAna2d_Outils.hxx`:35 - `MyDirectPolynomialRoots::NbSolutions()`
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MyDirectPolynomialRoots_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_nb_solutions(self as *const Self)
         })
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:37 - `MyDirectPolynomialRoots::Value()`
     pub fn value(&self, i: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MyDirectPolynomialRoots_value(self as *const Self, i)
+            crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_value(self as *const Self, i)
         })
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:39 - `MyDirectPolynomialRoots::IsDone()`
     pub fn is_done(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MyDirectPolynomialRoots_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `IntAna2d_Outils.hxx`:41 - `MyDirectPolynomialRoots::InfiniteRoots()`
     pub fn infinite_roots(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MyDirectPolynomialRoots_infinite_roots(self as *const Self)
+            crate::ffi_extern_TKGeomBase::MyDirectPolynomialRoots_infinite_roots(
+                self as *const Self,
+            )
         })
     }
 }

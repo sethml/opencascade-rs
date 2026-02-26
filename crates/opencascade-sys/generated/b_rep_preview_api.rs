@@ -18,11 +18,11 @@
 /// 2 - preview can be an edge if thin box in two directions is a point;
 /// 3 - preview can be a rectangular face if thin box in only one direction is a point;
 /// 4 - preview can be a valid box if point values fulfill the conditions of a valid box.
-pub use crate::ffi::BRepPreviewAPI_MakeBox as MakeBox;
+pub use crate::ffi_types::BRepPreviewAPI_MakeBox as MakeBox;
 
 unsafe impl crate::CppDeletable for MakeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPreviewAPI_MakeBox_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_destructor(ptr);
     }
 }
 
@@ -31,9 +31,9 @@ impl MakeBox {
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_ctor(),
+            ))
         }
     }
 
@@ -41,16 +41,18 @@ impl MakeBox {
     /// Creates a preview depending on point values.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_build(self as *mut Self, theRange)
         })
     }
 
     /// Upcast to BRepPrimAPI_MakeBox
     pub fn as_b_rep_prim_api_make_box(&self) -> &crate::b_rep_prim_api::MakeBox {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -58,7 +60,9 @@ impl MakeBox {
     pub fn as_b_rep_prim_api_make_box_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeBox {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepPrimAPI_MakeBox_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -66,9 +70,11 @@ impl MakeBox {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -78,7 +84,7 @@ impl MakeBox {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -88,9 +94,11 @@ impl MakeBox {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -98,7 +106,9 @@ impl MakeBox {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -106,7 +116,7 @@ impl MakeBox {
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:79 - `BRepPrimAPI_MakeBox::Init()`
     pub fn init(&mut self, theDX: f64, theDY: f64, theDZ: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_inherited_Init(
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Init(
                 self as *mut Self,
                 theDX,
                 theDY,
@@ -118,111 +128,126 @@ impl MakeBox {
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:99 - `BRepPrimAPI_MakeBox::Wedge()`
     pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Wedge(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Wedge(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shell(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Shell(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Solid(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Solid(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BottomFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_BottomFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:117 - `BRepPrimAPI_MakeBox::BackFace()`
     pub fn back_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_BackFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_BackFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:120 - `BRepPrimAPI_MakeBox::FrontFace()`
     pub fn front_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_FrontFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_FrontFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:123 - `BRepPrimAPI_MakeBox::LeftFace()`
     pub fn left_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_LeftFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_LeftFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:126 - `BRepPrimAPI_MakeBox::RightFace()`
     pub fn right_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_RightFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_RightFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeBox.hxx`:129 - `BRepPrimAPI_MakeBox::TopFace()`
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_TopFace(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_TopFace(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPreviewAPI_MakeBox_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPreviewAPI_MakeBox_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPreviewAPI_MakeBox_inherited_Check(self as *const Self)
         })
     }
 }

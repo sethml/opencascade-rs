@@ -11,22 +11,26 @@
 /// binary format of an STL file.
 /// Returns false if the cannot be opened;
 pub fn write_binary(
-    theMesh: &crate::ffi::HandlePolyTriangulation,
+    theMesh: &crate::ffi_types::HandlePolyTriangulation,
     thePath: &crate::osd::Path,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::RWStl_write_binary(theMesh, thePath, theProgress) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKDESTL::RWStl_write_binary(theMesh, thePath, theProgress)
+    })
 }
 /// **Source:** `RWStl.hxx`:40 - `RWStl::WriteAscii`
 /// write the meshing in a file following the
 /// Ascii  format of an STL file.
 /// Returns false if the cannot be opened;
 pub fn write_ascii(
-    theMesh: &crate::ffi::HandlePolyTriangulation,
+    theMesh: &crate::ffi_types::HandlePolyTriangulation,
     thePath: &crate::osd::Path,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::RWStl_write_ascii(theMesh, thePath, theProgress) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKDESTL::RWStl_write_ascii(theMesh, thePath, theProgress)
+    })
 }
 /// **Source:** `RWStl.hxx`:47 - `RWStl::ReadFile`
 /// Read specified STL file and returns its content as triangulation.
@@ -34,10 +38,10 @@ pub fn write_ascii(
 pub fn read_file_path_progressrange(
     theFile: &crate::osd::Path,
     theProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::RWStl_read_file_path_progressrange(theFile, theProgress),
+            crate::ffi_extern_TKDESTL::RWStl_read_file_path_progressrange(theFile, theProgress),
         ))
     }
 }
@@ -47,11 +51,14 @@ pub fn read_file_path_progressrange(
 pub fn read_file_charptr_progressrange_2(
     theFile: &str,
     theProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::RWStl_read_file_charptr_progressrange_2(c_theFile.as_ptr(), theProgress),
+            crate::ffi_extern_TKDESTL::RWStl_read_file_charptr_progressrange_2(
+                c_theFile.as_ptr(),
+                theProgress,
+            ),
         ))
     }
 }
@@ -66,11 +73,11 @@ pub fn read_file_charptr_real_progressrange(
     theFile: &str,
     theMergeAngle: f64,
     theProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::RWStl_read_file_charptr_real_progressrange(
+            crate::ffi_extern_TKDESTL::RWStl_read_file_charptr_real_progressrange(
                 c_theFile.as_ptr(),
                 theMergeAngle,
                 theProgress,
@@ -88,12 +95,12 @@ pub fn read_file_charptr_real_progressrange(
 pub fn read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(
     theFile: &str,
     theMergeAngle: f64,
-    theTriangList: &mut crate::ffi::NCollection_Sequence_opencascade_handle_Poly_Triangulation,
+    theTriangList: &mut crate::ffi_types::NCollection_Sequence_opencascade_handle_Poly_Triangulation,
     theProgress: &crate::message::ProgressRange,
 ) {
     let c_theFile = std::ffi::CString::new(theFile).unwrap();
     crate::check_void_result(unsafe {
-        crate::ffi::RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(c_theFile.as_ptr(), theMergeAngle, theTriangList, theProgress)
+        crate::ffi_extern_TKDESTL::RWStl_read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_progressrange(c_theFile.as_ptr(), theMergeAngle, theTriangList, theProgress)
     })
 }
 /// **Source:** `RWStl.hxx`:85 - `RWStl::ReadBinary`
@@ -102,12 +109,11 @@ pub fn read_file_charptr_real_sequence_opencascade_handle_poly_triangulation_pro
 pub fn read_binary(
     thePath: &crate::osd::Path,
     theProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWStl_read_binary(
-            thePath,
-            theProgress,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDESTL::RWStl_read_binary(thePath, theProgress),
+        ))
     }
 }
 /// **Source:** `RWStl.hxx`:91 - `RWStl::ReadAscii`
@@ -116,9 +122,9 @@ pub fn read_binary(
 pub fn read_ascii(
     thePath: &crate::osd::Path,
     theProgress: &crate::message::ProgressRange,
-) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWStl_read_ascii(
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTL::RWStl_read_ascii(
             thePath,
             theProgress,
         )))
@@ -126,7 +132,7 @@ pub fn read_ascii(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From RWStl_Reader.hxx
@@ -143,19 +149,21 @@ pub use crate::ffi::HandleStandardTransient;
 /// addNode() and addTriangle() to fill the mesh data structure.
 ///
 /// The nodes with equal coordinates are merged automatically  on the fly.
-pub use crate::ffi::RWStl_Reader as Reader;
+pub use crate::ffi_types::RWStl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::RWStl_Reader_destructor(ptr);
+        crate::ffi_extern_TKDESTL::RWStl_Reader_destructor(ptr);
     }
 }
 
 impl Reader {
     /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::RWStl_Reader_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTL::RWStl_Reader_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -170,7 +178,11 @@ impl Reader {
     pub fn read(&mut self, theFile: &str, theProgress: &crate::message::ProgressRange) -> bool {
         let c_theFile = std::ffi::CString::new(theFile).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_read(self as *mut Self, c_theFile.as_ptr(), theProgress)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_read(
+                self as *mut Self,
+                c_theFile.as_ptr(),
+                theProgress,
+            )
         })
     }
 
@@ -182,11 +194,15 @@ impl Reader {
     /// Returns true if the stream seems to contain Ascii STL.
     pub fn is_ascii(
         &mut self,
-        theStream: &mut crate::ffi::Standard_IStream,
+        theStream: &mut crate::ffi_types::Standard_IStream,
         isSeekgAvailable: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_is_ascii(self as *mut Self, theStream, isSeekgAvailable)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_is_ascii(
+                self as *mut Self,
+                theStream,
+                isSeekgAvailable,
+            )
         })
     }
 
@@ -197,11 +213,15 @@ impl Reader {
     /// Returns true if success, false on error or user break.
     pub fn read_binary(
         &mut self,
-        theStream: &mut crate::ffi::Standard_IStream,
+        theStream: &mut crate::ffi_types::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_read_binary(self as *mut Self, theStream, theProgress)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_read_binary(
+                self as *mut Self,
+                theStream,
+                theProgress,
+            )
         })
     }
 
@@ -210,7 +230,9 @@ impl Reader {
     /// Should create new node with specified coordinates in the target model, and return its ID as
     /// integer.
     pub fn add_node(&mut self, thePnt: &crate::gp::XYZ) -> i32 {
-        crate::check_result(unsafe { crate::ffi::RWStl_Reader_add_node(self as *mut Self, thePnt) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTL::RWStl_Reader_add_node(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `RWStl_Reader.hxx`:87 - `RWStl_Reader::AddTriangle()`
@@ -218,7 +240,12 @@ impl Reader {
     /// Should create new triangle built on specified nodes in the target model.
     pub fn add_triangle(&mut self, theN1: i32, theN2: i32, theN3: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWStl_Reader_add_triangle(self as *mut Self, theN1, theN2, theN3)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_add_triangle(
+                self as *mut Self,
+                theN1,
+                theN2,
+                theN3,
+            )
         })
     }
 
@@ -226,14 +253,18 @@ impl Reader {
     /// Callback function to be implemented in descendant.
     /// Should create a new triangulation for a solid in multi-domain case.
     pub fn add_solid(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::RWStl_Reader_add_solid(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTL::RWStl_Reader_add_solid(self as *mut Self)
+        })
     }
 
     /// **Source:** `RWStl_Reader.hxx`:98 - `RWStl_Reader::MergeAngle()`
     /// Return merge tolerance; M_PI/2 by default - all nodes are merged regardless angle between
     /// triangles.
     pub fn merge_angle(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::RWStl_Reader_merge_angle(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTL::RWStl_Reader_merge_angle(self as *const Self)
+        })
     }
 
     /// **Source:** `RWStl_Reader.hxx`:103 - `RWStl_Reader::SetMergeAngle()`
@@ -242,7 +273,7 @@ impl Reader {
     /// corners.
     pub fn set_merge_angle(&mut self, theAngleRad: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWStl_Reader_set_merge_angle(self as *mut Self, theAngleRad)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_set_merge_angle(self as *mut Self, theAngleRad)
         })
     }
 
@@ -251,7 +282,7 @@ impl Reader {
     /// coordinates are merged).
     pub fn merge_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_merge_tolerance(self as *const Self)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_merge_tolerance(self as *const Self)
         })
     }
 
@@ -259,28 +290,35 @@ impl Reader {
     /// Set linear merge tolerance.
     pub fn set_merge_tolerance(&mut self, theTolerance: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWStl_Reader_set_merge_tolerance(self as *mut Self, theTolerance)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_set_merge_tolerance(
+                self as *mut Self,
+                theTolerance,
+            )
         })
     }
 
     /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::RWStl_Reader_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTL::RWStl_Reader_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `RWStl_Reader.hxx`:37 - `RWStl_Reader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::RWStl_Reader_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTL::RWStl_Reader_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::RWStl_Reader_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKDESTL::RWStl_Reader_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -289,23 +327,28 @@ impl Reader {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::RWStl_Reader_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTL::RWStl_Reader_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -313,7 +356,7 @@ impl Reader {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::RWStl_Reader_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -326,58 +369,68 @@ impl Reader {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWStl_Reader_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTL::RWStl_Reader_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleRWStlReader;
+pub use crate::ffi_types::HandleRWStlReader;
 
 unsafe impl crate::CppDeletable for HandleRWStlReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleRWStlReader_destructor(ptr);
+        crate::ffi_extern_TKDESTL::HandleRWStlReader_destructor(ptr);
     }
 }
 
 impl HandleRWStlReader {
     /// Dereference this Handle to access the underlying RWStl_Reader
-    pub fn get(&self) -> &crate::ffi::RWStl_Reader {
-        unsafe { &*crate::check_result(crate::ffi::HandleRWStlReader_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::RWStl_Reader {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTL::HandleRWStlReader_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWStl_Reader
-    pub fn get_mut(&mut self) -> &mut crate::ffi::RWStl_Reader {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWStl_Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleRWStlReader_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTL::HandleRWStlReader_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<RWStl_Reader> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleRWStlReader_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTL::HandleRWStlReader_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }

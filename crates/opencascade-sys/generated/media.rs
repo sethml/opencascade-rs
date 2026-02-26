@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From Media_BufferPool.hxx
@@ -15,11 +15,11 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `Media_BufferPool.hxx`:25 - `Media_BufferPool`
 /// AVBufferPool wrapper.
-pub use crate::ffi::Media_BufferPool as BufferPool;
+pub use crate::ffi_types::Media_BufferPool as BufferPool;
 
 unsafe impl crate::CppDeletable for BufferPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_BufferPool_destructor(ptr);
+        crate::ffi_extern_TKService::Media_BufferPool_destructor(ptr);
     }
 }
 
@@ -28,28 +28,34 @@ impl BufferPool {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_BufferPool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_BufferPool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Media_BufferPool.hxx`:27 - `Media_BufferPool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_BufferPool_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_BufferPool_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_BufferPool.hxx`:36 - `Media_BufferPool::Release()`
     /// Release the pool (reference-counted buffer will be released when needed).
     pub fn release(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_BufferPool_release(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_BufferPool_release(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_BufferPool.hxx`:39 - `Media_BufferPool::Init()`
     /// (Re-)initialize the pool.
     pub fn init(&mut self, theBufferSize: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_init(self as *mut Self, theBufferSize)
+            crate::ffi_extern_TKService::Media_BufferPool_init(self as *mut Self, theBufferSize)
         })
     }
 
@@ -57,7 +63,7 @@ impl BufferPool {
     /// Return buffer size within the pool.
     pub fn buffer_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_buffer_size(self as *const Self)
+            crate::ffi_extern_TKService::Media_BufferPool_buffer_size(self as *const Self)
         })
     }
 
@@ -65,7 +71,7 @@ impl BufferPool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Media_BufferPool_get_type_name(),
+                crate::ffi_extern_TKService::Media_BufferPool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -73,50 +79,64 @@ impl BufferPool {
     }
 
     /// **Source:** `Media_BufferPool.hxx`:27 - `Media_BufferPool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_BufferPool_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Media_BufferPool_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_BufferPool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Media_BufferPool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_BufferPool_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_BufferPool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMediaBufferPool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaBufferPool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_BufferPool_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_BufferPool_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -124,7 +144,7 @@ impl BufferPool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_BufferPool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_BufferPool_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -137,58 +157,72 @@ impl BufferPool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_BufferPool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_BufferPool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaBufferPool;
+pub use crate::ffi_types::HandleMediaBufferPool;
 
 unsafe impl crate::CppDeletable for HandleMediaBufferPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaBufferPool_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaBufferPool_destructor(ptr);
     }
 }
 
 impl HandleMediaBufferPool {
     /// Dereference this Handle to access the underlying Media_BufferPool
-    pub fn get(&self) -> &crate::ffi::Media_BufferPool {
-        unsafe { &*crate::check_result(crate::ffi::HandleMediaBufferPool_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Media_BufferPool {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaBufferPool_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_BufferPool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_BufferPool {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_BufferPool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaBufferPool_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaBufferPool_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Media_BufferPool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaBufferPool_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaBufferPool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -207,11 +241,11 @@ impl HandleMediaBufferPool {
 
 /// **Source:** `Media_CodecContext.hxx`:26 - `Media_CodecContext`
 /// AVCodecContext wrapper - the coder/decoder holder.
-pub use crate::ffi::Media_CodecContext as CodecContext;
+pub use crate::ffi_types::Media_CodecContext as CodecContext;
 
 unsafe impl crate::CppDeletable for CodecContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_CodecContext_destructor(ptr);
+        crate::ffi_extern_TKService::Media_CodecContext_destructor(ptr);
     }
 }
 
@@ -220,14 +254,16 @@ impl CodecContext {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_CodecContext_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_CodecContext_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Media_CodecContext.hxx`:28 - `Media_CodecContext::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_CodecContext_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_CodecContext_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -236,56 +272,73 @@ impl CodecContext {
     /// **Source:** `Media_CodecContext.hxx`:66 - `Media_CodecContext::Close()`
     /// Close input.
     pub fn close(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_CodecContext_close(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_CodecContext_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:69 - `Media_CodecContext::SizeX()`
     /// @return source frame width
     pub fn size_x(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_CodecContext_size_x(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_CodecContext_size_x(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:72 - `Media_CodecContext::SizeY()`
     /// @return source frame height
     pub fn size_y(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_CodecContext_size_y(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_CodecContext_size_y(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:75 - `Media_CodecContext::StreamIndex()`
     /// Return stream index.
     pub fn stream_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_stream_index(self as *const Self)
+            crate::ffi_extern_TKService::Media_CodecContext_stream_index(self as *const Self)
         })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:78 - `Media_CodecContext::Flush()`
     /// avcodec_flush_buffers() wrapper.
     pub fn flush(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_CodecContext_flush(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_CodecContext_flush(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:81 - `Media_CodecContext::CanProcessPacket()`
     /// Return true if packet belongs to this stream.
-    pub fn can_process_packet(&self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
+    pub fn can_process_packet(&self, thePacket: &crate::ffi_types::HandleMediaPacket) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_can_process_packet(self as *const Self, thePacket)
+            crate::ffi_extern_TKService::Media_CodecContext_can_process_packet(
+                self as *const Self,
+                thePacket,
+            )
         })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:84 - `Media_CodecContext::SendPacket()`
     /// avcodec_send_packet() wrapper.
-    pub fn send_packet(&mut self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
+    pub fn send_packet(&mut self, thePacket: &crate::ffi_types::HandleMediaPacket) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_send_packet(self as *mut Self, thePacket)
+            crate::ffi_extern_TKService::Media_CodecContext_send_packet(
+                self as *mut Self,
+                thePacket,
+            )
         })
     }
 
     /// **Source:** `Media_CodecContext.hxx`:87 - `Media_CodecContext::ReceiveFrame()`
     /// avcodec_receive_frame() wrapper.
-    pub fn receive_frame(&mut self, theFrame: &crate::ffi::HandleMediaFrame) -> bool {
+    pub fn receive_frame(&mut self, theFrame: &crate::ffi_types::HandleMediaFrame) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_receive_frame(self as *mut Self, theFrame)
+            crate::ffi_extern_TKService::Media_CodecContext_receive_frame(
+                self as *mut Self,
+                theFrame,
+            )
         })
     }
 
@@ -293,7 +346,7 @@ impl CodecContext {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Media_CodecContext_get_type_name(),
+                crate::ffi_extern_TKService::Media_CodecContext_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -301,50 +354,64 @@ impl CodecContext {
     }
 
     /// **Source:** `Media_CodecContext.hxx`:28 - `Media_CodecContext::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_CodecContext_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Media_CodecContext_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_CodecContext_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Media_CodecContext_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_CodecContext_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_CodecContext_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMediaCodecContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaCodecContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_CodecContext_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKService::Media_CodecContext_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -352,7 +419,7 @@ impl CodecContext {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_CodecContext_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_CodecContext_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -365,62 +432,74 @@ impl CodecContext {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_CodecContext_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_CodecContext_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaCodecContext;
+pub use crate::ffi_types::HandleMediaCodecContext;
 
 unsafe impl crate::CppDeletable for HandleMediaCodecContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaCodecContext_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaCodecContext_destructor(ptr);
     }
 }
 
 impl HandleMediaCodecContext {
     /// Dereference this Handle to access the underlying Media_CodecContext
-    pub fn get(&self) -> &crate::ffi::Media_CodecContext {
+    pub fn get(&self) -> &crate::ffi_types::Media_CodecContext {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleMediaCodecContext_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaCodecContext_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_CodecContext
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_CodecContext {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_CodecContext {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaCodecContext_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaCodecContext_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Media_CodecContext> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaCodecContext_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaCodecContext_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -453,11 +532,11 @@ impl HandleMediaCodecContext {
 
 /// **Source:** `Media_FormatContext.hxx`:28 - `Media_FormatContext`
 /// AVFormatContext wrapper - the media input/output stream holder.
-pub use crate::ffi::Media_FormatContext as FormatContext;
+pub use crate::ffi_types::Media_FormatContext as FormatContext;
 
 unsafe impl crate::CppDeletable for FormatContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_FormatContext_destructor(ptr);
+        crate::ffi_extern_TKService::Media_FormatContext_destructor(ptr);
     }
 }
 
@@ -466,14 +545,16 @@ impl FormatContext {
     /// Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_FormatContext_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_FormatContext_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Media_FormatContext.hxx`:30 - `Media_FormatContext::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_FormatContext_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_FormatContext_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -483,7 +564,7 @@ impl FormatContext {
     /// Open input.
     pub fn open_input(&mut self, theInput: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_open_input(self as *mut Self, theInput)
+            crate::ffi_extern_TKService::Media_FormatContext_open_input(self as *mut Self, theInput)
         })
     }
 
@@ -491,7 +572,7 @@ impl FormatContext {
     /// Close input.
     pub fn close(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_FormatContext_close(self as *mut Self)
+            crate::ffi_extern_TKService::Media_FormatContext_close(self as *mut Self)
         })
     }
 
@@ -499,7 +580,7 @@ impl FormatContext {
     /// Return amount of streams.
     pub fn nb_steams(&self) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_nb_steams(self as *const Self)
+            crate::ffi_extern_TKService::Media_FormatContext_nb_steams(self as *const Self)
         })
     }
 
@@ -507,7 +588,7 @@ impl FormatContext {
     /// Return PTS start base in seconds.
     pub fn pts_start_base(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_pts_start_base(self as *const Self)
+            crate::ffi_extern_TKService::Media_FormatContext_pts_start_base(self as *const Self)
         })
     }
 
@@ -515,15 +596,18 @@ impl FormatContext {
     /// Return duration in seconds.
     pub fn duration(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_duration(self as *const Self)
+            crate::ffi_extern_TKService::Media_FormatContext_duration(self as *const Self)
         })
     }
 
     /// **Source:** `Media_FormatContext.hxx`:112 - `Media_FormatContext::ReadPacket()`
     /// av_read_frame() wrapper.
-    pub fn read_packet(&mut self, thePacket: &crate::ffi::HandleMediaPacket) -> bool {
+    pub fn read_packet(&mut self, thePacket: &crate::ffi_types::HandleMediaPacket) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_read_packet(self as *mut Self, thePacket)
+            crate::ffi_extern_TKService::Media_FormatContext_read_packet(
+                self as *mut Self,
+                thePacket,
+            )
         })
     }
 
@@ -531,7 +615,7 @@ impl FormatContext {
     /// Seek stream to specified position.
     pub fn seek_stream(&mut self, theStreamId: u32, theSeekPts: f64, toSeekBack: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_seek_stream(
+            crate::ffi_extern_TKService::Media_FormatContext_seek_stream(
                 self as *mut Self,
                 theStreamId,
                 theSeekPts,
@@ -544,7 +628,11 @@ impl FormatContext {
     /// Seek context to specified position.
     pub fn seek(&mut self, theSeekPts: f64, toSeekBack: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_seek(self as *mut Self, theSeekPts, toSeekBack)
+            crate::ffi_extern_TKService::Media_FormatContext_seek(
+                self as *mut Self,
+                theSeekPts,
+                toSeekBack,
+            )
         })
     }
 
@@ -552,7 +640,7 @@ impl FormatContext {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Media_FormatContext_get_type_name(),
+                crate::ffi_extern_TKService::Media_FormatContext_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -560,8 +648,12 @@ impl FormatContext {
     }
 
     /// **Source:** `Media_FormatContext.hxx`:30 - `Media_FormatContext::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_FormatContext_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Media_FormatContext_get_type_descriptor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_FormatContext.hxx`:33 - `Media_FormatContext::FormatAVErrorDescription()`
@@ -571,7 +663,9 @@ impl FormatContext {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_FormatContext_format_av_error_description(theErrCodeAV),
+                crate::ffi_extern_TKService::Media_FormatContext_format_av_error_description(
+                    theErrCodeAV,
+                ),
             ))
         }
     }
@@ -582,7 +676,7 @@ impl FormatContext {
     /// @return converted time units in seconds
     pub fn format_units_to_seconds(theTimeUnits: i64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_format_units_to_seconds(theTimeUnits)
+            crate::ffi_extern_TKService::Media_FormatContext_format_units_to_seconds(theTimeUnits)
         })
     }
 
@@ -592,7 +686,7 @@ impl FormatContext {
     /// @return time units
     pub fn seconds_to_units(theTimeSeconds: f64) -> i64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_seconds_to_units(theTimeSeconds)
+            crate::ffi_extern_TKService::Media_FormatContext_seconds_to_units(theTimeSeconds)
         })
     }
 
@@ -601,7 +695,7 @@ impl FormatContext {
     pub fn format_time(theSeconds: f64) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_FormatContext_format_time(theSeconds),
+                crate::ffi_extern_TKService::Media_FormatContext_format_time(theSeconds),
             ))
         }
     }
@@ -614,7 +708,10 @@ impl FormatContext {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_FormatContext_format_time_progress(theProgress, theDuration),
+                crate::ffi_extern_TKService::Media_FormatContext_format_time_progress(
+                    theProgress,
+                    theDuration,
+                ),
             ))
         }
     }
@@ -622,43 +719,53 @@ impl FormatContext {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_FormatContext_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Media_FormatContext_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_FormatContext_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_FormatContext_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMediaFormatContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaFormatContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_FormatContext_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKService::Media_FormatContext_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -666,7 +773,7 @@ impl FormatContext {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_FormatContext_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_FormatContext_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -679,62 +786,72 @@ impl FormatContext {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_FormatContext_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_FormatContext_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaFormatContext;
+pub use crate::ffi_types::HandleMediaFormatContext;
 
 unsafe impl crate::CppDeletable for HandleMediaFormatContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaFormatContext_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaFormatContext_destructor(ptr);
     }
 }
 
 impl HandleMediaFormatContext {
     /// Dereference this Handle to access the underlying Media_FormatContext
-    pub fn get(&self) -> &crate::ffi::Media_FormatContext {
+    pub fn get(&self) -> &crate::ffi_types::Media_FormatContext {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleMediaFormatContext_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Media_FormatContext
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_FormatContext {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaFormatContext_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaFormatContext_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Media_FormatContext
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_FormatContext {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::HandleMediaFormatContext_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Media_FormatContext> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaFormatContext_to_HandleStandardTransient(
+                crate::ffi_extern_TKService::HandleMediaFormatContext_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -793,11 +910,11 @@ impl HandleMediaFormatContext {
 
 /// **Source:** `Media_Frame.hxx`:26 - `Media_Frame`
 /// AVFrame wrapper - the frame (decoded image/audio sample data) holder.
-pub use crate::ffi::Media_Frame as Frame;
+pub use crate::ffi_types::Media_Frame as Frame;
 
 unsafe impl crate::CppDeletable for Frame {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_Frame_destructor(ptr);
+        crate::ffi_extern_TKService::Media_Frame_destructor(ptr);
     }
 }
 
@@ -805,61 +922,77 @@ impl Frame {
     /// **Source:** `Media_Frame.hxx`:43 - `Media_Frame::Media_Frame()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Frame_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_Frame_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Frame_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_Frame.hxx`:49 - `Media_Frame::IsEmpty()`
     /// Return true if frame does not contain any data.
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:52 - `Media_Frame::Unref()`
     /// av_frame_unref() wrapper.
     pub fn unref(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Frame_unref(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_unref(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:55 - `Media_Frame::Size()`
     /// Return image dimensions.
-    pub fn size(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec2i> {
+    pub fn size(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec2i> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_size(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Frame_size(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Media_Frame.hxx`:58 - `Media_Frame::SizeX()`
     /// Return image width.
     pub fn size_x(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_size_x(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_size_x(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:61 - `Media_Frame::SizeY()`
     /// Return image height.
     pub fn size_y(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_size_y(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_size_y(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:64 - `Media_Frame::Format()`
     /// Return pixel format (AVPixelFormat).
     pub fn format(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_format(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_format(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:67 - `Media_Frame::IsFullRangeYUV()`
     /// Return TRUE if YUV range is full.
     pub fn is_full_range_yuv(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_is_full_range_yuv(self as *const Self)
+            crate::ffi_extern_TKService::Media_Frame_is_full_range_yuv(self as *const Self)
         })
     }
 
@@ -867,7 +1000,7 @@ impl Frame {
     /// Access data plane for specified Id.
     pub unsafe fn plane(&self, thePlaneId: i32) -> *mut u8 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_plane(self as *const Self, thePlaneId)
+            crate::ffi_extern_TKService::Media_Frame_plane(self as *const Self, thePlaneId)
         })
     }
 
@@ -875,7 +1008,7 @@ impl Frame {
     /// @return linesize in bytes for specified data plane
     pub fn line_size(&self, thePlaneId: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_line_size(self as *const Self, thePlaneId)
+            crate::ffi_extern_TKService::Media_Frame_line_size(self as *const Self, thePlaneId)
         })
     }
 
@@ -883,21 +1016,23 @@ impl Frame {
     /// @return frame timestamp estimated using various heuristics, in stream time base
     pub fn best_effort_timestamp(&self) -> i64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_best_effort_timestamp(self as *const Self)
+            crate::ffi_extern_TKService::Media_Frame_best_effort_timestamp(self as *const Self)
         })
     }
 
     /// **Source:** `Media_Frame.hxx`:85 - `Media_Frame::Pts()`
     /// Return presentation timestamp (PTS).
     pub fn pts(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_pts(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_pts(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:88 - `Media_Frame::SetPts()`
     /// Set presentation timestamp (PTS).
     pub fn set_pts(&mut self, thePts: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Frame_set_pts(self as *mut Self, thePts)
+            crate::ffi_extern_TKService::Media_Frame_set_pts(self as *mut Self, thePts)
         })
     }
 
@@ -905,7 +1040,7 @@ impl Frame {
     /// Return PAR.
     pub fn pixel_aspect_ratio(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_pixel_aspect_ratio(self as *const Self)
+            crate::ffi_extern_TKService::Media_Frame_pixel_aspect_ratio(self as *const Self)
         })
     }
 
@@ -913,51 +1048,60 @@ impl Frame {
     /// Set PAR.
     pub fn set_pixel_aspect_ratio(&mut self, theRatio: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Frame_set_pixel_aspect_ratio(self as *mut Self, theRatio)
+            crate::ffi_extern_TKService::Media_Frame_set_pixel_aspect_ratio(
+                self as *mut Self,
+                theRatio,
+            )
         })
     }
 
     /// **Source:** `Media_Frame.hxx`:97 - `Media_Frame::IsLocked()`
     /// Return locked state.
     pub fn is_locked(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Media_Frame_is_locked(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_is_locked(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Frame.hxx`:100 - `Media_Frame::SetLocked()`
     /// Lock/free frame for edition.
     pub fn set_locked(&mut self, theToLock: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Frame_set_locked(self as *mut Self, theToLock)
+            crate::ffi_extern_TKService::Media_Frame_set_locked(self as *mut Self, theToLock)
         })
     }
 
     /// **Source:** `Media_Frame.hxx`:104 - `Media_Frame::InitWrapper()`
     /// Wrap allocated image pixmap.
-    pub fn init_wrapper(&mut self, thePixMap: &crate::ffi::HandleImagePixMap) -> bool {
+    pub fn init_wrapper(&mut self, thePixMap: &crate::ffi_types::HandleImagePixMap) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_init_wrapper(self as *mut Self, thePixMap)
+            crate::ffi_extern_TKService::Media_Frame_init_wrapper(self as *mut Self, thePixMap)
         })
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Frame_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Media_Frame_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Media_Frame.hxx`:28 - `Media_Frame::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_Frame_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Frame_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `Media_Frame.hxx`:31 - `Media_Frame::FormatFFmpeg2Occt()`
     /// Convert pixel format from FFmpeg (AVPixelFormat) to OCCT.
     pub fn format_f_fmpeg2_occt(theFormat: i32) -> crate::image::Format {
         crate::image::Format::try_from(crate::check_result(unsafe {
-            crate::ffi::Media_Frame_format_f_fmpeg2_occt(theFormat)
+            crate::ffi_extern_TKService::Media_Frame_format_f_fmpeg2_occt(theFormat)
         }))
         .unwrap()
     }
@@ -967,23 +1111,25 @@ impl Frame {
     /// Returns -1 (AV_PIX_FMT_NONE) if undefined.
     pub fn format_occt2_f_fmpeg(theFormat: crate::image::Format) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_format_occt2_f_fmpeg(theFormat.into())
+            crate::ffi_extern_TKService::Media_Frame_format_occt2_f_fmpeg(theFormat.into())
         })
     }
 
     /// **Source:** `Media_Frame.hxx`:38 - `Media_Frame::Swap()`
     /// Swap AVFrame* within two frames.
     pub fn swap(
-        theFrame1: &crate::ffi::HandleMediaFrame,
-        theFrame2: &crate::ffi::HandleMediaFrame,
+        theFrame1: &crate::ffi_types::HandleMediaFrame,
+        theFrame2: &crate::ffi_types::HandleMediaFrame,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Frame_swap(theFrame1, theFrame2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Frame_swap(theFrame1, theFrame2)
+        })
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_Frame_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Media_Frame_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -992,32 +1138,39 @@ impl Frame {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_Frame_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_Frame_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaFrame> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Frame_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Frame_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Frame_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Frame_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1025,7 +1178,7 @@ impl Frame {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_Frame_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_Frame_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1038,58 +1191,72 @@ impl Frame {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_Frame_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Frame_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Frame_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Frame_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Frame_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Frame_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_Frame_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaFrame;
+pub use crate::ffi_types::HandleMediaFrame;
 
 unsafe impl crate::CppDeletable for HandleMediaFrame {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaFrame_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaFrame_destructor(ptr);
     }
 }
 
 impl HandleMediaFrame {
     /// Dereference this Handle to access the underlying Media_Frame
-    pub fn get(&self) -> &crate::ffi::Media_Frame {
-        unsafe { &*crate::check_result(crate::ffi::HandleMediaFrame_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Media_Frame {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaFrame_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Frame
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Frame {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_Frame {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaFrame_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaFrame_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Media_Frame> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaFrame_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaFrame_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1113,11 +1280,11 @@ impl HandleMediaFrame {
 
 /// **Source:** `Media_IFrameQueue.hxx`:21 - `Media_IFrameQueue`
 /// Interface defining frame queuing.
-pub use crate::ffi::Media_IFrameQueue as IFrameQueue;
+pub use crate::ffi_types::Media_IFrameQueue as IFrameQueue;
 
 unsafe impl crate::CppDeletable for IFrameQueue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_IFrameQueue_destructor(ptr);
+        crate::ffi_extern_TKService::Media_IFrameQueue_destructor(ptr);
     }
 }
 
@@ -1125,19 +1292,22 @@ impl IFrameQueue {
     /// **Source:** `Media_IFrameQueue.hxx`:26 - `Media_IFrameQueue::LockFrame()`
     /// Lock the frame, e.g. take ownership on a single (not currently displayed) frame from the queue
     /// to perform decoding into.
-    pub fn lock_frame(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
+    pub fn lock_frame(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleMediaFrame> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_IFrameQueue_lock_frame(self as *mut Self),
+                crate::ffi_extern_TKService::Media_IFrameQueue_lock_frame(self as *mut Self),
             ))
         }
     }
 
     /// **Source:** `Media_IFrameQueue.hxx`:29 - `Media_IFrameQueue::ReleaseFrame()`
     /// Release previously locked frame, e.g. it can be displayed on the screen.
-    pub fn release_frame(&mut self, theFrame: &crate::ffi::HandleMediaFrame) {
+    pub fn release_frame(&mut self, theFrame: &crate::ffi_types::HandleMediaFrame) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_IFrameQueue_release_frame(self as *mut Self, theFrame)
+            crate::ffi_extern_TKService::Media_IFrameQueue_release_frame(
+                self as *mut Self,
+                theFrame,
+            )
         })
     }
 }
@@ -1148,11 +1318,11 @@ impl IFrameQueue {
 
 /// **Source:** `Media_Packet.hxx`:24 - `Media_Packet`
 /// AVPacket wrapper - the packet (data chunk for decoding/encoding) holder.
-pub use crate::ffi::Media_Packet as Packet;
+pub use crate::ffi_types::Media_Packet as Packet;
 
 unsafe impl crate::CppDeletable for Packet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_Packet_destructor(ptr);
+        crate::ffi_extern_TKService::Media_Packet_destructor(ptr);
     }
 }
 
@@ -1160,63 +1330,83 @@ impl Packet {
     /// **Source:** `Media_Packet.hxx`:29 - `Media_Packet::Media_Packet()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Packet_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Packet_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_Packet_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Packet_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_Packet.hxx`:35 - `Media_Packet::Unref()`
     /// av_packet_unref() wrapper.
     pub fn unref(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Packet_unref(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_unref(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:44 - `Media_Packet::Data()`
     /// Return data.
     pub unsafe fn data(&self) -> *const u8 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_data(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_data(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:47 - `Media_Packet::ChangeData()`
     /// Return data.
     pub unsafe fn change_data(&mut self) -> *mut u8 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_change_data(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_change_data(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:50 - `Media_Packet::Size()`
     /// Return data size.
     pub fn size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:53 - `Media_Packet::Pts()`
     /// Return presentation timestamp (PTS).
     pub fn pts(&self) -> i64 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_pts(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_pts(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:56 - `Media_Packet::Dts()`
     /// Return decoding timestamp (DTS).
     pub fn dts(&self) -> i64 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_dts(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_dts(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:59 - `Media_Packet::Duration()`
     /// Return Duration.
     pub fn duration(&self) -> i64 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_duration(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_duration(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:62 - `Media_Packet::DurationSeconds()`
     /// Return Duration in seconds.
     pub fn duration_seconds(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Packet_duration_seconds(self as *const Self)
+            crate::ffi_extern_TKService::Media_Packet_duration_seconds(self as *const Self)
         })
     }
 
@@ -1224,48 +1414,59 @@ impl Packet {
     /// Set Duration in seconds.
     pub fn set_duration_seconds(&mut self, theDurationSec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Packet_set_duration_seconds(self as *mut Self, theDurationSec)
+            crate::ffi_extern_TKService::Media_Packet_set_duration_seconds(
+                self as *mut Self,
+                theDurationSec,
+            )
         })
     }
 
     /// **Source:** `Media_Packet.hxx`:68 - `Media_Packet::StreamIndex()`
     /// Return stream index.
     pub fn stream_index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_stream_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_stream_index(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:71 - `Media_Packet::IsKeyFrame()`
     /// Return TRUE for a key frame.
     pub fn is_key_frame(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Media_Packet_is_key_frame(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Packet_is_key_frame(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Packet.hxx`:74 - `Media_Packet::SetKeyFrame()`
     /// Mark as key frame.
     pub fn set_key_frame(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Packet_set_key_frame(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Packet_set_key_frame(self as *mut Self)
         })
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Packet_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Media_Packet_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Media_Packet.hxx`:26 - `Media_Packet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_Packet_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Packet_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_Packet_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Media_Packet_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1274,32 +1475,39 @@ impl Packet {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_Packet_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_Packet_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaPacket> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaPacket> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Packet_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Packet_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Packet_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Packet_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Packet_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Packet_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1307,7 +1515,7 @@ impl Packet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_Packet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_Packet_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1320,58 +1528,72 @@ impl Packet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Packet_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_Packet_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Packet_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Packet_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Packet_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Packet_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Packet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_Packet_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaPacket;
+pub use crate::ffi_types::HandleMediaPacket;
 
 unsafe impl crate::CppDeletable for HandleMediaPacket {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaPacket_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaPacket_destructor(ptr);
     }
 }
 
 impl HandleMediaPacket {
     /// Dereference this Handle to access the underlying Media_Packet
-    pub fn get(&self) -> &crate::ffi::Media_Packet {
-        unsafe { &*crate::check_result(crate::ffi::HandleMediaPacket_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Media_Packet {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaPacket_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Packet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Packet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_Packet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaPacket_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaPacket_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Media_Packet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaPacket_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaPacket_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1395,11 +1617,11 @@ impl HandleMediaPacket {
 
 /// **Source:** `Media_PlayerContext.hxx`:33 - `Media_PlayerContext`
 /// Player context.
-pub use crate::ffi::Media_PlayerContext as PlayerContext;
+pub use crate::ffi_types::Media_PlayerContext as PlayerContext;
 
 unsafe impl crate::CppDeletable for PlayerContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_PlayerContext_destructor(ptr);
+        crate::ffi_extern_TKService::Media_PlayerContext_destructor(ptr);
     }
 }
 
@@ -1411,15 +1633,17 @@ impl PlayerContext {
     pub fn new_iframequeueptr(theFrameQueue: &mut IFrameQueue) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_PlayerContext_ctor_iframequeueptr(theFrameQueue as *mut _),
+                crate::ffi_extern_TKService::Media_PlayerContext_ctor_iframequeueptr(
+                    theFrameQueue as *mut _,
+                ),
             ))
         }
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:35 - `Media_PlayerContext::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_PlayerContext_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_PlayerContext_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1429,7 +1653,11 @@ impl PlayerContext {
     /// Set new input for playback.
     pub fn set_input(&mut self, theInputPath: &crate::t_collection::AsciiString, theToWait: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_set_input(self as *mut Self, theInputPath, theToWait)
+            crate::ffi_extern_TKService::Media_PlayerContext_set_input(
+                self as *mut Self,
+                theInputPath,
+                theToWait,
+            )
         })
     }
 
@@ -1442,7 +1670,7 @@ impl PlayerContext {
         theDuration: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_playback_state(
+            crate::ffi_extern_TKService::Media_PlayerContext_playback_state(
                 self as *mut Self,
                 theIsPaused,
                 theProgress,
@@ -1460,7 +1688,7 @@ impl PlayerContext {
         theDuration: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_play_pause(
+            crate::ffi_extern_TKService::Media_PlayerContext_play_pause(
                 self as *mut Self,
                 theIsPaused,
                 theProgress,
@@ -1473,7 +1701,7 @@ impl PlayerContext {
     /// Seek to specified position.
     pub fn seek(&mut self, thePosSec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_seek(self as *mut Self, thePosSec)
+            crate::ffi_extern_TKService::Media_PlayerContext_seek(self as *mut Self, thePosSec)
         })
     }
 
@@ -1481,7 +1709,7 @@ impl PlayerContext {
     /// Pause playback.
     pub fn pause(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_pause(self as *mut Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_pause(self as *mut Self)
         })
     }
 
@@ -1489,7 +1717,7 @@ impl PlayerContext {
     /// Resume playback.
     pub fn resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_resume(self as *mut Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_resume(self as *mut Self)
         })
     }
 
@@ -1498,7 +1726,7 @@ impl PlayerContext {
     /// default.
     pub fn to_force_rgb(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_to_force_rgb(self as *const Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_to_force_rgb(self as *const Self)
         })
     }
 
@@ -1506,7 +1734,10 @@ impl PlayerContext {
     /// Set if queue requires RGB pixel format or can handle also YUV pixel format.
     pub fn set_force_rgb(&mut self, theToForce: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_set_force_rgb(self as *mut Self, theToForce)
+            crate::ffi_extern_TKService::Media_PlayerContext_set_force_rgb(
+                self as *mut Self,
+                theToForce,
+            )
         })
     }
 
@@ -1514,7 +1745,7 @@ impl PlayerContext {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Media_PlayerContext_get_type_name(),
+                crate::ffi_extern_TKService::Media_PlayerContext_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1522,8 +1753,12 @@ impl PlayerContext {
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:35 - `Media_PlayerContext::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_PlayerContext_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Media_PlayerContext_get_type_descriptor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_PlayerContext.hxx`:40 - `Media_PlayerContext::DumpFirstFrame()`
@@ -1533,10 +1768,10 @@ impl PlayerContext {
     pub fn dump_first_frame_asciistring2(
         theSrcVideo: &crate::t_collection::AsciiString,
         theMediaInfo: &mut crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMediaFrame> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaFrame> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_PlayerContext_dump_first_frame_asciistring2(
+                crate::ffi_extern_TKService::Media_PlayerContext_dump_first_frame_asciistring2(
                     theSrcVideo,
                     theMediaInfo,
                 ),
@@ -1557,7 +1792,7 @@ impl PlayerContext {
         theMaxSize: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_dump_first_frame_asciistring3_int(
+            crate::ffi_extern_TKService::Media_PlayerContext_dump_first_frame_asciistring3_int(
                 theSrcVideo,
                 theOutImage,
                 theMediaInfo,
@@ -1569,43 +1804,53 @@ impl PlayerContext {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_PlayerContext_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Media_PlayerContext_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_PlayerContext_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_PlayerContext_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMediaPlayerContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaPlayerContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Media_PlayerContext_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKService::Media_PlayerContext_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1613,7 +1858,7 @@ impl PlayerContext {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_PlayerContext_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_PlayerContext_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1626,62 +1871,72 @@ impl PlayerContext {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_PlayerContext_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_PlayerContext_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaPlayerContext;
+pub use crate::ffi_types::HandleMediaPlayerContext;
 
 unsafe impl crate::CppDeletable for HandleMediaPlayerContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaPlayerContext_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaPlayerContext_destructor(ptr);
     }
 }
 
 impl HandleMediaPlayerContext {
     /// Dereference this Handle to access the underlying Media_PlayerContext
-    pub fn get(&self) -> &crate::ffi::Media_PlayerContext {
+    pub fn get(&self) -> &crate::ffi_types::Media_PlayerContext {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleMediaPlayerContext_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Media_PlayerContext
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_PlayerContext {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaPlayerContext_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaPlayerContext_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Media_PlayerContext
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_PlayerContext {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::HandleMediaPlayerContext_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Media_PlayerContext> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaPlayerContext_to_HandleStandardTransient(
+                crate::ffi_extern_TKService::HandleMediaPlayerContext_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1695,11 +1950,11 @@ impl HandleMediaPlayerContext {
 
 /// **Source:** `Media_Scaler.hxx`:27 - `Media_Scaler`
 /// SwsContext wrapper - tool performing image scaling and pixel format conversion.
-pub use crate::ffi::Media_Scaler as Scaler;
+pub use crate::ffi_types::Media_Scaler as Scaler;
 
 unsafe impl crate::CppDeletable for Scaler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_Scaler_destructor(ptr);
+        crate::ffi_extern_TKService::Media_Scaler_destructor(ptr);
     }
 }
 
@@ -1707,20 +1962,28 @@ impl Scaler {
     /// **Source:** `Media_Scaler.hxx`:32 - `Media_Scaler::Media_Scaler()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Scaler_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Scaler_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_Scaler_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Scaler_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_Scaler.hxx`:38 - `Media_Scaler::Release()`
     /// sws_freeContext() wrapper.
     pub fn release(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Scaler_release(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Scaler_release(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Scaler.hxx`:45 - `Media_Scaler::Init()`
@@ -1731,13 +1994,13 @@ impl Scaler {
     /// @param theResFormat pixel format (AVPixelFormat) of destination frame
     pub fn init(
         &mut self,
-        theSrcDims: &crate::ffi::Graphic3d_Vec2i,
+        theSrcDims: &crate::ffi_types::Graphic3d_Vec2i,
         theSrcFormat: i32,
-        theResDims: &crate::ffi::Graphic3d_Vec2i,
+        theResDims: &crate::ffi_types::Graphic3d_Vec2i,
         theResFormat: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_init(
+            crate::ffi_extern_TKService::Media_Scaler_init(
                 self as *mut Self,
                 theSrcDims,
                 theSrcFormat,
@@ -1751,38 +2014,44 @@ impl Scaler {
     /// Convert one frame to another.
     pub fn convert(
         &mut self,
-        theSrc: &crate::ffi::HandleMediaFrame,
-        theRes: &crate::ffi::HandleMediaFrame,
+        theSrc: &crate::ffi_types::HandleMediaFrame,
+        theRes: &crate::ffi_types::HandleMediaFrame,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_convert(self as *mut Self, theSrc, theRes)
+            crate::ffi_extern_TKService::Media_Scaler_convert(self as *mut Self, theSrc, theRes)
         })
     }
 
     /// **Source:** `Media_Scaler.hxx`:55 - `Media_Scaler::IsValid()`
     /// Return TRUE if context was initialized.
     pub fn is_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Media_Scaler_is_valid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Scaler_is_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Scaler_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Media_Scaler_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Media_Scaler.hxx`:29 - `Media_Scaler::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_Scaler_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Scaler_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_Scaler_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Media_Scaler_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1791,32 +2060,39 @@ impl Scaler {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_Scaler_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_Scaler_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaScaler> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaScaler> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Scaler_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Scaler_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1824,7 +2100,7 @@ impl Scaler {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_Scaler_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_Scaler_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1837,58 +2113,72 @@ impl Scaler {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Scaler_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_Scaler_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaScaler;
+pub use crate::ffi_types::HandleMediaScaler;
 
 unsafe impl crate::CppDeletable for HandleMediaScaler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaScaler_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaScaler_destructor(ptr);
     }
 }
 
 impl HandleMediaScaler {
     /// Dereference this Handle to access the underlying Media_Scaler
-    pub fn get(&self) -> &crate::ffi::Media_Scaler {
-        unsafe { &*crate::check_result(crate::ffi::HandleMediaScaler_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Media_Scaler {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaScaler_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Scaler
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Scaler {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_Scaler {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaScaler_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaScaler_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Media_Scaler> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaScaler_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaScaler_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1900,11 +2190,11 @@ impl HandleMediaScaler {
 
 /// **Source:** `Media_Timer.hxx`:23 - `Media_Timer`
 /// Auxiliary class defining the animation timer.
-pub use crate::ffi::Media_Timer as Timer;
+pub use crate::ffi_types::Media_Timer as Timer;
 
 unsafe impl crate::CppDeletable for Timer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Media_Timer_destructor(ptr);
+        crate::ffi_extern_TKService::Media_Timer_destructor(ptr);
     }
 }
 
@@ -1912,86 +2202,108 @@ impl Timer {
     /// **Source:** `Media_Timer.hxx`:28 - `Media_Timer::Media_Timer()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Timer_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Timer_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Media_Timer_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Timer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Media_Timer.hxx`:35 - `Media_Timer::ElapsedTime()`
     /// Return elapsed time in seconds.
     pub fn elapsed_time(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Media_Timer_elapsed_time(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_elapsed_time(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:38 - `Media_Timer::PlaybackSpeed()`
     /// Return playback speed coefficient (1.0 means normal speed).
     pub fn playback_speed(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Media_Timer_playback_speed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_playback_speed(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:41 - `Media_Timer::SetPlaybackSpeed()`
     /// Setup playback speed coefficient.
     pub fn set_playback_speed(&mut self, theSpeed: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Timer_set_playback_speed(self as *mut Self, theSpeed)
+            crate::ffi_extern_TKService::Media_Timer_set_playback_speed(self as *mut Self, theSpeed)
         })
     }
 
     /// **Source:** `Media_Timer.hxx`:44 - `Media_Timer::IsStarted()`
     /// Return true if timer has been started.
     pub fn is_started(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Media_Timer_is_started(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_is_started(self as *const Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:47 - `Media_Timer::Start()`
     /// Start the timer.
     pub fn start(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Timer_start(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_start(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:50 - `Media_Timer::Pause()`
     /// Pause the timer.
     pub fn pause(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Timer_pause(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_pause(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:53 - `Media_Timer::Stop()`
     /// Stop the timer.
     pub fn stop(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Media_Timer_stop(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Media_Timer_stop(self as *mut Self)
+        })
     }
 
     /// **Source:** `Media_Timer.hxx`:56 - `Media_Timer::Seek()`
     /// Seek the timer to specified position.
     pub fn seek(&mut self, theTime: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Timer_seek(self as *mut Self, theTime)
+            crate::ffi_extern_TKService::Media_Timer_seek(self as *mut Self, theTime)
         })
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Media_Timer_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Media_Timer_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Media_Timer.hxx`:25 - `Media_Timer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Media_Timer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Media_Timer_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Media_Timer_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Media_Timer_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2000,32 +2312,39 @@ impl Timer {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Media_Timer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Media_Timer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleMediaTimer> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMediaTimer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Media_Timer_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Media_Timer_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Timer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Timer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Media_Timer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Media_Timer_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2033,7 +2352,7 @@ impl Timer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Media_Timer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Media_Timer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2046,58 +2365,72 @@ impl Timer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Timer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Media_Timer_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Timer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Timer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Media_Timer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Media_Timer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Media_Timer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Media_Timer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMediaTimer;
+pub use crate::ffi_types::HandleMediaTimer;
 
 unsafe impl crate::CppDeletable for HandleMediaTimer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMediaTimer_destructor(ptr);
+        crate::ffi_extern_TKService::HandleMediaTimer_destructor(ptr);
     }
 }
 
 impl HandleMediaTimer {
     /// Dereference this Handle to access the underlying Media_Timer
-    pub fn get(&self) -> &crate::ffi::Media_Timer {
-        unsafe { &*crate::check_result(crate::ffi::HandleMediaTimer_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Media_Timer {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleMediaTimer_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Media_Timer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Media_Timer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Media_Timer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMediaTimer_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleMediaTimer_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Media_Timer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMediaTimer_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleMediaTimer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }

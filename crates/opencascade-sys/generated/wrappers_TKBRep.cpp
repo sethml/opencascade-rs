@@ -57,7 +57,7 @@
 #include <BRep_TFace.hxx>
 #include <BRep_TVertex.hxx>
 #include <BRep_Tool.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTools.hxx>
 #include <BinTools_Curve2dSet.hxx>
 #include <BinTools_CurveSet.hxx>
@@ -126,13 +126,13 @@
 #include <TColGeom_Array1OfBezierCurve.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopExp.hxx>
 #include <TopExp_Explorer.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools.hxx>
 #include <TopTools_Array1OfListOfShape.hxx>
 #include <TopTools_Array1OfShape.hxx>

@@ -8,10 +8,10 @@
 // already provides OStream/IStream type aliases via its re-exports section.
 
 extern "C" {
-    fn iostream_cout() -> *mut crate::ffi::Standard_OStream;
-    fn iostream_cerr() -> *mut crate::ffi::Standard_OStream;
-    fn iostream_clog() -> *mut crate::ffi::Standard_OStream;
-    fn iostream_cin() -> *mut crate::ffi::Standard_IStream;
+    fn iostream_cout() -> *mut crate::ffi_types::Standard_OStream;
+    fn iostream_cerr() -> *mut crate::ffi_types::Standard_OStream;
+    fn iostream_clog() -> *mut crate::ffi_types::Standard_OStream;
+    fn iostream_cin() -> *mut crate::ffi_types::Standard_IStream;
 }
 
 /// Returns a mutable reference to `std::cout` (C++ standard output stream).

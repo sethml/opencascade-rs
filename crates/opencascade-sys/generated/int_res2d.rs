@@ -110,11 +110,11 @@ impl TryFrom<i32> for TypeTrans {
 /// Domains must be closed.
 /// So, SetEquivalentParameters(.,.) method must be called
 /// after initializing the first and the last bounds.
-pub use crate::ffi::IntRes2d_Domain as Domain;
+pub use crate::ffi_types::IntRes2d_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntRes2d_Domain_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_destructor(ptr);
     }
 }
 
@@ -124,7 +124,9 @@ impl Domain {
     /// and HasLastPoint = False).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntRes2d_Domain_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_ctor(),
+            ))
         }
     }
 
@@ -140,7 +142,7 @@ impl Domain {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_ctor_pnt2d_real2_pnt2d_real2(
                     Pnt1, Par1, Tol1, Pnt2, Par2, Tol2,
                 ),
             ))
@@ -159,7 +161,9 @@ impl Domain {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_Domain_ctor_pnt2d_real2_bool(Pnt, Par, Tol, First),
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_ctor_pnt2d_real2_bool(
+                    Pnt, Par, Tol, First,
+                ),
             ))
         }
     }
@@ -176,7 +180,7 @@ impl Domain {
         Tol2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_set_values_pnt2d_real2_pnt2d_real2(
                 self as *mut Self,
                 Pnt1,
                 Par1,
@@ -192,7 +196,7 @@ impl Domain {
     /// Sets the values for an infinite domain.
     pub fn set_values(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Domain_set_values(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_set_values(self as *mut Self)
         })
     }
 
@@ -206,7 +210,7 @@ impl Domain {
         First: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Domain_set_values_pnt2d_real2_bool(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_set_values_pnt2d_real2_bool(
                 self as *mut Self,
                 Pnt,
                 Par,
@@ -220,7 +224,11 @@ impl Domain {
     /// Defines a closed domain.
     pub fn set_equivalent_parameters(&mut self, zero: f64, period: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Domain_set_equivalent_parameters(self as *mut Self, zero, period)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_set_equivalent_parameters(
+                self as *mut Self,
+                zero,
+                period,
+            )
         })
     }
 
@@ -230,7 +238,7 @@ impl Domain {
     /// curve.
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_has_first_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_has_first_point(self as *const Self)
         })
     }
 
@@ -240,7 +248,7 @@ impl Domain {
     /// returns False.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_first_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_first_parameter(self as *const Self)
         })
     }
 
@@ -250,7 +258,9 @@ impl Domain {
     /// returns False.
     pub fn first_point(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_Domain_first_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_first_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -260,7 +270,7 @@ impl Domain {
     /// returns False.
     pub fn first_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_first_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_first_tolerance(self as *const Self)
         })
     }
 
@@ -270,7 +280,7 @@ impl Domain {
     /// curve.
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_has_last_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_has_last_point(self as *const Self)
         })
     }
 
@@ -280,7 +290,7 @@ impl Domain {
     /// returns False.
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_last_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_last_parameter(self as *const Self)
         })
     }
 
@@ -290,7 +300,9 @@ impl Domain {
     /// returns False.
     pub fn last_point(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_Domain_last_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_last_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -300,14 +312,16 @@ impl Domain {
     /// returns False.
     pub fn last_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Domain_last_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_last_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:126 - `IntRes2d_Domain::IsClosed()`
     /// Returns True if the domain is closed.
     pub fn is_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntRes2d_Domain_is_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `IntRes2d_Domain.hxx`:130 - `IntRes2d_Domain::EquivalentParameters()`
@@ -315,7 +329,7 @@ impl Domain {
     /// Otherwise, the exception DomainError is raised.
     pub fn equivalent_parameters(&self, zero: &mut f64, zeroplusperiod: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Domain_equivalent_parameters(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Domain_equivalent_parameters(
                 self as *const Self,
                 zero,
                 zeroplusperiod,
@@ -332,14 +346,14 @@ impl Domain {
 /// Defines  the root   class  of  all  the  Intersections
 /// between  two 2D-Curves, and  provides all  the methods
 /// about the results of the Intersections Algorithms.
-pub use crate::ffi::IntRes2d_Intersection as Intersection;
+pub use crate::ffi_types::IntRes2d_Intersection as Intersection;
 
 impl Intersection {
     /// **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     /// returns TRUE when the computation was successful.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Intersection_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_is_done(self as *const Self)
         })
     }
 
@@ -349,7 +363,7 @@ impl Intersection {
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Intersection_is_empty(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_is_empty(self as *const Self)
         })
     }
 
@@ -359,7 +373,7 @@ impl Intersection {
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Intersection_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_nb_points(self as *const Self)
         })
     }
 
@@ -371,7 +385,10 @@ impl Intersection {
     /// or (N > NbPoints).
     pub fn point(&self, N: i32) -> &IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_Intersection_point(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
@@ -381,7 +398,7 @@ impl Intersection {
     /// The exception NotDone is raised if IsDone returns FALSE.
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Intersection_nb_segments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_nb_segments(self as *const Self)
         })
     }
 
@@ -393,7 +410,7 @@ impl Intersection {
     /// or (N > NbPoints).
     pub fn segment(&self, N: i32) -> &IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_Intersection_segment(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_segment(
                 self as *const Self,
                 N,
             )))
@@ -403,7 +420,7 @@ impl Intersection {
     /// **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Intersection_set_reversed_parameters(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Intersection_set_reversed_parameters(
                 self as *mut Self,
                 Reverseflag,
             )
@@ -418,11 +435,11 @@ impl Intersection {
 /// **Source:** `IntRes2d_IntersectionPoint.hxx`:30 - `IntRes2d_IntersectionPoint`
 /// Definition of an intersection point between two
 /// 2D curves.
-pub use crate::ffi::IntRes2d_IntersectionPoint as IntersectionPoint;
+pub use crate::ffi_types::IntRes2d_IntersectionPoint as IntersectionPoint;
 
 unsafe impl crate::CppDeletable for IntersectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntRes2d_IntersectionPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_destructor(ptr);
     }
 }
 
@@ -432,7 +449,7 @@ impl IntersectionPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionPoint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_ctor(),
             ))
         }
     }
@@ -453,16 +470,7 @@ impl IntersectionPoint {
         ReversedFlag: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionPoint_ctor_pnt2d_real2_transition2_bool(
-                    P,
-                    Uc1,
-                    Uc2,
-                    Trans1,
-                    Trans2,
-                    ReversedFlag,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_ctor_pnt2d_real2_transition2_bool(P, Uc1, Uc2, Trans1, Trans2, ReversedFlag)))
         }
     }
 
@@ -480,7 +488,7 @@ impl IntersectionPoint {
         ReversedFlag: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionPoint_set_values(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_set_values(
                 self as *mut Self,
                 P,
                 Uc1,
@@ -497,7 +505,7 @@ impl IntersectionPoint {
     /// intersection point in the 2D space.
     pub fn value(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_IntersectionPoint_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_value(
                 self as *const Self,
             )))
         }
@@ -507,7 +515,9 @@ impl IntersectionPoint {
     /// Returns the parameter on the first curve.
     pub fn param_on_first(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionPoint_param_on_first(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_param_on_first(
+                self as *const Self,
+            )
         })
     }
 
@@ -515,7 +525,9 @@ impl IntersectionPoint {
     /// Returns the parameter on the second curve.
     pub fn param_on_second(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionPoint_param_on_second(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_param_on_second(
+                self as *const Self,
+            )
         })
     }
 
@@ -524,9 +536,11 @@ impl IntersectionPoint {
     /// the 2nd one.
     pub fn transition_of_first(&self) -> &Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_IntersectionPoint_transition_of_first(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_transition_of_first(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -535,9 +549,11 @@ impl IntersectionPoint {
     /// the 1st one.
     pub fn transition_of_second(&self) -> &Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_IntersectionPoint_transition_of_second(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionPoint_transition_of_second(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -549,11 +565,11 @@ impl IntersectionPoint {
 /// **Source:** `IntRes2d_IntersectionSegment.hxx`:29 - `IntRes2d_IntersectionSegment`
 /// Definition of an intersection curve between
 /// two 2D curves.
-pub use crate::ffi::IntRes2d_IntersectionSegment as IntersectionSegment;
+pub use crate::ffi_types::IntRes2d_IntersectionSegment as IntersectionSegment;
 
 unsafe impl crate::CppDeletable for IntersectionSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntRes2d_IntersectionSegment_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_destructor(ptr);
     }
 }
 
@@ -563,7 +579,7 @@ impl IntersectionSegment {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionSegment_ctor(),
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_ctor(),
             ))
         }
     }
@@ -576,14 +592,7 @@ impl IntersectionSegment {
         ReverseFlag: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint2_bool2(
-                    P1,
-                    P2,
-                    Oppos,
-                    ReverseFlag,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_ctor_intersectionpoint2_bool2(P1, P2, Oppos, ReverseFlag)))
         }
     }
 
@@ -595,14 +604,7 @@ impl IntersectionSegment {
         ReverseFlag: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionSegment_ctor_intersectionpoint_bool3(
-                    P,
-                    First,
-                    Oppos,
-                    ReverseFlag,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_ctor_intersectionpoint_bool3(P, First, Oppos, ReverseFlag)))
         }
     }
 
@@ -611,7 +613,7 @@ impl IntersectionSegment {
     pub fn new_bool(Oppos: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_IntersectionSegment_ctor_bool(Oppos),
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_ctor_bool(Oppos),
             ))
         }
     }
@@ -621,7 +623,9 @@ impl IntersectionSegment {
     /// the same orientation on both curves.
     pub fn is_opposite(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionSegment_is_opposite(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_is_opposite(
+                self as *const Self,
+            )
         })
     }
 
@@ -634,7 +638,9 @@ impl IntersectionSegment {
     /// the highest parameter on the second curve.
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionSegment_has_first_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_has_first_point(
+                self as *const Self,
+            )
         })
     }
 
@@ -645,9 +651,11 @@ impl IntersectionSegment {
     /// returns False.
     pub fn first_point(&self) -> &IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_IntersectionSegment_first_point(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_first_point(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -660,7 +668,9 @@ impl IntersectionSegment {
     /// the lowest parameter on the second curve.
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_IntersectionSegment_has_last_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_has_last_point(
+                self as *const Self,
+            )
         })
     }
 
@@ -671,9 +681,11 @@ impl IntersectionSegment {
     /// HasLastExtremity returns False.
     pub fn last_point(&self) -> &IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntRes2d_IntersectionSegment_last_point(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_IntersectionSegment_last_point(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -691,11 +703,11 @@ impl IntersectionSegment {
 /// transition" which means that the  first curve does not
 /// cross  the  other one,  or an  "undecided" transition,
 /// which means that the curves are superposed.
-pub use crate::ffi::IntRes2d_Transition as Transition;
+pub use crate::ffi_types::IntRes2d_Transition as Transition;
 
 unsafe impl crate::CppDeletable for Transition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntRes2d_Transition_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_destructor(ptr);
     }
 }
 
@@ -704,7 +716,9 @@ impl Transition {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntRes2d_Transition_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_ctor(),
+            ))
         }
     }
 
@@ -717,7 +731,7 @@ impl Transition {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_Transition_ctor_bool_position_typetrans(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_ctor_bool_position_typetrans(
                     Tangent,
                     Pos.into(),
                     Type.into(),
@@ -736,7 +750,7 @@ impl Transition {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_Transition_ctor_bool_position_situation_bool(
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_ctor_bool_position_situation_bool(
                     Tangent,
                     Pos.into(),
                     Situ.into(),
@@ -751,7 +765,7 @@ impl Transition {
     pub fn new_position(Pos: crate::int_res2d::Position) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntRes2d_Transition_ctor_position(Pos.into()),
+                crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_ctor_position(Pos.into()),
             ))
         }
     }
@@ -765,7 +779,7 @@ impl Transition {
         Type: crate::int_res2d::TypeTrans,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Transition_set_value_bool_position_typetrans(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_set_value_bool_position_typetrans(
                 self as *mut Self,
                 Tangent,
                 Pos.into(),
@@ -784,7 +798,7 @@ impl Transition {
         Oppos: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Transition_set_value_bool_position_situation_bool(
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_set_value_bool_position_situation_bool(
                 self as *mut Self,
                 Tangent,
                 Pos.into(),
@@ -798,7 +812,10 @@ impl Transition {
     /// Sets the values of an UNDECIDED transition.
     pub fn set_value_position(&mut self, Pos: crate::int_res2d::Position) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Transition_set_value_position(self as *mut Self, Pos.into())
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_set_value_position(
+                self as *mut Self,
+                Pos.into(),
+            )
         })
     }
 
@@ -806,7 +823,10 @@ impl Transition {
     /// Sets the value of the position.
     pub fn set_position(&mut self, Pos: crate::int_res2d::Position) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntRes2d_Transition_set_position(self as *mut Self, Pos.into())
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_set_position(
+                self as *mut Self,
+                Pos.into(),
+            )
         })
     }
 
@@ -816,7 +836,7 @@ impl Transition {
     /// the middle (IntRes2d_Middle) of the curve.
     pub fn position_on_curve(&self) -> crate::int_res2d::Position {
         crate::int_res2d::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Transition_position_on_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_position_on_curve(self as *const Self)
         }))
         .unwrap()
     }
@@ -828,7 +848,7 @@ impl Transition {
     /// the tangent to one of the two curves.
     pub fn transition_type(&self) -> crate::int_res2d::TypeTrans {
         crate::int_res2d::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Transition_transition_type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_transition_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -840,7 +860,7 @@ impl Transition {
     /// transition is UNDECIDED.
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Transition_is_tangent(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_is_tangent(self as *const Self)
         })
     }
 
@@ -855,7 +875,7 @@ impl Transition {
     /// exception DomainError is raised.
     pub fn situation(&self) -> crate::int_res2d::Situation {
         crate::int_res2d::Situation::try_from(crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Transition_situation(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_situation(self as *const Self)
         }))
         .unwrap()
     }
@@ -869,7 +889,7 @@ impl Transition {
     /// DomainError is raised.
     pub fn is_opposite(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntRes2d_Transition_is_opposite(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntRes2d_Transition_is_opposite(self as *const Self)
         })
     }
 }
@@ -878,4 +898,4 @@ impl Transition {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::IntRes2d_SequenceOfIntersectionPoint as SequenceOfIntersectionPoint;
+pub use crate::ffi_types::IntRes2d_SequenceOfIntersectionPoint as SequenceOfIntersectionPoint;

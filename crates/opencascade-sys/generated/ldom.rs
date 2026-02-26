@@ -7,77 +7,87 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From LDOM_Attr.hxx
 // ========================
 
 /// **Source:** `LDOM_Attr.hxx`:26 - `LDOM_Attr`
-pub use crate::ffi::LDOM_Attr as Attr;
+pub use crate::ffi_types::LDOM_Attr as Attr;
 
 unsafe impl crate::CppDeletable for Attr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Attr_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Attr_destructor(ptr);
     }
 }
 
 impl Attr {
     /// **Source:** `LDOM_Attr.hxx`:31 - `LDOM_Attr::LDOM_Attr()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Attr_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_ctor()),
+            )
+        }
     }
 
     /// **Source:** `LDOM_Attr.hxx`:56 - `LDOM_Attr::getName()`
     pub fn get_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Attr_get_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Attr_get_name(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Attr.hxx`:58 - `LDOM_Attr::getValue()`
     pub fn get_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Attr_get_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Attr_get_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Attr.hxx`:60 - `LDOM_Attr::setValue()`
     pub fn set_value(&mut self, aValue: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Attr_set_value(self as *mut Self, aValue)
+            crate::ffi_extern_TKCDF::LDOM_Attr_set_value(self as *mut Self, aValue)
         })
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*crate::check_result(crate::ffi::LDOM_Attr_as_LDOM_Node(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_as_LDOM_Node(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Attr_as_LDOM_Node_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_as_LDOM_Node_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Attr_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Attr_to_owned(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_Attr_inherited_getOwnerDocument(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getOwnerDocument(
                 self as *const Self,
             )))
         }
@@ -85,14 +95,16 @@ impl Attr {
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_Attr_inherited_isNull(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Attr_inherited_isNull(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getNodeType(self as *const Self),
             ))
         }
     }
@@ -101,7 +113,7 @@ impl Attr {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getNodeName(self as *const Self),
             ))
         }
     }
@@ -110,7 +122,7 @@ impl Attr {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getNodeValue(self as *const Self),
             ))
         }
     }
@@ -119,7 +131,7 @@ impl Attr {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getFirstChild(self as *const Self),
             ))
         }
     }
@@ -128,7 +140,7 @@ impl Attr {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getLastChild(self as *const Self),
             ))
         }
     }
@@ -137,7 +149,7 @@ impl Attr {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Attr_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Attr_inherited_getNextSibling(self as *const Self),
             ))
         }
     }
@@ -145,28 +157,28 @@ impl Attr {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Attr_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Attr_inherited_removeChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Attr_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Attr_inherited_appendChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Attr_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Attr_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Attr_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Attr_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -176,11 +188,11 @@ impl Attr {
 // ========================
 
 /// **Source:** `LDOM_BasicAttribute.hxx`:27 - `LDOM_BasicAttribute`
-pub use crate::ffi::LDOM_BasicAttribute as BasicAttribute;
+pub use crate::ffi_types::LDOM_BasicAttribute as BasicAttribute;
 
 unsafe impl crate::CppDeletable for BasicAttribute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_BasicAttribute_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_BasicAttribute_destructor(ptr);
     }
 }
 
@@ -188,16 +200,18 @@ impl BasicAttribute {
     /// **Source:** `LDOM_BasicAttribute.hxx`:32 - `LDOM_BasicAttribute::LDOM_BasicAttribute()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_BasicAttribute_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicAttribute_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LDOM_BasicAttribute.hxx`:44 - `LDOM_BasicAttribute::GetName()`
     pub fn get_name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::LDOM_BasicAttribute_get_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicAttribute_get_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -206,7 +220,9 @@ impl BasicAttribute {
     /// **Source:** `LDOM_BasicAttribute.hxx`:46 - `LDOM_BasicAttribute::GetValue()`
     pub fn get_value(&self) -> &crate::ldom_basic_string::LDOMBasicString {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_BasicAttribute_get_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicAttribute_get_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -214,17 +230,17 @@ impl BasicAttribute {
     pub fn set_value(
         &mut self,
         aValue: &crate::ldom_basic_string::LDOMBasicString,
-        aDoc: &crate::ffi::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::HandleLDOMMemManager,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_BasicAttribute_set_value(self as *mut Self, aValue, aDoc)
+            crate::ffi_extern_TKCDF::LDOM_BasicAttribute_set_value(self as *mut Self, aValue, aDoc)
         })
     }
 
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicAttribute_as_LDOM_BasicNode(
                 self as *const Self,
             ))
         }
@@ -233,24 +249,28 @@ impl BasicAttribute {
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_BasicAttribute_as_LDOM_BasicNode_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicAttribute_as_LDOM_BasicNode_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_BasicAttribute_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_BasicAttribute_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:34 - `LDOM_BasicNode::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_BasicAttribute_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_BasicAttribute_inherited_getNodeType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -259,7 +279,9 @@ impl BasicAttribute {
     pub fn get_sibling(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicAttribute_inherited_GetSibling(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicAttribute_inherited_GetSibling(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -275,11 +297,11 @@ impl BasicAttribute {
 // ========================
 
 /// **Source:** `LDOM_BasicElement.hxx`:31 - `LDOM_BasicElement`
-pub use crate::ffi::LDOM_BasicElement as BasicElement;
+pub use crate::ffi_types::LDOM_BasicElement as BasicElement;
 
 unsafe impl crate::CppDeletable for BasicElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_BasicElement_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_BasicElement_destructor(ptr);
     }
 }
 
@@ -287,7 +309,9 @@ impl BasicElement {
     /// **Source:** `LDOM_BasicElement.hxx`:36 - `LDOM_BasicElement::LDOM_BasicElement()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_BasicElement_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_ctor(),
+            ))
         }
     }
 
@@ -295,7 +319,7 @@ impl BasicElement {
     pub fn get_tag_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LDOM_BasicElement_get_tag_name(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_get_tag_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -306,7 +330,7 @@ impl BasicElement {
     pub fn get_first_child(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicElement_get_first_child(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_get_first_child(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -320,7 +344,7 @@ impl BasicElement {
     pub fn get_last_child(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicElement_get_last_child(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_get_last_child(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -343,7 +367,7 @@ impl BasicElement {
         aLastCh: &BasicNode,
     ) -> &BasicAttribute {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_BasicElement_get_attribute(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicElement_get_attribute(
                 self as *const Self,
                 aName,
                 aLastCh as *const _,
@@ -355,11 +379,11 @@ impl BasicElement {
     pub fn create(
         aName: &str,
         aLength: i32,
-        aDoc: &crate::ffi::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::HandleLDOMMemManager,
     ) -> &'static mut BasicElement {
         let c_aName = std::ffi::CString::new(aName).unwrap();
         unsafe {
-            &mut *(crate::check_result(crate::ffi::LDOM_BasicElement_create(
+            &mut *(crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicElement_create(
                 c_aName.as_ptr(),
                 aLength,
                 aDoc,
@@ -370,7 +394,7 @@ impl BasicElement {
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicElement_as_LDOM_BasicNode(
                 self as *const Self,
             ))
         }
@@ -379,24 +403,26 @@ impl BasicElement {
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_BasicElement_as_LDOM_BasicNode_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_as_LDOM_BasicNode_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_BasicElement_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_BasicElement_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:34 - `LDOM_BasicNode::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_BasicElement_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_inherited_getNodeType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -405,7 +431,7 @@ impl BasicElement {
     pub fn get_sibling(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicElement_inherited_GetSibling(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicElement_inherited_GetSibling(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -421,25 +447,27 @@ impl BasicElement {
 // ========================
 
 /// **Source:** `LDOM_BasicNode.hxx`:26 - `LDOM_BasicNode`
-pub use crate::ffi::LDOM_BasicNode as BasicNode;
+pub use crate::ffi_types::LDOM_BasicNode as BasicNode;
 
 unsafe impl crate::CppDeletable for BasicNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_BasicNode_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_BasicNode_destructor(ptr);
     }
 }
 
 impl BasicNode {
     /// **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_BasicNode_is_null(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_BasicNode_is_null(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_BasicNode.hxx`:34 - `LDOM_BasicNode::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_BasicNode_get_node_type(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_BasicNode_get_node_type(self as *const Self),
             ))
         }
     }
@@ -448,7 +476,7 @@ impl BasicNode {
     pub fn get_sibling(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicNode_get_sibling(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicNode_get_sibling(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -464,64 +492,74 @@ impl BasicNode {
 // ========================
 
 /// **Source:** `LDOM_BasicText.hxx`:27 - `LDOM_BasicText`
-pub use crate::ffi::LDOM_BasicText as BasicText;
+pub use crate::ffi_types::LDOM_BasicText as BasicText;
 
 unsafe impl crate::CppDeletable for BasicText {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_BasicText_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_BasicText_destructor(ptr);
     }
 }
 
 impl BasicText {
     /// **Source:** `LDOM_BasicText.hxx`:32 - `LDOM_BasicText::LDOM_BasicText()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_BasicText_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicText_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LDOM_BasicText.hxx`:43 - `LDOM_BasicText::GetData()`
     pub fn get_data(&self) -> &crate::ldom_basic_string::LDOMBasicString {
-        unsafe { &*(crate::check_result(crate::ffi::LDOM_BasicText_get_data(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicText_get_data(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LDOM_BasicText.hxx`:45 - `LDOM_BasicText::SetData()`
     pub fn set_data(
         &mut self,
         aValue: &crate::ldom_basic_string::LDOMBasicString,
-        aDoc: &crate::ffi::HandleLDOMMemManager,
+        aDoc: &crate::ffi_types::HandleLDOMMemManager,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_BasicText_set_data(self as *mut Self, aValue, aDoc)
+            crate::ffi_extern_TKCDF::LDOM_BasicText_set_data(self as *mut Self, aValue, aDoc)
         })
     }
 
     /// Upcast to LDOM_BasicNode
     pub fn as_basic_node(&self) -> &BasicNode {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_BasicText_as_LDOM_BasicNode(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_BasicText_as_LDOM_BasicNode(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to LDOM_BasicNode (mutable)
     pub fn as_basic_node_mut(&mut self) -> &mut BasicNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_BasicText_as_LDOM_BasicNode_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_BasicText_as_LDOM_BasicNode_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:32 - `LDOM_BasicNode::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_BasicText_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_BasicText_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_BasicNode.hxx`:34 - `LDOM_BasicNode::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_BasicText_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_BasicText_inherited_getNodeType(self as *const Self),
             ))
         }
     }
@@ -530,7 +568,7 @@ impl BasicText {
     pub fn get_sibling(&self) -> Option<&BasicNode> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_BasicText_inherited_GetSibling(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_BasicText_inherited_GetSibling(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -546,11 +584,11 @@ impl BasicText {
 // ========================
 
 /// **Source:** `LDOM_CDATASection.hxx`:23 - `LDOM_CDATASection`
-pub use crate::ffi::LDOM_CDATASection as CDATASection;
+pub use crate::ffi_types::LDOM_CDATASection as CDATASection;
 
 unsafe impl crate::CppDeletable for CDATASection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_CDATASection_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_CDATASection_destructor(ptr);
     }
 }
 
@@ -558,21 +596,25 @@ impl CDATASection {
     /// **Source:** `LDOM_CDATASection.hxx`:28 - `LDOM_CDATASection::LDOM_CDATASection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CDATASection_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_ctor(),
+            ))
         }
     }
 
     /// Upcast to LDOM_Text
     pub fn as_text(&self) -> &Text {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_Text(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_Text(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to LDOM_Text (mutable)
     pub fn as_text_mut(&mut self) -> &mut Text {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_Text_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_Text_mut(
                 self as *mut Self,
             ))
         }
@@ -581,7 +623,7 @@ impl CDATASection {
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_CharacterData(
                 self as *const Self,
             ))
         }
@@ -590,23 +632,27 @@ impl CDATASection {
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_CharacterData_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_CharacterData_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_Node(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_Node(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_CDATASection_as_LDOM_Node_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_CDATASection_as_LDOM_Node_mut(
                 self as *mut Self,
             ))
         }
@@ -615,9 +661,9 @@ impl CDATASection {
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CDATASection_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_to_owned(self as *const Self),
+            ))
         }
     }
 
@@ -625,7 +671,7 @@ impl CDATASection {
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getData(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getData(self as *const Self),
             ))
         }
     }
@@ -633,38 +679,42 @@ impl CDATASection {
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_setData(self as *mut Self, aValue)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_setData(self as *mut Self, aValue)
         })
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_getLength(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getLength(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_CDATASection_inherited_getOwnerDocument(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getOwnerDocument(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getNodeType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -673,7 +723,9 @@ impl CDATASection {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getNodeName(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -682,7 +734,9 @@ impl CDATASection {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getNodeValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -691,7 +745,9 @@ impl CDATASection {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getFirstChild(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -700,7 +756,9 @@ impl CDATASection {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getLastChild(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -709,7 +767,9 @@ impl CDATASection {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CDATASection_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_getNextSibling(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -717,28 +777,34 @@ impl CDATASection {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_removeChild(
+                self as *mut Self,
+                aChild,
+            )
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_appendChild(
+                self as *mut Self,
+                aChild,
+            )
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CDATASection_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CDATASection_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -748,11 +814,11 @@ impl CDATASection {
 // ========================
 
 /// **Source:** `LDOM_CharReference.hxx`:42 - `LDOM_CharReference`
-pub use crate::ffi::LDOM_CharReference as CharReference;
+pub use crate::ffi_types::LDOM_CharReference as CharReference;
 
 unsafe impl crate::CppDeletable for CharReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_CharReference_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_CharReference_destructor(ptr);
     }
 }
 
@@ -761,13 +827,17 @@ impl CharReference {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CharReference_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CharReference_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LDOM_CharReference.hxx`:47 - `LDOM_CharReference::Decode()`
     pub unsafe fn decode(theSrc: *mut std::ffi::c_char, theLen: &mut i32) -> *mut std::ffi::c_char {
-        crate::check_result(unsafe { crate::ffi::LDOM_CharReference_decode(theSrc, theLen) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_CharReference_decode(theSrc, theLen)
+        })
     }
 
     /// **Source:** `LDOM_CharReference.hxx`:49 - `LDOM_CharReference::Encode()`
@@ -778,7 +848,11 @@ impl CharReference {
     ) -> *mut std::ffi::c_char {
         let c_theSrc = std::ffi::CString::new(theSrc).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CharReference_encode(c_theSrc.as_ptr(), theLen, isAttribute)
+            crate::ffi_extern_TKCDF::LDOM_CharReference_encode(
+                c_theSrc.as_ptr(),
+                theLen,
+                isAttribute,
+            )
         })
     }
 }
@@ -788,11 +862,11 @@ impl CharReference {
 // ========================
 
 /// **Source:** `LDOM_CharacterData.hxx`:26 - `LDOM_CharacterData`
-pub use crate::ffi::LDOM_CharacterData as CharacterData;
+pub use crate::ffi_types::LDOM_CharacterData as CharacterData;
 
 unsafe impl crate::CppDeletable for CharacterData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_CharacterData_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_CharacterData_destructor(ptr);
     }
 }
 
@@ -800,44 +874,48 @@ impl CharacterData {
     /// **Source:** `LDOM_CharacterData.hxx`:31 - `LDOM_CharacterData::LDOM_CharacterData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CharacterData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CharacterData_get_data(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_get_data(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CharacterData_set_data(self as *mut Self, aValue)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_set_data(self as *mut Self, aValue)
         })
     }
 
     /// **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CharacterData_get_length(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_get_length(self as *const Self)
         })
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_CharacterData_as_LDOM_Node(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_as_LDOM_Node(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_CharacterData_as_LDOM_Node_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_CharacterData_as_LDOM_Node_mut(
                 self as *mut Self,
             ))
         }
@@ -846,33 +924,37 @@ impl CharacterData {
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_CharacterData_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_to_owned(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_CharacterData_inherited_getOwnerDocument(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getOwnerDocument(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CharacterData_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getNodeType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -881,7 +963,9 @@ impl CharacterData {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getNodeName(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -890,7 +974,9 @@ impl CharacterData {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getNodeValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -899,7 +985,9 @@ impl CharacterData {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getFirstChild(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -908,7 +996,9 @@ impl CharacterData {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getLastChild(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -917,7 +1007,9 @@ impl CharacterData {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_CharacterData_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_getNextSibling(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -925,28 +1017,34 @@ impl CharacterData {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CharacterData_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_removeChild(
+                self as *mut Self,
+                aChild,
+            )
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CharacterData_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_appendChild(
+                self as *mut Self,
+                aChild,
+            )
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_CharacterData_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_CharacterData_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_CharacterData_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -956,24 +1054,28 @@ impl CharacterData {
 // ========================
 
 /// **Source:** `LDOM_Comment.hxx`:23 - `LDOM_Comment`
-pub use crate::ffi::LDOM_Comment as Comment;
+pub use crate::ffi_types::LDOM_Comment as Comment;
 
 unsafe impl crate::CppDeletable for Comment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Comment_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Comment_destructor(ptr);
     }
 }
 
 impl Comment {
     /// **Source:** `LDOM_Comment.hxx`:28 - `LDOM_Comment::LDOM_Comment()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Comment_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Comment_ctor(),
+            ))
+        }
     }
 
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_Comment_as_LDOM_CharacterData(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_as_LDOM_CharacterData(
                 self as *const Self,
             ))
         }
@@ -982,30 +1084,36 @@ impl Comment {
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Comment_as_LDOM_CharacterData_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Comment_as_LDOM_CharacterData_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*crate::check_result(crate::ffi::LDOM_Comment_as_LDOM_Node(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_as_LDOM_Node(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Comment_as_LDOM_Node_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Comment_as_LDOM_Node_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Comment_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Comment_to_owned(self as *const Self),
+            ))
         }
     }
 
@@ -1013,7 +1121,7 @@ impl Comment {
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getData(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getData(self as *const Self),
             ))
         }
     }
@@ -1021,38 +1129,40 @@ impl Comment {
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_setData(self as *mut Self, aValue)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_setData(self as *mut Self, aValue)
         })
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_getLength(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getLength(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_Comment_inherited_getOwnerDocument(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getOwnerDocument(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getNodeType(self as *const Self),
             ))
         }
     }
@@ -1061,7 +1171,7 @@ impl Comment {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getNodeName(self as *const Self),
             ))
         }
     }
@@ -1070,7 +1180,7 @@ impl Comment {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getNodeValue(self as *const Self),
             ))
         }
     }
@@ -1079,7 +1189,7 @@ impl Comment {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getFirstChild(self as *const Self),
             ))
         }
     }
@@ -1088,7 +1198,7 @@ impl Comment {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getLastChild(self as *const Self),
             ))
         }
     }
@@ -1097,7 +1207,7 @@ impl Comment {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Comment_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Comment_inherited_getNextSibling(self as *const Self),
             ))
         }
     }
@@ -1105,28 +1215,28 @@ impl Comment {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_removeChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_appendChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Comment_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Comment_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -1136,25 +1246,29 @@ impl Comment {
 // ========================
 
 /// **Source:** `LDOM_Document.hxx`:25 - `LDOM_Document`
-pub use crate::ffi::LDOM_Document as Document;
+pub use crate::ffi_types::LDOM_Document as Document;
 
 unsafe impl crate::CppDeletable for Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Document_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Document_destructor(ptr);
     }
 }
 
 impl Document {
     /// **Source:** `LDOM_Document.hxx`:29 - `LDOM_Document::LDOM_Document()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Document_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Document_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LDOM_Document.hxx`:32 - `LDOM_Document::LDOM_Document()`
     pub fn new_memmanager(aMemManager: &MemManager) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_ctor_memmanager(aMemManager),
+                crate::ffi_extern_TKCDF::LDOM_Document_ctor_memmanager(aMemManager),
             ))
         }
     }
@@ -1166,7 +1280,10 @@ impl Document {
     ) -> crate::OwnedPtr<Element> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_create_element(self as *mut Self, theTagName),
+                crate::ffi_extern_TKCDF::LDOM_Document_create_element(
+                    self as *mut Self,
+                    theTagName,
+                ),
             ))
         }
     }
@@ -1178,7 +1295,10 @@ impl Document {
     ) -> crate::OwnedPtr<CDATASection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_create_cdata_section(self as *mut Self, theData),
+                crate::ffi_extern_TKCDF::LDOM_Document_create_cdata_section(
+                    self as *mut Self,
+                    theData,
+                ),
             ))
         }
     }
@@ -1190,7 +1310,7 @@ impl Document {
     ) -> crate::OwnedPtr<Comment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_create_comment(self as *mut Self, theData),
+                crate::ffi_extern_TKCDF::LDOM_Document_create_comment(self as *mut Self, theData),
             ))
         }
     }
@@ -1202,7 +1322,7 @@ impl Document {
     ) -> crate::OwnedPtr<Text> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_create_text_node(self as *mut Self, theData),
+                crate::ffi_extern_TKCDF::LDOM_Document_create_text_node(self as *mut Self, theData),
             ))
         }
     }
@@ -1211,7 +1331,7 @@ impl Document {
     pub fn get_document_element(&self) -> crate::OwnedPtr<Element> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_get_document_element(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Document_get_document_element(self as *const Self),
             ))
         }
     }
@@ -1223,14 +1343,19 @@ impl Document {
     ) -> crate::OwnedPtr<NodeList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_get_elements_by_tag_name(self as *const Self, theTagName),
+                crate::ffi_extern_TKCDF::LDOM_Document_get_elements_by_tag_name(
+                    self as *const Self,
+                    theTagName,
+                ),
             ))
         }
     }
 
     /// **Source:** `LDOM_Document.hxx`:79 - `LDOM_Document::isNull()`
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_Document_is_null(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Document_is_null(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_Document.hxx`:43 - `LDOM_Document::createDocument()`
@@ -1239,7 +1364,7 @@ impl Document {
     ) -> crate::OwnedPtr<Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Document_create_document(theQualifiedName),
+                crate::ffi_extern_TKCDF::LDOM_Document_create_document(theQualifiedName),
             ))
         }
     }
@@ -1250,11 +1375,11 @@ impl Document {
 // ========================
 
 /// **Source:** `LDOM_DocumentType.hxx`:21 - `LDOM_DocumentType`
-pub use crate::ffi::LDOM_DocumentType as DocumentType;
+pub use crate::ffi_types::LDOM_DocumentType as DocumentType;
 
 unsafe impl crate::CppDeletable for DocumentType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_DocumentType_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_DocumentType_destructor(ptr);
     }
 }
 
@@ -1262,7 +1387,9 @@ impl DocumentType {
     /// **Source:** `LDOM_DocumentType.hxx`:26 - `LDOM_DocumentType::LDOM_DocumentType()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_DocumentType_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_DocumentType_ctor(),
+            ))
         }
     }
 }
@@ -1272,26 +1399,30 @@ impl DocumentType {
 // ========================
 
 /// **Source:** `LDOM_Element.hxx`:27 - `LDOM_Element`
-pub use crate::ffi::LDOM_Element as Element;
+pub use crate::ffi_types::LDOM_Element as Element;
 
 unsafe impl crate::CppDeletable for Element {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Element_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Element_destructor(ptr);
     }
 }
 
 impl Element {
     /// **Source:** `LDOM_Element.hxx`:32 - `LDOM_Element::LDOM_Element()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Element_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Element_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LDOM_Element.hxx`:57 - `LDOM_Element::getTagName()`
     pub fn get_tag_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Element_get_tag_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Element_get_tag_name(self as *const Self),
+            ))
         }
     }
 
@@ -1301,10 +1432,9 @@ impl Element {
         aName: &crate::ldom_string::LDOMString,
     ) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Element_get_attribute(
-                self as *const Self,
-                aName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Element_get_attribute(self as *const Self, aName),
+            ))
         }
     }
 
@@ -1315,7 +1445,10 @@ impl Element {
     ) -> crate::OwnedPtr<Attr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_get_attribute_node(self as *const Self, aName),
+                crate::ffi_extern_TKCDF::LDOM_Element_get_attribute_node(
+                    self as *const Self,
+                    aName,
+                ),
             ))
         }
     }
@@ -1327,7 +1460,10 @@ impl Element {
     ) -> crate::OwnedPtr<NodeList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_get_elements_by_tag_name(self as *const Self, aName),
+                crate::ffi_extern_TKCDF::LDOM_Element_get_elements_by_tag_name(
+                    self as *const Self,
+                    aName,
+                ),
             ))
         }
     }
@@ -1339,21 +1475,21 @@ impl Element {
         aValue: &crate::ldom_string::LDOMString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_set_attribute(self as *mut Self, aName, aValue)
+            crate::ffi_extern_TKCDF::LDOM_Element_set_attribute(self as *mut Self, aName, aValue)
         })
     }
 
     /// **Source:** `LDOM_Element.hxx`:67 - `LDOM_Element::setAttributeNode()`
     pub fn set_attribute_node(&mut self, aNewAttr: &Attr) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_set_attribute_node(self as *mut Self, aNewAttr)
+            crate::ffi_extern_TKCDF::LDOM_Element_set_attribute_node(self as *mut Self, aNewAttr)
         })
     }
 
     /// **Source:** `LDOM_Element.hxx`:69 - `LDOM_Element::removeAttribute()`
     pub fn remove_attribute(&mut self, aName: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_remove_attribute(self as *mut Self, aName)
+            crate::ffi_extern_TKCDF::LDOM_Element_remove_attribute(self as *mut Self, aName)
         })
     }
 
@@ -1364,7 +1500,10 @@ impl Element {
     ) -> crate::OwnedPtr<Element> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_get_child_by_tag_name(self as *const Self, aTagName),
+                crate::ffi_extern_TKCDF::LDOM_Element_get_child_by_tag_name(
+                    self as *const Self,
+                    aTagName,
+                ),
             ))
         }
     }
@@ -1373,7 +1512,7 @@ impl Element {
     pub fn get_sibling_by_tag_name(&self) -> crate::OwnedPtr<Element> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_get_sibling_by_tag_name(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_get_sibling_by_tag_name(self as *const Self),
             ))
         }
     }
@@ -1381,7 +1520,7 @@ impl Element {
     /// **Source:** `LDOM_Element.hxx`:76 - `LDOM_Element::ReplaceElement()`
     pub fn replace_element(&mut self, anOther: &Element) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_replace_element(self as *mut Self, anOther)
+            crate::ffi_extern_TKCDF::LDOM_Element_replace_element(self as *mut Self, anOther)
         })
     }
 
@@ -1389,53 +1528,61 @@ impl Element {
     pub fn get_attributes_list(&self) -> crate::OwnedPtr<NodeList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_get_attributes_list(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_get_attributes_list(self as *const Self),
             ))
         }
     }
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*crate::check_result(crate::ffi::LDOM_Element_as_LDOM_Node(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_as_LDOM_Node(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Element_as_LDOM_Node_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Element_as_LDOM_Node_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Element_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Element_to_owned(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_Element_inherited_getOwnerDocument(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getOwnerDocument(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Element_inherited_isNull(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Element_inherited_isNull(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getNodeType(self as *const Self),
             ))
         }
     }
@@ -1444,7 +1591,7 @@ impl Element {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getNodeName(self as *const Self),
             ))
         }
     }
@@ -1453,7 +1600,7 @@ impl Element {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getNodeValue(self as *const Self),
             ))
         }
     }
@@ -1462,7 +1609,7 @@ impl Element {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getFirstChild(self as *const Self),
             ))
         }
     }
@@ -1471,7 +1618,7 @@ impl Element {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getLastChild(self as *const Self),
             ))
         }
     }
@@ -1480,7 +1627,7 @@ impl Element {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Element_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Element_inherited_getNextSibling(self as *const Self),
             ))
         }
     }
@@ -1488,28 +1635,28 @@ impl Element {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Element_inherited_removeChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Element_inherited_appendChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Element_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Element_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Element_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Element_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -1519,11 +1666,11 @@ impl Element {
 // ========================
 
 /// **Source:** `LDOM_LDOMImplementation.hxx`:26 - `LDOM_LDOMImplementation`
-pub use crate::ffi::LDOM_LDOMImplementation as LDOMImplementation;
+pub use crate::ffi_types::LDOM_LDOMImplementation as LDOMImplementation;
 
 unsafe impl crate::CppDeletable for LDOMImplementation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_LDOMImplementation_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_LDOMImplementation_destructor(ptr);
     }
 }
 
@@ -1533,7 +1680,7 @@ impl LDOMImplementation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_LDOMImplementation_ctor(),
+                crate::ffi_extern_TKCDF::LDOM_LDOMImplementation_ctor(),
             ))
         }
     }
@@ -1546,7 +1693,7 @@ impl LDOMImplementation {
     ) -> crate::OwnedPtr<Document> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_LDOMImplementation_create_document(
+                crate::ffi_extern_TKCDF::LDOM_LDOMImplementation_create_document(
                     aNamespaceURI,
                     aQualifiedName,
                     aDocType,
@@ -1561,11 +1708,11 @@ impl LDOMImplementation {
 // ========================
 
 /// **Source:** `LDOM_MemManager.hxx`:32 - `LDOM_MemManager`
-pub use crate::ffi::LDOM_MemManager as MemManager;
+pub use crate::ffi_types::LDOM_MemManager as MemManager;
 
 unsafe impl crate::CppDeletable for MemManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_MemManager_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_MemManager_destructor(ptr);
     }
 }
 
@@ -1573,16 +1720,16 @@ impl MemManager {
     /// **Source:** `LDOM_MemManager.hxx`:37 - `LDOM_MemManager::LDOM_MemManager()`
     pub fn new_int(aBlockSize: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_MemManager_ctor_int(
-                aBlockSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_MemManager_ctor_int(aBlockSize),
+            ))
         }
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:43 - `LDOM_MemManager::Allocate()`
     pub unsafe fn allocate(&mut self, aSize: i32) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_allocate(self as *mut Self, aSize)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_allocate(self as *mut Self, aSize)
         })
     }
 
@@ -1596,7 +1743,7 @@ impl MemManager {
         let c_aString = std::ffi::CString::new(aString).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int2(
+                crate::ffi_extern_TKCDF::LDOM_MemManager_hashed_allocate_charptr_int2(
                     self as *mut Self,
                     c_aString.as_ptr(),
                     theLen,
@@ -1617,7 +1764,7 @@ impl MemManager {
     ) {
         let c_aString = std::ffi::CString::new(aString).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_MemManager_hashed_allocate_charptr_int_ldombasicstring(
+            crate::ffi_extern_TKCDF::LDOM_MemManager_hashed_allocate_charptr_int_ldombasicstring(
                 self as *mut Self,
                 c_aString.as_ptr(),
                 theLen,
@@ -1628,14 +1775,18 @@ impl MemManager {
 
     /// **Source:** `LDOM_MemManager.hxx`:71 - `LDOM_MemManager::Self()`
     pub fn self_(&self) -> &MemManager {
-        unsafe { &*(crate::check_result(crate::ffi::LDOM_MemManager_self_(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_MemManager_self_(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:73 - `LDOM_MemManager::RootElement()`
     pub fn root_element(&self) -> Option<&BasicElement> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_MemManager_root_element(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_MemManager_root_element(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1646,9 +1797,11 @@ impl MemManager {
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_MemManager_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_MemManager_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1656,7 +1809,7 @@ impl MemManager {
     pub fn hash(theString: &str, theLen: i32) -> i32 {
         let c_theString = std::ffi::CString::new(theString).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_hash(c_theString.as_ptr(), theLen)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_hash(c_theString.as_ptr(), theLen)
         })
     }
 
@@ -1665,7 +1818,7 @@ impl MemManager {
         let c_theString = std::ffi::CString::new(theString).unwrap();
         let c_theHashedStr = std::ffi::CString::new(theHashedStr).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_compare_strings(
+            crate::ffi_extern_TKCDF::LDOM_MemManager_compare_strings(
                 c_theString.as_ptr(),
                 theHashValue,
                 c_theHashedStr.as_ptr(),
@@ -1677,7 +1830,7 @@ impl MemManager {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LDOM_MemManager_get_type_name(),
+                crate::ffi_extern_TKCDF::LDOM_MemManager_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1685,14 +1838,16 @@ impl MemManager {
     }
 
     /// **Source:** `LDOM_MemManager.hxx`:135 - `LDOM_MemManager::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::LDOM_MemManager_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_MemManager_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_MemManager_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_MemManager_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1701,34 +1856,39 @@ impl MemManager {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_MemManager_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_MemManager_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLDOMMemManager> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleLDOMMemManager> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_MemManager_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_MemManager_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1736,7 +1896,7 @@ impl MemManager {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LDOM_MemManager_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1749,58 +1909,72 @@ impl MemManager {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_MemManager_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_MemManager_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleLDOMMemManager;
+pub use crate::ffi_types::HandleLDOMMemManager;
 
 unsafe impl crate::CppDeletable for HandleLDOMMemManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleLDOMMemManager_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleLDOMMemManager_destructor(ptr);
     }
 }
 
 impl HandleLDOMMemManager {
     /// Dereference this Handle to access the underlying LDOM_MemManager
-    pub fn get(&self) -> &crate::ffi::LDOM_MemManager {
-        unsafe { &*crate::check_result(crate::ffi::HandleLDOMMemManager_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::LDOM_MemManager {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleLDOMMemManager_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying LDOM_MemManager
-    pub fn get_mut(&mut self) -> &mut crate::ffi::LDOM_MemManager {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::LDOM_MemManager {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleLDOMMemManager_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleLDOMMemManager_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<LDOM_MemManager> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleLDOMMemManager_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleLDOMMemManager_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1811,118 +1985,128 @@ impl HandleLDOMMemManager {
 // ========================
 
 /// **Source:** `LDOM_Node.hxx`:34 - `LDOM_Node`
-pub use crate::ffi::LDOM_Node as Node;
+pub use crate::ffi_types::LDOM_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Node_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Node_destructor(ptr);
     }
 }
 
 impl Node {
     /// **Source:** `LDOM_Node.hxx`:49 - `LDOM_Node::LDOM_Node()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi_extern_TKCDF::LDOM_Node_ctor()),
+            )
+        }
     }
 
     /// **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_Node_get_owner_document(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_Node_get_owner_document(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_Node_is_null(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Node_is_null(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_node_type(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_node_type(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:84 - `LDOM_Node::getNodeName()`
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_node_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_node_name(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:86 - `LDOM_Node::getNodeValue()`
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_node_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_node_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:88 - `LDOM_Node::getFirstChild()`
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_first_child(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_first_child(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:90 - `LDOM_Node::getLastChild()`
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_last_child(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_last_child(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:92 - `LDOM_Node::getNextSibling()`
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_get_next_sibling(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_get_next_sibling(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Node_remove_child(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Node_remove_child(self as *mut Self, aChild)
         })
     }
 
     /// **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Node_append_child(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Node_append_child(self as *mut Self, aChild)
         })
     }
 
     /// **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_Node_has_child_nodes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Node_has_child_nodes(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Node_set_value_clear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Node_set_value_clear(self as *const Self)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Node_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Node_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1932,41 +2116,46 @@ impl Node {
 // ========================
 
 /// **Source:** `LDOM_NodeList.hxx`:27 - `LDOM_NodeList`
-pub use crate::ffi::LDOM_NodeList as NodeList;
+pub use crate::ffi_types::LDOM_NodeList as NodeList;
 
 unsafe impl crate::CppDeletable for NodeList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_NodeList_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_NodeList_destructor(ptr);
     }
 }
 
 impl NodeList {
     /// **Source:** `LDOM_NodeList.hxx`:32 - `LDOM_NodeList::LDOM_NodeList()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_NodeList_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_NodeList_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LDOM_NodeList.hxx`:51 - `LDOM_NodeList::item()`
     pub fn item(&self, arg0: i32) -> crate::OwnedPtr<Node> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_NodeList_item(
-                self as *const Self,
-                arg0,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_NodeList_item(self as *const Self, arg0),
+            ))
         }
     }
 
     /// **Source:** `LDOM_NodeList.hxx`:53 - `LDOM_NodeList::getLength()`
     pub fn get_length(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LDOM_NodeList_get_length(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_NodeList_get_length(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_NodeList_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_NodeList_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1980,11 +2169,11 @@ impl NodeList {
 /// redefines some virtual methods of it (overflow() and xsputn()).
 /// This class contains pointers on first and current element
 /// of sequence, also it has methods for the sequence management.
-pub use crate::ffi::LDOM_SBuffer as SBuffer;
+pub use crate::ffi_types::LDOM_SBuffer as SBuffer;
 
 unsafe impl crate::CppDeletable for SBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_SBuffer_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_SBuffer_destructor(ptr);
     }
 }
 
@@ -1994,9 +2183,9 @@ impl SBuffer {
     /// length of each sequence element.
     pub fn new_int(theMaxBuf: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_SBuffer_ctor_int(
-                theMaxBuf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_SBuffer_ctor_int(theMaxBuf),
+            ))
         }
     }
 
@@ -2008,9 +2197,9 @@ impl SBuffer {
     /// for memory release after the string usage.
     pub fn str(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::LDOM_SBuffer_str(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_SBuffer_str(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -2019,23 +2208,31 @@ impl SBuffer {
     /// **Source:** `LDOM_OSStream.hxx`:63 - `LDOM_SBuffer::Length()`
     /// Returns full length of data contained
     pub fn length(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LDOM_SBuffer_length(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_SBuffer_length(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:66 - `LDOM_SBuffer::Clear()`
     /// Clears first element of sequence and removes all others
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::LDOM_SBuffer_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_SBuffer_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:70 - `LDOM_SBuffer::overflow()`
     pub fn overflow(&mut self, c: i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LDOM_SBuffer_overflow(self as *mut Self, c) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_SBuffer_overflow(self as *mut Self, c)
+        })
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:71 - `LDOM_SBuffer::underflow()`
     pub fn underflow(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LDOM_SBuffer_underflow(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_SBuffer_underflow(self as *mut Self)
+        })
     }
 }
 
@@ -2053,11 +2250,11 @@ impl SBuffer {
 /// It inherits Standard_OStream (std::ostream).
 /// Beside methods of std::ostream, it also has additional
 /// useful methods: str(), Length() and Clear().
-pub use crate::ffi::LDOM_OSStream as OSStream;
+pub use crate::ffi_types::LDOM_OSStream as OSStream;
 
 unsafe impl crate::CppDeletable for OSStream {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_OSStream_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_OSStream_destructor(ptr);
     }
 }
 
@@ -2066,18 +2263,18 @@ impl OSStream {
     /// Constructor
     pub fn new_int(theMaxBuf: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_OSStream_ctor_int(
-                theMaxBuf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_OSStream_ctor_int(theMaxBuf),
+            ))
         }
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:105 - `LDOM_OSStream::str()`
     pub fn str(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::LDOM_OSStream_str(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_OSStream_str(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -2085,18 +2282,22 @@ impl OSStream {
 
     /// **Source:** `LDOM_OSStream.hxx`:107 - `LDOM_OSStream::Length()`
     pub fn length(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LDOM_OSStream_length(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_OSStream_length(self as *const Self)
+        })
     }
 
     /// **Source:** `LDOM_OSStream.hxx`:109 - `LDOM_OSStream::Clear()`
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::LDOM_OSStream_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_OSStream_clear(self as *mut Self)
+        })
     }
 
     /// Upcast to Standard_OStream
     pub fn as_standard_o_stream(&self) -> &crate::standard::OStream {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_OSStream_as_Standard_OStream(
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_OSStream_as_Standard_OStream(
                 self as *const Self,
             ))
         }
@@ -2105,9 +2306,9 @@ impl OSStream {
     /// Upcast to Standard_OStream (mutable)
     pub fn as_standard_o_stream_mut(&mut self) -> &mut crate::standard::OStream {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_OSStream_as_Standard_OStream_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_OSStream_as_Standard_OStream_mut(self as *mut Self),
+            )
         }
     }
 }
@@ -2117,31 +2318,37 @@ impl OSStream {
 // ========================
 
 /// **Source:** `LDOM_Text.hxx`:23 - `LDOM_Text`
-pub use crate::ffi::LDOM_Text as Text;
+pub use crate::ffi_types::LDOM_Text as Text;
 
 unsafe impl crate::CppDeletable for Text {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_Text_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_Text_destructor(ptr);
     }
 }
 
 impl Text {
     /// **Source:** `LDOM_Text.hxx`:28 - `LDOM_Text::LDOM_Text()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Text_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_ctor()),
+            )
+        }
     }
 
     /// Upcast to LDOM_CharacterData
     pub fn as_character_data(&self) -> &CharacterData {
         unsafe {
-            &*crate::check_result(crate::ffi::LDOM_Text_as_LDOM_CharacterData(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_as_LDOM_CharacterData(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to LDOM_CharacterData (mutable)
     pub fn as_character_data_mut(&mut self) -> &mut CharacterData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Text_as_LDOM_CharacterData_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_as_LDOM_CharacterData_mut(
                 self as *mut Self,
             ))
         }
@@ -2149,52 +2356,58 @@ impl Text {
 
     /// Upcast to LDOM_Node
     pub fn as_node(&self) -> &Node {
-        unsafe { &*crate::check_result(crate::ffi::LDOM_Text_as_LDOM_Node(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_as_LDOM_Node(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to LDOM_Node (mutable)
     pub fn as_node_mut(&mut self) -> &mut Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LDOM_Text_as_LDOM_Node_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_as_LDOM_Node_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Text_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Text_to_owned(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:53 - `LDOM_CharacterData::getData()`
     pub fn get_data(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_Text_inherited_getData(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getData(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:57 - `LDOM_CharacterData::setData()`
     pub fn set_data(&mut self, aValue: &crate::ldom_string::LDOMString) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_setData(self as *mut Self, aValue)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_setData(self as *mut Self, aValue)
         })
     }
 
     /// Inherited: **Source:** `LDOM_CharacterData.hxx`:60 - `LDOM_CharacterData::getLength()`
     pub fn get_length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_getLength(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_getLength(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:66 - `LDOM_Node::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOM_Text_inherited_getOwnerDocument(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::LDOM_Text_inherited_getOwnerDocument(
                 self as *const Self,
             )))
         }
@@ -2202,14 +2415,16 @@ impl Text {
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:80 - `LDOM_Node::isNull()`
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LDOM_Text_inherited_isNull(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_isNull(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:82 - `LDOM_Node::getNodeType()`
-    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi::LDOM_Node_NodeType> {
+    pub fn get_node_type(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_Node_NodeType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getNodeType(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getNodeType(self as *const Self),
             ))
         }
     }
@@ -2218,7 +2433,7 @@ impl Text {
     pub fn get_node_name(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getNodeName(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getNodeName(self as *const Self),
             ))
         }
     }
@@ -2227,7 +2442,7 @@ impl Text {
     pub fn get_node_value(&self) -> crate::OwnedPtr<crate::ldom_string::LDOMString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getNodeValue(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getNodeValue(self as *const Self),
             ))
         }
     }
@@ -2236,7 +2451,7 @@ impl Text {
     pub fn get_first_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getFirstChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getFirstChild(self as *const Self),
             ))
         }
     }
@@ -2245,7 +2460,7 @@ impl Text {
     pub fn get_last_child(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getLastChild(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getLastChild(self as *const Self),
             ))
         }
     }
@@ -2254,7 +2469,7 @@ impl Text {
     pub fn get_next_sibling(&self) -> crate::OwnedPtr<Node> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_Text_inherited_getNextSibling(self as *const Self),
+                crate::ffi_extern_TKCDF::LDOM_Text_inherited_getNextSibling(self as *const Self),
             ))
         }
     }
@@ -2262,28 +2477,28 @@ impl Text {
     /// Inherited: **Source:** `LDOM_Node.hxx`:94 - `LDOM_Node::removeChild()`
     pub fn remove_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_removeChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_removeChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:96 - `LDOM_Node::appendChild()`
     pub fn append_child(&mut self, aChild: &Node) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_appendChild(self as *mut Self, aChild)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_appendChild(self as *mut Self, aChild)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:98 - `LDOM_Node::hasChildNodes()`
     pub fn has_child_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_hasChildNodes(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_hasChildNodes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `LDOM_Node.hxx`:100 - `LDOM_Node::SetValueClear()`
     pub fn set_value_clear(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_Text_inherited_SetValueClear(self as *const Self)
+            crate::ffi_extern_TKCDF::LDOM_Text_inherited_SetValueClear(self as *const Self)
         })
     }
 }
@@ -2293,24 +2508,24 @@ impl Text {
 // ========================
 
 /// **Source:** `LDOM_XmlReader.hxx`:33 - `LDOM_XmlReader`
-pub use crate::ffi::LDOM_XmlReader as XmlReader;
+pub use crate::ffi_types::LDOM_XmlReader as XmlReader;
 
 unsafe impl crate::CppDeletable for XmlReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_XmlReader_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_XmlReader_destructor(ptr);
     }
 }
 
 impl XmlReader {
     /// **Source:** `LDOM_XmlReader.hxx`:51 - `LDOM_XmlReader::LDOM_XmlReader()`
     pub fn new_handleldommemmanager_asciistring_bool(
-        aDocument: &crate::ffi::HandleLDOMMemManager,
+        aDocument: &crate::ffi_types::HandleLDOMMemManager,
         anErrorString: &mut crate::t_collection::AsciiString,
         theTagPerStep: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LDOM_XmlReader_ctor_handleldommemmanager_asciistring_bool(
+                crate::ffi_extern_TKCDF::LDOM_XmlReader_ctor_handleldommemmanager_asciistring_bool(
                     aDocument,
                     anErrorString,
                     theTagPerStep,
@@ -2321,7 +2536,7 @@ impl XmlReader {
 
     /// **Source:** `LDOM_XmlReader.hxx`:51 - `LDOM_XmlReader::LDOM_XmlReader()`
     pub fn new_handleldommemmanager_asciistring(
-        aDocument: &crate::ffi::HandleLDOMMemManager,
+        aDocument: &crate::ffi_types::HandleLDOMMemManager,
         anErrorString: &mut crate::t_collection::AsciiString,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleldommemmanager_asciistring_bool(aDocument, anErrorString, false)
@@ -2330,24 +2545,28 @@ impl XmlReader {
     /// **Source:** `LDOM_XmlReader.hxx`:57 - `LDOM_XmlReader::ReadRecord()`
     pub fn read_record(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         theData: &mut OSStream,
         theDocStart: &mut bool,
-    ) -> crate::OwnedPtr<crate::ffi::LDOM_XmlReader_RecordType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::LDOM_XmlReader_RecordType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_XmlReader_read_record(
-                self as *mut Self,
-                theIStream,
-                theData,
-                theDocStart,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_XmlReader_read_record(
+                    self as *mut Self,
+                    theIStream,
+                    theData,
+                    theDocStart,
+                ),
+            ))
         }
     }
 
     /// **Source:** `LDOM_XmlReader.hxx`:63 - `LDOM_XmlReader::GetElement()`
     pub fn get_element(&mut self) -> &mut BasicElement {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::LDOM_XmlReader_get_element(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCDF::LDOM_XmlReader_get_element(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2355,16 +2574,20 @@ impl XmlReader {
     pub fn create_element(&mut self, theName: &str, theLen: i32) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_XmlReader_create_element(self as *mut Self, c_theName.as_ptr(), theLen)
+            crate::ffi_extern_TKCDF::LDOM_XmlReader_create_element(
+                self as *mut Self,
+                c_theName.as_ptr(),
+                theLen,
+            )
         })
     }
 
     /// **Source:** `LDOM_XmlReader.hxx`:76 - `LDOM_XmlReader::GetBOM()`
-    pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
+    pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_OSStream_BOMType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_XmlReader_get_bom(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_XmlReader_get_bom(self as *const Self),
+            ))
         }
     }
 
@@ -2377,7 +2600,11 @@ impl XmlReader {
         let c_theStart = std::ffi::CString::new(theStart).unwrap();
         let c_theEnd = std::ffi::CString::new(theEnd).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::LDOM_XmlReader_get_integer(theValue, c_theStart.as_ptr(), c_theEnd.as_ptr())
+            crate::ffi_extern_TKCDF::LDOM_XmlReader_get_integer(
+                theValue,
+                c_theStart.as_ptr(),
+                c_theEnd.as_ptr(),
+            )
         })
     }
 }
@@ -2387,11 +2614,11 @@ impl XmlReader {
 // ========================
 
 /// **Source:** `LDOM_XmlWriter.hxx`:26 - `LDOM_XmlWriter`
-pub use crate::ffi::LDOM_XmlWriter as XmlWriter;
+pub use crate::ffi_types::LDOM_XmlWriter as XmlWriter;
 
 unsafe impl crate::CppDeletable for XmlWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOM_XmlWriter_destructor(ptr);
+        crate::ffi_extern_TKCDF::LDOM_XmlWriter_destructor(ptr);
     }
 }
 
@@ -2400,38 +2627,46 @@ impl XmlWriter {
     pub fn new_charptr(theEncoding: &str) -> crate::OwnedPtr<Self> {
         let c_theEncoding = std::ffi::CString::new(theEncoding).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOM_XmlWriter_ctor_charptr(
-                c_theEncoding.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::LDOM_XmlWriter_ctor_charptr(c_theEncoding.as_ptr()),
+            ))
         }
     }
 
     /// **Source:** `LDOM_XmlWriter.hxx`:34 - `LDOM_XmlWriter::SetIndentation()`
     pub fn set_indentation(&mut self, theIndent: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_XmlWriter_set_indentation(self as *mut Self, theIndent)
+            crate::ffi_extern_TKCDF::LDOM_XmlWriter_set_indentation(self as *mut Self, theIndent)
         })
     }
 
     /// **Source:** `LDOM_XmlWriter.hxx`:36 - `LDOM_XmlWriter::Write()`
     pub fn write_ostream_document(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         theDoc: &Document,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_XmlWriter_write_ostream_document(self as *mut Self, theOStream, theDoc)
+            crate::ffi_extern_TKCDF::LDOM_XmlWriter_write_ostream_document(
+                self as *mut Self,
+                theOStream,
+                theDoc,
+            )
         })
     }
 
     /// **Source:** `LDOM_XmlWriter.hxx`:41 - `LDOM_XmlWriter::Write()`
     pub fn write_ostream_node(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         theNode: &Node,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LDOM_XmlWriter_write_ostream_node(self as *mut Self, theOStream, theNode)
+            crate::ffi_extern_TKCDF::LDOM_XmlWriter_write_ostream_node(
+                self as *mut Self,
+                theOStream,
+                theNode,
+            )
         })
     }
 }

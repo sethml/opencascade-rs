@@ -9,19 +9,16 @@
 /// **Source:** `BinMNaming.hxx`:34 - `BinMNaming::AddDrivers`
 /// Adds the attribute drivers to <theDriverTable>.
 pub fn add_drivers_handlebinmdfadrivertable_handlemessagemessenger_5(
-    theDriverTable: &crate::ffi::HandleBinMDFADriverTable,
-    aMsgDrv: &crate::ffi::HandleMessageMessenger,
+    theDriverTable: &crate::ffi_types::HandleBinMDFADriverTable,
+    aMsgDrv: &crate::ffi_types::HandleMessageMessenger,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BinMNaming_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_5(
-            theDriverTable,
-            aMsgDrv,
-        )
+        crate::ffi_extern_TKBin::BinMNaming_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_5(theDriverTable, aMsgDrv)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleBinMDFADriver, HandleStandardTransient};
+pub use crate::ffi_types::{HandleBinMDFADriver, HandleStandardTransient};
 
 // ========================
 // From BinMNaming_NamedShapeDriver.hxx
@@ -29,22 +26,22 @@ pub use crate::ffi::{HandleBinMDFADriver, HandleStandardTransient};
 
 /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:37 - `BinMNaming_NamedShapeDriver`
 /// NamedShape  Attribute Driver.
-pub use crate::ffi::BinMNaming_NamedShapeDriver as NamedShapeDriver;
+pub use crate::ffi_types::BinMNaming_NamedShapeDriver as NamedShapeDriver;
 
 unsafe impl crate::CppDeletable for NamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMNaming_NamedShapeDriver_destructor(ptr);
+        crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_destructor(ptr);
     }
 }
 
 impl NamedShapeDriver {
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:41 - `BinMNaming_NamedShapeDriver::BinMNaming_NamedShapeDriver()`
     pub fn new_handlemessagemessenger(
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_ctor_handlemessagemessenger(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_ctor_handlemessagemessenger(
                     theMessageDriver,
                 ),
             ))
@@ -52,10 +49,10 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:43 - `BinMNaming_NamedShapeDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_new_empty(self as *const Self),
             ))
         }
     }
@@ -64,23 +61,23 @@ impl NamedShapeDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
-        Target: &crate::ffi::HandleTDFAttribute,
+        Target: &crate::ffi_types::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
         })
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:50 - `BinMNaming_NamedShapeDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        Source: &crate::ffi::HandleTDFAttribute,
+        Source: &crate::ffi_types::HandleTDFAttribute,
         Target: &mut crate::bin_obj_mgt::Persistent,
-        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        RelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
@@ -88,11 +85,11 @@ impl NamedShapeDriver {
     /// Input the shapes from Bin Document file
     pub fn read_shape_section(
         &mut self,
-        theIS: &mut crate::ffi::Standard_IStream,
+        theIS: &mut crate::ffi_types::Standard_IStream,
         therange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_read_shape_section(
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_read_shape_section(
                 self as *mut Self,
                 theIS,
                 therange,
@@ -104,12 +101,12 @@ impl NamedShapeDriver {
     /// Output the shapes into Bin Document file
     pub fn write_shape_section(
         &mut self,
-        theOS: &mut crate::ffi::Standard_OStream,
+        theOS: &mut crate::ffi_types::Standard_OStream,
         theDocVer: i32,
         therange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_write_shape_section(
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_write_shape_section(
                 self as *mut Self,
                 theOS,
                 theDocVer,
@@ -122,7 +119,7 @@ impl NamedShapeDriver {
     /// Clear myShapeSet
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_clear(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_clear(self as *mut Self)
         })
     }
 
@@ -130,7 +127,9 @@ impl NamedShapeDriver {
     /// Return true if shape should be stored with triangles.
     pub fn is_with_triangles(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_is_with_triangles(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_is_with_triangles(
+                self as *const Self,
+            )
         })
     }
 
@@ -138,7 +137,9 @@ impl NamedShapeDriver {
     /// Return true if shape should be stored with triangulation normals.
     pub fn is_with_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_is_with_normals(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_is_with_normals(
+                self as *const Self,
+            )
         })
     }
 
@@ -146,7 +147,7 @@ impl NamedShapeDriver {
     /// set whether to store triangulation
     pub fn set_with_triangles(&mut self, isWithTriangles: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_set_with_triangles(
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_set_with_triangles(
                 self as *mut Self,
                 isWithTriangles,
             )
@@ -157,7 +158,7 @@ impl NamedShapeDriver {
     /// set whether to store triangulation with normals
     pub fn set_with_normals(&mut self, isWithNormals: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_set_with_normals(
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_set_with_normals(
                 self as *mut Self,
                 isWithNormals,
             )
@@ -169,7 +170,9 @@ impl NamedShapeDriver {
     pub fn get_shapes_locations(&mut self) -> &mut crate::bin_tools::LocationSet {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_get_shapes_locations(self as *mut Self),
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_get_shapes_locations(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -178,7 +181,10 @@ impl NamedShapeDriver {
     /// Sets the flag for quick part of the document access: shapes are stored in the attribute.
     pub fn enable_quick_part(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_enable_quick_part(self as *mut Self, theValue)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_enable_quick_part(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
@@ -187,7 +193,7 @@ impl NamedShapeDriver {
     /// attribute.
     pub fn is_quick_part(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_is_quick_part(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_is_quick_part(self as *mut Self)
         })
     }
 
@@ -196,7 +202,10 @@ impl NamedShapeDriver {
     pub fn shape_set(&mut self, theReading: bool) -> Option<&mut crate::bin_tools::ShapeSetBase> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMNaming_NamedShapeDriver_shape_set(self as *mut Self, theReading)
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_shape_set(
+                    self as *mut Self,
+                    theReading,
+                )
             });
             if __val.is_null() {
                 None
@@ -207,11 +216,13 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:94 - `BinMNaming_NamedShapeDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -219,7 +230,7 @@ impl NamedShapeDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_get_type_name(),
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -227,18 +238,22 @@ impl NamedShapeDriver {
     }
 
     /// **Source:** `BinMNaming_NamedShapeDriver.hxx`:94 - `BinMNaming_NamedShapeDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -246,7 +261,9 @@ impl NamedShapeDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_as_BinMDF_ADriver_mut(self as *mut Self),
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -254,9 +271,11 @@ impl NamedShapeDriver {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -264,7 +283,7 @@ impl NamedShapeDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -274,37 +293,41 @@ impl NamedShapeDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMNamingNamedShapeDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMNamingNamedShapeDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamedShapeDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMNaming_NamedShapeDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -312,9 +335,9 @@ impl NamedShapeDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -322,9 +345,12 @@ impl NamedShapeDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -332,7 +358,9 @@ impl NamedShapeDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMNaming_NamedShapeDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -345,64 +373,74 @@ impl NamedShapeDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamedShapeDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamedShapeDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMNamingNamedShapeDriver;
+pub use crate::ffi_types::HandleBinMNamingNamedShapeDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMNamingNamedShapeDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMNamingNamedShapeDriver_destructor(ptr);
+        crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMNamingNamedShapeDriver {
     /// Dereference this Handle to access the underlying BinMNaming_NamedShapeDriver
-    pub fn get(&self) -> &crate::ffi::BinMNaming_NamedShapeDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMNaming_NamedShapeDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMNamingNamedShapeDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMNaming_NamedShapeDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMNaming_NamedShapeDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMNaming_NamedShapeDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMNamingNamedShapeDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMNaming_NamedShapeDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMNamingNamedShapeDriver_to_HandleBinMDFADriver(
+                crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_to_HandleBinMDFADriver(
                     self as *const Self,
                 ),
             ))
@@ -410,13 +448,11 @@ impl HandleBinMNamingNamedShapeDriver {
     }
 
     /// Upcast Handle<BinMNaming_NamedShapeDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMNamingNamedShapeDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamedShapeDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -427,31 +463,33 @@ impl HandleBinMNamingNamedShapeDriver {
 
 /// **Source:** `BinMNaming_NamingDriver.hxx`:33 - `BinMNaming_NamingDriver`
 /// Naming  Attribute Driver.
-pub use crate::ffi::BinMNaming_NamingDriver as NamingDriver;
+pub use crate::ffi_types::BinMNaming_NamingDriver as NamingDriver;
 
 unsafe impl crate::CppDeletable for NamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMNaming_NamingDriver_destructor(ptr);
+        crate::ffi_extern_TKBin::BinMNaming_NamingDriver_destructor(ptr);
     }
 }
 
 impl NamingDriver {
     /// **Source:** `BinMNaming_NamingDriver.hxx`:37 - `BinMNaming_NamingDriver::BinMNaming_NamingDriver()`
     pub fn new_handlemessagemessenger(
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamingDriver_ctor_handlemessagemessenger(theMessageDriver),
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_ctor_handlemessagemessenger(
+                    theMessageDriver,
+                ),
             ))
         }
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:39 - `BinMNaming_NamingDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamingDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_new_empty(self as *const Self),
             ))
         }
     }
@@ -460,35 +498,30 @@ impl NamingDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::bin_obj_mgt::Persistent,
-        Target: &crate::ffi::HandleTDFAttribute,
+        Target: &crate::ffi_types::HandleTDFAttribute,
         RelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
         })
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:46 - `BinMNaming_NamingDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        Source: &crate::ffi::HandleTDFAttribute,
+        Source: &crate::ffi_types::HandleTDFAttribute,
         Target: &mut crate::bin_obj_mgt::Persistent,
-        RelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        RelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, Source, Target, RelocTable)
         })
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:50 - `BinMNaming_NamingDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamingDriver_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKBin::BinMNaming_NamingDriver_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -498,7 +531,7 @@ impl NamingDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMNaming_NamingDriver_get_type_name(),
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -506,36 +539,44 @@ impl NamingDriver {
     }
 
     /// **Source:** `BinMNaming_NamingDriver.hxx`:50 - `BinMNaming_NamingDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamingDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMNaming_NamingDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BinMNaming_NamingDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMNaming_NamingDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -543,7 +584,9 @@ impl NamingDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMNaming_NamingDriver_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -551,52 +594,64 @@ impl NamingDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMNamingNamingDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMNamingNamingDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMNaming_NamingDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamingDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamingDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMNaming_NamingDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -604,7 +659,7 @@ impl NamingDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMNaming_NamingDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -617,62 +672,70 @@ impl NamingDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMNaming_NamingDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBin::BinMNaming_NamingDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBinMNamingNamingDriver;
+pub use crate::ffi_types::HandleBinMNamingNamingDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMNamingNamingDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMNamingNamingDriver_destructor(ptr);
+        crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMNamingNamingDriver {
     /// Dereference this Handle to access the underlying BinMNaming_NamingDriver
-    pub fn get(&self) -> &crate::ffi::BinMNaming_NamingDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMNaming_NamingDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMNamingNamingDriver_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMNaming_NamingDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMNaming_NamingDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMNamingNamingDriver_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying BinMNaming_NamingDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMNaming_NamingDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<BinMNaming_NamingDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMNamingNamingDriver_to_HandleBinMDFADriver(
+                crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_to_HandleBinMDFADriver(
                     self as *const Self,
                 ),
             ))
@@ -680,10 +743,12 @@ impl HandleBinMNamingNamingDriver {
     }
 
     /// Upcast Handle<BinMNaming_NamingDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMNamingNamingDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKBin::HandleBinMNamingNamingDriver_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))

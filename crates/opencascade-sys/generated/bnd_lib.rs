@@ -17,7 +17,9 @@
 /// Standard_Failure if P1 and P2 are either two negative
 /// infinite real numbers, or two positive infinite real numbers.
 pub fn add_lin_real3_box(L: &crate::gp::Lin, P1: f64, P2: f64, Tol: f64, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_lin_real3_box(L, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_lin_real3_box(L, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:80 - `BndLib::Add`
 pub fn add_lin2d_real3_box2d(
@@ -27,11 +29,15 @@ pub fn add_lin2d_real3_box2d(
     Tol: f64,
     B: &mut crate::bnd::Box2d,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_lin2d_real3_box2d(L, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_lin2d_real3_box2d(L, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:86 - `BndLib::Add`
 pub fn add_circ_real_box(C: &crate::gp::Circ, Tol: f64, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_circ_real_box(C, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_circ_real_box(C, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:89 - `BndLib::Add`
 /// P2-P1 can be in [0,2*pi]
@@ -42,11 +48,15 @@ pub fn add_circ_real3_box(
     Tol: f64,
     B: &mut crate::bnd::Box,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_circ_real3_box(C, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_circ_real3_box(C, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:95 - `BndLib::Add`
 pub fn add_circ2d_real_box2d(C: &crate::gp::Circ2d, Tol: f64, B: &mut crate::bnd::Box2d) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_circ2d_real_box2d(C, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_circ2d_real_box2d(C, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:101 - `BndLib::Add`
 /// Adds the circle C, or the arc of the circle C
@@ -61,12 +71,14 @@ pub fn add_circ2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_circ2d_real3_box2d(C, P1, P2, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_circ2d_real3_box2d(C, P1, P2, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:107 - `BndLib::Add`
 pub fn add_elips_real_box(C: &crate::gp::Elips, Tol: f64, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_elips_real_box(C, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_elips_real_box(C, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:110 - `BndLib::Add`
 /// P2-P1 can be in [0,2*pi]
@@ -77,11 +89,15 @@ pub fn add_elips_real3_box(
     Tol: f64,
     B: &mut crate::bnd::Box,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_elips_real3_box(C, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_elips_real3_box(C, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:116 - `BndLib::Add`
 pub fn add_elips2d_real_box2d(C: &crate::gp::Elips2d, Tol: f64, B: &mut crate::bnd::Box2d) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_elips2d_real_box2d(C, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_elips2d_real_box2d(C, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:122 - `BndLib::Add`
 /// Adds the ellipse E, or the arc of the ellipse E
@@ -96,7 +112,7 @@ pub fn add_elips2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_elips2d_real3_box2d(C, P1, P2, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_elips2d_real3_box2d(C, P1, P2, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:128 - `BndLib::Add`
@@ -107,7 +123,9 @@ pub fn add_parab_real3_box(
     Tol: f64,
     B: &mut crate::bnd::Box,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_parab_real3_box(P, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_parab_real3_box(P, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:141 - `BndLib::Add`
 /// Adds the arc of the parabola P limited by the two
@@ -125,7 +143,7 @@ pub fn add_parab2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_parab2d_real3_box2d(P, P1, P2, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_parab2d_real3_box2d(P, P1, P2, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:147 - `BndLib::Add`
@@ -136,7 +154,9 @@ pub fn add_hypr_real3_box(
     Tol: f64,
     B: &mut crate::bnd::Box,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_hypr_real3_box(H, P1, P2, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_hypr_real3_box(H, P1, P2, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:160 - `BndLib::Add`
 /// Adds the arc of the branch of hyperbola H limited by the
@@ -154,7 +174,7 @@ pub fn add_hypr2d_real3_box2d(
     B: &mut crate::bnd::Box2d,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_hypr2d_real3_box2d(H, P1, P2, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_hypr2d_real3_box2d(H, P1, P2, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:167 - `BndLib::Add`
@@ -169,7 +189,9 @@ pub fn add_cylinder_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_cylinder_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_cylinder_real5_box(
+            S, UMin, UMax, VMin, VMax, Tol, B,
+        )
     })
 }
 /// **Source:** `BndLib.hxx`:185 - `BndLib::Add`
@@ -191,7 +213,7 @@ pub fn add_cylinder_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_cylinder_real3_box(S, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_cylinder_real3_box(S, VMin, VMax, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:192 - `BndLib::Add`
@@ -206,7 +228,7 @@ pub fn add_cone_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_cone_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_cone_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:210 - `BndLib::Add`
@@ -228,12 +250,14 @@ pub fn add_cone_real3_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_cone_real3_box(S, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_cone_real3_box(S, VMin, VMax, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:216 - `BndLib::Add`
 pub fn add_sphere_real_box(S: &crate::gp::Sphere, Tol: f64, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_sphere_real_box(S, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_sphere_real_box(S, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:226 - `BndLib::Add`
 /// Adds to the bounding box B the sphere S, or
@@ -254,12 +278,14 @@ pub fn add_sphere_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_sphere_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_sphere_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
     })
 }
 /// **Source:** `BndLib.hxx`:234 - `BndLib::Add`
 pub fn add_torus_real_box(P: &crate::gp::Torus, Tol: f64, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BndLib_add_torus_real_box(P, Tol, B) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKGeomBase::BndLib_add_torus_real_box(P, Tol, B)
+    })
 }
 /// **Source:** `BndLib.hxx`:245 - `BndLib::Add`
 /// Adds to the bounding box B
@@ -281,7 +307,7 @@ pub fn add_torus_real5_box(
     B: &mut crate::bnd::Box,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BndLib_add_torus_real5_box(P, UMin, UMax, VMin, VMax, Tol, B)
+        crate::ffi_extern_TKGeomBase::BndLib_add_torus_real5_box(P, UMin, UMax, VMin, VMax, Tol, B)
     })
 }
 
@@ -293,11 +319,11 @@ pub fn add_torus_real5_box(
 /// Computes the bounding box for a curve in 2d .
 /// Functions to add a 2D curve to a bounding box.
 /// The 2D curve is defined from a Geom2d curve.
-pub use crate::ffi::BndLib_Add2dCurve as Add2dCurve;
+pub use crate::ffi_types::BndLib_Add2dCurve as Add2dCurve;
 
 unsafe impl crate::CppDeletable for Add2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BndLib_Add2dCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_destructor(ptr);
     }
 }
 
@@ -306,7 +332,9 @@ impl Add2dCurve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BndLib_Add2dCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_ctor(),
+            ))
         }
     }
 
@@ -344,7 +372,7 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add2dCurve_add_curve2d_real_box2d(C, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_add_curve2d_real_box2d(C, Tol, B)
         })
     }
 
@@ -385,7 +413,9 @@ impl Add2dCurve {
         B: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add2dCurve_add_curve2d_real3_box2d(C, U1, U2, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_add_curve2d_real3_box2d(
+                C, U1, U2, Tol, B,
+            )
         })
     }
 
@@ -398,12 +428,14 @@ impl Add2dCurve {
     /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     pub fn add_handlegeom2dcurve_real_box2d(
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         Tol: f64,
         Box: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add2dCurve_add_handlegeom2dcurve_real_box2d(C, Tol, Box)
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_add_handlegeom2dcurve_real_box2d(
+                C, Tol, Box,
+            )
         })
     }
 
@@ -417,14 +449,16 @@ impl Add2dCurve {
     /// -   the poles of the curve if C is built from a Bezier curve or a BSpline curve,
     /// -   if not, the points of an approximation of the curve C.
     pub fn add_handlegeom2dcurve_real3_box2d(
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         U1: f64,
         U2: f64,
         Tol: f64,
         B: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add2dCurve_add_handlegeom2dcurve_real3_box2d(C, U1, U2, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_add_handlegeom2dcurve_real3_box2d(
+                C, U1, U2, Tol, B,
+            )
         })
     }
 
@@ -439,14 +473,14 @@ impl Add2dCurve {
     /// types of curve If Tol = < Precision::PConfusion(), Precision::PConfusion is used as tolerance
     /// for calculation
     pub fn add_optimal(
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         U1: f64,
         U2: f64,
         Tol: f64,
         B: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add2dCurve_add_optimal(C, U1, U2, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add2dCurve_add_optimal(C, U1, U2, Tol, B)
         })
     }
 }
@@ -459,11 +493,11 @@ impl Add2dCurve {
 /// Computes the bounding box for a curve in 3d.
 /// Functions to add a 3D curve to a bounding box.
 /// The 3D curve is defined from a Geom curve.
-pub use crate::ffi::BndLib_Add3dCurve as Add3dCurve;
+pub use crate::ffi_types::BndLib_Add3dCurve as Add3dCurve;
 
 unsafe impl crate::CppDeletable for Add3dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BndLib_Add3dCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_destructor(ptr);
     }
 }
 
@@ -472,7 +506,9 @@ impl Add3dCurve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BndLib_Add3dCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_ctor(),
+            ))
         }
     }
 
@@ -505,7 +541,7 @@ impl Add3dCurve {
     /// numbers, or two positive infinite real numbers.
     pub fn add_curve_real_box(C: &crate::adaptor3d::Curve, Tol: f64, B: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add3dCurve_add_curve_real_box(C, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_curve_real_box(C, Tol, B)
         })
     }
 
@@ -544,7 +580,7 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add3dCurve_add_curve_real3_box(C, U1, U2, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_curve_real3_box(C, U1, U2, Tol, B)
         })
     }
 
@@ -558,7 +594,7 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real_box(C, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_optimal_curve_real_box(C, Tol, B)
         })
     }
 
@@ -571,7 +607,9 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add3dCurve_add_optimal_curve_real3_box(C, U1, U2, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_optimal_curve_real3_box(
+                C, U1, U2, Tol, B,
+            )
         })
     }
 
@@ -588,7 +626,7 @@ impl Add3dCurve {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_Add3dCurve_add_gen_curv(C, UMin, UMax, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_Add3dCurve_add_gen_curv(C, UMin, UMax, Tol, B)
         })
     }
 }
@@ -601,11 +639,11 @@ impl Add3dCurve {
 /// computes the box from a surface
 /// Functions to add a surface to a bounding box.
 /// The surface is defined from a Geom surface.
-pub use crate::ffi::BndLib_AddSurface as AddSurface;
+pub use crate::ffi_types::BndLib_AddSurface as AddSurface;
 
 unsafe impl crate::CppDeletable for AddSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BndLib_AddSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::BndLib_AddSurface_destructor(ptr);
     }
 }
 
@@ -614,7 +652,9 @@ impl AddSurface {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BndLib_AddSurface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::BndLib_AddSurface_ctor(),
+            ))
         }
     }
 
@@ -649,7 +689,7 @@ impl AddSurface {
     /// AddSurface::Add ( S, Tol, B );
     pub fn add_surface_real_box(S: &crate::adaptor3d::Surface, Tol: f64, B: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_AddSurface_add_surface_real_box(S, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_surface_real_box(S, Tol, B)
         })
     }
 
@@ -695,7 +735,9 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_AddSurface_add_surface_real5_box(S, UMin, UMax, VMin, VMax, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_surface_real5_box(
+                S, UMin, UMax, VMin, VMax, Tol, B,
+            )
         })
     }
 
@@ -708,7 +750,7 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_AddSurface_add_optimal_surface_real_box(S, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_optimal_surface_real_box(S, Tol, B)
         })
     }
 
@@ -723,7 +765,7 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_AddSurface_add_optimal_surface_real5_box(
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_optimal_surface_real5_box(
                 S, UMin, UMax, VMin, VMax, Tol, B,
             )
         })
@@ -744,7 +786,9 @@ impl AddSurface {
         B: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BndLib_AddSurface_add_gen_surf(S, UMin, UMax, VMin, VMax, Tol, B)
+            crate::ffi_extern_TKGeomBase::BndLib_AddSurface_add_gen_surf(
+                S, UMin, UMax, VMin, VMax, Tol, B,
+            )
         })
     }
 }

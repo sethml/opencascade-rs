@@ -85,11 +85,11 @@ impl TryFrom<i32> for Status {
 /// has to be the vector of the parametric coordinates U1,V1,
 /// U2,V2, of the extremities of a section on the first and
 /// second surface.
-pub use crate::ffi::Blend_AppFunction as AppFunction;
+pub use crate::ffi_types::Blend_AppFunction as AppFunction;
 
 unsafe impl crate::CppDeletable for AppFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_AppFunction_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_AppFunction_destructor(ptr);
     }
 }
 
@@ -98,7 +98,7 @@ impl AppFunction {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -106,7 +106,7 @@ impl AppFunction {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_nb_equations(self as *const Self)
         })
     }
 
@@ -115,8 +115,14 @@ impl AppFunction {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_AppFunction_value(self as *mut Self, X, F) })
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_AppFunction_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
@@ -126,11 +132,11 @@ impl AppFunction {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -141,12 +147,12 @@ impl AppFunction {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -156,7 +162,7 @@ impl AppFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_set_real(self as *mut Self, Param)
         })
     }
 
@@ -167,7 +173,7 @@ impl AppFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_set_real2(self as *mut Self, First, Last)
         })
     }
 
@@ -175,9 +181,13 @@ impl AppFunction {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -192,11 +202,15 @@ impl AppFunction {
     /// for each of the 4 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
@@ -205,9 +219,9 @@ impl AppFunction {
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_is_solution(self as *mut Self, Sol, Tol)
         })
     }
 
@@ -216,27 +230,35 @@ impl AppFunction {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_minimal_distance(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:110 - `Blend_AppFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_AppFunction_pnt1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_AppFunction_pnt1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:113 - `Blend_AppFunction::Pnt2()`
     /// Returns the point on the first support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_AppFunction_pnt2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_AppFunction_pnt2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_is_rational(self as *const Self)
         })
     }
 
@@ -244,16 +266,19 @@ impl AppFunction {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_section_size(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -262,7 +287,10 @@ impl AppFunction {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::Blend_AppFunction_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -274,9 +302,17 @@ impl AppFunction {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     /// raises
     /// OutOfRange from Standard
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::Blend_AppFunction_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -289,7 +325,7 @@ impl AppFunction {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_shape(
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -310,11 +346,11 @@ impl AppFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::Blend_AppFunction_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -326,16 +362,16 @@ impl AppFunction {
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_mults(self as *mut Self, TMults)
         })
     }
 
@@ -346,15 +382,15 @@ impl AppFunction {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -362,18 +398,12 @@ impl AppFunction {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -384,25 +414,31 @@ impl AppFunction {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_AppFunction_resolution(self as *const Self, IC2d, Tol, TolU, TolV)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_resolution(
+                self as *const Self,
+                IC2d,
+                Tol,
+                TolU,
+                TolV,
+            )
         })
     }
 
@@ -411,7 +447,7 @@ impl AppFunction {
     /// impose the parameters in the approximation.
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_parameter(self as *const Self, P)
         })
     }
 
@@ -420,9 +456,11 @@ impl AppFunction {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_AppFunction_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -431,36 +469,38 @@ impl AppFunction {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_AppFunction_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_AppFunction_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_AppFunction_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_AppFunction_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_AppFunction_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_AppFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_AppFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -476,11 +516,11 @@ impl AppFunction {
 /// may be the vector of the parametric coordinates U,V,
 /// W of the extremities of a section on the surface  and
 /// the curve.
-pub use crate::ffi::Blend_CSFunction as CSFunction;
+pub use crate::ffi_types::Blend_CSFunction as CSFunction;
 
 unsafe impl crate::CppDeletable for CSFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_CSFunction_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_CSFunction_destructor(ptr);
     }
 }
 
@@ -489,7 +529,7 @@ impl CSFunction {
     /// Returns 3 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -497,7 +537,7 @@ impl CSFunction {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_nb_equations(self as *const Self)
         })
     }
 
@@ -506,8 +546,14 @@ impl CSFunction {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_CSFunction_value(self as *mut Self, X, F) })
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_CSFunction_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:68 - `Blend_CSFunction::Derivatives()`
@@ -517,11 +563,11 @@ impl CSFunction {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -532,12 +578,12 @@ impl CSFunction {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -547,7 +593,7 @@ impl CSFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_set_real(self as *mut Self, Param)
         })
     }
 
@@ -558,7 +604,7 @@ impl CSFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_set_real2(self as *mut Self, First, Last)
         })
     }
 
@@ -566,9 +612,13 @@ impl CSFunction {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::Blend_CSFunction_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -583,11 +633,15 @@ impl CSFunction {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
@@ -596,9 +650,9 @@ impl CSFunction {
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_is_solution(self as *mut Self, Sol, Tol)
         })
     }
 
@@ -607,27 +661,37 @@ impl CSFunction {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_get_minimal_distance(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:117 - `Blend_CSFunction::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_CSFunction_pnt1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_pnt1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:120 - `Blend_CSFunction::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_CSFunction_pnt2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_pnt2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:123 - `Blend_CSFunction::PointOnS()`
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_CSFunction_point_on_s(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_point_on_s(
+                self as *const Self,
+            )))
         }
     }
 
@@ -635,21 +699,27 @@ impl CSFunction {
     /// Returns the point on the curve.
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_CSFunction_point_on_c(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_point_on_c(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:129 - `Blend_CSFunction::Pnt2d()`
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_CSFunction_pnt2d(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_pnt2d(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:132 - `Blend_CSFunction::ParameterOnC()`
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_c(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_parameter_on_c(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_parameter_on_c(self as *const Self)
         })
     }
 
@@ -658,7 +728,7 @@ impl CSFunction {
     /// the tangent vectors at PointOnS and/or PointOnC.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_is_tangency_point(self as *const Self)
         })
     }
 
@@ -666,7 +736,9 @@ impl CSFunction {
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_CSFunction_tangent_on_s(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_tangent_on_s(
+                self as *const Self,
+            )))
         }
     }
 
@@ -675,7 +747,9 @@ impl CSFunction {
     /// parametric space of the first surface.
     pub fn tangent2d(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_CSFunction_tangent2d(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_tangent2d(
+                self as *const Self,
+            )))
         }
     }
 
@@ -683,7 +757,9 @@ impl CSFunction {
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_CSFunction_tangent_on_c(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_tangent_on_c(
+                self as *const Self,
+            )))
         }
     }
 
@@ -694,7 +770,13 @@ impl CSFunction {
     /// these points.
     pub fn tangent(&self, U: f64, V: f64, TgS: &mut crate::gp::Vec, NormS: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_tangent(self as *const Self, U, V, TgS, NormS)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_tangent(
+                self as *const Self,
+                U,
+                V,
+                TgS,
+                NormS,
+            )
         })
     }
 
@@ -707,7 +789,7 @@ impl CSFunction {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_get_shape(
+            crate::ffi_extern_TKFillet::Blend_CSFunction_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -728,11 +810,11 @@ impl CSFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::Blend_CSFunction_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -744,16 +826,16 @@ impl CSFunction {
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:173 - `Blend_CSFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `Blend_CSFunction.hxx`:175 - `Blend_CSFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_mults(self as *mut Self, TMults)
         })
     }
 
@@ -764,15 +846,15 @@ impl CSFunction {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -780,18 +862,12 @@ impl CSFunction {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -802,36 +878,40 @@ impl CSFunction {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_CSFunction_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CSFunction_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_CSFunction_as_Blend_AppFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CSFunction_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -840,9 +920,11 @@ impl CSFunction {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CSFunction_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -852,7 +934,7 @@ impl CSFunction {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(
+                crate::ffi_extern_TKFillet::Blend_CSFunction_as_math_FunctionSetWithDerivatives_mut(
                     self as *mut Self,
                 ),
             )
@@ -862,7 +944,7 @@ impl CSFunction {
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_CSFunction_as_math_FunctionSet(
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_CSFunction_as_math_FunctionSet(
                 self as *const Self,
             ))
         }
@@ -871,51 +953,69 @@ impl CSFunction {
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_CSFunction_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CSFunction_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_IsRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_GetSectionSize(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_GetSectionSize(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_GetMinimalWeight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_GetMinimalWeight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_NbIntervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_NbIntervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_Intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_Resolution(
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_Resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -928,14 +1028,14 @@ impl CSFunction {
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_Parameter(self as *const Self, P)
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CSFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_CSFunction_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -954,11 +1054,11 @@ impl CSFunction {
 /// coordinates w, U,  V where w is  the parameter  on the
 /// guide line, U,V   are the parametric coordinates of  a
 /// point on the partner surface.
-pub use crate::ffi::Blend_CurvPointFuncInv as CurvPointFuncInv;
+pub use crate::ffi_types::Blend_CurvPointFuncInv as CurvPointFuncInv;
 
 unsafe impl crate::CppDeletable for CurvPointFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_CurvPointFuncInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_destructor(ptr);
     }
 }
 
@@ -967,7 +1067,7 @@ impl CurvPointFuncInv {
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_nb_variables(self as *const Self)
         })
     }
 
@@ -975,7 +1075,7 @@ impl CurvPointFuncInv {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_nb_equations(self as *const Self)
         })
     }
 
@@ -984,9 +1084,13 @@ impl CurvPointFuncInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -997,11 +1101,11 @@ impl CurvPointFuncInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -1012,12 +1116,12 @@ impl CurvPointFuncInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -1025,7 +1129,7 @@ impl CurvPointFuncInv {
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_set(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_set(self as *mut Self, P)
         })
     }
 
@@ -1033,9 +1137,13 @@ impl CurvPointFuncInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
@@ -1046,20 +1154,28 @@ impl CurvPointFuncInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `Blend_CurvPointFuncInv.hxx`:87 - `Blend_CurvPointFuncInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -1068,11 +1184,7 @@ impl CurvPointFuncInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -1081,36 +1193,38 @@ impl CurvPointFuncInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_CurvPointFuncInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_CurvPointFuncInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1130,11 +1244,11 @@ impl CurvPointFuncInv {
 /// w is the parameter on the guide line,
 /// U,V are the parametric coordinates of a point on the
 /// partner surface.
-pub use crate::ffi::Blend_FuncInv as FuncInv;
+pub use crate::ffi_types::Blend_FuncInv as FuncInv;
 
 unsafe impl crate::CppDeletable for FuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_FuncInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_FuncInv_destructor(ptr);
     }
 }
 
@@ -1142,13 +1256,17 @@ impl FuncInv {
     /// **Source:** `Blend_FuncInv.hxx`:48 - `Blend_FuncInv::NbVariables()`
     /// Returns 4.
     pub fn nb_variables(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Blend_FuncInv_nb_variables(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_FuncInv_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:51 - `Blend_FuncInv::NbEquations()`
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Blend_FuncInv_nb_equations(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_FuncInv_nb_equations(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:57 - `Blend_FuncInv::Value()`
@@ -1156,8 +1274,14 @@ impl FuncInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_FuncInv_value(self as *mut Self, X, F) })
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_FuncInv_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:63 - `Blend_FuncInv::Derivatives()`
@@ -1167,11 +1291,11 @@ impl FuncInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_FuncInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -1182,11 +1306,13 @@ impl FuncInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_FuncInv_values(self as *mut Self, X, F, D) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_FuncInv_values(self as *mut Self, X, F, D)
+        })
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:77 - `Blend_FuncInv::Set()`
@@ -1194,9 +1320,9 @@ impl FuncInv {
     /// to be found. If <OnFirst> is set to Standard_True,
     /// the curve will be on the first surface, otherwise the
     /// curve is on the second one.
-    pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi::HandleAdaptor2dCurve2d) {
+    pub fn set(&mut self, OnFirst: bool, COnSurf: &crate::ffi_types::HandleAdaptor2dCurve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_set(self as *mut Self, OnFirst, COnSurf)
         })
     }
 
@@ -1204,9 +1330,13 @@ impl FuncInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 4 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_FuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
@@ -1217,20 +1347,24 @@ impl FuncInv {
     /// for each of the 4 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_FuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `Blend_FuncInv.hxx`:94 - `Blend_FuncInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_is_solution(self as *mut Self, Sol, Tol)
         })
     }
 
@@ -1239,9 +1373,11 @@ impl FuncInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_FuncInv_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1251,7 +1387,9 @@ impl FuncInv {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::Blend_FuncInv_as_math_FunctionSetWithDerivatives_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1259,7 +1397,7 @@ impl FuncInv {
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_FuncInv_as_math_FunctionSet(
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_FuncInv_as_math_FunctionSet(
                 self as *const Self,
             ))
         }
@@ -1268,16 +1406,18 @@ impl FuncInv {
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_FuncInv_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_FuncInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_FuncInv_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -1293,11 +1433,11 @@ impl FuncInv {
 /// has to be the vector of the parametric coordinates U1,V1,
 /// U2,V2, of the extremities of a section on the first and
 /// second surface.
-pub use crate::ffi::Blend_Function as Function;
+pub use crate::ffi_types::Blend_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_Function_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_Function_destructor(ptr);
     }
 }
 
@@ -1305,19 +1445,29 @@ impl Function {
     /// **Source:** `Blend_Function.hxx`:48 - `Blend_Function::NbVariables()`
     /// Returns 4.
     pub fn nb_variables(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Blend_Function_nb_variables(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Function_nb_variables(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Function.hxx`:51 - `Blend_Function::Pnt1()`
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Function_pnt1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_pnt1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:54 - `Blend_Function::Pnt2()`
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Function_pnt2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_pnt2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Function.hxx`:59 - `Blend_Function::PointOnS1()`
@@ -1326,7 +1476,9 @@ impl Function {
     /// IsSolution.
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_point_on_s1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_point_on_s1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1336,7 +1488,9 @@ impl Function {
     /// IsSolution.
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_point_on_s2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_point_on_s2(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1345,7 +1499,7 @@ impl Function {
     /// the tangent vectors at PointOnS1 and/or PointOnS2.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Function_is_tangency_point(self as *const Self)
         })
     }
 
@@ -1353,7 +1507,9 @@ impl Function {
     /// Returns the tangent vector at PointOnS1, in 3d space.
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_tangent_on_s1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_tangent_on_s1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1362,7 +1518,9 @@ impl Function {
     /// parametric space of the first surface.
     pub fn tangent2d_on_s1(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_tangent2d_on_s1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_tangent2d_on_s1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1370,7 +1528,9 @@ impl Function {
     /// Returns the tangent vector at PointOnS2, in 3d space.
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_tangent_on_s2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_tangent_on_s2(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1379,7 +1539,9 @@ impl Function {
     /// parametric space of the second surface.
     pub fn tangent2d_on_s2(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Function_tangent2d_on_s2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_tangent2d_on_s2(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1400,7 +1562,7 @@ impl Function {
         NormLast: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_tangent(
+            crate::ffi_extern_TKFillet::Blend_Function_tangent(
                 self as *const Self,
                 U1,
                 V1,
@@ -1416,30 +1578,28 @@ impl Function {
 
     /// **Source:** `Blend_Function.hxx`:97 - `Blend_Function::TwistOnS1()`
     pub fn twist_on_s1(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_Function_twist_on_s1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Function_twist_on_s1(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Function.hxx`:99 - `Blend_Function::TwistOnS2()`
     pub fn twist_on_s2(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Blend_Function_twist_on_s2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Function_twist_on_s2(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Function.hxx`:101 - `Blend_Function::Section()`
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::Blend_Function_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -1450,25 +1610,25 @@ impl Function {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_Function_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_Function_as_Blend_AppFunction(
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_as_Blend_AppFunction(
                 self as *const Self,
             ))
         }
@@ -1477,9 +1637,11 @@ impl Function {
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_Function_as_Blend_AppFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Function_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -1488,9 +1650,11 @@ impl Function {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Function_as_math_FunctionSetWithDerivatives(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1500,7 +1664,7 @@ impl Function {
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Blend_Function_as_math_FunctionSetWithDerivatives_mut(
+                crate::ffi_extern_TKFillet::Blend_Function_as_math_FunctionSetWithDerivatives_mut(
                     self as *mut Self,
                 ),
             )
@@ -1510,7 +1674,7 @@ impl Function {
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_Function_as_math_FunctionSet(
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_Function_as_math_FunctionSet(
                 self as *const Self,
             ))
         }
@@ -1519,120 +1683,158 @@ impl Function {
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_Function_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Function_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:53 - `Blend_AppFunction::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_NbEquations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_NbEquations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:59 - `Blend_AppFunction::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Value(self as *mut Self, X, F)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:65 - `Blend_AppFunction::Derivatives()`
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:71 - `Blend_AppFunction::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Values(self as *mut Self, X, F, D)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:78 - `Blend_AppFunction::Set()`
     pub fn set(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Set(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Set(self as *mut Self, Param)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:89 - `Blend_AppFunction::GetTolerance()`
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetTolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetTolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:96 - `Blend_AppFunction::GetBounds()`
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetBounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetBounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:102 - `Blend_AppFunction::IsSolution()`
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_IsSolution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_IsSolution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:107 - `Blend_AppFunction::GetMinimalDistance()`
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetMinimalDistance(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetMinimalDistance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:116 - `Blend_AppFunction::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_IsRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:119 - `Blend_AppFunction::GetSectionSize()`
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetSectionSize(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetSectionSize(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:123 - `Blend_AppFunction::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetMinimalWeight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetMinimalWeight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:127 - `Blend_AppFunction::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_NbIntervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_NbIntervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:136 - `Blend_AppFunction::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -1645,7 +1847,7 @@ impl Function {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetShape(
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetShape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -1656,23 +1858,23 @@ impl Function {
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:154 - `Blend_AppFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Knots(self as *mut Self, TKnots)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:156 - `Blend_AppFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Mults(self as *mut Self, TMults)
         })
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Resolution(
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -1685,14 +1887,14 @@ impl Function {
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_Parameter(self as *const Self, P)
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Function_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_Function_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -1702,18 +1904,22 @@ impl Function {
 // ========================
 
 /// **Source:** `Blend_Point.hxx`:30 - `Blend_Point`
-pub use crate::ffi::Blend_Point as Point;
+pub use crate::ffi_types::Blend_Point as Point;
 
 unsafe impl crate::CppDeletable for Point {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_Point_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_Point_destructor(ptr);
     }
 }
 
 impl Point {
     /// **Source:** `Blend_Point.hxx`:35 - `Blend_Point::Blend_Point()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:38 - `Blend_Point::Blend_Point()`
@@ -1733,7 +1939,7 @@ impl Point {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Blend_Point_ctor_pnt2_real5_vec2_vec2d2(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real5_vec2_vec2d2(
                     Pt1, Pt2, Param, U1, V1, U2, V2, Tg1, Tg2, Tg12d, Tg22d,
                 ),
             ))
@@ -1752,9 +1958,11 @@ impl Point {
         V2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_ctor_pnt2_real5(
-                Pt1, Pt2, Param, U1, V1, U2, V2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real5(
+                    Pt1, Pt2, Param, U1, V1, U2, V2,
+                ),
+            ))
         }
     }
 
@@ -1773,7 +1981,7 @@ impl Point {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Blend_Point_ctor_pnt2_real4_vec2_vec2d(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real4_vec2_vec2d(
                     Pts, Ptc, Param, U, V, W, Tgs, Tgc, Tg2d,
                 ),
             ))
@@ -1791,9 +1999,9 @@ impl Point {
         W: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_ctor_pnt2_real4(
-                Pts, Ptc, Param, U, V, W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real4(Pts, Ptc, Param, U, V, W),
+            ))
         }
     }
 
@@ -1816,7 +2024,7 @@ impl Point {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Blend_Point_ctor_pnt2_real6_vec2_vec2d2(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real6_vec2_vec2d2(
                     Pt1, Pt2, Param, U1, V1, U2, V2, PC, Tg1, Tg2, Tg12d, Tg22d,
                 ),
             ))
@@ -1837,9 +2045,11 @@ impl Point {
         PC: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_ctor_pnt2_real6(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real6(
+                    Pt1, Pt2, Param, U1, V1, U2, V2, PC,
+                ),
+            ))
         }
     }
 
@@ -1862,7 +2072,7 @@ impl Point {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Blend_Point_ctor_pnt2_real7_vec2_vec2d2(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real7_vec2_vec2d2(
                     Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2, Tg1, Tg2, Tg12d, Tg22d,
                 ),
             ))
@@ -1883,9 +2093,11 @@ impl Point {
         PC2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_ctor_pnt2_real7(
-                Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_ctor_pnt2_real7(
+                    Pt1, Pt2, Param, U1, V1, U2, V2, PC1, PC2,
+                ),
+            ))
         }
     }
 
@@ -1906,7 +2118,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real5_vec2_vec2d2(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real5_vec2_vec2d2(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -1936,7 +2148,7 @@ impl Point {
         V2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real5(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real5(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -1965,7 +2177,7 @@ impl Point {
         Tg2d: &crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real4_vec2_vec2d(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real4_vec2_vec2d(
                 self as *mut Self,
                 Pts,
                 Ptc,
@@ -1993,7 +2205,7 @@ impl Point {
         W: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real4(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real4(
                 self as *mut Self,
                 Pts,
                 Ptc,
@@ -2024,7 +2236,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real6_vec2_vec2d2(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real6_vec2_vec2d2(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -2057,7 +2269,7 @@ impl Point {
         PC: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real6(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real6(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -2090,7 +2302,7 @@ impl Point {
         Tg22d: &crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real7_vec2_vec2d2(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real7_vec2_vec2d2(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -2124,7 +2336,7 @@ impl Point {
         PC2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real7(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real7(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -2150,7 +2362,7 @@ impl Point {
         PC2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_value_pnt2_real3(
+            crate::ffi_extern_TKFillet::Blend_Point_set_value_pnt2_real3(
                 self as *mut Self,
                 Pt1,
                 Pt2,
@@ -2165,13 +2377,15 @@ impl Point {
     /// Changes parameter on existing point
     pub fn set_parameter(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_set_parameter(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_Point_set_parameter(self as *mut Self, Param)
         })
     }
 
     /// **Source:** `Blend_Point.hxx`:235 - `Blend_Point::Parameter()`
     pub fn parameter(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Blend_Point_parameter(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Point_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Point.hxx`:239 - `Blend_Point::IsTangencyPoint()`
@@ -2179,142 +2393,184 @@ impl Point {
     /// the tangent vectors at PointOnS1 and/or PointOnS2.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_Point_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_Point_is_tangency_point(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_Point.hxx`:241 - `Blend_Point::PointOnS1()`
     pub fn point_on_s1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_s1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_s1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:243 - `Blend_Point::PointOnS2()`
     pub fn point_on_s2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_s2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_s2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:245 - `Blend_Point::ParametersOnS1()`
     pub fn parameters_on_s1(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_parameters_on_s1(self as *const Self, U, V)
+            crate::ffi_extern_TKFillet::Blend_Point_parameters_on_s1(self as *const Self, U, V)
         })
     }
 
     /// **Source:** `Blend_Point.hxx`:247 - `Blend_Point::ParametersOnS2()`
     pub fn parameters_on_s2(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_parameters_on_s2(self as *const Self, U, V)
+            crate::ffi_extern_TKFillet::Blend_Point_parameters_on_s2(self as *const Self, U, V)
         })
     }
 
     /// **Source:** `Blend_Point.hxx`:249 - `Blend_Point::TangentOnS1()`
     pub fn tangent_on_s1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_s1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_s1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:251 - `Blend_Point::TangentOnS2()`
     pub fn tangent_on_s2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_s2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_s2(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:253 - `Blend_Point::Tangent2dOnS1()`
     pub fn tangent2d_on_s1(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_tangent2d_on_s1(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_tangent2d_on_s1(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:255 - `Blend_Point::Tangent2dOnS2()`
     pub fn tangent2d_on_s2(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_tangent2d_on_s2(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_tangent2d_on_s2(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:257 - `Blend_Point::PointOnS()`
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_s(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_s(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:259 - `Blend_Point::PointOnC()`
     pub fn point_on_c(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_c(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_c(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:261 - `Blend_Point::ParametersOnS()`
     pub fn parameters_on_s(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_Point_parameters_on_s(self as *const Self, U, V)
+            crate::ffi_extern_TKFillet::Blend_Point_parameters_on_s(self as *const Self, U, V)
         })
     }
 
     /// **Source:** `Blend_Point.hxx`:263 - `Blend_Point::ParameterOnC()`
     pub fn parameter_on_c(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Blend_Point_parameter_on_c(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Point_parameter_on_c(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Point.hxx`:265 - `Blend_Point::TangentOnS()`
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_s(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_s(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:267 - `Blend_Point::TangentOnC()`
     pub fn tangent_on_c(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_c(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_c(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:269 - `Blend_Point::Tangent2d()`
     pub fn tangent2d(&self) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Blend_Point_tangent2d(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_Point_tangent2d(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:271 - `Blend_Point::PointOnC1()`
     pub fn point_on_c1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_c1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_c1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:273 - `Blend_Point::PointOnC2()`
     pub fn point_on_c2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Blend_Point_point_on_c2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_point_on_c2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Blend_Point.hxx`:275 - `Blend_Point::ParameterOnC1()`
     pub fn parameter_on_c1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Blend_Point_parameter_on_c1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Point_parameter_on_c1(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Point.hxx`:277 - `Blend_Point::ParameterOnC2()`
     pub fn parameter_on_c2(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Blend_Point_parameter_on_c2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::Blend_Point_parameter_on_c2(self as *const Self)
+        })
     }
 
     /// **Source:** `Blend_Point.hxx`:279 - `Blend_Point::TangentOnC1()`
     pub fn tangent_on_c1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_c1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_c1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Blend_Point.hxx`:281 - `Blend_Point::TangentOnC2()`
     pub fn tangent_on_c2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_Point_tangent_on_c2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_Point_tangent_on_c2(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -2331,11 +2587,11 @@ impl Point {
 /// may be the vector of the parametric coordinates U,V,
 /// W of the extremities of a section on the surface  and
 /// the curve.
-pub use crate::ffi::Blend_RstRstFunction as RstRstFunction;
+pub use crate::ffi_types::Blend_RstRstFunction as RstRstFunction;
 
 unsafe impl crate::CppDeletable for RstRstFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_RstRstFunction_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_RstRstFunction_destructor(ptr);
     }
 }
 
@@ -2344,7 +2600,7 @@ impl RstRstFunction {
     /// Returns 2 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -2352,7 +2608,7 @@ impl RstRstFunction {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_nb_equations(self as *const Self)
         })
     }
 
@@ -2361,9 +2617,13 @@ impl RstRstFunction {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -2374,11 +2634,11 @@ impl RstRstFunction {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -2389,12 +2649,12 @@ impl RstRstFunction {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -2404,7 +2664,7 @@ impl RstRstFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_set_real(self as *mut Self, Param)
         })
     }
 
@@ -2415,7 +2675,11 @@ impl RstRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -2423,9 +2687,13 @@ impl RstRstFunction {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each variable;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -2440,11 +2708,15 @@ impl RstRstFunction {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
@@ -2453,9 +2725,13 @@ impl RstRstFunction {
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -2464,7 +2740,9 @@ impl RstRstFunction {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -2472,7 +2750,9 @@ impl RstRstFunction {
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_pnt1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_pnt1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2480,7 +2760,9 @@ impl RstRstFunction {
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_pnt2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_pnt2(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2488,7 +2770,7 @@ impl RstRstFunction {
     /// Returns the point on the surface.
     pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_point_on_rst1(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_point_on_rst1(
                 self as *const Self,
             )))
         }
@@ -2498,7 +2780,7 @@ impl RstRstFunction {
     /// Returns the point on the curve.
     pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_point_on_rst2(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_point_on_rst2(
                 self as *const Self,
             )))
         }
@@ -2508,7 +2790,7 @@ impl RstRstFunction {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_pnt2d_on_rst1(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_pnt2d_on_rst1(
                 self as *const Self,
             )))
         }
@@ -2519,7 +2801,7 @@ impl RstRstFunction {
     /// surface.
     pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_pnt2d_on_rst2(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_pnt2d_on_rst2(
                 self as *const Self,
             )))
         }
@@ -2529,7 +2811,7 @@ impl RstRstFunction {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_parameter_on_rst1(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_parameter_on_rst1(self as *const Self)
         })
     }
 
@@ -2537,7 +2819,7 @@ impl RstRstFunction {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_parameter_on_rst2(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_parameter_on_rst2(self as *const Self)
         })
     }
 
@@ -2546,7 +2828,7 @@ impl RstRstFunction {
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_is_tangency_point(self as *const Self)
         })
     }
 
@@ -2554,9 +2836,11 @@ impl RstRstFunction {
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_tangent_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_tangent_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2565,9 +2849,11 @@ impl RstRstFunction {
     /// parametric space of the first surface.
     pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_tangent2d_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_tangent2d_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2575,9 +2861,11 @@ impl RstRstFunction {
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_tangent_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_tangent_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2586,9 +2874,11 @@ impl RstRstFunction {
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_RstRstFunction_tangent2d_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_tangent2d_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2599,14 +2889,14 @@ impl RstRstFunction {
     /// but  the  values  calculated can  be  senseless.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NRst1: &mut crate::gp::Vec,
         TgRst1: &mut crate::gp::Vec,
         NRst2: &mut crate::gp::Vec,
         TgRst2: &mut crate::gp::Vec,
     ) -> crate::blend::DecrochStatus {
         crate::blend::DecrochStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_decroch(
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_decroch(
                 self as *const Self,
                 Sol,
                 NRst1,
@@ -2622,7 +2912,7 @@ impl RstRstFunction {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_is_rational(self as *const Self)
         })
     }
 
@@ -2630,16 +2920,19 @@ impl RstRstFunction {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_section_size(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:172 - `Blend_RstRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -2648,7 +2941,10 @@ impl RstRstFunction {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -2658,9 +2954,17 @@ impl RstRstFunction {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -2673,7 +2977,7 @@ impl RstRstFunction {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_shape(
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -2694,11 +2998,11 @@ impl RstRstFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -2710,16 +3014,16 @@ impl RstRstFunction {
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:201 - `Blend_RstRstFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `Blend_RstRstFunction.hxx`:203 - `Blend_RstRstFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_mults(self as *mut Self, TMults)
         })
     }
 
@@ -2727,18 +3031,12 @@ impl RstRstFunction {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -2749,15 +3047,15 @@ impl RstRstFunction {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -2768,36 +3066,40 @@ impl RstRstFunction {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_RstRstFunction_as_Blend_AppFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -2807,7 +3109,7 @@ impl RstRstFunction {
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives(
                     self as *const Self,
                 ),
             )
@@ -2819,36 +3121,36 @@ impl RstRstFunction {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_RstRstFunction_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_RstRstFunction_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_RstRstFunction_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_inherited_Resolution(
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_inherited_Resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -2861,14 +3163,19 @@ impl RstRstFunction {
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_RstRstFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_RstRstFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -2889,11 +3196,11 @@ impl RstRstFunction {
 /// parameter on the guide line, wcurv is the parameter on
 /// the curve, wrst is the parameter on the restriction on
 /// the surface.
-pub use crate::ffi::Blend_SurfCurvFuncInv as SurfCurvFuncInv;
+pub use crate::ffi_types::Blend_SurfCurvFuncInv as SurfCurvFuncInv;
 
 unsafe impl crate::CppDeletable for SurfCurvFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_SurfCurvFuncInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_destructor(ptr);
     }
 }
 
@@ -2902,7 +3209,7 @@ impl SurfCurvFuncInv {
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_nb_variables(self as *const Self)
         })
     }
 
@@ -2910,7 +3217,7 @@ impl SurfCurvFuncInv {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_nb_equations(self as *const Self)
         })
     }
 
@@ -2919,9 +3226,13 @@ impl SurfCurvFuncInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -2932,11 +3243,11 @@ impl SurfCurvFuncInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -2947,20 +3258,20 @@ impl SurfCurvFuncInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:72 - `Blend_SurfCurvFuncInv::Set()`
     /// Set the Point on which a solution has to be found.
-    pub fn set(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
+    pub fn set(&mut self, Rst: &crate::ffi_types::HandleAdaptor2dCurve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_set(self as *mut Self, Rst)
         })
     }
 
@@ -2968,9 +3279,13 @@ impl SurfCurvFuncInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
@@ -2981,20 +3296,28 @@ impl SurfCurvFuncInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `Blend_SurfCurvFuncInv.hxx`:88 - `Blend_SurfCurvFuncInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -3003,11 +3326,7 @@ impl SurfCurvFuncInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3016,36 +3335,38 @@ impl SurfCurvFuncInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfCurvFuncInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_SurfCurvFuncInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3065,11 +3386,11 @@ impl SurfCurvFuncInv {
 /// coordinates w, U,  V where w is  the parameter  on the
 /// guide line, U,V   are the parametric coordinates of  a
 /// point on the partner surface.
-pub use crate::ffi::Blend_SurfPointFuncInv as SurfPointFuncInv;
+pub use crate::ffi_types::Blend_SurfPointFuncInv as SurfPointFuncInv;
 
 unsafe impl crate::CppDeletable for SurfPointFuncInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_SurfPointFuncInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_destructor(ptr);
     }
 }
 
@@ -3078,7 +3399,7 @@ impl SurfPointFuncInv {
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_nb_variables(self as *const Self)
         })
     }
 
@@ -3086,7 +3407,7 @@ impl SurfPointFuncInv {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_nb_equations(self as *const Self)
         })
     }
 
@@ -3095,9 +3416,13 @@ impl SurfPointFuncInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -3108,11 +3433,11 @@ impl SurfPointFuncInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -3123,12 +3448,12 @@ impl SurfPointFuncInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -3136,7 +3461,7 @@ impl SurfPointFuncInv {
     /// Set the Point on which a solution has to be found.
     pub fn set(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_set(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_set(self as *mut Self, P)
         })
     }
 
@@ -3144,9 +3469,13 @@ impl SurfPointFuncInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
@@ -3157,20 +3486,28 @@ impl SurfPointFuncInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `Blend_SurfPointFuncInv.hxx`:88 - `Blend_SurfPointFuncInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -3179,11 +3516,7 @@ impl SurfPointFuncInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3192,36 +3525,38 @@ impl SurfPointFuncInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfPointFuncInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_SurfPointFuncInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3238,11 +3573,11 @@ impl SurfPointFuncInv {
 /// may be the vector of the parametric coordinates U,V,
 /// W of the extremities of a section on the surface  and
 /// the curve.
-pub use crate::ffi::Blend_SurfRstFunction as SurfRstFunction;
+pub use crate::ffi_types::Blend_SurfRstFunction as SurfRstFunction;
 
 unsafe impl crate::CppDeletable for SurfRstFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Blend_SurfRstFunction_destructor(ptr);
+        crate::ffi_extern_TKFillet::Blend_SurfRstFunction_destructor(ptr);
     }
 }
 
@@ -3251,7 +3586,7 @@ impl SurfRstFunction {
     /// Returns 3 (default value). Can be redefined.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -3259,7 +3594,7 @@ impl SurfRstFunction {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_nb_equations(self as *const Self)
         })
     }
 
@@ -3268,9 +3603,13 @@ impl SurfRstFunction {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -3281,11 +3620,11 @@ impl SurfRstFunction {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -3296,12 +3635,12 @@ impl SurfRstFunction {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -3311,7 +3650,7 @@ impl SurfRstFunction {
     /// to be found.
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_set_real(self as *mut Self, Param)
         })
     }
 
@@ -3322,7 +3661,11 @@ impl SurfRstFunction {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -3330,9 +3673,13 @@ impl SurfRstFunction {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each variable;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -3347,11 +3694,15 @@ impl SurfRstFunction {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
@@ -3360,9 +3711,13 @@ impl SurfRstFunction {
     /// Tol is the tolerance used in 3d space.
     /// The computation is made at the current value of
     /// the parameter on the guide line.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -3371,7 +3726,9 @@ impl SurfRstFunction {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -3379,7 +3736,9 @@ impl SurfRstFunction {
     /// Returns the point on the first support.
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_pnt1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_pnt1(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3387,7 +3746,9 @@ impl SurfRstFunction {
     /// Returns the point on the seconde support.
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_pnt2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_pnt2(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3395,7 +3756,7 @@ impl SurfRstFunction {
     /// Returns the point on the surface.
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_point_on_s(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_point_on_s(
                 self as *const Self,
             )))
         }
@@ -3405,7 +3766,7 @@ impl SurfRstFunction {
     /// Returns the point on the curve.
     pub fn point_on_rst(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_point_on_rst(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_point_on_rst(
                 self as *const Self,
             )))
         }
@@ -3415,7 +3776,7 @@ impl SurfRstFunction {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_pnt2d_on_s(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_pnt2d_on_s(
                 self as *const Self,
             )))
         }
@@ -3426,7 +3787,7 @@ impl SurfRstFunction {
     /// surface.
     pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_pnt2d_on_rst(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_pnt2d_on_rst(
                 self as *const Self,
             )))
         }
@@ -3436,7 +3797,7 @@ impl SurfRstFunction {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_parameter_on_rst(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_parameter_on_rst(self as *const Self)
         })
     }
 
@@ -3445,7 +3806,7 @@ impl SurfRstFunction {
     /// the tangent vectors at PointOnS and/or PointOnRst.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_is_tangency_point(self as *const Self)
         })
     }
 
@@ -3453,7 +3814,7 @@ impl SurfRstFunction {
     /// Returns the tangent vector at PointOnS, in 3d space.
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_tangent_on_s(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_tangent_on_s(
                 self as *const Self,
             )))
         }
@@ -3464,9 +3825,11 @@ impl SurfRstFunction {
     /// parametric space of the first surface.
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_tangent2d_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_tangent2d_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3474,9 +3837,11 @@ impl SurfRstFunction {
     /// Returns the tangent vector at PointOnC, in 3d space.
     pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_tangent_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_tangent_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3485,9 +3850,11 @@ impl SurfRstFunction {
     /// parametric space of the second surface.
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Blend_SurfRstFunction_tangent2d_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_tangent2d_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3496,12 +3863,17 @@ impl SurfRstFunction {
     /// specific to  the function.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NS: &mut crate::gp::Vec,
         TgS: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_decroch(self as *const Self, Sol, NS, TgS)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_decroch(
+                self as *const Self,
+                Sol,
+                NS,
+                TgS,
+            )
         })
     }
 
@@ -3509,7 +3881,7 @@ impl SurfRstFunction {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_is_rational(self as *const Self)
         })
     }
 
@@ -3517,16 +3889,19 @@ impl SurfRstFunction {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_section_size(self as *const Self)
         })
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:164 - `Blend_SurfRstFunction::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -3535,7 +3910,10 @@ impl SurfRstFunction {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -3545,9 +3923,17 @@ impl SurfRstFunction {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -3560,7 +3946,7 @@ impl SurfRstFunction {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_shape(
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -3581,11 +3967,11 @@ impl SurfRstFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -3597,16 +3983,16 @@ impl SurfRstFunction {
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:193 - `Blend_SurfRstFunction::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `Blend_SurfRstFunction.hxx`:195 - `Blend_SurfRstFunction::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_mults(self as *mut Self, TMults)
         })
     }
 
@@ -3617,15 +4003,15 @@ impl SurfRstFunction {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -3636,18 +4022,18 @@ impl SurfRstFunction {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -3655,36 +4041,34 @@ impl SurfRstFunction {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
     /// Upcast to Blend_AppFunction
     pub fn as_app_function(&self) -> &AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_app_function_mut(&mut self) -> &mut AppFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_SurfRstFunction_as_Blend_AppFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -3693,11 +4077,7 @@ impl SurfRstFunction {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3706,36 +4086,36 @@ impl SurfRstFunction {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Blend_SurfRstFunction_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::Blend_SurfRstFunction_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:188 - `Blend_AppFunction::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_inherited_Resolution(
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_inherited_Resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -3748,14 +4128,19 @@ impl SurfRstFunction {
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Blend_SurfRstFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::Blend_SurfRstFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }

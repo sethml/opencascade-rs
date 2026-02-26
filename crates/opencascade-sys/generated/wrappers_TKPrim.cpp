@@ -48,10 +48,10 @@
 #include <Sweep_NumShapeTool.hxx>
 #include <TColGeom2d_Array1OfCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_ListOfShape.hxx>
 #include <TopoDS_Edge.hxx>
 #include <TopoDS_Face.hxx>

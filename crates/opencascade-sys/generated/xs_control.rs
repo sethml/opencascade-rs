@@ -10,21 +10,29 @@
 /// Returns the WorkSession of a SessionPilot, but casts it as
 /// from XSControl : it then gives access to Control & Transfers
 pub fn session(
-    pilot: &crate::ffi::HandleIFSelectSessionPilot,
-) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_session(pilot))) }
+    pilot: &crate::ffi_types::HandleIFSelectSessionPilot,
+) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKXSBase::XSControl_session(pilot),
+        ))
+    }
 }
 /// **Source:** `XSControl.hxx`:42 - `XSControl::Vars`
 /// Returns the Vars of a SessionPilot, it is brought by Session
 /// it provides access to external variables
 pub fn vars(
-    pilot: &crate::ffi::HandleIFSelectSessionPilot,
-) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_vars(pilot))) }
+    pilot: &crate::ffi_types::HandleIFSelectSessionPilot,
+) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlVars> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_vars(
+            pilot,
+        )))
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleIFSelectSelectDeduct, HandleIFSelectSelectExplore, HandleIFSelectSelectExtract,
     HandleIFSelectSelection, HandleIFSelectSignature, HandleIFSelectWorkSession,
     HandleIGESControlController, HandleInterfaceSignType, HandleMoniToolSignText,
@@ -40,11 +48,11 @@ pub use crate::ffi::{
 /// From a TopoDS_Shape, or from the entity which has produced it,
 /// searches for the shapes, and the entities which have produced
 /// them in last transfer, which are adjacent to it by VERTICES
-pub use crate::ffi::XSControl_ConnectedShapes as ConnectedShapes;
+pub use crate::ffi_types::XSControl_ConnectedShapes as ConnectedShapes;
 
 unsafe impl crate::CppDeletable for ConnectedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_ConnectedShapes_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_destructor(ptr);
     }
 }
 
@@ -55,7 +63,7 @@ impl ConnectedShapes {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_ctor(),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_ctor(),
             ))
         }
     }
@@ -64,21 +72,19 @@ impl ConnectedShapes {
     /// Creates a Selection ConnectedShapes, which will work with the
     /// current TransferProcess brought by the TransferReader
     pub fn new_handlexscontroltransferreader(
-        TR: &crate::ffi::HandleXSControlTransferReader,
+        TR: &crate::ffi_types::HandleXSControlTransferReader,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_ctor_handlexscontroltransferreader(TR),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_ctor_handlexscontroltransferreader(TR)))
         }
     }
 
     /// **Source:** `XSControl_ConnectedShapes.hxx`:55 - `XSControl_ConnectedShapes::SetReader()`
     /// Sets a TransferReader to sort entities : it brings the
     /// TransferProcess which may change, while the TransferReader does not
-    pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
+    pub fn set_reader(&mut self, TR: &crate::ffi_types::HandleXSControlTransferReader) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_set_reader(self as *mut Self, TR)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_set_reader(self as *mut Self, TR)
         })
     }
 
@@ -88,12 +94,12 @@ impl ConnectedShapes {
     pub fn explore(
         &self,
         level: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         G: &crate::interface::Graph,
         explored: &mut crate::interface::EntityIterator,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_explore(
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_explore(
                 self as *const Self,
                 level,
                 ent,
@@ -109,17 +115,21 @@ impl ConnectedShapes {
     pub fn explore_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_explore_label(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_explore_label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_ConnectedShapes_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -128,12 +138,16 @@ impl ConnectedShapes {
     /// the search function explained above
     pub fn adjacent_entities(
         ashape: &crate::topo_ds::Shape,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         type_: crate::top_abs::ShapeEnum,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_adjacent_entities(ashape, TP, type_.into()),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_adjacent_entities(
+                    ashape,
+                    TP,
+                    type_.into(),
+                ),
             ))
         }
     }
@@ -142,7 +156,7 @@ impl ConnectedShapes {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -150,18 +164,22 @@ impl ConnectedShapes {
     }
 
     /// **Source:** `XSControl_ConnectedShapes.hxx`:76 - `XSControl_ConnectedShapes::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_ConnectedShapes_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IFSelect_SelectExplore
     pub fn as_if_select_select_explore(&self) -> &crate::if_select::SelectExplore {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_SelectExplore(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -169,7 +187,7 @@ impl ConnectedShapes {
     pub fn as_if_select_select_explore_mut(&mut self) -> &mut crate::if_select::SelectExplore {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_SelectExplore_mut(
                     self as *mut Self,
                 ),
             )
@@ -179,9 +197,11 @@ impl ConnectedShapes {
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -189,7 +209,7 @@ impl ConnectedShapes {
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_SelectDeduct_mut(
                     self as *mut Self,
                 ),
             )
@@ -199,9 +219,11 @@ impl ConnectedShapes {
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_Selection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -209,7 +231,9 @@ impl ConnectedShapes {
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_IFSelect_Selection_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -217,9 +241,11 @@ impl ConnectedShapes {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -227,7 +253,9 @@ impl ConnectedShapes {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -235,10 +263,10 @@ impl ConnectedShapes {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlConnectedShapes> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlConnectedShapes> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -246,7 +274,9 @@ impl ConnectedShapes {
     /// Inherited: **Source:** `IFSelect_SelectExplore.hxx`:55 - `IFSelect_SelectExplore::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
@@ -257,7 +287,10 @@ impl ConnectedShapes {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_RootResult(self as *const Self, G),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_RootResult(
+                    self as *const Self,
+                    G,
+                ),
             ))
         }
     }
@@ -266,23 +299,30 @@ impl ConnectedShapes {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_Label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
+    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_SetInput(self as *mut Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_SetInput(
+                self as *mut Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_Input(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_Input(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -290,23 +330,29 @@ impl ConnectedShapes {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_HasInput(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_HasInput(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_HasAlternate(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_HasAlternate(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::XSControl_ConnectedShapes_inherited_Alternate(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_Alternate(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -317,7 +363,10 @@ impl ConnectedShapes {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_InputResult(self as *const Self, G),
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_InputResult(
+                    self as *const Self,
+                    G,
+                ),
             ))
         }
     }
@@ -325,7 +374,10 @@ impl ConnectedShapes {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_FillIterator(self as *const Self, iter)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
         })
     }
 
@@ -336,7 +388,7 @@ impl ConnectedShapes {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_UniqueResult(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_UniqueResult(
                     self as *const Self,
                     G,
                 ),
@@ -351,7 +403,7 @@ impl ConnectedShapes {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_ConnectedShapes_inherited_CompleteResult(
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_CompleteResult(
                     self as *const Self,
                     G,
                 ),
@@ -360,16 +412,22 @@ impl ConnectedShapes {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -377,7 +435,9 @@ impl ConnectedShapes {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_ConnectedShapes_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -390,104 +450,102 @@ impl ConnectedShapes {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_ConnectedShapes_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_ConnectedShapes_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlConnectedShapes;
+pub use crate::ffi_types::HandleXSControlConnectedShapes;
 
 unsafe impl crate::CppDeletable for HandleXSControlConnectedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlConnectedShapes_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_destructor(ptr);
     }
 }
 
 impl HandleXSControlConnectedShapes {
     /// Dereference this Handle to access the underlying XSControl_ConnectedShapes
-    pub fn get(&self) -> &crate::ffi::XSControl_ConnectedShapes {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_ConnectedShapes {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlConnectedShapes_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_ConnectedShapes
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_ConnectedShapes {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_ConnectedShapes {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlConnectedShapes_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_SelectExplore>
     pub fn to_handle_select_explore(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExplore> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExplore> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectExplore(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_to_HandleIFSelectSelectExplore(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_to_HandleIFSelectSelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<IFSelect_Selection>
-    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    pub fn to_handle_selection(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleIFSelectSelection(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_to_HandleIFSelectSelection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_ConnectedShapes> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlConnectedShapes_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlConnectedShapes_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -512,11 +570,11 @@ impl HandleXSControlConnectedShapes {
 ///
 /// It does not manage the produced data, but the Actors make the
 /// link between the norm and the application
-pub use crate::ffi::XSControl_Controller as Controller;
+pub use crate::ffi_types::XSControl_Controller as Controller;
 
 unsafe impl crate::CppDeletable for Controller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Controller_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Controller_destructor(ptr);
     }
 }
 
@@ -529,7 +587,7 @@ impl Controller {
         let c_theLongName = std::ffi::CString::new(theLongName).unwrap();
         let c_theShortName = std::ffi::CString::new(theShortName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_set_names(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_set_names(
                 self as *mut Self,
                 c_theLongName.as_ptr(),
                 c_theShortName.as_ptr(),
@@ -542,7 +600,7 @@ impl Controller {
     /// Names (see method Name)
     pub fn auto_record(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_auto_record(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_auto_record(self as *const Self)
         })
     }
 
@@ -552,7 +610,10 @@ impl Controller {
     pub fn record(&self, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_record(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Controller_record(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -562,10 +623,9 @@ impl Controller {
     /// rsc = True : Name of the resource set (i.e. short name)
     pub fn name(&self, rsc: bool) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::XSControl_Controller_name(
-                self as *const Self,
-                rsc,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_name(self as *const Self, rsc),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -573,18 +633,20 @@ impl Controller {
 
     /// **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
     /// Returns the Protocol attached to the Norm (from field)
-    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Controller_protocol(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Controller_protocol(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
     /// Returns the WorkLibrary attached to the Norm. Remark that it
     /// has to be in phase with the Protocol  (read from field)
-    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+    pub fn work_library(&self) -> &crate::ffi_types::HandleIFSelectWorkLibrary {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Controller_work_library(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Controller_work_library(
                 self as *const Self,
             )))
         }
@@ -593,10 +655,10 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:106 - `XSControl_Controller::NewModel()`
     /// Creates a new empty Model ready to receive data of the Norm
     /// Used to write data from Imagine to an interface file
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Controller_new_model(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_Controller_new_model(self as *const Self),
             ))
         }
     }
@@ -607,11 +669,14 @@ impl Controller {
     /// Can be read from field then adapted with Model as required
     pub fn actor_read(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Controller_actor_read(self as *const Self, model),
+                crate::ffi_extern_TKXSBase::XSControl_Controller_actor_read(
+                    self as *const Self,
+                    model,
+                ),
             ))
         }
     }
@@ -619,10 +684,12 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
     /// Returns the Actor for Write attached to the pair (norm,appli)
     /// Read from field. Can be redefined
-    pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+    pub fn actor_write(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Controller_actor_write(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_Controller_actor_write(self as *const Self),
             ))
         }
     }
@@ -634,7 +701,7 @@ impl Controller {
     /// Then, for each value a little help can be attached
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_set_mode_write(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_set_mode_write(
                 self as *mut Self,
                 modemin,
                 modemax,
@@ -648,7 +715,7 @@ impl Controller {
     pub fn set_mode_write_help(&mut self, modetrans: i32, help: &str, shape: bool) {
         let c_help = std::ffi::CString::new(help).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_set_mode_write_help(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_set_mode_write_help(
                 self as *mut Self,
                 modetrans,
                 c_help.as_ptr(),
@@ -663,7 +730,7 @@ impl Controller {
     /// Returns True if bounds are set, False else (then, free value)
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_mode_write_bounds(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_mode_write_bounds(
                 self as *const Self,
                 modemin,
                 modemax,
@@ -677,7 +744,11 @@ impl Controller {
     /// Actually only for shapes
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_is_mode_write(self as *const Self, modetrans, shape)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_is_mode_write(
+                self as *const Self,
+                modetrans,
+                shape,
+            )
         })
     }
 
@@ -687,7 +758,7 @@ impl Controller {
     pub fn mode_write_help(&self, modetrans: i32, shape: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_Controller_mode_write_help(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_mode_write_help(
                     self as *const Self,
                     modetrans,
                     shape,
@@ -705,11 +776,11 @@ impl Controller {
     /// TransientMapper). Can be redefined
     pub fn recognize_write_transient(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         modetrans: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_recognize_write_transient(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_recognize_write_transient(
                 self as *const Self,
                 obj,
                 modetrans,
@@ -730,14 +801,14 @@ impl Controller {
     /// For type of object not recognized : should return 1
     pub fn transfer_write_transient(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
-        FP: &crate::ffi::HandleTransferFinderProcess,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        obj: &crate::ffi_types::HandleStandardTransient,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_transfer_write_transient(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_transfer_write_transient(
                 self as *const Self,
                 obj,
                 FP,
@@ -754,7 +825,7 @@ impl Controller {
     /// Asks the ActorWrite (through a ShapeMapper)
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_recognize_write_shape(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_recognize_write_shape(
                 self as *const Self,
                 shape,
                 modetrans,
@@ -772,13 +843,13 @@ impl Controller {
     pub fn transfer_write_shape(
         &self,
         shape: &crate::topo_ds::Shape,
-        FP: &crate::ffi::HandleTransferFinderProcess,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_transfer_write_shape(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_transfer_write_shape(
                 self as *const Self,
                 shape,
                 FP,
@@ -801,13 +872,13 @@ impl Controller {
     /// Warning : if <name> conflicts, the last recorded item is kept
     pub fn add_session_item(
         &mut self,
-        theItem: &crate::ffi::HandleStandardTransient,
+        theItem: &crate::ffi_types::HandleStandardTransient,
         theName: &str,
         toApply: bool,
     ) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_add_session_item(
+            crate::ffi_extern_TKXSBase::XSControl_Controller_add_session_item(
                 self as *mut Self,
                 theItem,
                 c_theName.as_ptr(),
@@ -822,11 +893,11 @@ impl Controller {
     pub fn session_item(
         &self,
         theName: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Controller_session_item(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_session_item(
                     self as *const Self,
                     c_theName.as_ptr(),
                 ),
@@ -836,25 +907,27 @@ impl Controller {
 
     /// **Source:** `XSControl_Controller.hxx`:211 - `XSControl_Controller::Customise()`
     /// Customises a WorkSession, by adding to it the recorded items (by AddSessionItem)
-    pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
+    pub fn customise(&mut self, WS: &mut crate::ffi_types::HandleXSControlWorkSession) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_customise(self as *mut Self, WS)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_customise(self as *mut Self, WS)
         })
     }
 
     /// **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn adaptor_session(&self) -> &crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Controller_adaptor_session(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_adaptor_session(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Controller_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Controller_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -863,11 +936,11 @@ impl Controller {
     /// **Source:** `XSControl_Controller.hxx`:83 - `XSControl_Controller::Recorded()`
     /// Returns the Controller attached to a given name
     /// Returns a Null Handle if <name> is unknown
-    pub fn recorded(name: &str) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+    pub fn recorded(name: &str) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlController> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Controller_recorded(c_name.as_ptr()),
+                crate::ffi_extern_TKXSBase::XSControl_Controller_recorded(c_name.as_ptr()),
             ))
         }
     }
@@ -876,7 +949,7 @@ impl Controller {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_Controller_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_Controller_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -884,39 +957,53 @@ impl Controller {
     }
 
     /// **Source:** `XSControl_Controller.hxx`:219 - `XSControl_Controller::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::XSControl_Controller_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_Controller_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::XSControl_Controller_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Controller_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -924,7 +1011,7 @@ impl Controller {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_Controller_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -937,62 +1024,72 @@ impl Controller {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Controller_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_Controller_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlController;
+pub use crate::ffi_types::HandleXSControlController;
 
 unsafe impl crate::CppDeletable for HandleXSControlController {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlController_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlController_destructor(ptr);
     }
 }
 
 impl HandleXSControlController {
     /// Dereference this Handle to access the underlying XSControl_Controller
-    pub fn get(&self) -> &crate::ffi::XSControl_Controller {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_Controller {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlController_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying XSControl_Controller
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Controller {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlController_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlController_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying XSControl_Controller
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_Controller {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlController_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<XSControl_Controller> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlController_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleXSControlController_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1004,11 +1101,9 @@ impl HandleXSControlController {
     /// Returns `None` if the handle does not point to a `IGESControl_Controller` (or subclass).
     pub fn downcast_to_iges_control_controller(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlController>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlController>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleXSControlController_downcast_to_HandleIGESControlController(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleXSControlController_downcast_to_HandleIGESControlController(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1022,11 +1117,9 @@ impl HandleXSControlController {
     /// Returns `None` if the handle does not point to a `STEPCAFControl_Controller` (or subclass).
     pub fn downcast_to_stepcaf_control_controller(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPCAFControlController>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleXSControlController_downcast_to_HandleSTEPCAFControlController(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleXSControlController_downcast_to_HandleSTEPCAFControlController(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1040,11 +1133,9 @@ impl HandleXSControlController {
     /// Returns `None` if the handle does not point to a `STEPControl_Controller` (or subclass).
     pub fn downcast_to_step_control_controller(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlController>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPControlController>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleXSControlController_downcast_to_HandleSTEPControlController(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleXSControlController_downcast_to_HandleSTEPControlController(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1069,11 +1160,11 @@ impl HandleXSControlController {
 ///
 /// This appendix of XSControl is compiled separately to distinguish
 /// basic features from user callable forms
-pub use crate::ffi::XSControl_FuncShape as FuncShape;
+pub use crate::ffi_types::XSControl_FuncShape as FuncShape;
 
 unsafe impl crate::CppDeletable for FuncShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_FuncShape_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_FuncShape_destructor(ptr);
     }
 }
 
@@ -1082,14 +1173,16 @@ impl FuncShape {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_FuncShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_FuncShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `XSControl_FuncShape.hxx`:46 - `XSControl_FuncShape::Init()`
     /// Defines and loads all functions which work on shapes for XSControl (as ActFunc)
     pub fn init() {
-        crate::check_void_result(unsafe { crate::ffi::XSControl_FuncShape_init() })
+        crate::check_void_result(unsafe { crate::ffi_extern_TKXSBase::XSControl_FuncShape_init() })
     }
 
     /// **Source:** `XSControl_FuncShape.hxx`:58 - `XSControl_FuncShape::MoreShapes()`
@@ -1104,13 +1197,17 @@ impl FuncShape {
     /// completed (Append without Clear) by the Shapes found
     /// Returns 0 if no Shape could be found
     pub fn more_shapes(
-        session: &crate::ffi::HandleXSControlWorkSession,
-        list: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        session: &crate::ffi_types::HandleXSControlWorkSession,
+        list: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
         name: &str,
     ) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_FuncShape_more_shapes(session, list, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_FuncShape_more_shapes(
+                session,
+                list,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -1127,7 +1224,7 @@ impl FuncShape {
     /// Else, the root part of <resfile> is considered, if defined
     /// Else, <def> is taken
     pub fn file_and_var(
-        session: &crate::ffi::HandleXSControlWorkSession,
+        session: &crate::ffi_types::HandleXSControlWorkSession,
         file: &str,
         var: &str,
         def: &str,
@@ -1138,7 +1235,7 @@ impl FuncShape {
         let c_var = std::ffi::CString::new(var).unwrap();
         let c_def = std::ffi::CString::new(def).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_FuncShape_file_and_var(
+            crate::ffi_extern_TKXSBase::XSControl_FuncShape_file_and_var(
                 session,
                 c_file.as_ptr(),
                 c_var.as_ptr(),
@@ -1160,11 +1257,11 @@ impl FuncShape {
 /// Controller and Transfer
 ///
 /// It works by adding functions by method Init
-pub use crate::ffi::XSControl_Functions as Functions;
+pub use crate::ffi_types::XSControl_Functions as Functions;
 
 unsafe impl crate::CppDeletable for Functions {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Functions_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Functions_destructor(ptr);
     }
 }
 
@@ -1173,14 +1270,16 @@ impl Functions {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Functions_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Functions_ctor(),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Functions.hxx`:29 - `XSControl_Functions::Init()`
     /// Defines and loads all functions for XSControl (as ActFunc)
     pub fn init() {
-        crate::check_void_result(unsafe { crate::ffi::XSControl_Functions_init() })
+        crate::check_void_result(unsafe { crate::ffi_extern_TKXSBase::XSControl_Functions_init() })
     }
 }
 
@@ -1220,11 +1319,11 @@ impl Functions {
 /// successive transfers. The last shape is cleared by:
 /// - ClearShapes which allows you to handle a new batch
 /// - TransferRoots which restarts the list of shapes from scratch.
-pub use crate::ffi::XSControl_Reader as Reader;
+pub use crate::ffi_types::XSControl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Reader_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Reader_destructor(ptr);
     }
 }
 
@@ -1234,7 +1333,9 @@ impl Reader {
     /// A WorkSession or a Controller must be provided before running
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Reader_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_ctor(),
+            ))
         }
     }
 
@@ -1245,7 +1346,7 @@ impl Reader {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Reader_ctor_charptr(c_norm.as_ptr()),
+                crate::ffi_extern_TKXSBase::XSControl_Reader_ctor_charptr(c_norm.as_ptr()),
             ))
         }
     }
@@ -1255,12 +1356,14 @@ impl Reader {
     /// Controller already set
     /// Virtual destructor
     pub fn new_handlexscontrolworksession_bool(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
+                crate::ffi_extern_TKXSBase::XSControl_Reader_ctor_handlexscontrolworksession_bool(
+                    WS, scratch,
+                ),
             ))
         }
     }
@@ -1270,7 +1373,7 @@ impl Reader {
     /// Controller already set
     /// Virtual destructor
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
     }
@@ -1281,25 +1384,28 @@ impl Reader {
     pub fn set_norm(&mut self, norm: &str) -> bool {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_set_norm(self as *mut Self, c_norm.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Reader_set_norm(
+                self as *mut Self,
+                c_norm.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
     /// Sets a specific session to <me>
-    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+    pub fn set_ws(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession, scratch: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_set_ws(self as *mut Self, WS, scratch)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_set_ws(self as *mut Self, WS, scratch)
         })
     }
 
     /// **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
     /// Returns the session used in <me>
-    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Reader_ws(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_ws(self as *const Self),
+            ))
         }
     }
 
@@ -1309,7 +1415,10 @@ impl Reader {
     pub fn read_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_read_file(self as *mut Self, c_filename.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Reader_read_file(
+                self as *mut Self,
+                c_filename.as_ptr(),
+            )
         }))
         .unwrap()
     }
@@ -1319,11 +1428,11 @@ impl Reader {
     pub fn read_stream(
         &mut self,
         theName: &str,
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
     ) -> crate::if_select::ReturnStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_read_stream(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_read_stream(
                 self as *mut Self,
                 c_theName.as_ptr(),
                 theIStream,
@@ -1334,11 +1443,11 @@ impl Reader {
 
     /// **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
     /// Returns the model. It can then be consulted (header, product)
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Reader_model(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_model(self as *const Self),
+            ))
         }
     }
 
@@ -1374,12 +1483,12 @@ impl Reader {
         &mut self,
         first: &str,
         second: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         let c_first = std::ffi::CString::new(first).unwrap();
         let c_second = std::ffi::CString::new(second).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Reader_give_list_charptr2(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_give_list_charptr2(
                     self as *mut Self,
                     c_first.as_ptr(),
                     c_second.as_ptr(),
@@ -1397,17 +1506,11 @@ impl Reader {
     pub fn give_list_charptr_handlestandardtransient(
         &mut self,
         first: &str,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         let c_first = std::ffi::CString::new(first).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Reader_give_list_charptr_handlestandardtransient(
-                    self as *mut Self,
-                    c_first.as_ptr(),
-                    ent,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Reader_give_list_charptr_handlestandardtransient(self as *mut Self, c_first.as_ptr(), ent)))
         }
     }
 
@@ -1417,7 +1520,7 @@ impl Reader {
     /// of entities in the list
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_nb_roots_for_transfer(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_nb_roots_for_transfer(self as *mut Self)
         })
     }
 
@@ -1428,10 +1531,13 @@ impl Reader {
     pub fn root_for_transfer(
         &mut self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Reader_root_for_transfer(self as *mut Self, num),
+                crate::ffi_extern_TKXSBase::XSControl_Reader_root_for_transfer(
+                    self as *mut Self,
+                    num,
+                ),
             ))
         }
     }
@@ -1445,7 +1551,11 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_transfer_one_root(self as *mut Self, num, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_transfer_one_root(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
         })
     }
 
@@ -1455,7 +1565,11 @@ impl Reader {
     /// false is returned if no shape is produced.
     pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_transfer_one(self as *mut Self, num, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_transfer_one(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
         })
     }
 
@@ -1465,11 +1579,15 @@ impl Reader {
     /// produced; otherwise, false is returned.
     pub fn transfer_entity(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_transfer_entity(self as *mut Self, start, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_transfer_entity(
+                self as *mut Self,
+                start,
+                theProgress,
+            )
         })
     }
 
@@ -1480,11 +1598,15 @@ impl Reader {
     /// Warning - This function does not clear the existing output shapes.
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_transfer_list(self as *mut Self, list, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_transfer_list(
+                self as *mut Self,
+                list,
+                theProgress,
+            )
         })
     }
 
@@ -1494,7 +1616,10 @@ impl Reader {
     /// Warning - This function clears existing output shapes first.
     pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Reader_transfer_roots(self as *mut Self, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_transfer_roots(
+                self as *mut Self,
+                theProgress,
+            )
         })
     }
 
@@ -1503,14 +1628,16 @@ impl Reader {
     /// may have accumulated in calls to TransferOne or TransferRoot.C
     pub fn clear_shapes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_clear_shapes(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_clear_shapes(self as *mut Self)
         })
     }
 
     /// **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     /// Returns the number of shapes produced by translation.
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::XSControl_Reader_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXSBase::XSControl_Reader_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `XSControl_Reader.hxx`:210 - `XSControl_Reader::Shape()`
@@ -1520,10 +1647,9 @@ impl Reader {
     /// resulting from the translation is returned.
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Reader_shape(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_shape(self as *const Self, num),
+            ))
         }
     }
 
@@ -1535,9 +1661,9 @@ impl Reader {
     /// - a compound containing the resulting shapes if there are more than one.
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Reader_one_shape(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_one_shape(self as *const Self),
+            ))
         }
     }
 
@@ -1554,7 +1680,7 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_check_load_bool_printcount(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_check_load_bool_printcount(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -1566,12 +1692,12 @@ impl Reader {
     /// Prints the check list attached to loaded data.
     pub fn print_check_load_ostream_bool_printcount(
         &self,
-        theStream: &mut crate::ffi::Standard_OStream,
+        theStream: &mut crate::ffi_types::Standard_OStream,
         failsonly: bool,
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_check_load_ostream_bool_printcount(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_check_load_ostream_bool_printcount(
                 self as *const Self,
                 theStream,
                 failsonly,
@@ -1593,7 +1719,7 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_check_transfer_bool_printcount(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_check_transfer_bool_printcount(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -1606,17 +1732,12 @@ impl Reader {
     /// entities.
     pub fn print_check_transfer_ostream_bool_printcount(
         &self,
-        theStream: &mut crate::ffi::Standard_OStream,
+        theStream: &mut crate::ffi_types::Standard_OStream,
         failsonly: bool,
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_check_transfer_ostream_bool_printcount(
-                self as *const Self,
-                theStream,
-                failsonly,
-                mode.into(),
-            )
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_check_transfer_ostream_bool_printcount(self as *const Self, theStream, failsonly, mode.into())
         })
     }
 
@@ -1650,7 +1771,11 @@ impl Reader {
     /// If mode is not set, only the list of all entities per warning is given.
     pub fn print_stats_transfer_int2(&self, what: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_stats_transfer_int2(self as *const Self, what, mode)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_stats_transfer_int2(
+                self as *const Self,
+                what,
+                mode,
+            )
         })
     }
 
@@ -1658,12 +1783,12 @@ impl Reader {
     /// Displays the statistics for the last translation.
     pub fn print_stats_transfer_ostream_int2(
         &self,
-        theStream: &mut crate::ffi::Standard_OStream,
+        theStream: &mut crate::ffi_types::Standard_OStream,
         what: i32,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_print_stats_transfer_ostream_int2(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_print_stats_transfer_ostream_int2(
                 self as *const Self,
                 theStream,
                 what,
@@ -1676,13 +1801,13 @@ impl Reader {
     /// Gives statistics about Transfer
     pub fn get_stats_transfer(
         &self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         nbMapped: &mut i32,
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_get_stats_transfer(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_get_stats_transfer(
                 self as *const Self,
                 list,
                 nbMapped,
@@ -1697,10 +1822,10 @@ impl Reader {
     /// @param theParameters the parameters for shape processing.
     pub fn set_shape_fix_parameters_parametermap(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_set_shape_fix_parameters_parametermap(
+            crate::ffi_extern_TKXSBase::XSControl_Reader_set_shape_fix_parameters_parametermap(
                 self as *mut Self,
                 theParameters,
             )
@@ -1717,34 +1842,40 @@ impl Reader {
     pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
         &mut self,
         theParameters: &crate::de::ShapeFixParameters,
-        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theAdditionalParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(
-                self as *mut Self,
-                theParameters,
-                theAdditionalParameters,
-            )
+            crate::ffi_extern_TKXSBase::XSControl_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
         })
     }
 
     /// **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Reader_get_shape_fix_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_get_shape_fix_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+            crate::ffi_extern_TKXSBase::XSControl_Reader_set_shape_process_flags(
+                self as *mut Self,
+                theFlags,
+            )
         })
     }
 
@@ -1752,11 +1883,15 @@ impl Reader {
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
     /// that indicates whether the flags were set.
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Reader_get_shape_process_flags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Reader_get_shape_process_flags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -1788,11 +1923,11 @@ impl Reader {
 ///
 /// This selection considers, either the current Actor (brought by
 /// the TransferReader, updated as required), or a precise one.
-pub use crate::ffi::XSControl_SelectForTransfer as SelectForTransfer;
+pub use crate::ffi_types::XSControl_SelectForTransfer as SelectForTransfer;
 
 unsafe impl crate::CppDeletable for SelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_SelectForTransfer_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_destructor(ptr);
     }
 }
 
@@ -1803,7 +1938,7 @@ impl SelectForTransfer {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_ctor(),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_ctor(),
             ))
         }
     }
@@ -1812,30 +1947,34 @@ impl SelectForTransfer {
     /// Creates a SelectForTransfer, which will work with the
     /// currently defined Actor brought by the TransferReader
     pub fn new_handlexscontroltransferreader(
-        TR: &crate::ffi::HandleXSControlTransferReader,
+        TR: &crate::ffi_types::HandleXSControlTransferReader,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_ctor_handlexscontroltransferreader(TR),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_ctor_handlexscontroltransferreader(TR)))
         }
     }
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:61 - `XSControl_SelectForTransfer::SetReader()`
     /// Sets a TransferReader to sort entities : it brings the Actor,
     /// which may change, while the TransferReader does not
-    pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
+    pub fn set_reader(&mut self, TR: &crate::ffi_types::HandleXSControlTransferReader) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_set_reader(self as *mut Self, TR)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_set_reader(
+                self as *mut Self,
+                TR,
+            )
         })
     }
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:65 - `XSControl_SelectForTransfer::SetActor()`
     /// Sets a precise actor to sort entities
     /// This definition oversedes the creation with a TransferReader
-    pub fn set_actor(&mut self, act: &crate::ffi::HandleTransferActorOfTransientProcess) {
+    pub fn set_actor(&mut self, act: &crate::ffi_types::HandleTransferActorOfTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_set_actor(self as *mut Self, act)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_set_actor(
+                self as *mut Self,
+                act,
+            )
         })
     }
 
@@ -1843,10 +1982,12 @@ impl SelectForTransfer {
     /// Returns the Actor used as precised one.
     /// Returns a Null Handle for a creation from a TransferReader
     /// without any further setting
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    pub fn actor(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_actor(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_actor(self as *const Self),
             ))
         }
     }
@@ -1854,10 +1995,10 @@ impl SelectForTransfer {
     /// **Source:** `XSControl_SelectForTransfer.hxx`:74 - `XSControl_SelectForTransfer::Reader()`
     /// Returns the Reader (if created with a Reader)
     /// Returns a Null Handle if not created with a Reader
-    pub fn reader(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferReader> {
+    pub fn reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlTransferReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_reader(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_reader(self as *const Self),
             ))
         }
     }
@@ -1868,11 +2009,16 @@ impl SelectForTransfer {
     pub fn sort(
         &self,
         rank: i32,
-        ent: &crate::ffi::HandleStandardTransient,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_sort(self as *const Self, rank, ent, model)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_sort(
+                self as *const Self,
+                rank,
+                ent,
+                model,
+            )
         })
     }
 
@@ -1881,17 +2027,21 @@ impl SelectForTransfer {
     pub fn extract_label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_extract_label(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_extract_label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_SelectForTransfer_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1899,7 +2049,7 @@ impl SelectForTransfer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1907,9 +2057,11 @@ impl SelectForTransfer {
     }
 
     /// **Source:** `XSControl_SelectForTransfer.hxx`:86 - `XSControl_SelectForTransfer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_SelectForTransfer_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_get_type_descriptor(),
+            ))
         }
     }
 
@@ -1917,7 +2069,7 @@ impl SelectForTransfer {
     pub fn as_if_select_select_extract(&self) -> &crate::if_select::SelectExtract {
         unsafe {
             &*crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_SelectExtract(
                     self as *const Self,
                 ),
             )
@@ -1927,40 +2079,36 @@ impl SelectForTransfer {
     /// Upcast to IFSelect_SelectExtract (mutable)
     pub fn as_if_select_select_extract_mut(&mut self) -> &mut crate::if_select::SelectExtract {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectExtract_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_SelectExtract_mut(self as *mut Self))
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct
     pub fn as_if_select_select_deduct(&self) -> &crate::if_select::SelectDeduct {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IFSelect_SelectDeduct (mutable)
     pub fn as_if_select_select_deduct_mut(&mut self) -> &mut crate::if_select::SelectDeduct {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_SelectDeduct_mut(self as *mut Self))
         }
     }
 
     /// Upcast to IFSelect_Selection
     pub fn as_if_select_selection(&self) -> &crate::if_select::Selection {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_Selection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1968,7 +2116,7 @@ impl SelectForTransfer {
     pub fn as_if_select_selection_mut(&mut self) -> &mut crate::if_select::Selection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_IFSelect_Selection_mut(
                     self as *mut Self,
                 ),
             )
@@ -1978,9 +2126,11 @@ impl SelectForTransfer {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1988,7 +2138,7 @@ impl SelectForTransfer {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -1998,10 +2148,10 @@ impl SelectForTransfer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlSelectForTransfer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlSelectForTransfer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2009,14 +2159,19 @@ impl SelectForTransfer {
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:46 - `IFSelect_SelectExtract::IsDirect()`
     pub fn is_direct(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_IsDirect(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_IsDirect(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectExtract.hxx`:50 - `IFSelect_SelectExtract::SetDirect()`
     pub fn set_direct(&mut self, direct: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_SetDirect(self as *mut Self, direct)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_SetDirect(
+                self as *mut Self,
+                direct,
+            )
         })
     }
 
@@ -2027,7 +2182,7 @@ impl SelectForTransfer {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_RootResult(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_RootResult(
                     self as *const Self,
                     G,
                 ),
@@ -2039,11 +2194,11 @@ impl SelectForTransfer {
     pub fn sort_in_graph(
         &self,
         rank: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         G: &crate::interface::Graph,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_SortInGraph(
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_SortInGraph(
                 self as *const Self,
                 rank,
                 ent,
@@ -2056,23 +2211,30 @@ impl SelectForTransfer {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_Label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:49 - `IFSelect_SelectDeduct::SetInput()`
-    pub fn set_input(&mut self, sel: &crate::ffi::HandleIFSelectSelection) {
+    pub fn set_input(&mut self, sel: &crate::ffi_types::HandleIFSelectSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_SetInput(self as *mut Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_SetInput(
+                self as *mut Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:52 - `IFSelect_SelectDeduct::Input()`
-    pub fn input(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    pub fn input(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_Input(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_Input(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2080,22 +2242,28 @@ impl SelectForTransfer {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:55 - `IFSelect_SelectDeduct::HasInput()`
     pub fn has_input(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_HasInput(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_HasInput(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:59 - `IFSelect_SelectDeduct::HasAlternate()`
     pub fn has_alternate(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_HasAlternate(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_HasAlternate(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:67 - `IFSelect_SelectDeduct::Alternate()`
-    pub fn alternate(&mut self) -> &mut crate::ffi::HandleIFSelectSelectPointed {
+    pub fn alternate(&mut self) -> &mut crate::ffi_types::HandleIFSelectSelectPointed {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_Alternate(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_Alternate(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -2107,7 +2275,7 @@ impl SelectForTransfer {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_InputResult(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_InputResult(
                     self as *const Self,
                     G,
                 ),
@@ -2118,7 +2286,7 @@ impl SelectForTransfer {
     /// Inherited: **Source:** `IFSelect_SelectDeduct.hxx`:78 - `IFSelect_SelectDeduct::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::if_select::SelectionIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_FillIterator(
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_FillIterator(
                 self as *const Self,
                 iter,
             )
@@ -2132,7 +2300,7 @@ impl SelectForTransfer {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_UniqueResult(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_UniqueResult(
                     self as *const Self,
                     G,
                 ),
@@ -2147,7 +2315,7 @@ impl SelectForTransfer {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SelectForTransfer_inherited_CompleteResult(
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_CompleteResult(
                     self as *const Self,
                     G,
                 ),
@@ -2156,9 +2324,9 @@ impl SelectForTransfer {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2166,9 +2334,12 @@ impl SelectForTransfer {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2176,7 +2347,9 @@ impl SelectForTransfer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_SelectForTransfer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2189,104 +2362,102 @@ impl SelectForTransfer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SelectForTransfer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SelectForTransfer_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlSelectForTransfer;
+pub use crate::ffi_types::HandleXSControlSelectForTransfer;
 
 unsafe impl crate::CppDeletable for HandleXSControlSelectForTransfer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlSelectForTransfer_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_destructor(ptr);
     }
 }
 
 impl HandleXSControlSelectForTransfer {
     /// Dereference this Handle to access the underlying XSControl_SelectForTransfer
-    pub fn get(&self) -> &crate::ffi::XSControl_SelectForTransfer {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_SelectForTransfer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlSelectForTransfer_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_SelectForTransfer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_SelectForTransfer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_SelectForTransfer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlSelectForTransfer_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_SelectExtract>
     pub fn to_handle_select_extract(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectExtract> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectExtract> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectExtract(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectExtract(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_SelectDeduct>
     pub fn to_handle_select_deduct(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelectDeduct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelectDeduct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectDeduct(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_to_HandleIFSelectSelectDeduct(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<IFSelect_Selection>
-    pub fn to_handle_selection(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    pub fn to_handle_selection(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleIFSelectSelection(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_to_HandleIFSelectSelection(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SelectForTransfer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSelectForTransfer_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -2295,9 +2466,9 @@ impl HandleXSControlSelectForTransfer {
     /// Returns `None` if the handle does not point to a `STEPSelections_SelectForTransfer` (or subclass).
     pub fn downcast_to_select_for_transfer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPSelectionsSelectForTransfer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPSelectionsSelectForTransfer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleXSControlSelectForTransfer_downcast_to_HandleSTEPSelectionsSelectForTransfer(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleXSControlSelectForTransfer_downcast_to_HandleSTEPSelectionsSelectForTransfer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2325,11 +2496,11 @@ impl HandleXSControlSelectForTransfer {
 /// - Fail on run : no result yet recorded, no message, but
 /// an exception occurred while recording the result
 /// (this should not appear and indicates a programming error)
-pub use crate::ffi::XSControl_SignTransferStatus as SignTransferStatus;
+pub use crate::ffi_types::XSControl_SignTransferStatus as SignTransferStatus;
 
 unsafe impl crate::CppDeletable for SignTransferStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_SignTransferStatus_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_destructor(ptr);
     }
 }
 
@@ -2340,7 +2511,7 @@ impl SignTransferStatus {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_ctor(),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_ctor(),
             ))
         }
     }
@@ -2349,29 +2520,30 @@ impl SignTransferStatus {
     /// Creates a SignTransferStatus, which will work on the current
     /// TransientProcess brought by the TransferReader (its MapReader)
     pub fn new_handlexscontroltransferreader(
-        TR: &crate::ffi::HandleXSControlTransferReader,
+        TR: &crate::ffi_types::HandleXSControlTransferReader,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_ctor_handlexscontroltransferreader(TR),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_ctor_handlexscontroltransferreader(TR)))
         }
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:58 - `XSControl_SignTransferStatus::SetReader()`
     /// Sets a TransferReader to work
-    pub fn set_reader(&mut self, TR: &crate::ffi::HandleXSControlTransferReader) {
+    pub fn set_reader(&mut self, TR: &crate::ffi_types::HandleXSControlTransferReader) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_set_reader(self as *mut Self, TR)
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_set_reader(
+                self as *mut Self,
+                TR,
+            )
         })
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:62 - `XSControl_SignTransferStatus::SetMap()`
     /// Sets a precise map to sign entities
     /// This definition oversedes the creation with a TransferReader
-    pub fn set_map(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_map(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_set_map(self as *mut Self, TP)
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_set_map(self as *mut Self, TP)
         })
     }
 
@@ -2379,10 +2551,10 @@ impl SignTransferStatus {
     /// Returns the TransientProcess used as precised one
     /// Returns a Null Handle for a creation from a TransferReader
     /// without any further setting
-    pub fn map(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    pub fn map(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_map(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_map(self as *const Self),
             ))
         }
     }
@@ -2390,10 +2562,12 @@ impl SignTransferStatus {
     /// **Source:** `XSControl_SignTransferStatus.hxx`:71 - `XSControl_SignTransferStatus::Reader()`
     /// Returns the Reader (if created with a Reader)
     /// Returns a Null Handle if not created with a Reader
-    pub fn reader(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferReader> {
+    pub fn reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlTransferReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_reader(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_reader(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2403,12 +2577,16 @@ impl SignTransferStatus {
     /// status
     pub fn value(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_value(self as *const Self, ent, model),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_value(
+                    self as *const Self,
+                    ent,
+                    model,
+                ),
             ))
         }
         .to_string_lossy()
@@ -2416,11 +2594,13 @@ impl SignTransferStatus {
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_SignTransferStatus_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2428,7 +2608,7 @@ impl SignTransferStatus {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2436,18 +2616,22 @@ impl SignTransferStatus {
     }
 
     /// **Source:** `XSControl_SignTransferStatus.hxx`:79 - `XSControl_SignTransferStatus::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_SignTransferStatus_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IFSelect_Signature
     pub fn as_if_select_signature(&self) -> &crate::if_select::Signature {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_IFSelect_Signature(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2455,7 +2639,7 @@ impl SignTransferStatus {
     pub fn as_if_select_signature_mut(&mut self) -> &mut crate::if_select::Signature {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_as_IFSelect_Signature_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_IFSelect_Signature_mut(
                     self as *mut Self,
                 ),
             )
@@ -2465,9 +2649,11 @@ impl SignTransferStatus {
     /// Upcast to Interface_SignType
     pub fn as_interface_sign_type(&self) -> &crate::interface::SignType {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_Interface_SignType(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2475,7 +2661,7 @@ impl SignTransferStatus {
     pub fn as_interface_sign_type_mut(&mut self) -> &mut crate::interface::SignType {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_as_Interface_SignType_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_Interface_SignType_mut(
                     self as *mut Self,
                 ),
             )
@@ -2485,9 +2671,11 @@ impl SignTransferStatus {
     /// Upcast to MoniTool_SignText
     pub fn as_moni_tool_sign_text(&self) -> &crate::moni_tool::SignText {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_MoniTool_SignText(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2495,7 +2683,7 @@ impl SignTransferStatus {
     pub fn as_moni_tool_sign_text_mut(&mut self) -> &mut crate::moni_tool::SignText {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_as_MoniTool_SignText_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_MoniTool_SignText_mut(
                     self as *mut Self,
                 ),
             )
@@ -2505,9 +2693,11 @@ impl SignTransferStatus {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2515,7 +2705,7 @@ impl SignTransferStatus {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -2525,10 +2715,10 @@ impl SignTransferStatus {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlSignTransferStatus> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlSignTransferStatus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2536,7 +2726,7 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:46 - `IFSelect_Signature::SetIntCase()`
     pub fn set_int_case(&mut self, hasmin: bool, valmin: i32, hasmax: bool, valmax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_SetIntCase(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_SetIntCase(
                 self as *mut Self,
                 hasmin,
                 valmin,
@@ -2555,7 +2745,7 @@ impl SignTransferStatus {
         valmax: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_IsIntCase(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_IsIntCase(
                 self as *const Self,
                 hasmin,
                 valmin,
@@ -2566,10 +2756,14 @@ impl SignTransferStatus {
     }
 
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:69 - `IFSelect_Signature::CaseList()`
-    pub fn case_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+    pub fn case_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_inherited_CaseList(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_CaseList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2578,7 +2772,9 @@ impl SignTransferStatus {
     pub fn label(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_Label(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2586,13 +2782,13 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `IFSelect_Signature.hxx`:87 - `IFSelect_Signature::Matches()`
     pub fn matches(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         text: &crate::t_collection::AsciiString,
         exact: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_Matches(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_Matches(
                 self as *const Self,
                 ent,
                 model,
@@ -2605,12 +2801,12 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `Interface_SignType.hxx`:42 - `Interface_SignType::Text()`
     pub fn text(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        context: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        context: &crate::ffi_types::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_inherited_Text(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_Text(
                     self as *const Self,
                     ent,
                     context,
@@ -2622,11 +2818,11 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `MoniTool_SignText.hxx`:46 - `MoniTool_SignText::TextAlone()`
     pub fn text_alone(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_SignTransferStatus_inherited_TextAlone(
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_TextAlone(
                     self as *const Self,
                     ent,
                 ),
@@ -2635,9 +2831,9 @@ impl SignTransferStatus {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2645,9 +2841,12 @@ impl SignTransferStatus {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2655,7 +2854,9 @@ impl SignTransferStatus {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_SignTransferStatus_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2668,14 +2869,16 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2684,7 +2887,7 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2693,79 +2896,75 @@ impl SignTransferStatus {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_SignTransferStatus_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_SignTransferStatus_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlSignTransferStatus;
+pub use crate::ffi_types::HandleXSControlSignTransferStatus;
 
 unsafe impl crate::CppDeletable for HandleXSControlSignTransferStatus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlSignTransferStatus_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_destructor(ptr);
     }
 }
 
 impl HandleXSControlSignTransferStatus {
     /// Dereference this Handle to access the underlying XSControl_SignTransferStatus
-    pub fn get(&self) -> &crate::ffi::XSControl_SignTransferStatus {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_SignTransferStatus {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlSignTransferStatus_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_SignTransferStatus
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_SignTransferStatus {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_SignTransferStatus {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlSignTransferStatus_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<IFSelect_Signature>
-    pub fn to_handle_signature(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+    pub fn to_handle_signature(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleIFSelectSignature(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_to_HandleIFSelectSignature(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<Interface_SignType>
-    pub fn to_handle_sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceSignType> {
+    pub fn to_handle_sign_type(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceSignType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleInterfaceSignType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_to_HandleInterfaceSignType(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<MoniTool_SignText>
-    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi::HandleMoniToolSignText> {
+    pub fn to_handle_sign_text(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMoniToolSignText> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleMoniToolSignText(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_to_HandleMoniToolSignText(self as *const Self)))
         }
     }
 
     /// Upcast Handle<XSControl_SignTransferStatus> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlSignTransferStatus_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlSignTransferStatus_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2793,11 +2992,11 @@ impl HandleXSControlSignTransferStatus {
 ///
 /// Some more direct access are given for results which are
 /// Transient or Shapes
-pub use crate::ffi::XSControl_TransferReader as TransferReader;
+pub use crate::ffi_types::XSControl_TransferReader as TransferReader;
 
 unsafe impl crate::CppDeletable for TransferReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_TransferReader_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_TransferReader_destructor(ptr);
     }
 }
 
@@ -2807,7 +3006,7 @@ impl TransferReader {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_ctor(),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_ctor(),
             ))
         }
     }
@@ -2815,18 +3014,27 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:70 - `XSControl_TransferReader::SetController()`
     /// Sets a Controller. It is required to generate the Actor.
     /// Elsewhere, the Actor must be provided directly
-    pub fn set_controller(&mut self, theControl: &crate::ffi::HandleXSControlController) {
+    pub fn set_controller(&mut self, theControl: &crate::ffi_types::HandleXSControlController) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_controller(self as *mut Self, theControl)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_controller(
+                self as *mut Self,
+                theControl,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:74 - `XSControl_TransferReader::SetActor()`
     /// Sets the Actor directly : this value will be used if the
     /// Controller is not set
-    pub fn set_actor(&mut self, theActor: &crate::ffi::HandleTransferActorOfTransientProcess) {
+    pub fn set_actor(
+        &mut self,
+        theActor: &crate::ffi_types::HandleTransferActorOfTransientProcess,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_actor(self as *mut Self, theActor)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_actor(
+                self as *mut Self,
+                theActor,
+            )
         })
     }
 
@@ -2834,10 +3042,12 @@ impl TransferReader {
     /// Returns the Actor, determined by the Controller, or if this
     /// one is unknown, directly set.
     /// Once it has been defined, it can then be edited.
-    pub fn actor(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    pub fn actor(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_actor(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_actor(self as *mut Self),
             ))
         }
     }
@@ -2845,35 +3055,47 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:83 - `XSControl_TransferReader::SetModel()`
     /// Sets an InterfaceModel. This causes former results, computed
     /// from another one, to be lost (see also Clear)
-    pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, theModel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_model(self as *mut Self, theModel)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_model(
+                self as *mut Self,
+                theModel,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:86 - `XSControl_TransferReader::SetGraph()`
     /// Sets a Graph and its InterfaceModel (calls SetModel)
-    pub fn set_graph(&mut self, theGraph: &crate::ffi::HandleInterfaceHGraph) {
+    pub fn set_graph(&mut self, theGraph: &crate::ffi_types::HandleInterfaceHGraph) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_graph(self as *mut Self, theGraph)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_graph(
+                self as *mut Self,
+                theGraph,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:89 - `XSControl_TransferReader::Model()`
     /// Returns the currently set InterfaceModel
-    pub fn model(&self) -> &crate::ffi::HandleInterfaceInterfaceModel {
+    pub fn model(&self) -> &crate::ffi_types::HandleInterfaceInterfaceModel {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferReader_model(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_TransferReader_model(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:93 - `XSControl_TransferReader::SetContext()`
     /// Sets a Context : according to receiving appli, to be
     /// interpreted by the Actor
-    pub fn set_context(&mut self, theName: &str, theCtx: &crate::ffi::HandleStandardTransient) {
+    pub fn set_context(
+        &mut self,
+        theName: &str,
+        theCtx: &crate::ffi_types::HandleStandardTransient,
+    ) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_context(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_context(
                 self as *mut Self,
                 c_theName.as_ptr(),
                 theCtx,
@@ -2888,12 +3110,12 @@ impl TransferReader {
     pub fn get_context(
         &self,
         theName: &str,
-        theType: &crate::ffi::HandleStandardType,
-        theCtx: &mut crate::ffi::HandleStandardTransient,
+        theType: &crate::ffi_types::HandleStandardType,
+        theCtx: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_get_context(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_get_context(
                 self as *const Self,
                 c_theName.as_ptr(),
                 theType,
@@ -2905,11 +3127,11 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:105 - `XSControl_TransferReader::Context()`
     /// Returns (modifiable) the whole definition of Context
     /// Rather for internal use (ex.: preparing and setting in once)
-    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn context(&mut self) -> &mut crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::XSControl_TransferReader_context(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_context(self as *mut Self),
+            ))
         }
     }
 
@@ -2918,7 +3140,7 @@ impl TransferReader {
     pub fn set_file_name(&mut self, theName: &str) {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_file_name(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_file_name(
                 self as *mut Self,
                 c_theName.as_ptr(),
             )
@@ -2930,7 +3152,7 @@ impl TransferReader {
     pub fn file_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_TransferReader_file_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_file_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -2945,7 +3167,7 @@ impl TransferReader {
     /// +2 working data (model, context, transfer process)
     pub fn clear(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_clear(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_clear(self as *mut Self, theMode)
         })
     }
 
@@ -2953,11 +3175,13 @@ impl TransferReader {
     /// Returns the currently used TransientProcess
     /// It is computed from the model by TransferReadRoots, or by
     /// BeginTransferRead
-    pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
+    pub fn transient_process(&self) -> &crate::ffi_types::HandleTransferTransientProcess {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferReader_transient_process(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_transient_process(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2965,9 +3189,15 @@ impl TransferReader {
     /// Forces the TransientProcess
     /// Remark : it also changes the Model and the Actor, from those
     /// recorded in the new TransientProcess
-    pub fn set_transient_process(&mut self, theTP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transient_process(
+        &mut self,
+        theTP: &crate::ffi_types::HandleTransferTransientProcess,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_set_transient_process(self as *mut Self, theTP)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_set_transient_process(
+                self as *mut Self,
+                theTP,
+            )
         })
     }
 
@@ -2976,9 +3206,12 @@ impl TransferReader {
     /// This result is recorded as a ResultFromModel, taken from
     /// the TransientProcess
     /// Returns True if a result is available, False else
-    pub fn record_result(&mut self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn record_result(&mut self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_record_result(self as *mut Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_record_result(
+                self as *mut Self,
+                theEnt,
+            )
         })
     }
 
@@ -2986,28 +3219,38 @@ impl TransferReader {
     /// Returns True if a final result is recorded for an entity
     /// Remark that it can bring no effective result if transfer has
     /// completely failed (FinalResult brings only fail messages ...)
-    pub fn is_recorded(&self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_recorded(&self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_is_recorded(self as *const Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_is_recorded(
+                self as *const Self,
+                theEnt,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:146 - `XSControl_TransferReader::HasResult()`
     /// Returns True if a final result is recorded AND BRINGS AN
     /// EFFECTIVE RESULT (else, it brings only fail messages)
-    pub fn has_result(&self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn has_result(&self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_has_result(self as *const Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_has_result(
+                self as *const Self,
+                theEnt,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:150 - `XSControl_TransferReader::RecordedList()`
     /// Returns the list of entities to which a final result is
     /// attached (i.e. processed by RecordResult)
-    pub fn recorded_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    pub fn recorded_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_recorded_list(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_recorded_list(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3017,17 +3260,20 @@ impl TransferReader {
     /// result at all is available (typically : case not implemented)
     /// It is not an error, but it gives a specific status : Skipped
     /// Returns True if done, False if <ent> is not in starting model
-    pub fn skip(&mut self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn skip(&mut self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_skip(self as *mut Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_skip(self as *mut Self, theEnt)
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:159 - `XSControl_TransferReader::IsSkipped()`
     /// Returns True if an entity is noted as skipped
-    pub fn is_skipped(&self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_skipped(&self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_is_skipped(self as *const Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_is_skipped(
+                self as *const Self,
+                theEnt,
+            )
         })
     }
 
@@ -3035,9 +3281,12 @@ impl TransferReader {
     /// Returns True if an entity has been asked for transfert, hence
     /// it is marked, as : Recorded (a computation has ran, with or
     /// without an effective result), or Skipped (case ignored)
-    pub fn is_marked(&self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_marked(&self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_is_marked(self as *const Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_is_marked(
+                self as *const Self,
+                theEnt,
+            )
         })
     }
 
@@ -3045,11 +3294,14 @@ impl TransferReader {
     /// Returns the final result recorded for an entity, as such
     pub fn final_result(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel> {
+        theEnt: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_final_result(self as *const Self, theEnt),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_final_result(
+                    self as *const Self,
+                    theEnt,
+                ),
             ))
         }
     }
@@ -3059,11 +3311,11 @@ impl TransferReader {
     /// or an empty string if not recorded
     pub fn final_entity_label(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_TransferReader_final_entity_label(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_final_entity_label(
                     self as *const Self,
                     theEnt,
                 ),
@@ -3076,9 +3328,12 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:177 - `XSControl_TransferReader::FinalEntityNumber()`
     /// Returns the number attached to the entity recorded for final,
     /// or zero if not recorded (looks in the ResultFromModel)
-    pub fn final_entity_number(&self, theEnt: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn final_entity_number(&self, theEnt: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_final_entity_number(self as *const Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_final_entity_number(
+                self as *const Self,
+                theEnt,
+            )
         })
     }
 
@@ -3088,10 +3343,10 @@ impl TransferReader {
     pub fn result_from_number(
         &self,
         theNum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_result_from_number(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_result_from_number(
                     self as *const Self,
                     theNum,
                 ),
@@ -3104,11 +3359,14 @@ impl TransferReader {
     /// Null Handle if no result or result not transient
     pub fn transient_result(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        theEnt: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_transient_result(self as *const Self, theEnt),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_transient_result(
+                    self as *const Self,
+                    theEnt,
+                ),
             ))
         }
     }
@@ -3118,11 +3376,14 @@ impl TransferReader {
     /// Null Shape if no result or result not a shape
     pub fn shape_result(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_shape_result(self as *const Self, theEnt),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_shape_result(
+                    self as *const Self,
+                    theEnt,
+                ),
             ))
         }
     }
@@ -3137,11 +3398,15 @@ impl TransferReader {
     /// Returns True when done, False if nothing was to clear
     pub fn clear_result(
         &mut self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         theMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_clear_result(self as *mut Self, theEnt, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_clear_result(
+                self as *mut Self,
+                theEnt,
+                theMode,
+            )
         })
     }
 
@@ -3156,12 +3421,12 @@ impl TransferReader {
     /// Returns a Null Handle if <res> not recorded
     pub fn entity_from_result(
         &self,
-        theRes: &crate::ffi::HandleStandardTransient,
+        theRes: &crate::ffi_types::HandleStandardTransient,
         theMode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_entity_from_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_entity_from_result(
                     self as *const Self,
                     theRes,
                     theMode,
@@ -3177,10 +3442,10 @@ impl TransferReader {
         &self,
         theRes: &crate::topo_ds::Shape,
         theMode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_entity_from_shape_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_entity_from_shape_result(
                     self as *const Self,
                     theRes,
                     theMode,
@@ -3195,12 +3460,12 @@ impl TransferReader {
     /// but is optimised
     pub fn entities_from_shape_list(
         &self,
-        theRes: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        theRes: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
         theMode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_entities_from_shape_list(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_entities_from_shape_list(
                     self as *const Self,
                     theRes,
                     theMode,
@@ -3224,12 +3489,12 @@ impl TransferReader {
     /// 2  for <ent> and subtransferts at all levels
     pub fn check_list(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         theLevel: i32,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_check_list(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_check_list(
                     self as *const Self,
                     theEnt,
                     theLevel,
@@ -3245,11 +3510,15 @@ impl TransferReader {
     /// Returns False if <ent> is not recorded
     pub fn has_checks(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         FailsOnly: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_has_checks(self as *const Self, theEnt, FailsOnly)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_has_checks(
+                self as *const Self,
+                theEnt,
+                FailsOnly,
+            )
         })
     }
 
@@ -3269,13 +3538,13 @@ impl TransferReader {
     /// Remark : result True and check=0 will give an empty list
     pub fn checked_list(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         WithCheck: crate::interface::CheckStatus,
         theResult: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_checked_list(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_checked_list(
                     self as *const Self,
                     theEnt,
                     WithCheck.into(),
@@ -3291,16 +3560,19 @@ impl TransferReader {
     /// (the Model, the Actor for Read)
     pub fn begin_transfer(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_begin_transfer(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_begin_transfer(self as *mut Self)
         })
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:275 - `XSControl_TransferReader::Recognize()`
     /// Tells if an entity is recognized as a valid candidate for
     /// Transfer. Calls method Recognize from the Actor (if known)
-    pub fn recognize(&mut self, theEnt: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, theEnt: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_recognize(self as *mut Self, theEnt)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_recognize(
+                self as *mut Self,
+                theEnt,
+            )
         })
     }
 
@@ -3311,12 +3583,12 @@ impl TransferReader {
     /// If <rec> is True (D), the result is recorded by RecordResult
     pub fn transfer_one(
         &mut self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         theRec: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_transfer_one(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_transfer_one(
                 self as *mut Self,
                 theEnt,
                 theRec,
@@ -3332,12 +3604,12 @@ impl TransferReader {
     /// If <rec> is True (D), the results are recorded by RecordResult
     pub fn transfer_list(
         &mut self,
-        theList: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        theList: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         theRec: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_transfer_list(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_transfer_list(
                 self as *mut Self,
                 theList,
                 theRec,
@@ -3358,7 +3630,7 @@ impl TransferReader {
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_transfer_roots(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_transfer_roots(
                 self as *mut Self,
                 theGraph,
                 theProgress,
@@ -3369,9 +3641,17 @@ impl TransferReader {
     /// **Source:** `XSControl_TransferReader.hxx`:306 - `XSControl_TransferReader::TransferClear()`
     /// Clears the results attached to an entity
     /// if <ents> equates the starting model, clears all results
-    pub fn transfer_clear(&mut self, theEnt: &crate::ffi::HandleStandardTransient, theLevel: i32) {
+    pub fn transfer_clear(
+        &mut self,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
+        theLevel: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_transfer_clear(self as *mut Self, theEnt, theLevel)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_transfer_clear(
+                self as *mut Self,
+                theEnt,
+                theLevel,
+            )
         })
     }
 
@@ -3380,12 +3660,12 @@ impl TransferReader {
     /// <mode>.  See PrintStatsProcess for details
     pub fn print_stats(
         &self,
-        theStream: &mut crate::ffi::Standard_OStream,
+        theStream: &mut crate::ffi_types::Standard_OStream,
         theWhat: i32,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_print_stats(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_print_stats(
                 self as *const Self,
                 theStream,
                 theWhat,
@@ -3400,7 +3680,9 @@ impl TransferReader {
     pub fn last_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_last_check_list(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_last_check_list(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3413,10 +3695,10 @@ impl TransferReader {
     pub fn last_transfer_list(
         &self,
         theRoots: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_last_transfer_list(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_last_transfer_list(
                     self as *const Self,
                     theRoots,
                 ),
@@ -3433,21 +3715,25 @@ impl TransferReader {
     pub fn shape_result_list(
         &mut self,
         theRec: bool,
-    ) -> &crate::ffi::HandleTopToolsHSequenceOfShape {
+    ) -> &crate::ffi_types::HandleTopToolsHSequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferReader_shape_result_list(
-                self as *mut Self,
-                theRec,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_shape_result_list(
+                    self as *mut Self,
+                    theRec,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:375 - `XSControl_TransferReader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferReader_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3483,12 +3769,14 @@ impl TransferReader {
     /// 3 : ListByItem        (count + entity numbers)
     /// 4 : EntitiesByItem    (count + entity numbers and labels)
     pub fn print_stats_process(
-        theTP: &crate::ffi::HandleTransferTransientProcess,
+        theTP: &crate::ffi_types::HandleTransferTransientProcess,
         theWhat: i32,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_print_stats_process(theTP, theWhat, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_print_stats_process(
+                theTP, theWhat, theMode,
+            )
         })
     }
 
@@ -3496,13 +3784,13 @@ impl TransferReader {
     /// Works as PrintStatsProcess, but displays data only on the
     /// entities which are in <list> (filter)
     pub fn print_stats_on_list(
-        theTP: &crate::ffi::HandleTransferTransientProcess,
-        theList: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        theTP: &crate::ffi_types::HandleTransferTransientProcess,
+        theList: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         theWhat: i32,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_print_stats_on_list(
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_print_stats_on_list(
                 theTP, theList, theWhat, theMode,
             )
         })
@@ -3512,7 +3800,7 @@ impl TransferReader {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_TransferReader_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3520,18 +3808,22 @@ impl TransferReader {
     }
 
     /// **Source:** `XSControl_TransferReader.hxx`:375 - `XSControl_TransferReader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferReader_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_TransferReader_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3539,7 +3831,9 @@ impl TransferReader {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_TransferReader_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3547,25 +3841,31 @@ impl TransferReader {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlTransferReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferReader_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3573,7 +3873,9 @@ impl TransferReader {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_TransferReader_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3586,67 +3888,75 @@ impl TransferReader {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferReader_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferReader_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlTransferReader;
+pub use crate::ffi_types::HandleXSControlTransferReader;
 
 unsafe impl crate::CppDeletable for HandleXSControlTransferReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlTransferReader_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_destructor(ptr);
     }
 }
 
 impl HandleXSControlTransferReader {
     /// Dereference this Handle to access the underlying XSControl_TransferReader
-    pub fn get(&self) -> &crate::ffi::XSControl_TransferReader {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_TransferReader {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlTransferReader_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_TransferReader
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_TransferReader {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_TransferReader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlTransferReader_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<XSControl_TransferReader> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlTransferReader_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferReader_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3662,11 +3972,11 @@ impl HandleXSControlTransferReader {
 /// It works with a Controller (which itself can work with an
 /// Actor to Write) and a FinderProcess. It records results and
 /// checks
-pub use crate::ffi::XSControl_TransferWriter as TransferWriter;
+pub use crate::ffi_types::XSControl_TransferWriter as TransferWriter;
 
 unsafe impl crate::CppDeletable for TransferWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_TransferWriter_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_TransferWriter_destructor(ptr);
     }
 }
 
@@ -3677,44 +3987,54 @@ impl TransferWriter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferWriter_ctor(),
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_ctor(),
             ))
         }
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:52 - `XSControl_TransferWriter::FinderProcess()`
     /// Returns the FinderProcess itself
-    pub fn finder_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
+    pub fn finder_process(&self) -> &crate::ffi_types::HandleTransferFinderProcess {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferWriter_finder_process(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_finder_process(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:55 - `XSControl_TransferWriter::SetFinderProcess()`
     /// Sets a new FinderProcess and forgets the former one
-    pub fn set_finder_process(&mut self, theFP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_finder_process(&mut self, theFP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_set_finder_process(self as *mut Self, theFP)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_set_finder_process(
+                self as *mut Self,
+                theFP,
+            )
         })
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:58 - `XSControl_TransferWriter::Controller()`
     /// Returns the currently used Controller
-    pub fn controller(&self) -> &crate::ffi::HandleXSControlController {
+    pub fn controller(&self) -> &crate::ffi_types::HandleXSControlController {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferWriter_controller(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_controller(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:61 - `XSControl_TransferWriter::SetController()`
     /// Sets a new Controller, also sets a new FinderProcess
-    pub fn set_controller(&mut self, theCtl: &crate::ffi::HandleXSControlController) {
+    pub fn set_controller(&mut self, theCtl: &crate::ffi_types::HandleXSControlController) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_set_controller(self as *mut Self, theCtl)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_set_controller(
+                self as *mut Self,
+                theCtl,
+            )
         })
     }
 
@@ -3724,7 +4044,7 @@ impl TransferWriter {
     /// -1 create a new FinderProcess
     pub fn clear(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_clear(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_clear(self as *mut Self, theMode)
         })
     }
 
@@ -3735,7 +4055,7 @@ impl TransferWriter {
     /// (parameters suited for each norm / transfer case)
     pub fn transfer_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_transfer_mode(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_transfer_mode(self as *const Self)
         })
     }
 
@@ -3743,7 +4063,10 @@ impl TransferWriter {
     /// Changes the Transfer Mode
     pub fn set_transfer_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_set_transfer_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_set_transfer_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
@@ -3752,7 +4075,11 @@ impl TransferWriter {
     /// See PrintStatsProcess for details
     pub fn print_stats(&self, theWhat: i32, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_print_stats(self as *const Self, theWhat, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_print_stats(
+                self as *const Self,
+                theWhat,
+                theMode,
+            )
         })
     }
 
@@ -3761,9 +4088,15 @@ impl TransferWriter {
     /// candidate for a transfer to a model
     /// Asks the Controller (RecognizeWriteTransient)
     /// If <obj> is a HShape, calls RecognizeShape
-    pub fn recognize_transient(&mut self, theObj: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize_transient(
+        &mut self,
+        theObj: &crate::ffi_types::HandleStandardTransient,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_recognize_transient(self as *mut Self, theObj)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_recognize_transient(
+                self as *mut Self,
+                theObj,
+            )
         })
     }
 
@@ -3775,12 +4108,12 @@ impl TransferWriter {
     /// transfer badly initialised
     pub fn transfer_write_transient(
         &mut self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
-        theObj: &crate::ffi::HandleStandardTransient,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        theObj: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_transfer_write_transient(
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_transfer_write_transient(
                 self as *mut Self,
                 theModel,
                 theObj,
@@ -3795,7 +4128,10 @@ impl TransferWriter {
     /// Asks the Controller (RecognizeWriteShape)
     pub fn recognize_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_recognize_shape(self as *mut Self, theShape)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_recognize_shape(
+                self as *mut Self,
+                theShape,
+            )
         })
     }
 
@@ -3807,12 +4143,12 @@ impl TransferWriter {
     /// transfer badly initialised
     pub fn transfer_write_shape(
         &mut self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
         theShape: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_transfer_write_shape(
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_transfer_write_shape(
                 self as *mut Self,
                 theModel,
                 theShape,
@@ -3828,7 +4164,9 @@ impl TransferWriter {
     pub fn check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferWriter_check_list(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_check_list(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3839,11 +4177,11 @@ impl TransferWriter {
     /// instead of keeping the original Mapper, whenever known
     pub fn result_check_list(
         &self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferWriter_result_check_list(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_result_check_list(
                     self as *const Self,
                     theModel,
                 ),
@@ -3852,11 +4190,13 @@ impl TransferWriter {
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferWriter_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3864,7 +4204,7 @@ impl TransferWriter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_TransferWriter_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3872,18 +4212,22 @@ impl TransferWriter {
     }
 
     /// **Source:** `XSControl_TransferWriter.hxx`:126 - `XSControl_TransferWriter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_TransferWriter_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_TransferWriter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3891,7 +4235,9 @@ impl TransferWriter {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_TransferWriter_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3899,25 +4245,31 @@ impl TransferWriter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlTransferWriter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlTransferWriter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_TransferWriter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3925,7 +4277,9 @@ impl TransferWriter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_TransferWriter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3938,67 +4292,75 @@ impl TransferWriter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_TransferWriter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_TransferWriter_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlTransferWriter;
+pub use crate::ffi_types::HandleXSControlTransferWriter;
 
 unsafe impl crate::CppDeletable for HandleXSControlTransferWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlTransferWriter_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_destructor(ptr);
     }
 }
 
 impl HandleXSControlTransferWriter {
     /// Dereference this Handle to access the underlying XSControl_TransferWriter
-    pub fn get(&self) -> &crate::ffi::XSControl_TransferWriter {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_TransferWriter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlTransferWriter_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_TransferWriter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_TransferWriter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_TransferWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlTransferWriter_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<XSControl_TransferWriter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlTransferWriter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlTransferWriter_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4019,11 +4381,11 @@ impl HandleXSControlTransferWriter {
 /// Also it gives some helps on some data structures from XSTEP,
 /// such as printing on standard trace file, recignizing most
 /// currently used auxiliary types (Binder,Mapper ...)
-pub use crate::ffi::XSControl_Utils as Utils;
+pub use crate::ffi_types::XSControl_Utils as Utils;
 
 unsafe impl crate::CppDeletable for Utils {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Utils_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Utils_destructor(ptr);
     }
 }
 
@@ -4033,7 +4395,9 @@ impl Utils {
     /// distinct "Utils" set per separate engine
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_ctor(),
+            ))
         }
     }
 
@@ -4043,7 +4407,10 @@ impl Utils {
     pub fn trace_line(&self, line: &str) {
         let c_line = std::ffi::CString::new(line).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_trace_line(self as *const Self, c_line.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Utils_trace_line(
+                self as *const Self,
+                c_line.as_ptr(),
+            )
         })
     }
 
@@ -4052,20 +4419,20 @@ impl Utils {
     /// File. <lines> can be a HAscii/ExtendedString (produces a print
     /// without ending line) or a HSequence or HArray1 Of ..
     /// (one new line per item)
-    pub fn trace_lines(&self, lines: &crate::ffi::HandleStandardTransient) {
+    pub fn trace_lines(&self, lines: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_trace_lines(self as *const Self, lines)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_trace_lines(self as *const Self, lines)
         })
     }
 
     /// **Source:** `XSControl_Utils.hxx`:70 - `XSControl_Utils::IsKind()`
     pub fn is_kind(
         &self,
-        item: &crate::ffi::HandleStandardTransient,
-        what: &crate::ffi::HandleStandardType,
+        item: &crate::ffi_types::HandleStandardTransient,
+        what: &crate::ffi_types::HandleStandardType,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_is_kind(self as *const Self, item, what)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_is_kind(self as *const Self, item, what)
         })
     }
 
@@ -4078,15 +4445,17 @@ impl Utils {
     /// If <nopk> is True, returns class name without package
     pub fn type_name(
         &self,
-        item: &crate::ffi::HandleStandardTransient,
+        item: &crate::ffi_types::HandleStandardTransient,
         nopk: bool,
     ) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::XSControl_Utils_type_name(
-                self as *const Self,
-                item,
-                nopk,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_type_name(
+                    self as *const Self,
+                    item,
+                    nopk,
+                ),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -4095,35 +4464,43 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:82 - `XSControl_Utils::TraValue()`
     pub fn tra_value(
         &self,
-        list: &crate::ffi::HandleStandardTransient,
+        list: &crate::ffi_types::HandleStandardTransient,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_tra_value(
-                self as *const Self,
-                list,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_tra_value(
+                    self as *const Self,
+                    list,
+                    num,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:85 - `XSControl_Utils::NewSeqTra()`
-    pub fn new_seq_tra(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    pub fn new_seq_tra(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_new_seq_tra(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_tra(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:87 - `XSControl_Utils::AppendTra()`
     pub fn append_tra(
         &self,
-        seqval: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        traval: &crate::ffi::HandleStandardTransient,
+        seqval: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+        traval: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_append_tra(self as *const Self, seqval, traval)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_append_tra(
+                self as *const Self,
+                seqval,
+                traval,
+            )
         })
     }
 
@@ -4138,15 +4515,17 @@ impl Utils {
         ss: i32,
     ) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::XSControl_Utils_date_string(
-                self as *const Self,
-                yy,
-                mm,
-                dd,
-                hh,
-                mn,
-                ss,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_date_string(
+                    self as *const Self,
+                    yy,
+                    mm,
+                    dd,
+                    hh,
+                    mn,
+                    ss,
+                ),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -4165,7 +4544,7 @@ impl Utils {
     ) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_date_values(
+            crate::ffi_extern_TKXSBase::XSControl_Utils_date_values(
                 self as *const Self,
                 c_text.as_ptr(),
                 yy,
@@ -4181,18 +4560,9 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:105 - `XSControl_Utils::ToCString()`
     pub fn to_c_string_handletcollectionhasciistring(
         &self,
-        strval: &crate::ffi::HandleTCollectionHAsciiString,
+        strval: &crate::ffi_types::HandleTCollectionHAsciiString,
     ) -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_Utils_to_c_string_handletcollectionhasciistring(
-                    self as *const Self,
-                    strval,
-                ),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
+        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Utils_to_c_string_handletcollectionhasciistring(self as *const Self, strval))) }.to_string_lossy().into_owned()
     }
 
     /// **Source:** `XSControl_Utils.hxx`:107 - `XSControl_Utils::ToCString()`
@@ -4202,7 +4572,10 @@ impl Utils {
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_Utils_to_c_string_asciistring(self as *const Self, strval),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_to_c_string_asciistring(
+                    self as *const Self,
+                    strval,
+                ),
             ))
         }
         .to_string_lossy()
@@ -4213,11 +4586,11 @@ impl Utils {
     pub fn to_h_string_charptr(
         &self,
         strcon: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         let c_strcon = std::ffi::CString::new(strcon).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_to_h_string_charptr(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_to_h_string_charptr(
                     self as *const Self,
                     c_strcon.as_ptr(),
                 ),
@@ -4229,20 +4602,22 @@ impl Utils {
     pub fn to_a_string(&self, strcon: &str) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         let c_strcon = std::ffi::CString::new(strcon).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_to_a_string(
-                self as *const Self,
-                c_strcon.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_to_a_string(
+                    self as *const Self,
+                    c_strcon.as_ptr(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:114 - `XSControl_Utils::ToEString()`
     pub unsafe fn to_e_string_handletcollectionhextendedstring(
         &self,
-        strval: &crate::ffi::HandleTCollectionHExtendedString,
+        strval: &crate::ffi_types::HandleTCollectionHExtendedString,
     ) -> *const u16 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_to_e_string_handletcollectionhextendedstring(
+            crate::ffi_extern_TKXSBase::XSControl_Utils_to_e_string_handletcollectionhextendedstring(
                 self as *const Self,
                 strval,
             )
@@ -4255,7 +4630,10 @@ impl Utils {
         strval: &crate::t_collection::ExtendedString,
     ) -> *const u16 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_to_e_string_extendedstring(self as *const Self, strval)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_to_e_string_extendedstring(
+                self as *const Self,
+                strval,
+            )
         })
     }
 
@@ -4263,10 +4641,13 @@ impl Utils {
     pub unsafe fn to_h_string_char16ptr(
         &self,
         strcon: *const u16,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_to_h_string_char16ptr(self as *const Self, strcon),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_to_h_string_char16ptr(
+                    self as *const Self,
+                    strcon,
+                ),
             ))
         }
     }
@@ -4277,10 +4658,12 @@ impl Utils {
         strcon: *const u16,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_to_x_string(
-                self as *const Self,
-                strcon,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_to_x_string(
+                    self as *const Self,
+                    strcon,
+                ),
+            ))
         }
     }
 
@@ -4288,14 +4671,17 @@ impl Utils {
     pub unsafe fn ascii_to_extended(&self, str: &str) -> *const u16 {
         let c_str = std::ffi::CString::new(str).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_ascii_to_extended(self as *const Self, c_str.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Utils_ascii_to_extended(
+                self as *const Self,
+                c_str.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `XSControl_Utils.hxx`:125 - `XSControl_Utils::IsAscii()`
     pub unsafe fn is_ascii(&self, str: *const u16) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_is_ascii(self as *const Self, str)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_is_ascii(self as *const Self, str)
         })
     }
 
@@ -4303,7 +4689,10 @@ impl Utils {
     pub unsafe fn extended_to_ascii(&self, str: *const u16) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_Utils_extended_to_ascii(self as *const Self, str),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_extended_to_ascii(
+                    self as *const Self,
+                    str,
+                ),
             ))
         }
         .to_string_lossy()
@@ -4313,15 +4702,17 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:129 - `XSControl_Utils::CStrValue()`
     pub fn c_str_value(
         &self,
-        list: &crate::ffi::HandleStandardTransient,
+        list: &crate::ffi_types::HandleStandardTransient,
         num: i32,
     ) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::XSControl_Utils_c_str_value(
-                self as *const Self,
-                list,
-                num,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_c_str_value(
+                    self as *const Self,
+                    list,
+                    num,
+                ),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -4330,21 +4721,21 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:132 - `XSControl_Utils::EStrValue()`
     pub unsafe fn e_str_value(
         &self,
-        list: &crate::ffi::HandleStandardTransient,
+        list: &crate::ffi_types::HandleStandardTransient,
         num: i32,
     ) -> *const u16 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_e_str_value(self as *const Self, list, num)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_e_str_value(self as *const Self, list, num)
         })
     }
 
     /// **Source:** `XSControl_Utils.hxx`:135 - `XSControl_Utils::NewSeqCStr()`
     pub fn new_seq_c_str(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_new_seq_c_str(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_c_str(self as *const Self),
             ))
         }
     }
@@ -4352,22 +4743,26 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:137 - `XSControl_Utils::AppendCStr()`
     pub fn append_c_str(
         &self,
-        seqval: &crate::ffi::HandleTColStdHSequenceOfHAsciiString,
+        seqval: &crate::ffi_types::HandleTColStdHSequenceOfHAsciiString,
         strval: &str,
     ) {
         let c_strval = std::ffi::CString::new(strval).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_append_c_str(self as *const Self, seqval, c_strval.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Utils_append_c_str(
+                self as *const Self,
+                seqval,
+                c_strval.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `XSControl_Utils.hxx`:140 - `XSControl_Utils::NewSeqEStr()`
     pub fn new_seq_e_str(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_new_seq_e_str(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_e_str(self as *const Self),
             ))
         }
     }
@@ -4375,11 +4770,15 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:142 - `XSControl_Utils::AppendEStr()`
     pub unsafe fn append_e_str(
         &self,
-        seqval: &crate::ffi::HandleTColStdHSequenceOfHExtendedString,
+        seqval: &crate::ffi_types::HandleTColStdHSequenceOfHExtendedString,
         strval: *const u16,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_append_e_str(self as *const Self, seqval, strval)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_append_e_str(
+                self as *const Self,
+                seqval,
+                strval,
+            )
         })
     }
 
@@ -4387,11 +4786,14 @@ impl Utils {
     /// Converts a list of Shapes to a Compound (a kind of Shape)
     pub fn compound_from_seq(
         &self,
-        seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        seqval: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_compound_from_seq(self as *const Self, seqval),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_compound_from_seq(
+                    self as *const Self,
+                    seqval,
+                ),
             ))
         }
     }
@@ -4408,7 +4810,11 @@ impl Utils {
         compound: bool,
     ) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_shape_type(self as *const Self, shape, compound)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_shape_type(
+                self as *const Self,
+                shape,
+                compound,
+            )
         }))
         .unwrap()
     }
@@ -4432,7 +4838,7 @@ impl Utils {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_sorted_compound(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_sorted_compound(
                     self as *const Self,
                     shape,
                     type_.into(),
@@ -4446,23 +4852,27 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:171 - `XSControl_Utils::ShapeValue()`
     pub fn shape_value(
         &self,
-        seqv: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        seqv: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
         num: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_shape_value(
-                self as *const Self,
-                seqv,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_shape_value(
+                    self as *const Self,
+                    seqv,
+                    num,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:174 - `XSControl_Utils::NewSeqShape()`
-    pub fn new_seq_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+    pub fn new_seq_shape(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_new_seq_shape(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_new_seq_shape(self as *const Self),
             ))
         }
     }
@@ -4470,11 +4880,15 @@ impl Utils {
     /// **Source:** `XSControl_Utils.hxx`:176 - `XSControl_Utils::AppendShape()`
     pub fn append_shape(
         &self,
-        seqv: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        seqv: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
         shape: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Utils_append_shape(self as *const Self, seqv, shape)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_append_shape(
+                self as *const Self,
+                seqv,
+                shape,
+            )
         })
     }
 
@@ -4487,10 +4901,14 @@ impl Utils {
         &self,
         shape: &crate::topo_ds::Shape,
         hs: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_shape_binder(self as *const Self, shape, hs),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_shape_binder(
+                    self as *const Self,
+                    shape,
+                    hs,
+                ),
             ))
         }
     }
@@ -4500,58 +4918,63 @@ impl Utils {
     /// In fact, recognizes ShapeBinder ShapeMapper and HShape
     pub fn binder_shape(
         &self,
-        tr: &crate::ffi::HandleStandardTransient,
+        tr: &crate::ffi_types::HandleStandardTransient,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Utils_binder_shape(self as *const Self, tr),
+                crate::ffi_extern_TKXSBase::XSControl_Utils_binder_shape(self as *const Self, tr),
             ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:191 - `XSControl_Utils::SeqLength()`
-    pub fn seq_length(&self, list: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn seq_length(&self, list: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_seq_length(self as *const Self, list)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_seq_length(self as *const Self, list)
         })
     }
 
     /// **Source:** `XSControl_Utils.hxx`:193 - `XSControl_Utils::SeqToArr()`
     pub fn seq_to_arr(
         &self,
-        seq: &crate::ffi::HandleStandardTransient,
+        seq: &crate::ffi_types::HandleStandardTransient,
         first: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_seq_to_arr(
-                self as *const Self,
-                seq,
-                first,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_seq_to_arr(
+                    self as *const Self,
+                    seq,
+                    first,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:196 - `XSControl_Utils::ArrToSeq()`
     pub fn arr_to_seq(
         &self,
-        arr: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        arr: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Utils_arr_to_seq(
-                self as *const Self,
-                arr,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Utils_arr_to_seq(self as *const Self, arr),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Utils.hxx`:198 - `XSControl_Utils::SeqIntValue()`
     pub fn seq_int_value(
         &self,
-        list: &crate::ffi::HandleTColStdHSequenceOfInteger,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfInteger,
         num: i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Utils_seq_int_value(self as *const Self, list, num)
+            crate::ffi_extern_TKXSBase::XSControl_Utils_seq_int_value(
+                self as *const Self,
+                list,
+                num,
+            )
         })
     }
 }
@@ -4571,25 +4994,29 @@ impl Utils {
 /// This class provides a common form for this. It also provides
 /// a default implementation (locally recorded variables in a
 /// dictionary), but which is aimed to be redefined
-pub use crate::ffi::XSControl_Vars as Vars;
+pub use crate::ffi_types::XSControl_Vars as Vars;
 
 unsafe impl crate::CppDeletable for Vars {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Vars_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Vars_destructor(ptr);
     }
 }
 
 impl Vars {
     /// **Source:** `XSControl_Vars.hxx`:51 - `XSControl_Vars::XSControl_Vars()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `XSControl_Vars.hxx`:53 - `XSControl_Vars::Set()`
-    pub fn set(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
+    pub fn set(&mut self, name: &str, val: &crate::ffi_types::HandleStandardTransient) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_set(self as *mut Self, c_name.as_ptr(), val)
         })
     }
 
@@ -4597,12 +5024,11 @@ impl Vars {
     pub fn get(
         &self,
         name: &mut *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get(self as *const Self, name),
+            ))
         }
     }
 
@@ -4610,12 +5036,11 @@ impl Vars {
     pub fn get_geom(
         &self,
         name: &mut *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get_geom(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_geom(self as *const Self, name),
+            ))
         }
     }
 
@@ -4623,12 +5048,11 @@ impl Vars {
     pub fn get_curve2d(
         &self,
         name: &mut *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get_curve2d(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_curve2d(self as *const Self, name),
+            ))
         }
     }
 
@@ -4636,12 +5060,11 @@ impl Vars {
     pub fn get_curve(
         &self,
         name: &mut *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get_curve(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_curve(self as *const Self, name),
+            ))
         }
     }
 
@@ -4649,12 +5072,11 @@ impl Vars {
     pub fn get_surface(
         &self,
         name: &mut *const std::ffi::c_char,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get_surface(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_surface(self as *const Self, name),
+            ))
         }
     }
 
@@ -4662,7 +5084,11 @@ impl Vars {
     pub fn set_point(&mut self, name: &str, val: &crate::gp::Pnt) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_set_point(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_set_point(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -4670,14 +5096,18 @@ impl Vars {
     pub fn set_point2d(&mut self, name: &str, val: &crate::gp::Pnt2d) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_set_point2d(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_set_point2d(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
         })
     }
 
     /// **Source:** `XSControl_Vars.hxx`:70 - `XSControl_Vars::GetPoint()`
     pub fn get_point(&self, name: &mut *const std::ffi::c_char, pnt: &mut crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_get_point(self as *const Self, name, pnt)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_get_point(self as *const Self, name, pnt)
         })
     }
 
@@ -4688,7 +5118,7 @@ impl Vars {
         pnt: &mut crate::gp::Pnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_get_point2d(self as *const Self, name, pnt)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_get_point2d(self as *const Self, name, pnt)
         })
     }
 
@@ -4696,7 +5126,11 @@ impl Vars {
     pub fn set_shape(&mut self, name: &str, val: &crate::topo_ds::Shape) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_set_shape(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_set_shape(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -4706,40 +5140,43 @@ impl Vars {
         name: &mut *const std::ffi::c_char,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_get_shape(
-                self as *const Self,
-                name,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_shape(self as *const Self, name),
+            ))
         }
     }
 
     /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_Vars_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Vars_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::XSControl_Vars_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `XSControl_Vars.hxx`:78 - `XSControl_Vars::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::XSControl_Vars_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Vars_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_Vars_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::XSControl_Vars_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4748,34 +5185,42 @@ impl Vars {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::XSControl_Vars_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlVars> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlVars> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Vars_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Vars_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4783,7 +5228,7 @@ impl Vars {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_Vars_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4796,58 +5241,72 @@ impl Vars {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Vars_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_Vars_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlVars;
+pub use crate::ffi_types::HandleXSControlVars;
 
 unsafe impl crate::CppDeletable for HandleXSControlVars {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlVars_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlVars_destructor(ptr);
     }
 }
 
 impl HandleXSControlVars {
     /// Dereference this Handle to access the underlying XSControl_Vars
-    pub fn get(&self) -> &crate::ffi::XSControl_Vars {
-        unsafe { &*crate::check_result(crate::ffi::HandleXSControlVars_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::XSControl_Vars {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlVars_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying XSControl_Vars
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_Vars {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_Vars {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlVars_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlVars_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<XSControl_Vars> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlVars_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKXSBase::HandleXSControlVars_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4866,11 +5325,11 @@ impl HandleXSControlVars {
 /// are given by the user, according to the transfer to be
 /// i.e. it is interpreted by the Actors
 /// Each item is accessed by a Name
-pub use crate::ffi::XSControl_WorkSession as WorkSession;
+pub use crate::ffi_types::XSControl_WorkSession as WorkSession;
 
 unsafe impl crate::CppDeletable for WorkSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_WorkSession_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_WorkSession_destructor(ptr);
     }
 }
 
@@ -4878,7 +5337,9 @@ impl WorkSession {
     /// **Source:** `XSControl_WorkSession.hxx`:52 - `XSControl_WorkSession::XSControl_WorkSession()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_WorkSession_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_ctor(),
+            ))
         }
     }
 
@@ -4890,7 +5351,7 @@ impl WorkSession {
     /// mode = 7 to clear transfers, results
     pub fn clear_data(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_clear_data(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_clear_data(self as *mut Self, theMode)
         })
     }
 
@@ -4903,15 +5364,21 @@ impl WorkSession {
     pub fn select_norm(&mut self, theNormName: &str) -> bool {
         let c_theNormName = std::ffi::CString::new(theNormName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_select_norm(self as *mut Self, c_theNormName.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_select_norm(
+                self as *mut Self,
+                c_theNormName.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:71 - `XSControl_WorkSession::SetController()`
     /// Selects a Norm defined by its Controller itself
-    pub fn set_controller(&mut self, theCtl: &crate::ffi::HandleXSControlController) {
+    pub fn set_controller(&mut self, theCtl: &crate::ffi_types::HandleXSControlController) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_controller(self as *mut Self, theCtl)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_controller(
+                self as *mut Self,
+                theCtl,
+            )
         })
     }
 
@@ -4923,7 +5390,10 @@ impl WorkSession {
     pub fn selected_norm(&self, theRsc: bool) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_WorkSession_selected_norm(self as *const Self, theRsc),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_selected_norm(
+                    self as *const Self,
+                    theRsc,
+                ),
             ))
         }
         .to_string_lossy()
@@ -4932,9 +5402,9 @@ impl WorkSession {
 
     /// **Source:** `XSControl_WorkSession.hxx`:81 - `XSControl_WorkSession::NormAdaptor()`
     /// Returns the norm controller itself
-    pub fn norm_adaptor(&self) -> &crate::ffi::HandleXSControlController {
+    pub fn norm_adaptor(&self) -> &crate::ffi_types::HandleXSControlController {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_norm_adaptor(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_WorkSession_norm_adaptor(
                 self as *const Self,
             )))
         }
@@ -4943,18 +5413,23 @@ impl WorkSession {
     /// **Source:** `XSControl_WorkSession.hxx`:85 - `XSControl_WorkSession::Context()`
     /// Returns the current Context List, Null if not defined
     /// The Context is given to the TransientProcess for TransferRead
-    pub fn context(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn context(&self) -> &crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_context(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_WorkSession_context(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:89 - `XSControl_WorkSession::SetAllContext()`
     /// Sets the current Context List, as a whole
     /// Sets it to the TransferReader
-    pub fn set_all_context(&mut self, theContext: &crate::ffi::XSControl_WorkSessionMap) {
+    pub fn set_all_context(&mut self, theContext: &crate::ffi_types::XSControl_WorkSessionMap) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_all_context(self as *mut Self, theContext)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_all_context(
+                self as *mut Self,
+                theContext,
+            )
         })
     }
 
@@ -4962,7 +5437,7 @@ impl WorkSession {
     /// Clears the whole current Context (nullifies it)
     pub fn clear_context(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_clear_context(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_clear_context(self as *mut Self)
         })
     }
 
@@ -4975,10 +5450,10 @@ impl WorkSession {
         &self,
         theNum: i32,
         theWri: bool,
-        theS: &mut crate::ffi::Standard_OStream,
+        theS: &mut crate::ffi_types::Standard_OStream,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_print_transfer_status(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_print_transfer_status(
                 self as *const Self,
                 theNum,
                 theWri,
@@ -4996,34 +5471,42 @@ impl WorkSession {
     /// 5 recreates TransferReader then begins a new transfer
     pub fn init_transfer_reader(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_init_transfer_reader(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_init_transfer_reader(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:111 - `XSControl_WorkSession::SetTransferReader()`
     /// Sets a Transfer Reader, which manages transfers on reading
-    pub fn set_transfer_reader(&mut self, theTR: &crate::ffi::HandleXSControlTransferReader) {
+    pub fn set_transfer_reader(&mut self, theTR: &crate::ffi_types::HandleXSControlTransferReader) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_transfer_reader(self as *mut Self, theTR)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_transfer_reader(
+                self as *mut Self,
+                theTR,
+            )
         })
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:114 - `XSControl_WorkSession::TransferReader()`
     /// Returns the Transfer Reader, Null if not set
-    pub fn transfer_reader(&self) -> &crate::ffi::HandleXSControlTransferReader {
+    pub fn transfer_reader(&self) -> &crate::ffi_types::HandleXSControlTransferReader {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_transfer_reader(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_reader(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:117 - `XSControl_WorkSession::MapReader()`
     /// Returns the TransientProcess(internal data for TransferReader)
-    pub fn map_reader(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    pub fn map_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_map_reader(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_map_reader(self as *const Self),
             ))
         }
     }
@@ -5033,9 +5516,15 @@ impl WorkSession {
     /// defines the relevant read results (forgets the former ones)
     /// Returns True when done, False in case of bad definition, i.e.
     /// if Model from TP differs from that of Session
-    pub fn set_map_reader(&mut self, theTP: &crate::ffi::HandleTransferTransientProcess) -> bool {
+    pub fn set_map_reader(
+        &mut self,
+        theTP: &crate::ffi_types::HandleTransferTransientProcess,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_map_reader(self as *mut Self, theTP)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_map_reader(
+                self as *mut Self,
+                theTP,
+            )
         })
     }
 
@@ -5051,12 +5540,16 @@ impl WorkSession {
     /// <mode> = 20, returns the ResultFromModel
     pub fn result(
         &self,
-        theEnt: &crate::ffi::HandleStandardTransient,
+        theEnt: &crate::ffi_types::HandleStandardTransient,
         theMode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_result(self as *const Self, theEnt, theMode),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_result(
+                    self as *const Self,
+                    theEnt,
+                    theMode,
+                ),
             ))
         }
     }
@@ -5072,11 +5565,11 @@ impl WorkSession {
     /// with no cumulation of former transfers (TransferReadRoots)
     pub fn transfer_read_one(
         &mut self,
-        theEnts: &crate::ffi::HandleStandardTransient,
+        theEnts: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_transfer_read_one(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_read_one(
                 self as *mut Self,
                 theEnts,
                 theProgress,
@@ -5090,7 +5583,10 @@ impl WorkSession {
     /// No cumulation with former calls to TransferReadOne
     pub fn transfer_read_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_transfer_read_roots(self as *mut Self, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_read_roots(
+                self as *mut Self,
+                theProgress,
+            )
         })
     }
 
@@ -5098,21 +5594,25 @@ impl WorkSession {
     /// produces and returns a new Model well conditioned
     /// It is produced by the Norm Controller
     /// It can be Null (if this function is not implemented)
-    pub fn new_model(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_new_model(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_new_model(self as *mut Self),
             ))
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:161 - `XSControl_WorkSession::TransferWriter()`
     /// Returns the Transfer Reader, Null if not set
-    pub fn transfer_writer(&self) -> &crate::ffi::HandleXSControlTransferWriter {
+    pub fn transfer_writer(&self) -> &crate::ffi_types::HandleXSControlTransferWriter {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_transfer_writer(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_writer(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5120,9 +5620,15 @@ impl WorkSession {
     /// Changes the Map Reader, i.e. considers that the new one
     /// defines the relevant read results (forgets the former ones)
     /// Returns True when done, False if <FP> is Null
-    pub fn set_map_writer(&mut self, theFP: &crate::ffi::HandleTransferFinderProcess) -> bool {
+    pub fn set_map_writer(
+        &mut self,
+        theFP: &crate::ffi_types::HandleTransferFinderProcess,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_map_writer(self as *mut Self, theFP)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_map_writer(
+                self as *mut Self,
+                theFP,
+            )
         })
     }
 
@@ -5138,7 +5644,7 @@ impl WorkSession {
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_transfer_write_shape(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_write_shape(
                 self as *mut Self,
                 theShape,
                 theCompGraph,
@@ -5156,29 +5662,33 @@ impl WorkSession {
     pub fn transfer_write_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_transfer_write_check_list(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_transfer_write_check_list(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:189 - `XSControl_WorkSession::Vars()`
-    pub fn vars(&self) -> &crate::ffi::HandleXSControlVars {
+    pub fn vars(&self) -> &crate::ffi_types::HandleXSControlVars {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_vars(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_WorkSession_vars(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:191 - `XSControl_WorkSession::SetVars()`
-    pub fn set_vars(&mut self, theVars: &crate::ffi::HandleXSControlVars) {
+    pub fn set_vars(&mut self, theVars: &crate::ffi_types::HandleXSControlVars) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_set_vars(self as *mut Self, theVars)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_set_vars(self as *mut Self, theVars)
         })
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:193 - `XSControl_WorkSession::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::XSControl_WorkSession_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5188,7 +5698,7 @@ impl WorkSession {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XSControl_WorkSession_get_type_name(),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5196,16 +5706,22 @@ impl WorkSession {
     }
 
     /// **Source:** `XSControl_WorkSession.hxx`:193 - `XSControl_WorkSession::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::XSControl_WorkSession_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IFSelect_WorkSession
     pub fn as_if_select_work_session(&self) -> &crate::if_select::WorkSession {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_as_IFSelect_WorkSession(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5213,7 +5729,9 @@ impl WorkSession {
     pub fn as_if_select_work_session_mut(&mut self) -> &mut crate::if_select::WorkSession {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::XSControl_WorkSession_as_IFSelect_WorkSession_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_as_IFSelect_WorkSession_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5221,28 +5739,32 @@ impl WorkSession {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XSControl_WorkSession_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::XSControl_WorkSession_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5250,91 +5772,121 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:79 - `IFSelect_WorkSession::SetErrorHandle()`
     pub fn set_error_handle(&mut self, toHandle: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetErrorHandle(self as *mut Self, toHandle)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetErrorHandle(
+                self as *mut Self,
+                toHandle,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:82 - `IFSelect_WorkSession::ErrorHandle()`
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ErrorHandle(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ErrorHandle(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:85 - `IFSelect_WorkSession::ShareOut()`
-    pub fn share_out(&self) -> &crate::ffi::HandleIFSelectShareOut {
+    pub fn share_out(&self) -> &crate::ffi_types::HandleIFSelectShareOut {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_ShareOut(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ShareOut(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:89 - `IFSelect_WorkSession::SetShareOut()`
-    pub fn set_share_out(&mut self, shareout: &crate::ffi::HandleIFSelectShareOut) {
+    pub fn set_share_out(&mut self, shareout: &crate::ffi_types::HandleIFSelectShareOut) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetShareOut(self as *mut Self, shareout)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetShareOut(
+                self as *mut Self,
+                shareout,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:94 - `IFSelect_WorkSession::SetModeStat()`
     pub fn set_mode_stat(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetModeStat(self as *mut Self, theMode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetModeStat(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:97 - `IFSelect_WorkSession::GetModeStat()`
     pub fn get_mode_stat(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_GetModeStat(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GetModeStat(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:100 - `IFSelect_WorkSession::SetLibrary()`
-    pub fn set_library(&mut self, theLib: &crate::ffi::HandleIFSelectWorkLibrary) {
+    pub fn set_library(&mut self, theLib: &crate::ffi_types::HandleIFSelectWorkLibrary) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetLibrary(self as *mut Self, theLib)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetLibrary(
+                self as *mut Self,
+                theLib,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:104 - `IFSelect_WorkSession::WorkLibrary()`
-    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+    pub fn work_library(&self) -> &crate::ffi_types::HandleIFSelectWorkLibrary {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_WorkLibrary(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_WorkLibrary(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:108 - `IFSelect_WorkSession::SetProtocol()`
-    pub fn set_protocol(&mut self, protocol: &crate::ffi::HandleInterfaceProtocol) {
+    pub fn set_protocol(&mut self, protocol: &crate::ffi_types::HandleInterfaceProtocol) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetProtocol(self as *mut Self, protocol)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetProtocol(
+                self as *mut Self,
+                protocol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:112 - `IFSelect_WorkSession::Protocol()`
-    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_Protocol(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Protocol(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:118 - `IFSelect_WorkSession::SetSignType()`
-    pub fn set_sign_type(&mut self, signtype: &crate::ffi::HandleIFSelectSignature) {
+    pub fn set_sign_type(&mut self, signtype: &crate::ffi_types::HandleIFSelectSignature) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetSignType(self as *mut Self, signtype)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetSignType(
+                self as *mut Self,
+                signtype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:121 - `IFSelect_WorkSession::SignType()`
-    pub fn sign_type(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+    pub fn sign_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SignType(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SignType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5342,18 +5894,20 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:124 - `IFSelect_WorkSession::HasModel()`
     pub fn has_model(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_HasModel(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_HasModel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:132 - `IFSelect_WorkSession::SetModel()`
     pub fn set_model(
         &mut self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         clearpointed: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetModel(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetModel(
                 self as *mut Self,
                 model,
                 clearpointed,
@@ -5362,18 +5916,22 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:137 - `IFSelect_WorkSession::Model()`
-    pub fn model(&self) -> &crate::ffi::HandleInterfaceInterfaceModel {
+    pub fn model(&self) -> &crate::ffi_types::HandleInterfaceInterfaceModel {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_Model(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Model(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:161 - `IFSelect_WorkSession::NbStartingEntities()`
     pub fn nb_starting_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_NbStartingEntities(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_NbStartingEntities(
+                self as *const Self,
+            )
         })
     }
 
@@ -5381,10 +5939,10 @@ impl WorkSession {
     pub fn starting_entity(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_StartingEntity(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_StartingEntity(
                     self as *const Self,
                     num,
                 ),
@@ -5393,20 +5951,26 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:169 - `IFSelect_WorkSession::StartingNumber()`
-    pub fn starting_number(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn starting_number(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_StartingNumber(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_StartingNumber(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:186 - `IFSelect_WorkSession::EntityLabel()`
     pub fn entity_label(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_EntityLabel(self as *const Self, ent),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EntityLabel(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -5414,34 +5978,45 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:192 - `IFSelect_WorkSession::EntityName()`
     pub fn entity_name(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_EntityName(self as *const Self, ent),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EntityName(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:198 - `IFSelect_WorkSession::CategoryNumber()`
-    pub fn category_number(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn category_number(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_CategoryNumber(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_CategoryNumber(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:228 - `IFSelect_WorkSession::ComputeGraph()`
     pub fn compute_graph(&mut self, enforce: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ComputeGraph(self as *mut Self, enforce)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ComputeGraph(
+                self as *mut Self,
+                enforce,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:231 - `IFSelect_WorkSession::HGraph()`
-    pub fn h_graph(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHGraph> {
+    pub fn h_graph(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHGraph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_HGraph(self as *mut Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_HGraph(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -5449,20 +6024,25 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:234 - `IFSelect_WorkSession::Graph()`
     pub fn graph(&mut self) -> &crate::interface::Graph {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_Graph(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Graph(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:238 - `IFSelect_WorkSession::Shareds()`
     pub fn shareds(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Shareds(self as *mut Self, ent),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Shareds(
+                    self as *mut Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -5470,11 +6050,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:243 - `IFSelect_WorkSession::Sharings()`
     pub fn sharings(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Sharings(self as *mut Self, ent),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Sharings(
+                    self as *mut Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -5482,14 +6065,19 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:249 - `IFSelect_WorkSession::IsLoaded()`
     pub fn is_loaded(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IsLoaded(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IsLoaded(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:258 - `IFSelect_WorkSession::ComputeCheck()`
     pub fn compute_check(&mut self, enforce: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ComputeCheck(self as *mut Self, enforce)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ComputeCheck(
+                self as *mut Self,
+                enforce,
+            )
         })
     }
 
@@ -5500,7 +6088,7 @@ impl WorkSession {
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ModelCheckList(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ModelCheckList(
                     self as *mut Self,
                     complete,
                 ),
@@ -5511,12 +6099,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:272 - `IFSelect_WorkSession::CheckOne()`
     pub fn check_one(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         complete: bool,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_CheckOne(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_CheckOne(
                     self as *mut Self,
                     ent,
                     complete,
@@ -5529,7 +6117,9 @@ impl WorkSession {
     pub fn last_run_check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_LastRunCheckList(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_LastRunCheckList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5537,70 +6127,105 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:286 - `IFSelect_WorkSession::MaxIdent()`
     pub fn max_ident(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_MaxIdent(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_MaxIdent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:290 - `IFSelect_WorkSession::Item()`
-    pub fn item(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn item(&self, id: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Item(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Item(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:294 - `IFSelect_WorkSession::ItemIdent()`
-    pub fn item_ident(&self, item: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn item_ident(&self, item: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ItemIdent(self as *const Self, item)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ItemIdent(
+                self as *const Self,
+                item,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:310 - `IFSelect_WorkSession::HasName()`
-    pub fn has_name(&self, item: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn has_name(&self, item: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_HasName(self as *const Self, item)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_HasName(
+                self as *const Self,
+                item,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:315 - `IFSelect_WorkSession::Name()`
     pub fn name(
         &self,
-        item: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        item: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Name(self as *const Self, item),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Name(
+                    self as *const Self,
+                    item,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:323 - `IFSelect_WorkSession::AddItem()`
-    pub fn add_item(&mut self, item: &crate::ffi::HandleStandardTransient, active: bool) -> i32 {
+    pub fn add_item(
+        &mut self,
+        item: &crate::ffi_types::HandleStandardTransient,
+        active: bool,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_AddItem(self as *mut Self, item, active)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_AddItem(
+                self as *mut Self,
+                item,
+                active,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:342 - `IFSelect_WorkSession::SetActive()`
-    pub fn set_active(&mut self, item: &crate::ffi::HandleStandardTransient, mode: bool) -> bool {
+    pub fn set_active(
+        &mut self,
+        item: &crate::ffi_types::HandleStandardTransient,
+        mode: bool,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetActive(self as *mut Self, item, mode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetActive(
+                self as *mut Self,
+                item,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:357 - `IFSelect_WorkSession::RemoveItem()`
-    pub fn remove_item(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn remove_item(&mut self, item: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_RemoveItem(self as *mut Self, item)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_RemoveItem(
+                self as *mut Self,
+                item,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:362 - `IFSelect_WorkSession::ClearItems()`
     pub fn clear_items(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ClearItems(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ClearItems(
+                self as *mut Self,
+            )
         })
     }
 
@@ -5608,10 +6233,13 @@ impl WorkSession {
     pub fn item_label(
         &self,
         id: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ItemLabel(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ItemLabel(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
@@ -5619,11 +6247,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:377 - `IFSelect_WorkSession::ItemIdents()`
     pub fn item_idents(
         &self,
-        type_: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+        type_: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ItemIdents(self as *const Self, type_),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ItemIdents(
+                    self as *const Self,
+                    type_,
+                ),
             ))
         }
     }
@@ -5631,35 +6262,52 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:383 - `IFSelect_WorkSession::ItemNames()`
     pub fn item_names(
         &self,
-        type_: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+        type_: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ItemNames(self as *const Self, type_),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ItemNames(
+                    self as *const Self,
+                    type_,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:423 - `IFSelect_WorkSession::IntParam()`
-    pub fn int_param(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectIntParam> {
+    pub fn int_param(&self, id: i32) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectIntParam> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_IntParam(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IntParam(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:426 - `IFSelect_WorkSession::IntValue()`
-    pub fn int_value(&self, it: &crate::ffi::HandleIFSelectIntParam) -> i32 {
+    pub fn int_value(&self, it: &crate::ffi_types::HandleIFSelectIntParam) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IntValue(self as *const Self, it)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IntValue(
+                self as *const Self,
+                it,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:435 - `IFSelect_WorkSession::SetIntValue()`
-    pub fn set_int_value(&mut self, it: &crate::ffi::HandleIFSelectIntParam, val: i32) -> bool {
+    pub fn set_int_value(
+        &mut self,
+        it: &crate::ffi_types::HandleIFSelectIntParam,
+        val: i32,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetIntValue(self as *mut Self, it, val)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetIntValue(
+                self as *mut Self,
+                it,
+                val,
+            )
         })
     }
 
@@ -5667,10 +6315,13 @@ impl WorkSession {
     pub fn text_param(
         &self,
         id: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_TextParam(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_TextParam(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
@@ -5678,29 +6329,38 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:446 - `IFSelect_WorkSession::TextValue()`
     pub fn text_value(
         &self,
-        par: &crate::ffi::HandleTCollectionHAsciiString,
+        par: &crate::ffi_types::HandleTCollectionHAsciiString,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_TextValue(self as *const Self, par),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_TextValue(
+                    self as *const Self,
+                    par,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:461 - `IFSelect_WorkSession::Signature()`
-    pub fn signature(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignature> {
+    pub fn signature(&self, id: i32) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignature> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Signature(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Signature(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:472 - `IFSelect_WorkSession::Selection()`
-    pub fn selection(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    pub fn selection(&self, id: i32) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Selection(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Selection(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
@@ -5708,11 +6368,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:477 - `IFSelect_WorkSession::EvalSelection()`
     pub fn eval_selection(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_EvalSelection(self as *const Self, sel),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvalSelection(
+                    self as *const Self,
+                    sel,
+                ),
             ))
         }
     }
@@ -5720,11 +6383,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:483 - `IFSelect_WorkSession::Sources()`
     pub fn sources(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
     ) -> crate::OwnedPtr<crate::if_select::SelectionIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Sources(self as *const Self, sel),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Sources(
+                    self as *const Self,
+                    sel,
+                ),
             ))
         }
     }
@@ -5732,11 +6398,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:489 - `IFSelect_WorkSession::SelectionResult()`
     pub fn selection_result(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SelectionResult(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SelectionResult(
                     self as *const Self,
                     sel,
                 ),
@@ -5747,12 +6413,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:500 - `IFSelect_WorkSession::SelectionResultFromList()`
     pub fn selection_result_from_list(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SelectionResultFromList(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SelectionResultFromList(
                     self as *const Self,
                     sel,
                     list,
@@ -5764,11 +6430,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:511 - `IFSelect_WorkSession::SetItemSelection()`
     pub fn set_item_selection(
         &mut self,
-        item: &crate::ffi::HandleStandardTransient,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        item: &crate::ffi_types::HandleStandardTransient,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetItemSelection(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetItemSelection(
                 self as *mut Self,
                 item,
                 sel,
@@ -5777,20 +6443,26 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:517 - `IFSelect_WorkSession::ResetItemSelection()`
-    pub fn reset_item_selection(&mut self, item: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn reset_item_selection(
+        &mut self,
+        item: &crate::ffi_types::HandleStandardTransient,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ResetItemSelection(self as *mut Self, item)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ResetItemSelection(
+                self as *mut Self,
+                item,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:521 - `IFSelect_WorkSession::ItemSelection()`
     pub fn item_selection(
         &self,
-        item: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+        item: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ItemSelection(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ItemSelection(
                     self as *const Self,
                     item,
                 ),
@@ -5799,10 +6471,16 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:527 - `IFSelect_WorkSession::SignCounter()`
-    pub fn sign_counter(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSignCounter> {
+    pub fn sign_counter(
+        &self,
+        id: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSignCounter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SignCounter(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SignCounter(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
@@ -5810,11 +6488,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:534 - `IFSelect_WorkSession::ComputeCounter()`
     pub fn compute_counter(
         &mut self,
-        counter: &crate::ffi::HandleIFSelectSignCounter,
+        counter: &crate::ffi_types::HandleIFSelectSignCounter,
         forced: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ComputeCounter(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ComputeCounter(
                 self as *mut Self,
                 counter,
                 forced,
@@ -5825,12 +6503,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:543 - `IFSelect_WorkSession::ComputeCounterFromList()`
     pub fn compute_counter_from_list(
         &mut self,
-        counter: &crate::ffi::HandleIFSelectSignCounter,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        counter: &crate::ffi_types::HandleIFSelectSignCounter,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         clear: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ComputeCounterFromList(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ComputeCounterFromList(
                 self as *mut Self,
                 counter,
                 list,
@@ -5842,10 +6520,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:548 - `IFSelect_WorkSession::AppliedDispatches()`
     pub fn applied_dispatches(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_AppliedDispatches(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_AppliedDispatches(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5853,46 +6533,60 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:553 - `IFSelect_WorkSession::ClearShareOut()`
     pub fn clear_share_out(&mut self, onlydisp: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ClearShareOut(self as *mut Self, onlydisp)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ClearShareOut(
+                self as *mut Self,
+                onlydisp,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:558 - `IFSelect_WorkSession::Dispatch()`
-    pub fn dispatch(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectDispatch> {
+    pub fn dispatch(&self, id: i32) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectDispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Dispatch(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Dispatch(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:562 - `IFSelect_WorkSession::DispatchRank()`
-    pub fn dispatch_rank(&self, disp: &crate::ffi::HandleIFSelectDispatch) -> i32 {
+    pub fn dispatch_rank(&self, disp: &crate::ffi_types::HandleIFSelectDispatch) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DispatchRank(self as *const Self, disp)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DispatchRank(
+                self as *const Self,
+                disp,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:565 - `IFSelect_WorkSession::ModelCopier()`
-    pub fn model_copier(&self) -> &crate::ffi::HandleIFSelectModelCopier {
+    pub fn model_copier(&self) -> &crate::ffi_types::HandleIFSelectModelCopier {
         unsafe {
-            &*(crate::check_result(crate::ffi::XSControl_WorkSession_inherited_ModelCopier(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ModelCopier(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:568 - `IFSelect_WorkSession::SetModelCopier()`
-    pub fn set_model_copier(&mut self, copier: &crate::ffi::HandleIFSelectModelCopier) {
+    pub fn set_model_copier(&mut self, copier: &crate::ffi_types::HandleIFSelectModelCopier) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetModelCopier(self as *mut Self, copier)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetModelCopier(
+                self as *mut Self,
+                copier,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:573 - `IFSelect_WorkSession::NbFinalModifiers()`
     pub fn nb_final_modifiers(&self, formodel: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_NbFinalModifiers(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_NbFinalModifiers(
                 self as *const Self,
                 formodel,
             )
@@ -5903,10 +6597,10 @@ impl WorkSession {
     pub fn final_modifier_idents(
         &self,
         formodel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FinalModifierIdents(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FinalModifierIdents(
                     self as *const Self,
                     formodel,
                 ),
@@ -5918,10 +6612,10 @@ impl WorkSession {
     pub fn general_modifier(
         &self,
         id: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectGeneralModifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectGeneralModifier> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_GeneralModifier(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GeneralModifier(
                     self as *const Self,
                     id,
                 ),
@@ -5930,25 +6624,34 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:592 - `IFSelect_WorkSession::ModelModifier()`
-    pub fn model_modifier(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectModifier> {
+    pub fn model_modifier(
+        &self,
+        id: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectModifier> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_ModelModifier(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ModelModifier(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:600 - `IFSelect_WorkSession::ModifierRank()`
-    pub fn modifier_rank(&self, item: &crate::ffi::HandleIFSelectGeneralModifier) -> i32 {
+    pub fn modifier_rank(&self, item: &crate::ffi_types::HandleIFSelectGeneralModifier) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ModifierRank(self as *const Self, item)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ModifierRank(
+                self as *const Self,
+                item,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:606 - `IFSelect_WorkSession::ChangeModifierRank()`
     pub fn change_modifier_rank(&mut self, formodel: bool, before: i32, after: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ChangeModifierRank(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ChangeModifierRank(
                 self as *mut Self,
                 formodel,
                 before,
@@ -5960,18 +6663,20 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:612 - `IFSelect_WorkSession::ClearFinalModifiers()`
     pub fn clear_final_modifiers(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ClearFinalModifiers(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ClearFinalModifiers(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:618 - `IFSelect_WorkSession::SetAppliedModifier()`
     pub fn set_applied_modifier(
         &mut self,
-        modif: &crate::ffi::HandleIFSelectGeneralModifier,
-        item: &crate::ffi::HandleStandardTransient,
+        modif: &crate::ffi_types::HandleIFSelectGeneralModifier,
+        item: &crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetAppliedModifier(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetAppliedModifier(
                 self as *mut Self,
                 modif,
                 item,
@@ -5982,10 +6687,10 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:624 - `IFSelect_WorkSession::ResetAppliedModifier()`
     pub fn reset_applied_modifier(
         &mut self,
-        modif: &crate::ffi::HandleIFSelectGeneralModifier,
+        modif: &crate::ffi_types::HandleIFSelectGeneralModifier,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ResetAppliedModifier(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ResetAppliedModifier(
                 self as *mut Self,
                 modif,
             )
@@ -5995,11 +6700,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:629 - `IFSelect_WorkSession::UsesAppliedModifier()`
     pub fn uses_applied_modifier(
         &self,
-        modif: &crate::ffi::HandleIFSelectGeneralModifier,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        modif: &crate::ffi_types::HandleIFSelectGeneralModifier,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_UsesAppliedModifier(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_UsesAppliedModifier(
                     self as *const Self,
                     modif,
                 ),
@@ -6008,37 +6713,54 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:635 - `IFSelect_WorkSession::Transformer()`
-    pub fn transformer(&self, id: i32) -> crate::OwnedPtr<crate::ffi::HandleIFSelectTransformer> {
+    pub fn transformer(
+        &self,
+        id: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectTransformer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Transformer(self as *const Self, id),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Transformer(
+                    self as *const Self,
+                    id,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:659 - `IFSelect_WorkSession::RunTransformer()`
-    pub fn run_transformer(&mut self, transf: &crate::ffi::HandleIFSelectTransformer) -> i32 {
+    pub fn run_transformer(&mut self, transf: &crate::ffi_types::HandleIFSelectTransformer) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_RunTransformer(self as *mut Self, transf)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_RunTransformer(
+                self as *mut Self,
+                transf,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:675 - `IFSelect_WorkSession::RunModifier()`
-    pub fn run_modifier(&mut self, modif: &crate::ffi::HandleIFSelectModifier, copy: bool) -> i32 {
+    pub fn run_modifier(
+        &mut self,
+        modif: &crate::ffi_types::HandleIFSelectModifier,
+        copy: bool,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_RunModifier(self as *mut Self, modif, copy)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_RunModifier(
+                self as *mut Self,
+                modif,
+                copy,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:681 - `IFSelect_WorkSession::RunModifierSelected()`
     pub fn run_modifier_selected(
         &mut self,
-        modif: &crate::ffi::HandleIFSelectModifier,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        modif: &crate::ffi_types::HandleIFSelectModifier,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
         copy: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_RunModifierSelected(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_RunModifierSelected(
                 self as *mut Self,
                 modif,
                 sel,
@@ -6050,11 +6772,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:700 - `IFSelect_WorkSession::SetModelContent()`
     pub fn set_model_content(
         &mut self,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
         keep: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetModelContent(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetModelContent(
                 self as *mut Self,
                 sel,
                 keep,
@@ -6063,28 +6785,38 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:704 - `IFSelect_WorkSession::FilePrefix()`
-    pub fn file_prefix(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn file_prefix(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FilePrefix(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FilePrefix(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:709 - `IFSelect_WorkSession::DefaultFileRoot()`
-    pub fn default_file_root(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn default_file_root(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_DefaultFileRoot(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DefaultFileRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:712 - `IFSelect_WorkSession::FileExtension()`
-    pub fn file_extension(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn file_extension(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FileExtension(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FileExtension(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6092,11 +6824,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:716 - `IFSelect_WorkSession::FileRoot()`
     pub fn file_root(
         &self,
-        disp: &crate::ffi::HandleIFSelectDispatch,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        disp: &crate::ffi_types::HandleIFSelectDispatch,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FileRoot(self as *const Self, disp),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FileRoot(
+                    self as *const Self,
+                    disp,
+                ),
             ))
         }
     }
@@ -6104,21 +6839,23 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:747 - `IFSelect_WorkSession::ClearFile()`
     pub fn clear_file(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ClearFile(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ClearFile(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:752 - `IFSelect_WorkSession::EvaluateFile()`
     pub fn evaluate_file(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_EvaluateFile(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvaluateFile(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:755 - `IFSelect_WorkSession::NbFiles()`
     pub fn nb_files(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_NbFiles(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_NbFiles(self as *const Self)
         })
     }
 
@@ -6126,10 +6863,13 @@ impl WorkSession {
     pub fn file_model(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FileModel(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FileModel(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -6138,7 +6878,10 @@ impl WorkSession {
     pub fn file_name(&self, num: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_FileName(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_FileName(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -6146,15 +6889,22 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:768 - `IFSelect_WorkSession::BeginSentFiles()`
     pub fn begin_sent_files(&mut self, record: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_BeginSentFiles(self as *mut Self, record)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_BeginSentFiles(
+                self as *mut Self,
+                record,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:772 - `IFSelect_WorkSession::SentFiles()`
-    pub fn sent_files(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHAsciiString> {
+    pub fn sent_files(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SentFiles(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SentFiles(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6162,15 +6912,17 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:786 - `IFSelect_WorkSession::SendSplit()`
     pub fn send_split(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SendSplit(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SendSplit(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:796 - `IFSelect_WorkSession::EvalSplit()`
-    pub fn eval_split(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectPacketList> {
+    pub fn eval_split(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectPacketList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_EvalSplit(self as *const Self),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvalSplit(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6179,7 +6931,10 @@ impl WorkSession {
     pub fn sent_list(&self, count: i32) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_SentList(self as *const Self, count),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SentList(
+                    self as *const Self,
+                    count,
+                ),
             ))
         }
     }
@@ -6187,41 +6942,56 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:817 - `IFSelect_WorkSession::MaxSendingCount()`
     pub fn max_sending_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_MaxSendingCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_MaxSendingCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:828 - `IFSelect_WorkSession::SetRemaining()`
     pub fn set_remaining(&mut self, mode: crate::if_select::RemainMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetRemaining(self as *mut Self, mode.into())
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetRemaining(
+                self as *mut Self,
+                mode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:882 - `IFSelect_WorkSession::NbSources()`
-    pub fn nb_sources(&self, sel: &crate::ffi::HandleIFSelectSelection) -> i32 {
+    pub fn nb_sources(&self, sel: &crate::ffi_types::HandleIFSelectSelection) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_NbSources(self as *const Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_NbSources(
+                self as *const Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:889 - `IFSelect_WorkSession::Source()`
     pub fn source(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIFSelectSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_Source(self as *const Self, sel, num),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Source(
+                    self as *const Self,
+                    sel,
+                    num,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:894 - `IFSelect_WorkSession::IsReversedSelectExtract()`
-    pub fn is_reversed_select_extract(&self, sel: &crate::ffi::HandleIFSelectSelection) -> bool {
+    pub fn is_reversed_select_extract(
+        &self,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IsReversedSelectExtract(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IsReversedSelectExtract(
                 self as *const Self,
                 sel,
             )
@@ -6229,20 +6999,26 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:899 - `IFSelect_WorkSession::ToggleSelectExtract()`
-    pub fn toggle_select_extract(&mut self, sel: &crate::ffi::HandleIFSelectSelection) -> bool {
+    pub fn toggle_select_extract(
+        &mut self,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ToggleSelectExtract(self as *mut Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ToggleSelectExtract(
+                self as *mut Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:905 - `IFSelect_WorkSession::SetInputSelection()`
     pub fn set_input_selection(
         &mut self,
-        sel: &crate::ffi::HandleIFSelectSelection,
-        input: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+        input: &crate::ffi_types::HandleIFSelectSelection,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetInputSelection(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetInputSelection(
                 self as *mut Self,
                 sel,
                 input,
@@ -6253,12 +7029,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:912 - `IFSelect_WorkSession::SetControl()`
     pub fn set_control(
         &mut self,
-        sel: &crate::ffi::HandleIFSelectSelection,
-        sc: &crate::ffi::HandleIFSelectSelection,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+        sc: &crate::ffi_types::HandleIFSelectSelection,
         formain: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetControl(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetControl(
                 self as *mut Self,
                 sel,
                 sc,
@@ -6270,12 +7046,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:922 - `IFSelect_WorkSession::CombineAdd()`
     pub fn combine_add(
         &mut self,
-        selcomb: &crate::ffi::HandleIFSelectSelection,
-        seladd: &crate::ffi::HandleIFSelectSelection,
+        selcomb: &crate::ffi_types::HandleIFSelectSelection,
+        seladd: &crate::ffi_types::HandleIFSelectSelection,
         atnum: i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_CombineAdd(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_CombineAdd(
                 self as *mut Self,
                 selcomb,
                 seladd,
@@ -6287,11 +7063,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:929 - `IFSelect_WorkSession::CombineRemove()`
     pub fn combine_remove(
         &mut self,
-        selcomb: &crate::ffi::HandleIFSelectSelection,
-        selrem: &crate::ffi::HandleIFSelectSelection,
+        selcomb: &crate::ffi_types::HandleIFSelectSelection,
+        selrem: &crate::ffi_types::HandleIFSelectSelection,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_CombineRemove(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_CombineRemove(
                 self as *mut Self,
                 selcomb,
                 selrem,
@@ -6302,12 +7078,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:944 - `IFSelect_WorkSession::SetSelectPointed()`
     pub fn set_select_pointed(
         &self,
-        sel: &crate::ffi::HandleIFSelectSelection,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        sel: &crate::ffi_types::HandleIFSelectSelection,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         mode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetSelectPointed(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetSelectPointed(
                 self as *const Self,
                 sel,
                 list,
@@ -6319,11 +7095,14 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:962 - `IFSelect_WorkSession::GiveList()`
     pub fn give_list(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+        obj: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_GiveList(self as *const Self, obj),
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GiveList(
+                    self as *const Self,
+                    obj,
+                ),
             ))
         }
     }
@@ -6331,13 +7110,13 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1000 - `IFSelect_WorkSession::GiveListCombined()`
     pub fn give_list_combined(
         &self,
-        l1: &crate::ffi::HandleTColStdHSequenceOfTransient,
-        l2: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        l1: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+        l2: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         mode: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_WorkSession_inherited_GiveListCombined(
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GiveListCombined(
                     self as *const Self,
                     l1,
                     l2,
@@ -6350,25 +7129,31 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1006 - `IFSelect_WorkSession::QueryCheckList()`
     pub fn query_check_list(&mut self, chl: &crate::interface::CheckIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_QueryCheckList(self as *mut Self, chl)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_QueryCheckList(
+                self as *mut Self,
+                chl,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1016 - `IFSelect_WorkSession::QueryCheckStatus()`
-    pub fn query_check_status(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn query_check_status(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_QueryCheckStatus(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_QueryCheckStatus(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1021 - `IFSelect_WorkSession::QueryParent()`
     pub fn query_parent(
         &self,
-        entdad: &crate::ffi::HandleStandardTransient,
-        entson: &crate::ffi::HandleStandardTransient,
+        entdad: &crate::ffi_types::HandleStandardTransient,
+        entson: &crate::ffi_types::HandleStandardTransient,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_QueryParent(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_QueryParent(
                 self as *const Self,
                 entdad,
                 entson,
@@ -6379,11 +7164,11 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1042 - `IFSelect_WorkSession::SetParams()`
     pub fn set_params(
         &mut self,
-        params: &crate::ffi::NCollection_Vector_opencascade_handle_Standard_Transient,
-        uselist: &crate::ffi::NCollection_Vector_Standard_Integer,
+        params: &crate::ffi_types::NCollection_Vector_opencascade_handle_Standard_Transient,
+        uselist: &crate::ffi_types::NCollection_Vector_Standard_Integer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_SetParams(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_SetParams(
                 self as *mut Self,
                 params,
                 uselist,
@@ -6394,7 +7179,7 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1052 - `IFSelect_WorkSession::TraceStatics()`
     pub fn trace_statics(&self, use_: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_TraceStatics(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_TraceStatics(
                 self as *const Self,
                 use_,
                 mode,
@@ -6405,14 +7190,16 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1056 - `IFSelect_WorkSession::DumpShare()`
     pub fn dump_share(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DumpShare(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DumpShare(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1066 - `IFSelect_WorkSession::ListFinalModifiers()`
     pub fn list_final_modifiers(&self, formodel: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ListFinalModifiers(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ListFinalModifiers(
                 self as *const Self,
                 formodel,
             )
@@ -6420,35 +7207,45 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1070 - `IFSelect_WorkSession::DumpSelection()`
-    pub fn dump_selection(&self, sel: &crate::ffi::HandleIFSelectSelection) {
+    pub fn dump_selection(&self, sel: &crate::ffi_types::HandleIFSelectSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DumpSelection(self as *const Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DumpSelection(
+                self as *const Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1079 - `IFSelect_WorkSession::DumpModel()`
-    pub fn dump_model(&mut self, level: i32, S: &mut crate::ffi::Standard_OStream) {
+    pub fn dump_model(&mut self, level: i32, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DumpModel(self as *mut Self, level, S)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DumpModel(
+                self as *mut Self,
+                level,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1083 - `IFSelect_WorkSession::TraceDumpModel()`
     pub fn trace_dump_model(&mut self, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_TraceDumpModel(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_TraceDumpModel(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1090 - `IFSelect_WorkSession::DumpEntity()`
     pub fn dump_entity(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         level: i32,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DumpEntity(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DumpEntity(
                 self as *const Self,
                 ent,
                 level,
@@ -6460,18 +7257,22 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1097 - `IFSelect_WorkSession::PrintEntityStatus()`
     pub fn print_entity_status(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-        S: &mut crate::ffi::Standard_OStream,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_PrintEntityStatus(self as *mut Self, ent, S)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_PrintEntityStatus(
+                self as *mut Self,
+                ent,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1103 - `IFSelect_WorkSession::TraceDumpEntity()`
-    pub fn trace_dump_entity(&self, ent: &crate::ffi::HandleStandardTransient, level: i32) {
+    pub fn trace_dump_entity(&self, ent: &crate::ffi_types::HandleStandardTransient, level: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_TraceDumpEntity(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_TraceDumpEntity(
                 self as *const Self,
                 ent,
                 level,
@@ -6482,13 +7283,13 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1114 - `IFSelect_WorkSession::PrintCheckList()`
     pub fn print_check_list(
         &self,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         checklist: &crate::interface::CheckIterator,
         failsonly: bool,
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_PrintCheckList(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_PrintCheckList(
                 self as *const Self,
                 S,
                 checklist,
@@ -6501,12 +7302,12 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1122 - `IFSelect_WorkSession::PrintSignatureList()`
     pub fn print_signature_list(
         &self,
-        S: &mut crate::ffi::Standard_OStream,
-        signlist: &crate::ffi::HandleIFSelectSignatureList,
+        S: &mut crate::ffi_types::Standard_OStream,
+        signlist: &crate::ffi_types::HandleIFSelectSignatureList,
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_PrintSignatureList(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_PrintSignatureList(
                 self as *const Self,
                 S,
                 signlist,
@@ -6516,16 +7317,19 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1128 - `IFSelect_WorkSession::EvaluateSelection()`
-    pub fn evaluate_selection(&self, sel: &crate::ffi::HandleIFSelectSelection) {
+    pub fn evaluate_selection(&self, sel: &crate::ffi_types::HandleIFSelectSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_EvaluateSelection(self as *const Self, sel)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvaluateSelection(
+                self as *const Self,
+                sel,
+            )
         })
     }
 
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1140 - `IFSelect_WorkSession::EvaluateDispatch()`
-    pub fn evaluate_dispatch(&self, disp: &crate::ffi::HandleIFSelectDispatch, mode: i32) {
+    pub fn evaluate_dispatch(&self, disp: &crate::ffi_types::HandleIFSelectDispatch, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_EvaluateDispatch(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvaluateDispatch(
                 self as *const Self,
                 disp,
                 mode,
@@ -6536,7 +7340,10 @@ impl WorkSession {
     /// Inherited: **Source:** `IFSelect_WorkSession.hxx`:1150 - `IFSelect_WorkSession::EvaluateComplete()`
     pub fn evaluate_complete(&self, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_EvaluateComplete(self as *const Self, mode)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_EvaluateComplete(
+                self as *const Self,
+                mode,
+            )
         })
     }
 
@@ -6545,10 +7352,10 @@ impl WorkSession {
         &self,
         iter: &crate::interface::EntityIterator,
         mode: i32,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_ListEntities(
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_ListEntities(
                 self as *const Self,
                 iter,
                 mode,
@@ -6558,16 +7365,22 @@ impl WorkSession {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6575,7 +7388,9 @@ impl WorkSession {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XSControl_WorkSession_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6588,62 +7403,72 @@ impl WorkSession {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_WorkSession_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::XSControl_WorkSession_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleXSControlWorkSession;
+pub use crate::ffi_types::HandleXSControlWorkSession;
 
 unsafe impl crate::CppDeletable for HandleXSControlWorkSession {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXSControlWorkSession_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_destructor(ptr);
     }
 }
 
 impl HandleXSControlWorkSession {
     /// Dereference this Handle to access the underlying XSControl_WorkSession
-    pub fn get(&self) -> &crate::ffi::XSControl_WorkSession {
+    pub fn get(&self) -> &crate::ffi_types::XSControl_WorkSession {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXSControlWorkSession_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying XSControl_WorkSession
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XSControl_WorkSession {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXSControlWorkSession_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying XSControl_WorkSession
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XSControl_WorkSession {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<XSControl_WorkSession> to Handle<IFSelect_WorkSession>
-    pub fn to_handle_work_session(&self) -> crate::OwnedPtr<crate::ffi::HandleIFSelectWorkSession> {
+    pub fn to_handle_work_session(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIFSelectWorkSession> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlWorkSession_to_HandleIFSelectWorkSession(
+                crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_to_HandleIFSelectWorkSession(
                     self as *const Self,
                 ),
             ))
@@ -6651,10 +7476,12 @@ impl HandleXSControlWorkSession {
     }
 
     /// Upcast Handle<XSControl_WorkSession> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXSControlWorkSession_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleXSControlWorkSession_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6670,11 +7497,11 @@ impl HandleXSControlWorkSession {
 /// This class gives a simple way to create then write a
 /// Model compliant to a given norm, from a Shape
 /// The model can then be edited by tools by other appropriate tools
-pub use crate::ffi::XSControl_Writer as Writer;
+pub use crate::ffi_types::XSControl_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XSControl_Writer_destructor(ptr);
+        crate::ffi_extern_TKXSBase::XSControl_Writer_destructor(ptr);
     }
 }
 
@@ -6683,7 +7510,9 @@ impl Writer {
     /// Creates a Writer from scratch
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Writer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Writer_ctor(),
+            ))
         }
     }
 
@@ -6694,7 +7523,7 @@ impl Writer {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Writer_ctor_charptr(c_norm.as_ptr()),
+                crate::ffi_extern_TKXSBase::XSControl_Writer_ctor_charptr(c_norm.as_ptr()),
             ))
         }
     }
@@ -6703,12 +7532,14 @@ impl Writer {
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
     pub fn new_handlexscontrolworksession_bool(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XSControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
+                crate::ffi_extern_TKXSBase::XSControl_Writer_ctor_handlexscontrolworksession_bool(
+                    WS, scratch,
+                ),
             ))
         }
     }
@@ -6717,7 +7548,7 @@ impl Writer {
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
     }
@@ -6728,25 +7559,28 @@ impl Writer {
     pub fn set_norm(&mut self, norm: &str) -> bool {
         let c_norm = std::ffi::CString::new(norm).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::XSControl_Writer_set_norm(self as *mut Self, c_norm.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Writer_set_norm(
+                self as *mut Self,
+                c_norm.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `XSControl_Writer.hxx`:58 - `XSControl_Writer::SetWS()`
     /// Sets a specific session to <me>
-    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+    pub fn set_ws(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession, scratch: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Writer_set_ws(self as *mut Self, WS, scratch)
+            crate::ffi_extern_TKXSBase::XSControl_Writer_set_ws(self as *mut Self, WS, scratch)
         })
     }
 
     /// **Source:** `XSControl_Writer.hxx`:62 - `XSControl_Writer::WS()`
     /// Returns the session used in <me>
-    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Writer_ws(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Writer_ws(self as *const Self),
+            ))
         }
     }
 
@@ -6758,12 +7592,11 @@ impl Writer {
     pub fn model(
         &mut self,
         newone: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::XSControl_Writer_model(
-                self as *mut Self,
-                newone,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::XSControl_Writer_model(self as *mut Self, newone),
+            ))
         }
     }
 
@@ -6776,7 +7609,12 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Writer_transfer_shape(self as *mut Self, sh, mode, theProgress)
+            crate::ffi_extern_TKXSBase::XSControl_Writer_transfer_shape(
+                self as *mut Self,
+                sh,
+                mode,
+                theProgress,
+            )
         }))
         .unwrap()
     }
@@ -6786,7 +7624,10 @@ impl Writer {
     pub fn write_file(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::XSControl_Writer_write_file(self as *mut Self, c_filename.as_ptr())
+            crate::ffi_extern_TKXSBase::XSControl_Writer_write_file(
+                self as *mut Self,
+                c_filename.as_ptr(),
+            )
         }))
         .unwrap()
     }
@@ -6795,7 +7636,11 @@ impl Writer {
     /// Prints Statistics about Transfer
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::XSControl_Writer_print_stats_transfer(self as *const Self, what, mode)
+            crate::ffi_extern_TKXSBase::XSControl_Writer_print_stats_transfer(
+                self as *const Self,
+                what,
+                mode,
+            )
         })
     }
 }
@@ -6804,4 +7649,4 @@ impl Writer {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::XSControl_WorkSessionMap as WorkSessionMap;
+pub use crate::ffi_types::XSControl_WorkSessionMap as WorkSessionMap;

@@ -8,14 +8,14 @@
 
 /// **Source:** `math.hxx`:31 - `math::GaussPointsMax`
 pub fn gauss_points_max() -> i32 {
-    crate::check_result(unsafe { crate::ffi::math_gauss_points_max() })
+    crate::check_result(unsafe { crate::ffi_extern_TKMath::math_gauss_points_max() })
 }
 /// **Source:** `math.hxx`:40 - `math::KronrodPointsMax`
 /// Returns the maximal number of points for that the values
 /// are stored in the table. If the number is greater then
 /// KronrodPointsMax, the points will be computed.
 pub fn kronrod_points_max() -> i32 {
-    crate::check_result(unsafe { crate::ffi::math_kronrod_points_max() })
+    crate::check_result(unsafe { crate::ffi_extern_TKMath::math_kronrod_points_max() })
 }
 
 /// C++ enum: `math_Status`
@@ -51,7 +51,7 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleStandardDimensionError, HandleStandardDomainError, HandleStandardFailure,
     HandleStandardTransient,
 };
@@ -69,11 +69,11 @@ pub use crate::ffi::{
 /// Method SetBoundary is used to define hyperparallelepiped borders. With boundaries
 /// defined, the algorithm will not make evaluations of the function outside of the
 /// borders.
-pub use crate::ffi::math_BFGS as BFGS;
+pub use crate::ffi_types::math_BFGS as BFGS;
 
 unsafe impl crate::CppDeletable for BFGS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BFGS_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BFGS_destructor(ptr);
     }
 }
 
@@ -94,7 +94,7 @@ impl BFGS {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BFGS_ctor_int_real_int_real(
+                crate::ffi_extern_TKMath::math_BFGS_ctor_int_real_int_real(
                     NbVariables,
                     Tolerance,
                     NbIterations,
@@ -149,11 +149,15 @@ impl BFGS {
     /// The expected indices range of vectors is [1, NbVariables].
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BFGS_set_boundary(self as *mut Self, theLeftBorder, theRightBorder)
+            crate::ffi_extern_TKMath::math_BFGS_set_boundary(
+                self as *mut Self,
+                theLeftBorder,
+                theRightBorder,
+            )
         })
     }
 
@@ -167,10 +171,10 @@ impl BFGS {
     pub fn perform(
         &mut self,
         F: &mut MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BFGS_perform(self as *mut Self, F, StartingPoint)
+            crate::ffi_extern_TKMath::math_BFGS_perform(self as *mut Self, F, StartingPoint)
         })
     }
 
@@ -181,21 +185,27 @@ impl BFGS {
     /// stop the iterations.
     pub fn is_solution_reached(&self, F: &mut MultipleVarFunctionWithGradient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_BFGS_is_solution_reached(self as *const Self, F)
+            crate::ffi_extern_TKMath::math_BFGS_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_BFGS_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BFGS_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
     /// returns the location vector of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
-    pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_BFGS_location(self as *const Self))) }
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_BFGS_location(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_BFGS.hxx`:88 - `math_BFGS::Location()`
@@ -203,9 +213,9 @@ impl BFGS {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Loc is not
     /// equal to the range of the StartingPoint.
-    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+    pub fn location_vector(&self, Loc: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BFGS_location_vector(self as *const Self, Loc)
+            crate::ffi_extern_TKMath::math_BFGS_location_vector(self as *const Self, Loc)
         })
     }
 
@@ -213,14 +223,20 @@ impl BFGS {
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BFGS_minimum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BFGS_minimum(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
     /// Returns the gradient vector at the minimum.
     /// Exception NotDone is raised if the minimum was not found.
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_BFGS_gradient(self as *const Self))) }
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_BFGS_gradient(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_BFGS.hxx`:102 - `math_BFGS::Gradient()`
@@ -228,9 +244,9 @@ impl BFGS {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Grad is not
     /// equal to the range of the StartingPoint.
-    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BFGS_gradient_vector(self as *const Self, Grad)
+            crate::ffi_extern_TKMath::math_BFGS_gradient_vector(self as *const Self, Grad)
         })
     }
 
@@ -239,15 +255,19 @@ impl BFGS {
     /// calculation of the minimum.
     /// The exception NotDone is raised if the minimum was not found.
     pub fn nb_iterations(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_BFGS_nb_iterations(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BFGS_nb_iterations(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_BFGS_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_BFGS_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -259,11 +279,11 @@ impl BFGS {
 /// This class implements a combination of Newton-Raphson and bissection
 /// methods to find the root of the function between two bounds.
 /// Knowledge of the derivative is required.
-pub use crate::ffi::math_BissecNewton as BissecNewton;
+pub use crate::ffi_types::math_BissecNewton as BissecNewton;
 
 unsafe impl crate::CppDeletable for BissecNewton {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BissecNewton_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BissecNewton_destructor(ptr);
     }
 }
 
@@ -273,9 +293,9 @@ impl BissecNewton {
     /// @param theXTolerance - algorithm tolerance.
     pub fn new_real(theXTolerance: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_BissecNewton_ctor_real(
-                theXTolerance,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_BissecNewton_ctor_real(theXTolerance),
+            ))
         }
     }
 
@@ -295,7 +315,7 @@ impl BissecNewton {
         NbIterations: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BissecNewton_perform(
+            crate::ffi_extern_TKMath::math_BissecNewton_perform(
                 self as *mut Self,
                 F,
                 Bound1,
@@ -312,21 +332,28 @@ impl BissecNewton {
     /// stop the iterations.
     pub fn is_solution_reached(&mut self, theFunction: &mut FunctionWithDerivative) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_BissecNewton_is_solution_reached(self as *mut Self, theFunction)
+            crate::ffi_extern_TKMath::math_BissecNewton_is_solution_reached(
+                self as *mut Self,
+                theFunction,
+            )
         })
     }
 
     /// **Source:** `math_BissecNewton.hxx`:60 - `math_BissecNewton::IsDone()`
     /// Tests is the root has been successfully found.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_BissecNewton_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BissecNewton_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BissecNewton.hxx`:64 - `math_BissecNewton::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn root(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BissecNewton_root(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BissecNewton_root(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BissecNewton.hxx`:68 - `math_BissecNewton::Derivative()`
@@ -334,7 +361,7 @@ impl BissecNewton {
     /// Exception NotDone is raised if the minimum was not found.
     pub fn derivative(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_BissecNewton_derivative(self as *const Self)
+            crate::ffi_extern_TKMath::math_BissecNewton_derivative(self as *const Self)
         })
     }
 
@@ -342,16 +369,18 @@ impl BissecNewton {
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn value(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BissecNewton_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BissecNewton_value(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BissecNewton.hxx`:77 - `math_BissecNewton::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BissecNewton_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_BissecNewton_dump(self as *const Self, o)
         })
     }
 }
@@ -370,11 +399,11 @@ impl BissecNewton {
 /// applied to the parameter change. The method SetLimits defines the allowed range.
 /// If no minimum is found in limits then IsDone() will return false. The user
 /// is in charge of providing A and B to be in limits.
-pub use crate::ffi::math_BracketMinimum as BracketMinimum;
+pub use crate::ffi_types::math_BracketMinimum as BracketMinimum;
 
 unsafe impl crate::CppDeletable for BracketMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BracketMinimum_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BracketMinimum_destructor(ptr);
     }
 }
 
@@ -384,7 +413,7 @@ impl BracketMinimum {
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BracketMinimum_ctor_real2(A, B),
+                crate::ffi_extern_TKMath::math_BracketMinimum_ctor_real2(A, B),
             ))
         }
     }
@@ -398,7 +427,7 @@ impl BracketMinimum {
     pub fn new_function_real2(F: &mut Function, A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BracketMinimum_ctor_function_real2(F, A, B),
+                crate::ffi_extern_TKMath::math_BracketMinimum_ctor_function_real2(F, A, B),
             ))
         }
     }
@@ -413,7 +442,7 @@ impl BracketMinimum {
     pub fn new_function_real3(F: &mut Function, A: f64, B: f64, FA: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BracketMinimum_ctor_function_real3(F, A, B, FA),
+                crate::ffi_extern_TKMath::math_BracketMinimum_ctor_function_real3(F, A, B, FA),
             ))
         }
     }
@@ -434,7 +463,7 @@ impl BracketMinimum {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BracketMinimum_ctor_function_real4(F, A, B, FA, FB),
+                crate::ffi_extern_TKMath::math_BracketMinimum_ctor_function_real4(F, A, B, FA, FB),
             ))
         }
     }
@@ -445,7 +474,11 @@ impl BracketMinimum {
     /// is in charge of providing A and B to be in limits.
     pub fn set_limits(&mut self, theLeft: f64, theRight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_set_limits(self as *mut Self, theLeft, theRight)
+            crate::ffi_extern_TKMath::math_BracketMinimum_set_limits(
+                self as *mut Self,
+                theLeft,
+                theRight,
+            )
         })
     }
 
@@ -453,7 +486,7 @@ impl BracketMinimum {
     /// Set function value at A
     pub fn set_fa(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_set_fa(self as *mut Self, theValue)
+            crate::ffi_extern_TKMath::math_BracketMinimum_set_fa(self as *mut Self, theValue)
         })
     }
 
@@ -461,7 +494,7 @@ impl BracketMinimum {
     /// Set function value at B
     pub fn set_fb(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_set_fb(self as *mut Self, theValue)
+            crate::ffi_extern_TKMath::math_BracketMinimum_set_fb(self as *mut Self, theValue)
         })
     }
 
@@ -469,14 +502,16 @@ impl BracketMinimum {
     /// The method performing the job. It is called automatically by constructors with the function.
     pub fn perform(&mut self, F: &mut Function) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_perform(self as *mut Self, F)
+            crate::ffi_extern_TKMath::math_BracketMinimum_perform(self as *mut Self, F)
         })
     }
 
     /// **Source:** `math_BracketMinimum.hxx`:92 - `math_BracketMinimum::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_BracketMinimum_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BracketMinimum_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BracketMinimum.hxx`:97 - `math_BracketMinimum::Values()`
@@ -485,7 +520,7 @@ impl BracketMinimum {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn values(&self, A: &mut f64, B: &mut f64, C: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_values(self as *const Self, A, B, C)
+            crate::ffi_extern_TKMath::math_BracketMinimum_values(self as *const Self, A, B, C)
         })
     }
 
@@ -495,7 +530,12 @@ impl BracketMinimum {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn function_values(&self, FA: &mut f64, FB: &mut f64, FC: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_function_values(self as *const Self, FA, FB, FC)
+            crate::ffi_extern_TKMath::math_BracketMinimum_function_values(
+                self as *const Self,
+                FA,
+                FB,
+                FC,
+            )
         })
     }
 
@@ -503,9 +543,9 @@ impl BracketMinimum {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketMinimum_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_BracketMinimum_dump(self as *const Self, o)
         })
     }
 }
@@ -517,11 +557,11 @@ impl BracketMinimum {
 /// **Source:** `math_BracketedRoot.hxx`:30 - `math_BracketedRoot`
 /// This class implements the Brent method to find the root of a function
 /// located within two bounds. No knowledge of the derivative is required.
-pub use crate::ffi::math_BracketedRoot as BracketedRoot;
+pub use crate::ffi_types::math_BracketedRoot as BracketedRoot;
 
 unsafe impl crate::CppDeletable for BracketedRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BracketedRoot_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BracketedRoot_destructor(ptr);
     }
 }
 
@@ -544,7 +584,7 @@ impl BracketedRoot {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BracketedRoot_ctor_function_real3_int_real(
+                crate::ffi_extern_TKMath::math_BracketedRoot_ctor_function_real3_int_real(
                     F,
                     Bound1,
                     Bound2,
@@ -594,21 +634,27 @@ impl BracketedRoot {
     /// **Source:** `math_BracketedRoot.hxx`:50 - `math_BracketedRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_BracketedRoot_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BracketedRoot_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BracketedRoot.hxx`:54 - `math_BracketedRoot::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn root(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BracketedRoot_root(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BracketedRoot_root(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BracketedRoot.hxx`:58 - `math_BracketedRoot::Value()`
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn value(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BracketedRoot_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BracketedRoot_value(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BracketedRoot.hxx`:63 - `math_BracketedRoot::NbIterations()`
@@ -617,16 +663,16 @@ impl BracketedRoot {
     /// Exception NotDone is raised if the minimum was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_BracketedRoot_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_BracketedRoot_nb_iterations(self as *const Self)
         })
     }
 
     /// **Source:** `math_BracketedRoot.hxx`:67 - `math_BracketedRoot::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BracketedRoot_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_BracketedRoot_dump(self as *const Self, o)
         })
     }
 }
@@ -639,11 +685,11 @@ impl BracketedRoot {
 /// This class implements the Brent's method to find the minimum of
 /// a function of a single variable.
 /// No knowledge of the derivative is required.
-pub use crate::ffi::math_BrentMinimum as BrentMinimum;
+pub use crate::ffi_types::math_BrentMinimum as BrentMinimum;
 
 unsafe impl crate::CppDeletable for BrentMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BrentMinimum_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BrentMinimum_destructor(ptr);
     }
 }
 
@@ -654,7 +700,11 @@ impl BrentMinimum {
     pub fn new_real_int_real(TolX: f64, NbIterations: i32, ZEPS: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BrentMinimum_ctor_real_int_real(TolX, NbIterations, ZEPS),
+                crate::ffi_extern_TKMath::math_BrentMinimum_ctor_real_int_real(
+                    TolX,
+                    NbIterations,
+                    ZEPS,
+                ),
             ))
         }
     }
@@ -671,7 +721,12 @@ impl BrentMinimum {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BrentMinimum_ctor_real2_int_real(TolX, Fbx, NbIterations, ZEPS),
+                crate::ffi_extern_TKMath::math_BrentMinimum_ctor_real2_int_real(
+                    TolX,
+                    Fbx,
+                    NbIterations,
+                    ZEPS,
+                ),
             ))
         }
     }
@@ -713,7 +768,7 @@ impl BrentMinimum {
     /// The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;
     pub fn perform(&mut self, F: &mut Function, Ax: f64, Bx: f64, Cx: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx)
+            crate::ffi_extern_TKMath::math_BrentMinimum_perform(self as *mut Self, F, Ax, Bx, Cx)
         })
     }
 
@@ -724,28 +779,37 @@ impl BrentMinimum {
     /// stop the iterations.
     pub fn is_solution_reached(&mut self, theFunction: &mut Function) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_BrentMinimum_is_solution_reached(self as *mut Self, theFunction)
+            crate::ffi_extern_TKMath::math_BrentMinimum_is_solution_reached(
+                self as *mut Self,
+                theFunction,
+            )
         })
     }
 
     /// **Source:** `math_BrentMinimum.hxx`:69 - `math_BrentMinimum::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_BrentMinimum_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BrentMinimum_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BrentMinimum.hxx`:73 - `math_BrentMinimum::Location()`
     /// returns the location value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn location(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BrentMinimum_location(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BrentMinimum_location(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BrentMinimum.hxx`:77 - `math_BrentMinimum::Minimum()`
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_BrentMinimum_minimum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_BrentMinimum_minimum(self as *const Self)
+        })
     }
 
     /// **Source:** `math_BrentMinimum.hxx`:82 - `math_BrentMinimum::NbIterations()`
@@ -754,7 +818,7 @@ impl BrentMinimum {
     /// Exception NotDone is raised if the minimum was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_BrentMinimum_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_BrentMinimum_nb_iterations(self as *const Self)
         })
     }
 
@@ -762,9 +826,9 @@ impl BrentMinimum {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BrentMinimum_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_BrentMinimum_dump(self as *const Self, o)
         })
     }
 }
@@ -775,11 +839,11 @@ impl BrentMinimum {
 
 /// **Source:** `math_BullardGenerator.hxx`:22 - `math_BullardGenerator`
 /// Fast random number generator (the algorithm proposed by Ian C. Bullard).
-pub use crate::ffi::math_BullardGenerator as BullardGenerator;
+pub use crate::ffi_types::math_BullardGenerator as BullardGenerator;
 
 unsafe impl crate::CppDeletable for BullardGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_BullardGenerator_destructor(ptr);
+        crate::ffi_extern_TKMath::math_BullardGenerator_destructor(ptr);
     }
 }
 
@@ -789,7 +853,7 @@ impl BullardGenerator {
     pub fn new_uint(theSeed: u32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_BullardGenerator_ctor_uint(theSeed),
+                crate::ffi_extern_TKMath::math_BullardGenerator_ctor_uint(theSeed),
             ))
         }
     }
@@ -804,7 +868,7 @@ impl BullardGenerator {
     /// Setup new seed / reset defaults.
     pub fn set_seed(&mut self, theSeed: u32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_BullardGenerator_set_seed(self as *mut Self, theSeed)
+            crate::ffi_extern_TKMath::math_BullardGenerator_set_seed(self as *mut Self, theSeed)
         })
     }
 
@@ -812,7 +876,7 @@ impl BullardGenerator {
     /// Generates new 64-bit integer value.
     pub fn next_int(&mut self) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::math_BullardGenerator_next_int(self as *mut Self)
+            crate::ffi_extern_TKMath::math_BullardGenerator_next_int(self as *mut Self)
         })
     }
 
@@ -820,7 +884,7 @@ impl BullardGenerator {
     /// Generates new floating-point value.
     pub fn next_real(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_BullardGenerator_next_real(self as *mut Self)
+            crate::ffi_extern_TKMath::math_BullardGenerator_next_real(self as *mut Self)
         })
     }
 }
@@ -830,11 +894,11 @@ impl BullardGenerator {
 // ========================
 
 /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:27 - `math_ComputeGaussPointsAndWeights`
-pub use crate::ffi::math_ComputeGaussPointsAndWeights as ComputeGaussPointsAndWeights;
+pub use crate::ffi_types::math_ComputeGaussPointsAndWeights as ComputeGaussPointsAndWeights;
 
 unsafe impl crate::CppDeletable for ComputeGaussPointsAndWeights {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_ComputeGaussPointsAndWeights_destructor(ptr);
+        crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_destructor(ptr);
     }
 }
 
@@ -843,7 +907,7 @@ impl ComputeGaussPointsAndWeights {
     pub fn new_int(Number: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeGaussPointsAndWeights_ctor_int(Number),
+                crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_ctor_int(Number),
             ))
         }
     }
@@ -851,24 +915,28 @@ impl ComputeGaussPointsAndWeights {
     /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:34 - `math_ComputeGaussPointsAndWeights::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_ComputeGaussPointsAndWeights_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:36 - `math_ComputeGaussPointsAndWeights::Points()`
-    pub fn points(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn points(&self) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeGaussPointsAndWeights_points(self as *const Self),
+                crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_points(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `math_ComputeGaussPointsAndWeights.hxx`:38 - `math_ComputeGaussPointsAndWeights::Weights()`
-    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeGaussPointsAndWeights_weights(self as *const Self),
+                crate::ffi_extern_TKMath::math_ComputeGaussPointsAndWeights_weights(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -879,11 +947,11 @@ impl ComputeGaussPointsAndWeights {
 // ========================
 
 /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:27 - `math_ComputeKronrodPointsAndWeights`
-pub use crate::ffi::math_ComputeKronrodPointsAndWeights as ComputeKronrodPointsAndWeights;
+pub use crate::ffi_types::math_ComputeKronrodPointsAndWeights as ComputeKronrodPointsAndWeights;
 
 unsafe impl crate::CppDeletable for ComputeKronrodPointsAndWeights {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_ComputeKronrodPointsAndWeights_destructor(ptr);
+        crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_destructor(ptr);
     }
 }
 
@@ -892,7 +960,7 @@ impl ComputeKronrodPointsAndWeights {
     pub fn new_int(Number: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeKronrodPointsAndWeights_ctor_int(Number),
+                crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_ctor_int(Number),
             ))
         }
     }
@@ -900,24 +968,30 @@ impl ComputeKronrodPointsAndWeights {
     /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:34 - `math_ComputeKronrodPointsAndWeights::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_ComputeKronrodPointsAndWeights_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_is_done(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:36 - `math_ComputeKronrodPointsAndWeights::Points()`
-    pub fn points(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn points(&self) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeKronrodPointsAndWeights_points(self as *const Self),
+                crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_points(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `math_ComputeKronrodPointsAndWeights.hxx`:38 - `math_ComputeKronrodPointsAndWeights::Weights()`
-    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn weights(&self) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ComputeKronrodPointsAndWeights_weights(self as *const Self),
+                crate::ffi_extern_TKMath::math_ComputeKronrodPointsAndWeights_weights(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -933,11 +1007,11 @@ impl ComputeKronrodPointsAndWeights {
 /// invert a symmetric matrix.
 /// This algorithm is similar to Gauss but is faster than Gauss.
 /// Only the inferior triangle of A and the diagonal can be given.
-pub use crate::ffi::math_Crout as Crout;
+pub use crate::ffi_types::math_Crout as Crout;
 
 unsafe impl crate::CppDeletable for Crout {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Crout_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Crout_destructor(ptr);
     }
 }
 
@@ -954,9 +1028,9 @@ impl Crout {
     /// Exception NotSquare is raised if A is not a square matrix.
     pub fn new_matrix_real(A: &Matrix, MinPivot: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Crout_ctor_matrix_real(
-                A, MinPivot,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Crout_ctor_matrix_real(A, MinPivot),
+            ))
         }
     }
 
@@ -977,7 +1051,9 @@ impl Crout {
     /// **Source:** `math_Crout.hxx`:50 - `math_Crout::IsDone()`
     /// Returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Crout_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Crout_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Crout.hxx`:58 - `math_Crout::Solve()`
@@ -987,8 +1063,10 @@ impl Crout {
     /// done successfully.
     /// Exception DimensionError is raised if the range of B is
     /// not equal to the rowrange of A.
-    pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
-        crate::check_void_result(unsafe { crate::ffi::math_Crout_solve(self as *const Self, B, X) })
+    pub fn solve(&self, B: &crate::ffi_types::math_Vector, X: &mut crate::ffi_types::math_Vector) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Crout_solve(self as *const Self, B, X)
+        })
     }
 
     /// **Source:** `math_Crout.hxx`:63 - `math_Crout::Inverse()`
@@ -996,7 +1074,11 @@ impl Crout {
     /// triangle is returned.
     /// Exception NotDone is raised if NotDone.
     pub fn inverse(&self) -> &Matrix {
-        unsafe { &*(crate::check_result(crate::ffi::math_Crout_inverse(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Crout_inverse(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_Crout.hxx`:68 - `math_Crout::Invert()`
@@ -1004,7 +1086,9 @@ impl Crout {
     /// triangle is returned.
     /// Exception NotDone is raised if NotDone.
     pub fn invert(&self, Inv: &mut Matrix) {
-        crate::check_void_result(unsafe { crate::ffi::math_Crout_invert(self as *const Self, Inv) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Crout_invert(self as *const Self, Inv)
+        })
     }
 
     /// **Source:** `math_Crout.hxx`:74 - `math_Crout::Determinant()`
@@ -1013,14 +1097,18 @@ impl Crout {
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn determinant(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_Crout_determinant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Crout_determinant(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Crout.hxx`:78 - `math_Crout::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Crout_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Crout_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -1032,11 +1120,11 @@ impl Crout {
 /// This class implements the calculation of all the real roots of a real
 /// polynomial of degree <= 4 using a direct method. Once found,
 /// the roots are polished using the Newton method.
-pub use crate::ffi::math_DirectPolynomialRoots as DirectPolynomialRoots;
+pub use crate::ffi_types::math_DirectPolynomialRoots as DirectPolynomialRoots;
 
 unsafe impl crate::CppDeletable for DirectPolynomialRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_DirectPolynomialRoots_destructor(ptr);
+        crate::ffi_extern_TKMath::math_DirectPolynomialRoots_destructor(ptr);
     }
 }
 
@@ -1047,7 +1135,7 @@ impl DirectPolynomialRoots {
     pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_DirectPolynomialRoots_ctor_real5(A, B, C, D, E),
+                crate::ffi_extern_TKMath::math_DirectPolynomialRoots_ctor_real5(A, B, C, D, E),
             ))
         }
     }
@@ -1058,7 +1146,7 @@ impl DirectPolynomialRoots {
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_DirectPolynomialRoots_ctor_real4(A, B, C, D),
+                crate::ffi_extern_TKMath::math_DirectPolynomialRoots_ctor_real4(A, B, C, D),
             ))
         }
     }
@@ -1069,7 +1157,7 @@ impl DirectPolynomialRoots {
     pub fn new_real3(A: f64, B: f64, C: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_DirectPolynomialRoots_ctor_real3(A, B, C),
+                crate::ffi_extern_TKMath::math_DirectPolynomialRoots_ctor_real3(A, B, C),
             ))
         }
     }
@@ -1079,7 +1167,7 @@ impl DirectPolynomialRoots {
     pub fn new_real2(A: f64, B: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_DirectPolynomialRoots_ctor_real2(A, B),
+                crate::ffi_extern_TKMath::math_DirectPolynomialRoots_ctor_real2(A, B),
             ))
         }
     }
@@ -1088,7 +1176,7 @@ impl DirectPolynomialRoots {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_DirectPolynomialRoots_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_is_done(self as *const Self)
         })
     }
 
@@ -1096,7 +1184,7 @@ impl DirectPolynomialRoots {
     /// Returns true if there is an infinity of roots, otherwise returns false.
     pub fn infinite_roots(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_DirectPolynomialRoots_infinite_roots(self as *const Self)
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_infinite_roots(self as *const Self)
         })
     }
 
@@ -1105,7 +1193,7 @@ impl DirectPolynomialRoots {
     /// An exception is raised if there are an infinity of roots.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_DirectPolynomialRoots_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_nb_solutions(self as *const Self)
         })
     }
 
@@ -1116,7 +1204,7 @@ impl DirectPolynomialRoots {
     /// or Nieme > NbSolutions.
     pub fn value(&self, Nieme: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_DirectPolynomialRoots_value(self as *const Self, Nieme)
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_value(self as *const Self, Nieme)
         })
     }
 
@@ -1124,9 +1212,9 @@ impl DirectPolynomialRoots {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_DirectPolynomialRoots_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_DirectPolynomialRoots_dump(self as *const Self, o)
         })
     }
 }
@@ -1136,11 +1224,11 @@ impl DirectPolynomialRoots {
 // ========================
 
 /// **Source:** `math_DoubleTab.hxx`:27 - `math_DoubleTab`
-pub use crate::ffi::math_DoubleTab as DoubleTab;
+pub use crate::ffi_types::math_DoubleTab as DoubleTab;
 
 unsafe impl crate::CppDeletable for DoubleTab {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_DoubleTab_destructor(ptr);
+        crate::ffi_extern_TKMath::math_DoubleTab_destructor(ptr);
     }
 }
 
@@ -1153,9 +1241,11 @@ impl DoubleTab {
         UpperCol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_DoubleTab_ctor_int4(
-                LowerRow, UpperRow, LowerCol, UpperCol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_DoubleTab_ctor_int4(
+                    LowerRow, UpperRow, LowerCol, UpperCol,
+                ),
+            ))
         }
     }
 
@@ -1169,7 +1259,7 @@ impl DoubleTab {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_DoubleTab_ctor_address_int4(
+                crate::ffi_extern_TKMath::math_DoubleTab_ctor_address_int4(
                     Tab, LowerRow, UpperRow, LowerCol, UpperCol,
                 ),
             ))
@@ -1179,35 +1269,35 @@ impl DoubleTab {
     /// **Source:** `math_DoubleTab.hxx`:43 - `math_DoubleTab::Init()`
     pub fn init(&mut self, InitValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_DoubleTab_init(self as *mut Self, InitValue)
+            crate::ffi_extern_TKMath::math_DoubleTab_init(self as *mut Self, InitValue)
         })
     }
 
     /// **Source:** `math_DoubleTab.hxx`:47 - `math_DoubleTab::Copy()`
     pub fn copy(&self, Other: &mut DoubleTab) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_DoubleTab_copy(self as *const Self, Other)
+            crate::ffi_extern_TKMath::math_DoubleTab_copy(self as *const Self, Other)
         })
     }
 
     /// **Source:** `math_DoubleTab.hxx`:49 - `math_DoubleTab::SetLowerRow()`
     pub fn set_lower_row(&mut self, LowerRow: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_DoubleTab_set_lower_row(self as *mut Self, LowerRow)
+            crate::ffi_extern_TKMath::math_DoubleTab_set_lower_row(self as *mut Self, LowerRow)
         })
     }
 
     /// **Source:** `math_DoubleTab.hxx`:51 - `math_DoubleTab::SetLowerCol()`
     pub fn set_lower_col(&mut self, LowerCol: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_DoubleTab_set_lower_col(self as *mut Self, LowerCol)
+            crate::ffi_extern_TKMath::math_DoubleTab_set_lower_col(self as *mut Self, LowerCol)
         })
     }
 
     /// **Source:** `math_DoubleTab.hxx`:53 - `math_DoubleTab::Value()`
     pub fn value(&mut self, RowIndex: i32, ColIndex: i32) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::math_DoubleTab_value(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::math_DoubleTab_value(
                 self as *mut Self,
                 RowIndex,
                 ColIndex,
@@ -1217,15 +1307,17 @@ impl DoubleTab {
 
     /// **Source:** `math_DoubleTab.hxx`:60 - `math_DoubleTab::Free()`
     pub fn free(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::math_DoubleTab_free(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_DoubleTab_free(self as *mut Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_DoubleTab_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_DoubleTab_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1237,23 +1329,26 @@ impl DoubleTab {
 /// **Source:** `math_EigenValuesSearcher.hxx`:32 - `math_EigenValuesSearcher`
 /// This class finds eigen values and vectors of
 /// real symmetric tridiagonal matrix
-pub use crate::ffi::math_EigenValuesSearcher as EigenValuesSearcher;
+pub use crate::ffi_types::math_EigenValuesSearcher as EigenValuesSearcher;
 
 unsafe impl crate::CppDeletable for EigenValuesSearcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_EigenValuesSearcher_destructor(ptr);
+        crate::ffi_extern_TKMath::math_EigenValuesSearcher_destructor(ptr);
     }
 }
 
 impl EigenValuesSearcher {
     /// **Source:** `math_EigenValuesSearcher.hxx`:37 - `math_EigenValuesSearcher::math_EigenValuesSearcher()`
     pub fn new_array1ofreal2(
-        Diagonal: &crate::ffi::TColStd_Array1OfReal,
-        Subdiagonal: &crate::ffi::TColStd_Array1OfReal,
+        Diagonal: &crate::ffi_types::TColStd_Array1OfReal,
+        Subdiagonal: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_EigenValuesSearcher_ctor_array1ofreal2(Diagonal, Subdiagonal),
+                crate::ffi_extern_TKMath::math_EigenValuesSearcher_ctor_array1ofreal2(
+                    Diagonal,
+                    Subdiagonal,
+                ),
             ))
         }
     }
@@ -1263,7 +1358,7 @@ impl EigenValuesSearcher {
     /// successfully.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_EigenValuesSearcher_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_EigenValuesSearcher_is_done(self as *const Self)
         })
     }
 
@@ -1271,7 +1366,7 @@ impl EigenValuesSearcher {
     /// Returns the dimension of matrix
     pub fn dimension(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_EigenValuesSearcher_dimension(self as *const Self)
+            crate::ffi_extern_TKMath::math_EigenValuesSearcher_dimension(self as *const Self)
         })
     }
 
@@ -1280,17 +1375,23 @@ impl EigenValuesSearcher {
     /// Index must be in [1, Dimension()]
     pub fn eigen_value(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_EigenValuesSearcher_eigen_value(self as *const Self, Index)
+            crate::ffi_extern_TKMath::math_EigenValuesSearcher_eigen_value(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `math_EigenValuesSearcher.hxx`:53 - `math_EigenValuesSearcher::EigenVector()`
     /// Returns the Index_th eigen vector of matrix
     /// Index must be in [1, Dimension()]
-    pub fn eigen_vector(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn eigen_vector(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_EigenValuesSearcher_eigen_vector(self as *const Self, Index),
+                crate::ffi_extern_TKMath::math_EigenValuesSearcher_eigen_vector(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1304,11 +1405,11 @@ impl EigenValuesSearcher {
 /// this class implements the Fletcher-Reeves-Polak_Ribiere minimization
 /// algorithm of a function of multiple variables.
 /// Knowledge of the function's gradient is required.
-pub use crate::ffi::math_FRPR as FRPR;
+pub use crate::ffi_types::math_FRPR as FRPR;
 
 unsafe impl crate::CppDeletable for FRPR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FRPR_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FRPR_destructor(ptr);
     }
 }
 
@@ -1323,14 +1424,7 @@ impl FRPR {
         theZEPS: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FRPR_ctor_multiplevarfunctionwithgradient_real_int_real(
-                    theFunction,
-                    theTolerance,
-                    theNbIterations,
-                    theZEPS,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_FRPR_ctor_multiplevarfunctionwithgradient_real_int_real(theFunction, theTolerance, theNbIterations, theZEPS)))
         }
     }
 
@@ -1371,10 +1465,14 @@ impl FRPR {
     pub fn perform(
         &mut self,
         theFunction: &mut MultipleVarFunctionWithGradient,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FRPR_perform(self as *mut Self, theFunction, theStartingPoint)
+            crate::ffi_extern_TKMath::math_FRPR_perform(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+            )
         })
     }
 
@@ -1387,21 +1485,27 @@ impl FRPR {
         theFunction: &mut MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FRPR_is_solution_reached(self as *mut Self, theFunction)
+            crate::ffi_extern_TKMath::math_FRPR_is_solution_reached(self as *mut Self, theFunction)
         })
     }
 
     /// **Source:** `math_FRPR.hxx`:57 - `math_FRPR::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_FRPR_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FRPR_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FRPR.hxx`:61 - `math_FRPR::Location()`
     /// returns the location vector of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
-    pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_FRPR_location(self as *const Self))) }
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_FRPR_location(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_FRPR.hxx`:67 - `math_FRPR::Location()`
@@ -1409,9 +1513,9 @@ impl FRPR {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Loc is not
     /// equal to the range of the StartingPoint.
-    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+    pub fn location_vector(&self, Loc: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FRPR_location_vector(self as *const Self, Loc)
+            crate::ffi_extern_TKMath::math_FRPR_location_vector(self as *const Self, Loc)
         })
     }
 
@@ -1419,14 +1523,20 @@ impl FRPR {
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_FRPR_minimum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FRPR_minimum(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FRPR.hxx`:75 - `math_FRPR::Gradient()`
     /// returns the gradient vector at the minimum.
     /// Exception NotDone is raised if the minimum was not found.
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_FRPR_gradient(self as *const Self))) }
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_FRPR_gradient(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_FRPR.hxx`:81 - `math_FRPR::Gradient()`
@@ -1434,9 +1544,9 @@ impl FRPR {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Grad is not
     /// equal to the range of the StartingPoint.
-    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FRPR_gradient_vector(self as *const Self, Grad)
+            crate::ffi_extern_TKMath::math_FRPR_gradient_vector(self as *const Self, Grad)
         })
     }
 
@@ -1445,15 +1555,19 @@ impl FRPR {
     /// computation of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn nb_iterations(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_FRPR_nb_iterations(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FRPR_nb_iterations(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FRPR.hxx`:91 - `math_FRPR::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_FRPR_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_FRPR_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -1464,11 +1578,11 @@ impl FRPR {
 /// **Source:** `math_Function.hxx`:29 - `math_Function`
 /// This abstract class describes the virtual functions
 /// associated with a Function of a single variable.
-pub use crate::ffi::math_Function as Function;
+pub use crate::ffi_types::math_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Function_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Function_destructor(ptr);
     }
 }
 
@@ -1479,7 +1593,9 @@ impl Function {
     /// returns True if the computation was done successfully,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Function_value(self as *mut Self, X, F) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Function_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
@@ -1499,7 +1615,7 @@ impl Function {
     /// an Integer that allows retrieval of the state.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_Function_get_state_number(self as *mut Self)
+            crate::ffi_extern_TKMath::math_Function_get_state_number(self as *mut Self)
         })
     }
 }
@@ -1514,11 +1630,11 @@ impl Function {
 /// uses the FunctionRoots algorithm to find the points
 /// where the function is null outside the "null intervals".
 /// Knowledge of the derivative is required.
-pub use crate::ffi::math_FunctionAllRoots as FunctionAllRoots;
+pub use crate::ffi_types::math_FunctionAllRoots as FunctionAllRoots;
 
 unsafe impl crate::CppDeletable for FunctionAllRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionAllRoots_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionAllRoots_destructor(ptr);
     }
 }
 
@@ -1540,11 +1656,7 @@ impl FunctionAllRoots {
         EpsNul: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionAllRoots_ctor_functionwithderivative_functionsample_real3(
-                    F, S, EpsX, EpsF, EpsNul,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_FunctionAllRoots_ctor_functionwithderivative_functionsample_real3(F, S, EpsX, EpsF, EpsNul)))
         }
     }
 
@@ -1552,7 +1664,7 @@ impl FunctionAllRoots {
     /// Returns True if the computation has been done successfully.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_is_done(self as *const Self)
         })
     }
 
@@ -1562,7 +1674,7 @@ impl FunctionAllRoots {
     /// An exception is raised if IsDone returns False.
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_nb_intervals(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_nb_intervals(self as *const Self)
         })
     }
 
@@ -1572,7 +1684,12 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >Nbintervals.
     pub fn get_interval(&self, Index: i32, A: &mut f64, B: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_get_interval(self as *const Self, Index, A, B)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_get_interval(
+                self as *const Self,
+                Index,
+                A,
+                B,
+            )
         })
     }
 
@@ -1582,7 +1699,7 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >Nbintervals.
     pub fn get_interval_state(&self, Index: i32, IFirst: &mut i32, ILast: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_get_interval_state(
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_get_interval_state(
                 self as *const Self,
                 Index,
                 IFirst,
@@ -1596,7 +1713,7 @@ impl FunctionAllRoots {
     /// An exception is raised if IsDone returns False.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_nb_points(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_nb_points(self as *const Self)
         })
     }
 
@@ -1606,7 +1723,7 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >NbPoints.
     pub fn get_point(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_get_point(self as *const Self, Index)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_get_point(self as *const Self, Index)
         })
     }
 
@@ -1616,16 +1733,19 @@ impl FunctionAllRoots {
     /// An exception is raised if Index<=0 or Index >Nbintervals.
     pub fn get_point_state(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_get_point_state(self as *const Self, Index)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_get_point_state(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `math_FunctionAllRoots.hxx`:91 - `math_FunctionAllRoots::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionAllRoots_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_FunctionAllRoots_dump(self as *const Self, o)
         })
     }
 }
@@ -1639,11 +1759,11 @@ impl FunctionAllRoots {
 /// a single variable which is near an initial guess using a minimization
 /// algorithm.Knowledge of the derivative is required. The
 /// algorithm used is the same as in
-pub use crate::ffi::math_FunctionRoot as FunctionRoot;
+pub use crate::ffi_types::math_FunctionRoot as FunctionRoot;
 
 unsafe impl crate::CppDeletable for FunctionRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionRoot_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionRoot_destructor(ptr);
     }
 }
 
@@ -1663,7 +1783,7 @@ impl FunctionRoot {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionRoot_ctor_functionwithderivative_real2_int(
+                crate::ffi_extern_TKMath::math_FunctionRoot_ctor_functionwithderivative_real2_int(
                     F,
                     Guess,
                     Tolerance,
@@ -1691,7 +1811,7 @@ impl FunctionRoot {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionRoot_ctor_functionwithderivative_real4_int(
+                crate::ffi_extern_TKMath::math_FunctionRoot_ctor_functionwithderivative_real4_int(
                     F,
                     Guess,
                     Tolerance,
@@ -1739,14 +1859,18 @@ impl FunctionRoot {
     /// **Source:** `math_FunctionRoot.hxx`:63 - `math_FunctionRoot::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_FunctionRoot_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoot_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FunctionRoot.hxx`:67 - `math_FunctionRoot::Root()`
     /// returns the value of the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn root(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_FunctionRoot_root(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoot_root(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FunctionRoot.hxx`:71 - `math_FunctionRoot::Derivative()`
@@ -1754,7 +1878,7 @@ impl FunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoot_derivative(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionRoot_derivative(self as *const Self)
         })
     }
 
@@ -1762,7 +1886,9 @@ impl FunctionRoot {
     /// returns the value of the function at the root.
     /// Exception NotDone is raised if the root was not found.
     pub fn value(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_FunctionRoot_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoot_value(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FunctionRoot.hxx`:80 - `math_FunctionRoot::NbIterations()`
@@ -1771,7 +1897,7 @@ impl FunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoot_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionRoot_nb_iterations(self as *const Self)
         })
     }
 
@@ -1779,9 +1905,9 @@ impl FunctionRoot {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionRoot_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_FunctionRoot_dump(self as *const Self, o)
         })
     }
 }
@@ -1794,11 +1920,11 @@ impl FunctionRoot {
 /// This class implements an algorithm which finds all the real roots of
 /// a function with derivative within a given range.
 /// Knowledge of the derivative is required.
-pub use crate::ffi::math_FunctionRoots as FunctionRoots;
+pub use crate::ffi_types::math_FunctionRoots as FunctionRoots;
 
 unsafe impl crate::CppDeletable for FunctionRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionRoots_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionRoots_destructor(ptr);
     }
 }
 
@@ -1821,11 +1947,7 @@ impl FunctionRoots {
         K: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionRoots_ctor_functionwithderivative_real2_int_real4(
-                    F, A, B, NbSample, EpsX, EpsF, EpsNull, K,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_FunctionRoots_ctor_functionwithderivative_real2_int_real4(F, A, B, NbSample, EpsX, EpsF, EpsNull, K)))
         }
     }
 
@@ -1904,7 +2026,9 @@ impl FunctionRoots {
     /// **Source:** `math_FunctionRoots.hxx`:53 - `math_FunctionRoots::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_FunctionRoots_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FunctionRoots_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_FunctionRoots.hxx`:58 - `math_FunctionRoots::IsAllNull()`
@@ -1913,7 +2037,7 @@ impl FunctionRoots {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn is_all_null(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoots_is_all_null(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionRoots_is_all_null(self as *const Self)
         })
     }
 
@@ -1923,7 +2047,7 @@ impl FunctionRoots {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoots_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionRoots_nb_solutions(self as *const Self)
         })
     }
 
@@ -1933,7 +2057,7 @@ impl FunctionRoots {
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
     pub fn value(&self, Nieme: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoots_value(self as *const Self, Nieme)
+            crate::ffi_extern_TKMath::math_FunctionRoots_value(self as *const Self, Nieme)
         })
     }
 
@@ -1943,16 +2067,16 @@ impl FunctionRoots {
     /// or Nieme > NbSolutions.
     pub fn state_number(&self, Nieme: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionRoots_state_number(self as *const Self, Nieme)
+            crate::ffi_extern_TKMath::math_FunctionRoots_state_number(self as *const Self, Nieme)
         })
     }
 
     /// **Source:** `math_FunctionRoots.hxx`:77 - `math_FunctionRoots::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionRoots_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_FunctionRoots_dump(self as *const Self, o)
         })
     }
 }
@@ -1965,11 +2089,11 @@ impl FunctionRoots {
 /// This class gives a default sample (constant difference
 /// of parameter) for a function defined between
 /// two bound A,B.
-pub use crate::ffi::math_FunctionSample as FunctionSample;
+pub use crate::ffi_types::math_FunctionSample as FunctionSample;
 
 unsafe impl crate::CppDeletable for FunctionSample {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionSample_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionSample_destructor(ptr);
     }
 }
 
@@ -1978,7 +2102,7 @@ impl FunctionSample {
     pub fn new_real2_int(A: f64, B: f64, N: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionSample_ctor_real2_int(A, B, N),
+                crate::ffi_extern_TKMath::math_FunctionSample_ctor_real2_int(A, B, N),
             ))
         }
     }
@@ -1987,7 +2111,7 @@ impl FunctionSample {
     /// Returns the bounds of parameters.
     pub fn bounds(&self, A: &mut f64, B: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSample_bounds(self as *const Self, A, B)
+            crate::ffi_extern_TKMath::math_FunctionSample_bounds(self as *const Self, A, B)
         })
     }
 
@@ -1995,7 +2119,7 @@ impl FunctionSample {
     /// Returns the number of sample points.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSample_nb_points(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSample_nb_points(self as *const Self)
         })
     }
 
@@ -2005,7 +2129,7 @@ impl FunctionSample {
     /// An exception is raised if Index<=0 or Index>NbPoints.
     pub fn get_parameter(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSample_get_parameter(self as *const Self, Index)
+            crate::ffi_extern_TKMath::math_FunctionSample_get_parameter(self as *const Self, Index)
         })
     }
 }
@@ -2017,11 +2141,11 @@ impl FunctionSample {
 /// **Source:** `math_FunctionSet.hxx`:28 - `math_FunctionSet`
 /// This abstract class describes the virtual functions associated to
 /// a set on N Functions of M independent variables.
-pub use crate::ffi::math_FunctionSet as FunctionSet;
+pub use crate::ffi_types::math_FunctionSet as FunctionSet;
 
 unsafe impl crate::CppDeletable for FunctionSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionSet_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionSet_destructor(ptr);
     }
 }
 
@@ -2030,7 +2154,7 @@ impl FunctionSet {
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSet_nb_variables(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSet_nb_variables(self as *const Self)
         })
     }
 
@@ -2038,7 +2162,7 @@ impl FunctionSet {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSet_nb_equations(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSet_nb_equations(self as *const Self)
         })
     }
 
@@ -2047,8 +2171,14 @@ impl FunctionSet {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_FunctionSet_value(self as *mut Self, X, F) })
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_FunctionSet_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
@@ -2068,7 +2198,7 @@ impl FunctionSet {
     /// an Integer that allows retrieval of the state.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSet_get_state_number(self as *mut Self)
+            crate::ffi_extern_TKMath::math_FunctionSet_get_state_number(self as *mut Self)
         })
     }
 }
@@ -2085,11 +2215,11 @@ impl FunctionSet {
 /// is no success in the Newton direction. This algorithm can also be
 /// used for functions minimization. Knowledge of all the partial
 /// derivatives (the Jacobian) is required.
-pub use crate::ffi::math_FunctionSetRoot as FunctionSetRoot;
+pub use crate::ffi_types::math_FunctionSetRoot as FunctionSetRoot;
 
 unsafe impl crate::CppDeletable for FunctionSetRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionSetRoot_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionSetRoot_destructor(ptr);
     }
 }
 
@@ -2101,17 +2231,11 @@ impl FunctionSetRoot {
     /// respected for all vectors and matrix declarations.
     pub fn new_functionsetwithderivatives_vector_int(
         F: &mut FunctionSetWithDerivatives,
-        Tolerance: &crate::ffi::math_Vector,
+        Tolerance: &crate::ffi_types::math_Vector,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(
-                    F,
-                    Tolerance,
-                    NbIterations,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_FunctionSetRoot_ctor_functionsetwithderivatives_vector_int(F, Tolerance, NbIterations)))
         }
     }
 
@@ -2128,7 +2252,7 @@ impl FunctionSetRoot {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_FunctionSetRoot_ctor_functionsetwithderivatives_int(
+                crate::ffi_extern_TKMath::math_FunctionSetRoot_ctor_functionsetwithderivatives_int(
                     F,
                     NbIterations,
                 ),
@@ -2143,7 +2267,7 @@ impl FunctionSetRoot {
     /// respected for all vectors and matrix declarations.
     pub fn new_functionsetwithderivatives_vector(
         F: &mut FunctionSetWithDerivatives,
-        Tolerance: &crate::ffi::math_Vector,
+        Tolerance: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_functionsetwithderivatives_vector_int(F, Tolerance, 100)
     }
@@ -2163,9 +2287,12 @@ impl FunctionSetRoot {
 
     /// **Source:** `math_FunctionSetRoot.hxx`:62 - `math_FunctionSetRoot::SetTolerance()`
     /// Initializes the tolerance values.
-    pub fn set_tolerance(&mut self, Tolerance: &crate::ffi::math_Vector) {
+    pub fn set_tolerance(&mut self, Tolerance: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_set_tolerance(self as *mut Self, Tolerance)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_set_tolerance(
+                self as *mut Self,
+                Tolerance,
+            )
         })
     }
 
@@ -2177,7 +2304,10 @@ impl FunctionSetRoot {
     /// for all unknowns.
     pub fn is_solution_reached(&mut self, arg0: &mut FunctionSetWithDerivatives) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_is_solution_reached(self as *mut Self, arg0)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_is_solution_reached(
+                self as *mut Self,
+                arg0,
+            )
         })
     }
 
@@ -2189,16 +2319,11 @@ impl FunctionSetRoot {
     pub fn perform_functionsetwithderivatives_vector_bool(
         &mut self,
         theFunction: &mut FunctionSetWithDerivatives,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
         theStopOnDivergent: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector_bool(
-                self as *mut Self,
-                theFunction,
-                theStartingPoint,
-                theStopOnDivergent,
-            )
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_perform_functionsetwithderivatives_vector_bool(self as *mut Self, theFunction, theStartingPoint, theStopOnDivergent)
         })
     }
 
@@ -2210,20 +2335,13 @@ impl FunctionSetRoot {
     pub fn perform_functionsetwithderivatives_vector3_bool(
         &mut self,
         theFunction: &mut FunctionSetWithDerivatives,
-        theStartingPoint: &crate::ffi::math_Vector,
-        theInfBound: &crate::ffi::math_Vector,
-        theSupBound: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
+        theInfBound: &crate::ffi_types::math_Vector,
+        theSupBound: &crate::ffi_types::math_Vector,
         theStopOnDivergent: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_perform_functionsetwithderivatives_vector3_bool(
-                self as *mut Self,
-                theFunction,
-                theStartingPoint,
-                theInfBound,
-                theSupBound,
-                theStopOnDivergent,
-            )
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_perform_functionsetwithderivatives_vector3_bool(self as *mut Self, theFunction, theStartingPoint, theInfBound, theSupBound, theStopOnDivergent)
         })
     }
 
@@ -2231,7 +2349,7 @@ impl FunctionSetRoot {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_is_done(self as *const Self)
         })
     }
 
@@ -2241,7 +2359,7 @@ impl FunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_nb_iterations(self as *const Self)
         })
     }
 
@@ -2250,16 +2368,18 @@ impl FunctionSetRoot {
     /// F.GetStateNumber()) associated to the root found.
     pub fn state_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_state_number(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_state_number(self as *const Self)
         })
     }
 
     /// **Source:** `math_FunctionSetRoot.hxx`:121 - `math_FunctionSetRoot::Root()`
     /// Returns the value of the root of function F.
     /// Exception NotDone is raised if the root was not found.
-    pub fn root(&self) -> &crate::ffi::math_Vector {
+    pub fn root(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_FunctionSetRoot_root(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_FunctionSetRoot_root(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2268,9 +2388,9 @@ impl FunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     /// Exception DimensionError is raised if the range of Root
     /// is not equal to the range of the StartingPoint.
-    pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
+    pub fn root_vector(&self, Root: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_root_vector(self as *const Self, Root)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_root_vector(self as *const Self, Root)
         })
     }
 
@@ -2279,7 +2399,7 @@ impl FunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> &Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_FunctionSetRoot_derivative(
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_FunctionSetRoot_derivative(
                 self as *const Self,
             )))
         }
@@ -2293,7 +2413,10 @@ impl FunctionSetRoot {
     /// of <Der> is not equal to the range of the startingPoint.
     pub fn derivative_matrix(&self, Der: &mut Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_derivative_matrix(self as *const Self, Der)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_derivative_matrix(
+                self as *const Self,
+                Der,
+            )
         })
     }
 
@@ -2301,11 +2424,13 @@ impl FunctionSetRoot {
     /// returns the vector value of the error done
     /// on the functions at the root.
     /// Exception NotDone is raised if the root was not found.
-    pub fn function_set_errors(&self) -> &crate::ffi::math_Vector {
+    pub fn function_set_errors(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_FunctionSetRoot_function_set_errors(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::math_FunctionSetRoot_function_set_errors(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2315,9 +2440,12 @@ impl FunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     /// Exception DimensionError is raised if the range of Err
     /// is not equal to the range of the StartingPoint.
-    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
+    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_function_set_errors_vector(self as *const Self, Err_)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_function_set_errors_vector(
+                self as *const Self,
+                Err_,
+            )
         })
     }
 
@@ -2325,16 +2453,16 @@ impl FunctionSetRoot {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_dump(self as *const Self, o)
         })
     }
 
     /// **Source:** `math_FunctionSetRoot.hxx`:174 - `math_FunctionSetRoot::IsDivergent()`
     pub fn is_divergent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetRoot_is_divergent(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetRoot_is_divergent(self as *const Self)
         })
     }
 }
@@ -2346,11 +2474,11 @@ impl FunctionSetRoot {
 /// **Source:** `math_FunctionSetWithDerivatives.hxx`:30 - `math_FunctionSetWithDerivatives`
 /// This abstract class describes the virtual functions associated
 /// with a set of N Functions each of M independent variables.
-pub use crate::ffi::math_FunctionSetWithDerivatives as FunctionSetWithDerivatives;
+pub use crate::ffi_types::math_FunctionSetWithDerivatives as FunctionSetWithDerivatives;
 
 unsafe impl crate::CppDeletable for FunctionSetWithDerivatives {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionSetWithDerivatives_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_destructor(ptr);
     }
 }
 
@@ -2359,7 +2487,9 @@ impl FunctionSetWithDerivatives {
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_nb_variables(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -2367,7 +2497,9 @@ impl FunctionSetWithDerivatives {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_nb_equations(self as *const Self)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -2376,9 +2508,13 @@ impl FunctionSetWithDerivatives {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_value(self as *mut Self, X, F)
         })
     }
 
@@ -2387,9 +2523,13 @@ impl FunctionSetWithDerivatives {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn derivatives(&mut self, X: &crate::ffi::math_Vector, D: &mut Matrix) -> bool {
+    pub fn derivatives(&mut self, X: &crate::ffi_types::math_Vector, D: &mut Matrix) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -2400,21 +2540,28 @@ impl FunctionSetWithDerivatives {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_function_set(&self) -> &FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2422,7 +2569,7 @@ impl FunctionSetWithDerivatives {
     pub fn as_function_set_mut(&mut self) -> &mut FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -2432,7 +2579,9 @@ impl FunctionSetWithDerivatives {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionSetWithDerivatives_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKMath::math_FunctionSetWithDerivatives_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -2445,11 +2594,11 @@ impl FunctionSetWithDerivatives {
 /// This abstract class describes the virtual functions associated with
 /// a function of a single variable for which the first derivative is
 /// available.
-pub use crate::ffi::math_FunctionWithDerivative as FunctionWithDerivative;
+pub use crate::ffi_types::math_FunctionWithDerivative as FunctionWithDerivative;
 
 unsafe impl crate::CppDeletable for FunctionWithDerivative {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_FunctionWithDerivative_destructor(ptr);
+        crate::ffi_extern_TKMath::math_FunctionWithDerivative_destructor(ptr);
     }
 }
 
@@ -2460,7 +2609,7 @@ impl FunctionWithDerivative {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionWithDerivative_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_FunctionWithDerivative_value(self as *mut Self, X, F)
         })
     }
 
@@ -2471,7 +2620,11 @@ impl FunctionWithDerivative {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionWithDerivative_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKMath::math_FunctionWithDerivative_derivative(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -2482,32 +2635,38 @@ impl FunctionWithDerivative {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionWithDerivative_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKMath::math_FunctionWithDerivative_values(self as *mut Self, X, F, D)
         })
     }
 
     /// Upcast to math_Function
     pub fn as_function(&self) -> &Function {
         unsafe {
-            &*crate::check_result(crate::ffi::math_FunctionWithDerivative_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_FunctionWithDerivative_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_function_mut(&mut self) -> &mut Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_FunctionWithDerivative_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_FunctionWithDerivative_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_FunctionWithDerivative_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKMath::math_FunctionWithDerivative_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -2523,11 +2682,11 @@ impl FunctionWithDerivative {
 /// - solution of a set of linear equations.
 /// - inverse of a matrix.
 /// - determinant of a matrix.
-pub use crate::ffi::math_Gauss as Gauss;
+pub use crate::ffi_types::math_Gauss as Gauss;
 
 unsafe impl crate::CppDeletable for Gauss {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Gauss_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Gauss_destructor(ptr);
     }
 }
 
@@ -2547,7 +2706,11 @@ impl Gauss {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Gauss_ctor_matrix_real_progressrange(A, MinPivot, theProgress),
+                crate::ffi_extern_TKMath::math_Gauss_ctor_matrix_real_progressrange(
+                    A,
+                    MinPivot,
+                    theProgress,
+                ),
             ))
         }
     }
@@ -2555,7 +2718,9 @@ impl Gauss {
     /// **Source:** `math_Gauss.hxx`:53 - `math_Gauss::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Gauss_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Gauss_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Gauss.hxx`:61 - `math_Gauss::Solve()`
@@ -2565,9 +2730,13 @@ impl Gauss {
     /// successfully.
     /// Exception DimensionError is raised if the range of B is not
     /// equal to the number of rows of A.
-    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+    pub fn solve_vector2(
+        &self,
+        B: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Gauss_solve_vector2(self as *const Self, B, X)
+            crate::ffi_extern_TKMath::math_Gauss_solve_vector2(self as *const Self, B, X)
         })
     }
 
@@ -2578,9 +2747,9 @@ impl Gauss {
     /// successfully.
     /// Exception DimensionError is raised if the range of B is not
     /// equal to the number of rows of A.
-    pub fn solve_vector(&self, B: &mut crate::ffi::math_Vector) {
+    pub fn solve_vector(&self, B: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Gauss_solve_vector(self as *const Self, B)
+            crate::ffi_extern_TKMath::math_Gauss_solve_vector(self as *const Self, B)
         })
     }
 
@@ -2590,7 +2759,9 @@ impl Gauss {
     /// Exception NotDone may be raised if the decomposition of A was not done
     /// successfully, zero is returned if the matrix A was considered as singular.
     pub fn determinant(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_Gauss_determinant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Gauss_determinant(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Gauss.hxx`:81 - `math_Gauss::Invert()`
@@ -2599,15 +2770,19 @@ impl Gauss {
     /// Exception DimensionError is raised if the ranges of B are not
     /// equal to the ranges of A.
     pub fn invert(&self, Inv: &mut Matrix) {
-        crate::check_void_result(unsafe { crate::ffi::math_Gauss_invert(self as *const Self, Inv) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Gauss_invert(self as *const Self, Inv)
+        })
     }
 
     /// **Source:** `math_Gauss.hxx`:86 - `math_Gauss::Dump()`
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Gauss_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Gauss_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -2621,11 +2796,11 @@ impl Gauss {
 /// decomposition algorithm.
 /// This algorithm is more likely subject to numerical instability
 /// than math_SVD.
-pub use crate::ffi::math_GaussLeastSquare as GaussLeastSquare;
+pub use crate::ffi_types::math_GaussLeastSquare as GaussLeastSquare;
 
 unsafe impl crate::CppDeletable for GaussLeastSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_GaussLeastSquare_destructor(ptr);
+        crate::ffi_extern_TKMath::math_GaussLeastSquare_destructor(ptr);
     }
 }
 
@@ -2641,7 +2816,7 @@ impl GaussLeastSquare {
     pub fn new_matrix_real(A: &Matrix, MinPivot: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GaussLeastSquare_ctor_matrix_real(A, MinPivot),
+                crate::ffi_extern_TKMath::math_GaussLeastSquare_ctor_matrix_real(A, MinPivot),
             ))
         }
     }
@@ -2662,7 +2837,7 @@ impl GaussLeastSquare {
     /// Returns true if the computations are successful, otherwise returns false.e
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussLeastSquare_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussLeastSquare_is_done(self as *const Self)
         })
     }
 
@@ -2675,9 +2850,9 @@ impl GaussLeastSquare {
     /// not equal to the rowrange of A.
     /// Exception DimensionError is raised if the range of X Inv is
     /// not equal to the colrange of A.
-    pub fn solve(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+    pub fn solve(&self, B: &crate::ffi_types::math_Vector, X: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GaussLeastSquare_solve(self as *const Self, B, X)
+            crate::ffi_extern_TKMath::math_GaussLeastSquare_solve(self as *const Self, B, X)
         })
     }
 
@@ -2685,9 +2860,9 @@ impl GaussLeastSquare {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GaussLeastSquare_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_GaussLeastSquare_dump(self as *const Self, o)
         })
     }
 }
@@ -2700,11 +2875,11 @@ impl GaussLeastSquare {
 /// This class implements the integration of a function of multiple
 /// variables between the parameter bounds Lower[a..b] and Upper[a..b].
 /// Warning: Each element of Order must be inferior or equal to 61.
-pub use crate::ffi::math_GaussMultipleIntegration as GaussMultipleIntegration;
+pub use crate::ffi_types::math_GaussMultipleIntegration as GaussMultipleIntegration;
 
 unsafe impl crate::CppDeletable for GaussMultipleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_GaussMultipleIntegration_destructor(ptr);
+        crate::ffi_extern_TKMath::math_GaussMultipleIntegration_destructor(ptr);
     }
 }
 
@@ -2715,12 +2890,12 @@ impl GaussMultipleIntegration {
     /// between the bounds Lower and Upper.
     pub fn new_multiplevarfunction_vector2_integervector(
         F: &mut MultipleVarFunction,
-        Lower: &crate::ffi::math_Vector,
-        Upper: &crate::ffi::math_Vector,
-        Order: &crate::ffi::math_IntegerVector,
+        Lower: &crate::ffi_types::math_Vector,
+        Upper: &crate::ffi_types::math_Vector,
+        Order: &crate::ffi_types::math_IntegerVector,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(F, Lower, Upper, Order)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_GaussMultipleIntegration_ctor_multiplevarfunction_vector2_integervector(F, Lower, Upper, Order)))
         }
     }
 
@@ -2728,7 +2903,7 @@ impl GaussMultipleIntegration {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussMultipleIntegration_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussMultipleIntegration_is_done(self as *const Self)
         })
     }
 
@@ -2736,15 +2911,15 @@ impl GaussMultipleIntegration {
     /// returns the value of the integral.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussMultipleIntegration_value(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussMultipleIntegration_value(self as *const Self)
         })
     }
 
     /// **Source:** `math_GaussMultipleIntegration.hxx`:51 - `math_GaussMultipleIntegration::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GaussMultipleIntegration_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_GaussMultipleIntegration_dump(self as *const Self, o)
         })
     }
 }
@@ -2758,11 +2933,11 @@ impl GaussMultipleIntegration {
 /// functions of M  variables variables between the
 /// parameter bounds Lower[a..b] and Upper[a..b].
 /// Warning: - The case M>1 is not implemented.
-pub use crate::ffi::math_GaussSetIntegration as GaussSetIntegration;
+pub use crate::ffi_types::math_GaussSetIntegration as GaussSetIntegration;
 
 unsafe impl crate::CppDeletable for GaussSetIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_GaussSetIntegration_destructor(ptr);
+        crate::ffi_extern_TKMath::math_GaussSetIntegration_destructor(ptr);
     }
 }
 
@@ -2773,16 +2948,12 @@ impl GaussSetIntegration {
     /// between the bounds Lower and Upper.
     pub fn new_functionset_vector2_integervector(
         F: &mut FunctionSet,
-        Lower: &crate::ffi::math_Vector,
-        Upper: &crate::ffi::math_Vector,
-        Order: &crate::ffi::math_IntegerVector,
+        Lower: &crate::ffi_types::math_Vector,
+        Upper: &crate::ffi_types::math_Vector,
+        Order: &crate::ffi_types::math_IntegerVector,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GaussSetIntegration_ctor_functionset_vector2_integervector(
-                    F, Lower, Upper, Order,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_GaussSetIntegration_ctor_functionset_vector2_integervector(F, Lower, Upper, Order)))
         }
     }
 
@@ -2790,23 +2961,25 @@ impl GaussSetIntegration {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussSetIntegration_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussSetIntegration_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `math_GaussSetIntegration.hxx`:49 - `math_GaussSetIntegration::Value()`
     /// returns the value of the integral.
-    pub fn value(&self) -> &crate::ffi::math_Vector {
+    pub fn value(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_GaussSetIntegration_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_GaussSetIntegration_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `math_GaussSetIntegration.hxx`:52 - `math_GaussSetIntegration::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GaussSetIntegration_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_GaussSetIntegration_dump(self as *const Self, o)
         })
     }
 }
@@ -2819,11 +2992,11 @@ impl GaussSetIntegration {
 /// This class implements the integration of a function of a single variable
 /// between the parameter bounds Lower and Upper.
 /// Warning: Order must be inferior or equal to 61.
-pub use crate::ffi::math_GaussSingleIntegration as GaussSingleIntegration;
+pub use crate::ffi_types::math_GaussSingleIntegration as GaussSingleIntegration;
 
 unsafe impl crate::CppDeletable for GaussSingleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_GaussSingleIntegration_destructor(ptr);
+        crate::ffi_extern_TKMath::math_GaussSingleIntegration_destructor(ptr);
     }
 }
 
@@ -2832,7 +3005,7 @@ impl GaussSingleIntegration {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GaussSingleIntegration_ctor(),
+                crate::ffi_extern_TKMath::math_GaussSingleIntegration_ctor(),
             ))
         }
     }
@@ -2848,7 +3021,7 @@ impl GaussSingleIntegration {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GaussSingleIntegration_ctor_function_real2_int(
+                crate::ffi_extern_TKMath::math_GaussSingleIntegration_ctor_function_real2_int(
                     F, Lower, Upper, Order,
                 ),
             ))
@@ -2868,7 +3041,7 @@ impl GaussSingleIntegration {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GaussSingleIntegration_ctor_function_real2_int_real(
+                crate::ffi_extern_TKMath::math_GaussSingleIntegration_ctor_function_real2_int_real(
                     F, Lower, Upper, Order, Tol,
                 ),
             ))
@@ -2879,7 +3052,7 @@ impl GaussSingleIntegration {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussSingleIntegration_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussSingleIntegration_is_done(self as *const Self)
         })
     }
 
@@ -2887,15 +3060,15 @@ impl GaussSingleIntegration {
     /// returns the value of the integral.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_GaussSingleIntegration_value(self as *const Self)
+            crate::ffi_extern_TKMath::math_GaussSingleIntegration_value(self as *const Self)
         })
     }
 
     /// **Source:** `math_GaussSingleIntegration.hxx`:60 - `math_GaussSingleIntegration::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GaussSingleIntegration_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_GaussSingleIntegration_dump(self as *const Self, o)
         })
     }
 }
@@ -2931,11 +3104,11 @@ impl GaussSingleIntegration {
 /// It is possible to set / get minimal value of the functional.
 /// It works well together with single solution search.
 /// This functionality is covered by SetFunctionalMinimalValue and GetFunctionalMinimalValue API.
-pub use crate::ffi::math_GlobOptMin as GlobOptMin;
+pub use crate::ffi_types::math_GlobOptMin as GlobOptMin;
 
 unsafe impl crate::CppDeletable for GlobOptMin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_GlobOptMin_destructor(ptr);
+        crate::ffi_extern_TKMath::math_GlobOptMin_destructor(ptr);
     }
 }
 
@@ -2950,15 +3123,15 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn new_multiplevarfunctionptr_vector2_real3(
         theFunc: &mut MultipleVarFunction,
-        theLowerBorder: &crate::ffi::math_Vector,
-        theUpperBorder: &crate::ffi::math_Vector,
+        theLowerBorder: &crate::ffi_types::math_Vector,
+        theUpperBorder: &crate::ffi_types::math_Vector,
         theC: f64,
         theDiscretizationTol: f64,
         theSameTol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_GlobOptMin_ctor_multiplevarfunctionptr_vector2_real3(
+                crate::ffi_extern_TKMath::math_GlobOptMin_ctor_multiplevarfunctionptr_vector2_real3(
                     theFunc as *mut _,
                     theLowerBorder,
                     theUpperBorder,
@@ -2980,8 +3153,8 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn new_multiplevarfunctionptr_vector2_real2(
         theFunc: &mut MultipleVarFunction,
-        theLowerBorder: &crate::ffi::math_Vector,
-        theUpperBorder: &crate::ffi::math_Vector,
+        theLowerBorder: &crate::ffi_types::math_Vector,
+        theUpperBorder: &crate::ffi_types::math_Vector,
         theC: f64,
         theDiscretizationTol: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3005,8 +3178,8 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn new_multiplevarfunctionptr_vector2_real(
         theFunc: &mut MultipleVarFunction,
-        theLowerBorder: &crate::ffi::math_Vector,
-        theUpperBorder: &crate::ffi::math_Vector,
+        theLowerBorder: &crate::ffi_types::math_Vector,
+        theUpperBorder: &crate::ffi_types::math_Vector,
         theC: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionptr_vector2_real3(
@@ -3029,8 +3202,8 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn new_multiplevarfunctionptr_vector2(
         theFunc: &mut MultipleVarFunction,
-        theLowerBorder: &crate::ffi::math_Vector,
-        theUpperBorder: &crate::ffi::math_Vector,
+        theLowerBorder: &crate::ffi_types::math_Vector,
+        theUpperBorder: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionptr_vector2_real3(
             theFunc,
@@ -3052,14 +3225,14 @@ impl GlobOptMin {
     pub fn set_global_params(
         &mut self,
         theFunc: &mut MultipleVarFunction,
-        theLowerBorder: &crate::ffi::math_Vector,
-        theUpperBorder: &crate::ffi::math_Vector,
+        theLowerBorder: &crate::ffi_types::math_Vector,
+        theUpperBorder: &crate::ffi_types::math_Vector,
         theC: f64,
         theDiscretizationTol: f64,
         theSameTol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_global_params(
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_global_params(
                 self as *mut Self,
                 theFunc as *mut _,
                 theLowerBorder,
@@ -3077,11 +3250,15 @@ impl GlobOptMin {
     /// @param theLocalB - upper corner of the local box.
     pub fn set_local_params(
         &mut self,
-        theLocalA: &crate::ffi::math_Vector,
-        theLocalB: &crate::ffi::math_Vector,
+        theLocalA: &crate::ffi_types::math_Vector,
+        theLocalB: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_local_params(self as *mut Self, theLocalA, theLocalB)
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_local_params(
+                self as *mut Self,
+                theLocalA,
+                theLocalB,
+            )
         })
     }
 
@@ -3091,7 +3268,11 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn set_tol(&mut self, theDiscretizationTol: f64, theSameTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_tol(self as *mut Self, theDiscretizationTol, theSameTol)
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_tol(
+                self as *mut Self,
+                theDiscretizationTol,
+                theSameTol,
+            )
         })
     }
 
@@ -3101,7 +3282,11 @@ impl GlobOptMin {
     /// @param theSameTol - functional value space indifference tolerance.
     pub fn get_tol(&mut self, theDiscretizationTol: &mut f64, theSameTol: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_get_tol(self as *mut Self, theDiscretizationTol, theSameTol)
+            crate::ffi_extern_TKMath::math_GlobOptMin_get_tol(
+                self as *mut Self,
+                theDiscretizationTol,
+                theSameTol,
+            )
         })
     }
 
@@ -3109,15 +3294,18 @@ impl GlobOptMin {
     /// @param isFindSingleSolution - defines whether to find single solution or all solutions.
     pub fn perform(&mut self, isFindSingleSolution: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_perform(self as *mut Self, isFindSingleSolution)
+            crate::ffi_extern_TKMath::math_GlobOptMin_perform(
+                self as *mut Self,
+                isFindSingleSolution,
+            )
         })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:100 - `math_GlobOptMin::Points()`
     /// Return solution theIndex, 1 <= theIndex <= NbExtrema.
-    pub fn points(&mut self, theIndex: i32, theSol: &mut crate::ffi::math_Vector) {
+    pub fn points(&mut self, theIndex: i32, theSol: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_points(self as *mut Self, theIndex, theSol)
+            crate::ffi_extern_TKMath::math_GlobOptMin_points(self as *mut Self, theIndex, theSol)
         })
     }
 
@@ -3125,14 +3313,14 @@ impl GlobOptMin {
     /// Set / Get continuity of local borders splits (0 ~ C0, 1 ~ C1, 2 ~ C2).
     pub fn set_continuity(&mut self, theCont: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_continuity(self as *mut Self, theCont)
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_continuity(self as *mut Self, theCont)
         })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:105 - `math_GlobOptMin::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_GlobOptMin_get_continuity(self as *const Self)
+            crate::ffi_extern_TKMath::math_GlobOptMin_get_continuity(self as *const Self)
         })
     }
 
@@ -3140,7 +3328,7 @@ impl GlobOptMin {
     /// Set / Get functional minimal value.
     pub fn set_functional_minimal_value(&mut self, theMinimalValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_functional_minimal_value(
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_functional_minimal_value(
                 self as *mut Self,
                 theMinimalValue,
             )
@@ -3150,7 +3338,9 @@ impl GlobOptMin {
     /// **Source:** `math_GlobOptMin.hxx`:113 - `math_GlobOptMin::GetFunctionalMinimalValue()`
     pub fn get_functional_minimal_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_GlobOptMin_get_functional_minimal_value(self as *const Self)
+            crate::ffi_extern_TKMath::math_GlobOptMin_get_functional_minimal_value(
+                self as *const Self,
+            )
         })
     }
 
@@ -3159,33 +3349,42 @@ impl GlobOptMin {
     /// True means that the constant is locked and unlocked otherwise.
     pub fn set_lip_const_state(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_GlobOptMin_set_lip_const_state(self as *mut Self, theFlag)
+            crate::ffi_extern_TKMath::math_GlobOptMin_set_lip_const_state(
+                self as *mut Self,
+                theFlag,
+            )
         })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:119 - `math_GlobOptMin::GetLipConstState()`
     pub fn get_lip_const_state(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_GlobOptMin_get_lip_const_state(self as *const Self)
+            crate::ffi_extern_TKMath::math_GlobOptMin_get_lip_const_state(self as *const Self)
         })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:122 - `math_GlobOptMin::isDone()`
     /// Return computation state of the algorithm.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_GlobOptMin_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_GlobOptMin_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:125 - `math_GlobOptMin::GetF()`
     /// Get best functional value.
     pub fn get_f(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_GlobOptMin_get_f(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_GlobOptMin_get_f(self as *const Self)
+        })
     }
 
     /// **Source:** `math_GlobOptMin.hxx`:128 - `math_GlobOptMin::NbExtrema()`
     /// Return count of global extremas.
     pub fn nb_extrema(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_GlobOptMin_nb_extrema(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_GlobOptMin_nb_extrema(self as *const Self)
+        })
     }
 }
 
@@ -3203,11 +3402,11 @@ impl GlobOptMin {
 /// It is about 16% longer than GaussLeastSquare if there is only
 /// one member B to solve.
 /// It is about 30% longer if there are twenty B members to solve.
-pub use crate::ffi::math_Householder as Householder;
+pub use crate::ffi_types::math_Householder as Householder;
 
 unsafe impl crate::CppDeletable for Householder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Householder_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Householder_destructor(ptr);
     }
 }
 
@@ -3223,7 +3422,7 @@ impl Householder {
     pub fn new_matrix2_real(A: &Matrix, B: &Matrix, EPS: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Householder_ctor_matrix2_real(A, B, EPS),
+                crate::ffi_extern_TKMath::math_Householder_ctor_matrix2_real(A, B, EPS),
             ))
         }
     }
@@ -3247,7 +3446,7 @@ impl Householder {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Householder_ctor_matrix2_int4_real(
+                crate::ffi_extern_TKMath::math_Householder_ctor_matrix2_int4_real(
                     A, B, lowerArow, upperArow, lowerAcol, upperAcol, EPS,
                 ),
             ))
@@ -3264,12 +3463,12 @@ impl Householder {
     /// is different from the A row number.
     pub fn new_matrix_vector_real(
         A: &Matrix,
-        B: &crate::ffi::math_Vector,
+        B: &crate::ffi_types::math_Vector,
         EPS: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Householder_ctor_matrix_vector_real(A, B, EPS),
+                crate::ffi_extern_TKMath::math_Householder_ctor_matrix_vector_real(A, B, EPS),
             ))
         }
     }
@@ -3313,14 +3512,19 @@ impl Householder {
     /// be done.
     /// Exception DimensionError is raised if the length of B
     /// is different from the A row number.
-    pub fn new_matrix_vector(A: &Matrix, B: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+    pub fn new_matrix_vector(
+        A: &Matrix,
+        B: &crate::ffi_types::math_Vector,
+    ) -> crate::OwnedPtr<Self> {
         Self::new_matrix_vector_real(A, B, 1.0e-20)
     }
 
     /// **Source:** `math_Householder.hxx`:80 - `math_Householder::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Householder_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Householder_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Householder.hxx`:88 - `math_Householder::Value()`
@@ -3330,9 +3534,9 @@ impl Householder {
     /// done.
     /// Exception OutOfRange is raised if Index <=0 or
     /// Index is more than the number of columns of B.
-    pub fn value(&self, sol: &mut crate::ffi::math_Vector, Index: i32) {
+    pub fn value(&self, sol: &mut crate::ffi_types::math_Vector, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Householder_value(self as *const Self, sol, Index)
+            crate::ffi_extern_TKMath::math_Householder_value(self as *const Self, sol, Index)
         })
     }
 
@@ -3343,15 +3547,17 @@ impl Householder {
     /// done.
     pub fn all_values(&self) -> &Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_Householder_all_values(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Householder_all_values(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `math_Householder.hxx`:97 - `math_Householder::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Householder_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_Householder_dump(self as *const Self, o)
         })
     }
 }
@@ -3364,11 +3570,11 @@ impl Householder {
 /// This class implements the Jacobi method to find the eigenvalues and
 /// the eigenvectors of a real symmetric square matrix.
 /// A sort of eigenvalues is done.
-pub use crate::ffi::math_Jacobi as Jacobi;
+pub use crate::ffi_types::math_Jacobi as Jacobi;
 
 unsafe impl crate::CppDeletable for Jacobi {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Jacobi_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Jacobi_destructor(ptr);
     }
 }
 
@@ -3380,21 +3586,29 @@ impl Jacobi {
     /// No verification that the matrix A is really symmetric is done.
     pub fn new_matrix(A: &Matrix) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Jacobi_ctor_matrix(A)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Jacobi_ctor_matrix(A),
+            ))
         }
     }
 
     /// **Source:** `math_Jacobi.hxx`:43 - `math_Jacobi::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Jacobi_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Jacobi_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Jacobi.hxx`:47 - `math_Jacobi::Values()`
     /// Returns the eigenvalues vector.
     /// Exception NotDone is raised if calculation is not done successfully.
-    pub fn values(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_Jacobi_values(self as *const Self))) }
+    pub fn values(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Jacobi_values(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_Jacobi.hxx`:52 - `math_Jacobi::Value()`
@@ -3402,31 +3616,39 @@ impl Jacobi {
     /// Eigenvalues are in the range (1..n).
     /// Exception NotDone is raised if calculation is not done successfully.
     pub fn value(&self, Num: i32) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_Jacobi_value(self as *const Self, Num) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Jacobi_value(self as *const Self, Num)
+        })
     }
 
     /// **Source:** `math_Jacobi.hxx`:56 - `math_Jacobi::Vectors()`
     /// returns the eigenvectors matrix.
     /// Exception NotDone is raised if calculation is not done successfully.
     pub fn vectors(&self) -> &Matrix {
-        unsafe { &*(crate::check_result(crate::ffi::math_Jacobi_vectors(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Jacobi_vectors(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_Jacobi.hxx`:61 - `math_Jacobi::Vector()`
     /// Returns the eigenvector V of number Num.
     /// Eigenvectors are in the range (1..n).
     /// Exception NotDone is raised if calculation is not done successfully.
-    pub fn vector(&self, Num: i32, V: &mut crate::ffi::math_Vector) {
+    pub fn vector(&self, Num: i32, V: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Jacobi_vector(self as *const Self, Num, V)
+            crate::ffi_extern_TKMath::math_Jacobi_vector(self as *const Self, Num, V)
         })
     }
 
     /// **Source:** `math_Jacobi.hxx`:65 - `math_Jacobi::Dump()`
     /// Prints information on the current state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Jacobi_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Jacobi_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -3437,11 +3659,11 @@ impl Jacobi {
 /// **Source:** `math_KronrodSingleIntegration.hxx`:28 - `math_KronrodSingleIntegration`
 /// This class implements the Gauss-Kronrod method of
 /// integral computation.
-pub use crate::ffi::math_KronrodSingleIntegration as KronrodSingleIntegration;
+pub use crate::ffi_types::math_KronrodSingleIntegration as KronrodSingleIntegration;
 
 unsafe impl crate::CppDeletable for KronrodSingleIntegration {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_KronrodSingleIntegration_destructor(ptr);
+        crate::ffi_extern_TKMath::math_KronrodSingleIntegration_destructor(ptr);
     }
 }
 
@@ -3451,7 +3673,7 @@ impl KronrodSingleIntegration {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_KronrodSingleIntegration_ctor(),
+                crate::ffi_extern_TKMath::math_KronrodSingleIntegration_ctor(),
             ))
         }
     }
@@ -3467,7 +3689,7 @@ impl KronrodSingleIntegration {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_KronrodSingleIntegration_ctor_function_real2_int(
+                crate::ffi_extern_TKMath::math_KronrodSingleIntegration_ctor_function_real2_int(
                     theFunction,
                     theLower,
                     theUpper,
@@ -3491,16 +3713,7 @@ impl KronrodSingleIntegration {
         theMaxNbIter: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_KronrodSingleIntegration_ctor_function_real2_int_real_int(
-                    theFunction,
-                    theLower,
-                    theUpper,
-                    theNbPnts,
-                    theTolerance,
-                    theMaxNbIter,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_KronrodSingleIntegration_ctor_function_real2_int_real_int(theFunction, theLower, theUpper, theNbPnts, theTolerance, theMaxNbIter)))
         }
     }
 
@@ -3518,7 +3731,7 @@ impl KronrodSingleIntegration {
         theNbPnts: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_perform_function_real2_int(
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_perform_function_real2_int(
                 self as *mut Self,
                 theFunction,
                 theLower,
@@ -3548,15 +3761,7 @@ impl KronrodSingleIntegration {
         theMaxNbIter: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_perform_function_real2_int_real_int(
-                self as *mut Self,
-                theFunction,
-                theLower,
-                theUpper,
-                theNbPnts,
-                theTolerance,
-                theMaxNbIter,
-            )
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_perform_function_real2_int_real_int(self as *mut Self, theFunction, theLower, theUpper, theNbPnts, theTolerance, theMaxNbIter)
         })
     }
 
@@ -3565,7 +3770,7 @@ impl KronrodSingleIntegration {
     /// successfully.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_is_done(self as *const Self)
         })
     }
 
@@ -3573,7 +3778,7 @@ impl KronrodSingleIntegration {
     /// Returns the value of the integral.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_value(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_value(self as *const Self)
         })
     }
 
@@ -3581,7 +3786,9 @@ impl KronrodSingleIntegration {
     /// Returns the value of the relative error reached.
     pub fn error_reached(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_error_reached(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_error_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -3589,7 +3796,9 @@ impl KronrodSingleIntegration {
     /// Returns the value of the relative error reached.
     pub fn absolut_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_absolut_error(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_absolut_error(
+                self as *const Self,
+            )
         })
     }
 
@@ -3598,7 +3807,9 @@ impl KronrodSingleIntegration {
     /// for which the result is computed.
     pub fn order_reached(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_order_reached(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_order_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -3607,7 +3818,9 @@ impl KronrodSingleIntegration {
     /// that were made to compute result.
     pub fn nb_iter_reached(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_nb_iter_reached(self as *const Self)
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_nb_iter_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -3616,15 +3829,15 @@ impl KronrodSingleIntegration {
         theFunction: &mut Function,
         theLower: f64,
         theUpper: f64,
-        theGaussP: &crate::ffi::math_Vector,
-        theGaussW: &crate::ffi::math_Vector,
-        theKronrodP: &crate::ffi::math_Vector,
-        theKronrodW: &crate::ffi::math_Vector,
+        theGaussP: &crate::ffi_types::math_Vector,
+        theGaussW: &crate::ffi_types::math_Vector,
+        theKronrodP: &crate::ffi_types::math_Vector,
+        theKronrodW: &crate::ffi_types::math_Vector,
         theValue: &mut f64,
         theError: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_KronrodSingleIntegration_gk_rule(
+            crate::ffi_extern_TKMath::math_KronrodSingleIntegration_gk_rule(
                 theFunction,
                 theLower,
                 theUpper,
@@ -3683,11 +3896,11 @@ impl KronrodSingleIntegration {
 /// math_Matrix A (tab1[0][0], 1, 10, 1, 20);
 /// math_Matrix B (tab2[0],    1, 10, 1, 20);
 /// @endcode
-pub use crate::ffi::math_Matrix as Matrix;
+pub use crate::ffi_types::math_Matrix as Matrix;
 
 unsafe impl crate::CppDeletable for Matrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Matrix_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Matrix_destructor(ptr);
     }
 }
 
@@ -3707,9 +3920,11 @@ impl Matrix {
         UpperCol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_ctor_int4(
-                LowerRow, UpperRow, LowerCol, UpperCol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_ctor_int4(
+                    LowerRow, UpperRow, LowerCol, UpperCol,
+                ),
+            ))
         }
     }
 
@@ -3725,13 +3940,15 @@ impl Matrix {
         InitialValue: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_ctor_int4_real(
-                LowerRow,
-                UpperRow,
-                LowerCol,
-                UpperCol,
-                InitialValue,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_ctor_int4_real(
+                    LowerRow,
+                    UpperRow,
+                    LowerCol,
+                    UpperCol,
+                    InitialValue,
+                ),
+            ))
         }
     }
 
@@ -3748,7 +3965,7 @@ impl Matrix {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Matrix_ctor_address_int4(
+                crate::ffi_extern_TKMath::math_Matrix_ctor_address_int4(
                     Tab, LowerRow, UpperRow, LowerCol, UpperCol,
                 ),
             ))
@@ -3759,7 +3976,7 @@ impl Matrix {
     /// Initialize all the elements of a matrix to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_init(self as *mut Self, InitialValue)
+            crate::ffi_extern_TKMath::math_Matrix_init(self as *mut Self, InitialValue)
         })
     }
 
@@ -3772,7 +3989,9 @@ impl Matrix {
     /// - the length of a column of A is equal to the number of
     /// rows of A.returns the row range of a matrix.
     pub fn row_number(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_row_number(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_row_number(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:134 - `math_Matrix::ColNumber()`
@@ -3784,49 +4003,63 @@ impl Matrix {
     /// - the length of a column of A is equal to the number of
     /// rows of A.returns the row range of a matrix.
     pub fn col_number(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_col_number(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_col_number(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:138 - `math_Matrix::LowerRow()`
     /// Returns the value of the Lower index of the row
     /// range of a matrix.
     pub fn lower_row(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_lower_row(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_lower_row(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:142 - `math_Matrix::UpperRow()`
     /// Returns the Upper index of the row range
     /// of a matrix.
     pub fn upper_row(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_upper_row(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_upper_row(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:146 - `math_Matrix::LowerCol()`
     /// Returns the value of the Lower index of the
     /// column range of a matrix.
     pub fn lower_col(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_lower_col(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_lower_col(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:150 - `math_Matrix::UpperCol()`
     /// Returns the value of the upper index of the
     /// column range of a matrix.
     pub fn upper_col(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_upper_col(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_upper_col(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:154 - `math_Matrix::Determinant()`
     /// Computes the determinant of a matrix.
     /// An exception is raised if the matrix is not a square matrix.
     pub fn determinant(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_Matrix_determinant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_determinant(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:158 - `math_Matrix::Transpose()`
     /// Transposes a given matrix.
     /// An exception is raised if the matrix is not a square matrix.
     pub fn transpose(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::math_Matrix_transpose(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_transpose(self as *mut Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:163 - `math_Matrix::Invert()`
@@ -3834,7 +4067,9 @@ impl Matrix {
     /// Exception NotSquare is raised if the matrix is not square.
     /// Exception SingularMatrix is raised if the matrix is singular.
     pub fn invert(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::math_Matrix_invert(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_invert(self as *mut Self)
+        })
     }
 
     /// **Source:** `math_Matrix.hxx`:182 - `math_Matrix::Multiply()`
@@ -3857,7 +4092,7 @@ impl Matrix {
     /// the number of columns of this matrix.
     pub fn multiply_real(&mut self, Right: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_multiply_real(self as *mut Self, Right)
+            crate::ffi_extern_TKMath::math_Matrix_multiply_real(self as *mut Self, Right)
         })
     }
 
@@ -3866,10 +4101,9 @@ impl Matrix {
     /// value <Right>.
     pub fn multiplied_real(&self, Right: f64) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_multiplied_real(
-                self as *const Self,
-                Right,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_multiplied_real(self as *const Self, Right),
+            ))
         }
     }
 
@@ -3894,10 +4128,9 @@ impl Matrix {
     /// the number of columns of this matrix.
     pub fn t_multiplied(&self, Right: f64) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_t_multiplied(
-                self as *const Self,
-                Right,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_t_multiplied(self as *const Self, Right),
+            ))
         }
     }
 
@@ -3906,7 +4139,7 @@ impl Matrix {
     /// An exception is raised if <Right> = 0.
     pub fn divide(&mut self, Right: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_divide(self as *mut Self, Right)
+            crate::ffi_extern_TKMath::math_Matrix_divide(self as *mut Self, Right)
         })
     }
 
@@ -3915,10 +4148,9 @@ impl Matrix {
     /// An exception is raised if <Right> = 0.
     pub fn divided(&self, Right: f64) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_divided(
-                self as *const Self,
-                Right,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_divided(self as *const Self, Right),
+            ))
         }
     }
 
@@ -3931,7 +4163,7 @@ impl Matrix {
     /// whenever possible.
     pub fn add_matrix(&mut self, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_add_matrix(self as *mut Self, Right)
+            crate::ffi_extern_TKMath::math_Matrix_add_matrix(self as *mut Self, Right)
         })
     }
 
@@ -3940,10 +4172,9 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn added(&self, Right: &Matrix) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_added(
-                self as *const Self,
-                Right,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_added(self as *const Self, Right),
+            ))
         }
     }
 
@@ -3952,7 +4183,7 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn add_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_add_matrix2(self as *mut Self, Left, Right)
+            crate::ffi_extern_TKMath::math_Matrix_add_matrix2(self as *mut Self, Left, Right)
         })
     }
 
@@ -3965,7 +4196,7 @@ impl Matrix {
     /// Subtract whenever possible.
     pub fn subtract_matrix(&mut self, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_subtract_matrix(self as *mut Self, Right)
+            crate::ffi_extern_TKMath::math_Matrix_subtract_matrix(self as *mut Self, Right)
         })
     }
 
@@ -3974,10 +4205,9 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn subtracted(&self, Right: &Matrix) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_subtracted(
-                self as *const Self,
-                Right,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_subtracted(self as *const Self, Right),
+            ))
         }
     }
 
@@ -3996,7 +4226,7 @@ impl Matrix {
     /// -   J2 - J1 + 1 is not equal to the number of columns of matrix M.
     pub fn set(&mut self, I1: i32, I2: i32, J1: i32, J2: i32, M: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M)
+            crate::ffi_extern_TKMath::math_Matrix_set(self as *mut Self, I1, I2, J1, J2, M)
         })
     }
 
@@ -4005,9 +4235,9 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     /// An exception is raises if <Row> is inferior to the lower
     /// row of the matrix or <Row> is superior to the upper row.
-    pub fn set_row(&mut self, Row: i32, V: &crate::ffi::math_Vector) {
+    pub fn set_row(&mut self, Row: i32, V: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_set_row(self as *mut Self, Row, V)
+            crate::ffi_extern_TKMath::math_Matrix_set_row(self as *mut Self, Row, V)
         })
     }
 
@@ -4017,9 +4247,9 @@ impl Matrix {
     /// An exception is raises if <Col> is inferior to the lower
     /// column of the matrix or <Col> is superior to the upper
     /// column.
-    pub fn set_col(&mut self, Col: i32, V: &crate::ffi::math_Vector) {
+    pub fn set_col(&mut self, Col: i32, V: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_set_col(self as *mut Self, Col, V)
+            crate::ffi_extern_TKMath::math_Matrix_set_col(self as *mut Self, Col, V)
         })
     }
 
@@ -4028,29 +4258,27 @@ impl Matrix {
     /// An exception is raised if the matrix is not square.
     pub fn set_diag(&mut self, Value: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_set_diag(self as *mut Self, Value)
+            crate::ffi_extern_TKMath::math_Matrix_set_diag(self as *mut Self, Value)
         })
     }
 
     /// **Source:** `math_Matrix.hxx`:306 - `math_Matrix::Row()`
     /// Returns the row of index Row of a matrix.
-    pub fn row(&self, Row: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn row(&self, Row: i32) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_row(
-                self as *const Self,
-                Row,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_row(self as *const Self, Row),
+            ))
         }
     }
 
     /// **Source:** `math_Matrix.hxx`:309 - `math_Matrix::Col()`
     /// Returns the column of index <Col> of a matrix.
-    pub fn col(&self, Col: i32) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+    pub fn col(&self, Col: i32) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_col(
-                self as *const Self,
-                Col,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_col(self as *const Self, Col),
+            ))
         }
     }
 
@@ -4059,7 +4287,7 @@ impl Matrix {
     /// An exception is raised if <Row1> or <Row2> is out of range.
     pub fn swap_row(&mut self, Row1: i32, Row2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_swap_row(self as *mut Self, Row1, Row2)
+            crate::ffi_extern_TKMath::math_Matrix_swap_row(self as *mut Self, Row1, Row2)
         })
     }
 
@@ -4068,7 +4296,7 @@ impl Matrix {
     /// An exception is raised if <Col1> or <Col2> is out of range.
     pub fn swap_col(&mut self, Col1: i32, Col2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_swap_col(self as *mut Self, Col1, Col2)
+            crate::ffi_extern_TKMath::math_Matrix_swap_col(self as *mut Self, Col1, Col2)
         })
     }
 
@@ -4077,9 +4305,9 @@ impl Matrix {
     /// An exception is raised if the matrix is not a square matrix.
     pub fn transposed(&self) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_transposed(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_transposed(self as *const Self),
+            ))
         }
     }
 
@@ -4089,9 +4317,9 @@ impl Matrix {
     /// Exception SingularMatrix is raised if the matrix is singular.
     pub fn inverse(&self) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_inverse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_inverse(self as *const Self),
+            ))
         }
     }
 
@@ -4102,7 +4330,7 @@ impl Matrix {
     pub fn t_multiply_matrix(&self, Right: &Matrix) -> crate::OwnedPtr<Matrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Matrix_t_multiply_matrix(self as *const Self, Right),
+                crate::ffi_extern_TKMath::math_Matrix_t_multiply_matrix(self as *const Self, Right),
             ))
         }
     }
@@ -4113,11 +4341,11 @@ impl Matrix {
     /// <me> = <Left> * <Right>.
     pub fn multiply_vector2(
         &mut self,
-        Left: &crate::ffi::math_Vector,
-        Right: &crate::ffi::math_Vector,
+        Left: &crate::ffi_types::math_Vector,
+        Right: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_multiply_vector2(self as *mut Self, Left, Right)
+            crate::ffi_extern_TKMath::math_Matrix_multiply_vector2(self as *mut Self, Left, Right)
         })
     }
 
@@ -4126,7 +4354,7 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right)
+            crate::ffi_extern_TKMath::math_Matrix_multiply_matrix2(self as *mut Self, Left, Right)
         })
     }
 
@@ -4136,7 +4364,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn t_multiply_matrix2(&mut self, TLeft: &Matrix, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_t_multiply_matrix2(self as *mut Self, TLeft, Right)
+            crate::ffi_extern_TKMath::math_Matrix_t_multiply_matrix2(
+                self as *mut Self,
+                TLeft,
+                Right,
+            )
         })
     }
 
@@ -4146,7 +4378,7 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn subtract_matrix2(&mut self, Left: &Matrix, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right)
+            crate::ffi_extern_TKMath::math_Matrix_subtract_matrix2(self as *mut Self, Left, Right)
         })
     }
 
@@ -4157,7 +4389,11 @@ impl Matrix {
     /// in the correct range.
     pub fn value(&mut self, Row: i32, Col: i32) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::math_Matrix_value(self as *mut Self, Row, Col)))
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::math_Matrix_value(
+                self as *mut Self,
+                Row,
+                Col,
+            )))
         }
     }
 
@@ -4172,7 +4408,7 @@ impl Matrix {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn initialized(&mut self, Other: &Matrix) -> &mut Matrix {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::math_Matrix_initialized(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::math_Matrix_initialized(
                 self as *mut Self,
                 Other,
             )))
@@ -4184,7 +4420,7 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn multiply_matrix(&mut self, Right: &Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Matrix_multiply_matrix(self as *mut Self, Right)
+            crate::ffi_extern_TKMath::math_Matrix_multiply_matrix(self as *mut Self, Right)
         })
     }
 
@@ -4194,7 +4430,7 @@ impl Matrix {
     pub fn multiplied_matrix(&self, Right: &Matrix) -> crate::OwnedPtr<Matrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Matrix_multiplied_matrix(self as *const Self, Right),
+                crate::ffi_extern_TKMath::math_Matrix_multiplied_matrix(self as *const Self, Right),
             ))
         }
     }
@@ -4204,11 +4440,11 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn multiplied_vector(
         &self,
-        Right: &crate::ffi::math_Vector,
-    ) -> crate::OwnedPtr<crate::ffi::math_Vector> {
+        Right: &crate::ffi_types::math_Vector,
+    ) -> crate::OwnedPtr<crate::ffi_types::math_Vector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Matrix_multiplied_vector(self as *const Self, Right),
+                crate::ffi_extern_TKMath::math_Matrix_multiplied_vector(self as *const Self, Right),
             ))
         }
     }
@@ -4218,25 +4454,27 @@ impl Matrix {
     /// An exception is raised if the dimensions are different.
     pub fn opposite(&mut self) -> crate::OwnedPtr<Matrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_opposite(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_opposite(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `math_Matrix.hxx`:399 - `math_Matrix::Dump()`
     /// Prints information on the current state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Matrix_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Matrix_dump(self as *const Self, o)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_Matrix_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_Matrix_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -4247,11 +4485,11 @@ impl Matrix {
 
 /// **Source:** `math_MultipleVarFunction.hxx`:27 - `math_MultipleVarFunction`
 /// Describes the virtual functions associated with a multiple variable function.
-pub use crate::ffi::math_MultipleVarFunction as MultipleVarFunction;
+pub use crate::ffi_types::math_MultipleVarFunction as MultipleVarFunction;
 
 unsafe impl crate::CppDeletable for MultipleVarFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_MultipleVarFunction_destructor(ptr);
+        crate::ffi_extern_TKMath::math_MultipleVarFunction_destructor(ptr);
     }
 }
 
@@ -4260,7 +4498,7 @@ impl MultipleVarFunction {
     /// Returns the number of variables of the function
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKMath::math_MultipleVarFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -4269,9 +4507,9 @@ impl MultipleVarFunction {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// otherwise false.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_MultipleVarFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -4292,7 +4530,7 @@ impl MultipleVarFunction {
     /// an Integer that allows retrieval of the state.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunction_get_state_number(self as *mut Self)
+            crate::ffi_extern_TKMath::math_MultipleVarFunction_get_state_number(self as *mut Self)
         })
     }
 }
@@ -4304,11 +4542,11 @@ impl MultipleVarFunction {
 /// **Source:** `math_MultipleVarFunctionWithGradient.hxx`:29 - `math_MultipleVarFunctionWithGradient`
 /// The abstract class MultipleVarFunctionWithGradient
 /// describes the virtual functions associated with a multiple variable function.
-pub use crate::ffi::math_MultipleVarFunctionWithGradient as MultipleVarFunctionWithGradient;
+pub use crate::ffi_types::math_MultipleVarFunctionWithGradient as MultipleVarFunctionWithGradient;
 
 unsafe impl crate::CppDeletable for MultipleVarFunctionWithGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_MultipleVarFunctionWithGradient_destructor(ptr);
+        crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_destructor(ptr);
     }
 }
 
@@ -4317,7 +4555,9 @@ impl MultipleVarFunctionWithGradient {
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithGradient_nb_variables(self as *const Self)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -4325,9 +4565,13 @@ impl MultipleVarFunctionWithGradient {
     /// Computes the values of the Functions <F> for the   variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithGradient_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -4337,11 +4581,15 @@ impl MultipleVarFunctionWithGradient {
     /// False otherwise.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithGradient_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
@@ -4352,41 +4600,38 @@ impl MultipleVarFunctionWithGradient {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithGradient_values(self as *mut Self, X, F, G)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
         })
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_multiple_var_function_mut(&mut self) -> &mut MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithGradient_inherited_GetStateNumber(
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithGradient_inherited_GetStateNumber(
                 self as *mut Self,
             )
         })
@@ -4398,11 +4643,11 @@ impl MultipleVarFunctionWithGradient {
 // ========================
 
 /// **Source:** `math_MultipleVarFunctionWithHessian.hxx`:28 - `math_MultipleVarFunctionWithHessian`
-pub use crate::ffi::math_MultipleVarFunctionWithHessian as MultipleVarFunctionWithHessian;
+pub use crate::ffi_types::math_MultipleVarFunctionWithHessian as MultipleVarFunctionWithHessian;
 
 unsafe impl crate::CppDeletable for MultipleVarFunctionWithHessian {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_MultipleVarFunctionWithHessian_destructor(ptr);
+        crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_destructor(ptr);
     }
 }
 
@@ -4411,7 +4656,9 @@ impl MultipleVarFunctionWithHessian {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_nb_variables(self as *const Self)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -4420,9 +4667,13 @@ impl MultipleVarFunctionWithHessian {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -4433,11 +4684,15 @@ impl MultipleVarFunctionWithHessian {
     /// False otherwise.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
@@ -4448,12 +4703,12 @@ impl MultipleVarFunctionWithHessian {
     /// False otherwise.
     pub fn values_vector_real_vector(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_values_vector_real_vector(
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_values_vector_real_vector(
                 self as *mut Self,
                 X,
                 F,
@@ -4469,26 +4724,20 @@ impl MultipleVarFunctionWithHessian {
     /// successfully, False otherwise.
     pub fn values_vector_real_vector_matrix(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
         H: &mut Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_values_vector_real_vector_matrix(
-                self as *mut Self,
-                X,
-                F,
-                G,
-                H,
-            )
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_values_vector_real_vector_matrix(self as *mut Self, X, F, G, H)
         })
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
     pub fn as_multiple_var_function_with_gradient(&self) -> &MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -4497,36 +4746,28 @@ impl MultipleVarFunctionWithHessian {
         &mut self,
     ) -> &mut MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_multiple_var_function(&self) -> &MultipleVarFunction {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_multiple_var_function_mut(&mut self) -> &mut MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_MultipleVarFunctionWithHessian_inherited_GetStateNumber(
+            crate::ffi_extern_TKMath::math_MultipleVarFunctionWithHessian_inherited_GetStateNumber(
                 self as *mut Self,
             )
         })
@@ -4541,11 +4782,11 @@ impl MultipleVarFunctionWithHessian {
 /// This class implements the calculation of a root of a function of
 /// a single variable starting from an initial near guess using the
 /// Newton algorithm. Knowledge of the derivative is required.
-pub use crate::ffi::math_NewtonFunctionRoot as NewtonFunctionRoot;
+pub use crate::ffi_types::math_NewtonFunctionRoot as NewtonFunctionRoot;
 
 unsafe impl crate::CppDeletable for NewtonFunctionRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_NewtonFunctionRoot_destructor(ptr);
+        crate::ffi_extern_TKMath::math_NewtonFunctionRoot_destructor(ptr);
     }
 }
 
@@ -4565,15 +4806,7 @@ impl NewtonFunctionRoot {
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NewtonFunctionRoot_ctor_functionwithderivative_real3_int(
-                    F,
-                    Guess,
-                    EpsX,
-                    EpsF,
-                    NbIterations,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_NewtonFunctionRoot_ctor_functionwithderivative_real3_int(F, Guess, EpsX, EpsF, NbIterations)))
         }
     }
 
@@ -4595,17 +4828,7 @@ impl NewtonFunctionRoot {
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NewtonFunctionRoot_ctor_functionwithderivative_real5_int(
-                    F,
-                    Guess,
-                    EpsX,
-                    EpsF,
-                    A,
-                    B,
-                    NbIterations,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_NewtonFunctionRoot_ctor_functionwithderivative_real5_int(F, Guess, EpsX, EpsF, A, B, NbIterations)))
         }
     }
 
@@ -4621,7 +4844,13 @@ impl NewtonFunctionRoot {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NewtonFunctionRoot_ctor_real4_int(A, B, EpsX, EpsF, NbIterations),
+                crate::ffi_extern_TKMath::math_NewtonFunctionRoot_ctor_real4_int(
+                    A,
+                    B,
+                    EpsX,
+                    EpsF,
+                    NbIterations,
+                ),
             ))
         }
     }
@@ -4672,7 +4901,7 @@ impl NewtonFunctionRoot {
     /// is used internally by the constructors.
     pub fn perform(&mut self, F: &mut FunctionWithDerivative, Guess: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_perform(self as *mut Self, F, Guess)
         })
     }
 
@@ -4680,7 +4909,7 @@ impl NewtonFunctionRoot {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_is_done(self as *const Self)
         })
     }
 
@@ -4689,7 +4918,7 @@ impl NewtonFunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn root(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_root(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_root(self as *const Self)
         })
     }
 
@@ -4698,7 +4927,7 @@ impl NewtonFunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_derivative(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_derivative(self as *const Self)
         })
     }
 
@@ -4707,7 +4936,7 @@ impl NewtonFunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_value(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_value(self as *const Self)
         })
     }
 
@@ -4717,15 +4946,15 @@ impl NewtonFunctionRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_nb_iterations(self as *const Self)
         })
     }
 
     /// **Source:** `math_NewtonFunctionRoot.hxx`:93 - `math_NewtonFunctionRoot::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionRoot_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_NewtonFunctionRoot_dump(self as *const Self, o)
         })
     }
 }
@@ -4739,11 +4968,11 @@ impl NewtonFunctionRoot {
 /// knowing an initial guess at the solution and using the
 /// Newton Raphson algorithm. Knowledge of all the partial
 /// derivatives (Jacobian) is required.
-pub use crate::ffi::math_NewtonFunctionSetRoot as NewtonFunctionSetRoot;
+pub use crate::ffi_types::math_NewtonFunctionSetRoot as NewtonFunctionSetRoot;
 
 unsafe impl crate::CppDeletable for NewtonFunctionSetRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_NewtonFunctionSetRoot_destructor(ptr);
+        crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_destructor(ptr);
     }
 }
 
@@ -4754,12 +4983,12 @@ impl NewtonFunctionSetRoot {
     /// all vectors and matrix declarations.
     pub fn new_functionsetwithderivatives_vector_real_int(
         theFunction: &mut FunctionSetWithDerivatives,
-        theXTolerance: &crate::ffi::math_Vector,
+        theXTolerance: &crate::ffi_types::math_Vector,
         theFTolerance: f64,
         tehNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(theFunction, theXTolerance, theFTolerance, tehNbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_vector_real_int(theFunction, theXTolerance, theFTolerance, tehNbIterations)))
         }
     }
 
@@ -4775,13 +5004,7 @@ impl NewtonFunctionSetRoot {
         theNbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_real_int(
-                    theFunction,
-                    theFTolerance,
-                    theNbIterations,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_ctor_functionsetwithderivatives_real_int(theFunction, theFTolerance, theNbIterations)))
         }
     }
 
@@ -4791,7 +5014,7 @@ impl NewtonFunctionSetRoot {
     /// all vectors and matrix declarations.
     pub fn new_functionsetwithderivatives_vector_real(
         theFunction: &mut FunctionSetWithDerivatives,
-        theXTolerance: &crate::ffi::math_Vector,
+        theXTolerance: &crate::ffi_types::math_Vector,
         theFTolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_functionsetwithderivatives_vector_real_int(
@@ -4817,9 +5040,12 @@ impl NewtonFunctionSetRoot {
 
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:60 - `math_NewtonFunctionSetRoot::SetTolerance()`
     /// Initializes the tolerance values for the unknowns.
-    pub fn set_tolerance(&mut self, XTol: &crate::ffi::math_Vector) {
+    pub fn set_tolerance(&mut self, XTol: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_set_tolerance(self as *mut Self, XTol)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_set_tolerance(
+                self as *mut Self,
+                XTol,
+            )
         })
     }
 
@@ -4830,14 +5056,10 @@ impl NewtonFunctionSetRoot {
     pub fn perform_functionsetwithderivatives_vector(
         &mut self,
         theFunction: &mut FunctionSetWithDerivatives,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector(
-                self as *mut Self,
-                theFunction,
-                theStartingPoint,
-            )
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector(self as *mut Self, theFunction, theStartingPoint)
         })
     }
 
@@ -4849,18 +5071,12 @@ impl NewtonFunctionSetRoot {
     pub fn perform_functionsetwithderivatives_vector3(
         &mut self,
         theFunction: &mut FunctionSetWithDerivatives,
-        theStartingPoint: &crate::ffi::math_Vector,
-        theInfBound: &crate::ffi::math_Vector,
-        theSupBound: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
+        theInfBound: &crate::ffi_types::math_Vector,
+        theSupBound: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector3(
-                self as *mut Self,
-                theFunction,
-                theStartingPoint,
-                theInfBound,
-                theSupBound,
-            )
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_perform_functionsetwithderivatives_vector3(self as *mut Self, theFunction, theStartingPoint, theInfBound, theSupBound)
         })
     }
 
@@ -4872,7 +5088,10 @@ impl NewtonFunctionSetRoot {
     /// the solution is reached or not.
     pub fn is_solution_reached(&mut self, F: &mut FunctionSetWithDerivatives) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_is_solution_reached(self as *mut Self, F)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_is_solution_reached(
+                self as *mut Self,
+                F,
+            )
         })
     }
 
@@ -4880,7 +5099,7 @@ impl NewtonFunctionSetRoot {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_is_done(self as *const Self)
         })
     }
 
@@ -4888,9 +5107,9 @@ impl NewtonFunctionSetRoot {
     /// Returns the value of the root of function F.
     /// Exceptions
     /// StdFail_NotDone if the algorithm fails (and IsDone returns false).
-    pub fn root(&self) -> &crate::ffi::math_Vector {
+    pub fn root(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NewtonFunctionSetRoot_root(
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_root(
                 self as *const Self,
             )))
         }
@@ -4901,9 +5120,12 @@ impl NewtonFunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     /// Exception DimensionError is raised if the range of Root is
     /// not equal to the range of the StartingPoint.
-    pub fn root_vector(&self, Root: &mut crate::ffi::math_Vector) {
+    pub fn root_vector(&self, Root: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_root_vector(self as *const Self, Root)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_root_vector(
+                self as *const Self,
+                Root,
+            )
         })
     }
 
@@ -4912,7 +5134,7 @@ impl NewtonFunctionSetRoot {
     /// vector root.
     pub fn state_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_state_number(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_state_number(self as *const Self)
         })
     }
 
@@ -4921,9 +5143,11 @@ impl NewtonFunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn derivative(&self) -> &Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NewtonFunctionSetRoot_derivative(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_derivative(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4935,7 +5159,10 @@ impl NewtonFunctionSetRoot {
     /// not equal to the range of the StartingPoint.
     pub fn derivative_matrix(&self, Der: &mut Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_derivative_matrix(self as *const Self, Der)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_derivative_matrix(
+                self as *const Self,
+                Der,
+            )
         })
     }
 
@@ -4943,11 +5170,13 @@ impl NewtonFunctionSetRoot {
     /// Returns the vector value of the error done on the
     /// functions at the root.
     /// Exception NotDone is raised if the root was not found.
-    pub fn function_set_errors(&self) -> &crate::ffi::math_Vector {
+    pub fn function_set_errors(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NewtonFunctionSetRoot_function_set_errors(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_function_set_errors(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4957,9 +5186,9 @@ impl NewtonFunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     /// Exception DimensionError is raised if the range of Err is
     /// not equal to the range of the StartingPoint.
-    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi::math_Vector) {
+    pub fn function_set_errors_vector(&self, Err_: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_function_set_errors_vector(
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_function_set_errors_vector(
                 self as *const Self,
                 Err_,
             )
@@ -4972,16 +5201,16 @@ impl NewtonFunctionSetRoot {
     /// Exception NotDone is raised if the root was not found.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_nb_iterations(self as *const Self)
         })
     }
 
     /// **Source:** `math_NewtonFunctionSetRoot.hxx`:132 - `math_NewtonFunctionSetRoot::Dump()`
     /// Prints information on the current state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonFunctionSetRoot_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_NewtonFunctionSetRoot_dump(self as *const Self, o)
         })
     }
 }
@@ -4991,11 +5220,11 @@ impl NewtonFunctionSetRoot {
 // ========================
 
 /// **Source:** `math_NewtonMinimum.hxx`:31 - `math_NewtonMinimum`
-pub use crate::ffi::math_NewtonMinimum as NewtonMinimum;
+pub use crate::ffi_types::math_NewtonMinimum as NewtonMinimum;
 
 unsafe impl crate::CppDeletable for NewtonMinimum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_NewtonMinimum_destructor(ptr);
+        crate::ffi_extern_TKMath::math_NewtonMinimum_destructor(ptr);
     }
 }
 
@@ -5014,7 +5243,7 @@ impl NewtonMinimum {
         theWithSingularity: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_NewtonMinimum_ctor_multiplevarfunctionwithhessian_real_int_real_bool(theFunction, theTolerance, theNbIterations, theConvexity, theWithSingularity)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::math_NewtonMinimum_ctor_multiplevarfunctionwithhessian_real_int_real_bool(theFunction, theTolerance, theNbIterations, theConvexity, theWithSingularity)))
         }
     }
 
@@ -5083,10 +5312,14 @@ impl NewtonMinimum {
     pub fn perform(
         &mut self,
         theFunction: &mut MultipleVarFunctionWithHessian,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonMinimum_perform(self as *mut Self, theFunction, theStartingPoint)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_perform(
+                self as *mut Self,
+                theFunction,
+                theStartingPoint,
+            )
         })
     }
 
@@ -5096,30 +5329,34 @@ impl NewtonMinimum {
     /// It can be redefined in a sub-class to implement a specific test.
     pub fn is_converged(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonMinimum_is_converged(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_is_converged(self as *const Self)
         })
     }
 
     /// **Source:** `math_NewtonMinimum.hxx`:60 - `math_NewtonMinimum::IsDone()`
     /// Tests if an error has occurred.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_NewtonMinimum_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_NewtonMinimum_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_NewtonMinimum.hxx`:63 - `math_NewtonMinimum::IsConvex()`
     /// Tests if the Function is convexe during optimization.
     pub fn is_convex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonMinimum_is_convex(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_is_convex(self as *const Self)
         })
     }
 
     /// **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location()`
     /// returns the location vector of the minimum.
     /// Exception NotDone is raised if an error has occurred.
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NewtonMinimum_location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_NewtonMinimum_location(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5128,9 +5365,9 @@ impl NewtonMinimum {
     /// Exception NotDone is raised if an error has occurred.
     /// Exception DimensionError is raised if the range of Loc is not
     /// equal to the range of the StartingPoint.
-    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+    pub fn location_vector(&self, Loc: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonMinimum_location_vector(self as *const Self, Loc)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_location_vector(self as *const Self, Loc)
         })
     }
 
@@ -5138,11 +5375,11 @@ impl NewtonMinimum {
     /// Set boundaries.
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonMinimum_set_boundary(
+            crate::ffi_extern_TKMath::math_NewtonMinimum_set_boundary(
                 self as *mut Self,
                 theLeftBorder,
                 theRightBorder,
@@ -5154,16 +5391,20 @@ impl NewtonMinimum {
     /// returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_NewtonMinimum_minimum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_NewtonMinimum_minimum(self as *const Self)
+        })
     }
 
     /// **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient()`
     /// returns the gradient vector at the minimum.
     /// Exception NotDone is raised if an error has occurred.
     /// The minimum was not found.
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NewtonMinimum_gradient(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_NewtonMinimum_gradient(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5172,9 +5413,9 @@ impl NewtonMinimum {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Grad is not
     /// equal to the range of the StartingPoint.
-    pub fn gradient_vector(&self, Grad: &mut crate::ffi::math_Vector) {
+    pub fn gradient_vector(&self, Grad: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonMinimum_gradient_vector(self as *const Self, Grad)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_gradient_vector(self as *const Self, Grad)
         })
     }
 
@@ -5184,7 +5425,7 @@ impl NewtonMinimum {
     /// The exception NotDone is raised if an error has occurred.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NewtonMinimum_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_nb_iterations(self as *const Self)
         })
     }
 
@@ -5193,7 +5434,7 @@ impl NewtonMinimum {
     /// The exception NotDone is raised if an error has occurred.
     pub fn get_status(&self) -> crate::math::Status {
         crate::math::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::math_NewtonMinimum_get_status(self as *const Self)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -5202,9 +5443,9 @@ impl NewtonMinimum {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NewtonMinimum_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_NewtonMinimum_dump(self as *const Self, o)
         })
     }
 }
@@ -5214,27 +5455,31 @@ impl NewtonMinimum {
 // ========================
 
 /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare`
-pub use crate::ffi::math_NotSquare as NotSquare;
+pub use crate::ffi_types::math_NotSquare as NotSquare;
 
 unsafe impl crate::CppDeletable for NotSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_NotSquare_destructor(ptr);
+        crate::ffi_extern_TKMath::math_NotSquare_destructor(ptr);
     }
 }
 
 impl NotSquare {
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::math_NotSquare()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_NotSquare_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::math_NotSquare()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_NotSquare_ctor_charptr(
-                c_theMessage.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_ctor_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -5244,7 +5489,7 @@ impl NotSquare {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NotSquare_ctor_charptr2(
+                crate::ffi_extern_TKMath::math_NotSquare_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -5253,9 +5498,11 @@ impl NotSquare {
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_NotSquare_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_NotSquare_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5263,23 +5510,27 @@ impl NotSquare {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKMath::math_NotSquare_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_NotSquare_raise_sstream(theMessage) })
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_NotSquare_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathNotSquare> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathNotSquare> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NotSquare_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKMath::math_NotSquare_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -5288,12 +5539,12 @@ impl NotSquare {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathNotSquare> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathNotSquare> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_NotSquare_new_instance_charptr2(
+                crate::ffi_extern_TKMath::math_NotSquare_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -5304,41 +5555,47 @@ impl NotSquare {
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::math_NotSquare_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `math_NotSquare.hxx`:36 - `math_NotSquare::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::math_NotSquare_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_NotSquare_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_DimensionError
     pub fn as_standard_dimension_error(&self) -> &crate::standard::DimensionError {
         unsafe {
-            &*crate::check_result(crate::ffi::math_NotSquare_as_Standard_DimensionError(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_as_Standard_DimensionError(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_DimensionError (mutable)
     pub fn as_standard_dimension_error_mut(&mut self) -> &mut crate::standard::DimensionError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_NotSquare_as_Standard_DimensionError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_as_Standard_DimensionError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
         unsafe {
-            &*crate::check_result(crate::ffi::math_NotSquare_as_Standard_DomainError(
+            &*crate::check_result(crate::ffi_extern_TKMath::math_NotSquare_as_Standard_DomainError(
                 self as *const Self,
             ))
         }
@@ -5347,16 +5604,18 @@ impl NotSquare {
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_NotSquare_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::math_NotSquare_as_Standard_Failure(
+            &*crate::check_result(crate::ffi_extern_TKMath::math_NotSquare_as_Standard_Failure(
                 self as *const Self,
             ))
         }
@@ -5365,16 +5624,16 @@ impl NotSquare {
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_NotSquare_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_as_Standard_Failure_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::math_NotSquare_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKMath::math_NotSquare_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -5383,55 +5642,60 @@ impl NotSquare {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_NotSquare_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathNotSquare> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathNotSquare> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_NotSquare_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_NotSquare_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_Print(self as *const Self, theStream)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -5439,7 +5703,7 @@ impl NotSquare {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::math_NotSquare_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::math_NotSquare_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5452,60 +5716,70 @@ impl NotSquare {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_NotSquare_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::math_NotSquare_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlemathNotSquare;
+pub use crate::ffi_types::HandlemathNotSquare;
 
 unsafe impl crate::CppDeletable for HandlemathNotSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlemathNotSquare_destructor(ptr);
+        crate::ffi_extern_TKMath::HandlemathNotSquare_destructor(ptr);
     }
 }
 
 impl HandlemathNotSquare {
     /// Dereference this Handle to access the underlying math_NotSquare
-    pub fn get(&self) -> &crate::ffi::math_NotSquare {
-        unsafe { &*crate::check_result(crate::ffi::HandlemathNotSquare_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::math_NotSquare {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKMath::HandlemathNotSquare_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying math_NotSquare
-    pub fn get_mut(&mut self) -> &mut crate::ffi::math_NotSquare {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::math_NotSquare {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlemathNotSquare_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandlemathNotSquare_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_DimensionError>
     pub fn to_handle_dimension_error(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardDimensionError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDimensionError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathNotSquare_to_HandleStandardDimensionError(
+                crate::ffi_extern_TKMath::HandlemathNotSquare_to_HandleStandardDimensionError(
                     self as *const Self,
                 ),
             ))
@@ -5513,28 +5787,38 @@ impl HandlemathNotSquare {
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+    pub fn to_handle_domain_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathNotSquare_to_HandleStandardDomainError(self as *const Self),
+                crate::ffi_extern_TKMath::HandlemathNotSquare_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathNotSquare_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKMath::HandlemathNotSquare_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<math_NotSquare> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathNotSquare_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandlemathNotSquare_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5575,11 +5859,11 @@ impl HandlemathNotSquare {
 /// Warning: PSO is effective to walk into optimum surrounding, not to get strict optimum.
 /// Run local optimization from pso output point.
 /// Warning: In PSO used fixed seed in RNG, so results are reproducible.
-pub use crate::ffi::math_PSO as PSO;
+pub use crate::ffi_types::math_PSO as PSO;
 
 unsafe impl crate::CppDeletable for PSO {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_PSO_destructor(ptr);
+        crate::ffi_extern_TKMath::math_PSO_destructor(ptr);
     }
 }
 
@@ -5598,15 +5882,15 @@ impl PSO {
     /// @param theNbIter defines maximum number of iterations.
     pub fn new_multiplevarfunctionptr_vector3_int2(
         theFunc: &mut MultipleVarFunction,
-        theLowBorder: &crate::ffi::math_Vector,
-        theUppBorder: &crate::ffi::math_Vector,
-        theSteps: &crate::ffi::math_Vector,
+        theLowBorder: &crate::ffi_types::math_Vector,
+        theUppBorder: &crate::ffi_types::math_Vector,
+        theSteps: &crate::ffi_types::math_Vector,
         theNbParticles: i32,
         theNbIter: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_PSO_ctor_multiplevarfunctionptr_vector3_int2(
+                crate::ffi_extern_TKMath::math_PSO_ctor_multiplevarfunctionptr_vector3_int2(
                     theFunc as *mut _,
                     theLowBorder,
                     theUppBorder,
@@ -5632,9 +5916,9 @@ impl PSO {
     /// @param theNbIter defines maximum number of iterations.
     pub fn new_multiplevarfunctionptr_vector3_int(
         theFunc: &mut MultipleVarFunction,
-        theLowBorder: &crate::ffi::math_Vector,
-        theUppBorder: &crate::ffi::math_Vector,
-        theSteps: &crate::ffi::math_Vector,
+        theLowBorder: &crate::ffi_types::math_Vector,
+        theUppBorder: &crate::ffi_types::math_Vector,
+        theSteps: &crate::ffi_types::math_Vector,
         theNbParticles: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionptr_vector3_int2(
@@ -5661,9 +5945,9 @@ impl PSO {
     /// @param theNbIter defines maximum number of iterations.
     pub fn new_multiplevarfunctionptr_vector3(
         theFunc: &mut MultipleVarFunction,
-        theLowBorder: &crate::ffi::math_Vector,
-        theUppBorder: &crate::ffi::math_Vector,
-        theSteps: &crate::ffi::math_Vector,
+        theLowBorder: &crate::ffi_types::math_Vector,
+        theUppBorder: &crate::ffi_types::math_Vector,
+        theSteps: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiplevarfunctionptr_vector3_int2(
             theFunc,
@@ -5679,13 +5963,13 @@ impl PSO {
     /// Perform computations, particles array is constructed inside of this function.
     pub fn perform_vector_real_vector_int(
         &mut self,
-        theSteps: &crate::ffi::math_Vector,
+        theSteps: &crate::ffi_types::math_Vector,
         theValue: &mut f64,
-        theOutPnt: &mut crate::ffi::math_Vector,
+        theOutPnt: &mut crate::ffi_types::math_Vector,
         theNbIter: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_PSO_perform_vector_real_vector_int(
+            crate::ffi_extern_TKMath::math_PSO_perform_vector_real_vector_int(
                 self as *mut Self,
                 theSteps,
                 theValue,
@@ -5702,11 +5986,11 @@ impl PSO {
         theParticles: &mut PSOParticlesPool,
         theNbParticles: i32,
         theValue: &mut f64,
-        theOutPnt: &mut crate::ffi::math_Vector,
+        theOutPnt: &mut crate::ffi_types::math_Vector,
         theNbIter: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_PSO_perform_psoparticlespool_int_real_vector_int(
+            crate::ffi_extern_TKMath::math_PSO_perform_psoparticlespool_int_real_vector_int(
                 self as *mut Self,
                 theParticles,
                 theNbParticles,
@@ -5726,27 +6010,31 @@ impl PSO {
 /// Describes particle pool for using in PSO algorithm.
 /// Indexes:
 /// 0 <= aDimidx <= myDimensionCount - 1
-pub use crate::ffi::PSO_Particle;
+pub use crate::ffi_types::PSO_Particle;
 
 unsafe impl crate::CppDeletable for PSO_Particle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PSO_Particle_destructor(ptr);
+        crate::ffi_extern_TKMath::PSO_Particle_destructor(ptr);
     }
 }
 
 impl PSO_Particle {
     /// **Source:** `math_PSOParticlesPool.hxx`:32 - `PSO_Particle::PSO_Particle()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PSO_Particle_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::PSO_Particle_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `math_PSOParticlesPool.hxx`:47 - `math_PSOParticlesPool`
-pub use crate::ffi::math_PSOParticlesPool as PSOParticlesPool;
+pub use crate::ffi_types::math_PSOParticlesPool as PSOParticlesPool;
 
 unsafe impl crate::CppDeletable for PSOParticlesPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_PSOParticlesPool_destructor(ptr);
+        crate::ffi_extern_TKMath::math_PSOParticlesPool_destructor(ptr);
     }
 }
 
@@ -5755,7 +6043,10 @@ impl PSOParticlesPool {
     pub fn new_int2(theParticlesCount: i32, theDimensionCount: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_PSOParticlesPool_ctor_int2(theParticlesCount, theDimensionCount),
+                crate::ffi_extern_TKMath::math_PSOParticlesPool_ctor_int2(
+                    theParticlesCount,
+                    theDimensionCount,
+                ),
             ))
         }
     }
@@ -5764,7 +6055,10 @@ impl PSOParticlesPool {
     pub fn get_particle(&mut self, theIdx: i32) -> Option<&mut PSO_Particle> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::math_PSOParticlesPool_get_particle(self as *mut Self, theIdx)
+                crate::ffi_extern_TKMath::math_PSOParticlesPool_get_particle(
+                    self as *mut Self,
+                    theIdx,
+                )
             });
             if __val.is_null() {
                 None
@@ -5778,7 +6072,7 @@ impl PSOParticlesPool {
     pub fn get_best_particle(&mut self) -> Option<&mut PSO_Particle> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::math_PSOParticlesPool_get_best_particle(self as *mut Self)
+                crate::ffi_extern_TKMath::math_PSOParticlesPool_get_best_particle(self as *mut Self)
             });
             if __val.is_null() {
                 None
@@ -5792,7 +6086,9 @@ impl PSOParticlesPool {
     pub fn get_worst_particle(&mut self) -> Option<&mut PSO_Particle> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::math_PSOParticlesPool_get_worst_particle(self as *mut Self)
+                crate::ffi_extern_TKMath::math_PSOParticlesPool_get_worst_particle(
+                    self as *mut Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5810,11 +6106,11 @@ impl PSOParticlesPool {
 /// **Source:** `math_Powell.hxx`:32 - `math_Powell`
 /// This class implements the Powell method to find the minimum of
 /// function of multiple variables (the gradient does not have to be known).
-pub use crate::ffi::math_Powell as Powell;
+pub use crate::ffi_types::math_Powell as Powell;
 
 unsafe impl crate::CppDeletable for Powell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Powell_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Powell_destructor(ptr);
     }
 }
 
@@ -5829,7 +6125,7 @@ impl Powell {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Powell_ctor_multiplevarfunction_real_int_real(
+                crate::ffi_extern_TKMath::math_Powell_ctor_multiplevarfunction_real_int_real(
                     theFunction,
                     theTolerance,
                     theNbIterations,
@@ -5872,11 +6168,11 @@ impl Powell {
     pub fn perform(
         &mut self,
         theFunction: &mut MultipleVarFunction,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
         theStartingDirections: &Matrix,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Powell_perform(
+            crate::ffi_extern_TKMath::math_Powell_perform(
                 self as *mut Self,
                 theFunction,
                 theStartingPoint,
@@ -5891,21 +6187,30 @@ impl Powell {
     /// The maximum number of iterations allowed is given by NbIterations.
     pub fn is_solution_reached(&mut self, theFunction: &mut MultipleVarFunction) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_Powell_is_solution_reached(self as *mut Self, theFunction)
+            crate::ffi_extern_TKMath::math_Powell_is_solution_reached(
+                self as *mut Self,
+                theFunction,
+            )
         })
     }
 
     /// **Source:** `math_Powell.hxx`:61 - `math_Powell::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Powell_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Powell_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Powell.hxx`:65 - `math_Powell::Location()`
     /// returns the location vector of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
-    pub fn location(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_Powell_location(self as *const Self))) }
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Powell_location(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_Powell.hxx`:71 - `math_Powell::Location()`
@@ -5913,9 +6218,9 @@ impl Powell {
     /// Exception NotDone is raised if the minimum was not found.
     /// Exception DimensionError is raised if the range of Loc is not
     /// equal to the range of the StartingPoint.
-    pub fn location_vector(&self, Loc: &mut crate::ffi::math_Vector) {
+    pub fn location_vector(&self, Loc: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_Powell_location_vector(self as *const Self, Loc)
+            crate::ffi_extern_TKMath::math_Powell_location_vector(self as *const Self, Loc)
         })
     }
 
@@ -5923,7 +6228,9 @@ impl Powell {
     /// Returns the value of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn minimum(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_Powell_minimum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Powell_minimum(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Powell.hxx`:80 - `math_Powell::NbIterations()`
@@ -5931,14 +6238,18 @@ impl Powell {
     /// computation of the minimum.
     /// Exception NotDone is raised if the minimum was not found.
     pub fn nb_iterations(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Powell_nb_iterations(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Powell_nb_iterations(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Powell.hxx`:84 - `math_Powell::Dump()`
     /// Prints information on the current state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Powell_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Powell_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -5952,11 +6263,11 @@ impl Powell {
 /// Value Decomposition algorithm is used. For singular or
 /// nearly singular matrices SVD is a better choice than Gauss
 /// or GaussLeastSquare.
-pub use crate::ffi::math_SVD as SVD;
+pub use crate::ffi_types::math_SVD as SVD;
 
 unsafe impl crate::CppDeletable for SVD {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_SVD_destructor(ptr);
+        crate::ffi_extern_TKMath::math_SVD_destructor(ptr);
     }
 }
 
@@ -5966,14 +6277,18 @@ impl SVD {
     /// this constructor performs the Singular Value Decomposition.
     pub fn new_matrix(A: &Matrix) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_SVD_ctor_matrix(A)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_SVD_ctor_matrix(A),
+            ))
         }
     }
 
     /// **Source:** `math_SVD.hxx`:43 - `math_SVD::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_SVD_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_SVD_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_SVD.hxx`:53 - `math_SVD::Solve()`
@@ -5987,12 +6302,12 @@ impl SVD {
     /// equal to the colrange of A.
     pub fn solve(
         &mut self,
-        B: &crate::ffi::math_Vector,
-        X: &mut crate::ffi::math_Vector,
+        B: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
         Eps: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SVD_solve(self as *mut Self, B, X, Eps)
+            crate::ffi_extern_TKMath::math_SVD_solve(self as *mut Self, B, X, Eps)
         })
     }
 
@@ -6004,15 +6319,17 @@ impl SVD {
     /// compatible with the ranges of A.
     pub fn pseudo_inverse(&mut self, Inv: &mut Matrix, Eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps)
+            crate::ffi_extern_TKMath::math_SVD_pseudo_inverse(self as *mut Self, Inv, Eps)
         })
     }
 
     /// **Source:** `math_SVD.hxx`:66 - `math_SVD::Dump()`
     /// Prints information on the current state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_SVD_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_SVD_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -6021,11 +6338,11 @@ impl SVD {
 // ========================
 
 /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix`
-pub use crate::ffi::math_SingularMatrix as SingularMatrix;
+pub use crate::ffi_types::math_SingularMatrix as SingularMatrix;
 
 unsafe impl crate::CppDeletable for SingularMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_SingularMatrix_destructor(ptr);
+        crate::ffi_extern_TKMath::math_SingularMatrix_destructor(ptr);
     }
 }
 
@@ -6033,7 +6350,9 @@ impl SingularMatrix {
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::math_SingularMatrix()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_SingularMatrix_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_ctor(),
+            ))
         }
     }
 
@@ -6042,7 +6361,7 @@ impl SingularMatrix {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_SingularMatrix_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKMath::math_SingularMatrix_ctor_charptr(c_theMessage.as_ptr()),
             ))
         }
     }
@@ -6053,7 +6372,7 @@ impl SingularMatrix {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_SingularMatrix_ctor_charptr2(
+                crate::ffi_extern_TKMath::math_SingularMatrix_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -6062,9 +6381,9 @@ impl SingularMatrix {
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_SingularMatrix_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_SingularMatrix_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6074,25 +6393,27 @@ impl SingularMatrix {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKMath::math_SingularMatrix_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_raise_sstream(theMessage)
+            crate::ffi_extern_TKMath::math_SingularMatrix_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathSingularMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathSingularMatrix> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_SingularMatrix_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKMath::math_SingularMatrix_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -6101,12 +6422,12 @@ impl SingularMatrix {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathSingularMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathSingularMatrix> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_SingularMatrix_new_instance_charptr2(
+                crate::ffi_extern_TKMath::math_SingularMatrix_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -6118,7 +6439,7 @@ impl SingularMatrix {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::math_SingularMatrix_get_type_name(),
+                crate::ffi_extern_TKMath::math_SingularMatrix_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6126,89 +6447,110 @@ impl SingularMatrix {
     }
 
     /// **Source:** `math_SingularMatrix.hxx`:36 - `math_SingularMatrix::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::math_SingularMatrix_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::math_SingularMatrix_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_SingularMatrix_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::math_SingularMatrix_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::math_SingularMatrix_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::math_SingularMatrix_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlemathSingularMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlemathSingularMatrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_SingularMatrix_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::math_SingularMatrix_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6216,7 +6558,7 @@ impl SingularMatrix {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::math_SingularMatrix_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::math_SingularMatrix_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6229,71 +6571,81 @@ impl SingularMatrix {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_SingularMatrix_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::math_SingularMatrix_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlemathSingularMatrix;
+pub use crate::ffi_types::HandlemathSingularMatrix;
 
 unsafe impl crate::CppDeletable for HandlemathSingularMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlemathSingularMatrix_destructor(ptr);
+        crate::ffi_extern_TKMath::HandlemathSingularMatrix_destructor(ptr);
     }
 }
 
 impl HandlemathSingularMatrix {
     /// Dereference this Handle to access the underlying math_SingularMatrix
-    pub fn get(&self) -> &crate::ffi::math_SingularMatrix {
+    pub fn get(&self) -> &crate::ffi_types::math_SingularMatrix {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlemathSingularMatrix_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandlemathSingularMatrix_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying math_SingularMatrix
-    pub fn get_mut(&mut self) -> &mut crate::ffi::math_SingularMatrix {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::math_SingularMatrix {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlemathSingularMatrix_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandlemathSingularMatrix_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<math_SingularMatrix> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathSingularMatrix_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKMath::HandlemathSingularMatrix_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<math_SingularMatrix> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlemathSingularMatrix_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandlemathSingularMatrix_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6309,11 +6661,11 @@ impl HandlemathSingularMatrix {
 /// This is function, which corresponds trigonometric equation
 /// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e = 0
 /// See class math_TrigonometricFunctionRoots
-pub use crate::ffi::math_TrigonometricEquationFunction as TrigonometricEquationFunction;
+pub use crate::ffi_types::math_TrigonometricEquationFunction as TrigonometricEquationFunction;
 
 unsafe impl crate::CppDeletable for TrigonometricEquationFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_TrigonometricEquationFunction_destructor(ptr);
+        crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_destructor(ptr);
     }
 }
 
@@ -6322,7 +6674,9 @@ impl TrigonometricEquationFunction {
     pub fn new_real5(A: f64, B: f64, C: f64, D: f64, E: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_TrigonometricEquationFunction_ctor_real5(A, B, C, D, E),
+                crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_ctor_real5(
+                    A, B, C, D, E,
+                ),
             ))
         }
     }
@@ -6330,52 +6684,59 @@ impl TrigonometricEquationFunction {
     /// **Source:** `math_TrigonometricEquationFunction.hxx`:47 - `math_TrigonometricEquationFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricEquationFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// **Source:** `math_TrigonometricEquationFunction.hxx`:55 - `math_TrigonometricEquationFunction::Derivative()`
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricEquationFunction_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_derivative(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
     /// **Source:** `math_TrigonometricEquationFunction.hxx`:65 - `math_TrigonometricEquationFunction::Values()`
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricEquationFunction_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_function_with_derivative(&self) -> &FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
     /// Upcast to math_FunctionWithDerivative (mutable)
     pub fn as_function_with_derivative_mut(&mut self) -> &mut FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_function(&self) -> &Function {
         unsafe {
-            &*crate::check_result(crate::ffi::math_TrigonometricEquationFunction_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6383,7 +6744,7 @@ impl TrigonometricEquationFunction {
     pub fn as_function_mut(&mut self) -> &mut Function {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::math_TrigonometricEquationFunction_as_math_Function_mut(
+                crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_as_math_Function_mut(
                     self as *mut Self,
                 ),
             )
@@ -6393,7 +6754,7 @@ impl TrigonometricEquationFunction {
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricEquationFunction_inherited_GetStateNumber(
+            crate::ffi_extern_TKMath::math_TrigonometricEquationFunction_inherited_GetStateNumber(
                 self as *mut Self,
             )
         })
@@ -6408,11 +6769,11 @@ impl TrigonometricEquationFunction {
 /// This class implements the solutions of the equation
 /// a*Cos(x)*Cos(x) + 2*b*Cos(x)*Sin(x) + c*Cos(x) + d*Sin(x) + e
 /// The degree of this equation can be 4, 3 or 2.
-pub use crate::ffi::math_TrigonometricFunctionRoots as TrigonometricFunctionRoots;
+pub use crate::ffi_types::math_TrigonometricFunctionRoots as TrigonometricFunctionRoots;
 
 unsafe impl crate::CppDeletable for TrigonometricFunctionRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_TrigonometricFunctionRoots_destructor(ptr);
+        crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_destructor(ptr);
     }
 }
 
@@ -6433,7 +6794,7 @@ impl TrigonometricFunctionRoots {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_TrigonometricFunctionRoots_ctor_real7(
+                crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_ctor_real7(
                     A, B, C, D, E, InfBound, SupBound,
                 ),
             ))
@@ -6448,7 +6809,9 @@ impl TrigonometricFunctionRoots {
     pub fn new_real4(D: f64, E: f64, InfBound: f64, SupBound: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_TrigonometricFunctionRoots_ctor_real4(D, E, InfBound, SupBound),
+                crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_ctor_real4(
+                    D, E, InfBound, SupBound,
+                ),
             ))
         }
     }
@@ -6467,7 +6830,9 @@ impl TrigonometricFunctionRoots {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_TrigonometricFunctionRoots_ctor_real5(C, D, E, InfBound, SupBound),
+                crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_ctor_real5(
+                    C, D, E, InfBound, SupBound,
+                ),
             ))
         }
     }
@@ -6476,7 +6841,7 @@ impl TrigonometricFunctionRoots {
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricFunctionRoots_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_is_done(self as *const Self)
         })
     }
 
@@ -6484,7 +6849,9 @@ impl TrigonometricFunctionRoots {
     /// Returns true if there is an infinity of roots, otherwise returns false.
     pub fn infinite_roots(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricFunctionRoots_infinite_roots(self as *const Self)
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_infinite_roots(
+                self as *const Self,
+            )
         })
     }
 
@@ -6495,7 +6862,10 @@ impl TrigonometricFunctionRoots {
     /// An exception is raised if there is an infinity of solutions.
     pub fn value(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricFunctionRoots_value(self as *const Self, Index)
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_value(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -6505,15 +6875,17 @@ impl TrigonometricFunctionRoots {
     /// An exception is raised if there is an infinity of solutions.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::math_TrigonometricFunctionRoots_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_nb_solutions(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `math_TrigonometricFunctionRoots.hxx`:85 - `math_TrigonometricFunctionRoots::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::math_TrigonometricFunctionRoots_dump(self as *const Self, o)
+            crate::ffi_extern_TKMath::math_TrigonometricFunctionRoots_dump(self as *const Self, o)
         })
     }
 }
@@ -6533,11 +6905,11 @@ impl TrigonometricFunctionRoots {
 /// done and is similar to Gauss resolution with an optimisation
 /// because the matrix is a symmetric matrix.
 /// (The resolution is done with Crout algorithm)
-pub use crate::ffi::math_Uzawa as Uzawa;
+pub use crate::ffi_types::math_Uzawa as Uzawa;
 
 unsafe impl crate::CppDeletable for Uzawa {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_Uzawa_destructor(ptr);
+        crate::ffi_extern_TKMath::math_Uzawa_destructor(ptr);
     }
 }
 
@@ -6555,15 +6927,15 @@ impl Uzawa {
     /// of Cont is different from the length of Secont.
     pub fn new_matrix_vector2_real2_int(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         EpsLix: f64,
         EpsLic: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Uzawa_ctor_matrix_vector2_real2_int(
+                crate::ffi_extern_TKMath::math_Uzawa_ctor_matrix_vector2_real2_int(
                     Cont,
                     Secont,
                     StartingPoint,
@@ -6592,8 +6964,8 @@ impl Uzawa {
     /// Nce + Nci.
     pub fn new_matrix_vector2_int2_real2_int(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Nci: i32,
         Nce: i32,
         EpsLix: f64,
@@ -6602,7 +6974,7 @@ impl Uzawa {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_Uzawa_ctor_matrix_vector2_int2_real2_int(
+                crate::ffi_extern_TKMath::math_Uzawa_ctor_matrix_vector2_int2_real2_int(
                     Cont,
                     Secont,
                     StartingPoint,
@@ -6629,8 +7001,8 @@ impl Uzawa {
     /// of Cont is different from the length of Secont.
     pub fn new_matrix_vector2_real2(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         EpsLix: f64,
         EpsLic: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -6650,8 +7022,8 @@ impl Uzawa {
     /// of Cont is different from the length of Secont.
     pub fn new_matrix_vector2_real(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         EpsLix: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, EpsLix, 1.0e-06, 500)
@@ -6670,8 +7042,8 @@ impl Uzawa {
     /// of Cont is different from the length of Secont.
     pub fn new_matrix_vector2(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_matrix_vector2_real2_int(Cont, Secont, StartingPoint, 1.0e-06, 1.0e-06, 500)
     }
@@ -6693,8 +7065,8 @@ impl Uzawa {
     /// Nce + Nci.
     pub fn new_matrix_vector2_int2_real2(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Nci: i32,
         Nce: i32,
         EpsLix: f64,
@@ -6729,8 +7101,8 @@ impl Uzawa {
     /// Nce + Nci.
     pub fn new_matrix_vector2_int2_real(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Nci: i32,
         Nce: i32,
         EpsLix: f64,
@@ -6764,8 +7136,8 @@ impl Uzawa {
     /// Nce + Nci.
     pub fn new_matrix_vector2_int2(
         Cont: &Matrix,
-        Secont: &crate::ffi::math_Vector,
-        StartingPoint: &crate::ffi::math_Vector,
+        Secont: &crate::ffi_types::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Nci: i32,
         Nce: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -6784,44 +7156,56 @@ impl Uzawa {
     /// **Source:** `math_Uzawa.hxx`:84 - `math_Uzawa::IsDone()`
     /// Returns true if the computations are successful, otherwise returns false.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::math_Uzawa_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Uzawa_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Uzawa.hxx`:88 - `math_Uzawa::Value()`
     /// Returns the vector solution of the system above.
     /// An exception is raised if NotDone.
-    pub fn value(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_Uzawa_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Uzawa_value(self as *const Self)))
+        }
     }
 
     /// **Source:** `math_Uzawa.hxx`:92 - `math_Uzawa::InitialError()`
     /// Returns the initial error Cont*StartingPoint-Secont.
     /// An exception is raised if NotDone.
-    pub fn initial_error(&self) -> &crate::ffi::math_Vector {
+    pub fn initial_error(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::math_Uzawa_initial_error(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Uzawa_initial_error(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `math_Uzawa.hxx`:95 - `math_Uzawa::Duale()`
     /// returns the duale variables V of the systeme.
-    pub fn duale(&self, V: &mut crate::ffi::math_Vector) {
-        crate::check_void_result(unsafe { crate::ffi::math_Uzawa_duale(self as *const Self, V) })
+    pub fn duale(&self, V: &mut crate::ffi_types::math_Vector) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Uzawa_duale(self as *const Self, V)
+        })
     }
 
     /// **Source:** `math_Uzawa.hxx`:100 - `math_Uzawa::Error()`
     /// Returns the difference between X solution and the
     /// StartingPoint.
     /// An exception is raised if NotDone.
-    pub fn error(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::math_Uzawa_error(self as *const Self))) }
+    pub fn error(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Uzawa_error(self as *const Self)))
+        }
     }
 
     /// **Source:** `math_Uzawa.hxx`:104 - `math_Uzawa::NbIterations()`
     /// returns the number of iterations really done.
     /// An exception is raised if NotDone.
     pub fn nb_iterations(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::math_Uzawa_nb_iterations(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_Uzawa_nb_iterations(self as *const Self)
+        })
     }
 
     /// **Source:** `math_Uzawa.hxx`:109 - `math_Uzawa::InverseCont()`
@@ -6829,13 +7213,19 @@ impl Uzawa {
     /// This result is needed for the computation of the gradient
     /// when approximating a curve.
     pub fn inverse_cont(&self) -> &Matrix {
-        unsafe { &*(crate::check_result(crate::ffi::math_Uzawa_inverse_cont(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::math_Uzawa_inverse_cont(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `math_Uzawa.hxx`:112 - `math_Uzawa::Dump()`
     /// Prints information on the current state of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::math_Uzawa_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::math_Uzawa_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -6845,11 +7235,11 @@ impl Uzawa {
 
 /// **Source:** `math_ValueAndWeight.hxx`:23 - `math_ValueAndWeight`
 /// Simple container storing two reals: value and weight
-pub use crate::ffi::math_ValueAndWeight as ValueAndWeight;
+pub use crate::ffi_types::math_ValueAndWeight as ValueAndWeight;
 
 unsafe impl crate::CppDeletable for ValueAndWeight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::math_ValueAndWeight_destructor(ptr);
+        crate::ffi_extern_TKMath::math_ValueAndWeight_destructor(ptr);
     }
 }
 
@@ -6857,7 +7247,9 @@ impl ValueAndWeight {
     /// **Source:** `math_ValueAndWeight.hxx`:28 - `math_ValueAndWeight::math_ValueAndWeight()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::math_ValueAndWeight_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::math_ValueAndWeight_ctor(),
+            ))
         }
     }
 
@@ -6865,19 +7257,23 @@ impl ValueAndWeight {
     pub fn new_real2(theValue: f64, theWeight: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::math_ValueAndWeight_ctor_real2(theValue, theWeight),
+                crate::ffi_extern_TKMath::math_ValueAndWeight_ctor_real2(theValue, theWeight),
             ))
         }
     }
 
     /// **Source:** `math_ValueAndWeight.hxx`:40 - `math_ValueAndWeight::Value()`
     pub fn value(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_ValueAndWeight_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_ValueAndWeight_value(self as *const Self)
+        })
     }
 
     /// **Source:** `math_ValueAndWeight.hxx`:42 - `math_ValueAndWeight::Weight()`
     pub fn weight(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::math_ValueAndWeight_weight(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::math_ValueAndWeight_weight(self as *const Self)
+        })
     }
 }
 
@@ -6885,4 +7281,4 @@ impl ValueAndWeight {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{math_IntegerVector as IntegerVector, math_Vector as Vector};
+pub use crate::ffi_types::{math_IntegerVector as IntegerVector, math_Vector as Vector};

@@ -9,7 +9,7 @@
 #include <BinDrivers_DocumentStorageDriver.hxx>
 #include <BinLDrivers_DocumentRetrievalDriver.hxx>
 #include <BinLDrivers_DocumentStorageDriver.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinTObjDrivers_DocumentRetrievalDriver.hxx>
 #include <BinTObjDrivers_DocumentStorageDriver.hxx>
 #include <BinXCAFDrivers_DocumentRetrievalDriver.hxx>
@@ -92,12 +92,12 @@
 #include <Storage_Error.hxx>
 #include <Storage_OpenMode.hxx>
 #include <TColStd_SequenceOfExtendedString.hxx>
-#include <TColStd_SequenceOfHExtendedString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TCollection_HExtendedString.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_Document.hxx>
 #include <TObj_Application.hxx>
+#include <TObj_Container.hxx>
 #include <UTL.hxx>
 #include <XCAFApp_Application.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>

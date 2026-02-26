@@ -6,7 +6,7 @@
 #![allow(dead_code)]
 #![allow(non_snake_case)]
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TColgp_Array1OfCirc2d as Array1OfCirc2d, TColgp_Array1OfDir as Array1OfDir,
     TColgp_Array1OfDir2d as Array1OfDir2d, TColgp_Array1OfLin2d as Array1OfLin2d,
     TColgp_Array1OfPnt as Array1OfPnt, TColgp_Array1OfPnt2d as Array1OfPnt2d,
@@ -22,13 +22,15 @@ pub use crate::ffi::{
 impl Array1OfCirc2d {
     /// Create a new empty Array1OfCirc2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_ctor_int2(lower, upper))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_ctor_int2(
+                lower, upper,
+            ))
         }
     }
 
@@ -36,44 +38,48 @@ impl Array1OfCirc2d {
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Circ2d,
+        value: &crate::ffi_types::gp_Circ2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfCirc2d_ctor_int2_value(
-                lower,
-                upper,
-                value as *const crate::ffi::gp_Circ2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::gp_Circ2d,
+                ),
+            )
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfCirc2d_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfCirc2d_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfCirc2d_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Circ2d {
-        unsafe { &*crate::ffi::TColgp_Array1OfCirc2d_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Circ2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_value(self as *const Self, index)
+        }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Circ2d) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Circ2d) {
         unsafe {
-            crate::ffi::TColgp_Array1OfCirc2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Circ2d,
+                item as *const crate::ffi_types::gp_Circ2d,
             )
         }
     }
@@ -81,63 +87,67 @@ impl Array1OfCirc2d {
 
 unsafe impl crate::CppDeletable for Array1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfCirc2d_destructor(ptr);
     }
 }
 
 impl Array1OfDir {
     /// Create a new empty Array1OfDir
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfDir_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_ctor_int2(lower, upper)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfDir_ctor_int2(
+                lower, upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Dir,
+        value: &crate::ffi_types::gp_Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir_ctor_int2_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfDir_ctor_int2_value(
                 lower,
                 upper,
-                value as *const crate::ffi::gp_Dir,
+                value as *const crate::ffi_types::gp_Dir,
             ))
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir {
-        unsafe { &*crate::ffi::TColgp_Array1OfDir_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Dir {
+        unsafe { &*crate::ffi_extern_TKMath::TColgp_Array1OfDir_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Dir) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Dir) {
         unsafe {
-            crate::ffi::TColgp_Array1OfDir_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Dir,
+                item as *const crate::ffi_types::gp_Dir,
             )
         }
     }
@@ -145,20 +155,22 @@ impl Array1OfDir {
 
 unsafe impl crate::CppDeletable for Array1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfDir_destructor(ptr);
     }
 }
 
 impl Array1OfDir2d {
     /// Create a new empty Array1OfDir2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_ctor_int2(lower, upper))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_ctor_int2(
+                lower, upper,
+            ))
         }
     }
 
@@ -166,44 +178,48 @@ impl Array1OfDir2d {
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Dir2d,
+        value: &crate::ffi_types::gp_Dir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfDir2d_ctor_int2_value(
-                lower,
-                upper,
-                value as *const crate::ffi::gp_Dir2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::gp_Dir2d,
+                ),
+            )
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir2d_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir2d_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfDir2d_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Dir2d {
-        unsafe { &*crate::ffi::TColgp_Array1OfDir2d_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Dir2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_value(self as *const Self, index)
+        }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Dir2d) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Dir2d) {
         unsafe {
-            crate::ffi::TColgp_Array1OfDir2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Dir2d,
+                item as *const crate::ffi_types::gp_Dir2d,
             )
         }
     }
@@ -211,20 +227,22 @@ impl Array1OfDir2d {
 
 unsafe impl crate::CppDeletable for Array1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfDir2d_destructor(ptr);
     }
 }
 
 impl Array1OfLin2d {
     /// Create a new empty Array1OfLin2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_ctor_int2(lower, upper))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_ctor_int2(
+                lower, upper,
+            ))
         }
     }
 
@@ -232,44 +250,48 @@ impl Array1OfLin2d {
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Lin2d,
+        value: &crate::ffi_types::gp_Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfLin2d_ctor_int2_value(
-                lower,
-                upper,
-                value as *const crate::ffi::gp_Lin2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::gp_Lin2d,
+                ),
+            )
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfLin2d_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfLin2d_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfLin2d_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Lin2d {
-        unsafe { &*crate::ffi::TColgp_Array1OfLin2d_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Lin2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_value(self as *const Self, index)
+        }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Lin2d) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Lin2d) {
         unsafe {
-            crate::ffi::TColgp_Array1OfLin2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Lin2d,
+                item as *const crate::ffi_types::gp_Lin2d,
             )
         }
     }
@@ -277,63 +299,67 @@ impl Array1OfLin2d {
 
 unsafe impl crate::CppDeletable for Array1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfLin2d_destructor(ptr);
     }
 }
 
 impl Array1OfPnt {
     /// Create a new empty Array1OfPnt
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfPnt_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_ctor_int2(lower, upper)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfPnt_ctor_int2(
+                lower, upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Pnt,
+        value: &crate::ffi_types::gp_Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt_ctor_int2_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfPnt_ctor_int2_value(
                 lower,
                 upper,
-                value as *const crate::ffi::gp_Pnt,
+                value as *const crate::ffi_types::gp_Pnt,
             ))
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt {
-        unsafe { &*crate::ffi::TColgp_Array1OfPnt_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Pnt {
+        unsafe { &*crate::ffi_extern_TKMath::TColgp_Array1OfPnt_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Pnt) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Pnt) {
         unsafe {
-            crate::ffi::TColgp_Array1OfPnt_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Pnt,
+                item as *const crate::ffi_types::gp_Pnt,
             )
         }
     }
@@ -341,20 +367,22 @@ impl Array1OfPnt {
 
 unsafe impl crate::CppDeletable for Array1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfPnt_destructor(ptr);
     }
 }
 
 impl Array1OfPnt2d {
     /// Create a new empty Array1OfPnt2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_ctor_int2(lower, upper))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_ctor_int2(
+                lower, upper,
+            ))
         }
     }
 
@@ -362,44 +390,48 @@ impl Array1OfPnt2d {
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Pnt2d,
+        value: &crate::ffi_types::gp_Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfPnt2d_ctor_int2_value(
-                lower,
-                upper,
-                value as *const crate::ffi::gp_Pnt2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::gp_Pnt2d,
+                ),
+            )
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt2d_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt2d_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfPnt2d_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Pnt2d {
-        unsafe { &*crate::ffi::TColgp_Array1OfPnt2d_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Pnt2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_value(self as *const Self, index)
+        }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Pnt2d) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Pnt2d) {
         unsafe {
-            crate::ffi::TColgp_Array1OfPnt2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Pnt2d,
+                item as *const crate::ffi_types::gp_Pnt2d,
             )
         }
     }
@@ -407,63 +439,67 @@ impl Array1OfPnt2d {
 
 unsafe impl crate::CppDeletable for Array1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfPnt2d_destructor(ptr);
     }
 }
 
 impl Array1OfVec {
     /// Create a new empty Array1OfVec
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfVec_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_ctor_int2(lower, upper)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfVec_ctor_int2(
+                lower, upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Vec,
+        value: &crate::ffi_types::gp_Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec_ctor_int2_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfVec_ctor_int2_value(
                 lower,
                 upper,
-                value as *const crate::ffi::gp_Vec,
+                value as *const crate::ffi_types::gp_Vec,
             ))
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec {
-        unsafe { &*crate::ffi::TColgp_Array1OfVec_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Vec {
+        unsafe { &*crate::ffi_extern_TKMath::TColgp_Array1OfVec_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Vec) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Vec) {
         unsafe {
-            crate::ffi::TColgp_Array1OfVec_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Vec,
+                item as *const crate::ffi_types::gp_Vec,
             )
         }
     }
@@ -471,20 +507,22 @@ impl Array1OfVec {
 
 unsafe impl crate::CppDeletable for Array1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfVec_destructor(ptr);
     }
 }
 
 impl Array1OfVec2d {
     /// Create a new empty Array1OfVec2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_ctor_int2(lower, upper))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_ctor_int2(
+                lower, upper,
+            ))
         }
     }
 
@@ -492,44 +530,48 @@ impl Array1OfVec2d {
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_Vec2d,
+        value: &crate::ffi_types::gp_Vec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfVec2d_ctor_int2_value(
-                lower,
-                upper,
-                value as *const crate::ffi::gp_Vec2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_ctor_int2_value(
+                    lower,
+                    upper,
+                    value as *const crate::ffi_types::gp_Vec2d,
+                ),
+            )
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec2d_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec2d_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfVec2d_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_Vec2d {
-        unsafe { &*crate::ffi::TColgp_Array1OfVec2d_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_Vec2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_value(self as *const Self, index)
+        }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_Vec2d) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_Vec2d) {
         unsafe {
-            crate::ffi::TColgp_Array1OfVec2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_Vec2d,
+                item as *const crate::ffi_types::gp_Vec2d,
             )
         }
     }
@@ -537,63 +579,67 @@ impl Array1OfVec2d {
 
 unsafe impl crate::CppDeletable for Array1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfVec2d_destructor(ptr);
     }
 }
 
 impl Array1OfXY {
     /// Create a new empty Array1OfXY
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXY_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_ctor_int2(lower, upper)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXY_ctor_int2(
+                lower, upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_XY,
+        value: &crate::ffi_types::gp_XY,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXY_ctor_int2_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXY_ctor_int2_value(
                 lower,
                 upper,
-                value as *const crate::ffi::gp_XY,
+                value as *const crate::ffi_types::gp_XY,
             ))
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXY_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXY_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXY_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXY_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXY_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXY_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_XY {
-        unsafe { &*crate::ffi::TColgp_Array1OfXY_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_XY {
+        unsafe { &*crate::ffi_extern_TKMath::TColgp_Array1OfXY_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_XY) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_XY) {
         unsafe {
-            crate::ffi::TColgp_Array1OfXY_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfXY_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_XY,
+                item as *const crate::ffi_types::gp_XY,
             )
         }
     }
@@ -601,63 +647,67 @@ impl Array1OfXY {
 
 unsafe impl crate::CppDeletable for Array1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfXY_destructor(ptr);
     }
 }
 
 impl Array1OfXYZ {
     /// Create a new empty Array1OfXYZ
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_new()) }
     }
 
     /// Create with lower and upper bounds
     pub fn new_int2(lower: i32, upper: i32) -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_ctor_int2(lower, upper)) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_ctor_int2(
+                lower, upper,
+            ))
+        }
     }
 
     /// Create with bounds, all elements initialized
     pub fn new_int2_value(
         lower: i32,
         upper: i32,
-        value: &crate::ffi::gp_XYZ,
+        value: &crate::ffi_types::gp_XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array1OfXYZ_ctor_int2_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_ctor_int2_value(
                 lower,
                 upper,
-                value as *const crate::ffi::gp_XYZ,
+                value as *const crate::ffi_types::gp_XYZ,
             ))
         }
     }
 
     /// Get number of elements
     pub fn length(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXYZ_length(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_length(self as *const Self) }
     }
 
     /// Get lower bound index
     pub fn lower(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXYZ_lower(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_lower(self as *const Self) }
     }
 
     /// Get upper bound index
     pub fn upper(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array1OfXYZ_upper(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_upper(self as *const Self) }
     }
 
     /// Get element at index
-    pub fn value(&self, index: i32) -> &crate::ffi::gp_XYZ {
-        unsafe { &*crate::ffi::TColgp_Array1OfXYZ_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::gp_XYZ {
+        unsafe { &*crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_value(self as *const Self, index) }
     }
 
     /// Set element at index
-    pub fn set_value(&mut self, index: i32, item: &crate::ffi::gp_XYZ) {
+    pub fn set_value(&mut self, index: i32, item: &crate::ffi_types::gp_XYZ) {
         unsafe {
-            crate::ffi::TColgp_Array1OfXYZ_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_set_value(
                 self as *mut Self,
                 index,
-                item as *const crate::ffi::gp_XYZ,
+                item as *const crate::ffi_types::gp_XYZ,
             )
         }
     }
@@ -665,14 +715,14 @@ impl Array1OfXYZ {
 
 unsafe impl crate::CppDeletable for Array1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array1OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array1OfXYZ_destructor(ptr);
     }
 }
 
 impl Array2OfCirc2d {
     /// Create a new empty Array2OfCirc2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -683,7 +733,7 @@ impl Array2OfCirc2d {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -695,42 +745,46 @@ impl Array2OfCirc2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Circ2d,
+        value: &crate::ffi_types::gp_Circ2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfCirc2d_ctor_int4_value(
-                row_lower,
-                row_upper,
-                col_lower,
-                col_upper,
-                value as *const crate::ffi::gp_Circ2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const crate::ffi_types::gp_Circ2d,
+                ),
+            )
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfCirc2d_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfCirc2d_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Circ2d {
-        unsafe { &*crate::ffi::TColgp_Array2OfCirc2d_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Circ2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Circ2d) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Circ2d) {
         unsafe {
-            crate::ffi::TColgp_Array2OfCirc2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Circ2d,
+                item as *const crate::ffi_types::gp_Circ2d,
             )
         }
     }
@@ -738,14 +792,14 @@ impl Array2OfCirc2d {
 
 unsafe impl crate::CppDeletable for Array2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfCirc2d_destructor(ptr);
     }
 }
 
 impl Array2OfDir {
     /// Create a new empty Array2OfDir
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfDir_new()) }
     }
 
     /// Create with row and column bounds
@@ -756,7 +810,7 @@ impl Array2OfDir {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfDir_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -768,42 +822,44 @@ impl Array2OfDir {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Dir,
+        value: &crate::ffi_types::gp_Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir_ctor_int4_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfDir_ctor_int4_value(
                 row_lower,
                 row_upper,
                 col_lower,
                 col_upper,
-                value as *const crate::ffi::gp_Dir,
+                value as *const crate::ffi_types::gp_Dir,
             ))
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfDir_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfDir_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfDir_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfDir_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir {
-        unsafe { &*crate::ffi::TColgp_Array2OfDir_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Dir {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfDir_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Dir) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Dir) {
         unsafe {
-            crate::ffi::TColgp_Array2OfDir_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Dir,
+                item as *const crate::ffi_types::gp_Dir,
             )
         }
     }
@@ -811,14 +867,14 @@ impl Array2OfDir {
 
 unsafe impl crate::CppDeletable for Array2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfDir_destructor(ptr);
     }
 }
 
 impl Array2OfDir2d {
     /// Create a new empty Array2OfDir2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -829,7 +885,7 @@ impl Array2OfDir2d {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -841,42 +897,46 @@ impl Array2OfDir2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Dir2d,
+        value: &crate::ffi_types::gp_Dir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfDir2d_ctor_int4_value(
-                row_lower,
-                row_upper,
-                col_lower,
-                col_upper,
-                value as *const crate::ffi::gp_Dir2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const crate::ffi_types::gp_Dir2d,
+                ),
+            )
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfDir2d_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfDir2d_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Dir2d {
-        unsafe { &*crate::ffi::TColgp_Array2OfDir2d_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Dir2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Dir2d) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Dir2d) {
         unsafe {
-            crate::ffi::TColgp_Array2OfDir2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Dir2d,
+                item as *const crate::ffi_types::gp_Dir2d,
             )
         }
     }
@@ -884,14 +944,14 @@ impl Array2OfDir2d {
 
 unsafe impl crate::CppDeletable for Array2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfDir2d_destructor(ptr);
     }
 }
 
 impl Array2OfLin2d {
     /// Create a new empty Array2OfLin2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -902,7 +962,7 @@ impl Array2OfLin2d {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -914,42 +974,46 @@ impl Array2OfLin2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Lin2d,
+        value: &crate::ffi_types::gp_Lin2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfLin2d_ctor_int4_value(
-                row_lower,
-                row_upper,
-                col_lower,
-                col_upper,
-                value as *const crate::ffi::gp_Lin2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const crate::ffi_types::gp_Lin2d,
+                ),
+            )
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfLin2d_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfLin2d_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Lin2d {
-        unsafe { &*crate::ffi::TColgp_Array2OfLin2d_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Lin2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Lin2d) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Lin2d) {
         unsafe {
-            crate::ffi::TColgp_Array2OfLin2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Lin2d,
+                item as *const crate::ffi_types::gp_Lin2d,
             )
         }
     }
@@ -957,14 +1021,14 @@ impl Array2OfLin2d {
 
 unsafe impl crate::CppDeletable for Array2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfLin2d_destructor(ptr);
     }
 }
 
 impl Array2OfPnt {
     /// Create a new empty Array2OfPnt
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfPnt_new()) }
     }
 
     /// Create with row and column bounds
@@ -975,7 +1039,7 @@ impl Array2OfPnt {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfPnt_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -987,42 +1051,44 @@ impl Array2OfPnt {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Pnt,
+        value: &crate::ffi_types::gp_Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt_ctor_int4_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfPnt_ctor_int4_value(
                 row_lower,
                 row_upper,
                 col_lower,
                 col_upper,
-                value as *const crate::ffi::gp_Pnt,
+                value as *const crate::ffi_types::gp_Pnt,
             ))
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfPnt_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfPnt_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfPnt_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfPnt_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt {
-        unsafe { &*crate::ffi::TColgp_Array2OfPnt_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Pnt {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfPnt_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Pnt) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Pnt) {
         unsafe {
-            crate::ffi::TColgp_Array2OfPnt_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Pnt,
+                item as *const crate::ffi_types::gp_Pnt,
             )
         }
     }
@@ -1030,14 +1096,14 @@ impl Array2OfPnt {
 
 unsafe impl crate::CppDeletable for Array2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfPnt_destructor(ptr);
     }
 }
 
 impl Array2OfPnt2d {
     /// Create a new empty Array2OfPnt2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -1048,7 +1114,7 @@ impl Array2OfPnt2d {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -1060,42 +1126,46 @@ impl Array2OfPnt2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Pnt2d,
+        value: &crate::ffi_types::gp_Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfPnt2d_ctor_int4_value(
-                row_lower,
-                row_upper,
-                col_lower,
-                col_upper,
-                value as *const crate::ffi::gp_Pnt2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const crate::ffi_types::gp_Pnt2d,
+                ),
+            )
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfPnt2d_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfPnt2d_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Pnt2d {
-        unsafe { &*crate::ffi::TColgp_Array2OfPnt2d_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Pnt2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Pnt2d) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Pnt2d) {
         unsafe {
-            crate::ffi::TColgp_Array2OfPnt2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Pnt2d,
+                item as *const crate::ffi_types::gp_Pnt2d,
             )
         }
     }
@@ -1103,14 +1173,14 @@ impl Array2OfPnt2d {
 
 unsafe impl crate::CppDeletable for Array2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfPnt2d_destructor(ptr);
     }
 }
 
 impl Array2OfVec {
     /// Create a new empty Array2OfVec
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfVec_new()) }
     }
 
     /// Create with row and column bounds
@@ -1121,7 +1191,7 @@ impl Array2OfVec {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfVec_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -1133,42 +1203,44 @@ impl Array2OfVec {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Vec,
+        value: &crate::ffi_types::gp_Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec_ctor_int4_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfVec_ctor_int4_value(
                 row_lower,
                 row_upper,
                 col_lower,
                 col_upper,
-                value as *const crate::ffi::gp_Vec,
+                value as *const crate::ffi_types::gp_Vec,
             ))
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfVec_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfVec_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfVec_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfVec_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec {
-        unsafe { &*crate::ffi::TColgp_Array2OfVec_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Vec {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfVec_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Vec) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Vec) {
         unsafe {
-            crate::ffi::TColgp_Array2OfVec_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Vec,
+                item as *const crate::ffi_types::gp_Vec,
             )
         }
     }
@@ -1176,14 +1248,14 @@ impl Array2OfVec {
 
 unsafe impl crate::CppDeletable for Array2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfVec_destructor(ptr);
     }
 }
 
 impl Array2OfVec2d {
     /// Create a new empty Array2OfVec2d
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_new()) }
     }
 
     /// Create with row and column bounds
@@ -1194,7 +1266,7 @@ impl Array2OfVec2d {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -1206,42 +1278,46 @@ impl Array2OfVec2d {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_Vec2d,
+        value: &crate::ffi_types::gp_Vec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfVec2d_ctor_int4_value(
-                row_lower,
-                row_upper,
-                col_lower,
-                col_upper,
-                value as *const crate::ffi::gp_Vec2d,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_ctor_int4_value(
+                    row_lower,
+                    row_upper,
+                    col_lower,
+                    col_upper,
+                    value as *const crate::ffi_types::gp_Vec2d,
+                ),
+            )
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfVec2d_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfVec2d_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_Vec2d {
-        unsafe { &*crate::ffi::TColgp_Array2OfVec2d_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_Vec2d {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_Vec2d) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_Vec2d) {
         unsafe {
-            crate::ffi::TColgp_Array2OfVec2d_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_Vec2d,
+                item as *const crate::ffi_types::gp_Vec2d,
             )
         }
     }
@@ -1249,14 +1325,14 @@ impl Array2OfVec2d {
 
 unsafe impl crate::CppDeletable for Array2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfVec2d_destructor(ptr);
     }
 }
 
 impl Array2OfXY {
     /// Create a new empty Array2OfXY
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXY_new()) }
     }
 
     /// Create with row and column bounds
@@ -1267,7 +1343,7 @@ impl Array2OfXY {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXY_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -1279,42 +1355,44 @@ impl Array2OfXY {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_XY,
+        value: &crate::ffi_types::gp_XY,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXY_ctor_int4_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXY_ctor_int4_value(
                 row_lower,
                 row_upper,
                 col_lower,
                 col_upper,
-                value as *const crate::ffi::gp_XY,
+                value as *const crate::ffi_types::gp_XY,
             ))
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfXY_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfXY_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfXY_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfXY_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XY {
-        unsafe { &*crate::ffi::TColgp_Array2OfXY_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_XY {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfXY_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_XY) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_XY) {
         unsafe {
-            crate::ffi::TColgp_Array2OfXY_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfXY_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_XY,
+                item as *const crate::ffi_types::gp_XY,
             )
         }
     }
@@ -1322,14 +1400,14 @@ impl Array2OfXY {
 
 unsafe impl crate::CppDeletable for Array2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfXY_destructor(ptr);
     }
 }
 
 impl Array2OfXYZ {
     /// Create a new empty Array2OfXYZ
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_new()) }
     }
 
     /// Create with row and column bounds
@@ -1340,7 +1418,7 @@ impl Array2OfXYZ {
         col_upper: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_ctor_int4(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_ctor_int4(
                 row_lower, row_upper, col_lower, col_upper,
             ))
         }
@@ -1352,42 +1430,44 @@ impl Array2OfXYZ {
         row_upper: i32,
         col_lower: i32,
         col_upper: i32,
-        value: &crate::ffi::gp_XYZ,
+        value: &crate::ffi_types::gp_XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TColgp_Array2OfXYZ_ctor_int4_value(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_ctor_int4_value(
                 row_lower,
                 row_upper,
                 col_lower,
                 col_upper,
-                value as *const crate::ffi::gp_XYZ,
+                value as *const crate::ffi_types::gp_XYZ,
             ))
         }
     }
 
     /// Get number of rows
     pub fn nb_rows(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfXYZ_nb_rows(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_nb_rows(self as *const Self) }
     }
 
     /// Get number of columns
     pub fn nb_columns(&self) -> i32 {
-        unsafe { crate::ffi::TColgp_Array2OfXYZ_nb_columns(self as *const Self) }
+        unsafe { crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_nb_columns(self as *const Self) }
     }
 
     /// Get element at (row, col)
-    pub fn value(&self, row: i32, col: i32) -> &crate::ffi::gp_XYZ {
-        unsafe { &*crate::ffi::TColgp_Array2OfXYZ_value(self as *const Self, row, col) }
+    pub fn value(&self, row: i32, col: i32) -> &crate::ffi_types::gp_XYZ {
+        unsafe {
+            &*crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_value(self as *const Self, row, col)
+        }
     }
 
     /// Set element at (row, col)
-    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi::gp_XYZ) {
+    pub fn set_value(&mut self, row: i32, col: i32, item: &crate::ffi_types::gp_XYZ) {
         unsafe {
-            crate::ffi::TColgp_Array2OfXYZ_set_value(
+            crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_set_value(
                 self as *mut Self,
                 row,
                 col,
-                item as *const crate::ffi::gp_XYZ,
+                item as *const crate::ffi_types::gp_XYZ,
             )
         }
     }
@@ -1395,23 +1475,23 @@ impl Array2OfXYZ {
 
 unsafe impl crate::CppDeletable for Array2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_Array2OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_Array2OfXYZ_destructor(ptr);
     }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From TColgp_HArray1OfCirc2d.hxx
 // ========================
 
 /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d`
-pub use crate::ffi::TColgp_HArray1OfCirc2d as HArray1OfCirc2d;
+pub use crate::ffi_types::TColgp_HArray1OfCirc2d as HArray1OfCirc2d;
 
 unsafe impl crate::CppDeletable for HArray1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_destructor(ptr);
     }
 }
 
@@ -1419,9 +1499,9 @@ impl HArray1OfCirc2d {
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_ctor(),
+            ))
         }
     }
 
@@ -1429,7 +1509,7 @@ impl HArray1OfCirc2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -1438,25 +1518,27 @@ impl HArray1OfCirc2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfCirc2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfCirc2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfCirc2d_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfCirc2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -1465,35 +1547,37 @@ impl HArray1OfCirc2d {
 
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::TColgp_HArray1OfCirc2d()`
     pub fn new_array1ofcirc2d(
-        theOther: &crate::ffi::TColgp_Array1OfCirc2d,
+        theOther: &crate::ffi_types::TColgp_Array1OfCirc2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_ctor_array1ofcirc2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfCirc2d {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfCirc2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfCirc2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfCirc2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1503,7 +1587,7 @@ impl HArray1OfCirc2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1511,16 +1595,22 @@ impl HArray1OfCirc2d {
     }
 
     /// **Source:** `TColgp_HArray1OfCirc2d.hxx`:24 - `TColgp_HArray1OfCirc2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfCirc2d
     pub fn as_array1_of_circ2d(&self) -> &Array1OfCirc2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1528,7 +1618,9 @@ impl HArray1OfCirc2d {
     pub fn as_array1_of_circ2d_mut(&mut self) -> &mut Array1OfCirc2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_as_TColgp_Array1OfCirc2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1536,43 +1628,53 @@ impl HArray1OfCirc2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfCirc2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfCirc2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfCirc2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfCirc2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1580,7 +1682,7 @@ impl HArray1OfCirc2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfCirc2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1593,62 +1695,72 @@ impl HArray1OfCirc2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfCirc2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfCirc2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfCirc2d;
+pub use crate::ffi_types::HandleTColgpHArray1OfCirc2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfCirc2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfCirc2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfCirc2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfCirc2d_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfCirc2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfCirc2d {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfCirc2d_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfCirc2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfCirc2d {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TColgp_HArray1OfCirc2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfCirc2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfCirc2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1661,11 +1773,11 @@ impl HandleTColgpHArray1OfCirc2d {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir`
-pub use crate::ffi::TColgp_HArray1OfDir as HArray1OfDir;
+pub use crate::ffi_types::TColgp_HArray1OfDir as HArray1OfDir;
 
 unsafe impl crate::CppDeletable for HArray1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfDir_destructor(ptr);
     }
 }
 
@@ -1673,7 +1785,9 @@ impl HArray1OfDir {
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfDir_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_ctor(),
+            ))
         }
     }
 
@@ -1681,7 +1795,7 @@ impl HArray1OfDir {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -1690,25 +1804,27 @@ impl HArray1OfDir {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfDir_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfDir_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfDir_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfDir_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -1716,34 +1832,38 @@ impl HArray1OfDir {
     }
 
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::TColgp_HArray1OfDir()`
-    pub fn new_array1ofdir(theOther: &crate::ffi::TColgp_Array1OfDir) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofdir(
+        theOther: &crate::ffi_types::TColgp_Array1OfDir,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_ctor_array1ofdir(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_ctor_array1ofdir(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfDir_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfDir_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfDir_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1753,7 +1873,7 @@ impl HArray1OfDir {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1761,68 +1881,86 @@ impl HArray1OfDir {
     }
 
     /// **Source:** `TColgp_HArray1OfDir.hxx`:24 - `TColgp_HArray1OfDir::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfDir
     pub fn as_array1_of_dir(&self) -> &Array1OfDir {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_as_TColgp_Array1OfDir(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array1OfDir (mutable)
     pub fn as_array1_of_dir_mut(&mut self) -> &mut Array1OfDir {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_as_TColgp_Array1OfDir_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfDir_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfDir_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfDir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1830,7 +1968,7 @@ impl HArray1OfDir {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfDir_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1843,62 +1981,70 @@ impl HArray1OfDir {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfDir;
+pub use crate::ffi_types::HandleTColgpHArray1OfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfDir {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfDir {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfDir_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfDir {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfDir_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfDir> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfDir_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1911,11 +2057,11 @@ impl HandleTColgpHArray1OfDir {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d`
-pub use crate::ffi::TColgp_HArray1OfDir2d as HArray1OfDir2d;
+pub use crate::ffi_types::TColgp_HArray1OfDir2d as HArray1OfDir2d;
 
 unsafe impl crate::CppDeletable for HArray1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_destructor(ptr);
     }
 }
 
@@ -1923,7 +2069,9 @@ impl HArray1OfDir2d {
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_ctor(),
+            ))
         }
     }
 
@@ -1931,7 +2079,7 @@ impl HArray1OfDir2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -1940,25 +2088,27 @@ impl HArray1OfDir2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfDir2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfDir2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfDir2d_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfDir2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -1966,34 +2116,38 @@ impl HArray1OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::TColgp_HArray1OfDir2d()`
-    pub fn new_array1ofdir2d(theOther: &crate::ffi::TColgp_Array1OfDir2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofdir2d(
+        theOther: &crate::ffi_types::TColgp_Array1OfDir2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_ctor_array1ofdir2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfDir2d {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfDir2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfDir2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfDir2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2003,7 +2157,7 @@ impl HArray1OfDir2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2011,16 +2165,22 @@ impl HArray1OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray1OfDir2d.hxx`:24 - `TColgp_HArray1OfDir2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfDir2d
     pub fn as_array1_of_dir2d(&self) -> &Array1OfDir2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2028,7 +2188,9 @@ impl HArray1OfDir2d {
     pub fn as_array1_of_dir2d_mut(&mut self) -> &mut Array1OfDir2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_as_TColgp_Array1OfDir2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2036,43 +2198,53 @@ impl HArray1OfDir2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfDir2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfDir2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfDir2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfDir2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2080,7 +2252,7 @@ impl HArray1OfDir2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfDir2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2093,62 +2265,72 @@ impl HArray1OfDir2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfDir2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfDir2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfDir2d;
+pub use crate::ffi_types::HandleTColgpHArray1OfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfDir2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfDir2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfDir2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfDir2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfDir2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfDir2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfDir2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfDir2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfDir2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfDir2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfDir2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2161,11 +2343,11 @@ impl HandleTColgpHArray1OfDir2d {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d`
-pub use crate::ffi::TColgp_HArray1OfLin2d as HArray1OfLin2d;
+pub use crate::ffi_types::TColgp_HArray1OfLin2d as HArray1OfLin2d;
 
 unsafe impl crate::CppDeletable for HArray1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_destructor(ptr);
     }
 }
 
@@ -2173,7 +2355,9 @@ impl HArray1OfLin2d {
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_ctor(),
+            ))
         }
     }
 
@@ -2181,7 +2365,7 @@ impl HArray1OfLin2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2190,25 +2374,27 @@ impl HArray1OfLin2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfLin2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfLin2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfLin2d_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfLin2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2216,34 +2402,38 @@ impl HArray1OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::TColgp_HArray1OfLin2d()`
-    pub fn new_array1oflin2d(theOther: &crate::ffi::TColgp_Array1OfLin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1oflin2d(
+        theOther: &crate::ffi_types::TColgp_Array1OfLin2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_ctor_array1oflin2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_ctor_array1oflin2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfLin2d {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfLin2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfLin2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfLin2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2253,7 +2443,7 @@ impl HArray1OfLin2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2261,16 +2451,22 @@ impl HArray1OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray1OfLin2d.hxx`:24 - `TColgp_HArray1OfLin2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfLin2d
     pub fn as_array1_of_lin2d(&self) -> &Array1OfLin2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2278,7 +2474,9 @@ impl HArray1OfLin2d {
     pub fn as_array1_of_lin2d_mut(&mut self) -> &mut Array1OfLin2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_as_TColgp_Array1OfLin2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2286,43 +2484,53 @@ impl HArray1OfLin2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfLin2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfLin2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfLin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfLin2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2330,7 +2538,7 @@ impl HArray1OfLin2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfLin2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2343,62 +2551,72 @@ impl HArray1OfLin2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfLin2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfLin2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfLin2d;
+pub use crate::ffi_types::HandleTColgpHArray1OfLin2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfLin2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfLin2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfLin2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfLin2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfLin2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfLin2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfLin2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfLin2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfLin2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfLin2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfLin2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2411,11 +2629,11 @@ impl HandleTColgpHArray1OfLin2d {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt`
-pub use crate::ffi::TColgp_HArray1OfPnt as HArray1OfPnt;
+pub use crate::ffi_types::TColgp_HArray1OfPnt as HArray1OfPnt;
 
 unsafe impl crate::CppDeletable for HArray1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_destructor(ptr);
     }
 }
 
@@ -2423,7 +2641,9 @@ impl HArray1OfPnt {
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfPnt_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_ctor(),
+            ))
         }
     }
 
@@ -2431,7 +2651,7 @@ impl HArray1OfPnt {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2440,25 +2660,27 @@ impl HArray1OfPnt {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfPnt_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfPnt_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfPnt_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfPnt_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2466,34 +2688,38 @@ impl HArray1OfPnt {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::TColgp_HArray1OfPnt()`
-    pub fn new_array1ofpnt(theOther: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt(
+        theOther: &crate::ffi_types::TColgp_Array1OfPnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_ctor_array1ofpnt(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfPnt_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2503,7 +2729,7 @@ impl HArray1OfPnt {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2511,68 +2737,86 @@ impl HArray1OfPnt {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt.hxx`:24 - `TColgp_HArray1OfPnt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfPnt
     pub fn as_array1_of_pnt(&self) -> &Array1OfPnt {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array1OfPnt (mutable)
     pub fn as_array1_of_pnt_mut(&mut self) -> &mut Array1OfPnt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_as_TColgp_Array1OfPnt_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfPnt_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfPnt_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfPnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2580,7 +2824,7 @@ impl HArray1OfPnt {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfPnt_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2593,62 +2837,70 @@ impl HArray1OfPnt {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfPnt;
+pub use crate::ffi_types::HandleTColgpHArray1OfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfPnt {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfPnt {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfPnt_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfPnt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfPnt_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfPnt> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfPnt_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2661,11 +2913,11 @@ impl HandleTColgpHArray1OfPnt {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d`
-pub use crate::ffi::TColgp_HArray1OfPnt2d as HArray1OfPnt2d;
+pub use crate::ffi_types::TColgp_HArray1OfPnt2d as HArray1OfPnt2d;
 
 unsafe impl crate::CppDeletable for HArray1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_destructor(ptr);
     }
 }
 
@@ -2673,7 +2925,9 @@ impl HArray1OfPnt2d {
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_ctor(),
+            ))
         }
     }
 
@@ -2681,7 +2935,7 @@ impl HArray1OfPnt2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2690,25 +2944,27 @@ impl HArray1OfPnt2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfPnt2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfPnt2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfPnt2d_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfPnt2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2716,34 +2972,38 @@ impl HArray1OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::TColgp_HArray1OfPnt2d()`
-    pub fn new_array1ofpnt2d(theOther: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt2d(
+        theOther: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_ctor_array1ofpnt2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfPnt2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2753,7 +3013,7 @@ impl HArray1OfPnt2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2761,16 +3021,22 @@ impl HArray1OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray1OfPnt2d.hxx`:24 - `TColgp_HArray1OfPnt2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfPnt2d
     pub fn as_array1_of_pnt2d(&self) -> &Array1OfPnt2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2778,7 +3044,9 @@ impl HArray1OfPnt2d {
     pub fn as_array1_of_pnt2d_mut(&mut self) -> &mut Array1OfPnt2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_as_TColgp_Array1OfPnt2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2786,43 +3054,53 @@ impl HArray1OfPnt2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfPnt2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfPnt2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfPnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfPnt2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2830,7 +3108,7 @@ impl HArray1OfPnt2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfPnt2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2843,62 +3121,72 @@ impl HArray1OfPnt2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfPnt2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfPnt2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfPnt2d;
+pub use crate::ffi_types::HandleTColgpHArray1OfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfPnt2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfPnt2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfPnt2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfPnt2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfPnt2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfPnt2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfPnt2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfPnt2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfPnt2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfPnt2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfPnt2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2911,11 +3199,11 @@ impl HandleTColgpHArray1OfPnt2d {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec`
-pub use crate::ffi::TColgp_HArray1OfVec as HArray1OfVec;
+pub use crate::ffi_types::TColgp_HArray1OfVec as HArray1OfVec;
 
 unsafe impl crate::CppDeletable for HArray1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfVec_destructor(ptr);
     }
 }
 
@@ -2923,7 +3211,9 @@ impl HArray1OfVec {
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfVec_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_ctor(),
+            ))
         }
     }
 
@@ -2931,7 +3221,7 @@ impl HArray1OfVec {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2940,25 +3230,27 @@ impl HArray1OfVec {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfVec_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfVec_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfVec_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfVec_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2966,34 +3258,38 @@ impl HArray1OfVec {
     }
 
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::TColgp_HArray1OfVec()`
-    pub fn new_array1ofvec(theOther: &crate::ffi::TColgp_Array1OfVec) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofvec(
+        theOther: &crate::ffi_types::TColgp_Array1OfVec,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_ctor_array1ofvec(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_ctor_array1ofvec(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfVec_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfVec_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfVec_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3003,7 +3299,7 @@ impl HArray1OfVec {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3011,68 +3307,86 @@ impl HArray1OfVec {
     }
 
     /// **Source:** `TColgp_HArray1OfVec.hxx`:23 - `TColgp_HArray1OfVec::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfVec
     pub fn as_array1_of_vec(&self) -> &Array1OfVec {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_as_TColgp_Array1OfVec(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array1OfVec (mutable)
     pub fn as_array1_of_vec_mut(&mut self) -> &mut Array1OfVec {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_as_TColgp_Array1OfVec_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfVec_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfVec_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfVec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3080,7 +3394,7 @@ impl HArray1OfVec {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfVec_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3093,62 +3407,70 @@ impl HArray1OfVec {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfVec;
+pub use crate::ffi_types::HandleTColgpHArray1OfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfVec {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfVec {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfVec_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfVec {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfVec_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfVec> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfVec_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3161,11 +3483,11 @@ impl HandleTColgpHArray1OfVec {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d`
-pub use crate::ffi::TColgp_HArray1OfVec2d as HArray1OfVec2d;
+pub use crate::ffi_types::TColgp_HArray1OfVec2d as HArray1OfVec2d;
 
 unsafe impl crate::CppDeletable for HArray1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_destructor(ptr);
     }
 }
 
@@ -3173,7 +3495,9 @@ impl HArray1OfVec2d {
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_ctor(),
+            ))
         }
     }
 
@@ -3181,7 +3505,7 @@ impl HArray1OfVec2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -3190,25 +3514,27 @@ impl HArray1OfVec2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfVec2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfVec2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfVec2d_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfVec2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -3216,34 +3542,38 @@ impl HArray1OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::TColgp_HArray1OfVec2d()`
-    pub fn new_array1ofvec2d(theOther: &crate::ffi::TColgp_Array1OfVec2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofvec2d(
+        theOther: &crate::ffi_types::TColgp_Array1OfVec2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_ctor_array1ofvec2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfVec2d {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfVec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfVec2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfVec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3253,7 +3583,7 @@ impl HArray1OfVec2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3261,16 +3591,22 @@ impl HArray1OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray1OfVec2d.hxx`:24 - `TColgp_HArray1OfVec2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfVec2d
     pub fn as_array1_of_vec2d(&self) -> &Array1OfVec2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3278,7 +3614,9 @@ impl HArray1OfVec2d {
     pub fn as_array1_of_vec2d_mut(&mut self) -> &mut Array1OfVec2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_as_TColgp_Array1OfVec2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3286,43 +3624,53 @@ impl HArray1OfVec2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfVec2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfVec2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfVec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfVec2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3330,7 +3678,7 @@ impl HArray1OfVec2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfVec2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3343,62 +3691,72 @@ impl HArray1OfVec2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfVec2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfVec2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfVec2d;
+pub use crate::ffi_types::HandleTColgpHArray1OfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfVec2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfVec2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfVec2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfVec2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfVec2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfVec2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfVec2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfVec2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfVec2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfVec2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfVec2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3411,11 +3769,11 @@ impl HandleTColgpHArray1OfVec2d {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY`
-pub use crate::ffi::TColgp_HArray1OfXY as HArray1OfXY;
+pub use crate::ffi_types::TColgp_HArray1OfXY as HArray1OfXY;
 
 unsafe impl crate::CppDeletable for HArray1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfXY_destructor(ptr);
     }
 }
 
@@ -3423,7 +3781,9 @@ impl HArray1OfXY {
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfXY_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_ctor(),
+            ))
         }
     }
 
@@ -3431,7 +3791,7 @@ impl HArray1OfXY {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -3440,25 +3800,27 @@ impl HArray1OfXY {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfXY_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfXY_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfXY_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfXY_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -3466,34 +3828,36 @@ impl HArray1OfXY {
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::TColgp_HArray1OfXY()`
-    pub fn new_array1ofxy(theOther: &crate::ffi::TColgp_Array1OfXY) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofxy(theOther: &crate::ffi_types::TColgp_Array1OfXY) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_ctor_array1ofxy(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_ctor_array1ofxy(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXY {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfXY {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfXY_array1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfXY_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXY {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfXY {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfXY_change_array1(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfXY_change_array1(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfXY_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfXY_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3503,7 +3867,7 @@ impl HArray1OfXY {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3511,68 +3875,86 @@ impl HArray1OfXY {
     }
 
     /// **Source:** `TColgp_HArray1OfXY.hxx`:24 - `TColgp_HArray1OfXY::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfXY_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfXY
     pub fn as_array1_of_xy(&self) -> &Array1OfXY {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_as_TColgp_Array1OfXY(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array1OfXY (mutable)
     pub fn as_array1_of_xy_mut(&mut self) -> &mut Array1OfXY {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_as_TColgp_Array1OfXY_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfXY_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfXY_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXY> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfXY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXY_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3580,7 +3962,7 @@ impl HArray1OfXY {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfXY_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3593,62 +3975,72 @@ impl HArray1OfXY {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXY_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXY_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfXY;
+pub use crate::ffi_types::HandleTColgpHArray1OfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfXY {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXY
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXY {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfXY {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfXY_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXY
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXY {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfXY {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfXY_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfXY> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfXY_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfXY_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3659,11 +4051,11 @@ impl HandleTColgpHArray1OfXY {
 // ========================
 
 /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ`
-pub use crate::ffi::TColgp_HArray1OfXYZ as HArray1OfXYZ;
+pub use crate::ffi_types::TColgp_HArray1OfXYZ as HArray1OfXYZ;
 
 unsafe impl crate::CppDeletable for HArray1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray1OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_destructor(ptr);
     }
 }
 
@@ -3671,7 +4063,9 @@ impl HArray1OfXYZ {
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_ctor(),
+            ))
         }
     }
 
@@ -3679,7 +4073,7 @@ impl HArray1OfXYZ {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -3688,25 +4082,27 @@ impl HArray1OfXYZ {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TColgp_Array1OfXYZ_value_type,
+        theValue: &crate::ffi_types::TColgp_Array1OfXYZ_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TColgp_Array1OfXYZ_value_type,
+        theBegin: &crate::ffi_types::TColgp_Array1OfXYZ_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_ctor_type_int2_bool(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -3714,34 +4110,38 @@ impl HArray1OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::TColgp_HArray1OfXYZ()`
-    pub fn new_array1ofxyz(theOther: &crate::ffi::TColgp_Array1OfXYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofxyz(
+        theOther: &crate::ffi_types::TColgp_Array1OfXYZ,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_ctor_array1ofxyz(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TColgp_Array1OfXYZ {
+    pub fn array1(&self) -> &crate::ffi_types::TColgp_Array1OfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TColgp_Array1OfXYZ {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TColgp_Array1OfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3751,7 +4151,7 @@ impl HArray1OfXYZ {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3759,68 +4159,86 @@ impl HArray1OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray1OfXYZ.hxx`:23 - `TColgp_HArray1OfXYZ::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array1OfXYZ
     pub fn as_array1_of_xyz(&self) -> &Array1OfXYZ {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array1OfXYZ (mutable)
     pub fn as_array1_of_xyz_mut(&mut self) -> &mut Array1OfXYZ {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_as_TColgp_Array1OfXYZ_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray1OfXYZ_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray1OfXYZ> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray1OfXYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray1OfXYZ_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3828,7 +4246,7 @@ impl HArray1OfXYZ {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray1OfXYZ_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3841,62 +4259,70 @@ impl HArray1OfXYZ {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray1OfXYZ_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray1OfXYZ_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray1OfXYZ;
+pub use crate::ffi_types::HandleTColgpHArray1OfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray1OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray1OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray1OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray1OfXYZ
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray1OfXYZ {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray1OfXYZ {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray1OfXYZ_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray1OfXYZ
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray1OfXYZ {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray1OfXYZ {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray1OfXYZ_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray1OfXYZ> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray1OfXYZ_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray1OfXYZ_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3909,11 +4335,11 @@ impl HandleTColgpHArray1OfXYZ {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d`
-pub use crate::ffi::TColgp_HArray2OfCirc2d as HArray2OfCirc2d;
+pub use crate::ffi_types::TColgp_HArray2OfCirc2d as HArray2OfCirc2d;
 
 unsafe impl crate::CppDeletable for HArray2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_destructor(ptr);
     }
 }
 
@@ -3927,7 +4353,7 @@ impl HArray2OfCirc2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -3940,11 +4366,11 @@ impl HArray2OfCirc2d {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfCirc2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfCirc2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -3953,35 +4379,37 @@ impl HArray2OfCirc2d {
 
     /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::TColgp_HArray2OfCirc2d()`
     pub fn new_array2ofcirc2d(
-        theOther: &crate::ffi::TColgp_Array2OfCirc2d,
+        theOther: &crate::ffi_types::TColgp_Array2OfCirc2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_ctor_array2ofcirc2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfCirc2d {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfCirc2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfCirc2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfCirc2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3991,7 +4419,7 @@ impl HArray2OfCirc2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3999,16 +4427,22 @@ impl HArray2OfCirc2d {
     }
 
     /// **Source:** `TColgp_HArray2OfCirc2d.hxx`:24 - `TColgp_HArray2OfCirc2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfCirc2d
     pub fn as_array2_of_circ2d(&self) -> &Array2OfCirc2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4016,7 +4450,9 @@ impl HArray2OfCirc2d {
     pub fn as_array2_of_circ2d_mut(&mut self) -> &mut Array2OfCirc2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_as_TColgp_Array2OfCirc2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4024,43 +4460,53 @@ impl HArray2OfCirc2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfCirc2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfCirc2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfCirc2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfCirc2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4068,7 +4514,7 @@ impl HArray2OfCirc2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfCirc2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4081,62 +4527,72 @@ impl HArray2OfCirc2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfCirc2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfCirc2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfCirc2d;
+pub use crate::ffi_types::HandleTColgpHArray2OfCirc2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfCirc2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfCirc2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfCirc2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfCirc2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfCirc2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfCirc2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfCirc2d_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfCirc2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfCirc2d {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfCirc2d_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfCirc2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfCirc2d {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TColgp_HArray2OfCirc2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfCirc2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfCirc2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4149,11 +4605,11 @@ impl HandleTColgpHArray2OfCirc2d {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir`
-pub use crate::ffi::TColgp_HArray2OfDir as HArray2OfDir;
+pub use crate::ffi_types::TColgp_HArray2OfDir as HArray2OfDir;
 
 unsafe impl crate::CppDeletable for HArray2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfDir_destructor(ptr);
     }
 }
 
@@ -4167,7 +4623,7 @@ impl HArray2OfDir {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -4180,11 +4636,11 @@ impl HArray2OfDir {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfDir_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfDir_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -4192,34 +4648,38 @@ impl HArray2OfDir {
     }
 
     /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::TColgp_HArray2OfDir()`
-    pub fn new_array2ofdir(theOther: &crate::ffi::TColgp_Array2OfDir) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofdir(
+        theOther: &crate::ffi_types::TColgp_Array2OfDir,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir_ctor_array2ofdir(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_ctor_array2ofdir(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfDir_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfDir_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfDir_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4229,7 +4689,7 @@ impl HArray2OfDir {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4237,68 +4697,86 @@ impl HArray2OfDir {
     }
 
     /// **Source:** `TColgp_HArray2OfDir.hxx`:24 - `TColgp_HArray2OfDir::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfDir
     pub fn as_array2_of_dir(&self) -> &Array2OfDir {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_as_TColgp_Array2OfDir(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array2OfDir (mutable)
     pub fn as_array2_of_dir_mut(&mut self) -> &mut Array2OfDir {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_as_TColgp_Array2OfDir_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfDir_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfDir_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfDir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4306,7 +4784,7 @@ impl HArray2OfDir {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfDir_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4319,62 +4797,70 @@ impl HArray2OfDir {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfDir;
+pub use crate::ffi_types::HandleTColgpHArray2OfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfDir {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfDir {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfDir_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfDir {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfDir_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfDir> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfDir_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4387,11 +4873,11 @@ impl HandleTColgpHArray2OfDir {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d`
-pub use crate::ffi::TColgp_HArray2OfDir2d as HArray2OfDir2d;
+pub use crate::ffi_types::TColgp_HArray2OfDir2d as HArray2OfDir2d;
 
 unsafe impl crate::CppDeletable for HArray2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_destructor(ptr);
     }
 }
 
@@ -4405,7 +4891,7 @@ impl HArray2OfDir2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -4418,11 +4904,11 @@ impl HArray2OfDir2d {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfDir2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfDir2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -4430,34 +4916,38 @@ impl HArray2OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::TColgp_HArray2OfDir2d()`
-    pub fn new_array2ofdir2d(theOther: &crate::ffi::TColgp_Array2OfDir2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofdir2d(
+        theOther: &crate::ffi_types::TColgp_Array2OfDir2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_ctor_array2ofdir2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfDir2d {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfDir2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfDir2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfDir2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4467,7 +4957,7 @@ impl HArray2OfDir2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4475,16 +4965,22 @@ impl HArray2OfDir2d {
     }
 
     /// **Source:** `TColgp_HArray2OfDir2d.hxx`:24 - `TColgp_HArray2OfDir2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfDir2d
     pub fn as_array2_of_dir2d(&self) -> &Array2OfDir2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4492,7 +4988,9 @@ impl HArray2OfDir2d {
     pub fn as_array2_of_dir2d_mut(&mut self) -> &mut Array2OfDir2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_as_TColgp_Array2OfDir2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4500,43 +4998,53 @@ impl HArray2OfDir2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfDir2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfDir2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfDir2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfDir2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4544,7 +5052,7 @@ impl HArray2OfDir2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfDir2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4557,62 +5065,72 @@ impl HArray2OfDir2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfDir2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfDir2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfDir2d;
+pub use crate::ffi_types::HandleTColgpHArray2OfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfDir2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfDir2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfDir2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfDir2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfDir2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfDir2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfDir2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfDir2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfDir2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfDir2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfDir2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4625,11 +5143,11 @@ impl HandleTColgpHArray2OfDir2d {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d`
-pub use crate::ffi::TColgp_HArray2OfLin2d as HArray2OfLin2d;
+pub use crate::ffi_types::TColgp_HArray2OfLin2d as HArray2OfLin2d;
 
 unsafe impl crate::CppDeletable for HArray2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_destructor(ptr);
     }
 }
 
@@ -4643,7 +5161,7 @@ impl HArray2OfLin2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -4656,11 +5174,11 @@ impl HArray2OfLin2d {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfLin2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfLin2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -4668,34 +5186,38 @@ impl HArray2OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::TColgp_HArray2OfLin2d()`
-    pub fn new_array2oflin2d(theOther: &crate::ffi::TColgp_Array2OfLin2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array2oflin2d(
+        theOther: &crate::ffi_types::TColgp_Array2OfLin2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_ctor_array2oflin2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_ctor_array2oflin2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfLin2d {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfLin2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfLin2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfLin2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4705,7 +5227,7 @@ impl HArray2OfLin2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4713,16 +5235,22 @@ impl HArray2OfLin2d {
     }
 
     /// **Source:** `TColgp_HArray2OfLin2d.hxx`:24 - `TColgp_HArray2OfLin2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfLin2d
     pub fn as_array2_of_lin2d(&self) -> &Array2OfLin2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4730,7 +5258,9 @@ impl HArray2OfLin2d {
     pub fn as_array2_of_lin2d_mut(&mut self) -> &mut Array2OfLin2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_as_TColgp_Array2OfLin2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4738,43 +5268,53 @@ impl HArray2OfLin2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfLin2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfLin2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfLin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfLin2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4782,7 +5322,7 @@ impl HArray2OfLin2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfLin2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4795,62 +5335,72 @@ impl HArray2OfLin2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfLin2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfLin2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfLin2d;
+pub use crate::ffi_types::HandleTColgpHArray2OfLin2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfLin2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfLin2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfLin2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfLin2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfLin2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfLin2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfLin2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfLin2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfLin2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfLin2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfLin2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfLin2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfLin2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfLin2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4863,11 +5413,11 @@ impl HandleTColgpHArray2OfLin2d {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt`
-pub use crate::ffi::TColgp_HArray2OfPnt as HArray2OfPnt;
+pub use crate::ffi_types::TColgp_HArray2OfPnt as HArray2OfPnt;
 
 unsafe impl crate::CppDeletable for HArray2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_destructor(ptr);
     }
 }
 
@@ -4881,7 +5431,7 @@ impl HArray2OfPnt {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -4894,11 +5444,11 @@ impl HArray2OfPnt {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfPnt_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfPnt_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -4906,34 +5456,38 @@ impl HArray2OfPnt {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::TColgp_HArray2OfPnt()`
-    pub fn new_array2ofpnt(theOther: &crate::ffi::TColgp_Array2OfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofpnt(
+        theOther: &crate::ffi_types::TColgp_Array2OfPnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_ctor_array2ofpnt(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfPnt_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4943,7 +5497,7 @@ impl HArray2OfPnt {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4951,68 +5505,86 @@ impl HArray2OfPnt {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt.hxx`:24 - `TColgp_HArray2OfPnt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfPnt
     pub fn as_array2_of_pnt(&self) -> &Array2OfPnt {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array2OfPnt (mutable)
     pub fn as_array2_of_pnt_mut(&mut self) -> &mut Array2OfPnt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_as_TColgp_Array2OfPnt_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfPnt_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfPnt_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfPnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5020,7 +5592,7 @@ impl HArray2OfPnt {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfPnt_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5033,62 +5605,70 @@ impl HArray2OfPnt {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfPnt;
+pub use crate::ffi_types::HandleTColgpHArray2OfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfPnt {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfPnt {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfPnt_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfPnt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfPnt_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfPnt> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfPnt_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5101,11 +5681,11 @@ impl HandleTColgpHArray2OfPnt {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d`
-pub use crate::ffi::TColgp_HArray2OfPnt2d as HArray2OfPnt2d;
+pub use crate::ffi_types::TColgp_HArray2OfPnt2d as HArray2OfPnt2d;
 
 unsafe impl crate::CppDeletable for HArray2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_destructor(ptr);
     }
 }
 
@@ -5119,7 +5699,7 @@ impl HArray2OfPnt2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -5132,11 +5712,11 @@ impl HArray2OfPnt2d {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfPnt2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfPnt2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -5144,34 +5724,38 @@ impl HArray2OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::TColgp_HArray2OfPnt2d()`
-    pub fn new_array2ofpnt2d(theOther: &crate::ffi::TColgp_Array2OfPnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofpnt2d(
+        theOther: &crate::ffi_types::TColgp_Array2OfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_ctor_array2ofpnt2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfPnt2d {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfPnt2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5181,7 +5765,7 @@ impl HArray2OfPnt2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5189,16 +5773,22 @@ impl HArray2OfPnt2d {
     }
 
     /// **Source:** `TColgp_HArray2OfPnt2d.hxx`:24 - `TColgp_HArray2OfPnt2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfPnt2d
     pub fn as_array2_of_pnt2d(&self) -> &Array2OfPnt2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5206,7 +5796,9 @@ impl HArray2OfPnt2d {
     pub fn as_array2_of_pnt2d_mut(&mut self) -> &mut Array2OfPnt2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_as_TColgp_Array2OfPnt2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5214,43 +5806,53 @@ impl HArray2OfPnt2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfPnt2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfPnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfPnt2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5258,7 +5860,7 @@ impl HArray2OfPnt2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfPnt2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5271,62 +5873,72 @@ impl HArray2OfPnt2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfPnt2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfPnt2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfPnt2d;
+pub use crate::ffi_types::HandleTColgpHArray2OfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfPnt2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfPnt2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfPnt2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfPnt2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfPnt2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfPnt2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfPnt2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfPnt2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfPnt2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfPnt2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfPnt2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5339,11 +5951,11 @@ impl HandleTColgpHArray2OfPnt2d {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec`
-pub use crate::ffi::TColgp_HArray2OfVec as HArray2OfVec;
+pub use crate::ffi_types::TColgp_HArray2OfVec as HArray2OfVec;
 
 unsafe impl crate::CppDeletable for HArray2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfVec_destructor(ptr);
     }
 }
 
@@ -5357,7 +5969,7 @@ impl HArray2OfVec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -5370,11 +5982,11 @@ impl HArray2OfVec {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfVec_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfVec_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -5382,34 +5994,38 @@ impl HArray2OfVec {
     }
 
     /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::TColgp_HArray2OfVec()`
-    pub fn new_array2ofvec(theOther: &crate::ffi::TColgp_Array2OfVec) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofvec(
+        theOther: &crate::ffi_types::TColgp_Array2OfVec,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec_ctor_array2ofvec(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_ctor_array2ofvec(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfVec_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfVec_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfVec_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5419,7 +6035,7 @@ impl HArray2OfVec {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5427,68 +6043,86 @@ impl HArray2OfVec {
     }
 
     /// **Source:** `TColgp_HArray2OfVec.hxx`:24 - `TColgp_HArray2OfVec::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfVec
     pub fn as_array2_of_vec(&self) -> &Array2OfVec {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_as_TColgp_Array2OfVec(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array2OfVec (mutable)
     pub fn as_array2_of_vec_mut(&mut self) -> &mut Array2OfVec {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_as_TColgp_Array2OfVec_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfVec_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfVec_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfVec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5496,7 +6130,7 @@ impl HArray2OfVec {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfVec_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5509,62 +6143,70 @@ impl HArray2OfVec {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfVec;
+pub use crate::ffi_types::HandleTColgpHArray2OfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfVec {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfVec {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfVec_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfVec {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfVec_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfVec> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfVec_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5577,11 +6219,11 @@ impl HandleTColgpHArray2OfVec {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d`
-pub use crate::ffi::TColgp_HArray2OfVec2d as HArray2OfVec2d;
+pub use crate::ffi_types::TColgp_HArray2OfVec2d as HArray2OfVec2d;
 
 unsafe impl crate::CppDeletable for HArray2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_destructor(ptr);
     }
 }
 
@@ -5595,7 +6237,7 @@ impl HArray2OfVec2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -5608,11 +6250,11 @@ impl HArray2OfVec2d {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfVec2d_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfVec2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -5620,34 +6262,38 @@ impl HArray2OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::TColgp_HArray2OfVec2d()`
-    pub fn new_array2ofvec2d(theOther: &crate::ffi::TColgp_Array2OfVec2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofvec2d(
+        theOther: &crate::ffi_types::TColgp_Array2OfVec2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_ctor_array2ofvec2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfVec2d {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfVec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfVec2d {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfVec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5657,7 +6303,7 @@ impl HArray2OfVec2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5665,16 +6311,22 @@ impl HArray2OfVec2d {
     }
 
     /// **Source:** `TColgp_HArray2OfVec2d.hxx`:24 - `TColgp_HArray2OfVec2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfVec2d
     pub fn as_array2_of_vec2d(&self) -> &Array2OfVec2d {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5682,7 +6334,9 @@ impl HArray2OfVec2d {
     pub fn as_array2_of_vec2d_mut(&mut self) -> &mut Array2OfVec2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_as_TColgp_Array2OfVec2d_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5690,43 +6344,53 @@ impl HArray2OfVec2d {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfVec2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfVec2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfVec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfVec2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5734,7 +6398,7 @@ impl HArray2OfVec2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfVec2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5747,62 +6411,72 @@ impl HArray2OfVec2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfVec2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfVec2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfVec2d;
+pub use crate::ffi_types::HandleTColgpHArray2OfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfVec2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfVec2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfVec2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfVec2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfVec2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfVec2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfVec2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfVec2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfVec2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfVec2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfVec2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5815,11 +6489,11 @@ impl HandleTColgpHArray2OfVec2d {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY`
-pub use crate::ffi::TColgp_HArray2OfXY as HArray2OfXY;
+pub use crate::ffi_types::TColgp_HArray2OfXY as HArray2OfXY;
 
 unsafe impl crate::CppDeletable for HArray2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfXY_destructor(ptr);
     }
 }
 
@@ -5833,7 +6507,7 @@ impl HArray2OfXY {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXY_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -5846,11 +6520,11 @@ impl HArray2OfXY {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfXY_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfXY_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXY_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -5858,34 +6532,36 @@ impl HArray2OfXY {
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::TColgp_HArray2OfXY()`
-    pub fn new_array2ofxy(theOther: &crate::ffi::TColgp_Array2OfXY) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofxy(theOther: &crate::ffi_types::TColgp_Array2OfXY) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXY_ctor_array2ofxy(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_ctor_array2ofxy(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXY {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfXY {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfXY_array2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfXY_array2(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXY {
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfXY {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfXY_change_array2(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfXY_change_array2(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfXY_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfXY_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5895,7 +6571,7 @@ impl HArray2OfXY {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXY_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5903,68 +6579,86 @@ impl HArray2OfXY {
     }
 
     /// **Source:** `TColgp_HArray2OfXY.hxx`:24 - `TColgp_HArray2OfXY::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfXY_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfXY
     pub fn as_array2_of_xy(&self) -> &Array2OfXY {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_as_TColgp_Array2OfXY(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array2OfXY (mutable)
     pub fn as_array2_of_xy_mut(&mut self) -> &mut Array2OfXY {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_as_TColgp_Array2OfXY_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfXY_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfXY_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXY> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfXY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXY_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5972,7 +6666,7 @@ impl HArray2OfXY {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfXY_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5985,62 +6679,72 @@ impl HArray2OfXY {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXY_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXY_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfXY;
+pub use crate::ffi_types::HandleTColgpHArray2OfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfXY {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXY
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXY {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfXY {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfXY_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXY
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXY {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfXY {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfXY_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfXY> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfXY_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfXY_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6051,11 +6755,11 @@ impl HandleTColgpHArray2OfXY {
 // ========================
 
 /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ`
-pub use crate::ffi::TColgp_HArray2OfXYZ as HArray2OfXYZ;
+pub use crate::ffi_types::TColgp_HArray2OfXYZ as HArray2OfXYZ;
 
 unsafe impl crate::CppDeletable for HArray2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HArray2OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_destructor(ptr);
     }
 }
 
@@ -6069,7 +6773,7 @@ impl HArray2OfXYZ {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXYZ_ctor_int4(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -6082,11 +6786,11 @@ impl HArray2OfXYZ {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TColgp_Array2OfXYZ_value_type,
+        theValue: &crate::ffi_types::TColgp_Array2OfXYZ_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXYZ_ctor_int4_type(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -6094,34 +6798,38 @@ impl HArray2OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::TColgp_HArray2OfXYZ()`
-    pub fn new_array2ofxyz(theOther: &crate::ffi::TColgp_Array2OfXYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_array2ofxyz(
+        theOther: &crate::ffi_types::TColgp_Array2OfXYZ,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_ctor_array2ofxyz(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+    pub fn array2(&self) -> &crate::ffi_types::TColgp_Array2OfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TColgp_Array2OfXYZ {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TColgp_Array2OfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6131,7 +6839,7 @@ impl HArray2OfXYZ {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXYZ_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6139,68 +6847,86 @@ impl HArray2OfXYZ {
     }
 
     /// **Source:** `TColgp_HArray2OfXYZ.hxx`:24 - `TColgp_HArray2OfXYZ::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TColgp_Array2OfXYZ
     pub fn as_array2_of_xyz(&self) -> &Array2OfXYZ {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TColgp_Array2OfXYZ (mutable)
     pub fn as_array2_of_xyz_mut(&mut self) -> &mut Array2OfXYZ {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_as_TColgp_Array2OfXYZ_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HArray2OfXYZ_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfXYZ> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfXYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HArray2OfXYZ_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6208,7 +6934,7 @@ impl HArray2OfXYZ {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HArray2OfXYZ_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6221,62 +6947,70 @@ impl HArray2OfXYZ {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HArray2OfXYZ_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HArray2OfXYZ_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHArray2OfXYZ;
+pub use crate::ffi_types::HandleTColgpHArray2OfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHArray2OfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHArray2OfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_destructor(ptr);
     }
 }
 
 impl HandleTColgpHArray2OfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HArray2OfXYZ
-    pub fn get(&self) -> &crate::ffi::TColgp_HArray2OfXYZ {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HArray2OfXYZ {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHArray2OfXYZ_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HArray2OfXYZ
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HArray2OfXYZ {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HArray2OfXYZ {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHArray2OfXYZ_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HArray2OfXYZ> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHArray2OfXYZ_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHArray2OfXYZ_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6289,11 +7023,11 @@ impl HandleTColgpHArray2OfXYZ {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir`
-pub use crate::ffi::TColgp_HSequenceOfDir as HSequenceOfDir;
+pub use crate::ffi_types::TColgp_HSequenceOfDir as HSequenceOfDir;
 
 unsafe impl crate::CppDeletable for HSequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_destructor(ptr);
     }
 }
 
@@ -6301,53 +7035,65 @@ impl HSequenceOfDir {
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::TColgp_HSequenceOfDir()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HSequenceOfDir_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::TColgp_HSequenceOfDir()`
-    pub fn new_sequenceofdir(theOther: &crate::ffi::TColgp_SequenceOfDir) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofdir(
+        theOther: &crate::ffi_types::TColgp_SequenceOfDir,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir_ctor_sequenceofdir(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_ctor_sequenceofdir(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfDir_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append()`
-    pub fn append_sequenceofdir(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfDir) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_append_sequenceofdir(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfDir {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfDir_change_sequence(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_sequence(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfDir_value_type) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_append_type(self as *mut Self, theItem)
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::Append()`
+    pub fn append_sequenceofdir(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfDir,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_append_sequenceofdir(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfDir {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_change_sequence(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6357,7 +7103,7 @@ impl HSequenceOfDir {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6365,50 +7111,64 @@ impl HSequenceOfDir {
     }
 
     /// **Source:** `TColgp_HSequenceOfDir.hxx`:24 - `TColgp_HSequenceOfDir::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfDir_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HSequenceOfDir_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfDir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6416,7 +7176,7 @@ impl HSequenceOfDir {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfDir_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6429,62 +7189,72 @@ impl HSequenceOfDir {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfDir;
+pub use crate::ffi_types::HandleTColgpHSequenceOfDir;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfDir_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfDir {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfDir {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfDir_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfDir {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfDir_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HSequenceOfDir> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfDir_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6497,11 +7267,11 @@ impl HandleTColgpHSequenceOfDir {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d`
-pub use crate::ffi::TColgp_HSequenceOfDir2d as HSequenceOfDir2d;
+pub use crate::ffi_types::TColgp_HSequenceOfDir2d as HSequenceOfDir2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_destructor(ptr);
     }
 }
 
@@ -6510,42 +7280,48 @@ impl HSequenceOfDir2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir2d_ctor(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_ctor(),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::TColgp_HSequenceOfDir2d()`
     pub fn new_sequenceofdir2d(
-        theOther: &crate::ffi::TColgp_SequenceOfDir2d,
+        theOther: &crate::ffi_types::TColgp_SequenceOfDir2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_ctor_sequenceofdir2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfDir2d {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfDir2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir2d_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfDir2d_value_type) {
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfDir2d_value_type) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_append_type(self as *mut Self, theItem)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_append_type(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::Append()`
-    pub fn append_sequenceofdir2d(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfDir2d) {
+    pub fn append_sequenceofdir2d(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfDir2d,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_append_sequenceofdir2d(
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_append_sequenceofdir2d(
                 self as *mut Self,
                 theSequence,
             )
@@ -6553,18 +7329,20 @@ impl HSequenceOfDir2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfDir2d {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfDir2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfDir2d_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6574,7 +7352,7 @@ impl HSequenceOfDir2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6582,18 +7360,22 @@ impl HSequenceOfDir2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfDir2d.hxx`:24 - `TColgp_HSequenceOfDir2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfDir2d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfDir2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6601,7 +7383,9 @@ impl HSequenceOfDir2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir2d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6609,25 +7393,31 @@ impl HSequenceOfDir2d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfDir2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfDir2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfDir2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6635,7 +7425,9 @@ impl HSequenceOfDir2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfDir2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6648,62 +7440,72 @@ impl HSequenceOfDir2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfDir2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfDir2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfDir2d;
+pub use crate::ffi_types::HandleTColgpHSequenceOfDir2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfDir2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfDir2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfDir2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfDir2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfDir2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfDir2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfDir2d_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfDir2d {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfDir2d_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfDir2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfDir2d {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TColgp_HSequenceOfDir2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfDir2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfDir2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6716,11 +7518,11 @@ impl HandleTColgpHSequenceOfDir2d {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt`
-pub use crate::ffi::TColgp_HSequenceOfPnt as HSequenceOfPnt;
+pub use crate::ffi_types::TColgp_HSequenceOfPnt as HSequenceOfPnt;
 
 unsafe impl crate::CppDeletable for HSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_destructor(ptr);
     }
 }
 
@@ -6728,53 +7530,65 @@ impl HSequenceOfPnt {
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::TColgp_HSequenceOfPnt()`
-    pub fn new_sequenceofpnt(theOther: &crate::ffi::TColgp_SequenceOfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofpnt(
+        theOther: &crate::ffi_types::TColgp_SequenceOfPnt,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_ctor_sequenceofpnt(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfPnt_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
-    pub fn append_sequenceofpnt(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfPnt) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_append_sequenceofpnt(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfPnt {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_change_sequence(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_sequence(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfPnt_value_type) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_append_type(self as *mut Self, theItem)
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::Append()`
+    pub fn append_sequenceofpnt(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfPnt,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_append_sequenceofpnt(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_change_sequence(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6784,7 +7598,7 @@ impl HSequenceOfPnt {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6792,50 +7606,64 @@ impl HSequenceOfPnt {
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt.hxx`:24 - `TColgp_HSequenceOfPnt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HSequenceOfPnt_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfPnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6843,7 +7671,7 @@ impl HSequenceOfPnt {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfPnt_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6856,62 +7684,72 @@ impl HSequenceOfPnt {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfPnt;
+pub use crate::ffi_types::HandleTColgpHSequenceOfPnt;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfPnt_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfPnt {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfPnt {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfPnt_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfPnt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfPnt_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HSequenceOfPnt> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfPnt_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6924,11 +7762,11 @@ impl HandleTColgpHSequenceOfPnt {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d`
-pub use crate::ffi::TColgp_HSequenceOfPnt2d as HSequenceOfPnt2d;
+pub use crate::ffi_types::TColgp_HSequenceOfPnt2d as HSequenceOfPnt2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_destructor(ptr);
     }
 }
 
@@ -6937,42 +7775,48 @@ impl HSequenceOfPnt2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt2d_ctor(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_ctor(),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::TColgp_HSequenceOfPnt2d()`
     pub fn new_sequenceofpnt2d(
-        theOther: &crate::ffi::TColgp_SequenceOfPnt2d,
+        theOther: &crate::ffi_types::TColgp_SequenceOfPnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_ctor_sequenceofpnt2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfPnt2d {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt2d_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfPnt2d_value_type) {
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfPnt2d_value_type) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_append_type(self as *mut Self, theItem)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_append_type(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::Append()`
-    pub fn append_sequenceofpnt2d(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfPnt2d) {
+    pub fn append_sequenceofpnt2d(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfPnt2d,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_append_sequenceofpnt2d(
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_append_sequenceofpnt2d(
                 self as *mut Self,
                 theSequence,
             )
@@ -6980,18 +7824,20 @@ impl HSequenceOfPnt2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfPnt2d {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfPnt2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt2d_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7001,7 +7847,7 @@ impl HSequenceOfPnt2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7009,18 +7855,22 @@ impl HSequenceOfPnt2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfPnt2d.hxx`:24 - `TColgp_HSequenceOfPnt2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfPnt2d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfPnt2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7028,7 +7878,9 @@ impl HSequenceOfPnt2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt2d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7036,25 +7888,31 @@ impl HSequenceOfPnt2d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfPnt2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfPnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfPnt2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7062,7 +7920,9 @@ impl HSequenceOfPnt2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfPnt2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7075,62 +7935,72 @@ impl HSequenceOfPnt2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfPnt2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfPnt2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfPnt2d;
+pub use crate::ffi_types::HandleTColgpHSequenceOfPnt2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfPnt2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfPnt2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfPnt2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfPnt2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfPnt2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfPnt2d_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfPnt2d {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfPnt2d_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfPnt2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfPnt2d {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TColgp_HSequenceOfPnt2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfPnt2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfPnt2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7143,11 +8013,11 @@ impl HandleTColgpHSequenceOfPnt2d {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec`
-pub use crate::ffi::TColgp_HSequenceOfVec as HSequenceOfVec;
+pub use crate::ffi_types::TColgp_HSequenceOfVec as HSequenceOfVec;
 
 unsafe impl crate::CppDeletable for HSequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_destructor(ptr);
     }
 }
 
@@ -7155,53 +8025,65 @@ impl HSequenceOfVec {
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::TColgp_HSequenceOfVec()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HSequenceOfVec_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::TColgp_HSequenceOfVec()`
-    pub fn new_sequenceofvec(theOther: &crate::ffi::TColgp_SequenceOfVec) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofvec(
+        theOther: &crate::ffi_types::TColgp_SequenceOfVec,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec_ctor_sequenceofvec(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_ctor_sequenceofvec(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfVec_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append()`
-    pub fn append_sequenceofvec(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfVec) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_append_sequenceofvec(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfVec {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfVec_change_sequence(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_sequence(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfVec_value_type) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_append_type(self as *mut Self, theItem)
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::Append()`
+    pub fn append_sequenceofvec(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfVec,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_append_sequenceofvec(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfVec {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_change_sequence(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7211,7 +8093,7 @@ impl HSequenceOfVec {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7219,50 +8101,64 @@ impl HSequenceOfVec {
     }
 
     /// **Source:** `TColgp_HSequenceOfVec.hxx`:24 - `TColgp_HSequenceOfVec::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfVec_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HSequenceOfVec_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfVec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7270,7 +8166,7 @@ impl HSequenceOfVec {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfVec_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7283,62 +8179,72 @@ impl HSequenceOfVec {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfVec;
+pub use crate::ffi_types::HandleTColgpHSequenceOfVec;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfVec_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfVec {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfVec {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfVec_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfVec {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfVec_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HSequenceOfVec> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfVec_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7351,11 +8257,11 @@ impl HandleTColgpHSequenceOfVec {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d`
-pub use crate::ffi::TColgp_HSequenceOfVec2d as HSequenceOfVec2d;
+pub use crate::ffi_types::TColgp_HSequenceOfVec2d as HSequenceOfVec2d;
 
 unsafe impl crate::CppDeletable for HSequenceOfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_destructor(ptr);
     }
 }
 
@@ -7364,42 +8270,48 @@ impl HSequenceOfVec2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec2d_ctor(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_ctor(),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::TColgp_HSequenceOfVec2d()`
     pub fn new_sequenceofvec2d(
-        theOther: &crate::ffi::TColgp_SequenceOfVec2d,
+        theOther: &crate::ffi_types::TColgp_SequenceOfVec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_ctor_sequenceofvec2d(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfVec2d {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfVec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec2d_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfVec2d_value_type) {
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfVec2d_value_type) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_append_type(self as *mut Self, theItem)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_append_type(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::Append()`
-    pub fn append_sequenceofvec2d(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfVec2d) {
+    pub fn append_sequenceofvec2d(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfVec2d,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_append_sequenceofvec2d(
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_append_sequenceofvec2d(
                 self as *mut Self,
                 theSequence,
             )
@@ -7407,18 +8319,20 @@ impl HSequenceOfVec2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfVec2d {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfVec2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfVec2d_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7428,7 +8342,7 @@ impl HSequenceOfVec2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec2d_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7436,18 +8350,22 @@ impl HSequenceOfVec2d {
     }
 
     /// **Source:** `TColgp_HSequenceOfVec2d.hxx`:24 - `TColgp_HSequenceOfVec2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfVec2d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfVec2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7455,7 +8373,9 @@ impl HSequenceOfVec2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec2d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7463,25 +8383,31 @@ impl HSequenceOfVec2d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfVec2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfVec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfVec2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7489,7 +8415,9 @@ impl HSequenceOfVec2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfVec2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7502,62 +8430,72 @@ impl HSequenceOfVec2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfVec2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfVec2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfVec2d;
+pub use crate::ffi_types::HandleTColgpHSequenceOfVec2d;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfVec2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfVec2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfVec2d {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfVec2d
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfVec2d {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfVec2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfVec2d_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfVec2d {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfVec2d_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfVec2d
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfVec2d {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TColgp_HSequenceOfVec2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfVec2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfVec2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7570,11 +8508,11 @@ impl HandleTColgpHSequenceOfVec2d {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY`
-pub use crate::ffi::TColgp_HSequenceOfXY as HSequenceOfXY;
+pub use crate::ffi_types::TColgp_HSequenceOfXY as HSequenceOfXY;
 
 unsafe impl crate::CppDeletable for HSequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_destructor(ptr);
     }
 }
 
@@ -7582,53 +8520,62 @@ impl HSequenceOfXY {
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::TColgp_HSequenceOfXY()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HSequenceOfXY_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::TColgp_HSequenceOfXY()`
-    pub fn new_sequenceofxy(theOther: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofxy(
+        theOther: &crate::ffi_types::TColgp_SequenceOfXY,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_ctor_sequenceofxy(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXY {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfXY {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXY_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfXY_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append()`
-    pub fn append_sequenceofxy(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfXY) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_append_sequenceofxy(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfXY {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfXY_change_sequence(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_sequence(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfXY_value_type) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_append_type(self as *mut Self, theItem)
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::Append()`
+    pub fn append_sequenceofxy(&mut self, theSequence: &mut crate::ffi_types::TColgp_SequenceOfXY) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_append_sequenceofxy(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfXY {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXY_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_change_sequence(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7638,7 +8585,7 @@ impl HSequenceOfXY {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXY_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7646,50 +8593,64 @@ impl HSequenceOfXY {
     }
 
     /// **Source:** `TColgp_HSequenceOfXY.hxx`:24 - `TColgp_HSequenceOfXY::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXY_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfXY_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HSequenceOfXY_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXY> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfXY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXY_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7697,7 +8658,7 @@ impl HSequenceOfXY {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfXY_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7710,62 +8671,72 @@ impl HSequenceOfXY {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXY_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXY_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfXY;
+pub use crate::ffi_types::HandleTColgpHSequenceOfXY;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXY {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfXY_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfXY {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXY
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXY {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfXY {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfXY_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXY
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXY {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfXY {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfXY_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HSequenceOfXY> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfXY_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXY_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7778,11 +8749,11 @@ impl HandleTColgpHSequenceOfXY {
 // ========================
 
 /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ`
-pub use crate::ffi::TColgp_HSequenceOfXYZ as HSequenceOfXYZ;
+pub use crate::ffi_types::TColgp_HSequenceOfXYZ as HSequenceOfXYZ;
 
 unsafe impl crate::CppDeletable for HSequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TColgp_HSequenceOfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_destructor(ptr);
     }
 }
 
@@ -7790,53 +8761,65 @@ impl HSequenceOfXYZ {
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::TColgp_HSequenceOfXYZ()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::TColgp_HSequenceOfXYZ()`
-    pub fn new_sequenceofxyz(theOther: &crate::ffi::TColgp_SequenceOfXYZ) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofxyz(
+        theOther: &crate::ffi_types::TColgp_SequenceOfXYZ,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(theOther),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_ctor_sequenceofxyz(theOther),
             ))
         }
     }
 
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TColgp_SequenceOfXYZ {
+    pub fn sequence(&self) -> &crate::ffi_types::TColgp_SequenceOfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_sequence(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TColgp_SequenceOfXYZ_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append()`
-    pub fn append_sequenceofxyz(&mut self, theSequence: &mut crate::ffi::TColgp_SequenceOfXYZ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_append_sequenceofxyz(self as *mut Self, theSequence)
-        })
-    }
-
-    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TColgp_SequenceOfXYZ {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_change_sequence(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_sequence(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append()`
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::TColgp_SequenceOfXYZ_value_type) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_append_type(self as *mut Self, theItem)
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::Append()`
+    pub fn append_sequenceofxyz(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TColgp_SequenceOfXYZ,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_append_sequenceofxyz(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TColgp_SequenceOfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_change_sequence(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7846,7 +8829,7 @@ impl HSequenceOfXYZ {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXYZ_get_type_name(),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7854,50 +8837,64 @@ impl HSequenceOfXYZ {
     }
 
     /// **Source:** `TColgp_HSequenceOfXYZ.hxx`:24 - `TColgp_HSequenceOfXYZ::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TColgp_HSequenceOfXYZ_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHSequenceOfXYZ> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHSequenceOfXYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TColgp_HSequenceOfXYZ_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7905,7 +8902,7 @@ impl HSequenceOfXYZ {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TColgp_HSequenceOfXYZ_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7918,62 +8915,72 @@ impl HSequenceOfXYZ {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TColgp_HSequenceOfXYZ_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TColgp_HSequenceOfXYZ_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTColgpHSequenceOfXYZ;
+pub use crate::ffi_types::HandleTColgpHSequenceOfXYZ;
 
 unsafe impl crate::CppDeletable for HandleTColgpHSequenceOfXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTColgpHSequenceOfXYZ_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_destructor(ptr);
     }
 }
 
 impl HandleTColgpHSequenceOfXYZ {
     /// Dereference this Handle to access the underlying TColgp_HSequenceOfXYZ
-    pub fn get(&self) -> &crate::ffi::TColgp_HSequenceOfXYZ {
+    pub fn get(&self) -> &crate::ffi_types::TColgp_HSequenceOfXYZ {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTColgpHSequenceOfXYZ_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TColgp_HSequenceOfXYZ
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TColgp_HSequenceOfXYZ {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TColgp_HSequenceOfXYZ {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTColgpHSequenceOfXYZ_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TColgp_HSequenceOfXYZ> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTColgpHSequenceOfXYZ_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleTColgpHSequenceOfXYZ_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7985,7 +8992,7 @@ impl HandleTColgpHSequenceOfXYZ {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TColgp_SequenceOfDir as SequenceOfDir, TColgp_SequenceOfDir2d as SequenceOfDir2d,
     TColgp_SequenceOfPnt as SequenceOfPnt, TColgp_SequenceOfPnt2d as SequenceOfPnt2d,
     TColgp_SequenceOfVec as SequenceOfVec, TColgp_SequenceOfVec2d as SequenceOfVec2d,

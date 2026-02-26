@@ -36,7 +36,7 @@ impl TryFrom<i32> for TypeOfSensitivity {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleAISViewCubeSensitive, HandleGraphic3dBuffer, HandleMeshVSCommonSensitiveEntity,
     HandleMeshVSDummySensitiveEntity, HandleMeshVSSensitiveFace, HandleMeshVSSensitiveMesh,
     HandleMeshVSSensitivePolyhedron, HandleMeshVSSensitiveQuad, HandleMeshVSSensitiveSegment,
@@ -49,11 +49,11 @@ pub use crate::ffi::{
 
 /// **Source:** `Select3D_BVHIndexBuffer.hxx`:22 - `Select3D_BVHIndexBuffer`
 /// Index buffer for BVH tree.
-pub use crate::ffi::Select3D_BVHIndexBuffer as BVHIndexBuffer;
+pub use crate::ffi_types::Select3D_BVHIndexBuffer as BVHIndexBuffer;
 
 unsafe impl crate::CppDeletable for BVHIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_BVHIndexBuffer_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_destructor(ptr);
     }
 }
 
@@ -61,19 +61,17 @@ impl BVHIndexBuffer {
     /// **Source:** `Select3D_BVHIndexBuffer.hxx`:26 - `Select3D_BVHIndexBuffer::Select3D_BVHIndexBuffer()`
     /// Empty constructor.
     pub fn new_handlencollectionbaseallocator(
-        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+        theAlloc: &crate::ffi_types::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_ctor_handlencollectionbaseallocator(theAlloc),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_ctor_handlencollectionbaseallocator(theAlloc)))
         }
     }
 
     /// **Source:** `Select3D_BVHIndexBuffer.hxx`:32 - `Select3D_BVHIndexBuffer::HasPatches()`
     pub fn has_patches(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_has_patches(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_has_patches(self as *const Self)
         })
     }
 
@@ -81,7 +79,11 @@ impl BVHIndexBuffer {
     /// Allocates new empty index array
     pub fn init(&mut self, theNbElems: i32, theHasPatches: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_init(self as *mut Self, theNbElems, theHasPatches)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_init(
+                self as *mut Self,
+                theNbElems,
+                theHasPatches,
+            )
         })
     }
 
@@ -89,7 +91,7 @@ impl BVHIndexBuffer {
     /// Access index at specified position
     pub fn index(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_index(self as *const Self, theIndex)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_index(self as *const Self, theIndex)
         })
     }
 
@@ -97,7 +99,10 @@ impl BVHIndexBuffer {
     /// Access index at specified position
     pub fn patch_size(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_patch_size(self as *const Self, theIndex)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_patch_size(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -105,7 +110,7 @@ impl BVHIndexBuffer {
     /// Change index at specified position
     pub fn set_index_int2(&mut self, theIndex: i32, theValue: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_set_index_int2(
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_set_index_int2(
                 self as *mut Self,
                 theIndex,
                 theValue,
@@ -117,7 +122,7 @@ impl BVHIndexBuffer {
     /// Change index at specified position
     pub fn set_index_int3(&mut self, theIndex: i32, theValue: i32, thePatchSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_set_index_int3(
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_set_index_int3(
                 self as *mut Self,
                 theIndex,
                 theValue,
@@ -127,9 +132,9 @@ impl BVHIndexBuffer {
     }
 
     /// **Source:** `Select3D_BVHIndexBuffer.hxx`:89 - `Select3D_BVHIndexBuffer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -139,7 +144,7 @@ impl BVHIndexBuffer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -147,36 +152,44 @@ impl BVHIndexBuffer {
     }
 
     /// **Source:** `Select3D_BVHIndexBuffer.hxx`:89 - `Select3D_BVHIndexBuffer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Graphic3d_Buffer
     pub fn as_graphic3d_buffer(&self) -> &crate::graphic3d::Buffer {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Graphic3d_Buffer (mutable)
     pub fn as_graphic3d_buffer_mut(&mut self) -> &mut crate::graphic3d::Buffer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_Graphic3d_Buffer_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to NCollection_Buffer
     pub fn as_n_collection_buffer(&self) -> &crate::n_collection::Buffer {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_NCollection_Buffer(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -184,7 +197,9 @@ impl BVHIndexBuffer {
     pub fn as_n_collection_buffer_mut(&mut self) -> &mut crate::n_collection::Buffer {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_as_NCollection_Buffer_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_NCollection_Buffer_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -192,9 +207,11 @@ impl BVHIndexBuffer {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -202,7 +219,9 @@ impl BVHIndexBuffer {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -210,10 +229,10 @@ impl BVHIndexBuffer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DBVHIndexBuffer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DBVHIndexBuffer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -221,7 +240,9 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:102 - `Graphic3d_Buffer::NbMaxElements()`
     pub fn nb_max_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_NbMaxElements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_NbMaxElements(
+                self as *const Self,
+            )
         })
     }
 
@@ -229,7 +250,9 @@ impl BVHIndexBuffer {
     pub fn attributes_array(&self) -> Option<&crate::graphic3d::Attribute> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_inherited_AttributesArray(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_AttributesArray(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -242,10 +265,12 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:114 - `Graphic3d_Buffer::Attribute()`
     pub fn attribute(&self, theAttribIndex: i32) -> &crate::graphic3d::Attribute {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_inherited_Attribute(
-                self as *const Self,
-                theAttribIndex,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Attribute(
+                    self as *const Self,
+                    theAttribIndex,
+                ),
+            ))
         }
     }
 
@@ -253,7 +278,7 @@ impl BVHIndexBuffer {
     pub fn change_attribute(&mut self, theAttribIndex: i32) -> &mut crate::graphic3d::Attribute {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_inherited_ChangeAttribute(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_ChangeAttribute(
                     self as *mut Self,
                     theAttribIndex,
                 ),
@@ -264,7 +289,7 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:128 - `Graphic3d_Buffer::FindAttribute()`
     pub fn find_attribute(&self, theAttrib: crate::graphic3d::TypeOfAttribute) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_FindAttribute(
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_FindAttribute(
                 self as *const Self,
                 theAttrib.into(),
             )
@@ -274,7 +299,7 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:144 - `Graphic3d_Buffer::AttributeOffset()`
     pub fn attribute_offset(&self, theAttribIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_AttributeOffset(
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_AttributeOffset(
                 self as *const Self,
                 theAttribIndex,
             )
@@ -284,21 +309,25 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:257 - `Graphic3d_Buffer::release()`
     pub fn release(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_release(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_release(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:312 - `Graphic3d_Buffer::IsInterleaved()`
     pub fn is_interleaved(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IsInterleaved(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IsInterleaved(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:316 - `Graphic3d_Buffer::IsMutable()`
     pub fn is_mutable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IsMutable(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IsMutable(
+                self as *const Self,
+            )
         })
     }
 
@@ -306,7 +335,9 @@ impl BVHIndexBuffer {
     pub fn invalidated_range(&self) -> crate::OwnedPtr<crate::graphic3d::BufferRange> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_BVHIndexBuffer_inherited_InvalidatedRange(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_InvalidatedRange(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -314,72 +345,86 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:324 - `Graphic3d_Buffer::Validate()`
     pub fn validate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Validate(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Validate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_Buffer.hxx`:327 - `Graphic3d_Buffer::Invalidate()`
     pub fn invalidate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Invalidate(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Invalidate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:63 - `NCollection_Buffer::Size()`
     pub fn size(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Size(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:66 - `NCollection_Buffer::Allocator()`
-    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_BVHIndexBuffer_inherited_Allocator(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Allocator(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
-    pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
+    pub fn set_allocator(&mut self, theAlloc: &crate::ffi_types::HandleNCollectionBaseAllocator) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_SetAllocator(self as *mut Self, theAlloc)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_SetAllocator(
+                self as *mut Self,
+                theAlloc,
+            )
         })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:77 - `NCollection_Buffer::Allocate()`
     pub fn allocate(&mut self, theSize: usize) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Allocate(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
     /// Inherited: **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
     pub fn free(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Free(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Free(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -387,7 +432,7 @@ impl BVHIndexBuffer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_BVHIndexBuffer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -400,62 +445,72 @@ impl BVHIndexBuffer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_BVHIndexBuffer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_BVHIndexBuffer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DBVHIndexBuffer;
+pub use crate::ffi_types::HandleSelect3DBVHIndexBuffer;
 
 unsafe impl crate::CppDeletable for HandleSelect3DBVHIndexBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DBVHIndexBuffer_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_destructor(ptr);
     }
 }
 
 impl HandleSelect3DBVHIndexBuffer {
     /// Dereference this Handle to access the underlying Select3D_BVHIndexBuffer
-    pub fn get(&self) -> &crate::ffi::Select3D_BVHIndexBuffer {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_BVHIndexBuffer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DBVHIndexBuffer_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Select3D_BVHIndexBuffer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_BVHIndexBuffer {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DBVHIndexBuffer_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Select3D_BVHIndexBuffer
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_BVHIndexBuffer {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<Graphic3d_Buffer>
-    pub fn to_handle_graphic3d_buffer(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dBuffer> {
+    pub fn to_handle_graphic3d_buffer(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dBuffer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleGraphic3dBuffer(
+                crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_to_HandleGraphic3dBuffer(
                     self as *const Self,
                 ),
             ))
@@ -465,10 +520,10 @@ impl HandleSelect3DBVHIndexBuffer {
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<NCollection_Buffer>
     pub fn to_handle_n_collection_buffer(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBuffer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleNCollectionBuffer(
+                crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_to_HandleNCollectionBuffer(
                     self as *const Self,
                 ),
             ))
@@ -476,10 +531,12 @@ impl HandleSelect3DBVHIndexBuffer {
     }
 
     /// Upcast Handle<Select3D_BVHIndexBuffer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DBVHIndexBuffer_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DBVHIndexBuffer_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -495,11 +552,11 @@ impl HandleSelect3DBVHIndexBuffer {
 /// This class handles the selection of arbitrary point set with internal type of sensitivity.
 /// The main principle is to split the point set given onto planar convex polygons and search
 /// for the overlap with one or more of them through traverse of BVH tree.
-pub use crate::ffi::Select3D_InteriorSensitivePointSet as InteriorSensitivePointSet;
+pub use crate::ffi_types::Select3D_InteriorSensitivePointSet as InteriorSensitivePointSet;
 
 unsafe impl crate::CppDeletable for InteriorSensitivePointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_InteriorSensitivePointSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_destructor(ptr);
     }
 }
 
@@ -507,20 +564,20 @@ impl InteriorSensitivePointSet {
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:33 - `Select3D_InteriorSensitivePointSet::Select3D_InteriorSensitivePointSet()`
     /// Splits the given point set thePoints onto planar convex polygons
     pub fn new_handleselectmgrentityowner_array1ofpnt(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::TColgp_Array1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_InteriorSensitivePointSet_ctor_handleselectmgrentityowner_array1ofpnt(theOwnerId, thePoints)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_ctor_handleselectmgrentityowner_array1ofpnt(theOwnerId, thePoints)))
         }
     }
 
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:39 - `Select3D_InteriorSensitivePointSet::GetPoints()`
     /// Initializes the given array theHArrayOfPnt by 3d coordinates of vertices of the
     /// whole point set
-    pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
+    pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi_types::HandleTColgpHArray1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_get_points(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_get_points(
                 self as *mut Self,
                 theHArrayOfPnt,
             )
@@ -531,16 +588,19 @@ impl InteriorSensitivePointSet {
     /// Returns the length of vector of planar convex polygons
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_size(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:45 - `Select3D_InteriorSensitivePointSet::Box()`
     /// Returns bounding box of planar convex polygon with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_box_(self as *const Self, theIdx),
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_box_(
+                    self as *const Self,
+                    theIdx,
+                ),
             ))
         }
     }
@@ -550,7 +610,7 @@ impl InteriorSensitivePointSet {
     /// theIdx in the vector along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_center(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_center(
                 self as *const Self,
                 theIdx,
                 theAxis,
@@ -562,17 +622,23 @@ impl InteriorSensitivePointSet {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:60 - `Select3D_InteriorSensitivePointSet::BoundingBox()`
     /// Returns bounding box of the point set. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_bounding_box(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -583,7 +649,7 @@ impl InteriorSensitivePointSet {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_center_of_geometry(
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_center_of_geometry(
                     self as *const Self,
                 ),
             ))
@@ -594,16 +660,20 @@ impl InteriorSensitivePointSet {
     /// Returns the amount of points in set
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_nb_sub_elements(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:73 - `Select3D_InteriorSensitivePointSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_InteriorSensitivePointSet_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -611,7 +681,7 @@ impl InteriorSensitivePointSet {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -619,10 +689,10 @@ impl InteriorSensitivePointSet {
     }
 
     /// **Source:** `Select3D_InteriorSensitivePointSet.hxx`:73 - `Select3D_InteriorSensitivePointSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_get_type_descriptor(),
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_get_type_descriptor(),
             ))
         }
     }
@@ -630,44 +700,28 @@ impl InteriorSensitivePointSet {
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet(self as *const Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveSet_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity(self as *const Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Select3D_SensitiveEntity_mut(self as *mut Self))
         }
     }
 
@@ -675,7 +729,7 @@ impl InteriorSensitivePointSet {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient(
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -685,21 +739,19 @@ impl InteriorSensitivePointSet {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DInteriorSensitivePointSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
@@ -711,7 +763,7 @@ impl InteriorSensitivePointSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Matches(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_Matches(
                 self as *mut Self,
                 theMgr,
                 thePickResult,
@@ -722,21 +774,25 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_BVH(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetBuilder(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_SetBuilder(
                 self as *mut Self,
                 theBuilder,
             )
@@ -746,31 +802,35 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_MarkDirty(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_Clear(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_GetLeafNodeSize(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_GetLeafNodeSize(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_inherited_OwnerId(
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_OwnerId(
                     self as *const Self,
                 ),
             ))
@@ -778,9 +838,9 @@ impl InteriorSensitivePointSet {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Set(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_Set(
                 self as *mut Self,
                 theOwnerId,
             )
@@ -790,7 +850,7 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_SensitivityFactor(
                 self as *const Self,
             )
         })
@@ -799,18 +859,17 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetSensitivityFactor(
-                self as *mut Self,
-                theNewSens,
-            )
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_SetSensitivityFactor(self as *mut Self, theNewSens)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:57 - `Select3D_SensitiveEntity::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_inherited_GetConnected(
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_GetConnected(
                     self as *mut Self,
                 ),
             ))
@@ -820,7 +879,7 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_HasInitLocation(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_HasInitLocation(
                 self as *const Self,
             )
         })
@@ -829,42 +888,31 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:94 - `Select3D_SensitiveEntity::InvInitLocation()`
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_inherited_InvInitLocation(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_InvInitLocation(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Select3D_InteriorSensitivePointSet_inherited_TransformPersistence(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_TransformPersistence(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_SetTransformPersistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_SetTransformPersistence(self as *mut Self, theTrsfPers)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -872,9 +920,9 @@ impl InteriorSensitivePointSet {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_IsKind(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -885,7 +933,9 @@ impl InteriorSensitivePointSet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_InteriorSensitivePointSet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -898,7 +948,7 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_GetRefCount(
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -907,86 +957,82 @@ impl InteriorSensitivePointSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_InteriorSensitivePointSet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_InteriorSensitivePointSet_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DInteriorSensitivePointSet;
+pub use crate::ffi_types::HandleSelect3DInteriorSensitivePointSet;
 
 unsafe impl crate::CppDeletable for HandleSelect3DInteriorSensitivePointSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DInteriorSensitivePointSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_destructor(ptr);
     }
 }
 
 impl HandleSelect3DInteriorSensitivePointSet {
     /// Dereference this Handle to access the underlying Select3D_InteriorSensitivePointSet
-    pub fn get(&self) -> &crate::ffi::Select3D_InteriorSensitivePointSet {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_InteriorSensitivePointSet {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DInteriorSensitivePointSet_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_InteriorSensitivePointSet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_InteriorSensitivePointSet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_InteriorSensitivePointSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DInteriorSensitivePointSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveSet(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveEntity(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_InteriorSensitivePointSet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DInteriorSensitivePointSet_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DInteriorSensitivePointSet_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -996,11 +1042,11 @@ impl HandleSelect3DInteriorSensitivePointSet {
 // ========================
 
 /// **Source:** `Select3D_Pnt.hxx`:19 - `Select3D_Pnt`
-pub use crate::ffi::Select3D_Pnt as Pnt;
+pub use crate::ffi_types::Select3D_Pnt as Pnt;
 
 unsafe impl crate::CppDeletable for Pnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_Pnt_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_Pnt_destructor(ptr);
     }
 }
 
@@ -1009,11 +1055,11 @@ unsafe impl crate::CppDeletable for Pnt {
 // ========================
 
 /// **Source:** `Select3D_PointData.hxx`:20 - `Select3D_PointData`
-pub use crate::ffi::Select3D_PointData as PointData;
+pub use crate::ffi_types::Select3D_PointData as PointData;
 
 unsafe impl crate::CppDeletable for PointData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_PointData_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_PointData_destructor(ptr);
     }
 }
 
@@ -1021,30 +1067,38 @@ impl PointData {
     /// **Source:** `Select3D_PointData.hxx`:26 - `Select3D_PointData::Select3D_PointData()`
     pub fn new_int(theNbPoints: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_PointData_ctor_int(
-                theNbPoints,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_PointData_ctor_int(theNbPoints),
+            ))
         }
     }
 
     /// **Source:** `Select3D_PointData.hxx`:40 - `Select3D_PointData::SetPnt()`
     pub fn set_pnt_int_pnt(&mut self, theIndex: i32, theValue: &Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_PointData_set_pnt_int_pnt(self as *mut Self, theIndex, theValue)
+            crate::ffi_extern_TKV3d::Select3D_PointData_set_pnt_int_pnt(
+                self as *mut Self,
+                theIndex,
+                theValue,
+            )
         })
     }
 
     /// **Source:** `Select3D_PointData.hxx`:49 - `Select3D_PointData::SetPnt()`
     pub fn set_pnt_int_pnt_2(&mut self, theIndex: i32, theValue: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_PointData_set_pnt_int_pnt_2(self as *mut Self, theIndex, theValue)
+            crate::ffi_extern_TKV3d::Select3D_PointData_set_pnt_int_pnt_2(
+                self as *mut Self,
+                theIndex,
+                theValue,
+            )
         })
     }
 
     /// **Source:** `Select3D_PointData.hxx`:58 - `Select3D_PointData::Pnt()`
     pub fn pnt(&self, theIndex: i32) -> &Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_PointData_pnt(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_PointData_pnt(
                 self as *const Self,
                 theIndex,
             )))
@@ -1054,16 +1108,17 @@ impl PointData {
     /// **Source:** `Select3D_PointData.hxx`:67 - `Select3D_PointData::Pnt3d()`
     pub fn pnt3d(&self, theIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_PointData_pnt3d(
-                self as *const Self,
-                theIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_PointData_pnt3d(self as *const Self, theIndex),
+            ))
         }
     }
 
     /// **Source:** `Select3D_PointData.hxx`:75 - `Select3D_PointData::Size()`
     pub fn size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Select3D_PointData_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::Select3D_PointData_size(self as *const Self)
+        })
     }
 }
 
@@ -1073,11 +1128,11 @@ impl PointData {
 
 /// **Source:** `Select3D_SensitiveBox.hxx`:23 - `Select3D_SensitiveBox`
 /// A framework to define selection by a sensitive box.
-pub use crate::ffi::Select3D_SensitiveBox as SensitiveBox;
+pub use crate::ffi_types::Select3D_SensitiveBox as SensitiveBox;
 
 unsafe impl crate::CppDeletable for SensitiveBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveBox_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveBox_destructor(ptr);
     }
 }
 
@@ -1086,12 +1141,12 @@ impl SensitiveBox {
     /// Constructs a sensitive box object defined by the
     /// owner theOwnerId, and the box theBox.
     pub fn new_handleselectmgrentityowner_box(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theBox: &crate::bnd::Box,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_ctor_handleselectmgrentityowner_box(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_ctor_handleselectmgrentityowner_box(
                     theOwnerId, theBox,
                 ),
             ))
@@ -1106,7 +1161,7 @@ impl SensitiveBox {
     /// and theXMax, theYMax and theZMax define the maximum
     /// point in the back upper right hand corner of the box.
     pub fn new_handleselectmgrentityowner_real6(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theXMin: f64,
         theYMin: f64,
         theZMin: f64,
@@ -1115,18 +1170,14 @@ impl SensitiveBox {
         theZMax: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_ctor_handleselectmgrentityowner_real6(
-                    theOwnerId, theXMin, theYMin, theZMin, theXMax, theYMax, theZMax,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveBox_ctor_handleselectmgrentityowner_real6(theOwnerId, theXMin, theYMin, theZMin, theXMax, theYMax, theZMax)))
         }
     }
 
     /// **Source:** `Select3D_SensitiveBox.hxx`:25 - `Select3D_SensitiveBox::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveBox_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveBox_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1136,15 +1187,17 @@ impl SensitiveBox {
     /// Returns the amount of sub-entities in sensitive
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveBox.hxx`:49 - `Select3D_SensitiveBox::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_get_connected(self as *mut Self),
             ))
         }
     }
@@ -1157,16 +1210,20 @@ impl SensitiveBox {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveBox.hxx`:56 - `Select3D_SensitiveBox::Box()`
     pub fn box_(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveBox_box_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_box_(self as *const Self),
+            ))
         }
     }
 
@@ -1176,7 +1233,9 @@ impl SensitiveBox {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1184,10 +1243,10 @@ impl SensitiveBox {
     /// **Source:** `Select3D_SensitiveBox.hxx`:75 - `Select3D_SensitiveBox::BoundingBox()`
     /// Returns coordinates of the box. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -1196,7 +1255,7 @@ impl SensitiveBox {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_to_build_bvh(self as *const Self)
         })
     }
 
@@ -1204,7 +1263,7 @@ impl SensitiveBox {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1212,16 +1271,22 @@ impl SensitiveBox {
     }
 
     /// **Source:** `Select3D_SensitiveBox.hxx`:25 - `Select3D_SensitiveBox::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitiveBox_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1229,7 +1294,7 @@ impl SensitiveBox {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -1239,59 +1304,70 @@ impl SensitiveBox {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveBox_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_SensitiveBox_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveBox> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveBox> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveBox_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -1301,21 +1377,23 @@ impl SensitiveBox {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -1323,16 +1401,18 @@ impl SensitiveBox {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveBox_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -1342,10 +1422,10 @@ impl SensitiveBox {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -1353,16 +1433,22 @@ impl SensitiveBox {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1370,7 +1456,7 @@ impl SensitiveBox {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveBox_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1383,52 +1469,60 @@ impl SensitiveBox {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveBox_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveBox_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveBox;
+pub use crate::ffi_types::HandleSelect3DSensitiveBox;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveBox_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveBox {
     /// Dereference this Handle to access the underlying Select3D_SensitiveBox
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveBox {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveBox {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveBox_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveBox
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveBox {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveBox {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveBox_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_get_mut(
                 self as *mut Self,
             ))
         }
@@ -1437,21 +1531,19 @@ impl HandleSelect3DSensitiveBox {
     /// Upcast Handle<Select3D_SensitiveBox> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveBox_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveBox> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveBox_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveBox_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1465,11 +1557,11 @@ impl HandleSelect3DSensitiveBox {
 
 /// **Source:** `Select3D_SensitiveCircle.hxx`:25 - `Select3D_SensitiveCircle`
 /// A framework to define sensitive 3D circles.
-pub use crate::ffi::Select3D_SensitiveCircle as SensitiveCircle;
+pub use crate::ffi_types::Select3D_SensitiveCircle as SensitiveCircle;
 
 unsafe impl crate::CppDeletable for SensitiveCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveCircle_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_destructor(ptr);
     }
 }
 
@@ -1478,18 +1570,12 @@ impl SensitiveCircle {
     /// Constructs the sensitive circle object defined by the
     /// owner theOwnerId, the circle theCircle and the boolean theIsFilled.
     pub fn new_handleselectmgrentityowner_circ_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCircle: &crate::gp::Circ,
         theIsFilled: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_ctor_handleselectmgrentityowner_circ_bool(
-                    theOwnerId,
-                    theCircle,
-                    theIsFilled,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_ctor_handleselectmgrentityowner_circ_bool(theOwnerId, theCircle, theIsFilled)))
         }
     }
 
@@ -1497,16 +1583,16 @@ impl SensitiveCircle {
     /// Constructs the sensitive circle object defined by the
     /// owner theOwnerId, the circle theCircle and the boolean theIsFilled.
     pub fn new_handleselectmgrentityowner_circ(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCircle: &crate::gp::Circ,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_circ_bool(theOwnerId, theCircle, false)
     }
 
     /// **Source:** `Select3D_SensitiveCircle.hxx`:27 - `Select3D_SensitiveCircle::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCircle_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1520,16 +1606,22 @@ impl SensitiveCircle {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveCircle.hxx`:54 - `Select3D_SensitiveCircle::GetConnected()`
     /// Returns a copy of this sensitive circle
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_get_connected(self as *mut Self),
             ))
         }
     }
@@ -1537,10 +1629,10 @@ impl SensitiveCircle {
     /// **Source:** `Select3D_SensitiveCircle.hxx`:58 - `Select3D_SensitiveCircle::BoundingBox()`
     /// Returns bounding box of the circle.
     /// If location transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -1549,7 +1641,7 @@ impl SensitiveCircle {
     /// Always returns Standard_False
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_to_build_bvh(self as *const Self)
         })
     }
 
@@ -1557,7 +1649,7 @@ impl SensitiveCircle {
     /// Returns the amount of points
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_nb_sub_elements(self as *const Self)
         })
     }
 
@@ -1566,7 +1658,9 @@ impl SensitiveCircle {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1576,9 +1670,11 @@ impl SensitiveCircle {
     /// it specifies the position and orientation of the circle.
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCircle_transformation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_transformation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1587,7 +1683,7 @@ impl SensitiveCircle {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_circle(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_circle(self as *const Self),
             ))
         }
     }
@@ -1596,7 +1692,7 @@ impl SensitiveCircle {
     /// Returns circle radius
     pub fn radius(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_radius(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_radius(self as *const Self)
         })
     }
 
@@ -1604,7 +1700,7 @@ impl SensitiveCircle {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1612,18 +1708,22 @@ impl SensitiveCircle {
     }
 
     /// **Source:** `Select3D_SensitiveCircle.hxx`:27 - `Select3D_SensitiveCircle::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCircle_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1631,7 +1731,7 @@ impl SensitiveCircle {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -1641,9 +1741,11 @@ impl SensitiveCircle {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1651,7 +1753,9 @@ impl SensitiveCircle {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1659,41 +1763,48 @@ impl SensitiveCircle {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCircle> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCircle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCircle_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -1703,21 +1814,23 @@ impl SensitiveCircle {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -1725,16 +1838,18 @@ impl SensitiveCircle {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveCircle_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -1744,10 +1859,10 @@ impl SensitiveCircle {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -1755,16 +1870,22 @@ impl SensitiveCircle {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1772,7 +1893,9 @@ impl SensitiveCircle {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveCircle_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1785,77 +1908,81 @@ impl SensitiveCircle {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCircle_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCircle_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveCircle;
+pub use crate::ffi_types::HandleSelect3DSensitiveCircle;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveCircle_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveCircle {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCircle
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCircle {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCircle {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveCircle_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCircle
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCircle {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveCircle {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveCircle_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCircle> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCircle_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCircle> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCircle_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCircle_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1871,11 +1998,11 @@ impl HandleSelect3DSensitiveCircle {
 /// A framework to define a sensitive 3D curve.
 /// In some cases this class can raise Standard_ConstructionError and
 /// Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
-pub use crate::ffi::Select3D_SensitiveCurve as SensitiveCurve;
+pub use crate::ffi_types::Select3D_SensitiveCurve as SensitiveCurve;
 
 unsafe impl crate::CppDeletable for SensitiveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveCurve_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_destructor(ptr);
     }
 }
 
@@ -1885,12 +2012,12 @@ impl SensitiveCurve {
     /// owner theOwnerId, the curve theCurve, and the
     /// maximum number of points on the curve: theNbPnts.
     pub fn new_handleselectmgrentityowner_handlegeomcurve_int(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theCurve: &crate::ffi::HandleGeomCurve,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theCurve: &crate::ffi_types::HandleGeomCurve,
         theNbPnts: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handlegeomcurve_int(theOwnerId, theCurve, theNbPnts)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handlegeomcurve_int(theOwnerId, theCurve, theNbPnts)))
         }
     }
 
@@ -1898,11 +2025,11 @@ impl SensitiveCurve {
     /// Constructs a sensitive curve object defined by the
     /// owner theOwnerId and the set of points ThePoints.
     pub fn new_handleselectmgrentityowner_handletcolgpharray1ofpnt(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::HandleTColgpHArray1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::HandleTColgpHArray1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt(theOwnerId, thePoints)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt(theOwnerId, thePoints)))
         }
     }
 
@@ -1910,15 +2037,11 @@ impl SensitiveCurve {
     /// Creation of Sensitive Curve from Points.
     /// Warning : This Method should disappear in the next version...
     pub fn new_handleselectmgrentityowner_array1ofpnt(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::TColgp_Array1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_array1ofpnt(
-                    theOwnerId, thePoints,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_ctor_handleselectmgrentityowner_array1ofpnt(theOwnerId, thePoints)))
         }
     }
 
@@ -1927,16 +2050,16 @@ impl SensitiveCurve {
     /// owner theOwnerId, the curve theCurve, and the
     /// maximum number of points on the curve: theNbPnts.
     pub fn new_handleselectmgrentityowner_handlegeomcurve(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theCurve: &crate::ffi::HandleGeomCurve,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theCurve: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_handlegeomcurve_int(theOwnerId, theCurve, 17)
     }
 
     /// **Source:** `Select3D_SensitiveCurve.hxx`:30 - `Select3D_SensitiveCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCurve_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1944,10 +2067,12 @@ impl SensitiveCurve {
 
     /// **Source:** `Select3D_SensitiveCurve.hxx`:55 - `Select3D_SensitiveCurve::GetConnected()`
     /// Returns the copy of this
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_get_connected(self as *mut Self),
             ))
         }
     }
@@ -1956,7 +2081,7 @@ impl SensitiveCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1964,18 +2089,22 @@ impl SensitiveCurve {
     }
 
     /// **Source:** `Select3D_SensitiveCurve.hxx`:30 - `Select3D_SensitiveCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Select3D_SensitivePoly
     pub fn as_sensitive_poly(&self) -> &SensitivePoly {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitivePoly(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1983,7 +2112,7 @@ impl SensitiveCurve {
     pub fn as_sensitive_poly_mut(&mut self) -> &mut SensitivePoly {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitivePoly_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitivePoly_mut(
                     self as *mut Self,
                 ),
             )
@@ -1993,9 +2122,11 @@ impl SensitiveCurve {
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitiveSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2003,7 +2134,9 @@ impl SensitiveCurve {
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveSet_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitiveSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2011,9 +2144,11 @@ impl SensitiveCurve {
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2021,7 +2156,7 @@ impl SensitiveCurve {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -2031,9 +2166,11 @@ impl SensitiveCurve {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2041,7 +2178,9 @@ impl SensitiveCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2049,10 +2188,10 @@ impl SensitiveCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2064,7 +2203,7 @@ impl SensitiveCurve {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Matches(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Matches(
                 self as *mut Self,
                 theMgr,
                 thePickResult,
@@ -2075,14 +2214,16 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:72 - `Select3D_SensitivePoly::NbSubElements()`
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_NbSubElements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_NbSubElements(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:75 - `Select3D_SensitivePoly::Points3D()`
-    pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
+    pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi_types::HandleTColgpHArray1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Points3D(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Points3D(
                 self as *mut Self,
                 theHArrayOfPnt,
             )
@@ -2092,7 +2233,7 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:86 - `Select3D_SensitivePoly::ArrayBounds()`
     pub fn array_bounds(&self, theLow: &mut i32, theUp: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_ArrayBounds(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_ArrayBounds(
                 self as *const Self,
                 theLow,
                 theUp,
@@ -2104,7 +2245,7 @@ impl SensitiveCurve {
     pub fn get_point3d(&self, thePntIdx: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_GetPoint3d(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_GetPoint3d(
                     self as *const Self,
                     thePntIdx,
                 ),
@@ -2113,10 +2254,12 @@ impl SensitiveCurve {
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:100 - `Select3D_SensitivePoly::BoundingBox()`
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_BoundingBox(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_BoundingBox(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -2125,7 +2268,9 @@ impl SensitiveCurve {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_CenterOfGeometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_CenterOfGeometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2133,15 +2278,18 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:107 - `Select3D_SensitivePoly::Size()`
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Size(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:110 - `Select3D_SensitivePoly::Box()`
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_Box(self as *const Self, theIdx),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Box(
+                    self as *const Self,
+                    theIdx,
+                ),
             ))
         }
     }
@@ -2149,7 +2297,7 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:115 - `Select3D_SensitivePoly::Center()`
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Center(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Center(
                 self as *const Self,
                 theIdx,
                 theAxis,
@@ -2160,79 +2308,97 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitivePoly.hxx`:120 - `Select3D_SensitivePoly::Swap()`
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_SetBuilder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_MarkDirty(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_GetLeafNodeSize(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_GetLeafNodeSize(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCurve_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -2242,7 +2408,9 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -2250,16 +2418,18 @@ impl SensitiveCurve {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveCurve_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -2269,10 +2439,10 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -2280,16 +2450,22 @@ impl SensitiveCurve {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2297,7 +2473,7 @@ impl SensitiveCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2310,77 +2486,81 @@ impl SensitiveCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCurve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveCurve;
+pub use crate::ffi_types::HandleSelect3DSensitiveCurve;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveCurve_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveCurve {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCurve
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCurve {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveCurve_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitivePoly>
     pub fn to_handle_sensitive_poly(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoly> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitivePoly(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitivePoly(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveSet(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveSet(
                     self as *const Self,
                 ),
             ))
@@ -2390,21 +2570,19 @@ impl HandleSelect3DSensitiveCurve {
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCurve_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2418,11 +2596,11 @@ impl HandleSelect3DSensitiveCurve {
 
 /// **Source:** `Select3D_SensitiveCylinder.hxx`:22 - `Select3D_SensitiveCylinder`
 /// A framework to define selection by a sensitive cylinder or cone.
-pub use crate::ffi::Select3D_SensitiveCylinder as SensitiveCylinder;
+pub use crate::ffi_types::Select3D_SensitiveCylinder as SensitiveCylinder;
 
 unsafe impl crate::CppDeletable for SensitiveCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveCylinder_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_destructor(ptr);
     }
 }
 
@@ -2433,7 +2611,7 @@ impl SensitiveCylinder {
     /// @param[in] theTopRad    cylinder top radius
     /// @param[in] theHeight    cylinder height
     pub fn new_handleselectmgrentityowner_real3_trsf_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theBottomRad: f64,
         theTopRad: f64,
         theHeight: f64,
@@ -2441,7 +2619,7 @@ impl SensitiveCylinder {
         theIsHollow: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveCylinder_ctor_handleselectmgrentityowner_real3_trsf_bool(theOwnerId, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_ctor_handleselectmgrentityowner_real3_trsf_bool(theOwnerId, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow)))
         }
     }
 
@@ -2451,7 +2629,7 @@ impl SensitiveCylinder {
     /// @param[in] theTopRad    cylinder top radius
     /// @param[in] theHeight    cylinder height
     pub fn new_handleselectmgrentityowner_real3_trsf(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theBottomRad: f64,
         theTopRad: f64,
         theHeight: f64,
@@ -2468,11 +2646,13 @@ impl SensitiveCylinder {
     }
 
     /// **Source:** `Select3D_SensitiveCylinder.hxx`:24 - `Select3D_SensitiveCylinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCylinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2484,16 +2664,24 @@ impl SensitiveCylinder {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveCylinder.hxx`:44 - `Select3D_SensitiveCylinder::GetConnected()`
     /// Returns the copy of this
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_get_connected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -2501,10 +2689,10 @@ impl SensitiveCylinder {
     /// **Source:** `Select3D_SensitiveCylinder.hxx`:48 - `Select3D_SensitiveCylinder::BoundingBox()`
     /// Returns bounding box of the cylinder.
     /// If location transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -2513,7 +2701,7 @@ impl SensitiveCylinder {
     /// Always returns Standard_False
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_to_build_bvh(self as *const Self)
         })
     }
 
@@ -2521,7 +2709,7 @@ impl SensitiveCylinder {
     /// Returns the amount of points
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_nb_sub_elements(self as *const Self)
         })
     }
 
@@ -2530,7 +2718,9 @@ impl SensitiveCylinder {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2539,9 +2729,11 @@ impl SensitiveCylinder {
     /// Returns cylinder transformation
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCylinder_transformation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_transformation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2549,7 +2741,7 @@ impl SensitiveCylinder {
     /// Returns cylinder top radius
     pub fn top_radius(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_top_radius(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_top_radius(self as *const Self)
         })
     }
 
@@ -2557,7 +2749,7 @@ impl SensitiveCylinder {
     /// Returns cylinder bottom radius
     pub fn bottom_radius(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_bottom_radius(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_bottom_radius(self as *const Self)
         })
     }
 
@@ -2565,7 +2757,7 @@ impl SensitiveCylinder {
     /// Returns cylinder height
     pub fn height(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_height(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_height(self as *const Self)
         })
     }
 
@@ -2573,7 +2765,7 @@ impl SensitiveCylinder {
     /// Returns true if the cylinder is empty inside
     pub fn is_hollow(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_is_hollow(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_is_hollow(self as *const Self)
         })
     }
 
@@ -2581,7 +2773,7 @@ impl SensitiveCylinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2589,9 +2781,11 @@ impl SensitiveCylinder {
     }
 
     /// **Source:** `Select3D_SensitiveCylinder.hxx`:24 - `Select3D_SensitiveCylinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCylinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_get_type_descriptor(),
+            ))
         }
     }
 
@@ -2599,7 +2793,7 @@ impl SensitiveCylinder {
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity(
                     self as *const Self,
                 ),
             )
@@ -2610,7 +2804,7 @@ impl SensitiveCylinder {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -2620,9 +2814,11 @@ impl SensitiveCylinder {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2630,7 +2826,9 @@ impl SensitiveCylinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2638,41 +2836,48 @@ impl SensitiveCylinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCylinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveCylinder_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -2682,21 +2887,23 @@ impl SensitiveCylinder {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -2704,7 +2911,7 @@ impl SensitiveCylinder {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_inherited_InvInitLocation(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_InvInitLocation(
                     self as *const Self,
                 ),
             ))
@@ -2712,10 +2919,10 @@ impl SensitiveCylinder {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveCylinder_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -2725,10 +2932,10 @@ impl SensitiveCylinder {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -2736,9 +2943,9 @@ impl SensitiveCylinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2746,9 +2953,12 @@ impl SensitiveCylinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2756,7 +2966,9 @@ impl SensitiveCylinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveCylinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2769,77 +2981,83 @@ impl SensitiveCylinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveCylinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveCylinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveCylinder;
+pub use crate::ffi_types::HandleSelect3DSensitiveCylinder;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveCylinder_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveCylinder {
     /// Dereference this Handle to access the underlying Select3D_SensitiveCylinder
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveCylinder {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveCylinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveCylinder_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveCylinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveCylinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveCylinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveCylinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCylinder> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveCylinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveCylinder_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveCylinder_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2853,19 +3071,19 @@ impl HandleSelect3DSensitiveCylinder {
 
 /// **Source:** `Select3D_SensitiveEntity.hxx`:29 - `Select3D_SensitiveEntity`
 /// Abstract framework to define 3D sensitive entities.
-pub use crate::ffi::Select3D_SensitiveEntity as SensitiveEntity;
+pub use crate::ffi_types::Select3D_SensitiveEntity as SensitiveEntity;
 
 unsafe impl crate::CppDeletable for SensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveEntity_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_destructor(ptr);
     }
 }
 
 impl SensitiveEntity {
     /// **Source:** `Select3D_SensitiveEntity.hxx`:31 - `Select3D_SensitiveEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveEntity_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2873,9 +3091,9 @@ impl SensitiveEntity {
 
     /// **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
     /// Returns pointer to owner of the entity
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveEntity_owner_id(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_owner_id(
                 self as *const Self,
             )))
         }
@@ -2883,9 +3101,9 @@ impl SensitiveEntity {
 
     /// **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
     /// Sets owner of the entity
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_set(self as *mut Self, theOwnerId)
         })
     }
 
@@ -2894,7 +3112,9 @@ impl SensitiveEntity {
     /// sized entities.
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_sensitivity_factor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_sensitivity_factor(
+                self as *const Self,
+            )
         })
     }
 
@@ -2902,7 +3122,7 @@ impl SensitiveEntity {
     /// Allows to manage sensitivity of a particular sensitive entity
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_set_sensitivity_factor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_set_sensitivity_factor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -2916,10 +3136,12 @@ impl SensitiveEntity {
     /// Thus all entities returned by GetConnected() share the same location propagated from
     /// corresponding selectable object. You must redefine this function for any type of sensitive
     /// entity which can accept another connected sensitive entity.
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_get_connected(self as *mut Self),
             ))
         }
     }
@@ -2934,7 +3156,11 @@ impl SensitiveEntity {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -2945,16 +3171,16 @@ impl SensitiveEntity {
     /// unnoticeable delay.
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveEntity.hxx`:75 - `Select3D_SensitiveEntity::BoundingBox()`
     /// Returns bounding box of a sensitive with transformation applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -2964,7 +3190,9 @@ impl SensitiveEntity {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2973,7 +3201,7 @@ impl SensitiveEntity {
     /// Builds BVH tree for a sensitive if needed
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_bvh(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_bvh(self as *mut Self)
         })
     }
 
@@ -2981,7 +3209,7 @@ impl SensitiveEntity {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_to_build_bvh(self as *const Self)
         })
     }
 
@@ -2989,7 +3217,7 @@ impl SensitiveEntity {
     /// Clears up all resources and memory
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_clear(self as *mut Self)
         })
     }
 
@@ -2997,7 +3225,7 @@ impl SensitiveEntity {
     /// Returns true if the shape corresponding to the entity has init location
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_has_init_location(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_has_init_location(self as *const Self)
         })
     }
 
@@ -3007,18 +3235,22 @@ impl SensitiveEntity {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_inv_init_location(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inv_init_location(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
     /// Return transformation persistence.
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveEntity_transform_persistence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_transform_persistence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3026,10 +3258,10 @@ impl SensitiveEntity {
     /// Set transformation persistence.
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_set_transform_persistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_set_transform_persistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -3040,7 +3272,7 @@ impl SensitiveEntity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3048,18 +3280,22 @@ impl SensitiveEntity {
     }
 
     /// **Source:** `Select3D_SensitiveEntity.hxx`:31 - `Select3D_SensitiveEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveEntity_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3067,22 +3303,30 @@ impl SensitiveEntity {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveEntity_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3090,7 +3334,9 @@ impl SensitiveEntity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveEntity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3103,64 +3349,72 @@ impl SensitiveEntity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveEntity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveEntity_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveEntity;
+pub use crate::ffi_types::HandleSelect3DSensitiveEntity;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveEntity_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveEntity {
     /// Dereference this Handle to access the underlying Select3D_SensitiveEntity
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveEntity {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveEntity_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveEntity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveEntity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveEntity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveEntity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveEntity_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3172,11 +3426,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `AIS_ViewCubeSensitive` (or subclass).
     pub fn downcast_to_view_cube_sensitive(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISViewCubeSensitive>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleAISViewCubeSensitive(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleAISViewCubeSensitive(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3190,11 +3442,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_CommonSensitiveEntity` (or subclass).
     pub fn downcast_to_common_sensitive_entity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSCommonSensitiveEntity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSCommonSensitiveEntity(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSCommonSensitiveEntity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3208,11 +3458,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_DummySensitiveEntity` (or subclass).
     pub fn downcast_to_dummy_sensitive_entity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSDummySensitiveEntity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSDummySensitiveEntity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSDummySensitiveEntity(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSDummySensitiveEntity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3226,11 +3474,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveFace` (or subclass).
     pub fn downcast_to_mesh_vs_sensitive_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveFace(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveFace(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3244,11 +3490,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveMesh` (or subclass).
     pub fn downcast_to_sensitive_mesh(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveMesh>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveMesh>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveMesh(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveMesh(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3262,11 +3506,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitivePolyhedron` (or subclass).
     pub fn downcast_to_sensitive_polyhedron(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitivePolyhedron>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitivePolyhedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitivePolyhedron(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitivePolyhedron(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3280,11 +3522,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveQuad` (or subclass).
     pub fn downcast_to_sensitive_quad(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveQuad>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveQuad>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveQuad(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveQuad(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3298,11 +3538,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveSegment` (or subclass).
     pub fn downcast_to_mesh_vs_sensitive_segment(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveSegment>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveSegment(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleMeshVSSensitiveSegment(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3316,9 +3554,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_InteriorSensitivePointSet` (or subclass).
     pub fn downcast_to_interior_sensitive_point_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DInteriorSensitivePointSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3332,11 +3570,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveBox` (or subclass).
     pub fn downcast_to_sensitive_box(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveBox>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveBox>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveBox(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveBox(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3350,11 +3586,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveCircle` (or subclass).
     pub fn downcast_to_sensitive_circle(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCircle>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCircle>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCircle(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCircle(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3368,11 +3602,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveCurve` (or subclass).
     pub fn downcast_to_sensitive_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCurve(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCurve(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3386,11 +3618,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveCylinder` (or subclass).
     pub fn downcast_to_sensitive_cylinder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCylinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCylinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCylinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveCylinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3404,11 +3634,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveFace` (or subclass).
     pub fn downcast_to_select3_d_sensitive_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveFace(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveFace(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3422,11 +3650,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveGroup` (or subclass).
     pub fn downcast_to_sensitive_group(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveGroup>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveGroup(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveGroup(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3440,11 +3666,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitivePoint` (or subclass).
     pub fn downcast_to_sensitive_point(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoint(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3458,11 +3682,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitivePoly` (or subclass).
     pub fn downcast_to_sensitive_poly(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoly>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoly(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePoly(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3476,9 +3698,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitivePrimitiveArray` (or subclass).
     pub fn downcast_to_sensitive_primitive_array(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePrimitiveArray>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePrimitiveArray(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitivePrimitiveArray(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3492,11 +3714,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveSegment` (or subclass).
     pub fn downcast_to_select3_d_sensitive_segment(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSegment>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSegment(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSegment(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3510,11 +3730,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveSphere` (or subclass).
     pub fn downcast_to_sensitive_sphere(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSphere>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSphere>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSphere(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveSphere(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3528,11 +3746,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveTriangle` (or subclass).
     pub fn downcast_to_sensitive_triangle(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangle>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveTriangle>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangle(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangle(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3546,9 +3762,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveTriangulation` (or subclass).
     pub fn downcast_to_sensitive_triangulation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveTriangulation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangulation(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveTriangulation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3562,11 +3778,9 @@ impl HandleSelect3DSensitiveEntity {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveWire` (or subclass).
     pub fn downcast_to_sensitive_wire(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveWire>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveWire(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveEntity_downcast_to_HandleSelect3DSensitiveWire(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3584,11 +3798,11 @@ impl HandleSelect3DSensitiveEntity {
 /// Sensitive Entity to make a face selectable.
 /// In some cases this class can raise Standard_ConstructionError and
 /// Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
-pub use crate::ffi::Select3D_SensitiveFace as SensitiveFace;
+pub use crate::ffi_types::Select3D_SensitiveFace as SensitiveFace;
 
 unsafe impl crate::CppDeletable for SensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveFace_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveFace_destructor(ptr);
     }
 }
 
@@ -3599,12 +3813,12 @@ impl SensitiveFace {
     /// the sensitivity type theType.
     /// The array of points is the outer polygon of the geometric face.
     pub fn new_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::TColgp_Array1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::TColgp_Array1OfPnt,
         theType: crate::select3_d::TypeOfSensitivity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_array1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())))
         }
     }
 
@@ -3614,19 +3828,19 @@ impl SensitiveFace {
     /// the sensitivity type theType.
     /// The array of points is the outer polygon of the geometric face.
     pub fn new_handleselectmgrentityowner_handletcolgpharray1ofpnt_typeofsensitivity(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::HandleTColgpHArray1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::HandleTColgpHArray1OfPnt,
         theType: crate::select3_d::TypeOfSensitivity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveFace_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_typeofsensitivity(theOwnerId, thePoints, theType.into())))
         }
     }
 
     /// **Source:** `Select3D_SensitiveFace.hxx`:30 - `Select3D_SensitiveFace::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveFace_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveFace_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3635,9 +3849,12 @@ impl SensitiveFace {
     /// **Source:** `Select3D_SensitiveFace.hxx`:50 - `Select3D_SensitiveFace::GetPoints()`
     /// Initializes the given array theHArrayOfPnt by 3d
     /// coordinates of vertices of the face
-    pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
+    pub fn get_points(&mut self, theHArrayOfPnt: &mut crate::ffi_types::HandleTColgpHArray1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_get_points(self as *mut Self, theHArrayOfPnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_get_points(
+                self as *mut Self,
+                theHArrayOfPnt,
+            )
         })
     }
 
@@ -3649,15 +3866,21 @@ impl SensitiveFace {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveFace.hxx`:57 - `Select3D_SensitiveFace::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_get_connected(self as *mut Self),
             ))
         }
     }
@@ -3665,10 +3888,10 @@ impl SensitiveFace {
     /// **Source:** `Select3D_SensitiveFace.hxx`:61 - `Select3D_SensitiveFace::BoundingBox()`
     /// Returns bounding box of the face. If location transformation
     /// is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -3679,7 +3902,9 @@ impl SensitiveFace {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3688,7 +3913,7 @@ impl SensitiveFace {
     /// Builds BVH tree for the face
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_bvh(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_bvh(self as *mut Self)
         })
     }
 
@@ -3696,7 +3921,7 @@ impl SensitiveFace {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_to_build_bvh(self as *const Self)
         })
     }
 
@@ -3704,7 +3929,7 @@ impl SensitiveFace {
     /// Returns the amount of sub-entities (points or planar convex polygons)
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_nb_sub_elements(self as *const Self)
         })
     }
 
@@ -3712,7 +3937,7 @@ impl SensitiveFace {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3720,16 +3945,22 @@ impl SensitiveFace {
     }
 
     /// **Source:** `Select3D_SensitiveFace.hxx`:30 - `Select3D_SensitiveFace::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitiveFace_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3737,7 +3968,7 @@ impl SensitiveFace {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -3747,59 +3978,70 @@ impl SensitiveFace {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveFace_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_SensitiveFace_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveFace_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -3809,14 +4051,16 @@ impl SensitiveFace {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -3824,16 +4068,18 @@ impl SensitiveFace {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveFace_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -3843,10 +4089,10 @@ impl SensitiveFace {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -3854,16 +4100,22 @@ impl SensitiveFace {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3871,7 +4123,7 @@ impl SensitiveFace {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveFace_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3884,52 +4136,60 @@ impl SensitiveFace {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveFace_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveFace_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveFace;
+pub use crate::ffi_types::HandleSelect3DSensitiveFace;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveFace_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveFace {
     /// Dereference this Handle to access the underlying Select3D_SensitiveFace
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveFace {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveFace {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveFace_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveFace
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveFace {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveFace {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveFace_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3938,21 +4198,19 @@ impl HandleSelect3DSensitiveFace {
     /// Upcast Handle<Select3D_SensitiveFace> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveFace_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveFace> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveFace_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3964,11 +4222,9 @@ impl HandleSelect3DSensitiveFace {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveFace` (or subclass).
     pub fn downcast_to_sensitive_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveFace_downcast_to_HandleMeshVSSensitiveFace(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveFace_downcast_to_HandleMeshVSSensitiveFace(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3990,11 +4246,11 @@ impl HandleSelect3DSensitiveFace {
 /// 1) when all the entities inside are selected in the rectangle
 /// 2) only one entity inside is selected by the rectangle
 /// By default the "Match All entities" mode is set.
-pub use crate::ffi::Select3D_SensitiveGroup as SensitiveGroup;
+pub use crate::ffi_types::Select3D_SensitiveGroup as SensitiveGroup;
 
 unsafe impl crate::CppDeletable for SensitiveGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveGroup_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_destructor(ptr);
     }
 }
 
@@ -4005,16 +4261,11 @@ impl SensitiveGroup {
     /// entities will be defined using the function Add to fill
     /// the entity owner OwnerId. If MatchAll is false, nothing can be added.
     pub fn new_handleselectmgrentityowner_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theIsMustMatchAll: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_ctor_handleselectmgrentityowner_bool(
-                    theOwnerId,
-                    theIsMustMatchAll,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_ctor_handleselectmgrentityowner_bool(theOwnerId, theIsMustMatchAll)))
         }
     }
 
@@ -4022,12 +4273,12 @@ impl SensitiveGroup {
     /// Constructs a sensitive group object defined by the list
     /// TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
     pub fn new_handleselectmgrentityowner_entitysequence_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theEntities: &mut crate::ffi::Select3D_EntitySequence,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theEntities: &mut crate::ffi_types::Select3D_EntitySequence,
         theIsMustMatchAll: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveGroup_ctor_handleselectmgrentityowner_entitysequence_bool(theOwnerId, theEntities, theIsMustMatchAll)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_ctor_handleselectmgrentityowner_entitysequence_bool(theOwnerId, theEntities, theIsMustMatchAll)))
         }
     }
 
@@ -4037,7 +4288,7 @@ impl SensitiveGroup {
     /// entities will be defined using the function Add to fill
     /// the entity owner OwnerId. If MatchAll is false, nothing can be added.
     pub fn new_handleselectmgrentityowner(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_bool(theOwnerId, true)
     }
@@ -4046,16 +4297,16 @@ impl SensitiveGroup {
     /// Constructs a sensitive group object defined by the list
     /// TheList and the entity owner OwnerId. If MatchAll is false, nothing is done.
     pub fn new_handleselectmgrentityowner_entitysequence(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theEntities: &mut crate::ffi::Select3D_EntitySequence,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theEntities: &mut crate::ffi_types::Select3D_EntitySequence,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_entitysequence_bool(theOwnerId, theEntities, true)
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:34 - `Select3D_SensitiveGroup::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveGroup_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4063,9 +4314,9 @@ impl SensitiveGroup {
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:50 - `Select3D_SensitiveGroup::Entities()`
     /// Gets group content
-    pub fn entities(&self) -> &crate::ffi::Select3D_IndexedMapOfEntity {
+    pub fn entities(&self) -> &crate::ffi_types::Select3D_IndexedMapOfEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveGroup_entities(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_entities(
                 self as *const Self,
             )))
         }
@@ -4073,9 +4324,9 @@ impl SensitiveGroup {
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:53 - `Select3D_SensitiveGroup::SubEntity()`
     /// Access entity by index [1, NbSubElements()].
-    pub fn sub_entity(&self, theIndex: i32) -> &crate::ffi::HandleSelect3DSensitiveEntity {
+    pub fn sub_entity(&self, theIndex: i32) -> &crate::ffi_types::HandleSelect3DSensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveGroup_sub_entity(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_sub_entity(
                 self as *const Self,
                 theIndex,
             )))
@@ -4086,10 +4337,12 @@ impl SensitiveGroup {
     /// Return last detected entity.
     pub fn last_detected_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_last_detected_entity(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_last_detected_entity(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4098,16 +4351,24 @@ impl SensitiveGroup {
     /// Return index of last detected entity.
     pub fn last_detected_entity_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_last_detected_entity_index(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_last_detected_entity_index(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:73 - `Select3D_SensitiveGroup::Add()`
     /// Adds the list of sensitive entities LL to the empty
     /// sensitive group object created at construction time.
-    pub fn add_entitysequence(&mut self, theEntities: &mut crate::ffi::Select3D_EntitySequence) {
+    pub fn add_entitysequence(
+        &mut self,
+        theEntities: &mut crate::ffi_types::Select3D_EntitySequence,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_add_entitysequence(self as *mut Self, theEntities)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_add_entitysequence(
+                self as *mut Self,
+                theEntities,
+            )
         })
     }
 
@@ -4116,10 +4377,10 @@ impl SensitiveGroup {
     /// sensitive group object created at construction time.
     pub fn add_handleselect3dsensitiveentity(
         &mut self,
-        theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity,
+        theSensitive: &crate::ffi_types::HandleSelect3DSensitiveEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_add_handleselect3dsensitiveentity(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_add_handleselect3dsensitiveentity(
                 self as *mut Self,
                 theSensitive,
             )
@@ -4127,9 +4388,9 @@ impl SensitiveGroup {
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:79 - `Select3D_SensitiveGroup::Remove()`
-    pub fn remove(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
+    pub fn remove(&mut self, theSensitive: &crate::ffi_types::HandleSelect3DSensitiveEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_remove(self as *mut Self, theSensitive)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_remove(self as *mut Self, theSensitive)
         })
     }
 
@@ -4138,16 +4399,19 @@ impl SensitiveGroup {
     /// time of construction, or added using the function Add.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:87 - `Select3D_SensitiveGroup::IsIn()`
     /// Returns true if the sensitive entity aSensitive is in
     /// the list used at the time of construction, or added using the function Add.
-    pub fn is_in(&self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) -> bool {
+    pub fn is_in(&self, theSensitive: &crate::ffi_types::HandleSelect3DSensitiveEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_is_in(self as *const Self, theSensitive)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_is_in(
+                self as *const Self,
+                theSensitive,
+            )
         })
     }
 
@@ -4157,7 +4421,10 @@ impl SensitiveGroup {
     /// the function Add must be matched.
     pub fn set_match_type(&mut self, theIsMustMatchAll: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_set_match_type(self as *mut Self, theIsMustMatchAll)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_set_match_type(
+                self as *mut Self,
+                theIsMustMatchAll,
+            )
         })
     }
 
@@ -4166,7 +4433,7 @@ impl SensitiveGroup {
     /// at the time of construction, or added using the function Add must be matched.
     pub fn must_match_all(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_must_match_all(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_must_match_all(self as *const Self)
         })
     }
 
@@ -4176,7 +4443,9 @@ impl SensitiveGroup {
     /// class property.
     pub fn to_check_overlap_all(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_to_check_overlap_all(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_to_check_overlap_all(
+                self as *const Self,
+            )
         })
     }
 
@@ -4186,7 +4455,7 @@ impl SensitiveGroup {
     /// class property.
     pub fn set_check_overlap_all(&mut self, theToCheckAll: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_set_check_overlap_all(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_set_check_overlap_all(
                 self as *mut Self,
                 theToCheckAll,
             )
@@ -4201,7 +4470,11 @@ impl SensitiveGroup {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -4209,34 +4482,36 @@ impl SensitiveGroup {
     /// Returns the amount of sub-entities
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:119 - `Select3D_SensitiveGroup::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_get_connected(self as *mut Self),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:122 - `Select3D_SensitiveGroup::Set()`
     /// Sets the owner for all entities in group
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_set(self as *mut Self, theOwnerId)
         })
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:126 - `Select3D_SensitiveGroup::BoundingBox()`
     /// Returns bounding box of the group. If location transformation
     /// is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -4247,17 +4522,19 @@ impl SensitiveGroup {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:133 - `Select3D_SensitiveGroup::Box()`
     /// Returns bounding box of sensitive entity with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_box_(self as *const Self, theIdx),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_box_(self as *const Self, theIdx),
             ))
         }
     }
@@ -4267,7 +4544,11 @@ impl SensitiveGroup {
     /// the vector along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_center(self as *const Self, theIdx, theAxis)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_center(
+                self as *const Self,
+                theIdx,
+                theAxis,
+            )
         })
     }
 
@@ -4275,7 +4556,11 @@ impl SensitiveGroup {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
@@ -4283,7 +4568,7 @@ impl SensitiveGroup {
     /// Returns the length of vector of sensitive entities
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_size(self as *const Self)
         })
     }
 
@@ -4291,7 +4576,7 @@ impl SensitiveGroup {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4299,18 +4584,22 @@ impl SensitiveGroup {
     }
 
     /// **Source:** `Select3D_SensitiveGroup.hxx`:34 - `Select3D_SensitiveGroup::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveGroup_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Select3D_SensitiveSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4318,7 +4607,9 @@ impl SensitiveGroup {
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveSet_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Select3D_SensitiveSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4326,9 +4617,11 @@ impl SensitiveGroup {
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4336,7 +4629,7 @@ impl SensitiveGroup {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -4346,9 +4639,11 @@ impl SensitiveGroup {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4356,7 +4651,9 @@ impl SensitiveGroup {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4364,10 +4661,10 @@ impl SensitiveGroup {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveGroup> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4375,58 +4672,69 @@ impl SensitiveGroup {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_SetBuilder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_MarkDirty(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_GetLeafNodeSize(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_GetLeafNodeSize(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveGroup_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -4436,7 +4744,9 @@ impl SensitiveGroup {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -4444,16 +4754,18 @@ impl SensitiveGroup {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveGroup_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -4463,10 +4775,10 @@ impl SensitiveGroup {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -4474,16 +4786,22 @@ impl SensitiveGroup {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4491,7 +4809,7 @@ impl SensitiveGroup {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveGroup_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4504,64 +4822,72 @@ impl SensitiveGroup {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveGroup_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveGroup_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveGroup;
+pub use crate::ffi_types::HandleSelect3DSensitiveGroup;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveGroup {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveGroup_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveGroup {
     /// Dereference this Handle to access the underlying Select3D_SensitiveGroup
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveGroup {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveGroup {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveGroup_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveGroup
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveGroup {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveGroup {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveGroup_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveSet(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveSet(
                     self as *const Self,
                 ),
             ))
@@ -4571,21 +4897,19 @@ impl HandleSelect3DSensitiveGroup {
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveGroup> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveGroup_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveGroup_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4599,11 +4923,11 @@ impl HandleSelect3DSensitiveGroup {
 
 /// **Source:** `Select3D_SensitivePoint.hxx`:24 - `Select3D_SensitivePoint`
 /// A framework to define sensitive 3D points.
-pub use crate::ffi::Select3D_SensitivePoint as SensitivePoint;
+pub use crate::ffi_types::Select3D_SensitivePoint as SensitivePoint;
 
 unsafe impl crate::CppDeletable for SensitivePoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitivePoint_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitivePoint_destructor(ptr);
     }
 }
 
@@ -4612,22 +4936,18 @@ impl SensitivePoint {
     /// Constructs a sensitive point object defined by the
     /// owner OwnerId and the point Point.
     pub fn new_handleselectmgrentityowner_pnt(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         thePoint: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_ctor_handleselectmgrentityowner_pnt(
-                    theOwnerId, thePoint,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoint_ctor_handleselectmgrentityowner_pnt(theOwnerId, thePoint)))
         }
     }
 
     /// **Source:** `Select3D_SensitivePoint.hxx`:26 - `Select3D_SensitivePoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoint_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoint_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4637,15 +4957,17 @@ impl SensitivePoint {
     /// Returns the amount of sub-entities in sensitive
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitivePoint.hxx`:36 - `Select3D_SensitivePoint::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_get_connected(self as *mut Self),
             ))
         }
     }
@@ -4658,7 +4980,11 @@ impl SensitivePoint {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -4666,7 +4992,9 @@ impl SensitivePoint {
     /// Returns the point used at the time of construction.
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoint_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoint_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4676,7 +5004,9 @@ impl SensitivePoint {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4684,10 +5014,10 @@ impl SensitivePoint {
     /// **Source:** `Select3D_SensitivePoint.hxx`:52 - `Select3D_SensitivePoint::BoundingBox()`
     /// Returns bounding box of the point. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -4696,7 +5026,7 @@ impl SensitivePoint {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_to_build_bvh(self as *const Self)
         })
     }
 
@@ -4704,7 +5034,7 @@ impl SensitivePoint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4712,18 +5042,22 @@ impl SensitivePoint {
     }
 
     /// **Source:** `Select3D_SensitivePoint.hxx`:26 - `Select3D_SensitivePoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoint_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4731,7 +5065,7 @@ impl SensitivePoint {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -4741,9 +5075,11 @@ impl SensitivePoint {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitivePoint_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4751,7 +5087,9 @@ impl SensitivePoint {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4759,41 +5097,48 @@ impl SensitivePoint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoint_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -4803,21 +5148,23 @@ impl SensitivePoint {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -4825,16 +5172,18 @@ impl SensitivePoint {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePoint_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -4844,10 +5193,10 @@ impl SensitivePoint {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -4855,16 +5204,22 @@ impl SensitivePoint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4872,7 +5227,7 @@ impl SensitivePoint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitivePoint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4885,75 +5240,81 @@ impl SensitivePoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoint_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitivePoint;
+pub use crate::ffi_types::HandleSelect3DSensitivePoint;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitivePoint_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitivePoint {
     /// Dereference this Handle to access the underlying Select3D_SensitivePoint
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitivePoint {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePoint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitivePoint_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePoint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePoint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitivePoint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitivePoint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePoint> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePoint_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePoint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePoint_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4970,11 +5331,11 @@ impl HandleSelect3DSensitivePoint {
 /// In some cases this class can raise Standard_ConstructionError and
 /// Standard_OutOfRange exceptions from its member Select3D_PointData
 /// myPolyg.
-pub use crate::ffi::Select3D_SensitivePoly as SensitivePoly;
+pub use crate::ffi_types::Select3D_SensitivePoly as SensitivePoly;
 
 unsafe impl crate::CppDeletable for SensitivePoly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitivePoly_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitivePoly_destructor(ptr);
     }
 }
 
@@ -4985,18 +5346,12 @@ impl SensitivePoly {
     /// the sensitivity type Sensitivity.
     /// The array of points is the outer polygon of the geometric face.
     pub fn new_handleselectmgrentityowner_array1ofpnt_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::TColgp_Array1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::TColgp_Array1OfPnt,
         theIsBVHEnabled: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_array1ofpnt_bool(
-                    theOwnerId,
-                    thePoints,
-                    theIsBVHEnabled,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_array1ofpnt_bool(theOwnerId, thePoints, theIsBVHEnabled)))
         }
     }
 
@@ -5006,12 +5361,12 @@ impl SensitivePoly {
     /// the sensitivity type Sensitivity.
     /// The array of points is the outer polygon of the geometric face.
     pub fn new_handleselectmgrentityowner_handletcolgpharray1ofpnt_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        thePoints: &crate::ffi::HandleTColgpHArray1OfPnt,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        thePoints: &crate::ffi_types::HandleTColgpHArray1OfPnt,
         theIsBVHEnabled: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_bool(theOwnerId, thePoints, theIsBVHEnabled)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_handletcolgpharray1ofpnt_bool(theOwnerId, thePoints, theIsBVHEnabled)))
         }
     }
 
@@ -5021,7 +5376,7 @@ impl SensitivePoly {
     /// and theU2, the boolean theIsFilled and the number of points theNbPnts.
     /// theU1 and theU2 define the first and last points of the arc on theCircle.
     pub fn new_handleselectmgrentityowner_circ_real2_bool_int(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCircle: &crate::gp::Circ,
         theU1: f64,
         theU2: f64,
@@ -5029,7 +5384,7 @@ impl SensitivePoly {
         theNbPnts: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_circ_real2_bool_int(theOwnerId, theCircle, theU1, theU2, theIsFilled, theNbPnts)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_circ_real2_bool_int(theOwnerId, theCircle, theU1, theU2, theIsFilled, theNbPnts)))
         }
     }
 
@@ -5038,18 +5393,12 @@ impl SensitivePoly {
     /// owner theOwnerId, the theIsBVHEnabled flag, and the
     /// maximum number of points on the curve: theNbPnts.
     pub fn new_handleselectmgrentityowner_bool_int(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theIsBVHEnabled: bool,
         theNbPnts: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_bool_int(
-                    theOwnerId,
-                    theIsBVHEnabled,
-                    theNbPnts,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoly_ctor_handleselectmgrentityowner_bool_int(theOwnerId, theIsBVHEnabled, theNbPnts)))
         }
     }
 
@@ -5059,7 +5408,7 @@ impl SensitivePoly {
     /// and theU2, the boolean theIsFilled and the number of points theNbPnts.
     /// theU1 and theU2 define the first and last points of the arc on theCircle.
     pub fn new_handleselectmgrentityowner_circ_real2_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCircle: &crate::gp::Circ,
         theU1: f64,
         theU2: f64,
@@ -5081,7 +5430,7 @@ impl SensitivePoly {
     /// and theU2, the boolean theIsFilled and the number of points theNbPnts.
     /// theU1 and theU2 define the first and last points of the arc on theCircle.
     pub fn new_handleselectmgrentityowner_circ_real2(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCircle: &crate::gp::Circ,
         theU1: f64,
         theU2: f64,
@@ -5096,16 +5445,16 @@ impl SensitivePoly {
     /// owner theOwnerId, the theIsBVHEnabled flag, and the
     /// maximum number of points on the curve: theNbPnts.
     pub fn new_handleselectmgrentityowner_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theIsBVHEnabled: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_bool_int(theOwnerId, theIsBVHEnabled, 6)
     }
 
     /// **Source:** `Select3D_SensitivePoly.hxx`:30 - `Select3D_SensitivePoly::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoly_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePoly_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5119,7 +5468,11 @@ impl SensitivePoly {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -5127,15 +5480,18 @@ impl SensitivePoly {
     /// Returns the amount of segments in poly
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitivePoly.hxx`:75 - `Select3D_SensitivePoly::Points3D()`
     /// Returns the 3D points of the array used at construction time.
-    pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi::HandleTColgpHArray1OfPnt) {
+    pub fn points3_d(&mut self, theHArrayOfPnt: &mut crate::ffi_types::HandleTColgpHArray1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_points3_d(self as *mut Self, theHArrayOfPnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_points3_d(
+                self as *mut Self,
+                theHArrayOfPnt,
+            )
         })
     }
 
@@ -5143,7 +5499,11 @@ impl SensitivePoly {
     /// Return array bounds.
     pub fn array_bounds(&self, theLow: &mut i32, theUp: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_array_bounds(self as *const Self, theLow, theUp)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_array_bounds(
+                self as *const Self,
+                theLow,
+                theUp,
+            )
         })
     }
 
@@ -5152,7 +5512,10 @@ impl SensitivePoly {
     pub fn get_point3d(&self, thePntIdx: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_get_point3d(self as *const Self, thePntIdx),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_get_point3d(
+                    self as *const Self,
+                    thePntIdx,
+                ),
             ))
         }
     }
@@ -5160,10 +5523,10 @@ impl SensitivePoly {
     /// **Source:** `Select3D_SensitivePoly.hxx`:100 - `Select3D_SensitivePoly::BoundingBox()`
     /// Returns bounding box of a polygon. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -5174,7 +5537,9 @@ impl SensitivePoly {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5182,17 +5547,18 @@ impl SensitivePoly {
     /// **Source:** `Select3D_SensitivePoly.hxx`:107 - `Select3D_SensitivePoly::Size()`
     /// Returns the amount of segments of the poly
     pub fn size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Select3D_SensitivePoly_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Select3D_SensitivePoly.hxx`:110 - `Select3D_SensitivePoly::Box()`
     /// Returns bounding box of segment with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitivePoly_box_(
-                self as *const Self,
-                theIdx,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_box_(self as *const Self, theIdx),
+            ))
         }
     }
 
@@ -5201,7 +5567,11 @@ impl SensitivePoly {
     /// the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_center(self as *const Self, theIdx, theAxis)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_center(
+                self as *const Self,
+                theIdx,
+                theAxis,
+            )
         })
     }
 
@@ -5209,7 +5579,11 @@ impl SensitivePoly {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
@@ -5217,7 +5591,7 @@ impl SensitivePoly {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5225,16 +5599,22 @@ impl SensitivePoly {
     }
 
     /// **Source:** `Select3D_SensitivePoly.hxx`:30 - `Select3D_SensitivePoly::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitivePoly_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Select3D_SensitiveSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5242,7 +5622,9 @@ impl SensitivePoly {
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveSet_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Select3D_SensitiveSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5250,9 +5632,11 @@ impl SensitivePoly {
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5260,7 +5644,7 @@ impl SensitivePoly {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -5270,28 +5654,32 @@ impl SensitivePoly {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitivePoly_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_SensitivePoly_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoly> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5299,72 +5687,86 @@ impl SensitivePoly {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_SetBuilder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_MarkDirty(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_GetLeafNodeSize(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_GetLeafNodeSize(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePoly_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -5372,10 +5774,14 @@ impl SensitivePoly {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:57 - `Select3D_SensitiveEntity::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_inherited_GetConnected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_GetConnected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -5383,7 +5789,9 @@ impl SensitivePoly {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -5391,16 +5799,18 @@ impl SensitivePoly {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePoly_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -5410,10 +5820,10 @@ impl SensitivePoly {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -5421,16 +5831,22 @@ impl SensitivePoly {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5438,7 +5854,7 @@ impl SensitivePoly {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitivePoly_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5451,52 +5867,60 @@ impl SensitivePoly {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePoly_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePoly_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitivePoly;
+pub use crate::ffi_types::HandleSelect3DSensitivePoly;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePoly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitivePoly_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitivePoly {
     /// Dereference this Handle to access the underlying Select3D_SensitivePoly
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitivePoly {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePoly {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitivePoly_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePoly
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePoly {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitivePoly {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitivePoly_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5505,10 +5929,10 @@ impl HandleSelect3DSensitivePoly {
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveSet(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveSet(
                     self as *const Self,
                 ),
             ))
@@ -5518,21 +5942,19 @@ impl HandleSelect3DSensitivePoly {
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePoly> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePoly_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5544,11 +5966,9 @@ impl HandleSelect3DSensitivePoly {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveCurve` (or subclass).
     pub fn downcast_to_sensitive_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitivePoly_downcast_to_HandleSelect3DSensitiveCurve(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePoly_downcast_to_HandleSelect3DSensitiveCurve(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -5566,11 +5986,11 @@ impl HandleSelect3DSensitivePoly {
 /// Sensitive for triangulation or point set defined by Primitive Array.
 /// The primitives can be optionally combined into patches within BVH tree
 /// to reduce its building time in expense of extra traverse time.
-pub use crate::ffi::Select3D_SensitivePrimitiveArray as SensitivePrimitiveArray;
+pub use crate::ffi_types::Select3D_SensitivePrimitiveArray as SensitivePrimitiveArray;
 
 unsafe impl crate::CppDeletable for SensitivePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitivePrimitiveArray_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_destructor(ptr);
     }
 }
 
@@ -5578,14 +5998,10 @@ impl SensitivePrimitiveArray {
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:33 - `Select3D_SensitivePrimitiveArray::Select3D_SensitivePrimitiveArray()`
     /// Constructs an empty sensitive object.
     pub fn new_handleselectmgrentityowner(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_ctor_handleselectmgrentityowner(
-                    theOwnerId,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_ctor_handleselectmgrentityowner(theOwnerId)))
         }
     }
 
@@ -5593,7 +6009,9 @@ impl SensitivePrimitiveArray {
     /// Return patch size limit (1 by default).
     pub fn patch_size_max(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_patch_size_max(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_patch_size_max(
+                self as *const Self,
+            )
         })
     }
 
@@ -5602,7 +6020,7 @@ impl SensitivePrimitiveArray {
     /// Should be set before initialization.
     pub fn set_patch_size_max(&mut self, thePatchSizeMax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_patch_size_max(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_patch_size_max(
                 self as *mut Self,
                 thePatchSizeMax,
             )
@@ -5614,7 +6032,9 @@ impl SensitivePrimitiveArray {
     /// Has no effect on indexed triangulation.
     pub fn patch_distance(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_patch_distance(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_patch_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -5623,7 +6043,7 @@ impl SensitivePrimitiveArray {
     /// Should be set before initialization.
     pub fn set_patch_distance(&mut self, thePatchDistMax: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_patch_distance(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_patch_distance(
                 self as *mut Self,
                 thePatchDistMax,
             )
@@ -5646,8 +6066,8 @@ impl SensitivePrimitiveArray {
     /// @param theNbGroups     number of groups to split the vertex array into several parts
     pub fn init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(
         &mut self,
-        theVerts: &crate::ffi::HandleGraphic3dBuffer,
-        theIndices: &crate::ffi::HandleGraphic3dIndexBuffer,
+        theVerts: &crate::ffi_types::HandleGraphic3dBuffer,
+        theIndices: &crate::ffi_types::HandleGraphic3dIndexBuffer,
         theInitLoc: &crate::top_loc::Location,
         theIndexLower: i32,
         theIndexUpper: i32,
@@ -5655,7 +6075,7 @@ impl SensitivePrimitiveArray {
         theNbGroups: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
         })
     }
 
@@ -5669,14 +6089,14 @@ impl SensitivePrimitiveArray {
     /// @param theNbGroups     number of groups to split the vertex array into several parts
     pub fn init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(
         &mut self,
-        theVerts: &crate::ffi::HandleGraphic3dBuffer,
-        theIndices: &crate::ffi::HandleGraphic3dIndexBuffer,
+        theVerts: &crate::ffi_types::HandleGraphic3dBuffer,
+        theIndices: &crate::ffi_types::HandleGraphic3dIndexBuffer,
         theInitLoc: &crate::top_loc::Location,
         theToEvalMinMax: bool,
         theNbGroups: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_init_triangulation_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
         })
     }
 
@@ -5695,8 +6115,8 @@ impl SensitivePrimitiveArray {
     /// @param theNbGroups     number of groups to split the vertex array into several parts
     pub fn init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(
         &mut self,
-        theVerts: &crate::ffi::HandleGraphic3dBuffer,
-        theIndices: &crate::ffi::HandleGraphic3dIndexBuffer,
+        theVerts: &crate::ffi_types::HandleGraphic3dBuffer,
+        theIndices: &crate::ffi_types::HandleGraphic3dIndexBuffer,
         theInitLoc: &crate::top_loc::Location,
         theIndexLower: i32,
         theIndexUpper: i32,
@@ -5704,7 +6124,7 @@ impl SensitivePrimitiveArray {
         theNbGroups: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_int2_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theIndexLower, theIndexUpper, theToEvalMinMax, theNbGroups)
         })
     }
 
@@ -5718,14 +6138,14 @@ impl SensitivePrimitiveArray {
     /// @param theNbGroups     number of groups to split the vertex array into several parts
     pub fn init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(
         &mut self,
-        theVerts: &crate::ffi::HandleGraphic3dBuffer,
-        theIndices: &crate::ffi::HandleGraphic3dIndexBuffer,
+        theVerts: &crate::ffi_types::HandleGraphic3dBuffer,
+        theIndices: &crate::ffi_types::HandleGraphic3dIndexBuffer,
         theInitLoc: &crate::top_loc::Location,
         theToEvalMinMax: bool,
         theNbGroups: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_handlegraphic3dindexbuffer_location_bool_int(self as *mut Self, theVerts, theIndices, theInitLoc, theToEvalMinMax, theNbGroups)
         })
     }
 
@@ -5738,13 +6158,13 @@ impl SensitivePrimitiveArray {
     /// @param theNbGroups     number of groups to split the vertex array into several parts
     pub fn init_points_handlegraphic3dbuffer_location_bool_int(
         &mut self,
-        theVerts: &crate::ffi::HandleGraphic3dBuffer,
+        theVerts: &crate::ffi_types::HandleGraphic3dBuffer,
         theInitLoc: &crate::top_loc::Location,
         theToEvalMinMax: bool,
         theNbGroups: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_location_bool_int(self as *mut Self, theVerts, theInitLoc, theToEvalMinMax, theNbGroups)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_init_points_handlegraphic3dbuffer_location_bool_int(self as *mut Self, theVerts, theInitLoc, theToEvalMinMax, theNbGroups)
         })
     }
 
@@ -5760,7 +6180,7 @@ impl SensitivePrimitiveArray {
         theMaxZ: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_min_max(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_min_max(
                 self as *mut Self,
                 theMinX,
                 theMinY,
@@ -5776,7 +6196,9 @@ impl SensitivePrimitiveArray {
     /// Return flag to keep index of last topmost detected element, TRUE by default.
     pub fn to_detect_elements(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_detect_elements(
+                self as *const Self,
+            )
         })
     }
 
@@ -5784,7 +6206,7 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected element (axis picking).
     pub fn set_detect_elements(&mut self, theToDetect: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_elements(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_detect_elements(
                 self as *mut Self,
                 theToDetect,
             )
@@ -5796,7 +6218,9 @@ impl SensitivePrimitiveArray {
     /// selection).
     pub fn to_detect_element_map(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_element_map(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_detect_element_map(
+                self as *const Self,
+            )
         })
     }
 
@@ -5804,7 +6228,7 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index map of last detected elements (rectangle selection).
     pub fn set_detect_element_map(&mut self, theToDetect: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_element_map(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_detect_element_map(
                 self as *mut Self,
                 theToDetect,
             )
@@ -5815,7 +6239,9 @@ impl SensitivePrimitiveArray {
     /// Return flag to keep index of last topmost detected node, FALSE by default.
     pub fn to_detect_nodes(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_nodes(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_detect_nodes(
+                self as *const Self,
+            )
         })
     }
 
@@ -5823,7 +6249,7 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected node (for axis picking).
     pub fn set_detect_nodes(&mut self, theToDetect: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_nodes(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_detect_nodes(
                 self as *mut Self,
                 theToDetect,
             )
@@ -5834,7 +6260,9 @@ impl SensitivePrimitiveArray {
     /// Return flag to keep index map of last detected nodes, FALSE by default (rectangle selection).
     pub fn to_detect_node_map(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_node_map(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_detect_node_map(
+                self as *const Self,
+            )
         })
     }
 
@@ -5842,7 +6270,7 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index map of last detected nodes (rectangle selection).
     pub fn set_detect_node_map(&mut self, theToDetect: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_node_map(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_detect_node_map(
                 self as *mut Self,
                 theToDetect,
             )
@@ -5853,7 +6281,9 @@ impl SensitivePrimitiveArray {
     /// Return flag to keep index of last topmost detected edge, FALSE by default.
     pub fn to_detect_edges(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_to_detect_edges(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_detect_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -5861,7 +6291,7 @@ impl SensitivePrimitiveArray {
     /// Setup keeping of the index of last topmost detected edge (axis picking).
     pub fn set_detect_edges(&mut self, theToDetect: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set_detect_edges(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set_detect_edges(
                 self as *mut Self,
                 theToDetect,
             )
@@ -5872,16 +6302,18 @@ impl SensitivePrimitiveArray {
     /// Return last topmost detected element or -1 if undefined (axis picking).
     pub fn last_detected_element(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_element(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_element(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:211 - `Select3D_SensitivePrimitiveArray::LastDetectedElementMap()`
     /// Return the index map of last detected elements (rectangle selection).
-    pub fn last_detected_element_map(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
+    pub fn last_detected_element_map(&self) -> &crate::ffi_types::HandleTColStdHPackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_element_map(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_element_map(
                     self as *const Self,
                 ),
             ))
@@ -5892,16 +6324,18 @@ impl SensitivePrimitiveArray {
     /// Return last topmost detected node or -1 if undefined (axis picking).
     pub fn last_detected_node(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_node(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_node(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:220 - `Select3D_SensitivePrimitiveArray::LastDetectedNodeMap()`
     /// Return the index map of last detected nodes (rectangle selection).
-    pub fn last_detected_node_map(&self) -> &crate::ffi::HandleTColStdHPackedMapOfInteger {
+    pub fn last_detected_node_map(&self) -> &crate::ffi_types::HandleTColStdHPackedMapOfInteger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_node_map(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_node_map(
                     self as *const Self,
                 ),
             ))
@@ -5912,7 +6346,7 @@ impl SensitivePrimitiveArray {
     /// Return the first node of last topmost detected edge or -1 if undefined (axis picking).
     pub fn last_detected_edge_node1(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_edge_node1(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_edge_node1(
                 self as *const Self,
             )
         })
@@ -5922,7 +6356,7 @@ impl SensitivePrimitiveArray {
     /// Return the second node of last topmost detected edge or -1 if undefined (axis picking).
     pub fn last_detected_edge_node2(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_last_detected_edge_node2(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_last_detected_edge_node2(
                 self as *const Self,
             )
         })
@@ -5936,7 +6370,7 @@ impl SensitivePrimitiveArray {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_matches(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_matches(
                 self as *mut Self,
                 theMgr,
                 thePickResult,
@@ -5945,10 +6379,14 @@ impl SensitivePrimitiveArray {
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:241 - `Select3D_SensitivePrimitiveArray::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_get_connected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -5957,7 +6395,7 @@ impl SensitivePrimitiveArray {
     /// Returns the length of array of triangles or edges
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_size(self as *const Self)
         })
     }
 
@@ -5965,16 +6403,21 @@ impl SensitivePrimitiveArray {
     /// Returns the amount of nodes in triangulation
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_nb_sub_elements(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:253 - `Select3D_SensitivePrimitiveArray::Box()`
     /// Returns bounding box of triangle/edge with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_box_(self as *const Self, theIdx),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_box_(
+                    self as *const Self,
+                    theIdx,
+                ),
             ))
         }
     }
@@ -5984,7 +6427,7 @@ impl SensitivePrimitiveArray {
     /// in array along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_center(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_center(
                 self as *const Self,
                 theIdx,
                 theAxis,
@@ -5996,17 +6439,23 @@ impl SensitivePrimitiveArray {
     /// Swaps items with indexes theIdx1 and theIdx2 in array
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:268 - `Select3D_SensitivePrimitiveArray::BoundingBox()`
     /// Returns bounding box of the triangulation. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_bounding_box(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -6017,7 +6466,7 @@ impl SensitivePrimitiveArray {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_center_of_geometry(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_center_of_geometry(
                     self as *const Self,
                 ),
             ))
@@ -6028,7 +6477,9 @@ impl SensitivePrimitiveArray {
     /// Returns true if the shape corresponding to the entity has init location
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_has_init_location(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_has_init_location(
+                self as *const Self,
+            )
         })
     }
 
@@ -6038,16 +6489,21 @@ impl SensitivePrimitiveArray {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_inv_init_location(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inv_init_location(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:285 - `Select3D_SensitivePrimitiveArray::Set()`
     /// Sets the owner for all entities in group
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
@@ -6055,16 +6511,18 @@ impl SensitivePrimitiveArray {
     /// Builds BVH tree for sensitive set.
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_bvh(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_bvh(self as *mut Self)
         })
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:369 - `Select3D_SensitivePrimitiveArray::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePrimitiveArray_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6072,7 +6530,7 @@ impl SensitivePrimitiveArray {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6080,10 +6538,10 @@ impl SensitivePrimitiveArray {
     }
 
     /// **Source:** `Select3D_SensitivePrimitiveArray.hxx`:369 - `Select3D_SensitivePrimitiveArray::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_get_type_descriptor(),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_get_type_descriptor(),
             ))
         }
     }
@@ -6092,7 +6550,7 @@ impl SensitivePrimitiveArray {
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet(
                     self as *const Self,
                 ),
             )
@@ -6102,33 +6560,21 @@ impl SensitivePrimitiveArray {
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveSet_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity(self as *const Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Select3D_SensitiveEntity_mut(self as *mut Self))
         }
     }
 
@@ -6136,7 +6582,7 @@ impl SensitivePrimitiveArray {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -6147,7 +6593,7 @@ impl SensitivePrimitiveArray {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_as_Standard_Transient_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -6157,10 +6603,10 @@ impl SensitivePrimitiveArray {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePrimitiveArray> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -6168,14 +6614,16 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetBuilder(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_SetBuilder(
                 self as *mut Self,
                 theBuilder,
             )
@@ -6185,39 +6633,45 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_MarkDirty(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_Clear(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_GetLeafNodeSize(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_GetLeafNodeSize(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitivePrimitiveArray_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_SensitivityFactor(
                 self as *const Self,
             )
         })
@@ -6226,7 +6680,7 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -6234,33 +6688,26 @@ impl SensitivePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Select3D_SensitivePrimitiveArray_inherited_TransformPersistence(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_TransformPersistence(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_SetTransformPersistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_SetTransformPersistence(self as *mut Self, theTrsfPers)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -6268,9 +6715,9 @@ impl SensitivePrimitiveArray {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_IsKind(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -6281,7 +6728,9 @@ impl SensitivePrimitiveArray {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitivePrimitiveArray_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6294,14 +6743,16 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -6310,7 +6761,7 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -6319,72 +6770,68 @@ impl SensitivePrimitiveArray {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitivePrimitiveArray_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitivePrimitiveArray_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitivePrimitiveArray;
+pub use crate::ffi_types::HandleSelect3DSensitivePrimitiveArray;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitivePrimitiveArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitivePrimitiveArray_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitivePrimitiveArray {
     /// Dereference this Handle to access the underlying Select3D_SensitivePrimitiveArray
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitivePrimitiveArray {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitivePrimitiveArray {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitivePrimitiveArray_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitivePrimitiveArray
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitivePrimitiveArray {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitivePrimitiveArray {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitivePrimitiveArray_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveSet(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitivePrimitiveArray> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitivePrimitiveArray_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -6393,11 +6840,9 @@ impl HandleSelect3DSensitivePrimitiveArray {
     /// Returns `None` if the handle does not point to a `AIS_ViewCubeSensitive` (or subclass).
     pub fn downcast_to_view_cube_sensitive(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISViewCubeSensitive>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitivePrimitiveArray_downcast_to_HandleAISViewCubeSensitive(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitivePrimitiveArray_downcast_to_HandleAISViewCubeSensitive(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6414,11 +6859,11 @@ impl HandleSelect3DSensitivePrimitiveArray {
 /// **Source:** `Select3D_SensitiveSegment.hxx`:25 - `Select3D_SensitiveSegment`
 /// A framework to define sensitive zones along a segment
 /// One gives the 3D start and end point
-pub use crate::ffi::Select3D_SensitiveSegment as SensitiveSegment;
+pub use crate::ffi_types::Select3D_SensitiveSegment as SensitiveSegment;
 
 unsafe impl crate::CppDeletable for SensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveSegment_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_destructor(ptr);
     }
 }
 
@@ -6427,27 +6872,23 @@ impl SensitiveSegment {
     /// Constructs the sensitive segment object defined by
     /// the owner theOwnerId, the points theFirstPnt, theLastPnt
     pub fn new_handleselectmgrentityowner_pnt2(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theFirstPnt: &crate::gp::Pnt,
         theLastPnt: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_ctor_handleselectmgrentityowner_pnt2(
-                    theOwnerId,
-                    theFirstPnt,
-                    theLastPnt,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_ctor_handleselectmgrentityowner_pnt2(theOwnerId, theFirstPnt, theLastPnt)))
         }
     }
 
     /// **Source:** `Select3D_SensitiveSegment.hxx`:27 - `Select3D_SensitiveSegment::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSegment_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6455,7 +6896,10 @@ impl SensitiveSegment {
     /// changes the start Point of the Segment;
     pub fn set_start_point(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_set_start_point(self as *mut Self, thePnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_set_start_point(
+                self as *mut Self,
+                thePnt,
+            )
         })
     }
 
@@ -6463,7 +6907,10 @@ impl SensitiveSegment {
     /// changes the end point of the segment
     pub fn set_end_point(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_set_end_point(self as *mut Self, thePnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_set_end_point(
+                self as *mut Self,
+                thePnt,
+            )
         })
     }
 
@@ -6471,7 +6918,7 @@ impl SensitiveSegment {
     /// gives the 3D start Point of the Segment
     pub fn start_point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSegment_start_point(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_start_point(
                 self as *const Self,
             )))
         }
@@ -6481,7 +6928,7 @@ impl SensitiveSegment {
     /// gives the 3D End Point of the Segment
     pub fn end_point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSegment_end_point(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_end_point(
                 self as *const Self,
             )))
         }
@@ -6491,15 +6938,17 @@ impl SensitiveSegment {
     /// Returns the amount of points
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveSegment.hxx`:50 - `Select3D_SensitiveSegment::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_get_connected(self as *mut Self),
             ))
         }
     }
@@ -6512,7 +6961,11 @@ impl SensitiveSegment {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -6522,7 +6975,9 @@ impl SensitiveSegment {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6530,10 +6985,10 @@ impl SensitiveSegment {
     /// **Source:** `Select3D_SensitiveSegment.hxx`:63 - `Select3D_SensitiveSegment::BoundingBox()`
     /// Returns bounding box of the segment. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -6542,7 +6997,7 @@ impl SensitiveSegment {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_to_build_bvh(self as *const Self)
         })
     }
 
@@ -6550,7 +7005,10 @@ impl SensitiveSegment {
     /// changes the start Point of the Segment;
     pub fn start_point_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_start_point_pnt(self as *mut Self, thePnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_start_point_pnt(
+                self as *mut Self,
+                thePnt,
+            )
         })
     }
 
@@ -6558,7 +7016,10 @@ impl SensitiveSegment {
     /// changes the end point of the segment
     pub fn end_point_pnt(&mut self, thePnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_end_point_pnt(self as *mut Self, thePnt)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_end_point_pnt(
+                self as *mut Self,
+                thePnt,
+            )
         })
     }
 
@@ -6566,7 +7027,7 @@ impl SensitiveSegment {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6574,9 +7035,11 @@ impl SensitiveSegment {
     }
 
     /// **Source:** `Select3D_SensitiveSegment.hxx`:27 - `Select3D_SensitiveSegment::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSegment_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_get_type_descriptor(),
+            ))
         }
     }
 
@@ -6584,7 +7047,7 @@ impl SensitiveSegment {
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity(
                     self as *const Self,
                 ),
             )
@@ -6595,7 +7058,7 @@ impl SensitiveSegment {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -6605,9 +7068,11 @@ impl SensitiveSegment {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6615,7 +7080,9 @@ impl SensitiveSegment {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6623,41 +7090,48 @@ impl SensitiveSegment {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSegment> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSegment> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSegment_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -6667,21 +7141,23 @@ impl SensitiveSegment {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -6689,7 +7165,7 @@ impl SensitiveSegment {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_inherited_InvInitLocation(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_InvInitLocation(
                     self as *const Self,
                 ),
             ))
@@ -6697,10 +7173,10 @@ impl SensitiveSegment {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveSegment_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -6710,10 +7186,10 @@ impl SensitiveSegment {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -6721,16 +7197,22 @@ impl SensitiveSegment {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6738,7 +7220,9 @@ impl SensitiveSegment {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveSegment_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6751,77 +7235,81 @@ impl SensitiveSegment {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSegment_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSegment_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveSegment;
+pub use crate::ffi_types::HandleSelect3DSensitiveSegment;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveSegment_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveSegment {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSegment
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSegment {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSegment {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveSegment_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSegment
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSegment {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveSegment {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveSegment_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveSegment> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSegment_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveSegment> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSegment_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6833,11 +7321,9 @@ impl HandleSelect3DSensitiveSegment {
     /// Returns `None` if the handle does not point to a `MeshVS_SensitiveSegment` (or subclass).
     pub fn downcast_to_sensitive_segment(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSSensitiveSegment>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSSensitiveSegment>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSegment_downcast_to_HandleMeshVSSensitiveSegment(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSegment_downcast_to_HandleMeshVSSensitiveSegment(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6860,19 +7346,19 @@ impl HandleSelect3DSensitiveSegment {
 /// in some container which allows referencing to elements by index. Note that methods taking
 /// index as a parameter are used for BVH build and the range of given index is [0; Size() - 1].
 /// For example of usage see Select3D_SensitiveTriangulation.
-pub use crate::ffi::Select3D_SensitiveSet as SensitiveSet;
+pub use crate::ffi_types::Select3D_SensitiveSet as SensitiveSet;
 
 unsafe impl crate::CppDeletable for SensitiveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveSet_destructor(ptr);
     }
 }
 
 impl SensitiveSet {
     /// **Source:** `Select3D_SensitiveSet.hxx`:33 - `Select3D_SensitiveSet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSet_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSet_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6881,17 +7367,18 @@ impl SensitiveSet {
     /// **Source:** `Select3D_SensitiveSet.hxx`:48 - `Select3D_SensitiveSet::Size()`
     /// Returns the amount of sub-entities of the complex entity
     pub fn size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Select3D_SensitiveSet_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:51 - `Select3D_SensitiveSet::Box()`
     /// Returns bounding box of sub-entity with index theIdx in sub-entity list
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveSet_box_(
-                self as *const Self,
-                theIdx,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_box_(self as *const Self, theIdx),
+            ))
         }
     }
 
@@ -6899,7 +7386,11 @@ impl SensitiveSet {
     /// Returns geometry center of sensitive entity index theIdx along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_center(self as *const Self, theIdx, theAxis)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_center(
+                self as *const Self,
+                theIdx,
+                theAxis,
+            )
         })
     }
 
@@ -6907,7 +7398,7 @@ impl SensitiveSet {
     /// Swaps items with indexes theIdx1 and theIdx2
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_swap(self as *mut Self, theIdx1, theIdx2)
         })
     }
 
@@ -6920,7 +7411,11 @@ impl SensitiveSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -6931,7 +7426,7 @@ impl SensitiveSet {
     /// but element by element
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_bvh(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_bvh(self as *mut Self)
         })
     }
 
@@ -6939,15 +7434,18 @@ impl SensitiveSet {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_to_build_bvh(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
     /// Sets the method (builder) used to construct BVH.
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_set_builder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_set_builder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
@@ -6956,17 +7454,17 @@ impl SensitiveSet {
     /// at the next call of BVH()
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_mark_dirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_mark_dirty(self as *mut Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:89 - `Select3D_SensitiveSet::BoundingBox()`
     /// Returns bounding box of the whole set.
     /// This method should be redefined in Select3D_SensitiveSet descendants
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -6977,7 +7475,9 @@ impl SensitiveSet {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6986,7 +7486,7 @@ impl SensitiveSet {
     /// Destroys cross-reference to avoid memory leak
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_clear(self as *mut Self)
         })
     }
 
@@ -6994,7 +7494,7 @@ impl SensitiveSet {
     /// Returns a number of nodes in 1 BVH leaf
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_get_leaf_node_size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_get_leaf_node_size(self as *const Self)
         })
     }
 
@@ -7002,7 +7502,7 @@ impl SensitiveSet {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7010,31 +7510,41 @@ impl SensitiveSet {
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:33 - `Select3D_SensitiveSet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitiveSet_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_get_type_descriptor(),
+            ))
+        }
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:36 - `Select3D_SensitiveSet::DefaultBVHBuilder()`
     /// Return global instance to default BVH builder.
-    pub fn default_bvh_builder() -> &'static crate::ffi::HandleBVHBuilderdouble3 {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitiveSet_default_bvh_builder())) }
+    pub fn default_bvh_builder() -> &'static crate::ffi_types::HandleBVHBuilderdouble3 {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_default_bvh_builder(),
+            ))
+        }
     }
 
     /// **Source:** `Select3D_SensitiveSet.hxx`:40 - `Select3D_SensitiveSet::SetDefaultBVHBuilder()`
     /// Assign new BVH builder to be used by default for new sensitive sets (assigning is NOT
     /// thread-safe!).
-    pub fn set_default_bvh_builder(theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_default_bvh_builder(theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_set_default_bvh_builder(theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_set_default_bvh_builder(theBuilder)
         })
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7042,7 +7552,7 @@ impl SensitiveSet {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -7052,48 +7562,59 @@ impl SensitiveSet {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveSet_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_SensitiveSet_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSet_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -7101,10 +7622,14 @@ impl SensitiveSet {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:57 - `Select3D_SensitiveEntity::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_inherited_GetConnected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_GetConnected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7112,14 +7637,18 @@ impl SensitiveSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:72 - `Select3D_SensitiveEntity::NbSubElements()`
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_NbSubElements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_NbSubElements(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -7127,16 +7656,18 @@ impl SensitiveSet {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveSet_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -7146,10 +7677,10 @@ impl SensitiveSet {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -7157,16 +7688,22 @@ impl SensitiveSet {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7174,7 +7711,7 @@ impl SensitiveSet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveSet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7187,52 +7724,60 @@ impl SensitiveSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSet_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveSet;
+pub use crate::ffi_types::HandleSelect3DSensitiveSet;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveSet {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSet
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSet {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSet {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveSet_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveSet_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7241,21 +7786,19 @@ impl HandleSelect3DSensitiveSet {
     /// Upcast Handle<Select3D_SensitiveSet> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSet_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveSet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSet_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7267,11 +7810,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `AIS_ViewCubeSensitive` (or subclass).
     pub fn downcast_to_view_cube_sensitive(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeSensitive>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISViewCubeSensitive>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleAISViewCubeSensitive(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleAISViewCubeSensitive(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7285,11 +7826,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `MeshVS_CommonSensitiveEntity` (or subclass).
     pub fn downcast_to_common_sensitive_entity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSCommonSensitiveEntity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSCommonSensitiveEntity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleMeshVSCommonSensitiveEntity(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleMeshVSCommonSensitiveEntity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7303,9 +7842,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_InteriorSensitivePointSet` (or subclass).
     pub fn downcast_to_interior_sensitive_point_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DInteriorSensitivePointSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DInteriorSensitivePointSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DInteriorSensitivePointSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7319,11 +7858,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveCurve` (or subclass).
     pub fn downcast_to_sensitive_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveCurve(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveCurve(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7337,11 +7874,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveGroup` (or subclass).
     pub fn downcast_to_sensitive_group(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveGroup>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveGroup>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveGroup(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveGroup(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7355,11 +7890,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitivePoly` (or subclass).
     pub fn downcast_to_sensitive_poly(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePoly>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePoly>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePoly(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePoly(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7373,11 +7906,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitivePrimitiveArray` (or subclass).
     pub fn downcast_to_sensitive_primitive_array(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitivePrimitiveArray>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitivePrimitiveArray>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePrimitiveArray(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitivePrimitiveArray(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7391,11 +7922,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveTriangulation` (or subclass).
     pub fn downcast_to_sensitive_triangulation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveTriangulation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveTriangulation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveTriangulation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7409,11 +7938,9 @@ impl HandleSelect3DSensitiveSet {
     /// Returns `None` if the handle does not point to a `Select3D_SensitiveWire` (or subclass).
     pub fn downcast_to_sensitive_wire(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveWire>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveWire(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSet_downcast_to_HandleSelect3DSensitiveWire(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7429,11 +7956,11 @@ impl HandleSelect3DSensitiveSet {
 
 /// **Source:** `Select3D_SensitiveSphere.hxx`:22 - `Select3D_SensitiveSphere`
 /// A framework to define selection by a sensitive sphere.
-pub use crate::ffi::Select3D_SensitiveSphere as SensitiveSphere;
+pub use crate::ffi_types::Select3D_SensitiveSphere as SensitiveSphere;
 
 unsafe impl crate::CppDeletable for SensitiveSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveSphere_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_destructor(ptr);
     }
 }
 
@@ -7442,23 +7969,19 @@ impl SensitiveSphere {
     /// Constructs a sensitive sphere object defined by the owner theOwnerId,
     /// the center of the sphere and it's radius.
     pub fn new_handleselectmgrentityowner_pnt_real(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theCenter: &crate::gp::Pnt,
         theRadius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_ctor_handleselectmgrentityowner_pnt_real(
-                    theOwnerId, theCenter, theRadius,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_ctor_handleselectmgrentityowner_pnt_real(theOwnerId, theCenter, theRadius)))
         }
     }
 
     /// **Source:** `Select3D_SensitiveSphere.hxx`:24 - `Select3D_SensitiveSphere::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSphere_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7468,7 +7991,7 @@ impl SensitiveSphere {
     /// Returns the radius of the sphere
     pub fn radius(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_radius(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_radius(self as *const Self)
         })
     }
 
@@ -7480,16 +8003,22 @@ impl SensitiveSphere {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveSphere.hxx`:42 - `Select3D_SensitiveSphere::GetConnected()`
     /// Returns the copy of this
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_get_connected(self as *mut Self),
             ))
         }
     }
@@ -7497,10 +8026,10 @@ impl SensitiveSphere {
     /// **Source:** `Select3D_SensitiveSphere.hxx`:46 - `Select3D_SensitiveSphere::BoundingBox()`
     /// Returns bounding box of the sphere.
     /// If location transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -7509,7 +8038,7 @@ impl SensitiveSphere {
     /// Always returns Standard_False
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_to_build_bvh(self as *const Self)
         })
     }
 
@@ -7517,7 +8046,7 @@ impl SensitiveSphere {
     /// Returns the amount of points
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_nb_sub_elements(self as *const Self)
         })
     }
 
@@ -7526,7 +8055,9 @@ impl SensitiveSphere {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7535,9 +8066,11 @@ impl SensitiveSphere {
     /// Returns the position of detected point on the sphere.
     pub fn last_detected_point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSphere_last_detected_point(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_last_detected_point(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7545,7 +8078,9 @@ impl SensitiveSphere {
     /// Invalidate the position of detected point on the sphere.
     pub fn reset_last_detected_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_reset_last_detected_point(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_reset_last_detected_point(
+                self as *mut Self,
+            )
         })
     }
 
@@ -7553,7 +8088,7 @@ impl SensitiveSphere {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7561,18 +8096,22 @@ impl SensitiveSphere {
     }
 
     /// **Source:** `Select3D_SensitiveSphere.hxx`:24 - `Select3D_SensitiveSphere::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSphere_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7580,7 +8119,7 @@ impl SensitiveSphere {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -7590,9 +8129,11 @@ impl SensitiveSphere {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7600,7 +8141,9 @@ impl SensitiveSphere {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7608,41 +8151,48 @@ impl SensitiveSphere {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSphere> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveSphere_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -7652,21 +8202,23 @@ impl SensitiveSphere {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -7674,16 +8226,18 @@ impl SensitiveSphere {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveSphere_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -7693,10 +8247,10 @@ impl SensitiveSphere {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -7704,16 +8258,22 @@ impl SensitiveSphere {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7721,7 +8281,9 @@ impl SensitiveSphere {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveSphere_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7734,77 +8296,81 @@ impl SensitiveSphere {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveSphere_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveSphere_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveSphere;
+pub use crate::ffi_types::HandleSelect3DSensitiveSphere;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveSphere_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveSphere {
     /// Dereference this Handle to access the underlying Select3D_SensitiveSphere
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveSphere {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveSphere {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveSphere_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveSphere
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveSphere {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveSphere {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveSphere_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveSphere> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSphere_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveSphere> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveSphere_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveSphere_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7821,11 +8387,11 @@ impl HandleSelect3DSensitiveSphere {
 /// This comes into play in the detection of meshing and triangulation in surfaces.
 /// In some cases this class can raise Standard_ConstructionError and
 /// Standard_OutOfRange exceptions. For more details see Select3D_SensitivePoly.
-pub use crate::ffi::Select3D_SensitiveTriangle as SensitiveTriangle;
+pub use crate::ffi_types::Select3D_SensitiveTriangle as SensitiveTriangle;
 
 unsafe impl crate::CppDeletable for SensitiveTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveTriangle_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_destructor(ptr);
     }
 }
 
@@ -7834,14 +8400,14 @@ impl SensitiveTriangle {
     /// Constructs a sensitive triangle object defined by the
     /// owner theOwnerId, the points P1, P2, P3, and the type of sensitivity Sensitivity.
     pub fn new_handleselectmgrentityowner_pnt3_typeofsensitivity(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
         thePnt0: &crate::gp::Pnt,
         thePnt1: &crate::gp::Pnt,
         thePnt2: &crate::gp::Pnt,
         theType: crate::select3_d::TypeOfSensitivity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveTriangle_ctor_handleselectmgrentityowner_pnt3_typeofsensitivity(theOwnerId, thePnt0, thePnt1, thePnt2, theType.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_ctor_handleselectmgrentityowner_pnt3_typeofsensitivity(theOwnerId, thePnt0, thePnt1, thePnt2, theType.into())))
         }
     }
 
@@ -7853,7 +8419,11 @@ impl SensitiveTriangle {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_matches(self as *mut Self, theMgr, thePickResult)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_matches(
+                self as *mut Self,
+                theMgr,
+                thePickResult,
+            )
         })
     }
 
@@ -7866,7 +8436,7 @@ impl SensitiveTriangle {
         thePnt2: &mut crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_points3_d(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_points3_d(
                 self as *const Self,
                 thePnt0,
                 thePnt1,
@@ -7880,17 +8450,21 @@ impl SensitiveTriangle {
     pub fn center3_d(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_center3_d(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_center3_d(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveTriangle.hxx`:57 - `Select3D_SensitiveTriangle::GetConnected()`
     /// Returns the copy of this
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_get_connected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7898,10 +8472,10 @@ impl SensitiveTriangle {
     /// **Source:** `Select3D_SensitiveTriangle.hxx`:61 - `Select3D_SensitiveTriangle::BoundingBox()`
     /// Returns bounding box of the triangle. If location transformation is set, it
     /// will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -7910,7 +8484,7 @@ impl SensitiveTriangle {
     /// Returns TRUE if BVH tree is in invalidated state
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_to_build_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_to_build_bvh(self as *const Self)
         })
     }
 
@@ -7918,7 +8492,7 @@ impl SensitiveTriangle {
     /// Returns the amount of points
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_nb_sub_elements(self as *const Self)
         })
     }
 
@@ -7926,17 +8500,21 @@ impl SensitiveTriangle {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveTriangle.hxx`:75 - `Select3D_SensitiveTriangle::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangle_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7944,7 +8522,7 @@ impl SensitiveTriangle {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7952,9 +8530,11 @@ impl SensitiveTriangle {
     }
 
     /// **Source:** `Select3D_SensitiveTriangle.hxx`:75 - `Select3D_SensitiveTriangle::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangle_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_get_type_descriptor(),
+            ))
         }
     }
 
@@ -7962,7 +8542,7 @@ impl SensitiveTriangle {
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity(
                     self as *const Self,
                 ),
             )
@@ -7973,7 +8553,7 @@ impl SensitiveTriangle {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -7983,9 +8563,11 @@ impl SensitiveTriangle {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7993,7 +8575,9 @@ impl SensitiveTriangle {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8001,41 +8585,48 @@ impl SensitiveTriangle {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangle> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveTriangle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangle_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -8045,21 +8636,23 @@ impl SensitiveTriangle {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:81 - `Select3D_SensitiveEntity::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:87 - `Select3D_SensitiveEntity::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -8067,7 +8660,7 @@ impl SensitiveTriangle {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_inherited_InvInitLocation(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_InvInitLocation(
                     self as *const Self,
                 ),
             ))
@@ -8075,10 +8668,10 @@ impl SensitiveTriangle {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangle_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -8088,10 +8681,10 @@ impl SensitiveTriangle {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -8099,9 +8692,9 @@ impl SensitiveTriangle {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -8109,9 +8702,12 @@ impl SensitiveTriangle {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8119,7 +8715,9 @@ impl SensitiveTriangle {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveTriangle_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8132,77 +8730,83 @@ impl SensitiveTriangle {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangle_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangle_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveTriangle;
+pub use crate::ffi_types::HandleSelect3DSensitiveTriangle;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveTriangle_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveTriangle {
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangle
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveTriangle {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveTriangle {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveTriangle_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveTriangle
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveTriangle {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveTriangle {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveTriangle_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangle> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangle> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveTriangle_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangle_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -8216,11 +8820,11 @@ impl HandleSelect3DSensitiveTriangle {
 
 /// **Source:** `Select3D_SensitiveTriangulation.hxx`:27 - `Select3D_SensitiveTriangulation`
 /// A framework to define selection of a sensitive entity made of a set of triangles.
-pub use crate::ffi::Select3D_SensitiveTriangulation as SensitiveTriangulation;
+pub use crate::ffi_types::Select3D_SensitiveTriangulation as SensitiveTriangulation;
 
 unsafe impl crate::CppDeletable for SensitiveTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveTriangulation_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_destructor(ptr);
     }
 }
 
@@ -8230,13 +8834,13 @@ impl SensitiveTriangulation {
     /// the owner theOwnerId, the triangulation theTrg,
     /// the location theInitLoc, and the flag theIsInterior.
     pub fn new_handleselectmgrentityowner_handlepolytriangulation_location_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theTrg: &crate::ffi::HandlePolyTriangulation,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theTrg: &crate::ffi_types::HandlePolyTriangulation,
         theInitLoc: &crate::top_loc::Location,
         theIsInterior: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_bool(theOwnerId, theTrg, theInitLoc, theIsInterior)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_bool(theOwnerId, theTrg, theInitLoc, theIsInterior)))
         }
     }
 
@@ -8248,15 +8852,15 @@ impl SensitiveTriangulation {
     /// As free edges and the center of gravity do not have
     /// to be computed later, this syntax reduces computation time.
     pub fn new_handleselectmgrentityowner_handlepolytriangulation_location_handletcolstdharray1ofinteger_pnt_bool(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theTrg: &crate::ffi::HandlePolyTriangulation,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theTrg: &crate::ffi_types::HandlePolyTriangulation,
         theInitLoc: &crate::top_loc::Location,
-        theFreeEdges: &crate::ffi::HandleTColStdHArray1OfInteger,
+        theFreeEdges: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         theCOG: &crate::gp::Pnt,
         theIsInterior: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_handletcolstdharray1ofinteger_pnt_bool(theOwnerId, theTrg, theInitLoc, theFreeEdges, theCOG, theIsInterior)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_ctor_handleselectmgrentityowner_handlepolytriangulation_location_handletcolstdharray1ofinteger_pnt_bool(theOwnerId, theTrg, theInitLoc, theFreeEdges, theCOG, theIsInterior)))
         }
     }
 
@@ -8265,8 +8869,8 @@ impl SensitiveTriangulation {
     /// the owner theOwnerId, the triangulation theTrg,
     /// the location theInitLoc, and the flag theIsInterior.
     pub fn new_handleselectmgrentityowner_handlepolytriangulation_location(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
-        theTrg: &crate::ffi::HandlePolyTriangulation,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theTrg: &crate::ffi_types::HandlePolyTriangulation,
         theInitLoc: &crate::top_loc::Location,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_handlepolytriangulation_location_bool(
@@ -8275,11 +8879,13 @@ impl SensitiveTriangulation {
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:29 - `Select3D_SensitiveTriangulation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8289,7 +8895,7 @@ impl SensitiveTriangulation {
     /// @return TRUE if defined
     pub fn last_detected_triangle_triangle(&self, theTriangle: &mut crate::poly::Triangle) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_last_detected_triangle_triangle(
                 self as *const Self,
                 theTriangle,
             )
@@ -8307,11 +8913,7 @@ impl SensitiveTriangulation {
         theTriNodes: &mut [crate::gp::Pnt; 3],
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_triangle_pnt3(
-                self as *const Self,
-                theTriangle,
-                theTriNodes.as_mut_ptr(),
-            )
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_last_detected_triangle_triangle_pnt3(self as *const Self, theTriangle, theTriNodes.as_mut_ptr())
         })
     }
 
@@ -8319,7 +8921,7 @@ impl SensitiveTriangulation {
     /// Return index of last detected triangle within [1..NbTris] range, or -1 if undefined.
     pub fn last_detected_triangle_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_last_detected_triangle_index(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_last_detected_triangle_index(
                 self as *const Self,
             )
         })
@@ -8329,25 +8931,33 @@ impl SensitiveTriangulation {
     /// Returns the amount of nodes in triangulation
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_nb_sub_elements(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:80 - `Select3D_SensitiveTriangulation::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_get_connected(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:82 - `Select3D_SensitiveTriangulation::Triangulation()`
-    pub fn triangulation(&self) -> &crate::ffi::HandlePolyTriangulation {
+    pub fn triangulation(&self) -> &crate::ffi_types::HandlePolyTriangulation {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_triangulation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_triangulation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8355,16 +8965,19 @@ impl SensitiveTriangulation {
     /// Returns the length of array of triangles or edges
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_size(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_size(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:88 - `Select3D_SensitiveTriangulation::Box()`
     /// Returns bounding box of triangle/edge with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_box_(self as *const Self, theIdx),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_box_(
+                    self as *const Self,
+                    theIdx,
+                ),
             ))
         }
     }
@@ -8374,7 +8987,11 @@ impl SensitiveTriangulation {
     /// in array along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_center(self as *const Self, theIdx, theAxis)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_center(
+                self as *const Self,
+                theIdx,
+                theAxis,
+            )
         })
     }
 
@@ -8382,17 +8999,23 @@ impl SensitiveTriangulation {
     /// Swaps items with indexes theIdx1 and theIdx2 in array
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:103 - `Select3D_SensitiveTriangulation::BoundingBox()`
     /// Returns bounding box of the triangulation. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_bounding_box(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -8403,7 +9026,9 @@ impl SensitiveTriangulation {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8412,7 +9037,9 @@ impl SensitiveTriangulation {
     /// Returns true if the shape corresponding to the entity has init location
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_has_init_location(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_has_init_location(
+                self as *const Self,
+            )
         })
     }
 
@@ -8422,7 +9049,9 @@ impl SensitiveTriangulation {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_inv_init_location(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inv_init_location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8430,9 +9059,11 @@ impl SensitiveTriangulation {
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:116 - `Select3D_SensitiveTriangulation::GetInitLocation()`
     pub fn get_init_location(&self) -> &crate::top_loc::Location {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_get_init_location(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_get_init_location(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8444,7 +9075,7 @@ impl SensitiveTriangulation {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_matches(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_matches(
                 self as *mut Self,
                 theMgr,
                 thePickResult,
@@ -8456,7 +9087,7 @@ impl SensitiveTriangulation {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8464,10 +9095,10 @@ impl SensitiveTriangulation {
     }
 
     /// **Source:** `Select3D_SensitiveTriangulation.hxx`:29 - `Select3D_SensitiveTriangulation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_get_type_descriptor(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_get_type_descriptor(),
             ))
         }
     }
@@ -8476,7 +9107,7 @@ impl SensitiveTriangulation {
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet(
                     self as *const Self,
                 ),
             )
@@ -8486,33 +9117,21 @@ impl SensitiveTriangulation {
     /// Upcast to Select3D_SensitiveSet (mutable)
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Select3D_SensitiveSet_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity(self as *const Self))
         }
     }
 
     /// Upcast to Select3D_SensitiveEntity (mutable)
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Select3D_SensitiveEntity_mut(self as *mut Self))
         }
     }
 
@@ -8520,7 +9139,7 @@ impl SensitiveTriangulation {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -8531,7 +9150,7 @@ impl SensitiveTriangulation {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_as_Standard_Transient_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -8541,10 +9160,10 @@ impl SensitiveTriangulation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveTriangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -8552,21 +9171,25 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_BVH(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_SetBuilder(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_SetBuilder(
                 self as *mut Self,
                 theBuilder,
             )
@@ -8576,46 +9199,55 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_MarkDirty(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_Clear(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_GetLeafNodeSize(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_GetLeafNodeSize(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveTriangulation_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:37 - `Select3D_SensitiveEntity::Set()`
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_Set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_Set(
+                self as *mut Self,
+                theOwnerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_SensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_SensitivityFactor(
                 self as *const Self,
             )
         })
@@ -8624,7 +9256,7 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -8632,33 +9264,26 @@ impl SensitiveTriangulation {
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveTriangulation_inherited_TransformPersistence(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_TransformPersistence(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_SetTransformPersistence(
-                self as *mut Self,
-                theTrsfPers,
-            )
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_SetTransformPersistence(self as *mut Self, theTrsfPers)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -8666,9 +9291,9 @@ impl SensitiveTriangulation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_IsKind(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -8679,7 +9304,9 @@ impl SensitiveTriangulation {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveTriangulation_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8692,14 +9319,16 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -8708,7 +9337,7 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -8717,72 +9346,68 @@ impl SensitiveTriangulation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveTriangulation_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveTriangulation_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveTriangulation;
+pub use crate::ffi_types::HandleSelect3DSensitiveTriangulation;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveTriangulation_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveTriangulation {
     /// Dereference this Handle to access the underlying Select3D_SensitiveTriangulation
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveTriangulation {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveTriangulation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveTriangulation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveTriangulation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveTriangulation {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveTriangulation {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveTriangulation_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveSet(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveSet(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveTriangulation> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveTriangulation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveTriangulation_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8794,11 +9419,11 @@ impl HandleSelect3DSensitiveTriangulation {
 /// **Source:** `Select3D_SensitiveWire.hxx`:24 - `Select3D_SensitiveWire`
 /// A framework to define selection of a wire owner by an
 /// elastic wire band.
-pub use crate::ffi::Select3D_SensitiveWire as SensitiveWire;
+pub use crate::ffi_types::Select3D_SensitiveWire as SensitiveWire;
 
 unsafe impl crate::CppDeletable for SensitiveWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Select3D_SensitiveWire_destructor(ptr);
+        crate::ffi_extern_TKV3d::Select3D_SensitiveWire_destructor(ptr);
     }
 }
 
@@ -8807,20 +9432,22 @@ impl SensitiveWire {
     /// Constructs a sensitive wire object defined by the
     /// owner theOwnerId
     pub fn new_handleselectmgrentityowner(
-        theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_ctor_handleselectmgrentityowner(theOwnerId),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_ctor_handleselectmgrentityowner(
+                    theOwnerId,
+                ),
             ))
         }
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:32 - `Select3D_SensitiveWire::Add()`
     /// Adds the sensitive entity theSensitive to this framework.
-    pub fn add(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
+    pub fn add(&mut self, theSensitive: &crate::ffi_types::HandleSelect3DSensitiveEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_add(self as *mut Self, theSensitive)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_add(self as *mut Self, theSensitive)
         })
     }
 
@@ -8828,15 +9455,17 @@ impl SensitiveWire {
     /// Returns the amount of sub-entities
     pub fn nb_sub_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_nb_sub_elements(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_nb_sub_elements(self as *const Self)
         })
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:37 - `Select3D_SensitiveWire::GetConnected()`
-    pub fn get_connected(&mut self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_connected(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_get_connected(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_get_connected(self as *mut Self),
             ))
         }
     }
@@ -8845,25 +9474,31 @@ impl SensitiveWire {
     /// returns the sensitive edges stored in this wire
     pub fn get_edges(
         &mut self,
-    ) -> &crate::ffi::NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity {
+    ) -> &crate::ffi_types::NCollection_Vector_opencascade_handle_Select3D_SensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveWire_get_edges(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveWire_get_edges(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:43 - `Select3D_SensitiveWire::Set()`
     /// Sets the owner for all entities in wire
-    pub fn set(&mut self, theOwnerId: &crate::ffi::HandleSelectMgrEntityOwner) {
+    pub fn set(&mut self, theOwnerId: &crate::ffi_types::HandleSelectMgrEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_set(self as *mut Self, theOwnerId)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_set(self as *mut Self, theOwnerId)
         })
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:46 - `Select3D_SensitiveWire::GetLastDetected()`
-    pub fn get_last_detected(&self) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    pub fn get_last_detected(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_get_last_detected(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_get_last_detected(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8871,10 +9506,10 @@ impl SensitiveWire {
     /// **Source:** `Select3D_SensitiveWire.hxx`:50 - `Select3D_SensitiveWire::BoundingBox()`
     /// Returns bounding box of the wire. If location
     /// transformation is set, it will be applied
-    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bounding_box(&mut self) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_bounding_box(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_bounding_box(self as *mut Self),
             ))
         }
     }
@@ -8885,7 +9520,9 @@ impl SensitiveWire {
     pub fn center_of_geometry(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_center_of_geometry(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_center_of_geometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8893,17 +9530,18 @@ impl SensitiveWire {
     /// **Source:** `Select3D_SensitiveWire.hxx`:57 - `Select3D_SensitiveWire::Size()`
     /// Returns the length of vector of sensitive entities
     pub fn size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Select3D_SensitiveWire_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:60 - `Select3D_SensitiveWire::Box()`
     /// Returns bounding box of sensitive entity with index theIdx
-    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIdx: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Select3D_SensitiveWire_box_(
-                self as *const Self,
-                theIdx,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_box_(self as *const Self, theIdx),
+            ))
         }
     }
 
@@ -8912,7 +9550,11 @@ impl SensitiveWire {
     /// the vector along the given axis theAxis
     pub fn center(&self, theIdx: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_center(self as *const Self, theIdx, theAxis)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_center(
+                self as *const Self,
+                theIdx,
+                theAxis,
+            )
         })
     }
 
@@ -8920,14 +9562,18 @@ impl SensitiveWire {
     /// Swaps items with indexes theIdx1 and theIdx2 in the vector
     pub fn swap(&mut self, theIdx1: i32, theIdx2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_swap(self as *mut Self, theIdx1, theIdx2)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_swap(
+                self as *mut Self,
+                theIdx1,
+                theIdx2,
+            )
         })
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:77 - `Select3D_SensitiveWire::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveWire_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::Select3D_SensitiveWire_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -8937,7 +9583,7 @@ impl SensitiveWire {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_get_type_name(),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8945,16 +9591,22 @@ impl SensitiveWire {
     }
 
     /// **Source:** `Select3D_SensitiveWire.hxx`:77 - `Select3D_SensitiveWire::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Select3D_SensitiveWire_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Select3D_SensitiveSet
     pub fn as_sensitive_set(&self) -> &SensitiveSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Select3D_SensitiveSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8962,7 +9614,9 @@ impl SensitiveWire {
     pub fn as_sensitive_set_mut(&mut self) -> &mut SensitiveSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveSet_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Select3D_SensitiveSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8970,9 +9624,11 @@ impl SensitiveWire {
     /// Upcast to Select3D_SensitiveEntity
     pub fn as_sensitive_entity(&self) -> &SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Select3D_SensitiveEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8980,7 +9636,7 @@ impl SensitiveWire {
     pub fn as_sensitive_entity_mut(&mut self) -> &mut SensitiveEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_as_Select3D_SensitiveEntity_mut(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Select3D_SensitiveEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -8990,28 +9646,32 @@ impl SensitiveWire {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Select3D_SensitiveWire_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Select3D_SensitiveWire_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveWire> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveWire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -9023,7 +9683,7 @@ impl SensitiveWire {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_Matches(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_Matches(
                 self as *mut Self,
                 theMgr,
                 thePickResult,
@@ -9034,65 +9694,76 @@ impl SensitiveWire {
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:72 - `Select3D_SensitiveSet::BVH()`
     pub fn bvh(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_BVH(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_BVH(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:75 - `Select3D_SensitiveSet::ToBuildBVH()`
     pub fn to_build_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_ToBuildBVH(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_ToBuildBVH(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:78 - `Select3D_SensitiveSet::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_SetBuilder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_SetBuilder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:85 - `Select3D_SensitiveSet::MarkDirty()`
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_MarkDirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_MarkDirty(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:96 - `Select3D_SensitiveSet::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveSet.hxx`:99 - `Select3D_SensitiveSet::GetLeafNodeSize()`
     pub fn get_leaf_node_size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_GetLeafNodeSize(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_GetLeafNodeSize(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:34 - `Select3D_SensitiveEntity::OwnerId()`
-    pub fn owner_id(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn owner_id(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::Select3D_SensitiveWire_inherited_OwnerId(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_OwnerId(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:41 - `Select3D_SensitiveEntity::SensitivityFactor()`
     pub fn sensitivity_factor(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_SensitivityFactor(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_SensitivityFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:44 - `Select3D_SensitiveEntity::SetSensitivityFactor()`
     pub fn set_sensitivity_factor(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_SetSensitivityFactor(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_SetSensitivityFactor(
                 self as *mut Self,
                 theNewSens,
             )
@@ -9102,7 +9773,9 @@ impl SensitiveWire {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:90 - `Select3D_SensitiveEntity::HasInitLocation()`
     pub fn has_init_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_HasInitLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_HasInitLocation(
+                self as *const Self,
+            )
         })
     }
 
@@ -9110,16 +9783,18 @@ impl SensitiveWire {
     pub fn inv_init_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_inherited_InvInitLocation(self as *const Self),
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_InvInitLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:97 - `Select3D_SensitiveEntity::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Select3D_SensitiveWire_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -9129,10 +9804,10 @@ impl SensitiveWire {
     /// Inherited: **Source:** `Select3D_SensitiveEntity.hxx`:100 - `Select3D_SensitiveEntity::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -9140,16 +9815,22 @@ impl SensitiveWire {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9157,7 +9838,7 @@ impl SensitiveWire {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Select3D_SensitiveWire_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9170,52 +9851,60 @@ impl SensitiveWire {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Select3D_SensitiveWire_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::Select3D_SensitiveWire_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelect3DSensitiveWire;
+pub use crate::ffi_types::HandleSelect3DSensitiveWire;
 
 unsafe impl crate::CppDeletable for HandleSelect3DSensitiveWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelect3DSensitiveWire_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_destructor(ptr);
     }
 }
 
 impl HandleSelect3DSensitiveWire {
     /// Dereference this Handle to access the underlying Select3D_SensitiveWire
-    pub fn get(&self) -> &crate::ffi::Select3D_SensitiveWire {
+    pub fn get(&self) -> &crate::ffi_types::Select3D_SensitiveWire {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelect3DSensitiveWire_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Select3D_SensitiveWire
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Select3D_SensitiveWire {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Select3D_SensitiveWire {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelect3DSensitiveWire_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_get_mut(
                 self as *mut Self,
             ))
         }
@@ -9224,10 +9913,10 @@ impl HandleSelect3DSensitiveWire {
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Select3D_SensitiveSet>
     pub fn to_handle_sensitive_set(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveSet(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveSet(
                     self as *const Self,
                 ),
             ))
@@ -9237,21 +9926,19 @@ impl HandleSelect3DSensitiveWire {
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Select3D_SensitiveEntity>
     pub fn to_handle_sensitive_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelect3DSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelect3DSensitiveEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_to_HandleSelect3DSensitiveEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Select3D_SensitiveWire> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelect3DSensitiveWire_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelect3DSensitiveWire_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -9263,7 +9950,7 @@ impl HandleSelect3DSensitiveWire {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     Select3D_BndBox3d as BndBox3d, Select3D_EntitySequence as EntitySequence,
     Select3D_IndexedMapOfEntity as IndexedMapOfEntity, Select3D_Vec3 as Vec3,
 };

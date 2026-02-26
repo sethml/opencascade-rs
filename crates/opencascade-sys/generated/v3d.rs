@@ -12,7 +12,7 @@ pub fn get_proj_axis(
     theOrientation: crate::v3d::TypeOfOrientation,
 ) -> crate::OwnedPtr<crate::gp::Dir> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_get_proj_axis(
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::V3d_get_proj_axis(
             theOrientation.into(),
         )))
     }
@@ -24,7 +24,7 @@ pub fn get_proj_axis(
 /// Alpha    : Angle of arrow.
 /// Lng      : Length of arrow.
 pub fn arrow_of_radius(
-    garrow: &crate::ffi::HandleGraphic3dGroup,
+    garrow: &crate::ffi_types::HandleGraphic3dGroup,
     X0: f64,
     Y0: f64,
     Z0: f64,
@@ -35,7 +35,7 @@ pub fn arrow_of_radius(
     Lng: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::V3d_arrow_of_radius(garrow, X0, Y0, Z0, DX, DY, DZ, Alpha, Lng)
+        crate::ffi_extern_TKV3d::V3d_arrow_of_radius(garrow, X0, Y0, Z0, DX, DY, DZ, Alpha, Lng)
     })
 }
 /// **Source:** `V3d.hxx`:118 - `V3d::CircleInPlane`
@@ -44,7 +44,7 @@ pub fn arrow_of_radius(
 /// VX,VY,VZ : Axis of circle.
 /// Radius   : Radius of circle.
 pub fn circle_in_plane(
-    gcircle: &crate::ffi::HandleGraphic3dGroup,
+    gcircle: &crate::ffi_types::HandleGraphic3dGroup,
     X0: f64,
     Y0: f64,
     Z0: f64,
@@ -54,16 +54,16 @@ pub fn circle_in_plane(
     Radius: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::V3d_circle_in_plane(gcircle, X0, Y0, Z0, VX, VY, VZ, Radius)
+        crate::ffi_extern_TKV3d::V3d_circle_in_plane(gcircle, X0, Y0, Z0, VX, VY, VZ, Radius)
     })
 }
 /// **Source:** `V3d.hxx`:127 - `V3d::SwitchViewsinWindow`
 pub fn switch_viewsin_window(
-    aPreviousView: &crate::ffi::HandleV3dView,
-    aNextView: &crate::ffi::HandleV3dView,
+    aPreviousView: &crate::ffi_types::HandleV3dView,
+    aNextView: &crate::ffi_types::HandleV3dView,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::V3d_switch_viewsin_window(aPreviousView, aNextView)
+        crate::ffi_extern_TKV3d::V3d_switch_viewsin_window(aPreviousView, aNextView)
     })
 }
 /// **Source:** `V3d.hxx`:133 - `V3d::TypeOfOrientationToString`
@@ -75,7 +75,7 @@ pub fn type_of_orientation_to_string(
 ) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::check_result(
-            crate::ffi::V3d_type_of_orientation_to_string(theType.into()),
+            crate::ffi_extern_TKV3d::V3d_type_of_orientation_to_string(theType.into()),
         ))
     }
     .to_string_lossy()
@@ -89,7 +89,7 @@ pub fn type_of_orientation_to_string(
 pub fn type_of_orientation_from_string(theTypeString: &str) -> crate::v3d::TypeOfOrientation {
     let c_theTypeString = std::ffi::CString::new(theTypeString).unwrap();
     crate::v3d::TypeOfOrientation::try_from(crate::check_result(unsafe {
-        crate::ffi::V3d_type_of_orientation_from_string(c_theTypeString.as_ptr())
+        crate::ffi_extern_TKV3d::V3d_type_of_orientation_from_string(c_theTypeString.as_ptr())
     }))
     .unwrap()
 }
@@ -308,7 +308,7 @@ impl TryFrom<i32> for TypeOfVisualization {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleAspectCircularGrid, HandleAspectGrid, HandleAspectRectangularGrid, HandleGraphic3dCLight,
     HandleStandardDomainError, HandleStandardFailure, HandleStandardOutOfRange,
     HandleStandardRangeError, HandleStandardTransient,
@@ -320,11 +320,11 @@ pub use crate::ffi::{
 
 /// **Source:** `V3d_AmbientLight.hxx`:23 - `V3d_AmbientLight`
 /// Creation of an ambient light source in a viewer.
-pub use crate::ffi::V3d_AmbientLight as AmbientLight;
+pub use crate::ffi_types::V3d_AmbientLight as AmbientLight;
 
 unsafe impl crate::CppDeletable for AmbientLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_AmbientLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_AmbientLight_destructor(ptr);
     }
 }
 
@@ -334,16 +334,18 @@ impl AmbientLight {
     /// The default Color of this light source is WHITE.
     pub fn new_color(theColor: &crate::quantity::Color) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_AmbientLight_ctor_color(
-                theColor,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_ctor_color(theColor),
+            ))
         }
     }
 
     /// **Source:** `V3d_AmbientLight.hxx`:25 - `V3d_AmbientLight::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -351,7 +353,7 @@ impl AmbientLight {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_AmbientLight_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -359,14 +361,16 @@ impl AmbientLight {
     }
 
     /// **Source:** `V3d_AmbientLight.hxx`:25 - `V3d_AmbientLight::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_AmbientLight_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Graphic3d_CLight
     pub fn as_graphic3d_c_light(&self) -> &crate::graphic3d::CLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_AmbientLight_as_Graphic3d_CLight(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_as_Graphic3d_CLight(
                 self as *const Self,
             ))
         }
@@ -375,16 +379,18 @@ impl AmbientLight {
     /// Upcast to Graphic3d_CLight (mutable)
     pub fn as_graphic3d_c_light_mut(&mut self) -> &mut crate::graphic3d::CLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_AmbientLight_as_Graphic3d_CLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_as_Graphic3d_CLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_AmbientLight_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -393,34 +399,39 @@ impl AmbientLight {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_AmbientLight_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dAmbientLight> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dAmbientLight> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_AmbientLight_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:36 - `Graphic3d_CLight::CopyFrom()`
-    pub fn copy_from(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn copy_from(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_CopyFrom(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_CopyFrom(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:39 - `Graphic3d_CLight::Type()`
     pub fn type_(&self) -> crate::graphic3d::TypeOfLightSource {
         crate::graphic3d::TypeOfLightSource::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Type(self as *const Self)
         }))
         .unwrap()
     }
@@ -428,7 +439,7 @@ impl AmbientLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:42 - `Graphic3d_CLight::Name()`
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_Name(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Name(
                 self as *const Self,
             )))
         }
@@ -437,14 +448,14 @@ impl AmbientLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:45 - `Graphic3d_CLight::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetName(self as *mut Self, theName)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetName(self as *mut Self, theName)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:48 - `Graphic3d_CLight::Color()`
     pub fn color(&self) -> &crate::quantity::Color {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_Color(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Color(
                 self as *const Self,
             )))
         }
@@ -453,51 +464,62 @@ impl AmbientLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:51 - `Graphic3d_CLight::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetColor(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:56 - `Graphic3d_CLight::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_IsEnabled(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_IsEnabled(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:61 - `Graphic3d_CLight::SetEnabled()`
     pub fn set_enabled(&mut self, theIsOn: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetEnabled(self as *mut Self, theIsOn)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetEnabled(
+                self as *mut Self,
+                theIsOn,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:65 - `Graphic3d_CLight::ToCastShadows()`
     pub fn to_cast_shadows(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_ToCastShadows(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_ToCastShadows(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:68 - `Graphic3d_CLight::SetCastShadows()`
     pub fn set_cast_shadows(&mut self, theToCast: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetCastShadows(self as *mut Self, theToCast)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetCastShadows(
+                self as *mut Self,
+                theToCast,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:157 - `Graphic3d_CLight::DisplayPosition()`
     pub fn display_position(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_DisplayPosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_DisplayPosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:163 - `Graphic3d_CLight::SetDisplayPosition()`
     pub fn set_display_position(&mut self, thePosition: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetDisplayPosition(
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetDisplayPosition(
                 self as *mut Self,
                 thePosition,
             )
@@ -507,79 +529,93 @@ impl AmbientLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:189 - `Graphic3d_CLight::Intensity()`
     pub fn intensity(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_Intensity(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Intensity(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:192 - `Graphic3d_CLight::SetIntensity()`
     pub fn set_intensity(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetIntensity(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetIntensity(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:206 - `Graphic3d_CLight::HasRange()`
     pub fn has_range(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_HasRange(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_HasRange(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:211 - `Graphic3d_CLight::Range()`
     pub fn range(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_Range(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Range(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:216 - `Graphic3d_CLight::SetRange()`
     pub fn set_range(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_SetRange(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_SetRange(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:221 - `Graphic3d_CLight::GetId()`
     pub fn get_id(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_GetId(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_GetId(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:224 - `Graphic3d_CLight::PackedParams()`
-    pub fn packed_params(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_params(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_PackedParams(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_PackedParams(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:227 - `Graphic3d_CLight::PackedColor()`
-    pub fn packed_color(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_color(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_PackedColor(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_PackedColor(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:231 - `Graphic3d_CLight::PackedDirectionRange()`
-    pub fn packed_direction_range(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_direction_range(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_AmbientLight_inherited_PackedDirectionRange(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_PackedDirectionRange(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:234 - `Graphic3d_CLight::PackedDirection()`
-    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec3> {
+    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_AmbientLight_inherited_PackedDirection(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_PackedDirection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -587,21 +623,24 @@ impl AmbientLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:237 - `Graphic3d_CLight::Revision()`
     pub fn revision(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_Revision(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Revision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -609,7 +648,7 @@ impl AmbientLight {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_AmbientLight_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -622,67 +661,83 @@ impl AmbientLight {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_AmbientLight_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_AmbientLight_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dAmbientLight;
+pub use crate::ffi_types::HandleV3dAmbientLight;
 
 unsafe impl crate::CppDeletable for HandleV3dAmbientLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dAmbientLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dAmbientLight_destructor(ptr);
     }
 }
 
 impl HandleV3dAmbientLight {
     /// Dereference this Handle to access the underlying V3d_AmbientLight
-    pub fn get(&self) -> &crate::ffi::V3d_AmbientLight {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dAmbientLight_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_AmbientLight {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dAmbientLight_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_AmbientLight
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_AmbientLight {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_AmbientLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dAmbientLight_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dAmbientLight_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_AmbientLight> to Handle<Graphic3d_CLight>
-    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight> {
+    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dCLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dAmbientLight_to_HandleGraphic3dCLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dAmbientLight_to_HandleGraphic3dCLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_AmbientLight> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dAmbientLight_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dAmbientLight_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -693,27 +748,31 @@ impl HandleV3dAmbientLight {
 // ========================
 
 /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue`
-pub use crate::ffi::V3d_BadValue as BadValue;
+pub use crate::ffi_types::V3d_BadValue as BadValue;
 
 unsafe impl crate::CppDeletable for BadValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_BadValue_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_BadValue_destructor(ptr);
     }
 }
 
 impl BadValue {
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::V3d_BadValue()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_BadValue_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::V3d_BadValue()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_BadValue_ctor_charptr(
-                c_theMessage.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_ctor_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -722,17 +781,21 @@ impl BadValue {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_BadValue_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_BadValue_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -740,23 +803,25 @@ impl BadValue {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKV3d::V3d_BadValue_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_BadValue_raise_sstream(theMessage) })
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_BadValue_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dBadValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dBadValue> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_BadValue_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKV3d::V3d_BadValue_new_instance_charptr(c_theMessage.as_ptr()),
             ))
         }
     }
@@ -765,12 +830,12 @@ impl BadValue {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dBadValue> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dBadValue> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_BadValue_new_instance_charptr2(
+                crate::ffi_extern_TKV3d::V3d_BadValue_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -781,21 +846,25 @@ impl BadValue {
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_BadValue_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_BadValue.hxx`:36 - `V3d_BadValue::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_BadValue_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_OutOfRange
     pub fn as_standard_out_of_range(&self) -> &crate::standard::OutOfRange {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_BadValue_as_Standard_OutOfRange(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_OutOfRange(
                 self as *const Self,
             ))
         }
@@ -804,16 +873,16 @@ impl BadValue {
     /// Upcast to Standard_OutOfRange (mutable)
     pub fn as_standard_out_of_range_mut(&mut self) -> &mut crate::standard::OutOfRange {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_BadValue_as_Standard_OutOfRange_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_OutOfRange_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_RangeError
     pub fn as_standard_range_error(&self) -> &crate::standard::RangeError {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_BadValue_as_Standard_RangeError(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_RangeError(
                 self as *const Self,
             ))
         }
@@ -822,16 +891,16 @@ impl BadValue {
     /// Upcast to Standard_RangeError (mutable)
     pub fn as_standard_range_error_mut(&mut self) -> &mut crate::standard::RangeError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_BadValue_as_Standard_RangeError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_RangeError_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_BadValue_as_Standard_DomainError(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_DomainError(
                 self as *const Self,
             ))
         }
@@ -840,32 +909,36 @@ impl BadValue {
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_BadValue_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_BadValue_as_Standard_Failure(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_Failure(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_BadValue_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_Failure_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_BadValue_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -874,53 +947,55 @@ impl BadValue {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_BadValue_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleV3dBadValue> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dBadValue> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_BadValue_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_BadValue_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_Print(self as *const Self, theStream)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -928,7 +1003,7 @@ impl BadValue {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_BadValue_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_BadValue_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -941,94 +1016,118 @@ impl BadValue {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_BadValue_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_BadValue_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dBadValue;
+pub use crate::ffi_types::HandleV3dBadValue;
 
 unsafe impl crate::CppDeletable for HandleV3dBadValue {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dBadValue_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dBadValue_destructor(ptr);
     }
 }
 
 impl HandleV3dBadValue {
     /// Dereference this Handle to access the underlying V3d_BadValue
-    pub fn get(&self) -> &crate::ffi::V3d_BadValue {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dBadValue_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_BadValue {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dBadValue_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_BadValue
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_BadValue {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_BadValue {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dBadValue_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dBadValue_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_BadValue> to Handle<Standard_OutOfRange>
-    pub fn to_handle_out_of_range(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardOutOfRange> {
+    pub fn to_handle_out_of_range(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardOutOfRange> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dBadValue_to_HandleStandardOutOfRange(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dBadValue_to_HandleStandardOutOfRange(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_BadValue> to Handle<Standard_RangeError>
-    pub fn to_handle_range_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardRangeError> {
+    pub fn to_handle_range_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardRangeError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dBadValue_to_HandleStandardRangeError(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dBadValue_to_HandleStandardRangeError(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_BadValue> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+    pub fn to_handle_domain_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dBadValue_to_HandleStandardDomainError(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dBadValue_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_BadValue> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dBadValue_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dBadValue_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_BadValue> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dBadValue_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dBadValue_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1039,11 +1138,11 @@ impl HandleV3dBadValue {
 // ========================
 
 /// **Source:** `V3d_CircularGrid.hxx`:31 - `V3d_CircularGrid`
-pub use crate::ffi::V3d_CircularGrid as CircularGrid;
+pub use crate::ffi_types::V3d_CircularGrid as CircularGrid;
 
 unsafe impl crate::CppDeletable for CircularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_CircularGrid_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_CircularGrid_destructor(ptr);
     }
 }
 
@@ -1056,15 +1155,21 @@ impl CircularGrid {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_CircularGrid_ctor_viewerptr_color2(aViewer, aColor, aTenthColor),
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_ctor_viewerptr_color2(
+                    aViewer,
+                    aColor,
+                    aTenthColor,
+                ),
             ))
         }
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:33 - `V3d_CircularGrid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_CircularGrid_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1075,38 +1180,54 @@ impl CircularGrid {
         aTenthColor: &crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_set_colors(self as *mut Self, aColor, aTenthColor)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_set_colors(
+                self as *mut Self,
+                aColor,
+                aTenthColor,
+            )
         })
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:44 - `V3d_CircularGrid::Display()`
     pub fn display(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_CircularGrid_display(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_display(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:46 - `V3d_CircularGrid::Erase()`
     pub fn erase(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_CircularGrid_erase(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_erase(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:48 - `V3d_CircularGrid::IsDisplayed()`
     pub fn is_displayed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_is_displayed(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_is_displayed(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:50 - `V3d_CircularGrid::GraphicValues()`
     pub fn graphic_values(&self, Radius: &mut f64, OffSet: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_graphic_values(self as *const Self, Radius, OffSet)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_graphic_values(
+                self as *const Self,
+                Radius,
+                OffSet,
+            )
         })
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:52 - `V3d_CircularGrid::SetGraphicValues()`
     pub fn set_graphic_values(&mut self, Radius: f64, OffSet: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_set_graphic_values(self as *mut Self, Radius, OffSet)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_set_graphic_values(
+                self as *mut Self,
+                Radius,
+                OffSet,
+            )
         })
     }
 
@@ -1114,7 +1235,7 @@ impl CircularGrid {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_CircularGrid_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1122,14 +1243,16 @@ impl CircularGrid {
     }
 
     /// **Source:** `V3d_CircularGrid.hxx`:33 - `V3d_CircularGrid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_CircularGrid_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Aspect_CircularGrid
     pub fn as_aspect_circular_grid(&self) -> &crate::aspect::CircularGrid {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_CircularGrid_as_Aspect_CircularGrid(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Aspect_CircularGrid(
                 self as *const Self,
             ))
         }
@@ -1138,23 +1261,27 @@ impl CircularGrid {
     /// Upcast to Aspect_CircularGrid (mutable)
     pub fn as_aspect_circular_grid_mut(&mut self) -> &mut crate::aspect::CircularGrid {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_CircularGrid_as_Aspect_CircularGrid_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Aspect_CircularGrid_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Aspect_Grid
     pub fn as_aspect_grid(&self) -> &crate::aspect::Grid {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_CircularGrid_as_Aspect_Grid(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Aspect_Grid(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Aspect_Grid (mutable)
     pub fn as_aspect_grid_mut(&mut self) -> &mut crate::aspect::Grid {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_CircularGrid_as_Aspect_Grid_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Aspect_Grid_mut(
                 self as *mut Self,
             ))
         }
@@ -1163,7 +1290,7 @@ impl CircularGrid {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_CircularGrid_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1172,34 +1299,42 @@ impl CircularGrid {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_CircularGrid_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dCircularGrid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dCircularGrid> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_CircularGrid_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:36 - `Aspect_CircularGrid::SetRadiusStep()`
     pub fn set_radius_step(&mut self, aStep: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetRadiusStep(self as *mut Self, aStep)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetRadiusStep(
+                self as *mut Self,
+                aStep,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:39 - `Aspect_CircularGrid::SetDivisionNumber()`
     pub fn set_division_number(&mut self, aNumber: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetDivisionNumber(self as *mut Self, aNumber)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetDivisionNumber(
+                self as *mut Self,
+                aNumber,
+            )
         })
     }
 
@@ -1213,7 +1348,7 @@ impl CircularGrid {
         RotationAngle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetGridValues(
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetGridValues(
                 self as *mut Self,
                 XOrigin,
                 YOrigin,
@@ -1227,112 +1362,137 @@ impl CircularGrid {
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:48 - `Aspect_CircularGrid::Compute()`
     pub fn compute(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Compute(self as *const Self, X, Y, gridX, gridY)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Compute(
+                self as *const Self,
+                X,
+                Y,
+                gridX,
+                gridY,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:54 - `Aspect_CircularGrid::RadiusStep()`
     pub fn radius_step(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_RadiusStep(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_RadiusStep(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:57 - `Aspect_CircularGrid::DivisionNumber()`
     pub fn division_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_DivisionNumber(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_DivisionNumber(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_CircularGrid.hxx`:59 - `Aspect_CircularGrid::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:31 - `Aspect_Grid::SetXOrigin()`
     pub fn set_x_origin(&mut self, anOrigin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetXOrigin(self as *mut Self, anOrigin)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetXOrigin(
+                self as *mut Self,
+                anOrigin,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:34 - `Aspect_Grid::SetYOrigin()`
     pub fn set_y_origin(&mut self, anOrigin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetYOrigin(self as *mut Self, anOrigin)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetYOrigin(
+                self as *mut Self,
+                anOrigin,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:37 - `Aspect_Grid::SetRotationAngle()`
     pub fn set_rotation_angle(&mut self, anAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetRotationAngle(self as *mut Self, anAngle)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetRotationAngle(
+                self as *mut Self,
+                anAngle,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:40 - `Aspect_Grid::Rotate()`
     pub fn rotate(&mut self, anAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Rotate(self as *mut Self, anAngle)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Rotate(self as *mut Self, anAngle)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:43 - `Aspect_Grid::Translate()`
     pub fn translate(&mut self, aDx: f64, aDy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Translate(self as *mut Self, aDx, aDy)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Translate(
+                self as *mut Self,
+                aDx,
+                aDy,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:52 - `Aspect_Grid::Hit()`
     pub fn hit(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Hit(self as *const Self, X, Y, gridX, gridY)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Hit(
+                self as *const Self,
+                X,
+                Y,
+                gridX,
+                gridY,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:66 - `Aspect_Grid::Activate()`
     pub fn activate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Activate(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Activate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:70 - `Aspect_Grid::Deactivate()`
     pub fn deactivate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Deactivate(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Deactivate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:73 - `Aspect_Grid::XOrigin()`
     pub fn x_origin(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_XOrigin(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_XOrigin(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:76 - `Aspect_Grid::YOrigin()`
     pub fn y_origin(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_YOrigin(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_YOrigin(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:79 - `Aspect_Grid::RotationAngle()`
     pub fn rotation_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_RotationAngle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_RotationAngle(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:82 - `Aspect_Grid::IsActive()`
     pub fn is_active(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_IsActive(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_IsActive(self as *const Self)
         })
     }
 
@@ -1343,36 +1503,46 @@ impl CircularGrid {
         aTenthColor: &mut crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Colors(self as *const Self, aColor, aTenthColor)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Colors(
+                self as *const Self,
+                aColor,
+                aTenthColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:88 - `Aspect_Grid::SetDrawMode()`
     pub fn set_draw_mode(&mut self, aDrawMode: crate::aspect::GridDrawMode) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_SetDrawMode(self as *mut Self, aDrawMode.into())
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_SetDrawMode(
+                self as *mut Self,
+                aDrawMode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:91 - `Aspect_Grid::DrawMode()`
     pub fn draw_mode(&self) -> crate::aspect::GridDrawMode {
         crate::aspect::GridDrawMode::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_DrawMode(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_DrawMode(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1380,7 +1550,7 @@ impl CircularGrid {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_CircularGrid_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1393,76 +1563,96 @@ impl CircularGrid {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_CircularGrid_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_CircularGrid_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dCircularGrid;
+pub use crate::ffi_types::HandleV3dCircularGrid;
 
 unsafe impl crate::CppDeletable for HandleV3dCircularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dCircularGrid_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dCircularGrid_destructor(ptr);
     }
 }
 
 impl HandleV3dCircularGrid {
     /// Dereference this Handle to access the underlying V3d_CircularGrid
-    pub fn get(&self) -> &crate::ffi::V3d_CircularGrid {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dCircularGrid_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_CircularGrid {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dCircularGrid_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_CircularGrid
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_CircularGrid {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_CircularGrid {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dCircularGrid_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dCircularGrid_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_CircularGrid> to Handle<Aspect_CircularGrid>
-    pub fn to_handle_circular_grid(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectCircularGrid> {
+    pub fn to_handle_circular_grid(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAspectCircularGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dCircularGrid_to_HandleAspectCircularGrid(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dCircularGrid_to_HandleAspectCircularGrid(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_CircularGrid> to Handle<Aspect_Grid>
-    pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
+    pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAspectGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dCircularGrid_to_HandleAspectGrid(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dCircularGrid_to_HandleAspectGrid(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_CircularGrid> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dCircularGrid_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dCircularGrid_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1474,11 +1664,11 @@ impl HandleV3dCircularGrid {
 
 /// **Source:** `V3d_DirectionalLight.hxx`:24 - `V3d_DirectionalLight`
 /// Directional light source for a viewer.
-pub use crate::ffi::V3d_DirectionalLight as DirectionalLight;
+pub use crate::ffi_types::V3d_DirectionalLight as DirectionalLight;
 
 unsafe impl crate::CppDeletable for DirectionalLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_DirectionalLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_DirectionalLight_destructor(ptr);
     }
 }
 
@@ -1492,7 +1682,7 @@ impl DirectionalLight {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_ctor_typeoforientation_color_bool(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_ctor_typeoforientation_color_bool(
                     theDirection.into(),
                     theColor,
                     theIsHeadlight,
@@ -1510,7 +1700,7 @@ impl DirectionalLight {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_ctor_dir_color_bool(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_ctor_dir_color_bool(
                     theDirection,
                     theColor,
                     theIsHeadlight,
@@ -1538,9 +1728,9 @@ impl DirectionalLight {
     }
 
     /// **Source:** `V3d_DirectionalLight.hxx`:26 - `V3d_DirectionalLight::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_DirectionalLight_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1550,7 +1740,10 @@ impl DirectionalLight {
     /// Defines the direction of the light source by a predefined orientation.
     pub fn set_direction(&mut self, theDirection: crate::v3d::TypeOfOrientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_set_direction(self as *mut Self, theDirection.into())
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_set_direction(
+                self as *mut Self,
+                theDirection.into(),
+            )
         })
     }
 
@@ -1558,7 +1751,7 @@ impl DirectionalLight {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1566,86 +1759,105 @@ impl DirectionalLight {
     }
 
     /// **Source:** `V3d_DirectionalLight.hxx`:26 - `V3d_DirectionalLight::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_DirectionalLight_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to V3d_PositionLight
     pub fn as_position_light(&self) -> &PositionLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_DirectionalLight_as_V3d_PositionLight(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_V3d_PositionLight(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to V3d_PositionLight (mutable)
     pub fn as_position_light_mut(&mut self) -> &mut PositionLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_DirectionalLight_as_V3d_PositionLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_V3d_PositionLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Graphic3d_CLight
     pub fn as_graphic3d_c_light(&self) -> &crate::graphic3d::CLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_DirectionalLight_as_Graphic3d_CLight(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_Graphic3d_CLight(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Graphic3d_CLight (mutable)
     pub fn as_graphic3d_c_light_mut(&mut self) -> &mut crate::graphic3d::CLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_DirectionalLight_as_Graphic3d_CLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_Graphic3d_CLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_DirectionalLight_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_DirectionalLight_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dDirectionalLight> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dDirectionalLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:36 - `Graphic3d_CLight::CopyFrom()`
-    pub fn copy_from(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn copy_from(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_CopyFrom(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_CopyFrom(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:39 - `Graphic3d_CLight::Type()`
     pub fn type_(&self) -> crate::graphic3d::TypeOfLightSource {
         crate::graphic3d::TypeOfLightSource::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Type(self as *const Self)
         }))
         .unwrap()
     }
@@ -1653,7 +1865,7 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:42 - `Graphic3d_CLight::Name()`
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_Name(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Name(
                 self as *const Self,
             )))
         }
@@ -1662,14 +1874,17 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:45 - `Graphic3d_CLight::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetName(self as *mut Self, theName)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:48 - `Graphic3d_CLight::Color()`
     pub fn color(&self) -> &crate::quantity::Color {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_Color(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Color(
                 self as *const Self,
             )))
         }
@@ -1678,56 +1893,70 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:51 - `Graphic3d_CLight::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetColor(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:56 - `Graphic3d_CLight::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_IsEnabled(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_IsEnabled(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:61 - `Graphic3d_CLight::SetEnabled()`
     pub fn set_enabled(&mut self, theIsOn: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetEnabled(self as *mut Self, theIsOn)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetEnabled(
+                self as *mut Self,
+                theIsOn,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:65 - `Graphic3d_CLight::ToCastShadows()`
     pub fn to_cast_shadows(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_ToCastShadows(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_ToCastShadows(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:68 - `Graphic3d_CLight::SetCastShadows()`
     pub fn set_cast_shadows(&mut self, theToCast: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetCastShadows(self as *mut Self, theToCast)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetCastShadows(
+                self as *mut Self,
+                theToCast,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:73 - `Graphic3d_CLight::IsHeadlight()`
     pub fn is_headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_IsHeadlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_IsHeadlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:76 - `Graphic3d_CLight::Headlight()`
     pub fn headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Headlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Headlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:79 - `Graphic3d_CLight::SetHeadlight()`
     pub fn set_headlight(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetHeadlight(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetHeadlight(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
@@ -1735,7 +1964,9 @@ impl DirectionalLight {
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_inherited_Direction(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Direction(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1743,16 +1974,18 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:157 - `Graphic3d_CLight::DisplayPosition()`
     pub fn display_position(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_DisplayPosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_DisplayPosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:163 - `Graphic3d_CLight::SetDisplayPosition()`
     pub fn set_display_position(&mut self, thePosition: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetDisplayPosition(
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetDisplayPosition(
                 self as *mut Self,
                 thePosition,
             )
@@ -1762,91 +1995,107 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:189 - `Graphic3d_CLight::Intensity()`
     pub fn intensity(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Intensity(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Intensity(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:192 - `Graphic3d_CLight::SetIntensity()`
     pub fn set_intensity(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetIntensity(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetIntensity(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:196 - `Graphic3d_CLight::Smoothness()`
     pub fn smoothness(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Smoothness(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Smoothness(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:199 - `Graphic3d_CLight::SetSmoothRadius()`
     pub fn set_smooth_radius(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetSmoothRadius(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetSmoothRadius(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:203 - `Graphic3d_CLight::SetSmoothAngle()`
     pub fn set_smooth_angle(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetSmoothAngle(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetSmoothAngle(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:206 - `Graphic3d_CLight::HasRange()`
     pub fn has_range(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_HasRange(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_HasRange(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:211 - `Graphic3d_CLight::Range()`
     pub fn range(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Range(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Range(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:216 - `Graphic3d_CLight::SetRange()`
     pub fn set_range(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_SetRange(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_SetRange(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:221 - `Graphic3d_CLight::GetId()`
     pub fn get_id(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_GetId(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_GetId(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:224 - `Graphic3d_CLight::PackedParams()`
-    pub fn packed_params(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_params(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_PackedParams(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_PackedParams(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:227 - `Graphic3d_CLight::PackedColor()`
-    pub fn packed_color(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_color(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_DirectionalLight_inherited_PackedColor(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_PackedColor(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:231 - `Graphic3d_CLight::PackedDirectionRange()`
-    pub fn packed_direction_range(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_direction_range(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_inherited_PackedDirectionRange(
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_PackedDirectionRange(
                     self as *const Self,
                 ),
             ))
@@ -1854,10 +2103,12 @@ impl DirectionalLight {
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:234 - `Graphic3d_CLight::PackedDirection()`
-    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec3> {
+    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_DirectionalLight_inherited_PackedDirection(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_PackedDirection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1865,21 +2116,27 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:237 - `Graphic3d_CLight::Revision()`
     pub fn revision(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Revision(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Revision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1887,7 +2144,7 @@ impl DirectionalLight {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_DirectionalLight_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1900,62 +2157,70 @@ impl DirectionalLight {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_DirectionalLight_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_DirectionalLight_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dDirectionalLight;
+pub use crate::ffi_types::HandleV3dDirectionalLight;
 
 unsafe impl crate::CppDeletable for HandleV3dDirectionalLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dDirectionalLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_destructor(ptr);
     }
 }
 
 impl HandleV3dDirectionalLight {
     /// Dereference this Handle to access the underlying V3d_DirectionalLight
-    pub fn get(&self) -> &crate::ffi::V3d_DirectionalLight {
+    pub fn get(&self) -> &crate::ffi_types::V3d_DirectionalLight {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleV3dDirectionalLight_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_DirectionalLight
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_DirectionalLight {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_DirectionalLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dDirectionalLight_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<V3d_DirectionalLight> to Handle<V3d_PositionLight>
-    pub fn to_handle_position_light(&self) -> crate::OwnedPtr<crate::ffi::HandleV3dPositionLight> {
+    pub fn to_handle_position_light(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPositionLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dDirectionalLight_to_HandleV3dPositionLight(
+                crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_to_HandleV3dPositionLight(
                     self as *const Self,
                 ),
             ))
@@ -1963,19 +2228,23 @@ impl HandleV3dDirectionalLight {
     }
 
     /// Upcast Handle<V3d_DirectionalLight> to Handle<Graphic3d_CLight>
-    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight> {
+    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dCLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dDirectionalLight_to_HandleGraphic3dCLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_to_HandleGraphic3dCLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_DirectionalLight> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dDirectionalLight_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleV3dDirectionalLight_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1989,11 +2258,11 @@ impl HandleV3dDirectionalLight {
 
 /// **Source:** `V3d_ImageDumpOptions.hxx`:22 - `V3d_ImageDumpOptions`
 /// The structure defines options for image dump functionality.
-pub use crate::ffi::V3d_ImageDumpOptions as ImageDumpOptions;
+pub use crate::ffi_types::V3d_ImageDumpOptions as ImageDumpOptions;
 
 unsafe impl crate::CppDeletable for ImageDumpOptions {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_ImageDumpOptions_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_ImageDumpOptions_destructor(ptr);
     }
 }
 
@@ -2002,7 +2271,9 @@ impl ImageDumpOptions {
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_ImageDumpOptions_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_ImageDumpOptions_ctor(),
+            ))
         }
     }
 }
@@ -2030,11 +2301,11 @@ impl ImageDumpOptions {
 /// @endcode
 /// Use interface of this class to modify plane equation synchronously
 /// with clipping equation.
-pub use crate::ffi::V3d_Plane as Plane;
+pub use crate::ffi_types::V3d_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_Plane_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_Plane_destructor(ptr);
     }
 }
 
@@ -2043,9 +2314,9 @@ impl Plane {
     /// Creates a clipping plane from plane coefficients.
     pub fn new_real4(theA: f64, theB: f64, theC: f64, theD: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Plane_ctor_real4(
-                theA, theB, theC, theD,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Plane_ctor_real4(theA, theB, theC, theD),
+            ))
         }
     }
 
@@ -2077,7 +2348,7 @@ impl Plane {
     /// Change plane equation.
     pub fn set_plane(&mut self, theA: f64, theB: f64, theC: f64, theD: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Plane_set_plane(self as *mut Self, theA, theB, theC, theD)
+            crate::ffi_extern_TKV3d::V3d_Plane_set_plane(self as *mut Self, theA, theB, theC, theD)
         })
     }
 
@@ -2085,97 +2356,115 @@ impl Plane {
     /// Display the plane representation in the chosen view.
     pub fn display(
         &mut self,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
         theColor: &crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Plane_display(self as *mut Self, theView, theColor)
+            crate::ffi_extern_TKV3d::V3d_Plane_display(self as *mut Self, theView, theColor)
         })
     }
 
     /// **Source:** `V3d_Plane.hxx`:62 - `V3d_Plane::Erase()`
     /// Erase the plane representation.
     pub fn erase(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Plane_erase(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Plane_erase(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Plane.hxx`:65 - `V3d_Plane::Plane()`
     /// Returns the parameters of the plane.
     pub fn plane(&self, theA: &mut f64, theB: &mut f64, theC: &mut f64, theD: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Plane_plane(self as *const Self, theA, theB, theC, theD)
+            crate::ffi_extern_TKV3d::V3d_Plane_plane(self as *const Self, theA, theB, theC, theD)
         })
     }
 
     /// **Source:** `V3d_Plane.hxx`:71 - `V3d_Plane::IsDisplayed()`
     /// Returns TRUE when the plane representation is displayed.
     pub fn is_displayed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Plane_is_displayed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Plane_is_displayed(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Plane.hxx`:76 - `V3d_Plane::ClipPlane()`
     /// Use this method to pass clipping plane implementation for
     /// standard clipping workflow.
     /// @return clipping plane implementation handle.
-    pub fn clip_plane(&self) -> &crate::ffi::HandleGraphic3dClipPlane {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Plane_clip_plane(self as *const Self))) }
+    pub fn clip_plane(&self) -> &crate::ffi_types::HandleGraphic3dClipPlane {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Plane_clip_plane(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_Plane.hxx`:89 - `V3d_Plane::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Plane_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Plane_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_Plane.hxx`:89 - `V3d_Plane::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_Plane_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Plane_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_Plane.hxx`:89 - `V3d_Plane::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Plane_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Plane_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_Plane_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_Plane_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_Plane_as_Standard_Transient_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::V3d_Plane_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleV3dPlane> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Plane_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Plane_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2183,7 +2472,7 @@ impl Plane {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_Plane_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_Plane_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2196,56 +2485,66 @@ impl Plane {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Plane_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Plane_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dPlane;
+pub use crate::ffi_types::HandleV3dPlane;
 
 unsafe impl crate::CppDeletable for HandleV3dPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dPlane_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dPlane_destructor(ptr);
     }
 }
 
 impl HandleV3dPlane {
     /// Dereference this Handle to access the underlying V3d_Plane
-    pub fn get(&self) -> &crate::ffi::V3d_Plane {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dPlane_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_Plane {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPlane_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_Plane
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_Plane {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleV3dPlane_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_Plane {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPlane_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<V3d_Plane> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPlane_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dPlane_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2257,19 +2556,21 @@ impl HandleV3dPlane {
 
 /// **Source:** `V3d_PositionLight.hxx`:23 - `V3d_PositionLight`
 /// Base class for Positional, Spot and Directional Light classes.
-pub use crate::ffi::V3d_PositionLight as PositionLight;
+pub use crate::ffi_types::V3d_PositionLight as PositionLight;
 
 unsafe impl crate::CppDeletable for PositionLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_PositionLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_PositionLight_destructor(ptr);
     }
 }
 
 impl PositionLight {
     /// **Source:** `V3d_PositionLight.hxx`:25 - `V3d_PositionLight::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2277,7 +2578,7 @@ impl PositionLight {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_PositionLight_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_PositionLight_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2285,14 +2586,16 @@ impl PositionLight {
     }
 
     /// **Source:** `V3d_PositionLight.hxx`:25 - `V3d_PositionLight::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_PositionLight_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Graphic3d_CLight
     pub fn as_graphic3d_c_light(&self) -> &crate::graphic3d::CLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_PositionLight_as_Graphic3d_CLight(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_as_Graphic3d_CLight(
                 self as *const Self,
             ))
         }
@@ -2301,16 +2604,18 @@ impl PositionLight {
     /// Upcast to Graphic3d_CLight (mutable)
     pub fn as_graphic3d_c_light_mut(&mut self) -> &mut crate::graphic3d::CLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_PositionLight_as_Graphic3d_CLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_as_Graphic3d_CLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_PositionLight_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2319,34 +2624,39 @@ impl PositionLight {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_PositionLight_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dPositionLight> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPositionLight> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_PositionLight_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:36 - `Graphic3d_CLight::CopyFrom()`
-    pub fn copy_from(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn copy_from(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_CopyFrom(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_CopyFrom(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:39 - `Graphic3d_CLight::Type()`
     pub fn type_(&self) -> crate::graphic3d::TypeOfLightSource {
         crate::graphic3d::TypeOfLightSource::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Type(self as *const Self)
         }))
         .unwrap()
     }
@@ -2354,7 +2664,7 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:42 - `Graphic3d_CLight::Name()`
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_Name(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Name(
                 self as *const Self,
             )))
         }
@@ -2363,14 +2673,14 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:45 - `Graphic3d_CLight::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetName(self as *mut Self, theName)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetName(self as *mut Self, theName)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:48 - `Graphic3d_CLight::Color()`
     pub fn color(&self) -> &crate::quantity::Color {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_Color(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Color(
                 self as *const Self,
             )))
         }
@@ -2379,77 +2689,93 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:51 - `Graphic3d_CLight::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetColor(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:56 - `Graphic3d_CLight::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_IsEnabled(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_IsEnabled(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:61 - `Graphic3d_CLight::SetEnabled()`
     pub fn set_enabled(&mut self, theIsOn: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetEnabled(self as *mut Self, theIsOn)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetEnabled(
+                self as *mut Self,
+                theIsOn,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:65 - `Graphic3d_CLight::ToCastShadows()`
     pub fn to_cast_shadows(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_ToCastShadows(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_ToCastShadows(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:68 - `Graphic3d_CLight::SetCastShadows()`
     pub fn set_cast_shadows(&mut self, theToCast: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetCastShadows(self as *mut Self, theToCast)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetCastShadows(
+                self as *mut Self,
+                theToCast,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:73 - `Graphic3d_CLight::IsHeadlight()`
     pub fn is_headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_IsHeadlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_IsHeadlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:76 - `Graphic3d_CLight::Headlight()`
     pub fn headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Headlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Headlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:79 - `Graphic3d_CLight::SetHeadlight()`
     pub fn set_headlight(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetHeadlight(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetHeadlight(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:110 - `Graphic3d_CLight::ConstAttenuation()`
     pub fn const_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_ConstAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_ConstAttenuation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:119 - `Graphic3d_CLight::LinearAttenuation()`
     pub fn linear_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_LinearAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_LinearAttenuation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:122 - `Graphic3d_CLight::Attenuation()`
     pub fn attenuation(&self, theConstAttenuation: &mut f64, theLinearAttenuation: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Attenuation(
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Attenuation(
                 self as *const Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -2460,7 +2786,7 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:130 - `Graphic3d_CLight::SetAttenuation()`
     pub fn set_attenuation(&mut self, theConstAttenuation: f32, theLinearAttenuation: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetAttenuation(
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetAttenuation(
                 self as *mut Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -2472,7 +2798,7 @@ impl PositionLight {
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_PositionLight_inherited_Direction(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Direction(self as *const Self),
             ))
         }
     }
@@ -2480,23 +2806,28 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:139 - `Graphic3d_CLight::SetDirection()`
     pub fn set_direction(&mut self, theDir: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetDirection(self as *mut Self, theDir)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetDirection(
+                self as *mut Self,
+                theDir,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:157 - `Graphic3d_CLight::DisplayPosition()`
     pub fn display_position(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_DisplayPosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_DisplayPosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:163 - `Graphic3d_CLight::SetDisplayPosition()`
     pub fn set_display_position(&mut self, thePosition: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetDisplayPosition(
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetDisplayPosition(
                 self as *mut Self,
                 thePosition,
             )
@@ -2506,28 +2837,31 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:168 - `Graphic3d_CLight::Angle()`
     pub fn angle(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Angle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Angle(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:171 - `Graphic3d_CLight::SetAngle()`
     pub fn set_angle(&mut self, theAngle: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetAngle(self as *mut Self, theAngle)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetAngle(
+                self as *mut Self,
+                theAngle,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:181 - `Graphic3d_CLight::Concentration()`
     pub fn concentration(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Concentration(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Concentration(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:184 - `Graphic3d_CLight::SetConcentration()`
     pub fn set_concentration(&mut self, theConcentration: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetConcentration(
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetConcentration(
                 self as *mut Self,
                 theConcentration,
             )
@@ -2537,100 +2871,120 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:189 - `Graphic3d_CLight::Intensity()`
     pub fn intensity(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Intensity(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Intensity(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:192 - `Graphic3d_CLight::SetIntensity()`
     pub fn set_intensity(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetIntensity(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetIntensity(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:196 - `Graphic3d_CLight::Smoothness()`
     pub fn smoothness(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Smoothness(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Smoothness(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:199 - `Graphic3d_CLight::SetSmoothRadius()`
     pub fn set_smooth_radius(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetSmoothRadius(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetSmoothRadius(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:203 - `Graphic3d_CLight::SetSmoothAngle()`
     pub fn set_smooth_angle(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetSmoothAngle(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetSmoothAngle(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:206 - `Graphic3d_CLight::HasRange()`
     pub fn has_range(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_HasRange(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_HasRange(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:211 - `Graphic3d_CLight::Range()`
     pub fn range(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Range(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Range(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:216 - `Graphic3d_CLight::SetRange()`
     pub fn set_range(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_SetRange(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_SetRange(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:221 - `Graphic3d_CLight::GetId()`
     pub fn get_id(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_GetId(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_GetId(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:224 - `Graphic3d_CLight::PackedParams()`
-    pub fn packed_params(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_params(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_PackedParams(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_PackedParams(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:227 - `Graphic3d_CLight::PackedColor()`
-    pub fn packed_color(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_color(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_PackedColor(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_PackedColor(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:231 - `Graphic3d_CLight::PackedDirectionRange()`
-    pub fn packed_direction_range(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_direction_range(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionLight_inherited_PackedDirectionRange(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_PackedDirectionRange(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:234 - `Graphic3d_CLight::PackedDirection()`
-    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec3> {
+    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_PositionLight_inherited_PackedDirection(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_PackedDirection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2638,21 +2992,27 @@ impl PositionLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:237 - `Graphic3d_CLight::Revision()`
     pub fn revision(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Revision(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Revision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2660,7 +3020,7 @@ impl PositionLight {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_PositionLight_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2673,69 +3033,83 @@ impl PositionLight {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionLight_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionLight_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dPositionLight;
+pub use crate::ffi_types::HandleV3dPositionLight;
 
 unsafe impl crate::CppDeletable for HandleV3dPositionLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dPositionLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dPositionLight_destructor(ptr);
     }
 }
 
 impl HandleV3dPositionLight {
     /// Dereference this Handle to access the underlying V3d_PositionLight
-    pub fn get(&self) -> &crate::ffi::V3d_PositionLight {
+    pub fn get(&self) -> &crate::ffi_types::V3d_PositionLight {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleV3dPositionLight_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionLight_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_PositionLight
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_PositionLight {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_PositionLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dPositionLight_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionLight_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_PositionLight> to Handle<Graphic3d_CLight>
-    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight> {
+    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dCLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPositionLight_to_HandleGraphic3dCLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dPositionLight_to_HandleGraphic3dCLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_PositionLight> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPositionLight_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dPositionLight_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2745,9 +3119,9 @@ impl HandleV3dPositionLight {
     /// Returns `None` if the handle does not point to a `V3d_DirectionalLight` (or subclass).
     pub fn downcast_to_directional_light(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dDirectionalLight>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleV3dDirectionalLight>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleV3dPositionLight_downcast_to_HandleV3dDirectionalLight(
+            crate::ffi_extern_TKV3d::HandleV3dPositionLight_downcast_to_HandleV3dDirectionalLight(
                 self as *const Self,
             )
         });
@@ -2763,9 +3137,9 @@ impl HandleV3dPositionLight {
     /// Returns `None` if the handle does not point to a `V3d_PositionalLight` (or subclass).
     pub fn downcast_to_positional_light(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dPositionalLight>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleV3dPositionalLight>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleV3dPositionLight_downcast_to_HandleV3dPositionalLight(
+            crate::ffi_extern_TKV3d::HandleV3dPositionLight_downcast_to_HandleV3dPositionalLight(
                 self as *const Self,
             )
         });
@@ -2781,9 +3155,11 @@ impl HandleV3dPositionLight {
     /// Returns `None` if the handle does not point to a `V3d_SpotLight` (or subclass).
     pub fn downcast_to_spot_light(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleV3dSpotLight>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleV3dSpotLight>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleV3dPositionLight_downcast_to_HandleV3dSpotLight(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleV3dPositionLight_downcast_to_HandleV3dSpotLight(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -2806,11 +3182,11 @@ impl HandleV3dPositionLight {
 /// F = 1 / (ConstAttenuation() + LinearAttenuation() * Distance)
 /// @endcode
 /// Where Distance is the distance of the isolated source from the surface.
-pub use crate::ffi::V3d_PositionalLight as PositionalLight;
+pub use crate::ffi_types::V3d_PositionalLight as PositionalLight;
 
 unsafe impl crate::CppDeletable for PositionalLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_PositionalLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_PositionalLight_destructor(ptr);
     }
 }
 
@@ -2823,15 +3199,15 @@ impl PositionalLight {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_PositionalLight_ctor_pnt_color(thePos, theColor),
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_ctor_pnt_color(thePos, theColor),
             ))
         }
     }
 
     /// **Source:** `V3d_PositionalLight.hxx`:32 - `V3d_PositionalLight::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionalLight_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2841,7 +3217,7 @@ impl PositionalLight {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_PositionalLight_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2849,32 +3225,40 @@ impl PositionalLight {
     }
 
     /// **Source:** `V3d_PositionalLight.hxx`:32 - `V3d_PositionalLight::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_PositionalLight_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to V3d_PositionLight
     pub fn as_position_light(&self) -> &PositionLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_PositionalLight_as_V3d_PositionLight(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_as_V3d_PositionLight(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to V3d_PositionLight (mutable)
     pub fn as_position_light_mut(&mut self) -> &mut PositionLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_PositionalLight_as_V3d_PositionLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_as_V3d_PositionLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Graphic3d_CLight
     pub fn as_graphic3d_c_light(&self) -> &crate::graphic3d::CLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_PositionalLight_as_Graphic3d_CLight(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionalLight_as_Graphic3d_CLight(
                 self as *const Self,
             ))
         }
@@ -2883,52 +3267,61 @@ impl PositionalLight {
     /// Upcast to Graphic3d_CLight (mutable)
     pub fn as_graphic3d_c_light_mut(&mut self) -> &mut crate::graphic3d::CLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_PositionalLight_as_Graphic3d_CLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_as_Graphic3d_CLight_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_PositionalLight_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_PositionalLight_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dPositionalLight> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPositionalLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_PositionalLight_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:36 - `Graphic3d_CLight::CopyFrom()`
-    pub fn copy_from(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn copy_from(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_CopyFrom(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_CopyFrom(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:39 - `Graphic3d_CLight::Type()`
     pub fn type_(&self) -> crate::graphic3d::TypeOfLightSource {
         crate::graphic3d::TypeOfLightSource::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Type(self as *const Self)
         }))
         .unwrap()
     }
@@ -2936,7 +3329,7 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:42 - `Graphic3d_CLight::Name()`
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_Name(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Name(
                 self as *const Self,
             )))
         }
@@ -2945,14 +3338,17 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:45 - `Graphic3d_CLight::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetName(self as *mut Self, theName)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetName(
+                self as *mut Self,
+                theName,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:48 - `Graphic3d_CLight::Color()`
     pub fn color(&self) -> &crate::quantity::Color {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_Color(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Color(
                 self as *const Self,
             )))
         }
@@ -2961,77 +3357,95 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:51 - `Graphic3d_CLight::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetColor(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:56 - `Graphic3d_CLight::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_IsEnabled(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_IsEnabled(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:61 - `Graphic3d_CLight::SetEnabled()`
     pub fn set_enabled(&mut self, theIsOn: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetEnabled(self as *mut Self, theIsOn)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetEnabled(
+                self as *mut Self,
+                theIsOn,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:65 - `Graphic3d_CLight::ToCastShadows()`
     pub fn to_cast_shadows(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_ToCastShadows(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_ToCastShadows(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:68 - `Graphic3d_CLight::SetCastShadows()`
     pub fn set_cast_shadows(&mut self, theToCast: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetCastShadows(self as *mut Self, theToCast)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetCastShadows(
+                self as *mut Self,
+                theToCast,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:73 - `Graphic3d_CLight::IsHeadlight()`
     pub fn is_headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_IsHeadlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_IsHeadlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:76 - `Graphic3d_CLight::Headlight()`
     pub fn headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Headlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Headlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:79 - `Graphic3d_CLight::SetHeadlight()`
     pub fn set_headlight(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetHeadlight(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetHeadlight(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:110 - `Graphic3d_CLight::ConstAttenuation()`
     pub fn const_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_ConstAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_ConstAttenuation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:119 - `Graphic3d_CLight::LinearAttenuation()`
     pub fn linear_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_LinearAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_LinearAttenuation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:122 - `Graphic3d_CLight::Attenuation()`
     pub fn attenuation(&self, theConstAttenuation: &mut f64, theLinearAttenuation: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Attenuation(
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Attenuation(
                 self as *const Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -3042,7 +3456,7 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:130 - `Graphic3d_CLight::SetAttenuation()`
     pub fn set_attenuation(&mut self, theConstAttenuation: f32, theLinearAttenuation: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetAttenuation(
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetAttenuation(
                 self as *mut Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -3053,16 +3467,18 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:157 - `Graphic3d_CLight::DisplayPosition()`
     pub fn display_position(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_DisplayPosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_DisplayPosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:163 - `Graphic3d_CLight::SetDisplayPosition()`
     pub fn set_display_position(&mut self, thePosition: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetDisplayPosition(
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetDisplayPosition(
                 self as *mut Self,
                 thePosition,
             )
@@ -3072,100 +3488,120 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:189 - `Graphic3d_CLight::Intensity()`
     pub fn intensity(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Intensity(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Intensity(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:192 - `Graphic3d_CLight::SetIntensity()`
     pub fn set_intensity(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetIntensity(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetIntensity(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:196 - `Graphic3d_CLight::Smoothness()`
     pub fn smoothness(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Smoothness(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Smoothness(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:199 - `Graphic3d_CLight::SetSmoothRadius()`
     pub fn set_smooth_radius(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetSmoothRadius(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetSmoothRadius(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:203 - `Graphic3d_CLight::SetSmoothAngle()`
     pub fn set_smooth_angle(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetSmoothAngle(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetSmoothAngle(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:206 - `Graphic3d_CLight::HasRange()`
     pub fn has_range(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_HasRange(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_HasRange(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:211 - `Graphic3d_CLight::Range()`
     pub fn range(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Range(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Range(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:216 - `Graphic3d_CLight::SetRange()`
     pub fn set_range(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_SetRange(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_SetRange(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:221 - `Graphic3d_CLight::GetId()`
     pub fn get_id(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_GetId(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_GetId(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:224 - `Graphic3d_CLight::PackedParams()`
-    pub fn packed_params(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_params(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_PackedParams(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_PackedParams(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:227 - `Graphic3d_CLight::PackedColor()`
-    pub fn packed_color(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_color(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_PackedColor(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_PackedColor(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:231 - `Graphic3d_CLight::PackedDirectionRange()`
-    pub fn packed_direction_range(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_direction_range(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_PositionalLight_inherited_PackedDirectionRange(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_PackedDirectionRange(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:234 - `Graphic3d_CLight::PackedDirection()`
-    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec3> {
+    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_PositionalLight_inherited_PackedDirection(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_PackedDirection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3173,21 +3609,27 @@ impl PositionalLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:237 - `Graphic3d_CLight::Revision()`
     pub fn revision(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Revision(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Revision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3195,7 +3637,7 @@ impl PositionalLight {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_PositionalLight_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3208,80 +3650,94 @@ impl PositionalLight {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_PositionalLight_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_PositionalLight_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dPositionalLight;
+pub use crate::ffi_types::HandleV3dPositionalLight;
 
 unsafe impl crate::CppDeletable for HandleV3dPositionalLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dPositionalLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dPositionalLight_destructor(ptr);
     }
 }
 
 impl HandleV3dPositionalLight {
     /// Dereference this Handle to access the underlying V3d_PositionalLight
-    pub fn get(&self) -> &crate::ffi::V3d_PositionalLight {
+    pub fn get(&self) -> &crate::ffi_types::V3d_PositionalLight {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleV3dPositionalLight_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionalLight_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_PositionalLight
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_PositionalLight {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_PositionalLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dPositionalLight_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dPositionalLight_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<V3d_PositionalLight> to Handle<V3d_PositionLight>
-    pub fn to_handle_position_light(&self) -> crate::OwnedPtr<crate::ffi::HandleV3dPositionLight> {
+    pub fn to_handle_position_light(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPositionLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPositionalLight_to_HandleV3dPositionLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dPositionalLight_to_HandleV3dPositionLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_PositionalLight> to Handle<Graphic3d_CLight>
-    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight> {
+    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dCLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPositionalLight_to_HandleGraphic3dCLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dPositionalLight_to_HandleGraphic3dCLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_PositionalLight> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dPositionalLight_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleV3dPositionalLight_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3294,11 +3750,11 @@ impl HandleV3dPositionalLight {
 // ========================
 
 /// **Source:** `V3d_RectangularGrid.hxx`:30 - `V3d_RectangularGrid`
-pub use crate::ffi::V3d_RectangularGrid as RectangularGrid;
+pub use crate::ffi_types::V3d_RectangularGrid as RectangularGrid;
 
 unsafe impl crate::CppDeletable for RectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_RectangularGrid_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_RectangularGrid_destructor(ptr);
     }
 }
 
@@ -3311,15 +3767,19 @@ impl RectangularGrid {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_RectangularGrid_ctor_viewerptr_color2(aViewer, aColor, aTenthColor),
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_ctor_viewerptr_color2(
+                    aViewer,
+                    aColor,
+                    aTenthColor,
+                ),
             ))
         }
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:32 - `V3d_RectangularGrid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_RectangularGrid_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_RectangularGrid_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3332,35 +3792,39 @@ impl RectangularGrid {
         aTenthColor: &crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_set_colors(self as *mut Self, aColor, aTenthColor)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_set_colors(
+                self as *mut Self,
+                aColor,
+                aTenthColor,
+            )
         })
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:43 - `V3d_RectangularGrid::Display()`
     pub fn display(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_display(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_display(self as *mut Self)
         })
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:45 - `V3d_RectangularGrid::Erase()`
     pub fn erase(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_erase(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_erase(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:47 - `V3d_RectangularGrid::IsDisplayed()`
     pub fn is_displayed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_is_displayed(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_is_displayed(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:49 - `V3d_RectangularGrid::GraphicValues()`
     pub fn graphic_values(&self, XSize: &mut f64, YSize: &mut f64, OffSet: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_graphic_values(
                 self as *const Self,
                 XSize,
                 YSize,
@@ -3372,7 +3836,7 @@ impl RectangularGrid {
     /// **Source:** `V3d_RectangularGrid.hxx`:53 - `V3d_RectangularGrid::SetGraphicValues()`
     pub fn set_graphic_values(&mut self, XSize: f64, YSize: f64, OffSet: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_set_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_set_graphic_values(
                 self as *mut Self,
                 XSize,
                 YSize,
@@ -3385,7 +3849,7 @@ impl RectangularGrid {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::V3d_RectangularGrid_get_type_name(),
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3393,16 +3857,22 @@ impl RectangularGrid {
     }
 
     /// **Source:** `V3d_RectangularGrid.hxx`:32 - `V3d_RectangularGrid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_RectangularGrid_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Aspect_RectangularGrid
     pub fn as_aspect_rectangular_grid(&self) -> &crate::aspect::RectangularGrid {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_RectangularGrid_as_Aspect_RectangularGrid(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Aspect_RectangularGrid(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3410,7 +3880,9 @@ impl RectangularGrid {
     pub fn as_aspect_rectangular_grid_mut(&mut self) -> &mut crate::aspect::RectangularGrid {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::V3d_RectangularGrid_as_Aspect_RectangularGrid_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Aspect_RectangularGrid_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3418,7 +3890,7 @@ impl RectangularGrid {
     /// Upcast to Aspect_Grid
     pub fn as_aspect_grid(&self) -> &crate::aspect::Grid {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_RectangularGrid_as_Aspect_Grid(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Aspect_Grid(
                 self as *const Self,
             ))
         }
@@ -3427,37 +3899,41 @@ impl RectangularGrid {
     /// Upcast to Aspect_Grid (mutable)
     pub fn as_aspect_grid_mut(&mut self) -> &mut crate::aspect::Grid {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_RectangularGrid_as_Aspect_Grid_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Aspect_Grid_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_RectangularGrid_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_RectangularGrid_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dRectangularGrid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dRectangularGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_RectangularGrid_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -3465,21 +3941,27 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:41 - `Aspect_RectangularGrid::SetXStep()`
     pub fn set_x_step(&mut self, aStep: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetXStep(self as *mut Self, aStep)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetXStep(
+                self as *mut Self,
+                aStep,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:44 - `Aspect_RectangularGrid::SetYStep()`
     pub fn set_y_step(&mut self, aStep: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetYStep(self as *mut Self, aStep)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetYStep(
+                self as *mut Self,
+                aStep,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:49 - `Aspect_RectangularGrid::SetAngle()`
     pub fn set_angle(&mut self, anAngle1: f64, anAngle2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetAngle(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetAngle(
                 self as *mut Self,
                 anAngle1,
                 anAngle2,
@@ -3497,7 +3979,7 @@ impl RectangularGrid {
         RotationAngle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetGridValues(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetGridValues(
                 self as *mut Self,
                 XOrigin,
                 YOrigin,
@@ -3511,7 +3993,7 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:58 - `Aspect_RectangularGrid::Compute()`
     pub fn compute(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Compute(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Compute(
                 self as *const Self,
                 X,
                 Y,
@@ -3524,119 +4006,143 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:64 - `Aspect_RectangularGrid::XStep()`
     pub fn x_step(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_XStep(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_XStep(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:67 - `Aspect_RectangularGrid::YStep()`
     pub fn y_step(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_YStep(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_YStep(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:70 - `Aspect_RectangularGrid::FirstAngle()`
     pub fn first_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_FirstAngle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_FirstAngle(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:73 - `Aspect_RectangularGrid::SecondAngle()`
     pub fn second_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SecondAngle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SecondAngle(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_RectangularGrid.hxx`:75 - `Aspect_RectangularGrid::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:31 - `Aspect_Grid::SetXOrigin()`
     pub fn set_x_origin(&mut self, anOrigin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetXOrigin(self as *mut Self, anOrigin)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetXOrigin(
+                self as *mut Self,
+                anOrigin,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:34 - `Aspect_Grid::SetYOrigin()`
     pub fn set_y_origin(&mut self, anOrigin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetYOrigin(self as *mut Self, anOrigin)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetYOrigin(
+                self as *mut Self,
+                anOrigin,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:37 - `Aspect_Grid::SetRotationAngle()`
     pub fn set_rotation_angle(&mut self, anAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetRotationAngle(self as *mut Self, anAngle)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetRotationAngle(
+                self as *mut Self,
+                anAngle,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:40 - `Aspect_Grid::Rotate()`
     pub fn rotate(&mut self, anAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Rotate(self as *mut Self, anAngle)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Rotate(
+                self as *mut Self,
+                anAngle,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:43 - `Aspect_Grid::Translate()`
     pub fn translate(&mut self, aDx: f64, aDy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Translate(self as *mut Self, aDx, aDy)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Translate(
+                self as *mut Self,
+                aDx,
+                aDy,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:52 - `Aspect_Grid::Hit()`
     pub fn hit(&self, X: f64, Y: f64, gridX: &mut f64, gridY: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Hit(self as *const Self, X, Y, gridX, gridY)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Hit(
+                self as *const Self,
+                X,
+                Y,
+                gridX,
+                gridY,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:66 - `Aspect_Grid::Activate()`
     pub fn activate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Activate(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Activate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:70 - `Aspect_Grid::Deactivate()`
     pub fn deactivate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Deactivate(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Deactivate(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:73 - `Aspect_Grid::XOrigin()`
     pub fn x_origin(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_XOrigin(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_XOrigin(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:76 - `Aspect_Grid::YOrigin()`
     pub fn y_origin(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_YOrigin(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_YOrigin(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:79 - `Aspect_Grid::RotationAngle()`
     pub fn rotation_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_RotationAngle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_RotationAngle(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Aspect_Grid.hxx`:82 - `Aspect_Grid::IsActive()`
     pub fn is_active(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_IsActive(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_IsActive(self as *const Self)
         })
     }
 
@@ -3647,7 +4153,7 @@ impl RectangularGrid {
         aTenthColor: &mut crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Colors(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Colors(
                 self as *const Self,
                 aColor,
                 aTenthColor,
@@ -3658,7 +4164,7 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Aspect_Grid.hxx`:88 - `Aspect_Grid::SetDrawMode()`
     pub fn set_draw_mode(&mut self, aDrawMode: crate::aspect::GridDrawMode) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_SetDrawMode(
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_SetDrawMode(
                 self as *mut Self,
                 aDrawMode.into(),
             )
@@ -3668,22 +4174,28 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Aspect_Grid.hxx`:91 - `Aspect_Grid::DrawMode()`
     pub fn draw_mode(&self) -> crate::aspect::GridDrawMode {
         crate::aspect::GridDrawMode::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_DrawMode(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_DrawMode(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3691,7 +4203,7 @@ impl RectangularGrid {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_RectangularGrid_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3704,52 +4216,58 @@ impl RectangularGrid {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_RectangularGrid_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_RectangularGrid_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dRectangularGrid;
+pub use crate::ffi_types::HandleV3dRectangularGrid;
 
 unsafe impl crate::CppDeletable for HandleV3dRectangularGrid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dRectangularGrid_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_destructor(ptr);
     }
 }
 
 impl HandleV3dRectangularGrid {
     /// Dereference this Handle to access the underlying V3d_RectangularGrid
-    pub fn get(&self) -> &crate::ffi::V3d_RectangularGrid {
+    pub fn get(&self) -> &crate::ffi_types::V3d_RectangularGrid {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleV3dRectangularGrid_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_RectangularGrid
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_RectangularGrid {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_RectangularGrid {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dRectangularGrid_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_get_mut(
                 self as *mut Self,
             ))
         }
@@ -3758,10 +4276,10 @@ impl HandleV3dRectangularGrid {
     /// Upcast Handle<V3d_RectangularGrid> to Handle<Aspect_RectangularGrid>
     pub fn to_handle_rectangular_grid(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAspectRectangularGrid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAspectRectangularGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dRectangularGrid_to_HandleAspectRectangularGrid(
+                crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_to_HandleAspectRectangularGrid(
                     self as *const Self,
                 ),
             ))
@@ -3769,19 +4287,23 @@ impl HandleV3dRectangularGrid {
     }
 
     /// Upcast Handle<V3d_RectangularGrid> to Handle<Aspect_Grid>
-    pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
+    pub fn to_handle_grid(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAspectGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dRectangularGrid_to_HandleAspectGrid(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_to_HandleAspectGrid(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_RectangularGrid> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dRectangularGrid_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleV3dRectangularGrid_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3803,11 +4325,11 @@ impl HandleV3dRectangularGrid {
 /// The default values (1.0, 0.0) correspond to a minimum of attenuation.
 /// The concentration factor determines the dispersion of the light on the surface, the default
 /// value (1.0) corresponds to a minimum of dispersion.
-pub use crate::ffi::V3d_SpotLight as SpotLight;
+pub use crate::ffi_types::V3d_SpotLight as SpotLight;
 
 unsafe impl crate::CppDeletable for SpotLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_SpotLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_SpotLight_destructor(ptr);
     }
 }
 
@@ -3822,7 +4344,7 @@ impl SpotLight {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_SpotLight_ctor_pnt_typeoforientation_color(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_ctor_pnt_typeoforientation_color(
                     thePos,
                     theDirection.into(),
                     theColor,
@@ -3841,15 +4363,21 @@ impl SpotLight {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_SpotLight_ctor_pnt_dir_color(thePos, theDirection, theColor),
+                crate::ffi_extern_TKV3d::V3d_SpotLight_ctor_pnt_dir_color(
+                    thePos,
+                    theDirection,
+                    theColor,
+                ),
             ))
         }
     }
 
     /// **Source:** `V3d_SpotLight.hxx`:34 - `V3d_SpotLight::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3858,28 +4386,35 @@ impl SpotLight {
     /// according to a predefined directional vector.
     pub fn set_direction(&mut self, theOrientation: crate::v3d::TypeOfOrientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_set_direction(self as *mut Self, theOrientation.into())
+            crate::ffi_extern_TKV3d::V3d_SpotLight_set_direction(
+                self as *mut Self,
+                theOrientation.into(),
+            )
         })
     }
 
     /// **Source:** `V3d_SpotLight.hxx`:34 - `V3d_SpotLight::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_SpotLight_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_SpotLight.hxx`:34 - `V3d_SpotLight::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_SpotLight_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_get_type_descriptor()))
+        }
     }
 
     /// Upcast to V3d_PositionLight
     pub fn as_position_light(&self) -> &PositionLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_SpotLight_as_V3d_PositionLight(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_as_V3d_PositionLight(
                 self as *const Self,
             ))
         }
@@ -3888,16 +4423,16 @@ impl SpotLight {
     /// Upcast to V3d_PositionLight (mutable)
     pub fn as_position_light_mut(&mut self) -> &mut PositionLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_SpotLight_as_V3d_PositionLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_as_V3d_PositionLight_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Graphic3d_CLight
     pub fn as_graphic3d_c_light(&self) -> &crate::graphic3d::CLight {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_SpotLight_as_Graphic3d_CLight(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_as_Graphic3d_CLight(
                 self as *const Self,
             ))
         }
@@ -3906,16 +4441,16 @@ impl SpotLight {
     /// Upcast to Graphic3d_CLight (mutable)
     pub fn as_graphic3d_c_light_mut(&mut self) -> &mut crate::graphic3d::CLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_SpotLight_as_Graphic3d_CLight_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_as_Graphic3d_CLight_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_SpotLight_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3924,34 +4459,34 @@ impl SpotLight {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_SpotLight_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dSpotLight> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dSpotLight> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_SpotLight_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:36 - `Graphic3d_CLight::CopyFrom()`
-    pub fn copy_from(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn copy_from(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_CopyFrom(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_CopyFrom(self as *mut Self, theLight)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:39 - `Graphic3d_CLight::Type()`
     pub fn type_(&self) -> crate::graphic3d::TypeOfLightSource {
         crate::graphic3d::TypeOfLightSource::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Type(self as *const Self)
         }))
         .unwrap()
     }
@@ -3959,98 +4494,108 @@ impl SpotLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:42 - `Graphic3d_CLight::Name()`
     pub fn name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_Name(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Name(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:45 - `Graphic3d_CLight::SetName()`
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetName(self as *mut Self, theName)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetName(self as *mut Self, theName)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:48 - `Graphic3d_CLight::Color()`
     pub fn color(&self) -> &crate::quantity::Color {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_Color(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Color(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:51 - `Graphic3d_CLight::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetColor(self as *mut Self, theColor)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:56 - `Graphic3d_CLight::IsEnabled()`
     pub fn is_enabled(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_IsEnabled(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_IsEnabled(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:61 - `Graphic3d_CLight::SetEnabled()`
     pub fn set_enabled(&mut self, theIsOn: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetEnabled(self as *mut Self, theIsOn)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetEnabled(self as *mut Self, theIsOn)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:65 - `Graphic3d_CLight::ToCastShadows()`
     pub fn to_cast_shadows(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_ToCastShadows(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_ToCastShadows(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:68 - `Graphic3d_CLight::SetCastShadows()`
     pub fn set_cast_shadows(&mut self, theToCast: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetCastShadows(self as *mut Self, theToCast)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetCastShadows(
+                self as *mut Self,
+                theToCast,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:73 - `Graphic3d_CLight::IsHeadlight()`
     pub fn is_headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_IsHeadlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_IsHeadlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:76 - `Graphic3d_CLight::Headlight()`
     pub fn headlight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Headlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Headlight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:79 - `Graphic3d_CLight::SetHeadlight()`
     pub fn set_headlight(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetHeadlight(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetHeadlight(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:110 - `Graphic3d_CLight::ConstAttenuation()`
     pub fn const_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_ConstAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_ConstAttenuation(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:119 - `Graphic3d_CLight::LinearAttenuation()`
     pub fn linear_attenuation(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_LinearAttenuation(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_LinearAttenuation(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:122 - `Graphic3d_CLight::Attenuation()`
     pub fn attenuation(&self, theConstAttenuation: &mut f64, theLinearAttenuation: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Attenuation(
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Attenuation(
                 self as *const Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -4061,7 +4606,7 @@ impl SpotLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:130 - `Graphic3d_CLight::SetAttenuation()`
     pub fn set_attenuation(&mut self, theConstAttenuation: f32, theLinearAttenuation: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetAttenuation(
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetAttenuation(
                 self as *mut Self,
                 theConstAttenuation,
                 theLinearAttenuation,
@@ -4073,7 +4618,7 @@ impl SpotLight {
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_SpotLight_inherited_Direction(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Direction(self as *const Self),
             ))
         }
     }
@@ -4081,44 +4626,49 @@ impl SpotLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:157 - `Graphic3d_CLight::DisplayPosition()`
     pub fn display_position(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_DisplayPosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_DisplayPosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:163 - `Graphic3d_CLight::SetDisplayPosition()`
     pub fn set_display_position(&mut self, thePosition: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetDisplayPosition(self as *mut Self, thePosition)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetDisplayPosition(
+                self as *mut Self,
+                thePosition,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:168 - `Graphic3d_CLight::Angle()`
     pub fn angle(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Angle(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Angle(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:171 - `Graphic3d_CLight::SetAngle()`
     pub fn set_angle(&mut self, theAngle: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetAngle(self as *mut Self, theAngle)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetAngle(self as *mut Self, theAngle)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:181 - `Graphic3d_CLight::Concentration()`
     pub fn concentration(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Concentration(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Concentration(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:184 - `Graphic3d_CLight::SetConcentration()`
     pub fn set_concentration(&mut self, theConcentration: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetConcentration(
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetConcentration(
                 self as *mut Self,
                 theConcentration,
             )
@@ -4128,98 +4678,113 @@ impl SpotLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:189 - `Graphic3d_CLight::Intensity()`
     pub fn intensity(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Intensity(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Intensity(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:192 - `Graphic3d_CLight::SetIntensity()`
     pub fn set_intensity(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetIntensity(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetIntensity(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:196 - `Graphic3d_CLight::Smoothness()`
     pub fn smoothness(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Smoothness(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Smoothness(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:199 - `Graphic3d_CLight::SetSmoothRadius()`
     pub fn set_smooth_radius(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetSmoothRadius(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetSmoothRadius(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:203 - `Graphic3d_CLight::SetSmoothAngle()`
     pub fn set_smooth_angle(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetSmoothAngle(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetSmoothAngle(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:206 - `Graphic3d_CLight::HasRange()`
     pub fn has_range(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_HasRange(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_HasRange(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:211 - `Graphic3d_CLight::Range()`
     pub fn range(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Range(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Range(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:216 - `Graphic3d_CLight::SetRange()`
     pub fn set_range(&mut self, theValue: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_SetRange(self as *mut Self, theValue)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_SetRange(self as *mut Self, theValue)
         })
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:221 - `Graphic3d_CLight::GetId()`
     pub fn get_id(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_GetId(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_GetId(
+                self as *const Self,
+            )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:224 - `Graphic3d_CLight::PackedParams()`
-    pub fn packed_params(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_params(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_PackedParams(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_PackedParams(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:227 - `Graphic3d_CLight::PackedColor()`
-    pub fn packed_color(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_color(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_PackedColor(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_PackedColor(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:231 - `Graphic3d_CLight::PackedDirectionRange()`
-    pub fn packed_direction_range(&self) -> &crate::ffi::Graphic3d_Vec4 {
+    pub fn packed_direction_range(&self) -> &crate::ffi_types::Graphic3d_Vec4 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_SpotLight_inherited_PackedDirectionRange(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_PackedDirectionRange(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:234 - `Graphic3d_CLight::PackedDirection()`
-    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi::Graphic3d_Vec3> {
+    pub fn packed_direction(&self) -> crate::OwnedPtr<crate::ffi_types::Graphic3d_Vec3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_SpotLight_inherited_PackedDirection(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_PackedDirection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4227,21 +4792,24 @@ impl SpotLight {
     /// Inherited: **Source:** `Graphic3d_CLight.hxx`:237 - `Graphic3d_CLight::Revision()`
     pub fn revision(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Revision(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Revision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4249,7 +4817,7 @@ impl SpotLight {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_SpotLight_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4262,76 +4830,92 @@ impl SpotLight {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_SpotLight_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_SpotLight_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dSpotLight;
+pub use crate::ffi_types::HandleV3dSpotLight;
 
 unsafe impl crate::CppDeletable for HandleV3dSpotLight {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dSpotLight_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dSpotLight_destructor(ptr);
     }
 }
 
 impl HandleV3dSpotLight {
     /// Dereference this Handle to access the underlying V3d_SpotLight
-    pub fn get(&self) -> &crate::ffi::V3d_SpotLight {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dSpotLight_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_SpotLight {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dSpotLight_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_SpotLight
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_SpotLight {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_SpotLight {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dSpotLight_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dSpotLight_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_SpotLight> to Handle<V3d_PositionLight>
-    pub fn to_handle_position_light(&self) -> crate::OwnedPtr<crate::ffi::HandleV3dPositionLight> {
+    pub fn to_handle_position_light(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dPositionLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dSpotLight_to_HandleV3dPositionLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dSpotLight_to_HandleV3dPositionLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_SpotLight> to Handle<Graphic3d_CLight>
-    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dCLight> {
+    pub fn to_handle_c_light(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dCLight> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dSpotLight_to_HandleGraphic3dCLight(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dSpotLight_to_HandleGraphic3dCLight(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_SpotLight> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dSpotLight_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dSpotLight_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4343,11 +4927,11 @@ impl HandleV3dSpotLight {
 
 /// **Source:** `V3d_Trihedron.hxx`:29 - `V3d_Trihedron`
 /// Class for presentation of trihedron object.
-pub use crate::ffi::V3d_Trihedron as Trihedron;
+pub use crate::ffi_types::V3d_Trihedron as Trihedron;
 
 unsafe impl crate::CppDeletable for Trihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_Trihedron_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_Trihedron_destructor(ptr);
     }
 }
 
@@ -4355,27 +4939,35 @@ impl Trihedron {
     /// **Source:** `V3d_Trihedron.hxx`:34 - `V3d_Trihedron::V3d_Trihedron()`
     /// Creates a default trihedron.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Trihedron_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Trihedron_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:31 - `V3d_Trihedron::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Trihedron_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:40 - `V3d_Trihedron::IsWireframe()`
     /// Return TRUE if wireframe presentation is set; FALSE by default.
     pub fn is_wireframe(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Trihedron_is_wireframe(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Trihedron_is_wireframe(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:43 - `V3d_Trihedron::SetWireframe()`
     /// Switch wireframe / shaded trihedron.
     pub fn set_wireframe(&mut self, theAsWireframe: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_wireframe(self as *mut Self, theAsWireframe)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_wireframe(self as *mut Self, theAsWireframe)
         })
     }
 
@@ -4383,10 +4975,10 @@ impl Trihedron {
     /// Return trihedron position.
     pub fn transform_persistence(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTransformPers> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dTransformPers> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Trihedron_transform_persistence(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Trihedron_transform_persistence(self as *const Self),
             ))
         }
     }
@@ -4395,35 +4987,42 @@ impl Trihedron {
     /// Setup the corner to draw the trihedron.
     pub fn set_position(&mut self, thePosition: crate::aspect::TypeOfTriedronPosition) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_position(self as *mut Self, thePosition.into())
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_position(
+                self as *mut Self,
+                thePosition.into(),
+            )
         })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:59 - `V3d_Trihedron::Scale()`
     /// Return scale factor.
     pub fn scale(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_Trihedron_scale(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Trihedron_scale(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:62 - `V3d_Trihedron::SetScale()`
     /// Setup the scale factor.
     pub fn set_scale(&mut self, theScale: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_scale(self as *mut Self, theScale)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_scale(self as *mut Self, theScale)
         })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:65 - `V3d_Trihedron::SizeRatio()`
     /// Return size ratio factor.
     pub fn size_ratio(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_Trihedron_size_ratio(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Trihedron_size_ratio(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:68 - `V3d_Trihedron::SetSizeRatio()`
     /// Setup the size ratio factor.
     pub fn set_size_ratio(&mut self, theRatio: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_size_ratio(self as *mut Self, theRatio)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_size_ratio(self as *mut Self, theRatio)
         })
     }
 
@@ -4431,7 +5030,7 @@ impl Trihedron {
     /// Return arrow diameter.
     pub fn arrow_diameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Trihedron_arrow_diameter(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_arrow_diameter(self as *const Self)
         })
     }
 
@@ -4439,21 +5038,23 @@ impl Trihedron {
     /// Setup the arrow diameter.
     pub fn set_arrow_diameter(&mut self, theDiam: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_arrow_diameter(self as *mut Self, theDiam)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_arrow_diameter(self as *mut Self, theDiam)
         })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:77 - `V3d_Trihedron::NbFacets()`
     /// Return number of facets for tessellation.
     pub fn nb_facets(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::V3d_Trihedron_nb_facets(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Trihedron_nb_facets(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:80 - `V3d_Trihedron::SetNbFacets()`
     /// Setup the number of facets for tessellation.
     pub fn set_nb_facets(&mut self, theNbFacets: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_nb_facets(self as *mut Self, theNbFacets)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_nb_facets(self as *mut Self, theNbFacets)
         })
     }
 
@@ -4464,9 +5065,9 @@ impl Trihedron {
     pub fn label_aspect(
         &self,
         theAxis: crate::v3d::TypeOfAxe,
-    ) -> &crate::ffi::HandlePrs3dTextAspect {
+    ) -> &crate::ffi_types::HandlePrs3dTextAspect {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Trihedron_label_aspect(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_label_aspect(
                 self as *const Self,
                 theAxis.into(),
             )))
@@ -4482,7 +5083,7 @@ impl Trihedron {
         theZColor: &crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_labels_color_color3(
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_labels_color_color3(
                 self as *mut Self,
                 theXColor,
                 theYColor,
@@ -4495,7 +5096,10 @@ impl Trihedron {
     /// Setup color of text labels.
     pub fn set_labels_color_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_labels_color_color(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_labels_color_color(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
@@ -4506,9 +5110,9 @@ impl Trihedron {
     pub fn arrow_aspect(
         &self,
         theAxis: crate::v3d::TypeOfAxe,
-    ) -> &crate::ffi::HandlePrs3dShadingAspect {
+    ) -> &crate::ffi_types::HandlePrs3dShadingAspect {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Trihedron_arrow_aspect(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_arrow_aspect(
                 self as *const Self,
                 theAxis.into(),
             )))
@@ -4524,7 +5128,7 @@ impl Trihedron {
         theZColor: &crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_arrows_color(
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_arrows_color(
                 self as *mut Self,
                 theXColor,
                 theYColor,
@@ -4535,9 +5139,11 @@ impl Trihedron {
 
     /// **Source:** `V3d_Trihedron.hxx`:112 - `V3d_Trihedron::OriginAspect()`
     /// Return shading aspect of origin sphere.
-    pub fn origin_aspect(&self) -> &crate::ffi::HandlePrs3dShadingAspect {
+    pub fn origin_aspect(&self) -> &crate::ffi_types::HandlePrs3dShadingAspect {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Trihedron_origin_aspect(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_origin_aspect(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4547,7 +5153,7 @@ impl Trihedron {
     /// @return text of the label
     pub fn label(&self, theAxis: crate::v3d::TypeOfAxe) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Trihedron_label(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_label(
                 self as *const Self,
                 theAxis.into(),
             )))
@@ -4563,15 +5169,15 @@ impl Trihedron {
         theZ: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_set_labels(self as *mut Self, theX, theY, theZ)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_set_labels(self as *mut Self, theX, theY, theZ)
         })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:125 - `V3d_Trihedron::Display()`
     /// Display trihedron.
-    pub fn display_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn display_handlev3dview(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_display_handlev3dview(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_display_handlev3dview(self as *mut Self, theView)
         })
     }
 
@@ -4579,34 +5185,40 @@ impl Trihedron {
     /// Display trihedron.
     pub fn display_view(&mut self, theView: &View) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_display_view(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_display_view(self as *mut Self, theView)
         })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:131 - `V3d_Trihedron::Erase()`
     /// Erase trihedron.
     pub fn erase(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Trihedron_erase(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Trihedron_erase(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:31 - `V3d_Trihedron::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_Trihedron_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Trihedron_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_Trihedron.hxx`:31 - `V3d_Trihedron::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Trihedron_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_Trihedron_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_Trihedron_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4615,34 +5227,37 @@ impl Trihedron {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_Trihedron_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Trihedron_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dTrihedron> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dTrihedron> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Trihedron_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Trihedron_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4650,7 +5265,7 @@ impl Trihedron {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_Trihedron_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4663,58 +5278,68 @@ impl Trihedron {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Trihedron_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Trihedron_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dTrihedron;
+pub use crate::ffi_types::HandleV3dTrihedron;
 
 unsafe impl crate::CppDeletable for HandleV3dTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dTrihedron_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dTrihedron_destructor(ptr);
     }
 }
 
 impl HandleV3dTrihedron {
     /// Dereference this Handle to access the underlying V3d_Trihedron
-    pub fn get(&self) -> &crate::ffi::V3d_Trihedron {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dTrihedron_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_Trihedron {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dTrihedron_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_Trihedron
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_Trihedron {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_Trihedron {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dTrihedron_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dTrihedron_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_Trihedron> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dTrihedron_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dTrihedron_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4725,27 +5350,31 @@ impl HandleV3dTrihedron {
 // ========================
 
 /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped`
-pub use crate::ffi::V3d_UnMapped as UnMapped;
+pub use crate::ffi_types::V3d_UnMapped as UnMapped;
 
 unsafe impl crate::CppDeletable for UnMapped {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_UnMapped_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_UnMapped_destructor(ptr);
     }
 }
 
 impl UnMapped {
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::V3d_UnMapped()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_UnMapped_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::V3d_UnMapped()`
     pub fn new_charptr(theMessage: &str) -> crate::OwnedPtr<Self> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_UnMapped_ctor_charptr(
-                c_theMessage.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_ctor_charptr(c_theMessage.as_ptr()),
+            ))
         }
     }
 
@@ -4754,17 +5383,21 @@ impl UnMapped {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_UnMapped_ctor_charptr2(
-                c_theMessage.as_ptr(),
-                c_theStackTrace.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_ctor_charptr2(
+                    c_theMessage.as_ptr(),
+                    c_theStackTrace.as_ptr(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_UnMapped_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_UnMapped_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4772,23 +5405,25 @@ impl UnMapped {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKV3d::V3d_UnMapped_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_UnMapped_raise_sstream(theMessage) })
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_UnMapped_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dUnMapped> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dUnMapped> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_UnMapped_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKV3d::V3d_UnMapped_new_instance_charptr(c_theMessage.as_ptr()),
             ))
         }
     }
@@ -4797,12 +5432,12 @@ impl UnMapped {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dUnMapped> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dUnMapped> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_UnMapped_new_instance_charptr2(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -4813,21 +5448,25 @@ impl UnMapped {
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_UnMapped_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_UnMapped.hxx`:36 - `V3d_UnMapped::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_UnMapped_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_UnMapped_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_DomainError(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_DomainError(
                 self as *const Self,
             ))
         }
@@ -4836,32 +5475,36 @@ impl UnMapped {
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_Failure(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_Failure(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_Failure_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4870,53 +5513,55 @@ impl UnMapped {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_UnMapped_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleV3dUnMapped> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dUnMapped> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_UnMapped_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_UnMapped_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_Print(self as *const Self, theStream)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4924,7 +5569,7 @@ impl UnMapped {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_UnMapped_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4937,76 +5582,92 @@ impl UnMapped {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_UnMapped_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_UnMapped_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dUnMapped;
+pub use crate::ffi_types::HandleV3dUnMapped;
 
 unsafe impl crate::CppDeletable for HandleV3dUnMapped {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dUnMapped_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dUnMapped_destructor(ptr);
     }
 }
 
 impl HandleV3dUnMapped {
     /// Dereference this Handle to access the underlying V3d_UnMapped
-    pub fn get(&self) -> &crate::ffi::V3d_UnMapped {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dUnMapped_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_UnMapped {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dUnMapped_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_UnMapped
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_UnMapped {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_UnMapped {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleV3dUnMapped_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dUnMapped_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<V3d_UnMapped> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+    pub fn to_handle_domain_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dUnMapped_to_HandleStandardDomainError(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dUnMapped_to_HandleStandardDomainError(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_UnMapped> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dUnMapped_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dUnMapped_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<V3d_UnMapped> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dUnMapped_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dUnMapped_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5032,11 +5693,11 @@ impl HandleV3dUnMapped {
 ///
 /// View->Move(10.,20.,0.,True)     (Starting motion)
 /// View->Move(15.,-5.,0.,False)    (Next motion)
-pub use crate::ffi::V3d_View as View;
+pub use crate::ffi_types::V3d_View as View;
 
 unsafe impl crate::CppDeletable for View {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_View_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_View_destructor(ptr);
     }
 }
 
@@ -5044,12 +5705,15 @@ impl View {
     /// **Source:** `V3d_View.hxx`:61 - `V3d_View::V3d_View()`
     /// Initializes the view.
     pub fn new_handlev3dviewer_typeofview(
-        theViewer: &crate::ffi::HandleV3dViewer,
+        theViewer: &crate::ffi_types::HandleV3dViewer,
         theType: crate::v3d::TypeOfView,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_View_ctor_handlev3dviewer_typeofview(theViewer, theType.into()),
+                crate::ffi_extern_TKV3d::V3d_View_ctor_handlev3dviewer_typeofview(
+                    theViewer,
+                    theType.into(),
+                ),
             ))
         }
     }
@@ -5057,19 +5721,25 @@ impl View {
     /// **Source:** `V3d_View.hxx`:65 - `V3d_View::V3d_View()`
     /// Initializes the view by copying.
     pub fn new_handlev3dviewer_handlev3dview(
-        theViewer: &crate::ffi::HandleV3dViewer,
-        theView: &crate::ffi::HandleV3dView,
+        theViewer: &crate::ffi_types::HandleV3dViewer,
+        theView: &crate::ffi_types::HandleV3dView,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_View_ctor_handlev3dviewer_handlev3dview(theViewer, theView),
+                crate::ffi_extern_TKV3d::V3d_View_ctor_handlev3dviewer_handlev3dview(
+                    theViewer, theView,
+                ),
             ))
         }
     }
 
     /// **Source:** `V3d_View.hxx`:58 - `V3d_View::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:93 - `V3d_View::SetWindow()`
@@ -5089,14 +5759,14 @@ impl View {
     /// Size=(0.5,1.0),Offset=(5.0,0.0);
     pub fn set_window(
         &mut self,
-        theParentView: &crate::ffi::HandleV3dView,
-        theSize: &crate::ffi::Graphic3d_Vec2d,
+        theParentView: &crate::ffi_types::HandleV3dView,
+        theSize: &crate::ffi_types::Graphic3d_Vec2d,
         theCorner: crate::aspect::TypeOfTriedronPosition,
-        theOffset: &crate::ffi::Graphic3d_Vec2d,
-        theMargins: &crate::ffi::Graphic3d_Vec2i,
+        theOffset: &crate::ffi_types::Graphic3d_Vec2d,
+        theMargins: &crate::ffi_types::Graphic3d_Vec2i,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_window(
+            crate::ffi_extern_TKV3d::V3d_View_set_window(
                 self as *mut Self,
                 theParentView,
                 theSize,
@@ -5110,15 +5780,15 @@ impl View {
     /// **Source:** `V3d_View.hxx`:99 - `V3d_View::SetMagnify()`
     pub fn set_magnify(
         &mut self,
-        theWindow: &crate::ffi::HandleAspectWindow,
-        thePreviousView: &crate::ffi::HandleV3dView,
+        theWindow: &crate::ffi_types::HandleAspectWindow,
+        thePreviousView: &crate::ffi_types::HandleV3dView,
         theX1: i32,
         theY1: i32,
         theX2: i32,
         theY2: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_magnify(
+            crate::ffi_extern_TKV3d::V3d_View_set_magnify(
                 self as *mut Self,
                 theWindow,
                 thePreviousView,
@@ -5133,13 +5803,17 @@ impl View {
     /// **Source:** `V3d_View.hxx`:107 - `V3d_View::Remove()`
     /// Destroys the view.
     pub fn remove(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_remove(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_remove(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:110 - `V3d_View::Update()`
     /// Deprecated, Redraw() should be used instead.
     pub fn update(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_update(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_update(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:116 - `V3d_View::Redraw()`
@@ -5148,34 +5822,40 @@ impl View {
     /// Must be called if the view is shown.
     /// (Ex: DeIconification ) .
     pub fn redraw(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_redraw(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_redraw(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:119 - `V3d_View::RedrawImmediate()`
     /// Updates layer of immediate presentations.
     pub fn redraw_immediate(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_redraw_immediate(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_redraw_immediate(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:122 - `V3d_View::Invalidate()`
     /// Invalidates view content but does not redraw it.
     pub fn invalidate(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_invalidate(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_invalidate(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:125 - `V3d_View::IsInvalidated()`
     /// Returns true if cached view content has been invalidated.
     pub fn is_invalidated(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_is_invalidated(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_is_invalidated(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:128 - `V3d_View::IsInvalidatedImmediate()`
     /// Returns true if immediate layer content has been invalidated.
     pub fn is_invalidated_immediate(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_is_invalidated_immediate(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_is_invalidated_immediate(self as *const Self)
         })
     }
 
@@ -5183,7 +5863,7 @@ impl View {
     /// Invalidates view content within immediate layer but does not redraw it.
     pub fn invalidate_immediate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_invalidate_immediate(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_invalidate_immediate(self as *mut Self)
         })
     }
 
@@ -5194,14 +5874,18 @@ impl View {
     /// Warning: The view is centered and resized to preserve
     /// the height/width ratio of the window.
     pub fn must_be_resized(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_must_be_resized(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_must_be_resized(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:142 - `V3d_View::DoMapping()`
     /// Must be called when the window supporting the
     /// view is mapped or unmapped.
     pub fn do_mapping(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_do_mapping(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_do_mapping(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:147 - `V3d_View::IsEmpty()`
@@ -5209,13 +5893,17 @@ impl View {
     /// the displayed structures inside
     /// Returns True is The View is empty
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:150 - `V3d_View::UpdateLights()`
     /// Updates the lights of the view.
     pub fn update_lights(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_update_lights(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_update_lights(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:161 - `V3d_View::SetAutoZFitMode()`
@@ -5230,21 +5918,27 @@ impl View {
     /// is passed.
     pub fn set_auto_z_fit_mode(&mut self, theIsOn: bool, theScaleFactor: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_auto_z_fit_mode(self as *mut Self, theIsOn, theScaleFactor)
+            crate::ffi_extern_TKV3d::V3d_View_set_auto_z_fit_mode(
+                self as *mut Self,
+                theIsOn,
+                theScaleFactor,
+            )
         })
     }
 
     /// **Source:** `V3d_View.hxx`:165 - `V3d_View::AutoZFitMode()`
     /// returns TRUE if automatic z-fit mode is turned on.
     pub fn auto_z_fit_mode(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_auto_z_fit_mode(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_auto_z_fit_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:168 - `V3d_View::AutoZFitScaleFactor()`
     /// returns scale factor parameter of automatic z-fit mode.
     pub fn auto_z_fit_scale_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_auto_z_fit_scale_factor(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_auto_z_fit_scale_factor(self as *const Self)
         })
     }
 
@@ -5252,7 +5946,9 @@ impl View {
     /// If automatic z-range fitting is turned on, adjusts Z-min and Z-max
     /// projection volume planes with call to ZFitAll.
     pub fn auto_z_fit(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_auto_z_fit(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_auto_z_fit(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:176 - `V3d_View::ZFitAll()`
@@ -5260,7 +5956,7 @@ impl View {
     /// displayed objects.
     pub fn z_fit_all(&self, theScaleFactor: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_z_fit_all(self as *const Self, theScaleFactor)
+            crate::ffi_extern_TKV3d::V3d_View_z_fit_all(self as *const Self, theScaleFactor)
         })
     }
 
@@ -5275,7 +5971,7 @@ impl View {
         theV3: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_color_typeofcolor_real3(
+            crate::ffi_extern_TKV3d::V3d_View_set_background_color_typeofcolor_real3(
                 self as *mut Self,
                 theType.into(),
                 theV1,
@@ -5289,7 +5985,10 @@ impl View {
     /// Defines the background color of the view.
     pub fn set_background_color_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_color_color(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_View_set_background_color_color(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
@@ -5304,7 +6003,7 @@ impl View {
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_bg_gradient_colors(
+            crate::ffi_extern_TKV3d::V3d_View_set_bg_gradient_colors(
                 self as *mut Self,
                 theColor1,
                 theColor2,
@@ -5322,7 +6021,7 @@ impl View {
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_bg_gradient_style(
+            crate::ffi_extern_TKV3d::V3d_View_set_bg_gradient_style(
                 self as *mut Self,
                 theMethod.into(),
                 theToUpdate,
@@ -5341,7 +6040,7 @@ impl View {
     ) {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_image_charptr_fillmethod_bool(
+            crate::ffi_extern_TKV3d::V3d_View_set_background_image_charptr_fillmethod_bool(
                 self as *mut Self,
                 c_theFileName.as_ptr(),
                 theFillStyle.into(),
@@ -5355,17 +6054,12 @@ impl View {
     /// by default)
     pub fn set_background_image_handlegraphic3dtexture2d_fillmethod_bool(
         &mut self,
-        theTexture: &crate::ffi::HandleGraphic3dTexture2D,
+        theTexture: &crate::ffi_types::HandleGraphic3dTexture2D,
         theFillStyle: crate::aspect::FillMethod,
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_image_handlegraphic3dtexture2d_fillmethod_bool(
-                self as *mut Self,
-                theTexture,
-                theFillStyle.into(),
-                theToUpdate,
-            )
+            crate::ffi_extern_TKV3d::V3d_View_set_background_image_handlegraphic3dtexture2d_fillmethod_bool(self as *mut Self, theTexture, theFillStyle.into(), theToUpdate)
         })
     }
 
@@ -5377,7 +6071,7 @@ impl View {
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_bg_image_style(
+            crate::ffi_extern_TKV3d::V3d_View_set_bg_image_style(
                 self as *mut Self,
                 theFillStyle.into(),
                 theToUpdate,
@@ -5392,12 +6086,12 @@ impl View {
     /// 'GeneratePBREnvironment')
     pub fn set_background_cube_map(
         &mut self,
-        theCubeMap: &crate::ffi::HandleGraphic3dCubeMap,
+        theCubeMap: &crate::ffi_types::HandleGraphic3dCubeMap,
         theToUpdatePBREnv: bool,
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_cube_map(
+            crate::ffi_extern_TKV3d::V3d_View_set_background_cube_map(
                 self as *mut Self,
                 theCubeMap,
                 theToUpdatePBREnv,
@@ -5410,7 +6104,9 @@ impl View {
     /// Returns skydome aspect;
     pub fn background_skydome(&self) -> &crate::aspect::SkydomeBackground {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_View_background_skydome(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_background_skydome(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5424,7 +6120,7 @@ impl View {
         theToUpdatePBREnv: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_background_skydome(
+            crate::ffi_extern_TKV3d::V3d_View_set_background_skydome(
                 self as *mut Self,
                 theAspect,
                 theToUpdatePBREnv,
@@ -5436,7 +6132,7 @@ impl View {
     /// Returns TRUE if IBL (Image Based Lighting) from background cubemap is enabled.
     pub fn is_image_based_lighting(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_is_image_based_lighting(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_is_image_based_lighting(self as *const Self)
         })
     }
 
@@ -5447,7 +6143,7 @@ impl View {
     /// @param[in] theToUpdate redraw the view
     pub fn set_image_based_lighting(&mut self, theToEnableIBL: bool, theToUpdate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_image_based_lighting(
+            crate::ffi_extern_TKV3d::V3d_View_set_image_based_lighting(
                 self as *mut Self,
                 theToEnableIBL,
                 theToUpdate,
@@ -5459,7 +6155,10 @@ impl View {
     /// Activates IBL from background cubemap.
     pub fn generate_pbr_environment(&mut self, theToUpdate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_generate_pbr_environment(self as *mut Self, theToUpdate)
+            crate::ffi_extern_TKV3d::V3d_View_generate_pbr_environment(
+                self as *mut Self,
+                theToUpdate,
+            )
         })
     }
 
@@ -5468,15 +6167,15 @@ impl View {
     /// color.
     pub fn clear_pbr_environment(&mut self, theToUpdate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_clear_pbr_environment(self as *mut Self, theToUpdate)
+            crate::ffi_extern_TKV3d::V3d_View_clear_pbr_environment(self as *mut Self, theToUpdate)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:259 - `V3d_View::SetTextureEnv()`
     /// Sets the environment texture to use. No environment texture by default.
-    pub fn set_texture_env(&mut self, theTexture: &crate::ffi::HandleGraphic3dTextureEnv) {
+    pub fn set_texture_env(&mut self, theTexture: &crate::ffi_types::HandleGraphic3dTextureEnv) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_texture_env(self as *mut Self, theTexture)
+            crate::ffi_extern_TKV3d::V3d_View_set_texture_env(self as *mut Self, theTexture)
         })
     }
 
@@ -5487,7 +6186,7 @@ impl View {
     /// Warning! raises BadValue from V3d if the vector normal is NULL. .
     pub fn set_axis(&mut self, X: f64, Y: f64, Z: f64, Vx: f64, Vy: f64, Vz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_axis(self as *mut Self, X, Y, Z, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_set_axis(self as *mut Self, X, Y, Z, Vx, Vy, Vz)
         })
     }
 
@@ -5495,7 +6194,7 @@ impl View {
     /// Defines the visualization type in the view.
     pub fn set_visualization(&mut self, theType: crate::v3d::TypeOfVisualization) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_visualization(self as *mut Self, theType.into())
+            crate::ffi_extern_TKV3d::V3d_View_set_visualization(self as *mut Self, theType.into())
         })
     }
 
@@ -5503,41 +6202,51 @@ impl View {
     /// Activates theLight in the view.
     pub fn set_light_on_handlegraphic3dclight(
         &mut self,
-        theLight: &crate::ffi::HandleGraphic3dCLight,
+        theLight: &crate::ffi_types::HandleGraphic3dCLight,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_light_on_handlegraphic3dclight(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_View_set_light_on_handlegraphic3dclight(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// **Source:** `V3d_View.hxx`:280 - `V3d_View::SetLightOn()`
     /// Activates all the lights defined in this view.
     pub fn set_light_on(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_set_light_on(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_set_light_on(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:283 - `V3d_View::SetLightOff()`
     /// Deactivate theLight in this view.
     pub fn set_light_off_handlegraphic3dclight(
         &mut self,
-        theLight: &crate::ffi::HandleGraphic3dCLight,
+        theLight: &crate::ffi_types::HandleGraphic3dCLight,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_light_off_handlegraphic3dclight(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_View_set_light_off_handlegraphic3dclight(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// **Source:** `V3d_View.hxx`:286 - `V3d_View::SetLightOff()`
     /// Deactivate all the Lights defined in this view.
     pub fn set_light_off(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_set_light_off(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_set_light_off(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:289 - `V3d_View::IsActiveLight()`
     /// Returns TRUE when the light is active in this view.
-    pub fn is_active_light(&self, theLight: &crate::ffi::HandleGraphic3dCLight) -> bool {
+    pub fn is_active_light(&self, theLight: &crate::ffi_types::HandleGraphic3dCLight) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_is_active_light(self as *const Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_View_is_active_light(self as *const Self, theLight)
         })
     }
 
@@ -5545,15 +6254,21 @@ impl View {
     /// sets the immediate update mode and returns the previous one.
     pub fn set_immediate_update(&mut self, theImmediateUpdate: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_set_immediate_update(self as *mut Self, theImmediateUpdate)
+            crate::ffi_extern_TKV3d::V3d_View_set_immediate_update(
+                self as *mut Self,
+                theImmediateUpdate,
+            )
         })
     }
 
     /// **Source:** `V3d_View.hxx`:295 - `V3d_View::Trihedron()`
     /// Returns trihedron object.
-    pub fn trihedron(&mut self, theToCreate: bool) -> &crate::ffi::HandleV3dTrihedron {
+    pub fn trihedron(&mut self, theToCreate: bool) -> &crate::ffi_types::HandleV3dTrihedron {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_View_trihedron(self as *mut Self, theToCreate)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_trihedron(
+                self as *mut Self,
+                theToCreate,
+            )))
         }
     }
 
@@ -5574,7 +6289,7 @@ impl View {
         theNbFacettes: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_z_buffer_triedron_setup(
+            crate::ffi_extern_TKV3d::V3d_View_z_buffer_triedron_setup(
                 self as *mut Self,
                 theXColor,
                 theYColor,
@@ -5598,7 +6313,7 @@ impl View {
         theMode: crate::v3d::TypeOfVisualization,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_triedron_display(
+            crate::ffi_extern_TKV3d::V3d_View_triedron_display(
                 self as *mut Self,
                 thePosition.into(),
                 theColor,
@@ -5611,14 +6326,16 @@ impl View {
     /// **Source:** `V3d_View.hxx`:327 - `V3d_View::TriedronErase()`
     /// Erases the Triedron.
     pub fn triedron_erase(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_triedron_erase(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_triedron_erase(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:330 - `V3d_View::GetGraduatedTrihedron()`
     /// Returns data of a graduated trihedron.
     pub fn get_graduated_trihedron(&self) -> &crate::graphic3d::GraduatedTrihedron {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_View_get_graduated_trihedron(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_get_graduated_trihedron(
                 self as *const Self,
             )))
         }
@@ -5631,7 +6348,10 @@ impl View {
         theTrihedronData: &crate::graphic3d::GraduatedTrihedron,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_graduated_trihedron_display(self as *mut Self, theTrihedronData)
+            crate::ffi_extern_TKV3d::V3d_View_graduated_trihedron_display(
+                self as *mut Self,
+                theTrihedronData,
+            )
         })
     }
 
@@ -5639,7 +6359,7 @@ impl View {
     /// Erases a graduated trihedron from the view.
     pub fn graduated_trihedron_erase(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_graduated_trihedron_erase(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_graduated_trihedron_erase(self as *mut Self)
         })
     }
 
@@ -5647,7 +6367,9 @@ impl View {
     /// modify the Projection of the view perpendicularly to
     /// the privileged plane of the viewer.
     pub fn set_front(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_set_front(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_set_front(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:351 - `V3d_View::Rotate()`
@@ -5661,7 +6383,13 @@ impl View {
     /// aligned or confused.
     pub fn rotate_real3_bool(&mut self, Ax: f64, Ay: f64, Az: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_rotate_real3_bool(self as *mut Self, Ax, Ay, Az, Start)
+            crate::ffi_extern_TKV3d::V3d_View_rotate_real3_bool(
+                self as *mut Self,
+                Ax,
+                Ay,
+                Az,
+                Start,
+            )
         })
     }
 
@@ -5684,7 +6412,16 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_rotate_real6_bool(self as *mut Self, Ax, Ay, Az, X, Y, Z, Start)
+            crate::ffi_extern_TKV3d::V3d_View_rotate_real6_bool(
+                self as *mut Self,
+                Ax,
+                Ay,
+                Az,
+                X,
+                Y,
+                Z,
+                Start,
+            )
         })
     }
 
@@ -5704,7 +6441,7 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_rotate_typeofaxe_real4_bool(
+            crate::ffi_extern_TKV3d::V3d_View_rotate_typeofaxe_real4_bool(
                 self as *mut Self,
                 Axe.into(),
                 Angle,
@@ -5729,7 +6466,7 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_rotate_typeofaxe_real_bool(
+            crate::ffi_extern_TKV3d::V3d_View_rotate_typeofaxe_real_bool(
                 self as *mut Self,
                 Axe.into(),
                 Angle,
@@ -5744,7 +6481,7 @@ impl View {
     /// position expressed by Start = Standard_True
     pub fn rotate_real_bool(&mut self, Angle: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_rotate_real_bool(self as *mut Self, Angle, Start)
+            crate::ffi_extern_TKV3d::V3d_View_rotate_real_bool(self as *mut Self, Angle, Start)
         })
     }
 
@@ -5754,7 +6491,7 @@ impl View {
     /// initial position expressed by Start = Standard_True.
     pub fn move_real3_bool(&mut self, Dx: f64, Dy: f64, Dz: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_move_real3_bool(self as *mut Self, Dx, Dy, Dz, Start)
+            crate::ffi_extern_TKV3d::V3d_View_move_real3_bool(self as *mut Self, Dx, Dy, Dz, Start)
         })
     }
 
@@ -5770,7 +6507,7 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_move_typeofaxe_real_bool(
+            crate::ffi_extern_TKV3d::V3d_View_move_typeofaxe_real_bool(
                 self as *mut Self,
                 Axe.into(),
                 Length,
@@ -5785,7 +6522,7 @@ impl View {
     /// expressed by Start = Standard_True
     pub fn move_real_bool(&mut self, Length: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_move_real_bool(self as *mut Self, Length, Start)
+            crate::ffi_extern_TKV3d::V3d_View_move_real_bool(self as *mut Self, Length, Start)
         })
     }
 
@@ -5796,7 +6533,13 @@ impl View {
     /// Start = Standard_True
     pub fn translate_real3_bool(&mut self, Dx: f64, Dy: f64, Dz: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_translate_real3_bool(self as *mut Self, Dx, Dy, Dz, Start)
+            crate::ffi_extern_TKV3d::V3d_View_translate_real3_bool(
+                self as *mut Self,
+                Dx,
+                Dy,
+                Dz,
+                Start,
+            )
         })
     }
 
@@ -5812,7 +6555,7 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_translate_typeofaxe_real_bool(
+            crate::ffi_extern_TKV3d::V3d_View_translate_typeofaxe_real_bool(
                 self as *mut Self,
                 Axe.into(),
                 Length,
@@ -5827,7 +6570,7 @@ impl View {
     /// position expressed by Start = Standard_True
     pub fn translate_real_bool(&mut self, Length: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_translate_real_bool(self as *mut Self, Length, Start)
+            crate::ffi_extern_TKV3d::V3d_View_translate_real_bool(self as *mut Self, Length, Start)
         })
     }
 
@@ -5837,7 +6580,7 @@ impl View {
     /// and updates the view.
     pub fn place(&mut self, theXp: i32, theYp: i32, theZoomFactor: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_place(self as *mut Self, theXp, theYp, theZoomFactor)
+            crate::ffi_extern_TKV3d::V3d_View_place(self as *mut Self, theXp, theYp, theZoomFactor)
         })
     }
 
@@ -5849,7 +6592,7 @@ impl View {
     /// Start = Standard_True
     pub fn turn_real3_bool(&mut self, Ax: f64, Ay: f64, Az: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_turn_real3_bool(self as *mut Self, Ax, Ay, Az, Start)
+            crate::ffi_extern_TKV3d::V3d_View_turn_real3_bool(self as *mut Self, Ax, Ay, Az, Start)
         })
     }
 
@@ -5866,7 +6609,7 @@ impl View {
         Start: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_turn_typeofaxe_real_bool(
+            crate::ffi_extern_TKV3d::V3d_View_turn_typeofaxe_real_bool(
                 self as *mut Self,
                 Axe.into(),
                 Angle,
@@ -5881,7 +6624,7 @@ impl View {
     /// position expressed by Start = Standard_True
     pub fn turn_real_bool(&mut self, Angle: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_turn_real_bool(self as *mut Self, Angle, Start)
+            crate::ffi_extern_TKV3d::V3d_View_turn_real_bool(self as *mut Self, Angle, Start)
         })
     }
 
@@ -5892,7 +6635,7 @@ impl View {
     /// RADIANS.
     pub fn set_twist(&mut self, Angle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_twist(self as *mut Self, Angle)
+            crate::ffi_extern_TKV3d::V3d_View_set_twist(self as *mut Self, Angle)
         })
     }
 
@@ -5900,7 +6643,7 @@ impl View {
     /// Defines the position of the eye..
     pub fn set_eye(&mut self, X: f64, Y: f64, Z: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_eye(self as *mut Self, X, Y, Z)
+            crate::ffi_extern_TKV3d::V3d_View_set_eye(self as *mut Self, X, Y, Z)
         })
     }
 
@@ -5909,7 +6652,7 @@ impl View {
     /// without update the projection .
     pub fn set_depth(&mut self, Depth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_depth(self as *mut Self, Depth)
+            crate::ffi_extern_TKV3d::V3d_View_set_depth(self as *mut Self, Depth)
         })
     }
 
@@ -5917,7 +6660,7 @@ impl View {
     /// Defines the orientation of the projection.
     pub fn set_proj_real3(&mut self, Vx: f64, Vy: f64, Vz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_proj_real3(self as *mut Self, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_set_proj_real3(self as *mut Self, Vx, Vy, Vz)
         })
     }
 
@@ -5931,7 +6674,7 @@ impl View {
         theIsYup: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_proj_typeoforientation_bool(
+            crate::ffi_extern_TKV3d::V3d_View_set_proj_typeoforientation_bool(
                 self as *mut Self,
                 theOrientation.into(),
                 theIsYup,
@@ -5942,14 +6685,16 @@ impl View {
     /// **Source:** `V3d_View.hxx`:500 - `V3d_View::SetAt()`
     /// Defines the position of the view point.
     pub fn set_at(&mut self, X: f64, Y: f64, Z: f64) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_set_at(self as *mut Self, X, Y, Z) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_set_at(self as *mut Self, X, Y, Z)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:503 - `V3d_View::SetUp()`
     /// Defines the orientation of the high point.
     pub fn set_up_real3(&mut self, Vx: f64, Vy: f64, Vz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_up_real3(self as *mut Self, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_set_up_real3(self as *mut Self, Vx, Vy, Vz)
         })
     }
 
@@ -5957,7 +6702,10 @@ impl View {
     /// Defines the orientation(SO) of the high point.
     pub fn set_up_typeoforientation(&mut self, Orientation: crate::v3d::TypeOfOrientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_up_typeoforientation(self as *mut Self, Orientation.into())
+            crate::ffi_extern_TKV3d::V3d_View_set_up_typeoforientation(
+                self as *mut Self,
+                Orientation.into(),
+            )
         })
     }
 
@@ -5966,7 +6714,7 @@ impl View {
     /// which will be the return state at ResetViewOrientation.
     pub fn set_view_orientation_default(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_view_orientation_default(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_set_view_orientation_default(self as *mut Self)
         })
     }
 
@@ -5975,7 +6723,7 @@ impl View {
     /// Updates the view
     pub fn reset_view_orientation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_reset_view_orientation(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_reset_view_orientation(self as *mut Self)
         })
     }
 
@@ -5995,7 +6743,7 @@ impl View {
     /// Performs update of view.
     pub fn panning(&mut self, theDXv: f64, theDYv: f64, theZoomFactor: f64, theToStart: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_panning(
+            crate::ffi_extern_TKV3d::V3d_View_panning(
                 self as *mut Self,
                 theDXv,
                 theDYv,
@@ -6014,7 +6762,7 @@ impl View {
     /// @param[in] theYp  the y coordinate.
     pub fn set_center(&mut self, theXp: i32, theYp: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_center(self as *mut Self, theXp, theYp)
+            crate::ffi_extern_TKV3d::V3d_View_set_center(self as *mut Self, theXp, theYp)
         })
     }
 
@@ -6023,7 +6771,7 @@ impl View {
     /// keeping the initial height/width ratio unchanged.
     pub fn set_size(&mut self, theSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_size(self as *mut Self, theSize)
+            crate::ffi_extern_TKV3d::V3d_View_set_size(self as *mut Self, theSize)
         })
     }
 
@@ -6036,7 +6784,7 @@ impl View {
     /// NOTE than the XY Size of the View is NOT modified .
     pub fn set_z_size(&mut self, SetZSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_z_size(self as *mut Self, SetZSize)
+            crate::ffi_extern_TKV3d::V3d_View_set_z_size(self as *mut Self, SetZSize)
         })
     }
 
@@ -6046,7 +6794,7 @@ impl View {
     /// Updates the view.
     pub fn set_zoom(&mut self, Coef: f64, Start: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_zoom(self as *mut Self, Coef, Start)
+            crate::ffi_extern_TKV3d::V3d_View_set_zoom(self as *mut Self, Coef, Start)
         })
     }
 
@@ -6055,7 +6803,9 @@ impl View {
     /// initialised by SetViewMappingDefault().
     /// Updates the view.
     pub fn set_scale(&mut self, Coef: f64) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_set_scale(self as *mut Self, Coef) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_set_scale(self as *mut Self, Coef)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:575 - `V3d_View::SetAxialScale()`
@@ -6069,7 +6819,7 @@ impl View {
     /// Updates the view.
     pub fn set_axial_scale(&mut self, Sx: f64, Sy: f64, Sz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_axial_scale(self as *mut Self, Sx, Sy, Sz)
+            crate::ffi_extern_TKV3d::V3d_View_set_axial_scale(self as *mut Self, Sx, Sy, Sz)
         })
     }
 
@@ -6082,7 +6832,11 @@ impl View {
     /// @param[in] theToUpdate  flag to perform view update.
     pub fn fit_all_real_bool(&mut self, theMargin: f64, theToUpdate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_fit_all_real_bool(self as *mut Self, theMargin, theToUpdate)
+            crate::ffi_extern_TKV3d::V3d_View_fit_all_real_bool(
+                self as *mut Self,
+                theMargin,
+                theToUpdate,
+            )
         })
     }
 
@@ -6101,7 +6855,7 @@ impl View {
         theToUpdate: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_fit_all_box_real_bool(
+            crate::ffi_extern_TKV3d::V3d_View_fit_all_box_real_bool(
                 self as *mut Self,
                 theBox,
                 theMargin,
@@ -6117,7 +6871,7 @@ impl View {
     /// NOTE than the original XY size of the view is NOT modified .
     pub fn depth_fit_all(&mut self, Aspect: f64, Margin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_depth_fit_all(self as *mut Self, Aspect, Margin)
+            crate::ffi_extern_TKV3d::V3d_View_depth_fit_all(self as *mut Self, Aspect, Margin)
         })
     }
 
@@ -6128,7 +6882,7 @@ impl View {
     /// NOTE than the original Z size of the view is NOT modified .
     pub fn fit_all_real4(&mut self, theMinXv: f64, theMinYv: f64, theMaxXv: f64, theMaxYv: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_fit_all_real4(
+            crate::ffi_extern_TKV3d::V3d_View_fit_all_real4(
                 self as *mut Self,
                 theMinXv,
                 theMinYv,
@@ -6148,7 +6902,7 @@ impl View {
     /// @param[in] theMaxYp  pixel coordinates of maximal corner on y screen axis.
     pub fn window_fit(&mut self, theMinXp: i32, theMinYp: i32, theMaxXp: i32, theMaxYp: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_window_fit(
+            crate::ffi_extern_TKV3d::V3d_View_window_fit(
                 self as *mut Self,
                 theMinXp,
                 theMinYp,
@@ -6163,7 +6917,7 @@ impl View {
     /// state returned from ResetViewmapping.
     pub fn set_view_mapping_default(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_view_mapping_default(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_set_view_mapping_default(self as *mut Self)
         })
     }
 
@@ -6172,7 +6926,7 @@ impl View {
     /// Updates the view
     pub fn reset_view_mapping(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_reset_view_mapping(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_reset_view_mapping(self as *mut Self)
         })
     }
 
@@ -6180,7 +6934,7 @@ impl View {
     /// Resets the centering and the orientation of the view.
     pub fn reset(&mut self, theToUpdate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_reset(self as *mut Self, theToUpdate)
+            crate::ffi_extern_TKV3d::V3d_View_reset(self as *mut Self, theToUpdate)
         })
     }
 
@@ -6188,7 +6942,9 @@ impl View {
     /// Converts the PIXEL value
     /// to a value in the projection plane.
     pub fn convert_int(&self, Vp: i32) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_convert_int(self as *const Self, Vp) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_convert_int(self as *const Self, Vp)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:644 - `V3d_View::Convert()`
@@ -6196,7 +6952,13 @@ impl View {
     /// in the reference frame of the projection plane.
     pub fn convert_int2_real2(&self, Xp: i32, Yp: i32, Xv: &mut f64, Yv: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_int2_real2(self as *const Self, Xp, Yp, Xv, Yv)
+            crate::ffi_extern_TKV3d::V3d_View_convert_int2_real2(
+                self as *const Self,
+                Xp,
+                Yp,
+                Xv,
+                Yv,
+            )
         })
     }
 
@@ -6204,7 +6966,9 @@ impl View {
     /// Converts tha value of the projection plane into
     /// a PIXEL value.
     pub fn convert_real(&self, Vv: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_convert_real(self as *const Self, Vv) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_convert_real(self as *const Self, Vv)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:655 - `V3d_View::Convert()`
@@ -6212,7 +6976,13 @@ impl View {
     /// of the projection plane into a point PIXEL.
     pub fn convert_real2_int2(&self, Xv: f64, Yv: f64, Xp: &mut i32, Yp: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_real2_int2(self as *const Self, Xv, Yv, Xp, Yp)
+            crate::ffi_extern_TKV3d::V3d_View_convert_real2_int2(
+                self as *const Self,
+                Xv,
+                Yv,
+                Xp,
+                Yp,
+            )
         })
     }
 
@@ -6223,7 +6993,14 @@ impl View {
     /// of the eye/view point vector.
     pub fn convert_int2_real3(&self, Xp: i32, Yp: i32, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_int2_real3(self as *const Self, Xp, Yp, X, Y, Z)
+            crate::ffi_extern_TKV3d::V3d_View_convert_int2_real3(
+                self as *const Self,
+                Xp,
+                Yp,
+                X,
+                Y,
+                Z,
+            )
         })
     }
 
@@ -6245,7 +7022,17 @@ impl View {
         Vz: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_with_proj(self as *const Self, Xp, Yp, X, Y, Z, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_convert_with_proj(
+                self as *const Self,
+                Xp,
+                Yp,
+                X,
+                Y,
+                Z,
+                Vx,
+                Vy,
+                Vz,
+            )
         })
     }
 
@@ -6278,7 +7065,14 @@ impl View {
         Zg: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_to_grid_int2_real3(self as *const Self, Xp, Yp, Xg, Yg, Zg)
+            crate::ffi_extern_TKV3d::V3d_View_convert_to_grid_int2_real3(
+                self as *const Self,
+                Xp,
+                Yp,
+                Xg,
+                Yg,
+                Zg,
+            )
         })
     }
 
@@ -6295,7 +7089,15 @@ impl View {
         Zg: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_to_grid_real6(self as *const Self, X, Y, Z, Xg, Yg, Zg)
+            crate::ffi_extern_TKV3d::V3d_View_convert_to_grid_real6(
+                self as *const Self,
+                X,
+                Y,
+                Z,
+                Xg,
+                Yg,
+                Zg,
+            )
         })
     }
 
@@ -6304,7 +7106,14 @@ impl View {
     /// the view into the projected point in the associated window.
     pub fn convert_real3_int2(&self, X: f64, Y: f64, Z: f64, Xp: &mut i32, Yp: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_convert_real3_int2(self as *const Self, X, Y, Z, Xp, Yp)
+            crate::ffi_extern_TKV3d::V3d_View_convert_real3_int2(
+                self as *const Self,
+                X,
+                Y,
+                Z,
+                Xp,
+                Yp,
+            )
         })
     }
 
@@ -6314,7 +7123,14 @@ impl View {
     /// relative to theZ.
     pub fn project_real5(&self, theX: f64, theY: f64, theZ: f64, theXp: &mut f64, theYp: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_project_real5(self as *const Self, theX, theY, theZ, theXp, theYp)
+            crate::ffi_extern_TKV3d::V3d_View_project_real5(
+                self as *const Self,
+                theX,
+                theY,
+                theZ,
+                theXp,
+                theYp,
+            )
         })
     }
 
@@ -6332,7 +7148,7 @@ impl View {
         theZp: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_project_real6(
+            crate::ffi_extern_TKV3d::V3d_View_project_real6(
                 self as *const Self,
                 theX,
                 theY,
@@ -6355,7 +7171,7 @@ impl View {
         V3: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_background_color_typeofcolor_real3(
+            crate::ffi_extern_TKV3d::V3d_View_background_color_typeofcolor_real3(
                 self as *const Self,
                 Type.into(),
                 V1,
@@ -6369,9 +7185,9 @@ impl View {
     /// Returns the Background color object of the view.
     pub fn background_color(&self) -> crate::OwnedPtr<crate::quantity::Color> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_background_color(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_background_color(self as *const Self),
+            ))
         }
     }
 
@@ -6383,7 +7199,7 @@ impl View {
         theColor2: &mut crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_gradient_background_colors(
+            crate::ffi_extern_TKV3d::V3d_View_gradient_background_colors(
                 self as *const Self,
                 theColor1,
                 theColor2,
@@ -6396,7 +7212,7 @@ impl View {
     pub fn gradient_background(&self) -> crate::OwnedPtr<crate::aspect::GradientBackground> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_View_gradient_background(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_View_gradient_background(self as *const Self),
             ))
         }
     }
@@ -6405,14 +7221,14 @@ impl View {
     /// Returns the current value of the zoom expressed with
     /// respect to SetViewMappingDefault().
     pub fn scale(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_scale(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKV3d::V3d_View_scale(self as *const Self) })
     }
 
     /// **Source:** `V3d_View.hxx`:767 - `V3d_View::AxialScale()`
     /// Returns the current values of the anisotropic (axial) scale factors.
     pub fn axial_scale_real3(&self, Sx: &mut f64, Sy: &mut f64, Sz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_axial_scale_real3(self as *const Self, Sx, Sy, Sz)
+            crate::ffi_extern_TKV3d::V3d_View_axial_scale_real3(self as *const Self, Sx, Sy, Sz)
         })
     }
 
@@ -6420,27 +7236,31 @@ impl View {
     /// Returns the height and width of the view.
     pub fn size(&self, Width: &mut f64, Height: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_size(self as *const Self, Width, Height)
+            crate::ffi_extern_TKV3d::V3d_View_size(self as *const Self, Width, Height)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:773 - `V3d_View::ZSize()`
     /// Returns the Depth of the view .
     pub fn z_size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_z_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_z_size(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:776 - `V3d_View::Eye()`
     /// Returns the position of the eye.
     pub fn eye(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_eye(self as *const Self, X, Y, Z) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_eye(self as *const Self, X, Y, Z)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:779 - `V3d_View::FocalReferencePoint()`
     /// Returns the position of point which emanating the projections.
     pub fn focal_reference_point(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_focal_reference_point(self as *const Self, X, Y, Z)
+            crate::ffi_extern_TKV3d::V3d_View_focal_reference_point(self as *const Self, X, Y, Z)
         })
     }
 
@@ -6460,7 +7280,7 @@ impl View {
         VZ: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_proj_reference_axe(
+            crate::ffi_extern_TKV3d::V3d_View_proj_reference_axe(
                 self as *const Self,
                 Xpix,
                 Ypix,
@@ -6477,28 +7297,30 @@ impl View {
     /// **Source:** `V3d_View.hxx`:797 - `V3d_View::Depth()`
     /// Returns the Distance between the Eye and View Point.
     pub fn depth(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_depth(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKV3d::V3d_View_depth(self as *const Self) })
     }
 
     /// **Source:** `V3d_View.hxx`:800 - `V3d_View::Proj()`
     /// Returns the projection vector.
     pub fn proj(&self, Vx: &mut f64, Vy: &mut f64, Vz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_proj(self as *const Self, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_proj(self as *const Self, Vx, Vy, Vz)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:803 - `V3d_View::At()`
     /// Returns the position of the view point.
     pub fn at(&self, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_at(self as *const Self, X, Y, Z) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_at(self as *const Self, X, Y, Z)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:806 - `V3d_View::Up()`
     /// Returns the vector giving the position of the high point.
     pub fn up(&self, Vx: &mut f64, Vy: &mut f64, Vz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_up(self as *const Self, Vx, Vy, Vz)
+            crate::ffi_extern_TKV3d::V3d_View_up(self as *const Self, Vx, Vy, Vz)
         })
     }
 
@@ -6506,14 +7328,14 @@ impl View {
     /// Returns in RADIANS the orientation of the view around
     /// the visual axis measured from the Y axis of the screen.
     pub fn twist(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_twist(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKV3d::V3d_View_twist(self as *const Self) })
     }
 
     /// **Source:** `V3d_View.hxx`:813 - `V3d_View::ShadingModel()`
     /// Returns the current shading model; Graphic3d_TypeOfShadingModel_Phong by default.
     pub fn shading_model(&self) -> crate::graphic3d::TypeOfShadingModel {
         crate::graphic3d::TypeOfShadingModel::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_View_shading_model(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_shading_model(self as *const Self)
         }))
         .unwrap()
     }
@@ -6522,16 +7344,19 @@ impl View {
     /// Defines the shading model for the visualization.
     pub fn set_shading_model(&mut self, theShadingModel: crate::graphic3d::TypeOfShadingModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_shading_model(self as *mut Self, theShadingModel.into())
+            crate::ffi_extern_TKV3d::V3d_View_set_shading_model(
+                self as *mut Self,
+                theShadingModel.into(),
+            )
         })
     }
 
     /// **Source:** `V3d_View.hxx`:818 - `V3d_View::TextureEnv()`
-    pub fn texture_env(&self) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dTextureEnv> {
+    pub fn texture_env(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dTextureEnv> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_texture_env(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_texture_env(self as *const Self),
+            ))
         }
     }
 
@@ -6539,23 +7364,29 @@ impl View {
     /// Returns the current visualisation mode.
     pub fn visualization(&self) -> crate::v3d::TypeOfVisualization {
         crate::v3d::TypeOfVisualization::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_View_visualization(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_visualization(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `V3d_View.hxx`:824 - `V3d_View::ActiveLights()`
     /// Returns a list of active lights.
-    pub fn active_lights(&self) -> &crate::ffi::V3d_ListOfLight {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_active_lights(self as *const Self))) }
+    pub fn active_lights(&self) -> &crate::ffi_types::V3d_ListOfLight {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_active_lights(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:827 - `V3d_View::ActiveLightIterator()`
     /// Return iterator for defined lights.
-    pub fn active_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+    pub fn active_light_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::V3d_ListOfLight_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_View_active_light_iterator(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_View_active_light_iterator(self as *const Self),
             ))
         }
     }
@@ -6563,36 +7394,42 @@ impl View {
     /// **Source:** `V3d_View.hxx`:833 - `V3d_View::LightLimit()`
     /// Returns the MAX number of light associated to the view.
     pub fn light_limit(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_light_limit(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_light_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:836 - `V3d_View::Viewer()`
     /// Returns the viewer in which the view has been created.
-    pub fn viewer(&self) -> crate::OwnedPtr<crate::ffi::HandleV3dViewer> {
+    pub fn viewer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleV3dViewer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_viewer(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_viewer(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `V3d_View.hxx`:839 - `V3d_View::IfWindow()`
     /// Returns True if MyView is associated with a window .
     pub fn if_window(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_if_window(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_if_window(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:842 - `V3d_View::Window()`
     /// Returns the Aspect Window associated with the view.
-    pub fn window(&self) -> &crate::ffi::HandleAspectWindow {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_window(self as *const Self))) }
+    pub fn window(&self) -> &crate::ffi_types::HandleAspectWindow {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_window(self as *const Self)))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:845 - `V3d_View::Type()`
     /// Returns the Type of the View
     pub fn type_(&self) -> crate::v3d::TypeOfView {
         crate::v3d::TypeOfView::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_View_type_(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_type_(self as *const Self)
         }))
         .unwrap()
     }
@@ -6611,7 +7448,13 @@ impl View {
     /// Performs update of view.
     pub fn pan(&mut self, theDXp: i32, theDYp: i32, theZoomFactor: f64, theToStart: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_pan(self as *mut Self, theDXp, theDYp, theZoomFactor, theToStart)
+            crate::ffi_extern_TKV3d::V3d_View_pan(
+                self as *mut Self,
+                theDXp,
+                theDYp,
+                theZoomFactor,
+                theToStart,
+            )
         })
     }
 
@@ -6624,7 +7467,13 @@ impl View {
     /// @param[in] theYp2  the y coordinate of second mouse position, in pixels.
     pub fn zoom(&mut self, theXp1: i32, theYp1: i32, theXp2: i32, theYp2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_zoom(self as *mut Self, theXp1, theYp1, theXp2, theYp2)
+            crate::ffi_extern_TKV3d::V3d_View_zoom(
+                self as *mut Self,
+                theXp1,
+                theYp1,
+                theXp2,
+                theYp2,
+            )
         })
     }
 
@@ -6634,7 +7483,7 @@ impl View {
     /// @param[in] theYp  the y mouse coordinate, in pixels.
     pub fn start_zoom_at_point(&mut self, theXp: i32, theYp: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_start_zoom_at_point(self as *mut Self, theXp, theYp)
+            crate::ffi_extern_TKV3d::V3d_View_start_zoom_at_point(self as *mut Self, theXp, theYp)
         })
     }
 
@@ -6648,7 +7497,7 @@ impl View {
         theMouseEndY: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_zoom_at_point(
+            crate::ffi_extern_TKV3d::V3d_View_zoom_at_point(
                 self as *mut Self,
                 theMouseStartX,
                 theMouseStartY,
@@ -6665,7 +7514,12 @@ impl View {
     /// The  calculated  scale  factor  is  then  passed  to  SetAxialScale(Sx,  Sy,  Sz)  method.
     pub fn axial_scale_int2_typeofaxe(&mut self, Dx: i32, Dy: i32, Axis: crate::v3d::TypeOfAxe) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_axial_scale_int2_typeofaxe(self as *mut Self, Dx, Dy, Axis.into())
+            crate::ffi_extern_TKV3d::V3d_View_axial_scale_int2_typeofaxe(
+                self as *mut Self,
+                Dx,
+                Dy,
+                Axis.into(),
+            )
         })
     }
 
@@ -6680,7 +7534,12 @@ impl View {
     /// outside this area.
     pub fn start_rotation(&mut self, X: i32, Y: i32, zRotationThreshold: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_start_rotation(self as *mut Self, X, Y, zRotationThreshold)
+            crate::ffi_extern_TKV3d::V3d_View_start_rotation(
+                self as *mut Self,
+                X,
+                Y,
+                zRotationThreshold,
+            )
         })
     }
 
@@ -6688,7 +7547,9 @@ impl View {
     /// Continues the rotation of the view
     /// with an angle computed from the last and new mouse position <X,Y>.
     pub fn rotation(&mut self, X: i32, Y: i32) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_View_rotation(self as *mut Self, X, Y) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_rotation(self as *mut Self, X, Y)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:912 - `V3d_View::SetFocale()`
@@ -6697,41 +7558,53 @@ impl View {
     /// is not a perspective view.
     pub fn set_focale(&mut self, Focale: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_focale(self as *mut Self, Focale)
+            crate::ffi_extern_TKV3d::V3d_View_set_focale(self as *mut Self, Focale)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:915 - `V3d_View::Focale()`
     /// Returns the View Plane Distance for Perspective Views
     pub fn focale(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_focale(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_focale(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:918 - `V3d_View::View()`
     /// Returns the associated Graphic3d view.
-    pub fn view(&self) -> &crate::ffi::HandleGraphic3dCView {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_view(self as *const Self))) }
+    pub fn view(&self) -> &crate::ffi_types::HandleGraphic3dCView {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_view(self as *const Self)))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:921 - `V3d_View::SetComputedMode()`
     /// Switches computed HLR mode in the view.
     pub fn set_computed_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_computed_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::V3d_View_set_computed_mode(self as *mut Self, theMode)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:924 - `V3d_View::ComputedMode()`
     /// Returns the computed HLR mode state.
     pub fn computed_mode(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_computed_mode(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_computed_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:927 - `V3d_View::WindowFitAll()`
     /// idem than WindowFit
     pub fn window_fit_all(&mut self, Xmin: i32, Ymin: i32, Xmax: i32, Ymax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_window_fit_all(self as *mut Self, Xmin, Ymin, Xmax, Ymax)
+            crate::ffi_extern_TKV3d::V3d_View_window_fit_all(
+                self as *mut Self,
+                Xmin,
+                Ymin,
+                Xmax,
+                Ymax,
+            )
         })
     }
 
@@ -6750,14 +7623,14 @@ impl View {
     /// @return TRUE if the fit all operation can be done
     pub fn fit_min_max(
         &self,
-        theCamera: &crate::ffi::HandleGraphic3dCamera,
+        theCamera: &crate::ffi_types::HandleGraphic3dCamera,
         theBox: &crate::bnd::Box,
         theMargin: f64,
         theResolution: f64,
         theToEnlargeIfLine: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_fit_min_max(
+            crate::ffi_extern_TKV3d::V3d_View_fit_min_max(
                 self as *const Self,
                 theCamera,
                 theBox,
@@ -6771,9 +7644,13 @@ impl View {
     /// **Source:** `V3d_View.hxx`:956 - `V3d_View::SetGrid()`
     /// Defines or Updates the definition of the
     /// grid in <me>
-    pub fn set_grid(&mut self, aPlane: &crate::gp::Ax3, aGrid: &crate::ffi::HandleAspectGrid) {
+    pub fn set_grid(
+        &mut self,
+        aPlane: &crate::gp::Ax3,
+        aGrid: &crate::ffi_types::HandleAspectGrid,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_grid(self as *mut Self, aPlane, aGrid)
+            crate::ffi_extern_TKV3d::V3d_View_set_grid(self as *mut Self, aPlane, aGrid)
         })
     }
 
@@ -6782,7 +7659,7 @@ impl View {
     /// grid in <me>
     pub fn set_grid_activity(&mut self, aFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_grid_activity(self as *mut Self, aFlag)
+            crate::ffi_extern_TKV3d::V3d_View_set_grid_activity(self as *mut Self, aFlag)
         })
     }
 
@@ -6796,7 +7673,11 @@ impl View {
     pub fn dump(&mut self, theFile: &str, theBufferType: crate::graphic3d::BufferType) -> bool {
         let c_theFile = std::ffi::CString::new(theFile).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_dump(self as *mut Self, c_theFile.as_ptr(), theBufferType.into())
+            crate::ffi_extern_TKV3d::V3d_View_dump(
+                self as *mut Self,
+                c_theFile.as_ptr(),
+                theBufferType.into(),
+            )
         })
     }
 
@@ -6811,7 +7692,7 @@ impl View {
         theParams: &ImageDumpOptions,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_to_pix_map_pixmap_imagedumpoptions(
+            crate::ffi_extern_TKV3d::V3d_View_to_pix_map_pixmap_imagedumpoptions(
                 self as *mut Self,
                 theImage,
                 theParams,
@@ -6845,7 +7726,7 @@ impl View {
     ) -> bool {
         let c_theLightName = std::ffi::CString::new(theLightName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_to_pix_map_pixmap_int2_buffertype_bool_int2_stereodumpoptions_charptr(self as *mut Self, theImage, theWidth, theHeight, theBufferType.into(), theToAdjustAspect, theTargetZLayerId, theIsSingleLayer, theStereoOptions.into(), c_theLightName.as_ptr())
+            crate::ffi_extern_TKV3d::V3d_View_to_pix_map_pixmap_int2_buffertype_bool_int2_stereodumpoptions_charptr(self as *mut Self, theImage, theWidth, theHeight, theBufferType.into(), theToAdjustAspect, theTargetZLayerId, theIsSingleLayer, theStereoOptions.into(), c_theLightName.as_ptr())
         })
     }
 
@@ -6853,7 +7734,10 @@ impl View {
     /// Manages display of the back faces
     pub fn set_back_facing_model(&mut self, theModel: crate::graphic3d::TypeOfBackfacingModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_back_facing_model(self as *mut Self, theModel.into())
+            crate::ffi_extern_TKV3d::V3d_View_set_back_facing_model(
+                self as *mut Self,
+                theModel.into(),
+            )
         })
     }
 
@@ -6862,7 +7746,7 @@ impl View {
     /// default, which means that backface culling is defined by each presentation.
     pub fn back_facing_model(&self) -> crate::graphic3d::TypeOfBackfacingModel {
         crate::graphic3d::TypeOfBackfacingModel::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_View_back_facing_model(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_back_facing_model(self as *const Self)
         }))
         .unwrap()
     }
@@ -6873,26 +7757,30 @@ impl View {
     /// by PlaneLimit method of associated Graphic3d_GraphicDriver.
     /// Please be aware that the planes which exceed the limit are ignored during rendering.
     /// @param[in] thePlane  the clip plane to be added to view.
-    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_add_clip_plane(self as *mut Self, thePlane)
+            crate::ffi_extern_TKV3d::V3d_View_add_clip_plane(self as *mut Self, thePlane)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:1029 - `V3d_View::RemoveClipPlane()`
     /// Removes clip plane from the view.
     /// @param[in] thePlane  the clip plane to be removed from view.
-    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_remove_clip_plane(self as *mut Self, thePlane)
+            crate::ffi_extern_TKV3d::V3d_View_remove_clip_plane(self as *mut Self, thePlane)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:1033 - `V3d_View::ClipPlanes()`
     /// Get clip planes.
     /// @return sequence clip planes that have been set for the view
-    pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_clip_planes(self as *const Self))) }
+    pub fn clip_planes(&self) -> &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_clip_planes(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:1042 - `V3d_View::SetClipPlanes()`
@@ -6903,23 +7791,28 @@ impl View {
     /// Graphic3d_GraphicDriver. Please be aware that the planes that
     /// exceed the limit are ignored during rendering.
     /// @param[in] thePlanes  the clip planes to set.
-    pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
+    pub fn set_clip_planes(
+        &mut self,
+        thePlanes: &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_clip_planes(self as *mut Self, thePlanes)
+            crate::ffi_extern_TKV3d::V3d_View_set_clip_planes(self as *mut Self, thePlanes)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:1045 - `V3d_View::PlaneLimit()`
     /// Returns the MAX number of clipping planes associated to the view.
     pub fn plane_limit(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::V3d_View_plane_limit(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_plane_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:1048 - `V3d_View::SetCamera()`
     /// Change camera used by view.
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::V3d_View_set_camera(self as *mut Self, theCamera)
         })
     }
 
@@ -6927,14 +7820,20 @@ impl View {
     /// Returns camera object of the view.
     /// @return: handle to camera object, or NULL if 3D view does not use
     /// the camera approach.
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_camera(self as *const Self))) }
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_camera(self as *const Self)))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:1056 - `V3d_View::DefaultCamera()`
     /// Return default camera.
-    pub fn default_camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_default_camera(self as *const Self))) }
+    pub fn default_camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_default_camera(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:1062 - `V3d_View::RenderingParams()`
@@ -6944,7 +7843,9 @@ impl View {
     /// @sa V3d_Viewer::DefaultRenderingParams()
     pub fn rendering_params(&self) -> &crate::graphic3d::RenderingParams {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_View_rendering_params(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_rendering_params(
+                self as *const Self,
+            )))
         }
     }
 
@@ -6952,7 +7853,7 @@ impl View {
     /// Returns reference to current rendering parameters and effect settings.
     pub fn change_rendering_params(&mut self) -> &mut crate::graphic3d::RenderingParams {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::V3d_View_change_rendering_params(
+            &mut *(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_change_rendering_params(
                 self as *mut Self,
             )))
         }
@@ -6961,14 +7862,16 @@ impl View {
     /// **Source:** `V3d_View.hxx`:1068 - `V3d_View::IsCullingEnabled()`
     /// @return flag value of objects culling mechanism
     pub fn is_culling_enabled(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_is_culling_enabled(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_is_culling_enabled(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:1074 - `V3d_View::SetFrustumCulling()`
     /// Turn on/off automatic culling of objects outside frustum (ON by default)
     pub fn set_frustum_culling(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_set_frustum_culling(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::V3d_View_set_frustum_culling(self as *mut Self, theMode)
         })
     }
 
@@ -6984,11 +7887,11 @@ impl View {
     /// @param theFlags defines the information to be retrieved
     pub fn diagnostic_information(
         &self,
-        theDict: &mut crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theDict: &mut crate::ffi_types::TColStd_IndexedDataMapOfStringString,
         theFlags: crate::graphic3d::DiagnosticInfo,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_diagnostic_information(
+            crate::ffi_extern_TKV3d::V3d_View_diagnostic_information(
                 self as *const Self,
                 theDict,
                 theFlags.into(),
@@ -7001,7 +7904,7 @@ impl View {
     pub fn statistic_information(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_View_statistic_information(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_View_statistic_information(self as *const Self),
             ))
         }
     }
@@ -7010,10 +7913,10 @@ impl View {
     /// Fills in the dictionary with statistic performance info.
     pub fn statistic_information_indexeddatamapofstringstring(
         &self,
-        theDict: &mut crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theDict: &mut crate::ffi_types::TColStd_IndexedDataMapOfStringString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_statistic_information_indexeddatamapofstringstring(
+            crate::ffi_extern_TKV3d::V3d_View_statistic_information_indexeddatamapofstringstring(
                 self as *const Self,
                 theDict,
             )
@@ -7024,9 +7927,9 @@ impl View {
     /// Returns the Objects number and the gravity center of ALL viewable points in the view
     pub fn gravity_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_gravity_point(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_gravity_point(self as *const Self),
+            ))
         }
     }
 
@@ -7034,15 +7937,18 @@ impl View {
     /// @name subvew management
     /// Return TRUE if this is a subview of another view.
     pub fn is_subview(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_View_is_subview(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_View_is_subview(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_View.hxx`:1110 - `V3d_View::ParentView()`
     /// Return parent View or NULL if this is not a subview.
     pub fn parent_view(&mut self) -> Option<&mut View> {
         {
-            let __val =
-                crate::check_result(unsafe { crate::ffi::V3d_View_parent_view(self as *mut Self) });
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKV3d::V3d_View_parent_view(self as *mut Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -7053,29 +7959,30 @@ impl View {
 
     /// **Source:** `V3d_View.hxx`:1113 - `V3d_View::Subviews()`
     /// Return subview list.
-    pub fn subviews(&self) -> &crate::ffi::NCollection_Sequence_opencascade_handle_V3d_View {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_subviews(self as *const Self))) }
+    pub fn subviews(&self) -> &crate::ffi_types::NCollection_Sequence_opencascade_handle_V3d_View {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_subviews(self as *const Self)))
+        }
     }
 
     /// **Source:** `V3d_View.hxx`:1116 - `V3d_View::PickSubview()`
     /// Pick subview from the given 2D point.
     pub fn pick_subview(
         &self,
-        thePnt: &crate::ffi::Graphic3d_Vec2i,
-    ) -> crate::OwnedPtr<crate::ffi::HandleV3dView> {
+        thePnt: &crate::ffi_types::Graphic3d_Vec2i,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dView> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_pick_subview(
-                self as *const Self,
-                thePnt,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_pick_subview(self as *const Self, thePnt),
+            ))
         }
     }
 
     /// **Source:** `V3d_View.hxx`:1119 - `V3d_View::AddSubview()`
     /// Add subview to the list.
-    pub fn add_subview(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn add_subview(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_add_subview(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_View_add_subview(self as *mut Self, theView)
         })
     }
 
@@ -7083,60 +7990,66 @@ impl View {
     /// Remove subview from the list.
     pub fn remove_subview(&mut self, theView: &View) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_remove_subview(self as *mut Self, theView as *const _)
+            crate::ffi_extern_TKV3d::V3d_View_remove_subview(self as *mut Self, theView as *const _)
         })
     }
 
     /// **Source:** `V3d_View.hxx`:58 - `V3d_View::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_View_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_View.hxx`:58 - `V3d_View::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_View_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_View_get_type_descriptor())) }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_View_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_View_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_View_as_Standard_Transient_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::V3d_View_as_Standard_Transient_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleV3dView> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dView> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_View_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_View_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -7144,7 +8057,7 @@ impl View {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_View_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_View_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7157,56 +8070,66 @@ impl View {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_View_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_View_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_View_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dView;
+pub use crate::ffi_types::HandleV3dView;
 
 unsafe impl crate::CppDeletable for HandleV3dView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dView_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dView_destructor(ptr);
     }
 }
 
 impl HandleV3dView {
     /// Dereference this Handle to access the underlying V3d_View
-    pub fn get(&self) -> &crate::ffi::V3d_View {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dView_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_View {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dView_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_View
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_View {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleV3dView_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_View {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dView_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<V3d_View> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dView_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dView_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7230,11 +8153,11 @@ impl HandleV3dView {
 /// The methods of this class allow editing and
 /// interrogation of the parameters linked to the viewer
 /// its friend classes (View,light,plane).
-pub use crate::ffi::V3d_Viewer as Viewer;
+pub use crate::ffi_types::V3d_Viewer as Viewer;
 
 unsafe impl crate::CppDeletable for Viewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::V3d_Viewer_destructor(ptr);
+        crate::ffi_extern_TKV3d::V3d_Viewer_destructor(ptr);
     }
 }
 
@@ -7245,48 +8168,59 @@ impl Viewer {
     /// - View background: Quantity_NOC_GRAY30
     /// - Shading model: V3d_GOURAUD
     pub fn new_handlegraphic3dgraphicdriver(
-        theDriver: &crate::ffi::HandleGraphic3dGraphicDriver,
+        theDriver: &crate::ffi_types::HandleGraphic3dGraphicDriver,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_ctor_handlegraphic3dgraphicdriver(theDriver),
+                crate::ffi_extern_TKV3d::V3d_Viewer_ctor_handlegraphic3dgraphicdriver(theDriver),
             ))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:51 - `V3d_Viewer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Viewer_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:60 - `V3d_Viewer::IfMoreViews()`
     /// Returns True if One View more can be defined in this Viewer.
     pub fn if_more_views(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Viewer_if_more_views(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_if_more_views(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:63 - `V3d_Viewer::CreateView()`
     /// Creates a view in the viewer according to its default parameters.
-    pub fn create_view(&mut self) -> crate::OwnedPtr<crate::ffi::HandleV3dView> {
+    pub fn create_view(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleV3dView> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Viewer_create_view(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Viewer_create_view(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:66 - `V3d_Viewer::SetViewOn()`
     /// Activates all of the views of a viewer attached to a window.
     pub fn set_view_on(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_set_view_on(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_view_on(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:70 - `V3d_Viewer::SetViewOn()`
     /// Activates a particular view in the Viewer.
     /// Must be call if the Window attached to the view has been Deiconified.
-    pub fn set_view_on_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn set_view_on_handlev3dview(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_view_on_handlev3dview(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_view_on_handlev3dview(
+                self as *mut Self,
+                theView,
+            )
         })
     }
 
@@ -7294,23 +8228,30 @@ impl Viewer {
     /// Deactivates all the views of a Viewer
     /// attached to a window.
     pub fn set_view_off(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_set_view_off(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_view_off(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:79 - `V3d_Viewer::SetViewOff()`
     /// Deactivates a particular view in the Viewer.
     /// Must be call if the Window attached to the view
     /// has been Iconified .
-    pub fn set_view_off_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn set_view_off_handlev3dview(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_view_off_handlev3dview(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_view_off_handlev3dview(
+                self as *mut Self,
+                theView,
+            )
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:82 - `V3d_Viewer::Update()`
     /// Deprecated, Redraw() should be used instead.
     pub fn update(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_update(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_update(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:88 - `V3d_Viewer::Redraw()`
@@ -7319,43 +8260,51 @@ impl Viewer {
     /// all the views of the Viewer are exposed, as for
     /// example in a global DeIconification.
     pub fn redraw(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_redraw(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_redraw(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:91 - `V3d_Viewer::RedrawImmediate()`
     /// Updates layer of immediate presentations.
     pub fn redraw_immediate(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_redraw_immediate(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_redraw_immediate(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:94 - `V3d_Viewer::Invalidate()`
     /// Invalidates viewer content but does not redraw it.
     pub fn invalidate(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_invalidate(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_invalidate(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:97 - `V3d_Viewer::Remove()`
     /// Suppresses the Viewer.
     pub fn remove(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_remove(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_remove(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:100 - `V3d_Viewer::Driver()`
     /// Return Graphic Driver instance.
-    pub fn driver(&self) -> &crate::ffi::HandleGraphic3dGraphicDriver {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Viewer_driver(self as *const Self))) }
+    pub fn driver(&self) -> &crate::ffi_types::HandleGraphic3dGraphicDriver {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_driver(self as *const Self)))
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:103 - `V3d_Viewer::StructureManager()`
     /// Returns the structure manager associated to this viewer.
     pub fn structure_manager(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructureManager> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dStructureManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_structure_manager(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_structure_manager(self as *const Self),
             ))
         }
     }
@@ -7365,7 +8314,7 @@ impl Viewer {
     /// By default these parameters are set in a new V3d_View.
     pub fn default_rendering_params(&self) -> &crate::graphic3d::RenderingParams {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_default_rendering_params(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_default_rendering_params(
                 self as *const Self,
             )))
         }
@@ -7375,7 +8324,10 @@ impl Viewer {
     /// Set default Rendering Parameters.
     pub fn set_default_rendering_params(&mut self, theParams: &crate::graphic3d::RenderingParams) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_rendering_params(self as *mut Self, theParams)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_rendering_params(
+                self as *mut Self,
+                theParams,
+            )
         })
     }
 
@@ -7384,7 +8336,10 @@ impl Viewer {
     /// attached to the viewer by supplying the color object
     pub fn set_default_background_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_background_color(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_background_color(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
@@ -7392,7 +8347,7 @@ impl Viewer {
     /// Returns the gradient background of the view.
     pub fn get_gradient_background(&self) -> &crate::aspect::GradientBackground {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_get_gradient_background(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_get_gradient_background(
                 self as *const Self,
             )))
         }
@@ -7408,7 +8363,7 @@ impl Viewer {
         theFillStyle: crate::aspect::GradientFillMethod,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_bg_gradient_colors(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_bg_gradient_colors(
                 self as *mut Self,
                 theColor1,
                 theColor2,
@@ -7421,7 +8376,7 @@ impl Viewer {
     /// Returns the default size of the view.
     pub fn default_view_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_view_size(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_view_size(self as *const Self)
         })
     }
 
@@ -7429,7 +8384,7 @@ impl Viewer {
     /// Gives a default size for the creation of views of the viewer.
     pub fn set_default_view_size(&mut self, theSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_view_size(self as *mut Self, theSize)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_view_size(self as *mut Self, theSize)
         })
     }
 
@@ -7437,7 +8392,7 @@ impl Viewer {
     /// Returns the default Projection.
     pub fn default_view_proj(&self) -> crate::v3d::TypeOfOrientation {
         crate::v3d::TypeOfOrientation::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_view_proj(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_view_proj(self as *const Self)
         }))
         .unwrap()
     }
@@ -7446,7 +8401,10 @@ impl Viewer {
     /// Sets the default projection for creating views in the viewer.
     pub fn set_default_view_proj(&mut self, theOrientation: crate::v3d::TypeOfOrientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_view_proj(self as *mut Self, theOrientation.into())
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_view_proj(
+                self as *mut Self,
+                theOrientation.into(),
+            )
         })
     }
 
@@ -7454,7 +8412,7 @@ impl Viewer {
     /// Returns the default type of Visualization.
     pub fn default_visualization(&self) -> crate::v3d::TypeOfVisualization {
         crate::v3d::TypeOfVisualization::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_visualization(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_visualization(self as *const Self)
         }))
         .unwrap()
     }
@@ -7463,7 +8421,10 @@ impl Viewer {
     /// Gives the default visualization mode.
     pub fn set_default_visualization(&mut self, theType: crate::v3d::TypeOfVisualization) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_visualization(self as *mut Self, theType.into())
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_visualization(
+                self as *mut Self,
+                theType.into(),
+            )
         })
     }
 
@@ -7471,7 +8432,7 @@ impl Viewer {
     /// Returns the default type of Shading; Graphic3d_TypeOfShadingModel_Phong by default.
     pub fn default_shading_model(&self) -> crate::graphic3d::TypeOfShadingModel {
         crate::graphic3d::TypeOfShadingModel::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_shading_model(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_shading_model(self as *const Self)
         }))
         .unwrap()
     }
@@ -7480,7 +8441,10 @@ impl Viewer {
     /// Gives the default type of SHADING.
     pub fn set_default_shading_model(&mut self, theType: crate::graphic3d::TypeOfShadingModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_shading_model(self as *mut Self, theType.into())
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_shading_model(
+                self as *mut Self,
+                theType.into(),
+            )
         })
     }
 
@@ -7489,7 +8453,7 @@ impl Viewer {
     /// CreateView() method.
     pub fn default_type_of_view(&self) -> crate::v3d::TypeOfView {
         crate::v3d::TypeOfView::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_type_of_view(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_type_of_view(self as *const Self)
         }))
         .unwrap()
     }
@@ -7499,7 +8463,10 @@ impl Viewer {
     /// CreateView() method.
     pub fn set_default_type_of_view(&mut self, theType: crate::v3d::TypeOfView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_type_of_view(self as *mut Self, theType.into())
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_type_of_view(
+                self as *mut Self,
+                theType.into(),
+            )
         })
     }
 
@@ -7508,7 +8475,7 @@ impl Viewer {
     pub fn default_background_color(&self) -> crate::OwnedPtr<crate::quantity::Color> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_default_background_color(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_default_background_color(self as *const Self),
             ))
         }
     }
@@ -7521,7 +8488,7 @@ impl Viewer {
         theColor2: &mut crate::quantity::Color,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_default_bg_gradient_colors(
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_bg_gradient_colors(
                 self as *const Self,
                 theColor1,
                 theColor2,
@@ -7532,9 +8499,9 @@ impl Viewer {
     /// **Source:** `V3d_Viewer.hxx`:190 - `V3d_Viewer::GetAllZLayers()`
     /// Return all Z layer ids in sequence ordered by overlay level from lowest layer to highest (
     /// foreground ). The first layer ID in sequence is the default layer that can't be removed.
-    pub fn get_all_z_layers(&self, theLayerSeq: &mut crate::ffi::TColStd_SequenceOfInteger) {
+    pub fn get_all_z_layers(&self, theLayerSeq: &mut crate::ffi_types::TColStd_SequenceOfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_get_all_z_layers(self as *const Self, theLayerSeq)
+            crate::ffi_extern_TKV3d::V3d_Viewer_get_all_z_layers(self as *const Self, theLayerSeq)
         })
     }
 
@@ -7552,7 +8519,11 @@ impl Viewer {
         theSettings: &crate::graphic3d::ZLayerSettings,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_add_z_layer(self as *mut Self, theLayerId, theSettings)
+            crate::ffi_extern_TKV3d::V3d_Viewer_add_z_layer(
+                self as *mut Self,
+                theLayerId,
+                theSettings,
+            )
         })
     }
 
@@ -7574,7 +8545,7 @@ impl Viewer {
         theLayerAfter: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_insert_layer_before(
+            crate::ffi_extern_TKV3d::V3d_Viewer_insert_layer_before(
                 self as *mut Self,
                 theNewLayerId,
                 theSettings,
@@ -7601,7 +8572,7 @@ impl Viewer {
         theLayerBefore: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_insert_layer_after(
+            crate::ffi_extern_TKV3d::V3d_Viewer_insert_layer_after(
                 self as *mut Self,
                 theNewLayerId,
                 theSettings,
@@ -7616,7 +8587,7 @@ impl Viewer {
     /// By default, there are always default bottom-level layer that can't be removed.
     pub fn remove_z_layer(&mut self, theLayerId: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_remove_z_layer(self as *mut Self, theLayerId)
+            crate::ffi_extern_TKV3d::V3d_Viewer_remove_z_layer(self as *mut Self, theLayerId)
         })
     }
 
@@ -7624,7 +8595,7 @@ impl Viewer {
     /// Returns the settings of a single Z layer.
     pub fn z_layer_settings(&self, theLayerId: i32) -> &crate::graphic3d::ZLayerSettings {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_z_layer_settings(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_z_layer_settings(
                 self as *const Self,
                 theLayerId,
             )))
@@ -7639,22 +8610,32 @@ impl Viewer {
         theSettings: &crate::graphic3d::ZLayerSettings,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_z_layer_settings(self as *mut Self, theLayerId, theSettings)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_z_layer_settings(
+                self as *mut Self,
+                theLayerId,
+                theSettings,
+            )
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:249 - `V3d_Viewer::ActiveViews()`
     /// Return a list of active views.
-    pub fn active_views(&self) -> &crate::ffi::V3d_ListOfView {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Viewer_active_views(self as *const Self))) }
+    pub fn active_views(&self) -> &crate::ffi_types::V3d_ListOfView {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_active_views(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:252 - `V3d_Viewer::ActiveViewIterator()`
     /// Return an iterator for active views.
-    pub fn active_view_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfView_Iterator> {
+    pub fn active_view_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::V3d_ListOfView_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_active_view_iterator(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_active_view_iterator(self as *const Self),
             ))
         }
     }
@@ -7662,23 +8643,29 @@ impl Viewer {
     /// **Source:** `V3d_Viewer.hxx`:258 - `V3d_Viewer::LastActiveView()`
     /// returns true if there is only one active view.
     pub fn last_active_view(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Viewer_last_active_view(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_last_active_view(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:262 - `V3d_Viewer::DefinedViews()`
     /// Return a list of defined views.
-    pub fn defined_views(&self) -> &crate::ffi::V3d_ListOfView {
+    pub fn defined_views(&self) -> &crate::ffi_types::V3d_ListOfView {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_defined_views(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_defined_views(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:265 - `V3d_Viewer::DefinedViewIterator()`
     /// Return an iterator for defined views.
-    pub fn defined_view_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfView_Iterator> {
+    pub fn defined_view_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::V3d_ListOfView_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_defined_view_iterator(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_defined_view_iterator(self as *const Self),
             ))
         }
     }
@@ -7692,7 +8679,7 @@ impl Viewer {
     /// ambient-light
     pub fn set_default_lights(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_lights(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_lights(self as *mut Self)
         })
     }
 
@@ -7700,97 +8687,117 @@ impl Viewer {
     /// Activates MyLight in the viewer.
     pub fn set_light_on_handlegraphic3dclight(
         &mut self,
-        theLight: &crate::ffi::HandleGraphic3dCLight,
+        theLight: &crate::ffi_types::HandleGraphic3dCLight,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_light_on_handlegraphic3dclight(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_light_on_handlegraphic3dclight(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:282 - `V3d_Viewer::SetLightOn()`
     /// Activates all the lights defined in this viewer.
     pub fn set_light_on(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_set_light_on(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_light_on(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:285 - `V3d_Viewer::SetLightOff()`
     /// Deactivates MyLight in this viewer.
     pub fn set_light_off_handlegraphic3dclight(
         &mut self,
-        theLight: &crate::ffi::HandleGraphic3dCLight,
+        theLight: &crate::ffi_types::HandleGraphic3dCLight,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_light_off_handlegraphic3dclight(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_light_off_handlegraphic3dclight(
+                self as *mut Self,
+                theLight,
+            )
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:288 - `V3d_Viewer::SetLightOff()`
     /// Deactivate all the Lights defined in this viewer.
     pub fn set_light_off(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_set_light_off(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_light_off(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:291 - `V3d_Viewer::AddLight()`
     /// Adds Light in Sequence Of Lights.
-    pub fn add_light(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn add_light(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_add_light(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_Viewer_add_light(self as *mut Self, theLight)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:294 - `V3d_Viewer::DelLight()`
     /// Delete Light in Sequence Of Lights.
-    pub fn del_light(&mut self, theLight: &crate::ffi::HandleGraphic3dCLight) {
+    pub fn del_light(&mut self, theLight: &crate::ffi_types::HandleGraphic3dCLight) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_del_light(self as *mut Self, theLight)
+            crate::ffi_extern_TKV3d::V3d_Viewer_del_light(self as *mut Self, theLight)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:297 - `V3d_Viewer::UpdateLights()`
     /// Updates the lights of all the views of a viewer.
     pub fn update_lights(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_update_lights(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_update_lights(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:299 - `V3d_Viewer::IsGlobalLight()`
-    pub fn is_global_light(&self, TheLight: &crate::ffi::HandleGraphic3dCLight) -> bool {
+    pub fn is_global_light(&self, TheLight: &crate::ffi_types::HandleGraphic3dCLight) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_is_global_light(self as *const Self, TheLight)
+            crate::ffi_extern_TKV3d::V3d_Viewer_is_global_light(self as *const Self, TheLight)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:302 - `V3d_Viewer::ActiveLights()`
     /// Return a list of active lights.
-    pub fn active_lights(&self) -> &crate::ffi::V3d_ListOfLight {
+    pub fn active_lights(&self) -> &crate::ffi_types::V3d_ListOfLight {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_active_lights(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_active_lights(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:305 - `V3d_Viewer::ActiveLightIterator()`
     /// Return an iterator for defined lights.
-    pub fn active_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+    pub fn active_light_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::V3d_ListOfLight_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_active_light_iterator(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_active_light_iterator(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:312 - `V3d_Viewer::DefinedLights()`
     /// Return a list of defined lights.
-    pub fn defined_lights(&self) -> &crate::ffi::V3d_ListOfLight {
+    pub fn defined_lights(&self) -> &crate::ffi_types::V3d_ListOfLight {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_defined_lights(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_defined_lights(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:315 - `V3d_Viewer::DefinedLightIterator()`
     /// Return an iterator for defined lights.
-    pub fn defined_light_iterator(&self) -> crate::OwnedPtr<crate::ffi::V3d_ListOfLight_Iterator> {
+    pub fn defined_light_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::V3d_ListOfLight_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_defined_light_iterator(self as *const Self),
+                crate::ffi_extern_TKV3d::V3d_Viewer_defined_light_iterator(self as *const Self),
             ))
         }
     }
@@ -7799,28 +8806,32 @@ impl Viewer {
     /// @name objects management
     /// Erase all Objects in All the views.
     pub fn erase(&self) {
-        crate::check_void_result(unsafe { crate::ffi::V3d_Viewer_erase(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_erase(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:325 - `V3d_Viewer::UnHighlight()`
     /// UnHighlight all Objects in All the views.
     pub fn un_highlight(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_un_highlight(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_un_highlight(self as *const Self)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:329 - `V3d_Viewer::ComputedMode()`
     /// returns true if the computed mode can be used.
     pub fn computed_mode(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Viewer_computed_mode(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_computed_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:332 - `V3d_Viewer::SetComputedMode()`
     /// Set if the computed mode can be used.
     pub fn set_computed_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_computed_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_computed_mode(self as *mut Self, theMode)
         })
     }
 
@@ -7828,7 +8839,7 @@ impl Viewer {
     /// returns true if by default the computed mode must be used.
     pub fn default_computed_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_default_computed_mode(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_default_computed_mode(self as *const Self)
         })
     }
 
@@ -7836,7 +8847,10 @@ impl Viewer {
     /// Set if by default the computed mode must be used.
     pub fn set_default_computed_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_default_computed_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_default_computed_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
@@ -7844,21 +8858,27 @@ impl Viewer {
     /// @name privileged plane management
     pub fn privileged_plane(&self) -> &crate::gp::Ax3 {
         unsafe {
-            &*(crate::check_result(crate::ffi::V3d_Viewer_privileged_plane(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_privileged_plane(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `V3d_Viewer.hxx`:343 - `V3d_Viewer::SetPrivilegedPlane()`
     pub fn set_privileged_plane(&mut self, thePlane: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_privileged_plane(self as *mut Self, thePlane)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_privileged_plane(self as *mut Self, thePlane)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:345 - `V3d_Viewer::DisplayPrivilegedPlane()`
     pub fn display_privileged_plane(&mut self, theOnOff: bool, theSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_display_privileged_plane(self as *mut Self, theOnOff, theSize)
+            crate::ffi_extern_TKV3d::V3d_Viewer_display_privileged_plane(
+                self as *mut Self,
+                theOnOff,
+                theSize,
+            )
         })
     }
 
@@ -7871,7 +8891,7 @@ impl Viewer {
         aGridDrawMode: crate::aspect::GridDrawMode,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_activate_grid(
+            crate::ffi_extern_TKV3d::V3d_Viewer_activate_grid(
                 self as *mut Self,
                 aGridType.into(),
                 aGridDrawMode.into(),
@@ -7883,7 +8903,7 @@ impl Viewer {
     /// Deactivates the grid in all views of <me>.
     pub fn deactivate_grid(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_deactivate_grid(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_deactivate_grid(self as *mut Self)
         })
     }
 
@@ -7892,7 +8912,7 @@ impl Viewer {
     /// If TRUE,the grid echo will be shown at ConvertToGrid() time.
     pub fn set_grid_echo_bool(&mut self, showGrid: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_grid_echo_bool(self as *mut Self, showGrid)
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_grid_echo_bool(self as *mut Self, showGrid)
         })
     }
 
@@ -7905,10 +8925,10 @@ impl Viewer {
     /// marker size : 3.0
     pub fn set_grid_echo_handlegraphic3daspectmarker3d(
         &mut self,
-        aMarker: &crate::ffi::HandleGraphic3dAspectMarker3d,
+        aMarker: &crate::ffi_types::HandleGraphic3dAspectMarker3d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_grid_echo_handlegraphic3daspectmarker3d(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_grid_echo_handlegraphic3daspectmarker3d(
                 self as *mut Self,
                 aMarker,
             )
@@ -7918,13 +8938,17 @@ impl Viewer {
     /// **Source:** `V3d_Viewer.hxx`:369 - `V3d_Viewer::GridEcho()`
     /// Returns TRUE when grid echo must be displayed at hit point.
     pub fn grid_echo(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Viewer_grid_echo(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_grid_echo(self as *const Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:372 - `V3d_Viewer::IsGridActive()`
     /// Returns Standard_True if a grid is activated in <me>.
     pub fn is_grid_active(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::V3d_Viewer_is_grid_active(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::V3d_Viewer_is_grid_active(self as *mut Self)
+        })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:375 - `V3d_Viewer::Grid()`
@@ -7932,12 +8956,11 @@ impl Viewer {
     pub fn grid_bool(
         &mut self,
         theToCreate: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAspectGrid> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Viewer_grid_bool(
-                self as *mut Self,
-                theToCreate,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Viewer_grid_bool(self as *mut Self, theToCreate),
+            ))
         }
     }
 
@@ -7947,10 +8970,10 @@ impl Viewer {
         &mut self,
         theGridType: crate::aspect::GridType,
         theToCreate: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAspectGrid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAspectGrid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::V3d_Viewer_grid_gridtype_bool(
+                crate::ffi_extern_TKV3d::V3d_Viewer_grid_gridtype_bool(
                     self as *mut Self,
                     theGridType.into(),
                     theToCreate,
@@ -7963,7 +8986,7 @@ impl Viewer {
     /// Returns the current grid type defined in <me>.
     pub fn grid_type(&self) -> crate::aspect::GridType {
         crate::aspect::GridType::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_grid_type(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_grid_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -7972,7 +8995,7 @@ impl Viewer {
     /// Returns the current grid draw mode defined in <me>.
     pub fn grid_draw_mode(&mut self) -> crate::aspect::GridDrawMode {
         crate::aspect::GridDrawMode::try_from(crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_grid_draw_mode(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_grid_draw_mode(self as *mut Self)
         }))
         .unwrap()
     }
@@ -7988,7 +9011,7 @@ impl Viewer {
         theRotationAngle: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_rectangular_grid_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_rectangular_grid_values(
                 self as *mut Self,
                 theXOrigin,
                 theYOrigin,
@@ -8014,7 +9037,7 @@ impl Viewer {
         RotationAngle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_rectangular_grid_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_rectangular_grid_values(
                 self as *mut Self,
                 XOrigin,
                 YOrigin,
@@ -8036,7 +9059,7 @@ impl Viewer {
         theRotationAngle: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_circular_grid_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_circular_grid_values(
                 self as *mut Self,
                 theXOrigin,
                 theYOrigin,
@@ -8062,7 +9085,7 @@ impl Viewer {
         RotationAngle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_circular_grid_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_circular_grid_values(
                 self as *mut Self,
                 XOrigin,
                 YOrigin,
@@ -8077,7 +9100,7 @@ impl Viewer {
     /// Returns the location and the size of the grid.
     pub fn circular_grid_graphic_values(&mut self, theRadius: &mut f64, theOffSet: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_circular_grid_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_circular_grid_graphic_values(
                 self as *mut Self,
                 theRadius,
                 theOffSet,
@@ -8092,7 +9115,7 @@ impl Viewer {
     /// <OffSet> defines the displacement along the plane normal.
     pub fn set_circular_grid_graphic_values(&mut self, Radius: f64, OffSet: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_circular_grid_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_circular_grid_graphic_values(
                 self as *mut Self,
                 Radius,
                 OffSet,
@@ -8109,7 +9132,7 @@ impl Viewer {
         theOffSet: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_rectangular_grid_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_rectangular_grid_graphic_values(
                 self as *mut Self,
                 theXSize,
                 theYSize,
@@ -8125,7 +9148,7 @@ impl Viewer {
     /// <OffSet> defines the displacement along the plane normal.
     pub fn set_rectangular_grid_graphic_values(&mut self, XSize: f64, YSize: f64, OffSet: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_set_rectangular_grid_graphic_values(
+            crate::ffi_extern_TKV3d::V3d_Viewer_set_rectangular_grid_graphic_values(
                 self as *mut Self,
                 XSize,
                 YSize,
@@ -8138,72 +9161,80 @@ impl Viewer {
     /// Display grid echo at requested point in the view.
     pub fn show_grid_echo(
         &mut self,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
         thePoint: &crate::graphic3d::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_show_grid_echo(self as *mut Self, theView, thePoint)
+            crate::ffi_extern_TKV3d::V3d_Viewer_show_grid_echo(self as *mut Self, theView, thePoint)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:451 - `V3d_Viewer::HideGridEcho()`
     /// Temporarily hide grid echo.
-    pub fn hide_grid_echo(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn hide_grid_echo(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_hide_grid_echo(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::V3d_Viewer_hide_grid_echo(self as *mut Self, theView)
         })
     }
 
     /// **Source:** `V3d_Viewer.hxx`:51 - `V3d_Viewer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::V3d_Viewer_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Viewer_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `V3d_Viewer.hxx`:51 - `V3d_Viewer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::V3d_Viewer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::V3d_Viewer_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::V3d_Viewer_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::V3d_Viewer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Viewer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleV3dViewer> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleV3dViewer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::V3d_Viewer_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::V3d_Viewer_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -8211,7 +9242,7 @@ impl Viewer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::V3d_Viewer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::V3d_Viewer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -8224,56 +9255,66 @@ impl Viewer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::V3d_Viewer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::V3d_Viewer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleV3dViewer;
+pub use crate::ffi_types::HandleV3dViewer;
 
 unsafe impl crate::CppDeletable for HandleV3dViewer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleV3dViewer_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleV3dViewer_destructor(ptr);
     }
 }
 
 impl HandleV3dViewer {
     /// Dereference this Handle to access the underlying V3d_Viewer
-    pub fn get(&self) -> &crate::ffi::V3d_Viewer {
-        unsafe { &*crate::check_result(crate::ffi::HandleV3dViewer_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::V3d_Viewer {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleV3dViewer_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying V3d_Viewer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::V3d_Viewer {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleV3dViewer_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::V3d_Viewer {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleV3dViewer_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<V3d_Viewer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleV3dViewer_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleV3dViewer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8283,4 +9324,4 @@ impl HandleV3dViewer {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{V3d_ListOfLight as ListOfLight, V3d_ListOfView as ListOfView};
+pub use crate::ffi_types::{V3d_ListOfLight as ListOfLight, V3d_ListOfView as ListOfView};

@@ -14,6 +14,7 @@
 #include <AppParCurves_MultiCurve.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
@@ -117,6 +118,7 @@
 #include <BRepExtrema_SupportType.hxx>
 #include <BRepExtrema_TriangleSet.hxx>
 #include <BRepExtrema_UnCompatibleShape.hxx>
+#include <BRepFill_DataMapOfNodeDataMapOfShapeShape.hxx>
 #include <BRepGProp.hxx>
 #include <BRepGProp_Cinert.hxx>
 #include <BRepGProp_Domain.hxx>
@@ -163,7 +165,7 @@
 #include <BRepTopAdaptor_Tool.hxx>
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BVH_Types.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector.hxx>
 #include <Bisector_Bisec.hxx>
 #include <Bisector_BisecAna.hxx>
@@ -218,6 +220,7 @@
 #include <MAT2d_Circuit.hxx>
 #include <MAT2d_Connexion.hxx>
 #include <MAT2d_CutCurve.hxx>
+#include <MAT2d_DataMapOfIntegerConnexion.hxx>
 #include <MAT2d_Mat2d.hxx>
 #include <MAT2d_MiniPath.hxx>
 #include <MAT2d_SequenceOfConnexion.hxx>
@@ -228,7 +231,6 @@
 #include <MAT_Bisector.hxx>
 #include <MAT_DataMapOfIntegerBasicElt.hxx>
 #include <MAT_DataMapOfIntegerBisector.hxx>
-#include <MAT_DataMapOfIntegerNode.hxx>
 #include <MAT_Edge.hxx>
 #include <MAT_Graph.hxx>
 #include <MAT_ListOfBisector.hxx>
@@ -259,7 +261,6 @@
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
@@ -270,10 +271,10 @@
 #include <TColgp_Array1OfVec.hxx>
 #include <TColgp_Array1OfVec2d.hxx>
 #include <TColgp_HArray1OfPnt.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopOpeBRep_DataMapOfTopolTool.hxx>
 #include <TopTools_DataMapOfIntegerListOfShape.hxx>
 #include <TopTools_DataMapOfIntegerShape.hxx>

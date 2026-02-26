@@ -4,12 +4,13 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepTools_History.hxx>
 #include <BRepTools_Modification.hxx>
 #include <BRepTools_Modifier.hxx>
 #include <BRepTools_ReShape.hxx>
 #include <BRepTools_TrsfModification.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Geom2d_BSplineCurve.hxx>
@@ -165,7 +166,6 @@
 #include <TColGeom_HArray2OfSurface.hxx>
 #include <TColGeom_HSequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_HArray1OfReal.hxx>
 #include <TColStd_HArray2OfReal.hxx>
@@ -175,10 +175,10 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TColgp_SequenceOfPnt.hxx>
 #include <TColgp_SequenceOfPnt2d.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>
 #include <TopTools_HArray1OfShape.hxx>

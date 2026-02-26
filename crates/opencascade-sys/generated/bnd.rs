@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From Bnd_B2d.hxx
 // ========================
 
 /// **Source:** `Bnd_B2d.hxx`:32 - `Bnd_B2d`
-pub use crate::ffi::Bnd_B2d as B2d;
+pub use crate::ffi_types::Bnd_B2d as B2d;
 
 unsafe impl crate::CppDeletable for B2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_B2d_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_B2d_destructor(ptr);
     }
 }
 
@@ -26,49 +26,59 @@ impl B2d {
     /// **Source:** `Bnd_B2d.hxx`:38 - `Bnd_B2d::Bnd_B2d()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_B2d_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:41 - `Bnd_B2d::Bnd_B2d()`
     /// Constructor.
     pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_ctor_xy2(
-                theCenter, theHSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2d_ctor_xy2(theCenter, theHSize),
+            ))
         }
     }
 
     /// **Source:** `Bnd_B2d.hxx`:44 - `Bnd_B2d::IsVoid()`
     /// Returns True if the box is void (non-initialized).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2d_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:47 - `Bnd_B2d::Clear()`
     /// Reset the box data.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2d_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:50 - `Bnd_B2d::Add()`
     /// Update the box by a point.
     pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2d_add_xy(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_add_xy(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:53 - `Bnd_B2d::Add()`
     /// Update the box by a point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2d_add_pnt2d(self as *mut Self, thePnt)
+            crate::ffi_extern_TKMath::Bnd_B2d_add_pnt2d(self as *mut Self, thePnt)
         })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:56 - `Bnd_B2d::Add()`
     /// Update the box by another box.
     pub fn add_b2d(&mut self, theBox: &B2d) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2d_add_b2d(self as *mut Self, theBox) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_add_b2d(self as *mut Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:61 - `Bnd_B2d::CornerMin()`
@@ -77,9 +87,9 @@ impl B2d {
     /// irrelevant result.
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_corner_min(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2d_corner_min(self as *const Self),
+            ))
         }
     }
 
@@ -89,9 +99,9 @@ impl B2d {
     /// irrelevant result.
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_corner_max(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2d_corner_max(self as *const Self),
+            ))
         }
     }
 
@@ -99,13 +109,17 @@ impl B2d {
     /// Query the square diagonal. If the box is VOID (see method IsVoid())
     /// then a very big real value is returned.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2d_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:73 - `Bnd_B2d::Enlarge()`
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2d_enlarge(self as *mut Self, theDiff) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_enlarge(self as *mut Self, theDiff)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:78 - `Bnd_B2d::Limit()`
@@ -113,7 +127,9 @@ impl B2d {
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
     pub fn limit(&mut self, theOtherBox: &B2d) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2d_limit(self as *mut Self, theOtherBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_limit(self as *mut Self, theOtherBox)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:82 - `Bnd_B2d::Transformed()`
@@ -121,10 +137,9 @@ impl B2d {
     /// The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_transformed(
-                self as *const Self,
-                theTrsf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2d_transformed(self as *const Self, theTrsf),
+            ))
         }
     }
 
@@ -132,7 +147,9 @@ impl B2d {
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
     pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2d_is_out_xy(self as *const Self, thePnt) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_xy(self as *const Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:91 - `Bnd_B2d::IsOut()`
@@ -145,7 +162,7 @@ impl B2d {
         isCircleHollow: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_out_xy_real_bool(
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_xy_real_bool(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -159,7 +176,7 @@ impl B2d {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b2d(&self, theOtherBox: &B2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_out_b2d(self as *const Self, theOtherBox)
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_b2d(self as *const Self, theOtherBox)
         })
     }
 
@@ -169,7 +186,11 @@ impl B2d {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b2d_trsf2d(&self, theOtherBox: &B2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_out_b2d_trsf2d(self as *const Self, theOtherBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_b2d_trsf2d(
+                self as *const Self,
+                theOtherBox,
+                theTrsf,
+            )
         })
     }
 
@@ -178,7 +199,7 @@ impl B2d {
     /// Returns True if there is no intersection.
     pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_out_ax2d(self as *const Self, theLine)
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_ax2d(self as *const Self, theLine)
         })
     }
 
@@ -188,7 +209,7 @@ impl B2d {
     /// Returns True if there is no intersection.
     pub fn is_out_xy2(&self, theP0: &crate::gp::XY, theP1: &crate::gp::XY) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_out_xy2(self as *const Self, theP0, theP1)
+            crate::ffi_extern_TKMath::Bnd_B2d_is_out_xy2(self as *const Self, theP0, theP1)
         })
     }
 
@@ -196,7 +217,9 @@ impl B2d {
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
     pub fn is_in_b2d(&self, theBox: &B2d) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2d_is_in_b2d(self as *const Self, theBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2d_is_in_b2d(self as *const Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B2d.hxx`:121 - `Bnd_B2d::IsIn()`
@@ -205,7 +228,7 @@ impl B2d {
     /// inside the transformed 'theBox'.
     pub fn is_in_b2d_trsf2d(&self, theBox: &B2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2d_is_in_b2d_trsf2d(self as *const Self, theBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B2d_is_in_b2d_trsf2d(self as *const Self, theBox, theTrsf)
         })
     }
 
@@ -213,7 +236,7 @@ impl B2d {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2d_set_center(self as *mut Self, theCenter)
+            crate::ffi_extern_TKMath::Bnd_B2d_set_center(self as *mut Self, theCenter)
         })
     }
 
@@ -222,16 +245,16 @@ impl B2d {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2d_set_h_size(self as *mut Self, theHSize)
+            crate::ffi_extern_TKMath::Bnd_B2d_set_h_size(self as *mut Self, theHSize)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2d_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2d_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -241,11 +264,11 @@ impl B2d {
 // ========================
 
 /// **Source:** `Bnd_B2f.hxx`:31 - `Bnd_B2f`
-pub use crate::ffi::Bnd_B2f as B2f;
+pub use crate::ffi_types::Bnd_B2f as B2f;
 
 unsafe impl crate::CppDeletable for B2f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_B2f_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_B2f_destructor(ptr);
     }
 }
 
@@ -253,49 +276,59 @@ impl B2f {
     /// **Source:** `Bnd_B2f.hxx`:37 - `Bnd_B2f::Bnd_B2f()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_B2f_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:40 - `Bnd_B2f::Bnd_B2f()`
     /// Constructor.
     pub fn new_xy2(theCenter: &crate::gp::XY, theHSize: &crate::gp::XY) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_ctor_xy2(
-                theCenter, theHSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2f_ctor_xy2(theCenter, theHSize),
+            ))
         }
     }
 
     /// **Source:** `Bnd_B2f.hxx`:43 - `Bnd_B2f::IsVoid()`
     /// Returns True if the box is void (non-initialized).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2f_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:46 - `Bnd_B2f::Clear()`
     /// Reset the box data.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2f_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:49 - `Bnd_B2f::Add()`
     /// Update the box by a point.
     pub fn add_xy(&mut self, thePnt: &crate::gp::XY) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2f_add_xy(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_add_xy(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:52 - `Bnd_B2f::Add()`
     /// Update the box by a point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2f_add_pnt2d(self as *mut Self, thePnt)
+            crate::ffi_extern_TKMath::Bnd_B2f_add_pnt2d(self as *mut Self, thePnt)
         })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:55 - `Bnd_B2f::Add()`
     /// Update the box by another box.
     pub fn add_b2f(&mut self, theBox: &B2f) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2f_add_b2f(self as *mut Self, theBox) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_add_b2f(self as *mut Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:60 - `Bnd_B2f::CornerMin()`
@@ -304,9 +337,9 @@ impl B2f {
     /// irrelevant result.
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_corner_min(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2f_corner_min(self as *const Self),
+            ))
         }
     }
 
@@ -316,9 +349,9 @@ impl B2f {
     /// irrelevant result.
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_corner_max(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2f_corner_max(self as *const Self),
+            ))
         }
     }
 
@@ -326,13 +359,17 @@ impl B2f {
     /// Query the square diagonal. If the box is VOID (see method IsVoid())
     /// then a very big real value is returned.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2f_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:72 - `Bnd_B2f::Enlarge()`
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B2f_enlarge(self as *mut Self, theDiff) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_enlarge(self as *mut Self, theDiff)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:77 - `Bnd_B2f::Limit()`
@@ -340,7 +377,9 @@ impl B2f {
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
     pub fn limit(&mut self, theOtherBox: &B2f) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2f_limit(self as *mut Self, theOtherBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_limit(self as *mut Self, theOtherBox)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:81 - `Bnd_B2f::Transformed()`
@@ -348,10 +387,9 @@ impl B2f {
     /// The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf2d) -> crate::OwnedPtr<B2f> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_transformed(
-                self as *const Self,
-                theTrsf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2f_transformed(self as *const Self, theTrsf),
+            ))
         }
     }
 
@@ -359,7 +397,9 @@ impl B2f {
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
     pub fn is_out_xy(&self, thePnt: &crate::gp::XY) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2f_is_out_xy(self as *const Self, thePnt) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_xy(self as *const Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:90 - `Bnd_B2f::IsOut()`
@@ -372,7 +412,7 @@ impl B2f {
         isCircleHollow: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_out_xy_real_bool(
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_xy_real_bool(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -386,7 +426,7 @@ impl B2f {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b2f(&self, theOtherBox: &B2f) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_out_b2f(self as *const Self, theOtherBox)
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_b2f(self as *const Self, theOtherBox)
         })
     }
 
@@ -396,7 +436,11 @@ impl B2f {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b2f_trsf2d(&self, theOtherBox: &B2f, theTrsf: &crate::gp::Trsf2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_out_b2f_trsf2d(self as *const Self, theOtherBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_b2f_trsf2d(
+                self as *const Self,
+                theOtherBox,
+                theTrsf,
+            )
         })
     }
 
@@ -405,7 +449,7 @@ impl B2f {
     /// Returns True if there is no intersection.
     pub fn is_out_ax2d(&self, theLine: &crate::gp::Ax2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_out_ax2d(self as *const Self, theLine)
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_ax2d(self as *const Self, theLine)
         })
     }
 
@@ -415,7 +459,7 @@ impl B2f {
     /// Returns True if there is no intersection.
     pub fn is_out_xy2(&self, theP0: &crate::gp::XY, theP1: &crate::gp::XY) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_out_xy2(self as *const Self, theP0, theP1)
+            crate::ffi_extern_TKMath::Bnd_B2f_is_out_xy2(self as *const Self, theP0, theP1)
         })
     }
 
@@ -423,7 +467,9 @@ impl B2f {
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
     pub fn is_in_b2f(&self, theBox: &B2f) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B2f_is_in_b2f(self as *const Self, theBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B2f_is_in_b2f(self as *const Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B2f.hxx`:120 - `Bnd_B2f::IsIn()`
@@ -432,7 +478,7 @@ impl B2f {
     /// inside the transformed 'theBox'.
     pub fn is_in_b2f_trsf2d(&self, theBox: &B2f, theTrsf: &crate::gp::Trsf2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B2f_is_in_b2f_trsf2d(self as *const Self, theBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B2f_is_in_b2f_trsf2d(self as *const Self, theBox, theTrsf)
         })
     }
 
@@ -440,7 +486,7 @@ impl B2f {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2f_set_center(self as *mut Self, theCenter)
+            crate::ffi_extern_TKMath::Bnd_B2f_set_center(self as *mut Self, theCenter)
         })
     }
 
@@ -449,16 +495,16 @@ impl B2f {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B2f_set_h_size(self as *mut Self, theHSize)
+            crate::ffi_extern_TKMath::Bnd_B2f_set_h_size(self as *mut Self, theHSize)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B2f_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B2f_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -468,11 +514,11 @@ impl B2f {
 // ========================
 
 /// **Source:** `Bnd_B3d.hxx`:33 - `Bnd_B3d`
-pub use crate::ffi::Bnd_B3d as B3d;
+pub use crate::ffi_types::Bnd_B3d as B3d;
 
 unsafe impl crate::CppDeletable for B3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_B3d_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_B3d_destructor(ptr);
     }
 }
 
@@ -480,7 +526,9 @@ impl B3d {
     /// **Source:** `Bnd_B3d.hxx`:39 - `Bnd_B3d::Bnd_B3d()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_B3d_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:42 - `Bnd_B3d::Bnd_B3d()`
@@ -490,40 +538,50 @@ impl B3d {
         theHSize: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_ctor_xyz2(
-                theCenter, theHSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3d_ctor_xyz2(theCenter, theHSize),
+            ))
         }
     }
 
     /// **Source:** `Bnd_B3d.hxx`:45 - `Bnd_B3d::IsVoid()`
     /// Returns True if the box is void (non-initialized).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3d_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:48 - `Bnd_B3d::Clear()`
     /// Reset the box data.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3d_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:51 - `Bnd_B3d::Add()`
     /// Update the box by a point.
     pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3d_add_xyz(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_add_xyz(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:54 - `Bnd_B3d::Add()`
     /// Update the box by a point.
     pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3d_add_pnt(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_add_pnt(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:57 - `Bnd_B3d::Add()`
     /// Update the box by another box.
     pub fn add_b3d(&mut self, theBox: &B3d) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3d_add_b3d(self as *mut Self, theBox) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_add_b3d(self as *mut Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:62 - `Bnd_B3d::CornerMin()`
@@ -532,9 +590,9 @@ impl B3d {
     /// irrelevant result.
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_corner_min(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3d_corner_min(self as *const Self),
+            ))
         }
     }
 
@@ -544,9 +602,9 @@ impl B3d {
     /// irrelevant result.
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_corner_max(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3d_corner_max(self as *const Self),
+            ))
         }
     }
 
@@ -554,13 +612,17 @@ impl B3d {
     /// Query the square diagonal. If the box is VOID (see method IsVoid())
     /// then a very big real value is returned.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3d_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:74 - `Bnd_B3d::Enlarge()`
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3d_enlarge(self as *mut Self, theDiff) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_enlarge(self as *mut Self, theDiff)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:79 - `Bnd_B3d::Limit()`
@@ -568,7 +630,9 @@ impl B3d {
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
     pub fn limit(&mut self, theOtherBox: &B3d) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3d_limit(self as *mut Self, theOtherBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_limit(self as *mut Self, theOtherBox)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:83 - `Bnd_B3d::Transformed()`
@@ -576,10 +640,9 @@ impl B3d {
     /// The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_transformed(
-                self as *const Self,
-                theTrsf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3d_transformed(self as *const Self, theTrsf),
+            ))
         }
     }
 
@@ -587,7 +650,9 @@ impl B3d {
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
     pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3d_is_out_xyz(self as *const Self, thePnt) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_xyz(self as *const Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:95 - `Bnd_B3d::IsOut()`
@@ -603,7 +668,7 @@ impl B3d {
         isSphereHollow: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_out_xyz_real_bool(
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_xyz_real_bool(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -617,7 +682,7 @@ impl B3d {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b3d(&self, theOtherBox: &B3d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_out_b3d(self as *const Self, theOtherBox)
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_b3d(self as *const Self, theOtherBox)
         })
     }
 
@@ -627,7 +692,11 @@ impl B3d {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b3d_trsf(&self, theOtherBox: &B3d, theTrsf: &crate::gp::Trsf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_out_b3d_trsf(self as *const Self, theOtherBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_b3d_trsf(
+                self as *const Self,
+                theOtherBox,
+                theTrsf,
+            )
         })
     }
 
@@ -645,7 +714,7 @@ impl B3d {
         theOverthickness: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_out_ax1_bool_real(
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_ax1_bool_real(
                 self as *const Self,
                 theLine,
                 isRay,
@@ -659,7 +728,7 @@ impl B3d {
     /// Returns True if there is no intersection.
     pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_out_ax3(self as *const Self, thePlane)
+            crate::ffi_extern_TKMath::Bnd_B3d_is_out_ax3(self as *const Self, thePlane)
         })
     }
 
@@ -667,7 +736,9 @@ impl B3d {
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
     pub fn is_in_b3d(&self, theBox: &B3d) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3d_is_in_b3d(self as *const Self, theBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3d_is_in_b3d(self as *const Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B3d.hxx`:129 - `Bnd_B3d::IsIn()`
@@ -676,7 +747,7 @@ impl B3d {
     /// inside the transformed 'theBox'.
     pub fn is_in_b3d_trsf(&self, theBox: &B3d, theTrsf: &crate::gp::Trsf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3d_is_in_b3d_trsf(self as *const Self, theBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B3d_is_in_b3d_trsf(self as *const Self, theBox, theTrsf)
         })
     }
 
@@ -684,7 +755,7 @@ impl B3d {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B3d_set_center(self as *mut Self, theCenter)
+            crate::ffi_extern_TKMath::Bnd_B3d_set_center(self as *mut Self, theCenter)
         })
     }
 
@@ -693,16 +764,16 @@ impl B3d {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B3d_set_h_size(self as *mut Self, theHSize)
+            crate::ffi_extern_TKMath::Bnd_B3d_set_h_size(self as *mut Self, theHSize)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3d_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3d_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -712,11 +783,11 @@ impl B3d {
 // ========================
 
 /// **Source:** `Bnd_B3f.hxx`:29 - `Bnd_B3f`
-pub use crate::ffi::Bnd_B3f as B3f;
+pub use crate::ffi_types::Bnd_B3f as B3f;
 
 unsafe impl crate::CppDeletable for B3f {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_B3f_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_B3f_destructor(ptr);
     }
 }
 
@@ -724,7 +795,9 @@ impl B3f {
     /// **Source:** `Bnd_B3f.hxx`:35 - `Bnd_B3f::Bnd_B3f()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_B3f_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:38 - `Bnd_B3f::Bnd_B3f()`
@@ -734,40 +807,50 @@ impl B3f {
         theHSize: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_ctor_xyz2(
-                theCenter, theHSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3f_ctor_xyz2(theCenter, theHSize),
+            ))
         }
     }
 
     /// **Source:** `Bnd_B3f.hxx`:41 - `Bnd_B3f::IsVoid()`
     /// Returns True if the box is void (non-initialized).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3f_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:44 - `Bnd_B3f::Clear()`
     /// Reset the box data.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3f_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:47 - `Bnd_B3f::Add()`
     /// Update the box by a point.
     pub fn add_xyz(&mut self, thePnt: &crate::gp::XYZ) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3f_add_xyz(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_add_xyz(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:50 - `Bnd_B3f::Add()`
     /// Update the box by a point.
     pub fn add_pnt(&mut self, thePnt: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3f_add_pnt(self as *mut Self, thePnt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_add_pnt(self as *mut Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:53 - `Bnd_B3f::Add()`
     /// Update the box by another box.
     pub fn add_b3f(&mut self, theBox: &B3f) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3f_add_b3f(self as *mut Self, theBox) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_add_b3f(self as *mut Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:58 - `Bnd_B3f::CornerMin()`
@@ -776,9 +859,9 @@ impl B3f {
     /// irrelevant result.
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_corner_min(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3f_corner_min(self as *const Self),
+            ))
         }
     }
 
@@ -788,9 +871,9 @@ impl B3f {
     /// irrelevant result.
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_corner_max(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3f_corner_max(self as *const Self),
+            ))
         }
     }
 
@@ -798,13 +881,17 @@ impl B3f {
     /// Query the square diagonal. If the box is VOID (see method IsVoid())
     /// then a very big real value is returned.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3f_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:70 - `Bnd_B3f::Enlarge()`
     /// Extend the Box by the absolute value of theDiff.
     pub fn enlarge(&mut self, theDiff: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_B3f_enlarge(self as *mut Self, theDiff) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_enlarge(self as *mut Self, theDiff)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:75 - `Bnd_B3f::Limit()`
@@ -812,7 +899,9 @@ impl B3f {
     /// Returns True if the limitation takes place, otherwise False
     /// indicating that the boxes do not intersect.
     pub fn limit(&mut self, theOtherBox: &B3f) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3f_limit(self as *mut Self, theOtherBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_limit(self as *mut Self, theOtherBox)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:79 - `Bnd_B3f::Transformed()`
@@ -820,10 +909,9 @@ impl B3f {
     /// The resulting box will be larger if theTrsf contains rotation.
     pub fn transformed(&self, theTrsf: &crate::gp::Trsf) -> crate::OwnedPtr<B3f> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_transformed(
-                self as *const Self,
-                theTrsf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3f_transformed(self as *const Self, theTrsf),
+            ))
         }
     }
 
@@ -831,7 +919,9 @@ impl B3f {
     /// Check the given point for the inclusion in the Box.
     /// Returns True if the point is outside.
     pub fn is_out_xyz(&self, thePnt: &crate::gp::XYZ) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3f_is_out_xyz(self as *const Self, thePnt) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_xyz(self as *const Self, thePnt)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:91 - `Bnd_B3f::IsOut()`
@@ -847,7 +937,7 @@ impl B3f {
         isSphereHollow: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_out_xyz_real_bool(
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_xyz_real_bool(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -861,7 +951,7 @@ impl B3f {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b3f(&self, theOtherBox: &B3f) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_out_b3f(self as *const Self, theOtherBox)
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_b3f(self as *const Self, theOtherBox)
         })
     }
 
@@ -871,7 +961,11 @@ impl B3f {
     /// Returns True if there is no intersection between boxes.
     pub fn is_out_b3f_trsf(&self, theOtherBox: &B3f, theTrsf: &crate::gp::Trsf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_out_b3f_trsf(self as *const Self, theOtherBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_b3f_trsf(
+                self as *const Self,
+                theOtherBox,
+                theTrsf,
+            )
         })
     }
 
@@ -889,7 +983,7 @@ impl B3f {
         theOverthickness: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_out_ax1_bool_real(
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_ax1_bool_real(
                 self as *const Self,
                 theLine,
                 isRay,
@@ -903,7 +997,7 @@ impl B3f {
     /// Returns True if there is no intersection.
     pub fn is_out_ax3(&self, thePlane: &crate::gp::Ax3) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_out_ax3(self as *const Self, thePlane)
+            crate::ffi_extern_TKMath::Bnd_B3f_is_out_ax3(self as *const Self, thePlane)
         })
     }
 
@@ -911,7 +1005,9 @@ impl B3f {
     /// Check that the box 'this' is inside the given box 'theBox'. Returns
     /// True if 'this' box is fully inside 'theBox'.
     pub fn is_in_b3f(&self, theBox: &B3f) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_B3f_is_in_b3f(self as *const Self, theBox) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_B3f_is_in_b3f(self as *const Self, theBox)
+        })
     }
 
     /// **Source:** `Bnd_B3f.hxx`:125 - `Bnd_B3f::IsIn()`
@@ -920,7 +1016,7 @@ impl B3f {
     /// inside the transformed 'theBox'.
     pub fn is_in_b3f_trsf(&self, theBox: &B3f, theTrsf: &crate::gp::Trsf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_B3f_is_in_b3f_trsf(self as *const Self, theBox, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_B3f_is_in_b3f_trsf(self as *const Self, theBox, theTrsf)
         })
     }
 
@@ -928,7 +1024,7 @@ impl B3f {
     /// Set the Center coordinates
     pub fn set_center(&mut self, theCenter: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B3f_set_center(self as *mut Self, theCenter)
+            crate::ffi_extern_TKMath::Bnd_B3f_set_center(self as *mut Self, theCenter)
         })
     }
 
@@ -937,16 +1033,16 @@ impl B3f {
     /// All components of theHSize must be non-negative.
     pub fn set_h_size(&mut self, theHSize: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_B3f_set_h_size(self as *mut Self, theHSize)
+            crate::ffi_extern_TKMath::Bnd_B3f_set_h_size(self as *mut Self, theHSize)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_B3f_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_B3f_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -963,11 +1059,11 @@ impl B3f {
 /// while the box being compared bounds a shape to be
 /// compared. The resulting list of intersecting boxes therefore
 /// gives the list of items which potentially intersect the shape to be compared.
-pub use crate::ffi::Bnd_BoundSortBox as BoundSortBox;
+pub use crate::ffi_types::Bnd_BoundSortBox as BoundSortBox;
 
 unsafe impl crate::CppDeletable for BoundSortBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_BoundSortBox_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_BoundSortBox_destructor(ptr);
     }
 }
 
@@ -977,7 +1073,9 @@ impl BoundSortBox {
     /// The bounding boxes are then defined using the Initialize function.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_BoundSortBox_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_BoundSortBox_ctor(),
+            ))
         }
     }
 
@@ -987,10 +1085,10 @@ impl BoundSortBox {
     pub fn initialize_box_handlebndharray1ofbox(
         &mut self,
         CompleteBox: &Box,
-        SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
+        SetOfBox: &crate::ffi_types::HandleBndHArray1OfBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_BoundSortBox_initialize_box_handlebndharray1ofbox(
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_initialize_box_handlebndharray1ofbox(
                 self as *mut Self,
                 CompleteBox,
                 SetOfBox,
@@ -1004,10 +1102,10 @@ impl BoundSortBox {
     /// CompleteBox is given as the global bounding box of SetOfBox.
     pub fn initialize_handlebndharray1ofbox(
         &mut self,
-        SetOfBox: &crate::ffi::HandleBndHArray1OfBox,
+        SetOfBox: &crate::ffi_types::HandleBndHArray1OfBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_BoundSortBox_initialize_handlebndharray1ofbox(
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_initialize_handlebndharray1ofbox(
                 self as *mut Self,
                 SetOfBox,
             )
@@ -1021,7 +1119,7 @@ impl BoundSortBox {
     /// function to define the array of bounding boxes to be sorted by this algorithm.
     pub fn initialize_box_int(&mut self, CompleteBox: &Box, nbComponents: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_BoundSortBox_initialize_box_int(
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_initialize_box_int(
                 self as *mut Self,
                 CompleteBox,
                 nbComponents,
@@ -1048,7 +1146,7 @@ impl BoundSortBox {
     /// this comparison algorithm.
     pub fn add(&mut self, theBox: &Box, boxIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex)
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_add(self as *mut Self, theBox, boxIndex)
         })
     }
 
@@ -1064,9 +1162,9 @@ impl BoundSortBox {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn compare_box(&mut self, theBox: &Box) -> &crate::ffi::TColStd_ListOfInteger {
+    pub unsafe fn compare_box(&mut self, theBox: &Box) -> &crate::ffi_types::TColStd_ListOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_BoundSortBox_compare_box(
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_BoundSortBox_compare_box(
                 self as *mut Self,
                 theBox,
             )))
@@ -1085,28 +1183,38 @@ impl BoundSortBox {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn compare_pln(&mut self, P: &crate::gp::Pln) -> &crate::ffi::TColStd_ListOfInteger {
+    pub unsafe fn compare_pln(
+        &mut self,
+        P: &crate::gp::Pln,
+    ) -> &crate::ffi_types::TColStd_ListOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_BoundSortBox_compare_pln(self as *mut Self, P)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_BoundSortBox_compare_pln(
+                self as *mut Self,
+                P,
+            )))
         }
     }
 
     /// **Source:** `Bnd_BoundSortBox.hxx`:95 - `Bnd_BoundSortBox::Dump()`
     pub fn dump(&self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_BoundSortBox_dump(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_dump(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_BoundSortBox.hxx`:97 - `Bnd_BoundSortBox::Destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_BoundSortBox_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_BoundSortBox_destroy(self as *mut Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_BoundSortBox_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_BoundSortBox_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1142,11 +1250,11 @@ impl BoundSortBox {
 /// bounding box if it is infinite or empty, and
 /// -   a gap, which is included on both sides in any direction
 /// when consulting the finite bounds of the box.
-pub use crate::ffi::Bnd_Box as Box;
+pub use crate::ffi_types::Bnd_Box as Box;
 
 unsafe impl crate::CppDeletable for Box {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_Box_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_Box_destructor(ptr);
     }
 }
 
@@ -1155,7 +1263,9 @@ impl Box {
     /// Creates an empty Box.
     /// The constructed box is qualified Void. Its gap is null.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_Box_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_Box.hxx`:71 - `Bnd_Box::Bnd_Box()`
@@ -1164,9 +1274,9 @@ impl Box {
     /// The constructed box is qualified Void. Its gap is null.
     pub fn new_pnt2(theMin: &crate::gp::Pnt, theMax: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_ctor_pnt2(
-                theMin, theMax,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_ctor_pnt2(theMin, theMax),
+            ))
         }
     }
 
@@ -1174,13 +1284,17 @@ impl Box {
     /// Sets this bounding box so that it covers the whole of 3D space.
     /// It is infinitely long in all directions.
     pub fn set_whole(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_set_whole(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_set_whole(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:78 - `Bnd_Box::SetVoid()`
     /// Sets this bounding box so that it is empty. All points are outside a void box.
     pub fn set_void(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_set_void(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_set_void(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:93 - `Bnd_Box::Set()`
@@ -1188,7 +1302,9 @@ impl Box {
     /// -   the point P. This involves first setting this bounding box
     /// to be void and then adding the point P.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_set_pnt(self as *mut Self, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_set_pnt(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:100 - `Bnd_Box::Set()`
@@ -1199,7 +1315,7 @@ impl Box {
     /// involves first setting this box to be void and then adding   the half-line.
     pub fn set_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box_set_pnt_dir(self as *mut Self, P, D)
+            crate::ffi_extern_TKMath::Bnd_Box_set_pnt_dir(self as *mut Self, P, D)
         })
     }
 
@@ -1219,7 +1335,7 @@ impl Box {
         aZmax: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box_update_real6(
+            crate::ffi_extern_TKMath::Bnd_Box_update_real6(
                 self as *mut Self,
                 aXmin,
                 aYmin,
@@ -1235,20 +1351,24 @@ impl Box {
     /// Adds a point of coordinates (X,Y,Z) to this bounding box.
     pub fn update_real3(&mut self, X: f64, Y: f64, Z: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box_update_real3(self as *mut Self, X, Y, Z)
+            crate::ffi_extern_TKMath::Bnd_Box_update_real3(self as *mut Self, X, Y, Z)
         })
     }
 
     /// **Source:** `Bnd_Box.hxx`:118 - `Bnd_Box::GetGap()`
     /// Returns the gap of this bounding box.
     pub fn get_gap(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_get_gap(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_get_gap(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:121 - `Bnd_Box::SetGap()`
     /// Set the gap of this bounding box to abs(Tol).
     pub fn set_gap(&mut self, Tol: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_set_gap(self as *mut Self, Tol) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_set_gap(self as *mut Self, Tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:129 - `Bnd_Box::Enlarge()`
@@ -1259,7 +1379,9 @@ impl Box {
     /// the absolute value of Tol, while the maximum values are
     /// increased by the same amount.
     pub fn enlarge(&mut self, Tol: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_enlarge(self as *mut Self, Tol) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_enlarge(self as *mut Self, Tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:136 - `Bnd_Box::Get()`
@@ -1278,7 +1400,7 @@ impl Box {
         theZmax: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box_get(
+            crate::ffi_extern_TKMath::Bnd_Box_get(
                 self as *const Self,
                 theXmin,
                 theYmin,
@@ -1298,9 +1420,9 @@ impl Box {
     /// if IsVoid()
     pub fn corner_min(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_corner_min(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_corner_min(self as *const Self),
+            ))
         }
     }
 
@@ -1312,9 +1434,9 @@ impl Box {
     /// if IsVoid()
     pub fn corner_max(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_corner_max(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_corner_max(self as *const Self),
+            ))
         }
     }
 
@@ -1322,121 +1444,159 @@ impl Box {
     /// The   Box will be   infinitely   long  in the Xmin
     /// direction.
     pub fn open_xmin(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_xmin(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_xmin(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:163 - `Bnd_Box::OpenXmax()`
     /// The   Box will be   infinitely   long  in the Xmax
     /// direction.
     pub fn open_xmax(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_xmax(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_xmax(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:167 - `Bnd_Box::OpenYmin()`
     /// The   Box will be   infinitely   long  in the Ymin
     /// direction.
     pub fn open_ymin(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_ymin(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_ymin(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:171 - `Bnd_Box::OpenYmax()`
     /// The   Box will be   infinitely   long  in the Ymax
     /// direction.
     pub fn open_ymax(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_ymax(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_ymax(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:175 - `Bnd_Box::OpenZmin()`
     /// The   Box will be   infinitely   long  in the Zmin
     /// direction.
     pub fn open_zmin(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_zmin(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_zmin(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:179 - `Bnd_Box::OpenZmax()`
     /// The   Box will be   infinitely   long  in the Zmax
     /// direction.
     pub fn open_zmax(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_open_zmax(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_open_zmax(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:182 - `Bnd_Box::IsOpen()`
     /// Returns true if this bounding box has at least one open direction.
     pub fn is_open(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:185 - `Bnd_Box::IsOpenXmin()`
     /// Returns true if this bounding box is open in the  Xmin direction.
     pub fn is_open_xmin(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_xmin(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_xmin(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:188 - `Bnd_Box::IsOpenXmax()`
     /// Returns true if this bounding box is open in the  Xmax direction.
     pub fn is_open_xmax(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_xmax(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_xmax(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:191 - `Bnd_Box::IsOpenYmin()`
     /// Returns true if this bounding box is open in the  Ymix direction.
     pub fn is_open_ymin(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_ymin(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_ymin(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:194 - `Bnd_Box::IsOpenYmax()`
     /// Returns true if this bounding box is open in the  Ymax direction.
     pub fn is_open_ymax(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_ymax(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_ymax(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:197 - `Bnd_Box::IsOpenZmin()`
     /// Returns true if this bounding box is open in the  Zmin direction.
     pub fn is_open_zmin(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_zmin(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_zmin(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:200 - `Bnd_Box::IsOpenZmax()`
     /// Returns true if this bounding box is open in the  Zmax  direction.
     pub fn is_open_zmax(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_open_zmax(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_open_zmax(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:203 - `Bnd_Box::IsWhole()`
     /// Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
     pub fn is_whole(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_whole(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_whole(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:206 - `Bnd_Box::IsVoid()`
     /// Returns true if this bounding box is empty (Void flag).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:209 - `Bnd_Box::IsXThin()`
     /// true if xmax-xmin < tol.
     pub fn is_x_thin(&self, tol: f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_x_thin(self as *const Self, tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_x_thin(self as *const Self, tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:212 - `Bnd_Box::IsYThin()`
     /// true if ymax-ymin < tol.
     pub fn is_y_thin(&self, tol: f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_y_thin(self as *const Self, tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_y_thin(self as *const Self, tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:215 - `Bnd_Box::IsZThin()`
     /// true if zmax-zmin < tol.
     pub fn is_z_thin(&self, tol: f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_z_thin(self as *const Self, tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_z_thin(self as *const Self, tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:219 - `Bnd_Box::IsThin()`
     /// Returns true if IsXThin, IsYThin and IsZThin are all true,
     /// i.e. if the box is thin in all three dimensions.
     pub fn is_thin(&self, tol: f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_thin(self as *const Self, tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_thin(self as *const Self, tol)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:227 - `Bnd_Box::Transformed()`
@@ -1448,30 +1608,33 @@ impl Box {
     /// dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &crate::gp::Trsf) -> crate::OwnedPtr<Box> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_transformed(
-                self as *const Self,
-                T,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_transformed(self as *const Self, T),
+            ))
         }
     }
 
     /// **Source:** `Bnd_Box.hxx`:230 - `Bnd_Box::Add()`
     /// Adds the box <Other> to <me>.
     pub fn add_box(&mut self, Other: &Box) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_add_box(self as *mut Self, Other) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_add_box(self as *mut Self, Other)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:233 - `Bnd_Box::Add()`
     /// Adds a Pnt to the box.
     pub fn add_pnt(&mut self, P: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_add_pnt(self as *mut Self, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_add_pnt(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:236 - `Bnd_Box::Add()`
     /// Extends  <me> from the Pnt <P> in the direction <D>.
     pub fn add_pnt_dir(&mut self, P: &crate::gp::Pnt, D: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box_add_pnt_dir(self as *mut Self, P, D)
+            crate::ffi_extern_TKMath::Bnd_Box_add_pnt_dir(self as *mut Self, P, D)
         })
     }
 
@@ -1480,31 +1643,41 @@ impl Box {
     /// an  half-line. The   box  may become   infinite in
     /// 1,2 or 3 directions.
     pub fn add_dir(&mut self, D: &crate::gp::Dir) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_add_dir(self as *mut Self, D) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_add_dir(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:244 - `Bnd_Box::IsOut()`
     /// Returns True if the Pnt is out the box.
     pub fn is_out_pnt(&self, P: &crate::gp::Pnt) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_out_pnt(self as *const Self, P) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_pnt(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:247 - `Bnd_Box::IsOut()`
     /// Returns False if the line intersects the box.
     pub fn is_out_lin(&self, L: &crate::gp::Lin) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_out_lin(self as *const Self, L) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_lin(self as *const Self, L)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:250 - `Bnd_Box::IsOut()`
     /// Returns False if the plane intersects the box.
     pub fn is_out_pln(&self, P: &crate::gp::Pln) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_out_pln(self as *const Self, P) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_pln(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:253 - `Bnd_Box::IsOut()`
     /// Returns False if the <Box> intersects or is inside <me>.
     pub fn is_out_box(&self, Other: &Box) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_is_out_box(self as *const Self, Other) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_box(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:257 - `Bnd_Box::IsOut()`
@@ -1512,7 +1685,7 @@ impl Box {
     /// or  is inside <me>.
     pub fn is_out_box_trsf(&self, Other: &Box, T: &crate::gp::Trsf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box_is_out_box_trsf(self as *const Self, Other, T)
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_box_trsf(self as *const Self, Other, T)
         })
     }
 
@@ -1526,7 +1699,12 @@ impl Box {
         T2: &crate::gp::Trsf,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box_is_out_trsf_box_trsf(self as *const Self, T1, Other, T2)
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_trsf_box_trsf(
+                self as *const Self,
+                T1,
+                Other,
+                T2,
+            )
         })
     }
 
@@ -1541,25 +1719,31 @@ impl Box {
         D: &crate::gp::Dir,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box_is_out_pnt2_dir(self as *const Self, P1, P2, D)
+            crate::ffi_extern_TKMath::Bnd_Box_is_out_pnt2_dir(self as *const Self, P1, P2, D)
         })
     }
 
     /// **Source:** `Bnd_Box.hxx`:271 - `Bnd_Box::Distance()`
     /// Computes the minimum distance between two boxes.
     pub fn distance(&self, Other: &Box) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_distance(self as *const Self, Other) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_distance(self as *const Self, Other)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:273 - `Bnd_Box::Dump()`
     pub fn dump(&self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box_dump(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_dump(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:276 - `Bnd_Box::SquareExtent()`
     /// Computes the squared diagonal of me.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box.hxx`:293 - `Bnd_Box::FinitePart()`
@@ -1569,24 +1753,26 @@ impl Box {
     /// using Add() method will be returned as is.
     pub fn finite_part(&self) -> crate::OwnedPtr<Box> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_finite_part(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_finite_part(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Bnd_Box.hxx`:307 - `Bnd_Box::HasFinitePart()`
     /// Returns TRUE if this box has finite part.
     pub fn has_finite_part(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box_has_finite_part(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box_has_finite_part(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1615,11 +1801,11 @@ impl Box {
 /// OpenYmax, WholeSpace and Void) which describe the bounding box if it is infinite or empty, and
 /// -   a gap, which is included on both sides in any direction when consulting the finite bounds of
 /// the box.
-pub use crate::ffi::Bnd_Box2d as Box2d;
+pub use crate::ffi_types::Bnd_Box2d as Box2d;
 
 unsafe impl crate::CppDeletable for Box2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_Box2d_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_Box2d_destructor(ptr);
     }
 }
 
@@ -1628,20 +1814,28 @@ impl Box2d {
     /// Creates an empty 2D bounding box.
     /// The constructed box is qualified Void. Its gap is null.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box2d_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box2d_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:70 - `Bnd_Box2d::SetWhole()`
     /// Sets this bounding box so that it covers the whole 2D
     /// space, i.e. it is infinite in all directions.
     pub fn set_whole(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_set_whole(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_set_whole(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:73 - `Bnd_Box2d::SetVoid()`
     /// Sets this 2D bounding box so that it is empty. All points are outside a void box.
     pub fn set_void(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_set_void(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_set_void(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:82 - `Bnd_Box2d::Set()`
@@ -1650,7 +1844,7 @@ impl Box2d {
     /// to be void and then adding the point PThe rectangle bounds   the  point <P>.
     pub fn set_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_set_pnt2d(self as *mut Self, thePnt)
+            crate::ffi_extern_TKMath::Bnd_Box2d_set_pnt2d(self as *mut Self, thePnt)
         })
     }
 
@@ -1662,7 +1856,7 @@ impl Box2d {
     /// first setting this 2D box to be void and then adding the   half-line.
     pub fn set_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_set_pnt2d_dir2d(self as *mut Self, thePnt, theDir)
+            crate::ffi_extern_TKMath::Bnd_Box2d_set_pnt2d_dir2d(self as *mut Self, thePnt, theDir)
         })
     }
 
@@ -1673,7 +1867,13 @@ impl Box2d {
     /// -   interval [ aYmin,aYmax ] in the "Y Direction"
     pub fn update_real4(&mut self, aXmin: f64, aYmin: f64, aXmax: f64, aYmax: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_update_real4(self as *mut Self, aXmin, aYmin, aXmax, aYmax)
+            crate::ffi_extern_TKMath::Bnd_Box2d_update_real4(
+                self as *mut Self,
+                aXmin,
+                aYmin,
+                aXmax,
+                aYmax,
+            )
         })
     }
 
@@ -1681,20 +1881,24 @@ impl Box2d {
     /// Adds a point of coordinates (X,Y) to this bounding box.
     pub fn update_real2(&mut self, X: f64, Y: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_update_real2(self as *mut Self, X, Y)
+            crate::ffi_extern_TKMath::Bnd_Box2d_update_real2(self as *mut Self, X, Y)
         })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:114 - `Bnd_Box2d::GetGap()`
     /// Returns the gap of this 2D bounding box.
     pub fn get_gap(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_get_gap(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_get_gap(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:117 - `Bnd_Box2d::SetGap()`
     /// Set the gap of this 2D bounding box to abs(Tol).
     pub fn set_gap(&mut self, Tol: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_set_gap(self as *mut Self, Tol) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_set_gap(self as *mut Self, Tol)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:124 - `Bnd_Box2d::Enlarge()`
@@ -1705,7 +1909,7 @@ impl Box2d {
     /// increased by the same amount.
     pub fn enlarge(&mut self, theTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_enlarge(self as *mut Self, theTol)
+            crate::ffi_extern_TKMath::Bnd_Box2d_enlarge(self as *mut Self, theTol)
         })
     }
 
@@ -1716,69 +1920,89 @@ impl Box2d {
     /// if IsVoid()
     pub fn get(&self, aXmin: &mut f64, aYmin: &mut f64, aXmax: &mut f64, aYmax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_get(self as *const Self, aXmin, aYmin, aXmax, aYmax)
+            crate::ffi_extern_TKMath::Bnd_Box2d_get(self as *const Self, aXmin, aYmin, aXmax, aYmax)
         })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:141 - `Bnd_Box2d::OpenXmin()`
     /// The Box will be infinitely long in the Xmin direction.
     pub fn open_xmin(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_open_xmin(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_open_xmin(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:144 - `Bnd_Box2d::OpenXmax()`
     /// The Box will be infinitely long in the Xmax direction.
     pub fn open_xmax(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_open_xmax(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_open_xmax(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:147 - `Bnd_Box2d::OpenYmin()`
     /// The Box will be infinitely long in the Ymin direction.
     pub fn open_ymin(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_open_ymin(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_open_ymin(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:150 - `Bnd_Box2d::OpenYmax()`
     /// The Box will be infinitely long in the Ymax direction.
     pub fn open_ymax(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_open_ymax(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_open_ymax(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:153 - `Bnd_Box2d::IsOpenXmin()`
     /// Returns true if this bounding box is open in the Xmin direction.
     pub fn is_open_xmin(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_open_xmin(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_open_xmin(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:156 - `Bnd_Box2d::IsOpenXmax()`
     /// Returns true if this bounding box is open in the Xmax direction.
     pub fn is_open_xmax(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_open_xmax(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_open_xmax(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:159 - `Bnd_Box2d::IsOpenYmin()`
     /// Returns true if this bounding box is open in the Ymin direction.
     pub fn is_open_ymin(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_open_ymin(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_open_ymin(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:162 - `Bnd_Box2d::IsOpenYmax()`
     /// Returns true if this bounding box is open in the Ymax direction.
     pub fn is_open_ymax(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_open_ymax(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_open_ymax(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:166 - `Bnd_Box2d::IsWhole()`
     /// Returns true if this bounding box is infinite in all 4
     /// directions (Whole Space flag).
     pub fn is_whole(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_whole(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_whole(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:169 - `Bnd_Box2d::IsVoid()`
     /// Returns true if this 2D bounding box is empty (Void flag).
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:177 - `Bnd_Box2d::Transformed()`
@@ -1790,10 +2014,9 @@ impl Box2d {
     /// dimensions. This is not optimal for algorithms which use it.
     pub fn transformed(&self, T: &crate::gp::Trsf2d) -> crate::OwnedPtr<Box2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box2d_transformed(
-                self as *const Self,
-                T,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box2d_transformed(self as *const Self, T),
+            ))
         }
     }
 
@@ -1801,7 +2024,7 @@ impl Box2d {
     /// Adds the 2d box <Other> to <me>.
     pub fn add_box2d(&mut self, Other: &Box2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_add_box2d(self as *mut Self, Other)
+            crate::ffi_extern_TKMath::Bnd_Box2d_add_box2d(self as *mut Self, Other)
         })
     }
 
@@ -1809,7 +2032,7 @@ impl Box2d {
     /// Adds the 2d point.
     pub fn add_pnt2d(&mut self, thePnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_add_pnt2d(self as *mut Self, thePnt)
+            crate::ffi_extern_TKMath::Bnd_Box2d_add_pnt2d(self as *mut Self, thePnt)
         })
     }
 
@@ -1817,7 +2040,7 @@ impl Box2d {
     /// Extends bounding box from thePnt in the direction theDir.
     pub fn add_pnt2d_dir2d(&mut self, thePnt: &crate::gp::Pnt2d, theDir: &crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Box2d_add_pnt2d_dir2d(self as *mut Self, thePnt, theDir)
+            crate::ffi_extern_TKMath::Bnd_Box2d_add_pnt2d_dir2d(self as *mut Self, thePnt, theDir)
         })
     }
 
@@ -1826,20 +2049,24 @@ impl Box2d {
     /// a half-line. The box may become infinite in 1 or 2
     /// directions.
     pub fn add_dir2d(&mut self, D: &crate::gp::Dir2d) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_add_dir2d(self as *mut Self, D) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_add_dir2d(self as *mut Self, D)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:198 - `Bnd_Box2d::IsOut()`
     /// Returns True if the 2d pnt <P> is out <me>.
     pub fn is_out_pnt2d(&self, P: &crate::gp::Pnt2d) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_is_out_pnt2d(self as *const Self, P) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_pnt2d(self as *const Self, P)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:201 - `Bnd_Box2d::IsOut()`
     /// Returns True if the line doesn't intersect the box.
     pub fn is_out_lin2d(&self, theL: &crate::gp::Lin2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box2d_is_out_lin2d(self as *const Self, theL)
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_lin2d(self as *const Self, theL)
         })
     }
 
@@ -1847,7 +2074,7 @@ impl Box2d {
     /// Returns True if the segment doesn't intersect the box.
     pub fn is_out_pnt2d2(&self, theP0: &crate::gp::Pnt2d, theP1: &crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box2d_is_out_pnt2d2(self as *const Self, theP0, theP1)
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_pnt2d2(self as *const Self, theP0, theP1)
         })
     }
 
@@ -1855,7 +2082,7 @@ impl Box2d {
     /// Returns True if <Box2d> is out <me>.
     pub fn is_out_box2d(&self, Other: &Box2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box2d_is_out_box2d(self as *const Self, Other)
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_box2d(self as *const Self, Other)
         })
     }
 
@@ -1863,7 +2090,11 @@ impl Box2d {
     /// Returns True if transformed <Box2d> is out <me>.
     pub fn is_out_box2d_trsf2d(&self, theOther: &Box2d, theTrsf: &crate::gp::Trsf2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box2d_is_out_box2d_trsf2d(self as *const Self, theOther, theTrsf)
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_box2d_trsf2d(
+                self as *const Self,
+                theOther,
+                theTrsf,
+            )
         })
     }
 
@@ -1878,27 +2109,36 @@ impl Box2d {
         T2: &crate::gp::Trsf2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Box2d_is_out_trsf2d_box2d_trsf2d(self as *const Self, T1, Other, T2)
+            crate::ffi_extern_TKMath::Bnd_Box2d_is_out_trsf2d_box2d_trsf2d(
+                self as *const Self,
+                T1,
+                Other,
+                T2,
+            )
         })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:223 - `Bnd_Box2d::Dump()`
     pub fn dump(&self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Box2d_dump(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_dump(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Box2d.hxx`:226 - `Bnd_Box2d::SquareExtent()`
     /// Computes the squared diagonal of me.
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Box2d_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Box2d_square_extent(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Box2d_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Box2d_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1908,11 +2148,11 @@ impl Box2d {
 // ========================
 
 /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox`
-pub use crate::ffi::Bnd_HArray1OfBox as HArray1OfBox;
+pub use crate::ffi_types::Bnd_HArray1OfBox as HArray1OfBox;
 
 unsafe impl crate::CppDeletable for HArray1OfBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_HArray1OfBox_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_HArray1OfBox_destructor(ptr);
     }
 }
 
@@ -1920,16 +2160,18 @@ impl HArray1OfBox {
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_HArray1OfBox_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_HArray1OfBox_ctor_int2(
-                theLower, theUpper,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_ctor_int2(theLower, theUpper),
+            ))
         }
     }
 
@@ -1937,7 +2179,9 @@ impl HArray1OfBox {
     pub fn new_int2_box(theLower: i32, theUpper: i32, theValue: &Box) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox_ctor_int2_box(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_ctor_int2_box(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -1951,38 +2195,46 @@ impl HArray1OfBox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox_ctor_box_int2_bool(theBegin, theLower, theUpper, arg3),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_ctor_box_int2_bool(
+                    theBegin, theLower, theUpper, arg3,
+                ),
             ))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Bnd_HArray1OfBox()`
-    pub fn new_array1ofbox(theOther: &crate::ffi::Bnd_Array1OfBox) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofbox(theOther: &crate::ffi_types::Bnd_Array1OfBox) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox_ctor_array1ofbox(theOther),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_ctor_array1ofbox(theOther),
             ))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox_array1(self as *const Self))) }
+    pub fn array1(&self) -> &crate::ffi_types::Bnd_Array1OfBox {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox_array1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfBox {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Bnd_Array1OfBox {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Bnd_HArray1OfBox_change_array1(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox_change_array1(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1990,7 +2242,7 @@ impl HArray1OfBox {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox_get_type_name(),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1998,14 +2250,16 @@ impl HArray1OfBox {
     }
 
     /// **Source:** `Bnd_HArray1OfBox.hxx`:24 - `Bnd_HArray1OfBox::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2014,34 +2268,42 @@ impl HArray1OfBox {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Bnd_HArray1OfBox_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfBox> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBndHArray1OfBox> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_HArray1OfBox_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2049,7 +2311,7 @@ impl HArray1OfBox {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Bnd_HArray1OfBox_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2062,58 +2324,72 @@ impl HArray1OfBox {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBndHArray1OfBox;
+pub use crate::ffi_types::HandleBndHArray1OfBox;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBndHArray1OfBox_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleBndHArray1OfBox_destructor(ptr);
     }
 }
 
 impl HandleBndHArray1OfBox {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox
-    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox {
-        unsafe { &*crate::check_result(crate::ffi::HandleBndHArray1OfBox_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfBox {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfBox {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bnd_HArray1OfBox {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBndHArray1OfBox_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Bnd_HArray1OfBox> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBndHArray1OfBox_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleBndHArray1OfBox_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2124,11 +2400,11 @@ impl HandleBndHArray1OfBox {
 // ========================
 
 /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d`
-pub use crate::ffi::Bnd_HArray1OfBox2d as HArray1OfBox2d;
+pub use crate::ffi_types::Bnd_HArray1OfBox2d as HArray1OfBox2d;
 
 unsafe impl crate::CppDeletable for HArray1OfBox2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_HArray1OfBox2d_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_destructor(ptr);
     }
 }
 
@@ -2136,7 +2412,9 @@ impl HArray1OfBox2d {
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Bnd_HArray1OfBox2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_ctor(),
+            ))
         }
     }
 
@@ -2144,7 +2422,7 @@ impl HArray1OfBox2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2153,7 +2431,9 @@ impl HArray1OfBox2d {
     pub fn new_int2_box2d(theLower: i32, theUpper: i32, theValue: &Box2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_ctor_int2_box2d(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_ctor_int2_box2d(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -2167,7 +2447,7 @@ impl HArray1OfBox2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_ctor_box2d_int2_bool(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_ctor_box2d_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2175,34 +2455,38 @@ impl HArray1OfBox2d {
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Bnd_HArray1OfBox2d()`
-    pub fn new_array1ofbox2d(theOther: &crate::ffi::Bnd_Array1OfBox2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofbox2d(
+        theOther: &crate::ffi_types::Bnd_Array1OfBox2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_ctor_array1ofbox2d(theOther),
             ))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfBox2d {
+    pub fn array1(&self) -> &crate::ffi_types::Bnd_Array1OfBox2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_array1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfBox2d {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Bnd_Array1OfBox2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_change_array1(
+            &mut *(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_change_array1(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2212,7 +2496,7 @@ impl HArray1OfBox2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_get_type_name(),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2220,50 +2504,64 @@ impl HArray1OfBox2d {
     }
 
     /// **Source:** `Bnd_HArray1OfBox2d.hxx`:23 - `Bnd_HArray1OfBox2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Bnd_HArray1OfBox2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfBox2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBndHArray1OfBox2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfBox2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2271,7 +2569,7 @@ impl HArray1OfBox2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Bnd_HArray1OfBox2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2284,62 +2582,72 @@ impl HArray1OfBox2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfBox2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfBox2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBndHArray1OfBox2d;
+pub use crate::ffi_types::HandleBndHArray1OfBox2d;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfBox2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBndHArray1OfBox2d_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_destructor(ptr);
     }
 }
 
 impl HandleBndHArray1OfBox2d {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfBox2d
-    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfBox2d {
+    pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfBox2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBndHArray1OfBox2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfBox2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfBox2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bnd_HArray1OfBox2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBndHArray1OfBox2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Bnd_HArray1OfBox2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBndHArray1OfBox2d_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleBndHArray1OfBox2d_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2350,11 +2658,11 @@ impl HandleBndHArray1OfBox2d {
 // ========================
 
 /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere`
-pub use crate::ffi::Bnd_HArray1OfSphere as HArray1OfSphere;
+pub use crate::ffi_types::Bnd_HArray1OfSphere as HArray1OfSphere;
 
 unsafe impl crate::CppDeletable for HArray1OfSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_HArray1OfSphere_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_destructor(ptr);
     }
 }
 
@@ -2362,7 +2670,9 @@ impl HArray1OfSphere {
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_HArray1OfSphere_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_ctor(),
+            ))
         }
     }
 
@@ -2370,7 +2680,7 @@ impl HArray1OfSphere {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -2383,7 +2693,9 @@ impl HArray1OfSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_ctor_int2_sphere(theLower, theUpper, theValue),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_ctor_int2_sphere(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -2397,7 +2709,7 @@ impl HArray1OfSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_ctor_sphere_int2_bool(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_ctor_sphere_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2405,34 +2717,38 @@ impl HArray1OfSphere {
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Bnd_HArray1OfSphere()`
-    pub fn new_array1ofsphere(theOther: &crate::ffi::Bnd_Array1OfSphere) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofsphere(
+        theOther: &crate::ffi_types::Bnd_Array1OfSphere,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_ctor_array1ofsphere(theOther),
             ))
         }
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Bnd_Array1OfSphere {
+    pub fn array1(&self) -> &crate::ffi_types::Bnd_Array1OfSphere {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_HArray1OfSphere_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Bnd_Array1OfSphere {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::Bnd_HArray1OfSphere_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Bnd_Array1OfSphere {
         unsafe {
-            &*(crate::check_result(crate::ffi::Bnd_HArray1OfSphere_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2442,7 +2758,7 @@ impl HArray1OfSphere {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_get_type_name(),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2450,50 +2766,64 @@ impl HArray1OfSphere {
     }
 
     /// **Source:** `Bnd_HArray1OfSphere.hxx`:23 - `Bnd_HArray1OfSphere::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_HArray1OfSphere_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Bnd_HArray1OfSphere_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBndHArray1OfSphere> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBndHArray1OfSphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_HArray1OfSphere_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2501,7 +2831,7 @@ impl HArray1OfSphere {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Bnd_HArray1OfSphere_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2514,62 +2844,70 @@ impl HArray1OfSphere {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_HArray1OfSphere_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::Bnd_HArray1OfSphere_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBndHArray1OfSphere;
+pub use crate::ffi_types::HandleBndHArray1OfSphere;
 
 unsafe impl crate::CppDeletable for HandleBndHArray1OfSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBndHArray1OfSphere_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_destructor(ptr);
     }
 }
 
 impl HandleBndHArray1OfSphere {
     /// Dereference this Handle to access the underlying Bnd_HArray1OfSphere
-    pub fn get(&self) -> &crate::ffi::Bnd_HArray1OfSphere {
+    pub fn get(&self) -> &crate::ffi_types::Bnd_HArray1OfSphere {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBndHArray1OfSphere_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Bnd_HArray1OfSphere
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Bnd_HArray1OfSphere {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Bnd_HArray1OfSphere {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBndHArray1OfSphere_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Bnd_HArray1OfSphere> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBndHArray1OfSphere_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandleBndHArray1OfSphere_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2589,11 +2927,11 @@ impl HandleBndHArray1OfSphere {
 /// of its three dimensions.
 /// The OBB can be used more effectively than AABB as a rejection mechanism
 /// for non-interfering objects.
-pub use crate::ffi::Bnd_OBB as OBB;
+pub use crate::ffi_types::Bnd_OBB as OBB;
 
 unsafe impl crate::CppDeletable for OBB {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_OBB_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_OBB_destructor(ptr);
     }
 }
 
@@ -2601,7 +2939,9 @@ impl OBB {
     /// **Source:** `Bnd_OBB.hxx`:44 - `Bnd_OBB::Bnd_OBB()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_OBB_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_ctor()))
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:51 - `Bnd_OBB::Bnd_OBB()`
@@ -2616,15 +2956,17 @@ impl OBB {
         theHZSize: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_OBB_ctor_pnt_dir3_real3(
-                theCenter,
-                theXDirection,
-                theYDirection,
-                theZDirection,
-                theHXSize,
-                theHYSize,
-                theHZSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_OBB_ctor_pnt_dir3_real3(
+                    theCenter,
+                    theXDirection,
+                    theYDirection,
+                    theZDirection,
+                    theHXSize,
+                    theHYSize,
+                    theHZSize,
+                ),
+            ))
         }
     }
 
@@ -2632,7 +2974,9 @@ impl OBB {
     /// Constructor to create OBB from AABB.
     pub fn new_box(theBox: &Box) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_OBB_ctor_box(theBox)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_OBB_ctor_box(theBox),
+            ))
         }
     }
 
@@ -2647,12 +2991,12 @@ impl OBB {
     /// axes are checked.
     pub fn re_build(
         &mut self,
-        theListOfPoints: &crate::ffi::TColgp_Array1OfPnt,
-        theListOfTolerances: Option<&crate::ffi::TColStd_Array1OfReal>,
+        theListOfPoints: &crate::ffi_types::TColgp_Array1OfPnt,
+        theListOfTolerances: Option<&crate::ffi_types::TColStd_Array1OfReal>,
         theIsOptimal: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_re_build(
+            crate::ffi_extern_TKMath::Bnd_OBB_re_build(
                 self as *mut Self,
                 theListOfPoints,
                 theListOfTolerances.map_or(std::ptr::null(), |r| r as *const _),
@@ -2665,7 +3009,7 @@ impl OBB {
     /// Sets the center of OBB
     pub fn set_center(&mut self, theCenter: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_set_center(self as *mut Self, theCenter)
+            crate::ffi_extern_TKMath::Bnd_OBB_set_center(self as *mut Self, theCenter)
         })
     }
 
@@ -2673,7 +3017,11 @@ impl OBB {
     /// Sets the X component of OBB - direction and size
     pub fn set_x_component(&mut self, theXDirection: &crate::gp::Dir, theHXSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_set_x_component(self as *mut Self, theXDirection, theHXSize)
+            crate::ffi_extern_TKMath::Bnd_OBB_set_x_component(
+                self as *mut Self,
+                theXDirection,
+                theHXSize,
+            )
         })
     }
 
@@ -2681,7 +3029,11 @@ impl OBB {
     /// Sets the Y component of OBB - direction and size
     pub fn set_y_component(&mut self, theYDirection: &crate::gp::Dir, theHYSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_set_y_component(self as *mut Self, theYDirection, theHYSize)
+            crate::ffi_extern_TKMath::Bnd_OBB_set_y_component(
+                self as *mut Self,
+                theYDirection,
+                theHYSize,
+            )
         })
     }
 
@@ -2689,7 +3041,11 @@ impl OBB {
     /// Sets the Z component of OBB - direction and size
     pub fn set_z_component(&mut self, theZDirection: &crate::gp::Dir, theHZSize: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_set_z_component(self as *mut Self, theZDirection, theHZSize)
+            crate::ffi_extern_TKMath::Bnd_OBB_set_z_component(
+                self as *mut Self,
+                theZDirection,
+                theHZSize,
+            )
         })
     }
 
@@ -2703,85 +3059,111 @@ impl OBB {
     /// @endcode
     pub fn position(&self) -> crate::OwnedPtr<crate::gp::Ax3> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_OBB_position(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_OBB_position(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:151 - `Bnd_OBB::Center()`
     /// Returns the center of OBB
     pub fn center(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_OBB_center(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_center(self as *const Self)))
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:154 - `Bnd_OBB::XDirection()`
     /// Returns the X Direction of OBB
     pub fn x_direction(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_OBB_x_direction(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_x_direction(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:157 - `Bnd_OBB::YDirection()`
     /// Returns the Y Direction of OBB
     pub fn y_direction(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_OBB_y_direction(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_y_direction(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:160 - `Bnd_OBB::ZDirection()`
     /// Returns the Z Direction of OBB
     pub fn z_direction(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_OBB_z_direction(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_OBB_z_direction(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Bnd_OBB.hxx`:163 - `Bnd_OBB::XHSize()`
     /// Returns the X Dimension of OBB
     pub fn xh_size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_xh_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_xh_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:166 - `Bnd_OBB::YHSize()`
     /// Returns the Y Dimension of OBB
     pub fn yh_size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_yh_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_yh_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:169 - `Bnd_OBB::ZHSize()`
     /// Returns the Z Dimension of OBB
     pub fn zh_size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_zh_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_zh_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:172 - `Bnd_OBB::IsVoid()`
     /// Checks if the box is empty.
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:178 - `Bnd_OBB::SetVoid()`
     /// Clears this box
     pub fn set_void(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_OBB_set_void(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_set_void(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:186 - `Bnd_OBB::SetAABox()`
     /// Sets the flag for axes aligned box
     pub fn set_aa_box(&mut self, theFlag: &bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_set_aa_box(self as *mut Self, theFlag)
+            crate::ffi_extern_TKMath::Bnd_OBB_set_aa_box(self as *mut Self, theFlag)
         })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:189 - `Bnd_OBB::IsAABox()`
     /// Returns TRUE if the box is axes aligned
     pub fn is_aa_box(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_is_aa_box(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_is_aa_box(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:192 - `Bnd_OBB::Enlarge()`
     /// Enlarges the box with the given value
     pub fn enlarge(&mut self, theGapAdd: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_enlarge(self as *mut Self, theGapAdd)
+            crate::ffi_extern_TKMath::Bnd_OBB_enlarge(self as *mut Self, theGapAdd)
         })
     }
 
@@ -2799,35 +3181,39 @@ impl OBB {
     /// Index == 7: ( XHSize(),  YHSize(),  ZHSize()).
     pub fn get_vertex(&self, theP: &mut [crate::gp::Pnt; 8]) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_OBB_get_vertex(self as *const Self, theP.as_mut_ptr())
+            crate::ffi_extern_TKMath::Bnd_OBB_get_vertex(self as *const Self, theP.as_mut_ptr())
         })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:237 - `Bnd_OBB::SquareExtent()`
     /// Returns square diagonal of this box
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_square_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:243 - `Bnd_OBB::IsOut()`
     /// Check if the box do not interfere the other box.
     pub fn is_out_obb(&self, theOther: &OBB) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_OBB_is_out_obb(self as *const Self, theOther)
+            crate::ffi_extern_TKMath::Bnd_OBB_is_out_obb(self as *const Self, theOther)
         })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:246 - `Bnd_OBB::IsOut()`
     /// Check if the point is inside of <this>.
     pub fn is_out_pnt(&self, theP: &crate::gp::Pnt) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_OBB_is_out_pnt(self as *const Self, theP) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_is_out_pnt(self as *const Self, theP)
+        })
     }
 
     /// **Source:** `Bnd_OBB.hxx`:249 - `Bnd_OBB::IsCompletelyInside()`
     /// Check if the theOther is completely inside *this.
     pub fn is_completely_inside(&self, theOther: &OBB) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_OBB_is_completely_inside(self as *const Self, theOther)
+            crate::ffi_extern_TKMath::Bnd_OBB_is_completely_inside(self as *const Self, theOther)
         })
     }
 
@@ -2836,7 +3222,7 @@ impl OBB {
     /// (which it was created from) and theOther.
     pub fn add_obb(&mut self, theOther: &OBB) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_OBB_add_obb(self as *mut Self, theOther)
+            crate::ffi_extern_TKMath::Bnd_OBB_add_obb(self as *mut Self, theOther)
         })
     }
 
@@ -2844,15 +3230,17 @@ impl OBB {
     /// Rebuilds this in order to include all previous objects
     /// (which it was created from) and theP.
     pub fn add_pnt(&mut self, theP: &crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_OBB_add_pnt(self as *mut Self, theP) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_OBB_add_pnt(self as *mut Self, theP)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_OBB_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_OBB_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -2865,11 +3253,11 @@ impl OBB {
 /// This class describes a range in 1D space restricted
 /// by two real values.
 /// A range can be void indicating there is no point included in the range.
-pub use crate::ffi::Bnd_Range as Range;
+pub use crate::ffi_types::Bnd_Range as Range;
 
 unsafe impl crate::CppDeletable for Range {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_Range_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_Range_destructor(ptr);
     }
 }
 
@@ -2877,16 +3265,20 @@ impl Range {
     /// **Source:** `Bnd_Range.hxx`:30 - `Bnd_Range::Bnd_Range()`
     /// Default constructor. Creates VOID range.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Range_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Range_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Bnd_Range.hxx`:37 - `Bnd_Range::Bnd_Range()`
     /// Constructor. Never creates VOID range.
     pub fn new_real2(theMin: f64, theMax: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Range_ctor_real2(
-                theMin, theMax,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Range_ctor_real2(theMin, theMax),
+            ))
         }
     }
 
@@ -2894,7 +3286,7 @@ impl Range {
     /// Replaces <this> with common-part of <this> and theOther
     pub fn common(&mut self, theOther: &Range) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_common(self as *mut Self, theOther)
+            crate::ffi_extern_TKMath::Bnd_Range_common(self as *mut Self, theOther)
         })
     }
 
@@ -2905,7 +3297,9 @@ impl Range {
     /// input arguments are empty or separated).
     /// @sa use method ::Add() to merge two ranges unconditionally
     pub fn union(&mut self, theOther: &Range) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Range_union(self as *mut Self, theOther) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_union(self as *mut Self, theOther)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:65 - `Bnd_Range::Split()`
@@ -2922,11 +3316,16 @@ impl Range {
     pub fn split(
         &self,
         theVal: f64,
-        theList: &mut crate::ffi::NCollection_List_Bnd_Range,
+        theList: &mut crate::ffi_types::NCollection_List_Bnd_Range,
         thePeriod: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_split(self as *const Self, theVal, theList, thePeriod)
+            crate::ffi_extern_TKMath::Bnd_Range_split(
+                self as *const Self,
+                theVal,
+                theList,
+                thePeriod,
+            )
         })
     }
 
@@ -2942,7 +3341,11 @@ impl Range {
     /// If (myFirst == myLast) then this function will return only either 0 or 2.
     pub fn is_intersected(&self, theVal: f64, thePeriod: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Range_is_intersected(self as *const Self, theVal, thePeriod)
+            crate::ffi_extern_TKMath::Bnd_Range_is_intersected(
+                self as *const Self,
+                theVal,
+                thePeriod,
+            )
         })
     }
 
@@ -2950,7 +3353,7 @@ impl Range {
     /// Extends <this> to include theParameter
     pub fn add_real(&mut self, theParameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_add_real(self as *mut Self, theParameter)
+            crate::ffi_extern_TKMath::Bnd_Range_add_real(self as *mut Self, theParameter)
         })
     }
 
@@ -2959,7 +3362,7 @@ impl Range {
     /// @sa use method ::Union() to check if two ranges overlap method merging
     pub fn add_range(&mut self, theRange: &Range) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_add_range(self as *mut Self, theRange)
+            crate::ffi_extern_TKMath::Bnd_Range_add_range(self as *mut Self, theRange)
         })
     }
 
@@ -2967,14 +3370,18 @@ impl Range {
     /// Obtain MIN boundary of <this>.
     /// If <this> is VOID the method returns false.
     pub fn get_min(&self, thePar: &mut f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Range_get_min(self as *const Self, thePar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_get_min(self as *const Self, thePar)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:125 - `Bnd_Range::GetMax()`
     /// Obtain MAX boundary of <this>.
     /// If <this> is VOID the method returns false.
     pub fn get_max(&self, thePar: &mut f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Range_get_max(self as *const Self, thePar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_get_max(self as *const Self, thePar)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:138 - `Bnd_Range::GetBounds()`
@@ -2982,7 +3389,11 @@ impl Range {
     /// If <this> is VOID the method returns false.
     pub fn get_bounds(&self, theFirstPar: &mut f64, theLastPar: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Range_get_bounds(self as *const Self, theFirstPar, theLastPar)
+            crate::ffi_extern_TKMath::Bnd_Range_get_bounds(
+                self as *const Self,
+                theFirstPar,
+                theLastPar,
+            )
         })
     }
 
@@ -2997,7 +3408,7 @@ impl Range {
     /// If <this> is VOID the method returns false.
     pub fn get_intermediate_point(&self, theLambda: f64, theParameter: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Range_get_intermediate_point(
+            crate::ffi_extern_TKMath::Bnd_Range_get_intermediate_point(
                 self as *const Self,
                 theLambda,
                 theParameter,
@@ -3008,26 +3419,32 @@ impl Range {
     /// **Source:** `Bnd_Range.hxx`:171 - `Bnd_Range::Delta()`
     /// Returns range value (MAX-MIN). Returns negative value for VOID range.
     pub fn delta(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Range_delta(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_delta(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:174 - `Bnd_Range::IsVoid()`
     /// Is <this> initialized.
     pub fn is_void(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Range_is_void(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_is_void(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:177 - `Bnd_Range::SetVoid()`
     /// Initializes <this> by default parameters. Makes <this> VOID.
     pub fn set_void(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Range_set_void(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_set_void(self as *mut Self)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:184 - `Bnd_Range::Enlarge()`
     /// Extends this to the given value (in both side)
     pub fn enlarge(&mut self, theDelta: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_enlarge(self as *mut Self, theDelta)
+            crate::ffi_extern_TKMath::Bnd_Range_enlarge(self as *mut Self, theDelta)
         })
     }
 
@@ -3035,17 +3452,18 @@ impl Range {
     /// Returns the copy of <*this> shifted by theVal
     pub fn shifted(&self, theVal: f64) -> crate::OwnedPtr<Range> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Range_shifted(
-                self as *const Self,
-                theVal,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Range_shifted(self as *const Self, theVal),
+            ))
         }
     }
 
     /// **Source:** `Bnd_Range.hxx`:202 - `Bnd_Range::Shift()`
     /// Shifts <*this> by theVal
     pub fn shift(&mut self, theVal: f64) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Range_shift(self as *mut Self, theVal) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Range_shift(self as *mut Self, theVal)
+        })
     }
 
     /// **Source:** `Bnd_Range.hxx`:213 - `Bnd_Range::TrimFrom()`
@@ -3053,7 +3471,7 @@ impl Range {
     /// Marks range as Void if the given Lower value is greater than range Max.
     pub fn trim_from(&mut self, theValLower: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_trim_from(self as *mut Self, theValLower)
+            crate::ffi_extern_TKMath::Bnd_Range_trim_from(self as *mut Self, theValLower)
         })
     }
 
@@ -3062,7 +3480,7 @@ impl Range {
     /// Marks range as Void if the given Upper value is smaller than range Max.
     pub fn trim_to(&mut self, theValUpper: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Range_trim_to(self as *mut Self, theValUpper)
+            crate::ffi_extern_TKMath::Bnd_Range_trim_to(self as *mut Self, theValUpper)
         })
     }
 
@@ -3070,7 +3488,7 @@ impl Range {
     /// Returns True if the value is out of this range.
     pub fn is_out_real(&self, theValue: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Range_is_out_real(self as *const Self, theValue)
+            crate::ffi_extern_TKMath::Bnd_Range_is_out_real(self as *const Self, theValue)
         })
     }
 
@@ -3078,16 +3496,16 @@ impl Range {
     /// Returns True if the given range is out of this range.
     pub fn is_out_range(&self, theRange: &Range) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Range_is_out_range(self as *const Self, theRange)
+            crate::ffi_extern_TKMath::Bnd_Range_is_out_range(self as *const Self, theRange)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Range_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Range_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -3099,11 +3517,11 @@ impl Range {
 /// **Source:** `Bnd_Sphere.hxx`:29 - `Bnd_Sphere`
 /// This class represents a bounding sphere of a geometric entity
 /// (triangle, segment of line or whatever else).
-pub use crate::ffi::Bnd_Sphere as Sphere;
+pub use crate::ffi_types::Bnd_Sphere as Sphere;
 
 unsafe impl crate::CppDeletable for Sphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_Sphere_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_Sphere_destructor(ptr);
     }
 }
 
@@ -3111,7 +3529,11 @@ impl Sphere {
     /// **Source:** `Bnd_Sphere.hxx`:35 - `Bnd_Sphere::Bnd_Sphere()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Sphere_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Sphere_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:38 - `Bnd_Sphere::Bnd_Sphere()`
@@ -3124,7 +3546,9 @@ impl Sphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Bnd_Sphere_ctor_xyz_real_int2(theCntr, theRad, theU, theV),
+                crate::ffi_extern_TKMath::Bnd_Sphere_ctor_xyz_real_int2(
+                    theCntr, theRad, theU, theV,
+                ),
             ))
         }
     }
@@ -3132,39 +3556,47 @@ impl Sphere {
     /// **Source:** `Bnd_Sphere.hxx`:44 - `Bnd_Sphere::U()`
     /// Returns the U parameter on shape
     pub fn u(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Sphere_u(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKMath::Bnd_Sphere_u(self as *const Self) })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:47 - `Bnd_Sphere::V()`
     /// Returns the V parameter on shape
     pub fn v(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Sphere_v(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKMath::Bnd_Sphere_v(self as *const Self) })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:51 - `Bnd_Sphere::IsValid()`
     /// Returns validity status, indicating that this
     /// sphere corresponds to a real entity
     pub fn is_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Bnd_Sphere_is_valid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Sphere_is_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:53 - `Bnd_Sphere::SetValid()`
     pub fn set_valid(&mut self, isValid: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Sphere_set_valid(self as *mut Self, isValid)
+            crate::ffi_extern_TKMath::Bnd_Sphere_set_valid(self as *mut Self, isValid)
         })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:56 - `Bnd_Sphere::Center()`
     /// Returns center of sphere object
     pub fn center(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Bnd_Sphere_center(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::Bnd_Sphere_center(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:59 - `Bnd_Sphere::Radius()`
     /// Returns the radius value
     pub fn radius(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Sphere_radius(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Sphere_radius(self as *const Self)
+        })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:64 - `Bnd_Sphere::Distances()`
@@ -3173,7 +3605,12 @@ impl Sphere {
     /// may affect performance!
     pub fn distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Sphere_distances(self as *const Self, theXYZ, theMin, theMax)
+            crate::ffi_extern_TKMath::Bnd_Sphere_distances(
+                self as *const Self,
+                theXYZ,
+                theMin,
+                theMax,
+            )
         })
     }
 
@@ -3183,7 +3620,12 @@ impl Sphere {
     /// may affect performance!
     pub fn square_distances(&self, theXYZ: &crate::gp::XYZ, theMin: &mut f64, theMax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Bnd_Sphere_square_distances(self as *const Self, theXYZ, theMin, theMax)
+            crate::ffi_extern_TKMath::Bnd_Sphere_square_distances(
+                self as *const Self,
+                theXYZ,
+                theMin,
+                theMax,
+            )
         })
     }
 
@@ -3198,7 +3640,7 @@ impl Sphere {
         theInside: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Sphere_project(
+            crate::ffi_extern_TKMath::Bnd_Sphere_project(
                 self as *const Self,
                 theNode,
                 theProjNode,
@@ -3211,47 +3653,55 @@ impl Sphere {
     /// **Source:** `Bnd_Sphere.hxx`:82 - `Bnd_Sphere::Distance()`
     pub fn distance(&self, theNode: &crate::gp::XYZ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Sphere_distance(self as *const Self, theNode)
+            crate::ffi_extern_TKMath::Bnd_Sphere_distance(self as *const Self, theNode)
         })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:84 - `Bnd_Sphere::SquareDistance()`
     pub fn square_distance(&self, theNode: &crate::gp::XYZ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Sphere_square_distance(self as *const Self, theNode)
+            crate::ffi_extern_TKMath::Bnd_Sphere_square_distance(self as *const Self, theNode)
         })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:86 - `Bnd_Sphere::Add()`
     pub fn add(&mut self, theOther: &Sphere) {
-        crate::check_void_result(unsafe { crate::ffi::Bnd_Sphere_add(self as *mut Self, theOther) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Sphere_add(self as *mut Self, theOther)
+        })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:88 - `Bnd_Sphere::IsOut()`
     pub fn is_out_sphere(&self, theOther: &Sphere) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Sphere_is_out_sphere(self as *const Self, theOther)
+            crate::ffi_extern_TKMath::Bnd_Sphere_is_out_sphere(self as *const Self, theOther)
         })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:90 - `Bnd_Sphere::IsOut()`
     pub fn is_out_xyz_real(&self, thePnt: &crate::gp::XYZ, theMaxDist: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Bnd_Sphere_is_out_xyz_real(self as *const Self, thePnt, theMaxDist)
+            crate::ffi_extern_TKMath::Bnd_Sphere_is_out_xyz_real(
+                self as *const Self,
+                thePnt,
+                theMaxDist,
+            )
         })
     }
 
     /// **Source:** `Bnd_Sphere.hxx`:92 - `Bnd_Sphere::SquareExtent()`
     pub fn square_extent(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Bnd_Sphere_square_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::Bnd_Sphere_square_extent(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Sphere_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Sphere_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -3262,11 +3712,11 @@ impl Sphere {
 
 /// **Source:** `Bnd_Tools.hxx`:24 - `Bnd_Tools`
 /// Defines a set of static methods operating with bounding boxes
-pub use crate::ffi::Bnd_Tools as Tools;
+pub use crate::ffi_types::Bnd_Tools as Tools;
 
 unsafe impl crate::CppDeletable for Tools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Bnd_Tools_destructor(ptr);
+        crate::ffi_extern_TKMath::Bnd_Tools_destructor(ptr);
     }
 }
 
@@ -3274,36 +3724,42 @@ impl Tools {
     /// **Source:** `Bnd_Tools.hxx` - `Bnd_Tools::Bnd_Tools()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Tools_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Tools_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Bnd_Tools.hxx`:28 - `Bnd_Tools::Bnd2BVH()`
     /// @name Bnd_Box to BVH_Box conversion
     /// Converts the given Bnd_Box2d to BVH_Box
-    pub fn bnd2_bvh_box2d(theBox: &Box2d) -> crate::OwnedPtr<crate::ffi::BVH_Box_Standard_Real_2> {
+    pub fn bnd2_bvh_box2d(
+        theBox: &Box2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::BVH_Box_Standard_Real_2> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Tools_bnd2_bvh_box2d(
-                theBox,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Tools_bnd2_bvh_box2d(theBox),
+            ))
         }
     }
 
     /// **Source:** `Bnd_Tools.hxx`:36 - `Bnd_Tools::Bnd2BVH()`
     /// Converts the given Bnd_Box to BVH_Box
-    pub fn bnd2_bvh_box(theBox: &Box) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn bnd2_bvh_box(theBox: &Box) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Tools_bnd2_bvh_box(
-                theBox,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Tools_bnd2_bvh_box(theBox),
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Bnd_Tools_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::Bnd_Tools_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -3312,7 +3768,7 @@ impl Tools {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     Bnd_Array1OfBox as Array1OfBox, Bnd_Array1OfBox2d as Array1OfBox2d,
     Bnd_Array1OfSphere as Array1OfSphere,
 };

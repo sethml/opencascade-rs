@@ -11,11 +11,11 @@
 // ========================
 
 /// **Source:** `StdObject_Location.hxx`:24 - `StdObject_Location`
-pub use crate::ffi::StdObject_Location as Location;
+pub use crate::ffi_types::StdObject_Location as Location;
 
 unsafe impl crate::CppDeletable for Location {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdObject_Location_destructor(ptr);
+        crate::ffi_extern_TKStd::StdObject_Location_destructor(ptr);
     }
 }
 
@@ -24,7 +24,9 @@ impl Location {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdObject_Location_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdObject_Location_ctor(),
+            ))
         }
     }
 
@@ -32,10 +34,10 @@ impl Location {
     /// Gets persistent child objects
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdObject_Location_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::StdObject_Location_p_children(self as *const Self, theChildren)
         })
     }
 
@@ -43,9 +45,9 @@ impl Location {
     /// Import transient object from the persistent data.
     pub fn import(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdObject_Location_import(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdObject_Location_import(self as *const Self),
+            ))
         }
     }
 
@@ -53,11 +55,11 @@ impl Location {
     /// Creates a persistent wrapper object for a location
     pub fn translate(
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
     ) -> crate::OwnedPtr<Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdObject_Location_translate(theLoc, theMap),
+                crate::ffi_extern_TKStd::StdObject_Location_translate(theLoc, theMap),
             ))
         }
     }
@@ -68,11 +70,11 @@ impl Location {
 // ========================
 
 /// **Source:** `StdObject_Shape.hxx`:22 - `StdObject_Shape`
-pub use crate::ffi::StdObject_Shape as Shape;
+pub use crate::ffi_types::StdObject_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdObject_Shape_destructor(ptr);
+        crate::ffi_extern_TKStd::StdObject_Shape_destructor(ptr);
     }
 }
 
@@ -81,7 +83,9 @@ impl Shape {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdObject_Shape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdObject_Shape_ctor(),
+            ))
         }
     }
 
@@ -89,19 +93,19 @@ impl Shape {
     /// Import transient object from the persistent data.
     pub fn import(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdObject_Shape_import(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdObject_Shape_import(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StdObject_Shape.hxx`:36 - `StdObject_Shape::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdObject_Shape_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::StdObject_Shape_p_children(self as *const Self, theChildren)
         })
     }
 }

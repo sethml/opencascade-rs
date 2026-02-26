@@ -47,7 +47,7 @@
 #include <BiTgte_ContactType.hxx>
 #include <BiTgte_CurveOnEdge.hxx>
 #include <BiTgte_CurveOnVertex.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <ChFiDS_TypeOfConcavity.hxx>
 #include <Draft.hxx>
 #include <Draft_EdgeInfo.hxx>
@@ -76,12 +76,12 @@
 #include <TColGeom_Array1OfBSplineCurve.hxx>
 #include <TColGeom_Array1OfBezierCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopAbs_State.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_DataMapOfShapeListOfShape.hxx>
 #include <TopTools_DataMapOfShapeReal.hxx>
 #include <TopTools_DataMapOfShapeShape.hxx>

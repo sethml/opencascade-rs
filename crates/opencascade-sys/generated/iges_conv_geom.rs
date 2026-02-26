@@ -22,13 +22,15 @@
 /// - 4  polynomial equation is not correct (no result produced)
 /// - 5  less than one segment (no result produced)
 pub fn spline_curve_from_iges(
-    igesent: &crate::ffi::HandleIGESGeomSplineCurve,
+    igesent: &crate::ffi_types::HandleIGESGeomSplineCurve,
     epscoef: f64,
     epsgeom: f64,
-    result: &mut crate::ffi::HandleGeomBSplineCurve,
+    result: &mut crate::ffi_types::HandleGeomBSplineCurve,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESConvGeom_spline_curve_from_iges(igesent, epscoef, epsgeom, result)
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_spline_curve_from_iges(
+            igesent, epscoef, epsgeom, result,
+        )
     })
 }
 /// **Source:** `IGESConvGeom.hxx`:68 - `IGESConvGeom::IncreaseCurveContinuity`
@@ -39,26 +41,22 @@ pub fn spline_curve_from_iges(
 /// Remark that, for instance with <continuity> = 2, even if not
 /// all the knots can be passed to C2, all knots which can be are.
 pub fn increase_curve_continuity_handlegeombsplinecurve_real_int(
-    curve: &crate::ffi::HandleGeomBSplineCurve,
+    curve: &crate::ffi_types::HandleGeomBSplineCurve,
     epsgeom: f64,
     continuity: i32,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESConvGeom_increase_curve_continuity_handlegeombsplinecurve_real_int(
-            curve, epsgeom, continuity,
-        )
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_increase_curve_continuity_handlegeombsplinecurve_real_int(curve, epsgeom, continuity)
     })
 }
 /// **Source:** `IGESConvGeom.hxx`:73 - `IGESConvGeom::IncreaseCurveContinuity`
 pub fn increase_curve_continuity_handlegeom2dbsplinecurve_real_int(
-    curve: &crate::ffi::HandleGeom2dBSplineCurve,
+    curve: &crate::ffi_types::HandleGeom2dBSplineCurve,
     epsgeom: f64,
     continuity: i32,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESConvGeom_increase_curve_continuity_handlegeom2dbsplinecurve_real_int(
-            curve, epsgeom, continuity,
-        )
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_increase_curve_continuity_handlegeom2dbsplinecurve_real_int(curve, epsgeom, continuity)
     })
 }
 /// **Source:** `IGESConvGeom.hxx`:90 - `IGESConvGeom::SplineSurfaceFromIGES`
@@ -75,13 +73,15 @@ pub fn increase_curve_continuity_handlegeom2dbsplinecurve_real_int(
 /// (no result produced)
 /// - 5  less than one segment in U or V (no result produced)
 pub fn spline_surface_from_iges(
-    igesent: &crate::ffi::HandleIGESGeomSplineSurface,
+    igesent: &crate::ffi_types::HandleIGESGeomSplineSurface,
     epscoef: f64,
     epsgeom: f64,
-    result: &mut crate::ffi::HandleGeomBSplineSurface,
+    result: &mut crate::ffi_types::HandleGeomBSplineSurface,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESConvGeom_spline_surface_from_iges(igesent, epscoef, epsgeom, result)
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_spline_surface_from_iges(
+            igesent, epscoef, epsgeom, result,
+        )
     })
 }
 /// **Source:** `IGESConvGeom.hxx`:102 - `IGESConvGeom::IncreaseSurfaceContinuity`
@@ -92,12 +92,14 @@ pub fn spline_surface_from_iges(
 /// Remark that, for instance with <continuity> = 2, even if not
 /// all the knots can be passed to C2, all knots which can be are.
 pub fn increase_surface_continuity(
-    surface: &crate::ffi::HandleGeomBSplineSurface,
+    surface: &crate::ffi_types::HandleGeomBSplineSurface,
     epsgeom: f64,
     continuity: i32,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESConvGeom_increase_surface_continuity(surface, epsgeom, continuity)
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_increase_surface_continuity(
+            surface, epsgeom, continuity,
+        )
     })
 }
 
@@ -111,11 +113,11 @@ pub fn increase_surface_continuity(
 /// define a curve in a plane in 3D space (ex. Circular or Conic
 /// arc, or Copious Data defined in 2D)
 /// make a CopiousData from a list of points/vectors
-pub use crate::ffi::IGESConvGeom_GeomBuilder as GeomBuilder;
+pub use crate::ffi_types::IGESConvGeom_GeomBuilder as GeomBuilder;
 
 unsafe impl crate::CppDeletable for GeomBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESConvGeom_GeomBuilder_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_destructor(ptr);
     }
 }
 
@@ -125,7 +127,7 @@ impl GeomBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESConvGeom_GeomBuilder_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_ctor(),
             ))
         }
     }
@@ -134,7 +136,7 @@ impl GeomBuilder {
     /// Clears list of Points/Vectors and data about Transformation
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_clear(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_clear(self as *mut Self)
         })
     }
 
@@ -142,7 +144,7 @@ impl GeomBuilder {
     /// Adds a XY (Z=0) to the list of points
     pub fn add_xy(&mut self, val: &crate::gp::XY) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_add_xy(self as *mut Self, val)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_add_xy(self as *mut Self, val)
         })
     }
 
@@ -150,7 +152,7 @@ impl GeomBuilder {
     /// Adds a XYZ to the list of points
     pub fn add_xyz(&mut self, val: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_add_xyz(self as *mut Self, val)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_add_xyz(self as *mut Self, val)
         })
     }
 
@@ -161,7 +163,7 @@ impl GeomBuilder {
     /// AddVec adds to the last added XY or XYZ
     pub fn add_vec(&mut self, val: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_add_vec(self as *mut Self, val)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_add_vec(self as *mut Self, val)
         })
     }
 
@@ -169,7 +171,7 @@ impl GeomBuilder {
     /// Returns the count of already recorded points
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_nb_points(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_nb_points(self as *const Self)
         })
     }
 
@@ -178,7 +180,10 @@ impl GeomBuilder {
     pub fn point(&self, num: i32) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESConvGeom_GeomBuilder_point(self as *const Self, num),
+                crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_point(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -194,10 +199,10 @@ impl GeomBuilder {
         &self,
         datatype: i32,
         polyline: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomCopiousData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomCopiousData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESConvGeom_GeomBuilder_make_copious_data(
+                crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_make_copious_data(
                     self as *const Self,
                     datatype,
                     polyline,
@@ -213,7 +218,7 @@ impl GeomBuilder {
     pub fn position(&self) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESConvGeom_GeomBuilder_position(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_position(self as *const Self),
             ))
         }
     }
@@ -222,7 +227,10 @@ impl GeomBuilder {
     /// Sets final position from an already defined Trsf
     pub fn set_position_trsf(&mut self, pos: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_set_position_trsf(self as *mut Self, pos)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_set_position_trsf(
+                self as *mut Self,
+                pos,
+            )
         })
     }
 
@@ -230,7 +238,10 @@ impl GeomBuilder {
     /// Sets final position from an Ax3
     pub fn set_position_ax3(&mut self, pos: &crate::gp::Ax3) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax3(self as *mut Self, pos)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_set_position_ax3(
+                self as *mut Self,
+                pos,
+            )
         })
     }
 
@@ -238,7 +249,10 @@ impl GeomBuilder {
     /// Sets final position from an Ax2
     pub fn set_position_ax2(&mut self, pos: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax2(self as *mut Self, pos)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_set_position_ax2(
+                self as *mut Self,
+                pos,
+            )
         })
     }
 
@@ -248,7 +262,10 @@ impl GeomBuilder {
     /// other axes are defined arbitrarily)
     pub fn set_position_ax1(&mut self, pos: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_set_position_ax1(self as *mut Self, pos)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_set_position_ax1(
+                self as *mut Self,
+                pos,
+            )
         })
     }
 
@@ -256,7 +273,7 @@ impl GeomBuilder {
     /// Returns True if the Position is Identity
     pub fn is_identity(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_is_identity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_is_identity(self as *const Self)
         })
     }
 
@@ -265,7 +282,7 @@ impl GeomBuilder {
     /// Remark : Identity and ZOnly will answer True
     pub fn is_translation(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_is_translation(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_is_translation(self as *const Self)
         })
     }
 
@@ -275,7 +292,7 @@ impl GeomBuilder {
     /// Remark : Identity will answer True
     pub fn is_z_only(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_is_z_only(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_is_z_only(self as *const Self)
         })
     }
 
@@ -286,7 +303,13 @@ impl GeomBuilder {
     /// Z will be regarded as a Z Displacement (can be ignored)
     pub fn eval_xyz(&self, val: &crate::gp::XYZ, X: &mut f64, Y: &mut f64, Z: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESConvGeom_GeomBuilder_eval_xyz(self as *const Self, val, X, Y, Z)
+            crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_eval_xyz(
+                self as *const Self,
+                val,
+                X,
+                Y,
+                Z,
+            )
         })
     }
 
@@ -299,10 +322,13 @@ impl GeomBuilder {
     pub fn make_transformation(
         &self,
         unit: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomTransformationMatrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESConvGeom_GeomBuilder_make_transformation(self as *const Self, unit),
+                crate::ffi_extern_TKDEIGES::IGESConvGeom_GeomBuilder_make_transformation(
+                    self as *const Self,
+                    unit,
+                ),
             ))
         }
     }

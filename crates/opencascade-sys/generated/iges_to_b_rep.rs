@@ -9,30 +9,36 @@
 /// **Source:** `IGESToBRep.hxx`:40 - `IGESToBRep::Init`
 /// Creates and initializes default AlgoContainer.
 pub fn init() {
-    crate::check_void_result(unsafe { crate::ffi::IGESToBRep_init() })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_init() })
 }
 /// **Source:** `IGESToBRep.hxx`:43 - `IGESToBRep::SetAlgoContainer`
 /// Sets default AlgoContainer
 pub fn set_algo_container_handleigestobrepalgocontainer(
-    aContainer: &crate::ffi::HandleIGESToBRepAlgoContainer,
+    aContainer: &crate::ffi_types::HandleIGESToBRepAlgoContainer,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::IGESToBRep_set_algo_container_handleigestobrepalgocontainer(aContainer)
+        crate::ffi_extern_TKDEIGES::IGESToBRep_set_algo_container_handleigestobrepalgocontainer(
+            aContainer,
+        )
     })
 }
 /// **Source:** `IGESToBRep.hxx`:46 - `IGESToBRep::AlgoContainer`
 /// Returns default AlgoContainer
-pub fn algo_container() -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
+pub fn algo_container() -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepAlgoContainer> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_algo_container()))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_algo_container(),
+        ))
     }
 }
 /// **Source:** `IGESToBRep.hxx`:51 - `IGESToBRep::IsCurveAndSurface`
 /// Return True if the IGESEntity can be transferred by
 /// TransferCurveAndSurface.
 /// ex: All IGESEntity from IGESGeom
-pub fn is_curve_and_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_curve_and_surface(start) })
+pub fn is_curve_and_surface(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKDEIGES::IGESToBRep_is_curve_and_surface(start)
+    })
 }
 /// **Source:** `IGESToBRep.hxx`:59 - `IGESToBRep::IsBasicCurve`
 /// Return True if the IGESEntity can be transferred by
@@ -40,32 +46,32 @@ pub fn is_curve_and_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> boo
 /// ex: CircularArc, ConicArc, Line, CopiousData,
 /// BSplineCurve, SplineCurve... from IGESGeom :
 /// 104,110,112,126
-pub fn is_basic_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_basic_curve(start) })
+pub fn is_basic_curve(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_is_basic_curve(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:65 - `IGESToBRep::IsBasicSurface`
 /// Return True if the IGESEntity can be transferred by
 /// TransferBasicSurface.
 /// ex: BSplineSurface, SplineSurface... from IGESGeom :
 /// 114,128
-pub fn is_basic_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_basic_surface(start) })
+pub fn is_basic_surface(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_is_basic_surface(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:71 - `IGESToBRep::IsTopoCurve`
 /// Return True if the IGESEntity can be transferred by
 /// TransferTopoCurve.
 /// ex: all Curves from IGESGeom :
 /// all basic curves,102,130,142,144
-pub fn is_topo_curve(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_topo_curve(start) })
+pub fn is_topo_curve(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_is_topo_curve(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:77 - `IGESToBRep::IsTopoSurface`
 /// Return True if the IGESEntity can be transferred by
 /// TransferTopoSurface.
 /// ex: All Surfaces from IGESGeom :
 /// all basic surfaces,108,118,120,122,141,143
-pub fn is_topo_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_topo_surface(start) })
+pub fn is_topo_surface(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_is_topo_surface(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:84 - `IGESToBRep::IsBRepEntity`
 /// Return True if the IGESEntity can be transferred by
@@ -73,16 +79,16 @@ pub fn is_topo_surface(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
 /// ex: VertexList, EdgeList, Loop, Face, Shell,
 /// Manifold Solid BRep Object from IGESSolid :
 /// 502, 504, 508, 510, 514, 186.
-pub fn is_b_rep_entity(start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_is_b_rep_entity(start) })
+pub fn is_b_rep_entity(start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESToBRep_is_b_rep_entity(start) })
 }
 /// **Source:** `IGESToBRep.hxx`:86 - `IGESToBRep::IGESCurveToSequenceOfIGESCurve`
 pub fn iges_curve_to_sequence_of_iges_curve(
-    curve: &crate::ffi::HandleIGESDataIGESEntity,
-    sequence: &mut crate::ffi::HandleTColStdHSequenceOfTransient,
+    curve: &crate::ffi_types::HandleIGESDataIGESEntity,
+    sequence: &mut crate::ffi_types::HandleTColStdHSequenceOfTransient,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence)
+        crate::ffi_extern_TKDEIGES::IGESToBRep_iges_curve_to_sequence_of_iges_curve(curve, sequence)
     })
 }
 /// **Source:** `IGESToBRep.hxx`:90 - `IGESToBRep::TransferPCurve`
@@ -91,11 +97,13 @@ pub fn transfer_p_curve(
     toedge: &crate::topo_ds::Edge,
     face: &crate::topo_ds::Face,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::IGESToBRep_transfer_p_curve(fromedge, toedge, face) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKDEIGES::IGESToBRep_transfer_p_curve(fromedge, toedge, face)
+    })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleIGESControlAlgoContainer, HandleIGESControlIGESBoundary, HandleIGESControlToolContainer,
     HandleStandardTransient, HandleTransferActorOfProcessForTransient,
     HandleTransferActorOfTransientProcess,
@@ -111,11 +119,11 @@ pub use crate::ffi::{
 ///
 /// I.E. for each type of Entity, it invokes the appropriate Tool
 /// then returns the Binder which contains the Result
-pub use crate::ffi::IGESToBRep_Actor as Actor;
+pub use crate::ffi_types::IGESToBRep_Actor as Actor;
 
 unsafe impl crate::CppDeletable for Actor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_Actor_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_destructor(ptr);
     }
 }
 
@@ -123,14 +131,16 @@ impl Actor {
     /// **Source:** `IGESToBRep_Actor.hxx`:44 - `IGESToBRep_Actor::IGESToBRep_Actor()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:46 - `IGESToBRep_Actor::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_set_model(self as *mut Self, model)
         })
     }
 
@@ -140,7 +150,10 @@ impl Actor {
     /// if continuity = 2 : try C2
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_set_continuity(self as *mut Self, continuity)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_set_continuity(
+                self as *mut Self,
+                continuity,
+            )
         })
     }
 
@@ -148,31 +161,33 @@ impl Actor {
     /// Return "thecontinuity"
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_get_continuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_get_continuity(self as *const Self)
         })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:56 - `IGESToBRep_Actor::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_recognize(self as *mut Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_recognize(self as *mut Self, start)
         })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:59 - `IGESToBRep_Actor::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_transfer(
-                self as *mut Self,
-                start,
-                TP,
-                theProgress,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_transfer(
+                    self as *mut Self,
+                    start,
+                    TP,
+                    theProgress,
+                ),
+            ))
         }
     }
 
@@ -181,14 +196,16 @@ impl Actor {
     /// the file or from statics
     pub fn used_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_used_tolerance(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_used_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -196,7 +213,7 @@ impl Actor {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -204,8 +221,12 @@ impl Actor {
     }
 
     /// **Source:** `IGESToBRep_Actor.hxx`:68 - `IGESToBRep_Actor::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESToBRep_Actor_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess
@@ -213,9 +234,11 @@ impl Actor {
         &self,
     ) -> &crate::transfer::ActorOfTransientProcess {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -224,11 +247,7 @@ impl Actor {
         &mut self,
     ) -> &mut crate::transfer::ActorOfTransientProcess {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Transfer_ActorOfTransientProcess_mut(self as *mut Self))
         }
     }
 
@@ -238,7 +257,7 @@ impl Actor {
     ) -> &crate::transfer::ActorOfProcessForTransient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient(
                     self as *const Self,
                 ),
             )
@@ -250,53 +269,53 @@ impl Actor {
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForTransient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_Actor_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESToBRep_Actor_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepActor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Actor_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferProcessForTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_inherited_Transferring(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_Transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -309,13 +328,13 @@ impl Actor {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_inherited_TransferTransient(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
@@ -328,10 +347,10 @@ impl Actor {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -339,47 +358,64 @@ impl Actor {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_inherited_GetShapeFixParameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_GetShapeFixParameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
-    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_processing_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_SetProcessingFlags(self as *mut Self, theFlags)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_SetProcessingFlags(
+                self as *mut Self,
+                theFlags,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
-    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_processing_flags(&self) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_Actor_inherited_GetProcessingFlags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_GetProcessingFlags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_inherited_TransientResult(self as *const Self, res),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_TransientResult(
+                    self as *const Self,
+                    res,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_inherited_NullResult(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_NullResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -387,44 +423,52 @@ impl Actor {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_SetLast(self as *mut Self, mode)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_IsLast(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_SetNext(self as *mut Self, next)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn next(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Actor_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_Next(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -432,7 +476,7 @@ impl Actor {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESToBRep_Actor_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -445,84 +489,90 @@ impl Actor {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Actor_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Actor_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESToBRepActor;
+pub use crate::ffi_types::HandleIGESToBRepActor;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepActor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESToBRepActor_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_destructor(ptr);
     }
 }
 
 impl HandleIGESToBRepActor {
     /// Dereference this Handle to access the underlying IGESToBRep_Actor
-    pub fn get(&self) -> &crate::ffi::IGESToBRep_Actor {
-        unsafe { &*crate::check_result(crate::ffi::HandleIGESToBRepActor_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::IGESToBRep_Actor {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_Actor
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_Actor {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESToBRep_Actor {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESToBRepActor_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfTransientProcess>
     pub fn to_handle_actor_of_transient_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfTransientProcess(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_to_HandleTransferActorOfTransientProcess(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepActor_to_HandleTransferActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_to_HandleTransferActorOfProcessForTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESToBRep_Actor> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepActor_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESToBRepActor_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -533,11 +583,11 @@ impl HandleIGESToBRepActor {
 // ========================
 
 /// **Source:** `IGESToBRep_AlgoContainer.hxx`:28 - `IGESToBRep_AlgoContainer`
-pub use crate::ffi::IGESToBRep_AlgoContainer as AlgoContainer;
+pub use crate::ffi_types::IGESToBRep_AlgoContainer as AlgoContainer;
 
 unsafe impl crate::CppDeletable for AlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_AlgoContainer_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_destructor(ptr);
     }
 }
 
@@ -547,35 +597,44 @@ impl AlgoContainer {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_AlgoContainer_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_ctor(),
             ))
         }
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:36 - `IGESToBRep_AlgoContainer::SetToolContainer()`
     /// Sets ToolContainer
-    pub fn set_tool_container(&mut self, TC: &crate::ffi::HandleIGESToBRepToolContainer) {
+    pub fn set_tool_container(&mut self, TC: &crate::ffi_types::HandleIGESToBRepToolContainer) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_set_tool_container(self as *mut Self, TC)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_set_tool_container(
+                self as *mut Self,
+                TC,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:39 - `IGESToBRep_AlgoContainer::ToolContainer()`
     /// Returns ToolContainer
-    pub fn tool_container(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+    pub fn tool_container(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepToolContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_AlgoContainer_tool_container(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_tool_container(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -583,7 +642,7 @@ impl AlgoContainer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESToBRep_AlgoContainer_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -591,18 +650,22 @@ impl AlgoContainer {
     }
 
     /// **Source:** `IGESToBRep_AlgoContainer.hxx`:41 - `IGESToBRep_AlgoContainer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -610,7 +673,9 @@ impl AlgoContainer {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_AlgoContainer_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -618,25 +683,31 @@ impl AlgoContainer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepAlgoContainer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepAlgoContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_AlgoContainer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -644,7 +715,9 @@ impl AlgoContainer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESToBRep_AlgoContainer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -657,67 +730,75 @@ impl AlgoContainer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_AlgoContainer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_AlgoContainer_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESToBRepAlgoContainer;
+pub use crate::ffi_types::HandleIGESToBRepAlgoContainer;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepAlgoContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESToBRepAlgoContainer_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_destructor(ptr);
     }
 }
 
 impl HandleIGESToBRepAlgoContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_AlgoContainer
-    pub fn get(&self) -> &crate::ffi::IGESToBRep_AlgoContainer {
+    pub fn get(&self) -> &crate::ffi_types::IGESToBRep_AlgoContainer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESToBRepAlgoContainer_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_AlgoContainer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_AlgoContainer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESToBRep_AlgoContainer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESToBRepAlgoContainer_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESToBRep_AlgoContainer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepAlgoContainer_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -726,11 +807,9 @@ impl HandleIGESToBRepAlgoContainer {
     /// Returns `None` if the handle does not point to a `IGESControl_AlgoContainer` (or subclass).
     pub fn downcast_to_algo_container(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlAlgoContainer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlAlgoContainer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleIGESToBRepAlgoContainer_downcast_to_HandleIGESControlAlgoContainer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepAlgoContainer_downcast_to_HandleIGESControlAlgoContainer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -749,11 +828,11 @@ impl HandleIGESToBRepAlgoContainer {
 /// ( VertexList 502, EdgeList 504, Loop 508,
 /// Face 510, Shell 514, ManifoldSolid 186)
 /// from IGES to CASCADE.
-pub use crate::ffi::IGESToBRep_BRepEntity as BRepEntity;
+pub use crate::ffi_types::IGESToBRep_BRepEntity as BRepEntity;
 
 unsafe impl crate::CppDeletable for BRepEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_BRepEntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_destructor(ptr);
     }
 }
 
@@ -764,7 +843,9 @@ impl BRepEntity {
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_BRepEntity_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_ctor(),
+            ))
         }
     }
 
@@ -774,7 +855,7 @@ impl BRepEntity {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -791,7 +872,7 @@ impl BRepEntity {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -802,12 +883,12 @@ impl BRepEntity {
     /// Transfer the BRepEntity" : Face, Shell or ManifoldSolid.
     pub fn transfer_b_rep_entity(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_b_rep_entity(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_b_rep_entity(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -820,12 +901,16 @@ impl BRepEntity {
     /// Transfer the entity number "index" of the VertexList "start"
     pub fn transfer_vertex(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidVertexList,
+        start: &crate::ffi_types::HandleIGESSolidVertexList,
         index: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_vertex(self as *mut Self, start, index),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_vertex(
+                    self as *mut Self,
+                    start,
+                    index,
+                ),
             ))
         }
     }
@@ -834,12 +919,16 @@ impl BRepEntity {
     /// Transfer the entity number "index" of the EdgeList "start".
     pub fn transfer_edge(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidEdgeList,
+        start: &crate::ffi_types::HandleIGESSolidEdgeList,
         index: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_edge(self as *mut Self, start, index),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_edge(
+                    self as *mut Self,
+                    start,
+                    index,
+                ),
             ))
         }
     }
@@ -848,14 +937,14 @@ impl BRepEntity {
     /// Transfer the Loop Entity
     pub fn transfer_loop(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidLoop,
+        start: &crate::ffi_types::HandleIGESSolidLoop,
         Face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_loop(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_loop(
                     self as *mut Self,
                     start,
                     Face,
@@ -870,11 +959,14 @@ impl BRepEntity {
     /// Transfer the Face Entity
     pub fn transfer_face(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidFace,
+        start: &crate::ffi_types::HandleIGESSolidFace,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_face(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_face(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -883,12 +975,12 @@ impl BRepEntity {
     /// Transfer the Shell Entity
     pub fn transfer_shell(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidShell,
+        start: &crate::ffi_types::HandleIGESSolidShell,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_shell(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_shell(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -901,12 +993,12 @@ impl BRepEntity {
     /// Transfer the ManifoldSolid Entity
     pub fn transfer_manifold_solid(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidManifoldSolid,
+        start: &crate::ffi_types::HandleIGESSolidManifoldSolid,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_transfer_manifold_solid(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_transfer_manifold_solid(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -918,9 +1010,11 @@ impl BRepEntity {
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -928,7 +1022,7 @@ impl BRepEntity {
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface_mut(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_as_IGESToBRep_CurveAndSurface_mut(
                     self as *mut Self,
                 ),
             )
@@ -938,162 +1032,216 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetEpsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetEpsilon(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsCoeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetEpsCoeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsCoeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetEpsCoeff(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetEpsGeom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetEpsGeom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetEpsGeom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetEpsGeom(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetMinTol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetMinTol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetMaxTol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetMaxTol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_UpdateMinMaxTol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_UpdateMinMaxTol(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetMinTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetMinTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetMaxTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetMaxTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeApprox(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetModeApprox(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeApprox(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetModeApprox(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModeTransfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetModeTransfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetModeTransfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetModeTransfer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetOptimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetOptimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetOptimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetOptimized(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetUnitFactor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetUnitFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurfaceCurve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetSurfaceCurve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetSurfaceCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1101,31 +1249,41 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetContinuity(self as *mut Self, continuity)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetContinuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetContinuity(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1133,12 +1291,12 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_TransferCurveAndSurface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -1150,12 +1308,12 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_TransferGeometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -1167,51 +1325,66 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SendWarning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     pub fn get_shape_result(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_GetShapeResult(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetShapeResult(
                     self as *const Self,
                     start,
                 ),
@@ -1222,11 +1395,11 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -1235,20 +1408,23 @@ impl BRepEntity {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_NbShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_NbShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_AddShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_AddShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -1257,17 +1433,22 @@ impl BRepEntity {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_SetSurface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_SetSurface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BRepEntity_inherited_Surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_Surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1275,7 +1456,9 @@ impl BRepEntity {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BRepEntity_inherited_GetUVResolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BRepEntity_inherited_GetUVResolution(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1296,11 +1479,11 @@ impl BRepEntity {
 /// * Copious data
 /// * Point
 /// * Transformation matrix
-pub use crate::ffi::IGESToBRep_BasicCurve as BasicCurve;
+pub use crate::ffi_types::IGESToBRep_BasicCurve as BasicCurve;
 
 unsafe impl crate::CppDeletable for BasicCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_BasicCurve_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_destructor(ptr);
     }
 }
 
@@ -1311,7 +1494,9 @@ impl BasicCurve {
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_BasicCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_ctor(),
+            ))
         }
     }
 
@@ -1321,7 +1506,7 @@ impl BasicCurve {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -1338,7 +1523,7 @@ impl BasicCurve {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -1351,11 +1536,14 @@ impl BasicCurve {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer_basic_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_basic_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_basic_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1368,11 +1556,14 @@ impl BasicCurve {
     /// returns a NullEntity.
     pub fn transfer2d_basic_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_basic_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_basic_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1380,11 +1571,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:85 - `IGESToBRep_BasicCurve::TransferBSplineCurve()`
     pub fn transfer_b_spline_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomBSplineCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        start: &crate::ffi_types::HandleIGESGeomBSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_b_spline_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_b_spline_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1392,11 +1586,11 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:88 - `IGESToBRep_BasicCurve::Transfer2dBSplineCurve()`
     pub fn transfer2d_b_spline_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomBSplineCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        start: &crate::ffi_types::HandleIGESGeomBSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_b_spline_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_b_spline_curve(
                     self as *mut Self,
                     start,
                 ),
@@ -1407,11 +1601,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:91 - `IGESToBRep_BasicCurve::TransferCircularArc()`
     pub fn transfer_circular_arc(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCircularArc,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        start: &crate::ffi_types::HandleIGESGeomCircularArc,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_circular_arc(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_circular_arc(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1419,11 +1616,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:93 - `IGESToBRep_BasicCurve::Transfer2dCircularArc()`
     pub fn transfer2d_circular_arc(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCircularArc,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        start: &crate::ffi_types::HandleIGESGeomCircularArc,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_circular_arc(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_circular_arc(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1431,11 +1631,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:96 - `IGESToBRep_BasicCurve::TransferConicArc()`
     pub fn transfer_conic_arc(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomConicArc,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        start: &crate::ffi_types::HandleIGESGeomConicArc,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_conic_arc(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_conic_arc(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1443,11 +1646,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:98 - `IGESToBRep_BasicCurve::Transfer2dConicArc()`
     pub fn transfer2d_conic_arc(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomConicArc,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        start: &crate::ffi_types::HandleIGESGeomConicArc,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_conic_arc(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_conic_arc(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1455,11 +1661,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:100 - `IGESToBRep_BasicCurve::TransferCopiousData()`
     pub fn transfer_copious_data(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCopiousData,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        start: &crate::ffi_types::HandleIGESGeomCopiousData,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_copious_data(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_copious_data(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1467,11 +1676,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:103 - `IGESToBRep_BasicCurve::Transfer2dCopiousData()`
     pub fn transfer2d_copious_data(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCopiousData,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        start: &crate::ffi_types::HandleIGESGeomCopiousData,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_copious_data(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_copious_data(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1479,11 +1691,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:106 - `IGESToBRep_BasicCurve::TransferLine()`
     pub fn transfer_line(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomLine,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+        start: &crate::ffi_types::HandleIGESGeomLine,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_line(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_line(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1491,11 +1706,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:108 - `IGESToBRep_BasicCurve::Transfer2dLine()`
     pub fn transfer2d_line(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomLine,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+        start: &crate::ffi_types::HandleIGESGeomLine,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_line(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_line(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1503,11 +1721,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:110 - `IGESToBRep_BasicCurve::TransferSplineCurve()`
     pub fn transfer_spline_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomSplineCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        start: &crate::ffi_types::HandleIGESGeomSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_spline_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_spline_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1515,11 +1736,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:113 - `IGESToBRep_BasicCurve::Transfer2dSplineCurve()`
     pub fn transfer2d_spline_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomSplineCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        start: &crate::ffi_types::HandleIGESGeomSplineCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer2d_spline_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer2d_spline_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1527,11 +1751,14 @@ impl BasicCurve {
     /// **Source:** `IGESToBRep_BasicCurve.hxx`:116 - `IGESToBRep_BasicCurve::TransferTransformation()`
     pub fn transfer_transformation(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomTransformationMatrix,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomTransformation> {
+        start: &crate::ffi_types::HandleIGESGeomTransformationMatrix,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomTransformation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_transfer_transformation(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_transfer_transformation(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1539,9 +1766,11 @@ impl BasicCurve {
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1549,7 +1778,7 @@ impl BasicCurve {
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface_mut(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_as_IGESToBRep_CurveAndSurface_mut(
                     self as *mut Self,
                 ),
             )
@@ -1559,162 +1788,216 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetEpsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetEpsilon(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetEpsCoeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsCoeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetEpsCoeff(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetEpsGeom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetEpsGeom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetEpsGeom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetEpsGeom(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetMinTol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetMinTol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetMaxTol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_UpdateMinMaxTol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_UpdateMinMaxTol(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetMinTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetMinTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetMaxTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetMaxTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeApprox(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetModeApprox(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeApprox(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetModeApprox(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetModeTransfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetModeTransfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetModeTransfer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetOptimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetOptimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetOptimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetOptimized(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetUnitFactor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetUnitFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetSurfaceCurve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetSurfaceCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1722,31 +2005,41 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetContinuity(self as *mut Self, continuity)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetContinuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetContinuity(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1754,12 +2047,12 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_TransferCurveAndSurface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -1771,12 +2064,12 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_TransferGeometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -1788,51 +2081,66 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     pub fn get_shape_result(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_GetShapeResult(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetShapeResult(
                     self as *const Self,
                     start,
                 ),
@@ -1843,11 +2151,11 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -1856,20 +2164,23 @@ impl BasicCurve {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_NbShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_NbShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_AddShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_AddShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -1878,17 +2189,22 @@ impl BasicCurve {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_SetSurface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_SetSurface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicCurve_inherited_Surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_Surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1896,7 +2212,9 @@ impl BasicCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicCurve_inherited_GetUVResolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicCurve_inherited_GetUVResolution(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1911,11 +2229,11 @@ impl BasicCurve {
 /// These can be :
 /// * Spline surface
 /// * BSpline surface
-pub use crate::ffi::IGESToBRep_BasicSurface as BasicSurface;
+pub use crate::ffi_types::IGESToBRep_BasicSurface as BasicSurface;
 
 unsafe impl crate::CppDeletable for BasicSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_BasicSurface_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_destructor(ptr);
     }
 }
 
@@ -1927,7 +2245,7 @@ impl BasicSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_ctor(),
             ))
         }
     }
@@ -1938,7 +2256,7 @@ impl BasicSurface {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -1955,7 +2273,7 @@ impl BasicSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -1966,11 +2284,11 @@ impl BasicSurface {
     /// Returns Surface  from Geom if the last transfer has succeeded.
     pub fn transfer_basic_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_basic_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_basic_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -1982,11 +2300,11 @@ impl BasicSurface {
     /// Returns Plane from Geom if the transfer has succeeded.
     pub fn transfer_plane_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidPlaneSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+        start: &crate::ffi_types::HandleIGESSolidPlaneSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_plane_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_plane_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -1998,15 +2316,10 @@ impl BasicSurface {
     /// Returns CylindricalSurface from Geom if the transfer has succeeded.
     pub fn transfer_rigth_cylindrical_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidCylindricalSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCylindricalSurface> {
+        start: &crate::ffi_types::HandleIGESSolidCylindricalSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCylindricalSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_cylindrical_surface(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_rigth_cylindrical_surface(self as *mut Self, start)))
         }
     }
 
@@ -2014,11 +2327,11 @@ impl BasicSurface {
     /// Returns ConicalSurface from Geom if the transfer has succeeded.
     pub fn transfer_rigth_conical_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidConicalSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomConicalSurface> {
+        start: &crate::ffi_types::HandleIGESSolidConicalSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomConicalSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_rigth_conical_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_rigth_conical_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -2030,11 +2343,11 @@ impl BasicSurface {
     /// Returns SphericalSurface from Geom if the transfer has succeeded.
     pub fn transfer_spherical_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidSphericalSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomSphericalSurface> {
+        start: &crate::ffi_types::HandleIGESSolidSphericalSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSphericalSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_spherical_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_spherical_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -2046,11 +2359,11 @@ impl BasicSurface {
     /// Returns SphericalSurface from Geom if the transfer has succeeded.
     pub fn transfer_toroidal_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidToroidalSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomToroidalSurface> {
+        start: &crate::ffi_types::HandleIGESSolidToroidalSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomToroidalSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_toroidal_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_toroidal_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -2062,11 +2375,11 @@ impl BasicSurface {
     /// Returns BSplineSurface  from Geom if the transfer has succeeded.
     pub fn transfer_spline_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomSplineSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        start: &crate::ffi_types::HandleIGESGeomSplineSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_spline_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_spline_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -2078,11 +2391,11 @@ impl BasicSurface {
     /// Returns BSplineSurface  from Geom if the transfer has succeeded.
     pub fn transfer_b_spline_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomBSplineSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        start: &crate::ffi_types::HandleIGESGeomBSplineSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_transfer_b_spline_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_transfer_b_spline_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -2094,7 +2407,7 @@ impl BasicSurface {
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
             &*crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface(
                     self as *const Self,
                 ),
             )
@@ -2104,173 +2417,223 @@ impl BasicSurface {
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetEpsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetEpsilon(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetEpsCoeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsCoeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetEpsCoeff(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetEpsGeom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetEpsGeom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetEpsGeom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetEpsGeom(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMinTol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetMinTol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetMaxTol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_UpdateMinMaxTol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_UpdateMinMaxTol(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetMinTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetMinTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetMaxTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetMaxTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeApprox(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetModeApprox(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeApprox(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetModeApprox(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetModeTransfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetModeTransfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetModeTransfer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetOptimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetOptimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetOptimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetOptimized(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetUnitFactor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetUnitFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetSurfaceCurve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetSurfaceCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2278,7 +2641,7 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetContinuity(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetContinuity(
                 self as *mut Self,
                 continuity,
             )
@@ -2288,24 +2651,29 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetContinuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetContinuity(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetTransferProcess(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetTransferProcess(
                     self as *const Self,
                 ),
             ))
@@ -2315,29 +2683,23 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_TransferCurveAndSurface(
-                    self as *mut Self,
-                    start,
-                    theProgress,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_TransferCurveAndSurface(self as *mut Self, start, theProgress)))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_TransferGeometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -2349,22 +2711,26 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SendWarning(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SendWarning(
                 self as *mut Self,
                 start,
                 amsg,
@@ -2375,29 +2741,36 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     pub fn get_shape_result(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_GetShapeResult(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetShapeResult(
                     self as *const Self,
                     start,
                 ),
@@ -2408,11 +2781,11 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -2421,20 +2794,23 @@ impl BasicSurface {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_NbShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_NbShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_AddShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_AddShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -2443,17 +2819,22 @@ impl BasicSurface {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_SetSurface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_SetSurface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_BasicSurface_inherited_Surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_Surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2461,7 +2842,9 @@ impl BasicSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_BasicSurface_inherited_GetUVResolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_BasicSurface_inherited_GetUVResolution(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -2472,11 +2855,11 @@ impl BasicSurface {
 
 /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:35 - `IGESToBRep_CurveAndSurface`
 /// Provides methods to transfer CurveAndSurface from IGES to CASCADE.
-pub use crate::ffi::IGESToBRep_CurveAndSurface as CurveAndSurface;
+pub use crate::ffi_types::IGESToBRep_CurveAndSurface as CurveAndSurface;
 
 unsafe impl crate::CppDeletable for CurveAndSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_CurveAndSurface_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_destructor(ptr);
     }
 }
 
@@ -2488,7 +2871,7 @@ impl CurveAndSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_ctor(),
             ))
         }
     }
@@ -2505,7 +2888,7 @@ impl CurveAndSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -2517,7 +2900,7 @@ impl CurveAndSurface {
     /// default creating values.
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_init(self as *mut Self)
         })
     }
 
@@ -2525,7 +2908,10 @@ impl CurveAndSurface {
     /// Changes the value of "myEps"
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_epsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_epsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
@@ -2533,7 +2919,7 @@ impl CurveAndSurface {
     /// Returns the value of "myEps"
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_epsilon(self as *const Self)
         })
     }
 
@@ -2541,7 +2927,10 @@ impl CurveAndSurface {
     /// Changes the value of "myEpsCoeff"
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_eps_coeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_eps_coeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
@@ -2549,7 +2938,9 @@ impl CurveAndSurface {
     /// Returns the value of "myEpsCoeff"
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_eps_coeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_eps_coeff(
+                self as *const Self,
+            )
         })
     }
 
@@ -2557,7 +2948,10 @@ impl CurveAndSurface {
     /// Changes the value of "myEpsGeom"
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_eps_geom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_eps_geom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
@@ -2565,7 +2959,7 @@ impl CurveAndSurface {
     /// Returns the value of "myEpsGeom"
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_eps_geom(self as *const Self)
         })
     }
 
@@ -2573,7 +2967,10 @@ impl CurveAndSurface {
     /// Changes the value of "myMinTol"
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_min_tol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_min_tol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -2581,7 +2978,10 @@ impl CurveAndSurface {
     /// Changes the value of "myMaxTol"
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_max_tol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_max_tol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -2593,7 +2993,9 @@ impl CurveAndSurface {
     /// of "myEpsGeom" or "myUnitFactor" are changed
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_update_min_max_tol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_update_min_max_tol(
+                self as *mut Self,
+            )
         })
     }
 
@@ -2601,7 +3003,7 @@ impl CurveAndSurface {
     /// Returns the value of "myMinTol"
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_min_tol(self as *const Self)
         })
     }
 
@@ -2609,7 +3011,7 @@ impl CurveAndSurface {
     /// Returns the value of "myMaxTol"
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_max_tol(self as *const Self)
         })
     }
 
@@ -2617,7 +3019,10 @@ impl CurveAndSurface {
     /// Changes the value of "myModeApprox"
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_mode_approx(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_mode_approx(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -2625,7 +3030,9 @@ impl CurveAndSurface {
     /// Returns the value of "myModeApprox"
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_mode_approx(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_mode_approx(
+                self as *const Self,
+            )
         })
     }
 
@@ -2633,7 +3040,10 @@ impl CurveAndSurface {
     /// Changes the value of "myModeIsTopo"
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_mode_transfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_mode_transfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -2641,7 +3051,9 @@ impl CurveAndSurface {
     /// Returns the value of "myModeIsTopo"
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_mode_transfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_mode_transfer(
+                self as *const Self,
+            )
         })
     }
 
@@ -2649,7 +3061,10 @@ impl CurveAndSurface {
     /// Changes the value of "myContIsOpti"
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_optimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_optimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
@@ -2657,7 +3072,9 @@ impl CurveAndSurface {
     /// Returns the value of "myContIsOpti"
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_optimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_optimized(
+                self as *const Self,
+            )
         })
     }
 
@@ -2665,7 +3082,9 @@ impl CurveAndSurface {
     /// Returns the value of " myUnitFactor"
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_unit_factor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_unit_factor(
+                self as *const Self,
+            )
         })
     }
 
@@ -2673,7 +3092,10 @@ impl CurveAndSurface {
     /// Changes the value of "mySurfaceCurve"
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_surface_curve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_surface_curve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
@@ -2683,24 +3105,31 @@ impl CurveAndSurface {
     /// compute 2d
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_surface_curve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_surface_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
     /// Set the value of "myModel"
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_model(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
     /// Returns the value of "myModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_get_model(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_model(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2712,7 +3141,10 @@ impl CurveAndSurface {
     /// if continuity = 2 try C2
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_continuity(self as *mut Self, continuity)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_continuity(
+                self as *mut Self,
+                continuity,
+            )
         })
     }
 
@@ -2720,15 +3152,20 @@ impl CurveAndSurface {
     /// Returns the value of "myContinuity"
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_continuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_continuity(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
     /// Set the value of "myMsgReg"
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_transfer_process(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_transfer_process(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
@@ -2736,10 +3173,12 @@ impl CurveAndSurface {
     /// Returns the value of "myMsgReg"
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_get_transfer_process(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_transfer_process(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2750,12 +3189,12 @@ impl CurveAndSurface {
     /// member return a NullEntity.
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_transfer_curve_and_surface(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -2770,12 +3209,12 @@ impl CurveAndSurface {
     /// member return a NullEntity.
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_transfer_geometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_transfer_geometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -2788,11 +3227,15 @@ impl CurveAndSurface {
     /// Records a new Fail message
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_send_fail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_send_fail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -2800,11 +3243,15 @@ impl CurveAndSurface {
     /// Records a new Warning message
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_send_warning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_send_warning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -2813,20 +3260,27 @@ impl CurveAndSurface {
     /// of a Msg (Original+Value)
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_send_msg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_send_msg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
     /// Returns True if start was already treated and has a result in "myMap"
     /// else returns False.
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_has_shape_result(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_has_shape_result(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -2835,15 +3289,10 @@ impl CurveAndSurface {
     /// in "myMap" . (if HasShapeResult is True).
     pub fn get_shape_result_handleigesdataigesentity(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(
-                    self as *const Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity(self as *const Self, start)))
         }
     }
 
@@ -2851,11 +3300,11 @@ impl CurveAndSurface {
     /// set in "myMap" the result of the transfer of the IGESEntity "start".
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_shape_result(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_shape_result(
                 self as *mut Self,
                 start,
                 result,
@@ -2866,9 +3315,12 @@ impl CurveAndSurface {
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
     /// Returns the number of shapes results contained in "myMap" for the
     /// IGESEntity start ( type VertexList or EdgeList).
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_nb_shape_result(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_nb_shape_result(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -2877,11 +3329,11 @@ impl CurveAndSurface {
     /// EdgeList) in "myMap". (if NbShapeResult is not null).
     pub fn get_shape_result_handleigesdataigesentity_int(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         num: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(self as *const Self, start, num)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_shape_result_handleigesdataigesentity_int(self as *const Self, start, num)))
         }
     }
 
@@ -2890,11 +3342,11 @@ impl CurveAndSurface {
     /// IGESEntity start ( type VertexList or EdgeList).
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_add_shape_result(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_add_shape_result(
                 self as *mut Self,
                 start,
                 result,
@@ -2903,17 +3355,20 @@ impl CurveAndSurface {
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_set_surface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_set_surface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_CurveAndSurface_surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_surface(self as *const Self),
             ))
         }
     }
@@ -2921,7 +3376,9 @@ impl CurveAndSurface {
     /// **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_CurveAndSurface_get_uv_resolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_CurveAndSurface_get_uv_resolution(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -2936,11 +3393,11 @@ impl CurveAndSurface {
 /// Methods Transfer are virtual and are redefined in Advanced
 /// Data Exchange to optimize the translation and take into
 /// account advanced parameters.
-pub use crate::ffi::IGESToBRep_IGESBoundary as IGESBoundary;
+pub use crate::ffi_types::IGESToBRep_IGESBoundary as IGESBoundary;
 
 unsafe impl crate::CppDeletable for IGESBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_IGESBoundary_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_destructor(ptr);
     }
 }
 
@@ -2950,7 +3407,7 @@ impl IGESBoundary {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_ctor(),
             ))
         }
     }
@@ -2960,7 +3417,7 @@ impl IGESBoundary {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -2977,14 +3434,14 @@ impl IGESBoundary {
     pub fn init(
         &mut self,
         CS: &CurveAndSurface,
-        entity: &crate::ffi::HandleIGESDataIGESEntity,
+        entity: &crate::ffi_types::HandleIGESDataIGESEntity,
         face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
         filepreference: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_init(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_init(
                 self as *mut Self,
                 CS,
                 entity,
@@ -2998,10 +3455,10 @@ impl IGESBoundary {
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:66 - `IGESToBRep_IGESBoundary::WireData()`
     /// Returns the resulting wire
-    pub fn wire_data(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+    pub fn wire_data(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendWireData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_wire_data(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_wire_data(self as *const Self),
             ))
         }
     }
@@ -3009,10 +3466,12 @@ impl IGESBoundary {
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:70 - `IGESToBRep_IGESBoundary::WireData3d()`
     /// Returns the wire from 3D curves (edges contain 3D curves
     /// and may contain pcurves)
-    pub fn wire_data3d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+    pub fn wire_data3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendWireData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_wire_data3d(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_wire_data3d(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3020,10 +3479,12 @@ impl IGESBoundary {
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:74 - `IGESToBRep_IGESBoundary::WireData2d()`
     /// Returns the wire from 2D curves (edges contain pcurves
     /// only)
-    pub fn wire_data2d(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+    pub fn wire_data2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendWireData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_wire_data2d(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_wire_data2d(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3047,13 +3508,13 @@ impl IGESBoundary {
         okCurve: &mut bool,
         okCurve3d: &mut bool,
         okCurve2d: &mut bool,
-        curve3d: &crate::ffi::HandleIGESDataIGESEntity,
+        curve3d: &crate::ffi_types::HandleIGESDataIGESEntity,
         toreverse3d: bool,
-        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        curves2d: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
         number: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleigesdataigesentity_bool_handleigesdataharray1ofigesentity_int(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, toreverse3d, curves2d, number)
         })
     }
 
@@ -3077,14 +3538,14 @@ impl IGESBoundary {
         okCurve: &mut bool,
         okCurve3d: &mut bool,
         okCurve2d: &mut bool,
-        curve3d: &crate::ffi::HandleShapeExtendWireData,
-        curves2d: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        curve3d: &crate::ffi_types::HandleShapeExtendWireData,
+        curves2d: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
         toreverse2d: bool,
         number: i32,
-        lsewd: &mut crate::ffi::HandleShapeExtendWireData,
+        lsewd: &mut crate::ffi_types::HandleShapeExtendWireData,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_transfer_bool3_handleshapeextendwiredata_handleigesdataharray1ofigesentity_bool_int_handleshapeextendwiredata(self as *mut Self, okCurve, okCurve3d, okCurve2d, curve3d, curves2d, toreverse2d, number, lsewd)
         })
     }
 
@@ -3099,7 +3560,7 @@ impl IGESBoundary {
     /// <okCurve3d>, <okCurve2d>: those returned by Transfer.
     pub fn check(&mut self, result: bool, checkclosure: bool, okCurve3d: bool, okCurve2d: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_check(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_check(
                 self as *mut Self,
                 result,
                 checkclosure,
@@ -3110,11 +3571,13 @@ impl IGESBoundary {
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3122,7 +3585,7 @@ impl IGESBoundary {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3130,18 +3593,22 @@ impl IGESBoundary {
     }
 
     /// **Source:** `IGESToBRep_IGESBoundary.hxx`:133 - `IGESToBRep_IGESBoundary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3149,7 +3616,9 @@ impl IGESBoundary {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3157,25 +3626,31 @@ impl IGESBoundary {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepIGESBoundary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_IGESBoundary_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3183,7 +3658,9 @@ impl IGESBoundary {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESToBRep_IGESBoundary_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3196,62 +3673,74 @@ impl IGESBoundary {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_IGESBoundary_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_IGESBoundary_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESToBRepIGESBoundary;
+pub use crate::ffi_types::HandleIGESToBRepIGESBoundary;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepIGESBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESToBRepIGESBoundary_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_destructor(ptr);
     }
 }
 
 impl HandleIGESToBRepIGESBoundary {
     /// Dereference this Handle to access the underlying IGESToBRep_IGESBoundary
-    pub fn get(&self) -> &crate::ffi::IGESToBRep_IGESBoundary {
+    pub fn get(&self) -> &crate::ffi_types::IGESToBRep_IGESBoundary {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESToBRepIGESBoundary_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying IGESToBRep_IGESBoundary
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_IGESBoundary {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESToBRepIGESBoundary_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying IGESToBRep_IGESBoundary
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESToBRep_IGESBoundary {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<IGESToBRep_IGESBoundary> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepIGESBoundary_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3263,11 +3752,9 @@ impl HandleIGESToBRepIGESBoundary {
     /// Returns `None` if the handle does not point to a `IGESControl_IGESBoundary` (or subclass).
     pub fn downcast_to_iges_boundary(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlIGESBoundary>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlIGESBoundary>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleIGESToBRepIGESBoundary_downcast_to_HandleIGESControlIGESBoundary(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepIGESBoundary_downcast_to_HandleIGESControlIGESBoundary(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3284,11 +3771,11 @@ impl HandleIGESToBRepIGESBoundary {
 /// **Source:** `IGESToBRep_Reader.hxx`:38 - `IGESToBRep_Reader`
 /// A simple way to read geometric IGES data.
 /// Encapsulates reading file and calling transfer tools
-pub use crate::ffi::IGESToBRep_Reader as Reader;
+pub use crate::ffi_types::IGESToBRep_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_Reader_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_destructor(ptr);
     }
 }
 
@@ -3297,7 +3784,9 @@ impl Reader {
     /// Creates a Reader
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_ctor(),
+            ))
         }
     }
 
@@ -3308,62 +3797,74 @@ impl Reader {
     pub fn load_file(&mut self, filename: &str) -> i32 {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_load_file(self as *mut Self, c_filename.as_ptr())
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_load_file(
+                self as *mut Self,
+                c_filename.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:54 - `IGESToBRep_Reader::SetModel()`
     /// Specifies a Model to work on
     /// Also clears the result and Done status, sets TransientProcess
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_set_model(self as *mut Self, model)
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:57 - `IGESToBRep_Reader::Model()`
     /// Returns the Model to be worked on.
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_model(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_model(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:61 - `IGESToBRep_Reader::SetTransientProcess()`
     /// Allows to set an already defined TransientProcess
     /// (to be called after LoadFile or SetModel)
-    pub fn set_transient_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transient_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_set_transient_process(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_set_transient_process(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:64 - `IGESToBRep_Reader::TransientProcess()`
     /// Returns the TransientProcess
-    pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    pub fn transient_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_Reader_transient_process(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_transient_process(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:67 - `IGESToBRep_Reader::Actor()`
     /// Returns "theActor"
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor> {
+    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepActor> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_actor(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_actor(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:70 - `IGESToBRep_Reader::Clear()`
     /// Clears the results between two translation operations.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::IGESToBRep_Reader_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:76 - `IGESToBRep_Reader::Check()`
@@ -3373,7 +3874,7 @@ impl Reader {
     /// message was found and False if there was at least one fail message.
     pub fn check(&self, withprint: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_check(self as *const Self, withprint)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_check(self as *const Self, withprint)
         })
     }
 
@@ -3388,7 +3889,7 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_transfer_roots(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_transfer_roots(
                 self as *mut Self,
                 onlyvisible,
                 theProgress,
@@ -3402,14 +3903,20 @@ impl Reader {
     /// (But it can have failed : see IsDone)
     pub fn transfer(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_transfer(self as *mut Self, num, theProgress)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_transfer(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:94 - `IGESToBRep_Reader::IsDone()`
     /// Returns True if the LAST Transfer/TransferRoots was a success
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IGESToBRep_Reader_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:99 - `IGESToBRep_Reader::UsedTolerance()`
@@ -3418,24 +3925,25 @@ impl Reader {
     /// (either that from File or that from Session, according the mode)
     pub fn used_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_used_tolerance(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_used_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:102 - `IGESToBRep_Reader::NbShapes()`
     /// Returns the number of shapes produced by the translation.
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESToBRep_Reader_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:105 - `IGESToBRep_Reader::Shape()`
     /// Returns the num the resulting shape in a translation operation.
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_shape(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_shape(self as *const Self, num),
+            ))
         }
     }
 
@@ -3447,9 +3955,9 @@ impl Reader {
     /// - a compound containing the resulting shapes if there are several.
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_Reader_one_shape(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_one_shape(self as *const Self),
+            ))
         }
     }
 
@@ -3458,10 +3966,10 @@ impl Reader {
     /// @param theParameters the parameters for shape processing.
     pub fn set_shape_fix_parameters_parametermap(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_parametermap(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_set_shape_fix_parameters_parametermap(
                 self as *mut Self,
                 theParameters,
             )
@@ -3478,45 +3986,53 @@ impl Reader {
     pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
         &mut self,
         theParameters: &crate::de::ShapeFixParameters,
-        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theAdditionalParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(
-                self as *mut Self,
-                theParameters,
-                theAdditionalParameters,
-            )
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:136 - `IGESToBRep_Reader::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_Reader_get_shape_fix_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_get_shape_fix_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:143 - `IGESToBRep_Reader::SetShapeProcessFlags()`
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_Reader_set_shape_process_flags(self as *mut Self, theFlags)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_set_shape_process_flags(
+                self as *mut Self,
+                theFlags,
+            )
         })
     }
 
     /// **Source:** `IGESToBRep_Reader.hxx`:147 - `IGESToBRep_Reader::GetShapeProcessFlags()`
     /// Returns flags defining operations to be performed on shapes.
     /// @return The flags defining operations to be performed on shapes.
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
+    pub fn get_shape_process_flags(&self) -> &crate::ffi_types::ShapeProcess_OperationsFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_Reader_get_shape_process_flags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_Reader_get_shape_process_flags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -3535,11 +4051,11 @@ impl Reader {
 // ========================
 
 /// **Source:** `IGESToBRep_ToolContainer.hxx`:28 - `IGESToBRep_ToolContainer`
-pub use crate::ffi::IGESToBRep_ToolContainer as ToolContainer;
+pub use crate::ffi_types::IGESToBRep_ToolContainer as ToolContainer;
 
 unsafe impl crate::CppDeletable for ToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_ToolContainer_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_destructor(ptr);
     }
 }
 
@@ -3549,27 +4065,31 @@ impl ToolContainer {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_ToolContainer_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_ctor(),
             ))
         }
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:36 - `IGESToBRep_ToolContainer::IGESBoundary()`
     /// Returns IGESToBRep_IGESBoundary
-    pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepIGESBoundary> {
+    pub fn iges_boundary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepIGESBoundary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_ToolContainer_iges_boundary(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_iges_boundary(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_ToolContainer_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3577,7 +4097,7 @@ impl ToolContainer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESToBRep_ToolContainer_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3585,18 +4105,22 @@ impl ToolContainer {
     }
 
     /// **Source:** `IGESToBRep_ToolContainer.hxx`:38 - `IGESToBRep_ToolContainer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESToBRep_ToolContainer_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3604,7 +4128,9 @@ impl ToolContainer {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_ToolContainer_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3612,25 +4138,31 @@ impl ToolContainer {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESToBRepToolContainer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepToolContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_ToolContainer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3638,7 +4170,9 @@ impl ToolContainer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESToBRep_ToolContainer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3651,67 +4185,75 @@ impl ToolContainer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_ToolContainer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_ToolContainer_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESToBRepToolContainer;
+pub use crate::ffi_types::HandleIGESToBRepToolContainer;
 
 unsafe impl crate::CppDeletable for HandleIGESToBRepToolContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESToBRepToolContainer_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_destructor(ptr);
     }
 }
 
 impl HandleIGESToBRepToolContainer {
     /// Dereference this Handle to access the underlying IGESToBRep_ToolContainer
-    pub fn get(&self) -> &crate::ffi::IGESToBRep_ToolContainer {
+    pub fn get(&self) -> &crate::ffi_types::IGESToBRep_ToolContainer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESToBRepToolContainer_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESToBRep_ToolContainer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESToBRep_ToolContainer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESToBRep_ToolContainer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESToBRepToolContainer_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESToBRep_ToolContainer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESToBRepToolContainer_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -3720,11 +4262,9 @@ impl HandleIGESToBRepToolContainer {
     /// Returns `None` if the handle does not point to a `IGESControl_ToolContainer` (or subclass).
     pub fn downcast_to_tool_container(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlToolContainer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlToolContainer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleIGESToBRepToolContainer_downcast_to_HandleIGESControlToolContainer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::HandleIGESToBRepToolContainer_downcast_to_HandleIGESControlToolContainer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3741,11 +4281,11 @@ impl HandleIGESToBRepToolContainer {
 /// **Source:** `IGESToBRep_TopoCurve.hxx`:45 - `IGESToBRep_TopoCurve`
 /// Provides methods to transfer topologic curves entities
 /// from IGES to CASCADE.
-pub use crate::ffi::IGESToBRep_TopoCurve as TopoCurve;
+pub use crate::ffi_types::IGESToBRep_TopoCurve as TopoCurve;
 
 unsafe impl crate::CppDeletable for TopoCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_TopoCurve_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_destructor(ptr);
     }
 }
 
@@ -3756,7 +4296,9 @@ impl TopoCurve {
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_TopoCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_ctor(),
+            ))
         }
     }
 
@@ -3766,7 +4308,7 @@ impl TopoCurve {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -3783,7 +4325,7 @@ impl TopoCurve {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -3793,11 +4335,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:71 - `IGESToBRep_TopoCurve::TransferTopoCurve()`
     pub fn transfer_topo_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_topo_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -3805,14 +4350,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:73 - `IGESToBRep_TopoCurve::Transfer2dTopoCurve()`
     pub fn transfer2d_topo_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer2d_topo_curve(
                     self as *mut Self,
                     start,
                     face,
@@ -3826,11 +4371,11 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:78 - `IGESToBRep_TopoCurve::TransferTopoBasicCurve()`
     pub fn transfer_topo_basic_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_topo_basic_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_topo_basic_curve(
                     self as *mut Self,
                     start,
                 ),
@@ -3841,14 +4386,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:80 - `IGESToBRep_TopoCurve::Transfer2dTopoBasicCurve()`
     pub fn transfer2d_topo_basic_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_topo_basic_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer2d_topo_basic_curve(
                     self as *mut Self,
                     start,
                     face,
@@ -3862,11 +4407,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:85 - `IGESToBRep_TopoCurve::TransferPoint()`
     pub fn transfer_point(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomPoint,
+        start: &crate::ffi_types::HandleIGESGeomPoint,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_point(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_point(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -3874,11 +4422,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:87 - `IGESToBRep_TopoCurve::Transfer2dPoint()`
     pub fn transfer2d_point(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomPoint,
+        start: &crate::ffi_types::HandleIGESGeomPoint,
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_point(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer2d_point(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -3886,11 +4437,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:89 - `IGESToBRep_TopoCurve::TransferCompositeCurve()`
     pub fn transfer_composite_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCompositeCurve,
+        start: &crate::ffi_types::HandleIGESGeomCompositeCurve,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_composite_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_composite_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -3898,14 +4452,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:92 - `IGESToBRep_TopoCurve::Transfer2dCompositeCurve()`
     pub fn transfer2d_composite_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCompositeCurve,
+        start: &crate::ffi_types::HandleIGESGeomCompositeCurve,
         face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_composite_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer2d_composite_curve(
                     self as *mut Self,
                     start,
                     face,
@@ -3919,11 +4473,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:97 - `IGESToBRep_TopoCurve::TransferOffsetCurve()`
     pub fn transfer_offset_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomOffsetCurve,
+        start: &crate::ffi_types::HandleIGESGeomOffsetCurve,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_offset_curve(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_offset_curve(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -3931,14 +4488,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:99 - `IGESToBRep_TopoCurve::Transfer2dOffsetCurve()`
     pub fn transfer2d_offset_curve(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomOffsetCurve,
+        start: &crate::ffi_types::HandleIGESGeomOffsetCurve,
         face: &crate::topo_ds::Face,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer2d_offset_curve(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer2d_offset_curve(
                     self as *mut Self,
                     start,
                     face,
@@ -3952,11 +4509,11 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:104 - `IGESToBRep_TopoCurve::TransferCurveOnSurface()`
     pub fn transfer_curve_on_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        start: &crate::ffi_types::HandleIGESGeomCurveOnSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_curve_on_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -3970,14 +4527,14 @@ impl TopoCurve {
     pub fn transfer_curve_on_face(
         &mut self,
         face: &mut crate::topo_ds::Face,
-        start: &crate::ffi::HandleIGESGeomCurveOnSurface,
+        start: &crate::ffi_types::HandleIGESGeomCurveOnSurface,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
         IsCurv: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_curve_on_face(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_curve_on_face(
                     self as *mut Self,
                     face,
                     start,
@@ -3992,11 +4549,14 @@ impl TopoCurve {
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:114 - `IGESToBRep_TopoCurve::TransferBoundary()`
     pub fn transfer_boundary(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomBoundary,
+        start: &crate::ffi_types::HandleIGESGeomBoundary,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_boundary(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_boundary(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4006,13 +4566,13 @@ impl TopoCurve {
     pub fn transfer_boundary_on_face(
         &mut self,
         face: &mut crate::topo_ds::Face,
-        start: &crate::ffi::HandleIGESGeomBoundary,
+        start: &crate::ffi_types::HandleIGESGeomBoundary,
         trans: &crate::gp::Trsf2d,
         uFact: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_transfer_boundary_on_face(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_transfer_boundary_on_face(
                     self as *mut Self,
                     face,
                     start,
@@ -4024,9 +4584,12 @@ impl TopoCurve {
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:122 - `IGESToBRep_TopoCurve::ApproxBSplineCurve()`
-    pub fn approx_b_spline_curve(&mut self, start: &crate::ffi::HandleGeomBSplineCurve) {
+    pub fn approx_b_spline_curve(&mut self, start: &crate::ffi_types::HandleGeomBSplineCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_approx_b_spline_curve(self as *mut Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_approx_b_spline_curve(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -4034,26 +4597,28 @@ impl TopoCurve {
     /// Returns the count of Curves in "TheCurves"
     pub fn nb_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_nb_curves(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_nb_curves(self as *const Self)
         })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:129 - `IGESToBRep_TopoCurve::Curve()`
     /// Returns a Curve given its rank, by default the first one
     /// (null Curvee if out of range) in "TheCurves"
-    pub fn curve(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn curve(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESToBRep_TopoCurve_curve(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_curve(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:131 - `IGESToBRep_TopoCurve::Approx2dBSplineCurve()`
-    pub fn approx2d_b_spline_curve(&mut self, start: &crate::ffi::HandleGeom2dBSplineCurve) {
+    pub fn approx2d_b_spline_curve(&mut self, start: &crate::ffi_types::HandleGeom2dBSplineCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_approx2d_b_spline_curve(self as *mut Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_approx2d_b_spline_curve(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -4061,17 +4626,17 @@ impl TopoCurve {
     /// Returns the count of Curves in "TheCurves2d"
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `IGESToBRep_TopoCurve.hxx`:138 - `IGESToBRep_TopoCurve::Curve2d()`
     /// Returns a Curve given its rank, by default the first one
     /// (null Curvee if out of range) in "TheCurves2d"
-    pub fn curve2d(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn curve2d(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_curve2d(self as *const Self, num),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_curve2d(self as *const Self, num),
             ))
         }
     }
@@ -4080,7 +4645,7 @@ impl TopoCurve {
     /// Sets TheBadCase flag
     pub fn set_bad_case(&mut self, value: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_set_bad_case(self as *mut Self, value)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_set_bad_case(self as *mut Self, value)
         })
     }
 
@@ -4088,16 +4653,18 @@ impl TopoCurve {
     /// Returns TheBadCase flag
     pub fn bad_case(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_bad_case(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_bad_case(self as *const Self)
         })
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4105,7 +4672,7 @@ impl TopoCurve {
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_as_IGESToBRep_CurveAndSurface_mut(
                     self as *mut Self,
                 ),
             )
@@ -4116,7 +4683,7 @@ impl TopoCurve {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_to_owned(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_to_owned(self as *const Self),
             ))
         }
     }
@@ -4124,162 +4691,216 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetEpsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetEpsilon(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsCoeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetEpsCoeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsCoeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetEpsCoeff(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetEpsGeom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetEpsGeom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetEpsGeom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetEpsGeom(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetMinTol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetMinTol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetMaxTol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetMaxTol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_UpdateMinMaxTol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_UpdateMinMaxTol(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetMinTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetMinTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetMaxTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetMaxTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeApprox(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetModeApprox(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeApprox(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetModeApprox(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModeTransfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetModeTransfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetModeTransfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetModeTransfer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetOptimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetOptimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetOptimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetOptimized(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetUnitFactor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetUnitFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurfaceCurve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetSurfaceCurve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetSurfaceCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4287,31 +4908,41 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetContinuity(self as *mut Self, continuity)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetContinuity(
+                self as *mut Self,
+                continuity,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetContinuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetContinuity(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4319,12 +4950,12 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_TransferCurveAndSurface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_TransferCurveAndSurface(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -4336,12 +4967,12 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_TransferGeometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -4353,51 +4984,66 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SendWarning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     pub fn get_shape_result(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_GetShapeResult(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetShapeResult(
                     self as *const Self,
                     start,
                 ),
@@ -4408,11 +5054,11 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -4421,20 +5067,23 @@ impl TopoCurve {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_NbShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_NbShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_AddShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_AddShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -4443,17 +5092,22 @@ impl TopoCurve {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_SetSurface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_SetSurface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoCurve_inherited_Surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_Surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4461,7 +5115,9 @@ impl TopoCurve {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoCurve_inherited_GetUVResolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoCurve_inherited_GetUVResolution(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -4473,11 +5129,11 @@ impl TopoCurve {
 /// **Source:** `IGESToBRep_TopoSurface.hxx`:42 - `IGESToBRep_TopoSurface`
 /// Provides methods to transfer topologic surfaces entities
 /// from IGES to CASCADE.
-pub use crate::ffi::IGESToBRep_TopoSurface as TopoSurface;
+pub use crate::ffi_types::IGESToBRep_TopoSurface as TopoSurface;
 
 unsafe impl crate::CppDeletable for TopoSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESToBRep_TopoSurface_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_destructor(ptr);
     }
 }
 
@@ -4488,9 +5144,9 @@ impl TopoSurface {
     /// optimization of  the continuity to False.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::IGESToBRep_TopoSurface_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_ctor(),
+            ))
         }
     }
 
@@ -4500,7 +5156,7 @@ impl TopoSurface {
     pub fn new_curveandsurface(CS: &CurveAndSurface) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_ctor_curveandsurface(CS),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_ctor_curveandsurface(CS),
             ))
         }
     }
@@ -4517,7 +5173,7 @@ impl TopoSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_ctor_real3_bool3(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_ctor_real3_bool3(
                     eps, epsGeom, epsCoeff, mode, modeapprox, optimized,
                 ),
             ))
@@ -4527,11 +5183,14 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:64 - `IGESToBRep_TopoSurface::TransferTopoSurface()`
     pub fn transfer_topo_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_topo_surface(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_topo_surface(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4539,11 +5198,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:66 - `IGESToBRep_TopoSurface::TransferTopoBasicSurface()`
     pub fn transfer_topo_basic_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_topo_basic_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_topo_basic_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -4554,11 +5213,14 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:68 - `IGESToBRep_TopoSurface::TransferRuledSurface()`
     pub fn transfer_ruled_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomRuledSurface,
+        start: &crate::ffi_types::HandleIGESGeomRuledSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_ruled_surface(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_ruled_surface(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4566,11 +5228,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:71 - `IGESToBRep_TopoSurface::TransferSurfaceOfRevolution()`
     pub fn transfer_surface_of_revolution(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomSurfaceOfRevolution,
+        start: &crate::ffi_types::HandleIGESGeomSurfaceOfRevolution,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_surface_of_revolution(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_surface_of_revolution(
                     self as *mut Self,
                     start,
                 ),
@@ -4581,11 +5243,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:74 - `IGESToBRep_TopoSurface::TransferTabulatedCylinder()`
     pub fn transfer_tabulated_cylinder(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomTabulatedCylinder,
+        start: &crate::ffi_types::HandleIGESGeomTabulatedCylinder,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_tabulated_cylinder(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_tabulated_cylinder(
                     self as *mut Self,
                     start,
                 ),
@@ -4596,11 +5258,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:76 - `IGESToBRep_TopoSurface::TransferOffsetSurface()`
     pub fn transfer_offset_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomOffsetSurface,
+        start: &crate::ffi_types::HandleIGESGeomOffsetSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_offset_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_offset_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -4611,11 +5273,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:78 - `IGESToBRep_TopoSurface::TransferTrimmedSurface()`
     pub fn transfer_trimmed_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomTrimmedSurface,
+        start: &crate::ffi_types::HandleIGESGeomTrimmedSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_trimmed_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_trimmed_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -4626,11 +5288,11 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:80 - `IGESToBRep_TopoSurface::TransferBoundedSurface()`
     pub fn transfer_bounded_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomBoundedSurface,
+        start: &crate::ffi_types::HandleIGESGeomBoundedSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_bounded_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_bounded_surface(
                     self as *mut Self,
                     start,
                 ),
@@ -4641,11 +5303,14 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:82 - `IGESToBRep_TopoSurface::TransferPlane()`
     pub fn transfer_plane(
         &mut self,
-        start: &crate::ffi::HandleIGESGeomPlane,
+        start: &crate::ffi_types::HandleIGESGeomPlane,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_plane(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_plane(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4653,11 +5318,14 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:84 - `IGESToBRep_TopoSurface::TransferPlaneSurface()`
     pub fn transfer_plane_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESSolidPlaneSurface,
+        start: &crate::ffi_types::HandleIGESSolidPlaneSurface,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_plane_surface(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_plane_surface(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4665,11 +5333,14 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:86 - `IGESToBRep_TopoSurface::TransferPerforate()`
     pub fn transfer_perforate(
         &mut self,
-        start: &crate::ffi::HandleIGESBasicSingleParent,
+        start: &crate::ffi_types::HandleIGESBasicSingleParent,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_transfer_perforate(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_transfer_perforate(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4677,13 +5348,13 @@ impl TopoSurface {
     /// **Source:** `IGESToBRep_TopoSurface.hxx`:88 - `IGESToBRep_TopoSurface::ParamSurface()`
     pub fn param_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         trans: &mut crate::gp::Trsf2d,
         uFact: &mut f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_param_surface(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_param_surface(
                     self as *mut Self,
                     start,
                     trans,
@@ -4696,182 +5367,234 @@ impl TopoSurface {
     /// Upcast to IGESToBRep_CurveAndSurface
     pub fn as_curve_and_surface(&self) -> &CurveAndSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESToBRep_CurveAndSurface (mutable)
     pub fn as_curve_and_surface_mut(&mut self) -> &mut CurveAndSurface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_as_IGESToBRep_CurveAndSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:55 - `IGESToBRep_CurveAndSurface::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:58 - `IGESToBRep_CurveAndSurface::SetEpsilon()`
     pub fn set_epsilon(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsilon(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetEpsilon(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:61 - `IGESToBRep_CurveAndSurface::GetEpsilon()`
     pub fn get_epsilon(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsilon(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetEpsilon(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:64 - `IGESToBRep_CurveAndSurface::SetEpsCoeff()`
     pub fn set_eps_coeff(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsCoeff(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetEpsCoeff(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:67 - `IGESToBRep_CurveAndSurface::GetEpsCoeff()`
     pub fn get_eps_coeff(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsCoeff(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetEpsCoeff(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:70 - `IGESToBRep_CurveAndSurface::SetEpsGeom()`
     pub fn set_eps_geom(&mut self, eps: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetEpsGeom(self as *mut Self, eps)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetEpsGeom(
+                self as *mut Self,
+                eps,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:73 - `IGESToBRep_CurveAndSurface::GetEpsGeom()`
     pub fn get_eps_geom(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetEpsGeom(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetEpsGeom(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:76 - `IGESToBRep_CurveAndSurface::SetMinTol()`
     pub fn set_min_tol(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetMinTol(self as *mut Self, mintol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetMinTol(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:79 - `IGESToBRep_CurveAndSurface::SetMaxTol()`
     pub fn set_max_tol(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetMaxTol(self as *mut Self, maxtol)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetMaxTol(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:86 - `IGESToBRep_CurveAndSurface::UpdateMinMaxTol()`
     pub fn update_min_max_tol(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_UpdateMinMaxTol(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_UpdateMinMaxTol(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:89 - `IGESToBRep_CurveAndSurface::GetMinTol()`
     pub fn get_min_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetMinTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetMinTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:92 - `IGESToBRep_CurveAndSurface::GetMaxTol()`
     pub fn get_max_tol(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetMaxTol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetMaxTol(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:95 - `IGESToBRep_CurveAndSurface::SetModeApprox()`
     pub fn set_mode_approx(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeApprox(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetModeApprox(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:98 - `IGESToBRep_CurveAndSurface::GetModeApprox()`
     pub fn get_mode_approx(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeApprox(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetModeApprox(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:101 - `IGESToBRep_CurveAndSurface::SetModeTransfer()`
     pub fn set_mode_transfer(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModeTransfer(self as *mut Self, mode)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetModeTransfer(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:104 - `IGESToBRep_CurveAndSurface::GetModeTransfer()`
     pub fn get_mode_transfer(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetModeTransfer(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetModeTransfer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:107 - `IGESToBRep_CurveAndSurface::SetOptimized()`
     pub fn set_optimized(&mut self, optimized: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetOptimized(self as *mut Self, optimized)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetOptimized(
+                self as *mut Self,
+                optimized,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:110 - `IGESToBRep_CurveAndSurface::GetOptimized()`
     pub fn get_optimized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetOptimized(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetOptimized(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:113 - `IGESToBRep_CurveAndSurface::GetUnitFactor()`
     pub fn get_unit_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetUnitFactor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetUnitFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:116 - `IGESToBRep_CurveAndSurface::SetSurfaceCurve()`
     pub fn set_surface_curve(&mut self, ival: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurfaceCurve(self as *mut Self, ival)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetSurfaceCurve(
+                self as *mut Self,
+                ival,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:121 - `IGESToBRep_CurveAndSurface::GetSurfaceCurve()`
     pub fn get_surface_curve(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetSurfaceCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:124 - `IGESToBRep_CurveAndSurface::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:127 - `IGESToBRep_CurveAndSurface::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4879,7 +5602,7 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:133 - `IGESToBRep_CurveAndSurface::SetContinuity()`
     pub fn set_continuity(&mut self, continuity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetContinuity(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetContinuity(
                 self as *mut Self,
                 continuity,
             )
@@ -4889,24 +5612,29 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:136 - `IGESToBRep_CurveAndSurface::GetContinuity()`
     pub fn get_continuity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetContinuity(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetContinuity(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:139 - `IGESToBRep_CurveAndSurface::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:142 - `IGESToBRep_CurveAndSurface::GetTransferProcess()`
     pub fn get_transfer_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetTransferProcess(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetTransferProcess(
                     self as *const Self,
                 ),
             ))
@@ -4916,29 +5644,23 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:148 - `IGESToBRep_CurveAndSurface::TransferCurveAndSurface()`
     pub fn transfer_curve_and_surface(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_TransferCurveAndSurface(
-                    self as *mut Self,
-                    start,
-                    theProgress,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_TransferCurveAndSurface(self as *mut Self, start, theProgress)))
         }
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:155 - `IGESToBRep_CurveAndSurface::TransferGeometry()`
     pub fn transfer_geometry(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_TransferGeometry(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_TransferGeometry(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -4950,51 +5672,66 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:159 - `IGESToBRep_CurveAndSurface::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:162 - `IGESToBRep_CurveAndSurface::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SendWarning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:166 - `IGESToBRep_CurveAndSurface::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:170 - `IGESToBRep_CurveAndSurface::HasShapeResult()`
-    pub fn has_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn has_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:174 - `IGESToBRep_CurveAndSurface::GetShapeResult()`
     pub fn get_shape_result(
         &self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_GetShapeResult(
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetShapeResult(
                     self as *const Self,
                     start,
                 ),
@@ -5005,11 +5742,11 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:177 - `IGESToBRep_CurveAndSurface::SetShapeResult()`
     pub fn set_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -5018,20 +5755,23 @@ impl TopoSurface {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:182 - `IGESToBRep_CurveAndSurface::NbShapeResult()`
-    pub fn nb_shape_result(&self, start: &crate::ffi::HandleIGESDataIGESEntity) -> i32 {
+    pub fn nb_shape_result(&self, start: &crate::ffi_types::HandleIGESDataIGESEntity) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_NbShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_NbShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:191 - `IGESToBRep_CurveAndSurface::AddShapeResult()`
     pub fn add_shape_result(
         &mut self,
-        start: &crate::ffi::HandleIGESDataIGESEntity,
+        start: &crate::ffi_types::HandleIGESDataIGESEntity,
         result: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_AddShapeResult(
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_AddShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -5040,17 +5780,22 @@ impl TopoSurface {
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:194 - `IGESToBRep_CurveAndSurface::SetSurface()`
-    pub fn set_surface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, theSurface: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_SetSurface(self as *mut Self, theSurface)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_SetSurface(
+                self as *mut Self,
+                theSurface,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:196 - `IGESToBRep_CurveAndSurface::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESToBRep_TopoSurface_inherited_Surface(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_Surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5058,7 +5803,9 @@ impl TopoSurface {
     /// Inherited: **Source:** `IGESToBRep_CurveAndSurface.hxx`:198 - `IGESToBRep_CurveAndSurface::GetUVResolution()`
     pub fn get_uv_resolution(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESToBRep_TopoSurface_inherited_GetUVResolution(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESToBRep_TopoSurface_inherited_GetUVResolution(
+                self as *mut Self,
+            )
         })
     }
 }

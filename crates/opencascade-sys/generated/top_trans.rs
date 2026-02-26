@@ -29,11 +29,11 @@
 /// - A curve and an orientation  called a half-curve,
 /// the boundary  of the curve is  before or after the
 /// intersection point depending on the orientation.
-pub use crate::ffi::TopTrans_CurveTransition as CurveTransition;
+pub use crate::ffi_types::TopTrans_CurveTransition as CurveTransition;
 
 unsafe impl crate::CppDeletable for CurveTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTrans_CurveTransition_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_destructor(ptr);
     }
 }
 
@@ -43,7 +43,7 @@ impl CurveTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTrans_CurveTransition_ctor(),
+                crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_ctor(),
             ))
         }
     }
@@ -53,7 +53,12 @@ impl CurveTransition {
     /// of a Curve.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_CurveTransition_reset_dir2_real(self as *mut Self, Tgt, Norm, Curv)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_reset_dir2_real(
+                self as *mut Self,
+                Tgt,
+                Norm,
+                Curv,
+            )
         })
     }
 
@@ -61,7 +66,7 @@ impl CurveTransition {
     /// Initialize a Transition with the local description of a straight line.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_reset_dir(self as *mut Self, Tgt)
         })
     }
 
@@ -81,7 +86,7 @@ impl CurveTransition {
         Or: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_CurveTransition_compare(
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_compare(
                 self as *mut Self,
                 Tole,
                 Tang,
@@ -100,7 +105,7 @@ impl CurveTransition {
     /// on the negative side of the tangent.
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_CurveTransition_state_before(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_state_before(self as *const Self)
         }))
         .unwrap()
     }
@@ -112,7 +117,7 @@ impl CurveTransition {
     /// on the positive side of the tangent.
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_CurveTransition_state_after(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_CurveTransition_state_after(self as *const Self)
         }))
         .unwrap()
     }
@@ -144,11 +149,11 @@ impl CurveTransition {
 /// least  one surface  element has   been given, this
 /// position is "In","Out" or "On" for the part of the
 /// curve "Before" or "After" the intersection.
-pub use crate::ffi::TopTrans_SurfaceTransition as SurfaceTransition;
+pub use crate::ffi_types::TopTrans_SurfaceTransition as SurfaceTransition;
 
 unsafe impl crate::CppDeletable for SurfaceTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTrans_SurfaceTransition_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_destructor(ptr);
     }
 }
 
@@ -158,7 +163,7 @@ impl SurfaceTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTrans_SurfaceTransition_ctor(),
+                crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_ctor(),
             ))
         }
     }
@@ -178,7 +183,7 @@ impl SurfaceTransition {
         MinCurv: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_reset_dir4_real2(
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_reset_dir4_real2(
                 self as *mut Self,
                 Tgt,
                 Norm,
@@ -195,7 +200,11 @@ impl SurfaceTransition {
     /// description of a straight line.
     pub fn reset_dir2(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_reset_dir2(self as *mut Self, Tgt, Norm)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_reset_dir2(
+                self as *mut Self,
+                Tgt,
+                Norm,
+            )
         })
     }
 
@@ -226,17 +235,7 @@ impl SurfaceTransition {
         O: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_compare_real_dir3_real2_orientation2(
-                self as *mut Self,
-                Tole,
-                Norm,
-                MaxD,
-                MinD,
-                MaxCurv,
-                MinCurv,
-                S.into(),
-                O.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_compare_real_dir3_real2_orientation2(self as *mut Self, Tole, Norm, MaxD, MinD, MaxCurv, MinCurv, S.into(), O.into())
         })
     }
 
@@ -250,7 +249,7 @@ impl SurfaceTransition {
         O: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_compare_real_dir_orientation2(
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_compare_real_dir_orientation2(
                 self as *mut Self,
                 Tole,
                 Norm,
@@ -267,7 +266,9 @@ impl SurfaceTransition {
     /// on the negative side of the tangent.
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_state_before(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_state_before(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -279,7 +280,9 @@ impl SurfaceTransition {
     /// on the positive side of the tangent.
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_state_after(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_state_after(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -287,7 +290,7 @@ impl SurfaceTransition {
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:114 - `TopTrans_SurfaceTransition::GetBefore()`
     pub fn get_before(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_get_before(Tran.into())
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_get_before(Tran.into())
         }))
         .unwrap()
     }
@@ -295,7 +298,7 @@ impl SurfaceTransition {
     /// **Source:** `TopTrans_SurfaceTransition.hxx`:116 - `TopTrans_SurfaceTransition::GetAfter()`
     pub fn get_after(Tran: crate::top_abs::Orientation) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopTrans_SurfaceTransition_get_after(Tran.into())
+            crate::ffi_extern_TKGeomAlgo::TopTrans_SurfaceTransition_get_after(Tran.into())
         }))
         .unwrap()
     }

@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
 #include <Graphic3d_Vec3.hxx>

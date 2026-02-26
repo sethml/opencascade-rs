@@ -53,7 +53,12 @@ pub fn linear_properties(
     UseTriangulation: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepGProp_linear_properties(S, LProps, SkipShared, UseTriangulation)
+        crate::ffi_extern_TKTopAlgo::BRepGProp_linear_properties(
+            S,
+            LProps,
+            SkipShared,
+            UseTriangulation,
+        )
     })
 }
 /// **Source:** `BRepGProp.hxx`:133 - `BRepGProp::SurfaceProperties`
@@ -104,7 +109,7 @@ pub fn surface_properties_shape_gprops_bool2(
     UseTriangulation: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepGProp_surface_properties_shape_gprops_bool2(
+        crate::ffi_extern_TKTopAlgo::BRepGProp_surface_properties_shape_gprops_bool2(
             S,
             SProps,
             SkipShared,
@@ -132,7 +137,9 @@ pub fn surface_properties_shape_gprops_real_bool(
     SkipShared: bool,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::BRepGProp_surface_properties_shape_gprops_real_bool(S, SProps, Eps, SkipShared)
+        crate::ffi_extern_TKTopAlgo::BRepGProp_surface_properties_shape_gprops_real_bool(
+            S, SProps, Eps, SkipShared,
+        )
     })
 }
 /// **Source:** `BRepGProp.hxx`:198 - `BRepGProp::VolumeProperties`
@@ -186,7 +193,7 @@ pub fn volume_properties_shape_gprops_bool3(
     UseTriangulation: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepGProp_volume_properties_shape_gprops_bool3(
+        crate::ffi_extern_TKTopAlgo::BRepGProp_volume_properties_shape_gprops_bool3(
             S,
             VProps,
             OnlyClosed,
@@ -218,7 +225,7 @@ pub fn volume_properties_shape_gprops_real_bool2(
     SkipShared: bool,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::BRepGProp_volume_properties_shape_gprops_real_bool2(
+        crate::ffi_extern_TKTopAlgo::BRepGProp_volume_properties_shape_gprops_real_bool2(
             S, VProps, Eps, OnlyClosed, SkipShared,
         )
     })
@@ -250,7 +257,7 @@ pub fn volume_properties_gk_shape_gprops_real_bool5(
     SkipShared: bool,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
+        crate::ffi_extern_TKTopAlgo::BRepGProp_volume_properties_gk_shape_gprops_real_bool5(
             S, VProps, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
         )
     })
@@ -268,7 +275,7 @@ pub fn volume_properties_gk_shape_gprops_pln_real_bool5(
     SkipShared: bool,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
+        crate::ffi_extern_TKTopAlgo::BRepGProp_volume_properties_gk_shape_gprops_pln_real_bool5(
             S, VProps, thePln, Eps, OnlyClosed, IsUseSpan, CGFlag, IFlag, SkipShared,
         )
     })
@@ -285,11 +292,11 @@ pub fn volume_properties_gk_shape_gprops_pln_real_bool5(
 /// package GProp. This template gives the minimum of methods
 /// required to evaluate the global properties of a curve 3D with
 /// the algorithms of GProp.
-pub use crate::ffi::BRepGProp_Cinert as Cinert;
+pub use crate::ffi_types::BRepGProp_Cinert as Cinert;
 
 unsafe impl crate::CppDeletable for Cinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Cinert_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_destructor(ptr);
     }
 }
 
@@ -297,7 +304,9 @@ impl Cinert {
     /// **Source:** `BRepGProp_Cinert.hxx`:38 - `BRepGProp_Cinert::BRepGProp_Cinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Cinert_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_ctor(),
+            ))
         }
     }
 
@@ -308,7 +317,7 @@ impl Cinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Cinert_ctor_curve_pnt(C, CLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_ctor_curve_pnt(C, CLocation),
             ))
         }
     }
@@ -316,44 +325,52 @@ impl Cinert {
     /// **Source:** `BRepGProp_Cinert.hxx`:42 - `BRepGProp_Cinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_set_location(self as *mut Self, CLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_set_location(self as *mut Self, CLocation)
         })
     }
 
     /// **Source:** `BRepGProp_Cinert.hxx`:44 - `BRepGProp_Cinert::Perform()`
     pub fn perform(&mut self, C: &crate::b_rep_adaptor::Curve) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_perform(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_perform(self as *mut Self, C)
         })
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_Cinert_as_GProp_GProps(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_as_GProp_GProps(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_Cinert_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_Mass(self as *const Self)
         })
     }
 
@@ -361,7 +378,9 @@ impl Cinert {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Cinert_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -370,7 +389,9 @@ impl Cinert {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Cinert_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -378,14 +399,22 @@ impl Cinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_StaticMoments(
+                self as *const Self,
+                Ix,
+                Iy,
+                Iz,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -393,7 +422,9 @@ impl Cinert {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Cinert_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -401,7 +432,10 @@ impl Cinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Cinert_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Cinert_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }
@@ -413,11 +447,11 @@ impl Cinert {
 /// **Source:** `BRepGProp_Domain.hxx`:31 - `BRepGProp_Domain`
 /// Arc iterator. Returns only Forward and Reversed edges from
 /// the face in an undigested order.
-pub use crate::ffi::BRepGProp_Domain as Domain;
+pub use crate::ffi_types::BRepGProp_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Domain_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_destructor(ptr);
     }
 }
 
@@ -426,7 +460,9 @@ impl Domain {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Domain_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_ctor(),
+            ))
         }
     }
 
@@ -434,9 +470,9 @@ impl Domain {
     /// Constructor. Initializes the domain with the face.
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Domain_ctor_face(
-                F,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_ctor_face(F),
+            ))
         }
     }
 
@@ -444,33 +480,43 @@ impl Domain {
     /// Initializes the domain with the face.
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Domain_init_face(self as *mut Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_init_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `BRepGProp_Domain.hxx`:46 - `BRepGProp_Domain::More()`
     /// Returns True if there is another arc of curve in the list.
     pub fn more(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Domain_more(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_more(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepGProp_Domain.hxx`:49 - `BRepGProp_Domain::Init()`
     /// Initializes the exploration with the face already set.
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepGProp_Domain_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepGProp_Domain.hxx`:52 - `BRepGProp_Domain::Value()`
     /// Returns the current edge.
     pub fn value(&mut self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::check_result(crate::ffi::BRepGProp_Domain_value(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_value(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepGProp_Domain.hxx`:56 - `BRepGProp_Domain::Next()`
     /// Sets the index of the arc iterator to the next arc of
     /// curve.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepGProp_Domain_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Domain_next(self as *mut Self)
+        })
     }
 }
 
@@ -481,11 +527,11 @@ impl Domain {
 /// **Source:** `BRepGProp_EdgeTool.hxx`:32 - `BRepGProp_EdgeTool`
 /// Provides  the required  methods    to instantiate
 /// CGProps from GProp with a Curve from BRepAdaptor.
-pub use crate::ffi::BRepGProp_EdgeTool as EdgeTool;
+pub use crate::ffi_types::BRepGProp_EdgeTool as EdgeTool;
 
 unsafe impl crate::CppDeletable for EdgeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_EdgeTool_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_destructor(ptr);
     }
 }
 
@@ -494,7 +540,9 @@ impl EdgeTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_EdgeTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_ctor(),
+            ))
         }
     }
 
@@ -503,7 +551,9 @@ impl EdgeTool {
     /// the curve.  The curve is oriented from the start point
     /// to the end point.
     pub fn first_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_EdgeTool_first_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `BRepGProp_EdgeTool.hxx`:45 - `BRepGProp_EdgeTool::LastParameter()`
@@ -511,7 +561,9 @@ impl EdgeTool {
     /// the curve.  The curve is oriented from the start point
     /// to the end point.
     pub fn last_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_EdgeTool_last_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_last_parameter(C)
+        })
     }
 
     /// **Source:** `BRepGProp_EdgeTool.hxx`:52 - `BRepGProp_EdgeTool::IntegrationOrder()`
@@ -521,16 +573,18 @@ impl EdgeTool {
     /// the maxima of accuracy is obtained with an order
     /// of integration equal to 2*n-1.
     pub fn integration_order(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_EdgeTool_integration_order(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_integration_order(C)
+        })
     }
 
     /// **Source:** `BRepGProp_EdgeTool.hxx`:55 - `BRepGProp_EdgeTool::Value()`
     /// Returns the point of parameter U on the loaded curve.
     pub fn value(C: &crate::b_rep_adaptor::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_EdgeTool_value(
-                C, U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_value(C, U),
+            ))
         }
     }
 
@@ -543,14 +597,18 @@ impl EdgeTool {
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepGProp_EdgeTool_d1(C, U, P, V1) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_d1(C, U, P, V1)
+        })
     }
 
     /// **Source:** `BRepGProp_EdgeTool.hxx`:66 - `BRepGProp_EdgeTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(C: &crate::b_rep_adaptor::Curve, S: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_EdgeTool_nb_intervals(C, S.into()) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `BRepGProp_EdgeTool.hxx`:74 - `BRepGProp_EdgeTool::Intervals()`
@@ -561,11 +619,11 @@ impl EdgeTool {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         C: &crate::b_rep_adaptor::Curve,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_EdgeTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKTopAlgo::BRepGProp_EdgeTool_intervals(C, T, S.into())
         })
     }
 }
@@ -575,11 +633,11 @@ impl EdgeTool {
 // ========================
 
 /// **Source:** `BRepGProp_Face.hxx`:38 - `BRepGProp_Face`
-pub use crate::ffi::BRepGProp_Face as Face;
+pub use crate::ffi_types::BRepGProp_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Face_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Face_destructor(ptr);
     }
 }
 
@@ -591,9 +649,9 @@ impl Face {
     /// are returned by the methods GetUKnots and GetTKnots.
     pub fn new_bool(IsUseSpan: bool) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Face_ctor_bool(
-                IsUseSpan,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Face_ctor_bool(IsUseSpan),
+            ))
         }
     }
 
@@ -606,7 +664,7 @@ impl Face {
     pub fn new_face_bool(F: &crate::topo_ds::Face, IsUseSpan: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Face_ctor_face_bool(F, IsUseSpan),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Face_ctor_face_bool(F, IsUseSpan),
             ))
         }
     }
@@ -633,14 +691,14 @@ impl Face {
     /// **Source:** `BRepGProp_Face.hxx`:56 - `BRepGProp_Face::Load()`
     pub fn load_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_load_face(self as *mut Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_load_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:58 - `BRepGProp_Face::VIntegrationOrder()`
     pub fn v_integration_order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_v_integration_order(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_v_integration_order(self as *const Self)
         })
     }
 
@@ -648,74 +706,83 @@ impl Face {
     /// Returns Standard_True if the face is not trimmed.
     pub fn natural_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_natural_restriction(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_natural_restriction(self as *const Self)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:64 - `BRepGProp_Face::GetFace()`
     /// Returns the TopoDS face.
     pub fn get_face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::check_result(crate::ffi::BRepGProp_Face_get_face(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_Face_get_face(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:67 - `BRepGProp_Face::Value2d()`
     /// Returns the value of the boundary curve of the face.
     pub fn value2d(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Face_value2d(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Face_value2d(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:69 - `BRepGProp_Face::SIntOrder()`
     pub fn s_int_order(&self, Eps: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_s_int_order(self as *const Self, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_s_int_order(self as *const Self, Eps)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:71 - `BRepGProp_Face::SVIntSubs()`
     pub fn sv_int_subs(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Face_sv_int_subs(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_sv_int_subs(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:73 - `BRepGProp_Face::SUIntSubs()`
     pub fn su_int_subs(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Face_su_int_subs(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_su_int_subs(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:75 - `BRepGProp_Face::UKnots()`
-    pub fn u_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn u_knots(&self, Knots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_u_knots(self as *const Self, Knots)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_u_knots(self as *const Self, Knots)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:77 - `BRepGProp_Face::VKnots()`
-    pub fn v_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn v_knots(&self, Knots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_v_knots(self as *const Self, Knots)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_v_knots(self as *const Self, Knots)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:79 - `BRepGProp_Face::LIntOrder()`
     pub fn l_int_order(&self, Eps: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_l_int_order(self as *const Self, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_l_int_order(self as *const Self, Eps)
         })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:81 - `BRepGProp_Face::LIntSubs()`
     pub fn l_int_subs(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Face_l_int_subs(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_l_int_subs(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:83 - `BRepGProp_Face::LKnots()`
-    pub fn l_knots(&self, Knots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn l_knots(&self, Knots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_l_knots(self as *const Self, Knots)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_l_knots(self as *const Self, Knots)
         })
     }
 
@@ -725,7 +792,7 @@ impl Face {
     /// a good accuracy.
     pub fn u_integration_order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_u_integration_order(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_u_integration_order(self as *const Self)
         })
     }
 
@@ -733,7 +800,7 @@ impl Face {
     /// Returns the parametric bounds of the Face.
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_bounds(self as *const Self, U1, U2, V1, V2)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_bounds(self as *const Self, U1, U2, V1, V2)
         })
     }
 
@@ -742,7 +809,7 @@ impl Face {
     /// the normal to the face at this point.
     pub fn normal(&self, U: f64, V: f64, P: &mut crate::gp::Pnt, VNor: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_normal(self as *const Self, U, V, P, VNor)
         })
     }
 
@@ -750,7 +817,9 @@ impl Face {
     /// Loading the boundary arc.
     /// Returns FALSE if edge has no P-Curve.
     pub fn load_edge(&mut self, E: &crate::topo_ds::Edge) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Face_load_edge(self as *mut Self, E) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_load_edge(self as *mut Self, E)
+        })
     }
 
     /// **Source:** `BRepGProp_Face.hxx`:109 - `BRepGProp_Face::FirstParameter()`
@@ -758,7 +827,7 @@ impl Face {
     /// the current arc of curve.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_first_parameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_first_parameter(self as *const Self)
         })
     }
 
@@ -767,7 +836,7 @@ impl Face {
     /// the current arc of curve.
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_last_parameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_last_parameter(self as *const Self)
         })
     }
 
@@ -776,7 +845,7 @@ impl Face {
     /// integration along the parameter of curve.
     pub fn integration_order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Face_integration_order(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_integration_order(self as *const Self)
         })
     }
 
@@ -785,7 +854,7 @@ impl Face {
     /// at this point of a boundary curve.
     pub fn d12d(&self, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_d12d(self as *const Self, U, P, V1)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_d12d(self as *const Self, U, P, V1)
         })
     }
 
@@ -801,7 +870,7 @@ impl Face {
     /// with either top or bottom one.
     pub fn load_bool_isotype(&mut self, IsFirstParam: bool, theIsoType: crate::geom_abs::IsoType) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_load_bool_isotype(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_load_bool_isotype(
                 self as *mut Self,
                 IsFirstParam,
                 theIsoType.into(),
@@ -820,10 +889,15 @@ impl Face {
         &self,
         theUMin: f64,
         theUMax: f64,
-        theUKnots: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        theUKnots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_get_u_knots(self as *const Self, theUMin, theUMax, theUKnots)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_get_u_knots(
+                self as *const Self,
+                theUMin,
+                theUMax,
+                theUKnots,
+            )
         })
     }
 
@@ -841,10 +915,15 @@ impl Face {
         &self,
         theTMin: f64,
         theTMax: f64,
-        theTKnots: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        theTKnots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Face_get_t_knots(self as *const Self, theTMin, theTMax, theTKnots)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Face_get_t_knots(
+                self as *const Self,
+                theTMin,
+                theTMax,
+                theTKnots,
+            )
         })
     }
 }
@@ -857,11 +936,11 @@ impl Face {
 /// Class performs computing of the global inertia properties
 /// of geometric object in 3D space by adaptive and non-adaptive
 /// 2D Gauss integration algorithms.
-pub use crate::ffi::BRepGProp_Gauss as Gauss;
+pub use crate::ffi_types::BRepGProp_Gauss as Gauss;
 
 unsafe impl crate::CppDeletable for Gauss {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Gauss_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_destructor(ptr);
     }
 }
 
@@ -869,11 +948,11 @@ impl Gauss {
     /// **Source:** `BRepGProp_Gauss.hxx`:73 - `BRepGProp_Gauss::BRepGProp_Gauss()`
     /// Constructor
     pub fn new_gausstype(
-        theType: &crate::ffi::BRepGProp_Gauss_BRepGProp_GaussType,
+        theType: &crate::ffi_types::BRepGProp_Gauss_BRepGProp_GaussType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Gauss_ctor_gausstype(theType),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_ctor_gausstype(theType),
             ))
         }
     }
@@ -903,7 +982,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_pnt_realptr_bool_real_pnt_mat(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_pnt_realptr_bool_real_pnt_mat(
                 self as *mut Self,
                 theSurface,
                 theLocation,
@@ -936,7 +1015,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_pnt_real_pnt_mat(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_pnt_real_pnt_mat(
                 self as *mut Self,
                 theSurface,
                 theLocation,
@@ -974,17 +1053,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_realptr_bool_real_pnt_mat(
-                self as *mut Self,
-                theSurface,
-                theDomain,
-                theLocation,
-                theCoeff,
-                theIsByPoint,
-                theOutMass,
-                theOutGravityCenter,
-                theOutInertia,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_domain_pnt_realptr_bool_real_pnt_mat(self as *mut Self, theSurface, theDomain, theLocation, theCoeff, theIsByPoint, theOutMass, theOutGravityCenter, theOutInertia)
         })
     }
 
@@ -1010,7 +1079,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_real_pnt_mat(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_domain_pnt_real_pnt_mat(
                 self as *mut Self,
                 theSurface,
                 theDomain,
@@ -1052,18 +1121,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_real_realptr_bool_real_pnt_mat(
-                self as *mut Self,
-                theSurface,
-                theDomain,
-                theLocation,
-                theEps,
-                theCoeff,
-                theByPoint,
-                theOutMass,
-                theOutGravityCenter,
-                theOutInertia,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_domain_pnt_real_realptr_bool_real_pnt_mat(self as *mut Self, theSurface, theDomain, theLocation, theEps, theCoeff, theByPoint, theOutMass, theOutGravityCenter, theOutInertia)
         })
     }
 
@@ -1091,7 +1149,7 @@ impl Gauss {
         theOutInertia: &mut crate::gp::Mat,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Gauss_compute_face_domain_pnt_real2_pnt_mat(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Gauss_compute_face_domain_pnt_real2_pnt_mat(
                 self as *mut Self,
                 theSurface,
                 theDomain,
@@ -1116,11 +1174,11 @@ impl Gauss {
 /// properties of edge, which has no exact geometry
 /// (3d or 2d curve), but has any of allowed
 /// polygons.
-pub use crate::ffi::BRepGProp_MeshCinert as MeshCinert;
+pub use crate::ffi_types::BRepGProp_MeshCinert as MeshCinert;
 
 unsafe impl crate::CppDeletable for MeshCinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_MeshCinert_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_destructor(ptr);
     }
 }
 
@@ -1128,23 +1186,28 @@ impl MeshCinert {
     /// **Source:** `BRepGProp_MeshCinert.hxx`:37 - `BRepGProp_MeshCinert::BRepGProp_MeshCinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_MeshCinert_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepGProp_MeshCinert.hxx`:39 - `BRepGProp_MeshCinert::SetLocation()`
     pub fn set_location(&mut self, CLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_set_location(self as *mut Self, CLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_set_location(
+                self as *mut Self,
+                CLocation,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_MeshCinert.hxx`:43 - `BRepGProp_MeshCinert::Perform()`
     /// Computes the  global properties of
     /// of polylines  represented by set of points.
-    pub fn perform(&mut self, theNodes: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn perform(&mut self, theNodes: &crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_perform(self as *mut Self, theNodes)
         })
     }
 
@@ -1154,42 +1217,50 @@ impl MeshCinert {
     /// If edge has no polygons, array thePolyg is left unchanged
     pub fn prepare_polygon(
         theE: &crate::topo_ds::Edge,
-        thePolyg: &mut crate::ffi::HandleTColgpHArray1OfPnt,
+        thePolyg: &mut crate::ffi_types::HandleTColgpHArray1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_prepare_polygon(theE, thePolyg)
         })
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_as_GProp_GProps(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_MeshCinert_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_Mass(self as *const Self)
         })
     }
 
@@ -1197,7 +1268,9 @@ impl MeshCinert {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshCinert_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1206,7 +1279,9 @@ impl MeshCinert {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshCinert_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1214,7 +1289,7 @@ impl MeshCinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_inherited_StaticMoments(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_StaticMoments(
                 self as *const Self,
                 Ix,
                 Iy,
@@ -1226,7 +1301,10 @@ impl MeshCinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -1234,7 +1312,9 @@ impl MeshCinert {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshCinert_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1242,7 +1322,10 @@ impl MeshCinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshCinert_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshCinert_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }
@@ -1254,11 +1337,11 @@ impl MeshCinert {
 /// **Source:** `BRepGProp_MeshProps.hxx`:26 - `BRepGProp_MeshProps`
 /// Computes the global properties of a surface mesh. The mesh can be
 /// interpreted as just a surface or as a piece of volume limited by this surface.
-pub use crate::ffi::BRepGProp_MeshProps as MeshProps;
+pub use crate::ffi_types::BRepGProp_MeshProps as MeshProps;
 
 unsafe impl crate::CppDeletable for MeshProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_MeshProps_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_destructor(ptr);
     }
 }
 
@@ -1266,11 +1349,11 @@ impl MeshProps {
     /// **Source:** `BRepGProp_MeshProps.hxx`:42 - `BRepGProp_MeshProps::BRepGProp_MeshProps()`
     /// Constructor takes the type of object.
     pub fn new_meshobjtype(
-        theType: &crate::ffi::BRepGProp_MeshProps_BRepGProp_MeshObjType,
+        theType: &crate::ffi_types::BRepGProp_MeshProps_BRepGProp_MeshObjType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshProps_ctor_meshobjtype(theType),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_ctor_meshobjtype(theType),
             ))
         }
     }
@@ -1279,7 +1362,10 @@ impl MeshProps {
     /// Sets the point relative which the calculation is to be done
     pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_set_location(self as *mut Self, theLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_set_location(
+                self as *mut Self,
+                theLocation,
+            )
         })
     }
 
@@ -1291,32 +1377,23 @@ impl MeshProps {
     /// calculate the surface or volume properties of the mesh.
     pub fn perform_handlepolytriangulation_location_orientation(
         &mut self,
-        theMesh: &crate::ffi::HandlePolyTriangulation,
+        theMesh: &crate::ffi_types::HandlePolyTriangulation,
         theLoc: &crate::top_loc::Location,
         theOri: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(
-                self as *mut Self,
-                theMesh,
-                theLoc,
-                theOri.into(),
-            )
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_perform_handlepolytriangulation_location_orientation(self as *mut Self, theMesh, theLoc, theOri.into())
         })
     }
 
     /// **Source:** `BRepGProp_MeshProps.hxx`:59 - `BRepGProp_MeshProps::Perform()`
     pub fn perform_handlepolytriangulation_orientation(
         &mut self,
-        theMesh: &crate::ffi::HandlePolyTriangulation,
+        theMesh: &crate::ffi_types::HandlePolyTriangulation,
         theOri: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(
-                self as *mut Self,
-                theMesh,
-                theOri.into(),
-            )
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_perform_handlepolytriangulation_orientation(self as *mut Self, theMesh, theOri.into())
         })
     }
 
@@ -1324,10 +1401,12 @@ impl MeshProps {
     /// Get type of mesh object
     pub fn get_mesh_obj_type(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::BRepGProp_MeshProps_BRepGProp_MeshObjType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::BRepGProp_MeshProps_BRepGProp_MeshObjType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshProps_get_mesh_obj_type(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_get_mesh_obj_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1348,7 +1427,7 @@ impl MeshProps {
         GaussPnts: *const f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_calculate_props(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_calculate_props(
                 p1,
                 p2,
                 p3,
@@ -1364,7 +1443,7 @@ impl MeshProps {
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_MeshProps_as_GProp_GProps(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_as_GProp_GProps(
                 self as *const Self,
             ))
         }
@@ -1373,23 +1452,29 @@ impl MeshProps {
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_MeshProps_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_Mass(self as *const Self)
         })
     }
 
@@ -1397,7 +1482,9 @@ impl MeshProps {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshProps_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1406,7 +1493,9 @@ impl MeshProps {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshProps_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1414,14 +1503,22 @@ impl MeshProps {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_StaticMoments(
+                self as *const Self,
+                Ix,
+                Iy,
+                Iz,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -1429,7 +1526,9 @@ impl MeshProps {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_MeshProps_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1437,7 +1536,10 @@ impl MeshProps {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_MeshProps_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_MeshProps_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }
@@ -1450,11 +1552,11 @@ impl MeshProps {
 /// Computes the global properties of a face in 3D space.
 /// The face 's requirements to evaluate the global properties
 /// are defined in the template FaceTool from package GProp.
-pub use crate::ffi::BRepGProp_Sinert as Sinert;
+pub use crate::ffi_types::BRepGProp_Sinert as Sinert;
 
 unsafe impl crate::CppDeletable for Sinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Sinert_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_destructor(ptr);
     }
 }
 
@@ -1462,7 +1564,9 @@ impl Sinert {
     /// **Source:** `BRepGProp_Sinert.hxx`:36 - `BRepGProp_Sinert::BRepGProp_Sinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Sinert_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_ctor(),
+            ))
         }
     }
 
@@ -1470,7 +1574,7 @@ impl Sinert {
     pub fn new_face_pnt(S: &Face, SLocation: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_ctor_face_pnt(S, SLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_ctor_face_pnt(S, SLocation),
             ))
         }
     }
@@ -1487,7 +1591,7 @@ impl Sinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt(S, D, SLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_ctor_face_domain_pnt(S, D, SLocation),
             ))
         }
     }
@@ -1500,7 +1604,7 @@ impl Sinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_ctor_face_pnt_real(S, SLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_ctor_face_pnt_real(S, SLocation, Eps),
             ))
         }
     }
@@ -1514,7 +1618,9 @@ impl Sinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_ctor_face_domain_pnt_real(S, D, SLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_ctor_face_domain_pnt_real(
+                    S, D, SLocation, Eps,
+                ),
             ))
         }
     }
@@ -1522,35 +1628,48 @@ impl Sinert {
     /// **Source:** `BRepGProp_Sinert.hxx`:55 - `BRepGProp_Sinert::SetLocation()`
     pub fn set_location(&mut self, SLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_set_location(self as *mut Self, SLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_set_location(self as *mut Self, SLocation)
         })
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:57 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face(&mut self, S: &Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_perform_face(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_perform_face(self as *mut Self, S)
         })
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:59 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_domain(&mut self, S: &mut Face, D: &mut Domain) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_perform_face_domain(self as *mut Self, S, D)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_perform_face_domain(
+                self as *mut Self,
+                S,
+                D,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:61 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_real(&mut self, S: &mut Face, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_perform_face_real(self as *mut Self, S, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_perform_face_real(
+                self as *mut Self,
+                S,
+                Eps,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Sinert.hxx`:63 - `BRepGProp_Sinert::Perform()`
     pub fn perform_face_domain_real(&mut self, S: &mut Face, D: &mut Domain, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_perform_face_domain_real(self as *mut Self, S, D, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_perform_face_domain_real(
+                self as *mut Self,
+                S,
+                D,
+                Eps,
+            )
         })
     }
 
@@ -1558,36 +1677,46 @@ impl Sinert {
     /// If previously used method contained Eps parameter
     /// get actual relative error of the computation, else return  1.0.
     pub fn get_epsilon(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Sinert_get_epsilon(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_get_epsilon(self as *mut Self)
+        })
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_Sinert_as_GProp_GProps(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_as_GProp_GProps(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_Sinert_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_Mass(self as *const Self)
         })
     }
 
@@ -1595,7 +1724,9 @@ impl Sinert {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1604,7 +1735,9 @@ impl Sinert {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1612,14 +1745,22 @@ impl Sinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_StaticMoments(
+                self as *const Self,
+                Ix,
+                Iy,
+                Iz,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -1627,7 +1768,9 @@ impl Sinert {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Sinert_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1635,7 +1778,10 @@ impl Sinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Sinert_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Sinert_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }
@@ -1649,11 +1795,11 @@ impl Sinert {
 /// integral computation. The returned value represents the
 /// integral of UFunction. It depends on the value type and the
 /// flag IsByPoint.
-pub use crate::ffi::BRepGProp_TFunction as TFunction;
+pub use crate::ffi_types::BRepGProp_TFunction as TFunction;
 
 unsafe impl crate::CppDeletable for TFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_TFunction_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_destructor(ptr);
     }
 }
 
@@ -1684,7 +1830,7 @@ impl TFunction {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_TFunction_ctor_face_pnt_bool_realptr_real2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_ctor_face_pnt_bool_realptr_real2(
                     theSurface,
                     theVertex,
                     IsByPoint,
@@ -1698,7 +1844,9 @@ impl TFunction {
 
     /// **Source:** `BRepGProp_TFunction.hxx`:61 - `BRepGProp_TFunction::Init()`
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepGProp_TFunction_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepGProp_TFunction.hxx`:73 - `BRepGProp_TFunction::SetNbKronrodPoints()`
@@ -1714,7 +1862,10 @@ impl TFunction {
     /// accordingly.
     pub fn set_nb_kronrod_points(&mut self, theNbPoints: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_set_nb_kronrod_points(self as *mut Self, theNbPoints)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_set_nb_kronrod_points(
+                self as *mut Self,
+                theNbPoints,
+            )
         })
     }
 
@@ -1723,7 +1874,10 @@ impl TFunction {
     /// parameter is directly passed to the UFunction.
     pub fn set_value_type(&mut self, aType: crate::g_prop::ValueType) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_set_value_type(self as *mut Self, aType.into())
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_set_value_type(
+                self as *mut Self,
+                aType.into(),
+            )
         })
     }
 
@@ -1731,7 +1885,7 @@ impl TFunction {
     /// Setting the tolerance  for  inner integration
     pub fn set_tolerance(&mut self, aTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_set_tolerance(self as *mut Self, aTol)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_set_tolerance(self as *mut Self, aTol)
         })
     }
 
@@ -1740,7 +1894,7 @@ impl TFunction {
     /// the last call of GetStateNumber method.
     pub fn error_reached(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_error_reached(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_error_reached(self as *const Self)
         })
     }
 
@@ -1749,7 +1903,7 @@ impl TFunction {
     /// the last call of GetStateNumber method.
     pub fn absolut_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_absolut_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_absolut_error(self as *const Self)
         })
     }
 
@@ -1759,7 +1913,7 @@ impl TFunction {
     /// tolerance using the adaptive Gauss-Kronrod method.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -1772,25 +1926,29 @@ impl TFunction {
     /// compute the integral of TFunction.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_TFunction_get_state_number(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_get_state_number(self as *mut Self)
         })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_TFunction_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_TFunction_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_TFunction_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -1819,11 +1977,11 @@ impl TFunction {
 /// surface and a point. Otherwise all computations are
 /// performed for the region of space delimited by a surface
 /// and a plane.
-pub use crate::ffi::BRepGProp_UFunction as UFunction;
+pub use crate::ffi_types::BRepGProp_UFunction as UFunction;
 
 unsafe impl crate::CppDeletable for UFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_UFunction_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_destructor(ptr);
     }
 }
 
@@ -1849,7 +2007,7 @@ impl UFunction {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_UFunction_ctor_face_pnt_bool_realptr(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_ctor_face_pnt_bool_realptr(
                     theSurface, theVertex, IsByPoint, theCoeffs,
                 ),
             ))
@@ -1860,7 +2018,10 @@ impl UFunction {
     /// Setting the type of the value to be returned.
     pub fn set_value_type(&mut self, theType: crate::g_prop::ValueType) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_UFunction_set_value_type(self as *mut Self, theType.into())
+            crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_set_value_type(
+                self as *mut Self,
+                theType.into(),
+            )
         })
     }
 
@@ -1869,7 +2030,10 @@ impl UFunction {
     /// integral computation.
     pub fn set_v_param(&mut self, theVParam: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_UFunction_set_v_param(self as *mut Self, theVParam)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_set_v_param(
+                self as *mut Self,
+                theVParam,
+            )
         })
     }
 
@@ -1877,32 +2041,38 @@ impl UFunction {
     /// Returns a value of the function.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_UFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_value(self as *mut Self, X, F)
         })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_UFunction_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_UFunction_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_UFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_UFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1924,11 +2094,11 @@ impl UFunction {
 ///
 /// The surface 's requirements to evaluate the global properties
 /// are defined in the template SurfaceTool from package GProp.
-pub use crate::ffi::BRepGProp_Vinert as Vinert;
+pub use crate::ffi_types::BRepGProp_Vinert as Vinert;
 
 unsafe impl crate::CppDeletable for Vinert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_Vinert_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_destructor(ptr);
     }
 }
 
@@ -1936,7 +2106,9 @@ impl Vinert {
     /// **Source:** `BRepGProp_Vinert.hxx`:46 - `BRepGProp_Vinert::BRepGProp_Vinert()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_Vinert_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor(),
+            ))
         }
     }
 
@@ -1951,7 +2123,7 @@ impl Vinert {
     pub fn new_face_pnt(S: &Face, VLocation: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pnt(S, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pnt(S, VLocation),
             ))
         }
     }
@@ -1970,7 +2142,7 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pnt_real(S, VLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pnt_real(S, VLocation, Eps),
             ))
         }
     }
@@ -1990,7 +2162,7 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pnt2(S, O, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pnt2(S, O, VLocation),
             ))
         }
     }
@@ -2011,7 +2183,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pnt2_real(S, O, VLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pnt2_real(
+                    S, O, VLocation, Eps,
+                ),
             ))
         }
     }
@@ -2031,7 +2205,7 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt(S, Pl, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pln_pnt(S, Pl, VLocation),
             ))
         }
     }
@@ -2052,7 +2226,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_pln_pnt_real(S, Pl, VLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_pln_pnt_real(
+                    S, Pl, VLocation, Eps,
+                ),
             ))
         }
     }
@@ -2072,7 +2248,7 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt(S, D, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pnt(S, D, VLocation),
             ))
         }
     }
@@ -2092,7 +2268,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt_real(S, D, VLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pnt_real(
+                    S, D, VLocation, Eps,
+                ),
             ))
         }
     }
@@ -2113,7 +2291,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2(S, D, O, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pnt2(
+                    S, D, O, VLocation,
+                ),
             ))
         }
     }
@@ -2135,7 +2315,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pnt2_real(S, D, O, VLocation, Eps),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pnt2_real(
+                    S, D, O, VLocation, Eps,
+                ),
             ))
         }
     }
@@ -2156,7 +2338,9 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt(S, D, Pl, VLocation),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pln_pnt(
+                    S, D, Pl, VLocation,
+                ),
             ))
         }
     }
@@ -2178,7 +2362,7 @@ impl Vinert {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_ctor_face_domain_pln_pnt_real(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_ctor_face_domain_pln_pnt_real(
                     S, D, Pl, VLocation, Eps,
                 ),
             ))
@@ -2188,70 +2372,98 @@ impl Vinert {
     /// **Source:** `BRepGProp_Vinert.hxx`:183 - `BRepGProp_Vinert::SetLocation()`
     pub fn set_location(&mut self, VLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_set_location(self as *mut Self, VLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_set_location(self as *mut Self, VLocation)
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:185 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face(&mut self, S: &Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face(self as *mut Self, S)
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:187 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_real(&mut self, S: &mut Face, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_real(self as *mut Self, S, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_real(
+                self as *mut Self,
+                S,
+                Eps,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:189 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pnt(&mut self, S: &Face, O: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_pnt(self as *mut Self, S, O)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_pnt(self as *mut Self, S, O)
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:191 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pnt_real(&mut self, S: &mut Face, O: &crate::gp::Pnt, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_pnt_real(self as *mut Self, S, O, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_pnt_real(
+                self as *mut Self,
+                S,
+                O,
+                Eps,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:195 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pln(&mut self, S: &Face, Pl: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_pln(self as *mut Self, S, Pl)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_pln(self as *mut Self, S, Pl)
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:197 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_pln_real(&mut self, S: &mut Face, Pl: &crate::gp::Pln, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_pln_real(self as *mut Self, S, Pl, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_pln_real(
+                self as *mut Self,
+                S,
+                Pl,
+                Eps,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:201 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain(&mut self, S: &mut Face, D: &mut Domain) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain(self as *mut Self, S, D)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain(
+                self as *mut Self,
+                S,
+                D,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:203 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_real(&mut self, S: &mut Face, D: &mut Domain, Eps: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain_real(self as *mut Self, S, D, Eps)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain_real(
+                self as *mut Self,
+                S,
+                D,
+                Eps,
+            )
         })
     }
 
     /// **Source:** `BRepGProp_Vinert.hxx`:207 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pnt(&mut self, S: &mut Face, D: &mut Domain, O: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain_pnt(self as *mut Self, S, D, O)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain_pnt(
+                self as *mut Self,
+                S,
+                D,
+                O,
+            )
         })
     }
 
@@ -2264,7 +2476,7 @@ impl Vinert {
         Eps: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain_pnt_real(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain_pnt_real(
                 self as *mut Self,
                 S,
                 D,
@@ -2277,7 +2489,12 @@ impl Vinert {
     /// **Source:** `BRepGProp_Vinert.hxx`:214 - `BRepGProp_Vinert::Perform()`
     pub fn perform_face_domain_pln(&mut self, S: &mut Face, D: &mut Domain, Pl: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain_pln(self as *mut Self, S, D, Pl)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain_pln(
+                self as *mut Self,
+                S,
+                D,
+                Pl,
+            )
         })
     }
 
@@ -2290,7 +2507,7 @@ impl Vinert {
         Eps: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_perform_face_domain_pln_real(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_perform_face_domain_pln_real(
                 self as *mut Self,
                 S,
                 D,
@@ -2304,36 +2521,46 @@ impl Vinert {
     /// If previously used methods containe Eps parameter
     /// gets actual relative error of the computation, else returns  1.0.
     pub fn get_epsilon(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepGProp_Vinert_get_epsilon(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_get_epsilon(self as *mut Self)
+        })
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_Vinert_as_GProp_GProps(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_as_GProp_GProps(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_Vinert_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_Mass(self as *const Self)
         })
     }
 
@@ -2341,7 +2568,9 @@ impl Vinert {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2350,7 +2579,9 @@ impl Vinert {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2358,14 +2589,22 @@ impl Vinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_StaticMoments(
+                self as *const Self,
+                Ix,
+                Iy,
+                Iz,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -2373,7 +2612,9 @@ impl Vinert {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_Vinert_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2381,7 +2622,10 @@ impl Vinert {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_Vinert_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_Vinert_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }
@@ -2416,11 +2660,11 @@ impl Vinert {
 /// The outer integral is computed along T parameter of a
 /// bounding curve. The integrand function is encapsulated in
 /// the support class TFunction that is defined below.
-pub use crate::ffi::BRepGProp_VinertGK as VinertGK;
+pub use crate::ffi_types::BRepGProp_VinertGK as VinertGK;
 
 unsafe impl crate::CppDeletable for VinertGK {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepGProp_VinertGK_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_destructor(ptr);
     }
 }
 
@@ -2429,7 +2673,9 @@ impl VinertGK {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepGProp_VinertGK_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor(),
+            ))
         }
     }
 
@@ -2446,7 +2692,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_pnt_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_pnt_real_bool2(
                     theSurface,
                     theLocation,
                     theTolerance,
@@ -2472,7 +2718,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_pnt2_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_pnt2_real_bool2(
                     theSurface,
                     thePoint,
                     theLocation,
@@ -2498,7 +2744,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pnt_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_domain_pnt_real_bool2(
                     theSurface,
                     theDomain,
                     theLocation,
@@ -2526,7 +2772,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pnt2_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_domain_pnt2_real_bool2(
                     theSurface,
                     theDomain,
                     thePoint,
@@ -2553,7 +2799,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_pln_pnt_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_pln_pnt_real_bool2(
                     theSurface,
                     thePlane,
                     theLocation,
@@ -2580,7 +2826,7 @@ impl VinertGK {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_ctor_face_domain_pln_pnt_real_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_ctor_face_domain_pln_pnt_real_bool2(
                     theSurface,
                     theDomain,
                     thePlane,
@@ -2937,7 +3183,10 @@ impl VinertGK {
     /// Sets the vertex that delimit 3D closed region of space.
     pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_set_location(self as *mut Self, theLocation)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_set_location(
+                self as *mut Self,
+                theLocation,
+            )
         })
     }
 
@@ -2953,7 +3202,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_real_bool2(
                 self as *mut Self,
                 theSurface,
                 theTolerance,
@@ -2977,7 +3226,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_pnt_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_pnt_real_bool2(
                 self as *mut Self,
                 theSurface,
                 thePoint,
@@ -3001,7 +3250,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_domain_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_domain_real_bool2(
                 self as *mut Self,
                 theSurface,
                 theDomain,
@@ -3027,7 +3276,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_domain_pnt_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_domain_pnt_real_bool2(
                 self as *mut Self,
                 theSurface,
                 theDomain,
@@ -3052,7 +3301,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_pln_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_pln_real_bool2(
                 self as *mut Self,
                 theSurface,
                 thePlane,
@@ -3077,7 +3326,7 @@ impl VinertGK {
         theIFlag: bool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_perform_face_domain_pln_real_bool2(
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_perform_face_domain_pln_real_bool2(
                 self as *mut Self,
                 theSurface,
                 theDomain,
@@ -3093,7 +3342,7 @@ impl VinertGK {
     /// Returns the relative reached computation error.
     pub fn get_error_reached(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_get_error_reached(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_get_error_reached(self as *const Self)
         })
     }
 
@@ -3101,14 +3350,14 @@ impl VinertGK {
     /// Returns the absolut reached computation error.
     pub fn get_absolut_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_get_absolut_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_get_absolut_error(self as *const Self)
         })
     }
 
     /// Upcast to GProp_GProps
     pub fn as_g_prop_g_props(&self) -> &crate::g_prop::GProps {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepGProp_VinertGK_as_GProp_GProps(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_as_GProp_GProps(
                 self as *const Self,
             ))
         }
@@ -3117,23 +3366,29 @@ impl VinertGK {
     /// Upcast to GProp_GProps (mutable)
     pub fn as_g_prop_g_props_mut(&mut self) -> &mut crate::g_prop::GProps {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepGProp_VinertGK_as_GProp_GProps_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_as_GProp_GProps_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:164 - `GProp_GProps::Add()`
     pub fn add(&mut self, Item: &crate::g_prop::GProps, Density: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_inherited_Add(self as *mut Self, Item, Density)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_Add(
+                self as *mut Self,
+                Item,
+                Density,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:190 - `GProp_GProps::Mass()`
     pub fn mass(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_inherited_Mass(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_Mass(self as *const Self)
         })
     }
 
@@ -3141,7 +3396,9 @@ impl VinertGK {
     pub fn centre_of_mass(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_inherited_CentreOfMass(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_CentreOfMass(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3150,7 +3407,9 @@ impl VinertGK {
     pub fn matrix_of_inertia(&self) -> crate::OwnedPtr<crate::gp::Mat> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_inherited_MatrixOfInertia(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_MatrixOfInertia(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3158,14 +3417,22 @@ impl VinertGK {
     /// Inherited: **Source:** `GProp_GProps.hxx`:220 - `GProp_GProps::StaticMoments()`
     pub fn static_moments(&self, Ix: &mut f64, Iy: &mut f64, Iz: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_inherited_StaticMoments(self as *const Self, Ix, Iy, Iz)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_StaticMoments(
+                self as *const Self,
+                Ix,
+                Iy,
+                Iz,
+            )
         })
     }
 
     /// Inherited: **Source:** `GProp_GProps.hxx`:224 - `GProp_GProps::MomentOfInertia()`
     pub fn moment_of_inertia(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_inherited_MomentOfInertia(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_MomentOfInertia(
+                self as *const Self,
+                A,
+            )
         })
     }
 
@@ -3173,7 +3440,9 @@ impl VinertGK {
     pub fn principal_properties(&self) -> crate::OwnedPtr<crate::g_prop::PrincipalProps> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepGProp_VinertGK_inherited_PrincipalProperties(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_PrincipalProperties(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3181,7 +3450,10 @@ impl VinertGK {
     /// Inherited: **Source:** `GProp_GProps.hxx`:242 - `GProp_GProps::RadiusOfGyration()`
     pub fn radius_of_gyration(&self, A: &crate::gp::Ax1) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepGProp_VinertGK_inherited_RadiusOfGyration(self as *const Self, A)
+            crate::ffi_extern_TKTopAlgo::BRepGProp_VinertGK_inherited_RadiusOfGyration(
+                self as *const Self,
+                A,
+            )
         })
     }
 }

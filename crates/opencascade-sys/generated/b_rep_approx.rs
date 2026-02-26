@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From BRepApprox_Approx.hxx
 // ========================
 
 /// **Source:** `BRepApprox_Approx.hxx`:51 - `BRepApprox_Approx`
-pub use crate::ffi::BRepApprox_Approx as Approx;
+pub use crate::ffi_types::BRepApprox_Approx as Approx;
 
 unsafe impl crate::CppDeletable for Approx {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_Approx_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_destructor(ptr);
     }
 }
 
@@ -26,7 +26,9 @@ impl Approx {
     /// **Source:** `BRepApprox_Approx.hxx`:85 - `BRepApprox_Approx::BRepApprox_Approx()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_Approx_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_ctor(),
+            ))
         }
     }
 
@@ -35,7 +37,7 @@ impl Approx {
         &mut self,
         Surf1: &crate::b_rep_adaptor::Surface,
         Surf2: &crate::b_rep_adaptor::Surface,
-        aLine: &crate::ffi::HandleBRepApproxApproxLine,
+        aLine: &crate::ffi_types::HandleBRepApproxApproxLine,
         ApproxXYZ: bool,
         ApproxU1V1: bool,
         ApproxU2V2: bool,
@@ -43,24 +45,14 @@ impl Approx {
         indicemax: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Approx_perform_surface2_handlebrepapproxapproxline_bool3_int2(
-                self as *mut Self,
-                Surf1,
-                Surf2,
-                aLine,
-                ApproxXYZ,
-                ApproxU1V1,
-                ApproxU2V2,
-                indicemin,
-                indicemax,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_perform_surface2_handlebrepapproxapproxline_bool3_int2(self as *mut Self, Surf1, Surf2, aLine, ApproxXYZ, ApproxU1V1, ApproxU2V2, indicemin, indicemax)
         })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:96 - `BRepApprox_Approx::Perform()`
     pub fn perform_handlebrepapproxapproxline_bool3_int2(
         &mut self,
-        aLine: &crate::ffi::HandleBRepApproxApproxLine,
+        aLine: &crate::ffi_types::HandleBRepApproxApproxLine,
         ApproxXYZ: bool,
         ApproxU1V1: bool,
         ApproxU2V2: bool,
@@ -68,15 +60,7 @@ impl Approx {
         indicemax: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Approx_perform_handlebrepapproxapproxline_bool3_int2(
-                self as *mut Self,
-                aLine,
-                ApproxXYZ,
-                ApproxU1V1,
-                ApproxU2V2,
-                indicemin,
-                indicemax,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_perform_handlebrepapproxapproxline_bool3_int2(self as *mut Self, aLine, ApproxXYZ, ApproxU1V1, ApproxU2V2, indicemin, indicemax)
         })
     }
 
@@ -93,7 +77,7 @@ impl Approx {
         Parametrization: crate::approx::ParametrizationType,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Approx_set_parameters(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_set_parameters(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -110,40 +94,45 @@ impl Approx {
     /// **Source:** `BRepApprox_Approx.hxx`:113 - `BRepApprox_Approx::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Approx_perform(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_perform(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:115 - `BRepApprox_Approx::TolReached3d()`
     pub fn tol_reached3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Approx_tol_reached3d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_tol_reached3d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:117 - `BRepApprox_Approx::TolReached2d()`
     pub fn tol_reached2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Approx_tol_reached2d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_tol_reached2d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:119 - `BRepApprox_Approx::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_Approx_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:121 - `BRepApprox_Approx::NbMultiCurves()`
     pub fn nb_multi_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Approx_nb_multi_curves(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_nb_multi_curves(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_Approx.hxx`:123 - `BRepApprox_Approx::Value()`
     pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_Approx_value(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -153,10 +142,16 @@ impl Approx {
         firstP: i32,
         lastP: i32,
         Par: crate::approx::ParametrizationType,
-        TheParameters: &mut crate::ffi::math_Vector,
+        TheParameters: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Approx_parameters(Line, firstP, lastP, Par.into(), TheParameters)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Approx_parameters(
+                Line,
+                firstP,
+                lastP,
+                Par.into(),
+                TheParameters,
+            )
         })
     }
 }
@@ -166,23 +161,23 @@ impl Approx {
 // ========================
 
 /// **Source:** `BRepApprox_ApproxLine.hxx`:33 - `BRepApprox_ApproxLine`
-pub use crate::ffi::BRepApprox_ApproxLine as ApproxLine;
+pub use crate::ffi_types::BRepApprox_ApproxLine as ApproxLine;
 
 unsafe impl crate::CppDeletable for ApproxLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ApproxLine_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_destructor(ptr);
     }
 }
 
 impl ApproxLine {
     /// **Source:** `BRepApprox_ApproxLine.hxx`:37 - `BRepApprox_ApproxLine::BRepApprox_ApproxLine()`
     pub fn new_handlegeombsplinecurve_handlegeom2dbsplinecurve2(
-        CurveXYZ: &crate::ffi::HandleGeomBSplineCurve,
-        CurveUV1: &crate::ffi::HandleGeom2dBSplineCurve,
-        CurveUV2: &crate::ffi::HandleGeom2dBSplineCurve,
+        CurveXYZ: &crate::ffi_types::HandleGeomBSplineCurve,
+        CurveUV1: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        CurveUV2: &crate::ffi_types::HandleGeom2dBSplineCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ApproxLine_ctor_handlegeombsplinecurve_handlegeom2dbsplinecurve2(CurveXYZ, CurveUV1, CurveUV2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_ctor_handlegeombsplinecurve_handlegeom2dbsplinecurve2(CurveXYZ, CurveUV1, CurveUV2)))
         }
     }
 
@@ -190,12 +185,14 @@ impl ApproxLine {
     /// theTang variable has been entered only for compatibility with
     /// the alias IntPatch_WLine. They are not used in this class.
     pub fn new_handleintsurflineon2s_bool(
-        lin: &crate::ffi::HandleIntSurfLineOn2S,
+        lin: &crate::ffi_types::HandleIntSurfLineOn2S,
         theTang: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_ApproxLine_ctor_handleintsurflineon2s_bool(lin, theTang),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_ctor_handleintsurflineon2s_bool(
+                    lin, theTang,
+                ),
             ))
         }
     }
@@ -204,7 +201,7 @@ impl ApproxLine {
     /// theTang variable has been entered only for compatibility with
     /// the alias IntPatch_WLine. They are not used in this class.
     pub fn new_handleintsurflineon2s(
-        lin: &crate::ffi::HandleIntSurfLineOn2S,
+        lin: &crate::ffi_types::HandleIntSurfLineOn2S,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleintsurflineon2s_bool(lin, false)
     }
@@ -212,26 +209,27 @@ impl ApproxLine {
     /// **Source:** `BRepApprox_ApproxLine.hxx`:46 - `BRepApprox_ApproxLine::NbPnts()`
     pub fn nb_pnts(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_nb_pnts(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_nb_pnts(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_ApproxLine.hxx`:48 - `BRepApprox_ApproxLine::Point()`
     pub fn point(&mut self, Index: i32) -> crate::OwnedPtr<crate::int_surf::PntOn2S> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ApproxLine_point(
-                self as *mut Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_point(self as *mut Self, Index),
+            ))
         }
     }
 
     /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ApproxLine_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -239,7 +237,7 @@ impl ApproxLine {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepApprox_ApproxLine_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -247,50 +245,64 @@ impl ApproxLine {
     }
 
     /// **Source:** `BRepApprox_ApproxLine.hxx`:50 - `BRepApprox_ApproxLine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepApprox_ApproxLine_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_ApproxLine_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepApproxApproxLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepApproxApproxLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_ApproxLine_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -298,7 +310,9 @@ impl ApproxLine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepApprox_ApproxLine_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -311,62 +325,72 @@ impl ApproxLine {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ApproxLine_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ApproxLine_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepApproxApproxLine;
+pub use crate::ffi_types::HandleBRepApproxApproxLine;
 
 unsafe impl crate::CppDeletable for HandleBRepApproxApproxLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepApproxApproxLine_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_destructor(ptr);
     }
 }
 
 impl HandleBRepApproxApproxLine {
     /// Dereference this Handle to access the underlying BRepApprox_ApproxLine
-    pub fn get(&self) -> &crate::ffi::BRepApprox_ApproxLine {
+    pub fn get(&self) -> &crate::ffi_types::BRepApprox_ApproxLine {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepApproxApproxLine_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BRepApprox_ApproxLine
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepApprox_ApproxLine {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepApproxApproxLine_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying BRepApprox_ApproxLine
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepApprox_ApproxLine {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<BRepApprox_ApproxLine> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepApproxApproxLine_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::HandleBRepApproxApproxLine_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -379,13 +403,11 @@ impl HandleBRepApproxApproxLine {
 // ========================
 
 /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:33 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox as BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox as BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -393,21 +415,21 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
     /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -428,32 +450,32 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -461,52 +483,52 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
         })
     }
 }
@@ -516,13 +538,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:41 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox as BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox as BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -534,14 +554,14 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)))
         }
     }
 
@@ -550,7 +570,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_nb_variables(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_nb_variables(self as *const Self)
         })
     }
 
@@ -559,13 +579,9 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_value(self as *mut Self, X, F)
         })
     }
 
@@ -574,15 +590,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -591,25 +603,20 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_values(self as *mut Self, X, F, G)
         })
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:78 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_new_parameters(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_new_parameters(self as *const Self)))
         }
     }
 
@@ -618,7 +625,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_curve_value(self as *mut Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_curve_value(self as *mut Self)))
         }
     }
 
@@ -627,11 +634,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// IPoint and the curve CurveIndex.
     pub fn error(&mut self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_error(
-                self as *mut Self,
-                IPoint,
-                CurveIndex,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_error(self as *mut Self, IPoint, CurveIndex)
         })
     }
 
@@ -640,7 +643,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// and the MultiBSpCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error3d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -649,7 +652,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// and the MultiBSpCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error2d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_max_error2d(self as *const Self)
         })
     }
 
@@ -658,7 +661,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// multiline.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
         }
     }
 
@@ -667,7 +670,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// multiline.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -676,45 +679,41 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_index(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_index(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:112 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:116 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:119 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetFirstLambda()`
     pub fn set_first_lambda(&mut self, l1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_first_lambda(self as *mut Self, l1)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_first_lambda(self as *mut Self, l1)
         })
     }
 
     /// **Source:** `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:121 - `BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox::SetLastLambda()`
     pub fn set_last_lambda(&mut self, l2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_last_lambda(self as *mut Self, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_set_last_lambda(self as *mut Self, l2)
         })
     }
 
@@ -723,7 +722,7 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -732,28 +731,28 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -763,13 +762,11 @@ impl BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:45 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox as BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox as BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -797,11 +794,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -816,7 +813,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -838,17 +835,17 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// parameter, only the vector B changes).
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -856,8 +853,8 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -865,24 +862,29 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
         })
     }
 
     /// **Source:** `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -892,14 +894,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -911,16 +913,16 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -928,9 +930,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_is_done(self as *const Self)
         })
     }
 
@@ -940,7 +940,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_bezier_value(self as *mut Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_bezier_value(self as *mut Self)))
         }
     }
 
@@ -950,7 +950,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -959,7 +959,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
         }
     }
 
@@ -968,7 +968,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -979,13 +979,13 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -994,7 +994,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_distance(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_distance(self as *mut Self)))
         }
     }
 
@@ -1004,12 +1004,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_error(self as *mut Self, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -1018,7 +1013,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_first_lambda(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_first_lambda(self as *const Self)
         })
     }
 
@@ -1027,7 +1022,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_last_lambda(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_last_lambda(self as *const Self)
         })
     }
 
@@ -1035,7 +1030,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_points(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_points(self as *const Self)))
         }
     }
 
@@ -1043,7 +1038,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_poles(self as *const Self)))
         }
     }
 
@@ -1052,9 +1047,9 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_k_index(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox_k_index(self as *const Self)))
         }
     }
 }
@@ -1064,13 +1059,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:34 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox as Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox as Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
     }
 }
 
@@ -1078,21 +1071,21 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -1113,32 +1106,32 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_is_solution_reached(self as *const Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -1146,52 +1139,52 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Minimum(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Gradient(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_NbIterations(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Dump(self as *const Self, o)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox_inherited_Dump(self as *const Self, o)
         })
     }
 }
@@ -1201,11 +1194,11 @@ impl Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:34 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox as Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox as Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -1213,21 +1206,21 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -1248,32 +1241,32 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -1281,52 +1274,52 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox_inherited_Dump(self as *const Self, o)
         })
     }
 }
@@ -1336,11 +1329,13 @@ impl Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox.hxx`:40 - `BRepApprox_MyBSplGradientOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox as MyBSplGradientOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox as MyBSplGradientOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for MyBSplGradientOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_destructor(
+            ptr,
+        );
     }
 }
 
@@ -1356,17 +1351,17 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -1381,10 +1376,10 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -1393,7 +1388,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
         lambda2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)))
         }
     }
 
@@ -1408,10 +1403,10 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -1423,7 +1418,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_is_done(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_is_done(
                 self as *const Self,
             )
         })
@@ -1434,11 +1429,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_value(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_value(self as *const Self)))
         }
     }
 
@@ -1449,7 +1440,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_error(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_error(
                 self as *const Self,
                 Index,
             )
@@ -1461,9 +1452,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -1472,9 +1461,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_max_error2d(self as *const Self)
         })
     }
 
@@ -1483,9 +1470,7 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_average_error(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyBSplGradientOfTheComputeLineOfApprox_average_error(self as *const Self)
         })
     }
 }
@@ -1495,11 +1480,13 @@ impl MyBSplGradientOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox.hxx`:39 - `BRepApprox_MyGradientOfTheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox as MyGradientOfTheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox as MyGradientOfTheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for MyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_destructor(
+            ptr,
+        );
     }
 }
 
@@ -1515,15 +1502,15 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -1538,8 +1525,8 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -1551,7 +1538,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_is_done(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_is_done(
                 self as *const Self,
             )
         })
@@ -1562,11 +1549,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_value(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_value(self as *const Self)))
         }
     }
 
@@ -1577,7 +1560,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_error(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_error(
                 self as *const Self,
                 Index,
             )
@@ -1589,9 +1572,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -1600,9 +1581,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_max_error2d(self as *const Self)
         })
     }
 
@@ -1611,9 +1590,7 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_average_error(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientOfTheComputeLineBezierOfApprox_average_error(self as *const Self)
         })
     }
 }
@@ -1623,11 +1600,13 @@ impl MyGradientOfTheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_MyGradientbisOfTheComputeLineOfApprox.hxx`:39 - `BRepApprox_MyGradientbisOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox as MyGradientbisOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_MyGradientbisOfTheComputeLineOfApprox as MyGradientbisOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for MyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_destructor(
+            ptr,
+        );
     }
 }
 
@@ -1643,15 +1622,15 @@ impl MyGradientbisOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -1666,8 +1645,8 @@ impl MyGradientbisOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -1679,7 +1658,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_is_done(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_is_done(
                 self as *const Self,
             )
         })
@@ -1691,7 +1670,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_value(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_value(
                     self as *const Self,
                 ),
             ))
@@ -1705,7 +1684,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_error(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_error(
                 self as *const Self,
                 Index,
             )
@@ -1717,9 +1696,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -1728,9 +1705,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_max_error2d(self as *const Self)
         })
     }
 
@@ -1739,9 +1714,7 @@ impl MyGradientbisOfTheComputeLineOfApprox {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_average_error(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_MyGradientbisOfTheComputeLineOfApprox_average_error(self as *const Self)
         })
     }
 }
@@ -1751,13 +1724,11 @@ impl MyGradientbisOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:38 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox as ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox as ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
     }
 }
 
@@ -1769,12 +1740,12 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -1783,7 +1754,7 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_nb_variables(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_nb_variables(self as *const Self)
         })
     }
 
@@ -1792,13 +1763,9 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_value(self as *mut Self, X, F)
         })
     }
 
@@ -1807,15 +1774,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -1824,25 +1787,20 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_values(self as *mut Self, X, F, G)
         })
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_new_parameters(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_new_parameters(self as *const Self)))
         }
     }
 
@@ -1851,7 +1809,7 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_curve_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_curve_value(self as *mut Self)))
         }
     }
 
@@ -1860,11 +1818,7 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_error(
-                self as *const Self,
-                IPoint,
-                CurveIndex,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_error(self as *const Self, IPoint, CurveIndex)
         })
     }
 
@@ -1873,9 +1827,7 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -1884,28 +1836,26 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_max_error2d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:93 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:97 - `BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
@@ -1913,7 +1863,7 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -1922,28 +1872,28 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -1953,11 +1903,11 @@ impl ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:38 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox as ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox as ParFunctionOfMyGradientbisOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -1969,12 +1919,12 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
         SSP: &TheMultiLineOfApprox,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -1983,9 +1933,7 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_nb_variables(self as *const Self)
         })
     }
 
@@ -1994,13 +1942,9 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_value(self as *mut Self, X, F)
         })
     }
 
@@ -2009,15 +1953,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -2026,25 +1966,20 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_values(self as *mut Self, X, F, G)
         })
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:73 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_new_parameters(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_new_parameters(self as *const Self)))
         }
     }
 
@@ -2053,7 +1988,7 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_curve_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_curve_value(self as *mut Self)))
         }
     }
 
@@ -2062,11 +1997,7 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_error(
-                self as *const Self,
-                IPoint,
-                CurveIndex,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_error(self as *const Self, IPoint, CurveIndex)
         })
     }
 
@@ -2075,9 +2006,7 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error3d(self as *const Self)
         })
     }
 
@@ -2086,28 +2015,26 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_max_error2d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:93 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox.hxx`:97 - `BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
@@ -2115,7 +2042,7 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -2124,28 +2051,28 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -2155,13 +2082,11 @@ impl ParFunctionOfMyGradientbisOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:45 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox as ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox as ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
     }
 }
 
@@ -2189,11 +2114,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -2208,7 +2133,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -2230,17 +2155,17 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// parameter, only the vector B changes).
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -2248,8 +2173,8 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -2257,24 +2182,29 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector(self as *mut Self, Parameters)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector(self as *mut Self, Parameters)
         })
     }
 
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -2284,14 +2214,14 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -2303,16 +2233,16 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -2320,9 +2250,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_is_done(self as *const Self)
         })
     }
 
@@ -2332,7 +2260,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_bezier_value(self as *mut Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_bezier_value(self as *mut Self)))
         }
     }
 
@@ -2342,7 +2270,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_b_spline_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -2351,7 +2279,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_function_matrix(self as *const Self)))
         }
     }
 
@@ -2360,7 +2288,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -2371,13 +2299,13 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -2386,7 +2314,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_distance(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_distance(self as *mut Self)))
         }
     }
 
@@ -2396,12 +2324,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_error(self as *mut Self, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -2410,7 +2333,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_first_lambda(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_first_lambda(self as *const Self)
         })
     }
 
@@ -2419,7 +2342,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_last_lambda(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_last_lambda(self as *const Self)
         })
     }
 
@@ -2427,7 +2350,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_points(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_points(self as *const Self)))
         }
     }
 
@@ -2435,7 +2358,7 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_poles(self as *const Self)))
         }
     }
 
@@ -2444,9 +2367,9 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_k_index(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox_k_index(self as *const Self)))
         }
     }
 }
@@ -2456,13 +2379,11 @@ impl ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:45 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox as ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox as ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -2490,11 +2411,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -2509,7 +2430,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -2531,17 +2452,17 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// parameter, only the vector B changes).
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -2549,8 +2470,8 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// Initializes the fields of the object.
     pub fn new_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &TheMultiLineOfApprox,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -2558,24 +2479,29 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:123 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector(self as *mut Self, Parameters)
         })
     }
 
     /// **Source:** `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox.hxx`:126 - `BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -2585,14 +2511,14 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -2604,16 +2530,16 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -2621,9 +2547,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_is_done(self as *const Self)
         })
     }
 
@@ -2633,7 +2557,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_bezier_value(self as *mut Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_bezier_value(self as *mut Self)))
         }
     }
 
@@ -2643,7 +2567,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -2652,7 +2576,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_function_matrix(self as *const Self)))
         }
     }
 
@@ -2661,7 +2585,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -2672,13 +2596,13 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -2687,7 +2611,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_distance(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_distance(self as *mut Self)))
         }
     }
 
@@ -2697,12 +2621,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_error(self as *mut Self, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -2711,7 +2630,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_first_lambda(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_first_lambda(self as *const Self)
         })
     }
 
@@ -2720,9 +2639,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_last_lambda(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_last_lambda(self as *const Self)
         })
     }
 
@@ -2730,11 +2647,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_points(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_points(self as *const Self)))
         }
     }
 
@@ -2742,11 +2655,7 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_poles(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_poles(self as *const Self)))
         }
     }
 
@@ -2755,9 +2664,9 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_k_index(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox_k_index(self as *const Self)))
         }
     }
 }
@@ -2767,13 +2676,11 @@ impl ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:36 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox as ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox as ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_destructor(
-            ptr,
-        );
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_destructor(ptr);
     }
 }
 
@@ -2794,13 +2701,13 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -2820,7 +2727,7 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -2831,9 +2738,7 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_is_done(self as *const Self)
         })
     }
 
@@ -2842,24 +2747,22 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     /// and the given points.
     pub fn error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_error(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_error(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:68 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_matrix(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_duale(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_duale(self as *const Self)))
         }
     }
 
@@ -2874,12 +2777,12 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
         }
     }
 
@@ -2888,7 +2791,7 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_inverse_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox_inverse_matrix(self as *const Self)))
         }
     }
 }
@@ -2898,11 +2801,11 @@ impl ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:36 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox as ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox as ResConstraintOfMyGradientbisOfTheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -2923,13 +2826,13 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_ctor_themultilineofapprox_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -2949,7 +2852,7 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -2960,9 +2863,7 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_is_done(self as *const Self)
         })
     }
 
@@ -2971,28 +2872,22 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     /// and the given points.
     pub fn error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_error(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_error(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:68 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_matrix(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox.hxx`:71 - `BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_duale(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_duale(self as *const Self)))
         }
     }
 
@@ -3007,12 +2902,12 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
         }
     }
 
@@ -3021,7 +2916,7 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_inverse_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox_inverse_matrix(self as *const Self)))
         }
     }
 }
@@ -3031,11 +2926,11 @@ impl ResConstraintOfMyGradientbisOfTheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_SurfaceTool.hxx`:37 - `BRepApprox_SurfaceTool`
-pub use crate::ffi::BRepApprox_SurfaceTool as SurfaceTool;
+pub use crate::ffi_types::BRepApprox_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_SurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_destructor(ptr);
     }
 }
 
@@ -3044,65 +2939,73 @@ impl SurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BRepApprox_SurfaceTool_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:42 - `BRepApprox_SurfaceTool::FirstUParameter()`
     pub fn first_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_first_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_first_u_parameter(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:44 - `BRepApprox_SurfaceTool::FirstVParameter()`
     pub fn first_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_first_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_first_v_parameter(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:46 - `BRepApprox_SurfaceTool::LastUParameter()`
     pub fn last_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_last_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_last_u_parameter(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:48 - `BRepApprox_SurfaceTool::LastVParameter()`
     pub fn last_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_last_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_last_v_parameter(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:50 - `BRepApprox_SurfaceTool::NbUIntervals()`
     pub fn nb_u_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_nb_u_intervals(S, Sh.into())
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_u_intervals(S, Sh.into())
         })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:52 - `BRepApprox_SurfaceTool::NbVIntervals()`
     pub fn nb_v_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_nb_v_intervals(S, Sh.into())
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_v_intervals(S, Sh.into())
         })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:54 - `BRepApprox_SurfaceTool::UIntervals()`
     pub fn u_intervals(
         S: &crate::b_rep_adaptor::Surface,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_u_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_u_intervals(S, T, Sh.into())
         })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:58 - `BRepApprox_SurfaceTool::VIntervals()`
     pub fn v_intervals(
         S: &crate::b_rep_adaptor::Surface,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_v_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_v_intervals(S, T, Sh.into())
         })
     }
 
@@ -3113,10 +3016,10 @@ impl SurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_u_trim(S, First, Last, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_u_trim(S, First, Last, Tol),
             ))
         }
     }
@@ -3128,42 +3031,54 @@ impl SurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_v_trim(S, First, Last, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_v_trim(S, First, Last, Tol),
             ))
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:74 - `BRepApprox_SurfaceTool::IsUClosed()`
     pub fn is_u_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_is_u_closed(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_is_u_closed(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:76 - `BRepApprox_SurfaceTool::IsVClosed()`
     pub fn is_v_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_is_v_closed(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_is_v_closed(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:78 - `BRepApprox_SurfaceTool::IsUPeriodic()`
     pub fn is_u_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_is_u_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_is_u_periodic(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:80 - `BRepApprox_SurfaceTool::UPeriod()`
     pub fn u_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_u_period(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_u_period(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:82 - `BRepApprox_SurfaceTool::IsVPeriodic()`
     pub fn is_v_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_is_v_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_is_v_periodic(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:84 - `BRepApprox_SurfaceTool::VPeriod()`
     pub fn v_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_v_period(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_v_period(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:86 - `BRepApprox_SurfaceTool::Value()`
@@ -3174,14 +3089,16 @@ impl SurfaceTool {
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_value(S, u, v),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_value(S, u, v),
             ))
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:88 - `BRepApprox_SurfaceTool::D0()`
     pub fn d0(S: &crate::b_rep_adaptor::Surface, u: f64, v: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_d0(S, u, v, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_d0(S, u, v, P)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:93 - `BRepApprox_SurfaceTool::D1()`
@@ -3194,7 +3111,7 @@ impl SurfaceTool {
         D1v: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_d1(S, u, v, P, D1u, D1v)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_d1(S, u, v, P, D1u, D1v)
         })
     }
 
@@ -3211,7 +3128,9 @@ impl SurfaceTool {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_d2(
+                S, u, v, P, D1U, D1V, D2U, D2V, D2UV,
+            )
         })
     }
 
@@ -3232,7 +3151,7 @@ impl SurfaceTool {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_d3(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_d3(
                 S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
             )
         })
@@ -3247,26 +3166,30 @@ impl SurfaceTool {
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_SurfaceTool_dn(
-                S, u, v, Nu, Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_dn(S, u, v, Nu, Nv),
+            ))
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:130 - `BRepApprox_SurfaceTool::UResolution()`
     pub fn u_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_u_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_u_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:132 - `BRepApprox_SurfaceTool::VResolution()`
     pub fn v_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_v_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_v_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:134 - `BRepApprox_SurfaceTool::GetType()`
     pub fn get_type(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_get_type(S)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_get_type(S)
         }))
         .unwrap()
     }
@@ -3275,7 +3198,7 @@ impl SurfaceTool {
     pub fn plane(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_plane(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_plane(S),
             ))
         }
     }
@@ -3284,7 +3207,7 @@ impl SurfaceTool {
     pub fn cylinder(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_cylinder(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_cylinder(S),
             ))
         }
     }
@@ -3292,9 +3215,9 @@ impl SurfaceTool {
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:140 - `BRepApprox_SurfaceTool::Cone()`
     pub fn cone(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_SurfaceTool_cone(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_cone(S),
+            ))
         }
     }
 
@@ -3302,7 +3225,7 @@ impl SurfaceTool {
     pub fn torus(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_torus(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_torus(S),
             ))
         }
     }
@@ -3311,7 +3234,7 @@ impl SurfaceTool {
     pub fn sphere(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_sphere(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_sphere(S),
             ))
         }
     }
@@ -3319,10 +3242,10 @@ impl SurfaceTool {
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:146 - `BRepApprox_SurfaceTool::Bezier()`
     pub fn bezier(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_bezier(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_bezier(S),
             ))
         }
     }
@@ -3330,10 +3253,10 @@ impl SurfaceTool {
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:148 - `BRepApprox_SurfaceTool::BSpline()`
     pub fn b_spline(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_b_spline(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_b_spline(S),
             ))
         }
     }
@@ -3342,7 +3265,7 @@ impl SurfaceTool {
     pub fn axe_of_revolution(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_axe_of_revolution(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_axe_of_revolution(S),
             ))
         }
     }
@@ -3351,7 +3274,7 @@ impl SurfaceTool {
     pub fn direction(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_direction(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_direction(S),
             ))
         }
     }
@@ -3359,35 +3282,43 @@ impl SurfaceTool {
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:154 - `BRepApprox_SurfaceTool::BasisCurve()`
     pub fn basis_curve(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_SurfaceTool_basis_curve(S),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_basis_curve(S),
             ))
         }
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:156 - `BRepApprox_SurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_u_surface(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_samples_u_surface(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:158 - `BRepApprox_SurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_SurfaceTool_nb_samples_v_surface(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_samples_v_surface(S)
+        })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:160 - `BRepApprox_SurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface_real2(S: &crate::b_rep_adaptor::Surface, u1: f64, u2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_nb_samples_u_surface_real2(S, u1, u2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_samples_u_surface_real2(
+                S, u1, u2,
+            )
         })
     }
 
     /// **Source:** `BRepApprox_SurfaceTool.hxx`:164 - `BRepApprox_SurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface_real2(S: &crate::b_rep_adaptor::Surface, v1: f64, v2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_SurfaceTool_nb_samples_v_surface_real2(S, v1, v2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_SurfaceTool_nb_samples_v_surface_real2(
+                S, v1, v2,
+            )
         })
     }
 }
@@ -3397,11 +3328,11 @@ impl SurfaceTool {
 // ========================
 
 /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:46 - `BRepApprox_TheComputeLineBezierOfApprox`
-pub use crate::ffi::BRepApprox_TheComputeLineBezierOfApprox as TheComputeLineBezierOfApprox;
+pub use crate::ffi_types::BRepApprox_TheComputeLineBezierOfApprox as TheComputeLineBezierOfApprox;
 
 unsafe impl crate::CppDeletable for TheComputeLineBezierOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_destructor(ptr);
     }
 }
 
@@ -3425,7 +3356,7 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -3438,7 +3369,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3448,14 +3379,14 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3465,7 +3396,7 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_vector_int2_real2_int_bool2(Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_ctor_vector_int2_real2_int_bool2(Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
@@ -3482,7 +3413,7 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -3525,7 +3456,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int_bool(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3555,7 +3486,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3584,7 +3515,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3612,7 +3543,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3639,7 +3570,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -3657,7 +3588,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
@@ -3674,7 +3605,7 @@ impl TheComputeLineBezierOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
             Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
@@ -3684,7 +3615,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3707,7 +3638,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3729,7 +3660,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3750,7 +3681,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -3770,7 +3701,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -3782,7 +3713,7 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(
@@ -3792,7 +3723,7 @@ impl TheComputeLineBezierOfApprox {
 
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:86 - `BRepApprox_TheComputeLineBezierOfApprox::BRepApprox_TheComputeLineBezierOfApprox()`
     /// Initializes the fields of the algorithm.
-    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+    pub fn new_vector(Parameters: &crate::ffi_types::math_Vector) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
@@ -3833,7 +3764,7 @@ impl TheComputeLineBezierOfApprox {
         Squares: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_init(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_init(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -3851,7 +3782,10 @@ impl TheComputeLineBezierOfApprox {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &TheMultiLineOfApprox) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_perform(
+                self as *mut Self,
+                Line,
+            )
         })
     }
 
@@ -3859,7 +3793,7 @@ impl TheComputeLineBezierOfApprox {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_degrees(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_set_degrees(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -3871,7 +3805,7 @@ impl TheComputeLineBezierOfApprox {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_tolerances(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_set_tolerances(
                 self as *mut Self,
                 Tolerance3d,
                 Tolerance2d,
@@ -3887,7 +3821,7 @@ impl TheComputeLineBezierOfApprox {
         lastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_set_constraints(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_set_constraints(
                 self as *mut Self,
                 firstC.into(),
                 lastC.into(),
@@ -3901,7 +3835,7 @@ impl TheComputeLineBezierOfApprox {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_is_all_approximated(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_is_all_approximated(
                 self as *const Self,
             )
         })
@@ -3911,9 +3845,7 @@ impl TheComputeLineBezierOfApprox {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_is_tolerance_reached(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_is_tolerance_reached(self as *const Self)
         })
     }
 
@@ -3921,7 +3853,7 @@ impl TheComputeLineBezierOfApprox {
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_error(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_error(
                 self as *const Self,
                 Index,
                 tol3d,
@@ -3935,7 +3867,9 @@ impl TheComputeLineBezierOfApprox {
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_nb_multi_curves(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_nb_multi_curves(
+                self as *const Self,
+            )
         })
     }
 
@@ -3943,10 +3877,12 @@ impl TheComputeLineBezierOfApprox {
     /// returns the result of the approximation.
     pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_value(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_value(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -3955,7 +3891,7 @@ impl TheComputeLineBezierOfApprox {
     pub fn change_value(&mut self, Index: i32) -> &mut crate::app_par_curves::MultiCurve {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_change_value(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_change_value(
                     self as *mut Self,
                     Index,
                 ),
@@ -3968,7 +3904,9 @@ impl TheComputeLineBezierOfApprox {
     pub fn spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_spline_value(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_spline_value(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -3977,7 +3915,9 @@ impl TheComputeLineBezierOfApprox {
     /// returns the type  of  parametrization
     pub fn parametrization(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_parametrization(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_parametrization(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3985,12 +3925,14 @@ impl TheComputeLineBezierOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineBezierOfApprox.hxx`:163 - `BRepApprox_TheComputeLineBezierOfApprox::Parameters()`
     /// returns the new parameters of the approximation
     /// corresponding to the points of the multicurve <Index>.
-    pub fn parameters(&self, Index: i32) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn parameters(&self, Index: i32) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheComputeLineBezierOfApprox_parameters(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineBezierOfApprox_parameters(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 }
@@ -4000,11 +3942,11 @@ impl TheComputeLineBezierOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:48 - `BRepApprox_TheComputeLineOfApprox`
-pub use crate::ffi::BRepApprox_TheComputeLineOfApprox as TheComputeLineOfApprox;
+pub use crate::ffi_types::BRepApprox_TheComputeLineOfApprox as TheComputeLineOfApprox;
 
 unsafe impl crate::CppDeletable for TheComputeLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheComputeLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_destructor(ptr);
     }
 }
 
@@ -4031,7 +3973,7 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -4044,7 +3986,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int_bool2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4054,14 +3996,14 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_ctor_themultilineofapprox_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4071,18 +4013,7 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_vector_int2_real2_int_bool2(
-                    Parameters,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_ctor_vector_int2_real2_int_bool2(Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
@@ -4099,7 +4030,7 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -4145,7 +4076,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int_bool(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4175,7 +4106,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2_int(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4204,7 +4135,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4232,7 +4163,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2_real(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4259,7 +4190,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int2(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -4277,7 +4208,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector_int(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
@@ -4294,7 +4225,7 @@ impl TheComputeLineOfApprox {
     /// no iteration at all.
     pub fn new_themultilineofapprox_vector(
         Line: &TheMultiLineOfApprox,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_themultilineofapprox_vector_int2_real2_int_bool2(
             Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
@@ -4304,7 +4235,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4327,7 +4258,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4349,7 +4280,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4370,7 +4301,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -4390,7 +4321,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -4402,7 +4333,7 @@ impl TheComputeLineOfApprox {
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(
@@ -4412,7 +4343,7 @@ impl TheComputeLineOfApprox {
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:91 - `BRepApprox_TheComputeLineOfApprox::BRepApprox_TheComputeLineOfApprox()`
     /// Initializes the fields of the algorithm.
-    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+    pub fn new_vector(Parameters: &crate::ffi_types::math_Vector) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
@@ -4444,7 +4375,10 @@ impl TheComputeLineOfApprox {
     /// The result will be a C2 curve of degree 3.
     pub fn interpol(&mut self, Line: &TheMultiLineOfApprox) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_interpol(self as *mut Self, Line)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_interpol(
+                self as *mut Self,
+                Line,
+            )
         })
     }
 
@@ -4462,7 +4396,7 @@ impl TheComputeLineOfApprox {
         Squares: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_init(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_init(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -4480,16 +4414,22 @@ impl TheComputeLineOfApprox {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &TheMultiLineOfApprox) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_perform(
+                self as *mut Self,
+                Line,
+            )
         })
     }
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:131 - `BRepApprox_TheComputeLineOfApprox::SetParameters()`
     /// The approximation will begin with the
     /// set of  parameters <ThePar>.
-    pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
+    pub fn set_parameters(&mut self, ThePar: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_parameters(self as *mut Self, ThePar)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_parameters(
+                self as *mut Self,
+                ThePar,
+            )
         })
     }
 
@@ -4497,9 +4437,12 @@ impl TheComputeLineOfApprox {
     /// The approximation will be done with the
     /// set of knots <Knots>. The multiplicities will be set
     /// with the degree and the desired continuity.
-    pub fn set_knots(&mut self, Knots: &crate::ffi::TColStd_Array1OfReal) {
+    pub fn set_knots(&mut self, Knots: &crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_knots(self as *mut Self, Knots)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_knots(
+                self as *mut Self,
+                Knots,
+            )
         })
     }
 
@@ -4508,15 +4451,11 @@ impl TheComputeLineOfApprox {
     /// set of knots <Knots> and the multiplicities <Mults>.
     pub fn set_knots_and_multiplicities(
         &mut self,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_knots_and_multiplicities(
-                self as *mut Self,
-                Knots,
-                Mults,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_knots_and_multiplicities(self as *mut Self, Knots, Mults)
         })
     }
 
@@ -4524,7 +4463,7 @@ impl TheComputeLineOfApprox {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_degrees(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_degrees(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -4536,7 +4475,7 @@ impl TheComputeLineOfApprox {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_tolerances(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_tolerances(
                 self as *mut Self,
                 Tolerance3d,
                 Tolerance2d,
@@ -4549,7 +4488,10 @@ impl TheComputeLineOfApprox {
     /// if C = 2, the spline will be C2.
     pub fn set_continuity(&mut self, C: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_continuity(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_continuity(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
@@ -4561,7 +4503,7 @@ impl TheComputeLineOfApprox {
         lastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_constraints(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_constraints(
                 self as *mut Self,
                 firstC.into(),
                 lastC.into(),
@@ -4576,7 +4518,7 @@ impl TheComputeLineOfApprox {
     /// Multiline must be closed.
     pub fn set_periodic(&mut self, thePeriodic: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_set_periodic(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_set_periodic(
                 self as *mut Self,
                 thePeriodic,
             )
@@ -4589,7 +4531,9 @@ impl TheComputeLineOfApprox {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_is_all_approximated(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_is_all_approximated(
+                self as *const Self,
+            )
         })
     }
 
@@ -4597,7 +4541,9 @@ impl TheComputeLineOfApprox {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_is_tolerance_reached(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_is_tolerance_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -4605,7 +4551,11 @@ impl TheComputeLineOfApprox {
     /// returns the tolerances 2d and 3d of the MultiBSpCurve.
     pub fn error(&self, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheComputeLineOfApprox_error(self as *const Self, tol3d, tol2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_error(
+                self as *const Self,
+                tol3d,
+                tol2d,
+            )
         })
     }
 
@@ -4613,9 +4563,11 @@ impl TheComputeLineOfApprox {
     /// returns the result of the approximation.
     pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_value(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_value(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4623,20 +4575,24 @@ impl TheComputeLineOfApprox {
     /// returns the result of the approximation.
     pub fn change_value(&mut self) -> &mut crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_change_value(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_change_value(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepApprox_TheComputeLineOfApprox.hxx`:184 - `BRepApprox_TheComputeLineOfApprox::Parameters()`
     /// returns the new parameters of the approximation
     /// corresponding to the points of the MultiBSpCurve.
-    pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn parameters(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheComputeLineOfApprox_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheComputeLineOfApprox_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -4646,11 +4602,11 @@ impl TheComputeLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:37 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox`
-pub use crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox as TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
+pub use crate::ffi_types::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox as TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox;
 
 unsafe impl crate::CppDeletable for TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
     }
 }
 
@@ -4661,68 +4617,55 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         S2: &crate::b_rep_adaptor::Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_surface2(S1, S2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_surface2(S1, S2)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:47 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_variables(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:49 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_equations(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_nb_equations(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:51 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_value(self as *mut Self, X, F)
         })
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:53 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Derivatives()`
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_derivatives(
-                self as *mut Self,
-                X,
-                D,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_derivatives(self as *mut Self, X, D)
         })
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:55 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_values(
-                self as *mut Self,
-                X,
-                F,
-                D,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -4730,14 +4673,14 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     pub fn compute_parameters(
         &mut self,
         ChoixIso: crate::int_imp::ConstIsoparametric,
-        Param: &crate::ffi::TColStd_Array1OfReal,
-        UVap: &mut crate::ffi::math_Vector,
-        BornInf: &mut crate::ffi::math_Vector,
-        BornSup: &mut crate::ffi::math_Vector,
-        Tolerance: &mut crate::ffi::math_Vector,
+        Param: &crate::ffi_types::TColStd_Array1OfReal,
+        UVap: &mut crate::ffi_types::math_Vector,
+        BornInf: &mut crate::ffi_types::math_Vector,
+        BornSup: &mut crate::ffi_types::math_Vector,
+        Tolerance: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_compute_parameters(self as *mut Self, ChoixIso.into(), Param, UVap, BornInf, BornSup, Tolerance)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_compute_parameters(self as *mut Self, ChoixIso.into(), Param, UVap, BornInf, BornSup, Tolerance)
         })
     }
 
@@ -4745,38 +4688,27 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// returns somme des fi*fi
     pub fn root(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_root(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_root(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:67 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Point()`
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_point(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_point(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:69 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::IsTangent()`
     pub fn is_tangent(
         &mut self,
-        UVap: &crate::ffi::math_Vector,
-        Param: &mut crate::ffi::TColStd_Array1OfReal,
+        UVap: &crate::ffi_types::math_Vector,
+        Param: &mut crate::ffi_types::TColStd_Array1OfReal,
         BestChoix: &mut crate::int_imp::ConstIsoparametric,
     ) -> bool {
         let mut BestChoix_i32_: i32 = (*BestChoix).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(
-                self as *mut Self,
-                UVap,
-                Param,
-                &mut BestChoix_i32_,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(self as *mut Self, UVap, Param, &mut BestChoix_i32_)
         });
         *BestChoix = crate::int_imp::ConstIsoparametric::try_from(BestChoix_i32_).unwrap();
         result_
@@ -4785,39 +4717,35 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:73 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:75 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::DirectionOnS1()`
     pub fn direction_on_s1(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s1(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s1(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:77 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::DirectionOnS2()`
     pub fn direction_on_s2(&self) -> crate::OwnedPtr<crate::gp::Dir2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s2(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s2(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:79 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::AuxillarSurface1()`
     pub fn auxillar_surface1(&self) -> &crate::b_rep_adaptor::Surface {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface1(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:81 - `BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox::AuxillarSurface2()`
     pub fn auxillar_surface2(&self) -> &crate::b_rep_adaptor::Surface {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_auxillar_surface2(self as *const Self)))
         }
     }
 
@@ -4826,7 +4754,7 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -4835,28 +4763,28 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self))
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -4866,11 +4794,11 @@ impl TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx`:41 - `BRepApprox_TheImpPrmSvSurfacesOfApprox`
-pub use crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox as TheImpPrmSvSurfacesOfApprox;
+pub use crate::ffi_types::BRepApprox_TheImpPrmSvSurfacesOfApprox as TheImpPrmSvSurfacesOfApprox;
 
 unsafe impl crate::CppDeletable for TheImpPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_destructor(ptr);
     }
 }
 
@@ -4881,11 +4809,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Surf2: &crate::int_surf::Quadric,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_ctor_surface_quadric(
-                    Surf1, Surf2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_ctor_surface_quadric(Surf1, Surf2)))
         }
     }
 
@@ -4895,11 +4819,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Surf2: &crate::b_rep_adaptor::Surface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_ctor_quadric_surface(
-                    Surf1, Surf2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_ctor_quadric_surface(Surf1, Surf2)))
         }
     }
 
@@ -4917,7 +4837,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Tguv2: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_compute(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_compute(
                 self as *mut Self,
                 u1,
                 v1,
@@ -4934,7 +4854,7 @@ impl TheImpPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_TheImpPrmSvSurfacesOfApprox.hxx`:62 - `BRepApprox_TheImpPrmSvSurfacesOfApprox::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_pnt(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_pnt(
                 self as *mut Self,
                 u1,
                 v1,
@@ -4955,7 +4875,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Point: &mut crate::int_surf::PntOn2S,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_seek_point(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_seek_point(
                 self as *mut Self,
                 u1,
                 v1,
@@ -4976,7 +4896,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency(
                 self as *mut Self,
                 u1,
                 v1,
@@ -4997,7 +4917,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency_on_surf1(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency_on_surf1(
                 self as *mut Self,
                 u1,
                 v1,
@@ -5018,7 +4938,7 @@ impl TheImpPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency_on_surf2(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_tangency_on_surf2(
                 self as *mut Self,
                 u1,
                 v1,
@@ -5040,66 +4960,40 @@ impl TheImpPrmSvSurfacesOfApprox {
         bsupu: f64,
         binfv: f64,
         bsupv: f64,
-        X: &mut crate::ffi::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
         TranslationU: &mut f64,
         TranslationV: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_fill_initial_vector_of_solution(
-                self as *mut Self,
-                u1,
-                v1,
-                u2,
-                v2,
-                binfu,
-                bsupu,
-                binfv,
-                bsupv,
-                X,
-                TranslationU,
-                TranslationV,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_fill_initial_vector_of_solution(self as *mut Self, u1, v1, u2, v2, binfu, bsupu, binfv, bsupv, X, TranslationU, TranslationV)
         })
     }
 
     /// Upcast to ApproxInt_SvSurfaces
     pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(self as *const Self))
         }
     }
 
     /// Upcast to ApproxInt_SvSurfaces (mutable)
     pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_inherited_SetUseSolver(
-                self as *mut Self,
-                theUseSol,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_inherited_SetUseSolver(self as *mut Self, theUseSol)
         })
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
     pub fn get_use_solver(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheImpPrmSvSurfacesOfApprox_inherited_GetUseSolver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheImpPrmSvSurfacesOfApprox_inherited_GetUseSolver(self as *const Self)
         })
     }
 }
@@ -5109,11 +5003,13 @@ impl TheImpPrmSvSurfacesOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:41 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox`
-pub use crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox as TheInt2SOfThePrmPrmSvSurfacesOfApprox;
+pub use crate::ffi_types::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox as TheInt2SOfThePrmPrmSvSurfacesOfApprox;
 
 unsafe impl crate::CppDeletable for TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_destructor(
+            ptr,
+        );
     }
 }
 
@@ -5121,13 +5017,13 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:47 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox()`
     /// compute the solution point with the close point
     pub fn new_array1ofreal_surface2_real(
-        Param: &crate::ffi::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::TColStd_Array1OfReal,
         S1: &crate::b_rep_adaptor::Surface,
         S2: &crate::b_rep_adaptor::Surface,
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_array1ofreal_surface2_real(Param, S1, S2, TolTangency)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_array1ofreal_surface2_real(Param, S1, S2, TolTangency)))
         }
     }
 
@@ -5148,13 +5044,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_surface2_real(
-                    S1,
-                    S2,
-                    TolTangency,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_ctor_surface2_real(S1, S2, TolTangency)))
         }
     }
 
@@ -5166,10 +5056,10 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// the choice of the isoparametic is calculated)
     pub fn perform_array1ofreal_functionsetroot(
         &mut self,
-        Param: &crate::ffi::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::TColStd_Array1OfReal,
         Rsnld: &mut crate::math::FunctionSetRoot,
     ) -> crate::int_imp::ConstIsoparametric {
-        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot(self as *mut Self, Param, Rsnld) })).unwrap()
+        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot(self as *mut Self, Param, Rsnld) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:80 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::Perform()`
@@ -5180,18 +5070,18 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// the choice of the isoparametic is given by ChoixIso)
     pub fn perform_array1ofreal_functionsetroot_constisoparametric(
         &mut self,
-        Param: &crate::ffi::TColStd_Array1OfReal,
+        Param: &crate::ffi_types::TColStd_Array1OfReal,
         Rsnld: &mut crate::math::FunctionSetRoot,
         ChoixIso: crate::int_imp::ConstIsoparametric,
     ) -> crate::int_imp::ConstIsoparametric {
-        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into()) })).unwrap()
+        crate::int_imp::ConstIsoparametric::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_perform_array1ofreal_functionsetroot_constisoparametric(self as *mut Self, Param, Rsnld, ChoixIso.into()) })).unwrap()
     }
 
     /// **Source:** `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox.hxx`:85 - `BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox::IsDone()`
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_done(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_done(
                 self as *const Self,
             )
         })
@@ -5201,7 +5091,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// Returns TRUE when there is no solution to the problem.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_empty(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_empty(
                 self as *const Self,
             )
         })
@@ -5212,7 +5102,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     pub fn point(&self) -> &crate::int_surf::PntOn2S {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_point(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_point(
                     self as *const Self,
                 ),
             ))
@@ -5224,7 +5114,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// intersection point.
     pub fn is_tangent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_is_tangent(
                 self as *const Self,
             )
         })
@@ -5234,11 +5124,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// Returns the tangent at the intersection line.
     pub fn direction(&self) -> &crate::gp::Dir {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction(self as *const Self)))
         }
     }
 
@@ -5247,11 +5133,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// parametric space of the first surface.
     pub fn direction_on_s1(&self) -> &crate::gp::Dir2d {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s1(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s1(self as *const Self)))
         }
     }
 
@@ -5260,11 +5142,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// parametric space of the second surface.
     pub fn direction_on_s2(&self) -> &crate::gp::Dir2d {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s2(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_direction_on_s2(self as *const Self)))
         }
     }
 
@@ -5273,11 +5151,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox {
         unsafe {
-            &mut *(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_function(
-                    self as *mut Self,
-                ),
-            ))
+            &mut *(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_function(self as *mut Self)))
         }
     }
 
@@ -5286,11 +5160,7 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
     /// enable for changing.
     pub fn change_point(&mut self) -> &mut crate::int_surf::PntOn2S {
         unsafe {
-            &mut *(crate::check_result(
-                crate::ffi::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_change_point(
-                    self as *mut Self,
-                ),
-            ))
+            &mut *(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheInt2SOfThePrmPrmSvSurfacesOfApprox_change_point(self as *mut Self)))
         }
     }
 }
@@ -5300,11 +5170,11 @@ impl TheInt2SOfThePrmPrmSvSurfacesOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:35 - `BRepApprox_TheMultiLineOfApprox`
-pub use crate::ffi::BRepApprox_TheMultiLineOfApprox as TheMultiLineOfApprox;
+pub use crate::ffi_types::BRepApprox_TheMultiLineOfApprox as TheMultiLineOfApprox;
 
 unsafe impl crate::CppDeletable for TheMultiLineOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheMultiLineOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_destructor(ptr);
     }
 }
 
@@ -5313,7 +5183,7 @@ impl TheMultiLineOfApprox {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_ctor(),
             ))
         }
     }
@@ -5326,7 +5196,7 @@ impl TheMultiLineOfApprox {
     /// this  algorithm with different surfaces (bi-parametric ones, or
     /// implicit and biparametric ones)
     pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         PtrSvSurfaces: *mut std::ffi::c_void,
         NbP3d: i32,
         NbP2d: i32,
@@ -5344,14 +5214,14 @@ impl TheMultiLineOfApprox {
         IndMax: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line, PtrSvSurfaces, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int2(line, PtrSvSurfaces, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)))
         }
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     /// No Extra points will be added on the current line
     pub fn new_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         NbP3d: i32,
         NbP2d: i32,
         ApproxU1V1: bool,
@@ -5368,7 +5238,7 @@ impl TheMultiLineOfApprox {
         IndMax: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_ctor_handlebrepapproxapproxline_int2_bool2_real7_bool_int2(line, NbP3d, NbP2d, ApproxU1V1, ApproxU2V2, xo, yo, zo, u1o, v1o, u2o, v2o, P2DOnFirst, IndMin, IndMax)))
         }
     }
 
@@ -5380,7 +5250,7 @@ impl TheMultiLineOfApprox {
     /// this  algorithm with different surfaces (bi-parametric ones, or
     /// implicit and biparametric ones)
     pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool_int(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         PtrSvSurfaces: *mut std::ffi::c_void,
         NbP3d: i32,
         NbP2d: i32,
@@ -5424,7 +5294,7 @@ impl TheMultiLineOfApprox {
     /// this  algorithm with different surfaces (bi-parametric ones, or
     /// implicit and biparametric ones)
     pub unsafe fn new_handlebrepapproxapproxline_address_int2_bool2_real7_bool(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         PtrSvSurfaces: *mut std::ffi::c_void,
         NbP3d: i32,
         NbP2d: i32,
@@ -5462,7 +5332,7 @@ impl TheMultiLineOfApprox {
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     /// No Extra points will be added on the current line
     pub fn new_handlebrepapproxapproxline_int2_bool2_real7_bool_int(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         NbP3d: i32,
         NbP2d: i32,
         ApproxU1V1: bool,
@@ -5486,7 +5356,7 @@ impl TheMultiLineOfApprox {
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:66 - `BRepApprox_TheMultiLineOfApprox::BRepApprox_TheMultiLineOfApprox()`
     /// No Extra points will be added on the current line
     pub fn new_handlebrepapproxapproxline_int2_bool2_real7_bool(
-        line: &crate::ffi::HandleBRepApproxApproxLine,
+        line: &crate::ffi_types::HandleBRepApproxApproxLine,
         NbP3d: i32,
         NbP2d: i32,
         ApproxU1V1: bool,
@@ -5509,14 +5379,18 @@ impl TheMultiLineOfApprox {
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:82 - `BRepApprox_TheMultiLineOfApprox::FirstPoint()`
     pub fn first_point(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_first_point(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_first_point(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:84 - `BRepApprox_TheMultiLineOfApprox::LastPoint()`
     pub fn last_point(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_last_point(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_last_point(
+                self as *const Self,
+            )
         })
     }
 
@@ -5524,7 +5398,7 @@ impl TheMultiLineOfApprox {
     /// Returns the number of 2d points of a TheLine.
     pub fn nb_p2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_nb_p2d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_nb_p2d(self as *const Self)
         })
     }
 
@@ -5532,14 +5406,16 @@ impl TheMultiLineOfApprox {
     /// Returns the number of 3d points of a TheLine.
     pub fn nb_p3d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_nb_p3d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_nb_p3d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheMultiLineOfApprox.hxx`:92 - `BRepApprox_TheMultiLineOfApprox::WhatStatus()`
     pub fn what_status(&self) -> crate::approx::Status {
         crate::approx::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_what_status(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_what_status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5549,10 +5425,10 @@ impl TheMultiLineOfApprox {
     pub fn value_int_array1ofpnt(
         &self,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt(
                 self as *const Self,
                 MPointIndex,
                 tabPt,
@@ -5565,10 +5441,10 @@ impl TheMultiLineOfApprox {
     pub fn value_int_array1ofpnt2d(
         &self,
         MPointIndex: i32,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt2d(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt2d(
                 self as *const Self,
                 MPointIndex,
                 tabPt2d,
@@ -5581,16 +5457,11 @@ impl TheMultiLineOfApprox {
     pub fn value_int_array1ofpnt_array1ofpnt2d(
         &self,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt_array1ofpnt2d(
-                self as *const Self,
-                MPointIndex,
-                tabPt,
-                tabPt2d,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_value_int_array1ofpnt_array1ofpnt2d(self as *const Self, MPointIndex, tabPt, tabPt2d)
         })
     }
 
@@ -5599,10 +5470,10 @@ impl TheMultiLineOfApprox {
     pub fn tangency_int_array1ofvec(
         &self,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec(
                 self as *const Self,
                 MPointIndex,
                 tabV,
@@ -5615,10 +5486,10 @@ impl TheMultiLineOfApprox {
     pub fn tangency_int_array1ofvec2d(
         &self,
         MPointIndex: i32,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec2d(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec2d(
                 self as *const Self,
                 MPointIndex,
                 tabV2d,
@@ -5631,16 +5502,11 @@ impl TheMultiLineOfApprox {
     pub fn tangency_int_array1ofvec_array1ofvec2d(
         &self,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec_array1ofvec2d(
-                self as *const Self,
-                MPointIndex,
-                tabV,
-                tabV2d,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_tangency_int_array1ofvec_array1ofvec2d(self as *const Self, MPointIndex, tabV, tabV2d)
         })
     }
 
@@ -5655,7 +5521,7 @@ impl TheMultiLineOfApprox {
     ) -> crate::OwnedPtr<TheMultiLineOfApprox> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheMultiLineOfApprox_make_ml_between(
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_make_ml_between(
                     self as *const Self,
                     Low,
                     High,
@@ -5676,7 +5542,7 @@ impl TheMultiLineOfApprox {
         OtherLine: &mut TheMultiLineOfApprox,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_make_ml_one_more_point(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_make_ml_one_more_point(
                 self as *const Self,
                 Low,
                 High,
@@ -5690,7 +5556,7 @@ impl TheMultiLineOfApprox {
     /// Dump of the current multi-line.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineOfApprox_dump(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineOfApprox_dump(self as *const Self)
         })
     }
 }
@@ -5700,11 +5566,11 @@ impl TheMultiLineOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:29 - `BRepApprox_TheMultiLineToolOfApprox`
-pub use crate::ffi::BRepApprox_TheMultiLineToolOfApprox as TheMultiLineToolOfApprox;
+pub use crate::ffi_types::BRepApprox_TheMultiLineToolOfApprox as TheMultiLineToolOfApprox;
 
 unsafe impl crate::CppDeletable for TheMultiLineToolOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheMultiLineToolOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_destructor(ptr);
     }
 }
 
@@ -5714,7 +5580,7 @@ impl TheMultiLineToolOfApprox {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheMultiLineToolOfApprox_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_ctor(),
             ))
         }
     }
@@ -5723,7 +5589,7 @@ impl TheMultiLineToolOfApprox {
     /// Returns the number of multipoints of the TheMultiLine.
     pub fn first_point(ML: &TheMultiLineOfApprox) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_first_point(ML)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_first_point(ML)
         })
     }
 
@@ -5731,20 +5597,24 @@ impl TheMultiLineToolOfApprox {
     /// Returns the number of multipoints of the TheMultiLine.
     pub fn last_point(ML: &TheMultiLineOfApprox) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_last_point(ML)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_last_point(ML)
         })
     }
 
     /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:41 - `BRepApprox_TheMultiLineToolOfApprox::NbP2d()`
     /// Returns the number of 2d points of a TheMultiLine.
     pub fn nb_p2d(ML: &TheMultiLineOfApprox) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_nb_p2d(ML) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_nb_p2d(ML)
+        })
     }
 
     /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:44 - `BRepApprox_TheMultiLineToolOfApprox::NbP3d()`
     /// Returns the number of 3d points of a TheMultiLine.
     pub fn nb_p3d(ML: &TheMultiLineOfApprox) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepApprox_TheMultiLineToolOfApprox_nb_p3d(ML) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_nb_p3d(ML)
+        })
     }
 
     /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:48 - `BRepApprox_TheMultiLineToolOfApprox::Value()`
@@ -5753,10 +5623,10 @@ impl TheMultiLineToolOfApprox {
     pub fn value_themultilineofapprox_int_array1ofpnt(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt(ML, MPointIndex, tabPt)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt(ML, MPointIndex, tabPt)
         })
     }
 
@@ -5766,10 +5636,10 @@ impl TheMultiLineToolOfApprox {
     pub fn value_themultilineofapprox_int_array1ofpnt2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt2d(ML, MPointIndex, tabPt2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt2d(ML, MPointIndex, tabPt2d)
         })
     }
 
@@ -5779,11 +5649,11 @@ impl TheMultiLineToolOfApprox {
     pub fn value_themultilineofapprox_int_array1ofpnt_array1ofpnt2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt_array1ofpnt2d(ML, MPointIndex, tabPt, tabPt2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_value_themultilineofapprox_int_array1ofpnt_array1ofpnt2d(ML, MPointIndex, tabPt, tabPt2d)
         })
     }
 
@@ -5793,10 +5663,10 @@ impl TheMultiLineToolOfApprox {
     pub fn tangency_themultilineofapprox_int_array1ofvec(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
         })
     }
 
@@ -5806,10 +5676,10 @@ impl TheMultiLineToolOfApprox {
     pub fn tangency_themultilineofapprox_int_array1ofvec2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
         })
     }
 
@@ -5819,11 +5689,11 @@ impl TheMultiLineToolOfApprox {
     pub fn tangency_themultilineofapprox_int_array1ofvec_array1ofvec2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_tangency_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
         })
     }
 
@@ -5833,10 +5703,10 @@ impl TheMultiLineToolOfApprox {
     pub fn curvature_themultilineofapprox_int_array1ofvec(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec(ML, MPointIndex, tabV)
         })
     }
 
@@ -5846,10 +5716,10 @@ impl TheMultiLineToolOfApprox {
     pub fn curvature_themultilineofapprox_int_array1ofvec2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec2d(ML, MPointIndex, tabV2d)
         })
     }
 
@@ -5859,11 +5729,11 @@ impl TheMultiLineToolOfApprox {
     pub fn curvature_themultilineofapprox_int_array1ofvec_array1ofvec2d(
         ML: &TheMultiLineOfApprox,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_curvature_themultilineofapprox_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
         })
     }
 
@@ -5877,7 +5747,9 @@ impl TheMultiLineToolOfApprox {
     ) -> crate::OwnedPtr<TheMultiLineOfApprox> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheMultiLineToolOfApprox_make_ml_between(ML, I1, I2, NbPMin),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_make_ml_between(
+                    ML, I1, I2, NbPMin,
+                ),
             ))
         }
     }
@@ -5892,7 +5764,7 @@ impl TheMultiLineToolOfApprox {
         OtherLine: &mut TheMultiLineOfApprox,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_make_ml_one_more_point(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_make_ml_one_more_point(
                 ML, I1, I2, indbad, OtherLine,
             )
         })
@@ -5901,7 +5773,7 @@ impl TheMultiLineToolOfApprox {
     /// **Source:** `BRepApprox_TheMultiLineToolOfApprox.hxx`:116 - `BRepApprox_TheMultiLineToolOfApprox::WhatStatus()`
     pub fn what_status(ML: &TheMultiLineOfApprox, I1: i32, I2: i32) -> crate::approx::Status {
         crate::approx::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_what_status(ML, I1, I2)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_what_status(ML, I1, I2)
         }))
         .unwrap()
     }
@@ -5910,7 +5782,7 @@ impl TheMultiLineToolOfApprox {
     /// Dump of the current multi-line.
     pub fn dump(ML: &TheMultiLineOfApprox) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheMultiLineToolOfApprox_dump(ML)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheMultiLineToolOfApprox_dump(ML)
         })
     }
 }
@@ -5920,11 +5792,11 @@ impl TheMultiLineToolOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_ThePrmPrmSvSurfacesOfApprox.hxx`:40 - `BRepApprox_ThePrmPrmSvSurfacesOfApprox`
-pub use crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox as ThePrmPrmSvSurfacesOfApprox;
+pub use crate::ffi_types::BRepApprox_ThePrmPrmSvSurfacesOfApprox as ThePrmPrmSvSurfacesOfApprox;
 
 unsafe impl crate::CppDeletable for ThePrmPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_destructor(ptr);
     }
 }
 
@@ -5936,7 +5808,9 @@ impl ThePrmPrmSvSurfacesOfApprox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_ctor_surface2(Surf1, Surf2),
+                crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_ctor_surface2(
+                    Surf1, Surf2,
+                ),
             ))
         }
     }
@@ -5955,7 +5829,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
         Tguv2: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_compute(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_compute(
                 self as *mut Self,
                 u1,
                 v1,
@@ -5972,7 +5846,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_ThePrmPrmSvSurfacesOfApprox.hxx`:58 - `BRepApprox_ThePrmPrmSvSurfacesOfApprox::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_pnt(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_pnt(
                 self as *mut Self,
                 u1,
                 v1,
@@ -5993,7 +5867,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
         Point: &mut crate::int_surf::PntOn2S,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_seek_point(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_seek_point(
                 self as *mut Self,
                 u1,
                 v1,
@@ -6014,7 +5888,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency(
                 self as *mut Self,
                 u1,
                 v1,
@@ -6035,7 +5909,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency_on_surf1(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency_on_surf1(
                 self as *mut Self,
                 u1,
                 v1,
@@ -6056,7 +5930,7 @@ impl ThePrmPrmSvSurfacesOfApprox {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency_on_surf2(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_tangency_on_surf2(
                 self as *mut Self,
                 u1,
                 v1,
@@ -6070,41 +5944,28 @@ impl ThePrmPrmSvSurfacesOfApprox {
     /// Upcast to ApproxInt_SvSurfaces
     pub fn as_approx_int_sv_surfaces(&self) -> &crate::approx_int::SvSurfaces {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces(self as *const Self))
         }
     }
 
     /// Upcast to ApproxInt_SvSurfaces (mutable)
     pub fn as_approx_int_sv_surfaces_mut(&mut self) -> &mut crate::approx_int::SvSurfaces {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_as_ApproxInt_SvSurfaces_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_inherited_SetUseSolver(
-                self as *mut Self,
-                theUseSol,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_inherited_SetUseSolver(self as *mut Self, theUseSol)
         })
     }
 
     /// Inherited: **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
     pub fn get_use_solver(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_ThePrmPrmSvSurfacesOfApprox_inherited_GetUseSolver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_ThePrmPrmSvSurfacesOfApprox_inherited_GetUseSolver(self as *const Self)
         })
     }
 }
@@ -6114,11 +5975,11 @@ impl ThePrmPrmSvSurfacesOfApprox {
 // ========================
 
 /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:38 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox`
-pub use crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox as TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
+pub use crate::ffi_types::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox as TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox;
 
 unsafe impl crate::CppDeletable for TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_destructor(ptr);
     }
 }
 
@@ -6126,9 +5987,7 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:43 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor(),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor()))
         }
     }
 
@@ -6138,71 +5997,60 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         IS: &crate::int_surf::Quadric,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_surface_quadric(PS, IS)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_surface_quadric(PS, IS)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:49 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox()`
     pub fn new_quadric(IS: &crate::int_surf::Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_quadric(IS),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_ctor_quadric(IS)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:51 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set()`
     pub fn set_surface(&mut self, PS: &crate::b_rep_adaptor::Surface) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_surface(
-                self as *mut Self,
-                PS,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_surface(self as *mut Self, PS)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:53 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::SetImplicitSurface()`
     pub fn set_implicit_surface(&mut self, IS: &crate::int_surf::Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_implicit_surface(
-                self as *mut Self,
-                IS,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_implicit_surface(self as *mut Self, IS)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:55 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Set()`
     pub fn set_real(&mut self, Tolerance: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_real(
-                self as *mut Self,
-                Tolerance,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_set_real(self as *mut Self, Tolerance)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:57 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_nb_variables(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:59 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_nb_equations(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_nb_equations(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:61 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_value(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_value(
                 self as *mut Self,
                 X,
                 F,
@@ -6213,39 +6061,30 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:63 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Derivatives()`
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_derivatives(
-                self as *mut Self,
-                X,
-                D,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_derivatives(self as *mut Self, X, D)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:65 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_values(
-                self as *mut Self,
-                X,
-                F,
-                D,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:67 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Root()`
     pub fn root(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_root(
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_root(
                 self as *const Self,
             )
         })
@@ -6256,73 +6095,49 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
     /// the function is considered null.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_tolerance(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:73 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_point(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_point(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:75 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::IsTangent()`
     pub fn is_tangent(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_is_tangent(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_is_tangent(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:77 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Direction3d()`
     pub fn direction3d(&mut self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_direction3d(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_direction3d(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:79 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::Direction2d()`
     pub fn direction2d(&mut self) -> &crate::gp::Dir2d {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_direction2d(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_direction2d(self as *mut Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:81 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::PSurface()`
     pub fn p_surface(&self) -> &crate::b_rep_adaptor::Surface {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_p_surface(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_p_surface(self as *const Self)))
         }
     }
 
     /// **Source:** `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox.hxx`:83 - `BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox::ISurface()`
     pub fn i_surface(&self) -> &crate::int_surf::Quadric {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_i_surface(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_i_surface(self as *const Self)))
         }
     }
 
@@ -6331,7 +6146,7 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -6340,28 +6155,28 @@ impl TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet(self as *const Self))
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }

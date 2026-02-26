@@ -34,11 +34,11 @@
 /// -   its orthogonal projection on the other curve,
 /// -   a limit point of the other curve; or
 /// -   an intersection point between the two curves.
-pub use crate::ffi::Geom2dAPI_ExtremaCurveCurve as ExtremaCurveCurve;
+pub use crate::ffi_types::Geom2dAPI_ExtremaCurveCurve as ExtremaCurveCurve;
 
 unsafe impl crate::CppDeletable for ExtremaCurveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dAPI_ExtremaCurveCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_destructor(ptr);
     }
 }
 
@@ -53,19 +53,15 @@ impl ExtremaCurveCurve {
     /// Use the function NbExtrema to obtain the number
     /// of solutions. If this algorithm fails, NbExtrema returns 0.
     pub fn new_handlegeom2dcurve2_real4(
-        C1: &crate::ffi::HandleGeom2dCurve,
-        C2: &crate::ffi::HandleGeom2dCurve,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C2: &crate::ffi_types::HandleGeom2dCurve,
         U1min: f64,
         U1max: f64,
         U2min: f64,
         U2max: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ExtremaCurveCurve_ctor_handlegeom2dcurve2_real4(
-                    C1, C2, U1min, U1max, U2min, U2max,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_ctor_handlegeom2dcurve2_real4(C1, C2, U1min, U1max, U2min, U2max)))
         }
     }
 
@@ -74,7 +70,9 @@ impl ExtremaCurveCurve {
     /// Note: if this algorithm fails, NbExtrema returns 0.
     pub fn nb_extrema(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_nb_extrema(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_nb_extrema(
+                self as *const Self,
+            )
         })
     }
 
@@ -88,7 +86,12 @@ impl ExtremaCurveCurve {
     /// number of extrema computed by this algorithm.
     pub fn points(&self, Index: i32, P1: &mut crate::gp::Pnt2d, P2: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_points(self as *const Self, Index, P1, P2)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_points(
+                self as *const Self,
+                Index,
+                P1,
+                P2,
+            )
         })
     }
 
@@ -103,7 +106,12 @@ impl ExtremaCurveCurve {
     /// number of extrema computed by this algorithm.
     pub fn parameters(&self, Index: i32, U1: &mut f64, U2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_parameters(self as *const Self, Index, U1, U2)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_parameters(
+                self as *const Self,
+                Index,
+                U1,
+                U2,
+            )
         })
     }
 
@@ -116,7 +124,10 @@ impl ExtremaCurveCurve {
     /// number of extrema computed by this algorithm.
     pub fn distance(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_distance(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_distance(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -127,7 +138,11 @@ impl ExtremaCurveCurve {
     /// Exceptions StdFail_NotDone if this algorithm fails.
     pub fn nearest_points(&self, P1: &mut crate::gp::Pnt2d, P2: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_nearest_points(self as *const Self, P1, P2)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_nearest_points(
+                self as *const Self,
+                P1,
+                P2,
+            )
         })
     }
 
@@ -139,7 +154,7 @@ impl ExtremaCurveCurve {
     /// StdFail_NotDone if this algorithm fails.
     pub fn lower_distance_parameters(&self, U1: &mut f64, U2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_lower_distance_parameters(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_lower_distance_parameters(
                 self as *const Self,
                 U1,
                 U2,
@@ -153,16 +168,20 @@ impl ExtremaCurveCurve {
     /// Exceptions - StdFail_NotDone if this algorithm fails.
     pub fn lower_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ExtremaCurveCurve_lower_distance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_lower_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Geom2dAPI_ExtremaCurveCurve.hxx`:126 - `Geom2dAPI_ExtremaCurveCurve::Extrema()`
     pub fn extrema(&self) -> &crate::extrema::ExtCC2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dAPI_ExtremaCurveCurve_extrema(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ExtremaCurveCurve_extrema(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -179,11 +198,11 @@ impl ExtremaCurveCurve {
 /// -      intersection points in the  case of cross intersections,
 /// -      intersection segments in the case of tangential intersections,
 /// -       nothing in the case of no intersections.
-pub use crate::ffi::Geom2dAPI_InterCurveCurve as InterCurveCurve;
+pub use crate::ffi_types::Geom2dAPI_InterCurveCurve as InterCurveCurve;
 
 unsafe impl crate::CppDeletable for InterCurveCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dAPI_InterCurveCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_destructor(ptr);
     }
 }
 
@@ -195,7 +214,7 @@ impl InterCurveCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_InterCurveCurve_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_ctor(),
             ))
         }
     }
@@ -204,14 +223,12 @@ impl InterCurveCurve {
     /// Creates an object and computes the
     /// intersections between the curves C1 and C2.
     pub fn new_handlegeom2dcurve2_real(
-        C1: &crate::ffi::HandleGeom2dCurve,
-        C2: &crate::ffi::HandleGeom2dCurve,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C2: &crate::ffi_types::HandleGeom2dCurve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_InterCurveCurve_ctor_handlegeom2dcurve2_real(C1, C2, Tol),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_ctor_handlegeom2dcurve2_real(C1, C2, Tol)))
         }
     }
 
@@ -228,12 +245,14 @@ impl InterCurveCurve {
     /// solutions. If the algorithm finds no intersections NbPoints and
     /// NbSegments return 0.
     pub fn new_handlegeom2dcurve_real(
-        C1: &crate::ffi::HandleGeom2dCurve,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_InterCurveCurve_ctor_handlegeom2dcurve_real(C1, Tol),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_ctor_handlegeom2dcurve_real(
+                    C1, Tol,
+                ),
             ))
         }
     }
@@ -242,8 +261,8 @@ impl InterCurveCurve {
     /// Creates an object and computes the
     /// intersections between the curves C1 and C2.
     pub fn new_handlegeom2dcurve2(
-        C1: &crate::ffi::HandleGeom2dCurve,
-        C2: &crate::ffi::HandleGeom2dCurve,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C2: &crate::ffi_types::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve2_real(C1, C2, 1.0e-6)
     }
@@ -260,7 +279,9 @@ impl InterCurveCurve {
     /// Use functions NbPoints and NbSegments to obtain the number of
     /// solutions. If the algorithm finds no intersections NbPoints and
     /// NbSegments return 0.
-    pub fn new_handlegeom2dcurve(C1: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeom2dcurve(
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve_real(C1, 1.0e-6)
     }
 
@@ -269,12 +290,12 @@ impl InterCurveCurve {
     /// given arguments and computes the intersections between the curves C1. and C2.
     pub fn init_handlegeom2dcurve2_real(
         &mut self,
-        C1: &crate::ffi::HandleGeom2dCurve,
-        C2: &crate::ffi::HandleGeom2dCurve,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+        C2: &crate::ffi_types::HandleGeom2dCurve,
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_InterCurveCurve_init_handlegeom2dcurve2_real(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_init_handlegeom2dcurve2_real(
                 self as *mut Self,
                 C1,
                 C2,
@@ -295,9 +316,13 @@ impl InterCurveCurve {
     /// Use functions NbPoints and NbSegments to obtain the number
     /// of solutions. If the algorithm finds no intersections NbPoints
     /// and NbSegments return 0.
-    pub fn init_handlegeom2dcurve_real(&mut self, C1: &crate::ffi::HandleGeom2dCurve, Tol: f64) {
+    pub fn init_handlegeom2dcurve_real(
+        &mut self,
+        C1: &crate::ffi_types::HandleGeom2dCurve,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_InterCurveCurve_init_handlegeom2dcurve_real(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_init_handlegeom2dcurve_real(
                 self as *mut Self,
                 C1,
                 Tol,
@@ -310,7 +335,7 @@ impl InterCurveCurve {
     /// NbPoints returns 0 if no intersections were found.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_InterCurveCurve_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_nb_points(self as *const Self)
         })
     }
 
@@ -325,7 +350,10 @@ impl InterCurveCurve {
     pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_InterCurveCurve_point(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_point(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -335,7 +363,7 @@ impl InterCurveCurve {
     /// NbSegments returns 0 if no intersections were found
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_InterCurveCurve_nb_segments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_nb_segments(self as *const Self)
         })
     }
 
@@ -357,11 +385,11 @@ impl InterCurveCurve {
     pub fn segment(
         &self,
         Index: i32,
-        Curve1: &mut crate::ffi::HandleGeom2dCurve,
-        Curve2: &mut crate::ffi::HandleGeom2dCurve,
+        Curve1: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve2: &mut crate::ffi_types::HandleGeom2dCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_InterCurveCurve_segment(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_segment(
                 self as *const Self,
                 Index,
                 Curve1,
@@ -374,9 +402,11 @@ impl InterCurveCurve {
     /// return the algorithmic object from Intersection.
     pub fn intersector(&self) -> &crate::geom2d_int::GInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dAPI_InterCurveCurve_intersector(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_InterCurveCurve_intersector(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -397,11 +427,11 @@ impl InterCurveCurve {
 /// which the resulting BSpline curve passes, and by vectors tangential to these points.
 /// An Interpolate object provides a framework for: defining the constraints of the BSpline curve,
 /// -   implementing the interpolation algorithm, and consulting the results.
-pub use crate::ffi::Geom2dAPI_Interpolate as Interpolate;
+pub use crate::ffi_types::Geom2dAPI_Interpolate as Interpolate;
 
 unsafe impl crate::CppDeletable for Interpolate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dAPI_Interpolate_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_destructor(ptr);
     }
 }
 
@@ -412,18 +442,12 @@ impl Interpolate {
     /// There should be at least 2 points
     /// if PeriodicFlag is True then the curve will be periodic.
     pub fn new_handletcolgpharray1ofpnt2d_bool_real(
-        Points: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        Points: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_bool_real(
-                    Points,
-                    PeriodicFlag,
-                    Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_bool_real(Points, PeriodicFlag, Tolerance)))
         }
     }
 
@@ -434,13 +458,13 @@ impl Interpolate {
     /// except if PeriodicFlag is True : then there should be one more
     /// parameter to close the curve
     pub fn new_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(
-        Points: &crate::ffi::HandleTColgpHArray1OfPnt2d,
-        Parameters: &crate::ffi::HandleTColStdHArray1OfReal,
+        Points: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
+        Parameters: &crate::ffi_types::HandleTColStdHArray1OfReal,
         PeriodicFlag: bool,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_ctor_handletcolgpharray1ofpnt2d_handletcolstdharray1ofreal_bool_real(Points, Parameters, PeriodicFlag, Tolerance)))
         }
     }
 
@@ -460,7 +484,7 @@ impl Interpolate {
         Scale: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_Interpolate_load_vec2d2_bool(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_load_vec2d2_bool(
                 self as *mut Self,
                 InitialTangent,
                 FinalTangent,
@@ -483,17 +507,12 @@ impl Interpolate {
     /// be scaled according to derivatives of lagrange interpolation.
     pub fn load_array1ofvec2d_handletcolstdharray1ofboolean_bool(
         &mut self,
-        Tangents: &crate::ffi::TColgp_Array1OfVec2d,
-        TangentFlags: &crate::ffi::HandleTColStdHArray1OfBoolean,
+        Tangents: &crate::ffi_types::TColgp_Array1OfVec2d,
+        TangentFlags: &crate::ffi_types::HandleTColStdHArray1OfBoolean,
         Scale: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_Interpolate_load_array1ofvec2d_handletcolstdharray1ofboolean_bool(
-                self as *mut Self,
-                Tangents,
-                TangentFlags,
-                Scale,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_load_array1ofvec2d_handletcolstdharray1ofboolean_bool(self as *mut Self, Tangents, TangentFlags, Scale)
         })
     }
 
@@ -502,7 +521,7 @@ impl Interpolate {
     /// constrained BSpline curve (as initialized by the function Load).
     pub fn clear_tangents(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_Interpolate_clear_tangents(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_clear_tangents(self as *mut Self)
         })
     }
 
@@ -511,15 +530,17 @@ impl Interpolate {
     /// computation is successful, and then the function Curve to obtain the result.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_Interpolate_perform(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_perform(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dAPI_Interpolate.hxx`:102 - `Geom2dAPI_Interpolate::Curve()`
     /// Returns the computed BSpline curve. Raises  StdFail_NotDone if the interpolation fails.
-    pub fn curve(&self) -> &crate::ffi::HandleGeom2dBSplineCurve {
+    pub fn curve(&self) -> &crate::ffi_types::HandleGeom2dBSplineCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dAPI_Interpolate_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -528,7 +549,7 @@ impl Interpolate {
     /// Note: in this case, the result is given by the function Curve.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_Interpolate_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_Interpolate_is_done(self as *const Self)
         })
     }
 }
@@ -547,11 +568,11 @@ impl Interpolate {
 /// -   defining the data of the BSpline curve to be built,
 /// -   implementing the approximation algorithm, and
 /// -   consulting the results
-pub use crate::ffi::Geom2dAPI_PointsToBSpline as PointsToBSpline;
+pub use crate::ffi_types::Geom2dAPI_PointsToBSpline as PointsToBSpline;
 
 unsafe impl crate::CppDeletable for PointsToBSpline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dAPI_PointsToBSpline_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_destructor(ptr);
     }
 }
 
@@ -562,7 +583,7 @@ impl PointsToBSpline {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_PointsToBSpline_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor(),
             ))
         }
     }
@@ -576,22 +597,14 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_int2_shape_real(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_int2_shape_real(
-                    Points,
-                    DegMin,
-                    DegMax,
-                    Continuity.into(),
-                    Tol2D,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_int2_shape_real(Points, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
@@ -616,7 +629,7 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofreal_real2_int2_shape_real(
-        YValues: &crate::ffi::TColStd_Array1OfReal,
+        YValues: &crate::ffi_types::TColStd_Array1OfReal,
         X0: f64,
         DX: f64,
         DegMin: i32,
@@ -625,17 +638,7 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofreal_real2_int2_shape_real(
-                    YValues,
-                    X0,
-                    DX,
-                    DegMin,
-                    DegMax,
-                    Continuity.into(),
-                    Tol2D,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofreal_real2_int2_shape_real(YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
@@ -648,7 +651,7 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_parametrizationtype_int2_shape_real(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
@@ -656,7 +659,7 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_parametrizationtype_int2_shape_real(Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
@@ -671,15 +674,15 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_array1ofreal_int2_shape_real(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_array1ofreal_int2_shape_real(Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_array1ofreal_int2_shape_real(Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)))
         }
     }
 
@@ -689,7 +692,7 @@ impl PointsToBSpline {
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
     pub fn new_array1ofpnt2d_real3_int_shape_real(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
@@ -698,17 +701,7 @@ impl PointsToBSpline {
         Tol3D: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_real3_int_shape_real(
-                    Points,
-                    Weight1,
-                    Weight2,
-                    Weight3,
-                    DegMax,
-                    Continuity.into(),
-                    Tol3D,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_ctor_array1ofpnt2d_real3_int_shape_real(Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol3D)))
         }
     }
 
@@ -721,7 +714,7 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_int2_shape(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
@@ -750,7 +743,7 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofreal_real2_int2_shape(
-        YValues: &crate::ffi::TColStd_Array1OfReal,
+        YValues: &crate::ffi_types::TColStd_Array1OfReal,
         X0: f64,
         DX: f64,
         DegMin: i32,
@@ -771,7 +764,7 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_parametrizationtype_int2_shape(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
@@ -793,8 +786,8 @@ impl PointsToBSpline {
     /// 3- the distance from the point <Points> to the
     /// BSpline will be lower to Tol2D
     pub fn new_array1ofpnt2d_array1ofreal_int2_shape(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
@@ -810,7 +803,7 @@ impl PointsToBSpline {
     /// which tries to minimize additional criterium:
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
     pub fn new_array1ofpnt2d_real3_int_shape(
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
@@ -832,21 +825,14 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol2D
     pub fn init_array1ofpnt2d_int2_shape_real(
         &mut self,
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_int2_shape_real(
-                self as *mut Self,
-                Points,
-                DegMin,
-                DegMax,
-                Continuity.into(),
-                Tol2D,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_int2_shape_real(self as *mut Self, Points, DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
@@ -872,7 +858,7 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol2D
     pub fn init_array1ofreal_real2_int2_shape_real(
         &mut self,
-        YValues: &crate::ffi::TColStd_Array1OfReal,
+        YValues: &crate::ffi_types::TColStd_Array1OfReal,
         X0: f64,
         DX: f64,
         DegMin: i32,
@@ -881,16 +867,7 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofreal_real2_int2_shape_real(
-                self as *mut Self,
-                YValues,
-                X0,
-                DX,
-                DegMin,
-                DegMax,
-                Continuity.into(),
-                Tol2D,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofreal_real2_int2_shape_real(self as *mut Self, YValues, X0, DX, DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
@@ -904,7 +881,7 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol2D
     pub fn init_array1ofpnt2d_parametrizationtype_int2_shape_real(
         &mut self,
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         ParType: crate::approx::ParametrizationType,
         DegMin: i32,
         DegMax: i32,
@@ -912,7 +889,7 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_parametrizationtype_int2_shape_real(self as *mut Self, Points, ParType.into(), DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
@@ -928,23 +905,15 @@ impl PointsToBSpline {
     /// BSpline will be lower to Tol2D
     pub fn init_array1ofpnt2d_array1ofreal_int2_shape_real(
         &mut self,
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
-        Parameters: &crate::ffi::TColStd_Array1OfReal,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        Parameters: &crate::ffi_types::TColStd_Array1OfReal,
         DegMin: i32,
         DegMax: i32,
         Continuity: crate::geom_abs::Shape,
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_array1ofreal_int2_shape_real(
-                self as *mut Self,
-                Points,
-                Parameters,
-                DegMin,
-                DegMax,
-                Continuity.into(),
-                Tol2D,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_array1ofreal_int2_shape_real(self as *mut Self, Points, Parameters, DegMin, DegMax, Continuity.into(), Tol2D)
         })
     }
 
@@ -955,7 +924,7 @@ impl PointsToBSpline {
     /// Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion
     pub fn init_array1ofpnt2d_real3_int_shape_real(
         &mut self,
-        Points: &crate::ffi::TColgp_Array1OfPnt2d,
+        Points: &crate::ffi_types::TColgp_Array1OfPnt2d,
         Weight1: f64,
         Weight2: f64,
         Weight3: f64,
@@ -964,24 +933,15 @@ impl PointsToBSpline {
         Tol2D: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_real3_int_shape_real(
-                self as *mut Self,
-                Points,
-                Weight1,
-                Weight2,
-                Weight3,
-                DegMax,
-                Continuity.into(),
-                Tol2D,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_init_array1ofpnt2d_real3_int_shape_real(self as *mut Self, Points, Weight1, Weight2, Weight3, DegMax, Continuity.into(), Tol2D)
         })
     }
 
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:214 - `Geom2dAPI_PointsToBSpline::Curve()`
     /// Returns the approximate BSpline Curve
-    pub fn curve(&self) -> &crate::ffi::HandleGeom2dBSplineCurve {
+    pub fn curve(&self) -> &crate::ffi_types::HandleGeom2dBSplineCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dAPI_PointsToBSpline_curve(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_curve(
                 self as *const Self,
             )))
         }
@@ -990,7 +950,7 @@ impl PointsToBSpline {
     /// **Source:** `Geom2dAPI_PointsToBSpline.hxx`:217 - `Geom2dAPI_PointsToBSpline::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_PointsToBSpline_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_PointsToBSpline_is_done(self as *const Self)
         })
     }
 }
@@ -1002,11 +962,11 @@ impl PointsToBSpline {
 /// **Source:** `Geom2dAPI_ProjectPointOnCurve.hxx`:32 - `Geom2dAPI_ProjectPointOnCurve`
 /// This class implements methods for computing all the orthogonal
 /// projections of a 2D point onto a 2D curve.
-pub use crate::ffi::Geom2dAPI_ProjectPointOnCurve as ProjectPointOnCurve;
+pub use crate::ffi_types::Geom2dAPI_ProjectPointOnCurve as ProjectPointOnCurve;
 
 unsafe impl crate::CppDeletable for ProjectPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dAPI_ProjectPointOnCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_destructor(ptr);
     }
 }
 
@@ -1017,7 +977,7 @@ impl ProjectPointOnCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ProjectPointOnCurve_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_ctor(),
             ))
         }
     }
@@ -1027,12 +987,10 @@ impl ProjectPointOnCurve {
     /// <Curve>
     pub fn new_pnt2d_handlegeom2dcurve(
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::HandleGeom2dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ProjectPointOnCurve_ctor_pnt2d_handlegeom2dcurve(P, Curve),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_ctor_pnt2d_handlegeom2dcurve(P, Curve)))
         }
     }
 
@@ -1044,16 +1002,12 @@ impl ProjectPointOnCurve {
     /// projection fails, NbPoints returns 0.
     pub fn new_pnt2d_handlegeom2dcurve_real2(
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::HandleGeom2dCurve,
         Umin: f64,
         Usup: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ProjectPointOnCurve_ctor_pnt2d_handlegeom2dcurve_real2(
-                    P, Curve, Umin, Usup,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_ctor_pnt2d_handlegeom2dcurve_real2(P, Curve, Umin, Usup)))
         }
     }
 
@@ -1063,10 +1017,10 @@ impl ProjectPointOnCurve {
     pub fn init_pnt2d_handlegeom2dcurve(
         &mut self,
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::HandleGeom2dCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_init_pnt2d_handlegeom2dcurve(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_init_pnt2d_handlegeom2dcurve(
                 self as *mut Self,
                 P,
                 Curve,
@@ -1081,18 +1035,12 @@ impl ProjectPointOnCurve {
     pub fn init_pnt2d_handlegeom2dcurve_real2(
         &mut self,
         P: &crate::gp::Pnt2d,
-        Curve: &crate::ffi::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::HandleGeom2dCurve,
         Umin: f64,
         Usup: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_init_pnt2d_handlegeom2dcurve_real2(
-                self as *mut Self,
-                P,
-                Curve,
-                Umin,
-                Usup,
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_init_pnt2d_handlegeom2dcurve_real2(self as *mut Self, P, Curve, Umin, Usup)
         })
     }
 
@@ -1101,7 +1049,9 @@ impl ProjectPointOnCurve {
     /// orthogonal projectionn points.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_nb_points(
+                self as *const Self,
+            )
         })
     }
 
@@ -1114,7 +1064,10 @@ impl ProjectPointOnCurve {
     pub fn point(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ProjectPointOnCurve_point(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_point(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1128,7 +1081,10 @@ impl ProjectPointOnCurve {
     /// NbPoints is the number of solution points.
     pub fn parameter_int(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_parameter_int(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_parameter_int(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -1141,7 +1097,7 @@ impl ProjectPointOnCurve {
     /// NbPoints is the number of solution points
     pub fn parameter_int_real(&self, Index: i32, U: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_parameter_int_real(
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_parameter_int_real(
                 self as *const Self,
                 Index,
                 U,
@@ -1158,7 +1114,10 @@ impl ProjectPointOnCurve {
     /// NbPoints is the number of solution points.
     pub fn distance(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_distance(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_distance(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -1169,7 +1128,9 @@ impl ProjectPointOnCurve {
     pub fn nearest_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dAPI_ProjectPointOnCurve_nearest_point(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_nearest_point(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1181,7 +1142,9 @@ impl ProjectPointOnCurve {
     /// StdFail_NotDone if this algorithm fails.
     pub fn lower_distance_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_lower_distance_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_lower_distance_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -1192,7 +1155,9 @@ impl ProjectPointOnCurve {
     /// StdFail_NotDone if this algorithm fails.
     pub fn lower_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dAPI_ProjectPointOnCurve_lower_distance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_lower_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -1200,9 +1165,11 @@ impl ProjectPointOnCurve {
     /// return the algorithmic object from Extrema
     pub fn extrema(&self) -> &crate::extrema::ExtPC2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dAPI_ProjectPointOnCurve_extrema(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dAPI_ProjectPointOnCurve_extrema(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }

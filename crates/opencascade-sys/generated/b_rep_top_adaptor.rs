@@ -7,18 +7,20 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleAdaptor3dHVertex, HandleAdaptor3dTopolTool, HandleStandardTransient};
+pub use crate::ffi_types::{
+    HandleAdaptor3dHVertex, HandleAdaptor3dTopolTool, HandleStandardTransient,
+};
 
 // ========================
 // From BRepTopAdaptor_FClass2d.hxx
 // ========================
 
 /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:29 - `BRepTopAdaptor_FClass2d`
-pub use crate::ffi::BRepTopAdaptor_FClass2d as FClass2d;
+pub use crate::ffi_types::BRepTopAdaptor_FClass2d as FClass2d;
 
 unsafe impl crate::CppDeletable for FClass2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepTopAdaptor_FClass2d_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_destructor(ptr);
     }
 }
 
@@ -27,7 +29,7 @@ impl FClass2d {
     pub fn new_face_real(F: &crate::topo_ds::Face, Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_FClass2d_ctor_face_real(F, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_ctor_face_real(F, Tol),
             ))
         }
     }
@@ -35,7 +37,9 @@ impl FClass2d {
     /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:36 - `BRepTopAdaptor_FClass2d::PerformInfinitePoint()`
     pub fn perform_infinite_point(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_FClass2d_perform_infinite_point(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_perform_infinite_point(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -47,7 +51,11 @@ impl FClass2d {
         RecadreOnPeriodic: bool,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_FClass2d_perform(self as *const Self, Puv, RecadreOnPeriodic)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_perform(
+                self as *const Self,
+                Puv,
+                RecadreOnPeriodic,
+            )
         }))
         .unwrap()
     }
@@ -55,7 +63,7 @@ impl FClass2d {
     /// **Source:** `BRepTopAdaptor_FClass2d.hxx`:41 - `BRepTopAdaptor_FClass2d::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_FClass2d_destroy(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_destroy(self as *mut Self)
         })
     }
 
@@ -68,7 +76,7 @@ impl FClass2d {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&self, Other: &FClass2d) -> &FClass2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepTopAdaptor_FClass2d_copy(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_copy(
                 self as *const Self,
                 Other,
             )))
@@ -86,7 +94,7 @@ impl FClass2d {
         RecadreOnPeriodic: bool,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_FClass2d_test_on_restriction(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_FClass2d_test_on_restriction(
                 self as *const Self,
                 Puv,
                 Tol,
@@ -102,11 +110,11 @@ impl FClass2d {
 // ========================
 
 /// **Source:** `BRepTopAdaptor_HVertex.hxx`:32 - `BRepTopAdaptor_HVertex`
-pub use crate::ffi::BRepTopAdaptor_HVertex as HVertex;
+pub use crate::ffi_types::BRepTopAdaptor_HVertex as HVertex;
 
 unsafe impl crate::CppDeletable for HVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepTopAdaptor_HVertex_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_destructor(ptr);
     }
 }
 
@@ -114,28 +122,30 @@ impl HVertex {
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:36 - `BRepTopAdaptor_HVertex::BRepTopAdaptor_HVertex()`
     pub fn new_vertex_handlebrepadaptorcurve2d(
         Vtx: &crate::topo_ds::Vertex,
-        Curve: &crate::ffi::HandleBRepAdaptorCurve2d,
+        Curve: &crate::ffi_types::HandleBRepAdaptorCurve2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_HVertex_ctor_vertex_handlebrepadaptorcurve2d(Vtx, Curve),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_ctor_vertex_handlebrepadaptorcurve2d(Vtx, Curve)))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:39 - `BRepTopAdaptor_HVertex::Vertex()`
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:41 - `BRepTopAdaptor_HVertex::ChangeVertex()`
     pub fn change_vertex(&mut self) -> &mut crate::topo_ds::Vertex {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_change_vertex(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_change_vertex(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -143,47 +153,49 @@ impl HVertex {
     pub fn value(&mut self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_HVertex_value(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_value(self as *mut Self),
             ))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:45 - `BRepTopAdaptor_HVertex::Parameter()`
-    pub fn parameter(&mut self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn parameter(&mut self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_parameter(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_parameter(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:49 - `BRepTopAdaptor_HVertex::Resolution()`
     /// Parametric resolution (2d).
-    pub fn resolution(&mut self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn resolution(&mut self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_resolution(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_resolution(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:52 - `BRepTopAdaptor_HVertex::Orientation()`
     pub fn orientation(&mut self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_orientation(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_orientation(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:54 - `BRepTopAdaptor_HVertex::IsSame()`
-    pub fn is_same(&mut self, Other: &crate::ffi::HandleAdaptor3dHVertex) -> bool {
+    pub fn is_same(&mut self, Other: &crate::ffi_types::HandleAdaptor3dHVertex) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_is_same(self as *mut Self, Other)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_is_same(self as *mut Self, Other)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -191,7 +203,7 @@ impl HVertex {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepTopAdaptor_HVertex_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -199,68 +211,86 @@ impl HVertex {
     }
 
     /// **Source:** `BRepTopAdaptor_HVertex.hxx`:57 - `BRepTopAdaptor_HVertex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Adaptor3d_HVertex
     pub fn as_adaptor3d_h_vertex(&self) -> &crate::adaptor3d::HVertex {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_as_Adaptor3d_HVertex(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_as_Adaptor3d_HVertex(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Adaptor3d_HVertex (mutable)
     pub fn as_adaptor3d_h_vertex_mut(&mut self) -> &mut crate::adaptor3d::HVertex {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_as_Adaptor3d_HVertex_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_as_Adaptor3d_HVertex_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepTopAdaptor_HVertex_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorHVertex> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepTopAdaptorHVertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_HVertex_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -268,7 +298,9 @@ impl HVertex {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepTopAdaptor_HVertex_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -281,62 +313,72 @@ impl HVertex {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_HVertex_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_HVertex_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBRepTopAdaptorHVertex;
+pub use crate::ffi_types::HandleBRepTopAdaptorHVertex;
 
 unsafe impl crate::CppDeletable for HandleBRepTopAdaptorHVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepTopAdaptorHVertex_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_destructor(ptr);
     }
 }
 
 impl HandleBRepTopAdaptorHVertex {
     /// Dereference this Handle to access the underlying BRepTopAdaptor_HVertex
-    pub fn get(&self) -> &crate::ffi::BRepTopAdaptor_HVertex {
+    pub fn get(&self) -> &crate::ffi_types::BRepTopAdaptor_HVertex {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepTopAdaptorHVertex_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BRepTopAdaptor_HVertex
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTopAdaptor_HVertex {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepTopAdaptorHVertex_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying BRepTopAdaptor_HVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepTopAdaptor_HVertex {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<BRepTopAdaptor_HVertex> to Handle<Adaptor3d_HVertex>
-    pub fn to_handle_h_vertex(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex> {
+    pub fn to_handle_h_vertex(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dHVertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepTopAdaptorHVertex_to_HandleAdaptor3dHVertex(
+                crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_to_HandleAdaptor3dHVertex(
                     self as *const Self,
                 ),
             ))
@@ -344,10 +386,12 @@ impl HandleBRepTopAdaptorHVertex {
     }
 
     /// Upcast Handle<BRepTopAdaptor_HVertex> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepTopAdaptorHVertex_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorHVertex_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -360,11 +404,11 @@ impl HandleBRepTopAdaptorHVertex {
 // ========================
 
 /// **Source:** `BRepTopAdaptor_Tool.hxx`:25 - `BRepTopAdaptor_Tool`
-pub use crate::ffi::BRepTopAdaptor_Tool as Tool;
+pub use crate::ffi_types::BRepTopAdaptor_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepTopAdaptor_Tool_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_destructor(ptr);
     }
 }
 
@@ -372,7 +416,9 @@ impl Tool {
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:30 - `BRepTopAdaptor_Tool::BRepTopAdaptor_Tool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepTopAdaptor_Tool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_ctor(),
+            ))
         }
     }
 
@@ -380,19 +426,21 @@ impl Tool {
     pub fn new_face_real(F: &crate::topo_ds::Face, Tol2d: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_Tool_ctor_face_real(F, Tol2d),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_ctor_face_real(F, Tol2d),
             ))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:34 - `BRepTopAdaptor_Tool::BRepTopAdaptor_Tool()`
     pub fn new_handleadaptor3dsurface_real(
-        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol2d: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_Tool_ctor_handleadaptor3dsurface_real(Surface, Tol2d),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_ctor_handleadaptor3dsurface_real(
+                    Surface, Tol2d,
+                ),
             ))
         }
     }
@@ -400,18 +448,22 @@ impl Tool {
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:37 - `BRepTopAdaptor_Tool::Init()`
     pub fn init_face_real(&mut self, F: &crate::topo_ds::Face, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_Tool_init_face_real(self as *mut Self, F, Tol2d)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_init_face_real(
+                self as *mut Self,
+                F,
+                Tol2d,
+            )
         })
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:39 - `BRepTopAdaptor_Tool::Init()`
     pub fn init_handleadaptor3dsurface_real(
         &mut self,
-        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol2d: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_Tool_init_handleadaptor3dsurface_real(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_init_handleadaptor3dsurface_real(
                 self as *mut Self,
                 Surface,
                 Tol2d,
@@ -420,26 +472,28 @@ impl Tool {
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:41 - `BRepTopAdaptor_Tool::GetTopolTool()`
-    pub fn get_topol_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorTopolTool> {
+    pub fn get_topol_tool(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepTopAdaptorTopolTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_Tool_get_topol_tool(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_get_topol_tool(self as *mut Self),
             ))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:43 - `BRepTopAdaptor_Tool::SetTopolTool()`
-    pub fn set_topol_tool(&mut self, TT: &crate::ffi::HandleBRepTopAdaptorTopolTool) {
+    pub fn set_topol_tool(&mut self, TT: &crate::ffi_types::HandleBRepTopAdaptorTopolTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_Tool_set_topol_tool(self as *mut Self, TT)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_set_topol_tool(self as *mut Self, TT)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:45 - `BRepTopAdaptor_Tool::GetSurface()`
-    pub fn get_surface(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    pub fn get_surface(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_Tool_get_surface(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_get_surface(self as *mut Self),
             ))
         }
     }
@@ -447,7 +501,7 @@ impl Tool {
     /// **Source:** `BRepTopAdaptor_Tool.hxx`:47 - `BRepTopAdaptor_Tool::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_Tool_destroy(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_Tool_destroy(self as *mut Self)
         })
     }
 }
@@ -457,11 +511,11 @@ impl Tool {
 // ========================
 
 /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:37 - `BRepTopAdaptor_TopolTool`
-pub use crate::ffi::BRepTopAdaptor_TopolTool as TopolTool;
+pub use crate::ffi_types::BRepTopAdaptor_TopolTool as TopolTool;
 
 unsafe impl crate::CppDeletable for TopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepTopAdaptor_TopolTool_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_destructor(ptr);
     }
 }
 
@@ -470,18 +524,20 @@ impl TopolTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_ctor(),
             ))
         }
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:43 - `BRepTopAdaptor_TopolTool::BRepTopAdaptor_TopolTool()`
     pub fn new_handleadaptor3dsurface(
-        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_ctor_handleadaptor3dsurface(Surface),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_ctor_handleadaptor3dsurface(
+                    Surface,
+                ),
             ))
         }
     }
@@ -489,14 +545,17 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:45 - `BRepTopAdaptor_TopolTool::Initialize()`
     pub fn initialize(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_initialize(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_initialize(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:47 - `BRepTopAdaptor_TopolTool::Initialize()`
-    pub fn initialize_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn initialize_handleadaptor3dsurface(
+        &mut self,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_initialize_handleadaptor3dsurface(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_initialize_handleadaptor3dsurface(
                 self as *mut Self,
                 S,
             )
@@ -506,10 +565,10 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:49 - `BRepTopAdaptor_TopolTool::Initialize()`
     pub fn initialize_handleadaptor2dcurve2d(
         &mut self,
-        Curve: &crate::ffi::HandleAdaptor2dCurve2d,
+        Curve: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_initialize_handleadaptor2dcurve2d(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_initialize_handleadaptor2dcurve2d(
                 self as *mut Self,
                 Curve,
             )
@@ -519,20 +578,22 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:51 - `BRepTopAdaptor_TopolTool::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_init(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_init(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:53 - `BRepTopAdaptor_TopolTool::More()`
     pub fn more(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepTopAdaptor_TopolTool_more(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_more(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:55 - `BRepTopAdaptor_TopolTool::Value()`
-    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_value(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_value(self as *mut Self),
             ))
         }
     }
@@ -540,36 +601,38 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:57 - `BRepTopAdaptor_TopolTool::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_next(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_next(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:59 - `BRepTopAdaptor_TopolTool::Edge()`
     pub unsafe fn edge(&self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_edge(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_edge(self as *const Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:61 - `BRepTopAdaptor_TopolTool::InitVertexIterator()`
     pub fn init_vertex_iterator(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_init_vertex_iterator(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_init_vertex_iterator(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:63 - `BRepTopAdaptor_TopolTool::MoreVertex()`
     pub fn more_vertex(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_more_vertex(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_more_vertex(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:65 - `BRepTopAdaptor_TopolTool::Vertex()`
-    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex> {
+    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dHVertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_vertex(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_vertex(self as *mut Self),
             ))
         }
     }
@@ -577,7 +640,7 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:67 - `BRepTopAdaptor_TopolTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_next_vertex(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_next_vertex(self as *mut Self)
         })
     }
 
@@ -589,7 +652,7 @@ impl TopolTool {
         RecadreOnPeriodic: bool,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_classify(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_classify(
                 self as *mut Self,
                 P2d,
                 Tol,
@@ -608,7 +671,7 @@ impl TopolTool {
         RecadreOnPeriodic: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_is_the_point_on(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_is_the_point_on(
                 self as *mut Self,
                 P2d,
                 Tol,
@@ -625,15 +688,9 @@ impl TopolTool {
     /// considered as an arc on the surface.
     pub fn orientation_handleadaptor2dcurve2d(
         &mut self,
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) -> crate::top_abs::Orientation {
-        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_orientation_handleadaptor2dcurve2d(
-                self as *mut Self,
-                C,
-            )
-        }))
-        .unwrap()
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_orientation_handleadaptor2dcurve2d(self as *mut Self, C) })).unwrap()
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:93 - `BRepTopAdaptor_TopolTool::Orientation()`
@@ -644,21 +701,15 @@ impl TopolTool {
     /// considered as an arc on the surface.
     pub fn orientation_handleadaptor3dhvertex(
         &mut self,
-        C: &crate::ffi::HandleAdaptor3dHVertex,
+        C: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) -> crate::top_abs::Orientation {
-        crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_orientation_handleadaptor3dhvertex(
-                self as *mut Self,
-                C,
-            )
-        }))
-        .unwrap()
+        crate::top_abs::Orientation::try_from(crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_orientation_handleadaptor3dhvertex(self as *mut Self, C) })).unwrap()
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:96 - `BRepTopAdaptor_TopolTool::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_destroy(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_destroy(self as *mut Self)
         })
     }
 
@@ -667,15 +718,18 @@ impl TopolTool {
     /// so that we could use Tol3d and Pnt methods.
     pub fn has3d(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_has3d(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_has3d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:105 - `BRepTopAdaptor_TopolTool::Tol3d()`
     /// returns 3d tolerance of the arc C
-    pub fn tol3d_handleadaptor2dcurve2d(&self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn tol3d_handleadaptor2dcurve2d(
+        &self,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_tol3d_handleadaptor2dcurve2d(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_tol3d_handleadaptor2dcurve2d(
                 self as *const Self,
                 C,
             )
@@ -684,9 +738,12 @@ impl TopolTool {
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:109 - `BRepTopAdaptor_TopolTool::Tol3d()`
     /// returns 3d tolerance of the vertex V
-    pub fn tol3d_handleadaptor3dhvertex(&self, V: &crate::ffi::HandleAdaptor3dHVertex) -> f64 {
+    pub fn tol3d_handleadaptor3dhvertex(
+        &self,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+    ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_tol3d_handleadaptor3dhvertex(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_tol3d_handleadaptor3dhvertex(
                 self as *const Self,
                 V,
             )
@@ -695,10 +752,13 @@ impl TopolTool {
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:113 - `BRepTopAdaptor_TopolTool::Pnt()`
     /// returns 3d point of the vertex V
-    pub fn pnt(&self, V: &crate::ffi::HandleAdaptor3dHVertex) -> crate::OwnedPtr<crate::gp::Pnt> {
+    pub fn pnt(
+        &self,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_pnt(self as *const Self, V),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_pnt(self as *const Self, V),
             ))
         }
     }
@@ -706,7 +766,9 @@ impl TopolTool {
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:115 - `BRepTopAdaptor_TopolTool::ComputeSamplePoints()`
     pub fn compute_sample_points(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_compute_sample_points(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_compute_sample_points(
+                self as *mut Self,
+            )
         })
     }
 
@@ -714,7 +776,7 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples_u(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_nb_samples_u(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_nb_samples_u(self as *mut Self)
         })
     }
 
@@ -722,7 +784,7 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples_v(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_nb_samples_v(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_nb_samples_v(self as *mut Self)
         })
     }
 
@@ -730,7 +792,7 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_nb_samples(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_nb_samples(self as *mut Self)
         })
     }
 
@@ -742,23 +804,32 @@ impl TopolTool {
         P3d: &mut crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_sample_point(self as *mut Self, Index, P2d, P3d)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_sample_point(
+                self as *mut Self,
+                Index,
+                P2d,
+                P3d,
+            )
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:130 - `BRepTopAdaptor_TopolTool::DomainIsInfinite()`
     pub fn domain_is_infinite(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_domain_is_infinite(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_domain_is_infinite(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepTopAdaptor_TopolTool_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -766,7 +837,7 @@ impl TopolTool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -774,18 +845,22 @@ impl TopolTool {
     }
 
     /// **Source:** `BRepTopAdaptor_TopolTool.hxx`:132 - `BRepTopAdaptor_TopolTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepTopAdaptor_TopolTool_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Adaptor3d_TopolTool
     pub fn as_adaptor3d_topol_tool(&self) -> &crate::adaptor3d::TopolTool {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepTopAdaptor_TopolTool_as_Adaptor3d_TopolTool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_as_Adaptor3d_TopolTool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -793,7 +868,9 @@ impl TopolTool {
     pub fn as_adaptor3d_topol_tool_mut(&mut self) -> &mut crate::adaptor3d::TopolTool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_as_Adaptor3d_TopolTool_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_as_Adaptor3d_TopolTool_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -801,9 +878,11 @@ impl TopolTool {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepTopAdaptor_TopolTool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -811,7 +890,9 @@ impl TopolTool {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -819,10 +900,10 @@ impl TopolTool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorTopolTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepTopAdaptorTopolTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepTopAdaptor_TopolTool_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -830,18 +911,22 @@ impl TopolTool {
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:92 - `Adaptor3d_TopolTool::Identical()`
     pub fn identical(
         &mut self,
-        V1: &crate::ffi::HandleAdaptor3dHVertex,
-        V2: &crate::ffi::HandleAdaptor3dHVertex,
+        V1: &crate::ffi_types::HandleAdaptor3dHVertex,
+        V2: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_Identical(self as *mut Self, V1, V2)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_Identical(
+                self as *mut Self,
+                V1,
+                V2,
+            )
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
-    pub fn u_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn u_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_UParameters(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_UParameters(
                 self as *const Self,
                 theArray,
             )
@@ -849,9 +934,9 @@ impl TopolTool {
     }
 
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
-    pub fn v_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn v_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_VParameters(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_VParameters(
                 self as *const Self,
                 theArray,
             )
@@ -861,7 +946,7 @@ impl TopolTool {
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:141 - `Adaptor3d_TopolTool::SamplePnts()`
     pub fn sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_SamplePnts(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_SamplePnts(
                 self as *mut Self,
                 theDefl,
                 theNUmin,
@@ -873,7 +958,7 @@ impl TopolTool {
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:150 - `Adaptor3d_TopolTool::BSplSamplePnts()`
     pub fn b_spl_sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_BSplSamplePnts(
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_BSplSamplePnts(
                 self as *mut Self,
                 theDefl,
                 theNUmin,
@@ -885,21 +970,29 @@ impl TopolTool {
     /// Inherited: **Source:** `Adaptor3d_TopolTool.hxx`:155 - `Adaptor3d_TopolTool::IsUniformSampling()`
     pub fn is_uniform_sampling(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_IsUniformSampling(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_IsUniformSampling(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -907,7 +1000,9 @@ impl TopolTool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepTopAdaptor_TopolTool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -920,78 +1015,84 @@ impl TopolTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepTopAdaptor_TopolTool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepTopAdaptor_TopolTool_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBRepTopAdaptorTopolTool;
+pub use crate::ffi_types::HandleBRepTopAdaptorTopolTool;
 
 unsafe impl crate::CppDeletable for HandleBRepTopAdaptorTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepTopAdaptorTopolTool_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_destructor(ptr);
     }
 }
 
 impl HandleBRepTopAdaptorTopolTool {
     /// Dereference this Handle to access the underlying BRepTopAdaptor_TopolTool
-    pub fn get(&self) -> &crate::ffi::BRepTopAdaptor_TopolTool {
+    pub fn get(&self) -> &crate::ffi_types::BRepTopAdaptor_TopolTool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepTopAdaptorTopolTool_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepTopAdaptor_TopolTool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepTopAdaptor_TopolTool {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepTopAdaptor_TopolTool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepTopAdaptorTopolTool_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BRepTopAdaptor_TopolTool> to Handle<Adaptor3d_TopolTool>
-    pub fn to_handle_topol_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool> {
+    pub fn to_handle_topol_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dTopolTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepTopAdaptorTopolTool_to_HandleAdaptor3dTopolTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_to_HandleAdaptor3dTopolTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepTopAdaptor_TopolTool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepTopAdaptorTopolTool_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepTopAdaptorTopolTool_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1000,4 +1101,4 @@ impl HandleBRepTopAdaptorTopolTool {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::BRepTopAdaptor_MapOfShapeTool as MapOfShapeTool;
+pub use crate::ffi_types::BRepTopAdaptor_MapOfShapeTool as MapOfShapeTool;

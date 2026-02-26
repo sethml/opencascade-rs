@@ -21,7 +21,7 @@ pub fn plane_equation(
     PolarDistance: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance)
+        crate::ffi_extern_TKGeomAlgo::Intf_plane_equation(P1, P2, P3, NormalVector, PolarDistance)
     })
 }
 /// **Source:** `Intf.hxx`:51 - `Intf::Contain`
@@ -32,7 +32,7 @@ pub fn contain(
     P3: &crate::gp::Pnt,
     ThePnt: &crate::gp::Pnt,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::Intf_contain(P1, P2, P3, ThePnt) })
+    crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::Intf_contain(P1, P2, P3, ThePnt) })
 }
 
 /// Describes the different intersection  point types for this
@@ -76,7 +76,7 @@ impl TryFrom<i32> for PIType {
 /// between polygon2d or polygon3d or polyhedron
 /// (as  three sequences   of  points  of  intersection,
 /// polylines of intersection and zones de tangence).
-pub use crate::ffi::Intf_Interference as Interference;
+pub use crate::ffi_types::Intf_Interference as Interference;
 
 impl Interference {
     /// **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
@@ -84,7 +84,7 @@ impl Interference {
     /// interference.
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_nb_section_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_nb_section_points(self as *const Self)
         })
     }
 
@@ -93,7 +93,7 @@ impl Interference {
     /// the interference.
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_Interference_pnt_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_Interference_pnt_value(
                 self as *const Self,
                 Index,
             )))
@@ -105,7 +105,7 @@ impl Interference {
     /// interference.
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_nb_section_lines(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_nb_section_lines(self as *const Self)
         })
     }
 
@@ -114,7 +114,7 @@ impl Interference {
     /// the interference.
     pub fn line_value(&self, Index: i32) -> &SectionLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_Interference_line_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_Interference_line_value(
                 self as *const Self,
                 Index,
             )))
@@ -125,7 +125,7 @@ impl Interference {
     /// Gives the number of zones of tangence in the interference.
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_nb_tangent_zones(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_nb_tangent_zones(self as *const Self)
         })
     }
 
@@ -134,7 +134,7 @@ impl Interference {
     /// interference.
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_Interference_zone_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_Interference_zone_value(
                 self as *const Self,
                 Index,
             )))
@@ -145,7 +145,7 @@ impl Interference {
     /// Gives the tolerance used for the calculation.
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_get_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_get_tolerance(self as *const Self)
         })
     }
 
@@ -154,7 +154,7 @@ impl Interference {
     /// tangence contain the point of intersection <ThePnt>.
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_contains(self as *const Self, ThePnt)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_contains(self as *const Self, ThePnt)
         })
     }
 
@@ -164,7 +164,10 @@ impl Interference {
     /// when done.
     pub fn insert_tangentzone(&mut self, TheZone: &TangentZone) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Interference_insert_tangentzone(self as *mut Self, TheZone)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_insert_tangentzone(
+                self as *mut Self,
+                TheZone,
+            )
         })
     }
 
@@ -173,13 +176,19 @@ impl Interference {
     /// polylines of intersection of the interference.
     pub fn insert_sectionpoint2(&mut self, pdeb: &SectionPoint, pfin: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Interference_insert_sectionpoint2(self as *mut Self, pdeb, pfin)
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_insert_sectionpoint2(
+                self as *mut Self,
+                pdeb,
+                pfin,
+            )
         })
     }
 
     /// **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
-        crate::check_void_result(unsafe { crate::ffi::Intf_Interference_dump(self as *const Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Interference_dump(self as *const Self)
+        })
     }
 }
 
@@ -191,11 +200,11 @@ impl Interference {
 /// Computes the  interference between two  polygons or
 /// the    self intersection of    a  polygon  in  two
 /// dimensions.
-pub use crate::ffi::Intf_InterferencePolygon2d as InterferencePolygon2d;
+pub use crate::ffi_types::Intf_InterferencePolygon2d as InterferencePolygon2d;
 
 unsafe impl crate::CppDeletable for InterferencePolygon2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_InterferencePolygon2d_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_destructor(ptr);
     }
 }
 
@@ -205,7 +214,7 @@ impl InterferencePolygon2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_InterferencePolygon2d_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_ctor(),
             ))
         }
     }
@@ -215,7 +224,9 @@ impl InterferencePolygon2d {
     pub fn new_polygon2d2(Obje1: &Polygon2d, Obje2: &Polygon2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d2(Obje1, Obje2),
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_ctor_polygon2d2(
+                    Obje1, Obje2,
+                ),
             ))
         }
     }
@@ -225,7 +236,7 @@ impl InterferencePolygon2d {
     pub fn new_polygon2d(Obje: &Polygon2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_InterferencePolygon2d_ctor_polygon2d(Obje),
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_ctor_polygon2d(Obje),
             ))
         }
     }
@@ -234,7 +245,7 @@ impl InterferencePolygon2d {
     /// Computes an interference between two Polygons.
     pub fn perform_polygon2d2(&mut self, Obje1: &Polygon2d, Obje2: &Polygon2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d2(
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_perform_polygon2d2(
                 self as *mut Self,
                 Obje1,
                 Obje2,
@@ -246,7 +257,10 @@ impl InterferencePolygon2d {
     /// Computes the self interference of a Polygon.
     pub fn perform_polygon2d(&mut self, Obje: &Polygon2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_perform_polygon2d(self as *mut Self, Obje)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_perform_polygon2d(
+                self as *mut Self,
+                Obje,
+            )
         })
     }
 
@@ -256,7 +270,10 @@ impl InterferencePolygon2d {
     pub fn pnt2d_value(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_InterferencePolygon2d_pnt2d_value(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_pnt2d_value(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -264,9 +281,11 @@ impl InterferencePolygon2d {
     /// Upcast to Intf_Interference
     pub fn as_interference(&self) -> &Interference {
         unsafe {
-            &*crate::check_result(crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_as_Intf_Interference(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -274,7 +293,9 @@ impl InterferencePolygon2d {
     pub fn as_interference_mut(&mut self) -> &mut Interference {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Intf_InterferencePolygon2d_as_Intf_Interference_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_as_Intf_Interference_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -282,79 +303,101 @@ impl InterferencePolygon2d {
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionPoints(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbSectionPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:47 - `Intf_Interference::PntValue()`
     pub fn pnt_value(&self, Index: i32) -> &SectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_PntValue(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_PntValue(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_NbSectionLines(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbSectionLines(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:55 - `Intf_Interference::LineValue()`
     pub fn line_value(&self, Index: i32) -> &SectionLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_LineValue(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_LineValue(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_NbTangentZones(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_NbTangentZones(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:62 - `Intf_Interference::ZoneValue()`
     pub fn zone_value(&self, Index: i32) -> &TangentZone {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_InterferencePolygon2d_inherited_ZoneValue(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_ZoneValue(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_GetTolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_GetTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_Contains(self as *const Self, ThePnt)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Contains(
+                self as *const Self,
+                ThePnt,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &TangentZone) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_Insert(self as *mut Self, TheZone)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Insert(
+                self as *mut Self,
+                TheZone,
+            )
         })
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_InterferencePolygon2d_inherited_Dump(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_InterferencePolygon2d_inherited_Dump(
+                self as *const Self,
+            )
         })
     }
 }
@@ -366,11 +409,11 @@ impl InterferencePolygon2d {
 /// **Source:** `Intf_Polygon2d.hxx`:29 - `Intf_Polygon2d`
 /// Describes the necessary polygon information to compute
 /// the interferences.
-pub use crate::ffi::Intf_Polygon2d as Polygon2d;
+pub use crate::ffi_types::Intf_Polygon2d as Polygon2d;
 
 unsafe impl crate::CppDeletable for Polygon2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_Polygon2d_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_destructor(ptr);
     }
 }
 
@@ -378,27 +421,37 @@ impl Polygon2d {
     /// **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
     /// Returns the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::bnd::Box2d {
-        unsafe { &*(crate::check_result(crate::ffi::Intf_Polygon2d_bounding(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_bounding(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:38 - `Intf_Polygon2d::Closed()`
     /// Returns True if the polyline is closed.
     pub fn closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Intf_Polygon2d_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:43 - `Intf_Polygon2d::DeflectionOverEstimation()`
     /// Returns the tolerance of the polygon.
     pub fn deflection_over_estimation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Polygon2d_deflection_over_estimation(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_deflection_over_estimation(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:46 - `Intf_Polygon2d::NbSegments()`
     /// Returns the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Intf_Polygon2d_nb_segments(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Polygon2d.hxx`:49 - `Intf_Polygon2d::Segment()`
@@ -410,7 +463,12 @@ impl Polygon2d {
         theEnd: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Polygon2d_segment(self as *const Self, theIndex, theBegin, theEnd)
+            crate::ffi_extern_TKGeomAlgo::Intf_Polygon2d_segment(
+                self as *const Self,
+                theIndex,
+                theBegin,
+                theEnd,
+            )
         })
     }
 }
@@ -422,11 +480,11 @@ impl Polygon2d {
 /// **Source:** `Intf_SectionLine.hxx`:30 - `Intf_SectionLine`
 /// Describe    a  polyline  of   intersection  between two
 /// polyhedra as a sequence of points of intersection.
-pub use crate::ffi::Intf_SectionLine as SectionLine;
+pub use crate::ffi_types::Intf_SectionLine as SectionLine;
 
 unsafe impl crate::CppDeletable for SectionLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_SectionLine_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_destructor(ptr);
     }
 }
 
@@ -435,7 +493,9 @@ impl SectionLine {
     /// Constructs an empty SectionLine.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionLine_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_ctor(),
+            ))
         }
     }
 
@@ -443,7 +503,7 @@ impl SectionLine {
     /// Returns number of points in this SectionLine.
     pub fn number_of_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionLine_number_of_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_number_of_points(self as *const Self)
         })
     }
 
@@ -452,7 +512,7 @@ impl SectionLine {
     /// SectionLine.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_SectionLine_get_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_get_point(
                 self as *const Self,
                 Index,
             )))
@@ -462,14 +522,16 @@ impl SectionLine {
     /// **Source:** `Intf_SectionLine.hxx`:43 - `Intf_SectionLine::IsClosed()`
     /// Returns True if the SectionLine is closed.
     pub fn is_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Intf_SectionLine_is_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:46 - `Intf_SectionLine::Contains()`
     /// Returns True if ThePI is in the SectionLine <me>.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionLine_contains(self as *const Self, ThePI)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_contains(self as *const Self, ThePI)
         })
     }
 
@@ -478,7 +540,7 @@ impl SectionLine {
     /// for the beginning, 2 for the end, otherwise 0.
     pub fn is_end(&self, ThePI: &SectionPoint) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionLine_is_end(self as *const Self, ThePI)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_is_end(self as *const Self, ThePI)
         })
     }
 
@@ -486,7 +548,7 @@ impl SectionLine {
     /// Compares two SectionLines.
     pub fn is_equal(&self, Other: &SectionLine) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionLine_is_equal(self as *const Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_is_equal(self as *const Self, Other)
         })
     }
 
@@ -494,7 +556,10 @@ impl SectionLine {
     /// Adds a point at the end of the SectionLine.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionLine_append_sectionpoint(self as *mut Self, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_append_sectionpoint(
+                self as *mut Self,
+                Pi,
+            )
         })
     }
 
@@ -503,7 +568,7 @@ impl SectionLine {
     /// SectionLine <me>.
     pub fn append_sectionline(&mut self, LS: &mut SectionLine) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionLine_append_sectionline(self as *mut Self, LS)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_append_sectionline(self as *mut Self, LS)
         })
     }
 
@@ -511,7 +576,10 @@ impl SectionLine {
     /// Adds a point to the beginning of the SectionLine <me>.
     pub fn prepend_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionLine_prepend_sectionpoint(self as *mut Self, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_prepend_sectionpoint(
+                self as *mut Self,
+                Pi,
+            )
         })
     }
 
@@ -520,35 +588,42 @@ impl SectionLine {
     /// SectionLine <me>.
     pub fn prepend_sectionline(&mut self, LS: &mut SectionLine) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionLine_prepend_sectionline(self as *mut Self, LS)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_prepend_sectionline(
+                self as *mut Self,
+                LS,
+            )
         })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:86 - `Intf_SectionLine::Reverse()`
     /// Reverses the order of the elements of the SectionLine.
     pub fn reverse(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Intf_SectionLine_reverse(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_reverse(self as *mut Self)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:89 - `Intf_SectionLine::Close()`
     /// Closes the SectionLine.
     pub fn close(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Intf_SectionLine_close(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `Intf_SectionLine.hxx`:91 - `Intf_SectionLine::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionLine_dump(self as *const Self, Indent)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_dump(self as *const Self, Indent)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionLine_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_SectionLine_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -560,11 +635,11 @@ impl SectionLine {
 /// **Source:** `Intf_SectionPoint.hxx`:30 - `Intf_SectionPoint`
 /// Describes an intersection  point between  polygons  and
 /// polyedra.
-pub use crate::ffi::Intf_SectionPoint as SectionPoint;
+pub use crate::ffi_types::Intf_SectionPoint as SectionPoint;
 
 unsafe impl crate::CppDeletable for SectionPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_SectionPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_destructor(ptr);
     }
 }
 
@@ -572,7 +647,9 @@ impl SectionPoint {
     /// **Source:** `Intf_SectionPoint.hxx`:88 - `Intf_SectionPoint::Intf_SectionPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_SectionPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_ctor(),
+            ))
         }
     }
 
@@ -593,20 +670,7 @@ impl SectionPoint {
         Incid: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_SectionPoint_ctor_pnt_pitype_int2_real_pitype_int2_real2(
-                    Where,
-                    DimeO.into(),
-                    AddrO1,
-                    AddrO2,
-                    ParamO,
-                    DimeT.into(),
-                    AddrT1,
-                    AddrT2,
-                    ParamT,
-                    Incid,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_ctor_pnt_pitype_int2_real_pitype_int2_real2(Where, DimeO.into(), AddrO1, AddrO2, ParamO, DimeT.into(), AddrT1, AddrT2, ParamT, Incid)))
         }
     }
 
@@ -625,25 +689,18 @@ impl SectionPoint {
         Incid: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Intf_SectionPoint_ctor_pnt2d_pitype_int_real_pitype_int_real2(
-                    Where,
-                    DimeO.into(),
-                    AddrO1,
-                    ParamO,
-                    DimeT.into(),
-                    AddrT1,
-                    ParamT,
-                    Incid,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_ctor_pnt2d_pitype_int_real_pitype_int_real2(Where, DimeO.into(), AddrO1, ParamO, DimeT.into(), AddrT1, ParamT, Incid)))
         }
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:36 - `Intf_SectionPoint::Pnt()`
     /// Returns the location of the SectionPoint.
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::Intf_SectionPoint_pnt(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_pnt(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:40 - `Intf_SectionPoint::ParamOnFirst()`
@@ -651,7 +708,7 @@ impl SectionPoint {
     /// first element.
     pub fn param_on_first(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_param_on_first(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_param_on_first(self as *const Self)
         })
     }
 
@@ -660,7 +717,7 @@ impl SectionPoint {
     /// second element.
     pub fn param_on_second(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_param_on_second(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_param_on_second(self as *const Self)
         })
     }
 
@@ -668,7 +725,7 @@ impl SectionPoint {
     /// Returns the type of the section point on the first element.
     pub fn type_on_first(&self) -> crate::intf::PIType {
         crate::intf::PIType::try_from(crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_type_on_first(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_type_on_first(self as *const Self)
         }))
         .unwrap()
     }
@@ -678,7 +735,7 @@ impl SectionPoint {
     /// element.
     pub fn type_on_second(&self) -> crate::intf::PIType {
         crate::intf::PIType::try_from(crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_type_on_second(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_type_on_second(self as *const Self)
         }))
         .unwrap()
     }
@@ -693,7 +750,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_info_first_pitype_int2_real(
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_info_first_pitype_int2_real(
                 self as *const Self,
                 &mut Dim_i32_,
                 Add1,
@@ -714,7 +771,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_info_first_pitype_int_real(
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_info_first_pitype_int_real(
                 self as *const Self,
                 &mut Dim_i32_,
                 Addr,
@@ -734,7 +791,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_info_second_pitype_int2_real(
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_info_second_pitype_int2_real(
                 self as *const Self,
                 &mut Dim_i32_,
                 Add1,
@@ -755,7 +812,7 @@ impl SectionPoint {
     ) {
         let mut Dim_i32_: i32 = (*Dim).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_info_second_pitype_int_real(
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_info_second_pitype_int_real(
                 self as *const Self,
                 &mut Dim_i32_,
                 Addr,
@@ -770,7 +827,9 @@ impl SectionPoint {
     /// between the two triangles is given by the cosine.  The best
     /// incidence is 0. (PI/2).  The worst is 1. (null angle).
     pub fn incidence(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Intf_SectionPoint_incidence(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_incidence(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:80 - `Intf_SectionPoint::IsEqual()`
@@ -778,7 +837,7 @@ impl SectionPoint {
     /// information.
     pub fn is_equal(&self, Other: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_is_equal(self as *const Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_is_equal(self as *const Self, Other)
         })
     }
 
@@ -787,7 +846,10 @@ impl SectionPoint {
     /// of the first or the second element.
     pub fn is_on_same_edge(&self, Other: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_SectionPoint_is_on_same_edge(self as *const Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_is_on_same_edge(
+                self as *const Self,
+                Other,
+            )
         })
     }
 
@@ -795,14 +857,14 @@ impl SectionPoint {
     /// Merges two SectionPoints.
     pub fn merge(&mut self, Other: &mut SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_merge(self as *mut Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_merge(self as *mut Self, Other)
         })
     }
 
     /// **Source:** `Intf_SectionPoint.hxx`:119 - `Intf_SectionPoint::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_SectionPoint_dump(self as *const Self, Indent)
+            crate::ffi_extern_TKGeomAlgo::Intf_SectionPoint_dump(self as *const Self, Indent)
         })
     }
 }
@@ -814,11 +876,11 @@ impl SectionPoint {
 /// **Source:** `Intf_TangentZone.hxx`:30 - `Intf_TangentZone`
 /// Describes   a  zone  of  tangence  between  polygons  or
 /// polyhedra as a sequence of points of intersection.
-pub use crate::ffi::Intf_TangentZone as TangentZone;
+pub use crate::ffi_types::Intf_TangentZone as TangentZone;
 
 unsafe impl crate::CppDeletable for TangentZone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_TangentZone_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_destructor(ptr);
     }
 }
 
@@ -827,7 +889,9 @@ impl TangentZone {
     /// Builds an empty tangent zone.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_TangentZone_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_ctor(),
+            ))
         }
     }
 
@@ -835,7 +899,7 @@ impl TangentZone {
     /// Returns number of SectionPoint in this TangentZone.
     pub fn number_of_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_TangentZone_number_of_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_number_of_points(self as *const Self)
         })
     }
 
@@ -844,7 +908,7 @@ impl TangentZone {
     /// TangentZone.
     pub fn get_point(&self, Index: i32) -> &SectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Intf_TangentZone_get_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_get_point(
                 self as *const Self,
                 Index,
             )))
@@ -855,7 +919,7 @@ impl TangentZone {
     /// Compares two TangentZones.
     pub fn is_equal(&self, Other: &TangentZone) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_TangentZone_is_equal(self as *const Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_is_equal(self as *const Self, Other)
         })
     }
 
@@ -863,7 +927,7 @@ impl TangentZone {
     /// Checks if <ThePI> is in TangentZone.
     pub fn contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_TangentZone_contains(self as *const Self, ThePI)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_contains(self as *const Self, ThePI)
         })
     }
 
@@ -872,7 +936,11 @@ impl TangentZone {
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_first(&self, paraMin: &mut f64, paraMax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_param_on_first(self as *const Self, paraMin, paraMax)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_param_on_first(
+                self as *const Self,
+                paraMin,
+                paraMax,
+            )
         })
     }
 
@@ -881,7 +949,11 @@ impl TangentZone {
     /// argument of the Interference. (Usable only for polygon)
     pub fn param_on_second(&self, paraMin: &mut f64, paraMax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_param_on_second(self as *const Self, paraMin, paraMax)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_param_on_second(
+                self as *const Self,
+                paraMin,
+                paraMax,
+            )
         })
     }
 
@@ -896,7 +968,7 @@ impl TangentZone {
         paraMax: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_info_first(
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_info_first(
                 self as *const Self,
                 segMin,
                 paraMin,
@@ -917,7 +989,7 @@ impl TangentZone {
         paraMax: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_info_second(
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_info_second(
                 self as *const Self,
                 segMin,
                 paraMin,
@@ -932,7 +1004,10 @@ impl TangentZone {
     /// TangentZone.
     pub fn range_contains(&self, ThePI: &SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_TangentZone_range_contains(self as *const Self, ThePI)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_range_contains(
+                self as *const Self,
+                ThePI,
+            )
         })
     }
 
@@ -941,7 +1016,10 @@ impl TangentZone {
     /// with <me>.
     pub fn has_common_range(&self, Other: &TangentZone) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Intf_TangentZone_has_common_range(self as *const Self, Other)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_has_common_range(
+                self as *const Self,
+                Other,
+            )
         })
     }
 
@@ -949,7 +1027,10 @@ impl TangentZone {
     /// Adds a SectionPoint to the TangentZone.
     pub fn append_sectionpoint(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_append_sectionpoint(self as *mut Self, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_append_sectionpoint(
+                self as *mut Self,
+                Pi,
+            )
         })
     }
 
@@ -957,21 +1038,26 @@ impl TangentZone {
     /// Adds the TangentZone <Tzi> to <me>.
     pub fn append_tangentzone(&mut self, Tzi: &TangentZone) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_append_tangentzone(self as *mut Self, Tzi)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_append_tangentzone(
+                self as *mut Self,
+                Tzi,
+            )
         })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:90 - `Intf_TangentZone::Insert()`
     /// Inserts a SectionPoint in the TangentZone.
     pub fn insert(&mut self, Pi: &SectionPoint) -> bool {
-        crate::check_result(unsafe { crate::ffi::Intf_TangentZone_insert(self as *mut Self, Pi) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_insert(self as *mut Self, Pi)
+        })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:93 - `Intf_TangentZone::PolygonInsert()`
     /// Inserts a point in the polygonal TangentZone.
     pub fn polygon_insert(&mut self, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_polygon_insert(self as *mut Self, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_polygon_insert(self as *mut Self, Pi)
         })
     }
 
@@ -979,7 +1065,11 @@ impl TangentZone {
     /// Inserts a SectionPoint before <Index> in the TangentZone.
     pub fn insert_before(&mut self, Index: i32, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_insert_before(self as *mut Self, Index, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_insert_before(
+                self as *mut Self,
+                Index,
+                Pi,
+            )
         })
     }
 
@@ -987,14 +1077,18 @@ impl TangentZone {
     /// Inserts a SectionPoint after <Index> in the TangentZone.
     pub fn insert_after(&mut self, Index: i32, Pi: &SectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_insert_after(self as *mut Self, Index, Pi)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_insert_after(
+                self as *mut Self,
+                Index,
+                Pi,
+            )
         })
     }
 
     /// **Source:** `Intf_TangentZone.hxx`:101 - `Intf_TangentZone::Dump()`
     pub fn dump(&self, Indent: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_TangentZone_dump(self as *const Self, Indent)
+            crate::ffi_extern_TKGeomAlgo::Intf_TangentZone_dump(self as *const Self, Indent)
         })
     }
 }
@@ -1006,18 +1100,22 @@ impl TangentZone {
 /// **Source:** `Intf_Tool.hxx`:35 - `Intf_Tool`
 /// Provides services to create box for infinites
 /// lines in a given contexte.
-pub use crate::ffi::Intf_Tool as Tool;
+pub use crate::ffi_types::Intf_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Intf_Tool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Intf_Tool_destructor(ptr);
     }
 }
 
 impl Tool {
     /// **Source:** `Intf_Tool.hxx`:40 - `Intf_Tool::Intf_Tool()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Intf_Tool_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Intf_Tool_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Intf_Tool.hxx`:42 - `Intf_Tool::Lin2dBox()`
@@ -1028,7 +1126,12 @@ impl Tool {
         boxLin: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_lin2d_box(self as *mut Self, theLin2d, bounding, boxLin)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_lin2d_box(
+                self as *mut Self,
+                theLin2d,
+                bounding,
+                boxLin,
+            )
         })
     }
 
@@ -1040,7 +1143,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_hypr2d_box(self as *mut Self, theHypr2d, bounding, boxHypr)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_hypr2d_box(
+                self as *mut Self,
+                theHypr2d,
+                bounding,
+                boxHypr,
+            )
         })
     }
 
@@ -1052,7 +1160,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_parab2d_box(self as *mut Self, theParab2d, bounding, boxHypr)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_parab2d_box(
+                self as *mut Self,
+                theParab2d,
+                bounding,
+                boxHypr,
+            )
         })
     }
 
@@ -1064,7 +1177,12 @@ impl Tool {
         boxLin: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_lin_box(self as *mut Self, theLin, bounding, boxLin)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_lin_box(
+                self as *mut Self,
+                theLin,
+                bounding,
+                boxLin,
+            )
         })
     }
 
@@ -1076,7 +1194,12 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_hypr_box(self as *mut Self, theHypr, bounding, boxHypr)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_hypr_box(
+                self as *mut Self,
+                theHypr,
+                bounding,
+                boxHypr,
+            )
         })
     }
 
@@ -1088,26 +1211,33 @@ impl Tool {
         boxHypr: &mut crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Intf_Tool_parab_box(self as *mut Self, theParab, bounding, boxHypr)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_parab_box(
+                self as *mut Self,
+                theParab,
+                bounding,
+                boxHypr,
+            )
         })
     }
 
     /// **Source:** `Intf_Tool.hxx`:62 - `Intf_Tool::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Intf_Tool_nb_segments(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_nb_segments(self as *const Self)
+        })
     }
 
     /// **Source:** `Intf_Tool.hxx`:64 - `Intf_Tool::BeginParam()`
     pub fn begin_param(&self, SegmentNum: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Tool_begin_param(self as *const Self, SegmentNum)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_begin_param(self as *const Self, SegmentNum)
         })
     }
 
     /// **Source:** `Intf_Tool.hxx`:66 - `Intf_Tool::EndParam()`
     pub fn end_param(&self, SegmentNum: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Intf_Tool_end_param(self as *const Self, SegmentNum)
+            crate::ffi_extern_TKGeomAlgo::Intf_Tool_end_param(self as *const Self, SegmentNum)
         })
     }
 }
@@ -1116,4 +1246,4 @@ impl Tool {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Intf_Array1OfLin as Array1OfLin;
+pub use crate::ffi_types::Intf_Array1OfLin as Array1OfLin;

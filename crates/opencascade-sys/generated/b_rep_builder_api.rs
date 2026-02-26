@@ -8,24 +8,32 @@
 
 /// **Source:** `BRepBuilderAPI.hxx`:91 - `BRepBuilderAPI::Plane`
 /// Sets    the current plane.
-pub fn plane_handlegeomplane(P: &crate::ffi::HandleGeomPlane) {
-    crate::check_void_result(unsafe { crate::ffi::BRepBuilderAPI_plane_handlegeomplane(P) })
+pub fn plane_handlegeomplane(P: &crate::ffi_types::HandleGeomPlane) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_plane_handlegeomplane(P)
+    })
 }
 /// **Source:** `BRepBuilderAPI.hxx`:94 - `BRepBuilderAPI::Plane`
 /// Returns the current plane.
-pub fn plane() -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBuilderAPI_plane())) }
+pub fn plane() -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_plane(),
+        ))
+    }
 }
 /// **Source:** `BRepBuilderAPI.hxx`:98 - `BRepBuilderAPI::Precision`
 /// Sets the default precision.  The current Precision
 /// is returned.
 pub fn precision_real(P: f64) {
-    crate::check_void_result(unsafe { crate::ffi::BRepBuilderAPI_precision_real(P) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_precision_real(P)
+    })
 }
 /// **Source:** `BRepBuilderAPI.hxx`:101 - `BRepBuilderAPI::Precision`
 /// Returns the default precision.
 pub fn precision() -> f64 {
-    crate::check_result(unsafe { crate::ffi::BRepBuilderAPI_precision() })
+    crate::check_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_precision() })
 }
 
 /// Indicates the outcome of the
@@ -313,7 +321,7 @@ impl TryFrom<i32> for WireError {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From BRepBuilderAPI_BndBoxTreeSelector.hxx
@@ -325,11 +333,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// This class is used to select overlapping boxes, stored in
 /// NCollection::UBTree; contains methods to maintain the selection
 /// condition and to retrieve selected objects after search.
-pub use crate::ffi::BRepBuilderAPI_BndBoxTreeSelector as BndBoxTreeSelector;
+pub use crate::ffi_types::BRepBuilderAPI_BndBoxTreeSelector as BndBoxTreeSelector;
 
 unsafe impl crate::CppDeletable for BndBoxTreeSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_destructor(ptr);
     }
 }
 
@@ -339,7 +347,7 @@ impl BndBoxTreeSelector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_ctor(),
             ))
         }
     }
@@ -350,7 +358,10 @@ impl BndBoxTreeSelector {
     /// True if the bounding box does not intersect with the current
     pub fn reject(&self, theBox: &crate::bnd::Box) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_reject(self as *const Self, theBox)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_reject(
+                self as *const Self,
+                theBox,
+            )
         })
     }
 
@@ -362,7 +373,10 @@ impl BndBoxTreeSelector {
     /// True, because the object is accepted
     pub fn accept(&mut self, theObj: &i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_accept(self as *mut Self, theObj)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_accept(
+                self as *mut Self,
+                theObj,
+            )
         })
     }
 
@@ -370,7 +384,9 @@ impl BndBoxTreeSelector {
     /// Clear the list of intersecting boxes
     pub fn clear_res_list(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_clear_res_list(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_clear_res_list(
+                self as *mut Self,
+            )
         })
     }
 
@@ -378,17 +394,22 @@ impl BndBoxTreeSelector {
     /// Set current box to search for overlapping with him
     pub fn set_current(&mut self, theBox: &crate::bnd::Box) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_set_current(self as *mut Self, theBox)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_set_current(
+                self as *mut Self,
+                theBox,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_BndBoxTreeSelector.hxx`:65 - `BRepBuilderAPI_BndBoxTreeSelector::ResInd()`
     /// Get list of indexes of boxes intersecting with the current box
-    pub fn res_ind(&mut self) -> &crate::ffi::TColStd_ListOfInteger {
+    pub fn res_ind(&mut self) -> &crate::ffi_types::TColStd_ListOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_BndBoxTreeSelector_res_ind(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_BndBoxTreeSelector_res_ind(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 }
@@ -398,11 +419,11 @@ impl BndBoxTreeSelector {
 // ========================
 
 /// **Source:** `BRepBuilderAPI_Collect.hxx`:29 - `BRepBuilderAPI_Collect`
-pub use crate::ffi::BRepBuilderAPI_Collect as Collect;
+pub use crate::ffi_types::BRepBuilderAPI_Collect as Collect;
 
 unsafe impl crate::CppDeletable for Collect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_Collect_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_destructor(ptr);
     }
 }
 
@@ -410,53 +431,59 @@ impl Collect {
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:34 - `BRepBuilderAPI_Collect::BRepBuilderAPI_Collect()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BRepBuilderAPI_Collect_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:36 - `BRepBuilderAPI_Collect::Add()`
     pub fn add(&mut self, SI: &crate::topo_ds::Shape, MKS: &mut MakeShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Collect_add(self as *mut Self, SI, MKS)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add(self as *mut Self, SI, MKS)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:38 - `BRepBuilderAPI_Collect::AddGenerated()`
     pub fn add_generated(&mut self, S: &crate::topo_ds::Shape, Gen: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Collect_add_generated(self as *mut Self, S, Gen)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add_generated(
+                self as *mut Self,
+                S,
+                Gen,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:40 - `BRepBuilderAPI_Collect::AddModif()`
     pub fn add_modif(&mut self, S: &crate::topo_ds::Shape, Mod: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Collect_add_modif(self as *mut Self, S, Mod)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_add_modif(self as *mut Self, S, Mod)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:42 - `BRepBuilderAPI_Collect::Filter()`
     pub fn filter(&mut self, SF: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Collect_filter(self as *mut Self, SF)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_filter(self as *mut Self, SF)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:44 - `BRepBuilderAPI_Collect::Modification()`
-    pub fn modification(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+    pub fn modification(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Collect_modification(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_modification(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_Collect.hxx`:46 - `BRepBuilderAPI_Collect::Generated()`
-    pub fn generated(&self) -> &crate::ffi::TopTools_DataMapOfShapeListOfShape {
+    pub fn generated(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Collect_generated(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Collect_generated(
                 self as *const Self,
             )))
         }
@@ -477,11 +504,11 @@ impl Collect {
 /// * Catching of exceptions (not implemented).
 ///
 /// * Logging (not implemented).
-pub use crate::ffi::BRepBuilderAPI_Command as Command;
+pub use crate::ffi_types::BRepBuilderAPI_Command as Command;
 
 unsafe impl crate::CppDeletable for Command {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_Command_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Command_destructor(ptr);
     }
 }
 
@@ -489,7 +516,7 @@ impl Command {
     /// **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Command_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Command_is_done(self as *const Self)
         })
     }
 
@@ -497,7 +524,7 @@ impl Command {
     /// Raises NotDone if done is false.
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Command_check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Command_check(self as *const Self)
         })
     }
 }
@@ -512,11 +539,11 @@ impl Command {
 /// -   defining the construction of a duplicate shape,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_Copy as Copy;
+pub use crate::ffi_types::BRepBuilderAPI_Copy as Copy;
 
 unsafe impl crate::CppDeletable for Copy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_Copy_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_destructor(ptr);
     }
 }
 
@@ -526,7 +553,9 @@ impl Copy {
     /// Perform to copy shapes.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBuilderAPI_Copy_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_ctor(),
+            ))
         }
     }
 
@@ -546,7 +575,9 @@ impl Copy {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Copy_ctor_shape_bool2(S, copyGeom, copyMesh),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_ctor_shape_bool2(
+                    S, copyGeom, copyMesh,
+                ),
             ))
         }
     }
@@ -586,16 +617,23 @@ impl Copy {
     /// geometry and triangulation will be shared with original shape.
     pub fn perform(&mut self, S: &crate::topo_ds::Shape, copyGeom: bool, copyMesh: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Copy_perform(self as *mut Self, S, copyGeom, copyMesh)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_perform(
+                self as *mut Self,
+                S,
+                copyGeom,
+                copyMesh,
+            )
         })
     }
 
     /// Upcast to BRepBuilderAPI_ModifyShape
     pub fn as_modify_shape(&self) -> &ModifyShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -603,7 +641,7 @@ impl Copy {
     pub fn as_modify_shape_mut(&mut self) -> &mut ModifyShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_ModifyShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -613,9 +651,11 @@ impl Copy {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -623,7 +663,9 @@ impl Copy {
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_MakeShape_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -631,9 +673,11 @@ impl Copy {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -641,7 +685,9 @@ impl Copy {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -653,7 +699,10 @@ impl Copy {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Copy_inherited_ModifiedShape(self as *const Self, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_ModifiedShape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -661,37 +710,43 @@ impl Copy {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Copy_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Copy_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Copy_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Copy_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Copy_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Copy_inherited_Check(self as *const Self)
         })
     }
 }
@@ -714,11 +769,11 @@ impl Copy {
 /// - compute -> Perform
 /// - retrieve the error status if any
 /// - retrieve the resulted shape
-pub use crate::ffi::BRepBuilderAPI_FastSewing as FastSewing;
+pub use crate::ffi_types::BRepBuilderAPI_FastSewing as FastSewing;
 
 unsafe impl crate::CppDeletable for FastSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_FastSewing_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_destructor(ptr);
     }
 }
 
@@ -728,7 +783,7 @@ impl FastSewing {
     pub fn new_real(theTolerance: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FastSewing_ctor_real(theTolerance),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_ctor_real(theTolerance),
             ))
         }
     }
@@ -743,15 +798,21 @@ impl FastSewing {
     /// Adds faces of a shape
     pub fn add_shape(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_add_shape(self as *mut Self, theShape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_add_shape(
+                self as *mut Self,
+                theShape,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:73 - `BRepBuilderAPI_FastSewing::Add()`
     /// Adds a surface
-    pub fn add_handlegeomsurface(&mut self, theSurface: &crate::ffi::HandleGeomSurface) -> bool {
+    pub fn add_handlegeomsurface(
+        &mut self,
+        theSurface: &crate::ffi_types::HandleGeomSurface,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_add_handlegeomsurface(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_add_handlegeomsurface(
                 self as *mut Self,
                 theSurface,
             )
@@ -762,7 +823,7 @@ impl FastSewing {
     /// Compute resulted shape
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_perform(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_perform(self as *mut Self)
         })
     }
 
@@ -770,7 +831,10 @@ impl FastSewing {
     /// Sets tolerance
     pub fn set_tolerance(&mut self, theToler: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_set_tolerance(self as *mut Self, theToler)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_set_tolerance(
+                self as *mut Self,
+                theToler,
+            )
         })
     }
 
@@ -778,7 +842,9 @@ impl FastSewing {
     /// Returns tolerance
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_get_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_tolerance(
+                self as *const Self,
+            )
         })
     }
 
@@ -786,17 +852,19 @@ impl FastSewing {
     /// Returns resulted shape
     pub fn get_result(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_FastSewing_get_result(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_result(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:88 - `BRepBuilderAPI_FastSewing::GetStatuses()`
     /// Returns list of statuses. Print message if theOS != 0
-    pub fn get_statuses(&mut self, theOS: Option<&mut crate::ffi::Standard_OStream>) -> u32 {
+    pub fn get_statuses(&mut self, theOS: Option<&mut crate::ffi_types::Standard_OStream>) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_get_statuses(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_statuses(
                 self as *mut Self,
                 theOS.map_or(std::ptr::null_mut(), |r| r as *mut _),
             )
@@ -804,11 +872,13 @@ impl FastSewing {
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_FastSewing_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -816,7 +886,7 @@ impl FastSewing {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FastSewing_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -824,18 +894,22 @@ impl FastSewing {
     }
 
     /// **Source:** `BRepBuilderAPI_FastSewing.hxx`:90 - `BRepBuilderAPI_FastSewing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_FastSewing_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_FastSewing_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -843,7 +917,9 @@ impl FastSewing {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_FastSewing_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -851,25 +927,31 @@ impl FastSewing {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBuilderAPIFastSewing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBuilderAPIFastSewing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FastSewing_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -877,7 +959,9 @@ impl FastSewing {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBuilderAPI_FastSewing_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -890,67 +974,75 @@ impl FastSewing {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FastSewing_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FastSewing_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBuilderAPIFastSewing;
+pub use crate::ffi_types::HandleBRepBuilderAPIFastSewing;
 
 unsafe impl crate::CppDeletable for HandleBRepBuilderAPIFastSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBuilderAPIFastSewing_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_destructor(ptr);
     }
 }
 
 impl HandleBRepBuilderAPIFastSewing {
     /// Dereference this Handle to access the underlying BRepBuilderAPI_FastSewing
-    pub fn get(&self) -> &crate::ffi::BRepBuilderAPI_FastSewing {
+    pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_FastSewing {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBuilderAPIFastSewing_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBuilderAPI_FastSewing
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBuilderAPI_FastSewing {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBuilderAPI_FastSewing {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBuilderAPIFastSewing_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BRepBuilderAPI_FastSewing> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBuilderAPIFastSewing_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPIFastSewing_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -966,11 +1058,11 @@ impl HandleBRepBuilderAPIFastSewing {
 /// -   extracting the edges of a given shape,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_FindPlane as FindPlane;
+pub use crate::ffi_types::BRepBuilderAPI_FindPlane as FindPlane;
 
 unsafe impl crate::CppDeletable for FindPlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_FindPlane_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_destructor(ptr);
     }
 }
 
@@ -980,7 +1072,7 @@ impl FindPlane {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FindPlane_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_ctor(),
             ))
         }
     }
@@ -997,7 +1089,7 @@ impl FindPlane {
     pub fn new_shape_real(S: &crate::topo_ds::Shape, Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FindPlane_ctor_shape_real(S, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_ctor_shape_real(S, Tol),
             ))
         }
     }
@@ -1026,7 +1118,7 @@ impl FindPlane {
     /// The resulting plane is then retrieved using the function Plane.
     pub fn init(&mut self, S: &crate::topo_ds::Shape, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FindPlane_init(self as *mut Self, S, Tol)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_init(self as *mut Self, S, Tol)
         })
     }
 
@@ -1035,7 +1127,7 @@ impl FindPlane {
     /// shape is found and built. Use the function Plane to consult the result.
     pub fn found(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_FindPlane_found(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_found(self as *const Self)
         })
     }
 
@@ -1044,10 +1136,10 @@ impl FindPlane {
     /// Warning
     /// Use the function Found to verify that the plane is built. If
     /// a plane is not found, Plane returns a null handle.
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_FindPlane_plane(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_FindPlane_plane(self as *const Self),
             ))
         }
     }
@@ -1080,11 +1172,11 @@ impl FindPlane {
 /// -      defining the geometric transformation to be applied,
 /// -      implementing the transformation algorithm, and
 /// -      consulting the result.
-pub use crate::ffi::BRepBuilderAPI_GTransform as GTransform;
+pub use crate::ffi_types::BRepBuilderAPI_GTransform as GTransform;
 
 unsafe impl crate::CppDeletable for GTransform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_GTransform_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_destructor(ptr);
     }
 }
 
@@ -1096,7 +1188,7 @@ impl GTransform {
     pub fn new_gtrsf(T: &crate::gp::GTrsf) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_ctor_gtrsf(T),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_ctor_gtrsf(T),
             ))
         }
     }
@@ -1122,7 +1214,9 @@ impl GTransform {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_ctor_shape_gtrsf_bool(S, T, Copy),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_ctor_shape_gtrsf_bool(
+                    S, T, Copy,
+                ),
             ))
         }
     }
@@ -1163,7 +1257,11 @@ impl GTransform {
     /// them by calling the function Perform again.
     pub fn perform(&mut self, S: &crate::topo_ds::Shape, Copy: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_GTransform_perform(self as *mut Self, S, Copy)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_perform(
+                self as *mut Self,
+                S,
+                Copy,
+            )
         })
     }
 
@@ -1179,12 +1277,14 @@ impl GTransform {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_GTransform_modified(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_modified(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -1196,7 +1296,10 @@ impl GTransform {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_modified_shape(self as *const Self, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_modified_shape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -1204,22 +1307,14 @@ impl GTransform {
     /// Upcast to BRepBuilderAPI_ModifyShape
     pub fn as_modify_shape(&self) -> &ModifyShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
     pub fn as_modify_shape_mut(&mut self) -> &mut ModifyShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_ModifyShape_mut(self as *mut Self))
         }
     }
 
@@ -1227,7 +1322,7 @@ impl GTransform {
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -1237,68 +1332,74 @@ impl GTransform {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_GTransform_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_GTransform_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_GTransform_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_GTransform_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_GTransform_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_GTransform_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -1339,11 +1440,11 @@ impl GTransform {
 /// V1 and V2. Same as the  previous but no vertices
 /// are created. If a vertex is  Null the curve will
 /// be open in this direction.
-pub use crate::ffi::BRepBuilderAPI_MakeEdge as MakeEdge;
+pub use crate::ffi_types::BRepBuilderAPI_MakeEdge as MakeEdge;
 
 unsafe impl crate::CppDeletable for MakeEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeEdge_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_destructor(ptr);
     }
 }
 
@@ -1352,7 +1453,7 @@ impl MakeEdge {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor(),
             ))
         }
     }
@@ -1364,7 +1465,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_vertex2(V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_vertex2(V1, V2),
             ))
         }
     }
@@ -1373,7 +1474,7 @@ impl MakeEdge {
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_pnt2(P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_pnt2(P1, P2),
             ))
         }
     }
@@ -1382,7 +1483,7 @@ impl MakeEdge {
     pub fn new_lin(L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_lin(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_lin(L),
             ))
         }
     }
@@ -1391,7 +1492,7 @@ impl MakeEdge {
     pub fn new_lin_real2(L: &crate::gp::Lin, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_lin_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_lin_real2(L, p1, p2),
             ))
         }
     }
@@ -1404,7 +1505,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_lin_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_lin_pnt2(L, P1, P2),
             ))
         }
     }
@@ -1417,7 +1518,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_lin_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_lin_vertex2(L, V1, V2),
             ))
         }
     }
@@ -1426,7 +1527,7 @@ impl MakeEdge {
     pub fn new_circ(L: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_circ(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_circ(L),
             ))
         }
     }
@@ -1435,7 +1536,7 @@ impl MakeEdge {
     pub fn new_circ_real2(L: &crate::gp::Circ, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_circ_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_circ_real2(L, p1, p2),
             ))
         }
     }
@@ -1448,7 +1549,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_circ_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_circ_pnt2(L, P1, P2),
             ))
         }
     }
@@ -1461,7 +1562,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_circ_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_circ_vertex2(L, V1, V2),
             ))
         }
     }
@@ -1470,7 +1571,7 @@ impl MakeEdge {
     pub fn new_elips(L: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_elips(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_elips(L),
             ))
         }
     }
@@ -1479,7 +1580,7 @@ impl MakeEdge {
     pub fn new_elips_real2(L: &crate::gp::Elips, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_elips_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_elips_real2(L, p1, p2),
             ))
         }
     }
@@ -1492,7 +1593,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_elips_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_elips_pnt2(L, P1, P2),
             ))
         }
     }
@@ -1505,7 +1606,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_elips_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_elips_vertex2(L, V1, V2),
             ))
         }
     }
@@ -1514,7 +1615,7 @@ impl MakeEdge {
     pub fn new_hypr(L: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_hypr(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_hypr(L),
             ))
         }
     }
@@ -1523,7 +1624,7 @@ impl MakeEdge {
     pub fn new_hypr_real2(L: &crate::gp::Hypr, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_hypr_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_hypr_real2(L, p1, p2),
             ))
         }
     }
@@ -1536,7 +1637,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_hypr_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_hypr_pnt2(L, P1, P2),
             ))
         }
     }
@@ -1549,7 +1650,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_hypr_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_hypr_vertex2(L, V1, V2),
             ))
         }
     }
@@ -1558,7 +1659,7 @@ impl MakeEdge {
     pub fn new_parab(L: &crate::gp::Parab) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_parab(L),
             ))
         }
     }
@@ -1567,7 +1668,7 @@ impl MakeEdge {
     pub fn new_parab_real2(L: &crate::gp::Parab, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_parab_real2(L, p1, p2),
             ))
         }
     }
@@ -1580,7 +1681,7 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_parab_pnt2(L, P1, P2),
             ))
         }
     }
@@ -1593,160 +1694,148 @@ impl MakeEdge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_parab_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_parab_vertex2(L, V1, V2),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:142 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
-    pub fn new_handlegeomcurve(L: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomcurve(L: &crate::ffi_types::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve(L),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:144 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_real2(
-        L: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi_types::HandleGeomCurve,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_real2(
+                    L, p1, p2,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:148 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2(
-        L: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi_types::HandleGeomCurve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2(
+                    L, P1, P2,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:152 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2(
-        L: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi_types::HandleGeomCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:156 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_pnt2_real2(
-        L: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi_types::HandleGeomCurve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2_real2(
-                    L, P1, P2, p1, p2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_pnt2_real2(L, P1, P2, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:162 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeomcurve_vertex2_real2(
-        L: &crate::ffi::HandleGeomCurve,
+        L: &crate::ffi_types::HandleGeomCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2_real2(
-                    L, V1, V2, p1, p2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeomcurve_vertex2_real2(L, V1, V2, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:168 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(L, S),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface(L, S)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:171 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(
-                    L, S, p1, p2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_real2(L, S, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:176 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(
-                    L, S, P1, P2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2(L, S, P1, P2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:181 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(L, S, V1, V2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2(L, S, V1, V2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:186 - `BRepBuilderAPI_MakeEdge::BRepBuilderAPI_MakeEdge()`
     pub fn new_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(L, S, P1, P2, p1, p2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_pnt2_real2(L, S, P1, P2, p1, p2)))
         }
     }
 
@@ -1816,34 +1905,37 @@ impl MakeEdge {
     ///
     /// Auxiliary methods
     pub fn new_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        L: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(L, S, V1, V2, p1, p2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_ctor_handlegeom2dcurve_handlegeomsurface_vertex2_real2(L, S, V1, V2, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:264 - `BRepBuilderAPI_MakeEdge::Init()`
-    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
+    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:266 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_real2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_real2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_real2(
                 self as *mut Self,
                 C,
                 p1,
@@ -1855,12 +1947,12 @@ impl MakeEdge {
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:270 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2(
                 self as *mut Self,
                 C,
                 P1,
@@ -1872,12 +1964,12 @@ impl MakeEdge {
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:272 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2(
                 self as *mut Self,
                 C,
                 V1,
@@ -1889,14 +1981,14 @@ impl MakeEdge {
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:276 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_pnt2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2_real2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_pnt2_real2(
                 self as *mut Self,
                 C,
                 P1,
@@ -1910,14 +2002,14 @@ impl MakeEdge {
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:282 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeomcurve_vertex2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2_real2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeomcurve_vertex2_real2(
                 self as *mut Self,
                 C,
                 V1,
@@ -1931,95 +2023,65 @@ impl MakeEdge {
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:288 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(
-                self as *mut Self,
-                C,
-                S,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface(self as *mut Self, C, S)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:290 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(
-                self as *mut Self,
-                C,
-                S,
-                p1,
-                p2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_real2(self as *mut Self, C, S, p1, p2)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:295 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(
-                self as *mut Self,
-                C,
-                S,
-                P1,
-                P2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2(self as *mut Self, C, S, P1, P2)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:300 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(
-                self as *mut Self,
-                C,
-                S,
-                V1,
-                V2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2(self as *mut Self, C, S, V1, V2)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge.hxx`:305 - `BRepBuilderAPI_MakeEdge::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         P1: &crate::gp::Pnt,
         P2: &crate::gp::Pnt,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(
-                self as *mut Self,
-                C,
-                S,
-                P1,
-                P2,
-                p1,
-                p2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_pnt2_real2(self as *mut Self, C, S, P1, P2, p1, p2)
         })
     }
 
@@ -2028,15 +2090,15 @@ impl MakeEdge {
     /// This function is currently used after the empty constructor BRepAPI_MakeEdge().
     pub fn init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(self as *mut Self, C, S, V1, V2, p1, p2)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_init_handlegeom2dcurve_handlegeomsurface_vertex2_real2(self as *mut Self, C, S, V1, V2, p1, p2)
         })
     }
 
@@ -2044,7 +2106,7 @@ impl MakeEdge {
     /// Returns true if the edge is built.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_is_done(self as *const Self)
         })
     }
 
@@ -2055,7 +2117,7 @@ impl MakeEdge {
     /// enumeration indicating the reason of construction failure.
     pub fn error(&self) -> crate::b_rep_builder_api::EdgeError {
         crate::b_rep_builder_api::EdgeError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -2065,7 +2127,9 @@ impl MakeEdge {
     /// Exceptions StdFail_NotDone if the edge is not built.
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_edge(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_edge(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2073,7 +2137,7 @@ impl MakeEdge {
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_vertex1(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_vertex1(
                 self as *const Self,
             )))
         }
@@ -2092,7 +2156,7 @@ impl MakeEdge {
     /// StdFail_NotDone if the edge is not built.
     pub fn vertex2(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_vertex2(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_vertex2(
                 self as *const Self,
             )))
         }
@@ -2101,29 +2165,29 @@ impl MakeEdge {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2131,7 +2195,7 @@ impl MakeEdge {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -2141,30 +2205,40 @@ impl MakeEdge {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2205,11 +2279,11 @@ impl MakeEdge {
 /// V1 and V2. Same as the  previous but no vertices
 /// are created. If a vertex is  Null the curve will
 /// be open in this direction.
-pub use crate::ffi::BRepBuilderAPI_MakeEdge2d as MakeEdge2d;
+pub use crate::ffi_types::BRepBuilderAPI_MakeEdge2d as MakeEdge2d;
 
 unsafe impl crate::CppDeletable for MakeEdge2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeEdge2d_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_destructor(ptr);
     }
 }
 
@@ -2221,7 +2295,7 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_vertex2(V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_vertex2(V1, V2),
             ))
         }
     }
@@ -2230,7 +2304,7 @@ impl MakeEdge2d {
     pub fn new_pnt2d2(P1: &crate::gp::Pnt2d, P2: &crate::gp::Pnt2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_pnt2d2(P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_pnt2d2(P1, P2),
             ))
         }
     }
@@ -2239,7 +2313,7 @@ impl MakeEdge2d {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_lin2d(L),
             ))
         }
     }
@@ -2248,7 +2322,7 @@ impl MakeEdge2d {
     pub fn new_lin2d_real2(L: &crate::gp::Lin2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_real2(L, p1, p2),
             ))
         }
     }
@@ -2261,7 +2335,7 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_pnt2d2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_pnt2d2(L, P1, P2),
             ))
         }
     }
@@ -2274,7 +2348,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_lin2d_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
@@ -2283,7 +2359,7 @@ impl MakeEdge2d {
     pub fn new_circ2d(L: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_circ2d(L),
             ))
         }
     }
@@ -2292,7 +2368,7 @@ impl MakeEdge2d {
     pub fn new_circ2d_real2(L: &crate::gp::Circ2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_real2(L, p1, p2),
             ))
         }
     }
@@ -2305,7 +2381,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_pnt2d2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_pnt2d2(
+                    L, P1, P2,
+                ),
             ))
         }
     }
@@ -2318,7 +2396,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_circ2d_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
@@ -2327,7 +2407,7 @@ impl MakeEdge2d {
     pub fn new_elips2d(L: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_elips2d(L),
             ))
         }
     }
@@ -2336,7 +2416,9 @@ impl MakeEdge2d {
     pub fn new_elips2d_real2(L: &crate::gp::Elips2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_real2(
+                    L, p1, p2,
+                ),
             ))
         }
     }
@@ -2349,7 +2431,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_pnt2d2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_pnt2d2(
+                    L, P1, P2,
+                ),
             ))
         }
     }
@@ -2362,7 +2446,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_elips2d_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
@@ -2371,7 +2457,7 @@ impl MakeEdge2d {
     pub fn new_hypr2d(L: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d(L),
             ))
         }
     }
@@ -2380,7 +2466,7 @@ impl MakeEdge2d {
     pub fn new_hypr2d_real2(L: &crate::gp::Hypr2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_real2(L, p1, p2),
             ))
         }
     }
@@ -2393,7 +2479,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_pnt2d2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_pnt2d2(
+                    L, P1, P2,
+                ),
             ))
         }
     }
@@ -2406,7 +2494,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_hypr2d_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
@@ -2415,7 +2505,7 @@ impl MakeEdge2d {
     pub fn new_parab2d(L: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_parab2d(L),
             ))
         }
     }
@@ -2424,7 +2514,9 @@ impl MakeEdge2d {
     pub fn new_parab2d_real2(L: &crate::gp::Parab2d, p1: f64, p2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_real2(
+                    L, p1, p2,
+                ),
             ))
         }
     }
@@ -2437,7 +2529,9 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_pnt2d2(L, P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_pnt2d2(
+                    L, P1, P2,
+                ),
             ))
         }
     }
@@ -2450,109 +2544,104 @@ impl MakeEdge2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_vertex2(L, V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_parab2d_vertex2(
+                    L, V1, V2,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:148 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
-    pub fn new_handlegeom2dcurve(L: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeom2dcurve(L: &crate::ffi_types::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve(L),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve(L),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:150 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
+        L: &crate::ffi_types::HandleGeom2dCurve,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_real2(L, p1, p2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_real2(
+                    L, p1, p2,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:154 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2(
-        L: &crate::ffi::HandleGeom2dCurve,
+        L: &crate::ffi_types::HandleGeom2dCurve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(L, P1, P2),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2(L, P1, P2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:158 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2(
-        L: &crate::ffi::HandleGeom2dCurve,
+        L: &crate::ffi_types::HandleGeom2dCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(L, V1, V2),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2(L, V1, V2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:162 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_pnt2d2_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
+        L: &crate::ffi_types::HandleGeom2dCurve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(
-                    L, P1, P2, p1, p2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_pnt2d2_real2(L, P1, P2, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:168 - `BRepBuilderAPI_MakeEdge2d::BRepBuilderAPI_MakeEdge2d()`
     pub fn new_handlegeom2dcurve_vertex2_real2(
-        L: &crate::ffi::HandleGeom2dCurve,
+        L: &crate::ffi_types::HandleGeom2dCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(
-                    L, V1, V2, p1, p2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_ctor_handlegeom2dcurve_vertex2_real2(L, V1, V2, p1, p2)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:174 - `BRepBuilderAPI_MakeEdge2d::Init()`
-    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:176 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_real2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_real2(
                 self as *mut Self,
                 C,
                 p1,
@@ -2564,12 +2653,12 @@ impl MakeEdge2d {
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:180 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2(
                 self as *mut Self,
                 C,
                 P1,
@@ -2581,12 +2670,12 @@ impl MakeEdge2d {
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:182 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2(
                 self as *mut Self,
                 C,
                 V1,
@@ -2598,49 +2687,35 @@ impl MakeEdge2d {
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:186 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_pnt2d2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(
-                self as *mut Self,
-                C,
-                P1,
-                P2,
-                p1,
-                p2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_pnt2d2_real2(self as *mut Self, C, P1, P2, p1, p2)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:192 - `BRepBuilderAPI_MakeEdge2d::Init()`
     pub fn init_handlegeom2dcurve_vertex2_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         V1: &crate::topo_ds::Vertex,
         V2: &crate::topo_ds::Vertex,
         p1: f64,
         p2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(
-                self as *mut Self,
-                C,
-                V1,
-                V2,
-                p1,
-                p2,
-            )
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_init_handlegeom2dcurve_vertex2_real2(self as *mut Self, C, V1, V2, p1, p2)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:198 - `BRepBuilderAPI_MakeEdge2d::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_is_done(self as *const Self)
         })
     }
 
@@ -2648,7 +2723,7 @@ impl MakeEdge2d {
     /// Returns the error description when NotDone.
     pub fn error(&self) -> crate::b_rep_builder_api::EdgeError {
         crate::b_rep_builder_api::EdgeError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -2656,7 +2731,9 @@ impl MakeEdge2d {
     /// **Source:** `BRepBuilderAPI_MakeEdge2d.hxx`:203 - `BRepBuilderAPI_MakeEdge2d::Edge()`
     pub fn edge(&mut self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge2d_edge(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_edge(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2664,7 +2741,7 @@ impl MakeEdge2d {
     /// Returns the first vertex of the edge. May be Null.
     pub fn vertex1(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge2d_vertex1(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_vertex1(
                 self as *const Self,
             )))
         }
@@ -2674,7 +2751,7 @@ impl MakeEdge2d {
     /// Returns the second vertex of the edge. May be Null.
     pub fn vertex2(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge2d_vertex2(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_vertex2(
                 self as *const Self,
             )))
         }
@@ -2684,7 +2761,7 @@ impl MakeEdge2d {
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -2694,61 +2771,65 @@ impl MakeEdge2d {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeEdge2d_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeEdge2d_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2783,11 +2864,11 @@ impl MakeEdge2d {
 /// * From a face and a wire.
 ///
 /// - The new wire is a perforation.
-pub use crate::ffi::BRepBuilderAPI_MakeFace as MakeFace;
+pub use crate::ffi_types::BRepBuilderAPI_MakeFace as MakeFace;
 
 unsafe impl crate::CppDeletable for MakeFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeFace_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_destructor(ptr);
     }
 }
 
@@ -2797,7 +2878,7 @@ impl MakeFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor(),
             ))
         }
     }
@@ -2807,7 +2888,7 @@ impl MakeFace {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_face(F),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_face(F),
             ))
         }
     }
@@ -2817,7 +2898,7 @@ impl MakeFace {
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_pln(P),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_pln(P),
             ))
         }
     }
@@ -2827,7 +2908,7 @@ impl MakeFace {
     pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cylinder(C),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cylinder(C),
             ))
         }
     }
@@ -2837,7 +2918,7 @@ impl MakeFace {
     pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cone(C),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cone(C),
             ))
         }
     }
@@ -2847,7 +2928,7 @@ impl MakeFace {
     pub fn new_sphere(S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_sphere(S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_sphere(S),
             ))
         }
     }
@@ -2857,7 +2938,7 @@ impl MakeFace {
     pub fn new_torus(C: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_torus(C),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_torus(C),
             ))
         }
     }
@@ -2866,12 +2947,14 @@ impl MakeFace {
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
     pub fn new_handlegeomsurface_real(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         TolDegen: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real(S, TolDegen),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real(
+                    S, TolDegen,
+                ),
             ))
         }
     }
@@ -2887,7 +2970,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_pln_real4(P, UMin, UMax, VMin, VMax),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_pln_real4(
+                    P, UMin, UMax, VMin, VMax,
+                ),
             ))
         }
     }
@@ -2903,7 +2988,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cylinder_real4(C, UMin, UMax, VMin, VMax),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cylinder_real4(
+                    C, UMin, UMax, VMin, VMax,
+                ),
             ))
         }
     }
@@ -2919,7 +3006,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cone_real4(C, UMin, UMax, VMin, VMax),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cone_real4(
+                    C, UMin, UMax, VMin, VMax,
+                ),
             ))
         }
     }
@@ -2935,7 +3024,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_sphere_real4(S, UMin, UMax, VMin, VMax),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_sphere_real4(
+                    S, UMin, UMax, VMin, VMax,
+                ),
             ))
         }
     }
@@ -2951,7 +3042,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_torus_real4(C, UMin, UMax, VMin, VMax),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_torus_real4(
+                    C, UMin, UMax, VMin, VMax,
+                ),
             ))
         }
     }
@@ -2960,7 +3053,7 @@ impl MakeFace {
     /// Make a face from a Surface. Accepts tolerance value (TolDegen)
     /// for resolution of degenerated edges.
     pub fn new_handlegeomsurface_real5(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -2969,7 +3062,7 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real5(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_real5(
                     S, UMin, UMax, VMin, VMax, TolDegen,
                 ),
             ))
@@ -2984,7 +3077,7 @@ impl MakeFace {
     pub fn new_wire_bool(W: &crate::topo_ds::Wire, OnlyPlane: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_wire_bool(W, OnlyPlane),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_wire_bool(W, OnlyPlane),
             ))
         }
     }
@@ -2998,7 +3091,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_pln_wire_bool(P, W, Inside),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_pln_wire_bool(
+                    P, W, Inside,
+                ),
             ))
         }
     }
@@ -3012,7 +3107,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cylinder_wire_bool(C, W, Inside),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cylinder_wire_bool(
+                    C, W, Inside,
+                ),
             ))
         }
     }
@@ -3026,7 +3123,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_cone_wire_bool(C, W, Inside),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_cone_wire_bool(
+                    C, W, Inside,
+                ),
             ))
         }
     }
@@ -3040,7 +3139,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_sphere_wire_bool(S, W, Inside),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_sphere_wire_bool(
+                    S, W, Inside,
+                ),
             ))
         }
     }
@@ -3054,7 +3155,9 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_torus_wire_bool(C, W, Inside),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_torus_wire_bool(
+                    C, W, Inside,
+                ),
             ))
         }
     }
@@ -3065,14 +3168,12 @@ impl MakeFace {
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
     pub fn new_handlegeomsurface_wire_bool(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         W: &crate::topo_ds::Wire,
         Inside: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_wire_bool(S, W, Inside),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_handlegeomsurface_wire_bool(S, W, Inside)))
         }
     }
 
@@ -3126,7 +3227,7 @@ impl MakeFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_ctor_face_wire(F, W),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_ctor_face_wire(F, W),
             ))
         }
     }
@@ -3182,7 +3283,7 @@ impl MakeFace {
     /// it must contain pcurves for all edges in W,
     /// otherwise the wrong shape will be created.
     pub fn new_handlegeomsurface_wire(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         W: &crate::topo_ds::Wire,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_wire_bool(S, W, true)
@@ -3196,7 +3297,7 @@ impl MakeFace {
     /// want to work on the geometries of the two faces independently.
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_init_face(self as *mut Self, F)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_init_face(self as *mut Self, F)
         })
     }
 
@@ -3212,12 +3313,12 @@ impl MakeFace {
     /// if calculation of natural bounds is turned on.
     pub fn init_handlegeomsurface_bool_real(
         &mut self,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         Bound: bool,
         TolDegen: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_init_handlegeomsurface_bool_real(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_init_handlegeomsurface_bool_real(
                 self as *mut Self,
                 S,
                 Bound,
@@ -3239,7 +3340,7 @@ impl MakeFace {
     /// TolDegen parameter is used for resolution of degenerated edges.
     pub fn init_handlegeomsurface_real5(
         &mut self,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -3247,7 +3348,7 @@ impl MakeFace {
         TolDegen: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_init_handlegeomsurface_real5(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_init_handlegeomsurface_real5(
                 self as *mut Self,
                 S,
                 UMin,
@@ -3275,7 +3376,7 @@ impl MakeFace {
     /// TopoDS_Face F = MF;
     pub fn add(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_add(self as *mut Self, W)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_add(self as *mut Self, W)
         })
     }
 
@@ -3283,7 +3384,7 @@ impl MakeFace {
     /// Returns true if this algorithm has a valid face.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_is_done(self as *const Self)
         })
     }
 
@@ -3296,7 +3397,7 @@ impl MakeFace {
     /// bounds of the surface.
     pub fn error(&self) -> crate::b_rep_builder_api::FaceError {
         crate::b_rep_builder_api::FaceError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -3307,36 +3408,38 @@ impl MakeFace {
     /// StdFail_NotDone if no face is built.
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeFace_face(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_face(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3344,7 +3447,7 @@ impl MakeFace {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -3354,30 +3457,40 @@ impl MakeFace {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeFace_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeFace_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeFace_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3404,11 +3517,11 @@ impl MakeFace {
 /// -   initializing the construction of a polygonal wire,
 /// -   adding points or vertices to the polygonal wire under construction, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_MakePolygon as MakePolygon;
+pub use crate::ffi_types::BRepBuilderAPI_MakePolygon as MakePolygon;
 
 unsafe impl crate::CppDeletable for MakePolygon {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakePolygon_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_destructor(ptr);
     }
 }
 
@@ -3421,7 +3534,7 @@ impl MakePolygon {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor(),
             ))
         }
     }
@@ -3430,7 +3543,7 @@ impl MakePolygon {
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt2(P1, P2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_pnt2(P1, P2),
             ))
         }
     }
@@ -3444,7 +3557,9 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt3_bool(P1, P2, P3, Close),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_pnt3_bool(
+                    P1, P2, P3, Close,
+                ),
             ))
         }
     }
@@ -3474,7 +3589,9 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_pnt4_bool(P1, P2, P3, P4, Close),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_pnt4_bool(
+                    P1, P2, P3, P4, Close,
+                ),
             ))
         }
     }
@@ -3486,7 +3603,7 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex2(V1, V2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_vertex2(V1, V2),
             ))
         }
     }
@@ -3500,7 +3617,9 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex3_bool(V1, V2, V3, Close),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_vertex3_bool(
+                    V1, V2, V3, Close,
+                ),
             ))
         }
     }
@@ -3531,7 +3650,9 @@ impl MakePolygon {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_ctor_vertex4_bool(V1, V2, V3, V4, Close),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_ctor_vertex4_bool(
+                    V1, V2, V3, V4, Close,
+                ),
             ))
         }
     }
@@ -3608,7 +3729,7 @@ impl MakePolygon {
     /// **Source:** `BRepBuilderAPI_MakePolygon.hxx`:116 - `BRepBuilderAPI_MakePolygon::Add()`
     pub fn add_pnt(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_add_pnt(self as *mut Self, P)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_add_pnt(self as *mut Self, P)
         })
     }
 
@@ -3639,7 +3760,7 @@ impl MakePolygon {
     /// -   a non-manifold polygonal wire.
     pub fn add_vertex(&mut self, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_add_vertex(self as *mut Self, V)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_add_vertex(self as *mut Self, V)
         })
     }
 
@@ -3648,7 +3769,7 @@ impl MakePolygon {
     /// polygonal wire is not coincident with the previous one.
     pub fn added(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_added(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_added(self as *const Self)
         })
     }
 
@@ -3658,16 +3779,18 @@ impl MakePolygon {
     /// wire under construction.
     pub fn close(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_close(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_close(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepBuilderAPI_MakePolygon.hxx`:153 - `BRepBuilderAPI_MakePolygon::FirstVertex()`
     pub fn first_vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_first_vertex(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_first_vertex(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3676,9 +3799,11 @@ impl MakePolygon {
     /// If the constructed polygonal wire is closed, the first and the last vertices are identical.
     pub fn last_vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_last_vertex(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_last_vertex(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3689,7 +3814,7 @@ impl MakePolygon {
     /// been chained together by this construction algorithm.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_is_done(self as *const Self)
         })
     }
 
@@ -3700,7 +3825,7 @@ impl MakePolygon {
     /// If there is only one vertex in the polygonal wire, the result is a null edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_edge(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_edge(
                 self as *const Self,
             )))
         }
@@ -3714,7 +3839,9 @@ impl MakePolygon {
     /// two vertices have been chained together by this construction algorithm.
     pub fn wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_wire(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_wire(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3722,7 +3849,7 @@ impl MakePolygon {
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -3732,61 +3859,65 @@ impl MakePolygon {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakePolygon_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakePolygon_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3801,11 +3932,11 @@ impl MakePolygon {
 ///
 /// It  provides deferred methods to trace the history
 /// of sub-shapes.
-pub use crate::ffi::BRepBuilderAPI_MakeShape as MakeShape;
+pub use crate::ffi_types::BRepBuilderAPI_MakeShape as MakeShape;
 
 unsafe impl crate::CppDeletable for MakeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeShape_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_destructor(ptr);
     }
 }
 
@@ -3815,7 +3946,7 @@ impl MakeShape {
     /// may be redefined.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShape_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_build(self as *mut Self, theRange)
         })
     }
 
@@ -3824,7 +3955,9 @@ impl MakeShape {
     /// Raises exception StdFail_NotDone if the shape was not built.
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShape_shape(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_shape(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3840,12 +3973,14 @@ impl MakeShape {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShape_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -3861,9 +3996,9 @@ impl MakeShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShape_modified(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_modified(
                 self as *mut Self,
                 S,
             )))
@@ -3874,16 +4009,18 @@ impl MakeShape {
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShape_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_is_deleted(self as *mut Self, S)
         })
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3891,7 +4028,7 @@ impl MakeShape {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -3901,14 +4038,18 @@ impl MakeShape {
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShape_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShape_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShape_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3921,11 +4062,11 @@ impl MakeShape {
 /// Builds shape on per-facet basis on the input mesh. Resulting shape has shared
 /// edges by construction, but no maximization (unify same domain) is applied.
 /// No generation history is provided.
-pub use crate::ffi::BRepBuilderAPI_MakeShapeOnMesh as MakeShapeOnMesh;
+pub use crate::ffi_types::BRepBuilderAPI_MakeShapeOnMesh as MakeShapeOnMesh;
 
 unsafe impl crate::CppDeletable for MakeShapeOnMesh {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_destructor(ptr);
     }
 }
 
@@ -3934,12 +4075,10 @@ impl MakeShapeOnMesh {
     /// Ctor. Sets mesh to process.
     /// @param[in] theMesh  - Mesh to construct shape for.
     pub fn new_handlepolytriangulation(
-        theMesh: &crate::ffi::HandlePolyTriangulation,
+        theMesh: &crate::ffi_types::HandlePolyTriangulation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_ctor_handlepolytriangulation(theMesh),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_ctor_handlepolytriangulation(theMesh)))
         }
     }
 
@@ -3947,81 +4086,77 @@ impl MakeShapeOnMesh {
     /// Builds shape on mesh.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShapeOnMesh_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShapeOnMesh_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4054,11 +4189,11 @@ impl MakeShapeOnMesh {
 /// the surface are not sewn. For a sewn result, you need to use
 /// BRepOffsetAPI_Sewing. For a shell with thickness, you need to use
 /// BRepOffsetAPI_MakeOffsetShape.
-pub use crate::ffi::BRepBuilderAPI_MakeShell as MakeShell;
+pub use crate::ffi_types::BRepBuilderAPI_MakeShell as MakeShell;
 
 unsafe impl crate::CppDeletable for MakeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeShell_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_destructor(ptr);
     }
 }
 
@@ -4072,7 +4207,7 @@ impl MakeShell {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShell_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_ctor(),
             ))
         }
     }
@@ -4080,12 +4215,14 @@ impl MakeShell {
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:67 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     /// Constructs a shell from the surface S.
     pub fn new_handlegeomsurface_bool(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         Segment: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_bool(S, Segment),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_bool(
+                    S, Segment,
+                ),
             ))
         }
     }
@@ -4096,7 +4233,7 @@ impl MakeShell {
     /// parameter values UMin and UMax, and limited in the v
     /// parametric direction by the two parameter values VMin and VMax.
     pub fn new_handlegeomsurface_real4_bool(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4104,17 +4241,13 @@ impl MakeShell {
         Segment: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_real4_bool(
-                    S, UMin, UMax, VMin, VMax, Segment,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_ctor_handlegeomsurface_real4_bool(S, UMin, UMax, VMin, VMax, Segment)))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeShell.hxx`:67 - `BRepBuilderAPI_MakeShell::BRepBuilderAPI_MakeShell()`
     /// Constructs a shell from the surface S.
-    pub fn new_handlegeomsurface(S: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomsurface(S: &crate::ffi_types::HandleGeomSurface) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_bool(S, false)
     }
 
@@ -4124,7 +4257,7 @@ impl MakeShell {
     /// parameter values UMin and UMax, and limited in the v
     /// parametric direction by the two parameter values VMin and VMax.
     pub fn new_handlegeomsurface_real4(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4146,7 +4279,7 @@ impl MakeShell {
     /// surface or the basis surface if S is trimmed
     pub fn init(
         &mut self,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UMin: f64,
         UMax: f64,
         VMin: f64,
@@ -4154,7 +4287,7 @@ impl MakeShell {
         Segment: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_init(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_init(
                 self as *mut Self,
                 S,
                 UMin,
@@ -4170,7 +4303,7 @@ impl MakeShell {
     /// Returns true if the shell is built.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_is_done(self as *const Self)
         })
     }
 
@@ -4183,7 +4316,7 @@ impl MakeShell {
     /// indicating that the given parameters are outside the bounds of the surface.
     pub fn error(&self) -> crate::b_rep_builder_api::ShellError {
         crate::b_rep_builder_api::ShellError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -4192,36 +4325,38 @@ impl MakeShell {
     /// Returns the new Shell.
     pub fn shell(&self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShell_shell(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_shell(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4229,7 +4364,7 @@ impl MakeShell {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -4239,30 +4374,40 @@ impl MakeShell {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeShell_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeShell_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeShell_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4282,11 +4427,11 @@ impl MakeShell {
 /// A MakeSolid object provides a framework for:
 /// -   defining and implementing the construction of a solid, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_MakeSolid as MakeSolid;
+pub use crate::ffi_types::BRepBuilderAPI_MakeSolid as MakeSolid;
 
 unsafe impl crate::CppDeletable for MakeSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeSolid_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_destructor(ptr);
     }
 }
 
@@ -4298,7 +4443,7 @@ impl MakeSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor(),
             ))
         }
     }
@@ -4308,7 +4453,7 @@ impl MakeSolid {
     pub fn new_compsolid(S: &crate::topo_ds::CompSolid) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_compsolid(S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_compsolid(S),
             ))
         }
     }
@@ -4318,7 +4463,7 @@ impl MakeSolid {
     pub fn new_shell(S: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_shell(S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_shell(S),
             ))
         }
     }
@@ -4331,7 +4476,7 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_shell2(S1, S2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_shell2(S1, S2),
             ))
         }
     }
@@ -4359,7 +4504,7 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_shell3(S1, S2, S3),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_shell3(S1, S2, S3),
             ))
         }
     }
@@ -4369,7 +4514,7 @@ impl MakeSolid {
     pub fn new_solid(So: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_solid(So),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_solid(So),
             ))
         }
     }
@@ -4394,7 +4539,7 @@ impl MakeSolid {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_ctor_solid_shell(So, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_ctor_solid_shell(So, S),
             ))
         }
     }
@@ -4412,7 +4557,7 @@ impl MakeSolid {
     /// these previous ones. Each must bound a closed volume.
     pub fn add(&mut self, S: &crate::topo_ds::Shell) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeSolid_add(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_add(self as *mut Self, S)
         })
     }
 
@@ -4424,7 +4569,7 @@ impl MakeSolid {
     /// conditions of coherence of the resulting solid.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeSolid_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_is_done(self as *const Self)
         })
     }
 
@@ -4432,43 +4577,45 @@ impl MakeSolid {
     /// Returns the new Solid.
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeSolid_solid(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_solid(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_MakeSolid.hxx`:120 - `BRepBuilderAPI_MakeSolid::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeSolid_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_is_deleted(self as *mut Self, S)
         })
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4476,7 +4623,7 @@ impl MakeSolid {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -4486,23 +4633,30 @@ impl MakeSolid {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeSolid_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeSolid_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeSolid_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeSolid_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4521,11 +4675,11 @@ impl MakeSolid {
 /// A MakeVertex object provides a framework for:
 /// -   defining and implementing the construction of a vertex, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_MakeVertex as MakeVertex;
+pub use crate::ffi_types::BRepBuilderAPI_MakeVertex as MakeVertex;
 
 unsafe impl crate::CppDeletable for MakeVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeVertex_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_destructor(ptr);
     }
 }
 
@@ -4538,7 +4692,7 @@ impl MakeVertex {
     pub fn new_pnt(P: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeVertex_ctor_pnt(P),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_ctor_pnt(P),
             ))
         }
     }
@@ -4547,7 +4701,9 @@ impl MakeVertex {
     /// Returns the constructed vertex.
     pub fn vertex(&mut self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeVertex_vertex(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_vertex(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -4555,7 +4711,7 @@ impl MakeVertex {
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -4565,68 +4721,74 @@ impl MakeVertex {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeVertex_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeVertex_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeVertex_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeVertex_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeVertex_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeVertex_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4667,11 +4829,11 @@ impl MakeVertex {
 /// -   initializing the construction of a wire,
 /// -   adding edges to the wire under construction, and
 /// -   consulting the result.
-pub use crate::ffi::BRepBuilderAPI_MakeWire as MakeWire;
+pub use crate::ffi_types::BRepBuilderAPI_MakeWire as MakeWire;
 
 unsafe impl crate::CppDeletable for MakeWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_MakeWire_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_destructor(ptr);
     }
 }
 
@@ -4688,7 +4850,7 @@ impl MakeWire {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor(),
             ))
         }
     }
@@ -4698,7 +4860,7 @@ impl MakeWire {
     pub fn new_edge(E: &crate::topo_ds::Edge) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_edge(E),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_edge(E),
             ))
         }
     }
@@ -4711,7 +4873,7 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_edge2(E1, E2),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_edge2(E1, E2),
             ))
         }
     }
@@ -4725,7 +4887,7 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_edge3(E1, E2, E3),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_edge3(E1, E2, E3),
             ))
         }
     }
@@ -4760,7 +4922,7 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_edge4(E1, E2, E3, E4),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_edge4(E1, E2, E3, E4),
             ))
         }
     }
@@ -4770,7 +4932,7 @@ impl MakeWire {
     pub fn new_wire(W: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_wire(W),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_wire(W),
             ))
         }
     }
@@ -4783,7 +4945,7 @@ impl MakeWire {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_ctor_wire_edge(W, E),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_ctor_wire_edge(W, E),
             ))
         }
     }
@@ -4804,7 +4966,7 @@ impl MakeWire {
     /// connectable edge is added.
     pub fn add_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_add_edge(self as *mut Self, E)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_add_edge(self as *mut Self, E)
         })
     }
 
@@ -4812,7 +4974,7 @@ impl MakeWire {
     /// Add the edges of <W> to the current wire.
     pub fn add_wire(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_add_wire(self as *mut Self, W)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_add_wire(self as *mut Self, W)
         })
     }
 
@@ -4824,9 +4986,12 @@ impl MakeWire {
     /// DisconnectedWire but the "Maker" is Done() and you
     /// can get the  partial result. (ie connected to  the
     /// first edgeof the list <L>)
-    pub fn add_listofshape(&mut self, L: &crate::ffi::TopTools_ListOfShape) {
+    pub fn add_listofshape(&mut self, L: &crate::ffi_types::TopTools_ListOfShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_add_listofshape(self as *mut Self, L)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_add_listofshape(
+                self as *mut Self,
+                L,
+            )
         })
     }
 
@@ -4837,7 +5002,7 @@ impl MakeWire {
     /// -   the last edge which you tried to add was not connectable.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_is_done(self as *const Self)
         })
     }
 
@@ -4848,7 +5013,7 @@ impl MakeWire {
     /// enumeration indicating why the construction failed.
     pub fn error(&self) -> crate::b_rep_builder_api::WireError {
         crate::b_rep_builder_api::WireError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_error(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -4859,7 +5024,9 @@ impl MakeWire {
     /// Exceptions StdFail_NotDone if a wire is not built.
     pub fn wire(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_wire(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_wire(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -4873,7 +5040,9 @@ impl MakeWire {
     /// tried to add was not connectable..
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_edge(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_edge(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4886,36 +5055,38 @@ impl MakeWire {
     /// add was not connectableR
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4923,7 +5094,7 @@ impl MakeWire {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -4933,30 +5104,40 @@ impl MakeWire {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_MakeWire_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_MakeWire_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_MakeWire_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4981,11 +5162,11 @@ impl MakeWire {
 /// -   BRepBuilderAPI_NurbsConvert to convert the
 /// whole geometry of a shape into NURBS geometry,
 /// -   BRepOffsetAPI_DraftAngle to build a tapered shape.
-pub use crate::ffi::BRepBuilderAPI_ModifyShape as ModifyShape;
+pub use crate::ffi_types::BRepBuilderAPI_ModifyShape as ModifyShape;
 
 unsafe impl crate::CppDeletable for ModifyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_ModifyShape_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_destructor(ptr);
     }
 }
 
@@ -5002,12 +5183,14 @@ impl ModifyShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_ModifyShape_modified(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_modified(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -5026,7 +5209,10 @@ impl ModifyShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_ModifyShape_modified_shape(self as *const Self, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_modified_shape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -5035,7 +5221,7 @@ impl ModifyShape {
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -5045,68 +5231,74 @@ impl ModifyShape {
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_ModifyShape_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_ModifyShape_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_ModifyShape_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_ModifyShape_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_ModifyShape_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_ModifyShape_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -5122,11 +5314,11 @@ impl ModifyShape {
 /// all curves supporting edges of the basis shape are converted
 /// into BSpline curves, and all surfaces supporting its faces are
 /// converted into BSpline surfaces.
-pub use crate::ffi::BRepBuilderAPI_NurbsConvert as NurbsConvert;
+pub use crate::ffi_types::BRepBuilderAPI_NurbsConvert as NurbsConvert;
 
 unsafe impl crate::CppDeletable for NurbsConvert {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_NurbsConvert_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_destructor(ptr);
     }
 }
 
@@ -5138,7 +5330,7 @@ impl NurbsConvert {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_ctor(),
             ))
         }
     }
@@ -5156,7 +5348,7 @@ impl NurbsConvert {
     pub fn new_shape_bool(S: &crate::topo_ds::Shape, Copy: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_ctor_shape_bool(S, Copy),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_ctor_shape_bool(S, Copy),
             ))
         }
     }
@@ -5186,7 +5378,11 @@ impl NurbsConvert {
     /// shapes: you specify them by calling the function Perform again.
     pub fn perform(&mut self, S: &crate::topo_ds::Shape, Copy: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_NurbsConvert_perform(self as *mut Self, S, Copy)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_perform(
+                self as *mut Self,
+                S,
+                Copy,
+            )
         })
     }
 
@@ -5202,12 +5398,14 @@ impl NurbsConvert {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_NurbsConvert_modified(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_modified(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -5224,7 +5422,10 @@ impl NurbsConvert {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_modified_shape(self as *const Self, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_modified_shape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -5232,44 +5433,28 @@ impl NurbsConvert {
     /// Upcast to BRepBuilderAPI_ModifyShape
     pub fn as_modify_shape(&self) -> &ModifyShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
     pub fn as_modify_shape_mut(&mut self) -> &mut ModifyShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_ModifyShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
@@ -5277,7 +5462,7 @@ impl NurbsConvert {
     pub fn as_command(&self) -> &Command {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command(
                     self as *const Self,
                 ),
             )
@@ -5287,48 +5472,56 @@ impl NurbsConvert {
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_NurbsConvert_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_NurbsConvert_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -5360,11 +5553,11 @@ impl NurbsConvert {
 /// - output free edges if necessary
 /// - output multiple edges if necessary
 /// - output the problems if any
-pub use crate::ffi::BRepBuilderAPI_Sewing as Sewing;
+pub use crate::ffi_types::BRepBuilderAPI_Sewing as Sewing;
 
 unsafe impl crate::CppDeletable for Sewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_Sewing_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_destructor(ptr);
     }
 }
 
@@ -5385,7 +5578,7 @@ impl Sewing {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Sewing_ctor_real_bool4(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_ctor_real_bool4(
                     tolerance, option1, option2, option3, option4,
                 ),
             ))
@@ -5463,7 +5656,7 @@ impl Sewing {
         option4: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_init(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_init(
                 self as *mut Self,
                 tolerance,
                 option1,
@@ -5478,7 +5671,7 @@ impl Sewing {
     /// Loads the context shape.
     pub fn load(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_load(self as *mut Self, shape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_load(self as *mut Self, shape)
         })
     }
 
@@ -5486,7 +5679,7 @@ impl Sewing {
     /// Defines the shapes to be sewed or controlled
     pub fn add(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_add(self as *mut Self, shape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_add(self as *mut Self, shape)
         })
     }
 
@@ -5495,7 +5688,10 @@ impl Sewing {
     /// theProgress - progress indicator of algorithm
     pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_perform(self as *mut Self, theProgress)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_perform(
+                self as *mut Self,
+                theProgress,
+            )
         })
     }
 
@@ -5505,7 +5701,7 @@ impl Sewing {
     /// may be a face, a shell, a solid or a compound
     pub fn sewed_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_sewed_shape(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_sewed_shape(
                 self as *const Self,
             )))
         }
@@ -5513,17 +5709,20 @@ impl Sewing {
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:116 - `BRepBuilderAPI_Sewing::SetContext()`
     /// set context
-    pub fn set_context(&mut self, theContext: &crate::ffi::HandleBRepToolsReShape) {
+    pub fn set_context(&mut self, theContext: &crate::ffi_types::HandleBRepToolsReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_context(self as *mut Self, theContext)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_context(
+                self as *mut Self,
+                theContext,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:119 - `BRepBuilderAPI_Sewing::GetContext()`
     /// return context
-    pub fn get_context(&self) -> &crate::ffi::HandleBRepToolsReShape {
+    pub fn get_context(&self) -> &crate::ffi_types::HandleBRepToolsReShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_get_context(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_get_context(
                 self as *const Self,
             )))
         }
@@ -5533,7 +5732,7 @@ impl Sewing {
     /// Gives the number of free edges (edge shared by one face)
     pub fn nb_free_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_nb_free_edges(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_nb_free_edges(self as *const Self)
         })
     }
 
@@ -5541,7 +5740,7 @@ impl Sewing {
     /// Gives each free edge
     pub fn free_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_free_edge(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_free_edge(
                 self as *const Self,
                 index,
             )))
@@ -5553,7 +5752,9 @@ impl Sewing {
     /// (edge shared by more than two faces)
     pub fn nb_multiple_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_nb_multiple_edges(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_nb_multiple_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -5561,10 +5762,12 @@ impl Sewing {
     /// Gives each multiple edge
     pub fn multiple_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_multiple_edge(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_multiple_edge(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -5572,7 +5775,9 @@ impl Sewing {
     /// Gives the number of contiguous edges (edge shared by two faces)
     pub fn nb_contigous_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_nb_contigous_edges(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_nb_contigous_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -5580,21 +5785,25 @@ impl Sewing {
     /// Gives each contiguous edge
     pub fn contigous_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_contigous_edge(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_contigous_edge(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:141 - `BRepBuilderAPI_Sewing::ContigousEdgeCouple()`
     /// Gives the sections (edge) belonging to a contiguous edge
-    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_contigous_edge_couple(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_contigous_edge_couple(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -5602,7 +5811,10 @@ impl Sewing {
     /// Indicates if a section is bound (before use SectionToBoundary)
     pub fn is_section_bound(&self, section: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_is_section_bound(self as *const Self, section)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_is_section_bound(
+                self as *const Self,
+                section,
+            )
         })
     }
 
@@ -5623,10 +5835,12 @@ impl Sewing {
         section: &crate::topo_ds::Edge,
     ) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_section_to_boundary(
-                self as *const Self,
-                section,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_section_to_boundary(
+                    self as *const Self,
+                    section,
+                ),
+            ))
         }
     }
 
@@ -5634,7 +5848,9 @@ impl Sewing {
     /// Gives the number of degenerated shapes
     pub fn nb_degenerated_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_nb_degenerated_shapes(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_nb_degenerated_shapes(
+                self as *const Self,
+            )
         })
     }
 
@@ -5642,10 +5858,12 @@ impl Sewing {
     /// Gives each degenerated shape
     pub fn degenerated_shape(&self, index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_degenerated_shape(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_degenerated_shape(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -5653,7 +5871,10 @@ impl Sewing {
     /// Indicates if a input shape is degenerated
     pub fn is_degenerated(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_is_degenerated(self as *const Self, shape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_is_degenerated(
+                self as *const Self,
+                shape,
+            )
         })
     }
 
@@ -5661,7 +5882,10 @@ impl Sewing {
     /// Indicates if a input shape has been modified
     pub fn is_modified(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_is_modified(self as *const Self, shape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_is_modified(
+                self as *const Self,
+                shape,
+            )
         })
     }
 
@@ -5675,7 +5899,7 @@ impl Sewing {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn modified(&self, shape: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_modified(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_modified(
                 self as *const Self,
                 shape,
             )))
@@ -5686,7 +5910,10 @@ impl Sewing {
     /// Indicates if a input subshape has been modified
     pub fn is_modified_sub_shape(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_is_modified_sub_shape(self as *const Self, shape)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_is_modified_sub_shape(
+                self as *const Self,
+                shape,
+            )
         })
     }
 
@@ -5698,7 +5925,10 @@ impl Sewing {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Sewing_modified_sub_shape(self as *const Self, shape),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_modified_sub_shape(
+                    self as *const Self,
+                    shape,
+                ),
             ))
         }
     }
@@ -5707,7 +5937,7 @@ impl Sewing {
     /// print the information
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_dump(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_dump(self as *const Self)
         })
     }
 
@@ -5715,7 +5945,7 @@ impl Sewing {
     /// Gives the number of deleted faces (faces smallest than tolerance)
     pub fn nb_deleted_faces(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_nb_deleted_faces(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_nb_deleted_faces(self as *const Self)
         })
     }
 
@@ -5723,10 +5953,12 @@ impl Sewing {
     /// Gives each deleted face
     pub fn deleted_face(&self, index: i32) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_deleted_face(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_deleted_face(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -5739,7 +5971,11 @@ impl Sewing {
     ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Sewing_which_face(self as *const Self, theEdg, index),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_which_face(
+                    self as *const Self,
+                    theEdg,
+                    index,
+                ),
             ))
         }
     }
@@ -5748,7 +5984,9 @@ impl Sewing {
     /// Gets same parameter mode.
     pub fn same_parameter_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_same_parameter_mode(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_same_parameter_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5756,7 +5994,7 @@ impl Sewing {
     /// Sets same parameter mode.
     pub fn set_same_parameter_mode(&mut self, SameParameterMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_same_parameter_mode(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_same_parameter_mode(
                 self as *mut Self,
                 SameParameterMode,
             )
@@ -5767,7 +6005,7 @@ impl Sewing {
     /// Gives set tolerance.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_tolerance(self as *const Self)
         })
     }
 
@@ -5775,7 +6013,10 @@ impl Sewing {
     /// Sets tolerance
     pub fn set_tolerance(&mut self, theToler: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_tolerance(self as *mut Self, theToler)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_tolerance(
+                self as *mut Self,
+                theToler,
+            )
         })
     }
 
@@ -5783,7 +6024,7 @@ impl Sewing {
     /// Gives set min tolerance.
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_min_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_min_tolerance(self as *const Self)
         })
     }
 
@@ -5791,7 +6032,10 @@ impl Sewing {
     /// Sets min tolerance
     pub fn set_min_tolerance(&mut self, theMinToler: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_min_tolerance(self as *mut Self, theMinToler)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_min_tolerance(
+                self as *mut Self,
+                theMinToler,
+            )
         })
     }
 
@@ -5799,7 +6043,7 @@ impl Sewing {
     /// Gives set max tolerance
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_max_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_max_tolerance(self as *const Self)
         })
     }
 
@@ -5807,7 +6051,10 @@ impl Sewing {
     /// Sets max tolerance.
     pub fn set_max_tolerance(&mut self, theMaxToler: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_max_tolerance(self as *mut Self, theMaxToler)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_max_tolerance(
+                self as *mut Self,
+                theMaxToler,
+            )
         })
     }
 
@@ -5815,7 +6062,7 @@ impl Sewing {
     /// Returns mode for sewing faces By default - true.
     pub fn face_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_face_mode(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_face_mode(self as *const Self)
         })
     }
 
@@ -5823,7 +6070,10 @@ impl Sewing {
     /// Sets mode for sewing faces By default - true.
     pub fn set_face_mode(&mut self, theFaceMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_face_mode(self as *mut Self, theFaceMode)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_face_mode(
+                self as *mut Self,
+                theFaceMode,
+            )
         })
     }
 
@@ -5831,7 +6081,9 @@ impl Sewing {
     /// Returns mode for sewing floating edges By default - false.
     pub fn floating_edges_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_floating_edges_mode(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_floating_edges_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5841,7 +6093,7 @@ impl Sewing {
     /// Sets mode for cutting floating edges By default - false.
     pub fn set_floating_edges_mode(&mut self, theFloatingEdgesMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_floating_edges_mode(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_floating_edges_mode(
                 self as *mut Self,
                 theFloatingEdgesMode,
             )
@@ -5853,7 +6105,9 @@ impl Sewing {
     /// of edges and vertices during of merging.
     pub fn local_tolerances_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_local_tolerances_mode(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_local_tolerances_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5863,7 +6117,7 @@ impl Sewing {
     /// in this case WorkTolerance = myTolerance + tolEdge1+ tolEdg2;
     pub fn set_local_tolerances_mode(&mut self, theLocalTolerancesMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_local_tolerances_mode(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_local_tolerances_mode(
                 self as *mut Self,
                 theLocalTolerancesMode,
             )
@@ -5874,7 +6128,7 @@ impl Sewing {
     /// Sets mode for non-manifold sewing.
     pub fn set_non_manifold_mode(&mut self, theNonManifoldMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_set_non_manifold_mode(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_set_non_manifold_mode(
                 self as *mut Self,
                 theNonManifoldMode,
             )
@@ -5887,16 +6141,20 @@ impl Sewing {
     /// INTERNAL FUNCTIONS ---
     pub fn non_manifold_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_non_manifold_mode(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_non_manifold_mode(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5904,7 +6162,7 @@ impl Sewing {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Sewing_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5912,50 +6170,64 @@ impl Sewing {
     }
 
     /// **Source:** `BRepBuilderAPI_Sewing.hxx`:243 - `BRepBuilderAPI_Sewing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBuilderAPI_Sewing_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBuilderAPISewing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBuilderAPISewing> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Sewing_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5963,7 +6235,9 @@ impl Sewing {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBuilderAPI_Sewing_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5976,62 +6250,72 @@ impl Sewing {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Sewing_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Sewing_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBuilderAPISewing;
+pub use crate::ffi_types::HandleBRepBuilderAPISewing;
 
 unsafe impl crate::CppDeletable for HandleBRepBuilderAPISewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBuilderAPISewing_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_destructor(ptr);
     }
 }
 
 impl HandleBRepBuilderAPISewing {
     /// Dereference this Handle to access the underlying BRepBuilderAPI_Sewing
-    pub fn get(&self) -> &crate::ffi::BRepBuilderAPI_Sewing {
+    pub fn get(&self) -> &crate::ffi_types::BRepBuilderAPI_Sewing {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBuilderAPISewing_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BRepBuilderAPI_Sewing
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBuilderAPI_Sewing {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBuilderAPISewing_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying BRepBuilderAPI_Sewing
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBuilderAPI_Sewing {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<BRepBuilderAPI_Sewing> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBuilderAPISewing_to_HandleStandardTransient(
+                crate::ffi_extern_TKTopAlgo::HandleBRepBuilderAPISewing_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6055,11 +6339,11 @@ impl HandleBRepBuilderAPISewing {
 /// -   defining the geometric transformation to be applied,
 /// -   implementing the transformation algorithm, and
 /// -   consulting the results.
-pub use crate::ffi::BRepBuilderAPI_Transform as Transform;
+pub use crate::ffi_types::BRepBuilderAPI_Transform as Transform;
 
 unsafe impl crate::CppDeletable for Transform {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBuilderAPI_Transform_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_destructor(ptr);
     }
 }
 
@@ -6071,7 +6355,7 @@ impl Transform {
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_ctor_trsf(T),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_ctor_trsf(T),
             ))
         }
     }
@@ -6094,7 +6378,7 @@ impl Transform {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_ctor_shape_trsf_bool2(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_ctor_shape_trsf_bool2(
                     theShape,
                     theTrsf,
                     theCopyGeom,
@@ -6161,7 +6445,7 @@ impl Transform {
         theCopyMesh: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Transform_perform(
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_perform(
                 self as *mut Self,
                 theShape,
                 theCopyGeom,
@@ -6178,7 +6462,10 @@ impl Transform {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_modified_shape(self as *const Self, S),
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_modified_shape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -6195,9 +6482,9 @@ impl Transform {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Transform_modified(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_modified(
                 self as *mut Self,
                 S,
             )))
@@ -6208,7 +6495,7 @@ impl Transform {
     pub fn as_modify_shape(&self) -> &ModifyShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape(
                     self as *const Self,
                 ),
             )
@@ -6218,40 +6505,36 @@ impl Transform {
     /// Upcast to BRepBuilderAPI_ModifyShape (mutable)
     pub fn as_modify_shape_mut(&mut self) -> &mut ModifyShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_ModifyShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_make_shape(&self) -> &MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape (mutable)
     pub fn as_make_shape_mut(&mut self) -> &mut MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_command(&self) -> &Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6259,7 +6542,7 @@ impl Transform {
     pub fn as_command_mut(&mut self) -> &mut Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -6269,37 +6552,49 @@ impl Transform {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Transform_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBuilderAPI_Transform_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Transform_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Transform_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBuilderAPI_Transform_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepBuilderAPI_Transform_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }

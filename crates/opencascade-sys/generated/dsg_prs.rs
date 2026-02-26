@@ -10,8 +10,8 @@
 /// draws symbols ((one or two) arrows,(one or two)points
 /// at thebeginning and at the end of the dimension
 pub fn compute_symbol(
-    aPresentation: &crate::ffi::HandleGraphic3dStructure,
-    anAspect: &crate::ffi::HandlePrs3dDimensionAspect,
+    aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+    anAspect: &crate::ffi_types::HandlePrs3dDimensionAspect,
     pt1: &crate::gp::Pnt,
     pt2: &crate::gp::Pnt,
     dir1: &crate::gp::Dir,
@@ -20,7 +20,7 @@ pub fn compute_symbol(
     drawFromCenter: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_symbol(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_symbol(
             aPresentation,
             anAspect,
             pt1,
@@ -46,7 +46,7 @@ pub fn compute_planar_faces_length_presentation(
     DirOfArrow1: &mut crate::gp::Dir,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_planar_faces_length_presentation(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_planar_faces_length_presentation(
             FirstArrowLength,
             SecondArrowLength,
             AttachmentPoint1,
@@ -64,21 +64,21 @@ pub fn compute_planar_faces_length_presentation(
 pub fn compute_curvilinear_faces_length_presentation(
     FirstArrowLength: f64,
     SecondArrowLength: f64,
-    SecondSurf: &crate::ffi::HandleGeomSurface,
+    SecondSurf: &crate::ffi_types::HandleGeomSurface,
     AttachmentPoint1: &crate::gp::Pnt,
     AttachmentPoint2: &crate::gp::Pnt,
     DirAttach: &crate::gp::Dir,
     EndOfArrow2: &mut crate::gp::Pnt,
     DirOfArrow1: &mut crate::gp::Dir,
-    VCurve: &mut crate::ffi::HandleGeomCurve,
-    UCurve: &mut crate::ffi::HandleGeomCurve,
+    VCurve: &mut crate::ffi_types::HandleGeomCurve,
+    UCurve: &mut crate::ffi_types::HandleGeomCurve,
     FirstU: &mut f64,
     deltaU: &mut f64,
     FirstV: &mut f64,
     deltaV: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_curvilinear_faces_length_presentation(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_curvilinear_faces_length_presentation(
             FirstArrowLength,
             SecondArrowLength,
             SecondSurf,
@@ -122,7 +122,7 @@ pub fn compute_faces_angle_presentation(
     LastParAttachCirc: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_faces_angle_presentation(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_faces_angle_presentation(
             ArrowLength,
             Value,
             CenterPoint,
@@ -158,7 +158,7 @@ pub fn compute_radius_line(
     aRadLineEnd: &mut crate::gp::Pnt,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_radius_line(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_radius_line(
             aCenter,
             anEndOfArrow,
             aPosition,
@@ -192,7 +192,7 @@ pub fn compute_fillet_radius_presentation(
     DrawPosition: &mut crate::gp::Pnt,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::DsgPrs_compute_fillet_radius_presentation(
+        crate::ffi_extern_TKV3d::DsgPrs_compute_fillet_radius_presentation(
             ArrowLength,
             Value,
             Position,
@@ -215,7 +215,9 @@ pub fn compute_fillet_radius_presentation(
 /// **Source:** `DsgPrs.hxx`:126 - `DsgPrs::DistanceFromApex`
 /// computes  length  of  ellipse  arc  in  parametric  units
 pub fn distance_from_apex(elips: &crate::gp::Elips, Apex: &crate::gp::Pnt, par: f64) -> f64 {
-    crate::check_result(unsafe { crate::ffi::DsgPrs_distance_from_apex(elips, Apex, par) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKV3d::DsgPrs_distance_from_apex(elips, Apex, par)
+    })
 }
 
 /// Designates how many arrows will be displayed and
@@ -266,11 +268,11 @@ impl TryFrom<i32> for ArrowSide {
 
 /// **Source:** `DsgPrs_AnglePresentation.hxx`:35 - `DsgPrs_AnglePresentation`
 /// A framework for displaying angles.
-pub use crate::ffi::DsgPrs_AnglePresentation as AnglePresentation;
+pub use crate::ffi_types::DsgPrs_AnglePresentation as AnglePresentation;
 
 unsafe impl crate::CppDeletable for AnglePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_AnglePresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_destructor(ptr);
     }
 }
 
@@ -280,7 +282,7 @@ impl AnglePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_AnglePresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_ctor(),
             ))
         }
     }
@@ -291,8 +293,8 @@ impl AnglePresentation {
     /// VmaxCircle - a circle at V parameter = Vmax
     /// aCircle - a circle at V parameter from projection of aPosition to axis of the cone
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_circ_pnt2_circ2_real(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aVal: f64,
         aText: &crate::t_collection::ExtendedString,
         aCircle: &crate::gp::Circ,
@@ -303,7 +305,7 @@ impl AnglePresentation {
         aArrowSize: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_circ_pnt2_circ2_real(aPresentation, aDrawer, aVal, aText, aCircle, aPosition, Apex, VminCircle, VmaxCircle, aArrowSize)
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_circ_pnt2_circ2_real(aPresentation, aDrawer, aVal, aText, aCircle, aPosition, Apex, VminCircle, VmaxCircle, aArrowSize)
         })
     }
 
@@ -313,8 +315,8 @@ impl AnglePresentation {
     /// CenterPoint, using the offset point OffsetPoint.
     /// Lines are drawn to points AttachmentPoint1 and AttachmentPoint2
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt3_dir2_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         CenterPoint: &crate::gp::Pnt,
         AttachmentPoint1: &crate::gp::Pnt,
@@ -324,7 +326,7 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt3_dir2_pnt(aPresentation, aDrawer, theval, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt3_dir2_pnt(aPresentation, aDrawer, theval, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
         })
     }
 
@@ -332,8 +334,8 @@ impl AnglePresentation {
     /// Same  as above, but <thevalstring> contains conversion
     /// in Session units....
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         thevalstring: &crate::t_collection::ExtendedString,
         CenterPoint: &crate::gp::Pnt,
@@ -344,7 +346,7 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint)
         })
     }
 
@@ -352,8 +354,8 @@ impl AnglePresentation {
     /// Same  as above, may add one  or
     /// two Arrows  according to  <ArrowSide>  value
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         thevalstring: &crate::t_collection::ExtendedString,
         CenterPoint: &crate::gp::Pnt,
@@ -365,7 +367,7 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir2_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, OffsetPoint, ArrowSide.into())
         })
     }
 
@@ -373,8 +375,8 @@ impl AnglePresentation {
     /// Same  as above, but axisdir contains the axis direction
     /// useful for Revol that can be opened with 180 degrees
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         thevalstring: &crate::t_collection::ExtendedString,
         CenterPoint: &crate::gp::Pnt,
@@ -386,7 +388,7 @@ impl AnglePresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_pnt(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, OffsetPoint)
         })
     }
 
@@ -394,8 +396,8 @@ impl AnglePresentation {
     /// Same  as above,may add one  or
     /// two Arrows  according to  <ArrowSide>  value
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_bool_ax1_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         thevalstring: &crate::t_collection::ExtendedString,
         CenterPoint: &crate::gp::Pnt,
@@ -410,7 +412,7 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_bool_ax1_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, isPlane, AxisOfSurf, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_dir3_bool_ax1_pnt_arrowside(aPresentation, aDrawer, theval, thevalstring, CenterPoint, AttachmentPoint1, AttachmentPoint2, dir1, dir2, axisdir, isPlane, AxisOfSurf, OffsetPoint, ArrowSide.into())
         })
     }
 
@@ -421,8 +423,8 @@ impl AnglePresentation {
     /// two Arrows  according to  <ArrowSide>  value.  The
     /// attributes (color,arrowsize,...) are driven by the Drawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt2_ax1_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         theCenter: &crate::gp::Pnt,
         AttachmentPoint1: &crate::gp::Pnt,
@@ -430,7 +432,7 @@ impl AnglePresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt2_ax1_arrowside(aPresentation, aDrawer, theval, theCenter, AttachmentPoint1, theAxe, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_AnglePresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_pnt2_ax1_arrowside(aPresentation, aDrawer, theval, theCenter, AttachmentPoint1, theAxe, ArrowSide.into())
         })
     }
 }
@@ -441,11 +443,11 @@ impl AnglePresentation {
 
 /// **Source:** `DsgPrs_Chamf2dPresentation.hxx`:32 - `DsgPrs_Chamf2dPresentation`
 /// Framework for display of 2D chamfers.
-pub use crate::ffi::DsgPrs_Chamf2dPresentation as Chamf2dPresentation;
+pub use crate::ffi_types::DsgPrs_Chamf2dPresentation as Chamf2dPresentation;
 
 unsafe impl crate::CppDeletable for Chamf2dPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_Chamf2dPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_destructor(ptr);
     }
 }
 
@@ -455,7 +457,7 @@ impl Chamf2dPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_Chamf2dPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_ctor(),
             ))
         }
     }
@@ -468,14 +470,14 @@ impl Chamf2dPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPntAttach: &crate::gp::Pnt,
         aPntEnd: &crate::gp::Pnt,
         aText: &crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring(aPresentation, aDrawer, aPntAttach, aPntEnd, aText)
+            crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring(aPresentation, aDrawer, aPntAttach, aPntEnd, aText)
         })
     }
 
@@ -490,15 +492,15 @@ impl Chamf2dPresentation {
     /// at the point of attachment has a display defined by a
     /// value of the enumeration DsgPrs_Arrowside.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPntAttach: &crate::gp::Pnt,
         aPntEnd: &crate::gp::Pnt,
         aText: &crate::t_collection::ExtendedString,
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring_arrowside(aPresentation, aDrawer, aPntAttach, aPntEnd, aText, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_Chamf2dPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_extendedstring_arrowside(aPresentation, aDrawer, aPntAttach, aPntEnd, aText, ArrowSide.into())
         })
     }
 }
@@ -509,11 +511,11 @@ impl Chamf2dPresentation {
 
 /// **Source:** `DsgPrs_ConcentricPresentation.hxx`:30 - `DsgPrs_ConcentricPresentation`
 /// A framework to define display of relations of concentricity.
-pub use crate::ffi::DsgPrs_ConcentricPresentation as ConcentricPresentation;
+pub use crate::ffi_types::DsgPrs_ConcentricPresentation as ConcentricPresentation;
 
 unsafe impl crate::CppDeletable for ConcentricPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_ConcentricPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_ConcentricPresentation_destructor(ptr);
     }
 }
 
@@ -523,7 +525,7 @@ impl ConcentricPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_ConcentricPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_ConcentricPresentation_ctor(),
             ))
         }
     }
@@ -537,15 +539,15 @@ impl ConcentricPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aCenter: &crate::gp::Pnt,
         aRadius: f64,
         aNorm: &crate::gp::Dir,
         aPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_ConcentricPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_ConcentricPresentation_add(
                 aPresentation,
                 aDrawer,
                 aCenter,
@@ -563,11 +565,11 @@ impl ConcentricPresentation {
 
 /// **Source:** `DsgPrs_DatumPrs.hxx`:22 - `DsgPrs_DatumPrs`
 /// A framework for displaying an XYZ trihedron.
-pub use crate::ffi::DsgPrs_DatumPrs as DatumPrs;
+pub use crate::ffi_types::DsgPrs_DatumPrs as DatumPrs;
 
 unsafe impl crate::CppDeletable for DatumPrs {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_DatumPrs_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_DatumPrs_destructor(ptr);
     }
 }
 
@@ -576,7 +578,9 @@ impl DatumPrs {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::DsgPrs_DatumPrs_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::DsgPrs_DatumPrs_ctor(),
+            ))
         }
     }
 
@@ -592,12 +596,12 @@ impl DatumPrs {
     /// @param[in] theDatum  the source of trihedron position
     /// @param[in] theDrawer  the provider of display attributes
     pub fn add(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theDatum: &crate::gp::Ax2,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_DatumPrs_add(thePresentation, theDatum, theDrawer)
+            crate::ffi_extern_TKV3d::DsgPrs_DatumPrs_add(thePresentation, theDatum, theDrawer)
         })
     }
 }
@@ -608,11 +612,11 @@ impl DatumPrs {
 
 /// **Source:** `DsgPrs_DiameterPresentation.hxx`:32 - `DsgPrs_DiameterPresentation`
 /// A framework for displaying diameters in shapes.
-pub use crate::ffi::DsgPrs_DiameterPresentation as DiameterPresentation;
+pub use crate::ffi_types::DsgPrs_DiameterPresentation as DiameterPresentation;
 
 unsafe impl crate::CppDeletable for DiameterPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_DiameterPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_destructor(ptr);
     }
 }
 
@@ -622,7 +626,7 @@ impl DiameterPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_DiameterPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_ctor(),
             ))
         }
     }
@@ -637,8 +641,8 @@ impl DiameterPresentation {
     /// whether arrows will be displayed at either or both
     /// ends of the length. The text aText labels the diameter.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_arrowside_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
         aCircle: &crate::gp::Circ,
@@ -646,7 +650,7 @@ impl DiameterPresentation {
         IsDiamSymbol: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, ArrowSide.into(), IsDiamSymbol)
+            crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, ArrowSide.into(), IsDiamSymbol)
         })
     }
 
@@ -661,8 +665,8 @@ impl DiameterPresentation {
     /// length. The parameters uFirst and uLast define the
     /// first and last points of the arc. The text aText labels the diameter.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
         aCircle: &crate::gp::Circ,
@@ -672,7 +676,7 @@ impl DiameterPresentation {
         IsDiamSymbol: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, uFirst, uLast, ArrowSide.into(), IsDiamSymbol)
+            crate::ffi_extern_TKV3d::DsgPrs_DiameterPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, uFirst, uLast, ArrowSide.into(), IsDiamSymbol)
         })
     }
 }
@@ -682,11 +686,11 @@ impl DiameterPresentation {
 // ========================
 
 /// **Source:** `DsgPrs_EllipseRadiusPresentation.hxx`:32 - `DsgPrs_EllipseRadiusPresentation`
-pub use crate::ffi::DsgPrs_EllipseRadiusPresentation as EllipseRadiusPresentation;
+pub use crate::ffi_types::DsgPrs_EllipseRadiusPresentation as EllipseRadiusPresentation;
 
 unsafe impl crate::CppDeletable for EllipseRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_EllipseRadiusPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_destructor(ptr);
     }
 }
 
@@ -696,7 +700,7 @@ impl EllipseRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_EllipseRadiusPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_ctor(),
             ))
         }
     }
@@ -705,8 +709,8 @@ impl EllipseRadiusPresentation {
     /// draws a  Radius  (Major  or  Minor)
     /// representation for whole ellipse  case
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_bool_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
@@ -716,7 +720,7 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_bool_arrowside(aPresentation, aDrawer, theval, aText, AttachmentPoint, anEndOfArrow, aCenter, IsMaxRadius, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_pnt3_bool_arrowside(aPresentation, aDrawer, theval, aText, AttachmentPoint, anEndOfArrow, aCenter, IsMaxRadius, ArrowSide.into())
         })
     }
 
@@ -724,8 +728,8 @@ impl EllipseRadiusPresentation {
     /// draws a  Radius  (Major  or  Minor) representation
     /// for arc of an ellipse  case
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_elips_pnt3_real_bool2_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         aText: &crate::t_collection::ExtendedString,
         anEllipse: &crate::gp::Elips,
@@ -738,7 +742,7 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_elips_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, anEllipse, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_elips_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, anEllipse, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
         })
     }
 
@@ -746,11 +750,11 @@ impl EllipseRadiusPresentation {
     /// draws a  Radius  (Major  or  Minor) representation
     /// for arc of an offset  curve  from  ellipse
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_handlegeomoffsetcurve_pnt3_real_bool2_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theval: f64,
         aText: &crate::t_collection::ExtendedString,
-        aCurve: &crate::ffi::HandleGeomOffsetCurve,
+        aCurve: &crate::ffi_types::HandleGeomOffsetCurve,
         AttachmentPoint: &crate::gp::Pnt,
         anEndOfArrow: &crate::gp::Pnt,
         aCenter: &crate::gp::Pnt,
@@ -760,7 +764,7 @@ impl EllipseRadiusPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_handlegeomoffsetcurve_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, aCurve, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_EllipseRadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_real_extendedstring_handlegeomoffsetcurve_pnt3_real_bool2_arrowside(aPresentation, aDrawer, theval, aText, aCurve, AttachmentPoint, anEndOfArrow, aCenter, uFirst, IsInDomain, IsMaxRadius, ArrowSide.into())
         })
     }
 }
@@ -773,11 +777,11 @@ impl EllipseRadiusPresentation {
 /// A framework to display equal distances between shapes and a given plane.
 /// The distance is the length of a projection from the shape to the plane.
 /// These distances are used to compare two shapes by this vector alone.
-pub use crate::ffi::DsgPrs_EqualDistancePresentation as EqualDistancePresentation;
+pub use crate::ffi_types::DsgPrs_EqualDistancePresentation as EqualDistancePresentation;
 
 unsafe impl crate::CppDeletable for EqualDistancePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_EqualDistancePresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_destructor(ptr);
     }
 }
 
@@ -787,7 +791,7 @@ impl EqualDistancePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_EqualDistancePresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_ctor(),
             ))
         }
     }
@@ -799,16 +803,16 @@ impl EqualDistancePresentation {
     /// The distance is the length of a projection from the shape to the plane.
     /// These distances are used to compare two shapes by this vector alone.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         Point1: &crate::gp::Pnt,
         Point2: &crate::gp::Pnt,
         Point3: &crate::gp::Pnt,
         Point4: &crate::gp::Pnt,
-        Plane: &crate::ffi::HandleGeomPlane,
+        Plane: &crate::ffi_types::HandleGeomPlane,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EqualDistancePresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_add(
                 aPresentation,
                 aDrawer,
                 Point1,
@@ -824,8 +828,8 @@ impl EqualDistancePresentation {
     /// is used for presentation of interval between
     /// two lines or two points or between a line and a point.
     pub fn add_interval(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPoint1: &crate::gp::Pnt,
         aPoint2: &crate::gp::Pnt,
         aDir: &crate::gp::Dir,
@@ -835,7 +839,7 @@ impl EqualDistancePresentation {
         anExtremePnt2: &mut crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EqualDistancePresentation_add_interval(
+            crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_add_interval(
                 aPresentation,
                 aDrawer,
                 aPoint1,
@@ -853,8 +857,8 @@ impl EqualDistancePresentation {
     /// is used for presentation of interval between two arcs.
     /// One of arcs can have a zero radius.
     pub fn add_interval_between_two_arcs(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aCircle1: &crate::gp::Circ,
         aCircle2: &crate::gp::Circ,
         aPoint1: &crate::gp::Pnt,
@@ -864,7 +868,7 @@ impl EqualDistancePresentation {
         anArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EqualDistancePresentation_add_interval_between_two_arcs(
+            crate::ffi_extern_TKV3d::DsgPrs_EqualDistancePresentation_add_interval_between_two_arcs(
                 aPresentation,
                 aDrawer,
                 aCircle1,
@@ -885,11 +889,11 @@ impl EqualDistancePresentation {
 
 /// **Source:** `DsgPrs_EqualRadiusPresentation.hxx`:31 - `DsgPrs_EqualRadiusPresentation`
 /// A framework to define display of equality in radii.
-pub use crate::ffi::DsgPrs_EqualRadiusPresentation as EqualRadiusPresentation;
+pub use crate::ffi_types::DsgPrs_EqualRadiusPresentation as EqualRadiusPresentation;
 
 unsafe impl crate::CppDeletable for EqualRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_EqualRadiusPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_EqualRadiusPresentation_destructor(ptr);
     }
 }
 
@@ -899,7 +903,7 @@ impl EqualRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_EqualRadiusPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_EqualRadiusPresentation_ctor(),
             ))
         }
     }
@@ -914,16 +918,16 @@ impl EqualRadiusPresentation {
     /// first and second shapes respectively, and FirstPoint
     /// and SecondPoint are the attachment points of the radii to arcs.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         FirstCenter: &crate::gp::Pnt,
         SecondCenter: &crate::gp::Pnt,
         FirstPoint: &crate::gp::Pnt,
         SecondPoint: &crate::gp::Pnt,
-        Plane: &crate::ffi::HandleGeomPlane,
+        Plane: &crate::ffi_types::HandleGeomPlane,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_EqualRadiusPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_EqualRadiusPresentation_add(
                 aPresentation,
                 aDrawer,
                 FirstCenter,
@@ -942,11 +946,11 @@ impl EqualRadiusPresentation {
 
 /// **Source:** `DsgPrs_FilletRadiusPresentation.hxx`:33 - `DsgPrs_FilletRadiusPresentation`
 /// A framework for displaying radii of fillets.
-pub use crate::ffi::DsgPrs_FilletRadiusPresentation as FilletRadiusPresentation;
+pub use crate::ffi_types::DsgPrs_FilletRadiusPresentation as FilletRadiusPresentation;
 
 unsafe impl crate::CppDeletable for FilletRadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_FilletRadiusPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_FilletRadiusPresentation_destructor(ptr);
     }
 }
 
@@ -956,7 +960,7 @@ impl FilletRadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_FilletRadiusPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_FilletRadiusPresentation_ctor(),
             ))
         }
     }
@@ -967,8 +971,8 @@ impl FilletRadiusPresentation {
     /// defined by the attribute manager aDrawer. the value
     /// specifies the length of the radius.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         thevalue: f64,
         aText: &crate::t_collection::ExtendedString,
         aPosition: &crate::gp::Pnt,
@@ -981,11 +985,11 @@ impl FilletRadiusPresentation {
         drawRevers: bool,
         DrawPosition: &mut crate::gp::Pnt,
         EndOfArrow: &mut crate::gp::Pnt,
-        TrimCurve: &mut crate::ffi::HandleGeomTrimmedCurve,
+        TrimCurve: &mut crate::ffi_types::HandleGeomTrimmedCurve,
         HasCircle: &mut bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_FilletRadiusPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_FilletRadiusPresentation_add(
                 aPresentation,
                 aDrawer,
                 thevalue,
@@ -1013,11 +1017,11 @@ impl FilletRadiusPresentation {
 
 /// **Source:** `DsgPrs_FixPresentation.hxx`:30 - `DsgPrs_FixPresentation`
 /// class which draws the presentation of Fixed objects
-pub use crate::ffi::DsgPrs_FixPresentation as FixPresentation;
+pub use crate::ffi_types::DsgPrs_FixPresentation as FixPresentation;
 
 unsafe impl crate::CppDeletable for FixPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_FixPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_FixPresentation_destructor(ptr);
     }
 }
 
@@ -1026,9 +1030,9 @@ impl FixPresentation {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::DsgPrs_FixPresentation_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::DsgPrs_FixPresentation_ctor(),
+            ))
         }
     }
 
@@ -1039,15 +1043,15 @@ impl FixPresentation {
     /// ( which belongs to the fixed object) and <aPntEnd>.
     /// aSymbSize is the size of the 'fix'symbol
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPntAttach: &crate::gp::Pnt,
         aPntEnd: &crate::gp::Pnt,
         aNormPln: &crate::gp::Dir,
         aSymbSize: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_FixPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_FixPresentation_add(
                 aPresentation,
                 aDrawer,
                 aPntAttach,
@@ -1064,11 +1068,11 @@ impl FixPresentation {
 // ========================
 
 /// **Source:** `DsgPrs_IdenticPresentation.hxx`:31 - `DsgPrs_IdenticPresentation`
-pub use crate::ffi::DsgPrs_IdenticPresentation as IdenticPresentation;
+pub use crate::ffi_types::DsgPrs_IdenticPresentation as IdenticPresentation;
 
 unsafe impl crate::CppDeletable for IdenticPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_IdenticPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_destructor(ptr);
     }
 }
 
@@ -1078,7 +1082,7 @@ impl IdenticPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_IdenticPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_ctor(),
             ))
         }
     }
@@ -1087,14 +1091,14 @@ impl IdenticPresentation {
     /// draws a line between <aPntAttach> and
     /// <aPntOffset>.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         aPntAttach: &crate::gp::Pnt,
         aPntOffset: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2(aPresentation, aDrawer, aText, aPntAttach, aPntOffset)
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2(aPresentation, aDrawer, aText, aPntAttach, aPntOffset)
         })
     }
 
@@ -1105,15 +1109,15 @@ impl IdenticPresentation {
     /// between <aPntOffset> and its projection
     /// on the precedent line.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         aFAttach: &crate::gp::Pnt,
         aSAttach: &crate::gp::Pnt,
         aPntOffset: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3(aPresentation, aDrawer, aText, aFAttach, aSAttach, aPntOffset)
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3(aPresentation, aDrawer, aText, aFAttach, aSAttach, aPntOffset)
         })
     }
 
@@ -1125,8 +1129,8 @@ impl IdenticPresentation {
     /// draws a segment between <aPntOffset> and
     /// its projection on the arc.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt4(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         aAx2: &crate::gp::Ax2,
         aCenter: &crate::gp::Pnt,
@@ -1135,7 +1139,7 @@ impl IdenticPresentation {
         aPntOffset: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt4(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset)
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt4(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset)
         })
     }
 
@@ -1146,8 +1150,8 @@ impl IdenticPresentation {
     /// and of radius dist(aCenter, aFAttach), and
     /// draws a segment between <aPntOffset> and <aPntOnCirc>
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt5(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         aAx2: &crate::gp::Ax2,
         aCenter: &crate::gp::Pnt,
@@ -1157,7 +1161,7 @@ impl IdenticPresentation {
         aPntOnCirc: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt5(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset, aPntOnCirc)
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_ax2_pnt5(aPresentation, aDrawer, aText, aAx2, aCenter, aFAttach, aSAttach, aPntOffset, aPntOnCirc)
         })
     }
 
@@ -1167,8 +1171,8 @@ impl IdenticPresentation {
     /// between <aFAttach> and <aSAttach> and
     /// draws a segment between <aPntOffset> and <aPntOnElli>
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_elips_pnt4(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         anEllipse: &crate::gp::Elips,
         aFAttach: &crate::gp::Pnt,
@@ -1177,7 +1181,7 @@ impl IdenticPresentation {
         aPntOnElli: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_elips_pnt4(aPresentation, aDrawer, aText, anEllipse, aFAttach, aSAttach, aPntOffset, aPntOnElli)
+            crate::ffi_extern_TKV3d::DsgPrs_IdenticPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_elips_pnt4(aPresentation, aDrawer, aText, anEllipse, aFAttach, aSAttach, aPntOffset, aPntOnElli)
         })
     }
 }
@@ -1191,11 +1195,11 @@ impl IdenticPresentation {
 /// The length displayed is indicated by line segments
 /// and text alone or by a combination of line segment,
 /// text and   arrows at either or both of its ends.
-pub use crate::ffi::DsgPrs_LengthPresentation as LengthPresentation;
+pub use crate::ffi_types::DsgPrs_LengthPresentation as LengthPresentation;
 
 unsafe impl crate::CppDeletable for LengthPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_LengthPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_destructor(ptr);
     }
 }
 
@@ -1205,7 +1209,7 @@ impl LengthPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_LengthPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_ctor(),
             ))
         }
     }
@@ -1219,8 +1223,8 @@ impl LengthPresentation {
     /// The line and text attributes are specified by the
     /// attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1228,7 +1232,7 @@ impl LengthPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
         })
     }
 
@@ -1244,8 +1248,8 @@ impl LengthPresentation {
     /// The line, text and arrow attributes are specified by the
     /// attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1254,7 +1258,7 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
         })
     }
 
@@ -1271,8 +1275,8 @@ impl LengthPresentation {
     /// The line, text and arrow attributes are specified by the
     /// attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_pln_dir_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1282,7 +1286,7 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_pln_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, PlaneOfFaces, aDirection, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_pln_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, PlaneOfFaces, aDirection, OffsetPoint, ArrowSide.into())
         })
     }
 
@@ -1299,10 +1303,10 @@ impl LengthPresentation {
     /// The line, text and arrow attributes are specified by the
     /// attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_handlegeomsurface_pnt2_dir_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
-        SecondSurf: &crate::ffi::HandleGeomSurface,
+        SecondSurf: &crate::ffi_types::HandleGeomSurface,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
         aDirection: &crate::gp::Dir,
@@ -1310,7 +1314,7 @@ impl LengthPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_handlegeomsurface_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, SecondSurf, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_handlegeomsurface_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, SecondSurf, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
         })
     }
 
@@ -1323,14 +1327,14 @@ impl LengthPresentation {
     /// whether arrows will be displayed at either or both ends of the length.
     /// The line and arrow attributes are specified by the attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         Pt1: &crate::gp::Pnt,
         Pt2: &crate::gp::Pnt,
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_arrowside(aPresentation, aDrawer, Pt1, Pt2, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_LengthPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_arrowside(aPresentation, aDrawer, Pt1, Pt2, ArrowSide.into())
         })
     }
 }
@@ -1340,11 +1344,11 @@ impl LengthPresentation {
 // ========================
 
 /// **Source:** `DsgPrs_MidPointPresentation.hxx`:30 - `DsgPrs_MidPointPresentation`
-pub use crate::ffi::DsgPrs_MidPointPresentation as MidPointPresentation;
+pub use crate::ffi_types::DsgPrs_MidPointPresentation as MidPointPresentation;
 
 unsafe impl crate::CppDeletable for MidPointPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_MidPointPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_destructor(ptr);
     }
 }
 
@@ -1354,7 +1358,7 @@ impl MidPointPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_MidPointPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_ctor(),
             ))
         }
     }
@@ -1363,8 +1367,8 @@ impl MidPointPresentation {
     /// draws the representation of a MidPoint between
     /// two vertices.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt3_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theAxe: &crate::gp::Ax2,
         MidPoint: &crate::gp::Pnt,
         Position: &crate::gp::Pnt,
@@ -1372,7 +1376,7 @@ impl MidPointPresentation {
         first: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt3_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, first)
+            crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt3_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, first)
         })
     }
 
@@ -1380,8 +1384,8 @@ impl MidPointPresentation {
     /// draws the representation of a MidPoint between
     /// two lines or linear segments.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt5_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theAxe: &crate::gp::Ax2,
         MidPoint: &crate::gp::Pnt,
         Position: &crate::gp::Pnt,
@@ -1391,7 +1395,7 @@ impl MidPointPresentation {
         first: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt5_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, Point1, Point2, first)
+            crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_ax2_pnt5_bool(aPresentation, aDrawer, theAxe, MidPoint, Position, AttachPoint, Point1, Point2, first)
         })
     }
 
@@ -1399,8 +1403,8 @@ impl MidPointPresentation {
     /// draws the representation of a MidPoint between
     /// two entire circles or two circular arcs.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_circ_pnt5_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aCircle: &crate::gp::Circ,
         MidPoint: &crate::gp::Pnt,
         Position: &crate::gp::Pnt,
@@ -1410,7 +1414,7 @@ impl MidPointPresentation {
         first: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_circ_pnt5_bool(aPresentation, aDrawer, aCircle, MidPoint, Position, AttachPoint, Point1, Point2, first)
+            crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_circ_pnt5_bool(aPresentation, aDrawer, aCircle, MidPoint, Position, AttachPoint, Point1, Point2, first)
         })
     }
 
@@ -1418,8 +1422,8 @@ impl MidPointPresentation {
     /// draws the representation of a MidPoint between
     /// two entire ellipses or two elliptic arcs.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_elips_pnt5_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         anElips: &crate::gp::Elips,
         MidPoint: &crate::gp::Pnt,
         Position: &crate::gp::Pnt,
@@ -1429,7 +1433,7 @@ impl MidPointPresentation {
         first: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_elips_pnt5_bool(aPresentation, aDrawer, anElips, MidPoint, Position, AttachPoint, Point1, Point2, first)
+            crate::ffi_extern_TKV3d::DsgPrs_MidPointPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_elips_pnt5_bool(aPresentation, aDrawer, anElips, MidPoint, Position, AttachPoint, Point1, Point2, first)
         })
     }
 }
@@ -1440,11 +1444,11 @@ impl MidPointPresentation {
 
 /// **Source:** `DsgPrs_OffsetPresentation.hxx`:31 - `DsgPrs_OffsetPresentation`
 /// A framework to define display of offsets.
-pub use crate::ffi::DsgPrs_OffsetPresentation as OffsetPresentation;
+pub use crate::ffi_types::DsgPrs_OffsetPresentation as OffsetPresentation;
 
 unsafe impl crate::CppDeletable for OffsetPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_OffsetPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_destructor(ptr);
     }
 }
 
@@ -1454,7 +1458,7 @@ impl OffsetPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_OffsetPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_ctor(),
             ))
         }
     }
@@ -1468,8 +1472,8 @@ impl OffsetPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1478,7 +1482,7 @@ impl OffsetPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_OffsetPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_add(
                 aPresentation,
                 aDrawer,
                 aText,
@@ -1497,8 +1501,8 @@ impl OffsetPresentation {
     /// point AttachmentPoint2, along direction
     /// aDirection, using the offset point OffsetPoint.
     pub fn add_axes(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1507,7 +1511,7 @@ impl OffsetPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_OffsetPresentation_add_axes(
+            crate::ffi_extern_TKV3d::DsgPrs_OffsetPresentation_add_axes(
                 aPresentation,
                 aDrawer,
                 aText,
@@ -1527,11 +1531,11 @@ impl OffsetPresentation {
 
 /// **Source:** `DsgPrs_ParalPresentation.hxx`:29 - `DsgPrs_ParalPresentation`
 /// A framework to define display of relations of parallelism between shapes.
-pub use crate::ffi::DsgPrs_ParalPresentation as ParalPresentation;
+pub use crate::ffi_types::DsgPrs_ParalPresentation as ParalPresentation;
 
 unsafe impl crate::CppDeletable for ParalPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_ParalPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_destructor(ptr);
     }
 }
 
@@ -1541,7 +1545,7 @@ impl ParalPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_ParalPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_ctor(),
             ))
         }
     }
@@ -1556,8 +1560,8 @@ impl ParalPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1565,7 +1569,7 @@ impl ParalPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint)
         })
     }
 
@@ -1580,8 +1584,8 @@ impl ParalPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
@@ -1590,7 +1594,7 @@ impl ParalPresentation {
         ArrowSide: crate::dsg_prs::ArrowSide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
+            crate::ffi_extern_TKV3d::DsgPrs_ParalPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt2_dir_pnt_arrowside(aPresentation, aDrawer, aText, AttachmentPoint1, AttachmentPoint2, aDirection, OffsetPoint, ArrowSide.into())
         })
     }
 }
@@ -1602,11 +1606,11 @@ impl ParalPresentation {
 /// **Source:** `DsgPrs_PerpenPresentation.hxx`:30 - `DsgPrs_PerpenPresentation`
 /// A framework to define display of perpendicular
 /// constraints between shapes.
-pub use crate::ffi::DsgPrs_PerpenPresentation as PerpenPresentation;
+pub use crate::ffi_types::DsgPrs_PerpenPresentation as PerpenPresentation;
 
 unsafe impl crate::CppDeletable for PerpenPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_PerpenPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_PerpenPresentation_destructor(ptr);
     }
 }
 
@@ -1616,7 +1620,7 @@ impl PerpenPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_PerpenPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_PerpenPresentation_ctor(),
             ))
         }
     }
@@ -1631,8 +1635,8 @@ impl PerpenPresentation {
     /// object aPresentation. Their display attributes are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         pAx1: &crate::gp::Pnt,
         pAx2: &crate::gp::Pnt,
         pnt1: &crate::gp::Pnt,
@@ -1642,7 +1646,7 @@ impl PerpenPresentation {
         intOut2: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_PerpenPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_PerpenPresentation_add(
                 aPresentation,
                 aDrawer,
                 pAx1,
@@ -1663,11 +1667,11 @@ impl PerpenPresentation {
 
 /// **Source:** `DsgPrs_RadiusPresentation.hxx`:32 - `DsgPrs_RadiusPresentation`
 /// A framework to define display of radii.
-pub use crate::ffi::DsgPrs_RadiusPresentation as RadiusPresentation;
+pub use crate::ffi_types::DsgPrs_RadiusPresentation as RadiusPresentation;
 
 unsafe impl crate::CppDeletable for RadiusPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_RadiusPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_destructor(ptr);
     }
 }
 
@@ -1677,7 +1681,7 @@ impl RadiusPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_RadiusPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_ctor(),
             ))
         }
     }
@@ -1693,8 +1697,8 @@ impl RadiusPresentation {
     /// If the Boolean reverseArrow is true, the arrowhead
     /// will point away from the attachment point.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_bool2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
         aCircle: &crate::gp::Circ,
@@ -1704,7 +1708,7 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, drawFromCenter, reverseArrow)
+            crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, drawFromCenter, reverseArrow)
         })
     }
 
@@ -1722,8 +1726,8 @@ impl RadiusPresentation {
     /// If the Boolean reverseArrow is true, the arrowhead
     /// will point away from the attachment point.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
         aCircle: &crate::gp::Circ,
@@ -1734,7 +1738,7 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, ArrowSide.into(), drawFromCenter, reverseArrow)
+            crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt_circ_real2_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, aCircle, firstparam, lastparam, ArrowSide.into(), drawFromCenter, reverseArrow)
         })
     }
 
@@ -1752,8 +1756,8 @@ impl RadiusPresentation {
     /// If the Boolean reverseArrow is true, the arrowhead
     /// will point away from the attachment point.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3_arrowside_bool2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         AttachmentPoint: &crate::gp::Pnt,
         Center: &crate::gp::Pnt,
@@ -1763,7 +1767,7 @@ impl RadiusPresentation {
         reverseArrow: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, Center, EndOfArrow, ArrowSide.into(), drawFromCenter, reverseArrow)
+            crate::ffi_extern_TKV3d::DsgPrs_RadiusPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_extendedstring_pnt3_arrowside_bool2(aPresentation, aDrawer, aText, AttachmentPoint, Center, EndOfArrow, ArrowSide.into(), drawFromCenter, reverseArrow)
         })
     }
 }
@@ -1774,11 +1778,11 @@ impl RadiusPresentation {
 
 /// **Source:** `DsgPrs_ShadedPlanePresentation.hxx`:29 - `DsgPrs_ShadedPlanePresentation`
 /// A framework to define display of shaded planes.
-pub use crate::ffi::DsgPrs_ShadedPlanePresentation as ShadedPlanePresentation;
+pub use crate::ffi_types::DsgPrs_ShadedPlanePresentation as ShadedPlanePresentation;
 
 unsafe impl crate::CppDeletable for ShadedPlanePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_ShadedPlanePresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_ShadedPlanePresentation_destructor(ptr);
     }
 }
 
@@ -1788,7 +1792,7 @@ impl ShadedPlanePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_ShadedPlanePresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_ShadedPlanePresentation_ctor(),
             ))
         }
     }
@@ -1799,14 +1803,20 @@ impl ShadedPlanePresentation {
     /// The display attributes of the shaded plane are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPt1: &crate::gp::Pnt,
         aPt2: &crate::gp::Pnt,
         aPt3: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_ShadedPlanePresentation_add(aPresentation, aDrawer, aPt1, aPt2, aPt3)
+            crate::ffi_extern_TKV3d::DsgPrs_ShadedPlanePresentation_add(
+                aPresentation,
+                aDrawer,
+                aPt1,
+                aPt2,
+                aPt3,
+            )
         })
     }
 }
@@ -1818,11 +1828,11 @@ impl ShadedPlanePresentation {
 /// **Source:** `DsgPrs_ShapeDirPresentation.hxx`:31 - `DsgPrs_ShapeDirPresentation`
 /// A framework to define display of the normal to the
 /// surface of a shape.
-pub use crate::ffi::DsgPrs_ShapeDirPresentation as ShapeDirPresentation;
+pub use crate::ffi_types::DsgPrs_ShapeDirPresentation as ShapeDirPresentation;
 
 unsafe impl crate::CppDeletable for ShapeDirPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_ShapeDirPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_ShapeDirPresentation_destructor(ptr);
     }
 }
 
@@ -1832,7 +1842,7 @@ impl ShapeDirPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_ShapeDirPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_ShapeDirPresentation_ctor(),
             ))
         }
     }
@@ -1846,13 +1856,13 @@ impl ShapeDirPresentation {
     /// the normal is given to the presentation object. If the
     /// first point: 0; if the last point, 1.
     pub fn add(
-        prs: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        prs: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         shape: &crate::topo_ds::Shape,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_ShapeDirPresentation_add(prs, aDrawer, shape, mode)
+            crate::ffi_extern_TKV3d::DsgPrs_ShapeDirPresentation_add(prs, aDrawer, shape, mode)
         })
     }
 }
@@ -1863,11 +1873,11 @@ impl ShapeDirPresentation {
 
 /// **Source:** `DsgPrs_SymbPresentation.hxx`:30 - `DsgPrs_SymbPresentation`
 /// A framework to define display of symbols.
-pub use crate::ffi::DsgPrs_SymbPresentation as SymbPresentation;
+pub use crate::ffi_types::DsgPrs_SymbPresentation as SymbPresentation;
 
 unsafe impl crate::CppDeletable for SymbPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_SymbPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_SymbPresentation_destructor(ptr);
     }
 }
 
@@ -1877,7 +1887,7 @@ impl SymbPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_SymbPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_SymbPresentation_ctor(),
             ))
         }
     }
@@ -1888,13 +1898,18 @@ impl SymbPresentation {
     /// The display attributes of the shaded plane are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aText: &crate::t_collection::ExtendedString,
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_SymbPresentation_add(aPresentation, aDrawer, aText, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_SymbPresentation_add(
+                aPresentation,
+                aDrawer,
+                aText,
+                OffsetPoint,
+            )
         })
     }
 }
@@ -1905,11 +1920,11 @@ impl SymbPresentation {
 
 /// **Source:** `DsgPrs_SymmetricPresentation.hxx`:32 - `DsgPrs_SymmetricPresentation`
 /// A framework to define display of symmetry between shapes.
-pub use crate::ffi::DsgPrs_SymmetricPresentation as SymmetricPresentation;
+pub use crate::ffi_types::DsgPrs_SymmetricPresentation as SymmetricPresentation;
 
 unsafe impl crate::CppDeletable for SymmetricPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_SymmetricPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_destructor(ptr);
     }
 }
 
@@ -1919,7 +1934,7 @@ impl SymmetricPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_SymmetricPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_ctor(),
             ))
         }
     }
@@ -1932,8 +1947,8 @@ impl SymmetricPresentation {
     /// the attribute manager aDrawer.
     /// This syntax is used for display of symmetries between two segments.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_dir_lin_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
         aDirection1: &crate::gp::Dir,
@@ -1941,7 +1956,7 @@ impl SymmetricPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_dir_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aDirection1, aAxis, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_dir_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aDirection1, aAxis, OffsetPoint)
         })
     }
 
@@ -1954,8 +1969,8 @@ impl SymmetricPresentation {
     /// the attribute manager aDrawer.
     /// This syntax is used for display of symmetries between two arcs.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_circ_lin_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
         aCircle1: &crate::gp::Circ,
@@ -1963,7 +1978,7 @@ impl SymmetricPresentation {
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_circ_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aCircle1, aAxis, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_circ_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aCircle1, aAxis, OffsetPoint)
         })
     }
 
@@ -1975,15 +1990,15 @@ impl SymmetricPresentation {
     /// the attribute manager aDrawer.
     /// This syntax is used for display of symmetries between two vertices.
     pub fn add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_lin_pnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         AttachmentPoint1: &crate::gp::Pnt,
         AttachmentPoint2: &crate::gp::Pnt,
         aAxis: &crate::gp::Lin,
         OffsetPoint: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aAxis, OffsetPoint)
+            crate::ffi_extern_TKV3d::DsgPrs_SymmetricPresentation_add_handlegraphic3dstructure_handleprs3ddrawer_pnt2_lin_pnt(aPresentation, aDrawer, AttachmentPoint1, AttachmentPoint2, aAxis, OffsetPoint)
         })
     }
 }
@@ -1994,11 +2009,11 @@ impl SymmetricPresentation {
 
 /// **Source:** `DsgPrs_TangentPresentation.hxx`:30 - `DsgPrs_TangentPresentation`
 /// A framework to define display of tangents.
-pub use crate::ffi::DsgPrs_TangentPresentation as TangentPresentation;
+pub use crate::ffi_types::DsgPrs_TangentPresentation as TangentPresentation;
 
 unsafe impl crate::CppDeletable for TangentPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_TangentPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_TangentPresentation_destructor(ptr);
     }
 }
 
@@ -2008,7 +2023,7 @@ impl TangentPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_TangentPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_TangentPresentation_ctor(),
             ))
         }
     }
@@ -2019,14 +2034,14 @@ impl TangentPresentation {
     /// The display attributes of the tangent are defined by
     /// the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         OffsetPoint: &crate::gp::Pnt,
         aDirection: &crate::gp::Dir,
         aLength: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_TangentPresentation_add(
+            crate::ffi_extern_TKV3d::DsgPrs_TangentPresentation_add(
                 aPresentation,
                 aDrawer,
                 OffsetPoint,
@@ -2043,11 +2058,11 @@ impl TangentPresentation {
 
 /// **Source:** `DsgPrs_XYZAxisPresentation.hxx`:33 - `DsgPrs_XYZAxisPresentation`
 /// A framework for displaying the axes of an XYZ trihedron.
-pub use crate::ffi::DsgPrs_XYZAxisPresentation as XYZAxisPresentation;
+pub use crate::ffi_types::DsgPrs_XYZAxisPresentation as XYZAxisPresentation;
 
 unsafe impl crate::CppDeletable for XYZAxisPresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_XYZAxisPresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_destructor(ptr);
     }
 }
 
@@ -2057,7 +2072,7 @@ impl XYZAxisPresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_XYZAxisPresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_ctor(),
             ))
         }
     }
@@ -2073,8 +2088,8 @@ impl XYZAxisPresentation {
     /// can vary in length relative to the scale of shape display.
     /// Each axis will be identified as X, Y, or Z by the text aText.
     pub fn add_handlegraphic3dstructure_handleprs3dlineaspect_dir_real_charptr_pnt2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        anLineAspect: &crate::ffi::HandlePrs3dLineAspect,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        anLineAspect: &crate::ffi_types::HandlePrs3dLineAspect,
         aDir: &crate::gp::Dir,
         aVal: f64,
         aText: &str,
@@ -2083,17 +2098,17 @@ impl XYZAxisPresentation {
     ) {
         let c_aText = std::ffi::CString::new(aText).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_dir_real_charptr_pnt2(aPresentation, anLineAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
+            crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_dir_real_charptr_pnt2(aPresentation, anLineAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
         })
     }
 
     /// **Source:** `DsgPrs_XYZAxisPresentation.hxx`:56 - `DsgPrs_XYZAxisPresentation::Add()`
     /// draws the presentation X ,Y ,Z axis
     pub fn add_handlegraphic3dstructure_handleprs3dlineaspect_handleprs3darrowaspect_handleprs3dtextaspect_dir_real_charptr_pnt2(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aLineAspect: &crate::ffi::HandlePrs3dLineAspect,
-        anArrowAspect: &crate::ffi::HandlePrs3dArrowAspect,
-        aTextAspect: &crate::ffi::HandlePrs3dTextAspect,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aLineAspect: &crate::ffi_types::HandlePrs3dLineAspect,
+        anArrowAspect: &crate::ffi_types::HandlePrs3dArrowAspect,
+        aTextAspect: &crate::ffi_types::HandlePrs3dTextAspect,
         aDir: &crate::gp::Dir,
         aVal: f64,
         aText: &str,
@@ -2102,7 +2117,7 @@ impl XYZAxisPresentation {
     ) {
         let c_aText = std::ffi::CString::new(aText).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_handleprs3darrowaspect_handleprs3dtextaspect_dir_real_charptr_pnt2(aPresentation, aLineAspect, anArrowAspect, aTextAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
+            crate::ffi_extern_TKV3d::DsgPrs_XYZAxisPresentation_add_handlegraphic3dstructure_handleprs3dlineaspect_handleprs3darrowaspect_handleprs3dtextaspect_dir_real_charptr_pnt2(aPresentation, aLineAspect, anArrowAspect, aTextAspect, aDir, aVal, c_aText.as_ptr(), aPfirst, aPlast)
         })
     }
 }
@@ -2113,11 +2128,11 @@ impl XYZAxisPresentation {
 
 /// **Source:** `DsgPrs_XYZPlanePresentation.hxx`:29 - `DsgPrs_XYZPlanePresentation`
 /// A framework for displaying the planes of an XYZ trihedron.
-pub use crate::ffi::DsgPrs_XYZPlanePresentation as XYZPlanePresentation;
+pub use crate::ffi_types::DsgPrs_XYZPlanePresentation as XYZPlanePresentation;
 
 unsafe impl crate::CppDeletable for XYZPlanePresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DsgPrs_XYZPlanePresentation_destructor(ptr);
+        crate::ffi_extern_TKV3d::DsgPrs_XYZPlanePresentation_destructor(ptr);
     }
 }
 
@@ -2127,7 +2142,7 @@ impl XYZPlanePresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::DsgPrs_XYZPlanePresentation_ctor(),
+                crate::ffi_extern_TKV3d::DsgPrs_XYZPlanePresentation_ctor(),
             ))
         }
     }
@@ -2138,14 +2153,20 @@ impl XYZPlanePresentation {
     /// defined by the attribute manager aDrawer. Each
     /// triangular plane is defined by the points aPt1 aPt2 and aPt3.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         aPt1: &crate::gp::Pnt,
         aPt2: &crate::gp::Pnt,
         aPt3: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::DsgPrs_XYZPlanePresentation_add(aPresentation, aDrawer, aPt1, aPt2, aPt3)
+            crate::ffi_extern_TKV3d::DsgPrs_XYZPlanePresentation_add(
+                aPresentation,
+                aDrawer,
+                aPt1,
+                aPt2,
+                aPt3,
+            )
         })
     }
 }

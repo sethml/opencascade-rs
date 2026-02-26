@@ -30,7 +30,7 @@ pub fn add_shape_box_bool(
     useTriangulation: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepBndLib_add_shape_box_bool(S, B, useTriangulation)
+        crate::ffi_extern_TKTopAlgo::BRepBndLib_add_shape_box_bool(S, B, useTriangulation)
     })
 }
 /// **Source:** `BRepBndLib.hxx`:67 - `BRepBndLib::AddClose`
@@ -46,7 +46,7 @@ pub fn add_shape_box_bool(
 /// Add function. So the added part of the resulting bounding
 /// box is closer to the shape S.
 pub fn add_close(S: &crate::topo_ds::Shape, B: &mut crate::bnd::Box) {
-    crate::check_void_result(unsafe { crate::ffi::BRepBndLib_add_close(S, B) })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKTopAlgo::BRepBndLib_add_close(S, B) })
 }
 /// **Source:** `BRepBndLib.hxx`:78 - `BRepBndLib::AddOptimal`
 /// Adds the shape S to the bounding box B.
@@ -65,7 +65,12 @@ pub fn add_optimal(
     useShapeTolerance: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepBndLib_add_optimal(S, B, useTriangulation, useShapeTolerance)
+        crate::ffi_extern_TKTopAlgo::BRepBndLib_add_optimal(
+            S,
+            B,
+            useTriangulation,
+            useShapeTolerance,
+        )
     })
 }
 /// **Source:** `BRepBndLib.hxx`:95 - `BRepBndLib::AddOBB`
@@ -89,7 +94,7 @@ pub fn add_obb(
     theIsShapeToleranceUsed: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BRepBndLib_add_obb(
+        crate::ffi_extern_TKTopAlgo::BRepBndLib_add_obb(
             theS,
             theOBB,
             theIsTriangulationUsed,

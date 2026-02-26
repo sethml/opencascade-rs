@@ -15,10 +15,14 @@
 pub fn map_shapes_shape_shapeenum_indexedmapofshape(
     S: &crate::topo_ds::Shape,
     T: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi::TopTools_IndexedMapOfShape,
+    M: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(S, T.into(), M)
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_shapeenum_indexedmapofshape(
+            S,
+            T.into(),
+            M,
+        )
     })
 }
 /// **Source:** `TopExp.hxx`:64 - `TopExp::MapShapes`
@@ -30,12 +34,14 @@ pub fn map_shapes_shape_shapeenum_indexedmapofshape(
 /// each sub-shape the transformation that is associated with S.
 pub fn map_shapes_shape_indexedmapofshape_bool2(
     S: &crate::topo_ds::Shape,
-    M: &mut crate::ffi::TopTools_IndexedMapOfShape,
+    M: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
     cumOri: bool,
     cumLoc: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_map_shapes_shape_indexedmapofshape_bool2(S, M, cumOri, cumLoc)
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_indexedmapofshape_bool2(
+            S, M, cumOri, cumLoc,
+        )
     })
 }
 /// **Source:** `TopExp.hxx`:75 - `TopExp::MapShapes`
@@ -47,12 +53,12 @@ pub fn map_shapes_shape_indexedmapofshape_bool2(
 /// each sub-shape the transformation that is associated with S.
 pub fn map_shapes_shape_mapofshape_bool2(
     S: &crate::topo_ds::Shape,
-    M: &mut crate::ffi::TopTools_MapOfShape,
+    M: &mut crate::ffi_types::TopTools_MapOfShape,
     cumOri: bool,
     cumLoc: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_shape_mapofshape_bool2(S, M, cumOri, cumLoc)
     })
 }
 /// **Source:** `TopExp.hxx`:85 - `TopExp::MapShapesAndAncestors`
@@ -65,10 +71,10 @@ pub fn map_shapes_and_ancestors(
     S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+    M: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M)
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_and_ancestors(S, TS.into(), TA.into(), M)
     })
 }
 /// **Source:** `TopExp.hxx`:96 - `TopExp::MapShapesAndUniqueAncestors`
@@ -82,11 +88,11 @@ pub fn map_shapes_and_unique_ancestors(
     S: &crate::topo_ds::Shape,
     TS: crate::top_abs::ShapeEnum,
     TA: crate::top_abs::ShapeEnum,
-    M: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+    M: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
     useOrientation: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_map_shapes_and_unique_ancestors(
+        crate::ffi_extern_TKBRep::TopExp_map_shapes_and_unique_ancestors(
             S,
             TS.into(),
             TA.into(),
@@ -104,7 +110,9 @@ pub fn first_vertex(
     CumOri: bool,
 ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopExp_first_vertex(E, CumOri)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKBRep::TopExp_first_vertex(E, CumOri),
+        ))
     }
 }
 /// **Source:** `TopExp.hxx`:112 - `TopExp::LastVertex`
@@ -116,7 +124,9 @@ pub fn last_vertex(
     CumOri: bool,
 ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopExp_last_vertex(E, CumOri)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKBRep::TopExp_last_vertex(E, CumOri),
+        ))
     }
 }
 /// **Source:** `TopExp.hxx`:118 - `TopExp::Vertices`
@@ -130,7 +140,7 @@ pub fn vertices_edge_vertex2_bool(
     CumOri: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
+        crate::ffi_extern_TKBRep::TopExp_vertices_edge_vertex2_bool(E, Vfirst, Vlast, CumOri)
     })
 }
 /// **Source:** `TopExp.hxx`:129 - `TopExp::Vertices`
@@ -145,7 +155,9 @@ pub fn vertices_wire_vertex2(
     Vfirst: &mut crate::topo_ds::Vertex,
     Vlast: &mut crate::topo_ds::Vertex,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKBRep::TopExp_vertices_wire_vertex2(W, Vfirst, Vlast)
+    })
 }
 /// **Source:** `TopExp.hxx`:137 - `TopExp::CommonVertex`
 /// Finds   the  vertex <V> common   to  the two edges
@@ -157,7 +169,7 @@ pub fn common_vertex_mut(
     E2: &crate::topo_ds::Edge,
     V: &mut crate::topo_ds::Vertex,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::TopExp_common_vertex_mut(E1, E2, V) })
+    crate::check_result(unsafe { crate::ffi_extern_TKBRep::TopExp_common_vertex_mut(E1, E2, V) })
 }
 
 // ========================
@@ -222,11 +234,11 @@ pub fn common_vertex_mut(
 ///
 /// For example searching edges  not in a vertex  does
 /// not make a difference.
-pub use crate::ffi::TopExp_Explorer as Explorer;
+pub use crate::ffi_types::TopExp_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopExp_Explorer_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopExp_Explorer_destructor(ptr);
     }
 }
 
@@ -235,7 +247,9 @@ impl Explorer {
     /// Creates an empty explorer, becomes useful after Init.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopExp_Explorer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBRep::TopExp_Explorer_ctor(),
+            ))
         }
     }
 
@@ -256,7 +270,11 @@ impl Explorer {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopExp_Explorer_ctor_shape_shapeenum2(S, ToFind.into(), ToAvoid.into()),
+                crate::ffi_extern_TKBRep::TopExp_Explorer_ctor_shape_shapeenum2(
+                    S,
+                    ToFind.into(),
+                    ToAvoid.into(),
+                ),
             ))
         }
     }
@@ -275,14 +293,21 @@ impl Explorer {
         ToAvoid: crate::top_abs::ShapeEnum,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopExp_Explorer_init(self as *mut Self, S, ToFind.into(), ToAvoid.into())
+            crate::ffi_extern_TKBRep::TopExp_Explorer_init(
+                self as *mut Self,
+                S,
+                ToFind.into(),
+                ToAvoid.into(),
+            )
         })
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:113 - `TopExp_Explorer::More()`
     /// Returns True if there are more shapes in the exploration.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopExp_Explorer_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:118 - `TopExp_Explorer::Next()`
@@ -290,7 +315,9 @@ impl Explorer {
     /// Exceptions
     /// Standard_NoMoreObject if there are no more shapes to explore.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopExp_Explorer_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:123 - `TopExp_Explorer::Value()`
@@ -298,7 +325,11 @@ impl Explorer {
     /// Exceptions
     /// Standard_NoSuchObject if this explorer has no more shapes to explore.
     pub fn value(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::TopExp_Explorer_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopExp_Explorer_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:128 - `TopExp_Explorer::Current()`
@@ -306,20 +337,28 @@ impl Explorer {
     /// Exceptions
     /// Standard_NoSuchObject if this explorer has no more shapes to explore.
     pub fn current(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::TopExp_Explorer_current(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopExp_Explorer_current(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:131 - `TopExp_Explorer::ReInit()`
     /// Reinitialize the exploration with the original arguments.
     pub fn re_init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopExp_Explorer_re_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_re_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:134 - `TopExp_Explorer::ExploredShape()`
     /// Return explored shape.
     pub fn explored_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopExp_Explorer_explored_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopExp_Explorer_explored_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -327,13 +366,17 @@ impl Explorer {
     /// Returns the current depth of the exploration. 0 is
     /// the shape to explore itself.
     pub fn depth(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopExp_Explorer_depth(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_depth(self as *const Self)
+        })
     }
 
     /// **Source:** `TopExp_Explorer.hxx`:142 - `TopExp_Explorer::Clear()`
     /// Clears the content of the explorer. It will return
     /// False on More().
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopExp_Explorer_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::TopExp_Explorer_clear(self as *mut Self)
+        })
     }
 }

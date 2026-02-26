@@ -9,7 +9,8 @@
 #include <AIS_ListOfInteractive.hxx>
 #include <AIS_NListOfEntityOwner.hxx>
 #include <AIS_Shape.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
@@ -23,18 +24,18 @@
 #include <Graphic3d_MapOfObject.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
+#include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Texture2D.hxx>
 #include <Graphic3d_TextureMap.hxx>
 #include <Graphic3d_TextureRoot.hxx>
 #include <Graphic3d_TextureUnit.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
-#include <Graphic3d_Vec2.hxx>
 #include <Image_CompressedPixMap.hxx>
 #include <Image_SupportedFormats.hxx>
 #include <Image_Texture.hxx>
 #include <Message_ProgressRange.hxx>
 #include <MoniTool_DataMapOfShapeTransient.hxx>
-#include <MoniTool_ValueInterpret.hxx>
+#include <MoniTool_ValueSatisfies.hxx>
 #include <OSD_File.hxx>
 #include <OSD_Path.hxx>
 #include <PrsMgr_ListOfPresentableObjects.hxx>
@@ -63,7 +64,6 @@
 #include <TDF_Attribute.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
-#include <TDF_AttributeMap.hxx>
 #include <TDF_AttributeSequence.hxx>
 #include <TDF_DataSet.hxx>
 #include <TDF_IDFilter.hxx>
@@ -72,7 +72,6 @@
 #include <TDF_LabelMap.hxx>
 #include <TDF_LabelSequence.hxx>
 #include <TDF_RelocationTable.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TDataStd_GenericEmpty.hxx>
 #include <TDataStd_NamedData.hxx>
 #include <TDataStd_Real.hxx>

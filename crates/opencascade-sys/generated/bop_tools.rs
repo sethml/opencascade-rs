@@ -18,11 +18,11 @@
 /// - Classification algorithms;
 /// - Making connexity blocks;
 /// - Shape validation.
-pub use crate::ffi::BOPTools_AlgoTools as AlgoTools;
+pub use crate::ffi_types::BOPTools_AlgoTools as AlgoTools;
 
 unsafe impl crate::CppDeletable for AlgoTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_AlgoTools_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_AlgoTools_destructor(ptr);
     }
 }
 
@@ -31,7 +31,9 @@ impl AlgoTools {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BOPTools_AlgoTools_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_AlgoTools_ctor(),
+            ))
         }
     }
 
@@ -43,7 +45,7 @@ impl AlgoTools {
     /// distances to these shapes. It helps to avoid numerical instability
     /// which may occur when comparing distances and tolerances.
     pub fn d_tolerance() -> f64 {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_d_tolerance() })
+        crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_d_tolerance() })
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:76 - `BOPTools_AlgoTools::ComputeVV()`
@@ -58,7 +60,9 @@ impl AlgoTools {
         theTolP: f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_vv_vertex_pnt_real(theV, theP, theTolP)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_vv_vertex_pnt_real(
+                theV, theP, theTolP,
+            )
         })
     }
 
@@ -73,7 +77,9 @@ impl AlgoTools {
         theFuzz: f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_vv_vertex2_real(theV1, theV2, theFuzz)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_vv_vertex2_real(
+                theV1, theV2, theFuzz,
+            )
         })
     }
 
@@ -82,10 +88,12 @@ impl AlgoTools {
     /// Makes the vertex in the middle of given vertices with
     /// the tolerance covering all tolerance spheres of vertices.
     pub fn make_vertex(
-        theLV: &crate::ffi::TopTools_ListOfShape,
+        theLV: &crate::ffi_types::TopTools_ListOfShape,
         theV: &mut crate::topo_ds::Vertex,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BOPTools_AlgoTools_make_vertex(theLV, theV) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_vertex(theLV, theV)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:95 - `BOPTools_AlgoTools::MakeNewVertex()`
@@ -96,7 +104,9 @@ impl AlgoTools {
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(aP1, aTol, aNewVertex)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_new_vertex_pnt_real_vertex(
+                aP1, aTol, aNewVertex,
+            )
         })
     }
 
@@ -108,7 +118,7 @@ impl AlgoTools {
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_vertex3(aV1, aV2, aNewVertex)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_new_vertex_vertex3(aV1, aV2, aNewVertex)
         })
     }
 
@@ -123,7 +133,7 @@ impl AlgoTools {
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_new_vertex_edge_real_edge_real_vertex(
                 aE1, aP1, aE2, aP2, aNewVertex,
             )
         })
@@ -139,7 +149,7 @@ impl AlgoTools {
         aNewVertex: &mut crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_new_vertex_edge_real_face_vertex(
                 aE1, aP1, aF2, aNewVertex,
             )
         })
@@ -156,7 +166,7 @@ impl AlgoTools {
         aV: &crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_update_vertex_curve_real_vertex(aIC, aT, aV)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_update_vertex_curve_real_vertex(aIC, aT, aV)
         })
     }
 
@@ -170,7 +180,7 @@ impl AlgoTools {
         aV: &crate::topo_ds::Vertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_update_vertex_edge_real_vertex(aE, aT, aV)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_update_vertex_edge_real_vertex(aE, aT, aV)
         })
     }
 
@@ -180,7 +190,7 @@ impl AlgoTools {
     /// cover tolerance zone of <aVF>
     pub fn update_vertex_vertex2(aVF: &crate::topo_ds::Vertex, aVN: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_update_vertex_vertex2(aVF, aVN)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_update_vertex_vertex2(aVF, aVN)
         })
     }
 
@@ -197,7 +207,7 @@ impl AlgoTools {
         theE: &mut crate::topo_ds::Edge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_edge(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_edge(
                 theCurve, theV1, theT1, theV2, theT2, theTolR3D, theE,
             )
         })
@@ -208,7 +218,7 @@ impl AlgoTools {
     pub fn copy_edge(theEdge: &crate::topo_ds::Edge) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BOPTools_AlgoTools_copy_edge(theEdge),
+                crate::ffi_extern_TKBO::BOPTools_AlgoTools_copy_edge(theEdge),
             ))
         }
     }
@@ -225,7 +235,9 @@ impl AlgoTools {
         aNewEdge: &mut crate::topo_ds::Edge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_split_edge(aE1, aV1, aP1, aV2, aP2, aNewEdge)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_split_edge(
+                aE1, aV1, aP1, aV2, aP2, aNewEdge,
+            )
         })
     }
 
@@ -241,7 +253,9 @@ impl AlgoTools {
         aNewEdge: &mut crate::topo_ds::Edge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_sect_edge(aIC, aV1, aP1, aV2, aP2, aNewEdge)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_sect_edge(
+                aIC, aV1, aP1, aV2, aP2, aNewEdge,
+            )
         })
     }
 
@@ -256,14 +270,9 @@ impl AlgoTools {
         thePoint: &crate::gp::Pnt,
         theSolid: &crate::topo_ds::Solid,
         theTol: f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_state_pnt_solid_real_handleinttoolscontext(
-                thePoint, theSolid, theTol, theContext,
-            )
-        }))
-        .unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_state_pnt_solid_real_handleinttoolscontext(thePoint, theSolid, theTol, theContext) })).unwrap()
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:186 - `BOPTools_AlgoTools::ComputeState()`
@@ -276,14 +285,9 @@ impl AlgoTools {
         theVertex: &crate::topo_ds::Vertex,
         theSolid: &crate::topo_ds::Solid,
         theTol: f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_state_vertex_solid_real_handleinttoolscontext(
-                theVertex, theSolid, theTol, theContext,
-            )
-        }))
-        .unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_state_vertex_solid_real_handleinttoolscontext(theVertex, theSolid, theTol, theContext) })).unwrap()
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:196 - `BOPTools_AlgoTools::ComputeState()`
@@ -296,14 +300,9 @@ impl AlgoTools {
         theEdge: &crate::topo_ds::Edge,
         theSolid: &crate::topo_ds::Solid,
         theTol: f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_state_edge_solid_real_handleinttoolscontext(
-                theEdge, theSolid, theTol, theContext,
-            )
-        }))
-        .unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_state_edge_solid_real_handleinttoolscontext(theEdge, theSolid, theTol, theContext) })).unwrap()
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:207 - `BOPTools_AlgoTools::ComputeState()`
@@ -317,10 +316,10 @@ impl AlgoTools {
         theFace: &crate::topo_ds::Face,
         theSolid: &crate::topo_ds::Solid,
         theTol: f64,
-        theBounds: &crate::ffi::TopTools_IndexedMapOfShape,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theBounds: &crate::ffi_types::TopTools_IndexedMapOfShape,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> crate::top_abs::State {
-        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(theFace, theSolid, theTol, theBounds, theContext) })).unwrap()
+        crate::top_abs::State::try_from(crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_state_face_solid_real_indexedmapofshape_handleinttoolscontext(theFace, theSolid, theTol, theBounds, theContext) })).unwrap()
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:218 - `BOPTools_AlgoTools::ComputeStateByOnePoint()`
@@ -333,10 +332,10 @@ impl AlgoTools {
         theShape: &crate::topo_ds::Shape,
         theSolid: &crate::topo_ds::Solid,
         theTol: f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_state_by_one_point(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_state_by_one_point(
                 theShape, theSolid, theTol, theContext,
             )
         }))
@@ -352,12 +351,12 @@ impl AlgoTools {
     pub fn get_face_off(
         theEdge: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
-        theLCEF: &mut crate::ffi::BOPTools_ListOfCoupleOfShape,
+        theLCEF: &mut crate::ffi_types::BOPTools_ListOfCoupleOfShape,
         theFaceOff: &mut crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_get_face_off(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_get_face_off(
                 theEdge, theFace, theLCEF, theFaceOff, theContext,
             )
         })
@@ -377,12 +376,10 @@ impl AlgoTools {
         theEdge: &crate::topo_ds::Edge,
         theFace1: &crate::topo_ds::Face,
         theFace2: &crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_face2_handleinttoolscontext(
-                theFace, theEdge, theFace1, theFace2, theContext,
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_internal_face_face_edge_face2_handleinttoolscontext(theFace, theEdge, theFace1, theFace2, theContext)
         })
     }
 
@@ -397,11 +394,11 @@ impl AlgoTools {
     pub fn is_internal_face_face_edge_listofshape_handleinttoolscontext(
         theFace: &crate::topo_ds::Face,
         theEdge: &crate::topo_ds::Edge,
-        theLF: &mut crate::ffi::TopTools_ListOfShape,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theLF: &mut crate::ffi_types::TopTools_ListOfShape,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(theFace, theEdge, theLF, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_internal_face_face_edge_listofshape_handleinttoolscontext(theFace, theEdge, theLF, theContext)
         })
     }
 
@@ -414,12 +411,12 @@ impl AlgoTools {
     pub fn is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(
         theFace: &crate::topo_ds::Face,
         theSolid: &crate::topo_ds::Solid,
-        theMEF: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theMEF: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
         theTol: f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(theFace, theSolid, theMEF, theTol, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_internal_face_face_solid_indexeddatamapofshapelistofshape_real_handleinttoolscontext(theFace, theSolid, theMEF, theTol, theContext)
         })
     }
 
@@ -434,10 +431,10 @@ impl AlgoTools {
         theCurve: &crate::int_tools::Curve,
         thePC1: bool,
         thePC2: bool,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_p_curve(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_p_curve(
                 theE, theF1, theF2, theCurve, thePC1, thePC2, theContext,
             )
         })
@@ -447,7 +444,9 @@ impl AlgoTools {
     /// @name Wire classification relatively face
     /// Checks if the wire is a hole for the face.
     pub fn is_hole(theW: &crate::topo_ds::Shape, theF: &crate::topo_ds::Shape) -> bool {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_is_hole(theW, theF) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_hole(theW, theF)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:314 - `BOPTools_AlgoTools::IsSplitToReverse()`
@@ -476,16 +475,11 @@ impl AlgoTools {
     pub fn is_split_to_reverse_shape2_handleinttoolscontext_intptr(
         theSplit: &crate::topo_ds::Shape,
         theShape: &crate::topo_ds::Shape,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_split_to_reverse_shape2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -496,11 +490,11 @@ impl AlgoTools {
     pub fn is_split_to_reverse_with_warn(
         theSplit: &crate::topo_ds::Shape,
         theShape: &crate::topo_ds::Shape,
-        theContext: &crate::ffi::HandleIntToolsContext,
-        theReport: &crate::ffi::HandleMessageReport,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
+        theReport: &crate::ffi_types::HandleMessageReport,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_with_warn(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_split_to_reverse_with_warn(
                 theSplit, theShape, theContext, theReport,
             )
         })
@@ -530,16 +524,11 @@ impl AlgoTools {
     pub fn is_split_to_reverse_face2_handleinttoolscontext_intptr(
         theSplit: &crate::topo_ds::Face,
         theShape: &crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_split_to_reverse_face2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -567,16 +556,11 @@ impl AlgoTools {
     pub fn is_split_to_reverse_edge2_handleinttoolscontext_intptr(
         theSplit: &crate::topo_ds::Edge,
         theShape: &crate::topo_ds::Edge,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theError: Option<&mut i32>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(
-                theSplit,
-                theShape,
-                theContext,
-                theError.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_split_to_reverse_edge2_handleinttoolscontext_intptr(theSplit, theShape, theContext, theError.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -590,10 +574,10 @@ impl AlgoTools {
     pub fn sense(
         theF1: &crate::topo_ds::Face,
         theF2: &crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_sense(theF1, theF2, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_sense(theF1, theF2, theContext)
         })
     }
 
@@ -604,13 +588,13 @@ impl AlgoTools {
     /// theMapAvoid - set of edges to avoid for
     /// the treatment
     pub fn make_connexity_block(
-        theLS: &mut crate::ffi::TopTools_ListOfShape,
-        theMapAvoid: &mut crate::ffi::TopTools_IndexedMapOfShape,
-        theLSCB: &mut crate::ffi::TopTools_ListOfShape,
-        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+        theLS: &mut crate::ffi_types::TopTools_ListOfShape,
+        theMapAvoid: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
+        theLSCB: &mut crate::ffi_types::TopTools_ListOfShape,
+        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_block(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_connexity_block(
                 theLS,
                 theMapAvoid,
                 theLSCB,
@@ -628,15 +612,10 @@ impl AlgoTools {
         theS: &crate::topo_ds::Shape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
-        theLCB: &mut crate::ffi::TopTools_ListOfShape,
+        theLCB: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(
-                theS,
-                theConnectionType.into(),
-                theElementType.into(),
-                theLCB,
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listofshape(theS, theConnectionType.into(), theElementType.into(), theLCB)
         })
     }
 
@@ -650,11 +629,11 @@ impl AlgoTools {
         theS: &crate::topo_ds::Shape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
-        theLCB: &mut crate::ffi::TopTools_ListOfListOfShape,
-        theConnectionMap: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theLCB: &mut crate::ffi_types::TopTools_ListOfListOfShape,
+        theConnectionMap: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(theS, theConnectionType.into(), theElementType.into(), theLCB, theConnectionMap)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_connexity_blocks_shape_shapeenum2_listoflistofshape_indexeddatamapofshapelistofshape(theS, theConnectionType.into(), theElementType.into(), theLCB, theConnectionMap)
         })
     }
 
@@ -663,13 +642,13 @@ impl AlgoTools {
     /// connecting elements. The blocks are checked on regularity (multi-connectivity)
     /// and stored to the list of blocks <theLCB>.
     pub fn make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(
-        theLS: &crate::ffi::TopTools_ListOfShape,
+        theLS: &crate::ffi_types::TopTools_ListOfShape,
         theConnectionType: crate::top_abs::ShapeEnum,
         theElementType: crate::top_abs::ShapeEnum,
-        theLCB: &mut crate::ffi::BOPTools_ListOfConnexityBlock,
+        theLCB: &mut crate::ffi_types::BOPTools_ListOfConnexityBlock,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(theLS, theConnectionType.into(), theElementType.into(), theLCB)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_connexity_blocks_listofshape_shapeenum2_listofconnexityblock(theLS, theConnectionType.into(), theElementType.into(), theLCB)
         })
     }
 
@@ -678,7 +657,7 @@ impl AlgoTools {
     /// Correctly orients edges on the wire
     pub fn orient_edges_on_wire(theWire: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_orient_edges_on_wire(theWire)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_orient_edges_on_wire(theWire)
         })
     }
 
@@ -686,7 +665,7 @@ impl AlgoTools {
     /// Correctly orients faces on the shell
     pub fn orient_faces_on_shell(theShell: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_orient_faces_on_shell(theShell)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_orient_faces_on_shell(theShell)
         })
     }
 
@@ -699,12 +678,12 @@ impl AlgoTools {
     /// perform.
     pub fn correct_tolerances(
         theS: &crate::topo_ds::Shape,
-        theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
+        theMapToAvoid: &crate::ffi_types::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_tolerances(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_tolerances(
                 theS,
                 theMapToAvoid,
                 theTolMax,
@@ -718,12 +697,12 @@ impl AlgoTools {
     /// in  terms of BRepCheck_InvalidCurveOnSurface.
     pub fn correct_curve_on_surface(
         theS: &crate::topo_ds::Shape,
-        theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
+        theMapToAvoid: &crate::ffi_types::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_curve_on_surface(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_curve_on_surface(
                 theS,
                 theMapToAvoid,
                 theTolMax,
@@ -737,12 +716,12 @@ impl AlgoTools {
     /// in  terms of BRepCheck_InvalidPointOnCurve.
     pub fn correct_point_on_curve(
         theS: &crate::topo_ds::Shape,
-        theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
+        theMapToAvoid: &crate::ffi_types::TopTools_IndexedMapOfShape,
         theTolMax: f64,
         theRunParallel: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_point_on_curve(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_point_on_curve(
                 theS,
                 theMapToAvoid,
                 theTolMax,
@@ -755,11 +734,11 @@ impl AlgoTools {
     /// Corrects tolerance values of the sub-shapes of the shape <theS> if needed.
     pub fn correct_shape_tolerances(
         theS: &crate::topo_ds::Shape,
-        theMapToAvoid: &crate::ffi::TopTools_IndexedMapOfShape,
+        theMapToAvoid: &crate::ffi_types::TopTools_IndexedMapOfShape,
         theRunParallel: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_shape_tolerances(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_shape_tolerances(
                 theS,
                 theMapToAvoid,
                 theRunParallel,
@@ -773,11 +752,13 @@ impl AlgoTools {
     pub fn are_faces_same_domain(
         theF1: &crate::topo_ds::Face,
         theF2: &crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theFuzz: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_are_faces_same_domain(theF1, theF2, theContext, theFuzz)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_are_faces_same_domain(
+                theF1, theF2, theContext, theFuzz,
+            )
         })
     }
 
@@ -793,7 +774,7 @@ impl AlgoTools {
         theEdgeOff: &mut crate::topo_ds::Edge,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_get_edge_off(theEdge, theFace, theEdgeOff)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_get_edge_off(theEdge, theFace, theEdgeOff)
         })
     }
 
@@ -808,7 +789,9 @@ impl AlgoTools {
         theEdgeOnF: &mut crate::topo_ds::Edge,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_get_edge_on_face(theEdge, theFace, theEdgeOnF)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_get_edge_on_face(
+                theEdge, theFace, theEdgeOnF,
+            )
         })
     }
 
@@ -823,7 +806,9 @@ impl AlgoTools {
         aNewSR: &mut crate::int_tools::Range,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_range_edge2_range2(aE1, aE2, aSR, aNewSR)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_range_edge2_range2(
+                aE1, aE2, aSR, aNewSR,
+            )
         })
     }
 
@@ -837,7 +822,9 @@ impl AlgoTools {
         aNewSR: &mut crate::int_tools::Range,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_correct_range_edge_face_range2(aE, aF, aSR, aNewSR)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_correct_range_edge_face_range2(
+                aE, aF, aSR, aNewSR,
+            )
         })
     }
 
@@ -848,11 +835,15 @@ impl AlgoTools {
     /// the possibility to split the edge or not.
     pub fn is_micro_edge(
         theEdge: &crate::topo_ds::Edge,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theCheckSplittable: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_micro_edge(theEdge, theContext, theCheckSplittable)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_micro_edge(
+                theEdge,
+                theContext,
+                theCheckSplittable,
+            )
         })
     }
 
@@ -860,7 +851,9 @@ impl AlgoTools {
     /// @name Solid classification
     /// Returns true if the solid <theSolid> is inverted
     pub fn is_inverted_solid(theSolid: &crate::topo_ds::Solid) -> bool {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_is_inverted_solid(theSolid) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_inverted_solid(theSolid)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:527 - `BOPTools_AlgoTools::ComputeTolerance()`
@@ -873,7 +866,7 @@ impl AlgoTools {
         theMaxPar: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_compute_tolerance(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_compute_tolerance(
                 theFace, theEdge, theMaxDist, theMaxPar,
             )
         })
@@ -887,7 +880,7 @@ impl AlgoTools {
         theShape: &mut crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_make_container(theType.into(), theShape)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_make_container(theType.into(), theShape)
         })
     }
 
@@ -895,7 +888,7 @@ impl AlgoTools {
     /// Compute a 3D-point on the edge <aEdge> at parameter <aPrm>
     pub fn point_on_edge(aEdge: &crate::topo_ds::Edge, aPrm: f64, aP: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_point_on_edge(aEdge, aPrm, aP)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_point_on_edge(aEdge, aPrm, aP)
         })
     }
 
@@ -906,10 +899,10 @@ impl AlgoTools {
         aShR: &crate::int_tools::Range,
         aF: &crate::topo_ds::Face,
         aE: &crate::topo_ds::Edge,
-        aContext: &crate::ffi::HandleIntToolsContext,
+        aContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_block_in_on_face(aShR, aF, aE, aContext)
         })
     }
 
@@ -917,7 +910,7 @@ impl AlgoTools {
     /// Returns the min and max dimensions of the shape <theS>.
     pub fn dimensions(theS: &crate::topo_ds::Shape, theDMin: &mut i32, theDMax: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_dimensions(theS, theDMin, theDMax)
         })
     }
 
@@ -925,7 +918,7 @@ impl AlgoTools {
     /// Returns dimension of the shape <theS>.
     /// If the shape contains elements of different dimension, -1 is returned.
     pub fn dimension(theS: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_dimension(theS) })
+        crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools_dimension(theS) })
     }
 
     /// **Source:** `BOPTools_AlgoTools.hxx`:560 - `BOPTools_AlgoTools::TreatCompound()`
@@ -934,11 +927,11 @@ impl AlgoTools {
     /// output list, so it will also contain all non-compound sub-shapes.
     pub fn treat_compound(
         theS: &crate::topo_ds::Shape,
-        theList: &mut crate::ffi::TopTools_ListOfShape,
-        theMap: Option<&mut crate::ffi::TopTools_MapOfShape>,
+        theList: &mut crate::ffi_types::TopTools_ListOfShape,
+        theMap: Option<&mut crate::ffi_types::TopTools_MapOfShape>,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools_treat_compound(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_treat_compound(
                 theS,
                 theList,
                 theMap.map_or(std::ptr::null_mut(), |r| r as *mut _),
@@ -949,7 +942,9 @@ impl AlgoTools {
     /// **Source:** `BOPTools_AlgoTools.hxx`:565 - `BOPTools_AlgoTools::IsOpenShell()`
     /// Returns true if the  shell <theShell> is open
     pub fn is_open_shell(theShell: &crate::topo_ds::Shell) -> bool {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools_is_open_shell(theShell) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools_is_open_shell(theShell)
+        })
     }
 }
 
@@ -961,11 +956,11 @@ impl AlgoTools {
 /// The class contains handy static functions
 /// dealing with the topology
 /// This is the copy of the BOPTools_AlgoTools2D.cdl
-pub use crate::ffi::BOPTools_AlgoTools2D as AlgoTools2D;
+pub use crate::ffi_types::BOPTools_AlgoTools2D as AlgoTools2D;
 
 unsafe impl crate::CppDeletable for AlgoTools2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_AlgoTools2D_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_destructor(ptr);
     }
 }
 
@@ -974,7 +969,9 @@ impl AlgoTools2D {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BOPTools_AlgoTools2D_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_ctor(),
+            ))
         }
     }
 
@@ -985,17 +982,21 @@ impl AlgoTools2D {
     pub fn build_p_curve_for_edge_on_face(
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_build_p_curve_for_edge_on_face(aE, aF, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_build_p_curve_for_edge_on_face(
+                aE, aF, theContext,
+            )
         })
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:50 - `BOPTools_AlgoTools2D::EdgeTangent()`
     /// Compute tangent for the edge  <aE> [in 3D]  at parameter <aT>
     pub fn edge_tangent(anE: &crate::topo_ds::Edge, aT: f64, Tau: &mut crate::gp::Vec) -> bool {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_edge_tangent(anE, aT, Tau)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools2D.hxx`:60 - `BOPTools_AlgoTools2D::PointOnSurface()`
@@ -1011,10 +1012,12 @@ impl AlgoTools2D {
         aT: f64,
         U: &mut f64,
         V: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_point_on_surface(aE, aF, aT, U, V, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_point_on_surface(
+                aE, aF, aT, U, V, theContext,
+            )
         })
     }
 
@@ -1027,12 +1030,12 @@ impl AlgoTools2D {
     pub fn curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aToler: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(aE, aF, aC, aToler, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real_handleinttoolscontext(aE, aF, aC, aToler, theContext)
         })
     }
 
@@ -1046,14 +1049,14 @@ impl AlgoTools2D {
     pub fn curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
         aToler: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(aE, aF, aC, aFirst, aLast, aToler, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_curve_on_surface_edge_face_handlegeom2dcurve_real3_handleinttoolscontext(aE, aF, aC, aFirst, aLast, aToler, theContext)
         })
     }
 
@@ -1066,15 +1069,13 @@ impl AlgoTools2D {
     pub fn has_curve_on_surface_edge_face_handlegeom2dcurve_real3(
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
         aToler: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face_handlegeom2dcurve_real3(
-                aE, aF, aC, aFirst, aLast, aToler,
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face_handlegeom2dcurve_real3(aE, aF, aC, aFirst, aLast, aToler)
         })
     }
 
@@ -1087,7 +1088,7 @@ impl AlgoTools2D {
         aF: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(aE, aF)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_has_curve_on_surface_edge_face(aE, aF)
         })
     }
 
@@ -1096,13 +1097,13 @@ impl AlgoTools2D {
     /// <theContext> - storage for caching the geometrical tools
     pub fn adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(
         theF: &crate::topo_ds::Face,
-        theC3D: &crate::ffi::HandleGeomCurve,
-        theC2D: &crate::ffi::HandleGeom2dCurve,
-        theC2DA: &mut crate::ffi::HandleGeom2dCurve,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theC3D: &crate::ffi_types::HandleGeomCurve,
+        theC2D: &crate::ffi_types::HandleGeom2dCurve,
+        theC2DA: &mut crate::ffi_types::HandleGeom2dCurve,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(theF, theC3D, theC2D, theC2DA, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve2_handleinttoolscontext(theF, theC3D, theC2D, theC2DA, theContext)
         })
     }
 
@@ -1114,12 +1115,12 @@ impl AlgoTools2D {
         theF: &crate::topo_ds::Face,
         theFirst: f64,
         theLast: f64,
-        theC2D: &crate::ffi::HandleGeom2dCurve,
-        theC2DA: &mut crate::ffi::HandleGeom2dCurve,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theC2D: &crate::ffi_types::HandleGeom2dCurve,
+        theC2DA: &mut crate::ffi_types::HandleGeom2dCurve,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(theF, theFirst, theLast, theC2D, theC2DA, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_adjust_p_curve_on_face_face_real2_handlegeom2dcurve2_handleinttoolscontext(theF, theFirst, theLast, theC2D, theC2DA, theContext)
         })
     }
 
@@ -1130,11 +1131,13 @@ impl AlgoTools2D {
         aF: &crate::b_rep_adaptor::Surface,
         aT1: f64,
         aT2: f64,
-        aC2D: &crate::ffi::HandleGeom2dCurve,
-        aC2DA: &mut crate::ffi::HandleGeom2dCurve,
+        aC2D: &crate::ffi_types::HandleGeom2dCurve,
+        aC2DA: &mut crate::ffi_types::HandleGeom2dCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_adjust_p_curve_on_surf(aF, aT1, aT2, aC2D, aC2DA)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_adjust_p_curve_on_surf(
+                aF, aT1, aT2, aC2D, aC2DA,
+            )
         })
     }
 
@@ -1142,7 +1145,7 @@ impl AlgoTools2D {
     /// Compute intermediate  value in  between [aFirst, aLast] .
     pub fn intermediate_point_real2(aFirst: f64, aLast: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_intermediate_point_real2(aFirst, aLast)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_intermediate_point_real2(aFirst, aLast)
         })
     }
 
@@ -1150,7 +1153,7 @@ impl AlgoTools2D {
     /// Compute intermediate value of parameter for the edge <anE>.
     pub fn intermediate_point_edge(anE: &crate::topo_ds::Edge) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_intermediate_point_edge(anE)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_intermediate_point_edge(anE)
         })
     }
 
@@ -1163,14 +1166,16 @@ impl AlgoTools2D {
     pub fn make2_d(
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aFirst: &mut f64,
         aLast: &mut f64,
         aToler: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make2_d(aE, aF, aC, aFirst, aLast, aToler, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_make2_d(
+                aE, aF, aC, aFirst, aLast, aToler, theContext,
+            )
         })
     }
 
@@ -1181,13 +1186,13 @@ impl AlgoTools2D {
     /// <theContext> - storage for caching the geometrical tools
     pub fn make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(
         aF: &crate::topo_ds::Face,
-        C3D: &crate::ffi::HandleGeomCurve,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        C3D: &crate::ffi_types::HandleGeomCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aToler: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aC, aToler, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aC, aToler, theContext)
         })
     }
 
@@ -1199,15 +1204,15 @@ impl AlgoTools2D {
     /// <theContext> - storage for caching the geometrical tools
     pub fn make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(
         aF: &crate::topo_ds::Face,
-        C3D: &crate::ffi::HandleGeomCurve,
+        C3D: &crate::ffi_types::HandleGeomCurve,
         aT1: f64,
         aT2: f64,
-        aC: &mut crate::ffi::HandleGeom2dCurve,
+        aC: &mut crate::ffi_types::HandleGeom2dCurve,
         aToler: &mut f64,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aT1, aT2, aC, aToler, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_make_p_curve_on_face_face_handlegeomcurve_real2_handlegeom2dcurve_real_handleinttoolscontext(aF, C3D, aT1, aT2, aC, aToler, theContext)
         })
     }
 
@@ -1219,10 +1224,12 @@ impl AlgoTools2D {
         aEold: &crate::topo_ds::Edge,
         aEnew: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
-        aCtx: &crate::ffi::HandleIntToolsContext,
+        aCtx: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_attach_existing_p_curve(aEold, aEnew, aF, aCtx)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_attach_existing_p_curve(
+                aEold, aEnew, aF, aCtx,
+            )
         })
     }
 
@@ -1245,7 +1252,9 @@ impl AlgoTools2D {
         isTheVIso: &mut bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools2D_is_edge_isoline(theE, theF, isTheUIso, isTheVIso)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools2D_is_edge_isoline(
+                theE, theF, isTheUIso, isTheVIso,
+            )
         })
     }
 }
@@ -1258,11 +1267,11 @@ impl AlgoTools2D {
 /// The class contains handy static functions
 /// dealing with the topology
 /// This is the copy of BOPTools_AlgoTools3D.cdl file
-pub use crate::ffi::BOPTools_AlgoTools3D as AlgoTools3D;
+pub use crate::ffi_types::BOPTools_AlgoTools3D as AlgoTools3D;
 
 unsafe impl crate::CppDeletable for AlgoTools3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_AlgoTools3D_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_destructor(ptr);
     }
 }
 
@@ -1271,7 +1280,9 @@ impl AlgoTools3D {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BOPTools_AlgoTools3D_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_ctor(),
+            ))
         }
     }
 
@@ -1283,7 +1294,9 @@ impl AlgoTools3D {
         theFace: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge_face(theESplit, theFace)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_do_split_seam_on_face_edge_face(
+                theESplit, theFace,
+            )
         })
     }
 
@@ -1296,7 +1309,7 @@ impl AlgoTools3D {
         theFace: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_do_split_seam_on_face_edge2_face(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_do_split_seam_on_face_edge2_face(
                 theEOrigin, theESplit, theFace,
             )
         })
@@ -1311,10 +1324,10 @@ impl AlgoTools3D {
         aF: &crate::topo_ds::Face,
         aT: f64,
         aD: &mut crate::gp::Dir,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_real_dir_handleinttoolscontext(aE, aF, aT, aD, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_real_dir_handleinttoolscontext(aE, aF, aT, aD, theContext)
         })
     }
 
@@ -1326,10 +1339,10 @@ impl AlgoTools3D {
         aE: &crate::topo_ds::Edge,
         aF: &crate::topo_ds::Face,
         aD: &mut crate::gp::Dir,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(aE, aF, aD, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_normal_to_face_on_edge_edge_face_dir_handleinttoolscontext(aE, aF, aD, theContext)
         })
     }
 
@@ -1338,20 +1351,22 @@ impl AlgoTools3D {
     /// Returns 0  if directions aNF1 aNF2 coincide<br>
     /// Returns -1 if scalar product aNF1* aNF2<0.
     pub fn sense_flag(aNF1: &crate::gp::Dir, aNF2: &crate::gp::Dir) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools3D_sense_flag(aNF1, aNF2) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_sense_flag(aNF1, aNF2)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:78 - `BOPTools_AlgoTools3D::GetNormalToSurface()`
     /// Compute normal <aD> to surface <aS> in point (U,V)
     /// Returns TRUE if directions aD1U, aD1V coincide
     pub fn get_normal_to_surface(
-        aS: &crate::ffi::HandleGeomSurface,
+        aS: &crate::ffi_types::HandleGeomSurface,
         U: f64,
         V: f64,
         aD: &mut crate::gp::Dir,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_normal_to_surface(aS, U, V, aD)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_normal_to_surface(aS, U, V, aD)
         })
     }
 
@@ -1376,10 +1391,10 @@ impl AlgoTools3D {
         aT: f64,
         aPx: &mut crate::gp::Pnt,
         aD: &mut crate::gp::Dir,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_handleinttoolscontext(aE, aF, aT, aPx, aD, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_handleinttoolscontext(aE, aF, aT, aPx, aD, theContext)
         })
     }
 
@@ -1406,7 +1421,7 @@ impl AlgoTools3D {
         aDt2D: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(theE, theF, aT, aP, aDNF, aDt2D)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real_pnt_dir_real(theE, theF, aT, aP, aDNF, aDt2D)
         })
     }
 
@@ -1432,10 +1447,10 @@ impl AlgoTools3D {
         aDt2D: f64,
         aP: &mut crate::gp::Pnt,
         aDNF: &mut crate::gp::Dir,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real2_pnt_dir_handleinttoolscontext(theE, theF, aT, aDt2D, aP, aDNF, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_get_approx_normal_to_face_on_edge_edge_face_real2_pnt_dir_handleinttoolscontext(theE, theF, aT, aDt2D, aP, aDNF, theContext)
         })
     }
 
@@ -1457,10 +1472,10 @@ impl AlgoTools3D {
         aDt2D: f64,
         aP2D: &mut crate::gp::Pnt2d,
         aPx: &mut crate::gp::Pnt,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aDt2D, aP2D, aPx, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aDt2D, aP2D, aPx, theContext)
         })
     }
 
@@ -1481,7 +1496,7 @@ impl AlgoTools3D {
         aPx: &mut crate::gp::Pnt,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_near_edge_edge_face_real2_pnt2d_pnt(
                 aE, aF, aT, aDt2D, aP2D, aPx,
             )
         })
@@ -1504,10 +1519,10 @@ impl AlgoTools3D {
         aT: f64,
         aP2D: &mut crate::gp::Pnt2d,
         aPx: &mut crate::gp::Pnt,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_real_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aP2D, aPx, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_near_edge_edge_face_real_pnt2d_pnt_handleinttoolscontext(aE, aF, aT, aP2D, aPx, theContext)
         })
     }
 
@@ -1527,10 +1542,10 @@ impl AlgoTools3D {
         aF: &crate::topo_ds::Face,
         aP2D: &mut crate::gp::Pnt2d,
         aPx: &mut crate::gp::Pnt,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(aE, aF, aP2D, aPx, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_near_edge_edge_face_pnt2d_pnt_handleinttoolscontext(aE, aF, aP2D, aPx, theContext)
         })
     }
 
@@ -1538,14 +1553,16 @@ impl AlgoTools3D {
     /// Returns simple step value that is used in 2D-computations
     /// = 1.e-5
     pub fn min_step_in2d() -> f64 {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools3D_min_step_in2d() })
+        crate::check_result(unsafe { crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_min_step_in2d() })
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:219 - `BOPTools_AlgoTools3D::IsEmptyShape()`
     /// Returns TRUE if the shape <aS> does not contain
     /// geometry information  (e.g. empty compound)
     pub fn is_empty_shape(aS: &crate::topo_ds::Shape) -> bool {
-        crate::check_result(unsafe { crate::ffi::BOPTools_AlgoTools3D_is_empty_shape(aS) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_is_empty_shape(aS)
+        })
     }
 
     /// **Source:** `BOPTools_AlgoTools3D.hxx`:223 - `BOPTools_AlgoTools3D::OrientEdgeOnFace()`
@@ -1557,7 +1574,7 @@ impl AlgoTools3D {
         aER: &mut crate::topo_ds::Edge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_orient_edge_on_face(aE, aF, aER)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_orient_edge_on_face(aE, aF, aER)
         })
     }
 
@@ -1570,12 +1587,10 @@ impl AlgoTools3D {
         theF: &crate::topo_ds::Face,
         theP: &mut crate::gp::Pnt,
         theP2D: &mut crate::gp::Pnt2d,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_pnt_pnt2d_handleinttoolscontext(
-                theF, theP, theP2D, theContext,
-            )
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_in_face_face_pnt_pnt2d_handleinttoolscontext(theF, theP, theP2D, theContext)
         })
     }
 
@@ -1596,10 +1611,10 @@ impl AlgoTools3D {
         theDt2D: f64,
         theP: &mut crate::gp::Pnt,
         theP2D: &mut crate::gp::Pnt2d,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(theF, theE, theT, theDt2D, theP, theP2D, theContext)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_in_face_face_edge_real2_pnt_pnt2d_handleinttoolscontext(theF, theE, theT, theDt2D, theP, theP2D, theContext)
         })
     }
 
@@ -1611,14 +1626,14 @@ impl AlgoTools3D {
     /// Returns 0 in case of success.
     pub fn point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(
         theF: &crate::topo_ds::Face,
-        theL: &crate::ffi::HandleGeom2dCurve,
+        theL: &crate::ffi_types::HandleGeom2dCurve,
         theP: &mut crate::gp::Pnt,
         theP2D: &mut crate::gp::Pnt2d,
-        theContext: &crate::ffi::HandleIntToolsContext,
+        theContext: &crate::ffi_types::HandleIntToolsContext,
         theDt2D: f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_AlgoTools3D_point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(theF, theL, theP, theP2D, theContext, theDt2D)
+            crate::ffi_extern_TKBO::BOPTools_AlgoTools3D_point_in_face_face_handlegeom2dcurve_pnt_pnt2d_handleinttoolscontext_real(theF, theL, theP, theP2D, theContext, theDt2D)
         })
     }
 }
@@ -1628,11 +1643,11 @@ impl AlgoTools3D {
 // ========================
 
 /// **Source:** `BOPTools_ConnexityBlock.hxx`:25 - `BOPTools_ConnexityBlock`
-pub use crate::ffi::BOPTools_ConnexityBlock as ConnexityBlock;
+pub use crate::ffi_types::BOPTools_ConnexityBlock as ConnexityBlock;
 
 unsafe impl crate::CppDeletable for ConnexityBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_ConnexityBlock_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_destructor(ptr);
     }
 }
 
@@ -1641,18 +1656,18 @@ impl ConnexityBlock {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BOPTools_ConnexityBlock_ctor(),
+                crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_ctor(),
             ))
         }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:34 - `BOPTools_ConnexityBlock::BOPTools_ConnexityBlock()`
     pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BOPTools_ConnexityBlock_ctor_handlencollectionbaseallocator(
+                crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_ctor_handlencollectionbaseallocator(
                     theAllocator,
                 ),
             ))
@@ -1660,48 +1675,52 @@ impl ConnexityBlock {
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:41 - `BOPTools_ConnexityBlock::Shapes()`
-    pub fn shapes(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn shapes(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BOPTools_ConnexityBlock_shapes(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_shapes(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:44 - `BOPTools_ConnexityBlock::ChangeShapes()`
-    pub fn change_shapes(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
+    pub fn change_shapes(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BOPTools_ConnexityBlock_change_shapes(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_change_shapes(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:47 - `BOPTools_ConnexityBlock::SetRegular()`
     pub fn set_regular(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_ConnexityBlock_set_regular(self as *mut Self, theFlag)
+            crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_set_regular(self as *mut Self, theFlag)
         })
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:50 - `BOPTools_ConnexityBlock::IsRegular()`
     pub fn is_regular(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_ConnexityBlock_is_regular(self as *const Self)
+            crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_is_regular(self as *const Self)
         })
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:53 - `BOPTools_ConnexityBlock::Loops()`
-    pub fn loops(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn loops(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BOPTools_ConnexityBlock_loops(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_loops(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BOPTools_ConnexityBlock.hxx`:56 - `BOPTools_ConnexityBlock::ChangeLoops()`
-    pub fn change_loops(&mut self) -> &mut crate::ffi::TopTools_ListOfShape {
+    pub fn change_loops(&mut self) -> &mut crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BOPTools_ConnexityBlock_change_loops(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_ConnexityBlock_change_loops(self as *mut Self),
+            ))
         }
     }
 }
@@ -1711,11 +1730,11 @@ impl ConnexityBlock {
 // ========================
 
 /// **Source:** `BOPTools_CoupleOfShape.hxx`:24 - `BOPTools_CoupleOfShape`
-pub use crate::ffi::BOPTools_CoupleOfShape as CoupleOfShape;
+pub use crate::ffi_types::BOPTools_CoupleOfShape as CoupleOfShape;
 
 unsafe impl crate::CppDeletable for CoupleOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_CoupleOfShape_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_destructor(ptr);
     }
 }
 
@@ -1723,37 +1742,41 @@ impl CoupleOfShape {
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:27 - `BOPTools_CoupleOfShape::BOPTools_CoupleOfShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BOPTools_CoupleOfShape_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:32 - `BOPTools_CoupleOfShape::SetShape1()`
     pub fn set_shape1(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_CoupleOfShape_set_shape1(self as *mut Self, theShape)
+            crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_set_shape1(self as *mut Self, theShape)
         })
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:35 - `BOPTools_CoupleOfShape::Shape1()`
     pub fn shape1(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BOPTools_CoupleOfShape_shape1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_shape1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:38 - `BOPTools_CoupleOfShape::SetShape2()`
     pub fn set_shape2(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_CoupleOfShape_set_shape2(self as *mut Self, theShape)
+            crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_set_shape2(self as *mut Self, theShape)
         })
     }
 
     /// **Source:** `BOPTools_CoupleOfShape.hxx`:41 - `BOPTools_CoupleOfShape::Shape2()`
     pub fn shape2(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BOPTools_CoupleOfShape_shape2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPTools_CoupleOfShape_shape2(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1763,27 +1786,33 @@ impl CoupleOfShape {
 // ========================
 
 /// **Source:** `BOPTools_Set.hxx`:27 - `BOPTools_Set`
-pub use crate::ffi::BOPTools_Set as Set;
+pub use crate::ffi_types::BOPTools_Set as Set;
 
 unsafe impl crate::CppDeletable for Set {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BOPTools_Set_destructor(ptr);
+        crate::ffi_extern_TKBO::BOPTools_Set_destructor(ptr);
     }
 }
 
 impl Set {
     /// **Source:** `BOPTools_Set.hxx`:32 - `BOPTools_Set::BOPTools_Set()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BOPTools_Set_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_Set_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:35 - `BOPTools_Set::BOPTools_Set()`
     pub fn new_handlencollectionbaseallocator(
-        theAllocator: &crate::ffi::HandleNCollectionBaseAllocator,
+        theAllocator: &crate::ffi_types::HandleNCollectionBaseAllocator,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BOPTools_Set_ctor_handlencollectionbaseallocator(theAllocator),
+                crate::ffi_extern_TKBO::BOPTools_Set_ctor_handlencollectionbaseallocator(
+                    theAllocator,
+                ),
             ))
         }
     }
@@ -1797,45 +1826,54 @@ impl Set {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &Set) -> &mut Set {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BOPTools_Set_assign(self as *mut Self, Other)))
+            &mut *(crate::check_result(crate::ffi_extern_TKBO::BOPTools_Set_assign(
+                self as *mut Self,
+                Other,
+            )))
         }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:44 - `BOPTools_Set::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::BOPTools_Set_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBO::BOPTools_Set_shape(self as *const Self)))
+        }
     }
 
     /// **Source:** `BOPTools_Set.hxx`:46 - `BOPTools_Set::Add()`
     pub fn add(&mut self, theS: &crate::topo_ds::Shape, theType: crate::top_abs::ShapeEnum) {
         crate::check_void_result(unsafe {
-            crate::ffi::BOPTools_Set_add(self as *mut Self, theS, theType.into())
+            crate::ffi_extern_TKBO::BOPTools_Set_add(self as *mut Self, theS, theType.into())
         })
     }
 
     /// **Source:** `BOPTools_Set.hxx`:48 - `BOPTools_Set::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BOPTools_Set_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_Set_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `BOPTools_Set.hxx`:50 - `BOPTools_Set::IsEqual()`
     pub fn is_equal(&self, aOther: &Set) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BOPTools_Set_is_equal(self as *const Self, aOther)
+            crate::ffi_extern_TKBO::BOPTools_Set_is_equal(self as *const Self, aOther)
         })
     }
 
     /// **Source:** `BOPTools_Set.hxx`:54 - `BOPTools_Set::GetSum()`
     pub fn get_sum(&self) -> usize {
-        crate::check_result(unsafe { crate::ffi::BOPTools_Set_get_sum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBO::BOPTools_Set_get_sum(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BOPTools_Set_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBO::BOPTools_Set_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1844,7 +1882,7 @@ impl Set {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     BOPTools_ListOfConnexityBlock as ListOfConnexityBlock,
     BOPTools_ListOfCoupleOfShape as ListOfCoupleOfShape,
 };

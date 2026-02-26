@@ -38,7 +38,7 @@ impl TryFrom<i32> for DeletingMode {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleCDFApplication, HandleCDMApplication, HandleMessageAlgorithm, HandleStandardTransient,
     HandleTDFAttribute, HandleTDocStdApplication,
 };
@@ -51,20 +51,22 @@ pub use crate::ffi::{
 ///
 /// This is a base class for OCAF based TObj models
 /// with declared virtual methods
-pub use crate::ffi::TObj_Application as Application;
+pub use crate::ffi_types::TObj_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_Application_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_Application_destructor(ptr);
     }
 }
 
 impl Application {
     /// **Source:** `TObj_Application.hxx`:36 - `TObj_Application::Messenger()`
     /// Returns reference to associated messenger handle
-    pub fn messenger(&mut self) -> &mut crate::ffi::HandleMessageMessenger {
+    pub fn messenger(&mut self) -> &mut crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TObj_Application_messenger(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_messenger(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -72,15 +74,11 @@ impl Application {
     /// Saving the OCAF document to a file
     pub fn save_document_handletdocstddocument_extendedstring(
         &mut self,
-        theSourceDoc: &crate::ffi::HandleTDocStdDocument,
+        theSourceDoc: &crate::ffi_types::HandleTDocStdDocument,
         theTargetFile: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_save_document_handletdocstddocument_extendedstring(
-                self as *mut Self,
-                theSourceDoc,
-                theTargetFile,
-            )
+            crate::ffi_extern_TKTObj::TObj_Application_save_document_handletdocstddocument_extendedstring(self as *mut Self, theSourceDoc, theTargetFile)
         })
     }
 
@@ -88,11 +86,11 @@ impl Application {
     /// Saving the OCAF document to a stream
     pub fn save_document_handletdocstddocument_ostream(
         &mut self,
-        theSourceDoc: &crate::ffi::HandleTDocStdDocument,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theSourceDoc: &crate::ffi_types::HandleTDocStdDocument,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_save_document_handletdocstddocument_ostream(
+            crate::ffi_extern_TKTObj::TObj_Application_save_document_handletdocstddocument_ostream(
                 self as *mut Self,
                 theSourceDoc,
                 theOStream,
@@ -105,14 +103,10 @@ impl Application {
     pub fn load_document_extendedstring_handletdocstddocument(
         &mut self,
         theSourceFile: &crate::t_collection::ExtendedString,
-        theTargetDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theTargetDoc: &mut crate::ffi_types::HandleTDocStdDocument,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_load_document_extendedstring_handletdocstddocument(
-                self as *mut Self,
-                theSourceFile,
-                theTargetDoc,
-            )
+            crate::ffi_extern_TKTObj::TObj_Application_load_document_extendedstring_handletdocstddocument(self as *mut Self, theSourceFile, theTargetDoc)
         })
     }
 
@@ -120,11 +114,11 @@ impl Application {
     /// Loading the OCAF document from a stream
     pub fn load_document_istream_handletdocstddocument(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theTargetDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theTargetDoc: &mut crate::ffi_types::HandleTDocStdDocument,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_load_document_istream_handletdocstddocument(
+            crate::ffi_extern_TKTObj::TObj_Application_load_document_istream_handletdocstddocument(
                 self as *mut Self,
                 theIStream,
                 theTargetDoc,
@@ -136,11 +130,15 @@ impl Application {
     /// Create the OCAF document from scratch
     pub fn create_new_document(
         &mut self,
-        theDoc: &mut crate::ffi::HandleTDocStdDocument,
+        theDoc: &mut crate::ffi_types::HandleTDocStdDocument,
         theFormat: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_create_new_document(self as *mut Self, theDoc, theFormat)
+            crate::ffi_extern_TKTObj::TObj_Application_create_new_document(
+                self as *mut Self,
+                theDoc,
+                theFormat,
+            )
         })
     }
 
@@ -153,7 +151,7 @@ impl Application {
         theLevel: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_error_message_extendedstring_gravity(
+            crate::ffi_extern_TKTObj::TObj_Application_error_message_extendedstring_gravity(
                 self as *mut Self,
                 theMsg,
                 theLevel.into(),
@@ -166,7 +164,10 @@ impl Application {
     /// Default imiplementation invoke previous declaration with 0
     pub fn error_message_extendedstring(&mut self, theMsg: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_error_message_extendedstring(self as *mut Self, theMsg)
+            crate::ffi_extern_TKTObj::TObj_Application_error_message_extendedstring(
+                self as *mut Self,
+                theMsg,
+            )
         })
     }
 
@@ -175,14 +176,16 @@ impl Application {
     /// CPU and elapsed times
     pub fn set_verbose(&mut self, isVerbose: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_set_verbose(self as *mut Self, isVerbose)
+            crate::ffi_extern_TKTObj::TObj_Application_set_verbose(self as *mut Self, isVerbose)
         })
     }
 
     /// **Source:** `TObj_Application.hxx`:84 - `TObj_Application::IsVerbose()`
     /// Returns the verbose flag
     pub fn is_verbose(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Application_is_verbose(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Application_is_verbose(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Application.hxx`:95 - `TObj_Application::ResourcesName()`
@@ -190,7 +193,7 @@ impl Application {
     pub fn resources_name(&mut self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_Application_resources_name(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_Application_resources_name(self as *mut Self),
             ))
         }
         .to_string_lossy()
@@ -199,18 +202,20 @@ impl Application {
 
     /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_Application_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TObj_Application.hxx`:33 - `TObj_Application::GetInstance()`
     /// Returns static instance of the application
-    pub fn get_instance() -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+    pub fn get_instance() -> crate::OwnedPtr<crate::ffi_types::HandleTObjApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_get_instance(),
+                crate::ffi_extern_TKTObj::TObj_Application_get_instance(),
             ))
         }
     }
@@ -220,7 +225,7 @@ impl Application {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_Application_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_Application_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -229,32 +234,38 @@ impl Application {
 
     /// **Source:** `TObj_Application.hxx`:123 - `TObj_Application::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_Application_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDocStd_Application
     pub fn as_t_doc_std_application(&self) -> &crate::t_doc_std::Application {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Application_as_TDocStd_Application(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_as_TDocStd_Application(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TDocStd_Application (mutable)
     pub fn as_t_doc_std_application_mut(&mut self) -> &mut crate::t_doc_std::Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Application_as_TDocStd_Application_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_as_TDocStd_Application_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to CDF_Application
     pub fn as_cdf_application(&self) -> &crate::cdf::Application {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Application_as_CDF_Application(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_as_CDF_Application(
                 self as *const Self,
             ))
         }
@@ -263,16 +274,18 @@ impl Application {
     /// Upcast to CDF_Application (mutable)
     pub fn as_cdf_application_mut(&mut self) -> &mut crate::cdf::Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Application_as_CDF_Application_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_as_CDF_Application_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to CDM_Application
     pub fn as_cdm_application(&self) -> &crate::cdm::Application {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Application_as_CDM_Application(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_as_CDM_Application(
                 self as *const Self,
             ))
         }
@@ -281,16 +294,18 @@ impl Application {
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Application_as_CDM_Application_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_as_CDM_Application_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Application_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Application_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -299,35 +314,37 @@ impl Application {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Application_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjApplication> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Application_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:76 - `TDocStd_Application::IsDriverLoaded()`
     pub fn is_driver_loaded(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_IsDriverLoaded(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_IsDriverLoaded(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:96 - `TDocStd_Application::Resources()`
-    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleResourceManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_Resources(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_Resources(self as *mut Self),
             ))
         }
     }
@@ -338,11 +355,11 @@ impl Application {
         theFormat: &crate::t_collection::AsciiString,
         theDescription: &crate::t_collection::AsciiString,
         theExtension: &crate::t_collection::AsciiString,
-        theReader: &crate::ffi::HandlePCDMRetrievalDriver,
-        theWriter: &crate::ffi::HandlePCDMStorageDriver,
+        theReader: &crate::ffi_types::HandlePCDMRetrievalDriver,
+        theWriter: &crate::ffi_types::HandlePCDMStorageDriver,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_DefineFormat(
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_DefineFormat(
                 self as *mut Self,
                 theFormat,
                 theDescription,
@@ -354,30 +371,46 @@ impl Application {
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:149 - `TDocStd_Application::ReadingFormats()`
-    pub fn reading_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+    pub fn reading_formats(
+        &mut self,
+        theFormats: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_ReadingFormats(self as *mut Self, theFormats)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_ReadingFormats(
+                self as *mut Self,
+                theFormats,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:154 - `TDocStd_Application::WritingFormats()`
-    pub fn writing_formats(&mut self, theFormats: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+    pub fn writing_formats(
+        &mut self,
+        theFormats: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_WritingFormats(self as *mut Self, theFormats)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_WritingFormats(
+                self as *mut Self,
+                theFormats,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:157 - `TDocStd_Application::NbDocuments()`
     pub fn nb_documents(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_NbDocuments(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_NbDocuments(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:171 - `TDocStd_Application::GetDocument()`
-    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi::HandleTDocStdDocument) {
+    pub fn get_document(&self, index: i32, aDoc: &mut crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_GetDocument(self as *const Self, index, aDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_GetDocument(
+                self as *const Self,
+                index,
+                aDoc,
+            )
         })
     }
 
@@ -385,31 +418,41 @@ impl Application {
     pub fn new_document(
         &mut self,
         format: &crate::t_collection::ExtendedString,
-        aDoc: &mut crate::ffi::HandleCDMDocument,
+        aDoc: &mut crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_NewDocument(self as *mut Self, format, aDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_NewDocument(
+                self as *mut Self,
+                format,
+                aDoc,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:194 - `TDocStd_Application::InitDocument()`
-    pub fn init_document(&self, aDoc: &crate::ffi::HandleCDMDocument) {
+    pub fn init_document(&self, aDoc: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_InitDocument(self as *const Self, aDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_InitDocument(
+                self as *const Self,
+                aDoc,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:199 - `TDocStd_Application::Close()`
-    pub fn close(&mut self, aDoc: &crate::ffi::HandleTDocStdDocument) {
+    pub fn close(&mut self, aDoc: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Close(self as *mut Self, aDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Close(self as *mut Self, aDoc)
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:221 - `TDocStd_Application::IsInSession()`
     pub fn is_in_session(&self, path: &crate::t_collection::ExtendedString) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_IsInSession(self as *const Self, path)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_IsInSession(
+                self as *const Self,
+                path,
+            )
         })
     }
 
@@ -417,12 +460,12 @@ impl Application {
     pub fn open(
         &mut self,
         thePath: &crate::t_collection::ExtendedString,
-        theDoc: &mut crate::ffi::HandleTDocStdDocument,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theDoc: &mut crate::ffi_types::HandleTDocStdDocument,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Open(
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Open(
                 self as *mut Self,
                 thePath,
                 theDoc,
@@ -436,12 +479,17 @@ impl Application {
     /// Inherited: **Source:** `TDocStd_Application.hxx`:278 - `TDocStd_Application::SaveAs()`
     pub fn save_as(
         &mut self,
-        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::HandleTDocStdDocument,
         path: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_SaveAs(self as *mut Self, theDoc, path, theRange)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_SaveAs(
+                self as *mut Self,
+                theDoc,
+                path,
+                theRange,
+            )
         }))
         .unwrap()
     }
@@ -449,43 +497,59 @@ impl Application {
     /// Inherited: **Source:** `TDocStd_Application.hxx`:294 - `TDocStd_Application::Save()`
     pub fn save(
         &mut self,
-        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::HandleTDocStdDocument,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Save(self as *mut Self, theDoc, theRange)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Save(
+                self as *mut Self,
+                theDoc,
+                theRange,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:321 - `TDocStd_Application::OnOpenTransaction()`
-    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+    pub fn on_open_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_OnOpenTransaction(self as *mut Self, theDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_OnOpenTransaction(
+                self as *mut Self,
+                theDoc,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:324 - `TDocStd_Application::OnCommitTransaction()`
-    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+    pub fn on_commit_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_OnCommitTransaction(self as *mut Self, theDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_OnCommitTransaction(
+                self as *mut Self,
+                theDoc,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDocStd_Application.hxx`:327 - `TDocStd_Application::OnAbortTransaction()`
-    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+    pub fn on_abort_transaction(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_OnAbortTransaction(self as *mut Self, theDoc)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_OnAbortTransaction(
+                self as *mut Self,
+                theDoc,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
     pub fn can_close(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::cdm::CanCloseStatus {
         crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_CanClose(self as *mut Self, aDocument)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_CanClose(
+                self as *mut Self,
+                aDocument,
+            )
         }))
         .unwrap()
     }
@@ -496,12 +560,12 @@ impl Application {
         aFolder: &crate::t_collection::ExtendedString,
         aName: &crate::t_collection::ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_Retrieve(
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_Retrieve(
                     self as *mut Self,
                     aFolder,
                     aName,
@@ -521,7 +585,7 @@ impl Application {
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_CanRetrieve(
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_CanRetrieve(
                 self as *mut Self,
                 theFolder,
                 theName,
@@ -534,7 +598,9 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:136 - `CDF_Application::GetRetrieveStatus()`
     pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_GetRetrieveStatus(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_GetRetrieveStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -542,13 +608,13 @@ impl Application {
     /// Inherited: **Source:** `CDF_Application.hxx`:140 - `CDF_Application::Read()`
     pub fn read(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theDocument: &mut crate::ffi::HandleCDMDocument,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theDocument: &mut crate::ffi_types::HandleCDMDocument,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Read(
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Read(
                 self as *mut Self,
                 theIStream,
                 theDocument,
@@ -562,10 +628,13 @@ impl Application {
     pub fn reader_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_ReaderFromFormat(self as *mut Self, aFormat),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_ReaderFromFormat(
+                    self as *mut Self,
+                    aFormat,
+                ),
             ))
         }
     }
@@ -574,10 +643,13 @@ impl Application {
     pub fn writer_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_WriterFromFormat(self as *mut Self, aFormat),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_WriterFromFormat(
+                    self as *mut Self,
+                    aFormat,
+                ),
             ))
         }
     }
@@ -589,44 +661,55 @@ impl Application {
         theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Format(self as *mut Self, aFileName, theFormat)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Format(
+                self as *mut Self,
+                aFileName,
+                theFormat,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
-    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDFMetaDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_MetaDataDriver(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_MetaDataDriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
-    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_MessageDriver(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_MessageDriver(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
-    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_BeginOfUpdate(
+                self as *mut Self,
+                aDocument,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
     pub fn end_of_update(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         theStatus: bool,
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_EndOfUpdate(
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_EndOfUpdate(
                 self as *mut Self,
                 aDocument,
                 theStatus,
@@ -639,7 +722,7 @@ impl Application {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_Name(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_Name(self as *const Self),
             ))
         }
     }
@@ -648,31 +731,39 @@ impl Application {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Application_inherited_Version(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_Version(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
+    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi_types::CDM_MetaDataLookUpTable {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TObj_Application_inherited_MetaDataLookUpTable(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -680,7 +771,7 @@ impl Application {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_Application_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_Application_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -693,87 +784,111 @@ impl Application {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Application_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Application_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Application_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjApplication;
+pub use crate::ffi_types::HandleTObjApplication;
 
 unsafe impl crate::CppDeletable for HandleTObjApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjApplication_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjApplication_destructor(ptr);
     }
 }
 
 impl HandleTObjApplication {
     /// Dereference this Handle to access the underlying TObj_Application
-    pub fn get(&self) -> &crate::ffi::TObj_Application {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjApplication_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_Application {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjApplication_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_Application
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Application {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjApplication_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjApplication_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_Application> to Handle<TDocStd_Application>
     pub fn to_handle_t_doc_std_application(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDocStdApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDocStdApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjApplication_to_HandleTDocStdApplication(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjApplication_to_HandleTDocStdApplication(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_Application> to Handle<CDF_Application>
-    pub fn to_handle_cdf_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
+    pub fn to_handle_cdf_application(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjApplication_to_HandleCDFApplication(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjApplication_to_HandleCDFApplication(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_Application> to Handle<CDM_Application>
-    pub fn to_handle_cdm_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
+    pub fn to_handle_cdm_application(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjApplication_to_HandleCDMApplication(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjApplication_to_HandleCDMApplication(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_Application> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjApplication_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjApplication_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -791,11 +906,11 @@ impl HandleTObjApplication {
 /// 1. DataMap of Modeller name - handle to model to be used in loading of references
 /// 2. Indexed map of Standard_Type to be used during save or load of object type
 /// 3. Handle to the current model - model that is loaded at the current moment
-pub use crate::ffi::TObj_Assistant as Assistant;
+pub use crate::ffi_types::TObj_Assistant as Assistant;
 
 unsafe impl crate::CppDeletable for Assistant {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_Assistant_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_Assistant_destructor(ptr);
     }
 }
 
@@ -803,75 +918,89 @@ impl Assistant {
     /// **Source:** `TObj_Assistant.hxx` - `TObj_Assistant::TObj_Assistant()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Assistant_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Assistant_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TObj_Assistant.hxx`:42 - `TObj_Assistant::FindModel()`
     /// Finds model by name
-    pub fn find_model(theName: &str) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn find_model(theName: &str) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Assistant_find_model(
-                c_theName.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Assistant_find_model(c_theName.as_ptr()),
+            ))
         }
     }
 
     /// **Source:** `TObj_Assistant.hxx`:45 - `TObj_Assistant::BindModel()`
     /// Binds model to the map
-    pub fn bind_model(theModel: &crate::ffi::HandleTObjModel) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Assistant_bind_model(theModel) })
+    pub fn bind_model(theModel: &crate::ffi_types::HandleTObjModel) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_bind_model(theModel)
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:48 - `TObj_Assistant::ClearModelMap()`
     /// Clears all records from the model map
     pub fn clear_model_map() {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Assistant_clear_model_map() })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_clear_model_map()
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:57 - `TObj_Assistant::FindType()`
     /// Finds Standard_Type by index;
     /// returns NULL handle if not found
-    pub fn find_type(theTypeIndex: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn find_type(theTypeIndex: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Assistant_find_type(
-                theTypeIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Assistant_find_type(theTypeIndex),
+            ))
         }
     }
 
     /// **Source:** `TObj_Assistant.hxx`:61 - `TObj_Assistant::FindTypeIndex()`
     /// Rinds index by Standard_Type;
     /// returns 0 if not found
-    pub fn find_type_index(theType: &crate::ffi::HandleStandardType) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Assistant_find_type_index(theType) })
+    pub fn find_type_index(theType: &crate::ffi_types::HandleStandardType) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_find_type_index(theType)
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:65 - `TObj_Assistant::BindType()`
     /// Binds Standard_Type to the map;
     /// returns index of bound type
-    pub fn bind_type(theType: &crate::ffi::HandleStandardType) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Assistant_bind_type(theType) })
+    pub fn bind_type(theType: &crate::ffi_types::HandleStandardType) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKTObj::TObj_Assistant_bind_type(theType) })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:68 - `TObj_Assistant::ClearTypeMap()`
     /// Clears map of types
     pub fn clear_type_map() {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Assistant_clear_type_map() })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_clear_type_map()
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:76 - `TObj_Assistant::SetCurrentModel()`
     /// Sets current model
-    pub fn set_current_model(theModel: &crate::ffi::HandleTObjModel) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Assistant_set_current_model(theModel) })
+    pub fn set_current_model(theModel: &crate::ffi_types::HandleTObjModel) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_set_current_model(theModel)
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:79 - `TObj_Assistant::GetCurrentModel()`
     /// Returns current model
-    pub fn get_current_model() -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn get_current_model() -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Assistant_get_current_model(),
+                crate::ffi_extern_TKTObj::TObj_Assistant_get_current_model(),
             ))
         }
     }
@@ -879,14 +1008,16 @@ impl Assistant {
     /// **Source:** `TObj_Assistant.hxx`:82 - `TObj_Assistant::UnSetCurrentModel()`
     /// Unsets current model
     pub fn un_set_current_model() {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Assistant_un_set_current_model() })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Assistant_un_set_current_model()
+        })
     }
 
     /// **Source:** `TObj_Assistant.hxx`:87 - `TObj_Assistant::GetAppVersion()`
     /// Returns the version of application which wrote the currently read document.
     /// Returns 0 if it has not been set yet for the current document.
     pub fn get_app_version() -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Assistant_get_app_version() })
+        crate::check_result(unsafe { crate::ffi_extern_TKTObj::TObj_Assistant_get_app_version() })
     }
 }
 
@@ -901,21 +1032,23 @@ impl Assistant {
 /// messages to be sent using SendStatusMessages (SendMessages) method.
 /// It supports also the fix mode, in which some inconsistencies are
 /// corrected.
-pub use crate::ffi::TObj_CheckModel as CheckModel;
+pub use crate::ffi_types::TObj_CheckModel as CheckModel;
 
 unsafe impl crate::CppDeletable for CheckModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_CheckModel_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_CheckModel_destructor(ptr);
     }
 }
 
 impl CheckModel {
     /// **Source:** `TObj_CheckModel.hxx`:36 - `TObj_CheckModel::TObj_CheckModel()`
     /// Initialize checker by model
-    pub fn new_handletobjmodel(theModel: &crate::ffi::HandleTObjModel) -> crate::OwnedPtr<Self> {
+    pub fn new_handletobjmodel(
+        theModel: &crate::ffi_types::HandleTObjModel,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_CheckModel_ctor_handletobjmodel(theModel),
+                crate::ffi_extern_TKTObj::TObj_CheckModel_ctor_handletobjmodel(theModel),
             ))
         }
     }
@@ -924,21 +1057,25 @@ impl CheckModel {
     /// Sets flag allowing fixing inconsistencies
     pub fn set_to_fix(&mut self, theToFix: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_set_to_fix(self as *mut Self, theToFix)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_set_to_fix(self as *mut Self, theToFix)
         })
     }
 
     /// **Source:** `TObj_CheckModel.hxx`:46 - `TObj_CheckModel::IsToFix()`
     /// Returns true if it is allowed to fix inconsistencies
     pub fn is_to_fix(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_CheckModel_is_to_fix(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_CheckModel_is_to_fix(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_CheckModel.hxx`:49 - `TObj_CheckModel::GetModel()`
     /// Returns the checked model
-    pub fn get_model(&self) -> &crate::ffi::HandleTObjModel {
+    pub fn get_model(&self) -> &crate::ffi_types::HandleTObjModel {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_CheckModel_get_model(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_get_model(
+                self as *const Self,
+            )))
         }
     }
 
@@ -949,14 +1086,18 @@ impl CheckModel {
     /// between objects of the model.
     /// Returns true if no inconsistencies found.
     pub fn perform(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_CheckModel_perform(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_CheckModel_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_CheckModel.hxx`:74 - `TObj_CheckModel::DynamicType()`
     /// Declaration of CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_CheckModel_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -965,7 +1106,7 @@ impl CheckModel {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_CheckModel_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_CheckModel_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -974,14 +1115,16 @@ impl CheckModel {
 
     /// **Source:** `TObj_CheckModel.hxx`:74 - `TObj_CheckModel::get_type_descriptor()`
     /// Declaration of CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_CheckModel_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Message_Algorithm
     pub fn as_message_algorithm(&self) -> &crate::message::Algorithm {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_CheckModel_as_Message_Algorithm(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_as_Message_Algorithm(
                 self as *const Self,
             ))
         }
@@ -990,16 +1133,18 @@ impl CheckModel {
     /// Upcast to Message_Algorithm (mutable)
     pub fn as_message_algorithm_mut(&mut self) -> &mut crate::message::Algorithm {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_CheckModel_as_Message_Algorithm_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_as_Message_Algorithm_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_CheckModel_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1008,34 +1153,39 @@ impl CheckModel {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_CheckModel_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjCheckModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjCheckModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_CheckModel_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:95 - `Message_Algorithm::SetStatus()`
     pub fn set_status(&mut self, theStat: crate::message::Status) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_SetStatus(self as *mut Self, theStat.into())
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_SetStatus(
+                self as *mut Self,
+                theStat.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:141 - `Message_Algorithm::GetStatus()`
     pub fn get_status(&self) -> &crate::message::ExecStatus {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_CheckModel_inherited_GetStatus(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetStatus(
                 self as *const Self,
             )))
         }
@@ -1044,31 +1194,36 @@ impl CheckModel {
     /// Inherited: **Source:** `Message_Algorithm.hxx`:144 - `Message_Algorithm::ChangeStatus()`
     pub fn change_status(&mut self) -> &mut crate::message::ExecStatus {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TObj_CheckModel_inherited_ChangeStatus(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_ChangeStatus(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:147 - `Message_Algorithm::ClearStatus()`
     pub fn clear_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_ClearStatus(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_ClearStatus(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:150 - `Message_Algorithm::SetMessenger()`
-    pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_SetMessenger(self as *mut Self, theMsgr)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_SetMessenger(
+                self as *mut Self,
+                theMsgr,
+            )
         })
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:155 - `Message_Algorithm::GetMessenger()`
-    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn get_messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_CheckModel_inherited_GetMessenger(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetMessenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1081,7 +1236,7 @@ impl CheckModel {
         theMaxCount: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_SendStatusMessages(
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_SendStatusMessages(
                 self as *const Self,
                 theFilter,
                 theTraceLevel.into(),
@@ -1093,7 +1248,7 @@ impl CheckModel {
     /// Inherited: **Source:** `Message_Algorithm.hxx`:182 - `Message_Algorithm::SendMessages()`
     pub fn send_messages(&self, theTraceLevel: crate::message::Gravity, theMaxCount: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_SendMessages(
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_SendMessages(
                 self as *const Self,
                 theTraceLevel.into(),
                 theMaxCount,
@@ -1102,9 +1257,12 @@ impl CheckModel {
     }
 
     /// Inherited: **Source:** `Message_Algorithm.hxx`:187 - `Message_Algorithm::AddStatus()`
-    pub fn add_status(&mut self, theOther: &crate::ffi::HandleMessageAlgorithm) {
+    pub fn add_status(&mut self, theOther: &crate::ffi_types::HandleMessageAlgorithm) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_AddStatus(self as *mut Self, theOther)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_AddStatus(
+                self as *mut Self,
+                theOther,
+            )
         })
     }
 
@@ -1112,10 +1270,10 @@ impl CheckModel {
     pub fn get_message_numbers(
         &self,
         theStatus: crate::message::Status,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHPackedMapOfInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHPackedMapOfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_CheckModel_inherited_GetMessageNumbers(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetMessageNumbers(
                     self as *const Self,
                     theStatus.into(),
                 ),
@@ -1127,10 +1285,10 @@ impl CheckModel {
     pub fn get_message_strings(
         &self,
         theStatus: crate::message::Status,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_CheckModel_inherited_GetMessageStrings(
+                crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetMessageStrings(
                     self as *const Self,
                     theStatus.into(),
                 ),
@@ -1139,16 +1297,19 @@ impl CheckModel {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1156,7 +1317,7 @@ impl CheckModel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_CheckModel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1169,67 +1330,83 @@ impl CheckModel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_CheckModel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_CheckModel_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjCheckModel;
+pub use crate::ffi_types::HandleTObjCheckModel;
 
 unsafe impl crate::CppDeletable for HandleTObjCheckModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjCheckModel_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjCheckModel_destructor(ptr);
     }
 }
 
 impl HandleTObjCheckModel {
     /// Dereference this Handle to access the underlying TObj_CheckModel
-    pub fn get(&self) -> &crate::ffi::TObj_CheckModel {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjCheckModel_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_CheckModel {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjCheckModel_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_CheckModel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_CheckModel {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_CheckModel {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjCheckModel_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjCheckModel_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_CheckModel> to Handle<Message_Algorithm>
-    pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageAlgorithm> {
+    pub fn to_handle_algorithm(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageAlgorithm> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjCheckModel_to_HandleMessageAlgorithm(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjCheckModel_to_HandleMessageAlgorithm(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_CheckModel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjCheckModel_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjCheckModel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1242,11 +1419,11 @@ impl HandleTObjCheckModel {
 /// **Source:** `TObj_HiddenPartition.hxx`:27 - `TObj_HiddenPartition`
 ///
 /// This class is partition is predefined hidden flag
-pub use crate::ffi::TObj_HiddenPartition as HiddenPartition;
+pub use crate::ffi_types::TObj_HiddenPartition as HiddenPartition;
 
 unsafe impl crate::CppDeletable for HiddenPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_HiddenPartition_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_HiddenPartition_destructor(ptr);
     }
 }
 
@@ -1256,7 +1433,7 @@ impl HiddenPartition {
     pub fn new_label(theLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_ctor_label(theLabel),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_ctor_label(theLabel),
             ))
         }
     }
@@ -1265,15 +1442,15 @@ impl HiddenPartition {
     /// Returns all flags of father except Visible
     pub fn get_type_flags(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_get_type_flags(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_get_type_flags(self as *const Self)
         })
     }
 
     /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_HiddenPartition_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_HiddenPartition_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1284,7 +1461,7 @@ impl HiddenPartition {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1293,14 +1470,18 @@ impl HiddenPartition {
 
     /// **Source:** `TObj_HiddenPartition.hxx`:41 - `TObj_HiddenPartition::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_HiddenPartition_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TObj_Partition
     pub fn as_partition(&self) -> &Partition {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_HiddenPartition_as_TObj_Partition(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_TObj_Partition(
                 self as *const Self,
             ))
         }
@@ -1309,16 +1490,18 @@ impl HiddenPartition {
     /// Upcast to TObj_Partition (mutable)
     pub fn as_partition_mut(&mut self) -> &mut Partition {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_HiddenPartition_as_TObj_Partition_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_TObj_Partition_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_Object
     pub fn as_object(&self) -> &Object {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_HiddenPartition_as_TObj_Object(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_TObj_Object(
                 self as *const Self,
             ))
         }
@@ -1327,67 +1510,88 @@ impl HiddenPartition {
     /// Upcast to TObj_Object (mutable)
     pub fn as_object_mut(&mut self) -> &mut Object {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_HiddenPartition_as_TObj_Object_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_TObj_Object_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_HiddenPartition_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_HiddenPartition_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjHiddenPartition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjHiddenPartition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:66 - `TObj_Partition::SetName()`
-    pub fn set_name(&self, theName: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+    pub fn set_name(&self, theName: &crate::ffi_types::HandleTCollectionHExtendedString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_SetName(self as *const Self, theName)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_SetName(
+                self as *const Self,
+                theName,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:75 - `TObj_Partition::AfterRetrieval()`
     pub fn after_retrieval(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_AfterRetrieval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_AfterRetrieval(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:86 - `TObj_Partition::SetNamePrefix()`
-    pub fn set_name_prefix(&mut self, thePrefix: &crate::ffi::HandleTCollectionHExtendedString) {
+    pub fn set_name_prefix(
+        &mut self,
+        thePrefix: &crate::ffi_types::HandleTCollectionHExtendedString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_SetNamePrefix(self as *mut Self, thePrefix)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_SetNamePrefix(
+                self as *mut Self,
+                thePrefix,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:89 - `TObj_Partition::GetNamePrefix()`
-    pub fn get_name_prefix(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_name_prefix(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetNamePrefix(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetNamePrefix(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1396,10 +1600,10 @@ impl HiddenPartition {
     pub fn get_new_name(
         &mut self,
         theIsToChangeCount: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetNewName(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetNewName(
                     self as *mut Self,
                     theIsToChangeCount,
                 ),
@@ -1410,29 +1614,36 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Partition.hxx`:98 - `TObj_Partition::GetLastIndex()`
     pub fn get_last_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_GetLastIndex(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetLastIndex(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:101 - `TObj_Partition::SetLastIndex()`
     pub fn set_last_index(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_SetLastIndex(self as *mut Self, theIndex)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_SetLastIndex(
+                self as *mut Self,
+                theIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Partition.hxx`:118 - `TObj_Partition::Update()`
     pub fn update(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_Update(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_Update(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1440,11 +1651,11 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
     pub fn get_children(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetChildren(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetChildren(
                     self as *const Self,
                     theType,
                 ),
@@ -1456,7 +1667,9 @@ impl HiddenPartition {
     pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetChildLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetChildLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1465,7 +1678,7 @@ impl HiddenPartition {
     pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_getChildLabel(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_getChildLabel(
                     self as *const Self,
                     theRank,
                 ),
@@ -1477,7 +1690,9 @@ impl HiddenPartition {
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1486,7 +1701,9 @@ impl HiddenPartition {
     pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetDataLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetDataLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1495,25 +1712,31 @@ impl HiddenPartition {
     pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetReferenceLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetReferenceLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:160 - `TObj_Object::GetDictionary()`
-    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetDictionary(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetDictionary(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetName(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetName(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1521,11 +1744,11 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:183 - `TObj_Object::GetNameForClone()`
     pub fn get_name_for_clone(
         &self,
-        arg0: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        arg0: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetNameForClone(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetNameForClone(
                     self as *const Self,
                     arg0,
                 ),
@@ -1534,20 +1757,23 @@ impl HiddenPartition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
-    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn has_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_HasReference(self as *const Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_HasReference(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:198 - `TObj_Object::GetReferences()`
     pub fn get_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetReferences(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetReferences(
                     self as *const Self,
                     theType,
                 ),
@@ -1558,18 +1784,20 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:202 - `TObj_Object::RemoveAllReferences()`
     pub fn remove_all_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_RemoveAllReferences(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_RemoveAllReferences(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:207 - `TObj_Object::GetBackReferences()`
     pub fn get_back_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetBackReferences(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetBackReferences(
                     self as *const Self,
                     theType,
                 ),
@@ -1578,9 +1806,9 @@ impl HiddenPartition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:213 - `TObj_Object::AddBackReference()`
-    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_AddBackReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_AddBackReference(
                 self as *mut Self,
                 theObject,
             )
@@ -1590,11 +1818,11 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:218 - `TObj_Object::RemoveBackReference()`
     pub fn remove_back_reference(
         &mut self,
-        theObject: &crate::ffi::HandleTObjObject,
+        theObject: &crate::ffi_types::HandleTObjObject,
         theSingleOnly: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_RemoveBackReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_RemoveBackReference(
                 self as *mut Self,
                 theObject,
                 theSingleOnly,
@@ -1605,7 +1833,7 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:224 - `TObj_Object::RemoveBackReferences()`
     pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_RemoveBackReferences(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_RemoveBackReferences(
                 self as *mut Self,
                 theMode.into(),
             )
@@ -1615,25 +1843,29 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:227 - `TObj_Object::ClearBackReferences()`
     pub fn clear_back_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_ClearBackReferences(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_ClearBackReferences(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:230 - `TObj_Object::HasBackReferences()`
     pub fn has_back_references(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_HasBackReferences(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_HasBackReferences(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:235 - `TObj_Object::ReplaceReference()`
     pub fn replace_reference(
         &mut self,
-        theOldObject: &crate::ffi::HandleTObjObject,
-        theNewObject: &crate::ffi::HandleTObjObject,
+        theOldObject: &crate::ffi_types::HandleTObjObject,
+        theNewObject: &crate::ffi_types::HandleTObjObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_ReplaceReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_ReplaceReference(
                 self as *mut Self,
                 theOldObject,
                 theNewObject,
@@ -1648,7 +1880,7 @@ impl HiddenPartition {
         theBadReference: &mut crate::tdf::Label,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_GetBadReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetBadReference(
                 self as *const Self,
                 theRoot,
                 theBadReference,
@@ -1664,7 +1896,7 @@ impl HiddenPartition {
         theUpdateBackRefs: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_RelocateReferences(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_RelocateReferences(
                 self as *mut Self,
                 theFromRoot,
                 theToRoot,
@@ -1674,9 +1906,9 @@ impl HiddenPartition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:262 - `TObj_Object::CanRemoveReference()`
-    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn can_remove_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_CanRemoveReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_CanRemoveReference(
                 self as *const Self,
                 theObject,
             )
@@ -1684,16 +1916,19 @@ impl HiddenPartition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
-    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn remove_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_RemoveReference(self as *mut Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_RemoveReference(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:270 - `TObj_Object::BeforeForgetReference()`
     pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_BeforeForgetReference(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_BeforeForgetReference(
                 self as *mut Self,
                 arg0,
             )
@@ -1703,25 +1938,31 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:279 - `TObj_Object::CanDetach()`
     pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_CanDetach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_CanDetach(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:287 - `TObj_Object::Detach()`
     pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_Detach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_Detach(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:310 - `TObj_Object::GetFatherObject()`
     pub fn get_father_object(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_GetFatherObject(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetFatherObject(
                     self as *const Self,
                     theType,
                 ),
@@ -1732,7 +1973,7 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:320 - `TObj_Object::IsAlive()`
     pub fn is_alive(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_IsAlive(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_IsAlive(self as *const Self)
         })
     }
 
@@ -1740,11 +1981,11 @@ impl HiddenPartition {
     pub fn clone(
         &mut self,
         theTargetLabel: &crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HiddenPartition_inherited_Clone(
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_Clone(
                     self as *mut Self,
                     theTargetLabel,
                     theRelocTable,
@@ -1756,11 +1997,11 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:339 - `TObj_Object::CopyReferences()`
     pub fn copy_references(
         &mut self,
-        theTargetObject: &crate::ffi::HandleTObjObject,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theTargetObject: &crate::ffi_types::HandleTObjObject,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_CopyReferences(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_CopyReferences(
                 self as *mut Self,
                 theTargetObject,
                 theRelocTable,
@@ -1772,10 +2013,10 @@ impl HiddenPartition {
     pub fn copy_children(
         &mut self,
         theTargetLabel: &mut crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_CopyChildren(
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_CopyChildren(
                 self as *mut Self,
                 theTargetLabel,
                 theRelocTable,
@@ -1786,70 +2027,92 @@ impl HiddenPartition {
     /// Inherited: **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
     pub fn get_order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_GetOrder(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetOrder(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder()`
     pub fn set_order(&mut self, theIndx: &i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_SetOrder(self as *mut Self, theIndx)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_SetOrder(
+                self as *mut Self,
+                theIndx,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
     pub fn has_modifications(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_HasModifications(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_HasModifications(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
     pub fn get_flags(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_GetFlags(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetFlags(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
     pub fn set_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_SetFlags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_SetFlags(
+                self as *mut Self,
+                theMask,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:395 - `TObj_Object::TestFlags()`
     pub fn test_flags(&self, theMask: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_TestFlags(self as *const Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_TestFlags(
+                self as *const Self,
+                theMask,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:398 - `TObj_Object::ClearFlags()`
     pub fn clear_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_ClearFlags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_ClearFlags(
+                self as *mut Self,
+                theMask,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
     pub fn before_storing(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_BeforeStoring(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_BeforeStoring(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1857,7 +2120,7 @@ impl HiddenPartition {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_HiddenPartition_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1870,80 +2133,94 @@ impl HiddenPartition {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HiddenPartition_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HiddenPartition_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjHiddenPartition;
+pub use crate::ffi_types::HandleTObjHiddenPartition;
 
 unsafe impl crate::CppDeletable for HandleTObjHiddenPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjHiddenPartition_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_destructor(ptr);
     }
 }
 
 impl HandleTObjHiddenPartition {
     /// Dereference this Handle to access the underlying TObj_HiddenPartition
-    pub fn get(&self) -> &crate::ffi::TObj_HiddenPartition {
+    pub fn get(&self) -> &crate::ffi_types::TObj_HiddenPartition {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjHiddenPartition_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_HiddenPartition
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_HiddenPartition {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_HiddenPartition {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjHiddenPartition_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TObj_HiddenPartition> to Handle<TObj_Partition>
-    pub fn to_handle_partition(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjPartition> {
+    pub fn to_handle_partition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjPartition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjHiddenPartition_to_HandleTObjPartition(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_to_HandleTObjPartition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_HiddenPartition> to Handle<TObj_Object>
-    pub fn to_handle_object(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn to_handle_object(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjHiddenPartition_to_HandleTObjObject(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_to_HandleTObjObject(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_HiddenPartition> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjHiddenPartition_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjHiddenPartition_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1958,11 +2235,11 @@ impl HandleTObjHiddenPartition {
 /// **Source:** `TObj_LabelIterator.hxx`:31 - `TObj_LabelIterator`
 ///
 /// This class is a basis for OCAF based iterators.
-pub use crate::ffi::TObj_LabelIterator as LabelIterator;
+pub use crate::ffi_types::TObj_LabelIterator as LabelIterator;
 
 unsafe impl crate::CppDeletable for LabelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_LabelIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_LabelIterator_destructor(ptr);
     }
 }
 
@@ -1970,22 +2247,26 @@ impl LabelIterator {
     /// **Source:** `TObj_LabelIterator.hxx`:58 - `TObj_LabelIterator::More()`
     /// Returns True if there is a current Item in the iteration.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_LabelIterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_LabelIterator.hxx`:61 - `TObj_LabelIterator::Next()`
     /// Move to the next Item
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_LabelIterator_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
     /// Returns the current item
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_LabelIterator_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_value(self as *const Self),
+            ))
         }
     }
 
@@ -1993,15 +2274,17 @@ impl LabelIterator {
     /// Returns the label of the current item
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_LabelIterator_label_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_LabelIterator_label_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TObj_LabelIterator.hxx`:98 - `TObj_LabelIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_LabelIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_LabelIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2012,7 +2295,7 @@ impl LabelIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_LabelIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2021,57 +2304,75 @@ impl LabelIterator {
 
     /// **Source:** `TObj_LabelIterator.hxx`:98 - `TObj_LabelIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_LabelIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TObj_ObjectIterator
     pub fn as_object_iterator(&self) -> &ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_LabelIterator_as_TObj_ObjectIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_as_TObj_ObjectIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_ObjectIterator (mutable)
     pub fn as_object_iterator_mut(&mut self) -> &mut ObjectIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_LabelIterator_as_TObj_ObjectIterator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_as_TObj_ObjectIterator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_LabelIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_LabelIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2079,7 +2380,7 @@ impl LabelIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_LabelIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2092,52 +2393,58 @@ impl LabelIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_LabelIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_LabelIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjLabelIterator;
+pub use crate::ffi_types::HandleTObjLabelIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjLabelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjLabelIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjLabelIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjLabelIterator {
     /// Dereference this Handle to access the underlying TObj_LabelIterator
-    pub fn get(&self) -> &crate::ffi::TObj_LabelIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_LabelIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjLabelIterator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjLabelIterator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_LabelIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_LabelIterator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_LabelIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjLabelIterator_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjLabelIterator_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2146,10 +2453,10 @@ impl HandleTObjLabelIterator {
     /// Upcast Handle<TObj_LabelIterator> to Handle<TObj_ObjectIterator>
     pub fn to_handle_object_iterator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjLabelIterator_to_HandleTObjObjectIterator(
+                crate::ffi_extern_TKTObj::HandleTObjLabelIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
             ))
@@ -2157,10 +2464,14 @@ impl HandleTObjLabelIterator {
     }
 
     /// Upcast Handle<TObj_LabelIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjLabelIterator_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjLabelIterator_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2170,11 +2481,9 @@ impl HandleTObjLabelIterator {
     /// Returns `None` if the handle does not point to a `TObj_OcafObjectIterator` (or subclass).
     pub fn downcast_to_ocaf_object_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjOcafObjectIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjOcafObjectIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjLabelIterator_downcast_to_HandleTObjOcafObjectIterator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTObj::HandleTObjLabelIterator_downcast_to_HandleTObjOcafObjectIterator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2188,11 +2497,9 @@ impl HandleTObjLabelIterator {
     /// Returns `None` if the handle does not point to a `TObj_ReferenceIterator` (or subclass).
     pub fn downcast_to_reference_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjReferenceIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjReferenceIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjLabelIterator_downcast_to_HandleTObjReferenceIterator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTObj::HandleTObjLabelIterator_downcast_to_HandleTObjReferenceIterator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2213,25 +2520,25 @@ impl HandleTObjLabelIterator {
 /// classes, basic services to access model objects and common
 /// operations with the model.
 /// Provides default implementation for many methods.
-pub use crate::ffi::TObj_Model as Model;
+pub use crate::ffi_types::TObj_Model as Model;
 
 impl Model {
     /// **Source:** `TObj_Model.hxx`:74 - `TObj_Model::SetMessenger()`
     /// Set messenger to use for messages output
-    pub fn set_messenger(&mut self, theMsgr: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, theMsgr: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_set_messenger(self as *mut Self, theMsgr)
+            crate::ffi_extern_TKTObj::TObj_Model_set_messenger(self as *mut Self, theMsgr)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:78 - `TObj_Model::Messenger()`
     /// Get messenger used for messages output (by default, the messenger from
     /// application is used)
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_messenger(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_messenger(self as *const Self),
+            ))
         }
     }
 
@@ -2240,16 +2547,16 @@ impl Model {
     /// not exists, it just initializes model by empty data.
     pub fn load_extendedstring(&mut self, theFile: &crate::t_collection::ExtendedString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_load_extendedstring(self as *mut Self, theFile)
+            crate::ffi_extern_TKTObj::TObj_Model_load_extendedstring(self as *mut Self, theFile)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:91 - `TObj_Model::Load()`
     /// Load the OCAF model from a stream. If case of failure,
     /// it initializes the model by empty data.
-    pub fn load_istream(&mut self, theIStream: &mut crate::ffi::Standard_IStream) -> bool {
+    pub fn load_istream(&mut self, theIStream: &mut crate::ffi_types::Standard_IStream) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_load_istream(self as *mut Self, theIStream)
+            crate::ffi_extern_TKTObj::TObj_Model_load_istream(self as *mut Self, theIStream)
         })
     }
 
@@ -2260,66 +2567,68 @@ impl Model {
         theFile: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_save_as_extendedstring(self as *mut Self, theFile)
+            crate::ffi_extern_TKTObj::TObj_Model_save_as_extendedstring(self as *mut Self, theFile)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:97 - `TObj_Model::SaveAs()`
     /// Save the model to a stream
-    pub fn save_as_ostream(&mut self, theOStream: &mut crate::ffi::Standard_OStream) -> bool {
+    pub fn save_as_ostream(&mut self, theOStream: &mut crate::ffi_types::Standard_OStream) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_save_as_ostream(self as *mut Self, theOStream)
+            crate::ffi_extern_TKTObj::TObj_Model_save_as_ostream(self as *mut Self, theOStream)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:100 - `TObj_Model::Save()`
     /// Save the model to the same file
     pub fn save(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Model_save(self as *mut Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKTObj::TObj_Model_save(self as *mut Self) })
     }
 
     /// **Source:** `TObj_Model.hxx`:108 - `TObj_Model::Close()`
     /// Close the model
     pub fn close(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Model_close(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Model_close(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_Model.hxx`:111 - `TObj_Model::CloseDocument()`
     /// Close Free OCAF document
-    pub fn close_document(&mut self, theDoc: &crate::ffi::HandleTDocStdDocument) {
+    pub fn close_document(&mut self, theDoc: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_close_document(self as *mut Self, theDoc)
+            crate::ffi_extern_TKTObj::TObj_Model_close_document(self as *mut Self, theDoc)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:119 - `TObj_Model::GetFile()`
     /// Returns the full file name this model is to be saved to,
     /// or null if the model was not saved yet
-    pub fn get_file(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_file(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_file(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_file(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:127 - `TObj_Model::GetObjects()`
     /// Returns an Iterator on all objects in the Model
-    pub fn get_objects(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    pub fn get_objects(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_objects(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_objects(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:130 - `TObj_Model::GetChildren()`
     /// Returns an Iterator on objects in the main partition
-    pub fn get_children(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    pub fn get_children(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_children(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_children(self as *const Self),
+            ))
         }
     }
 
@@ -2327,45 +2636,47 @@ impl Model {
     /// Returns an Object by given Name (or Null if not found).
     pub fn find_object(
         &self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
-        theDictionary: &crate::ffi::HandleTObjTNameContainer,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
+        theDictionary: &crate::ffi_types::HandleTObjTNameContainer,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_find_object(
-                self as *const Self,
-                theName,
-                theDictionary,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_find_object(
+                    self as *const Self,
+                    theName,
+                    theDictionary,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:139 - `TObj_Model::GetChecker()`
     /// Returns the tool checking model consistency.
     /// Descendant may redefine it to return its own tool.
-    pub fn get_checker(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjCheckModel> {
+    pub fn get_checker(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjCheckModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_checker(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_checker(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:147 - `TObj_Model::GetRoot()`
     /// Returns root object of model
-    pub fn get_root(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn get_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_root(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_root(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:150 - `TObj_Model::GetMainPartition()`
     /// Returns root object of model
-    pub fn get_main_partition(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjPartition> {
+    pub fn get_main_partition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjPartition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Model_get_main_partition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Model_get_main_partition(self as *const Self),
             ))
         }
     }
@@ -2374,19 +2685,21 @@ impl Model {
     /// Returns OCAF label on which model data are stored.
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:166 - `TObj_Model::GetModelName()`
     /// Returns the name of the model
-    pub fn get_model_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_model_name(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_model_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_model_name(self as *const Self),
+            ))
         }
     }
 
@@ -2395,11 +2708,15 @@ impl Model {
     /// The input argument may be NULL handle, then model check in own global container
     pub fn is_registered_name(
         &self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
-        theDictionary: &crate::ffi::HandleTObjTNameContainer,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
+        theDictionary: &crate::ffi_types::HandleTObjTNameContainer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_is_registered_name(self as *const Self, theName, theDictionary)
+            crate::ffi_extern_TKTObj::TObj_Model_is_registered_name(
+                self as *const Self,
+                theName,
+                theDictionary,
+            )
         })
     }
 
@@ -2408,12 +2725,12 @@ impl Model {
     /// The input argument may be NULL handle, then model check in own global container
     pub fn register_name(
         &self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
         theLabel: &crate::tdf::Label,
-        theDictionary: &crate::ffi::HandleTObjTNameContainer,
+        theDictionary: &crate::ffi_types::HandleTObjTNameContainer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_register_name(
+            crate::ffi_extern_TKTObj::TObj_Model_register_name(
                 self as *const Self,
                 theName,
                 theLabel,
@@ -2427,11 +2744,15 @@ impl Model {
     /// The input argument may be NULL handle, then model check in own global container
     pub fn un_register_name(
         &self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
-        theDictionary: &crate::ffi::HandleTObjTNameContainer,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
+        theDictionary: &crate::ffi_types::HandleTObjTNameContainer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_un_register_name(self as *const Self, theName, theDictionary)
+            crate::ffi_extern_TKTObj::TObj_Model_un_register_name(
+                self as *const Self,
+                theName,
+                theDictionary,
+            )
         })
     }
 
@@ -2439,14 +2760,16 @@ impl Model {
     /// Returns True if a Command transaction is open
     /// Starting, finishing the transaction
     pub fn has_open_command(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Model_has_open_command(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Model_has_open_command(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Model.hxx`:198 - `TObj_Model::OpenCommand()`
     /// Open a new command transaction.
     pub fn open_command(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_open_command(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Model_open_command(self as *const Self)
         })
     }
 
@@ -2455,7 +2778,7 @@ impl Model {
     /// transaction open.
     pub fn commit_command(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_commit_command(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Model_commit_command(self as *const Self)
         })
     }
 
@@ -2464,31 +2787,33 @@ impl Model {
     /// transaction open.
     pub fn abort_command(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_abort_command(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Model_abort_command(self as *const Self)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:209 - `TObj_Model::IsModified()`
     /// Modification status
     pub fn is_modified(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Model_is_modified(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Model_is_modified(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Model.hxx`:212 - `TObj_Model::SetModified()`
     /// Sets modification status
     pub fn set_modified(&mut self, theModified: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_set_modified(self as *mut Self, theModified)
+            crate::ffi_extern_TKTObj::TObj_Model_set_modified(self as *mut Self, theModified)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:220 - `TObj_Model::GetApplication()`
     /// Returns handle to static instance of the relevant application class
-    pub fn get_application(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTObjApplication> {
+    pub fn get_application(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjApplication> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_application(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_application(self as *mut Self),
+            ))
         }
     }
 
@@ -2498,9 +2823,9 @@ impl Model {
     /// for those models that should use another format.
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_format(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_format(self as *const Self),
+            ))
         }
     }
 
@@ -2508,43 +2833,45 @@ impl Model {
     /// Returns the version of format stored in TObj file
     pub fn get_format_version(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_get_format_version(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Model_get_format_version(self as *const Self)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:249 - `TObj_Model::Update()`
     /// this method is called before activating this model
     pub fn update(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Model_update(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Model_update(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_Model.hxx`:257 - `TObj_Model::GetGUID()`
     /// Defines interface GUID for TObj_Model
     pub fn get_guid(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_guid(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_guid(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:265 - `TObj_Model::GetDictionary()`
     /// Returns the map of names of the objects
-    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_dictionary(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_dictionary(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:294 - `TObj_Model::GetDocument()`
     /// Returns OCAF document of Model
-    pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi::HandleTDocStdDocument> {
+    pub fn get_document(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDocStdDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_get_document(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_document(self as *const Self),
+            ))
         }
     }
 
@@ -2553,7 +2880,7 @@ impl Model {
     /// Used by persistence mechanism.
     pub fn set_label(&mut self, theLabel: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_set_label(self as *mut Self, theLabel)
+            crate::ffi_extern_TKTObj::TObj_Model_set_label(self as *mut Self, theLabel)
         })
     }
 
@@ -2563,21 +2890,21 @@ impl Model {
     /// if theRelocTable is not NULL theRelocTable is filled by objects
     pub fn paste(
         &mut self,
-        theModel: &crate::ffi::HandleTObjModel,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theModel: &crate::ffi_types::HandleTObjModel,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Model_paste(self as *mut Self, theModel, theRelocTable)
+            crate::ffi_extern_TKTObj::TObj_Model_paste(self as *mut Self, theModel, theRelocTable)
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:337 - `TObj_Model::NewEmpty()`
     /// This function have to create a new model with type like me
-    pub fn new_empty(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn new_empty(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Model_new_empty(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_new_empty(self as *mut Self),
+            ))
         }
     }
 
@@ -2585,18 +2912,26 @@ impl Model {
     /// Copy references from me to the other
     pub fn copy_references(
         &mut self,
-        theTarget: &crate::ffi::HandleTObjModel,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theTarget: &crate::ffi_types::HandleTObjModel,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Model_copy_references(self as *mut Self, theTarget, theRelocTable)
+            crate::ffi_extern_TKTObj::TObj_Model_copy_references(
+                self as *mut Self,
+                theTarget,
+                theRelocTable,
+            )
         })
     }
 
     /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_Model_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Model_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_Model.hxx`:115 - `TObj_Model::GetDocumentModel()`
@@ -2604,25 +2939,29 @@ impl Model {
     /// or NULL handle if label is NULL
     pub fn get_document_model(
         theLabel: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Model_get_document_model(theLabel),
+                crate::ffi_extern_TKTObj::TObj_Model_get_document_model(theLabel),
             ))
         }
     }
 
     /// **Source:** `TObj_Model.hxx`:169 - `TObj_Model::SetNewName()`
     /// Sets new unique name for the object
-    pub fn set_new_name(theObject: &crate::ffi::HandleTObjObject) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Model_set_new_name(theObject) })
+    pub fn set_new_name(theObject: &crate::ffi_types::HandleTObjObject) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Model_set_new_name(theObject)
+        })
     }
 
     /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::get_type_name()`
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TObj_Model_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -2630,51 +2969,67 @@ impl Model {
 
     /// **Source:** `TObj_Model.hxx`:353 - `TObj_Model::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_Model_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Model_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Model_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Model_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Model_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Model_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 }
 
-pub use crate::ffi::HandleTObjModel;
+pub use crate::ffi_types::HandleTObjModel;
 
 unsafe impl crate::CppDeletable for HandleTObjModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjModel_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjModel_destructor(ptr);
     }
 }
 
 impl HandleTObjModel {
     /// Dereference this Handle to access the underlying TObj_Model
-    pub fn get(&self) -> &crate::ffi::TObj_Model {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjModel_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_Model {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModel_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_Model
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Model {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleTObjModel_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_Model {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModel_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<TObj_Model> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjModel_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjModel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2687,11 +3042,11 @@ impl HandleTObjModel {
 /// **Source:** `TObj_ModelIterator.hxx`:28 - `TObj_ModelIterator`
 ///
 /// This class provides an iterator by all objects in the model.
-pub use crate::ffi::TObj_ModelIterator as ModelIterator;
+pub use crate::ffi_types::TObj_ModelIterator as ModelIterator;
 
 unsafe impl crate::CppDeletable for ModelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_ModelIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_ModelIterator_destructor(ptr);
     }
 }
 
@@ -2701,10 +3056,12 @@ impl ModelIterator {
     /// Constructor
     ///
     /// Creates Iterator and initialize it by Model`s label
-    pub fn new_handletobjmodel(theModel: &crate::ffi::HandleTObjModel) -> crate::OwnedPtr<Self> {
+    pub fn new_handletobjmodel(
+        theModel: &crate::ffi_types::HandleTObjModel,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ModelIterator_ctor_handletobjmodel(theModel),
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_ctor_handletobjmodel(theModel),
             ))
         }
     }
@@ -2713,30 +3070,34 @@ impl ModelIterator {
     /// Returns True if iteration is not finished and method Value()
     /// will give the object
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_ModelIterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_ModelIterator.hxx`:47 - `TObj_ModelIterator::Next()`
     /// Iterates to the next object
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_ModelIterator_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_ModelIterator.hxx`:50 - `TObj_ModelIterator::Value()`
     /// Returns current object (or MainObj of Model if iteration has finished)
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_ModelIterator_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_ModelIterator.hxx`:69 - `TObj_ModelIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_ModelIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_ModelIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2747,7 +3108,7 @@ impl ModelIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_ModelIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2756,68 +3117,86 @@ impl ModelIterator {
 
     /// **Source:** `TObj_ModelIterator.hxx`:69 - `TObj_ModelIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_ModelIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TObj_ObjectIterator
     pub fn as_object_iterator(&self) -> &ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ModelIterator_as_TObj_ObjectIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_as_TObj_ObjectIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_ObjectIterator (mutable)
     pub fn as_object_iterator_mut(&mut self) -> &mut ObjectIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_ModelIterator_as_TObj_ObjectIterator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_as_TObj_ObjectIterator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ModelIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_ModelIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjModelIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModelIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ModelIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2825,7 +3204,7 @@ impl ModelIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_ModelIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2838,52 +3217,58 @@ impl ModelIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ModelIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ModelIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjModelIterator;
+pub use crate::ffi_types::HandleTObjModelIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjModelIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjModelIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjModelIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjModelIterator {
     /// Dereference this Handle to access the underlying TObj_ModelIterator
-    pub fn get(&self) -> &crate::ffi::TObj_ModelIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_ModelIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjModelIterator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModelIterator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_ModelIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_ModelIterator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_ModelIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjModelIterator_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjModelIterator_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2892,10 +3277,10 @@ impl HandleTObjModelIterator {
     /// Upcast Handle<TObj_ModelIterator> to Handle<TObj_ObjectIterator>
     pub fn to_handle_object_iterator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjModelIterator_to_HandleTObjObjectIterator(
+                crate::ffi_extern_TKTObj::HandleTObjModelIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
             ))
@@ -2903,10 +3288,14 @@ impl HandleTObjModelIterator {
     }
 
     /// Upcast Handle<TObj_ModelIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjModelIterator_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjModelIterator_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2918,22 +3307,22 @@ impl HandleTObjModelIterator {
 
 /// **Source:** `TObj_Object.hxx`:43 - `TObj_Object`
 /// Basis class for transient objects in OCAF-based models
-pub use crate::ffi::TObj_Object as Object;
+pub use crate::ffi_types::TObj_Object as Object;
 
 unsafe impl crate::CppDeletable for Object {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_Object_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_Object_destructor(ptr);
     }
 }
 
 impl Object {
     /// **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
     /// Returns the model to which the object belongs
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_model(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_model(self as *const Self),
+            ))
         }
     }
 
@@ -2946,13 +3335,12 @@ impl Object {
     /// of the children sub label
     pub fn get_children(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_children(
-                self as *const Self,
-                theType,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_children(self as *const Self, theType),
+            ))
         }
     }
 
@@ -2960,9 +3348,9 @@ impl Object {
     /// Returns the label under which children are stored
     pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_child_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_child_label(self as *const Self),
+            ))
         }
     }
 
@@ -2971,7 +3359,10 @@ impl Object {
     pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Object_get_child_label_2(self as *const Self, theRank),
+                crate::ffi_extern_TKTObj::TObj_Object_get_child_label_2(
+                    self as *const Self,
+                    theRank,
+                ),
             ))
         }
     }
@@ -2980,9 +3371,9 @@ impl Object {
     /// Returns the OCAF label on which object`s data are stored
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_label(self as *const Self),
+            ))
         }
     }
 
@@ -2990,9 +3381,9 @@ impl Object {
     /// Returns the label which is the root for data OCAF sub-tree
     pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_data_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_data_label(self as *const Self),
+            ))
         }
     }
 
@@ -3001,7 +3392,7 @@ impl Object {
     pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Object_get_reference_label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Object_get_reference_label(self as *const Self),
             ))
         }
     }
@@ -3009,21 +3400,21 @@ impl Object {
     /// **Source:** `TObj_Object.hxx`:160 - `TObj_Object::GetDictionary()`
     /// Returns the map of names of the objects
     /// Default implementation returns global Dictionary of the model
-    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_dictionary(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_dictionary(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
     /// Returns the name of the object (empty string if object has no name)
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_name(self as *const Self),
+            ))
         }
     }
 
@@ -3034,7 +3425,10 @@ impl Object {
         theName: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_get_name_extendedstring(self as *const Self, theName)
+            crate::ffi_extern_TKTObj::TObj_Object_get_name_extendedstring(
+                self as *const Self,
+                theName,
+            )
         })
     }
 
@@ -3042,7 +3436,7 @@ impl Object {
     /// Returns the Standard_True is object has name and returns name to theName
     pub fn get_name_asciistring(&self, theName: &mut crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_get_name_asciistring(self as *const Self, theName)
+            crate::ffi_extern_TKTObj::TObj_Object_get_name_asciistring(self as *const Self, theName)
         })
     }
 
@@ -3050,10 +3444,10 @@ impl Object {
     /// Sets name of the object. Returns False if theName is not unique.
     pub fn set_name_handletcollectionhextendedstring(
         &self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_set_name_handletcollectionhextendedstring(
+            crate::ffi_extern_TKTObj::TObj_Object_set_name_handletcollectionhextendedstring(
                 self as *const Self,
                 theName,
             )
@@ -3064,10 +3458,10 @@ impl Object {
     /// Sets name of the object. Returns False if theName is not unique.
     pub fn set_name_handletcollectionhasciistring(
         &self,
-        theName: &crate::ffi::HandleTCollectionHAsciiString,
+        theName: &crate::ffi_types::HandleTCollectionHAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_set_name_handletcollectionhasciistring(
+            crate::ffi_extern_TKTObj::TObj_Object_set_name_handletcollectionhasciistring(
                 self as *const Self,
                 theName,
             )
@@ -3079,7 +3473,10 @@ impl Object {
     pub fn set_name_charptr(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_set_name_charptr(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKTObj::TObj_Object_set_name_charptr(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -3088,20 +3485,20 @@ impl Object {
     /// default implementation returns the same name
     pub fn get_name_for_clone(
         &self,
-        arg0: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        arg0: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Object_get_name_for_clone(self as *const Self, arg0),
+                crate::ffi_extern_TKTObj::TObj_Object_get_name_for_clone(self as *const Self, arg0),
             ))
         }
     }
 
     /// **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
     /// Returns True if object has reference to indicated object
-    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn has_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_has_reference(self as *const Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Object_has_reference(self as *const Self, theObject)
         })
     }
 
@@ -3110,13 +3507,12 @@ impl Object {
     /// theType narrows a variety of iterated objects
     pub fn get_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_get_references(
-                self as *const Self,
-                theType,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_references(self as *const Self, theType),
+            ))
         }
     }
 
@@ -3124,7 +3520,7 @@ impl Object {
     /// Remove all references to other objects, by removing all reference attributes
     pub fn remove_all_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_remove_all_references(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_remove_all_references(self as *mut Self)
         })
     }
 
@@ -3134,11 +3530,14 @@ impl Object {
     /// theType narrows a variety of iterated objects
     pub fn get_back_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Object_get_back_references(self as *const Self, theType),
+                crate::ffi_extern_TKTObj::TObj_Object_get_back_references(
+                    self as *const Self,
+                    theType,
+                ),
             ))
         }
     }
@@ -3147,9 +3546,9 @@ impl Object {
     /// Registers another object as being dependent on this one.
     /// Stores back references under sublabel 2 (purely transient data,
     /// not subject to persistency).
-    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_add_back_reference(self as *mut Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Object_add_back_reference(self as *mut Self, theObject)
         })
     }
 
@@ -3159,11 +3558,11 @@ impl Object {
     /// case of duplicate items.
     pub fn remove_back_reference(
         &mut self,
-        theObject: &crate::ffi::HandleTObjObject,
+        theObject: &crate::ffi_types::HandleTObjObject,
         theSingleOnly: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_remove_back_reference(
+            crate::ffi_extern_TKTObj::TObj_Object_remove_back_reference(
                 self as *mut Self,
                 theObject,
                 theSingleOnly,
@@ -3175,7 +3574,10 @@ impl Object {
     /// Removes all back reference by removing references from other to me.
     pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_remove_back_references(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Object_remove_back_references(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
@@ -3183,7 +3585,7 @@ impl Object {
     /// The default implementation just clear the back references container
     pub fn clear_back_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_clear_back_references(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_clear_back_references(self as *mut Self)
         })
     }
 
@@ -3191,7 +3593,7 @@ impl Object {
     /// Returns TRUE if object has 1 or more back references
     pub fn has_back_references(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_has_back_references(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Object_has_back_references(self as *const Self)
         })
     }
 
@@ -3201,11 +3603,15 @@ impl Object {
     /// If new object is null then simple remove reference to old object.
     pub fn replace_reference(
         &mut self,
-        theOldObject: &crate::ffi::HandleTObjObject,
-        theNewObject: &crate::ffi::HandleTObjObject,
+        theOldObject: &crate::ffi_types::HandleTObjObject,
+        theNewObject: &crate::ffi_types::HandleTObjObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_replace_reference(self as *mut Self, theOldObject, theNewObject)
+            crate::ffi_extern_TKTObj::TObj_Object_replace_reference(
+                self as *mut Self,
+                theOldObject,
+                theNewObject,
+            )
         })
     }
 
@@ -3219,7 +3625,11 @@ impl Object {
         theBadReference: &mut crate::tdf::Label,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_get_bad_reference(self as *const Self, theRoot, theBadReference)
+            crate::ffi_extern_TKTObj::TObj_Object_get_bad_reference(
+                self as *const Self,
+                theRoot,
+                theBadReference,
+            )
         })
     }
 
@@ -3240,7 +3650,7 @@ impl Object {
         theUpdateBackRefs: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_relocate_references(
+            crate::ffi_extern_TKTObj::TObj_Object_relocate_references(
                 self as *mut Self,
                 theFromRoot,
                 theToRoot,
@@ -3253,17 +3663,20 @@ impl Object {
     /// Returns True if the referred object theObject can be deleted
     /// without deletion of this object.
     /// Default implementation does nothing and returns False.
-    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn can_remove_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_can_remove_reference(self as *const Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Object_can_remove_reference(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
     /// **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
     /// Removes reference to the object by replace reference to NULL object
-    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn remove_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_remove_reference(self as *mut Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Object_remove_reference(self as *mut Self, theObject)
         })
     }
 
@@ -3273,7 +3686,7 @@ impl Object {
     /// Default implementation is empty
     pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_before_forget_reference(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_Object_before_forget_reference(self as *mut Self, arg0)
         })
     }
 
@@ -3281,7 +3694,7 @@ impl Object {
     /// Checks if object can be detached with specified mode
     pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_can_detach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Object_can_detach(self as *mut Self, theMode.into())
         })
     }
 
@@ -3294,7 +3707,7 @@ impl Object {
     /// Should be redefined for each specific kind of object
     pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_detach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Object_detach(self as *mut Self, theMode.into())
         })
     }
 
@@ -3303,11 +3716,14 @@ impl Object {
     /// theType gives type of father object to search
     pub fn get_father_object(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Object_get_father_object(self as *const Self, theType),
+                crate::ffi_extern_TKTObj::TObj_Object_get_father_object(
+                    self as *const Self,
+                    theType,
+                ),
             ))
         }
     }
@@ -3316,7 +3732,9 @@ impl Object {
     /// Checks that object alive in model
     /// Default implementation checks that object has TObject attribute at own label.
     pub fn is_alive(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Object_is_alive(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Object_is_alive(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Object.hxx`:334 - `TObj_Object::Clone()`
@@ -3330,14 +3748,16 @@ impl Object {
     pub fn clone(
         &mut self,
         theTargetLabel: &crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_clone(
-                self as *mut Self,
-                theTargetLabel,
-                theRelocTable,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_clone(
+                    self as *mut Self,
+                    theTargetLabel,
+                    theRelocTable,
+                ),
+            ))
         }
     }
 
@@ -3346,11 +3766,11 @@ impl Object {
     /// return Standard_False is Target object is different type
     pub fn copy_references(
         &mut self,
-        theTargetObject: &crate::ffi::HandleTObjObject,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theTargetObject: &crate::ffi_types::HandleTObjObject,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_copy_references(
+            crate::ffi_extern_TKTObj::TObj_Object_copy_references(
                 self as *mut Self,
                 theTargetObject,
                 theRelocTable,
@@ -3363,24 +3783,30 @@ impl Object {
     pub fn copy_children(
         &mut self,
         theTargetLabel: &mut crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_copy_children(self as *mut Self, theTargetLabel, theRelocTable)
+            crate::ffi_extern_TKTObj::TObj_Object_copy_children(
+                self as *mut Self,
+                theTargetLabel,
+                theRelocTable,
+            )
         })
     }
 
     /// **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
     /// returns order of object (or tag of their label if order is not initialised)
     pub fn get_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Object_get_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Object_get_order(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder()`
     /// sets order of object
     pub fn set_order(&mut self, theIndx: &i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_set_order(self as *mut Self, theIndx)
+            crate::ffi_extern_TKTObj::TObj_Object_set_order(self as *mut Self, theIndx)
         })
     }
 
@@ -3392,7 +3818,7 @@ impl Object {
     /// transaction
     pub fn has_modifications(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_has_modifications(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Object_has_modifications(self as *const Self)
         })
     }
 
@@ -3400,20 +3826,24 @@ impl Object {
     /// Returns flags (bitmask) that define properties of objects of that type
     /// By default returns flag Visible
     pub fn get_type_flags(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Object_get_type_flags(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Object_get_type_flags(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
     /// Returns mask of seted flags
     pub fn get_flags(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TObj_Object_get_flags(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Object_get_flags(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
     /// Sets flags with defined mask.
     pub fn set_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_set_flags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Object_set_flags(self as *mut Self, theMask)
         })
     }
 
@@ -3421,7 +3851,7 @@ impl Object {
     /// tests flags by the mask.
     pub fn test_flags(&self, theMask: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_test_flags(self as *const Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Object_test_flags(self as *const Self, theMask)
         })
     }
 
@@ -3429,7 +3859,7 @@ impl Object {
     /// clears flags by the mask.
     pub fn clear_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_clear_flags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Object_clear_flags(self as *mut Self, theMask)
         })
     }
 
@@ -3438,7 +3868,7 @@ impl Object {
     /// stored in persistence. Should be redefined if necessary.
     pub fn after_retrieval(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_after_retrieval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_after_retrieval(self as *mut Self)
         })
     }
 
@@ -3448,15 +3878,17 @@ impl Object {
     /// Default implementation does nothing
     pub fn before_storing(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_before_storing(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_before_storing(self as *mut Self)
         })
     }
 
     /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_Object_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Object_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3469,7 +3901,10 @@ impl Object {
         theMode: crate::t_obj::DeletingMode,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_detach_label_deletingmode(theLabel, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Object_detach_label_deletingmode(
+                theLabel,
+                theMode.into(),
+            )
         })
     }
 
@@ -3480,11 +3915,11 @@ impl Object {
     /// If isSuper is true tries to find on the super labels.
     pub fn get_obj(
         theLabel: &crate::tdf::Label,
-        theResult: &mut crate::ffi::HandleTObjObject,
+        theResult: &mut crate::ffi_types::HandleTObjObject,
         isSuper: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_get_obj(theLabel, theResult, isSuper)
+            crate::ffi_extern_TKTObj::TObj_Object_get_obj(theLabel, theResult, isSuper)
         })
     }
 
@@ -3492,7 +3927,9 @@ impl Object {
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TObj_Object_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -3500,14 +3937,16 @@ impl Object {
 
     /// **Source:** `TObj_Object.hxx`:608 - `TObj_Object::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_Object_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Object_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Object_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Object_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3516,32 +3955,34 @@ impl Object {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Object_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Object_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Object_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -3549,7 +3990,7 @@ impl Object {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_Object_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_Object_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3562,58 +4003,68 @@ impl Object {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Object_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Object_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Object_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjObject;
+pub use crate::ffi_types::HandleTObjObject;
 
 unsafe impl crate::CppDeletable for HandleTObjObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjObject_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjObject_destructor(ptr);
     }
 }
 
 impl HandleTObjObject {
     /// Dereference this Handle to access the underlying TObj_Object
-    pub fn get(&self) -> &crate::ffi::TObj_Object {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjObject_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_Object {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObject_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_Object
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Object {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_Object {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjObject_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObject_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_Object> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjObject_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjObject_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3623,9 +4074,11 @@ impl HandleTObjObject {
     /// Returns `None` if the handle does not point to a `TObj_HiddenPartition` (or subclass).
     pub fn downcast_to_hidden_partition(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjHiddenPartition>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjHiddenPartition>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObject_downcast_to_HandleTObjHiddenPartition(self as *const Self)
+            crate::ffi_extern_TKTObj::HandleTObjObject_downcast_to_HandleTObjHiddenPartition(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3639,9 +4092,11 @@ impl HandleTObjObject {
     /// Returns `None` if the handle does not point to a `TObj_Partition` (or subclass).
     pub fn downcast_to_partition(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjPartition>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjPartition>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObject_downcast_to_HandleTObjPartition(self as *const Self)
+            crate::ffi_extern_TKTObj::HandleTObjObject_downcast_to_HandleTObjPartition(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3659,11 +4114,11 @@ impl HandleTObjObject {
 ///
 /// This class provides an iterator by objects in a partition.
 /// (implements TObj_ObjectIterator interface)
-pub use crate::ffi::TObj_ObjectIterator as ObjectIterator;
+pub use crate::ffi_types::TObj_ObjectIterator as ObjectIterator;
 
 unsafe impl crate::CppDeletable for ObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_ObjectIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_ObjectIterator_destructor(ptr);
     }
 }
 
@@ -3672,7 +4127,9 @@ impl ObjectIterator {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_ObjectIterator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_ctor(),
+            ))
         }
     }
 
@@ -3681,32 +4138,36 @@ impl ObjectIterator {
     /// will give the object.
     /// Default implementation returns False
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_ObjectIterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_ObjectIterator.hxx`:45 - `TObj_ObjectIterator::Next()`
     /// Iterates to the next object
     /// Default implementation does nothing
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_ObjectIterator_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_ObjectIterator.hxx`:49 - `TObj_ObjectIterator::Value()`
     /// Returns current object (or null if iteration has finished)
     /// Default implementation returns null handle
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_ObjectIterator_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_ObjectIterator.hxx`:53 - `TObj_ObjectIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_ObjectIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_ObjectIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3717,7 +4178,7 @@ impl ObjectIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_ObjectIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3726,50 +4187,64 @@ impl ObjectIterator {
 
     /// **Source:** `TObj_ObjectIterator.hxx`:53 - `TObj_ObjectIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_ObjectIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ObjectIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_ObjectIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ObjectIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3777,7 +4252,7 @@ impl ObjectIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_ObjectIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3790,62 +4265,70 @@ impl ObjectIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ObjectIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ObjectIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjObjectIterator;
+pub use crate::ffi_types::HandleTObjObjectIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjObjectIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjObjectIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjObjectIterator {
     /// Dereference this Handle to access the underlying TObj_ObjectIterator
-    pub fn get(&self) -> &crate::ffi::TObj_ObjectIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjObjectIterator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObjectIterator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_ObjectIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_ObjectIterator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_ObjectIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjObjectIterator_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjObjectIterator_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TObj_ObjectIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjObjectIterator_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjObjectIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3857,9 +4340,9 @@ impl HandleTObjObjectIterator {
     /// Returns `None` if the handle does not point to a `TObj_ModelIterator` (or subclass).
     pub fn downcast_to_model_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjModelIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjModelIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObjectIterator_downcast_to_HandleTObjModelIterator(
+            crate::ffi_extern_TKTObj::HandleTObjObjectIterator_downcast_to_HandleTObjModelIterator(
                 self as *const Self,
             )
         });
@@ -3875,11 +4358,9 @@ impl HandleTObjObjectIterator {
     /// Returns `None` if the handle does not point to a `TObj_OcafObjectIterator` (or subclass).
     pub fn downcast_to_ocaf_object_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjOcafObjectIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjOcafObjectIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObjectIterator_downcast_to_HandleTObjOcafObjectIterator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTObj::HandleTObjObjectIterator_downcast_to_HandleTObjOcafObjectIterator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3893,11 +4374,9 @@ impl HandleTObjObjectIterator {
     /// Returns `None` if the handle does not point to a `TObj_ReferenceIterator` (or subclass).
     pub fn downcast_to_reference_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjReferenceIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjReferenceIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObjectIterator_downcast_to_HandleTObjReferenceIterator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTObj::HandleTObjObjectIterator_downcast_to_HandleTObjReferenceIterator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3911,11 +4390,9 @@ impl HandleTObjObjectIterator {
     /// Returns `None` if the handle does not point to a `TObj_SequenceIterator` (or subclass).
     pub fn downcast_to_sequence_iterator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjSequenceIterator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjSequenceIterator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjObjectIterator_downcast_to_HandleTObjSequenceIterator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKTObj::HandleTObjObjectIterator_downcast_to_HandleTObjSequenceIterator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3933,11 +4410,11 @@ impl HandleTObjObjectIterator {
 ///
 /// This class provides an iterator by objects in a partition.
 /// (implements TObj_ObjectIterator interface)
-pub use crate::ffi::TObj_OcafObjectIterator as OcafObjectIterator;
+pub use crate::ffi_types::TObj_OcafObjectIterator as OcafObjectIterator;
 
 unsafe impl crate::CppDeletable for OcafObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_OcafObjectIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_destructor(ptr);
     }
 }
 
@@ -3951,19 +4428,12 @@ impl OcafObjectIterator {
     /// sub-children too
     pub fn new_label_handlestandardtype_bool2(
         theLabel: &crate::tdf::Label,
-        theType: &crate::ffi::HandleStandardType,
+        theType: &crate::ffi_types::HandleStandardType,
         theRecursive: bool,
         theAllSubChildren: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_ctor_label_handlestandardtype_bool2(
-                    theLabel,
-                    theType,
-                    theRecursive,
-                    theAllSubChildren,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_ctor_label_handlestandardtype_bool2(theLabel, theType, theRecursive, theAllSubChildren)))
         }
     }
 
@@ -3976,7 +4446,7 @@ impl OcafObjectIterator {
     /// sub-children too
     pub fn new_label_handlestandardtype_bool(
         theLabel: &crate::tdf::Label,
-        theType: &crate::ffi::HandleStandardType,
+        theType: &crate::ffi_types::HandleStandardType,
         theRecursive: bool,
     ) -> crate::OwnedPtr<Self> {
         Self::new_label_handlestandardtype_bool2(theLabel, theType, theRecursive, false)
@@ -3991,16 +4461,16 @@ impl OcafObjectIterator {
     /// sub-children too
     pub fn new_label_handlestandardtype(
         theLabel: &crate::tdf::Label,
-        theType: &crate::ffi::HandleStandardType,
+        theType: &crate::ffi_types::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_label_handlestandardtype_bool2(theLabel, theType, false, false)
     }
 
     /// **Source:** `TObj_OcafObjectIterator.hxx`:55 - `TObj_OcafObjectIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_OcafObjectIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4011,7 +4481,7 @@ impl OcafObjectIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4020,18 +4490,22 @@ impl OcafObjectIterator {
 
     /// **Source:** `TObj_OcafObjectIterator.hxx`:55 - `TObj_OcafObjectIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_OcafObjectIterator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to TObj_LabelIterator
     pub fn as_label_iterator(&self) -> &LabelIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_OcafObjectIterator_as_TObj_LabelIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_TObj_LabelIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4039,7 +4513,9 @@ impl OcafObjectIterator {
     pub fn as_label_iterator_mut(&mut self) -> &mut LabelIterator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_as_TObj_LabelIterator_mut(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_TObj_LabelIterator_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4047,9 +4523,11 @@ impl OcafObjectIterator {
     /// Upcast to TObj_ObjectIterator
     pub fn as_object_iterator(&self) -> &ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_OcafObjectIterator_as_TObj_ObjectIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_TObj_ObjectIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4057,7 +4535,9 @@ impl OcafObjectIterator {
     pub fn as_object_iterator_mut(&mut self) -> &mut ObjectIterator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_as_TObj_ObjectIterator_mut(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_TObj_ObjectIterator_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4065,9 +4545,11 @@ impl OcafObjectIterator {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_OcafObjectIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4075,7 +4557,9 @@ impl OcafObjectIterator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4083,10 +4567,10 @@ impl OcafObjectIterator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjOcafObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjOcafObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4094,22 +4578,24 @@ impl OcafObjectIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:58 - `TObj_LabelIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_More(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_More(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:61 - `TObj_LabelIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_Next(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_Next(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_OcafObjectIterator_inherited_Value(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_Value(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4117,23 +4603,31 @@ impl OcafObjectIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_OcafObjectIterator_inherited_LabelValue(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_LabelValue(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4141,7 +4635,9 @@ impl OcafObjectIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_OcafObjectIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4154,62 +4650,72 @@ impl OcafObjectIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_OcafObjectIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_OcafObjectIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjOcafObjectIterator;
+pub use crate::ffi_types::HandleTObjOcafObjectIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjOcafObjectIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjOcafObjectIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjOcafObjectIterator {
     /// Dereference this Handle to access the underlying TObj_OcafObjectIterator
-    pub fn get(&self) -> &crate::ffi::TObj_OcafObjectIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_OcafObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjOcafObjectIterator_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TObj_OcafObjectIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_OcafObjectIterator {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjOcafObjectIterator_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TObj_OcafObjectIterator
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_OcafObjectIterator {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TObj_OcafObjectIterator> to Handle<TObj_LabelIterator>
-    pub fn to_handle_label_iterator(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjLabelIterator> {
+    pub fn to_handle_label_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjLabelIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjOcafObjectIterator_to_HandleTObjLabelIterator(
+                crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_to_HandleTObjLabelIterator(
                     self as *const Self,
                 ),
             ))
@@ -4219,10 +4725,10 @@ impl HandleTObjOcafObjectIterator {
     /// Upcast Handle<TObj_OcafObjectIterator> to Handle<TObj_ObjectIterator>
     pub fn to_handle_object_iterator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjOcafObjectIterator_to_HandleTObjObjectIterator(
+                crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
             ))
@@ -4230,10 +4736,12 @@ impl HandleTObjOcafObjectIterator {
     }
 
     /// Upcast Handle<TObj_OcafObjectIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjOcafObjectIterator_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjOcafObjectIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4249,20 +4757,20 @@ impl HandleTObjOcafObjectIterator {
 ///
 /// This class provides tool handling one of partitions (the set of
 /// homogeneous elements) in the OCAF based model`s data structure
-pub use crate::ffi::TObj_Partition as Partition;
+pub use crate::ffi_types::TObj_Partition as Partition;
 
 unsafe impl crate::CppDeletable for Partition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_Partition_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_Partition_destructor(ptr);
     }
 }
 
 impl Partition {
     /// **Source:** `TObj_Partition.hxx`:66 - `TObj_Partition::SetName()`
     /// Sets name of the object. partition does not check unique of own name
-    pub fn set_name(&self, theName: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+    pub fn set_name(&self, theName: &crate::ffi_types::HandleTCollectionHExtendedString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_set_name(self as *const Self, theName)
+            crate::ffi_extern_TKTObj::TObj_Partition_set_name(self as *const Self, theName)
         })
     }
 
@@ -4271,7 +4779,7 @@ impl Partition {
     /// stored in persistence. Does not register the partition name
     pub fn after_retrieval(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_after_retrieval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_after_retrieval(self as *mut Self)
         })
     }
 
@@ -4279,26 +4787,31 @@ impl Partition {
     /// Creates and Returns label for new object in partition.
     pub fn new_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Partition_new_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_new_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_Partition.hxx`:86 - `TObj_Partition::SetNamePrefix()`
     /// Sets prefix for names of the objects in partition.
-    pub fn set_name_prefix(&mut self, thePrefix: &crate::ffi::HandleTCollectionHExtendedString) {
+    pub fn set_name_prefix(
+        &mut self,
+        thePrefix: &crate::ffi_types::HandleTCollectionHExtendedString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_set_name_prefix(self as *mut Self, thePrefix)
+            crate::ffi_extern_TKTObj::TObj_Partition_set_name_prefix(self as *mut Self, thePrefix)
         })
     }
 
     /// **Source:** `TObj_Partition.hxx`:89 - `TObj_Partition::GetNamePrefix()`
     /// Returns prefix for names of the objects in partition.
-    pub fn get_name_prefix(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_name_prefix(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_get_name_prefix(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_get_name_prefix(self as *const Self),
             ))
         }
     }
@@ -4310,12 +4823,14 @@ impl Partition {
     pub fn get_new_name(
         &mut self,
         theIsToChangeCount: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Partition_get_new_name(
-                self as *mut Self,
-                theIsToChangeCount,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_get_new_name(
+                    self as *mut Self,
+                    theIsToChangeCount,
+                ),
+            ))
         }
     }
 
@@ -4323,7 +4838,7 @@ impl Partition {
     /// Return Last index in partition (reserved);
     pub fn get_last_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_get_last_index(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_get_last_index(self as *const Self)
         })
     }
 
@@ -4331,21 +4846,25 @@ impl Partition {
     /// Sets Last index in partition (reserved);
     pub fn set_last_index(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_set_last_index(self as *mut Self, theIndex)
+            crate::ffi_extern_TKTObj::TObj_Partition_set_last_index(self as *mut Self, theIndex)
         })
     }
 
     /// **Source:** `TObj_Partition.hxx`:118 - `TObj_Partition::Update()`
     /// Does nothing in the partition.
     pub fn update(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_Partition_update(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Partition_update(self as *mut Self)
+        })
     }
 
     /// **Source:** `TObj_Partition.hxx`:144 - `TObj_Partition::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_Partition_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Partition_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4354,11 +4873,11 @@ impl Partition {
     pub fn create(
         theLabel: &crate::tdf::Label,
         theSetName: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjPartition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjPartition> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Partition_create(
-                theLabel, theSetName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_create(theLabel, theSetName),
+            ))
         }
     }
 
@@ -4366,11 +4885,11 @@ impl Partition {
     /// Returns the partition in which object is stored. Null partition
     /// returned if not found
     pub fn get_partition(
-        theObject: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjPartition> {
+        theObject: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjPartition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_get_partition(theObject),
+                crate::ffi_extern_TKTObj::TObj_Partition_get_partition(theObject),
             ))
         }
     }
@@ -4379,9 +4898,9 @@ impl Partition {
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::TObj_Partition_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -4389,21 +4908,25 @@ impl Partition {
 
     /// **Source:** `TObj_Partition.hxx`:144 - `TObj_Partition::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_Partition_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_Partition_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TObj_Object
     pub fn as_object(&self) -> &Object {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Partition_as_TObj_Object(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Partition_as_TObj_Object(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TObj_Object (mutable)
     pub fn as_object_mut(&mut self) -> &mut Object {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Partition_as_TObj_Object_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::TObj_Partition_as_TObj_Object_mut(
                 self as *mut Self,
             ))
         }
@@ -4412,7 +4935,7 @@ impl Partition {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_Partition_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_Partition_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4421,28 +4944,30 @@ impl Partition {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_Partition_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjPartition> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjPartition> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_Partition_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_Partition_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:122 - `TObj_Object::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetModel(self as *const Self),
             ))
         }
     }
@@ -4450,11 +4975,14 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:130 - `TObj_Object::GetChildren()`
     pub fn get_children(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetChildren(self as *const Self, theType),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetChildren(
+                    self as *const Self,
+                    theType,
+                ),
             ))
         }
     }
@@ -4463,7 +4991,9 @@ impl Partition {
     pub fn get_child_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetChildLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetChildLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4472,7 +5002,10 @@ impl Partition {
     pub fn get_child_label_2(&self, theRank: i32) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_getChildLabel(self as *const Self, theRank),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_getChildLabel(
+                    self as *const Self,
+                    theRank,
+                ),
             ))
         }
     }
@@ -4481,7 +5014,7 @@ impl Partition {
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetLabel(self as *const Self),
             ))
         }
     }
@@ -4490,7 +5023,9 @@ impl Partition {
     pub fn get_data_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetDataLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetDataLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4499,25 +5034,29 @@ impl Partition {
     pub fn get_reference_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetReferenceLabel(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetReferenceLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:160 - `TObj_Object::GetDictionary()`
-    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    pub fn get_dictionary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetDictionary(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetDictionary(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:163 - `TObj_Object::GetName()`
-    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn get_name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetName(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetName(self as *const Self),
             ))
         }
     }
@@ -4525,30 +5064,39 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:183 - `TObj_Object::GetNameForClone()`
     pub fn get_name_for_clone(
         &self,
-        arg0: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+        arg0: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetNameForClone(self as *const Self, arg0),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetNameForClone(
+                    self as *const Self,
+                    arg0,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:194 - `TObj_Object::HasReference()`
-    pub fn has_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn has_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_HasReference(self as *const Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_HasReference(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:198 - `TObj_Object::GetReferences()`
     pub fn get_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetReferences(self as *const Self, theType),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetReferences(
+                    self as *const Self,
+                    theType,
+                ),
             ))
         }
     }
@@ -4556,18 +5104,20 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:202 - `TObj_Object::RemoveAllReferences()`
     pub fn remove_all_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_RemoveAllReferences(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_RemoveAllReferences(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:207 - `TObj_Object::GetBackReferences()`
     pub fn get_back_references(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetBackReferences(
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetBackReferences(
                     self as *const Self,
                     theType,
                 ),
@@ -4576,20 +5126,23 @@ impl Partition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:213 - `TObj_Object::AddBackReference()`
-    pub fn add_back_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn add_back_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_AddBackReference(self as *mut Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_AddBackReference(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:218 - `TObj_Object::RemoveBackReference()`
     pub fn remove_back_reference(
         &mut self,
-        theObject: &crate::ffi::HandleTObjObject,
+        theObject: &crate::ffi_types::HandleTObjObject,
         theSingleOnly: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_RemoveBackReference(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_RemoveBackReference(
                 self as *mut Self,
                 theObject,
                 theSingleOnly,
@@ -4600,7 +5153,7 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:224 - `TObj_Object::RemoveBackReferences()`
     pub fn remove_back_references(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_RemoveBackReferences(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_RemoveBackReferences(
                 self as *mut Self,
                 theMode.into(),
             )
@@ -4610,25 +5163,29 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:227 - `TObj_Object::ClearBackReferences()`
     pub fn clear_back_references(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_ClearBackReferences(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_ClearBackReferences(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:230 - `TObj_Object::HasBackReferences()`
     pub fn has_back_references(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_HasBackReferences(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_HasBackReferences(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:235 - `TObj_Object::ReplaceReference()`
     pub fn replace_reference(
         &mut self,
-        theOldObject: &crate::ffi::HandleTObjObject,
-        theNewObject: &crate::ffi::HandleTObjObject,
+        theOldObject: &crate::ffi_types::HandleTObjObject,
+        theNewObject: &crate::ffi_types::HandleTObjObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_ReplaceReference(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_ReplaceReference(
                 self as *mut Self,
                 theOldObject,
                 theNewObject,
@@ -4643,7 +5200,7 @@ impl Partition {
         theBadReference: &mut crate::tdf::Label,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_GetBadReference(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetBadReference(
                 self as *const Self,
                 theRoot,
                 theBadReference,
@@ -4659,7 +5216,7 @@ impl Partition {
         theUpdateBackRefs: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_RelocateReferences(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_RelocateReferences(
                 self as *mut Self,
                 theFromRoot,
                 theToRoot,
@@ -4669,48 +5226,66 @@ impl Partition {
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:262 - `TObj_Object::CanRemoveReference()`
-    pub fn can_remove_reference(&self, theObject: &crate::ffi::HandleTObjObject) -> bool {
+    pub fn can_remove_reference(&self, theObject: &crate::ffi_types::HandleTObjObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_CanRemoveReference(self as *const Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_CanRemoveReference(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:265 - `TObj_Object::RemoveReference()`
-    pub fn remove_reference(&mut self, theObject: &crate::ffi::HandleTObjObject) {
+    pub fn remove_reference(&mut self, theObject: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_RemoveReference(self as *mut Self, theObject)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_RemoveReference(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:270 - `TObj_Object::BeforeForgetReference()`
     pub fn before_forget_reference(&mut self, arg0: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_BeforeForgetReference(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_BeforeForgetReference(
+                self as *mut Self,
+                arg0,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:279 - `TObj_Object::CanDetach()`
     pub fn can_detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_CanDetach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_CanDetach(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:287 - `TObj_Object::Detach()`
     pub fn detach(&mut self, theMode: crate::t_obj::DeletingMode) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_Detach(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_Detach(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:310 - `TObj_Object::GetFatherObject()`
     pub fn get_father_object(
         &self,
-        theType: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theType: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_GetFatherObject(self as *const Self, theType),
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetFatherObject(
+                    self as *const Self,
+                    theType,
+                ),
             ))
         }
     }
@@ -4718,7 +5293,7 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:320 - `TObj_Object::IsAlive()`
     pub fn is_alive(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_IsAlive(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_IsAlive(self as *const Self)
         })
     }
 
@@ -4726,11 +5301,11 @@ impl Partition {
     pub fn clone(
         &mut self,
         theTargetLabel: &crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Partition_inherited_Clone(
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_Clone(
                     self as *mut Self,
                     theTargetLabel,
                     theRelocTable,
@@ -4742,11 +5317,11 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:339 - `TObj_Object::CopyReferences()`
     pub fn copy_references(
         &mut self,
-        theTargetObject: &crate::ffi::HandleTObjObject,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theTargetObject: &crate::ffi_types::HandleTObjObject,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_CopyReferences(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_CopyReferences(
                 self as *mut Self,
                 theTargetObject,
                 theRelocTable,
@@ -4758,10 +5333,10 @@ impl Partition {
     pub fn copy_children(
         &mut self,
         theTargetLabel: &mut crate::tdf::Label,
-        theRelocTable: &crate::ffi::HandleTDFRelocationTable,
+        theRelocTable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_CopyChildren(
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_CopyChildren(
                 self as *mut Self,
                 theTargetLabel,
                 theRelocTable,
@@ -4772,77 +5347,86 @@ impl Partition {
     /// Inherited: **Source:** `TObj_Object.hxx`:352 - `TObj_Object::GetOrder()`
     pub fn get_order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_GetOrder(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetOrder(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:355 - `TObj_Object::SetOrder()`
     pub fn set_order(&mut self, theIndx: &i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_SetOrder(self as *mut Self, theIndx)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_SetOrder(self as *mut Self, theIndx)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:363 - `TObj_Object::HasModifications()`
     pub fn has_modifications(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_HasModifications(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_HasModifications(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:386 - `TObj_Object::GetTypeFlags()`
     pub fn get_type_flags(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_GetTypeFlags(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetTypeFlags(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:389 - `TObj_Object::GetFlags()`
     pub fn get_flags(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_GetFlags(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetFlags(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:392 - `TObj_Object::SetFlags()`
     pub fn set_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_SetFlags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_SetFlags(self as *mut Self, theMask)
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:395 - `TObj_Object::TestFlags()`
     pub fn test_flags(&self, theMask: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_TestFlags(self as *const Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_TestFlags(
+                self as *const Self,
+                theMask,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:398 - `TObj_Object::ClearFlags()`
     pub fn clear_flags(&mut self, theMask: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_ClearFlags(self as *mut Self, theMask)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_ClearFlags(
+                self as *mut Self,
+                theMask,
+            )
         })
     }
 
     /// Inherited: **Source:** `TObj_Object.hxx`:412 - `TObj_Object::BeforeStoring()`
     pub fn before_storing(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_BeforeStoring(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_BeforeStoring(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4850,7 +5434,7 @@ impl Partition {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_Partition_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_Partition_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4863,67 +5447,83 @@ impl Partition {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_Partition_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_Partition_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjPartition;
+pub use crate::ffi_types::HandleTObjPartition;
 
 unsafe impl crate::CppDeletable for HandleTObjPartition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjPartition_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjPartition_destructor(ptr);
     }
 }
 
 impl HandleTObjPartition {
     /// Dereference this Handle to access the underlying TObj_Partition
-    pub fn get(&self) -> &crate::ffi::TObj_Partition {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjPartition_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_Partition {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjPartition_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_Partition
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_Partition {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_Partition {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjPartition_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjPartition_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_Partition> to Handle<TObj_Object>
-    pub fn to_handle_object(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn to_handle_object(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjPartition_to_HandleTObjObject(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjPartition_to_HandleTObjObject(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_Partition> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjPartition_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjPartition_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4933,9 +5533,9 @@ impl HandleTObjPartition {
     /// Returns `None` if the handle does not point to a `TObj_HiddenPartition` (or subclass).
     pub fn downcast_to_hidden_partition(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjHiddenPartition>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjHiddenPartition>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTObjPartition_downcast_to_HandleTObjHiddenPartition(
+            crate::ffi_extern_TKTObj::HandleTObjPartition_downcast_to_HandleTObjHiddenPartition(
                 self as *const Self,
             )
         });
@@ -4960,7 +5560,7 @@ impl HandleTObjPartition {
 /// This is a special kind of object, it automatically registers itself
 /// in a global map when created, and the only thing it does is to
 /// create a new object of the type that it manages, by request
-pub use crate::ffi::TObj_Persistence as Persistence;
+pub use crate::ffi_types::TObj_Persistence as Persistence;
 
 impl Persistence {
     /// **Source:** `TObj_Persistence.hxx`:44 - `TObj_Persistence::CreateNewObject()`
@@ -4969,11 +5569,14 @@ impl Persistence {
     pub fn create_new_object(
         theType: &str,
         theLabel: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         let c_theType = std::ffi::CString::new(theType).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_Persistence_create_new_object(c_theType.as_ptr(), theLabel),
+                crate::ffi_extern_TKTObj::TObj_Persistence_create_new_object(
+                    c_theType.as_ptr(),
+                    theLabel,
+                ),
             ))
         }
     }
@@ -4981,8 +5584,10 @@ impl Persistence {
     /// **Source:** `TObj_Persistence.hxx`:49 - `TObj_Persistence::DumpTypes()`
     /// Dumps names of all the types registered for persistence to the
     /// specified stream
-    pub fn dump_types(theOs: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_Persistence_dump_types(theOs) })
+    pub fn dump_types(theOs: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_Persistence_dump_types(theOs)
+        })
     }
 }
 
@@ -4994,11 +5599,11 @@ impl Persistence {
 ///
 /// This class provides an iterator by references of the object
 /// (implements TObj_ReferenceIterator interface)
-pub use crate::ffi::TObj_ReferenceIterator as ReferenceIterator;
+pub use crate::ffi_types::TObj_ReferenceIterator as ReferenceIterator;
 
 unsafe impl crate::CppDeletable for ReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_ReferenceIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_ReferenceIterator_destructor(ptr);
     }
 }
 
@@ -5008,12 +5613,12 @@ impl ReferenceIterator {
     /// theType narrows a variety of iterated objects
     pub fn new_label_handlestandardtype_bool(
         theLabel: &crate::tdf::Label,
-        theType: &crate::ffi::HandleStandardType,
+        theType: &crate::ffi_types::HandleStandardType,
         theRecursive: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ReferenceIterator_ctor_label_handlestandardtype_bool(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_ctor_label_handlestandardtype_bool(
                     theLabel,
                     theType,
                     theRecursive,
@@ -5027,16 +5632,16 @@ impl ReferenceIterator {
     /// theType narrows a variety of iterated objects
     pub fn new_label_handlestandardtype(
         theLabel: &crate::tdf::Label,
-        theType: &crate::ffi::HandleStandardType,
+        theType: &crate::ffi_types::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         Self::new_label_handlestandardtype_bool(theLabel, theType, true)
     }
 
     /// **Source:** `TObj_ReferenceIterator.hxx`:53 - `TObj_ReferenceIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_ReferenceIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_ReferenceIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5047,7 +5652,7 @@ impl ReferenceIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_ReferenceIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5056,34 +5661,44 @@ impl ReferenceIterator {
 
     /// **Source:** `TObj_ReferenceIterator.hxx`:53 - `TObj_ReferenceIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_ReferenceIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TObj_LabelIterator
     pub fn as_label_iterator(&self) -> &LabelIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ReferenceIterator_as_TObj_LabelIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_TObj_LabelIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_LabelIterator (mutable)
     pub fn as_label_iterator_mut(&mut self) -> &mut LabelIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_ReferenceIterator_as_TObj_LabelIterator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_TObj_LabelIterator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_ObjectIterator
     pub fn as_object_iterator(&self) -> &ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ReferenceIterator_as_TObj_ObjectIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_TObj_ObjectIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5091,7 +5706,9 @@ impl ReferenceIterator {
     pub fn as_object_iterator_mut(&mut self) -> &mut ObjectIterator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TObj_ReferenceIterator_as_TObj_ObjectIterator_mut(self as *mut Self),
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_TObj_ObjectIterator_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5099,28 +5716,32 @@ impl ReferenceIterator {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_ReferenceIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_ReferenceIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjReferenceIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjReferenceIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ReferenceIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5128,22 +5749,24 @@ impl ReferenceIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:58 - `TObj_LabelIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_More(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_More(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:61 - `TObj_LabelIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_Next(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_Next(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:64 - `TObj_LabelIterator::Value()`
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_ReferenceIterator_inherited_Value(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_Value(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5151,23 +5774,31 @@ impl ReferenceIterator {
     /// Inherited: **Source:** `TObj_LabelIterator.hxx`:67 - `TObj_LabelIterator::LabelValue()`
     pub fn label_value(&self) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_ReferenceIterator_inherited_LabelValue(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_LabelValue(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5175,7 +5806,7 @@ impl ReferenceIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_ReferenceIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5188,62 +5819,72 @@ impl ReferenceIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_ReferenceIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_ReferenceIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjReferenceIterator;
+pub use crate::ffi_types::HandleTObjReferenceIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjReferenceIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjReferenceIterator {
     /// Dereference this Handle to access the underlying TObj_ReferenceIterator
-    pub fn get(&self) -> &crate::ffi::TObj_ReferenceIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_ReferenceIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjReferenceIterator_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TObj_ReferenceIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_ReferenceIterator {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjReferenceIterator_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TObj_ReferenceIterator
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_ReferenceIterator {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TObj_ReferenceIterator> to Handle<TObj_LabelIterator>
-    pub fn to_handle_label_iterator(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjLabelIterator> {
+    pub fn to_handle_label_iterator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjLabelIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjReferenceIterator_to_HandleTObjLabelIterator(
+                crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_to_HandleTObjLabelIterator(
                     self as *const Self,
                 ),
             ))
@@ -5253,10 +5894,10 @@ impl HandleTObjReferenceIterator {
     /// Upcast Handle<TObj_ReferenceIterator> to Handle<TObj_ObjectIterator>
     pub fn to_handle_object_iterator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjReferenceIterator_to_HandleTObjObjectIterator(
+                crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
             ))
@@ -5264,10 +5905,12 @@ impl HandleTObjReferenceIterator {
     }
 
     /// Upcast Handle<TObj_ReferenceIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjReferenceIterator_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjReferenceIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5282,11 +5925,11 @@ impl HandleTObjReferenceIterator {
 /// **Source:** `TObj_SequenceIterator.hxx`:28 - `TObj_SequenceIterator`
 ///
 /// This class is an iterator on sequence
-pub use crate::ffi::TObj_SequenceIterator as SequenceIterator;
+pub use crate::ffi_types::TObj_SequenceIterator as SequenceIterator;
 
 unsafe impl crate::CppDeletable for SequenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_SequenceIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_SequenceIterator_destructor(ptr);
     }
 }
 
@@ -5294,43 +5937,45 @@ impl SequenceIterator {
     /// **Source:** `TObj_SequenceIterator.hxx`:45 - `TObj_SequenceIterator::TObj_SequenceIterator()`
     /// Creates an iterator an initialize it by sequence of objects.
     pub fn new_handletobjhsequenceofobject_handlestandardtype(
-        theObjects: &crate::ffi::HandleTObjHSequenceOfObject,
-        theType: &crate::ffi::HandleStandardType,
+        theObjects: &crate::ffi_types::HandleTObjHSequenceOfObject,
+        theType: &crate::ffi_types::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_SequenceIterator_ctor_handletobjhsequenceofobject_handlestandardtype(theObjects, theType)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTObj::TObj_SequenceIterator_ctor_handletobjhsequenceofobject_handlestandardtype(theObjects, theType)))
         }
     }
 
     /// **Source:** `TObj_SequenceIterator.hxx`:54 - `TObj_SequenceIterator::More()`
     /// Returns True if there is a current Item in the iteration.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_SequenceIterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_SequenceIterator.hxx`:57 - `TObj_SequenceIterator::Next()`
     /// Move to the next Item
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_next(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_next(self as *mut Self)
         })
     }
 
     /// **Source:** `TObj_SequenceIterator.hxx`:60 - `TObj_SequenceIterator::Value()`
     /// Returns the current item
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_SequenceIterator_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_SequenceIterator.hxx`:72 - `TObj_SequenceIterator::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_SequenceIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_SequenceIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5341,7 +5986,7 @@ impl SequenceIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_SequenceIterator_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5350,68 +5995,86 @@ impl SequenceIterator {
 
     /// **Source:** `TObj_SequenceIterator.hxx`:72 - `TObj_SequenceIterator::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_SequenceIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TObj_ObjectIterator
     pub fn as_object_iterator(&self) -> &ObjectIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_SequenceIterator_as_TObj_ObjectIterator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_as_TObj_ObjectIterator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TObj_ObjectIterator (mutable)
     pub fn as_object_iterator_mut(&mut self) -> &mut ObjectIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_SequenceIterator_as_TObj_ObjectIterator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_as_TObj_ObjectIterator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_SequenceIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_SequenceIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjSequenceIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjSequenceIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_SequenceIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5419,7 +6082,7 @@ impl SequenceIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_SequenceIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5432,52 +6095,60 @@ impl SequenceIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_SequenceIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_SequenceIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjSequenceIterator;
+pub use crate::ffi_types::HandleTObjSequenceIterator;
 
 unsafe impl crate::CppDeletable for HandleTObjSequenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjSequenceIterator_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_destructor(ptr);
     }
 }
 
 impl HandleTObjSequenceIterator {
     /// Dereference this Handle to access the underlying TObj_SequenceIterator
-    pub fn get(&self) -> &crate::ffi::TObj_SequenceIterator {
+    pub fn get(&self) -> &crate::ffi_types::TObj_SequenceIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjSequenceIterator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_SequenceIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_SequenceIterator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_SequenceIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjSequenceIterator_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5486,10 +6157,10 @@ impl HandleTObjSequenceIterator {
     /// Upcast Handle<TObj_SequenceIterator> to Handle<TObj_ObjectIterator>
     pub fn to_handle_object_iterator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjObjectIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObjectIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjSequenceIterator_to_HandleTObjObjectIterator(
+                crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_to_HandleTObjObjectIterator(
                     self as *const Self,
                 ),
             ))
@@ -5497,10 +6168,12 @@ impl HandleTObjSequenceIterator {
     }
 
     /// Upcast Handle<TObj_SequenceIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjSequenceIterator_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjSequenceIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5513,11 +6186,11 @@ impl HandleTObjSequenceIterator {
 // ========================
 
 /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject`
-pub use crate::ffi::TObj_HSequenceOfObject as HSequenceOfObject;
+pub use crate::ffi_types::TObj_HSequenceOfObject as HSequenceOfObject;
 
 unsafe impl crate::CppDeletable for HSequenceOfObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_HSequenceOfObject_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_destructor(ptr);
     }
 }
 
@@ -5525,43 +6198,49 @@ impl HSequenceOfObject {
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::TObj_HSequenceOfObject()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TObj_HSequenceOfObject_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::TObj_HSequenceOfObject()`
     pub fn new_sequenceofobject(
-        theOther: &crate::ffi::TObj_SequenceOfObject,
+        theOther: &crate::ffi_types::TObj_SequenceOfObject,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HSequenceOfObject_ctor_sequenceofobject(theOther),
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_ctor_sequenceofobject(theOther),
             ))
         }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TObj_SequenceOfObject {
+    pub fn sequence(&self) -> &crate::ffi_types::TObj_SequenceOfObject {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_HSequenceOfObject_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
-    pub fn append_handletobjobject(&mut self, theItem: &crate::ffi::HandleTObjObject) {
+    pub fn append_handletobjobject(&mut self, theItem: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_append_handletobjobject(self as *mut Self, theItem)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_append_handletobjobject(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::Append()`
-    pub fn append_sequenceofobject(&mut self, theSequence: &mut crate::ffi::TObj_SequenceOfObject) {
+    pub fn append_sequenceofobject(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TObj_SequenceOfObject,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_append_sequenceofobject(
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_append_sequenceofobject(
                 self as *mut Self,
                 theSequence,
             )
@@ -5569,18 +6248,18 @@ impl HSequenceOfObject {
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TObj_SequenceOfObject {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TObj_SequenceOfObject {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TObj_HSequenceOfObject_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_change_sequence(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_HSequenceOfObject_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5590,7 +6269,7 @@ impl HSequenceOfObject {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_HSequenceOfObject_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5598,50 +6277,64 @@ impl HSequenceOfObject {
     }
 
     /// **Source:** `TObj_SequenceOfObject.hxx`:27 - `TObj_HSequenceOfObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_HSequenceOfObject_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_HSequenceOfObject_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_HSequenceOfObject_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjHSequenceOfObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjHSequenceOfObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_HSequenceOfObject_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5649,7 +6342,7 @@ impl HSequenceOfObject {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_HSequenceOfObject_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5662,62 +6355,72 @@ impl HSequenceOfObject {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_HSequenceOfObject_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_HSequenceOfObject_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjHSequenceOfObject;
+pub use crate::ffi_types::HandleTObjHSequenceOfObject;
 
 unsafe impl crate::CppDeletable for HandleTObjHSequenceOfObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjHSequenceOfObject_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_destructor(ptr);
     }
 }
 
 impl HandleTObjHSequenceOfObject {
     /// Dereference this Handle to access the underlying TObj_HSequenceOfObject
-    pub fn get(&self) -> &crate::ffi::TObj_HSequenceOfObject {
+    pub fn get(&self) -> &crate::ffi_types::TObj_HSequenceOfObject {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjHSequenceOfObject_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TObj_HSequenceOfObject
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_HSequenceOfObject {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjHSequenceOfObject_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TObj_HSequenceOfObject
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_HSequenceOfObject {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TObj_HSequenceOfObject> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjHSequenceOfObject_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjHSequenceOfObject_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5734,11 +6437,11 @@ impl HandleTObjHSequenceOfObject {
 /// OCAF Attribute to store a set of positive integer values in the OCAF tree.
 /// Each value is identified by ID (positive integer).
 /// The supporting underlying data structure is NCollection_SparseArray of integers.
-pub use crate::ffi::TObj_TIntSparseArray as TIntSparseArray;
+pub use crate::ffi_types::TObj_TIntSparseArray as TIntSparseArray;
 
 unsafe impl crate::CppDeletable for TIntSparseArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TIntSparseArray_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TIntSparseArray_destructor(ptr);
     }
 }
 
@@ -5747,28 +6450,36 @@ impl TIntSparseArray {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TIntSparseArray_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:45 - `TObj_TIntSparseArray::ID()`
     /// Returns the ID of this attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TIntSparseArray_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TIntSparseArray_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:54 - `TObj_TIntSparseArray::Size()`
     /// Returns the number of stored values in the set
     pub fn size(&self) -> usize {
-        crate::check_result(unsafe { crate::ffi::TObj_TIntSparseArray_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_size(self as *const Self)
+        })
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:59 - `TObj_TIntSparseArray::GetIterator()`
     /// Returns iterator on objects contained in the set
-    pub fn get_iterator(&self) -> crate::OwnedPtr<crate::ffi::TObj_TIntSparseArray_Iterator> {
+    pub fn get_iterator(&self) -> crate::OwnedPtr<crate::ffi_types::TObj_TIntSparseArray_Iterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_get_iterator(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_get_iterator(self as *const Self),
             ))
         }
     }
@@ -5777,7 +6488,7 @@ impl TIntSparseArray {
     /// Returns true if the value with the given ID is present.
     pub fn has_value(&self, theId: usize) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_has_value(self as *const Self, theId)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_has_value(self as *const Self, theId)
         })
     }
 
@@ -5786,7 +6497,7 @@ impl TIntSparseArray {
     /// Raises an exception if no value is stored with this ID
     pub fn value(&self, theId: usize) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_value(self as *const Self, theId)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_value(self as *const Self, theId)
         })
     }
 
@@ -5795,7 +6506,11 @@ impl TIntSparseArray {
     /// Raises an exception if theId is not positive
     pub fn set_value(&mut self, theId: usize, theValue: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_set_value(self as *mut Self, theId, theValue)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_set_value(
+                self as *mut Self,
+                theId,
+                theValue,
+            )
         })
     }
 
@@ -5804,7 +6519,7 @@ impl TIntSparseArray {
     /// Raises an exception if theId is not positive
     pub fn unset_value(&mut self, theId: usize) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_unset_value(self as *mut Self, theId)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_unset_value(self as *mut Self, theId)
         })
     }
 
@@ -5812,36 +6527,36 @@ impl TIntSparseArray {
     /// Clears the set
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_clear(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:84 - `TObj_TIntSparseArray::NewEmpty()`
     /// Returns an new empty TObj_TIntSparseArray attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_new_empty(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_new_empty(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:87 - `TObj_TIntSparseArray::BackupCopy()`
     /// Moves this delta into a new other attribute.
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_backup_copy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_backup_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:90 - `TObj_TIntSparseArray::Restore()`
     /// Restores the set using info saved in backup attribute theDelta.
-    pub fn restore(&mut self, theDelta: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theDelta: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_restore(self as *mut Self, theDelta)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_restore(self as *mut Self, theDelta)
         })
     }
 
@@ -5850,11 +6565,15 @@ impl TIntSparseArray {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_paste(
+                self as *const Self,
+                theInto,
+                theRT,
+            )
         })
     }
 
@@ -5863,15 +6582,23 @@ impl TIntSparseArray {
     /// and does Backup() to create a delta
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_before_commit_transaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_before_commit_transaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:102 - `TObj_TIntSparseArray::DeltaOnModification()`
     /// Applies theDelta to this.
-    pub fn delta_on_modification(&mut self, theDelta: &crate::ffi::HandleTDFDeltaOnModification) {
+    pub fn delta_on_modification(
+        &mut self,
+        theDelta: &crate::ffi_types::HandleTDFDeltaOnModification,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_delta_on_modification(self as *mut Self, theDelta)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_delta_on_modification(
+                self as *mut Self,
+                theDelta,
+            )
         })
     }
 
@@ -5879,11 +6606,15 @@ impl TIntSparseArray {
     /// Clears my modification delta; called after application of theDelta
     pub fn after_undo(
         &mut self,
-        theDelta: &crate::ffi::HandleTDFAttributeDelta,
+        theDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         toForce: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_after_undo(self as *mut Self, theDelta, toForce)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_after_undo(
+                self as *mut Self,
+                theDelta,
+                toForce,
+            )
         })
     }
 
@@ -5892,22 +6623,22 @@ impl TIntSparseArray {
     /// It is called by the retrieval driver
     pub fn set_do_backup(&mut self, toDo: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_set_do_backup(self as *mut Self, toDo)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_set_do_backup(self as *mut Self, toDo)
         })
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:116 - `TObj_TIntSparseArray::ClearDelta()`
     pub fn clear_delta(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_clear_delta(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_clear_delta(self as *mut Self)
         })
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_TIntSparseArray_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TIntSparseArray_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5916,18 +6647,18 @@ impl TIntSparseArray {
     /// **Source:** `TObj_TIntSparseArray.hxx`:42 - `TObj_TIntSparseArray::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TIntSparseArray_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TIntSparseArray_get_id())) }
     }
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:48 - `TObj_TIntSparseArray::Set()`
     /// Creates TObj_TIntSparseArray attribute on given label.
     pub fn set(
         theLabel: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTIntSparseArray> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTIntSparseArray> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TIntSparseArray_set(
-                theLabel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_set(theLabel),
+            ))
         }
     }
 
@@ -5936,7 +6667,7 @@ impl TIntSparseArray {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5945,14 +6676,18 @@ impl TIntSparseArray {
 
     /// **Source:** `TObj_TIntSparseArray.hxx`:137 - `TObj_TIntSparseArray::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TIntSparseArray_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TIntSparseArray_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TIntSparseArray_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -5961,37 +6696,43 @@ impl TIntSparseArray {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TIntSparseArray_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_as_TDF_Attribute_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TIntSparseArray_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TIntSparseArray_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTIntSparseArray> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTIntSparseArray> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5999,7 +6740,7 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -6007,7 +6748,7 @@ impl TIntSparseArray {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -6015,42 +6756,51 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_Transaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsForgotten(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -6058,10 +6808,10 @@ impl TIntSparseArray {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_FindAttribute(
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -6070,23 +6820,29 @@ impl TIntSparseArray {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -6096,46 +6852,53 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_AfterAddition(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_BeforeRemoval(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_BeforeUndo(
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -6146,69 +6909,80 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TIntSparseArray_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_ExtendedDump(
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -6220,21 +6994,30 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6242,7 +7025,7 @@ impl TIntSparseArray {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TIntSparseArray_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6255,71 +7038,83 @@ impl TIntSparseArray {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TIntSparseArray_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TIntSparseArray_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTIntSparseArray;
+pub use crate::ffi_types::HandleTObjTIntSparseArray;
 
 unsafe impl crate::CppDeletable for HandleTObjTIntSparseArray {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTIntSparseArray_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_destructor(ptr);
     }
 }
 
 impl HandleTObjTIntSparseArray {
     /// Dereference this Handle to access the underlying TObj_TIntSparseArray
-    pub fn get(&self) -> &crate::ffi::TObj_TIntSparseArray {
+    pub fn get(&self) -> &crate::ffi_types::TObj_TIntSparseArray {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjTIntSparseArray_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TIntSparseArray
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TIntSparseArray {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TIntSparseArray {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjTIntSparseArray_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TObj_TIntSparseArray> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTIntSparseArray_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TIntSparseArray> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTIntSparseArray_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjTIntSparseArray_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6336,11 +7131,11 @@ impl HandleTObjTIntSparseArray {
 /// Attribute to store OCAF-based models in OCAF tree
 /// The persistency mechanism of the TObj_TModel allows to save
 /// and restore various types of models without recompilation of the schema
-pub use crate::ffi::TObj_TModel as TModel;
+pub use crate::ffi_types::TObj_TModel as TModel;
 
 unsafe impl crate::CppDeletable for TModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TModel_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TModel_destructor(ptr);
     }
 }
 
@@ -6348,50 +7143,56 @@ impl TModel {
     /// **Source:** `TObj_TModel.hxx`:39 - `TObj_TModel::TObj_TModel()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TModel_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TObj_TModel.hxx`:45 - `TObj_TModel::ID()`
     /// Returns the ID of TObj_TModel attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TModel_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_id(self as *const Self)))
+        }
     }
 
     /// **Source:** `TObj_TModel.hxx`:51 - `TObj_TModel::Set()`
     /// Sets the Model object
-    pub fn set(&mut self, theModel: &crate::ffi::HandleTObjModel) {
+    pub fn set(&mut self, theModel: &crate::ffi_types::HandleTObjModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_set(self as *mut Self, theModel)
+            crate::ffi_extern_TKTObj::TObj_TModel_set(self as *mut Self, theModel)
         })
     }
 
     /// **Source:** `TObj_TModel.hxx`:54 - `TObj_TModel::Model()`
     /// Returns the Model object
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TModel_model(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_model(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TModel.hxx`:61 - `TObj_TModel::NewEmpty()`
     /// Returns an new empty TObj_TModel attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TModel_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_new_empty(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TModel.hxx`:65 - `TObj_TModel::Restore()`
     /// Restores the backuped contents from <theWith> into this one. It is used
     /// when aborting a transaction.
-    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theWith: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_restore(self as *mut Self, theWith)
+            crate::ffi_extern_TKTObj::TObj_TModel_restore(self as *mut Self, theWith)
         })
     }
 
@@ -6400,33 +7201,37 @@ impl TModel {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TModel_paste(self as *const Self, theInto, theRT)
         })
     }
 
     /// **Source:** `TObj_TModel.hxx`:78 - `TObj_TModel::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_TModel_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TObj_TModel.hxx`:42 - `TObj_TModel::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TModel_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_get_id())) }
     }
 
     /// **Source:** `TObj_TModel.hxx`:78 - `TObj_TModel::get_type_name()`
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TObj_TModel_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -6434,21 +7239,25 @@ impl TModel {
 
     /// **Source:** `TObj_TModel.hxx`:78 - `TObj_TModel::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TModel_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TModel_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TModel_as_TDF_Attribute_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_as_TDF_Attribute_mut(
                 self as *mut Self,
             ))
         }
@@ -6457,7 +7266,7 @@ impl TModel {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TModel_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TModel_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -6466,74 +7275,78 @@ impl TModel {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TModel_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjTModel> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TModel_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TModel_inherited_Label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_UntilTransaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_TModel_inherited_IsNew(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsAttribute(self as *const Self, anID)
         })
     }
 
@@ -6541,31 +7354,38 @@ impl TModel {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_FindAttribute(self as *const Self, anID, anAttribute)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_AddAttribute(self as *const Self, other)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -6575,113 +7395,128 @@ impl TModel {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_DeltaOnForget(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_DeltaOnResume(self as *const Self),
             ))
         }
     }
@@ -6689,11 +7524,11 @@ impl TModel {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_DeltaOnModification(
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -6702,51 +7537,59 @@ impl TModel {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TModel_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_DeltaOnRemoval(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_ExtendedDump(self as *const Self, anOS, aFilter, aMap)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_Forget(self as *mut Self, aTransaction)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -6754,7 +7597,7 @@ impl TModel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TModel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TModel_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6767,67 +7610,79 @@ impl TModel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TModel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TModel_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTModel;
+pub use crate::ffi_types::HandleTObjTModel;
 
 unsafe impl crate::CppDeletable for HandleTObjTModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTModel_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTModel_destructor(ptr);
     }
 }
 
 impl HandleTObjTModel {
     /// Dereference this Handle to access the underlying TObj_TModel
-    pub fn get(&self) -> &crate::ffi::TObj_TModel {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjTModel_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_TModel {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTModel_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TModel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TModel {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TModel {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjTModel_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTModel_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_TModel> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTModel_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTModel_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TModel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTModel_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTModel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6841,11 +7696,11 @@ impl HandleTObjTModel {
 ///
 /// This class provides OCAF Attribute to storing the unique names of object in
 /// model.
-pub use crate::ffi::TObj_TNameContainer as TNameContainer;
+pub use crate::ffi_types::TObj_TNameContainer as TNameContainer;
 
 unsafe impl crate::CppDeletable for TNameContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TNameContainer_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TNameContainer_destructor(ptr);
     }
 }
 
@@ -6854,41 +7709,57 @@ impl TNameContainer {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TNameContainer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:41 - `TObj_TNameContainer::ID()`
     /// Returns the ID of TObj_TNameContainer attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TNameContainer_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:53 - `TObj_TNameContainer::RecordName()`
     /// Records name with label attached
     pub fn record_name(
         &mut self,
-        theName: &crate::ffi::HandleTCollectionHExtendedString,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
         theLabel: &crate::tdf::Label,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_record_name(self as *mut Self, theName, theLabel)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_record_name(
+                self as *mut Self,
+                theName,
+                theLabel,
+            )
         })
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:57 - `TObj_TNameContainer::RemoveName()`
     /// Remove name from the map
-    pub fn remove_name(&mut self, theName: &crate::ffi::HandleTCollectionHExtendedString) {
+    pub fn remove_name(&mut self, theName: &crate::ffi_types::HandleTCollectionHExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_remove_name(self as *mut Self, theName)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_remove_name(self as *mut Self, theName)
         })
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:61 - `TObj_TNameContainer::IsRegistered()`
     /// Return True is theName is registered in the Map
-    pub fn is_registered(&self, theName: &crate::ffi::HandleTCollectionHExtendedString) -> bool {
+    pub fn is_registered(
+        &self,
+        theName: &crate::ffi_types::HandleTCollectionHExtendedString,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_is_registered(self as *const Self, theName)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_is_registered(
+                self as *const Self,
+                theName,
+            )
         })
     }
 
@@ -6896,31 +7767,35 @@ impl TNameContainer {
     /// Remove all names registered in container
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_clear(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:70 - `TObj_TNameContainer::Set()`
     /// Sets the TObj_DataMapOfNameLabel object
-    pub fn set(&mut self, theElem: &crate::ffi::TObj_DataMapOfNameLabel) {
+    pub fn set(&mut self, theElem: &crate::ffi_types::TObj_DataMapOfNameLabel) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_set(self as *mut Self, theElem)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_set(self as *mut Self, theElem)
         })
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:73 - `TObj_TNameContainer::Get()`
     /// Returns the TObj_DataMapOfNameLabel object
-    pub fn get(&self) -> &crate::ffi::TObj_DataMapOfNameLabel {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TNameContainer_get(self as *const Self))) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_DataMapOfNameLabel {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_get(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:80 - `TObj_TNameContainer::NewEmpty()`
     /// Returns an new empty TObj_TNameContainer attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_new_empty(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_new_empty(self as *const Self),
             ))
         }
     }
@@ -6928,9 +7803,9 @@ impl TNameContainer {
     /// **Source:** `TObj_TNameContainer.hxx`:84 - `TObj_TNameContainer::Restore()`
     /// Restores the backuped contents from <theWith> into this one. It is used
     /// when aborting a transaction.
-    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theWith: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_restore(self as *mut Self, theWith)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_restore(self as *mut Self, theWith)
         })
     }
 
@@ -6939,19 +7814,19 @@ impl TNameContainer {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_paste(self as *const Self, theInto, theRT)
         })
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_TNameContainer_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -6960,17 +7835,17 @@ impl TNameContainer {
     /// **Source:** `TObj_TNameContainer.hxx`:38 - `TObj_TNameContainer::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TNameContainer_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_get_id())) }
     }
 
     /// **Source:** `TObj_TNameContainer.hxx`:47 - `TObj_TNameContainer::Set()`
     /// Creates TObj_DataMapOfNameLabel attribute on given label if not exist
     pub fn set_label(
         theLabel: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_set_label(theLabel),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_set_label(theLabel),
             ))
         }
     }
@@ -6980,7 +7855,7 @@ impl TNameContainer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_TNameContainer_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6989,14 +7864,18 @@ impl TNameContainer {
 
     /// **Source:** `TObj_TNameContainer.hxx`:97 - `TObj_TNameContainer::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TNameContainer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TNameContainer_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TNameContainer_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -7005,37 +7884,43 @@ impl TNameContainer {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TNameContainer_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_as_TDF_Attribute_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TNameContainer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TNameContainer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTNameContainer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTNameContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -7043,7 +7928,7 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -7051,7 +7936,7 @@ impl TNameContainer {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -7059,42 +7944,47 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -7102,10 +7992,10 @@ impl TNameContainer {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_FindAttribute(
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -7114,23 +8004,29 @@ impl TNameContainer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -7140,46 +8036,49 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_BeforeUndo(
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -7190,11 +8089,11 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_AfterUndo(
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_AfterUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -7205,56 +8104,66 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_BackupCopy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7262,11 +8171,11 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_DeltaOnModification(
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -7275,30 +8184,35 @@ impl TNameContainer {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TNameContainer_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_ExtendedDump(
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -7310,21 +8224,30 @@ impl TNameContainer {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7332,7 +8255,7 @@ impl TNameContainer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TNameContainer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7345,71 +8268,81 @@ impl TNameContainer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TNameContainer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TNameContainer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTNameContainer;
+pub use crate::ffi_types::HandleTObjTNameContainer;
 
 unsafe impl crate::CppDeletable for HandleTObjTNameContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTNameContainer_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTNameContainer_destructor(ptr);
     }
 }
 
 impl HandleTObjTNameContainer {
     /// Dereference this Handle to access the underlying TObj_TNameContainer
-    pub fn get(&self) -> &crate::ffi::TObj_TNameContainer {
+    pub fn get(&self) -> &crate::ffi_types::TObj_TNameContainer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTObjTNameContainer_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTNameContainer_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TNameContainer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TNameContainer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TNameContainer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjTNameContainer_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTNameContainer_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TObj_TNameContainer> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTNameContainer_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTNameContainer_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TNameContainer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTNameContainer_to_HandleStandardTransient(
+                crate::ffi_extern_TKTObj::HandleTObjTNameContainer_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7427,11 +8360,11 @@ impl HandleTObjTNameContainer {
 /// modelers in the OCAF tree.
 /// The persistency mechanism of the TObj_TObject allows to save
 /// and restore objects of various subtypes without recompilation of the schema
-pub use crate::ffi::TObj_TObject as TObject;
+pub use crate::ffi_types::TObj_TObject as TObject;
 
 unsafe impl crate::CppDeletable for TObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TObject_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TObject_destructor(ptr);
     }
 }
 
@@ -7439,50 +8372,56 @@ impl TObject {
     /// **Source:** `TObj_TObject.hxx`:41 - `TObj_TObject::TObj_TObject()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TObject_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TObj_TObject.hxx`:47 - `TObj_TObject::ID()`
     /// Returns the ID of TObj_TObject attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TObject_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_id(self as *const Self)))
+        }
     }
 
     /// **Source:** `TObj_TObject.hxx`:60 - `TObj_TObject::Set()`
     /// Sets the TObj_Object object
-    pub fn set(&mut self, theElem: &crate::ffi::HandleTObjObject) {
+    pub fn set(&mut self, theElem: &crate::ffi_types::HandleTObjObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_set(self as *mut Self, theElem)
+            crate::ffi_extern_TKTObj::TObj_TObject_set(self as *mut Self, theElem)
         })
     }
 
     /// **Source:** `TObj_TObject.hxx`:63 - `TObj_TObject::Get()`
     /// Returns the TObj_Object object
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn get(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TObject_get(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_get(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TObject.hxx`:70 - `TObj_TObject::NewEmpty()`
     /// Returns an new empty TObj_TObject attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TObject_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_new_empty(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TObject.hxx`:74 - `TObj_TObject::Restore()`
     /// Restores the backuped contents from <theWith> into this one. It is used
     /// when aborting a transaction.
-    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theWith: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_restore(self as *mut Self, theWith)
+            crate::ffi_extern_TKTObj::TObj_TObject_restore(self as *mut Self, theWith)
         })
     }
 
@@ -7491,11 +8430,11 @@ impl TObject {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TObject_paste(self as *const Self, theInto, theRT)
         })
     }
 
@@ -7504,7 +8443,7 @@ impl TObject {
     /// i.e. (myElem->IsAlive() == false) after that
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_before_forget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_before_forget(self as *mut Self)
         })
     }
 
@@ -7513,37 +8452,45 @@ impl TObject {
     /// i.e. (myElem->IsAlive() == true) after that
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_after_undo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TObject_after_undo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// **Source:** `TObj_TObject.hxx`:96 - `TObj_TObject::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_TObject_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TObj_TObject.hxx`:44 - `TObj_TObject::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TObject_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_get_id())) }
     }
 
     /// **Source:** `TObj_TObject.hxx`:53 - `TObj_TObject::Set()`
     /// Creates TObj_TObject attribute on given label
     pub fn set_label_handletobjobject(
         theLabel: &crate::tdf::Label,
-        theElem: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTObject> {
+        theElem: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_set_label_handletobjobject(theLabel, theElem),
+                crate::ffi_extern_TKTObj::TObj_TObject_set_label_handletobjobject(
+                    theLabel, theElem,
+                ),
             ))
         }
     }
@@ -7552,7 +8499,9 @@ impl TObject {
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TObj_TObject_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -7560,21 +8509,25 @@ impl TObject {
 
     /// **Source:** `TObj_TObject.hxx`:96 - `TObj_TObject::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TObject_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TObject_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TObject_as_TDF_Attribute_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_as_TDF_Attribute_mut(
                 self as *mut Self,
             ))
         }
@@ -7583,7 +8536,7 @@ impl TObject {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TObject_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TObject_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -7592,25 +8545,27 @@ impl TObject {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TObject_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjTObject> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TObject_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TObject_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -7618,7 +8573,7 @@ impl TObject {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -7626,42 +8581,42 @@ impl TObject {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_UntilTransaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsAttribute(self as *const Self, anID)
         })
     }
 
@@ -7669,31 +8624,41 @@ impl TObject {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_FindAttribute(self as *const Self, anID, anAttribute)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -7703,95 +8668,106 @@ impl TObject {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_DeltaOnForget(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_DeltaOnResume(self as *const Self),
             ))
         }
     }
@@ -7799,11 +8775,11 @@ impl TObject {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_DeltaOnModification(
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -7812,30 +8788,35 @@ impl TObject {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TObject_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_ExtendedDump(
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -7847,21 +8828,24 @@ impl TObject {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_Forget(self as *mut Self, aTransaction)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -7869,7 +8853,7 @@ impl TObject {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TObject_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TObject_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7882,67 +8866,79 @@ impl TObject {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TObject_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TObject_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTObject;
+pub use crate::ffi_types::HandleTObjTObject;
 
 unsafe impl crate::CppDeletable for HandleTObjTObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTObject_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTObject_destructor(ptr);
     }
 }
 
 impl HandleTObjTObject {
     /// Dereference this Handle to access the underlying TObj_TObject
-    pub fn get(&self) -> &crate::ffi::TObj_TObject {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjTObject_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_TObject {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTObject_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TObject
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TObject {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TObject {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjTObject_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTObject_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_TObject> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTObject_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTObject_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TObject> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTObject_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTObject_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7960,11 +8956,11 @@ impl HandleTObjTObject {
 /// cross-model references.
 /// Each reference, when created, registers itself in the referred object,
 /// to support back references
-pub use crate::ffi::TObj_TReference as TReference;
+pub use crate::ffi_types::TObj_TReference as TReference;
 
 unsafe impl crate::CppDeletable for TReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TReference_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TReference_destructor(ptr);
     }
 }
 
@@ -7973,25 +8969,31 @@ impl TReference {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TObj_TReference.hxx`:48 - `TObj_TReference::ID()`
     /// Returns the ID of TObj_TReference attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TReference_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TReference.hxx`:63 - `TObj_TReference::Set()`
     /// Sets the reference to the theObject
     pub fn set_handletobjobject_label(
         &mut self,
-        theObject: &crate::ffi::HandleTObjObject,
+        theObject: &crate::ffi_types::HandleTObjObject,
         theMasterLabel: &crate::tdf::Label,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_set_handletobjobject_label(
+            crate::ffi_extern_TKTObj::TObj_TReference_set_handletobjobject_label(
                 self as *mut Self,
                 theObject,
                 theMasterLabel,
@@ -8004,17 +9006,21 @@ impl TReference {
     /// It is method for persistent only. Don`t use anywhere else.
     pub fn set_label2(&mut self, theLabel: &crate::tdf::Label, theMasterLabel: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_set_label2(self as *mut Self, theLabel, theMasterLabel)
+            crate::ffi_extern_TKTObj::TObj_TReference_set_label2(
+                self as *mut Self,
+                theLabel,
+                theMasterLabel,
+            )
         })
     }
 
     /// **Source:** `TObj_TReference.hxx`:70 - `TObj_TReference::Get()`
     /// Returns the referenced theObject
-    pub fn get(&self) -> crate::OwnedPtr<crate::ffi::HandleTObjObject> {
+    pub fn get(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTObjObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_get(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_get(self as *const Self),
+            ))
         }
     }
 
@@ -8023,7 +9029,7 @@ impl TReference {
     pub fn get_master_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_get_master_label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_get_master_label(self as *const Self),
             ))
         }
     }
@@ -8032,29 +9038,29 @@ impl TReference {
     /// Returns the referred label.
     pub fn get_label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_get_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_get_label(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TReference.hxx`:83 - `TObj_TReference::NewEmpty()`
     /// Returns an new empty TObj_TReference attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_new_empty(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TReference.hxx`:87 - `TObj_TReference::Restore()`
     /// Restores the backuped contents from <theWith> into this one. It is used
     /// when aborting a transaction.
-    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theWith: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_restore(self as *mut Self, theWith)
+            crate::ffi_extern_TKTObj::TObj_TReference_restore(self as *mut Self, theWith)
         })
     }
 
@@ -8063,11 +9069,11 @@ impl TReference {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TReference_paste(self as *const Self, theInto, theRT)
         })
     }
 
@@ -8075,7 +9081,7 @@ impl TReference {
     /// Remove back references of it reference if it is in other document.
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_before_forget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_before_forget(self as *mut Self)
         })
     }
 
@@ -8083,11 +9089,15 @@ impl TReference {
     /// It is necessary for tranzaction mechanism (Undo/Redo).
     pub fn before_undo(
         &mut self,
-        theDelta: &crate::ffi::HandleTDFAttributeDelta,
+        theDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         isForced: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_before_undo(self as *mut Self, theDelta, isForced)
+            crate::ffi_extern_TKTObj::TObj_TReference_before_undo(
+                self as *mut Self,
+                theDelta,
+                isForced,
+            )
         })
     }
 
@@ -8095,11 +9105,15 @@ impl TReference {
     /// It is necessary for tranzaction mechanism (Undo/Redo).
     pub fn after_undo(
         &mut self,
-        theDelta: &crate::ffi::HandleTDFAttributeDelta,
+        theDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         isForced: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_after_undo(self as *mut Self, theDelta, isForced)
+            crate::ffi_extern_TKTObj::TObj_TReference_after_undo(
+                self as *mut Self,
+                theDelta,
+                isForced,
+            )
         })
     }
 
@@ -8107,7 +9121,7 @@ impl TReference {
     /// Check if back reference exists for reference.
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_after_resume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_after_resume(self as *mut Self)
         })
     }
 
@@ -8115,22 +9129,24 @@ impl TReference {
     /// Called after retrieval reference from file.
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_after_retrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TReference_after_retrieval(self as *mut Self, forceIt)
         })
     }
 
     /// **Source:** `TObj_TReference.hxx`:121 - `TObj_TReference::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TObj_TReference_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TObj_TReference.hxx`:45 - `TObj_TReference::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TReference_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_get_id())) }
     }
 
     /// **Source:** `TObj_TReference.hxx`:55 - `TObj_TReference::Set()`
@@ -8138,13 +9154,13 @@ impl TReference {
     /// creates backreference from the object <theObject> to <theMaster> one.
     pub fn set(
         theLabel: &crate::tdf::Label,
-        theObject: &crate::ffi::HandleTObjObject,
-        theMaster: &crate::ffi::HandleTObjObject,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTReference> {
+        theObject: &crate::ffi_types::HandleTObjObject,
+        theMaster: &crate::ffi_types::HandleTObjObject,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTReference> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_set(
-                theLabel, theObject, theMaster,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_set(theLabel, theObject, theMaster),
+            ))
         }
     }
 
@@ -8153,7 +9169,7 @@ impl TReference {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TObj_TReference_get_type_name(),
+                crate::ffi_extern_TKTObj::TObj_TReference_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8162,30 +9178,34 @@ impl TReference {
 
     /// **Source:** `TObj_TReference.hxx`:121 - `TObj_TReference::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TReference_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TReference_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TReference_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_as_TDF_Attribute_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TReference_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TReference_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -8194,27 +9214,29 @@ impl TReference {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TReference_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTReference> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTReference> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TReference_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TReference_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -8222,7 +9244,7 @@ impl TReference {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -8230,42 +9252,47 @@ impl TReference {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -8273,10 +9300,10 @@ impl TReference {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_FindAttribute(
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -8285,23 +9312,29 @@ impl TReference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -8311,70 +9344,78 @@ impl TReference {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8382,11 +9423,11 @@ impl TReference {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_DeltaOnModification(
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -8395,30 +9436,35 @@ impl TReference {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TReference_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_ExtendedDump(
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -8430,21 +9476,27 @@ impl TReference {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -8452,7 +9504,7 @@ impl TReference {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TReference_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TReference_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -8465,67 +9517,83 @@ impl TReference {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TReference_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TReference_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTReference;
+pub use crate::ffi_types::HandleTObjTReference;
 
 unsafe impl crate::CppDeletable for HandleTObjTReference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTReference_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTReference_destructor(ptr);
     }
 }
 
 impl HandleTObjTReference {
     /// Dereference this Handle to access the underlying TObj_TReference
-    pub fn get(&self) -> &crate::ffi::TObj_TReference {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjTReference_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_TReference {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTReference_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TReference
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TReference {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TReference {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTObjTReference_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTReference_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TObj_TReference> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTReference_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTReference_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TReference> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTReference_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTReference_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8537,11 +9605,11 @@ impl HandleTObjTReference {
 
 /// **Source:** `TObj_TXYZ.hxx`:31 - `TObj_TXYZ`
 /// Define handle class for TObj_TXYZ
-pub use crate::ffi::TObj_TXYZ as TXYZ;
+pub use crate::ffi_types::TObj_TXYZ as TXYZ;
 
 unsafe impl crate::CppDeletable for TXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TObj_TXYZ_destructor(ptr);
+        crate::ffi_extern_TKTObj::TObj_TXYZ_destructor(ptr);
     }
 }
 
@@ -8549,26 +9617,34 @@ impl TXYZ {
     /// **Source:** `TObj_TXYZ.hxx`:37 - `TObj_TXYZ::TObj_TXYZ()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:43 - `TObj_TXYZ::ID()`
     /// Returns the ID of TObj_TXYZ attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TXYZ_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_id(self as *const Self)))
+        }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:55 - `TObj_TXYZ::Set()`
     /// Sets the XYZ
     pub fn set(&mut self, theXYZ: &crate::gp::XYZ) {
-        crate::check_void_result(unsafe { crate::ffi::TObj_TXYZ_set(self as *mut Self, theXYZ) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TXYZ_set(self as *mut Self, theXYZ)
+        })
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:58 - `TObj_TXYZ::Get()`
     /// Returns the XYZ
     pub fn get(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_get(
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_get(
                 self as *const Self,
             )))
         }
@@ -8577,20 +9653,20 @@ impl TXYZ {
     /// **Source:** `TObj_TXYZ.hxx`:65 - `TObj_TXYZ::NewEmpty()`
     /// Returns an new empty TObj_TXYZ attribute. It is used by the
     /// copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_new_empty(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:69 - `TObj_TXYZ::Restore()`
     /// Restores the backuped contents from <theWith> into this one. It is used
     /// when aborting a transaction.
-    pub fn restore(&mut self, theWith: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, theWith: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_restore(self as *mut Self, theWith)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_restore(self as *mut Self, theWith)
         })
     }
 
@@ -8599,11 +9675,11 @@ impl TXYZ {
     /// into a target structure.
     pub fn paste(
         &self,
-        theInto: &crate::ffi::HandleTDFAttribute,
-        theRT: &crate::ffi::HandleTDFRelocationTable,
+        theInto: &crate::ffi_types::HandleTDFAttribute,
+        theRT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_paste(self as *const Self, theInto, theRT)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_paste(self as *const Self, theInto, theRT)
         })
     }
 
@@ -8617,21 +9693,30 @@ impl TXYZ {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        theOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
-        unsafe { &mut *(crate::check_result(crate::ffi::TObj_TXYZ_dump(self as *mut Self, theOS))) }
+        theOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_dump(
+                self as *mut Self,
+                theOS,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:85 - `TObj_TXYZ::DynamicType()`
     /// CASCADE RTTI
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TXYZ_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:40 - `TObj_TXYZ::GetID()`
     /// This method is used in implementation of ID()
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TXYZ_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_get_id())) }
     }
 
     /// **Source:** `TObj_TXYZ.hxx`:49 - `TObj_TXYZ::Set()`
@@ -8639,11 +9724,11 @@ impl TXYZ {
     pub fn set_label_xyz(
         theLabel: &crate::tdf::Label,
         theXYZ: &crate::gp::XYZ,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTObjTXYZ> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTXYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_set_label_xyz(
-                theLabel, theXYZ,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_set_label_xyz(theLabel, theXYZ),
+            ))
         }
     }
 
@@ -8651,7 +9736,9 @@ impl TXYZ {
     /// CASCADE RTTI
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::TObj_TXYZ_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -8659,100 +9746,114 @@ impl TXYZ {
 
     /// **Source:** `TObj_TXYZ.hxx`:85 - `TObj_TXYZ::get_type_descriptor()`
     /// CASCADE RTTI
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TObj_TXYZ_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TXYZ_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TXYZ_as_TDF_Attribute_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_as_TDF_Attribute_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TObj_TXYZ_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKTObj::TObj_TXYZ_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TObj_TXYZ_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleTObjTXYZ> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTObjTXYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:150 - `TDF_Attribute::Label()`
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TObj_TXYZ_inherited_Label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_Label(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_UntilTransaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_TXYZ_inherited_IsValid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsValid(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TObj_TXYZ_inherited_IsNew(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsNew(self as *const Self)
+        })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsAttribute(self as *const Self, anID)
         })
     }
 
@@ -8760,144 +9861,162 @@ impl TXYZ {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_FindAttribute(self as *const Self, anID, anAttribute)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_FindAttribute(
+                self as *const Self,
+                anID,
+                anAttribute,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_AddAttribute(self as *const Self, other)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_ForgetAllAttributes(self as *const Self, clearChildren)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_ForgetAllAttributes(
+                self as *const Self,
+                clearChildren,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_AfterRetrieval(self as *mut Self, forceIt)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_BeforeCommitTransaction(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DeltaOnAddition(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DeltaOnForget(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DeltaOnResume(self as *const Self),
             ))
         }
     }
@@ -8905,11 +10024,11 @@ impl TXYZ {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_DeltaOnModification(
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -8918,51 +10037,56 @@ impl TXYZ {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TObj_TXYZ_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DeltaOnRemoval(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_References(self as *const Self, aDataSet)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_ExtendedDump(self as *const Self, anOS, aFilter, aMap)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_ExtendedDump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_Forget(self as *mut Self, aTransaction)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -8970,7 +10094,7 @@ impl TXYZ {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TObj_TXYZ_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -8983,65 +10107,75 @@ impl TXYZ {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TObj_TXYZ_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTObj::TObj_TXYZ_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTObjTXYZ;
+pub use crate::ffi_types::HandleTObjTXYZ;
 
 unsafe impl crate::CppDeletable for HandleTObjTXYZ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTObjTXYZ_destructor(ptr);
+        crate::ffi_extern_TKTObj::HandleTObjTXYZ_destructor(ptr);
     }
 }
 
 impl HandleTObjTXYZ {
     /// Dereference this Handle to access the underlying TObj_TXYZ
-    pub fn get(&self) -> &crate::ffi::TObj_TXYZ {
-        unsafe { &*crate::check_result(crate::ffi::HandleTObjTXYZ_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TObj_TXYZ {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTXYZ_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TObj_TXYZ
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TObj_TXYZ {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleTObjTXYZ_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TObj_TXYZ {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKTObj::HandleTObjTXYZ_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<TObj_TXYZ> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTXYZ_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTXYZ_to_HandleTDFAttribute(self as *const Self),
             ))
         }
     }
 
     /// Upcast Handle<TObj_TXYZ> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTObjTXYZ_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTObj::HandleTObjTXYZ_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9051,6 +10185,6 @@ impl HandleTObjTXYZ {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TObj_DataMapOfNameLabel as DataMapOfNameLabel, TObj_SequenceOfObject as SequenceOfObject,
 };

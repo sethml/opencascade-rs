@@ -11,13 +11,12 @@
 /// Stream <S> and returns <S>.
 pub fn print_typelinecurve_ostream(
     TLC: crate::top_ope_b_rep::TypeLineCurve,
-    OS: &mut crate::ffi::Standard_OStream,
-) -> &mut crate::ffi::Standard_OStream {
+    OS: &mut crate::ffi_types::Standard_OStream,
+) -> &mut crate::ffi_types::Standard_OStream {
     unsafe {
-        &mut *(crate::check_result(crate::ffi::TopOpeBRep_print_typelinecurve_ostream(
-            TLC.into(),
-            OS,
-        )))
+        &mut *(crate::check_result(
+            crate::ffi_extern_TKBool::TopOpeBRep_print_typelinecurve_ostream(TLC.into(), OS),
+        ))
     }
 }
 
@@ -94,18 +93,18 @@ impl TryFrom<i32> for TypeLineCurve {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From TopOpeBRep_Bipoint.hxx
 // ========================
 
 /// **Source:** `TopOpeBRep_Bipoint.hxx`:25 - `TopOpeBRep_Bipoint`
-pub use crate::ffi::TopOpeBRep_Bipoint as Bipoint;
+pub use crate::ffi_types::TopOpeBRep_Bipoint as Bipoint;
 
 unsafe impl crate::CppDeletable for Bipoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_Bipoint_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_Bipoint_destructor(ptr);
     }
 }
 
@@ -113,7 +112,9 @@ impl Bipoint {
     /// **Source:** `TopOpeBRep_Bipoint.hxx`:30 - `TopOpeBRep_Bipoint::TopOpeBRep_Bipoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Bipoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Bipoint_ctor(),
+            ))
         }
     }
 
@@ -121,19 +122,23 @@ impl Bipoint {
     pub fn new_int2(I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_Bipoint_ctor_int2(I1, I2),
+                crate::ffi_extern_TKBool::TopOpeBRep_Bipoint_ctor_int2(I1, I2),
             ))
         }
     }
 
     /// **Source:** `TopOpeBRep_Bipoint.hxx`:34 - `TopOpeBRep_Bipoint::I1()`
     pub fn i1(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_Bipoint_i1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Bipoint_i1(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_Bipoint.hxx`:36 - `TopOpeBRep_Bipoint::I2()`
     pub fn i2(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_Bipoint_i2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Bipoint_i2(self as *const Self)
+        })
     }
 }
 
@@ -153,11 +158,11 @@ impl Bipoint {
 ///
 /// 3. Complete the  DataStructure to record shapes to
 /// rebuild (shells, wires )
-pub use crate::ffi::TopOpeBRep_DSFiller as DSFiller;
+pub use crate::ffi_types::TopOpeBRep_DSFiller as DSFiller;
 
 unsafe impl crate::CppDeletable for DSFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_DSFiller_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_destructor(ptr);
     }
 }
 
@@ -165,7 +170,9 @@ impl DSFiller {
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:50 - `TopOpeBRep_DSFiller::TopOpeBRep_DSFiller()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_ctor(),
+            ))
         }
     }
 
@@ -175,7 +182,9 @@ impl DSFiller {
     pub fn p_shape_classifier(&self) -> Option<&crate::top_ope_b_rep_tool::ShapeClassifier> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_DSFiller_p_shape_classifier(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_p_shape_classifier(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -194,11 +203,17 @@ impl DSFiller {
         &mut self,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
         orientFORWARD: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_insert(self as *mut Self, S1, S2, HDS, orientFORWARD)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_insert(
+                self as *mut Self,
+                S1,
+                S2,
+                HDS,
+                orientFORWARD,
+            )
         })
     }
 
@@ -211,11 +226,11 @@ impl DSFiller {
         &mut self,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
         orientFORWARD: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_insert_intersection(
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_insert_intersection(
                 self as *mut Self,
                 S1,
                 S2,
@@ -226,9 +241,9 @@ impl DSFiller {
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:76 - `TopOpeBRep_DSFiller::Complete()`
-    pub fn complete(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn complete(&mut self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_complete(self as *mut Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_complete(self as *mut Self, HDS)
         })
     }
 
@@ -239,10 +254,10 @@ impl DSFiller {
         &mut self,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_insert2d(self as *mut Self, S1, S2, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_insert2d(self as *mut Self, S1, S2, HDS)
         })
     }
 
@@ -254,24 +269,29 @@ impl DSFiller {
         &mut self,
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_insert_intersection2d(self as *mut Self, S1, S2, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_insert_intersection2d(
+                self as *mut Self,
+                S1,
+                S2,
+                HDS,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:91 - `TopOpeBRep_DSFiller::IsMadeOf1d()`
     pub fn is_made_of1d(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_is_made_of1d(self as *const Self, S)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_is_made_of1d(self as *const Self, S)
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:93 - `TopOpeBRep_DSFiller::IsContext1d()`
     pub fn is_context1d(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_is_context1d(self as *const Self, S)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_is_context1d(self as *const Self, S)
         })
     }
 
@@ -291,11 +311,11 @@ impl DSFiller {
         S2: &crate::topo_ds::Shape,
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
         orientFORWARD: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_insert1d(
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_insert1d(
                 self as *mut Self,
                 S1,
                 S2,
@@ -310,52 +330,62 @@ impl DSFiller {
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:111 - `TopOpeBRep_DSFiller::ChangeShapeIntersector()`
     pub fn change_shape_intersector(&mut self) -> &mut ShapeIntersector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_change_shape_intersector(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_change_shape_intersector(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:113 - `TopOpeBRep_DSFiller::ChangeShapeIntersector2d()`
     pub fn change_shape_intersector2d(&mut self) -> &mut ShapeIntersector2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_change_shape_intersector2d(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_change_shape_intersector2d(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:115 - `TopOpeBRep_DSFiller::ChangeFacesFiller()`
     pub fn change_faces_filler(&mut self) -> &mut FacesFiller {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_change_faces_filler(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_change_faces_filler(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:117 - `TopOpeBRep_DSFiller::ChangeEdgesFiller()`
     pub fn change_edges_filler(&mut self) -> &mut EdgesFiller {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_change_edges_filler(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_change_edges_filler(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:119 - `TopOpeBRep_DSFiller::ChangeFaceEdgeFiller()`
     pub fn change_face_edge_filler(&mut self) -> &mut FaceEdgeFiller {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_DSFiller_change_face_edge_filler(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_change_face_edge_filler(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:121 - `TopOpeBRep_DSFiller::GapFiller()`
-    pub fn gap_filler(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn gap_filler(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_gap_filler(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_gap_filler(self as *const Self, HDS)
         })
     }
 
@@ -365,37 +395,43 @@ impl DSFiller {
     ///
     /// Shells containing an intersected face.
     /// Wires  containing an intersected edge.
-    pub fn complete_ds(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn complete_ds(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_complete_ds(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_complete_ds(self as *const Self, HDS)
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:130 - `TopOpeBRep_DSFiller::Filter()`
-    pub fn filter(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn filter(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_filter(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_filter(self as *const Self, HDS)
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:132 - `TopOpeBRep_DSFiller::Reducer()`
-    pub fn reducer(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn reducer(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_reducer(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_reducer(self as *const Self, HDS)
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:134 - `TopOpeBRep_DSFiller::RemoveUnsharedGeometry()`
-    pub fn remove_unshared_geometry(&mut self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn remove_unshared_geometry(
+        &mut self,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_remove_unshared_geometry(self as *mut Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_remove_unshared_geometry(
+                self as *mut Self,
+                HDS,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_DSFiller.hxx`:136 - `TopOpeBRep_DSFiller::Checker()`
-    pub fn checker(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn checker(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_checker(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_checker(self as *const Self, HDS)
         })
     }
 
@@ -407,9 +443,9 @@ impl DSFiller {
     /// Wires  containing an intersected edge.
     ///
     /// search for interference identity using edge connexity //NYI
-    pub fn complete_ds2d(&self, HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure) {
+    pub fn complete_ds2d(&self, HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_DSFiller_complete_ds2d(self as *const Self, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_DSFiller_complete_ds2d(self as *const Self, HDS)
         })
     }
 }
@@ -421,11 +457,11 @@ impl DSFiller {
 /// **Source:** `TopOpeBRep_EdgesFiller.hxx`:40 - `TopOpeBRep_EdgesFiller`
 /// Fills a TopOpeBRepDS_DataStructure with Edge/Edge
 /// intersection data described by TopOpeBRep_EdgesIntersector.
-pub use crate::ffi::TopOpeBRep_EdgesFiller as EdgesFiller;
+pub use crate::ffi_types::TopOpeBRep_EdgesFiller as EdgesFiller;
 
 unsafe impl crate::CppDeletable for EdgesFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_EdgesFiller_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_EdgesFiller_destructor(ptr);
     }
 }
 
@@ -433,9 +469,9 @@ impl EdgesFiller {
     /// **Source:** `TopOpeBRep_EdgesFiller.hxx`:45 - `TopOpeBRep_EdgesFiller::TopOpeBRep_EdgesFiller()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TopOpeBRep_EdgesFiller_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_EdgesFiller_ctor(),
+            ))
         }
     }
 
@@ -445,24 +481,30 @@ impl EdgesFiller {
         E1: &crate::topo_ds::Shape,
         E2: &crate::topo_ds::Shape,
         EI: &mut EdgesIntersector,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesFiller_insert(self as *mut Self, E1, E2, EI, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesFiller_insert(
+                self as *mut Self,
+                E1,
+                E2,
+                EI,
+                HDS,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesFiller.hxx`:52 - `TopOpeBRep_EdgesFiller::Face()`
     pub fn face_int_shape(&mut self, I: i32, F: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesFiller_face_int_shape(self as *mut Self, I, F)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesFiller_face_int_shape(self as *mut Self, I, F)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesFiller.hxx`:54 - `TopOpeBRep_EdgesFiller::Face()`
     pub fn face_int(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesFiller_face_int(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesFiller_face_int(
                 self as *const Self,
                 I,
             )))
@@ -476,11 +518,11 @@ impl EdgesFiller {
 
 /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:43 - `TopOpeBRep_EdgesIntersector`
 /// Describes the intersection of two edges on the same surface
-pub use crate::ffi::TopOpeBRep_EdgesIntersector as EdgesIntersector;
+pub use crate::ffi_types::TopOpeBRep_EdgesIntersector as EdgesIntersector;
 
 unsafe impl crate::CppDeletable for EdgesIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_EdgesIntersector_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_destructor(ptr);
     }
 }
 
@@ -489,7 +531,7 @@ impl EdgesIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_EdgesIntersector_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_ctor(),
             ))
         }
     }
@@ -497,7 +539,11 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:52 - `TopOpeBRep_EdgesIntersector::SetFaces()`
     pub fn set_faces_shape2(&mut self, F1: &crate::topo_ds::Shape, F2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_set_faces_shape2(self as *mut Self, F1, F2)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_set_faces_shape2(
+                self as *mut Self,
+                F1,
+                F2,
+            )
         })
     }
 
@@ -510,7 +556,7 @@ impl EdgesIntersector {
         B2: &crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_set_faces_shape2_box2(
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_set_faces_shape2_box2(
                 self as *mut Self,
                 F1,
                 F2,
@@ -523,14 +569,21 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:59 - `TopOpeBRep_EdgesIntersector::ForceTolerances()`
     pub fn force_tolerances(&mut self, Tol1: f64, Tol2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_force_tolerances(self as *mut Self, Tol1, Tol2)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_force_tolerances(
+                self as *mut Self,
+                Tol1,
+                Tol2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:61 - `TopOpeBRep_EdgesIntersector::Dimension()`
     pub fn dimension_int(&mut self, D: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_dimension_int(self as *mut Self, D)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_dimension_int(
+                self as *mut Self,
+                D,
+            )
         })
     }
 
@@ -538,7 +591,7 @@ impl EdgesIntersector {
     /// set working space dimension D = 1 for E &|| W, 2 for E in F
     pub fn dimension(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_dimension(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_dimension(self as *const Self)
         })
     }
 
@@ -550,7 +603,7 @@ impl EdgesIntersector {
         ReduceSegments: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_perform(
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_perform(
                 self as *mut Self,
                 E1,
                 E2,
@@ -562,7 +615,7 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:70 - `TopOpeBRep_EdgesIntersector::IsEmpty()`
     pub fn is_empty(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_is_empty(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_is_empty(self as *mut Self)
         })
     }
 
@@ -570,7 +623,7 @@ impl EdgesIntersector {
     /// true if at least one intersection segment.
     pub fn has_segment(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_has_segment(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_has_segment(self as *const Self)
         })
     }
 
@@ -578,14 +631,14 @@ impl EdgesIntersector {
     /// = mySameDomain.
     pub fn same_domain(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_same_domain(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_same_domain(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:78 - `TopOpeBRep_EdgesIntersector::Edge()`
     pub fn edge(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_edge(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_edge(
                 self as *const Self,
                 Index,
             )))
@@ -595,7 +648,7 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:80 - `TopOpeBRep_EdgesIntersector::Curve()`
     pub fn curve(&self, Index: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_curve(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_curve(
                 self as *const Self,
                 Index,
             )))
@@ -605,7 +658,7 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:82 - `TopOpeBRep_EdgesIntersector::Face()`
     pub fn face(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_face(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_face(
                 self as *const Self,
                 Index,
             )))
@@ -615,7 +668,7 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:84 - `TopOpeBRep_EdgesIntersector::Surface()`
     pub fn surface(&self, Index: i32) -> &crate::b_rep_adaptor::Surface {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_surface(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_surface(
                 self as *const Self,
                 Index,
             )))
@@ -625,77 +678,93 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:86 - `TopOpeBRep_EdgesIntersector::SurfacesSameOriented()`
     pub fn surfaces_same_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_surfaces_same_oriented(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_surfaces_same_oriented(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:88 - `TopOpeBRep_EdgesIntersector::FacesSameOriented()`
     pub fn faces_same_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_faces_same_oriented(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_faces_same_oriented(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:90 - `TopOpeBRep_EdgesIntersector::ToleranceMax()`
     pub fn tolerance_max(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_tolerance_max(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_tolerance_max(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:92 - `TopOpeBRep_EdgesIntersector::Tolerances()`
     pub fn tolerances(&self, tol1: &mut f64, tol2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_tolerances(self as *const Self, tol1, tol2)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_tolerances(
+                self as *const Self,
+                tol1,
+                tol2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:94 - `TopOpeBRep_EdgesIntersector::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_nb_points(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_nb_points(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:96 - `TopOpeBRep_EdgesIntersector::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_nb_segments(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_nb_segments(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:98 - `TopOpeBRep_EdgesIntersector::Dump()`
     pub fn dump(&mut self, str: &crate::t_collection::AsciiString, ie1: i32, ie2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_dump(self as *mut Self, str, ie1, ie2)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_dump(
+                self as *mut Self,
+                str,
+                ie1,
+                ie2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:102 - `TopOpeBRep_EdgesIntersector::InitPoint()`
     pub fn init_point(&mut self, selectkeep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_init_point(self as *mut Self, selectkeep)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_init_point(
+                self as *mut Self,
+                selectkeep,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:104 - `TopOpeBRep_EdgesIntersector::MorePoint()`
     pub fn more_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_more_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_more_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:106 - `TopOpeBRep_EdgesIntersector::NextPoint()`
     pub fn next_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_next_point(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_next_point(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:108 - `TopOpeBRep_EdgesIntersector::Points()`
-    pub fn points(&self) -> &crate::ffi::TopOpeBRep_SequenceOfPoint2d {
+    pub fn points(&self) -> &crate::ffi_types::TopOpeBRep_SequenceOfPoint2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_points(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_points(
                 self as *const Self,
             )))
         }
@@ -704,7 +773,7 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:110 - `TopOpeBRep_EdgesIntersector::Point()`
     pub fn point(&self) -> &Point2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_point(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_point(
                 self as *const Self,
             )))
         }
@@ -713,24 +782,31 @@ impl EdgesIntersector {
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:112 - `TopOpeBRep_EdgesIntersector::Point()`
     pub fn point_int(&self, I: i32) -> &Point2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_EdgesIntersector_point_int(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_point_int(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:114 - `TopOpeBRep_EdgesIntersector::ReduceSegment()`
     pub fn reduce_segment(&self, P1: &mut Point2d, P2: &mut Point2d, Pn: &mut Point2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_reduce_segment(self as *const Self, P1, P2, Pn)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_reduce_segment(
+                self as *const Self,
+                P1,
+                P2,
+                Pn,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_EdgesIntersector.hxx`:118 - `TopOpeBRep_EdgesIntersector::Status1()`
     pub fn status1(&self) -> crate::top_ope_b_rep::P2Dstatus {
         crate::top_ope_b_rep::P2Dstatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_EdgesIntersector_status1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_EdgesIntersector_status1(self as *const Self)
         }))
         .unwrap()
     }
@@ -741,11 +817,11 @@ impl EdgesIntersector {
 // ========================
 
 /// **Source:** `TopOpeBRep_FFDumper.hxx`:36 - `TopOpeBRep_FFDumper`
-pub use crate::ffi::TopOpeBRep_FFDumper as FFDumper;
+pub use crate::ffi_types::TopOpeBRep_FFDumper as FFDumper;
 
 unsafe impl crate::CppDeletable for FFDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FFDumper_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_destructor(ptr);
     }
 }
 
@@ -754,7 +830,7 @@ impl FFDumper {
     pub unsafe fn new_facesfillerptr(PFF: &*mut FacesFiller) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFDumper_ctor_facesfillerptr(PFF),
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_ctor_facesfillerptr(PFF),
             ))
         }
     }
@@ -762,42 +838,46 @@ impl FFDumper {
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:42 - `TopOpeBRep_FFDumper::Init()`
     pub unsafe fn init(&mut self, PFF: &*mut FacesFiller) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_init(self as *mut Self, PFF)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_init(self as *mut Self, PFF)
         })
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:44 - `TopOpeBRep_FFDumper::DumpLine()`
     pub fn dump_line_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_dump_line_int(self as *mut Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dump_line_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:46 - `TopOpeBRep_FFDumper::DumpLine()`
     pub fn dump_line_lineinter(&mut self, L: &LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_dump_line_lineinter(self as *mut Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dump_line_lineinter(self as *mut Self, L)
         })
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:48 - `TopOpeBRep_FFDumper::DumpVP()`
     pub fn dump_vp_vpointinter(&mut self, VP: &VPointInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_dump_vp_vpointinter(self as *mut Self, VP)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dump_vp_vpointinter(self as *mut Self, VP)
         })
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:50 - `TopOpeBRep_FFDumper::DumpVP()`
     pub fn dump_vp_vpointinter_int(&mut self, VP: &VPointInter, ISI: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_dump_vp_vpointinter_int(self as *mut Self, VP, ISI)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dump_vp_vpointinter_int(
+                self as *mut Self,
+                VP,
+                ISI,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:52 - `TopOpeBRep_FFDumper::ExploreIndex()`
     pub fn explore_index(&self, S: &crate::topo_ds::Shape, ISI: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_explore_index(self as *const Self, S, ISI)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_explore_index(self as *const Self, S, ISI)
         })
     }
 
@@ -810,7 +890,13 @@ impl FFDumper {
         newinDS: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_dump_dsp(self as *const Self, VP, GK.into(), G, newinDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dump_dsp(
+                self as *const Self,
+                VP,
+                GK.into(),
+                G,
+                newinDS,
+            )
         })
     }
 
@@ -818,7 +904,9 @@ impl FFDumper {
     pub fn p_faces_filler_dummy(&self) -> Option<&FacesFiller> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FFDumper_p_faces_filler_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_p_faces_filler_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -829,9 +917,9 @@ impl FFDumper {
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:62 - `TopOpeBRep_FFDumper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FFDumper_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -841,7 +929,7 @@ impl FFDumper {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopOpeBRep_FFDumper_get_type_name(),
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -849,50 +937,64 @@ impl FFDumper {
     }
 
     /// **Source:** `TopOpeBRep_FFDumper.hxx`:62 - `TopOpeBRep_FFDumper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TopOpeBRep_FFDumper_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TopOpeBRep_FFDumper_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepFFDumper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepFFDumper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFDumper_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -900,7 +1002,7 @@ impl FFDumper {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FFDumper_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -913,62 +1015,70 @@ impl FFDumper {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FFDumper_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FFDumper_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopOpeBRepFFDumper;
+pub use crate::ffi_types::HandleTopOpeBRepFFDumper;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepFFDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopOpeBRepFFDumper_destructor(ptr);
+        crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_destructor(ptr);
     }
 }
 
 impl HandleTopOpeBRepFFDumper {
     /// Dereference this Handle to access the underlying TopOpeBRep_FFDumper
-    pub fn get(&self) -> &crate::ffi::TopOpeBRep_FFDumper {
+    pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_FFDumper {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopOpeBRepFFDumper_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_FFDumper
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_FFDumper {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRep_FFDumper {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopOpeBRepFFDumper_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopOpeBRep_FFDumper> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopOpeBRepFFDumper_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepFFDumper_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -981,11 +1091,11 @@ impl HandleTopOpeBRepFFDumper {
 // ========================
 
 /// **Source:** `TopOpeBRep_FFTransitionTool.hxx`:30 - `TopOpeBRep_FFTransitionTool`
-pub use crate::ffi::TopOpeBRep_FFTransitionTool as FFTransitionTool;
+pub use crate::ffi_types::TopOpeBRep_FFTransitionTool as FFTransitionTool;
 
 unsafe impl crate::CppDeletable for FFTransitionTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FFTransitionTool_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_destructor(ptr);
     }
 }
 
@@ -995,7 +1105,7 @@ impl FFTransitionTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFTransitionTool_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_ctor(),
             ))
         }
     }
@@ -1007,7 +1117,7 @@ impl FFTransitionTool {
         EdgeOrientation: crate::top_abs::Orientation,
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_int_orientation(P, Index, EdgeOrientation.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_int_orientation(P, Index, EdgeOrientation.into())))
         }
     }
 
@@ -1017,7 +1127,7 @@ impl FFTransitionTool {
         L: &LineInter,
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_lineinter(P, L)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_process_line_transition_vpointinter_lineinter(P, L)))
         }
     }
 
@@ -1029,7 +1139,7 @@ impl FFTransitionTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFTransitionTool_process_edge_transition(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_process_edge_transition(
                     P,
                     Index,
                     LineOrientation.into(),
@@ -1046,7 +1156,7 @@ impl FFTransitionTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFTransitionTool_process_face_transition(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_process_face_transition(
                     L,
                     Index,
                     FaceOrientation.into(),
@@ -1072,7 +1182,7 @@ impl FFTransitionTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FFTransitionTool_process_edge_on_transition(
+                crate::ffi_extern_TKBool::TopOpeBRep_FFTransitionTool_process_edge_on_transition(
                     VP, Index, R, E, F,
                 ),
             ))
@@ -1085,11 +1195,11 @@ impl FFTransitionTool {
 // ========================
 
 /// **Source:** `TopOpeBRep_FaceEdgeFiller.hxx`:33 - `TopOpeBRep_FaceEdgeFiller`
-pub use crate::ffi::TopOpeBRep_FaceEdgeFiller as FaceEdgeFiller;
+pub use crate::ffi_types::TopOpeBRep_FaceEdgeFiller as FaceEdgeFiller;
 
 unsafe impl crate::CppDeletable for FaceEdgeFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FaceEdgeFiller_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeFiller_destructor(ptr);
     }
 }
 
@@ -1098,7 +1208,7 @@ impl FaceEdgeFiller {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FaceEdgeFiller_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeFiller_ctor(),
             ))
         }
     }
@@ -1109,10 +1219,16 @@ impl FaceEdgeFiller {
         F: &crate::topo_ds::Shape,
         E: &crate::topo_ds::Shape,
         FEINT: &mut FaceEdgeIntersector,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeFiller_insert(self as *mut Self, F, E, FEINT, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeFiller_insert(
+                self as *mut Self,
+                F,
+                E,
+                FEINT,
+                HDS,
+            )
         })
     }
 }
@@ -1123,11 +1239,11 @@ impl FaceEdgeFiller {
 
 /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:40 - `TopOpeBRep_FaceEdgeIntersector`
 /// Describes the intersection of a face and an edge.
-pub use crate::ffi::TopOpeBRep_FaceEdgeIntersector as FaceEdgeIntersector;
+pub use crate::ffi_types::TopOpeBRep_FaceEdgeIntersector as FaceEdgeIntersector;
 
 unsafe impl crate::CppDeletable for FaceEdgeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FaceEdgeIntersector_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_destructor(ptr);
     }
 }
 
@@ -1136,7 +1252,7 @@ impl FaceEdgeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FaceEdgeIntersector_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_ctor(),
             ))
         }
     }
@@ -1144,14 +1260,18 @@ impl FaceEdgeIntersector {
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:47 - `TopOpeBRep_FaceEdgeIntersector::Perform()`
     pub fn perform(&mut self, F: &crate::topo_ds::Shape, E: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_perform(self as *mut Self, F, E)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_perform(
+                self as *mut Self,
+                F,
+                E,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:49 - `TopOpeBRep_FaceEdgeIntersector::IsEmpty()`
     pub fn is_empty(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_is_empty(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_is_empty(self as *mut Self)
         })
     }
 
@@ -1160,7 +1280,7 @@ impl FaceEdgeIntersector {
     /// value of <Index> = 1 or 2
     pub fn shape(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FaceEdgeIntersector_shape(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_shape(
                 self as *const Self,
                 Index,
             )))
@@ -1171,7 +1291,10 @@ impl FaceEdgeIntersector {
     /// Force the tolerance values used by the next Perform(S1,S2) call.
     pub fn force_tolerance(&mut self, tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_force_tolerance(self as *mut Self, tol)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_force_tolerance(
+                self as *mut Self,
+                tol,
+            )
         })
     }
 
@@ -1181,35 +1304,35 @@ impl FaceEdgeIntersector {
     /// If not, return value extracted from shapes.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_tolerance(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:63 - `TopOpeBRep_FaceEdgeIntersector::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_nb_points(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_nb_points(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:65 - `TopOpeBRep_FaceEdgeIntersector::InitPoint()`
     pub fn init_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_init_point(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_init_point(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:67 - `TopOpeBRep_FaceEdgeIntersector::MorePoint()`
     pub fn more_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_more_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_more_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:69 - `TopOpeBRep_FaceEdgeIntersector::NextPoint()`
     pub fn next_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_next_point(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_next_point(self as *mut Self)
         })
     }
 
@@ -1218,7 +1341,7 @@ impl FaceEdgeIntersector {
     pub fn value(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FaceEdgeIntersector_value(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_value(self as *const Self),
             ))
         }
     }
@@ -1227,7 +1350,7 @@ impl FaceEdgeIntersector {
     /// parametre de Value() sur l'arete
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_parameter(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_parameter(self as *const Self)
         })
     }
 
@@ -1235,7 +1358,10 @@ impl FaceEdgeIntersector {
     /// parametre de Value() sur la face
     pub fn uv_point(&self, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_uv_point(self as *const Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_uv_point(
+                self as *const Self,
+                P,
+            )
         })
     }
 
@@ -1243,7 +1369,7 @@ impl FaceEdgeIntersector {
     /// IN ou ON / a la face. Les points OUT ne sont pas retournes.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_state(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -1257,7 +1383,7 @@ impl FaceEdgeIntersector {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FaceEdgeIntersector_transition(
+                crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_transition(
                     self as *const Self,
                     Index,
                     FaceOrientation.into(),
@@ -1275,7 +1401,7 @@ impl FaceEdgeIntersector {
         V: &mut crate::topo_ds::Vertex,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_is_vertex_shape_pnt_real_vertex(
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_is_vertex_shape_pnt_real_vertex(
                 self as *mut Self,
                 S,
                 P,
@@ -1288,7 +1414,11 @@ impl FaceEdgeIntersector {
     /// **Source:** `TopOpeBRep_FaceEdgeIntersector.hxx`:92 - `TopOpeBRep_FaceEdgeIntersector::IsVertex()`
     pub fn is_vertex_int_vertex(&mut self, I: i32, V: &mut crate::topo_ds::Vertex) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_is_vertex_int_vertex(self as *mut Self, I, V)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_is_vertex_int_vertex(
+                self as *mut Self,
+                I,
+                V,
+            )
         })
     }
 
@@ -1296,7 +1426,7 @@ impl FaceEdgeIntersector {
     /// trace only
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FaceEdgeIntersector_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FaceEdgeIntersector_index(self as *const Self)
         })
     }
 }
@@ -1311,11 +1441,11 @@ impl FaceEdgeIntersector {
 /// if the faces have same Domain, record it in the DS.
 /// else record lines and  points and attach list of interferences
 /// to the faces, the lines and the edges.
-pub use crate::ffi::TopOpeBRep_FacesFiller as FacesFiller;
+pub use crate::ffi_types::TopOpeBRep_FacesFiller as FacesFiller;
 
 unsafe impl crate::CppDeletable for FacesFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FacesFiller_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_destructor(ptr);
     }
 }
 
@@ -1323,9 +1453,9 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:54 - `TopOpeBRep_FacesFiller::TopOpeBRep_FacesFiller()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TopOpeBRep_FacesFiller_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_ctor(),
+            ))
         }
     }
 
@@ -1336,26 +1466,36 @@ impl FacesFiller {
         F1: &crate::topo_ds::Shape,
         F2: &crate::topo_ds::Shape,
         FACINT: &mut FacesIntersector,
-        HDS: &crate::ffi::HandleTopOpeBRepDSHDataStructure,
+        HDS: &crate::ffi_types::HandleTopOpeBRepDSHDataStructure,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_insert(self as *mut Self, F1, F2, FACINT, HDS)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_insert(
+                self as *mut Self,
+                F1,
+                F2,
+                FACINT,
+                HDS,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:62 - `TopOpeBRep_FacesFiller::ProcessSectionEdges()`
     pub fn process_section_edges(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_section_edges(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_section_edges(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:64 - `TopOpeBRep_FacesFiller::ChangePointClassifier()`
     pub fn change_point_classifier(&mut self) -> &mut PointClassifier {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_FacesFiller_change_point_classifier(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_change_point_classifier(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1364,7 +1504,9 @@ impl FacesFiller {
     pub fn p_shape_classifier(&self) -> Option<&crate::top_ope_b_rep_tool::ShapeClassifier> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FacesFiller_p_shape_classifier(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_p_shape_classifier(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1381,21 +1523,24 @@ impl FacesFiller {
         PSC: &*mut crate::top_ope_b_rep_tool::ShapeClassifier,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_set_p_shape_classifier(self as *mut Self, PSC)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_set_p_shape_classifier(
+                self as *mut Self,
+                PSC,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:72 - `TopOpeBRep_FacesFiller::LoadLine()`
     pub fn load_line(&mut self, L: &mut LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_load_line(self as *mut Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_load_line(self as *mut Self, L)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:74 - `TopOpeBRep_FacesFiller::CheckLine()`
     pub fn check_line(&self, L: &mut LineInter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_check_line(self as *const Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_check_line(self as *const Self, L)
         })
     }
 
@@ -1403,7 +1548,7 @@ impl FacesFiller {
     /// compute position of VPoints of lines
     pub fn vp_position_facesintersector(&mut self, FACINT: &mut FacesIntersector) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_vp_position_facesintersector(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_position_facesintersector(
                 self as *mut Self,
                 FACINT,
             )
@@ -1414,7 +1559,10 @@ impl FacesFiller {
     /// compute position of VPoints of line L
     pub fn vp_position_lineinter(&mut self, L: &mut LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_vp_position_lineinter(self as *mut Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_position_lineinter(
+                self as *mut Self,
+                L,
+            )
         })
     }
 
@@ -1422,7 +1570,7 @@ impl FacesFiller {
     /// compute position of VPoints of non-restriction line L.
     pub fn vp_position_on_l(&mut self, L: &mut LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_l(self as *mut Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_position_on_l(self as *mut Self, L)
         })
     }
 
@@ -1430,7 +1578,7 @@ impl FacesFiller {
     /// compute position of VPoints of restriction line L.
     pub fn vp_position_on_r(&mut self, L: &mut LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_vp_position_on_r(self as *mut Self, L)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_position_on_r(self as *mut Self, L)
         })
     }
 
@@ -1443,11 +1591,7 @@ impl FacesFiller {
         VPC: &mut VPointInterClassifier,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_vp_position_vpointinter_vpointinterclassifier(
-                self as *mut Self,
-                VP,
-                VPC,
-            )
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_position_vpointinter_vpointinterclassifier(self as *mut Self, VP, VPC)
         })
     }
 
@@ -1455,14 +1599,14 @@ impl FacesFiller {
     /// Process current intersection line (set by LoadLine)
     pub fn process_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_line(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:96 - `TopOpeBRep_FacesFiller::ResetDSC()`
     pub fn reset_dsc(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_reset_dsc(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_reset_dsc(self as *mut Self)
         })
     }
 
@@ -1471,7 +1615,7 @@ impl FacesFiller {
     /// and computing face/edge interference.
     pub fn process_r_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_r_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_r_line(self as *mut Self)
         })
     }
 
@@ -1487,14 +1631,14 @@ impl FacesFiller {
     /// interference for VP boundaries.
     pub fn fill_line_v_pon_r(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_fill_line_v_pon_r(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_fill_line_v_pon_r(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:113 - `TopOpeBRep_FacesFiller::FillLine()`
     pub fn fill_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_fill_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_fill_line(self as *mut Self)
         })
     }
 
@@ -1503,16 +1647,16 @@ impl FacesFiller {
     /// for current NDSC. Add them to the DS.
     pub fn add_shapes_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_add_shapes_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_add_shapes_line(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:121 - `TopOpeBRep_FacesFiller::GetESL()`
     /// Get map <mapES > of restriction edges having parts IN one
     /// of the 2 faces.
-    pub fn get_esl(&mut self, LES: &mut crate::ffi::TopTools_ListOfShape) {
+    pub fn get_esl(&mut self, LES: &mut crate::ffi_types::TopTools_ListOfShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_get_esl(self as *mut Self, LES)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_get_esl(self as *mut Self, LES)
         })
     }
 
@@ -1520,7 +1664,7 @@ impl FacesFiller {
     /// calling the following ProcessVPIonR and ProcessVPonR.
     pub fn process_vpr(&mut self, FF: &mut FacesFiller, VP: &VPointInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_vpr(self as *mut Self, FF, VP)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_vpr(self as *mut Self, FF, VP)
         })
     }
 
@@ -1534,7 +1678,7 @@ impl FacesFiller {
         ShapeIndex: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_vp_ion_r(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_vp_ion_r(
                 self as *mut Self,
                 VPI,
                 trans1,
@@ -1555,7 +1699,7 @@ impl FacesFiller {
         ShapeIndex: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_v_pon_r(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_v_pon_r(
                 self as *mut Self,
                 VP,
                 trans1,
@@ -1576,10 +1720,10 @@ impl FacesFiller {
         PVKind: crate::top_ope_b_rep_ds::Kind,
         PVIndex: i32,
         EPIfound: bool,
-        IEPI: &crate::ffi::HandleTopOpeBRepDSInterference,
+        IEPI: &crate::ffi_types::HandleTopOpeBRepDSInterference,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_v_ponclosing_r(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_v_ponclosing_r(
                 self as *mut Self,
                 VP,
                 F1,
@@ -1602,13 +1746,13 @@ impl FacesFiller {
         PVKind: &mut crate::top_ope_b_rep_ds::Kind,
         PVIndex: &mut i32,
         EPIfound: &mut bool,
-        IEPI: &mut crate::ffi::HandleTopOpeBRepDSInterference,
+        IEPI: &mut crate::ffi_types::HandleTopOpeBRepDSInterference,
         CPIfound: &mut bool,
-        ICPI: &mut crate::ffi::HandleTopOpeBRepDSInterference,
+        ICPI: &mut crate::ffi_types::HandleTopOpeBRepDSInterference,
     ) -> bool {
         let mut PVKind_i32_: i32 = (*PVKind).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_v_pondg_e(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_v_pondg_e(
                 self as *mut Self,
                 VP,
                 ShapeIndex,
@@ -1628,7 +1772,10 @@ impl FacesFiller {
     /// processing ProcessVPnotonR for VPI.
     pub fn process_vp_inoton_r(&mut self, VPI: &mut VPointInterIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_vp_inoton_r(self as *mut Self, VPI)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_vp_inoton_r(
+                self as *mut Self,
+                VPI,
+            )
         })
     }
 
@@ -1637,7 +1784,10 @@ impl FacesFiller {
     /// and computes curve point interference.
     pub fn process_v_pnoton_r(&mut self, VP: &VPointInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_process_v_pnoton_r(self as *mut Self, VP)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_process_v_pnoton_r(
+                self as *mut Self,
+                VP,
+            )
         })
     }
 
@@ -1650,14 +1800,14 @@ impl FacesFiller {
     /// returns the value of ScanInterfList().
     pub fn get_geometry(
         &mut self,
-        IT: &mut crate::ffi::TopOpeBRepDS_ListIteratorOfListOfInterference,
+        IT: &mut crate::ffi_types::TopOpeBRepDS_ListIteratorOfListOfInterference,
         VP: &VPointInter,
         G: &mut i32,
         K: &mut crate::top_ope_b_rep_ds::Kind,
     ) -> bool {
         let mut K_i32_: i32 = (*K).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_get_geometry(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_get_geometry(
                 self as *mut Self,
                 IT,
                 VP,
@@ -1678,7 +1828,7 @@ impl FacesFiller {
     ) -> i32 {
         let mut K_i32_: i32 = (*K).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_make_geometry(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_make_geometry(
                 self as *mut Self,
                 VP,
                 ShapeIndex,
@@ -1692,9 +1842,15 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:183 - `TopOpeBRep_FacesFiller::StoreCurveInterference()`
     /// Add interference <I> to list myDSCIL.
     /// on a given line, at first call, add a new DS curve.
-    pub fn store_curve_interference(&mut self, I: &crate::ffi::HandleTopOpeBRepDSInterference) {
+    pub fn store_curve_interference(
+        &mut self,
+        I: &crate::ffi_types::HandleTopOpeBRepDSInterference,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_store_curve_interference(self as *mut Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_store_curve_interference(
+                self as *mut Self,
+                I,
+            )
         })
     }
 
@@ -1710,7 +1866,7 @@ impl FacesFiller {
     ) -> bool {
         let mut K_i32_: i32 = (*K).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_get_ff_geometry_point_kind_int(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_get_ff_geometry_point_kind_int(
                 self as *const Self,
                 DSP,
                 &mut K_i32_,
@@ -1733,7 +1889,7 @@ impl FacesFiller {
     ) -> bool {
         let mut K_i32_: i32 = (*K).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_get_ff_geometry_vpointinter_kind_int(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_get_ff_geometry_vpointinter_kind_int(
                 self as *const Self,
                 VP,
                 &mut K_i32_,
@@ -1748,7 +1904,9 @@ impl FacesFiller {
     pub fn change_faces_intersector(&mut self) -> &mut FacesIntersector {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_FacesFiller_change_faces_intersector(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_change_faces_intersector(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -1756,10 +1914,12 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:201 - `TopOpeBRep_FacesFiller::HDataStructure()`
     pub fn h_data_structure(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepDSHDataStructure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepDSHDataStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FacesFiller_h_data_structure(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_h_data_structure(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -1767,16 +1927,21 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:203 - `TopOpeBRep_FacesFiller::ChangeDataStructure()`
     pub fn change_data_structure(&mut self) -> &mut crate::top_ope_b_rep_ds::DataStructure {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_FacesFiller_change_data_structure(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_change_data_structure(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:205 - `TopOpeBRep_FacesFiller::Face()`
     pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FacesFiller_face(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_face(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
@@ -1794,7 +1959,7 @@ impl FacesFiller {
     ) -> &crate::top_ope_b_rep_ds::Transition {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::TopOpeBRep_FacesFiller_face_face_transition_lineinter_int(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_face_face_transition_lineinter_int(
                     self as *const Self,
                     L,
                     I,
@@ -1806,10 +1971,12 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:210 - `TopOpeBRep_FacesFiller::FaceFaceTransition()`
     pub fn face_face_transition_int(&self, I: i32) -> &crate::top_ope_b_rep_ds::Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FacesFiller_face_face_transition_int(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_face_face_transition_int(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
@@ -1817,7 +1984,9 @@ impl FacesFiller {
     pub fn p_faces_intersector_dummy(&self) -> Option<&FacesIntersector> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FacesFiller_p_faces_intersector_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_p_faces_intersector_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1831,7 +2000,9 @@ impl FacesFiller {
     pub fn p_data_structure_dummy(&self) -> Option<&crate::top_ope_b_rep_ds::DataStructure> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FacesFiller_p_data_structure_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_p_data_structure_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1845,7 +2016,9 @@ impl FacesFiller {
     pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_FacesFiller_p_line_inter_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_p_line_inter_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1858,14 +2031,22 @@ impl FacesFiller {
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:218 - `TopOpeBRep_FacesFiller::SetTraceIndex()`
     pub fn set_trace_index(&mut self, exF1: i32, exF2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_set_trace_index(self as *mut Self, exF1, exF2)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_set_trace_index(
+                self as *mut Self,
+                exF1,
+                exF2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:220 - `TopOpeBRep_FacesFiller::GetTraceIndex()`
     pub fn get_trace_index(&self, exF1: &mut i32, exF2: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_get_trace_index(self as *const Self, exF1, exF2)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_get_trace_index(
+                self as *const Self,
+                exF1,
+                exF2,
+            )
         })
     }
 
@@ -1874,15 +2055,17 @@ impl FacesFiller {
     /// enclosing all vpoints.
     pub fn lminmax(L: &LineInter, pmin: &mut f64, pmax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_lminmax(L, pmin, pmax)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_lminmax(L, pmin, pmax)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:230 - `TopOpeBRep_FacesFiller::LSameDomainERL()`
     /// Returns <True> if <L> shares a same geometric domain with
     /// at least one of the section edges of <ERL>.
-    pub fn l_same_domain_erl(L: &LineInter, ERL: &crate::ffi::TopTools_ListOfShape) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_FacesFiller_l_same_domain_erl(L, ERL) })
+    pub fn l_same_domain_erl(L: &LineInter, ERL: &crate::ffi_types::TopTools_ListOfShape) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_l_same_domain_erl(L, ERL)
+        })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:235 - `TopOpeBRep_FacesFiller::IsVPtransLok()`
@@ -1895,7 +2078,7 @@ impl FacesFiller {
         T: &mut crate::top_ope_b_rep_ds::Transition,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_is_v_ptrans_lok(L, iVP, SI12, T)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_is_v_ptrans_lok(L, iVP, SI12, T)
         })
     }
 
@@ -1906,20 +2089,22 @@ impl FacesFiller {
     /// transition computed is OUT/IN.
     pub fn transvp_ok(L: &LineInter, iVP: i32, SI: i32, isINOUT: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_transvp_ok(L, iVP, SI, isINOUT)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_transvp_ok(L, iVP, SI, isINOUT)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:250 - `TopOpeBRep_FacesFiller::VPParamOnER()`
     /// Returns parameter u of vp on the restriction edge.
     pub fn vp_param_on_er(vp: &VPointInter, Lrest: &LineInter) -> f64 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_FacesFiller_vp_param_on_er(vp, Lrest) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_vp_param_on_er(vp, Lrest)
+        })
     }
 
     /// **Source:** `TopOpeBRep_FacesFiller.hxx`:253 - `TopOpeBRep_FacesFiller::EqualpPonR()`
     pub fn equalp_pon_r(Lrest: &LineInter, VP1: &VPointInter, VP2: &VPointInter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesFiller_equalp_pon_r(Lrest, VP1, VP2)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesFiller_equalp_pon_r(Lrest, VP1, VP2)
         })
     }
 }
@@ -1930,11 +2115,11 @@ impl FacesFiller {
 
 /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:32 - `TopOpeBRep_FacesIntersector`
 /// Describes the intersection of two faces.
-pub use crate::ffi::TopOpeBRep_FacesIntersector as FacesIntersector;
+pub use crate::ffi_types::TopOpeBRep_FacesIntersector as FacesIntersector;
 
 unsafe impl crate::CppDeletable for FacesIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_FacesIntersector_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_destructor(ptr);
     }
 }
 
@@ -1943,7 +2128,7 @@ impl FacesIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FacesIntersector_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_ctor(),
             ))
         }
     }
@@ -1952,7 +2137,11 @@ impl FacesIntersector {
     /// Computes the intersection of faces S1 and S2.
     pub fn perform_shape2(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_perform_shape2(self as *mut Self, S1, S2)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_perform_shape2(
+                self as *mut Self,
+                S1,
+                S2,
+            )
         })
     }
 
@@ -1966,7 +2155,7 @@ impl FacesIntersector {
         B2: &crate::bnd::Box,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_perform_shape2_box2(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_perform_shape2_box2(
                 self as *mut Self,
                 S1,
                 S2,
@@ -1979,14 +2168,14 @@ impl FacesIntersector {
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:48 - `TopOpeBRep_FacesIntersector::IsEmpty()`
     pub fn is_empty(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_is_empty(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_is_empty(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:50 - `TopOpeBRep_FacesIntersector::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_is_done(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_is_done(self as *const Self)
         })
     }
 
@@ -1995,7 +2184,7 @@ impl FacesIntersector {
     /// same surface.
     pub fn same_domain(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_same_domain(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_same_domain(self as *const Self)
         })
     }
 
@@ -2003,7 +2192,7 @@ impl FacesIntersector {
     /// returns first or second intersected face.
     pub fn face(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FacesIntersector_face(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_face(
                 self as *const Self,
                 Index,
             )))
@@ -2016,7 +2205,9 @@ impl FacesIntersector {
     /// Raise if SameDomain is False
     pub fn surfaces_same_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_surfaces_same_oriented(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_surfaces_same_oriented(
+                self as *const Self,
+            )
         })
     }
 
@@ -2025,32 +2216,39 @@ impl FacesIntersector {
     /// associated with a RESTRICTION line.
     pub fn is_restriction(&self, E: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_is_restriction(self as *const Self, E)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_is_restriction(
+                self as *const Self,
+                E,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:69 - `TopOpeBRep_FacesIntersector::Restrictions()`
     /// returns the map of edges found as TopeBRepBRep_RESTRICTION
-    pub fn restrictions(&self) -> &crate::ffi::TopTools_IndexedMapOfShape {
+    pub fn restrictions(&self) -> &crate::ffi_types::TopTools_IndexedMapOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_FacesIntersector_restrictions(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_restrictions(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:71 - `TopOpeBRep_FacesIntersector::PrepareLines()`
     pub fn prepare_lines(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_prepare_lines(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_prepare_lines(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:73 - `TopOpeBRep_FacesIntersector::Lines()`
-    pub fn lines(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfLineInter> {
+    pub fn lines(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHArray1OfLineInter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_FacesIntersector_lines(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_lines(self as *mut Self),
             ))
         }
     }
@@ -2058,54 +2256,60 @@ impl FacesIntersector {
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:75 - `TopOpeBRep_FacesIntersector::NbLines()`
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_nb_lines(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_nb_lines(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:77 - `TopOpeBRep_FacesIntersector::InitLine()`
     pub fn init_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_init_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_init_line(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:79 - `TopOpeBRep_FacesIntersector::MoreLine()`
     pub fn more_line(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_more_line(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_more_line(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:81 - `TopOpeBRep_FacesIntersector::NextLine()`
     pub fn next_line(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_next_line(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_next_line(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:83 - `TopOpeBRep_FacesIntersector::CurrentLine()`
     pub fn current_line(&mut self) -> &mut LineInter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_FacesIntersector_current_line(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_current_line(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:85 - `TopOpeBRep_FacesIntersector::CurrentLineIndex()`
     pub fn current_line_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_current_line_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_current_line_index(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_FacesIntersector.hxx`:87 - `TopOpeBRep_FacesIntersector::ChangeLine()`
     pub fn change_line(&mut self, IL: i32) -> &mut LineInter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_FacesIntersector_change_line(
-                self as *mut Self,
-                IL,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_change_line(
+                    self as *mut Self,
+                    IL,
+                ),
+            ))
         }
     }
 
@@ -2113,7 +2317,7 @@ impl FacesIntersector {
     /// Force the tolerance values used by the next Perform(S1,S2) call.
     pub fn force_tolerances(&mut self, tolarc: f64, toltang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_force_tolerances(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_force_tolerances(
                 self as *mut Self,
                 tolarc,
                 toltang,
@@ -2127,7 +2331,7 @@ impl FacesIntersector {
     /// If not, return values extracted from shapes.
     pub fn get_tolerances(&self, tolarc: &mut f64, toltang: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_FacesIntersector_get_tolerances(
+            crate::ffi_extern_TKBool::TopOpeBRep_FacesIntersector_get_tolerances(
                 self as *const Self,
                 tolarc,
                 toltang,
@@ -2142,11 +2346,11 @@ impl FacesIntersector {
 
 /// **Source:** `TopOpeBRep_GeomTool.hxx`:32 - `TopOpeBRep_GeomTool`
 /// Provide services needed by the DSFiller
-pub use crate::ffi::TopOpeBRep_GeomTool as GeomTool;
+pub use crate::ffi_types::TopOpeBRep_GeomTool as GeomTool;
 
 unsafe impl crate::CppDeletable for GeomTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_GeomTool_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_destructor(ptr);
     }
 }
 
@@ -2155,7 +2359,9 @@ impl GeomTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_GeomTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_ctor(),
+            ))
         }
     }
 
@@ -2169,28 +2375,35 @@ impl GeomTool {
         S1: &crate::topo_ds::Shape,
         S2: &crate::topo_ds::Shape,
         C: &mut crate::top_ope_b_rep_ds::Curve,
-        PC1: &mut crate::ffi::HandleGeom2dCurve,
-        PC2: &mut crate::ffi::HandleGeom2dCurve,
+        PC1: &mut crate::ffi_types::HandleGeom2dCurve,
+        PC2: &mut crate::ffi_types::HandleGeom2dCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_GeomTool_make_curves(min, max, L, S1, S2, C, PC1, PC2)
+            crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_make_curves(
+                min, max, L, S1, S2, C, PC1, PC2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_GeomTool.hxx`:48 - `TopOpeBRep_GeomTool::MakeCurve()`
-    pub fn make_curve(min: f64, max: f64, L: &LineInter, C: &mut crate::ffi::HandleGeomCurve) {
+    pub fn make_curve(
+        min: f64,
+        max: f64,
+        L: &LineInter,
+        C: &mut crate::ffi_types::HandleGeomCurve,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_GeomTool_make_curve(min, max, L, C)
+            crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_make_curve(min, max, L, C)
         })
     }
 
     /// **Source:** `TopOpeBRep_GeomTool.hxx`:53 - `TopOpeBRep_GeomTool::MakeBSpline1fromWALKING3d()`
     pub fn make_b_spline1from_walking3d(
         L: &LineInter,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_GeomTool_make_b_spline1from_walking3d(L),
+                crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_make_b_spline1from_walking3d(L),
             ))
         }
     }
@@ -2199,10 +2412,10 @@ impl GeomTool {
     pub fn make_b_spline1from_walking2d(
         L: &LineInter,
         SI: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_GeomTool_make_b_spline1from_walking2d(L, SI),
+                crate::ffi_extern_TKBool::TopOpeBRep_GeomTool_make_b_spline1from_walking2d(L, SI),
             ))
         }
     }
@@ -2213,11 +2426,11 @@ impl GeomTool {
 // ========================
 
 /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter`
-pub use crate::ffi::TopOpeBRep_HArray1OfLineInter as HArray1OfLineInter;
+pub use crate::ffi_types::TopOpeBRep_HArray1OfLineInter as HArray1OfLineInter;
 
 unsafe impl crate::CppDeletable for HArray1OfLineInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_HArray1OfLineInter_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_destructor(ptr);
     }
 }
 
@@ -2226,7 +2439,7 @@ impl HArray1OfLineInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_ctor(),
             ))
         }
     }
@@ -2235,7 +2448,9 @@ impl HArray1OfLineInter {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -2248,7 +2463,7 @@ impl HArray1OfLineInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_int2_lineinter(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_ctor_int2_lineinter(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -2264,7 +2479,7 @@ impl HArray1OfLineInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_lineinter_int2_bool(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_ctor_lineinter_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -2273,39 +2488,45 @@ impl HArray1OfLineInter {
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::TopOpeBRep_HArray1OfLineInter()`
     pub fn new_array1oflineinter(
-        theOther: &crate::ffi::TopOpeBRep_Array1OfLineInter,
+        theOther: &crate::ffi_types::TopOpeBRep_Array1OfLineInter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_ctor_array1oflineinter(theOther),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_ctor_array1oflineinter(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TopOpeBRep_Array1OfLineInter {
+    pub fn array1(&self) -> &crate::ffi_types::TopOpeBRep_Array1OfLineInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfLineInter_array1(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_array1(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TopOpeBRep_Array1OfLineInter {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TopOpeBRep_Array1OfLineInter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfLineInter_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfLineInter_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2313,7 +2534,7 @@ impl HArray1OfLineInter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_get_type_name(),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2321,18 +2542,22 @@ impl HArray1OfLineInter {
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfLineInter.hxx`:23 - `TopOpeBRep_HArray1OfLineInter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfLineInter_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2340,7 +2565,7 @@ impl HArray1OfLineInter {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -2350,18 +2575,18 @@ impl HArray1OfLineInter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfLineInter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHArray1OfLineInter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_IsInstance(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2369,9 +2594,12 @@ impl HArray1OfLineInter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2379,7 +2607,9 @@ impl HArray1OfLineInter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2392,14 +2622,16 @@ impl HArray1OfLineInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2408,7 +2640,7 @@ impl HArray1OfLineInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2417,46 +2649,48 @@ impl HArray1OfLineInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfLineInter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfLineInter_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTopOpeBRepHArray1OfLineInter;
+pub use crate::ffi_types::HandleTopOpeBRepHArray1OfLineInter;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfLineInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopOpeBRepHArray1OfLineInter_destructor(ptr);
+        crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_destructor(ptr);
     }
 }
 
 impl HandleTopOpeBRepHArray1OfLineInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfLineInter
-    pub fn get(&self) -> &crate::ffi::TopOpeBRep_HArray1OfLineInter {
+    pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfLineInter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get(
+            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_HArray1OfLineInter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_HArray1OfLineInter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRep_HArray1OfLineInter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopOpeBRepHArray1OfLineInter_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TopOpeBRep_HArray1OfLineInter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopOpeBRepHArray1OfLineInter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfLineInter_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2466,11 +2700,11 @@ impl HandleTopOpeBRepHArray1OfLineInter {
 // ========================
 
 /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter`
-pub use crate::ffi::TopOpeBRep_HArray1OfVPointInter as HArray1OfVPointInter;
+pub use crate::ffi_types::TopOpeBRep_HArray1OfVPointInter as HArray1OfVPointInter;
 
 unsafe impl crate::CppDeletable for HArray1OfVPointInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_HArray1OfVPointInter_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_destructor(ptr);
     }
 }
 
@@ -2479,7 +2713,7 @@ impl HArray1OfVPointInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_ctor(),
             ))
         }
     }
@@ -2488,7 +2722,9 @@ impl HArray1OfVPointInter {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -2501,7 +2737,7 @@ impl HArray1OfVPointInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_int2_vpointinter(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_ctor_int2_vpointinter(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -2516,49 +2752,53 @@ impl HArray1OfVPointInter {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_vpointinter_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_ctor_vpointinter_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::TopOpeBRep_HArray1OfVPointInter()`
     pub fn new_array1ofvpointinter(
-        theOther: &crate::ffi::TopOpeBRep_Array1OfVPointInter,
+        theOther: &crate::ffi_types::TopOpeBRep_Array1OfVPointInter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_ctor_array1ofvpointinter(theOther),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_ctor_array1ofvpointinter(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TopOpeBRep_Array1OfVPointInter {
+    pub fn array1(&self) -> &crate::ffi_types::TopOpeBRep_Array1OfVPointInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfVPointInter_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TopOpeBRep_Array1OfVPointInter {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TopOpeBRep_Array1OfVPointInter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfVPointInter_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_HArray1OfVPointInter_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2566,7 +2806,7 @@ impl HArray1OfVPointInter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_get_type_name(),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2574,10 +2814,10 @@ impl HArray1OfVPointInter {
     }
 
     /// **Source:** `TopOpeBRep_HArray1OfVPointInter.hxx`:23 - `TopOpeBRep_HArray1OfVPointInter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_get_type_descriptor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_get_type_descriptor(),
             ))
         }
     }
@@ -2586,7 +2826,7 @@ impl HArray1OfVPointInter {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -2597,7 +2837,7 @@ impl HArray1OfVPointInter {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -2607,18 +2847,18 @@ impl HArray1OfVPointInter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHArray1OfVPointInter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHArray1OfVPointInter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_IsInstance(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2626,9 +2866,9 @@ impl HArray1OfVPointInter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_IsKind(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -2639,7 +2879,9 @@ impl HArray1OfVPointInter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2652,14 +2894,16 @@ impl HArray1OfVPointInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2668,7 +2912,7 @@ impl HArray1OfVPointInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2677,46 +2921,50 @@ impl HArray1OfVPointInter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_HArray1OfVPointInter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_HArray1OfVPointInter_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTopOpeBRepHArray1OfVPointInter;
+pub use crate::ffi_types::HandleTopOpeBRepHArray1OfVPointInter;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHArray1OfVPointInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_destructor(ptr);
+        crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_destructor(ptr);
     }
 }
 
 impl HandleTopOpeBRepHArray1OfVPointInter {
     /// Dereference this Handle to access the underlying TopOpeBRep_HArray1OfVPointInter
-    pub fn get(&self) -> &crate::ffi::TopOpeBRep_HArray1OfVPointInter {
+    pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_HArray1OfVPointInter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_HArray1OfVPointInter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_HArray1OfVPointInter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRep_HArray1OfVPointInter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TopOpeBRep_HArray1OfVPointInter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopOpeBRepHArray1OfVPointInter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHArray1OfVPointInter_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2726,11 +2974,11 @@ impl HandleTopOpeBRepHArray1OfVPointInter {
 // ========================
 
 /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:34 - `TopOpeBRep_Hctxee2d`
-pub use crate::ffi::TopOpeBRep_Hctxee2d as Hctxee2d;
+pub use crate::ffi_types::TopOpeBRep_Hctxee2d as Hctxee2d;
 
 unsafe impl crate::CppDeletable for Hctxee2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_Hctxee2d_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_destructor(ptr);
     }
 }
 
@@ -2738,7 +2986,9 @@ impl Hctxee2d {
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:38 - `TopOpeBRep_Hctxee2d::TopOpeBRep_Hctxee2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_ctor(),
+            ))
         }
     }
 
@@ -2751,35 +3001,50 @@ impl Hctxee2d {
         BAS2: &crate::b_rep_adaptor::Surface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_set_edges(self as *mut Self, E1, E2, BAS1, BAS2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_set_edges(
+                self as *mut Self,
+                E1,
+                E2,
+                BAS1,
+                BAS2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:45 - `TopOpeBRep_Hctxee2d::Edge()`
     pub fn edge(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_edge(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_edge(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:47 - `TopOpeBRep_Hctxee2d::Curve()`
     pub fn curve(&self, I: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_curve(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_curve(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:49 - `TopOpeBRep_Hctxee2d::Domain()`
     pub fn domain(&self, I: i32) -> &crate::int_res2d::Domain {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_domain(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_domain(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:51 - `TopOpeBRep_Hctxee2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2789,7 +3054,7 @@ impl Hctxee2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopOpeBRep_Hctxee2d_get_type_name(),
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2797,50 +3062,64 @@ impl Hctxee2d {
     }
 
     /// **Source:** `TopOpeBRep_Hctxee2d.hxx`:51 - `TopOpeBRep_Hctxee2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TopOpeBRep_Hctxee2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxee2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHctxee2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_Hctxee2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2848,7 +3127,7 @@ impl Hctxee2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_Hctxee2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2861,62 +3140,70 @@ impl Hctxee2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxee2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxee2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopOpeBRepHctxee2d;
+pub use crate::ffi_types::HandleTopOpeBRepHctxee2d;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxee2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopOpeBRepHctxee2d_destructor(ptr);
+        crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_destructor(ptr);
     }
 }
 
 impl HandleTopOpeBRepHctxee2d {
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxee2d
-    pub fn get(&self) -> &crate::ffi::TopOpeBRep_Hctxee2d {
+    pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_Hctxee2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopOpeBRepHctxee2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_Hctxee2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_Hctxee2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRep_Hctxee2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopOpeBRepHctxee2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopOpeBRep_Hctxee2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopOpeBRepHctxee2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepHctxee2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2929,11 +3216,11 @@ impl HandleTopOpeBRepHctxee2d {
 // ========================
 
 /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:26 - `TopOpeBRep_Hctxff2d`
-pub use crate::ffi::TopOpeBRep_Hctxff2d as Hctxff2d;
+pub use crate::ffi_types::TopOpeBRep_Hctxff2d as Hctxff2d;
 
 unsafe impl crate::CppDeletable for Hctxff2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_Hctxff2d_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_destructor(ptr);
     }
 }
 
@@ -2941,61 +3228,74 @@ impl Hctxff2d {
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:30 - `TopOpeBRep_Hctxff2d::TopOpeBRep_Hctxff2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:32 - `TopOpeBRep_Hctxff2d::SetFaces()`
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_set_faces(self as *mut Self, F1, F2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_set_faces(self as *mut Self, F1, F2)
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:34 - `TopOpeBRep_Hctxff2d::SetHSurfaces()`
     pub fn set_h_surfaces(
         &mut self,
-        S1: &crate::ffi::HandleBRepAdaptorSurface,
-        S2: &crate::ffi::HandleBRepAdaptorSurface,
+        S1: &crate::ffi_types::HandleBRepAdaptorSurface,
+        S2: &crate::ffi_types::HandleBRepAdaptorSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_set_h_surfaces(self as *mut Self, S1, S2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_set_h_surfaces(self as *mut Self, S1, S2)
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:37 - `TopOpeBRep_Hctxff2d::SetTolerances()`
     pub fn set_tolerances(&mut self, Tol1: f64, Tol2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_set_tolerances(self as *mut Self, Tol1, Tol2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_set_tolerances(
+                self as *mut Self,
+                Tol1,
+                Tol2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:39 - `TopOpeBRep_Hctxff2d::GetTolerances()`
     pub fn get_tolerances(&self, Tol1: &mut f64, Tol2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_get_tolerances(self as *const Self, Tol1, Tol2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_get_tolerances(
+                self as *const Self,
+                Tol1,
+                Tol2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:41 - `TopOpeBRep_Hctxff2d::GetMaxTolerance()`
     pub fn get_max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_get_max_tolerance(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_get_max_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:43 - `TopOpeBRep_Hctxff2d::Face()`
     pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_face(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_face(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:45 - `TopOpeBRep_Hctxff2d::HSurface()`
-    pub fn h_surface(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleBRepAdaptorSurface> {
+    pub fn h_surface(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleBRepAdaptorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_Hctxff2d_h_surface(self as *const Self, I),
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_h_surface(self as *const Self, I),
             ))
         }
     }
@@ -3003,28 +3303,33 @@ impl Hctxff2d {
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:47 - `TopOpeBRep_Hctxff2d::SurfacesSameOriented()`
     pub fn surfaces_same_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_surfaces_same_oriented(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_surfaces_same_oriented(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:49 - `TopOpeBRep_Hctxff2d::FacesSameOriented()`
     pub fn faces_same_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_faces_same_oriented(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_faces_same_oriented(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:51 - `TopOpeBRep_Hctxff2d::FaceSameOrientedWithRef()`
     pub fn face_same_oriented_with_ref(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_face_same_oriented_with_ref(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_face_same_oriented_with_ref(
+                self as *const Self,
+                I,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:53 - `TopOpeBRep_Hctxff2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3034,7 +3339,7 @@ impl Hctxff2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopOpeBRep_Hctxff2d_get_type_name(),
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3042,50 +3347,64 @@ impl Hctxff2d {
     }
 
     /// **Source:** `TopOpeBRep_Hctxff2d.hxx`:53 - `TopOpeBRep_Hctxff2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TopOpeBRep_Hctxff2d_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxff2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHctxff2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_Hctxff2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3093,7 +3412,7 @@ impl Hctxff2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_Hctxff2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3106,62 +3425,70 @@ impl Hctxff2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Hctxff2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Hctxff2d_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopOpeBRepHctxff2d;
+pub use crate::ffi_types::HandleTopOpeBRepHctxff2d;
 
 unsafe impl crate::CppDeletable for HandleTopOpeBRepHctxff2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopOpeBRepHctxff2d_destructor(ptr);
+        crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_destructor(ptr);
     }
 }
 
 impl HandleTopOpeBRepHctxff2d {
     /// Dereference this Handle to access the underlying TopOpeBRep_Hctxff2d
-    pub fn get(&self) -> &crate::ffi::TopOpeBRep_Hctxff2d {
+    pub fn get(&self) -> &crate::ffi_types::TopOpeBRep_Hctxff2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopOpeBRepHctxff2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopOpeBRep_Hctxff2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopOpeBRep_Hctxff2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopOpeBRep_Hctxff2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopOpeBRepHctxff2d_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TopOpeBRep_Hctxff2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopOpeBRepHctxff2d_to_HandleStandardTransient(
+                crate::ffi_extern_TKBool::HandleTopOpeBRepHctxff2d_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3174,11 +3501,11 @@ impl HandleTopOpeBRepHctxff2d {
 // ========================
 
 /// **Source:** `TopOpeBRep_LineInter.hxx`:47 - `TopOpeBRep_LineInter`
-pub use crate::ffi::TopOpeBRep_LineInter as LineInter;
+pub use crate::ffi_types::TopOpeBRep_LineInter as LineInter;
 
 unsafe impl crate::CppDeletable for LineInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_LineInter_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_LineInter_destructor(ptr);
     }
 }
 
@@ -3186,33 +3513,35 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:52 - `TopOpeBRep_LineInter::TopOpeBRep_LineInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_LineInter_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:54 - `TopOpeBRep_LineInter::SetLine()`
     pub fn set_line(
         &mut self,
-        L: &crate::ffi::HandleIntPatchLine,
+        L: &crate::ffi_types::HandleIntPatchLine,
         S1: &crate::b_rep_adaptor::Surface,
         S2: &crate::b_rep_adaptor::Surface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_line(self as *mut Self, L, S1, S2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_line(self as *mut Self, L, S1, S2)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:58 - `TopOpeBRep_LineInter::SetFaces()`
     pub fn set_faces(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_faces(self as *mut Self, F1, F2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_faces(self as *mut Self, F1, F2)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:60 - `TopOpeBRep_LineInter::TypeLineCurve()`
     pub fn type_line_curve(&self) -> crate::top_ope_b_rep::TypeLineCurve {
         crate::top_ope_b_rep::TypeLineCurve::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_type_line_curve(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_type_line_curve(self as *const Self)
         }))
         .unwrap()
     }
@@ -3220,14 +3549,14 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:62 - `TopOpeBRep_LineInter::NbVPoint()`
     pub fn nb_v_point(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_nb_v_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_nb_v_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:64 - `TopOpeBRep_LineInter::VPoint()`
     pub fn v_point(&self, I: i32) -> &VPointInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_v_point(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_v_point(
                 self as *const Self,
                 I,
             )))
@@ -3237,123 +3566,131 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:66 - `TopOpeBRep_LineInter::ChangeVPoint()`
     pub fn change_v_point(&mut self, I: i32) -> &mut VPointInter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_LineInter_change_v_point(
-                self as *mut Self,
-                I,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_change_v_point(self as *mut Self, I),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:68 - `TopOpeBRep_LineInter::SetINL()`
     pub fn set_inl(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_inl(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_inl(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:70 - `TopOpeBRep_LineInter::INL()`
     pub fn inl(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_LineInter_inl(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_inl(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:72 - `TopOpeBRep_LineInter::SetIsVClosed()`
     pub fn set_is_v_closed(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_is_v_closed(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_is_v_closed(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:74 - `TopOpeBRep_LineInter::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_is_v_closed(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_is_v_closed(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:76 - `TopOpeBRep_LineInter::SetOK()`
     pub fn set_ok(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_ok(self as *mut Self, B)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_ok(self as *mut Self, B)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:78 - `TopOpeBRep_LineInter::OK()`
     pub fn ok(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_LineInter_ok(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_ok(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:80 - `TopOpeBRep_LineInter::SetHasVPonR()`
     pub fn set_has_v_pon_r(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_has_v_pon_r(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_has_v_pon_r(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:82 - `TopOpeBRep_LineInter::HasVPonR()`
     pub fn has_v_pon_r(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_has_v_pon_r(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_has_v_pon_r(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:84 - `TopOpeBRep_LineInter::SetVPBounds()`
     pub fn set_vp_bounds(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_vp_bounds(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_vp_bounds(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:86 - `TopOpeBRep_LineInter::VPBounds()`
     pub fn vp_bounds(&self, f: &mut i32, l: &mut i32, n: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_vp_bounds(self as *const Self, f, l, n)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_vp_bounds(self as *const Self, f, l, n)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:90 - `TopOpeBRep_LineInter::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_is_periodic(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:92 - `TopOpeBRep_LineInter::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_LineInter_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_period(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:94 - `TopOpeBRep_LineInter::Bounds()`
     pub fn bounds(&self, f: &mut f64, l: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_bounds(self as *const Self, f, l)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_bounds(self as *const Self, f, l)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:96 - `TopOpeBRep_LineInter::HasVInternal()`
     pub fn has_v_internal(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_has_v_internal(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_has_v_internal(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:98 - `TopOpeBRep_LineInter::NbWPoint()`
     pub fn nb_w_point(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_nb_w_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_nb_w_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:100 - `TopOpeBRep_LineInter::WPoint()`
     pub fn w_point(&mut self, I: i32) -> &WPointInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_w_point(self as *mut Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_w_point(
+                self as *mut Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:102 - `TopOpeBRep_LineInter::TransitionOnS1()`
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_transition_on_s1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_transition_on_s1(self as *const Self)
         }))
         .unwrap()
     }
@@ -3361,7 +3698,7 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:104 - `TopOpeBRep_LineInter::TransitionOnS2()`
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_transition_on_s2(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_transition_on_s2(self as *const Self)
         }))
         .unwrap()
     }
@@ -3369,7 +3706,7 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:106 - `TopOpeBRep_LineInter::SituationS1()`
     pub fn situation_s1(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_situation_s1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_situation_s1(self as *const Self)
         }))
         .unwrap()
     }
@@ -3377,17 +3714,17 @@ impl LineInter {
     /// **Source:** `TopOpeBRep_LineInter.hxx`:108 - `TopOpeBRep_LineInter::SituationS2()`
     pub fn situation_s2(&self) -> crate::int_surf::Situation {
         crate::int_surf::Situation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_situation_s2(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_situation_s2(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:110 - `TopOpeBRep_LineInter::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_LineInter_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_curve(self as *const Self),
+            ))
         }
     }
 
@@ -3396,10 +3733,14 @@ impl LineInter {
         &self,
         parmin: f64,
         parmax: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_LineInter_curve_real2(self as *const Self, parmin, parmax),
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_curve_real2(
+                    self as *const Self,
+                    parmin,
+                    parmax,
+                ),
             ))
         }
     }
@@ -3408,7 +3749,9 @@ impl LineInter {
     /// returns the edge of a RESTRICTION line (or a null edge).
     pub fn arc(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_arc(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_arc(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3417,78 +3760,90 @@ impl LineInter {
     /// an edge of the original face <Index> (1 or 2).
     pub fn arc_is_edge(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_arc_is_edge(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_arc_is_edge(self as *const Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:122 - `TopOpeBRep_LineInter::LineW()`
-    pub fn line_w(&self) -> &crate::ffi::HandleIntPatchWLine {
+    pub fn line_w(&self) -> &crate::ffi_types::HandleIntPatchWLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_line_w(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_line_w(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:124 - `TopOpeBRep_LineInter::LineG()`
-    pub fn line_g(&self) -> &crate::ffi::HandleIntPatchGLine {
+    pub fn line_g(&self) -> &crate::ffi_types::HandleIntPatchGLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_line_g(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_line_g(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:126 - `TopOpeBRep_LineInter::LineR()`
-    pub fn line_r(&self) -> &crate::ffi::HandleIntPatchRLine {
+    pub fn line_r(&self) -> &crate::ffi_types::HandleIntPatchRLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_line_r(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_LineInter_line_r(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:128 - `TopOpeBRep_LineInter::HasFirstPoint()`
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_has_first_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_has_first_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:130 - `TopOpeBRep_LineInter::HasLastPoint()`
     pub fn has_last_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_has_last_point(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_has_last_point(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:132 - `TopOpeBRep_LineInter::ComputeFaceFaceTransition()`
     pub fn compute_face_face_transition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_compute_face_face_transition(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_compute_face_face_transition(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:134 - `TopOpeBRep_LineInter::FaceFaceTransition()`
     pub fn face_face_transition(&self, I: i32) -> &crate::top_ope_b_rep_ds::Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_LineInter_face_face_transition(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_face_face_transition(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:136 - `TopOpeBRep_LineInter::Index()`
     pub fn index_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_index_int(self as *mut Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_index_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:138 - `TopOpeBRep_LineInter::Index()`
     pub fn index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_LineInter_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_index(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:140 - `TopOpeBRep_LineInter::DumpType()`
     pub fn dump_type(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_dump_type(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_dump_type(self as *const Self)
         })
     }
 
@@ -3500,7 +3855,12 @@ impl LineInter {
         s2: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_dump_v_point(self as *const Self, I, s1, s2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_dump_v_point(
+                self as *const Self,
+                I,
+                s1,
+                s2,
+            )
         })
     }
 
@@ -3512,21 +3872,34 @@ impl LineInter {
         s2: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_dump_bipoint(self as *const Self, B, s1, s2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_dump_bipoint(
+                self as *const Self,
+                B,
+                s1,
+                s2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:150 - `TopOpeBRep_LineInter::SetTraceIndex()`
     pub fn set_trace_index(&mut self, exF1: i32, exF2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_set_trace_index(self as *mut Self, exF1, exF2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_set_trace_index(
+                self as *mut Self,
+                exF1,
+                exF2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_LineInter.hxx`:152 - `TopOpeBRep_LineInter::GetTraceIndex()`
     pub fn get_trace_index(&self, exF1: &mut i32, exF2: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_LineInter_get_trace_index(self as *const Self, exF1, exF2)
+            crate::ffi_extern_TKBool::TopOpeBRep_LineInter_get_trace_index(
+                self as *const Self,
+                exF1,
+                exF2,
+            )
         })
     }
 
@@ -3539,13 +3912,15 @@ impl LineInter {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_line_transitions(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_LineInter_dump_line_transitions(
-                self as *mut Self,
-                OS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_LineInter_dump_line_transitions(
+                    self as *mut Self,
+                    OS,
+                ),
+            ))
         }
     }
 }
@@ -3555,11 +3930,11 @@ impl LineInter {
 // ========================
 
 /// **Source:** `TopOpeBRep_Point2d.hxx`:40 - `TopOpeBRep_Point2d`
-pub use crate::ffi::TopOpeBRep_Point2d as Point2d;
+pub use crate::ffi_types::TopOpeBRep_Point2d as Point2d;
 
 unsafe impl crate::CppDeletable for Point2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_Point2d_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_Point2d_destructor(ptr);
     }
 }
 
@@ -3567,73 +3942,84 @@ impl Point2d {
     /// **Source:** `TopOpeBRep_Point2d.hxx`:45 - `TopOpeBRep_Point2d::TopOpeBRep_Point2d()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Point2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Point2d_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:47 - `TopOpeBRep_Point2d::Dump()`
     pub fn dump(&self, ie1: i32, ie2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_dump(self as *const Self, ie1, ie2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_dump(self as *const Self, ie1, ie2)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:49 - `TopOpeBRep_Point2d::SetPint()`
     pub fn set_pint(&mut self, P: &crate::int_res2d::IntersectionPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_pint(self as *mut Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_pint(self as *mut Self, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:51 - `TopOpeBRep_Point2d::HasPint()`
     pub fn has_pint(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_Point2d_has_pint(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_has_pint(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:53 - `TopOpeBRep_Point2d::Pint()`
     pub fn pint(&self) -> &crate::int_res2d::IntersectionPoint {
-        unsafe { &*(crate::check_result(crate::ffi::TopOpeBRep_Point2d_pint(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Point2d_pint(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:55 - `TopOpeBRep_Point2d::SetIsVertex()`
     pub fn set_is_vertex(&mut self, I: i32, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_is_vertex(self as *mut Self, I, B)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_is_vertex(self as *mut Self, I, B)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:57 - `TopOpeBRep_Point2d::IsVertex()`
     pub fn is_vertex(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_is_vertex(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_is_vertex(self as *const Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:59 - `TopOpeBRep_Point2d::SetVertex()`
     pub fn set_vertex(&mut self, I: i32, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_vertex(self as *mut Self, I, V)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_vertex(self as *mut Self, I, V)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:61 - `TopOpeBRep_Point2d::Vertex()`
     pub fn vertex(&self, I: i32) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Point2d_vertex(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Point2d_vertex(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:63 - `TopOpeBRep_Point2d::SetTransition()`
     pub fn set_transition(&mut self, I: i32, T: &crate::top_ope_b_rep_ds::Transition) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_transition(self as *mut Self, I, T)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_transition(self as *mut Self, I, T)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:65 - `TopOpeBRep_Point2d::Transition()`
     pub fn transition(&self, I: i32) -> &crate::top_ope_b_rep_ds::Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Point2d_transition(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Point2d_transition(
                 self as *const Self,
                 I,
             )))
@@ -3643,66 +4029,79 @@ impl Point2d {
     /// **Source:** `TopOpeBRep_Point2d.hxx`:67 - `TopOpeBRep_Point2d::ChangeTransition()`
     pub fn change_transition(&mut self, I: i32) -> &mut crate::top_ope_b_rep_ds::Transition {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_Point2d_change_transition(
-                self as *mut Self,
-                I,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Point2d_change_transition(
+                    self as *mut Self,
+                    I,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:69 - `TopOpeBRep_Point2d::SetParameter()`
     pub fn set_parameter(&mut self, I: i32, P: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_parameter(self as *mut Self, I, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_parameter(self as *mut Self, I, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:71 - `TopOpeBRep_Point2d::Parameter()`
     pub fn parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_parameter(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_parameter(self as *const Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:73 - `TopOpeBRep_Point2d::SetIsPointOfSegment()`
     pub fn set_is_point_of_segment(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_is_point_of_segment(self as *mut Self, B)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_is_point_of_segment(
+                self as *mut Self,
+                B,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:75 - `TopOpeBRep_Point2d::IsPointOfSegment()`
     pub fn is_point_of_segment(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_is_point_of_segment(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_is_point_of_segment(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:77 - `TopOpeBRep_Point2d::SetSegmentAncestors()`
     pub fn set_segment_ancestors(&mut self, IP1: i32, IP2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_segment_ancestors(self as *mut Self, IP1, IP2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_segment_ancestors(
+                self as *mut Self,
+                IP1,
+                IP2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:79 - `TopOpeBRep_Point2d::SegmentAncestors()`
     pub fn segment_ancestors(&self, IP1: &mut i32, IP2: &mut i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_segment_ancestors(self as *const Self, IP1, IP2)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_segment_ancestors(
+                self as *const Self,
+                IP1,
+                IP2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:81 - `TopOpeBRep_Point2d::SetStatus()`
     pub fn set_status(&mut self, S: crate::top_ope_b_rep::P2Dstatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_status(self as *mut Self, S.into())
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_status(self as *mut Self, S.into())
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:83 - `TopOpeBRep_Point2d::Status()`
     pub fn status(&self) -> crate::top_ope_b_rep::P2Dstatus {
         crate::top_ope_b_rep::P2Dstatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_status(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -3710,66 +4109,77 @@ impl Point2d {
     /// **Source:** `TopOpeBRep_Point2d.hxx`:85 - `TopOpeBRep_Point2d::SetIndex()`
     pub fn set_index(&mut self, X: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_index(self as *mut Self, X)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_index(self as *mut Self, X)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:87 - `TopOpeBRep_Point2d::Index()`
     pub fn index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_Point2d_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_index(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:89 - `TopOpeBRep_Point2d::SetValue()`
     pub fn set_value(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_value(self as *mut Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_value(self as *mut Self, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:91 - `TopOpeBRep_Point2d::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Point2d_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Point2d_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:93 - `TopOpeBRep_Point2d::SetValue2d()`
     pub fn set_value2d(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_value2d(self as *mut Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_value2d(self as *mut Self, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:95 - `TopOpeBRep_Point2d::Value2d()`
     pub fn value2d(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_Point2d_value2d(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_Point2d_value2d(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:97 - `TopOpeBRep_Point2d::SetKeep()`
     pub fn set_keep(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_keep(self as *mut Self, B)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_keep(self as *mut Self, B)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:99 - `TopOpeBRep_Point2d::Keep()`
     pub fn keep(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_Point2d_keep(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_keep(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:101 - `TopOpeBRep_Point2d::SetEdgesConfig()`
     pub fn set_edges_config(&mut self, C: crate::top_ope_b_rep_ds::Config) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_edges_config(self as *mut Self, C.into())
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_edges_config(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:103 - `TopOpeBRep_Point2d::EdgesConfig()`
     pub fn edges_config(&self) -> crate::top_ope_b_rep_ds::Config {
         crate::top_ope_b_rep_ds::Config::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_edges_config(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_edges_config(self as *const Self)
         }))
         .unwrap()
     }
@@ -3777,46 +4187,46 @@ impl Point2d {
     /// **Source:** `TopOpeBRep_Point2d.hxx`:105 - `TopOpeBRep_Point2d::SetTolerance()`
     pub fn set_tolerance(&mut self, T: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_tolerance(self as *mut Self, T)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_tolerance(self as *mut Self, T)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:107 - `TopOpeBRep_Point2d::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_tolerance(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:109 - `TopOpeBRep_Point2d::SetHctxff2d()`
-    pub fn set_hctxff2d(&mut self, ff2d: &crate::ffi::HandleTopOpeBRepHctxff2d) {
+    pub fn set_hctxff2d(&mut self, ff2d: &crate::ffi_types::HandleTopOpeBRepHctxff2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_hctxff2d(self as *mut Self, ff2d)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_hctxff2d(self as *mut Self, ff2d)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:111 - `TopOpeBRep_Point2d::Hctxff2d()`
-    pub fn hctxff2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxff2d> {
+    pub fn hctxff2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHctxff2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Point2d_hctxff2d(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Point2d_hctxff2d(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:113 - `TopOpeBRep_Point2d::SetHctxee2d()`
-    pub fn set_hctxee2d(&mut self, ee2d: &crate::ffi::HandleTopOpeBRepHctxee2d) {
+    pub fn set_hctxee2d(&mut self, ee2d: &crate::ffi_types::HandleTopOpeBRepHctxee2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_Point2d_set_hctxee2d(self as *mut Self, ee2d)
+            crate::ffi_extern_TKBool::TopOpeBRep_Point2d_set_hctxee2d(self as *mut Self, ee2d)
         })
     }
 
     /// **Source:** `TopOpeBRep_Point2d.hxx`:115 - `TopOpeBRep_Point2d::Hctxee2d()`
-    pub fn hctxee2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTopOpeBRepHctxee2d> {
+    pub fn hctxee2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTopOpeBRepHctxee2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopOpeBRep_Point2d_hctxee2d(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_Point2d_hctxee2d(self as *const Self),
+            ))
         }
     }
 }
@@ -3826,11 +4236,11 @@ impl Point2d {
 // ========================
 
 /// **Source:** `TopOpeBRep_PointClassifier.hxx`:28 - `TopOpeBRep_PointClassifier`
-pub use crate::ffi::TopOpeBRep_PointClassifier as PointClassifier;
+pub use crate::ffi_types::TopOpeBRep_PointClassifier as PointClassifier;
 
 unsafe impl crate::CppDeletable for PointClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_PointClassifier_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_destructor(ptr);
     }
 }
 
@@ -3839,7 +4249,7 @@ impl PointClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointClassifier_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_ctor(),
             ))
         }
     }
@@ -3847,14 +4257,14 @@ impl PointClassifier {
     /// **Source:** `TopOpeBRep_PointClassifier.hxx`:35 - `TopOpeBRep_PointClassifier::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_PointClassifier_init(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_init(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_PointClassifier.hxx`:37 - `TopOpeBRep_PointClassifier::Load()`
     pub fn load(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_PointClassifier_load(self as *mut Self, F)
+            crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_load(self as *mut Self, F)
         })
     }
 
@@ -3867,7 +4277,12 @@ impl PointClassifier {
         Tol: f64,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_PointClassifier_classify(self as *mut Self, F, P, Tol)
+            crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_classify(
+                self as *mut Self,
+                F,
+                P,
+                Tol,
+            )
         }))
         .unwrap()
     }
@@ -3875,7 +4290,7 @@ impl PointClassifier {
     /// **Source:** `TopOpeBRep_PointClassifier.hxx`:44 - `TopOpeBRep_PointClassifier::State()`
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_PointClassifier_state(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_PointClassifier_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -3887,11 +4302,11 @@ impl PointClassifier {
 
 /// **Source:** `TopOpeBRep_PointGeomTool.hxx`:30 - `TopOpeBRep_PointGeomTool`
 /// Provide services needed by the Fillers
-pub use crate::ffi::TopOpeBRep_PointGeomTool as PointGeomTool;
+pub use crate::ffi_types::TopOpeBRep_PointGeomTool as PointGeomTool;
 
 unsafe impl crate::CppDeletable for PointGeomTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_PointGeomTool_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_destructor(ptr);
     }
 }
 
@@ -3901,7 +4316,7 @@ impl PointGeomTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointGeomTool_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_ctor(),
             ))
         }
     }
@@ -3912,7 +4327,7 @@ impl PointGeomTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointGeomTool_make_point_vpointinter(IP),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_make_point_vpointinter(IP),
             ))
         }
     }
@@ -3921,7 +4336,7 @@ impl PointGeomTool {
     pub fn make_point_point2d(P2D: &Point2d) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointGeomTool_make_point_point2d(P2D),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_make_point_point2d(P2D),
             ))
         }
     }
@@ -3932,7 +4347,9 @@ impl PointGeomTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointGeomTool_make_point_faceedgeintersector(FEI),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_make_point_faceedgeintersector(
+                    FEI,
+                ),
             ))
         }
     }
@@ -3943,7 +4360,7 @@ impl PointGeomTool {
     ) -> crate::OwnedPtr<crate::top_ope_b_rep_ds::Point> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_PointGeomTool_make_point_shape(S),
+                crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_make_point_shape(S),
             ))
         }
     }
@@ -3953,7 +4370,9 @@ impl PointGeomTool {
         DSP1: &crate::top_ope_b_rep_ds::Point,
         DSP2: &crate::top_ope_b_rep_ds::Point,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_PointGeomTool_is_equal(DSP1, DSP2) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_PointGeomTool_is_equal(DSP1, DSP2)
+        })
     }
 }
 
@@ -3981,11 +4400,11 @@ impl PointGeomTool {
 /// Let S1,S2 the shapes sent to InitIntersection(S1,S2) method :
 /// - S1 is always SCANNED by a ShapeScanner from TopOpeBRep.
 /// - S2 is always EXPLORED by a ShapeExplorer from TopOpeBRepTool.
-pub use crate::ffi::TopOpeBRep_ShapeIntersector as ShapeIntersector;
+pub use crate::ffi_types::TopOpeBRep_ShapeIntersector as ShapeIntersector;
 
 unsafe impl crate::CppDeletable for ShapeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_ShapeIntersector_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_destructor(ptr);
     }
 }
 
@@ -3994,7 +4413,7 @@ impl ShapeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_ctor(),
             ))
         }
     }
@@ -4007,7 +4426,7 @@ impl ShapeIntersector {
         S2: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_init_intersection_shape2(
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_init_intersection_shape2(
                 self as *mut Self,
                 S1,
                 S2,
@@ -4025,7 +4444,7 @@ impl ShapeIntersector {
         F2: &crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_init_intersection_shape2_face2(
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_init_intersection_shape2_face2(
                 self as *mut Self,
                 S1,
                 S2,
@@ -4041,7 +4460,7 @@ impl ShapeIntersector {
     /// Index = 1 will return S1, Index = 2 will return S2.
     pub fn shape(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeIntersector_shape(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_shape(
                 self as *const Self,
                 Index,
             )))
@@ -4053,7 +4472,9 @@ impl ShapeIntersector {
     /// between two the shapes.
     pub fn more_intersection(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_more_intersection(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_more_intersection(
+                self as *const Self,
+            )
         })
     }
 
@@ -4061,7 +4482,9 @@ impl ShapeIntersector {
     /// search for the next intersection between the two shapes.
     pub fn next_intersection(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_next_intersection(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_next_intersection(
+                self as *mut Self,
+            )
         })
     }
 
@@ -4070,7 +4493,9 @@ impl ShapeIntersector {
     pub fn change_faces_intersector(&mut self) -> &mut FacesIntersector {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector_change_faces_intersector(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_change_faces_intersector(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -4080,7 +4505,9 @@ impl ShapeIntersector {
     pub fn change_edges_intersector(&mut self) -> &mut EdgesIntersector {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector_change_edges_intersector(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_change_edges_intersector(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -4090,7 +4517,7 @@ impl ShapeIntersector {
     pub fn change_face_edge_intersector(&mut self) -> &mut FaceEdgeIntersector {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector_change_face_edge_intersector(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_change_face_edge_intersector(
                     self as *mut Self,
                 ),
             ))
@@ -4102,10 +4529,12 @@ impl ShapeIntersector {
     /// current intersection.
     pub fn current_geom_shape(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeIntersector_current_geom_shape(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_current_geom_shape(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -4114,21 +4543,28 @@ impl ShapeIntersector {
     /// which FacesIntersector from TopOpeBRep was working.
     pub fn get_tolerances(&self, tol1: &mut f64, tol2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_get_tolerances(self as *const Self, tol1, tol2)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_get_tolerances(
+                self as *const Self,
+                tol1,
+                tol2,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector.hxx`:98 - `TopOpeBRep_ShapeIntersector::DumpCurrent()`
     pub fn dump_current(&self, K: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_dump_current(self as *const Self, K)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_dump_current(
+                self as *const Self,
+                K,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector.hxx`:100 - `TopOpeBRep_ShapeIntersector::Index()`
     pub fn index(&self, K: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_index(self as *const Self, K)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_index(self as *const Self, K)
         })
     }
 
@@ -4137,10 +4573,10 @@ impl ShapeIntersector {
         &mut self,
         anObj: &crate::topo_ds::Shape,
         aReference: &crate::topo_ds::Shape,
-        aListOfShape: &mut crate::ffi::TopTools_ListOfShape,
+        aListOfShape: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector_rejected_faces(
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector_rejected_faces(
                 self as *mut Self,
                 anObj,
                 aReference,
@@ -4174,11 +4610,11 @@ impl ShapeIntersector {
 /// Let S1,S2 the shapes sent to InitIntersection(S1,S2) method :
 /// - S1 is always SCANNED by a ShapeScanner from TopOpeBRep.
 /// - S2 is always EXPLORED by a ShapeExplorer from TopOpeBRepTool.
-pub use crate::ffi::TopOpeBRep_ShapeIntersector2d as ShapeIntersector2d;
+pub use crate::ffi_types::TopOpeBRep_ShapeIntersector2d as ShapeIntersector2d;
 
 unsafe impl crate::CppDeletable for ShapeIntersector2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_ShapeIntersector2d_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_destructor(ptr);
     }
 }
 
@@ -4187,7 +4623,7 @@ impl ShapeIntersector2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector2d_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_ctor(),
             ))
         }
     }
@@ -4196,7 +4632,11 @@ impl ShapeIntersector2d {
     /// Initialize the intersection of shapes S1,S2.
     pub fn init_intersection(&mut self, S1: &crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector2d_init_intersection(self as *mut Self, S1, S2)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_init_intersection(
+                self as *mut Self,
+                S1,
+                S2,
+            )
         })
     }
 
@@ -4206,7 +4646,7 @@ impl ShapeIntersector2d {
     /// Index = 1 will return S1, Index = 2 will return S2.
     pub fn shape(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeIntersector2d_shape(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_shape(
                 self as *const Self,
                 Index,
             )))
@@ -4218,7 +4658,9 @@ impl ShapeIntersector2d {
     /// between two the shapes.
     pub fn more_intersection(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector2d_more_intersection(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_more_intersection(
+                self as *const Self,
+            )
         })
     }
 
@@ -4226,7 +4668,9 @@ impl ShapeIntersector2d {
     /// search for the next intersection between the two shapes.
     pub fn next_intersection(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector2d_next_intersection(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_next_intersection(
+                self as *mut Self,
+            )
         })
     }
 
@@ -4235,7 +4679,7 @@ impl ShapeIntersector2d {
     pub fn change_edges_intersector(&mut self) -> &mut EdgesIntersector {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeIntersector2d_change_edges_intersector(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_change_edges_intersector(
                     self as *mut Self,
                 ),
             ))
@@ -4247,24 +4691,29 @@ impl ShapeIntersector2d {
     /// current intersection.
     pub fn current_geom_shape(&self, Index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeIntersector2d_current_geom_shape(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_current_geom_shape(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector2d.hxx`:80 - `TopOpeBRep_ShapeIntersector2d::DumpCurrent()`
     pub fn dump_current(&self, K: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector2d_dump_current(self as *const Self, K)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_dump_current(
+                self as *const Self,
+                K,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeIntersector2d.hxx`:82 - `TopOpeBRep_ShapeIntersector2d::Index()`
     pub fn index(&self, K: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeIntersector2d_index(self as *const Self, K)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeIntersector2d_index(self as *const Self, K)
         })
     }
 }
@@ -4277,11 +4726,11 @@ impl ShapeIntersector2d {
 /// Find, among the subshapes SS of a reference shape
 /// RS, the ones which 3D box interferes with the box of
 /// a shape S (SS and S are of the same type).
-pub use crate::ffi::TopOpeBRep_ShapeScanner as ShapeScanner;
+pub use crate::ffi_types::TopOpeBRep_ShapeScanner as ShapeScanner;
 
 unsafe impl crate::CppDeletable for ShapeScanner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_ShapeScanner_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_destructor(ptr);
     }
 }
 
@@ -4290,7 +4739,7 @@ impl ShapeScanner {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_ShapeScanner_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_ctor(),
             ))
         }
     }
@@ -4298,7 +4747,7 @@ impl ShapeScanner {
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:42 - `TopOpeBRep_ShapeScanner::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_clear(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_clear(self as *mut Self)
         })
     }
 
@@ -4310,7 +4759,7 @@ impl ShapeScanner {
         TA: crate::top_abs::ShapeEnum,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_add_boxes_make_cob(
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_add_boxes_make_cob(
                 self as *mut Self,
                 S,
                 TS.into(),
@@ -4322,35 +4771,38 @@ impl ShapeScanner {
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:48 - `TopOpeBRep_ShapeScanner::Init()`
     pub fn init_shape(&mut self, E: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_init_shape(self as *mut Self, E)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_init_shape(self as *mut Self, E)
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:50 - `TopOpeBRep_ShapeScanner::Init()`
     pub fn init_shapeexplorer(&mut self, X: &mut crate::top_ope_b_rep_tool::ShapeExplorer) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_init_shapeexplorer(self as *mut Self, X)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_init_shapeexplorer(
+                self as *mut Self,
+                X,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:52 - `TopOpeBRep_ShapeScanner::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_more(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_more(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:54 - `TopOpeBRep_ShapeScanner::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_next(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_next(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:56 - `TopOpeBRep_ShapeScanner::Current()`
     pub fn current(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeScanner_current(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_current(
                 self as *const Self,
             )))
         }
@@ -4359,7 +4811,7 @@ impl ShapeScanner {
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:58 - `TopOpeBRep_ShapeScanner::BoxSort()`
     pub fn box_sort(&self) -> &crate::top_ope_b_rep_tool::BoxSort {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_ShapeScanner_box_sort(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_box_sort(
                 self as *const Self,
             )))
         }
@@ -4368,16 +4820,18 @@ impl ShapeScanner {
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:60 - `TopOpeBRep_ShapeScanner::ChangeBoxSort()`
     pub fn change_box_sort(&mut self) -> &mut crate::top_ope_b_rep_tool::BoxSort {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_ShapeScanner_change_box_sort(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_change_box_sort(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_ShapeScanner.hxx`:62 - `TopOpeBRep_ShapeScanner::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_ShapeScanner_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_index(self as *const Self)
         })
     }
 
@@ -4390,13 +4844,15 @@ impl ShapeScanner {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_current(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_ShapeScanner_dump_current(
-                self as *mut Self,
-                OS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_ShapeScanner_dump_current(
+                    self as *mut Self,
+                    OS,
+                ),
+            ))
         }
     }
 }
@@ -4406,11 +4862,11 @@ impl ShapeScanner {
 // ========================
 
 /// **Source:** `TopOpeBRep_VPointInter.hxx`:34 - `TopOpeBRep_VPointInter`
-pub use crate::ffi::TopOpeBRep_VPointInter as VPointInter;
+pub use crate::ffi_types::TopOpeBRep_VPointInter as VPointInter;
 
 unsafe impl crate::CppDeletable for VPointInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_VPointInter_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_destructor(ptr);
     }
 }
 
@@ -4418,30 +4874,30 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:39 - `TopOpeBRep_VPointInter::TopOpeBRep_VPointInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TopOpeBRep_VPointInter_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:41 - `TopOpeBRep_VPointInter::SetPoint()`
     pub fn set_point(&mut self, P: &crate::int_patch::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_set_point(self as *mut Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_set_point(self as *mut Self, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:43 - `TopOpeBRep_VPointInter::SetShapes()`
     pub fn set_shapes(&mut self, I1: i32, I2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_set_shapes(self as *mut Self, I1, I2)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_set_shapes(self as *mut Self, I1, I2)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:45 - `TopOpeBRep_VPointInter::GetShapes()`
     pub fn get_shapes(&self, I1: &mut i32, I2: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_get_shapes(self as *const Self, I1, I2)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_get_shapes(self as *const Self, I1, I2)
         })
     }
 
@@ -4449,7 +4905,9 @@ impl VPointInter {
     pub fn transition_on_s1(&self) -> crate::OwnedPtr<crate::int_surf::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInter_transition_on_s1(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_transition_on_s1(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4458,7 +4916,9 @@ impl VPointInter {
     pub fn transition_on_s2(&self) -> crate::OwnedPtr<crate::int_surf::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInter_transition_on_s2(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_transition_on_s2(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4467,7 +4927,9 @@ impl VPointInter {
     pub fn transition_line_arc1(&self) -> crate::OwnedPtr<crate::int_surf::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInter_transition_line_arc1(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_transition_line_arc1(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4476,7 +4938,9 @@ impl VPointInter {
     pub fn transition_line_arc2(&self) -> crate::OwnedPtr<crate::int_surf::Transition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInter_transition_line_arc2(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_transition_line_arc2(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4484,49 +4948,59 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:55 - `TopOpeBRep_VPointInter::IsOnDomS1()`
     pub fn is_on_dom_s1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_on_dom_s1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_on_dom_s1(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:57 - `TopOpeBRep_VPointInter::IsOnDomS2()`
     pub fn is_on_dom_s2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_on_dom_s2(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_on_dom_s2(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:59 - `TopOpeBRep_VPointInter::ParametersOnS1()`
     pub fn parameters_on_s1(&self, u: &mut f64, v: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_parameters_on_s1(self as *const Self, u, v)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_parameters_on_s1(
+                self as *const Self,
+                u,
+                v,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:61 - `TopOpeBRep_VPointInter::ParametersOnS2()`
     pub fn parameters_on_s2(&self, u: &mut f64, v: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_parameters_on_s2(self as *const Self, u, v)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_parameters_on_s2(
+                self as *const Self,
+                u,
+                v,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:63 - `TopOpeBRep_VPointInter::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:65 - `TopOpeBRep_VPointInter::Tolerance()`
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_tolerance(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:67 - `TopOpeBRep_VPointInter::ArcOnS1()`
     pub fn arc_on_s1(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_arc_on_s1(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_arc_on_s1(
                 self as *const Self,
             )))
         }
@@ -4535,7 +5009,7 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:69 - `TopOpeBRep_VPointInter::ArcOnS2()`
     pub fn arc_on_s2(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_arc_on_s2(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_arc_on_s2(
                 self as *const Self,
             )))
         }
@@ -4544,14 +5018,14 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:71 - `TopOpeBRep_VPointInter::ParameterOnLine()`
     pub fn parameter_on_line(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_parameter_on_line(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_parameter_on_line(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:73 - `TopOpeBRep_VPointInter::ParameterOnArc1()`
     pub fn parameter_on_arc1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_parameter_on_arc1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_parameter_on_arc1(self as *const Self)
         })
     }
 
@@ -4560,7 +5034,7 @@ impl VPointInter {
     /// restriction facet of the first surface.
     pub fn is_vertex_on_s1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_vertex_on_s1(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_vertex_on_s1(self as *const Self)
         })
     }
 
@@ -4571,7 +5045,7 @@ impl VPointInter {
     /// Otherwise, an exception is raised.
     pub fn vertex_on_s1(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_vertex_on_s1(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_vertex_on_s1(
                 self as *const Self,
             )))
         }
@@ -4580,7 +5054,7 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:85 - `TopOpeBRep_VPointInter::ParameterOnArc2()`
     pub fn parameter_on_arc2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_parameter_on_arc2(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_parameter_on_arc2(self as *const Self)
         })
     }
 
@@ -4589,7 +5063,7 @@ impl VPointInter {
     /// restriction facet of the second surface.
     pub fn is_vertex_on_s2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_vertex_on_s2(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_vertex_on_s2(self as *const Self)
         })
     }
 
@@ -4600,7 +5074,7 @@ impl VPointInter {
     /// Otherwise, an exception is raised.
     pub fn vertex_on_s2(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_vertex_on_s2(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_vertex_on_s2(
                 self as *const Self,
             )))
         }
@@ -4609,7 +5083,7 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:97 - `TopOpeBRep_VPointInter::IsInternal()`
     pub fn is_internal(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_internal(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_internal(self as *const Self)
         })
     }
 
@@ -4618,7 +5092,7 @@ impl VPointInter {
     /// lines.
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_multiple(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_multiple(self as *const Self)
         })
     }
 
@@ -4627,7 +5101,7 @@ impl VPointInter {
     /// domain <I> (= 1 or 2).
     pub fn state_int(&self, I: i32) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_state_int(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_state_int(self as *const Self, I)
         }))
         .unwrap()
     }
@@ -4637,7 +5111,11 @@ impl VPointInter {
     /// the geometric shape <I> (= 1 or 2).
     pub fn state_state_int(&mut self, S: crate::top_abs::State, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_state_state_int(self as *mut Self, S.into(), I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_state_state_int(
+                self as *mut Self,
+                S.into(),
+                I,
+            )
         })
     }
 
@@ -4646,7 +5124,7 @@ impl VPointInter {
     /// and parameter <Par> of point on <Eon>.
     pub fn edge_on_shape_real_int(&mut self, Eon: &crate::topo_ds::Shape, Par: f64, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_edge_on_shape_real_int(
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_edge_on_shape_real_int(
                 self as *mut Self,
                 Eon,
                 Par,
@@ -4659,7 +5137,7 @@ impl VPointInter {
     /// get the edge of shape I (1,2) containing the point.
     pub fn edge_on_int(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_edge_on_int(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_edge_on_int(
                 self as *const Self,
                 I,
             )))
@@ -4670,7 +5148,10 @@ impl VPointInter {
     /// get the parameter on edge of shape I (1,2) containing the point.
     pub fn edge_on_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_edge_on_parameter(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_edge_on_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -4682,7 +5163,7 @@ impl VPointInter {
     /// 3 means the VPoint is on the restrictions 1 and 2
     pub fn shape_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_shape_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_shape_index(self as *const Self)
         })
     }
 
@@ -4690,7 +5171,7 @@ impl VPointInter {
     /// set value of shape supporting me (0,1,2,3).
     pub fn shape_index_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_shape_index_int(self as *mut Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_shape_index_int(self as *mut Self, I)
         })
     }
 
@@ -4700,7 +5181,10 @@ impl VPointInter {
     /// of shape I (1,2).
     pub fn edge(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_edge(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_edge(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
@@ -4708,7 +5192,7 @@ impl VPointInter {
     /// get the parameter on edge of shape I (1,2) containing the point
     pub fn edge_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_edge_parameter(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_edge_parameter(self as *const Self, I)
         })
     }
 
@@ -4717,7 +5201,10 @@ impl VPointInter {
     pub fn surface_parameters(&self, I: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInter_surface_parameters(self as *const Self, I),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_surface_parameters(
+                    self as *const Self,
+                    I,
+                ),
             ))
         }
     }
@@ -4725,14 +5212,14 @@ impl VPointInter {
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:144 - `TopOpeBRep_VPointInter::IsVertex()`
     pub fn is_vertex(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_is_vertex(self as *const Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_is_vertex(self as *const Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:146 - `TopOpeBRep_VPointInter::Vertex()`
     pub fn vertex(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_vertex(
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_vertex(
                 self as *const Self,
                 I,
             )))
@@ -4743,7 +5230,7 @@ impl VPointInter {
     /// set myKeep value according to current states.
     pub fn update_keep(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_update_keep(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_update_keep(self as *mut Self)
         })
     }
 
@@ -4752,14 +5239,16 @@ impl VPointInter {
     /// False at creation of VPoint.
     /// Updated by State(State from TopAbs,Integer from Standard)
     pub fn keep(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopOpeBRep_VPointInter_keep(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_keep(self as *const Self)
+        })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:157 - `TopOpeBRep_VPointInter::ChangeKeep()`
     /// updates VPointInter flag "keep" with <keep>.
     pub fn change_keep(&mut self, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_change_keep(self as *mut Self, keep)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_change_keep(self as *mut Self, keep)
         })
     }
 
@@ -4768,7 +5257,7 @@ impl VPointInter {
     /// VPoints are same
     pub fn equalp_p(&self, VP: &VPointInter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_equalp_p(self as *const Self, VP)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_equalp_p(self as *const Self, VP)
         })
     }
 
@@ -4777,21 +5266,21 @@ impl VPointInter {
     /// else returns <par> parameter on <E>
     pub fn paron_e(&self, E: &crate::topo_ds::Edge, par: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_paron_e(self as *const Self, E, par)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_paron_e(self as *const Self, E, par)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:167 - `TopOpeBRep_VPointInter::Index()`
     pub fn index_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_index_int(self as *mut Self, I)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_index_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInter.hxx`:169 - `TopOpeBRep_VPointInter::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInter_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_index(self as *const Self)
         })
     }
 
@@ -4806,15 +5295,17 @@ impl VPointInter {
         &mut self,
         I: i32,
         F: &crate::topo_ds::Face,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_dump_int_face_ostream(
-                self as *mut Self,
-                I,
-                F,
-                OS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_dump_int_face_ostream(
+                    self as *mut Self,
+                    I,
+                    F,
+                    OS,
+                ),
+            ))
         }
     }
 
@@ -4829,15 +5320,17 @@ impl VPointInter {
         &mut self,
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopOpeBRep_VPointInter_dump_face2_ostream(
-                self as *mut Self,
-                F1,
-                F2,
-                OS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_dump_face2_ostream(
+                    self as *mut Self,
+                    F1,
+                    F2,
+                    OS,
+                ),
+            ))
         }
     }
 
@@ -4845,7 +5338,7 @@ impl VPointInter {
     pub fn p_the_point_of_intersection_dummy(&self) -> Option<&crate::int_patch::Point> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_VPointInter_p_the_point_of_intersection_dummy(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInter_p_the_point_of_intersection_dummy(
                     self as *const Self,
                 )
             });
@@ -4863,11 +5356,11 @@ impl VPointInter {
 // ========================
 
 /// **Source:** `TopOpeBRep_VPointInterClassifier.hxx`:30 - `TopOpeBRep_VPointInterClassifier`
-pub use crate::ffi::TopOpeBRep_VPointInterClassifier as VPointInterClassifier;
+pub use crate::ffi_types::TopOpeBRep_VPointInterClassifier as VPointInterClassifier;
 
 unsafe impl crate::CppDeletable for VPointInterClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_VPointInterClassifier_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_VPointInterClassifier_destructor(ptr);
     }
 }
 
@@ -4876,7 +5369,7 @@ impl VPointInterClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInterClassifier_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterClassifier_ctor(),
             ))
         }
     }
@@ -4897,7 +5390,7 @@ impl VPointInterClassifier {
         Tol: f64,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterClassifier_v_point_position(
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterClassifier_v_point_position(
                 self as *mut Self,
                 F,
                 VP,
@@ -4916,9 +5409,11 @@ impl VPointInterClassifier {
     /// computed is ON, else Edge is a null shape.
     pub fn edge(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInterClassifier_edge(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterClassifier_edge(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4926,7 +5421,9 @@ impl VPointInterClassifier {
     /// returns the parameter of the VPoint <VP> on Edge()
     pub fn edge_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterClassifier_edge_parameter(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterClassifier_edge_parameter(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4936,11 +5433,11 @@ impl VPointInterClassifier {
 // ========================
 
 /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:27 - `TopOpeBRep_VPointInterIterator`
-pub use crate::ffi::TopOpeBRep_VPointInterIterator as VPointInterIterator;
+pub use crate::ffi_types::TopOpeBRep_VPointInterIterator as VPointInterIterator;
 
 unsafe impl crate::CppDeletable for VPointInterIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_VPointInterIterator_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_destructor(ptr);
     }
 }
 
@@ -4949,7 +5446,7 @@ impl VPointInterIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInterIterator_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_ctor(),
             ))
         }
     }
@@ -4958,7 +5455,7 @@ impl VPointInterIterator {
     pub fn new_lineinter(LI: &LineInter) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInterIterator_ctor_lineinter(LI),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_ctor_lineinter(LI),
             ))
         }
     }
@@ -4966,7 +5463,7 @@ impl VPointInterIterator {
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:36 - `TopOpeBRep_VPointInterIterator::Init()`
     pub fn init_lineinter_bool(&mut self, LI: &LineInter, checkkeep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterIterator_init_lineinter_bool(
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_init_lineinter_bool(
                 self as *mut Self,
                 LI,
                 checkkeep,
@@ -4977,37 +5474,41 @@ impl VPointInterIterator {
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:39 - `TopOpeBRep_VPointInterIterator::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterIterator_init(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_init(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:41 - `TopOpeBRep_VPointInterIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterIterator_more(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:43 - `TopOpeBRep_VPointInterIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterIterator_next(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_next(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:45 - `TopOpeBRep_VPointInterIterator::CurrentVP()`
     pub fn current_vp(&mut self) -> &VPointInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_VPointInterIterator_current_vp(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_current_vp(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_VPointInterIterator.hxx`:47 - `TopOpeBRep_VPointInterIterator::CurrentVPIndex()`
     pub fn current_vp_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_VPointInterIterator_current_vp_index(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_current_vp_index(
+                self as *const Self,
+            )
         })
     }
 
@@ -5015,7 +5516,9 @@ impl VPointInterIterator {
     pub fn change_current_vp(&mut self) -> &mut VPointInter {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TopOpeBRep_VPointInterIterator_change_current_vp(self as *mut Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_change_current_vp(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -5024,7 +5527,9 @@ impl VPointInterIterator {
     pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_VPointInterIterator_p_line_inter_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_VPointInterIterator_p_line_inter_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5040,11 +5545,11 @@ impl VPointInterIterator {
 // ========================
 
 /// **Source:** `TopOpeBRep_WPointInter.hxx`:27 - `TopOpeBRep_WPointInter`
-pub use crate::ffi::TopOpeBRep_WPointInter as WPointInter;
+pub use crate::ffi_types::TopOpeBRep_WPointInter as WPointInter;
 
 unsafe impl crate::CppDeletable for WPointInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_WPointInter_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_destructor(ptr);
     }
 }
 
@@ -5052,37 +5557,51 @@ impl WPointInter {
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:32 - `TopOpeBRep_WPointInter::TopOpeBRep_WPointInter()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::TopOpeBRep_WPointInter_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:34 - `TopOpeBRep_WPointInter::Set()`
     pub fn set(&mut self, P: &crate::int_surf::PntOn2S) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInter_set(self as *mut Self, P)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_set(self as *mut Self, P)
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:36 - `TopOpeBRep_WPointInter::ParametersOnS1()`
     pub fn parameters_on_s1(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInter_parameters_on_s1(self as *const Self, U, V)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_parameters_on_s1(
+                self as *const Self,
+                U,
+                V,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:38 - `TopOpeBRep_WPointInter::ParametersOnS2()`
     pub fn parameters_on_s2(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInter_parameters_on_s2(self as *const Self, U, V)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_parameters_on_s2(
+                self as *const Self,
+                U,
+                V,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:40 - `TopOpeBRep_WPointInter::Parameters()`
     pub fn parameters(&self, U1: &mut f64, V1: &mut f64, U2: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInter_parameters(self as *const Self, U1, V1, U2, V2)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_parameters(
+                self as *const Self,
+                U1,
+                V1,
+                U2,
+                V2,
+            )
         })
     }
 
@@ -5090,7 +5609,7 @@ impl WPointInter {
     pub fn value_on_s1(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_WPointInter_value_on_s1(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_value_on_s1(self as *const Self),
             ))
         }
     }
@@ -5099,7 +5618,7 @@ impl WPointInter {
     pub fn value_on_s2(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_WPointInter_value_on_s2(self as *const Self),
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_value_on_s2(self as *const Self),
             ))
         }
     }
@@ -5107,7 +5626,9 @@ impl WPointInter {
     /// **Source:** `TopOpeBRep_WPointInter.hxx`:49 - `TopOpeBRep_WPointInter::Value()`
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_WPointInter_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5115,7 +5636,9 @@ impl WPointInter {
     pub fn p_pnt_on2_s_dummy(&self) -> Option<&crate::int_surf::PntOn2S> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_WPointInter_p_pnt_on2_s_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInter_p_pnt_on2_s_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5131,11 +5654,11 @@ impl WPointInter {
 // ========================
 
 /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:27 - `TopOpeBRep_WPointInterIterator`
-pub use crate::ffi::TopOpeBRep_WPointInterIterator as WPointInterIterator;
+pub use crate::ffi_types::TopOpeBRep_WPointInterIterator as WPointInterIterator;
 
 unsafe impl crate::CppDeletable for WPointInterIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopOpeBRep_WPointInterIterator_destructor(ptr);
+        crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_destructor(ptr);
     }
 }
 
@@ -5144,7 +5667,7 @@ impl WPointInterIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_WPointInterIterator_ctor(),
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_ctor(),
             ))
         }
     }
@@ -5153,7 +5676,7 @@ impl WPointInterIterator {
     pub fn new_lineinter(LI: &LineInter) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopOpeBRep_WPointInterIterator_ctor_lineinter(LI),
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_ctor_lineinter(LI),
             ))
         }
     }
@@ -5161,37 +5684,42 @@ impl WPointInterIterator {
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:36 - `TopOpeBRep_WPointInterIterator::Init()`
     pub fn init_lineinter(&mut self, LI: &LineInter) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInterIterator_init_lineinter(self as *mut Self, LI)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_init_lineinter(
+                self as *mut Self,
+                LI,
+            )
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:38 - `TopOpeBRep_WPointInterIterator::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInterIterator_init(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_init(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:40 - `TopOpeBRep_WPointInterIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInterIterator_more(self as *const Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:42 - `TopOpeBRep_WPointInterIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopOpeBRep_WPointInterIterator_next(self as *mut Self)
+            crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_next(self as *mut Self)
         })
     }
 
     /// **Source:** `TopOpeBRep_WPointInterIterator.hxx`:44 - `TopOpeBRep_WPointInterIterator::CurrentWP()`
     pub fn current_wp(&mut self) -> &WPointInter {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopOpeBRep_WPointInterIterator_current_wp(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_current_wp(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -5199,7 +5727,9 @@ impl WPointInterIterator {
     pub fn p_line_inter_dummy(&self) -> Option<&LineInter> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopOpeBRep_WPointInterIterator_p_line_inter_dummy(self as *const Self)
+                crate::ffi_extern_TKBool::TopOpeBRep_WPointInterIterator_p_line_inter_dummy(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5214,7 +5744,7 @@ impl WPointInterIterator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TopOpeBRep_Array1OfLineInter as Array1OfLineInter,
     TopOpeBRep_Array1OfVPointInter as Array1OfVPointInter,
     TopOpeBRep_SequenceOfPoint2d as SequenceOfPoint2d,

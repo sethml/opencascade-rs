@@ -22,10 +22,10 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
     enforce: bool,
     preci: f64,
     theProgress: &crate::message::ProgressRange,
-    theMsgReg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+    theMsgReg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::ShapeFix_same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgregistrator(shape, enforce, preci, theProgress, theMsgReg)
+        crate::ffi_extern_TKShHealing::ShapeFix_same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgregistrator(shape, enforce, preci, theProgress, theMsgReg)
     })
 }
 /// **Source:** `ShapeFix.hxx`:65 - `ShapeFix::EncodeRegularity`
@@ -34,7 +34,7 @@ pub fn same_parameter_shape_bool_real_progressrange_handleshapeextendbasicmsgreg
 /// is processed only once
 pub fn encode_regularity_shape_real_2(shape: &crate::topo_ds::Shape, tolang: f64) {
     crate::check_void_result(unsafe {
-        crate::ffi::ShapeFix_encode_regularity_shape_real_2(shape, tolang)
+        crate::ffi_extern_TKShHealing::ShapeFix_encode_regularity_shape_real_2(shape, tolang)
     })
 }
 /// **Source:** `ShapeFix.hxx`:70 - `ShapeFix::RemoveSmallEdges`
@@ -43,12 +43,12 @@ pub fn encode_regularity_shape_real_2(shape: &crate::topo_ds::Shape, tolang: f64
 pub fn remove_small_edges(
     shape: &mut crate::topo_ds::Shape,
     Tolerance: f64,
-    context: &mut crate::ffi::HandleShapeBuildReShape,
+    context: &mut crate::ffi_types::HandleShapeBuildReShape,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_remove_small_edges(
-            shape, Tolerance, context,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKShHealing::ShapeFix_remove_small_edges(shape, Tolerance, context),
+        ))
     }
 }
 /// **Source:** `ShapeFix.hxx`:75 - `ShapeFix::FixVertexPosition`
@@ -56,20 +56,26 @@ pub fn remove_small_edges(
 pub fn fix_vertex_position(
     theshape: &mut crate::topo_ds::Shape,
     theTolerance: f64,
-    thecontext: &crate::ffi::HandleShapeBuildReShape,
+    thecontext: &crate::ffi_types::HandleShapeBuildReShape,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::ShapeFix_fix_vertex_position(theshape, theTolerance, thecontext)
+        crate::ffi_extern_TKShHealing::ShapeFix_fix_vertex_position(
+            theshape,
+            theTolerance,
+            thecontext,
+        )
     })
 }
 /// **Source:** `ShapeFix.hxx`:81 - `ShapeFix::LeastEdgeSize`
 /// Calculate size of least edge;
 pub fn least_edge_size(theshape: &mut crate::topo_ds::Shape) -> f64 {
-    crate::check_result(unsafe { crate::ffi::ShapeFix_least_edge_size(theshape) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKShHealing::ShapeFix_least_edge_size(theshape)
+    })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From ShapeFix_ComposeShell.hxx
@@ -113,11 +119,11 @@ pub use crate::ffi::HandleStandardTransient;
 ///
 /// All the modifications are recorded in the context tool
 /// (ShapeBuild_ReShape).
-pub use crate::ffi::ShapeFix_ComposeShell as ComposeShell;
+pub use crate::ffi_types::ShapeFix_ComposeShell as ComposeShell;
 
 unsafe impl crate::CppDeletable for ComposeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_ComposeShell_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_destructor(ptr);
     }
 }
 
@@ -126,7 +132,9 @@ impl ComposeShell {
     /// Creates empty tool.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_ComposeShell_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_ctor(),
+            ))
         }
     }
 
@@ -137,13 +145,19 @@ impl ComposeShell {
     /// for handling subtle cases, such as tangential intersections.
     pub fn init(
         &mut self,
-        Grid: &crate::ffi::HandleShapeExtendCompositeSurface,
+        Grid: &crate::ffi_types::HandleShapeExtendCompositeSurface,
         L: &crate::top_loc::Location,
         Face: &crate::topo_ds::Face,
         Prec: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_init(self as *mut Self, Grid, L, Face, Prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_init(
+                self as *mut Self,
+                Grid,
+                L,
+                Face,
+                Prec,
+            )
         })
     }
 
@@ -156,16 +170,18 @@ impl ComposeShell {
     /// Default is False
     pub fn closed_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_ComposeShell_closed_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_closed_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:111 - `ShapeFix_ComposeShell::Perform()`
     /// Performs the work on already loaded data.
     pub fn perform(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_ComposeShell_perform(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:121 - `ShapeFix_ComposeShell::SplitEdges()`
@@ -179,7 +195,7 @@ impl ComposeShell {
     /// of the edge.
     pub fn split_edges(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_split_edges(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_split_edges(self as *mut Self)
         })
     }
 
@@ -187,7 +203,9 @@ impl ComposeShell {
     /// Returns resulting shell or face (or Null shape if not done)
     pub fn result(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_ComposeShell_result(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_result(
+                self as *const Self,
+            )))
         }
     }
 
@@ -202,7 +220,10 @@ impl ComposeShell {
     /// FAIL4: unrecoverable algorithm error (parity check)
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -214,11 +235,15 @@ impl ComposeShell {
     /// face is created.
     pub fn dispatch_wires(
         &self,
-        faces: &mut crate::ffi::TopTools_SequenceOfShape,
-        wires: &mut crate::ffi::ShapeFix_SequenceOfWireSegment,
+        faces: &mut crate::ffi_types::TopTools_SequenceOfShape,
+        wires: &mut crate::ffi_types::ShapeFix_SequenceOfWireSegment,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_dispatch_wires(self as *const Self, faces, wires)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_dispatch_wires(
+                self as *const Self,
+                faces,
+                wires,
+            )
         })
     }
 
@@ -226,10 +251,10 @@ impl ComposeShell {
     /// Sets tool for transfer parameters from 3d to 2d and vice versa.
     pub fn set_transfer_param_tool(
         &mut self,
-        TransferParam: &crate::ffi::HandleShapeAnalysisTransferParameters,
+        TransferParam: &crate::ffi_types::HandleShapeAnalysisTransferParameters,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_set_transfer_param_tool(
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_set_transfer_param_tool(
                 self as *mut Self,
                 TransferParam,
             )
@@ -240,20 +265,24 @@ impl ComposeShell {
     /// Gets tool for transfer parameters from 3d to 2d and vice versa.
     pub fn get_transfer_param_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_ComposeShell_get_transfer_param_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_get_transfer_param_tool(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:151 - `ShapeFix_ComposeShell::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_ComposeShell_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -261,7 +290,7 @@ impl ComposeShell {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_ComposeShell_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -269,76 +298,96 @@ impl ComposeShell {
     }
 
     /// **Source:** `ShapeFix_ComposeShell.hxx`:151 - `ShapeFix_ComposeShell::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_ComposeShell_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_as_ShapeFix_Root(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_ComposeShell_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_ComposeShell_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixComposeShell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_ComposeShell_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_Set(
+                self as *mut Self,
+                Root,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_ComposeShell_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -346,20 +395,25 @@ impl ComposeShell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_ComposeShell_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -367,49 +421,67 @@ impl ComposeShell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -421,7 +493,7 @@ impl ComposeShell {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -433,7 +505,7 @@ impl ComposeShell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SendWarning(
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SendWarning(
                 self as *const Self,
                 shape,
                 message,
@@ -444,7 +516,7 @@ impl ComposeShell {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_SendFail(
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_SendFail(
                 self as *const Self,
                 shape,
                 message,
@@ -453,16 +525,22 @@ impl ComposeShell {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -470,7 +548,9 @@ impl ComposeShell {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_ComposeShell_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -483,74 +563,86 @@ impl ComposeShell {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ComposeShell_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_ComposeShell_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixComposeShell;
+pub use crate::ffi_types::HandleShapeFixComposeShell;
 
 unsafe impl crate::CppDeletable for HandleShapeFixComposeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixComposeShell_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_destructor(ptr);
     }
 }
 
 impl HandleShapeFixComposeShell {
     /// Dereference this Handle to access the underlying ShapeFix_ComposeShell
-    pub fn get(&self) -> &crate::ffi::ShapeFix_ComposeShell {
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_ComposeShell {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixComposeShell_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_ComposeShell
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_ComposeShell {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixComposeShell_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeFix_ComposeShell
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_ComposeShell {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeFix_ComposeShell> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixComposeShell_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_ComposeShell> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixComposeShell_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixComposeShell_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -567,11 +659,11 @@ impl HandleShapeFixComposeShell {
 /// - incorrect SameParameter flag (curve deviation is greater than
 /// edge tolerance),
 /// - not adjacent curves (3d or pcurve) to the vertices.
-pub use crate::ffi::ShapeFix_Edge as Edge;
+pub use crate::ffi_types::ShapeFix_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Edge_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Edge_destructor(ptr);
     }
 }
 
@@ -579,7 +671,11 @@ impl Edge {
     /// **Source:** `ShapeFix_Edge.hxx`:54 - `ShapeFix_Edge::ShapeFix_Edge()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Edge_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:58 - `ShapeFix_Edge::Projector()`
@@ -587,11 +683,11 @@ impl Edge {
     /// Can be used for adjusting parameters of projector
     pub fn projector(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeConstructProjectCurveOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeConstructProjectCurveOnSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Edge_projector(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_projector(self as *mut Self),
+            ))
         }
     }
 
@@ -602,7 +698,11 @@ impl Edge {
         face: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_remove_p_curve_edge_face(self as *mut Self, edge, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_remove_p_curve_edge_face(
+                self as *mut Self,
+                edge,
+                face,
+            )
         })
     }
 
@@ -618,16 +718,11 @@ impl Edge {
     pub fn fix_remove_p_curve_edge_handlegeomsurface_location(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi::HandleGeomSurface,
+        surface: &crate::ffi_types::HandleGeomSurface,
         location: &crate::top_loc::Location,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_remove_p_curve_edge_handlegeomsurface_location(
-                self as *mut Self,
-                edge,
-                surface,
-                location,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_remove_p_curve_edge_handlegeomsurface_location(self as *mut Self, edge, surface, location)
         })
     }
 
@@ -638,7 +733,7 @@ impl Edge {
     /// nothing done
     pub fn fix_remove_curve3d(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_remove_curve3d(self as *mut Self, edge)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_remove_curve3d(self as *mut Self, edge)
         })
     }
 
@@ -652,7 +747,7 @@ impl Edge {
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_face_bool_real(
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_add_p_curve_edge_face_bool_real(
                 self as *mut Self,
                 edge,
                 face,
@@ -667,20 +762,13 @@ impl Edge {
     pub fn fix_add_p_curve_edge_handlegeomsurface_location_bool_real(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi::HandleGeomSurface,
+        surface: &crate::ffi_types::HandleGeomSurface,
         location: &crate::top_loc::Location,
         isSeam: bool,
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_handlegeomsurface_location_bool_real(
-                self as *mut Self,
-                edge,
-                surface,
-                location,
-                isSeam,
-                prec,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_add_p_curve_edge_handlegeomsurface_location_bool_real(self as *mut Self, edge, surface, location, isSeam, prec)
         })
     }
 
@@ -691,18 +779,11 @@ impl Edge {
         edge: &crate::topo_ds::Edge,
         face: &crate::topo_ds::Face,
         isSeam: bool,
-        surfana: &crate::ffi::HandleShapeAnalysisSurface,
+        surfana: &crate::ffi_types::HandleShapeAnalysisSurface,
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_face_bool_handleshapeanalysissurface_real(
-                self as *mut Self,
-                edge,
-                face,
-                isSeam,
-                surfana,
-                prec,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_add_p_curve_edge_face_bool_handleshapeanalysissurface_real(self as *mut Self, edge, face, isSeam, surfana, prec)
         })
     }
 
@@ -727,14 +808,14 @@ impl Edge {
     pub fn fix_add_p_curve_edge_handlegeomsurface_location_bool_handleshapeanalysissurface_real(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi::HandleGeomSurface,
+        surface: &crate::ffi_types::HandleGeomSurface,
         location: &crate::top_loc::Location,
         isSeam: bool,
-        surfana: &crate::ffi::HandleShapeAnalysisSurface,
+        surfana: &crate::ffi_types::HandleShapeAnalysisSurface,
         prec: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_add_p_curve_edge_handlegeomsurface_location_bool_handleshapeanalysissurface_real(self as *mut Self, edge, surface, location, isSeam, surfana, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_add_p_curve_edge_handlegeomsurface_location_bool_handleshapeanalysissurface_real(self as *mut Self, edge, surface, location, isSeam, surfana, prec)
         })
     }
 
@@ -749,7 +830,7 @@ impl Edge {
     /// DONE1: 3d curve was added
     pub fn fix_add_curve3d(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_add_curve3d(self as *mut Self, edge)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_add_curve3d(self as *mut Self, edge)
         })
     }
 
@@ -760,7 +841,11 @@ impl Edge {
         face: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_vertex_tolerance_edge_face(self as *mut Self, edge, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_vertex_tolerance_edge_face(
+                self as *mut Self,
+                edge,
+                face,
+            )
         })
     }
 
@@ -775,7 +860,10 @@ impl Edge {
     /// DONE2: the tolerance of last  vertex has been increased
     pub fn fix_vertex_tolerance_edge(&mut self, edge: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_vertex_tolerance_edge(self as *mut Self, edge)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_vertex_tolerance_edge(
+                self as *mut Self,
+                edge,
+            )
         })
     }
 
@@ -786,7 +874,11 @@ impl Edge {
         face: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_reversed2d_edge_face(self as *mut Self, edge, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_reversed2d_edge_face(
+                self as *mut Self,
+                edge,
+                face,
+            )
         })
     }
 
@@ -805,16 +897,11 @@ impl Edge {
     pub fn fix_reversed2d_edge_handlegeomsurface_location(
         &mut self,
         edge: &crate::topo_ds::Edge,
-        surface: &crate::ffi::HandleGeomSurface,
+        surface: &crate::ffi_types::HandleGeomSurface,
         location: &crate::top_loc::Location,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_reversed2d_edge_handlegeomsurface_location(
-                self as *mut Self,
-                edge,
-                surface,
-                location,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_reversed2d_edge_handlegeomsurface_location(self as *mut Self, edge, surface, location)
         })
     }
 
@@ -858,7 +945,7 @@ impl Edge {
         tolerance: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_same_parameter_edge_real(
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_same_parameter_edge_real(
                 self as *mut Self,
                 edge,
                 tolerance,
@@ -907,7 +994,7 @@ impl Edge {
         tolerance: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_fix_same_parameter_edge_face_real(
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_fix_same_parameter_edge_face_real(
                 self as *mut Self,
                 edge,
                 face,
@@ -920,89 +1007,107 @@ impl Edge {
     /// Returns the status (in the form of True/False) of last Fix
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_status(self as *const Self, status.into())
         })
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:242 - `ShapeFix_Edge::SetContext()`
     /// Sets context
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Edge_set_context(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_set_context(self as *mut Self, context)
         })
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:245 - `ShapeFix_Edge::Context()`
     /// Returns context
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Edge_context(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_context(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:247 - `ShapeFix_Edge::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Edge_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Edge_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:247 - `ShapeFix_Edge::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ShapeFix_Edge_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Edge.hxx`:247 - `ShapeFix_Edge::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Edge_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Edge_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Edge_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixEdge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Edge_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1010,7 +1115,7 @@ impl Edge {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Edge_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1023,58 +1128,72 @@ impl Edge {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Edge_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Edge_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixEdge;
+pub use crate::ffi_types::HandleShapeFixEdge;
 
 unsafe impl crate::CppDeletable for HandleShapeFixEdge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixEdge_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixEdge_destructor(ptr);
     }
 }
 
 impl HandleShapeFixEdge {
     /// Dereference this Handle to access the underlying ShapeFix_Edge
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Edge {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixEdge_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Edge {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixEdge_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Edge
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Edge {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Edge {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixEdge_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixEdge_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Edge> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixEdge_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixEdge_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1089,11 +1208,11 @@ impl HandleShapeFixEdge {
 /// Makes vertices to be shared to connect edges,
 /// updates positions and tolerances for shared vertices.
 /// Accepts edges bounded by two vertices each.
-pub use crate::ffi::ShapeFix_EdgeConnect as EdgeConnect;
+pub use crate::ffi_types::ShapeFix_EdgeConnect as EdgeConnect;
 
 unsafe impl crate::CppDeletable for EdgeConnect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_EdgeConnect_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_destructor(ptr);
     }
 }
 
@@ -1101,7 +1220,9 @@ impl EdgeConnect {
     /// **Source:** `ShapeFix_EdgeConnect.hxx`:37 - `ShapeFix_EdgeConnect::ShapeFix_EdgeConnect()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_EdgeConnect_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_ctor(),
+            ))
         }
     }
 
@@ -1111,7 +1232,11 @@ impl EdgeConnect {
     /// taking edges orientation into account
     pub fn add_edge2(&mut self, aFirst: &crate::topo_ds::Edge, aSecond: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeConnect_add_edge2(self as *mut Self, aFirst, aSecond)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_add_edge2(
+                self as *mut Self,
+                aFirst,
+                aSecond,
+            )
         })
     }
 
@@ -1121,7 +1246,7 @@ impl EdgeConnect {
     /// Note: flag Closed should be set for closed wires
     pub fn add_shape(&mut self, aShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeConnect_add_shape(self as *mut Self, aShape)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_add_shape(self as *mut Self, aShape)
         })
     }
 
@@ -1129,7 +1254,7 @@ impl EdgeConnect {
     /// Builds shared vertices, updates their positions and tolerances
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeConnect_build(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_build(self as *mut Self)
         })
     }
 
@@ -1137,7 +1262,7 @@ impl EdgeConnect {
     /// Clears internal data structure
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeConnect_clear(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeConnect_clear(self as *mut Self)
         })
     }
 }
@@ -1149,11 +1274,11 @@ impl EdgeConnect {
 /// **Source:** `ShapeFix_EdgeProjAux.hxx`:33 - `ShapeFix_EdgeProjAux`
 /// Project 3D point (vertex) on pcurves to find Vertex Parameter
 /// on parametric representation of an edge
-pub use crate::ffi::ShapeFix_EdgeProjAux as EdgeProjAux;
+pub use crate::ffi_types::ShapeFix_EdgeProjAux as EdgeProjAux;
 
 unsafe impl crate::CppDeletable for EdgeProjAux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_EdgeProjAux_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_destructor(ptr);
     }
 }
 
@@ -1161,7 +1286,9 @@ impl EdgeProjAux {
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:37 - `ShapeFix_EdgeProjAux::ShapeFix_EdgeProjAux()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_EdgeProjAux_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_ctor(),
+            ))
         }
     }
 
@@ -1172,7 +1299,7 @@ impl EdgeProjAux {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_EdgeProjAux_ctor_face_edge(F, E),
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_ctor_face_edge(F, E),
             ))
         }
     }
@@ -1180,58 +1307,60 @@ impl EdgeProjAux {
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:41 - `ShapeFix_EdgeProjAux::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_init(self as *mut Self, F, E)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_init(self as *mut Self, F, E)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:43 - `ShapeFix_EdgeProjAux::Compute()`
     pub fn compute(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_compute(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_compute(self as *mut Self, preci)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:45 - `ShapeFix_EdgeProjAux::IsFirstDone()`
     pub fn is_first_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_is_first_done(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_is_first_done(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:47 - `ShapeFix_EdgeProjAux::IsLastDone()`
     pub fn is_last_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_is_last_done(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_is_last_done(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:49 - `ShapeFix_EdgeProjAux::FirstParam()`
     pub fn first_param(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_first_param(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_first_param(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:51 - `ShapeFix_EdgeProjAux::LastParam()`
     pub fn last_param(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_last_param(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_last_param(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:53 - `ShapeFix_EdgeProjAux::IsIso()`
-    pub fn is_iso(&mut self, C: &crate::ffi::HandleGeom2dCurve) -> bool {
+    pub fn is_iso(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_is_iso(self as *mut Self, C)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_is_iso(self as *mut Self, C)
         })
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:55 - `ShapeFix_EdgeProjAux::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_EdgeProjAux_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1239,7 +1368,7 @@ impl EdgeProjAux {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_EdgeProjAux_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1247,50 +1376,64 @@ impl EdgeProjAux {
     }
 
     /// **Source:** `ShapeFix_EdgeProjAux.hxx`:55 - `ShapeFix_EdgeProjAux::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_EdgeProjAux_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_EdgeProjAux_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdgeProjAux> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixEdgeProjAux> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_EdgeProjAux_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1298,7 +1441,9 @@ impl EdgeProjAux {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_EdgeProjAux_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1311,62 +1456,74 @@ impl EdgeProjAux {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_EdgeProjAux_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_EdgeProjAux_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixEdgeProjAux;
+pub use crate::ffi_types::HandleShapeFixEdgeProjAux;
 
 unsafe impl crate::CppDeletable for HandleShapeFixEdgeProjAux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixEdgeProjAux_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_destructor(ptr);
     }
 }
 
 impl HandleShapeFixEdgeProjAux {
     /// Dereference this Handle to access the underlying ShapeFix_EdgeProjAux
-    pub fn get(&self) -> &crate::ffi::ShapeFix_EdgeProjAux {
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_EdgeProjAux {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixEdgeProjAux_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_EdgeProjAux
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_EdgeProjAux {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixEdgeProjAux_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeFix_EdgeProjAux
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_EdgeProjAux {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeFix_EdgeProjAux> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixEdgeProjAux_to_HandleStandardTransient(
+                crate::ffi_extern_TKShHealing::HandleShapeFixEdgeProjAux_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1384,11 +1541,11 @@ impl HandleShapeFixEdgeProjAux {
 /// fixing orientation of wires, addition of natural bounds,
 /// fixing of missing seam edge,
 /// and detection and removal of null-area wires
-pub use crate::ffi::ShapeFix_Face as Face;
+pub use crate::ffi_types::ShapeFix_Face as Face;
 
 unsafe impl crate::CppDeletable for Face {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Face_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Face_destructor(ptr);
     }
 }
 
@@ -1396,16 +1553,20 @@ impl Face {
     /// **Source:** `ShapeFix_Face.hxx`:57 - `ShapeFix_Face::ShapeFix_Face()`
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:60 - `ShapeFix_Face::ShapeFix_Face()`
     /// Creates a tool and loads a face
     pub fn new_face(face: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_ctor_face(
-                face,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_ctor_face(face),
+            ))
         }
     }
 
@@ -1413,7 +1574,7 @@ impl Face {
     /// Sets all modes to default
     pub fn clear_modes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_clear_modes(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_clear_modes(self as *mut Self)
         })
     }
 
@@ -1422,7 +1583,7 @@ impl Face {
     /// location
     pub fn init_face(&mut self, face: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_init_face(self as *mut Self, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_init_face(self as *mut Self, face)
         })
     }
 
@@ -1431,12 +1592,12 @@ impl Face {
     /// By default it will be FORWARD, or REVERSED if <fwd> is False
     pub fn init_handlegeomsurface_real_bool(
         &mut self,
-        surf: &crate::ffi::HandleGeomSurface,
+        surf: &crate::ffi_types::HandleGeomSurface,
         preci: f64,
         fwd: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_init_handlegeomsurface_real_bool(
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_init_handlegeomsurface_real_bool(
                 self as *mut Self,
                 surf,
                 preci,
@@ -1450,12 +1611,12 @@ impl Face {
     /// By default it will be FORWARD, or REVERSED if <fwd> is False
     pub fn init_handleshapeanalysissurface_real_bool(
         &mut self,
-        surf: &crate::ffi::HandleShapeAnalysisSurface,
+        surf: &crate::ffi_types::HandleShapeAnalysisSurface,
         preci: f64,
         fwd: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_init_handleshapeanalysissurface_real_bool(
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_init_handleshapeanalysissurface_real_bool(
                 self as *mut Self,
                 surf,
                 preci,
@@ -1468,10 +1629,13 @@ impl Face {
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_set_msg_registrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
@@ -1479,7 +1643,7 @@ impl Face {
     /// Sets basic precision value (also to FixWireTool)
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_set_precision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_set_precision(self as *mut Self, preci)
         })
     }
 
@@ -1487,7 +1651,10 @@ impl Face {
     /// Sets minimal allowed tolerance (also to FixWireTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -1495,7 +1662,10 @@ impl Face {
     /// Sets maximal allowed tolerance (also to FixWireTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -1504,7 +1674,9 @@ impl Face {
     /// ShapeFix_Wire, by default True.
     pub fn fix_wire_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_wire_mode(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_wire_mode(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -1513,9 +1685,11 @@ impl Face {
     /// True. If True, wires oriented to border limited square.
     pub fn fix_orientation_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_orientation_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_orientation_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1526,9 +1700,11 @@ impl Face {
     /// handled by FixOrientation in that case) and True for others.
     pub fn fix_add_natural_bound_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_add_natural_bound_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_add_natural_bound_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1537,9 +1713,11 @@ impl Face {
     /// True. If True, tries to insert seam is missed.
     pub fn fix_missing_seam_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_missing_seam_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_missing_seam_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1548,9 +1726,11 @@ impl Face {
     /// False. If True, drops small wires.
     pub fn fix_small_area_wire_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_small_area_wire_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_small_area_wire_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1559,9 +1739,11 @@ impl Face {
     /// False. If True, drops faces with small outer wires.
     pub fn remove_small_area_face_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_remove_small_area_face_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_remove_small_area_face_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1570,9 +1752,11 @@ impl Face {
     /// by default True.
     pub fn fix_intersecting_wires_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_intersecting_wires_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_intersecting_wires_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1581,9 +1765,9 @@ impl Face {
     /// by default True.
     pub fn fix_loop_wires_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_loop_wires_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_loop_wires_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -1592,9 +1776,9 @@ impl Face {
     /// by default True.
     pub fn fix_split_face_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_split_face_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_split_face_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -1603,9 +1787,11 @@ impl Face {
     /// by default False.
     pub fn auto_correct_precision_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_auto_correct_precision_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_auto_correct_precision_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1614,9 +1800,11 @@ impl Face {
     /// degenerated fix. False by default.
     pub fn fix_periodic_degenerated_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Face_fix_periodic_degenerated_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_periodic_degenerated_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1626,9 +1814,9 @@ impl Face {
     /// same support
     pub fn face(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_face(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_face(self as *const Self),
+            ))
         }
     }
 
@@ -1637,9 +1825,9 @@ impl Face {
     /// To be used instead of Face() if FixMissingSeam involved
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_result(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_result(self as *const Self),
+            ))
         }
     }
 
@@ -1648,7 +1836,9 @@ impl Face {
     /// Wire is added without taking into account orientation of face
     /// (as if face were FORWARD).
     pub fn add(&mut self, wire: &crate::topo_ds::Wire) {
-        crate::check_void_result(unsafe { crate::ffi::ShapeFix_Face_add(self as *mut Self, wire) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_add(self as *mut Self, wire)
+        })
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:166 - `ShapeFix_Face::Perform()`
@@ -1665,7 +1855,9 @@ impl Face {
     /// ShapeExtend_FAIL3: cannot add missing seam
     /// ShapeExtend_FAIL4: cannot remove small area wire
     pub fn perform(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Face_perform(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:175 - `ShapeFix_Face::FixOrientation()`
@@ -1677,7 +1869,9 @@ impl Face {
     /// any case (supposing that natural bound will be added).
     /// Returns True if wires were reversed
     pub fn fix_orientation(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Face_fix_orientation(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_orientation(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:186 - `ShapeFix_Face::FixOrientation()`
@@ -1692,10 +1886,10 @@ impl Face {
     /// internal wires for each (for performing split face).
     pub fn fix_orientation_datamapofshapelistofshape(
         &mut self,
-        MapWires: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        MapWires: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_orientation_datamapofshapelistofshape(
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_orientation_datamapofshapelistofshape(
                 self as *mut Self,
                 MapWires,
             )
@@ -1711,7 +1905,7 @@ impl Face {
     /// Returns True if natural boundary was added
     pub fn fix_add_natural_bound(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_add_natural_bound(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_add_natural_bound(self as *mut Self)
         })
     }
 
@@ -1723,7 +1917,7 @@ impl Face {
     /// Returns True if missing seam was added
     pub fn fix_missing_seam(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_missing_seam(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_missing_seam(self as *mut Self)
         })
     }
 
@@ -1734,16 +1928,22 @@ impl Face {
     /// False if does nothing.
     pub fn fix_small_area_wire(&mut self, theIsRemoveSmallFace: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_small_area_wire(self as *mut Self, theIsRemoveSmallFace)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_small_area_wire(
+                self as *mut Self,
+                theIsRemoveSmallFace,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:211 - `ShapeFix_Face::FixLoopWire()`
     /// Detects if wire has a loop and fixes this situation by splitting on the few parts.
     /// if wire has a loops and it was split Status was set to value ShapeExtend_DONE6.
-    pub fn fix_loop_wire(&mut self, aResWires: &mut crate::ffi::TopTools_SequenceOfShape) -> bool {
+    pub fn fix_loop_wire(
+        &mut self,
+        aResWires: &mut crate::ffi_types::TopTools_SequenceOfShape,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_loop_wire(self as *mut Self, aResWires)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_loop_wire(self as *mut Self, aResWires)
         })
     }
 
@@ -1752,7 +1952,7 @@ impl Face {
     /// and this wires have intersection point
     pub fn fix_intersecting_wires(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_intersecting_wires(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_intersecting_wires(self as *mut Self)
         })
     }
 
@@ -1761,7 +1961,9 @@ impl Face {
     /// Queries on status after Perform()
     pub fn fix_wires_two_coinc_edges(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_wires_two_coinc_edges(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_wires_two_coinc_edges(
+                self as *mut Self,
+            )
         })
     }
 
@@ -1770,10 +1972,10 @@ impl Face {
     /// using inrormation after FixOrientation()
     pub fn fix_split_face(
         &mut self,
-        MapWires: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        MapWires: &crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_split_face(self as *mut Self, MapWires)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_split_face(self as *mut Self, MapWires)
         })
     }
 
@@ -1785,7 +1987,7 @@ impl Face {
     /// Must be used in couple and before FixMissingSeam routine
     pub fn fix_periodic_degenerated(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_fix_periodic_degenerated(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_periodic_degenerated(self as *mut Self)
         })
     }
 
@@ -1804,105 +2006,124 @@ impl Face {
     /// ShapeExtend_FAIL4: cannot remove small area wire
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_status(self as *const Self, status.into())
         })
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:247 - `ShapeFix_Face::FixWireTool()`
     /// Returns tool for fixing wires.
-    pub fn fix_wire_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+    pub fn fix_wire_tool(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixWire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_fix_wire_tool(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_fix_wire_tool(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:249 - `ShapeFix_Face::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Face_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Face_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:249 - `ShapeFix_Face::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ShapeFix_Face_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Face.hxx`:249 - `ShapeFix_Face::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Face_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Face_as_ShapeFix_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Face_as_ShapeFix_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Face_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Face_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Face_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixFace> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Face_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_Set(self as *mut Self, Root)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Face_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_Context(self as *const Self),
             ))
         }
     }
@@ -1910,10 +2131,12 @@ impl Face {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Face_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1921,28 +2144,31 @@ impl Face {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_Precision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_MinTolerance(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_MaxTolerance(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -1954,7 +2180,7 @@ impl Face {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -1966,28 +2192,42 @@ impl Face {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_SendWarning(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_SendWarning(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_SendFail(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1995,7 +2235,7 @@ impl Face {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Face_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2008,67 +2248,83 @@ impl Face {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Face_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Face_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixFace;
+pub use crate::ffi_types::HandleShapeFixFace;
 
 unsafe impl crate::CppDeletable for HandleShapeFixFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixFace_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixFace_destructor(ptr);
     }
 }
 
 impl HandleShapeFixFace {
     /// Dereference this Handle to access the underlying ShapeFix_Face
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Face {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixFace_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Face {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFace_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Face
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Face {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Face {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixFace_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFace_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Face> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFace_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixFace_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Face> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFace_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixFace_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2080,11 +2336,11 @@ impl HandleShapeFixFace {
 
 /// **Source:** `ShapeFix_FaceConnect.hxx`:28 - `ShapeFix_FaceConnect`
 /// Rebuilds connectivity between faces in shell
-pub use crate::ffi::ShapeFix_FaceConnect as FaceConnect;
+pub use crate::ffi_types::ShapeFix_FaceConnect as FaceConnect;
 
 unsafe impl crate::CppDeletable for FaceConnect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_FaceConnect_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_FaceConnect_destructor(ptr);
     }
 }
 
@@ -2092,14 +2348,20 @@ impl FaceConnect {
     /// **Source:** `ShapeFix_FaceConnect.hxx`:33 - `ShapeFix_FaceConnect::ShapeFix_FaceConnect()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_FaceConnect_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FaceConnect_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_FaceConnect.hxx`:35 - `ShapeFix_FaceConnect::Add()`
     pub fn add(&mut self, aFirst: &crate::topo_ds::Face, aSecond: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FaceConnect_add(self as *mut Self, aFirst, aSecond)
+            crate::ffi_extern_TKShHealing::ShapeFix_FaceConnect_add(
+                self as *mut Self,
+                aFirst,
+                aSecond,
+            )
         })
     }
 
@@ -2111,12 +2373,14 @@ impl FaceConnect {
         fixtoler: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_FaceConnect_build(
-                self as *mut Self,
-                shell,
-                sewtoler,
-                fixtoler,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FaceConnect_build(
+                    self as *mut Self,
+                    shell,
+                    sewtoler,
+                    fixtoler,
+                ),
+            ))
         }
     }
 
@@ -2124,7 +2388,7 @@ impl FaceConnect {
     /// Clears internal data structure
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FaceConnect_clear(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FaceConnect_clear(self as *mut Self)
         })
     }
 }
@@ -2135,11 +2399,11 @@ impl FaceConnect {
 
 /// **Source:** `ShapeFix_FixSmallFace.hxx`:35 - `ShapeFix_FixSmallFace`
 /// Fixing face with small size
-pub use crate::ffi::ShapeFix_FixSmallFace as FixSmallFace;
+pub use crate::ffi_types::ShapeFix_FixSmallFace as FixSmallFace;
 
 unsafe impl crate::CppDeletable for FixSmallFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_FixSmallFace_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_destructor(ptr);
     }
 }
 
@@ -2147,14 +2411,16 @@ impl FixSmallFace {
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:39 - `ShapeFix_FixSmallFace::ShapeFix_FixSmallFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_FixSmallFace_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:41 - `ShapeFix_FixSmallFace::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_init(self as *mut Self, S)
         })
     }
 
@@ -2162,7 +2428,7 @@ impl FixSmallFace {
     /// Fixing case of spot face
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_perform(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_perform(self as *mut Self)
         })
     }
 
@@ -2171,7 +2437,9 @@ impl FixSmallFace {
     pub fn fix_spot_face(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_fix_spot_face(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_spot_face(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -2180,7 +2448,7 @@ impl FixSmallFace {
     /// Compute average vertex and replacing vertices by new one.
     pub fn replace_vertices_in_case_of_spot(&self, F: &mut crate::topo_ds::Face, tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_replace_vertices_in_case_of_spot(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_replace_vertices_in_case_of_spot(
                 self as *const Self,
                 F,
                 tol,
@@ -2192,7 +2460,10 @@ impl FixSmallFace {
     /// Remove spot face from compound
     pub fn remove_faces_in_case_of_spot(&self, F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_remove_faces_in_case_of_spot(self as *const Self, F)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_remove_faces_in_case_of_spot(
+                self as *const Self,
+                F,
+            )
         })
     }
 
@@ -2201,7 +2472,10 @@ impl FixSmallFace {
     pub fn fix_strip_face(&mut self, wasdone: bool) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_fix_strip_face(self as *mut Self, wasdone),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_strip_face(
+                    self as *mut Self,
+                    wasdone,
+                ),
             ))
         }
     }
@@ -2216,7 +2490,7 @@ impl FixSmallFace {
         tol: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_replace_in_case_of_strip(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_replace_in_case_of_strip(
                 self as *const Self,
                 F,
                 E1,
@@ -2230,7 +2504,10 @@ impl FixSmallFace {
     /// Remove strip face from compound.
     pub fn remove_faces_in_case_of_strip(&self, F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_remove_faces_in_case_of_strip(self as *const Self, F)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_remove_faces_in_case_of_strip(
+                self as *const Self,
+                F,
+            )
         })
     }
 
@@ -2245,16 +2522,7 @@ impl FixSmallFace {
         tol: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_compute_shared_edge_for_strip_face(
-                    self as *const Self,
-                    F,
-                    E1,
-                    E2,
-                    F1,
-                    tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_compute_shared_edge_for_strip_face(self as *const Self, F, E1, E2, F1, tol)))
         }
     }
 
@@ -2265,7 +2533,10 @@ impl FixSmallFace {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_fix_split_face(self as *mut Self, S),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_split_face(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -2278,7 +2549,11 @@ impl FixSmallFace {
         theSplittedFaces: &mut crate::topo_ds::Compound,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_split_one_face(self as *mut Self, F, theSplittedFaces)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_split_one_face(
+                self as *mut Self,
+                F,
+                theSplittedFaces,
+            )
         })
     }
 
@@ -2286,7 +2561,7 @@ impl FixSmallFace {
     pub fn fix_face(&mut self, F: &crate::topo_ds::Face) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_fix_face(self as *mut Self, F),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_face(self as *mut Self, F),
             ))
         }
     }
@@ -2295,7 +2570,7 @@ impl FixSmallFace {
     pub fn fix_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_fix_shape(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_shape(self as *mut Self),
             ))
         }
     }
@@ -2303,25 +2578,27 @@ impl FixSmallFace {
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:84 - `ShapeFix_FixSmallFace::Shape()`
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_FixSmallFace_shape(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_shape(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:86 - `ShapeFix_FixSmallFace::FixPinFace()`
     pub fn fix_pin_face(&mut self, F: &mut crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_fix_pin_face(self as *mut Self, F)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_fix_pin_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:88 - `ShapeFix_FixSmallFace::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_FixSmallFace_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2329,7 +2606,7 @@ impl FixSmallFace {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2337,76 +2614,96 @@ impl FixSmallFace {
     }
 
     /// **Source:** `ShapeFix_FixSmallFace.hxx`:88 - `ShapeFix_FixSmallFace::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_FixSmallFace_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_as_ShapeFix_Root(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_FixSmallFace_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixFixSmallFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_Set(
+                self as *mut Self,
+                Root,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2414,20 +2711,25 @@ impl FixSmallFace {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallFace_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2435,49 +2737,67 @@ impl FixSmallFace {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -2489,7 +2809,7 @@ impl FixSmallFace {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -2501,7 +2821,7 @@ impl FixSmallFace {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SendWarning(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SendWarning(
                 self as *const Self,
                 shape,
                 message,
@@ -2512,7 +2832,7 @@ impl FixSmallFace {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_SendFail(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_SendFail(
                 self as *const Self,
                 shape,
                 message,
@@ -2521,16 +2841,22 @@ impl FixSmallFace {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2538,7 +2864,9 @@ impl FixSmallFace {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_FixSmallFace_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2551,74 +2879,86 @@ impl FixSmallFace {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallFace_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallFace_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixFixSmallFace;
+pub use crate::ffi_types::HandleShapeFixFixSmallFace;
 
 unsafe impl crate::CppDeletable for HandleShapeFixFixSmallFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixFixSmallFace_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_destructor(ptr);
     }
 }
 
 impl HandleShapeFixFixSmallFace {
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallFace
-    pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallFace {
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_FixSmallFace {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixFixSmallFace_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallFace
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallFace {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixFixSmallFace_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallFace
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_FixSmallFace {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeFix_FixSmallFace> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallFace> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFixSmallFace_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallFace_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2629,11 +2969,11 @@ impl HandleShapeFixFixSmallFace {
 
 /// **Source:** `ShapeFix_FixSmallSolid.hxx`:31 - `ShapeFix_FixSmallSolid`
 /// Fixing solids with small size
-pub use crate::ffi::ShapeFix_FixSmallSolid as FixSmallSolid;
+pub use crate::ffi_types::ShapeFix_FixSmallSolid as FixSmallSolid;
 
 unsafe impl crate::CppDeletable for FixSmallSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_FixSmallSolid_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_destructor(ptr);
     }
 }
 
@@ -2642,9 +2982,9 @@ impl FixSmallSolid {
     /// Construct
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_ctor(),
+            ))
         }
     }
 
@@ -2655,7 +2995,10 @@ impl FixSmallSolid {
     /// - theMode = 2 use only VolumeThreshold parameter
     pub fn set_fix_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_set_fix_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_set_fix_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
@@ -2663,7 +3006,10 @@ impl FixSmallSolid {
     /// Set or clear volume threshold for small solids
     pub fn set_volume_threshold(&mut self, theThreshold: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_set_volume_threshold(self as *mut Self, theThreshold)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_set_volume_threshold(
+                self as *mut Self,
+                theThreshold,
+            )
         })
     }
 
@@ -2671,7 +3017,7 @@ impl FixSmallSolid {
     /// Set or clear width factor threshold for small solids
     pub fn set_width_factor_threshold(&mut self, theThreshold: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_set_width_factor_threshold(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_set_width_factor_threshold(
                 self as *mut Self,
                 theThreshold,
             )
@@ -2683,11 +3029,11 @@ impl FixSmallSolid {
     pub fn remove(
         &self,
         theShape: &crate::topo_ds::Shape,
-        theContext: &crate::ffi::HandleShapeBuildReShape,
+        theContext: &crate::ffi_types::HandleShapeBuildReShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_remove(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_remove(
                     self as *const Self,
                     theShape,
                     theContext,
@@ -2701,21 +3047,27 @@ impl FixSmallSolid {
     pub fn merge(
         &self,
         theShape: &crate::topo_ds::Shape,
-        theContext: &crate::ffi::HandleShapeBuildReShape,
+        theContext: &crate::ffi_types::HandleShapeBuildReShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_merge(self as *const Self, theShape, theContext),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_merge(
+                    self as *const Self,
+                    theShape,
+                    theContext,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_FixSmallSolid.hxx`:58 - `ShapeFix_FixSmallSolid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2723,7 +3075,7 @@ impl FixSmallSolid {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2731,76 +3083,96 @@ impl FixSmallSolid {
     }
 
     /// **Source:** `ShapeFix_FixSmallSolid.hxx`:58 - `ShapeFix_FixSmallSolid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_as_ShapeFix_Root(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_FixSmallSolid_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixFixSmallSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_Set(
+                self as *mut Self,
+                Root,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2808,10 +3180,10 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMsgRegistrator(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SetMsgRegistrator(
                 self as *mut Self,
                 msgreg,
             )
@@ -2821,10 +3193,12 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FixSmallSolid_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2832,49 +3206,67 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -2886,7 +3278,7 @@ impl FixSmallSolid {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -2898,7 +3290,7 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SendWarning(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SendWarning(
                 self as *const Self,
                 shape,
                 message,
@@ -2909,7 +3301,7 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_SendFail(
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_SendFail(
                 self as *const Self,
                 shape,
                 message,
@@ -2918,16 +3310,22 @@ impl FixSmallSolid {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2935,7 +3333,9 @@ impl FixSmallSolid {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_FixSmallSolid_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2948,74 +3348,86 @@ impl FixSmallSolid {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_FixSmallSolid_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_FixSmallSolid_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixFixSmallSolid;
+pub use crate::ffi_types::HandleShapeFixFixSmallSolid;
 
 unsafe impl crate::CppDeletable for HandleShapeFixFixSmallSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixFixSmallSolid_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_destructor(ptr);
     }
 }
 
 impl HandleShapeFixFixSmallSolid {
     /// Dereference this Handle to access the underlying ShapeFix_FixSmallSolid
-    pub fn get(&self) -> &crate::ffi::ShapeFix_FixSmallSolid {
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_FixSmallSolid {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixFixSmallSolid_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallSolid
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_FixSmallSolid {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixFixSmallSolid_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeFix_FixSmallSolid
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_FixSmallSolid {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeFix_FixSmallSolid> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_FixSmallSolid> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixFixSmallSolid_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixFixSmallSolid_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3048,11 +3460,11 @@ impl HandleShapeFixFixSmallSolid {
 ///
 /// Since interface of this class is the same as one of
 /// ShapeAnalysis_FreeBounds refer to its CDL for details.
-pub use crate::ffi::ShapeFix_FreeBounds as FreeBounds;
+pub use crate::ffi_types::ShapeFix_FreeBounds as FreeBounds;
 
 unsafe impl crate::CppDeletable for FreeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_FreeBounds_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_destructor(ptr);
     }
 }
 
@@ -3061,7 +3473,9 @@ impl FreeBounds {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_FreeBounds_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_ctor(),
+            ))
         }
     }
 
@@ -3081,7 +3495,7 @@ impl FreeBounds {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FreeBounds_ctor_shape_real2_bool2(
+                crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_ctor_shape_real2_bool2(
                     shape,
                     sewtoler,
                     closetoler,
@@ -3104,7 +3518,7 @@ impl FreeBounds {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_FreeBounds_ctor_shape_real_bool2(
+                crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_ctor_shape_real_bool2(
                     shape,
                     closetoler,
                     splitclosed,
@@ -3118,9 +3532,11 @@ impl FreeBounds {
     /// Returns compound of closed wires out of free edges.
     pub fn get_closed_wires(&self) -> &crate::topo_ds::Compound {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_FreeBounds_get_closed_wires(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_get_closed_wires(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3128,9 +3544,11 @@ impl FreeBounds {
     /// Returns compound of open wires out of free edges.
     pub fn get_open_wires(&self) -> &crate::topo_ds::Compound {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_FreeBounds_get_open_wires(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_get_open_wires(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3138,7 +3556,9 @@ impl FreeBounds {
     /// Returns modified source shape.
     pub fn get_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_FreeBounds_get_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_FreeBounds_get_shape(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -3150,11 +3570,11 @@ impl FreeBounds {
 /// **Source:** `ShapeFix_IntersectionTool.hxx`:35 - `ShapeFix_IntersectionTool`
 /// Tool for fixing selfintersecting wire
 /// and intersecting wires
-pub use crate::ffi::ShapeFix_IntersectionTool as IntersectionTool;
+pub use crate::ffi_types::ShapeFix_IntersectionTool as IntersectionTool;
 
 unsafe impl crate::CppDeletable for IntersectionTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_IntersectionTool_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_destructor(ptr);
     }
 }
 
@@ -3162,23 +3582,19 @@ impl IntersectionTool {
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool()`
     /// Constructor
     pub fn new_handleshapebuildreshape_real2(
-        context: &crate::ffi::HandleShapeBuildReShape,
+        context: &crate::ffi_types::HandleShapeBuildReShape,
         preci: f64,
         maxtol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_IntersectionTool_ctor_handleshapebuildreshape_real2(
-                    context, preci, maxtol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_ctor_handleshapebuildreshape_real2(context, preci, maxtol)))
         }
     }
 
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:41 - `ShapeFix_IntersectionTool::ShapeFix_IntersectionTool()`
     /// Constructor
     pub fn new_handleshapebuildreshape_real(
-        context: &crate::ffi::HandleShapeBuildReShape,
+        context: &crate::ffi_types::HandleShapeBuildReShape,
         preci: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleshapebuildreshape_real2(context, preci, 1.0)
@@ -3186,10 +3602,12 @@ impl IntersectionTool {
 
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:46 - `ShapeFix_IntersectionTool::Context()`
     /// Returns context
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_IntersectionTool_context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3209,7 +3627,7 @@ impl IntersectionTool {
         preci: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_IntersectionTool_split_edge(
+            crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_split_edge(
                 self as *const Self,
                 edge,
                 param,
@@ -3233,7 +3651,7 @@ impl IntersectionTool {
         iscutline: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_IntersectionTool_cut_edge(
+            crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_cut_edge(
                 self as *const Self,
                 edge,
                 pend,
@@ -3247,14 +3665,14 @@ impl IntersectionTool {
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:66 - `ShapeFix_IntersectionTool::FixSelfIntersectWire()`
     pub fn fix_self_intersect_wire(
         &self,
-        sewd: &mut crate::ffi::HandleShapeExtendWireData,
+        sewd: &mut crate::ffi_types::HandleShapeExtendWireData,
         face: &crate::topo_ds::Face,
         NbSplit: &mut i32,
         NbCut: &mut i32,
         NbRemoved: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_IntersectionTool_fix_self_intersect_wire(
+            crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_fix_self_intersect_wire(
                 self as *const Self,
                 sewd,
                 face,
@@ -3268,7 +3686,10 @@ impl IntersectionTool {
     /// **Source:** `ShapeFix_IntersectionTool.hxx`:72 - `ShapeFix_IntersectionTool::FixIntersectingWires()`
     pub fn fix_intersecting_wires(&self, face: &mut crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_IntersectionTool_fix_intersecting_wires(self as *const Self, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_IntersectionTool_fix_intersecting_wires(
+                self as *const Self,
+                face,
+            )
         })
     }
 }
@@ -3283,11 +3704,11 @@ impl IntersectionTool {
 /// basic precision value and limit (minimal and
 /// maximal) values for tolerances,
 /// and message registrator
-pub use crate::ffi::ShapeFix_Root as Root;
+pub use crate::ffi_types::ShapeFix_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Root_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Root_destructor(ptr);
     }
 }
 
@@ -3295,30 +3716,36 @@ impl Root {
     /// **Source:** `ShapeFix_Root.hxx`:47 - `ShapeFix_Root::ShapeFix_Root()`
     /// Empty Constructor (no context is created)
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Root_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
     /// Copy all fields from another Root object
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
-        crate::check_void_result(unsafe { crate::ffi::ShapeFix_Root_set(self as *mut Self, Root) })
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set(self as *mut Self, Root)
+        })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
     /// Sets context
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_set_context(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set_context(self as *mut Self, context)
         })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
     /// Returns context
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Root_context(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_context(self as *const Self),
+            ))
         }
     }
 
@@ -3326,10 +3753,13 @@ impl Root {
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_set_msg_registrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
@@ -3337,10 +3767,10 @@ impl Root {
     /// Returns message registrator
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Root_msg_registrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_msg_registrator(self as *const Self),
             ))
         }
     }
@@ -3349,49 +3779,61 @@ impl Root {
     /// Sets basic precision value
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_set_precision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set_precision(self as *mut Self, preci)
         })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     /// Returns basic precision value
     pub fn precision(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Root_precision(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     /// Returns minimal allowed tolerance
     pub fn min_tolerance(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Root_min_tolerance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_min_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     /// Returns maximal allowed tolerance
     pub fn max_tolerance(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Root_max_tolerance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_max_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     /// Returns tolerance limited by [myMinTol,myMaxTol]
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Root_limit_tolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_limit_tolerance(self as *const Self, toler)
         })
     }
 
@@ -3405,7 +3847,7 @@ impl Root {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_msg_shape_msg_gravity(
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_msg_shape_msg_gravity(
                 self as *const Self,
                 shape,
                 message,
@@ -3423,7 +3865,7 @@ impl Root {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_msg_msg_gravity(
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_msg_msg_gravity(
                 self as *const Self,
                 message,
                 gravity.into(),
@@ -3440,7 +3882,11 @@ impl Root {
         message: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_warning_shape_msg(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_warning_shape_msg(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
@@ -3448,7 +3894,10 @@ impl Root {
     /// Calls previous method for myShape.
     pub fn send_warning_msg(&self, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_warning_msg(self as *const Self, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_warning_msg(
+                self as *const Self,
+                message,
+            )
         })
     }
 
@@ -3461,7 +3910,11 @@ impl Root {
         message: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_fail_shape_msg(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_fail_shape_msg(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
@@ -3469,71 +3922,89 @@ impl Root {
     /// Calls previous method for myShape.
     pub fn send_fail_msg(&self, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_send_fail_msg(self as *const Self, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_send_fail_msg(self as *const Self, message)
         })
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:110 - `ShapeFix_Root::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Root_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Root_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:110 - `ShapeFix_Root::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ShapeFix_Root_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Root.hxx`:110 - `ShapeFix_Root::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Root_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Root_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Root_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Root_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3541,7 +4012,7 @@ impl Root {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Root_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3554,58 +4025,72 @@ impl Root {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Root_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Root_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixRoot;
+pub use crate::ffi_types::HandleShapeFixRoot;
 
 unsafe impl crate::CppDeletable for HandleShapeFixRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixRoot_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixRoot_destructor(ptr);
     }
 }
 
 impl HandleShapeFixRoot {
     /// Dereference this Handle to access the underlying ShapeFix_Root
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Root {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixRoot_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixRoot_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Root
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Root {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixRoot_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixRoot_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Root> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixRoot_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixRoot_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3615,9 +4100,9 @@ impl HandleShapeFixRoot {
     /// Returns `None` if the handle does not point to a `ShapeFix_ComposeShell` (or subclass).
     pub fn downcast_to_compose_shell(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixComposeShell>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixComposeShell>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixComposeShell(
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixComposeShell(
                 self as *const Self,
             )
         });
@@ -3631,9 +4116,13 @@ impl HandleShapeFixRoot {
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Face>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Face` (or subclass).
-    pub fn downcast_to_face(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFace>> {
+    pub fn downcast_to_face(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFace(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixFace(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3647,9 +4136,9 @@ impl HandleShapeFixRoot {
     /// Returns `None` if the handle does not point to a `ShapeFix_FixSmallFace` (or subclass).
     pub fn downcast_to_fix_small_face(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallFace>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixFixSmallFace>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallFace(
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallFace(
                 self as *const Self,
             )
         });
@@ -3665,11 +4154,9 @@ impl HandleShapeFixRoot {
     /// Returns `None` if the handle does not point to a `ShapeFix_FixSmallSolid` (or subclass).
     pub fn downcast_to_fix_small_solid(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixFixSmallSolid>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixFixSmallSolid>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallSolid(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixFixSmallSolid(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3681,9 +4168,13 @@ impl HandleShapeFixRoot {
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Shape>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Shape` (or subclass).
-    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShape>> {
+    pub fn downcast_to_shape(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShape(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixShape(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3695,9 +4186,13 @@ impl HandleShapeFixRoot {
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Shell>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Shell` (or subclass).
-    pub fn downcast_to_shell(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixShell>> {
+    pub fn downcast_to_shell(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixShell>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixShell(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixShell(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3709,9 +4204,13 @@ impl HandleShapeFixRoot {
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Solid>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Solid` (or subclass).
-    pub fn downcast_to_solid(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSolid>> {
+    pub fn downcast_to_solid(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixSolid>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSolid(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixSolid(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3725,11 +4224,9 @@ impl HandleShapeFixRoot {
     /// Returns `None` if the handle does not point to a `ShapeFix_SplitCommonVertex` (or subclass).
     pub fn downcast_to_split_common_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixSplitCommonVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixSplitCommonVertex(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixSplitCommonVertex(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3741,9 +4238,13 @@ impl HandleShapeFixRoot {
     /// Downcast Handle<ShapeFix_Root> to Handle<ShapeFix_Wire>
     ///
     /// Returns `None` if the handle does not point to a `ShapeFix_Wire` (or subclass).
-    pub fn downcast_to_wire(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWire>> {
+    pub fn downcast_to_wire(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixWire>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWire(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixWire(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3757,9 +4258,11 @@ impl HandleShapeFixRoot {
     /// Returns `None` if the handle does not point to a `ShapeFix_Wireframe` (or subclass).
     pub fn downcast_to_wireframe(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeFixWireframe>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeFixRoot_downcast_to_HandleShapeFixWireframe(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeFixRoot_downcast_to_HandleShapeFixWireframe(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3775,11 +4278,11 @@ impl HandleShapeFixRoot {
 
 /// **Source:** `ShapeFix_Shape.hxx`:46 - `ShapeFix_Shape`
 /// Fixing shape in general
-pub use crate::ffi::ShapeFix_Shape as Shape;
+pub use crate::ffi_types::ShapeFix_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Shape_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Shape_destructor(ptr);
     }
 }
 
@@ -3787,16 +4290,20 @@ impl Shape {
     /// **Source:** `ShapeFix_Shape.hxx`:51 - `ShapeFix_Shape::ShapeFix_Shape()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shape_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:54 - `ShapeFix_Shape::ShapeFix_Shape()`
     /// Initislises by shape.
     pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shape_ctor_shape(
-                shape,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_ctor_shape(shape),
+            ))
         }
     }
 
@@ -3804,7 +4311,7 @@ impl Shape {
     /// Initislises by shape.
     pub fn init(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_init(self as *mut Self, shape)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_init(self as *mut Self, shape)
         })
     }
 
@@ -3812,7 +4319,7 @@ impl Shape {
     /// Iterates on sub- shape and performs fixes
     pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_perform(self as *mut Self, theProgress)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_perform(self as *mut Self, theProgress)
         })
     }
 
@@ -3820,58 +4327,58 @@ impl Shape {
     /// Returns resulting shape
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shape_shape(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_shape(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:67 - `ShapeFix_Shape::FixSolidTool()`
     /// Returns tool for fixing solids.
-    pub fn fix_solid_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSolid> {
+    pub fn fix_solid_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixSolid> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_fix_solid_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_solid_tool(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:70 - `ShapeFix_Shape::FixShellTool()`
     /// Returns tool for fixing shells.
-    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
+    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixShell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_fix_shell_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_shell_tool(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:73 - `ShapeFix_Shape::FixFaceTool()`
     /// Returns tool for fixing faces.
-    pub fn fix_face_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+    pub fn fix_face_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_fix_face_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_face_tool(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:76 - `ShapeFix_Shape::FixWireTool()`
     /// Returns tool for fixing wires.
-    pub fn fix_wire_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+    pub fn fix_wire_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixWire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_fix_wire_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_wire_tool(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:79 - `ShapeFix_Shape::FixEdgeTool()`
     /// Returns tool for fixing edges.
-    pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
+    pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixEdge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_fix_edge_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_edge_tool(self as *const Self),
             ))
         }
     }
@@ -3887,7 +4394,7 @@ impl Shape {
     /// ShapeExtend_DONE6: shapes in compound(s) were fixed
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_status(self as *const Self, status.into())
         })
     }
 
@@ -3895,10 +4402,13 @@ impl Shape {
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_set_msg_registrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
@@ -3906,7 +4416,7 @@ impl Shape {
     /// Sets basic precision value (also to FixSolidTool)
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_set_precision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_set_precision(self as *mut Self, preci)
         })
     }
 
@@ -3914,7 +4424,10 @@ impl Shape {
     /// Sets minimal allowed tolerance (also to FixSolidTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -3922,7 +4435,10 @@ impl Shape {
     /// Sets maximal allowed tolerance (also to FixSolidTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -3931,9 +4447,9 @@ impl Shape {
     /// ShapeFix_Solid, by default True.
     pub fn fix_solid_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_solid_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_solid_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -3942,9 +4458,11 @@ impl Shape {
     /// ShapeFix_Shell, by default True.
     pub fn fix_free_shell_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_free_shell_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_free_shell_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -3953,9 +4471,9 @@ impl Shape {
     /// ShapeFix_Face, by default True.
     pub fn fix_free_face_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_free_face_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_free_face_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -3964,9 +4482,9 @@ impl Shape {
     /// ShapeFix_Wire, by default True.
     pub fn fix_free_wire_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_free_wire_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_free_wire_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -3975,9 +4493,11 @@ impl Shape {
     /// ShapeFix::SameParameter after all fixes, by default True.
     pub fn fix_same_parameter_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_same_parameter_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_same_parameter_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -3986,9 +4506,11 @@ impl Shape {
     /// ShapeFix::FixVertexPosition before all fixes, by default False.
     pub fn fix_vertex_position_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_vertex_position_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_vertex_position_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -3997,99 +4519,120 @@ impl Shape {
     /// after performing all fixes
     pub fn fix_vertex_tol_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shape_fix_vertex_tol_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_fix_vertex_tol_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:132 - `ShapeFix_Shape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Shape_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Shape_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:132 - `ShapeFix_Shape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::ShapeFix_Shape_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Shape.hxx`:132 - `ShapeFix_Shape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Shape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Shape_as_ShapeFix_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Shape_as_ShapeFix_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Shape_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Shape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Shape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shape_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_Set(self as *mut Self, Root)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4097,10 +4640,12 @@ impl Shape {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shape_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4108,28 +4653,35 @@ impl Shape {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_Precision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -4141,7 +4693,7 @@ impl Shape {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -4153,28 +4705,42 @@ impl Shape {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_SendWarning(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_SendWarning(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_SendFail(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4182,7 +4748,7 @@ impl Shape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Shape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4195,67 +4761,83 @@ impl Shape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixShape;
+pub use crate::ffi_types::HandleShapeFixShape;
 
 unsafe impl crate::CppDeletable for HandleShapeFixShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixShape_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixShape_destructor(ptr);
     }
 }
 
 impl HandleShapeFixShape {
     /// Dereference this Handle to access the underlying ShapeFix_Shape
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Shape {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixShape_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shape {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShape_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Shape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Shape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixShape_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShape_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Shape> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixShape_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixShape_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Shape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixShape_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4267,11 +4849,11 @@ impl HandleShapeFixShape {
 
 /// **Source:** `ShapeFix_ShapeTolerance.hxx`:27 - `ShapeFix_ShapeTolerance`
 /// Modifies tolerances of sub-shapes (vertices, edges, faces)
-pub use crate::ffi::ShapeFix_ShapeTolerance as ShapeTolerance;
+pub use crate::ffi_types::ShapeFix_ShapeTolerance as ShapeTolerance;
 
 unsafe impl crate::CppDeletable for ShapeTolerance {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_ShapeTolerance_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_ShapeTolerance_destructor(ptr);
     }
 }
 
@@ -4280,7 +4862,7 @@ impl ShapeTolerance {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_ShapeTolerance_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeFix_ShapeTolerance_ctor(),
             ))
         }
     }
@@ -4307,7 +4889,7 @@ impl ShapeTolerance {
         styp: crate::top_abs::ShapeEnum,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_ShapeTolerance_limit_tolerance(
+            crate::ffi_extern_TKShHealing::ShapeFix_ShapeTolerance_limit_tolerance(
                 self as *const Self,
                 shape,
                 tmin,
@@ -4331,7 +4913,7 @@ impl ShapeTolerance {
         styp: crate::top_abs::ShapeEnum,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_ShapeTolerance_set_tolerance(
+            crate::ffi_extern_TKShHealing::ShapeFix_ShapeTolerance_set_tolerance(
                 self as *const Self,
                 shape,
                 preci,
@@ -4347,11 +4929,11 @@ impl ShapeTolerance {
 
 /// **Source:** `ShapeFix_Shell.hxx`:40 - `ShapeFix_Shell`
 /// Fixing orientation of faces in shell
-pub use crate::ffi::ShapeFix_Shell as Shell;
+pub use crate::ffi_types::ShapeFix_Shell as Shell;
 
 unsafe impl crate::CppDeletable for Shell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Shell_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Shell_destructor(ptr);
     }
 }
 
@@ -4359,16 +4941,20 @@ impl Shell {
     /// **Source:** `ShapeFix_Shell.hxx`:45 - `ShapeFix_Shell::ShapeFix_Shell()`
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:48 - `ShapeFix_Shell::ShapeFix_Shell()`
     /// Initializes by shell.
     pub fn new_shell(shape: &crate::topo_ds::Shell) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_ctor_shell(
-                shape,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_ctor_shell(shape),
+            ))
         }
     }
 
@@ -4376,7 +4962,7 @@ impl Shell {
     /// Initializes by shell.
     pub fn init(&mut self, shell: &crate::topo_ds::Shell) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_init(self as *mut Self, shell)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_init(self as *mut Self, shell)
         })
     }
 
@@ -4388,7 +4974,7 @@ impl Shell {
     /// stage and abort algorithm if needed.
     pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_perform(self as *mut Self, theProgress)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_perform(self as *mut Self, theProgress)
         })
     }
 
@@ -4414,7 +5000,7 @@ impl Shell {
         NonManifold: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_fix_face_orientation(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_fix_face_orientation(
                 self as *mut Self,
                 shell,
                 isAccountMultiConex,
@@ -4427,9 +5013,9 @@ impl Shell {
     /// Returns fixed shell (or subset of oriented faces).
     pub fn shell(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_shell(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_shell(self as *mut Self),
+            ))
         }
     }
 
@@ -4438,25 +5024,27 @@ impl Shell {
     /// else returns one shell..
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_shape(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_shape(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:88 - `ShapeFix_Shell::NbShells()`
     /// Returns Number of obtainrd shells;
     pub fn nb_shells(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Shell_nb_shells(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_nb_shells(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:91 - `ShapeFix_Shell::ErrorFaces()`
     /// Returns not oriented subset of faces.
     pub fn error_faces(&self) -> crate::OwnedPtr<crate::topo_ds::Compound> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_error_faces(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_error_faces(self as *const Self),
+            ))
         }
     }
 
@@ -4464,16 +5052,16 @@ impl Shell {
     /// Returns the status of the last Fix.
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_status(self as *const Self, status.into())
         })
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:97 - `ShapeFix_Shell::FixFaceTool()`
     /// Returns tool for fixing faces.
-    pub fn fix_face_tool(&mut self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixFace> {
+    pub fn fix_face_tool(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixFace> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shell_fix_face_tool(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_fix_face_tool(self as *mut Self),
             ))
         }
     }
@@ -4482,10 +5070,13 @@ impl Shell {
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_set_msg_registrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
@@ -4493,7 +5084,7 @@ impl Shell {
     /// Sets basic precision value (also to FixWireTool)
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_set_precision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_set_precision(self as *mut Self, preci)
         })
     }
 
@@ -4501,7 +5092,10 @@ impl Shell {
     /// Sets minimal allowed tolerance (also to FixWireTool)
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -4509,7 +5103,10 @@ impl Shell {
     /// Sets maximal allowed tolerance (also to FixWireTool)
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -4518,7 +5115,9 @@ impl Shell {
     /// ShapeFix_Face, by default True.
     pub fn fix_face_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shell_fix_face_mode(self as *mut Self)))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_fix_face_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -4527,9 +5126,11 @@ impl Shell {
     /// FixFaceOrientation, by default True.
     pub fn fix_orientation_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Shell_fix_orientation_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_fix_orientation_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -4537,780 +5138,46 @@ impl Shell {
     /// Sets NonManifold flag
     pub fn set_non_manifold_flag(&mut self, isNonManifold: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_set_non_manifold_flag(self as *mut Self, isNonManifold)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_set_non_manifold_flag(
+                self as *mut Self,
+                isNonManifold,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:123 - `ShapeFix_Shell::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Shell_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Shell_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:123 - `ShapeFix_Shell::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::ShapeFix_Shell_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Shell.hxx`:123 - `ShapeFix_Shell::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Shell_get_type_descriptor())) }
-    }
-
-    /// Upcast to ShapeFix_Root
-    pub fn as_root(&self) -> &Root {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Shell_as_ShapeFix_Root(self as *const Self))
-        }
-    }
-
-    /// Upcast to ShapeFix_Root (mutable)
-    pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Shell_as_ShapeFix_Root_mut(
-                self as *mut Self,
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_get_type_descriptor(),
             ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Shell_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Shell_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Shell_to_handle(
-                obj.into_raw(),
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_Set(self as *mut Self, Root)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_SetContext(self as *mut Self, context)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shell_inherited_Context(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
-    pub fn msg_registrator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Shell_inherited_MsgRegistrator(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
-    pub fn precision(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_Precision(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
-    pub fn min_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_MinTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
-    pub fn max_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_MaxTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
-    pub fn limit_tolerance(&self, toler: f64) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_LimitTolerance(self as *const Self, toler)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
-    pub fn send_msg(
-        &self,
-        shape: &crate::topo_ds::Shape,
-        message: &crate::message::Msg,
-        gravity: crate::message::Gravity,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_SendWarning(self as *const Self, shape, message)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_SendFail(self as *const Self, shape, message)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Shell_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Shell_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeFixShell;
-
-unsafe impl crate::CppDeletable for HandleShapeFixShell {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixShell_destructor(ptr);
-    }
-}
-
-impl HandleShapeFixShell {
-    /// Dereference this Handle to access the underlying ShapeFix_Shell
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Shell {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixShell_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_Shell
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Shell {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixShell_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<ShapeFix_Shell> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixShell_to_HandleShapeFixRoot(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeFix_Shell> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixShell_to_HandleStandardTransient(self as *const Self),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeFix_Solid.hxx
-// ========================
-
-/// **Source:** `ShapeFix_Solid.hxx`:42 - `ShapeFix_Solid`
-/// Provides method to build a solid from a shells and
-/// orients them in order to have a valid solid with finite volume
-pub use crate::ffi::ShapeFix_Solid as Solid;
-
-unsafe impl crate::CppDeletable for Solid {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Solid_destructor(ptr);
-    }
-}
-
-impl Solid {
-    /// **Source:** `ShapeFix_Solid.hxx`:47 - `ShapeFix_Solid::ShapeFix_Solid()`
-    /// Empty constructor;
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Solid_ctor())) }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:50 - `ShapeFix_Solid::ShapeFix_Solid()`
-    /// Initializes by solid.
-    pub fn new_solid(solid: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Solid_ctor_solid(
-                solid,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:53 - `ShapeFix_Solid::Init()`
-    /// Initializes by solid .
-    pub fn init(&mut self, solid: &crate::topo_ds::Solid) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_init(self as *mut Self, solid)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:59 - `ShapeFix_Solid::Perform()`
-    /// Iterates on shells and performs fixes
-    /// (calls ShapeFix_Shell for each subshell). The passed
-    /// progress indicator allows user to consult the current
-    /// progress stage and abort algorithm if needed.
-    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_perform(self as *mut Self, theProgress)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:63 - `ShapeFix_Solid::SolidFromShell()`
-    /// Calls MakeSolid and orients the solid to be "not infinite"
-    pub fn solid_from_shell(
-        &mut self,
-        shell: &crate::topo_ds::Shell,
-    ) -> crate::OwnedPtr<crate::topo_ds::Solid> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Solid_solid_from_shell(self as *mut Self, shell),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:66 - `ShapeFix_Solid::Status()`
-    /// Returns the status of the last Fix.
-    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_status(self as *const Self, status.into())
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:69 - `ShapeFix_Solid::Solid()`
-    /// Returns resulting solid.
-    pub fn solid(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Solid_solid(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:72 - `ShapeFix_Solid::FixShellTool()`
-    /// Returns tool for fixing shells.
-    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixShell> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Solid_fix_shell_tool(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:75 - `ShapeFix_Solid::SetMsgRegistrator()`
-    /// Sets message registrator
-    pub fn set_msg_registrator(
-        &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_set_msg_registrator(self as *mut Self, msgreg)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:79 - `ShapeFix_Solid::SetPrecision()`
-    /// Sets basic precision value (also to FixShellTool)
-    pub fn set_precision(&mut self, preci: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_set_precision(self as *mut Self, preci)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:82 - `ShapeFix_Solid::SetMinTolerance()`
-    /// Sets minimal allowed tolerance (also to FixShellTool)
-    pub fn set_min_tolerance(&mut self, mintol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_set_min_tolerance(self as *mut Self, mintol)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:85 - `ShapeFix_Solid::SetMaxTolerance()`
-    /// Sets maximal allowed tolerance (also to FixShellTool)
-    pub fn set_max_tolerance(&mut self, maxtol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_set_max_tolerance(self as *mut Self, maxtol)
-        })
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:89 - `ShapeFix_Solid::FixShellMode()`
-    /// Returns (modifiable) the mode for applying fixes of
-    /// ShapeFix_Shell, by default True.
-    pub fn fix_shell_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Solid_fix_shell_mode(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:93 - `ShapeFix_Solid::FixShellOrientationMode()`
-    /// Returns (modifiable) the mode for applying analysis and fixes of
-    /// orientation of shells in the solid; by default True.
-    pub fn fix_shell_orientation_mode(&mut self) -> &mut i32 {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Solid_fix_shell_orientation_mode(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:100 - `ShapeFix_Solid::CreateOpenSolidMode()`
-    /// Returns (modifiable) the mode for creation of solids.
-    /// If mode myCreateOpenSolidMode is equal to true
-    /// solids are created from open shells
-    /// else solids are created  from closed shells only.
-    /// ShapeFix_Shell, by default False.
-    pub fn create_open_solid_mode(&mut self) -> &mut bool {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Solid_create_open_solid_mode(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:104 - `ShapeFix_Solid::Shape()`
-    /// In case of multiconnexity returns compound of fixed solids
-    /// else returns one solid.
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Solid_shape(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Solid_dynamic_type(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::ShapeFix_Solid_get_type_name()),
-            )
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Solid_get_type_descriptor())) }
-    }
-
-    /// Upcast to ShapeFix_Root
-    pub fn as_root(&self) -> &Root {
-        unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Solid_as_ShapeFix_Root(self as *const Self))
-        }
-    }
-
-    /// Upcast to ShapeFix_Root (mutable)
-    pub fn as_root_mut(&mut self) -> &mut Root {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Solid_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Solid_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Solid_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSolid> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Solid_to_handle(
-                obj.into_raw(),
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_Set(self as *mut Self, Root)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_SetContext(self as *mut Self, context)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Solid_inherited_Context(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
-    pub fn msg_registrator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Solid_inherited_MsgRegistrator(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
-    pub fn precision(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_Precision(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
-    pub fn min_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_MinTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
-    pub fn max_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_MaxTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
-    pub fn limit_tolerance(&self, toler: f64) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_LimitTolerance(self as *const Self, toler)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
-    pub fn send_msg(
-        &self,
-        shape: &crate::topo_ds::Shape,
-        message: &crate::message::Msg,
-        gravity: crate::message::Gravity,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_SendMsg(
-                self as *const Self,
-                shape,
-                message,
-                gravity.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
-    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_SendWarning(self as *const Self, shape, message)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
-    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_SendFail(self as *const Self, shape, message)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Solid_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Solid_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeFixSolid;
-
-unsafe impl crate::CppDeletable for HandleShapeFixSolid {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixSolid_destructor(ptr);
-    }
-}
-
-impl HandleShapeFixSolid {
-    /// Dereference this Handle to access the underlying ShapeFix_Solid
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Solid {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixSolid_get(self as *const Self)) }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_Solid
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Solid {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixSolid_get_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast Handle<ShapeFix_Solid> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixSolid_to_HandleShapeFixRoot(self as *const Self),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeFix_Solid> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixSolid_to_HandleStandardTransient(self as *const Self),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeFix_SplitCommonVertex.hxx
-// ========================
-
-/// **Source:** `ShapeFix_SplitCommonVertex.hxx`:32 - `ShapeFix_SplitCommonVertex`
-/// Two wires have common vertex - this case is valid in BRep model
-/// and isn't valid in STEP => before writing into STEP it is necessary
-/// to split this vertex (each wire must has one vertex)
-pub use crate::ffi::ShapeFix_SplitCommonVertex as SplitCommonVertex;
-
-unsafe impl crate::CppDeletable for SplitCommonVertex {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_SplitCommonVertex_destructor(ptr);
-    }
-}
-
-impl SplitCommonVertex {
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:36 - `ShapeFix_SplitCommonVertex::ShapeFix_SplitCommonVertex()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:38 - `ShapeFix_SplitCommonVertex::Init()`
-    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_init(self as *mut Self, S)
-        })
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:40 - `ShapeFix_SplitCommonVertex::Perform()`
-    pub fn perform(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_perform(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:42 - `ShapeFix_SplitCommonVertex::Shape()`
-    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_shape(self as *mut Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_SplitCommonVertex_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_SplitCommonVertex_get_type_descriptor()))
         }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Shell_as_ShapeFix_Root(
                 self as *const Self,
             ))
         }
@@ -5319,18 +5186,22 @@ impl SplitCommonVertex {
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_SplitCommonVertex_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5338,7 +5209,9 @@ impl SplitCommonVertex {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5346,100 +5219,67 @@ impl SplitCommonVertex {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixSplitCommonVertex> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixShell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_Set(self as *mut Self, Root)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetContext(self as *mut Self, context)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_inherited_Context(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
-    pub fn set_msg_registrator(
-        &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMsgRegistrator(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_SetContext(
                 self as *mut Self,
-                msgreg,
+                context,
             )
         })
     }
 
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
-    pub fn msg_registrator(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_SplitCommonVertex_inherited_MsgRegistrator(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_Context(
                     self as *const Self,
                 ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
-    pub fn set_precision(&mut self, preci: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetPrecision(self as *mut Self, preci)
-        })
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            ))
+        }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_Precision(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
-    pub fn set_min_tolerance(&mut self, mintol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_Precision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_MinTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
-    pub fn set_max_tolerance(&mut self, maxtol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_MinTolerance(
+                self as *const Self,
             )
         })
     }
@@ -5447,14 +5287,16 @@ impl SplitCommonVertex {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_LimitTolerance(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
             )
@@ -5469,7 +5311,7 @@ impl SplitCommonVertex {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -5481,7 +5323,7 @@ impl SplitCommonVertex {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendWarning(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_SendWarning(
                 self as *const Self,
                 shape,
                 message,
@@ -5492,7 +5334,7 @@ impl SplitCommonVertex {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_SendFail(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_SendFail(
                 self as *const Self,
                 shape,
                 message,
@@ -5501,9 +5343,9 @@ impl SplitCommonVertex {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -5511,9 +5353,12 @@ impl SplitCommonVertex {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5521,7 +5366,7 @@ impl SplitCommonVertex {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_SplitCommonVertex_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5534,78 +5379,1013 @@ impl SplitCommonVertex {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_SplitCommonVertex_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Shell_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixSplitCommonVertex;
+pub use crate::ffi_types::HandleShapeFixShell;
 
-unsafe impl crate::CppDeletable for HandleShapeFixSplitCommonVertex {
+unsafe impl crate::CppDeletable for HandleShapeFixShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixSplitCommonVertex_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixShell_destructor(ptr);
     }
 }
 
-impl HandleShapeFixSplitCommonVertex {
-    /// Dereference this Handle to access the underlying ShapeFix_SplitCommonVertex
-    pub fn get(&self) -> &crate::ffi::ShapeFix_SplitCommonVertex {
+impl HandleShapeFixShell {
+    /// Dereference this Handle to access the underlying ShapeFix_Shell
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Shell {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixSplitCommonVertex_get(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShell_get(
                 self as *const Self,
             ))
         }
     }
 
-    /// Dereference this Handle to mutably access the underlying ShapeFix_SplitCommonVertex
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_SplitCommonVertex {
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Shell
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Shell {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixSplitCommonVertex_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixShell_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
-    /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    /// Upcast Handle<ShapeFix_Shell> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(
+                crate::ffi_extern_TKShHealing::HandleShapeFixShell_to_HandleShapeFixRoot(
                     self as *const Self,
                 ),
             ))
         }
     }
 
-    /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    /// Upcast Handle<ShapeFix_Shell> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixSplitCommonVertex_to_HandleStandardTransient(
+                crate::ffi_extern_TKShHealing::HandleShapeFixShell_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
+        }
+    }
+}
+
+// ========================
+// From ShapeFix_Solid.hxx
+// ========================
+
+/// **Source:** `ShapeFix_Solid.hxx`:42 - `ShapeFix_Solid`
+/// Provides method to build a solid from a shells and
+/// orients them in order to have a valid solid with finite volume
+pub use crate::ffi_types::ShapeFix_Solid as Solid;
+
+unsafe impl crate::CppDeletable for Solid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeFix_Solid_destructor(ptr);
+    }
+}
+
+impl Solid {
+    /// **Source:** `ShapeFix_Solid.hxx`:47 - `ShapeFix_Solid::ShapeFix_Solid()`
+    /// Empty constructor;
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:50 - `ShapeFix_Solid::ShapeFix_Solid()`
+    /// Initializes by solid.
+    pub fn new_solid(solid: &crate::topo_ds::Solid) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_ctor_solid(solid),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:53 - `ShapeFix_Solid::Init()`
+    /// Initializes by solid .
+    pub fn init(&mut self, solid: &crate::topo_ds::Solid) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_init(self as *mut Self, solid)
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:59 - `ShapeFix_Solid::Perform()`
+    /// Iterates on shells and performs fixes
+    /// (calls ShapeFix_Shell for each subshell). The passed
+    /// progress indicator allows user to consult the current
+    /// progress stage and abort algorithm if needed.
+    pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_perform(self as *mut Self, theProgress)
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:63 - `ShapeFix_Solid::SolidFromShell()`
+    /// Calls MakeSolid and orients the solid to be "not infinite"
+    pub fn solid_from_shell(
+        &mut self,
+        shell: &crate::topo_ds::Shell,
+    ) -> crate::OwnedPtr<crate::topo_ds::Solid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_solid_from_shell(
+                    self as *mut Self,
+                    shell,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:66 - `ShapeFix_Solid::Status()`
+    /// Returns the status of the last Fix.
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_status(self as *const Self, status.into())
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:69 - `ShapeFix_Solid::Solid()`
+    /// Returns resulting solid.
+    pub fn solid(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_solid(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:72 - `ShapeFix_Solid::FixShellTool()`
+    /// Returns tool for fixing shells.
+    pub fn fix_shell_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixShell> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_fix_shell_tool(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:75 - `ShapeFix_Solid::SetMsgRegistrator()`
+    /// Sets message registrator
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:79 - `ShapeFix_Solid::SetPrecision()`
+    /// Sets basic precision value (also to FixShellTool)
+    pub fn set_precision(&mut self, preci: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_set_precision(self as *mut Self, preci)
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:82 - `ShapeFix_Solid::SetMinTolerance()`
+    /// Sets minimal allowed tolerance (also to FixShellTool)
+    pub fn set_min_tolerance(&mut self, mintol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:85 - `ShapeFix_Solid::SetMaxTolerance()`
+    /// Sets maximal allowed tolerance (also to FixShellTool)
+    pub fn set_max_tolerance(&mut self, maxtol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:89 - `ShapeFix_Solid::FixShellMode()`
+    /// Returns (modifiable) the mode for applying fixes of
+    /// ShapeFix_Shell, by default True.
+    pub fn fix_shell_mode(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_fix_shell_mode(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:93 - `ShapeFix_Solid::FixShellOrientationMode()`
+    /// Returns (modifiable) the mode for applying analysis and fixes of
+    /// orientation of shells in the solid; by default True.
+    pub fn fix_shell_orientation_mode(&mut self) -> &mut i32 {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_fix_shell_orientation_mode(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:100 - `ShapeFix_Solid::CreateOpenSolidMode()`
+    /// Returns (modifiable) the mode for creation of solids.
+    /// If mode myCreateOpenSolidMode is equal to true
+    /// solids are created from open shells
+    /// else solids are created  from closed shells only.
+    /// ShapeFix_Shell, by default False.
+    pub fn create_open_solid_mode(&mut self) -> &mut bool {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_create_open_solid_mode(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:104 - `ShapeFix_Solid::Shape()`
+    /// In case of multiconnexity returns compound of fixed solids
+    /// else returns one solid.
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_shape(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Solid_dynamic_type(
+                self as *const Self,
+            )))
+        }
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `ShapeFix_Solid.hxx`:106 - `ShapeFix_Solid::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to ShapeFix_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Solid_as_ShapeFix_Root(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Upcast to ShapeFix_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixSolid> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_Set(self as *mut Self, Root)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_Context(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_Precision(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
+    pub fn min_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_MinTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
+    pub fn max_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_MaxTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
+    pub fn send_msg(
+        &self,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_SendMsg(
+                self as *const Self,
+                shape,
+                message,
+                gravity.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_SendWarning(
+                self as *const Self,
+                shape,
+                message,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_This(self as *const Self)
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_GetRefCount(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Solid_inherited_Delete(self as *const Self)
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeFixSolid;
+
+unsafe impl crate::CppDeletable for HandleShapeFixSolid {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeFixSolid_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixSolid {
+    /// Dereference this Handle to access the underlying ShapeFix_Solid
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Solid {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSolid_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Solid
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Solid {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSolid_get_mut(
+                self as *mut Self,
+            ))
+        }
+    }
+
+    /// Upcast Handle<ShapeFix_Solid> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixSolid_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Upcast Handle<ShapeFix_Solid> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixSolid_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+}
+
+// ========================
+// From ShapeFix_SplitCommonVertex.hxx
+// ========================
+
+/// **Source:** `ShapeFix_SplitCommonVertex.hxx`:32 - `ShapeFix_SplitCommonVertex`
+/// Two wires have common vertex - this case is valid in BRep model
+/// and isn't valid in STEP => before writing into STEP it is necessary
+/// to split this vertex (each wire must has one vertex)
+pub use crate::ffi_types::ShapeFix_SplitCommonVertex as SplitCommonVertex;
+
+unsafe impl crate::CppDeletable for SplitCommonVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_destructor(ptr);
+    }
+}
+
+impl SplitCommonVertex {
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:36 - `ShapeFix_SplitCommonVertex::ShapeFix_SplitCommonVertex()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:38 - `ShapeFix_SplitCommonVertex::Init()`
+    pub fn init(&mut self, S: &crate::topo_ds::Shape) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_init(self as *mut Self, S)
+        })
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:40 - `ShapeFix_SplitCommonVertex::Perform()`
+    pub fn perform(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_perform(self as *mut Self)
+        })
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:42 - `ShapeFix_SplitCommonVertex::Shape()`
+    pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_shape(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `ShapeFix_SplitCommonVertex.hxx`:44 - `ShapeFix_SplitCommonVertex::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to ShapeFix_Root
+    pub fn as_root(&self) -> &Root {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_as_ShapeFix_Root(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to ShapeFix_Root (mutable)
+    pub fn as_root_mut(&mut self) -> &mut Root {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixSplitCommonVertex> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_Set(
+                self as *mut Self,
+                Root,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_Context(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
+    pub fn set_msg_registrator(
+        &mut self,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
+    pub fn msg_registrator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
+    pub fn precision(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_Precision(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
+    pub fn set_min_tolerance(&mut self, mintol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
+    pub fn min_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_MinTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
+    pub fn set_max_tolerance(&mut self, maxtol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
+    pub fn max_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_MaxTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:88 - `ShapeFix_Root::SendMsg()`
+    pub fn send_msg(
+        &self,
+        shape: &crate::topo_ds::Shape,
+        message: &crate::message::Msg,
+        gravity: crate::message::Gravity,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SendMsg(
+                self as *const Self,
+                shape,
+                message,
+                gravity.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
+    pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SendWarning(
+                self as *const Self,
+                shape,
+                message,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
+    pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitCommonVertex_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeFixSplitCommonVertex;
+
+unsafe impl crate::CppDeletable for HandleShapeFixSplitCommonVertex {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_destructor(ptr);
+    }
+}
+
+impl HandleShapeFixSplitCommonVertex {
+    /// Dereference this Handle to access the underlying ShapeFix_SplitCommonVertex
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_SplitCommonVertex {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeFix_SplitCommonVertex
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_SplitCommonVertex {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<ShapeFix_Root>
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_to_HandleShapeFixRoot(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeFix_SplitCommonVertex> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixSplitCommonVertex_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -5617,11 +6397,11 @@ impl HandleShapeFixSplitCommonVertex {
 /// **Source:** `ShapeFix_SplitTool.hxx`:32 - `ShapeFix_SplitTool`
 /// Tool for splitting and cutting edges; includes methods
 /// used in OverlappingTool and IntersectionTool
-pub use crate::ffi::ShapeFix_SplitTool as SplitTool;
+pub use crate::ffi_types::ShapeFix_SplitTool as SplitTool;
 
 unsafe impl crate::CppDeletable for SplitTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_SplitTool_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_destructor(ptr);
     }
 }
 
@@ -5630,7 +6410,9 @@ impl SplitTool {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_SplitTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_ctor(),
+            ))
         }
     }
 
@@ -5650,17 +6432,7 @@ impl SplitTool {
         tol2d: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitTool_split_edge_edge_real_vertex_face_edge2_real2(
-                self as *const Self,
-                edge,
-                param,
-                vert,
-                face,
-                newE1,
-                newE2,
-                tol3d,
-                tol2d,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_split_edge_edge_real_vertex_face_edge2_real2(self as *const Self, edge, param, vert, face, newE1, newE2, tol3d, tol2d)
         })
     }
 
@@ -5681,18 +6453,7 @@ impl SplitTool {
         tol2d: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitTool_split_edge_edge_real2_vertex_face_edge2_real2(
-                self as *const Self,
-                edge,
-                param1,
-                param2,
-                vert,
-                face,
-                newE1,
-                newE2,
-                tol3d,
-                tol2d,
-            )
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_split_edge_edge_real2_vertex_face_edge2_real2(self as *const Self, edge, param1, param2, vert, face, newE1, newE2, tol3d, tol2d)
         })
     }
 
@@ -5707,7 +6468,7 @@ impl SplitTool {
         iscutline: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitTool_cut_edge(
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_cut_edge(
                 self as *const Self,
                 edge,
                 pend,
@@ -5731,14 +6492,14 @@ impl SplitTool {
         lp: f64,
         V2: &crate::topo_ds::Vertex,
         face: &crate::topo_ds::Face,
-        SeqE: &mut crate::ffi::TopTools_SequenceOfShape,
+        SeqE: &mut crate::ffi_types::TopTools_SequenceOfShape,
         aNum: &mut i32,
-        context: &crate::ffi::HandleShapeBuildReShape,
+        context: &crate::ffi_types::HandleShapeBuildReShape,
         tol3d: f64,
         tol2d: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_SplitTool_split_edge_edge_real_vertex_real_vertex_face_sequenceofshape_int_handleshapebuildreshape_real2(self as *const Self, edge, fp, V1, lp, V2, face, SeqE, aNum, context, tol3d, tol2d)
+            crate::ffi_extern_TKShHealing::ShapeFix_SplitTool_split_edge_edge_real_vertex_real_vertex_face_sequenceofshape_int_handleshapebuildreshape_real2(self as *const Self, edge, fp, V1, lp, V2, face, SeqE, aNum, context, tol3d, tol2d)
         })
     }
 }
@@ -5796,11 +6557,11 @@ impl SplitTool {
 /// (LoadWire, SetFace or SetSurface, SetPrecision, SetMaxTailAngle
 /// and SetMaxTailWidth), or
 /// by loading already filled ShapeAnalisis_Wire with method Load
-pub use crate::ffi::ShapeFix_Wire as Wire;
+pub use crate::ffi_types::ShapeFix_Wire as Wire;
 
 unsafe impl crate::CppDeletable for Wire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Wire_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Wire_destructor(ptr);
     }
 }
 
@@ -5808,7 +6569,11 @@ impl Wire {
     /// **Source:** `ShapeFix_Wire.hxx`:92 - `ShapeFix_Wire::ShapeFix_Wire()`
     /// Empty Constructor, creates clear object with default flags
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:96 - `ShapeFix_Wire::ShapeFix_Wire()`
@@ -5821,7 +6586,7 @@ impl Wire {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wire_ctor_wire_face_real(wire, face, prec),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_ctor_wire_face_real(wire, face, prec),
             ))
         }
     }
@@ -5830,7 +6595,7 @@ impl Wire {
     /// Sets all modes to default
     pub fn clear_modes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_clear_modes(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_clear_modes(self as *mut Self)
         })
     }
 
@@ -5838,7 +6603,7 @@ impl Wire {
     /// Clears all statuses
     pub fn clear_statuses(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_clear_statuses(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_clear_statuses(self as *mut Self)
         })
     }
 
@@ -5852,7 +6617,12 @@ impl Wire {
         prec: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_init_wire_face_real(self as *mut Self, wire, face, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_init_wire_face_real(
+                self as *mut Self,
+                wire,
+                face,
+                prec,
+            )
         })
     }
 
@@ -5861,9 +6631,15 @@ impl Wire {
     /// and drops all fixing statuses
     /// If analyzer contains face, there is no need to set it
     /// by SetFace or SetSurface
-    pub fn init_handleshapeanalysiswire(&mut self, saw: &crate::ffi::HandleShapeAnalysisWire) {
+    pub fn init_handleshapeanalysiswire(
+        &mut self,
+        saw: &crate::ffi_types::HandleShapeAnalysisWire,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_init_handleshapeanalysiswire(self as *mut Self, saw)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_init_handleshapeanalysiswire(
+                self as *mut Self,
+                saw,
+            )
         })
     }
 
@@ -5871,15 +6647,21 @@ impl Wire {
     /// Load data for the wire, and drops all fixing statuses
     pub fn load_wire(&mut self, wire: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_load_wire(self as *mut Self, wire)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_load_wire(self as *mut Self, wire)
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:122 - `ShapeFix_Wire::Load()`
     /// Load data for the wire, and drops all fixing statuses
-    pub fn load_handleshapeextendwiredata(&mut self, sbwd: &crate::ffi::HandleShapeExtendWireData) {
+    pub fn load_handleshapeextendwiredata(
+        &mut self,
+        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_load_handleshapeextendwiredata(self as *mut Self, sbwd)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_load_handleshapeextendwiredata(
+                self as *mut Self,
+                sbwd,
+            )
         })
     }
 
@@ -5887,15 +6669,18 @@ impl Wire {
     /// Set working face for the wire
     pub fn set_face(&mut self, face: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_face(self as *mut Self, face)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_face(self as *mut Self, face)
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:128 - `ShapeFix_Wire::SetSurface()`
     /// Set surface for the wire
-    pub fn set_surface_handlegeomsurface(&mut self, surf: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface_handlegeomsurface(&mut self, surf: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_surface_handlegeomsurface(self as *mut Self, surf)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_surface_handlegeomsurface(
+                self as *mut Self,
+                surf,
+            )
         })
     }
 
@@ -5903,11 +6688,11 @@ impl Wire {
     /// Set surface for the wire
     pub fn set_surface_handlegeomsurface_location(
         &mut self,
-        surf: &crate::ffi::HandleGeomSurface,
+        surf: &crate::ffi_types::HandleGeomSurface,
         loc: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_surface_handlegeomsurface_location(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_surface_handlegeomsurface_location(
                 self as *mut Self,
                 surf,
                 loc,
@@ -5919,7 +6704,7 @@ impl Wire {
     /// Set working precision (to root and to analyzer)
     pub fn set_precision(&mut self, prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_precision(self as *mut Self, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_precision(self as *mut Self, prec)
         })
     }
 
@@ -5927,7 +6712,10 @@ impl Wire {
     /// Sets the maximal allowed angle of the tails in radians.
     pub fn set_max_tail_angle(&mut self, theMaxTailAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_max_tail_angle(self as *mut Self, theMaxTailAngle)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_max_tail_angle(
+                self as *mut Self,
+                theMaxTailAngle,
+            )
         })
     }
 
@@ -5935,35 +6723,44 @@ impl Wire {
     /// Sets the maximal allowed width of the tails.
     pub fn set_max_tail_width(&mut self, theMaxTailWidth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_set_max_tail_width(self as *mut Self, theMaxTailWidth)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_set_max_tail_width(
+                self as *mut Self,
+                theMaxTailWidth,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:143 - `ShapeFix_Wire::IsLoaded()`
     /// Tells if the wire is loaded
     pub fn is_loaded(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_is_loaded(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_is_loaded(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:146 - `ShapeFix_Wire::IsReady()`
     /// Tells if the wire and face are loaded
     pub fn is_ready(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_is_ready(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_is_ready(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:149 - `ShapeFix_Wire::NbEdges()`
     /// returns number of edges in the working wire
     pub fn nb_edges(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_nb_edges(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_nb_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:152 - `ShapeFix_Wire::Wire()`
     /// Makes the resulting Wire (by basic Brep_Builder)
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_wire(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_wire(self as *const Self),
+            ))
         }
     }
 
@@ -5971,32 +6768,40 @@ impl Wire {
     /// Makes the resulting Wire (by BRepAPI_MakeWire)
     pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_wire_api_make(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_wire_api_make(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:158 - `ShapeFix_Wire::Analyzer()`
     /// returns field Analyzer (working tool)
-    pub fn analyzer(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisWire> {
+    pub fn analyzer(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisWire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_analyzer(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_analyzer(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:161 - `ShapeFix_Wire::WireData()`
     /// returns working wire
-    pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Wire_wire_data(self as *const Self))) }
+    pub fn wire_data(&self) -> &crate::ffi_types::HandleShapeExtendWireData {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_wire_data(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:164 - `ShapeFix_Wire::Face()`
     /// returns working face (Analyzer.Face())
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Wire_face(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_face(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:169 - `ShapeFix_Wire::ModifyTopologyMode()`
@@ -6005,9 +6810,11 @@ impl Wire {
     /// (adding/removing edges etc.)
     pub fn modify_topology_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_modify_topology_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_modify_topology_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6016,9 +6823,11 @@ impl Wire {
     /// methods are allowed to modify geometry of the edges and vertices
     pub fn modify_geometry_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_modify_geometry_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_modify_geometry_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6027,9 +6836,11 @@ impl Wire {
     /// methods are allowed to modify RemoveLoop of the edges
     pub fn modify_remove_loop_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_modify_remove_loop_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_modify_remove_loop_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6039,9 +6850,9 @@ impl Wire {
     /// and FixConnected() for last and first edges).
     pub fn closed_wire_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_closed_wire_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_closed_wire_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -6051,9 +6862,11 @@ impl Wire {
     /// case of ambiguity in FixEdgeCurves).
     pub fn preference_p_curve_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_preference_p_curve_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_preference_p_curve_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6063,79 +6876,89 @@ impl Wire {
     /// using intersection, extrema, projections) or not.
     pub fn fix_gaps_by_ranges_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_gaps_by_ranges_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gaps_by_ranges_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:194 - `ShapeFix_Wire::FixReorderMode()`
     pub fn fix_reorder_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_reorder_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_reorder_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:196 - `ShapeFix_Wire::FixSmallMode()`
     pub fn fix_small_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_small_mode(self as *mut Self)))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_small_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:198 - `ShapeFix_Wire::FixConnectedMode()`
     pub fn fix_connected_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_connected_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_connected_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:200 - `ShapeFix_Wire::FixEdgeCurvesMode()`
     pub fn fix_edge_curves_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_edge_curves_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_edge_curves_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:202 - `ShapeFix_Wire::FixDegeneratedMode()`
     pub fn fix_degenerated_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_degenerated_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_degenerated_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:204 - `ShapeFix_Wire::FixSelfIntersectionMode()`
     pub fn fix_self_intersection_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_self_intersection_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_self_intersection_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:206 - `ShapeFix_Wire::FixLackingMode()`
     pub fn fix_lacking_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_lacking_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_lacking_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:208 - `ShapeFix_Wire::FixGaps3dMode()`
     pub fn fix_gaps3d_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_gaps3d_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gaps3d_mode(self as *mut Self),
+            ))
         }
     }
 
@@ -6148,115 +6971,135 @@ impl Wire {
     /// 0 method will not be called
     pub fn fix_gaps2d_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_gaps2d_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gaps2d_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:218 - `ShapeFix_Wire::FixReversed2dMode()`
     pub fn fix_reversed2d_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_reversed2d_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_reversed2d_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:220 - `ShapeFix_Wire::FixRemovePCurveMode()`
     pub fn fix_remove_p_curve_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_remove_p_curve_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_remove_p_curve_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:222 - `ShapeFix_Wire::FixAddPCurveMode()`
     pub fn fix_add_p_curve_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_add_p_curve_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_add_p_curve_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:224 - `ShapeFix_Wire::FixRemoveCurve3dMode()`
     pub fn fix_remove_curve3d_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_remove_curve3d_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_remove_curve3d_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:226 - `ShapeFix_Wire::FixAddCurve3dMode()`
     pub fn fix_add_curve3d_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_add_curve3d_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_add_curve3d_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:228 - `ShapeFix_Wire::FixSeamMode()`
     pub fn fix_seam_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_seam_mode(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_seam_mode(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:230 - `ShapeFix_Wire::FixShiftedMode()`
     pub fn fix_shifted_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_shifted_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_shifted_mode(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:232 - `ShapeFix_Wire::FixSameParameterMode()`
     pub fn fix_same_parameter_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_same_parameter_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_same_parameter_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:234 - `ShapeFix_Wire::FixVertexToleranceMode()`
     pub fn fix_vertex_tolerance_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_vertex_tolerance_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_vertex_tolerance_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:236 - `ShapeFix_Wire::FixNotchedEdgesMode()`
     pub fn fix_notched_edges_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_notched_edges_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_notched_edges_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:238 - `ShapeFix_Wire::FixSelfIntersectingEdgeMode()`
     pub fn fix_self_intersecting_edge_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_self_intersecting_edge_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_self_intersecting_edge_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:240 - `ShapeFix_Wire::FixIntersectingEdgesMode()`
     pub fn fix_intersecting_edges_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_intersecting_edges_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_intersecting_edges_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6269,18 +7112,16 @@ impl Wire {
     /// 0 method will not be called
     pub fn fix_non_adjacent_intersecting_edges_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(
-                crate::ffi::ShapeFix_Wire_fix_non_adjacent_intersecting_edges_mode(
-                    self as *mut Self,
-                ),
-            ))
+            &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_non_adjacent_intersecting_edges_mode(self as *mut Self)))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:250 - `ShapeFix_Wire::FixTailMode()`
     pub fn fix_tail_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wire_fix_tail_mode(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_tail_mode(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -6301,7 +7142,9 @@ impl Wire {
     /// FixSelfIntersection (if wire is ordered and ClosedMode is True)
     /// FixLacking (if wire is ordered)
     pub fn perform(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_perform(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:271 - `ShapeFix_Wire::FixReorder()`
@@ -6309,7 +7152,10 @@ impl Wire {
     /// Flag <theModeBoth> determines the use of miscible mode if necessary.
     pub fn fix_reorder_bool(&mut self, theModeBoth: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_reorder_bool(self as *mut Self, theModeBoth)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_reorder_bool(
+                self as *mut Self,
+                theModeBoth,
+            )
         })
     }
 
@@ -6317,7 +7163,11 @@ impl Wire {
     /// Applies FixSmall(num) to all edges in the wire
     pub fn fix_small_bool_real(&mut self, lockvtx: bool, precsmall: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_small_bool_real(self as *mut Self, lockvtx, precsmall)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_small_bool_real(
+                self as *mut Self,
+                lockvtx,
+                precsmall,
+            )
         })
     }
 
@@ -6328,7 +7178,7 @@ impl Wire {
     /// If <prec> is -1 then MaxTolerance() is taken.
     pub fn fix_connected_real(&mut self, prec: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_connected_real(self as *mut Self, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_connected_real(self as *mut Self, prec)
         })
     }
 
@@ -6344,7 +7194,9 @@ impl Wire {
     /// FixShifted,
     /// ShapeFix_Edge::FixSameParameter
     pub fn fix_edge_curves(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_edge_curves(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_edge_curves(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:298 - `ShapeFix_Wire::FixDegenerated()`
@@ -6352,7 +7204,9 @@ impl Wire {
     /// Connection between first and last edges is treated only if
     /// flag ClosedMode is True
     pub fn fix_degenerated(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_degenerated(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_degenerated(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:305 - `ShapeFix_Wire::FixSelfIntersection()`
@@ -6363,7 +7217,7 @@ impl Wire {
     /// and removes wrong edges if any
     pub fn fix_self_intersection(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_self_intersection(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_self_intersection(self as *mut Self)
         })
     }
 
@@ -6378,7 +7232,7 @@ impl Wire {
     /// of vertices which have big tolerances.
     pub fn fix_lacking_bool(&mut self, force: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_lacking_bool(self as *mut Self, force)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_lacking_bool(self as *mut Self, force)
         })
     }
 
@@ -6390,7 +7244,7 @@ impl Wire {
     /// If <prec> is -1 then MaxTolerance() is taken.
     pub fn fix_closed(&mut self, prec: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_closed(self as *mut Self, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_closed(self as *mut Self, prec)
         })
     }
 
@@ -6398,14 +7252,18 @@ impl Wire {
     /// Fixes gaps between ends of 3d curves on adjacent edges
     /// myPrecision is used to detect the gaps.
     pub fn fix_gaps3d(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_gaps3d(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gaps3d(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:330 - `ShapeFix_Wire::FixGaps2d()`
     /// Fixes gaps between ends of pcurves on adjacent edges
     /// myPrecision is used to detect the gaps.
     pub fn fix_gaps2d(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_gaps2d(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gaps2d(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:334 - `ShapeFix_Wire::FixReorder()`
@@ -6413,7 +7271,10 @@ impl Wire {
     /// that should be filled and computed before
     pub fn fix_reorder_wireorder(&mut self, wi: &crate::shape_analysis::WireOrder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_reorder_wireorder(self as *mut Self, wi)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_reorder_wireorder(
+                self as *mut Self,
+                wi,
+            )
         })
     }
 
@@ -6427,7 +7288,7 @@ impl Wire {
     /// But if lockvtx is True, this edge must be kept ...
     pub fn fix_small_int_bool_real(&mut self, num: i32, lockvtx: bool, precsmall: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_small_int_bool_real(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_small_int_bool_real(
                 self as *mut Self,
                 num,
                 lockvtx,
@@ -6444,7 +7305,11 @@ impl Wire {
     /// If <prec> is -1 then MaxTolerance() is taken.
     pub fn fix_connected_int_real(&mut self, num: i32, prec: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_connected_int_real(self as *mut Self, num, prec)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_connected_int_real(
+                self as *mut Self,
+                num,
+                prec,
+            )
         })
     }
 
@@ -6464,7 +7329,9 @@ impl Wire {
     /// 2. Wire is extracted from the face with orientation not composed
     /// with orientation of the face
     pub fn fix_seam(&mut self, num: i32) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_seam(self as *mut Self, num) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_seam(self as *mut Self, num)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:383 - `ShapeFix_Wire::FixShifted()`
@@ -6481,7 +7348,9 @@ impl Wire {
     /// and special cases like sphere given by two meridians
     /// are treated.
     pub fn fix_shifted(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_shifted(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_shifted(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:390 - `ShapeFix_Wire::FixDegenerated()`
@@ -6492,7 +7361,7 @@ impl Wire {
     /// (before <num>th), or makes <num>th edge to be degenerated.
     pub fn fix_degenerated_int(&mut self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_degenerated_int(self as *mut Self, num)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_degenerated_int(self as *mut Self, num)
         })
     }
 
@@ -6505,14 +7374,18 @@ impl Wire {
     /// Returns True if edge was added or tolerance was increased.
     pub fn fix_lacking_int_bool(&mut self, num: i32, force: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_lacking_int_bool(self as *mut Self, num, force)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_lacking_int_bool(
+                self as *mut Self,
+                num,
+                force,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:401 - `ShapeFix_Wire::FixNotchedEdges()`
     pub fn fix_notched_edges(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_notched_edges(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_notched_edges(self as *mut Self)
         })
     }
 
@@ -6522,7 +7395,7 @@ impl Wire {
     /// If convert is True, converts curves to bsplines to bend.
     pub fn fix_gap3d(&mut self, num: i32, convert: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_gap3d(self as *mut Self, num, convert)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gap3d(self as *mut Self, num, convert)
         })
     }
 
@@ -6532,89 +7405,124 @@ impl Wire {
     /// If convert is True, converts pcurves to bsplines to bend.
     pub fn fix_gap2d(&mut self, num: i32, convert: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_fix_gap2d(self as *mut Self, num, convert)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_gap2d(self as *mut Self, num, convert)
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:415 - `ShapeFix_Wire::FixTails()`
     pub fn fix_tails(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_Wire_fix_tails(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_tails(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:417 - `ShapeFix_Wire::StatusReorder()`
     pub fn status_reorder(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_reorder(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_reorder(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:419 - `ShapeFix_Wire::StatusSmall()`
     pub fn status_small(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_small(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_small(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:421 - `ShapeFix_Wire::StatusConnected()`
     pub fn status_connected(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_connected(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_connected(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:423 - `ShapeFix_Wire::StatusEdgeCurves()`
     pub fn status_edge_curves(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_edge_curves(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_edge_curves(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:425 - `ShapeFix_Wire::StatusDegenerated()`
     pub fn status_degenerated(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_degenerated(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_degenerated(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:427 - `ShapeFix_Wire::StatusSelfIntersection()`
     pub fn status_self_intersection(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_self_intersection(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_self_intersection(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:429 - `ShapeFix_Wire::StatusLacking()`
     pub fn status_lacking(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_lacking(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_lacking(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:431 - `ShapeFix_Wire::StatusClosed()`
     pub fn status_closed(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_closed(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_closed(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:433 - `ShapeFix_Wire::StatusGaps3d()`
     pub fn status_gaps3d(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_gaps3d(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_gaps3d(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:435 - `ShapeFix_Wire::StatusGaps2d()`
     pub fn status_gaps2d(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_gaps2d(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_gaps2d(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:437 - `ShapeFix_Wire::StatusNotches()`
     pub fn status_notches(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_notches(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_notches(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -6627,14 +7535,17 @@ impl Wire {
     /// FAIL: some problem(s) cannot be fixed
     pub fn status_removed_segment(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_removed_segment(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_removed_segment(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:447 - `ShapeFix_Wire::StatusFixTails()`
     pub fn status_fix_tails(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_status_fix_tails(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_status_fix_tails(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -6647,105 +7558,127 @@ impl Wire {
     /// FAIL: problem cannot be fixed
     pub fn last_fix_status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_last_fix_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_last_fix_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:458 - `ShapeFix_Wire::FixEdgeTool()`
     /// Returns tool for fixing wires.
-    pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixEdge> {
+    pub fn fix_edge_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixEdge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_fix_edge_tool(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_fix_edge_tool(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:460 - `ShapeFix_Wire::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Wire_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:460 - `ShapeFix_Wire::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ShapeFix_Wire_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ShapeFix_Wire.hxx`:460 - `ShapeFix_Wire::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Wire_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Wire_as_ShapeFix_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wire_as_ShapeFix_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Wire_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Wire_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Wire_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWire> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixWire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wire_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_Set(self as *mut Self, Root)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wire_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_Context(self as *const Self),
             ))
         }
     }
@@ -6753,20 +7686,25 @@ impl Wire {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wire_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6774,42 +7712,51 @@ impl Wire {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_Precision(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_MinTolerance(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_MaxTolerance(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -6821,7 +7768,7 @@ impl Wire {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -6833,28 +7780,42 @@ impl Wire {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SendWarning(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SendWarning(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_SendFail(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6862,7 +7823,7 @@ impl Wire {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Wire_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6875,67 +7836,83 @@ impl Wire {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wire_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wire_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixWire;
+pub use crate::ffi_types::HandleShapeFixWire;
 
 unsafe impl crate::CppDeletable for HandleShapeFixWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixWire_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixWire_destructor(ptr);
     }
 }
 
 impl HandleShapeFixWire {
     /// Dereference this Handle to access the underlying ShapeFix_Wire
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Wire {
-        unsafe { &*crate::check_result(crate::ffi::HandleShapeFixWire_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Wire {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixWire_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeFix_Wire
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wire {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Wire {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixWire_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixWire_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Wire> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixWire_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixWire_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Wire> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixWire_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixWire_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6969,11 +7946,11 @@ impl HandleShapeFixWire {
 /// orientation REVERSED (for outer wire) or FORWARD (for inner
 /// wires), and segments of splitting seams - with orientation
 /// EXTERNAL.
-pub use crate::ffi::ShapeFix_WireSegment as WireSegment;
+pub use crate::ffi_types::ShapeFix_WireSegment as WireSegment;
 
 unsafe impl crate::CppDeletable for WireSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_WireSegment_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_destructor(ptr);
     }
 }
 
@@ -6982,23 +7959,20 @@ impl WireSegment {
     /// Creates empty segment.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_WireSegment_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:64 - `ShapeFix_WireSegment::ShapeFix_WireSegment()`
     /// Creates segment and initializes it with wire and orientation.
     pub fn new_handleshapeextendwiredata_orientation(
-        wire: &crate::ffi::HandleShapeExtendWireData,
+        wire: &crate::ffi_types::HandleShapeExtendWireData,
         ori: crate::top_abs::Orientation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_WireSegment_ctor_handleshapeextendwiredata_orientation(
-                    wire,
-                    ori.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_ctor_handleshapeextendwiredata_orientation(wire, ori.into())))
         }
     }
 
@@ -7010,7 +7984,10 @@ impl WireSegment {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_WireSegment_ctor_wire_orientation(wire, ori.into()),
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_ctor_wire_orientation(
+                    wire,
+                    ori.into(),
+                ),
             ))
         }
     }
@@ -7019,23 +7996,25 @@ impl WireSegment {
     /// Clears all fields.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_clear(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:75 - `ShapeFix_WireSegment::Load()`
     /// Loads wire.
-    pub fn load(&mut self, wire: &crate::ffi::HandleShapeExtendWireData) {
+    pub fn load(&mut self, wire: &crate::ffi_types::HandleShapeExtendWireData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_load(self as *mut Self, wire)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_load(self as *mut Self, wire)
         })
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:78 - `ShapeFix_WireSegment::WireData()`
     /// Returns wire.
-    pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
+    pub fn wire_data(&self) -> &crate::ffi_types::HandleShapeExtendWireData {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_WireSegment_wire_data(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_wire_data(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7043,7 +8022,10 @@ impl WireSegment {
     /// Sets orientation flag.
     pub fn orientation_orientation(&mut self, ori: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_orientation_orientation(self as *mut Self, ori.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_orientation_orientation(
+                self as *mut Self,
+                ori.into(),
+            )
         })
     }
 
@@ -7051,7 +8033,7 @@ impl WireSegment {
     /// Returns orientation flag.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_orientation(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -7062,7 +8044,9 @@ impl WireSegment {
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_WireSegment_first_vertex(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_first_vertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7073,7 +8057,9 @@ impl WireSegment {
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_WireSegment_last_vertex(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_last_vertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7082,7 +8068,7 @@ impl WireSegment {
     /// Returns True if FirstVertex() == LastVertex()
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_is_closed(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_is_closed(self as *const Self)
         })
     }
 
@@ -7090,7 +8076,7 @@ impl WireSegment {
     /// Returns Number of edges in the wire
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_nb_edges(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_nb_edges(self as *const Self)
         })
     }
 
@@ -7098,10 +8084,9 @@ impl WireSegment {
     /// Returns edge by given index in the wire
     pub fn edge(&self, i: i32) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_WireSegment_edge(
-                self as *const Self,
-                i,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_edge(self as *const Self, i),
+            ))
         }
     }
 
@@ -7109,7 +8094,7 @@ impl WireSegment {
     /// Replaces edge at index i by new one.
     pub fn set_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_set_edge(self as *mut Self, i, edge)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_set_edge(self as *mut Self, i, edge)
         })
     }
 
@@ -7119,7 +8104,11 @@ impl WireSegment {
     /// If i==0, edge is inserted at end of wire.
     pub fn add_edge_int_edge(&mut self, i: i32, edge: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_add_edge_int_edge(self as *mut Self, i, edge)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_add_edge_int_edge(
+                self as *mut Self,
+                i,
+                edge,
+            )
         })
     }
 
@@ -7136,7 +8125,7 @@ impl WireSegment {
         ivmax: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_add_edge_int_edge_int4(
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_add_edge_int_edge_int4(
                 self as *mut Self,
                 i,
                 edge,
@@ -7152,7 +8141,7 @@ impl WireSegment {
     /// Set patch indices for edge i.
     pub fn set_patch_index(&mut self, i: i32, iumin: i32, iumax: i32, ivmin: i32, ivmax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_set_patch_index(
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_set_patch_index(
                 self as *mut Self,
                 i,
                 iumin,
@@ -7166,21 +8155,33 @@ impl WireSegment {
     /// **Source:** `ShapeFix_WireSegment.hxx`:127 - `ShapeFix_WireSegment::DefineIUMin()`
     pub fn define_iu_min(&mut self, i: i32, iumin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_define_iu_min(self as *mut Self, i, iumin)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_define_iu_min(
+                self as *mut Self,
+                i,
+                iumin,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:129 - `ShapeFix_WireSegment::DefineIUMax()`
     pub fn define_iu_max(&mut self, i: i32, iumax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_define_iu_max(self as *mut Self, i, iumax)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_define_iu_max(
+                self as *mut Self,
+                i,
+                iumax,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:131 - `ShapeFix_WireSegment::DefineIVMin()`
     pub fn define_iv_min(&mut self, i: i32, ivmin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_define_iv_min(self as *mut Self, i, ivmin)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_define_iv_min(
+                self as *mut Self,
+                i,
+                ivmin,
+            )
         })
     }
 
@@ -7190,7 +8191,11 @@ impl WireSegment {
     /// as to satisfy eq. iumin <= myIUMin(i) <= myIUMax(i) <= iumax
     pub fn define_iv_max(&mut self, i: i32, ivmax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_define_iv_max(self as *mut Self, i, ivmax)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_define_iv_max(
+                self as *mut Self,
+                i,
+                ivmax,
+            )
         })
     }
 
@@ -7205,7 +8210,7 @@ impl WireSegment {
         ivmax: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_get_patch_index(
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_get_patch_index(
                 self as *const Self,
                 i,
                 iumin,
@@ -7221,14 +8226,20 @@ impl WireSegment {
     /// IUMin(i) <= IUMax(i) <= IUMin(i)+1
     pub fn check_patch_index(&self, i: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_check_patch_index(self as *const Self, i)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_check_patch_index(
+                self as *const Self,
+                i,
+            )
         })
     }
 
     /// **Source:** `ShapeFix_WireSegment.hxx`:149 - `ShapeFix_WireSegment::SetVertex()`
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_set_vertex(self as *mut Self, theVertex)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_set_vertex(
+                self as *mut Self,
+                theVertex,
+            )
         })
     }
 
@@ -7236,7 +8247,7 @@ impl WireSegment {
     pub fn get_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_WireSegment_get_vertex(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_get_vertex(self as *const Self),
             ))
         }
     }
@@ -7244,7 +8255,7 @@ impl WireSegment {
     /// **Source:** `ShapeFix_WireSegment.hxx`:153 - `ShapeFix_WireSegment::IsVertex()`
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_WireSegment_is_vertex(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireSegment_is_vertex(self as *const Self)
         })
     }
 }
@@ -7258,11 +8269,11 @@ impl WireSegment {
 /// Fixes vertices in the wire on the basis of pre-analysis
 /// made by ShapeAnalysis_WireVertex (given as argument).
 /// The Wire has formerly been loaded in a ShapeExtend_WireData.
-pub use crate::ffi::ShapeFix_WireVertex as WireVertex;
+pub use crate::ffi_types::ShapeFix_WireVertex as WireVertex;
 
 unsafe impl crate::CppDeletable for WireVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_WireVertex_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_destructor(ptr);
     }
 }
 
@@ -7270,7 +8281,9 @@ impl WireVertex {
     /// **Source:** `ShapeFix_WireVertex.hxx`:38 - `ShapeFix_WireVertex::ShapeFix_WireVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_WireVertex_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_ctor(),
+            ))
         }
     }
 
@@ -7280,7 +8293,11 @@ impl WireVertex {
     /// and performs analysis
     pub fn init_wire_real(&mut self, wire: &crate::topo_ds::Wire, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireVertex_init_wire_real(self as *mut Self, wire, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_init_wire_real(
+                self as *mut Self,
+                wire,
+                preci,
+            )
         })
     }
 
@@ -7290,11 +8307,11 @@ impl WireVertex {
     /// and performs analysis
     pub fn init_handleshapeextendwiredata_real(
         &mut self,
-        sbwd: &crate::ffi::HandleShapeExtendWireData,
+        sbwd: &crate::ffi_types::HandleShapeExtendWireData,
         preci: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireVertex_init_handleshapeextendwiredata_real(
+            crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_init_handleshapeextendwiredata_real(
                 self as *mut Self,
                 sbwd,
                 preci,
@@ -7307,7 +8324,10 @@ impl WireVertex {
     /// ShapeAnalysis_WireVertex
     pub fn init_wirevertex(&mut self, sawv: &crate::shape_analysis::WireVertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_WireVertex_init_wirevertex(self as *mut Self, sawv)
+            crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_init_wirevertex(
+                self as *mut Self,
+                sawv,
+            )
         })
     }
 
@@ -7315,15 +8335,19 @@ impl WireVertex {
     /// returns internal analyzer
     pub fn analyzer(&self) -> &crate::shape_analysis::WireVertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_WireVertex_analyzer(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_analyzer(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeFix_WireVertex.hxx`:58 - `ShapeFix_WireVertex::WireData()`
     /// returns data on wire (fixed)
-    pub fn wire_data(&self) -> &crate::ffi::HandleShapeExtendWireData {
+    pub fn wire_data(&self) -> &crate::ffi_types::HandleShapeExtendWireData {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_WireVertex_wire_data(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_wire_data(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7331,9 +8355,9 @@ impl WireVertex {
     /// returns resulting wire (fixed)
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_WireVertex_wire(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_wire(self as *const Self),
+            ))
         }
     }
 
@@ -7342,7 +8366,9 @@ impl WireVertex {
     /// without changing parameters)
     /// Returns the count of fixed vertices, 0 if none
     pub fn fix_same(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_WireVertex_fix_same(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_fix_same(self as *mut Self)
+        })
     }
 
     /// **Source:** `ShapeFix_WireVertex.hxx`:71 - `ShapeFix_WireVertex::Fix()`
@@ -7350,7 +8376,9 @@ impl WireVertex {
     /// common value has been set, with or without changing parameters
     /// Returns the count of fixed vertices, 0 if none
     pub fn fix(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ShapeFix_WireVertex_fix(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeFix_WireVertex_fix(self as *mut Self)
+        })
     }
 }
 
@@ -7360,11 +8388,11 @@ impl WireVertex {
 
 /// **Source:** `ShapeFix_Wireframe.hxx`:34 - `ShapeFix_Wireframe`
 /// Provides methods for fixing wireframe of shape
-pub use crate::ffi::ShapeFix_Wireframe as Wireframe;
+pub use crate::ffi_types::ShapeFix_Wireframe as Wireframe;
 
 unsafe impl crate::CppDeletable for Wireframe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeFix_Wireframe_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_destructor(ptr);
     }
 }
 
@@ -7372,7 +8400,9 @@ impl Wireframe {
     /// **Source:** `ShapeFix_Wireframe.hxx`:38 - `ShapeFix_Wireframe::ShapeFix_Wireframe()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wireframe_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_ctor(),
+            ))
         }
     }
 
@@ -7380,7 +8410,7 @@ impl Wireframe {
     pub fn new_shape(shape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wireframe_ctor_shape(shape),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_ctor_shape(shape),
             ))
         }
     }
@@ -7389,7 +8419,7 @@ impl Wireframe {
     /// Clears all statuses
     pub fn clear_statuses(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_clear_statuses(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_clear_statuses(self as *mut Self)
         })
     }
 
@@ -7397,7 +8427,7 @@ impl Wireframe {
     /// Loads a shape, resets statuses
     pub fn load(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_load(self as *mut Self, shape)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_load(self as *mut Self, shape)
         })
     }
 
@@ -7407,7 +8437,7 @@ impl Wireframe {
     /// If precision is 0.0, uses Precision::Confusion().
     pub fn fix_wire_gaps(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_fix_wire_gaps(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_fix_wire_gaps(self as *mut Self)
         })
     }
 
@@ -7416,7 +8446,7 @@ impl Wireframe {
     /// If precision is 0.0, uses Precision::Confusion().
     pub fn fix_small_edges(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_fix_small_edges(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_fix_small_edges(self as *mut Self)
         })
     }
 
@@ -7425,13 +8455,13 @@ impl Wireframe {
     /// Returns True if at least one small edge has been found.
     pub fn check_small_edges(
         &mut self,
-        theSmallEdges: &mut crate::ffi::TopTools_MapOfShape,
-        theEdgeToFaces: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theFaceWithSmall: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theMultyEdges: &mut crate::ffi::TopTools_MapOfShape,
+        theSmallEdges: &mut crate::ffi_types::TopTools_MapOfShape,
+        theEdgeToFaces: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theFaceWithSmall: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theMultyEdges: &mut crate::ffi_types::TopTools_MapOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_check_small_edges(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_check_small_edges(
                 self as *mut Self,
                 theSmallEdges,
                 theEdgeToFaces,
@@ -7451,15 +8481,15 @@ impl Wireframe {
     /// If theLimitAngle is equal to -1, this angle is not taken into account.
     pub fn merge_small_edges(
         &mut self,
-        theSmallEdges: &mut crate::ffi::TopTools_MapOfShape,
-        theEdgeToFaces: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theFaceWithSmall: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theMultyEdges: &mut crate::ffi::TopTools_MapOfShape,
+        theSmallEdges: &mut crate::ffi_types::TopTools_MapOfShape,
+        theEdgeToFaces: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theFaceWithSmall: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theMultyEdges: &mut crate::ffi_types::TopTools_MapOfShape,
         theModeDrop: bool,
         theLimitAngle: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_merge_small_edges(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_merge_small_edges(
                 self as *mut Self,
                 theSmallEdges,
                 theEdgeToFaces,
@@ -7480,7 +8510,10 @@ impl Wireframe {
     /// FAIL2 - Failed to fix some gaps in 2D
     pub fn status_wire_gaps(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_status_wire_gaps(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_status_wire_gaps(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -7491,16 +8524,19 @@ impl Wireframe {
     /// FAIL1 - Failed to fix some small edges
     pub fn status_small_edges(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_status_small_edges(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_status_small_edges(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:94 - `ShapeFix_Wireframe::Shape()`
     pub fn shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeFix_Wireframe_shape(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_shape(self as *mut Self),
+            ))
         }
     }
 
@@ -7508,9 +8544,11 @@ impl Wireframe {
     /// Returns mode managing removing small edges.
     pub fn mode_drop_small_edges(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeFix_Wireframe_mode_drop_small_edges(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_mode_drop_small_edges(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -7518,7 +8556,10 @@ impl Wireframe {
     /// Set limit angle for merging edges.
     pub fn set_limit_angle(&mut self, theLimitAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_set_limit_angle(self as *mut Self, theLimitAngle)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_set_limit_angle(
+                self as *mut Self,
+                theLimitAngle,
+            )
         })
     }
 
@@ -7526,14 +8567,14 @@ impl Wireframe {
     /// Get limit angle for merging edges.
     pub fn limit_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_limit_angle(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_limit_angle(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:105 - `ShapeFix_Wireframe::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeFix_Wireframe_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7543,7 +8584,7 @@ impl Wireframe {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeFix_Wireframe_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7551,76 +8592,93 @@ impl Wireframe {
     }
 
     /// **Source:** `ShapeFix_Wireframe.hxx`:105 - `ShapeFix_Wireframe::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeFix_Wireframe_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeFix_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_as_ShapeFix_Root(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeFix_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Wireframe_as_ShapeFix_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_as_ShapeFix_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeFix_Wireframe_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeFix_Wireframe_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeFixWireframe> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixWireframe> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wireframe_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:50 - `ShapeFix_Root::Set()`
-    pub fn set(&mut self, Root: &crate::ffi::HandleShapeFixRoot) {
+    pub fn set(&mut self, Root: &crate::ffi_types::HandleShapeFixRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_Set(self as *mut Self, Root)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_Set(self as *mut Self, Root)
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:53 - `ShapeFix_Root::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:56 - `ShapeFix_Root::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wireframe_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7628,20 +8686,25 @@ impl Wireframe {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:59 - `ShapeFix_Root::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SetMsgRegistrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:63 - `ShapeFix_Root::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeFix_Wireframe_inherited_MsgRegistrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_MsgRegistrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7649,49 +8712,67 @@ impl Wireframe {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:66 - `ShapeFix_Root::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:69 - `ShapeFix_Root::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:72 - `ShapeFix_Root::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:75 - `ShapeFix_Root::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:78 - `ShapeFix_Root::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:81 - `ShapeFix_Root::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:84 - `ShapeFix_Root::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
@@ -7703,7 +8784,7 @@ impl Wireframe {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -7715,7 +8796,7 @@ impl Wireframe {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:98 - `ShapeFix_Root::SendWarning()`
     pub fn send_warning(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SendWarning(
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SendWarning(
                 self as *const Self,
                 shape,
                 message,
@@ -7726,21 +8807,31 @@ impl Wireframe {
     /// Inherited: **Source:** `ShapeFix_Root.hxx`:105 - `ShapeFix_Root::SendFail()`
     pub fn send_fail(&self, shape: &crate::topo_ds::Shape, message: &crate::message::Msg) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_SendFail(self as *const Self, shape, message)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_SendFail(
+                self as *const Self,
+                shape,
+                message,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7748,7 +8839,9 @@ impl Wireframe {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeFix_Wireframe_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7761,71 +8854,85 @@ impl Wireframe {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeFix_Wireframe_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeFix_Wireframe_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeFixWireframe;
+pub use crate::ffi_types::HandleShapeFixWireframe;
 
 unsafe impl crate::CppDeletable for HandleShapeFixWireframe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeFixWireframe_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_destructor(ptr);
     }
 }
 
 impl HandleShapeFixWireframe {
     /// Dereference this Handle to access the underlying ShapeFix_Wireframe
-    pub fn get(&self) -> &crate::ffi::ShapeFix_Wireframe {
+    pub fn get(&self) -> &crate::ffi_types::ShapeFix_Wireframe {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeFixWireframe_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeFix_Wireframe
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeFix_Wireframe {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeFixWireframe_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeFix_Wireframe
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeFix_Wireframe {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeFix_Wireframe> to Handle<ShapeFix_Root>
-    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeFixRoot> {
+    pub fn to_handle_root(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeFixRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixWireframe_to_HandleShapeFixRoot(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_to_HandleShapeFixRoot(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeFix_Wireframe> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeFixWireframe_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeFixWireframe_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7835,4 +8942,4 @@ impl HandleShapeFixWireframe {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ShapeFix_SequenceOfWireSegment as SequenceOfWireSegment;
+pub use crate::ffi_types::ShapeFix_SequenceOfWireSegment as SequenceOfWireSegment;

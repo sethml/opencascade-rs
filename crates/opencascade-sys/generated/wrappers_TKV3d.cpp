@@ -95,7 +95,7 @@
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRep_Builder.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_OBB.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
@@ -174,15 +174,16 @@
 #include <Graphic3d_SequenceOfGroup.hxx>
 #include <Graphic3d_SequenceOfHClipPlane.hxx>
 #include <Graphic3d_ShaderProgram.hxx>
+#include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_StructureManager.hxx>
 #include <Graphic3d_Text.hxx>
 #include <Graphic3d_TextPath.hxx>
 #include <Graphic3d_Texture2D.hxx>
 #include <Graphic3d_TextureEnv.hxx>
 #include <Graphic3d_TransformPers.hxx>
+#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfShadingModel.hxx>
-#include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <Graphic3d_Vec4.hxx>
 #include <Graphic3d_Vertex.hxx>
@@ -400,7 +401,6 @@
 #include <StdSelect_TypeOfFace.hxx>
 #include <StdSelect_TypeOfSelectionImage.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_HArray1OfByte.hxx>
 #include <TColStd_HArray1OfInteger.hxx>
 #include <TColStd_HPackedMapOfInteger.hxx>
@@ -420,6 +420,7 @@
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopLoc_Datum3D.hxx>
 #include <TopLoc_Location.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTools_HSequenceOfShape.hxx>
 #include <TopTools_IndexedMapOfShape.hxx>
 #include <TopoDS_Compound.hxx>

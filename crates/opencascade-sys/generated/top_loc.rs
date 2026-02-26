@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From TopLoc_Datum3D.hxx
@@ -19,11 +19,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// A Datum3D is always described relative to the default datum.
 /// The default datum is described relative to itself: its
 /// origin is (0,0,0), and its axes are (1,0,0) (0,1,0) (0,0,1).
-pub use crate::ffi::TopLoc_Datum3D as Datum3D;
+pub use crate::ffi_types::TopLoc_Datum3D as Datum3D;
 
 unsafe impl crate::CppDeletable for Datum3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopLoc_Datum3D_destructor(ptr);
+        crate::ffi_extern_TKMath::TopLoc_Datum3D_destructor(ptr);
     }
 }
 
@@ -31,7 +31,11 @@ impl Datum3D {
     /// **Source:** `TopLoc_Datum3D.hxx`:40 - `TopLoc_Datum3D::TopLoc_Datum3D()`
     /// Constructs a default Datum3D.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Datum3D_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:44 - `TopLoc_Datum3D::TopLoc_Datum3D()`
@@ -39,7 +43,9 @@ impl Datum3D {
     /// raised if the Trsf is not a rigid transformation.
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Datum3D_ctor_trsf(T)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_ctor_trsf(T),
+            ))
         }
     }
 
@@ -47,60 +53,70 @@ impl Datum3D {
     /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_Datum3D_transformation(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Datum3D_transformation(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:50 - `TopLoc_Datum3D::Trsf()`
     /// Returns a gp_Trsf which, when applied to this datum, produces the default datum.
     pub fn trsf(&self) -> &crate::gp::Trsf {
-        unsafe { &*(crate::check_result(crate::ffi::TopLoc_Datum3D_trsf(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Datum3D_trsf(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:53 - `TopLoc_Datum3D::Form()`
     /// Return transformation form.
     pub fn form(&self) -> crate::gp::TrsfForm {
         crate::gp::TrsfForm::try_from(crate::check_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_form(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_form(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:59 - `TopLoc_Datum3D::ShallowDump()`
     /// Writes the contents of this Datum3D to the stream S.
-    pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
+    pub fn shallow_dump(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_shallow_dump(self as *const Self, S)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_shallow_dump(self as *const Self, S)
         })
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_Datum3D_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Datum3D_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::TopLoc_Datum3D_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `TopLoc_Datum3D.hxx`:61 - `TopLoc_Datum3D::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TopLoc_Datum3D_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Datum3D_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopLoc_Datum3D_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKMath::TopLoc_Datum3D_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -109,34 +125,39 @@ impl Datum3D {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TopLoc_Datum3D_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopLocDatum3D> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopLocDatum3D> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Datum3D_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -144,7 +165,7 @@ impl Datum3D {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopLoc_Datum3D_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -157,58 +178,72 @@ impl Datum3D {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_Datum3D_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_Datum3D_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopLocDatum3D;
+pub use crate::ffi_types::HandleTopLocDatum3D;
 
 unsafe impl crate::CppDeletable for HandleTopLocDatum3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopLocDatum3D_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTopLocDatum3D_destructor(ptr);
     }
 }
 
 impl HandleTopLocDatum3D {
     /// Dereference this Handle to access the underlying TopLoc_Datum3D
-    pub fn get(&self) -> &crate::ffi::TopLoc_Datum3D {
-        unsafe { &*crate::check_result(crate::ffi::HandleTopLocDatum3D_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TopLoc_Datum3D {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleTopLocDatum3D_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_Datum3D
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_Datum3D {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopLoc_Datum3D {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopLocDatum3D_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleTopLocDatum3D_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TopLoc_Datum3D> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopLocDatum3D_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleTopLocDatum3D_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -229,11 +264,11 @@ impl HandleTopLocDatum3D {
 /// * The exponent of the elementary Datum.
 ///
 /// * The transformation associated to the composition.
-pub use crate::ffi::TopLoc_ItemLocation as ItemLocation;
+pub use crate::ffi_types::TopLoc_ItemLocation as ItemLocation;
 
 unsafe impl crate::CppDeletable for ItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopLoc_ItemLocation_destructor(ptr);
+        crate::ffi_extern_TKMath::TopLoc_ItemLocation_destructor(ptr);
     }
 }
 
@@ -242,12 +277,12 @@ impl ItemLocation {
     /// Sets the elementary Datum to <D>
     /// Sets the exponent to <P>
     pub fn new_handletoplocdatum3d_int(
-        D: &crate::ffi::HandleTopLocDatum3D,
+        D: &crate::ffi_types::HandleTopLocDatum3D,
         P: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P),
+                crate::ffi_extern_TKMath::TopLoc_ItemLocation_ctor_handletoplocdatum3d_int(D, P),
             ))
         }
     }
@@ -256,7 +291,7 @@ impl ItemLocation {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_ItemLocation_to_owned(self as *const Self),
+                crate::ffi_extern_TKMath::TopLoc_ItemLocation_to_owned(self as *const Self),
             ))
         }
     }
@@ -271,11 +306,11 @@ impl ItemLocation {
 /// series of elementary reference coordinates, i.e.
 /// objects of type TopLoc_Datum3D, and the powers to
 /// which these objects are raised.
-pub use crate::ffi::TopLoc_Location as Location;
+pub use crate::ffi_types::TopLoc_Location as Location;
 
 unsafe impl crate::CppDeletable for Location {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopLoc_Location_destructor(ptr);
+        crate::ffi_extern_TKMath::TopLoc_Location_destructor(ptr);
     }
 }
 
@@ -285,7 +320,9 @@ impl Location {
     /// Note: A Location constructed from a default datum is said to be "empty".
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_ctor(),
+            ))
         }
     }
 
@@ -294,7 +331,9 @@ impl Location {
     /// by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
     pub fn new_trsf(T: &crate::gp::Trsf) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_ctor_trsf(T)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_ctor_trsf(T),
+            ))
         }
     }
 
@@ -303,10 +342,12 @@ impl Location {
     /// Exceptions
     /// Standard_ConstructionError if the transformation
     /// T does not represent a 3D coordinate system.
-    pub fn new_handletoplocdatum3d(D: &crate::ffi::HandleTopLocDatum3D) -> crate::OwnedPtr<Self> {
+    pub fn new_handletoplocdatum3d(
+        D: &crate::ffi_types::HandleTopLocDatum3D,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_Location_ctor_handletoplocdatum3d(D),
+                crate::ffi_extern_TKMath::TopLoc_Location_ctor_handletoplocdatum3d(D),
             ))
         }
     }
@@ -314,13 +355,17 @@ impl Location {
     /// **Source:** `TopLoc_Location.hxx`:55 - `TopLoc_Location::IsIdentity()`
     /// Returns true if this location is equal to the Identity transformation.
     pub fn is_identity(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TopLoc_Location_is_identity(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_is_identity(self as *const Self)
+        })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:58 - `TopLoc_Location::Identity()`
     /// Resets this location to the Identity transformation.
     pub fn identity(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopLoc_Location_identity(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_identity(self as *mut Self)
+        })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:65 - `TopLoc_Location::FirstDatum()`
@@ -329,9 +374,11 @@ impl Location {
     /// the other data comprising this location.
     /// Exceptions
     /// Standard_NoSuchObject if this location is empty.
-    pub fn first_datum(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn first_datum(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_Location_first_datum(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_first_datum(
+                self as *const Self,
+            )))
         }
     }
 
@@ -341,7 +388,9 @@ impl Location {
     /// Exceptions
     /// Standard_NoSuchObject if this location is empty.
     pub fn first_power(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopLoc_Location_first_power(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_first_power(self as *const Self)
+        })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:79 - `TopLoc_Location::NextLocation()`
@@ -353,7 +402,9 @@ impl Location {
     /// Standard_NoSuchObject if this location is empty.
     pub fn next_location(&self) -> &Location {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_Location_next_location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_next_location(
+                self as *const Self,
+            )))
         }
     }
 
@@ -362,7 +413,9 @@ impl Location {
     /// coordinate system.
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_Location_transformation(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_Location_transformation(
+                self as *const Self,
+            )))
         }
     }
 
@@ -372,9 +425,9 @@ impl Location {
     /// <me> * Inverted() is an Identity.
     pub fn inverted(&self) -> crate::OwnedPtr<Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_inverted(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_inverted(self as *const Self),
+            ))
         }
     }
 
@@ -383,10 +436,9 @@ impl Location {
     /// concatenated.
     pub fn multiplied(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_multiplied(
-                self as *const Self,
-                Other,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_multiplied(self as *const Self, Other),
+            ))
         }
     }
 
@@ -394,10 +446,9 @@ impl Location {
     /// Returns  <me> / <Other>.
     pub fn divided(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_divided(
-                self as *const Self,
-                Other,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_divided(self as *const Self, Other),
+            ))
         }
     }
 
@@ -405,10 +456,9 @@ impl Location {
     /// Returns <Other>.Inverted() * <me>.
     pub fn predivided(&self, Other: &Location) -> crate::OwnedPtr<Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_predivided(
-                self as *const Self,
-                Other,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_predivided(self as *const Self, Other),
+            ))
         }
     }
 
@@ -418,10 +468,9 @@ impl Location {
     /// (usual meaning for powers).
     pub fn powered(&self, pwr: i32) -> crate::OwnedPtr<Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_powered(
-                self as *const Self,
-                pwr,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_powered(self as *const Self, pwr),
+            ))
         }
     }
 
@@ -430,7 +479,9 @@ impl Location {
     /// to store and retrieve the object easily
     /// @return a computed hash code
     pub fn hash_code(&self) -> usize {
-        crate::check_result(unsafe { crate::ffi::TopLoc_Location_hash_code(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_hash_code(self as *const Self)
+        })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:125 - `TopLoc_Location::IsEqual()`
@@ -440,7 +491,7 @@ impl Location {
     /// This method is an alias for operator ==.
     pub fn is_equal(&self, Other: &Location) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Location_is_equal(self as *const Self, Other)
+            crate::ffi_extern_TKMath::TopLoc_Location_is_equal(self as *const Self, Other)
         })
     }
 
@@ -451,35 +502,37 @@ impl Location {
     /// This method is an alias for operator !=.
     pub fn is_different(&self, Other: &Location) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_Location_is_different(self as *const Self, Other)
+            crate::ffi_extern_TKMath::TopLoc_Location_is_different(self as *const Self, Other)
         })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:141 - `TopLoc_Location::ShallowDump()`
     /// Prints the contents of <me> on the stream <s>.
-    pub fn shallow_dump(&self, S: &mut crate::ffi::Standard_OStream) {
+    pub fn shallow_dump(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_Location_shallow_dump(self as *const Self, S)
+            crate::ffi_extern_TKMath::TopLoc_Location_shallow_dump(self as *const Self, S)
         })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:144 - `TopLoc_Location::Clear()`
     /// Clear myItems
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopLoc_Location_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKMath::TopLoc_Location_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `TopLoc_Location.hxx`:146 - `TopLoc_Location::ScalePrec()`
     pub fn scale_prec() -> f64 {
-        crate::check_result(unsafe { crate::ffi::TopLoc_Location_scale_prec() })
+        crate::check_result(unsafe { crate::ffi_extern_TKMath::TopLoc_Location_scale_prec() })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopLoc_Location_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_Location_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -489,11 +542,11 @@ impl Location {
 // ========================
 
 /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:29 - `TopLoc_SListNodeOfItemLocation`
-pub use crate::ffi::TopLoc_SListNodeOfItemLocation as SListNodeOfItemLocation;
+pub use crate::ffi_types::TopLoc_SListNodeOfItemLocation as SListNodeOfItemLocation;
 
 unsafe impl crate::CppDeletable for SListNodeOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopLoc_SListNodeOfItemLocation_destructor(ptr);
+        crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_destructor(ptr);
     }
 }
 
@@ -504,38 +557,36 @@ impl SListNodeOfItemLocation {
         aTail: &SListOfItemLocation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(
-                    I, aTail,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_ctor_itemlocation_slistofitemlocation(I, aTail)))
         }
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:36 - `TopLoc_SListNodeOfItemLocation::Tail()`
     pub fn tail(&mut self) -> &mut SListOfItemLocation {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopLoc_SListNodeOfItemLocation_tail(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_tail(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:38 - `TopLoc_SListNodeOfItemLocation::Value()`
     pub fn value(&mut self) -> &mut ItemLocation {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopLoc_SListNodeOfItemLocation_value(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_value(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:40 - `TopLoc_SListNodeOfItemLocation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_SListNodeOfItemLocation_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -543,7 +594,7 @@ impl SListNodeOfItemLocation {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_name(),
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -551,18 +602,22 @@ impl SListNodeOfItemLocation {
     }
 
     /// **Source:** `TopLoc_SListNodeOfItemLocation.hxx`:40 - `TopLoc_SListNodeOfItemLocation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_SListNodeOfItemLocation_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -570,7 +625,7 @@ impl SListNodeOfItemLocation {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopLoc_SListNodeOfItemLocation_as_Standard_Transient_mut(
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -580,18 +635,18 @@ impl SListNodeOfItemLocation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopLocSListNodeOfItemLocation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopLocSListNodeOfItemLocation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_SListNodeOfItemLocation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_IsInstance(
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -599,9 +654,9 @@ impl SListNodeOfItemLocation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_IsKind(
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -612,7 +667,9 @@ impl SListNodeOfItemLocation {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -625,14 +682,16 @@ impl SListNodeOfItemLocation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -641,7 +700,7 @@ impl SListNodeOfItemLocation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -650,46 +709,50 @@ impl SListNodeOfItemLocation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListNodeOfItemLocation_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_SListNodeOfItemLocation_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTopLocSListNodeOfItemLocation;
+pub use crate::ffi_types::HandleTopLocSListNodeOfItemLocation;
 
 unsafe impl crate::CppDeletable for HandleTopLocSListNodeOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopLocSListNodeOfItemLocation_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_destructor(ptr);
     }
 }
 
 impl HandleTopLocSListNodeOfItemLocation {
     /// Dereference this Handle to access the underlying TopLoc_SListNodeOfItemLocation
-    pub fn get(&self) -> &crate::ffi::TopLoc_SListNodeOfItemLocation {
+    pub fn get(&self) -> &crate::ffi_types::TopLoc_SListNodeOfItemLocation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopLocSListNodeOfItemLocation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopLoc_SListNodeOfItemLocation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopLoc_SListNodeOfItemLocation {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopLoc_SListNodeOfItemLocation {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopLocSListNodeOfItemLocation_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TopLoc_SListNodeOfItemLocation> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopLocSListNodeOfItemLocation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::HandleTopLocSListNodeOfItemLocation_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -714,11 +777,11 @@ impl HandleTopLocSListNodeOfItemLocation {
 /// SListOfItemLocation Iterator;
 /// for (Iterator = S; Iterator.More(); Iterator.Next())
 /// X = Iterator.Value();
-pub use crate::ffi::TopLoc_SListOfItemLocation as SListOfItemLocation;
+pub use crate::ffi_types::TopLoc_SListOfItemLocation as SListOfItemLocation;
 
 unsafe impl crate::CppDeletable for SListOfItemLocation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopLoc_SListOfItemLocation_destructor(ptr);
+        crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_destructor(ptr);
     }
 }
 
@@ -728,7 +791,7 @@ impl SListOfItemLocation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_SListOfItemLocation_ctor(),
+                crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_ctor(),
             ))
         }
     }
@@ -740,11 +803,7 @@ impl SListOfItemLocation {
         aTail: &SListOfItemLocation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(
-                    anItem, aTail,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_ctor_itemlocation_slistofitemlocation(anItem, aTail)))
         }
     }
 
@@ -759,10 +818,12 @@ impl SListOfItemLocation {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn assign(&mut self, Other: &SListOfItemLocation) -> &mut SListOfItemLocation {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopLoc_SListOfItemLocation_assign(
-                self as *mut Self,
-                Other,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_assign(
+                    self as *mut Self,
+                    Other,
+                ),
+            ))
         }
     }
 
@@ -770,7 +831,7 @@ impl SListOfItemLocation {
     /// Return true if this list is empty
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_is_empty(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_is_empty(self as *const Self)
         })
     }
 
@@ -778,7 +839,7 @@ impl SListOfItemLocation {
     /// Sets the list to be empty.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_clear(self as *mut Self)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_clear(self as *mut Self)
         })
     }
 
@@ -787,7 +848,7 @@ impl SListOfItemLocation {
     /// raised  if the list is empty.
     pub fn value(&self) -> &ItemLocation {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_SListOfItemLocation_value(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_value(
                 self as *const Self,
             )))
         }
@@ -798,7 +859,7 @@ impl SListOfItemLocation {
     /// list the tail is the list itself.
     pub fn tail(&self) -> &SListOfItemLocation {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopLoc_SListOfItemLocation_tail(
+            &*(crate::check_result(crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_tail(
                 self as *const Self,
             )))
         }
@@ -809,7 +870,10 @@ impl SListOfItemLocation {
     /// and the  list <me> as  tail.
     pub fn construct(&mut self, anItem: &ItemLocation) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_construct(self as *mut Self, anItem)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_construct(
+                self as *mut Self,
+                anItem,
+            )
         })
     }
 
@@ -817,7 +881,7 @@ impl SListOfItemLocation {
     /// Replaces the list <me> by its tail.
     pub fn to_tail(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_to_tail(self as *mut Self)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_to_tail(self as *mut Self)
         })
     }
 
@@ -826,7 +890,7 @@ impl SListOfItemLocation {
     /// This is !IsEmpty()
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_more(self as *const Self)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_more(self as *const Self)
         })
     }
 
@@ -835,7 +899,7 @@ impl SListOfItemLocation {
     /// If the iterator is empty it will  stay empty. This is ToTail()
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopLoc_SListOfItemLocation_next(self as *mut Self)
+            crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_next(self as *mut Self)
         })
     }
 
@@ -843,7 +907,7 @@ impl SListOfItemLocation {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopLoc_SListOfItemLocation_to_owned(self as *const Self),
+                crate::ffi_extern_TKMath::TopLoc_SListOfItemLocation_to_owned(self as *const Self),
             ))
         }
     }

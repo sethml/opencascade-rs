@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <DEBREP_ConfigurationNode.hxx>
 #include <DEBREP_Provider.hxx>
 #include <DEXCAF_ConfigurationNode.hxx>

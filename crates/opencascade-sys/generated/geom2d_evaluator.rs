@@ -10,7 +10,7 @@
 /// Recalculate D1 values of base curve into D0 value of offset curve
 pub fn calculate_d0(theValue: &mut crate::gp::Pnt2d, theD1: &crate::gp::Vec2d, theOffset: f64) {
     crate::check_void_result(unsafe {
-        crate::ffi::Geom2dEvaluator_calculate_d0(theValue, theD1, theOffset)
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_calculate_d0(theValue, theD1, theOffset)
     })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:41 - `Geom2dEvaluator::CalculateD1`
@@ -22,7 +22,7 @@ pub fn calculate_d1(
     theOffset: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::Geom2dEvaluator_calculate_d1(theValue, theD1, theD2, theOffset)
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_calculate_d1(theValue, theD1, theD2, theOffset)
     })
 }
 /// **Source:** `Geom2dEvaluator.hxx`:47 - `Geom2dEvaluator::CalculateD2`
@@ -36,7 +36,7 @@ pub fn calculate_d2(
     theOffset: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::Geom2dEvaluator_calculate_d2(
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_calculate_d2(
             theValue,
             theD1,
             theD2,
@@ -58,7 +58,7 @@ pub fn calculate_d3(
     theOffset: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::Geom2dEvaluator_calculate_d3(
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_calculate_d3(
             theValue,
             theD1,
             theD2,
@@ -81,7 +81,7 @@ pub fn adjust_derivative(
     theD4: &mut crate::gp::Vec2d,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::Geom2dEvaluator_adjust_derivative(
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_adjust_derivative(
             theMaxDerivative,
             theU,
             theD1,
@@ -93,7 +93,7 @@ pub fn adjust_derivative(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From Geom2dEvaluator_Curve.hxx
@@ -102,11 +102,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// **Source:** `Geom2dEvaluator_Curve.hxx`:26 - `Geom2dEvaluator_Curve`
 /// Interface for calculation of values and derivatives for different kinds of curves in 2D.
 /// Works both with adaptors and curves.
-pub use crate::ffi::Geom2dEvaluator_Curve as Curve;
+pub use crate::ffi_types::Geom2dEvaluator_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dEvaluator_Curve_destructor(ptr);
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_destructor(ptr);
     }
 }
 
@@ -115,7 +115,7 @@ impl Curve {
     /// Value of 2D curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_d0(self as *const Self, theU, theValue)
         })
     }
 
@@ -123,7 +123,12 @@ impl Curve {
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_d1(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+            )
         })
     }
 
@@ -137,7 +142,13 @@ impl Curve {
         theD2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_d2(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+            )
         })
     }
 
@@ -152,7 +163,7 @@ impl Curve {
         theD3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_d3(
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_d3(
                 self as *const Self,
                 theU,
                 theValue,
@@ -167,27 +178,29 @@ impl Curve {
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
     pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_dn(
-                self as *const Self,
-                theU,
-                theDerU,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_dn(
+                    self as *const Self,
+                    theU,
+                    theDerU,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:49 - `Geom2dEvaluator_Curve::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_Curve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_shallow_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -197,7 +210,7 @@ impl Curve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Geom2dEvaluator_Curve_get_type_name(),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -205,39 +218,53 @@ impl Curve {
     }
 
     /// **Source:** `Geom2dEvaluator_Curve.hxx`:51 - `Geom2dEvaluator_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Geom2dEvaluator_Curve_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dEvaluator_Curve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -245,7 +272,7 @@ impl Curve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Geom2dEvaluator_Curve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -258,62 +285,72 @@ impl Curve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_Curve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_Curve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeom2dEvaluatorCurve;
+pub use crate::ffi_types::HandleGeom2dEvaluatorCurve;
 
 unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeom2dEvaluatorCurve_destructor(ptr);
+        crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_destructor(ptr);
     }
 }
 
 impl HandleGeom2dEvaluatorCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_Curve
-    pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_Curve {
+    pub fn get(&self) -> &crate::ffi_types::Geom2dEvaluator_Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeom2dEvaluatorCurve_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_Curve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_Curve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Geom2dEvaluator_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeom2dEvaluatorCurve_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Geom2dEvaluator_Curve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dEvaluatorCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -325,11 +362,9 @@ impl HandleGeom2dEvaluatorCurve {
     /// Returns `None` if the handle does not point to a `Geom2dEvaluator_OffsetCurve` (or subclass).
     pub fn downcast_to_offset_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeom2dEvaluatorOffsetCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeom2dEvaluatorCurve_downcast_to_HandleGeom2dEvaluatorOffsetCurve(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorCurve_downcast_to_HandleGeom2dEvaluatorOffsetCurve(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -345,11 +380,11 @@ impl HandleGeom2dEvaluatorCurve {
 
 /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:22 - `Geom2dEvaluator_OffsetCurve`
 /// Allows to calculate values and derivatives for offset curves in 2D
-pub use crate::ffi::Geom2dEvaluator_OffsetCurve as OffsetCurve;
+pub use crate::ffi_types::Geom2dEvaluator_OffsetCurve as OffsetCurve;
 
 unsafe impl crate::CppDeletable for OffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dEvaluator_OffsetCurve_destructor(ptr);
+        crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_destructor(ptr);
     }
 }
 
@@ -357,12 +392,12 @@ impl OffsetCurve {
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:26 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve
     pub fn new_handlegeom2dcurve_real(
-        theBase: &crate::ffi::HandleGeom2dCurve,
+        theBase: &crate::ffi_types::HandleGeom2dCurve,
         theOffset: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dcurve_real(
                     theBase, theOffset,
                 ),
             ))
@@ -372,15 +407,11 @@ impl OffsetCurve {
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:29 - `Geom2dEvaluator_OffsetCurve::Geom2dEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve adaptor
     pub fn new_handlegeom2dadaptorcurve_real(
-        theBase: &crate::ffi::HandleGeom2dAdaptorCurve,
+        theBase: &crate::ffi_types::HandleGeom2dAdaptorCurve,
         theOffset: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dadaptorcurve_real(
-                    theBase, theOffset,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_ctor_handlegeom2dadaptorcurve_real(theBase, theOffset)))
         }
     }
 
@@ -388,7 +419,10 @@ impl OffsetCurve {
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_set_offset_value(self as *mut Self, theOffset)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_set_offset_value(
+                self as *mut Self,
+                theOffset,
+            )
         })
     }
 
@@ -396,7 +430,11 @@ impl OffsetCurve {
     /// Value of curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_d0(
+                self as *const Self,
+                theU,
+                theValue,
+            )
         })
     }
 
@@ -404,7 +442,12 @@ impl OffsetCurve {
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt2d, theD1: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_d1(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+            )
         })
     }
 
@@ -418,7 +461,7 @@ impl OffsetCurve {
         theD2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_d2(
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_d2(
                 self as *const Self,
                 theU,
                 theValue,
@@ -439,7 +482,7 @@ impl OffsetCurve {
         theD3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_d3(
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_d3(
                 self as *const Self,
                 theU,
                 theValue,
@@ -455,26 +498,34 @@ impl OffsetCurve {
     pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_dn(self as *const Self, theU, theDeriv),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_dn(
+                    self as *const Self,
+                    theU,
+                    theDeriv,
+                ),
             ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:56 - `Geom2dEvaluator_OffsetCurve::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_shallow_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -482,7 +533,7 @@ impl OffsetCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_name(),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -490,18 +541,22 @@ impl OffsetCurve {
     }
 
     /// **Source:** `Geom2dEvaluator_OffsetCurve.hxx`:58 - `Geom2dEvaluator_OffsetCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Geom2dEvaluator_Curve
     pub fn as_curve(&self) -> &Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -509,7 +564,7 @@ impl OffsetCurve {
     pub fn as_curve_mut(&mut self) -> &mut Curve {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_as_Geom2dEvaluator_Curve_mut(
                     self as *mut Self,
                 ),
             )
@@ -519,9 +574,11 @@ impl OffsetCurve {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -529,7 +586,7 @@ impl OffsetCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_as_Standard_Transient_mut(
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -539,18 +596,18 @@ impl OffsetCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorOffsetCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dEvaluatorOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dEvaluator_OffsetCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsInstance(
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -558,9 +615,12 @@ impl OffsetCurve {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -568,7 +628,9 @@ impl OffsetCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -581,78 +643,82 @@ impl OffsetCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dEvaluator_OffsetCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG2d::Geom2dEvaluator_OffsetCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeom2dEvaluatorOffsetCurve;
+pub use crate::ffi_types::HandleGeom2dEvaluatorOffsetCurve;
 
 unsafe impl crate::CppDeletable for HandleGeom2dEvaluatorOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeom2dEvaluatorOffsetCurve_destructor(ptr);
+        crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_destructor(ptr);
     }
 }
 
 impl HandleGeom2dEvaluatorOffsetCurve {
     /// Dereference this Handle to access the underlying Geom2dEvaluator_OffsetCurve
-    pub fn get(&self) -> &crate::ffi::Geom2dEvaluator_OffsetCurve {
+    pub fn get(&self) -> &crate::ffi_types::Geom2dEvaluator_OffsetCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Geom2dEvaluator_OffsetCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dEvaluator_OffsetCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Geom2dEvaluator_OffsetCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeom2dEvaluatorOffsetCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Geom2dEvaluator_OffsetCurve> to Handle<Geom2dEvaluator_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dEvaluatorCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dEvaluatorCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_to_HandleGeom2dEvaluatorCurve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Geom2dEvaluator_OffsetCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dEvaluatorOffsetCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG2d::HandleGeom2dEvaluatorOffsetCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }

@@ -150,7 +150,7 @@ impl TryFrom<i32> for UnicodeSubset {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From Font_FTFont.hxx
@@ -158,11 +158,11 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `Font_FTFont.hxx`:37 - `Font_FTFontParams`
 /// Font initialization parameters.
-pub use crate::ffi::Font_FTFontParams as FTFontParams;
+pub use crate::ffi_types::Font_FTFontParams as FTFontParams;
 
 unsafe impl crate::CppDeletable for FTFontParams {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_FTFontParams_destructor(ptr);
+        crate::ffi_extern_TKService::Font_FTFontParams_destructor(ptr);
     }
 }
 
@@ -171,7 +171,9 @@ impl FTFontParams {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTFontParams_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFontParams_ctor(),
+            ))
         }
     }
 
@@ -180,7 +182,10 @@ impl FTFontParams {
     pub fn new_uint2(thePointSize: u32, theResolution: u32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FTFontParams_ctor_uint2(thePointSize, theResolution),
+                crate::ffi_extern_TKService::Font_FTFontParams_ctor_uint2(
+                    thePointSize,
+                    theResolution,
+                ),
             ))
         }
     }
@@ -190,11 +195,11 @@ impl FTFontParams {
 /// Wrapper over FreeType font.
 /// Notice that this class uses internal buffers for loaded glyphs
 /// and it is absolutely UNSAFE to load/read glyph from concurrent threads!
-pub use crate::ffi::Font_FTFont as FTFont;
+pub use crate::ffi_types::Font_FTFont as FTFont;
 
 unsafe impl crate::CppDeletable for FTFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_FTFont_destructor(ptr);
+        crate::ffi_extern_TKService::Font_FTFont_destructor(ptr);
     }
 }
 
@@ -202,32 +207,40 @@ impl FTFont {
     /// **Source:** `Font_FTFont.hxx`:153 - `Font_FTFont::Font_FTFont()`
     /// Create uninitialized instance.
     pub fn new_handlefontftlibrary(
-        theFTLib: &crate::ffi::HandleFontFTLibrary,
+        theFTLib: &crate::ffi_types::HandleFontFTLibrary,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FTFont_ctor_handlefontftlibrary(theFTLib),
+                crate::ffi_extern_TKService::Font_FTFont_ctor_handlefontftlibrary(theFTLib),
             ))
         }
     }
 
     /// **Source:** `Font_FTFont.hxx`:77 - `Font_FTFont::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_FTFont_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FTFont_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Font_FTFont.hxx`:159 - `Font_FTFont::IsValid()`
     /// @return true if font is loaded
     pub fn is_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_valid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:162 - `Font_FTFont::GlyphImage()`
     /// @return image plane for currently rendered glyph
     pub fn glyph_image(&self) -> &crate::image::PixMap {
-        unsafe { &*(crate::check_result(crate::ffi::Font_FTFont_glyph_image(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FTFont_glyph_image(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `Font_FTFont.hxx`:169 - `Font_FTFont::Init()`
@@ -243,7 +256,7 @@ impl FTFont {
         theFaceId: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_init_asciistring_ftfontparams_int(
+            crate::ffi_extern_TKService::Font_FTFont_init_asciistring_ftfontparams_int(
                 self as *mut Self,
                 theFontPath,
                 theParams,
@@ -262,19 +275,13 @@ impl FTFont {
     /// @return true on success
     pub fn init_handlencollectionbuffer_asciistring_ftfontparams_int(
         &mut self,
-        theData: &crate::ffi::HandleNCollectionBuffer,
+        theData: &crate::ffi_types::HandleNCollectionBuffer,
         theFileName: &crate::t_collection::AsciiString,
         theParams: &FTFontParams,
         theFaceId: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_init_handlencollectionbuffer_asciistring_ftfontparams_int(
-                self as *mut Self,
-                theData,
-                theFileName,
-                theParams,
-                theFaceId,
-            )
+            crate::ffi_extern_TKService::Font_FTFont_init_handlencollectionbuffer_asciistring_ftfontparams_int(self as *mut Self, theData, theFileName, theParams, theFaceId)
         })
     }
 
@@ -293,7 +300,7 @@ impl FTFont {
         theStrictLevel: crate::font::StrictLevel,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_find_and_init(
+            crate::ffi_extern_TKService::Font_FTFont_find_and_init(
                 self as *mut Self,
                 theFontName,
                 theFontAspect.into(),
@@ -309,7 +316,9 @@ impl FTFont {
     /// @sa Font_FontMgr::ToUseUnicodeSubsetFallback()
     pub fn to_use_unicode_subset_fallback(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_to_use_unicode_subset_fallback(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTFont_to_use_unicode_subset_fallback(
+                self as *const Self,
+            )
         })
     }
 
@@ -318,7 +327,7 @@ impl FTFont {
     /// specific Unicode subset.
     pub fn set_use_unicode_subset_fallback(&mut self, theToFallback: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_set_use_unicode_subset_fallback(
+            crate::ffi_extern_TKService::Font_FTFont_set_use_unicode_subset_fallback(
                 self as *mut Self,
                 theToFallback,
             )
@@ -331,7 +340,7 @@ impl FTFont {
     /// incorrectly by normal software.
     pub fn is_single_stroke_font(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_is_single_stroke_font(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTFont_is_single_stroke_font(self as *const Self)
         })
     }
 
@@ -339,7 +348,10 @@ impl FTFont {
     /// Set if this font should be rendered as single-stroke (one-line).
     pub fn set_single_stroke_font(&mut self, theIsSingleLine: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_set_single_stroke_font(self as *mut Self, theIsSingleLine)
+            crate::ffi_extern_TKService::Font_FTFont_set_single_stroke_font(
+                self as *mut Self,
+                theIsSingleLine,
+            )
         })
     }
 
@@ -347,21 +359,23 @@ impl FTFont {
     /// Return TRUE if italic style should be synthesized; FALSE by default.
     pub fn to_synthesize_italic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_to_synthesize_italic(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTFont_to_synthesize_italic(self as *const Self)
         })
     }
 
     /// **Source:** `Font_FTFont.hxx`:226 - `Font_FTFont::Release()`
     /// Release currently loaded font.
     pub fn release(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Font_FTFont_release(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_release(self as *mut Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:229 - `Font_FTFont::RenderGlyph()`
     /// Render specified glyph into internal buffer (bitmap).
     pub fn render_glyph(&mut self, theChar: u32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_render_glyph(self as *mut Self, theChar)
+            crate::ffi_extern_TKService::Font_FTFont_render_glyph(self as *mut Self, theChar)
         })
     }
 
@@ -369,7 +383,10 @@ impl FTFont {
     /// @return maximal glyph width in pixels (rendered to bitmap).
     pub fn glyph_max_size_x(&self, theToIncludeFallback: bool) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_glyph_max_size_x(self as *const Self, theToIncludeFallback)
+            crate::ffi_extern_TKService::Font_FTFont_glyph_max_size_x(
+                self as *const Self,
+                theToIncludeFallback,
+            )
         })
     }
 
@@ -377,38 +394,51 @@ impl FTFont {
     /// @return maximal glyph height in pixels (rendered to bitmap).
     pub fn glyph_max_size_y(&self, theToIncludeFallback: bool) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_glyph_max_size_y(self as *const Self, theToIncludeFallback)
+            crate::ffi_extern_TKService::Font_FTFont_glyph_max_size_y(
+                self as *const Self,
+                theToIncludeFallback,
+            )
         })
     }
 
     /// **Source:** `Font_FTFont.hxx`:238 - `Font_FTFont::Ascender()`
     /// @return vertical distance from the horizontal baseline to the highest character coordinate.
     pub fn ascender(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_ascender(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_ascender(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:241 - `Font_FTFont::Descender()`
     /// @return vertical distance from the horizontal baseline to the lowest character coordinate.
     pub fn descender(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_descender(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_descender(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:244 - `Font_FTFont::LineSpacing()`
     /// @return default line spacing (the baseline-to-baseline distance).
     pub fn line_spacing(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_line_spacing(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_line_spacing(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:247 - `Font_FTFont::PointSize()`
     /// Configured point size
     pub fn point_size(&self) -> u32 {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_point_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_point_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:250 - `Font_FTFont::WidthScaling()`
     /// Return glyph scaling along X-axis.
     pub fn width_scaling(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_width_scaling(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_width_scaling(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:254 - `Font_FTFont::SetWidthScaling()`
@@ -416,7 +446,10 @@ impl FTFont {
     /// By default glyphs are not scaled (scaling factor = 1.0)
     pub fn set_width_scaling(&mut self, theScaleFactor: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_set_width_scaling(self as *mut Self, theScaleFactor)
+            crate::ffi_extern_TKService::Font_FTFont_set_width_scaling(
+                self as *mut Self,
+                theScaleFactor,
+            )
         })
     }
 
@@ -424,7 +457,7 @@ impl FTFont {
     /// Return TRUE if font contains specified symbol (excluding fallback list).
     pub fn has_symbol(&self, theUChar: u32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_has_symbol(self as *const Self, theUChar)
+            crate::ffi_extern_TKService::Font_FTFont_has_symbol(self as *const Self, theUChar)
         })
     }
 
@@ -434,7 +467,10 @@ impl FTFont {
     /// @param theUCharNext the next character to compute advance from current one
     pub fn advance_x_uint(&self, theUCharNext: u32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_advance_x_uint(self as *const Self, theUCharNext)
+            crate::ffi_extern_TKService::Font_FTFont_advance_x_uint(
+                self as *const Self,
+                theUCharNext,
+            )
         })
     }
 
@@ -445,7 +481,11 @@ impl FTFont {
     /// @param theUCharNext the next character to compute advance from current one
     pub fn advance_x_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_advance_x_uint2(self as *mut Self, theUChar, theUCharNext)
+            crate::ffi_extern_TKService::Font_FTFont_advance_x_uint2(
+                self as *mut Self,
+                theUChar,
+                theUCharNext,
+            )
         })
     }
 
@@ -455,7 +495,10 @@ impl FTFont {
     /// @param theUCharNext the next character to compute advance from current one
     pub fn advance_y_uint(&self, theUCharNext: u32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_advance_y_uint(self as *const Self, theUCharNext)
+            crate::ffi_extern_TKService::Font_FTFont_advance_y_uint(
+                self as *const Self,
+                theUCharNext,
+            )
         })
     }
 
@@ -466,7 +509,11 @@ impl FTFont {
     /// @param theUCharNext the next character to compute advance from current one
     pub fn advance_y_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_advance_y_uint2(self as *mut Self, theUChar, theUCharNext)
+            crate::ffi_extern_TKService::Font_FTFont_advance_y_uint2(
+                self as *mut Self,
+                theUChar,
+                theUCharNext,
+            )
         })
     }
 
@@ -475,7 +522,10 @@ impl FTFont {
     /// @param theToIncludeFallback if TRUE then the number will include fallback list
     pub fn glyphs_number(&self, theToIncludeFallback: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_glyphs_number(self as *const Self, theToIncludeFallback)
+            crate::ffi_extern_TKService::Font_FTFont_glyphs_number(
+                self as *const Self,
+                theToIncludeFallback,
+            )
         })
     }
 
@@ -483,7 +533,7 @@ impl FTFont {
     /// Retrieve glyph bitmap rectangle
     pub fn glyph_rect(&self, theRect: &mut Rect) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_glyph_rect(self as *const Self, theRect)
+            crate::ffi_extern_TKService::Font_FTFont_glyph_rect(self as *const Self, theRect)
         })
     }
 
@@ -494,32 +544,38 @@ impl FTFont {
     /// negative.
     pub fn bounding_box(
         &mut self,
-        theString: &crate::ffi::NCollection_Utf8String,
+        theString: &crate::ffi_types::NCollection_Utf8String,
         theAlignX: crate::graphic3d::HorizontalTextAlignment,
         theAlignY: crate::graphic3d::VerticalTextAlignment,
     ) -> crate::OwnedPtr<Rect> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTFont_bounding_box(
-                self as *mut Self,
-                theString,
-                theAlignX.into(),
-                theAlignY.into(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFont_bounding_box(
+                    self as *mut Self,
+                    theString,
+                    theAlignX.into(),
+                    theAlignY.into(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `Font_FTFont.hxx`:77 - `Font_FTFont::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Font_FTFont_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFont_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Font_FTFont.hxx`:77 - `Font_FTFont::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Font_FTFont_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FTFont_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `Font_FTFont.hxx`:85 - `Font_FTFont::FindAndCreate()`
@@ -534,58 +590,72 @@ impl FTFont {
         theFontAspect: crate::font::FontAspect,
         theParams: &FTFontParams,
         theStrictLevel: crate::font::StrictLevel,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontFTFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontFTFont> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTFont_find_and_create(
-                theFontName,
-                theFontAspect.into(),
-                theParams,
-                theStrictLevel.into(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFont_find_and_create(
+                    theFontName,
+                    theFontAspect.into(),
+                    theParams,
+                    theStrictLevel.into(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `Font_FTFont.hxx`:92 - `Font_FTFont::IsCharFromCJK()`
     /// Return TRUE if specified character is within subset of modern CJK characters.
     pub fn is_char_from_cjk(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_from_cjk(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_from_cjk(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:105 - `Font_FTFont::IsCharFromHiragana()`
     /// Return TRUE if specified character is within subset of Hiragana (Japanese).
     pub fn is_char_from_hiragana(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_from_hiragana(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_from_hiragana(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:111 - `Font_FTFont::IsCharFromKatakana()`
     /// Return TRUE if specified character is within subset of Katakana (Japanese).
     pub fn is_char_from_katakana(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_from_katakana(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_from_katakana(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:117 - `Font_FTFont::IsCharFromKorean()`
     /// Return TRUE if specified character is within subset of modern Korean characters (Hangul).
     pub fn is_char_from_korean(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_from_korean(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_from_korean(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:125 - `Font_FTFont::IsCharFromArabic()`
     /// Return TRUE if specified character is within subset of Arabic characters.
     pub fn is_char_from_arabic(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_from_arabic(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_from_arabic(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:131 - `Font_FTFont::IsCharRightToLeft()`
     /// Return TRUE if specified character should be displayed in Right-to-Left order.
     pub fn is_char_right_to_left(theUChar: u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTFont_is_char_right_to_left(theUChar) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTFont_is_char_right_to_left(theUChar)
+        })
     }
 
     /// **Source:** `Font_FTFont.hxx`:134 - `Font_FTFont::CharSubset()`
     /// Determine Unicode subset for specified character
     pub fn char_subset(theUChar: u32) -> crate::font::UnicodeSubset {
         crate::font::UnicodeSubset::try_from(crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_char_subset(theUChar)
+            crate::ffi_extern_TKService::Font_FTFont_char_subset(theUChar)
         }))
         .unwrap()
     }
@@ -593,7 +663,7 @@ impl FTFont {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Font_FTFont_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Font_FTFont_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -602,32 +672,39 @@ impl FTFont {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Font_FTFont_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFont_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFontFTFont> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontFTFont> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTFont_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTFont_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -635,7 +712,7 @@ impl FTFont {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Font_FTFont_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Font_FTFont_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -648,58 +725,72 @@ impl FTFont {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTFont_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTFont_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFontFTFont;
+pub use crate::ffi_types::HandleFontFTFont;
 
 unsafe impl crate::CppDeletable for HandleFontFTFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFontFTFont_destructor(ptr);
+        crate::ffi_extern_TKService::HandleFontFTFont_destructor(ptr);
     }
 }
 
 impl HandleFontFTFont {
     /// Dereference this Handle to access the underlying Font_FTFont
-    pub fn get(&self) -> &crate::ffi::Font_FTFont {
-        unsafe { &*crate::check_result(crate::ffi::HandleFontFTFont_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Font_FTFont {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleFontFTFont_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Font_FTFont
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Font_FTFont {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Font_FTFont {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFontFTFont_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleFontFTFont_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Font_FTFont> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFontFTFont_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleFontFTFont_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -720,11 +811,11 @@ impl HandleFontFTFont {
 
 /// **Source:** `Font_FTLibrary.hxx`:26 - `Font_FTLibrary`
 /// Wrapper over FT_Library. Provides access to FreeType library.
-pub use crate::ffi::Font_FTLibrary as FTLibrary;
+pub use crate::ffi_types::Font_FTLibrary as FTLibrary;
 
 unsafe impl crate::CppDeletable for FTLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_FTLibrary_destructor(ptr);
+        crate::ffi_extern_TKService::Font_FTLibrary_destructor(ptr);
     }
 }
 
@@ -732,79 +823,101 @@ impl FTLibrary {
     /// **Source:** `Font_FTLibrary.hxx`:31 - `Font_FTLibrary::Font_FTLibrary()`
     /// Initialize new FT_Library instance.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTLibrary_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Font_FTLibrary.hxx`:38 - `Font_FTLibrary::IsValid()`
     /// This method should always return true.
     /// @return true if FT_Library instance is valid.
     pub fn is_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_FTLibrary_is_valid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_FTLibrary_is_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_FTLibrary.hxx`:51 - `Font_FTLibrary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_FTLibrary_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FTLibrary_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Font_FTLibrary.hxx`:51 - `Font_FTLibrary::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::Font_FTLibrary_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Font_FTLibrary.hxx`:51 - `Font_FTLibrary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Font_FTLibrary_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Font_FTLibrary_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Font_FTLibrary_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontFTLibrary> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontFTLibrary> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FTLibrary_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FTLibrary_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -812,7 +925,7 @@ impl FTLibrary {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Font_FTLibrary_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Font_FTLibrary_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -825,58 +938,72 @@ impl FTLibrary {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FTLibrary_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Font_FTLibrary_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFontFTLibrary;
+pub use crate::ffi_types::HandleFontFTLibrary;
 
 unsafe impl crate::CppDeletable for HandleFontFTLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFontFTLibrary_destructor(ptr);
+        crate::ffi_extern_TKService::HandleFontFTLibrary_destructor(ptr);
     }
 }
 
 impl HandleFontFTLibrary {
     /// Dereference this Handle to access the underlying Font_FTLibrary
-    pub fn get(&self) -> &crate::ffi::Font_FTLibrary {
-        unsafe { &*crate::check_result(crate::ffi::HandleFontFTLibrary_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Font_FTLibrary {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleFontFTLibrary_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Font_FTLibrary
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Font_FTLibrary {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Font_FTLibrary {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFontFTLibrary_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleFontFTLibrary_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Font_FTLibrary> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFontFTLibrary_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleFontFTLibrary_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -895,36 +1022,38 @@ impl HandleFontFTLibrary {
 
 /// **Source:** `Font_FontMgr.hxx`:35 - `Font_FontMgr`
 /// Collects and provides information about available fonts in system.
-pub use crate::ffi::Font_FontMgr as FontMgr;
+pub use crate::ffi_types::Font_FontMgr as FontMgr;
 
 unsafe impl crate::CppDeletable for FontMgr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_FontMgr_destructor(ptr);
+        crate::ffi_extern_TKService::Font_FontMgr_destructor(ptr);
     }
 }
 
 impl FontMgr {
     /// **Source:** `Font_FontMgr.hxx`:37 - `Font_FontMgr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_FontMgr_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FontMgr_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Font_FontMgr.hxx`:67 - `Font_FontMgr::AvailableFonts()`
     /// Return the list of available fonts.
-    pub fn available_fonts(&self, theList: &mut crate::ffi::Font_NListOfSystemFont) {
+    pub fn available_fonts(&self, theList: &mut crate::ffi_types::Font_NListOfSystemFont) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_available_fonts(self as *const Self, theList)
+            crate::ffi_extern_TKService::Font_FontMgr_available_fonts(self as *const Self, theList)
         })
     }
 
     /// **Source:** `Font_FontMgr.hxx`:76 - `Font_FontMgr::GetAvailableFonts()`
     /// Return the list of available fonts.
-    pub fn get_available_fonts(&self) -> crate::OwnedPtr<crate::ffi::Font_NListOfSystemFont> {
+    pub fn get_available_fonts(&self) -> crate::OwnedPtr<crate::ffi_types::Font_NListOfSystemFont> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_get_available_fonts(self as *const Self),
+                crate::ffi_extern_TKService::Font_FontMgr_get_available_fonts(self as *const Self),
             ))
         }
     }
@@ -933,10 +1062,13 @@ impl FontMgr {
     /// Returns sequence of available fonts names
     pub fn get_available_fonts_names(
         &self,
-        theFontsNames: &mut crate::ffi::TColStd_SequenceOfHAsciiString,
+        theFontsNames: &mut crate::ffi_types::TColStd_SequenceOfHAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_get_available_fonts_names(self as *const Self, theFontsNames)
+            crate::ffi_extern_TKService::Font_FontMgr_get_available_fonts_names(
+                self as *const Self,
+                theFontsNames,
+            )
         })
     }
 
@@ -947,19 +1079,12 @@ impl FontMgr {
     /// If theFontSize is "-1" returned font can have any FontSize.
     pub fn get_font_handletcollectionhasciistring_fontaspect_int(
         &self,
-        theFontName: &crate::ffi::HandleTCollectionHAsciiString,
+        theFontName: &crate::ffi_types::HandleTCollectionHAsciiString,
         theFontAspect: crate::font::FontAspect,
         theFontSize: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_get_font_handletcollectionhasciistring_fontaspect_int(
-                    self as *const Self,
-                    theFontName,
-                    theFontAspect.into(),
-                    theFontSize,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKService::Font_FontMgr_get_font_handletcollectionhasciistring_fontaspect_int(self as *const Self, theFontName, theFontAspect.into(), theFontSize)))
         }
     }
 
@@ -969,10 +1094,13 @@ impl FontMgr {
     pub fn get_font_asciistring(
         &self,
         theFontName: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_get_font_asciistring(self as *const Self, theFontName),
+                crate::ffi_extern_TKService::Font_FontMgr_get_font_asciistring(
+                    self as *const Self,
+                    theFontName,
+                ),
             ))
         }
     }
@@ -996,18 +1124,10 @@ impl FontMgr {
         theStrictLevel: crate::font::StrictLevel,
         theFontAspect: &mut crate::font::FontAspect,
         theDoFailMsg: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         let mut theFontAspect_i32_: i32 = (*theFontAspect).into();
         let result_ = unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_find_font_asciistring_strictlevel_fontaspect_bool(
-                    self as *const Self,
-                    theFontName,
-                    theStrictLevel.into(),
-                    &mut theFontAspect_i32_,
-                    theDoFailMsg,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKService::Font_FontMgr_find_font_asciistring_strictlevel_fontaspect_bool(self as *const Self, theFontName, theStrictLevel.into(), &mut theFontAspect_i32_, theDoFailMsg)))
         };
         *theFontAspect = crate::font::FontAspect::try_from(theFontAspect_i32_).unwrap();
         result_
@@ -1019,11 +1139,11 @@ impl FontMgr {
         &self,
         theFontName: &crate::t_collection::AsciiString,
         theFontAspect: &mut crate::font::FontAspect,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         let mut theFontAspect_i32_: i32 = (*theFontAspect).into();
         let result_ = unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_find_font_asciistring_fontaspect(
+                crate::ffi_extern_TKService::Font_FontMgr_find_font_asciistring_fontaspect(
                     self as *const Self,
                     theFontName,
                     &mut theFontAspect_i32_,
@@ -1043,10 +1163,10 @@ impl FontMgr {
         &self,
         theSubset: crate::font::UnicodeSubset,
         theFontAspect: crate::font::FontAspect,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_find_fallback_font(
+                crate::ffi_extern_TKService::Font_FontMgr_find_fallback_font(
                     self as *const Self,
                     theSubset.into(),
                     theFontAspect.into(),
@@ -1059,11 +1179,11 @@ impl FontMgr {
     /// Read font file and retrieve information from it (the list of font faces).
     pub fn check_font_sequence_opencascade_handle_font_systemfont_asciistring(
         &self,
-        theFonts: &mut crate::ffi::NCollection_Sequence_opencascade_handle_Font_SystemFont,
+        theFonts: &mut crate::ffi_types::NCollection_Sequence_opencascade_handle_Font_SystemFont,
         theFontPath: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_check_font_sequence_opencascade_handle_font_systemfont_asciistring(self as *const Self, theFonts, theFontPath)
+            crate::ffi_extern_TKService::Font_FontMgr_check_font_sequence_opencascade_handle_font_systemfont_asciistring(self as *const Self, theFonts, theFontPath)
         })
     }
 
@@ -1072,11 +1192,11 @@ impl FontMgr {
     pub fn check_font_charptr(
         &self,
         theFontPath: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         let c_theFontPath = std::ffi::CString::new(theFontPath).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_check_font_charptr(
+                crate::ffi_extern_TKService::Font_FontMgr_check_font_charptr(
                     self as *const Self,
                     c_theFontPath.as_ptr(),
                 ),
@@ -1090,11 +1210,15 @@ impl FontMgr {
     /// then font will be overridden or ignored depending on theToOverride flag.
     pub fn register_font(
         &mut self,
-        theFont: &crate::ffi::HandleFontSystemFont,
+        theFont: &crate::ffi_types::HandleFontSystemFont,
         theToOverride: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_register_font(self as *mut Self, theFont, theToOverride)
+            crate::ffi_extern_TKService::Font_FontMgr_register_font(
+                self as *mut Self,
+                theFont,
+                theToOverride,
+            )
         })
     }
 
@@ -1102,11 +1226,15 @@ impl FontMgr {
     /// Register new fonts.
     pub fn register_fonts(
         &mut self,
-        theFonts: &crate::ffi::NCollection_Sequence_opencascade_handle_Font_SystemFont,
+        theFonts: &crate::ffi_types::NCollection_Sequence_opencascade_handle_Font_SystemFont,
         theToOverride: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_register_fonts(self as *mut Self, theFonts, theToOverride)
+            crate::ffi_extern_TKService::Font_FontMgr_register_fonts(
+                self as *mut Self,
+                theFonts,
+                theToOverride,
+            )
         })
     }
 
@@ -1114,7 +1242,7 @@ impl FontMgr {
     /// Return flag for tracing font aliases usage via Message_Trace messages; TRUE by default.
     pub fn to_trace_aliases(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_to_trace_aliases(self as *const Self)
+            crate::ffi_extern_TKService::Font_FontMgr_to_trace_aliases(self as *const Self)
         })
     }
 
@@ -1123,16 +1251,25 @@ impl FontMgr {
     /// Can be disabled to avoid redundant messages with Message_Trace level.
     pub fn set_trace_aliases(&mut self, theToTrace: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_set_trace_aliases(self as *mut Self, theToTrace)
+            crate::ffi_extern_TKService::Font_FontMgr_set_trace_aliases(
+                self as *mut Self,
+                theToTrace,
+            )
         })
     }
 
     /// **Source:** `Font_FontMgr.hxx`:169 - `Font_FontMgr::GetAllAliases()`
     /// Return font names with defined aliases.
     /// @param[out] theAliases  alias names
-    pub fn get_all_aliases(&self, theAliases: &mut crate::ffi::TColStd_SequenceOfHAsciiString) {
+    pub fn get_all_aliases(
+        &self,
+        theAliases: &mut crate::ffi_types::TColStd_SequenceOfHAsciiString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_get_all_aliases(self as *const Self, theAliases)
+            crate::ffi_extern_TKService::Font_FontMgr_get_all_aliases(
+                self as *const Self,
+                theAliases,
+            )
         })
     }
 
@@ -1142,11 +1279,11 @@ impl FontMgr {
     /// @param[in] theAliasName   alias name
     pub fn get_font_aliases(
         &self,
-        theFontNames: &mut crate::ffi::TColStd_SequenceOfHAsciiString,
+        theFontNames: &mut crate::ffi_types::TColStd_SequenceOfHAsciiString,
         theAliasName: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_get_font_aliases(
+            crate::ffi_extern_TKService::Font_FontMgr_get_font_aliases(
                 self as *const Self,
                 theFontNames,
                 theAliasName,
@@ -1176,7 +1313,11 @@ impl FontMgr {
         theFontName: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_add_font_alias(self as *mut Self, theAliasName, theFontName)
+            crate::ffi_extern_TKService::Font_FontMgr_add_font_alias(
+                self as *mut Self,
+                theAliasName,
+                theFontName,
+            )
         })
     }
 
@@ -1193,7 +1334,11 @@ impl FontMgr {
         theFontName: &crate::t_collection::AsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_remove_font_alias(self as *mut Self, theAliasName, theFontName)
+            crate::ffi_extern_TKService::Font_FontMgr_remove_font_alias(
+                self as *mut Self,
+                theAliasName,
+                theFontName,
+            )
         })
     }
 
@@ -1201,7 +1346,7 @@ impl FontMgr {
     /// Collects available fonts paths.
     pub fn init_font_data_base(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_init_font_data_base(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FontMgr_init_font_data_base(self as *mut Self)
         })
     }
 
@@ -1209,29 +1354,35 @@ impl FontMgr {
     /// Clear registry. Can be used for testing purposes.
     pub fn clear_font_data_base(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_clear_font_data_base(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FontMgr_clear_font_data_base(self as *mut Self)
         })
     }
 
     /// **Source:** `Font_FontMgr.hxx`:37 - `Font_FontMgr::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Font_FontMgr_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKService::Font_FontMgr_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `Font_FontMgr.hxx`:37 - `Font_FontMgr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Font_FontMgr_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_FontMgr_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `Font_FontMgr.hxx`:40 - `Font_FontMgr::GetInstance()`
     /// Return global instance of font manager.
-    pub fn get_instance() -> crate::OwnedPtr<crate::ffi::HandleFontFontMgr> {
+    pub fn get_instance() -> crate::OwnedPtr<crate::ffi_types::HandleFontFontMgr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FontMgr_get_instance()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FontMgr_get_instance(),
+            ))
         }
     }
 
@@ -1240,7 +1391,7 @@ impl FontMgr {
     pub fn font_aspect_to_string(theAspect: crate::font::FontAspect) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Font_FontMgr_font_aspect_to_string(theAspect.into()),
+                crate::ffi_extern_TKService::Font_FontMgr_font_aspect_to_string(theAspect.into()),
             ))
         }
         .to_string_lossy()
@@ -1252,7 +1403,9 @@ impl FontMgr {
     /// Unicode subset; TRUE by default.
     pub fn to_use_unicode_subset_fallback() -> &'static mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Font_FontMgr_to_use_unicode_subset_fallback()))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKService::Font_FontMgr_to_use_unicode_subset_fallback(),
+            ))
         }
     }
 
@@ -1261,10 +1414,10 @@ impl FontMgr {
     /// It can be used in cases when there is no own font file.
     /// Note: result buffer is readonly and should not be changed,
     /// any data modification can lead to unpredictable consequences.
-    pub fn embed_fallback_font() -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
+    pub fn embed_fallback_font() -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBuffer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_FontMgr_embed_fallback_font(),
+                crate::ffi_extern_TKService::Font_FontMgr_embed_fallback_font(),
             ))
         }
     }
@@ -1272,7 +1425,7 @@ impl FontMgr {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Font_FontMgr_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKService::Font_FontMgr_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1281,32 +1434,39 @@ impl FontMgr {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Font_FontMgr_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Font_FontMgr_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFontFontMgr> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontFontMgr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_FontMgr_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_FontMgr_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1314,7 +1474,7 @@ impl FontMgr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Font_FontMgr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Font_FontMgr_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1327,58 +1487,72 @@ impl FontMgr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_FontMgr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Font_FontMgr_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFontFontMgr;
+pub use crate::ffi_types::HandleFontFontMgr;
 
 unsafe impl crate::CppDeletable for HandleFontFontMgr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFontFontMgr_destructor(ptr);
+        crate::ffi_extern_TKService::HandleFontFontMgr_destructor(ptr);
     }
 }
 
 impl HandleFontFontMgr {
     /// Dereference this Handle to access the underlying Font_FontMgr
-    pub fn get(&self) -> &crate::ffi::Font_FontMgr {
-        unsafe { &*crate::check_result(crate::ffi::HandleFontFontMgr_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Font_FontMgr {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleFontFontMgr_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Font_FontMgr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Font_FontMgr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Font_FontMgr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFontFontMgr_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleFontFontMgr_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Font_FontMgr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFontFontMgr_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleFontFontMgr_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1390,11 +1564,11 @@ impl HandleFontFontMgr {
 
 /// **Source:** `Font_Rect.hxx`:22 - `Font_Rect`
 /// Auxiliary POD structure - 2D rectangle definition.
-pub use crate::ffi::Font_Rect as Rect;
+pub use crate::ffi_types::Font_Rect as Rect;
 
 unsafe impl crate::CppDeletable for Rect {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_Rect_destructor(ptr);
+        crate::ffi_extern_TKService::Font_Rect_destructor(ptr);
     }
 }
 
@@ -1405,11 +1579,11 @@ unsafe impl crate::CppDeletable for Rect {
 /// **Source:** `Font_SystemFont.hxx`:27 - `Font_SystemFont`
 /// This class stores information about the font, which is merely a file path and cached metadata
 /// about the font.
-pub use crate::ffi::Font_SystemFont as SystemFont;
+pub use crate::ffi_types::Font_SystemFont as SystemFont;
 
 unsafe impl crate::CppDeletable for SystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_SystemFont_destructor(ptr);
+        crate::ffi_extern_TKService::Font_SystemFont_destructor(ptr);
     }
 }
 
@@ -1421,15 +1595,17 @@ impl SystemFont {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_SystemFont_ctor_asciistring(theFontName),
+                crate::ffi_extern_TKService::Font_SystemFont_ctor_asciistring(theFontName),
             ))
         }
     }
 
     /// **Source:** `Font_SystemFont.hxx`:29 - `Font_SystemFont::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_SystemFont_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_SystemFont_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1437,7 +1613,9 @@ impl SystemFont {
     /// Returns font family name (lower-cased).
     pub fn font_key(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_SystemFont_font_key(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_SystemFont_font_key(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1445,7 +1623,9 @@ impl SystemFont {
     /// Returns font family name.
     pub fn font_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_SystemFont_font_name(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_SystemFont_font_name(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1456,7 +1636,7 @@ impl SystemFont {
         theAspect: crate::font::FontAspect,
     ) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_SystemFont_font_path(
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_SystemFont_font_path(
                 self as *const Self,
                 theAspect.into(),
             )))
@@ -1467,7 +1647,10 @@ impl SystemFont {
     /// Returns font file path.
     pub fn font_face_id(&self, theAspect: crate::font::FontAspect) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_font_face_id(self as *const Self, theAspect.into())
+            crate::ffi_extern_TKService::Font_SystemFont_font_face_id(
+                self as *const Self,
+                theAspect.into(),
+            )
         })
     }
 
@@ -1480,7 +1663,7 @@ impl SystemFont {
         theFaceId: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_SystemFont_set_font_path(
+            crate::ffi_extern_TKService::Font_SystemFont_set_font_path(
                 self as *mut Self,
                 theAspect.into(),
                 thePath,
@@ -1493,7 +1676,10 @@ impl SystemFont {
     /// Returns TRUE if dedicated file for specified font aspect has been defined.
     pub fn has_font_aspect(&self, theAspect: crate::font::FontAspect) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_has_font_aspect(self as *const Self, theAspect.into())
+            crate::ffi_extern_TKService::Font_SystemFont_has_font_aspect(
+                self as *const Self,
+                theAspect.into(),
+            )
         })
     }
 
@@ -1512,7 +1698,7 @@ impl SystemFont {
         theFaceId: &mut i32,
     ) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_SystemFont_font_path_any(
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_SystemFont_font_path_any(
                 self as *const Self,
                 theAspect.into(),
                 theToSynthesizeItalic,
@@ -1523,9 +1709,9 @@ impl SystemFont {
 
     /// **Source:** `Font_SystemFont.hxx`:115 - `Font_SystemFont::IsEqual()`
     /// Return true if the FontName, FontAspect and FontSize are the same.
-    pub fn is_equal(&self, theOtherFont: &crate::ffi::HandleFontSystemFont) -> bool {
+    pub fn is_equal(&self, theOtherFont: &crate::ffi_types::HandleFontSystemFont) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_is_equal(self as *const Self, theOtherFont)
+            crate::ffi_extern_TKService::Font_SystemFont_is_equal(self as *const Self, theOtherFont)
         })
     }
 
@@ -1535,7 +1721,7 @@ impl SystemFont {
     /// incorrectly by normal software.
     pub fn is_single_stroke_font(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_is_single_stroke_font(self as *const Self)
+            crate::ffi_extern_TKService::Font_SystemFont_is_single_stroke_font(self as *const Self)
         })
     }
 
@@ -1543,7 +1729,10 @@ impl SystemFont {
     /// Set if this font should be rendered as single-stroke (one-line).
     pub fn set_single_stroke_font(&mut self, theIsSingleLine: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_SystemFont_set_single_stroke_font(self as *mut Self, theIsSingleLine)
+            crate::ffi_extern_TKService::Font_SystemFont_set_single_stroke_font(
+                self as *mut Self,
+                theIsSingleLine,
+            )
         })
     }
 
@@ -1551,9 +1740,9 @@ impl SystemFont {
     /// Format font description.
     pub fn to_string(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_SystemFont_to_string(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_SystemFont_to_string(self as *const Self),
+            ))
         }
     }
 
@@ -1561,7 +1750,7 @@ impl SystemFont {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Font_SystemFont_get_type_name(),
+                crate::ffi_extern_TKService::Font_SystemFont_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1569,50 +1758,64 @@ impl SystemFont {
     }
 
     /// **Source:** `Font_SystemFont.hxx`:29 - `Font_SystemFont::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Font_SystemFont_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Font_SystemFont_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Font_SystemFont_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Font_SystemFont_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Font_SystemFont_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Font_SystemFont_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontSystemFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontSystemFont> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_SystemFont_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_SystemFont_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1620,7 +1823,7 @@ impl SystemFont {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Font_SystemFont_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Font_SystemFont_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1633,58 +1836,72 @@ impl SystemFont {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_SystemFont_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Font_SystemFont_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFontSystemFont;
+pub use crate::ffi_types::HandleFontSystemFont;
 
 unsafe impl crate::CppDeletable for HandleFontSystemFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFontSystemFont_destructor(ptr);
+        crate::ffi_extern_TKService::HandleFontSystemFont_destructor(ptr);
     }
 }
 
 impl HandleFontSystemFont {
     /// Dereference this Handle to access the underlying Font_SystemFont
-    pub fn get(&self) -> &crate::ffi::Font_SystemFont {
-        unsafe { &*crate::check_result(crate::ffi::HandleFontSystemFont_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Font_SystemFont {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKService::HandleFontSystemFont_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Font_SystemFont
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Font_SystemFont {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Font_SystemFont {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFontSystemFont_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleFontSystemFont_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Font_SystemFont> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFontSystemFont_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleFontSystemFont_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1719,11 +1936,11 @@ impl HandleFontSystemFont {
 /// // setting of additional properties such as wrapping or alignment
 /// aFormatter->Format();
 /// @endcode
-pub use crate::ffi::Font_TextFormatter as TextFormatter;
+pub use crate::ffi_types::Font_TextFormatter as TextFormatter;
 
 unsafe impl crate::CppDeletable for TextFormatter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_TextFormatter_destructor(ptr);
+        crate::ffi_extern_TKService::Font_TextFormatter_destructor(ptr);
     }
 }
 
@@ -1732,7 +1949,9 @@ impl TextFormatter {
     /// Default constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Font_TextFormatter_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKService::Font_TextFormatter_ctor(),
+            ))
         }
     }
 
@@ -1744,7 +1963,7 @@ impl TextFormatter {
         theAlignY: crate::graphic3d::VerticalTextAlignment,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_setup_alignment(
+            crate::ffi_extern_TKService::Font_TextFormatter_setup_alignment(
                 self as *mut Self,
                 theAlignX.into(),
                 theAlignY.into(),
@@ -1755,14 +1974,24 @@ impl TextFormatter {
     /// **Source:** `Font_TextFormatter.hxx`:155 - `Font_TextFormatter::Reset()`
     /// Reset current progress.
     pub fn reset(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Font_TextFormatter_reset(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_reset(self as *mut Self)
+        })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:158 - `Font_TextFormatter::Append()`
     /// Render specified text to inner buffer.
-    pub fn append(&mut self, theString: &crate::ffi::NCollection_Utf8String, theFont: &mut FTFont) {
+    pub fn append(
+        &mut self,
+        theString: &crate::ffi_types::NCollection_Utf8String,
+        theFont: &mut FTFont,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_append(self as *mut Self, theString, theFont)
+            crate::ffi_extern_TKService::Font_TextFormatter_append(
+                self as *mut Self,
+                theString,
+                theFont,
+            )
         })
     }
 
@@ -1771,15 +2000,15 @@ impl TextFormatter {
     /// Should not be called more than once after initialization!
     pub fn format(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_format(self as *mut Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_format(self as *mut Self)
         })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:172 - `Font_TextFormatter::BottomLeft()`
     /// Returns specific glyph rectangle.
-    pub fn bottom_left(&self, theIndex: i32) -> &crate::ffi::gp_Vec2f {
+    pub fn bottom_left(&self, theIndex: i32) -> &crate::ffi_types::gp_Vec2f {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_TextFormatter_bottom_left(
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_bottom_left(
                 self as *const Self,
                 theIndex,
             )))
@@ -1788,9 +2017,11 @@ impl TextFormatter {
 
     /// **Source:** `Font_TextFormatter.hxx`:178 - `Font_TextFormatter::String()`
     /// Returns current rendering string.
-    pub fn string(&self) -> &crate::ffi::NCollection_Utf8String {
+    pub fn string(&self) -> &crate::ffi_types::NCollection_Utf8String {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_TextFormatter_string(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_string(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1799,7 +2030,7 @@ impl TextFormatter {
     /// @param bounding box.
     pub fn glyph_bounding_box(&self, theIndex: i32, theBndBox: &mut Rect) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_glyph_bounding_box(
+            crate::ffi_extern_TKService::Font_TextFormatter_glyph_bounding_box(
                 self as *const Self,
                 theIndex,
                 theBndBox,
@@ -1812,7 +2043,10 @@ impl TextFormatter {
     /// @param theIndex a line index, obtained by LineIndex()
     pub fn line_height(&self, theIndex: i32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_line_height(self as *const Self, theIndex)
+            crate::ffi_extern_TKService::Font_TextFormatter_line_height(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -1820,7 +2054,10 @@ impl TextFormatter {
     /// Returns width of a line
     pub fn line_width(&self, theIndex: i32) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_line_width(self as *const Self, theIndex)
+            crate::ffi_extern_TKService::Font_TextFormatter_line_width(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -1828,7 +2065,10 @@ impl TextFormatter {
     /// Returns true if the symbol by the index is '\n'. The width of the symbol is zero.
     pub fn is_lf_symbol(&self, theIndex: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_is_lf_symbol(self as *const Self, theIndex)
+            crate::ffi_extern_TKService::Font_TextFormatter_is_lf_symbol(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -1836,7 +2076,7 @@ impl TextFormatter {
     /// Returns position of the first symbol in a line using alignment
     pub fn first_position(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_first_position(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_first_position(self as *const Self)
         })
     }
 
@@ -1844,7 +2084,10 @@ impl TextFormatter {
     /// Returns column index of the corner index in the current line
     pub fn line_position_index(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_line_position_index(self as *const Self, theIndex)
+            crate::ffi_extern_TKService::Font_TextFormatter_line_position_index(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -1852,21 +2095,28 @@ impl TextFormatter {
     /// Returns row index of the corner index among text lines
     pub fn line_index(&self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_line_index(self as *const Self, theIndex)
+            crate::ffi_extern_TKService::Font_TextFormatter_line_index(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:208 - `Font_TextFormatter::TabSize()`
     /// Returns tab size.
     pub fn tab_size(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Font_TextFormatter_tab_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_tab_size(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:211 - `Font_TextFormatter::HorizontalTextAlignment()`
     /// Returns horizontal alignment style
     pub fn horizontal_text_alignment(&self) -> crate::graphic3d::HorizontalTextAlignment {
         crate::graphic3d::HorizontalTextAlignment::try_from(crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_horizontal_text_alignment(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_horizontal_text_alignment(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1875,7 +2125,9 @@ impl TextFormatter {
     /// Returns vertical   alignment style
     pub fn vertical_text_alignment(&self) -> crate::graphic3d::VerticalTextAlignment {
         crate::graphic3d::VerticalTextAlignment::try_from(crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_vertical_text_alignment(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_vertical_text_alignment(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1884,7 +2136,10 @@ impl TextFormatter {
     /// Sets text wrapping width, zero means that the text is not bounded by width
     pub fn set_wrapping(&mut self, theWidth: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_set_wrapping(self as *mut Self, theWidth)
+            crate::ffi_extern_TKService::Font_TextFormatter_set_wrapping(
+                self as *mut Self,
+                theWidth,
+            )
         })
     }
 
@@ -1892,21 +2147,23 @@ impl TextFormatter {
     /// Returns text maximum width, zero means that the text is not bounded by width
     pub fn has_wrapping(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_has_wrapping(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_has_wrapping(self as *const Self)
         })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:223 - `Font_TextFormatter::Wrapping()`
     /// Returns text maximum width, zero means that the text is not bounded by width
     pub fn wrapping(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::Font_TextFormatter_wrapping(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_wrapping(self as *const Self)
+        })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:226 - `Font_TextFormatter::WordWrapping()`
     /// returns TRUE when trying not to break words when wrapping text
     pub fn word_wrapping(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_word_wrapping(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_word_wrapping(self as *const Self)
         })
     }
 
@@ -1914,7 +2171,10 @@ impl TextFormatter {
     /// returns TRUE when trying not to break words when wrapping text
     pub fn set_word_wrapping(&mut self, theIsWordWrapping: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_set_word_wrapping(self as *mut Self, theIsWordWrapping)
+            crate::ffi_extern_TKService::Font_TextFormatter_set_word_wrapping(
+                self as *mut Self,
+                theIsWordWrapping,
+            )
         })
     }
 
@@ -1922,7 +2182,7 @@ impl TextFormatter {
     /// @return width of formatted text.
     pub fn result_width(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_result_width(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_result_width(self as *const Self)
         })
     }
 
@@ -1930,7 +2190,7 @@ impl TextFormatter {
     /// @return height of formatted text.
     pub fn result_height(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_result_height(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_result_height(self as *const Self)
         })
     }
 
@@ -1938,7 +2198,9 @@ impl TextFormatter {
     /// @return maximum width of the text symbol
     pub fn maximum_symbol_width(&self) -> f32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_maximum_symbol_width(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_maximum_symbol_width(
+                self as *const Self,
+            )
         })
     }
 
@@ -1946,30 +2208,36 @@ impl TextFormatter {
     /// @param bounding box.
     pub fn bnd_box(&self, theBndBox: &mut Rect) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_bnd_box(self as *const Self, theBndBox)
+            crate::ffi_extern_TKService::Font_TextFormatter_bnd_box(self as *const Self, theBndBox)
         })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:270 - `Font_TextFormatter::Corners()`
     /// Returns internal container of the top left corners of a formatted rectangles.
-    pub fn corners(&self) -> &crate::ffi::NCollection_Vector_NCollection_Vec2_Standard_ShortReal {
+    pub fn corners(
+        &self,
+    ) -> &crate::ffi_types::NCollection_Vector_NCollection_Vec2_Standard_ShortReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_TextFormatter_corners(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_corners(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:276 - `Font_TextFormatter::NewLines()`
     /// Returns container of each line position at LF in formatted text
-    pub fn new_lines(&self) -> &crate::ffi::NCollection_Vector_Standard_ShortReal {
+    pub fn new_lines(&self) -> &crate::ffi_types::NCollection_Vector_Standard_ShortReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_TextFormatter_new_lines(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_new_lines(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:299 - `Font_TextFormatter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Font_TextFormatter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1978,14 +2246,16 @@ impl TextFormatter {
     /// **Source:** `Font_TextFormatter.hxx`:279 - `Font_TextFormatter::IsCommandSymbol()`
     /// Returns true if the symbol is CR, BEL, FF, NP, BS or VT
     pub fn is_command_symbol(theSymbol: &u32) -> bool {
-        crate::check_result(unsafe { crate::ffi::Font_TextFormatter_is_command_symbol(theSymbol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKService::Font_TextFormatter_is_command_symbol(theSymbol)
+        })
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:292 - `Font_TextFormatter::IsSeparatorSymbol()`
     /// Returns true if the symbol separates words when wrapping is enabled
     pub fn is_separator_symbol(theSymbol: &u32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_is_separator_symbol(theSymbol)
+            crate::ffi_extern_TKService::Font_TextFormatter_is_separator_symbol(theSymbol)
         })
     }
 
@@ -1993,7 +2263,7 @@ impl TextFormatter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Font_TextFormatter_get_type_name(),
+                crate::ffi_extern_TKService::Font_TextFormatter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2001,50 +2271,64 @@ impl TextFormatter {
     }
 
     /// **Source:** `Font_TextFormatter.hxx`:299 - `Font_TextFormatter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Font_TextFormatter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKService::Font_TextFormatter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Font_TextFormatter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKService::Font_TextFormatter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Font_TextFormatter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKService::Font_TextFormatter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFontTextFormatter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFontTextFormatter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_TextFormatter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKService::Font_TextFormatter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2052,7 +2336,7 @@ impl TextFormatter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Font_TextFormatter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKService::Font_TextFormatter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2065,62 +2349,74 @@ impl TextFormatter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFontTextFormatter;
+pub use crate::ffi_types::HandleFontTextFormatter;
 
 unsafe impl crate::CppDeletable for HandleFontTextFormatter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFontTextFormatter_destructor(ptr);
+        crate::ffi_extern_TKService::HandleFontTextFormatter_destructor(ptr);
     }
 }
 
 impl HandleFontTextFormatter {
     /// Dereference this Handle to access the underlying Font_TextFormatter
-    pub fn get(&self) -> &crate::ffi::Font_TextFormatter {
+    pub fn get(&self) -> &crate::ffi_types::Font_TextFormatter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFontTextFormatter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKService::HandleFontTextFormatter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Font_TextFormatter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Font_TextFormatter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Font_TextFormatter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFontTextFormatter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKService::HandleFontTextFormatter_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Font_TextFormatter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFontTextFormatter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKService::HandleFontTextFormatter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2129,11 +2425,11 @@ impl HandleFontTextFormatter {
 /// **Source:** `Font_TextFormatter.hxx`:66 - `Font_TextFormatter_Iterator`
 /// Iterator through formatted symbols.
 /// It's possible to filter returned symbols to have only significant ones.
-pub use crate::ffi::Font_TextFormatter_Iterator as TextFormatter_Iterator;
+pub use crate::ffi_types::Font_TextFormatter_Iterator as TextFormatter_Iterator;
 
 unsafe impl crate::CppDeletable for TextFormatter_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Font_TextFormatter_Iterator_destructor(ptr);
+        crate::ffi_extern_TKService::Font_TextFormatter_Iterator_destructor(ptr);
     }
 }
 
@@ -2142,15 +2438,10 @@ impl TextFormatter_Iterator {
     /// Constructor with initialization.
     pub fn new_textformatter_iterationfilter(
         theFormatter: &TextFormatter,
-        theFilter: &crate::ffi::Font_TextFormatter_IterationFilter,
+        theFilter: &crate::ffi_types::Font_TextFormatter_IterationFilter,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Font_TextFormatter_Iterator_ctor_textformatter_iterationfilter(
-                    theFormatter,
-                    theFilter,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKService::Font_TextFormatter_Iterator_ctor_textformatter_iterationfilter(theFormatter, theFilter)))
         }
     }
 
@@ -2158,7 +2449,7 @@ impl TextFormatter_Iterator {
     /// Returns TRUE if iterator points to a valid item.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_more(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_more(self as *const Self)
         })
     }
 
@@ -2166,7 +2457,7 @@ impl TextFormatter_Iterator {
     /// Returns TRUE if next item exists
     pub fn has_next(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_has_next(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_has_next(self as *const Self)
         })
     }
 
@@ -2174,7 +2465,7 @@ impl TextFormatter_Iterator {
     /// Returns current symbol.
     pub fn symbol(&self) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_symbol(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_symbol(self as *const Self)
         })
     }
 
@@ -2182,7 +2473,9 @@ impl TextFormatter_Iterator {
     /// Returns the next symbol if exists.
     pub fn symbol_next(&self) -> u32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_symbol_next(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_symbol_next(
+                self as *const Self,
+            )
         })
     }
 
@@ -2190,7 +2483,9 @@ impl TextFormatter_Iterator {
     /// Returns current symbol position.
     pub fn symbol_position(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_symbol_position(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_symbol_position(
+                self as *const Self,
+            )
         })
     }
 
@@ -2198,7 +2493,9 @@ impl TextFormatter_Iterator {
     /// Returns the next symbol position.
     pub fn symbol_position_next(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_symbol_position_next(self as *const Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_symbol_position_next(
+                self as *const Self,
+            )
         })
     }
 
@@ -2206,7 +2503,7 @@ impl TextFormatter_Iterator {
     /// Moves to the next item.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Font_TextFormatter_Iterator_next(self as *mut Self)
+            crate::ffi_extern_TKService::Font_TextFormatter_Iterator_next(self as *mut Self)
         })
     }
 }
@@ -2215,4 +2512,4 @@ impl TextFormatter_Iterator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::Font_NListOfSystemFont as NListOfSystemFont;
+pub use crate::ffi_types::Font_NListOfSystemFont as NListOfSystemFont;

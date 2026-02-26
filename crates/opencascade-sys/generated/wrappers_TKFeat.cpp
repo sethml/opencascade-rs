@@ -21,7 +21,7 @@
 #include <BRepFeat_Status.hxx>
 #include <BRepFeat_StatusError.hxx>
 #include <BRepTopAdaptor_FClass2d.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Geom2dAdaptor_Curve.hxx>
 #include <Geom_Curve.hxx>
 #include <Geom_Plane.hxx>

@@ -12,7 +12,7 @@ pub fn common_vertex_mut(
     E2: &crate::topo_ds::Edge,
     V: &mut crate::topo_ds::Vertex,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::ChFi2d_common_vertex_mut(E1, E2, V) })
+    crate::check_result(unsafe { crate::ffi_extern_TKFillet::ChFi2d_common_vertex_mut(E1, E2, V) })
 }
 /// **Source:** `ChFi2d.hxx`:58 - `ChFi2d::FindConnectedEdges`
 pub fn find_connected_edges(
@@ -22,7 +22,7 @@ pub fn find_connected_edges(
     E2: &mut crate::topo_ds::Edge,
 ) -> crate::ch_fi2d::ConstructionError {
     crate::ch_fi2d::ConstructionError::try_from(crate::check_result(unsafe {
-        crate::ffi::ChFi2d_find_connected_edges(F, V, E1, E2)
+        crate::ffi_extern_TKFillet::ChFi2d_find_connected_edges(F, V, E1, E2)
     }))
     .unwrap()
 }
@@ -97,11 +97,11 @@ impl TryFrom<i32> for ConstructionError {
 /// **Source:** `ChFi2d_AnaFilletAlgo.hxx`:25 - `ChFi2d_AnaFilletAlgo`
 /// An analytical algorithm for calculation of the fillets.
 /// It is implemented for segments and arcs of circle only.
-pub use crate::ffi::ChFi2d_AnaFilletAlgo as AnaFilletAlgo;
+pub use crate::ffi_types::ChFi2d_AnaFilletAlgo as AnaFilletAlgo;
 
 unsafe impl crate::CppDeletable for AnaFilletAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFi2d_AnaFilletAlgo_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_destructor(ptr);
     }
 }
 
@@ -111,7 +111,9 @@ impl AnaFilletAlgo {
     /// Use the method Init() to initialize the class.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_AnaFilletAlgo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_ctor(),
+            ))
         }
     }
 
@@ -126,7 +128,7 @@ impl AnaFilletAlgo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_AnaFilletAlgo_ctor_wire_pln(theWire, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_ctor_wire_pln(theWire, thePlane),
             ))
         }
     }
@@ -143,7 +145,9 @@ impl AnaFilletAlgo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_AnaFilletAlgo_ctor_edge2_pln(theEdge1, theEdge2, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_ctor_edge2_pln(
+                    theEdge1, theEdge2, thePlane,
+                ),
             ))
         }
     }
@@ -152,7 +156,11 @@ impl AnaFilletAlgo {
     /// Initializes the class by a wire consisting of two edges.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_AnaFilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane)
+            crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_init_wire_pln(
+                self as *mut Self,
+                theWire,
+                thePlane,
+            )
         })
     }
 
@@ -165,7 +173,7 @@ impl AnaFilletAlgo {
         thePlane: &crate::gp::Pln,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_AnaFilletAlgo_init_edge2_pln(
+            crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_init_edge2_pln(
                 self as *mut Self,
                 theEdge1,
                 theEdge2,
@@ -178,7 +186,7 @@ impl AnaFilletAlgo {
     /// Calculates a fillet.
     pub fn perform(&mut self, radius: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_AnaFilletAlgo_perform(self as *mut Self, radius)
+            crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_perform(self as *mut Self, radius)
         })
     }
 
@@ -196,7 +204,7 @@ impl AnaFilletAlgo {
         e2: &mut crate::topo_ds::Edge,
     ) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFi2d_AnaFilletAlgo_result(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_AnaFilletAlgo_result(
                 self as *mut Self,
                 e1,
                 e2,
@@ -212,18 +220,22 @@ impl AnaFilletAlgo {
 /// **Source:** `ChFi2d_Builder.hxx`:39 - `ChFi2d_Builder`
 /// This  class contains  the algorithm  used to build
 /// fillet on planar wire.
-pub use crate::ffi::ChFi2d_Builder as Builder;
+pub use crate::ffi_types::ChFi2d_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFi2d_Builder_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFi2d_Builder_destructor(ptr);
     }
 }
 
 impl Builder {
     /// **Source:** `ChFi2d_Builder.hxx`:44 - `ChFi2d_Builder::ChFi2d_Builder()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_Builder_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:48 - `ChFi2d_Builder::ChFi2d_Builder()`
@@ -231,21 +243,27 @@ impl Builder {
     /// wire.
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_Builder_ctor_face(F)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_ctor_face(F),
+            ))
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:50 - `ChFi2d_Builder::Init()`
     pub fn init_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_Builder_init_face(self as *mut Self, F)
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_init_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:52 - `ChFi2d_Builder::Init()`
     pub fn init_face2(&mut self, RefFace: &crate::topo_ds::Face, ModFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_Builder_init_face2(self as *mut Self, RefFace, ModFace)
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_init_face2(
+                self as *mut Self,
+                RefFace,
+                ModFace,
+            )
         })
     }
 
@@ -261,11 +279,9 @@ impl Builder {
         Radius: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_Builder_add_fillet(
-                self as *mut Self,
-                V,
-                Radius,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_add_fillet(self as *mut Self, V, Radius),
+            ))
         }
     }
 
@@ -280,7 +296,11 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_modify_fillet(self as *mut Self, Fillet, Radius),
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_modify_fillet(
+                    self as *mut Self,
+                    Fillet,
+                    Radius,
+                ),
             ))
         }
     }
@@ -294,7 +314,7 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_remove_fillet(self as *mut Self, Fillet),
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_remove_fillet(self as *mut Self, Fillet),
             ))
         }
     }
@@ -313,7 +333,7 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_add_chamfer_edge2_real2(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_add_chamfer_edge2_real2(
                     self as *mut Self,
                     E1,
                     E2,
@@ -341,7 +361,7 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_add_chamfer_edge_vertex_real2(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_add_chamfer_edge_vertex_real2(
                     self as *mut Self,
                     E,
                     V,
@@ -367,7 +387,7 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_modify_chamfer_edge3_real2(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_modify_chamfer_edge3_real2(
                     self as *mut Self,
                     Chamfer,
                     E1,
@@ -393,7 +413,7 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_modify_chamfer_edge2_real2(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_modify_chamfer_edge2_real2(
                     self as *mut Self,
                     Chamfer,
                     E,
@@ -414,7 +434,10 @@ impl Builder {
     ) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_Builder_remove_chamfer(self as *mut Self, Chamfer),
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_remove_chamfer(
+                    self as *mut Self,
+                    Chamfer,
+                ),
             ))
         }
     }
@@ -423,49 +446,57 @@ impl Builder {
     /// returns the modified face
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_Builder_result(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_Builder_result(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:118 - `ChFi2d_Builder::IsModified()`
     pub fn is_modified(&self, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_Builder_is_modified(self as *const Self, E)
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_is_modified(self as *const Self, E)
         })
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:121 - `ChFi2d_Builder::FilletEdges()`
     /// returns the list of new edges
-    pub fn fillet_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+    pub fn fillet_edges(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFi2d_Builder_fillet_edges(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_fillet_edges(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:123 - `ChFi2d_Builder::NbFillet()`
     pub fn nb_fillet(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFi2d_Builder_nb_fillet(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_nb_fillet(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:126 - `ChFi2d_Builder::ChamferEdges()`
     /// returns the list of new edges
-    pub fn chamfer_edges(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+    pub fn chamfer_edges(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFi2d_Builder_chamfer_edges(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_chamfer_edges(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:128 - `ChFi2d_Builder::NbChamfer()`
     pub fn nb_chamfer(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFi2d_Builder_nb_chamfer(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_nb_chamfer(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:130 - `ChFi2d_Builder::HasDescendant()`
     pub fn has_descendant(&self, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_Builder_has_descendant(self as *const Self, E)
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_has_descendant(self as *const Self, E)
         })
     }
 
@@ -480,7 +511,7 @@ impl Builder {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn descendant_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFi2d_Builder_descendant_edge(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_descendant_edge(
                 self as *const Self,
                 E,
             )))
@@ -499,14 +530,17 @@ impl Builder {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn basis_edge(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFi2d_Builder_basis_edge(self as *const Self, E)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFi2d_Builder_basis_edge(
+                self as *const Self,
+                E,
+            )))
         }
     }
 
     /// **Source:** `ChFi2d_Builder.hxx`:141 - `ChFi2d_Builder::Status()`
     pub fn status(&self) -> crate::ch_fi2d::ConstructionError {
         crate::ch_fi2d::ConstructionError::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFi2d_Builder_status(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFi2d_Builder_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -518,11 +552,11 @@ impl Builder {
 
 /// **Source:** `ChFi2d_ChamferAPI.hxx`:24 - `ChFi2d_ChamferAPI`
 /// A class making a chamfer between two linear edges.
-pub use crate::ffi::ChFi2d_ChamferAPI as ChamferAPI;
+pub use crate::ffi_types::ChFi2d_ChamferAPI as ChamferAPI;
 
 unsafe impl crate::CppDeletable for ChamferAPI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFi2d_ChamferAPI_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_destructor(ptr);
     }
 }
 
@@ -531,7 +565,9 @@ impl ChamferAPI {
     /// An empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_ChamferAPI_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_ctor(),
+            ))
         }
     }
 
@@ -539,9 +575,9 @@ impl ChamferAPI {
     /// A constructor accepting a wire consisting of two linear edges.
     pub fn new_wire(theWire: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_ChamferAPI_ctor_wire(
-                theWire,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_ctor_wire(theWire),
+            ))
         }
     }
 
@@ -553,7 +589,7 @@ impl ChamferAPI {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_ChamferAPI_ctor_edge2(theEdge1, theEdge2),
+                crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_ctor_edge2(theEdge1, theEdge2),
             ))
         }
     }
@@ -562,7 +598,7 @@ impl ChamferAPI {
     /// Initializes the class by a wire consisting of two libear edges.
     pub fn init_wire(&mut self, theWire: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_ChamferAPI_init_wire(self as *mut Self, theWire)
+            crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_init_wire(self as *mut Self, theWire)
         })
     }
 
@@ -570,7 +606,11 @@ impl ChamferAPI {
     /// Initializes the class by two linear edges.
     pub fn init_edge2(&mut self, theEdge1: &crate::topo_ds::Edge, theEdge2: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_ChamferAPI_init_edge2(self as *mut Self, theEdge1, theEdge2)
+            crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_init_edge2(
+                self as *mut Self,
+                theEdge1,
+                theEdge2,
+            )
         })
     }
 
@@ -578,7 +618,9 @@ impl ChamferAPI {
     /// Constructs a chamfer edge.
     /// Returns true if the edge is constructed.
     pub fn perform(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFi2d_ChamferAPI_perform(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFi2d_ChamferAPI.hxx`:47 - `ChFi2d_ChamferAPI::Result()`
@@ -590,13 +632,15 @@ impl ChamferAPI {
         theLength2: f64,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_ChamferAPI_result(
-                self as *mut Self,
-                theEdge1,
-                theEdge2,
-                theLength1,
-                theLength2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_ChamferAPI_result(
+                    self as *mut Self,
+                    theEdge1,
+                    theEdge2,
+                    theLength1,
+                    theLength2,
+                ),
+            ))
         }
     }
 }
@@ -622,11 +666,11 @@ impl ChamferAPI {
 /// The algorithms ChFi2d_AnaFilletAlgo and ChFi2d_FilletAlgo may be used directly
 /// or via this ChFi2d_FilletAPI class. This class chooses an appropriate algorithm
 /// analyzing the arguments (a wire or two edges).
-pub use crate::ffi::ChFi2d_FilletAPI as FilletAPI;
+pub use crate::ffi_types::ChFi2d_FilletAPI as FilletAPI;
 
 unsafe impl crate::CppDeletable for FilletAPI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFi2d_FilletAPI_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_destructor(ptr);
     }
 }
 
@@ -637,7 +681,9 @@ impl FilletAPI {
     /// before calling of a Perform() method.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_FilletAPI_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_ctor(),
+            ))
         }
     }
 
@@ -649,7 +695,7 @@ impl FilletAPI {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_FilletAPI_ctor_wire_pln(theWire, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_ctor_wire_pln(theWire, thePlane),
             ))
         }
     }
@@ -663,7 +709,9 @@ impl FilletAPI {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_FilletAPI_ctor_edge2_pln(theEdge1, theEdge2, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_ctor_edge2_pln(
+                    theEdge1, theEdge2, thePlane,
+                ),
             ))
         }
     }
@@ -672,7 +720,11 @@ impl FilletAPI {
     /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_FilletAPI_init_wire_pln(self as *mut Self, theWire, thePlane)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_init_wire_pln(
+                self as *mut Self,
+                theWire,
+                thePlane,
+            )
         })
     }
 
@@ -685,7 +737,7 @@ impl FilletAPI {
         thePlane: &crate::gp::Pln,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_FilletAPI_init_edge2_pln(
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_init_edge2_pln(
                 self as *mut Self,
                 theEdge1,
                 theEdge2,
@@ -699,7 +751,7 @@ impl FilletAPI {
     /// Returns true if at least one result was found.
     pub fn perform(&mut self, theRadius: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_FilletAPI_perform(self as *mut Self, theRadius)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_perform(self as *mut Self, theRadius)
         })
     }
 
@@ -710,7 +762,7 @@ impl FilletAPI {
     /// Put the intersecting (or common) point of the edges.
     pub fn nb_results(&mut self, thePoint: &crate::gp::Pnt) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_FilletAPI_nb_results(self as *mut Self, thePoint)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_nb_results(self as *mut Self, thePoint)
         })
     }
 
@@ -728,13 +780,15 @@ impl FilletAPI {
         iSolution: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_FilletAPI_result(
-                self as *mut Self,
-                thePoint,
-                theEdge1,
-                theEdge2,
-                iSolution,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAPI_result(
+                    self as *mut Self,
+                    thePoint,
+                    theEdge1,
+                    theEdge2,
+                    iSolution,
+                ),
+            ))
         }
     }
 }
@@ -770,11 +824,11 @@ impl FilletAPI {
 /// 4. If solution is found, result is created on point on root of the function (as a start point),
 /// point of the projection onto second curve (as an end point) and center of arc in found
 /// center. Initial edges are cut by the start and end point of tangency.
-pub use crate::ffi::ChFi2d_FilletAlgo as FilletAlgo;
+pub use crate::ffi_types::ChFi2d_FilletAlgo as FilletAlgo;
 
 unsafe impl crate::CppDeletable for FilletAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFi2d_FilletAlgo_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_destructor(ptr);
     }
 }
 
@@ -785,7 +839,9 @@ impl FilletAlgo {
     /// before calling of a Perform() method.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_FilletAlgo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_ctor(),
+            ))
         }
     }
 
@@ -797,7 +853,7 @@ impl FilletAlgo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_FilletAlgo_ctor_wire_pln(theWire, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_ctor_wire_pln(theWire, thePlane),
             ))
         }
     }
@@ -811,7 +867,9 @@ impl FilletAlgo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFi2d_FilletAlgo_ctor_edge2_pln(theEdge1, theEdge2, thePlane),
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_ctor_edge2_pln(
+                    theEdge1, theEdge2, thePlane,
+                ),
             ))
         }
     }
@@ -820,7 +878,11 @@ impl FilletAlgo {
     /// Initializes a fillet algorithm: accepts a wire consisting of two edges in a plane.
     pub fn init_wire_pln(&mut self, theWire: &crate::topo_ds::Wire, thePlane: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_FilletAlgo_init_wire_pln(self as *mut Self, theWire, thePlane)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_init_wire_pln(
+                self as *mut Self,
+                theWire,
+                thePlane,
+            )
         })
     }
 
@@ -833,7 +895,7 @@ impl FilletAlgo {
         thePlane: &crate::gp::Pln,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFi2d_FilletAlgo_init_edge2_pln(
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_init_edge2_pln(
                 self as *mut Self,
                 theEdge1,
                 theEdge2,
@@ -847,7 +909,7 @@ impl FilletAlgo {
     /// Returns true, if at least one result was found
     pub fn perform(&mut self, theRadius: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_FilletAlgo_perform(self as *mut Self, theRadius)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_perform(self as *mut Self, theRadius)
         })
     }
 
@@ -858,7 +920,7 @@ impl FilletAlgo {
     /// Put the intersecting (or common) point of the edges.
     pub fn nb_results(&mut self, thePoint: &crate::gp::Pnt) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFi2d_FilletAlgo_nb_results(self as *mut Self, thePoint)
+            crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_nb_results(self as *mut Self, thePoint)
         })
     }
 
@@ -876,13 +938,15 @@ impl FilletAlgo {
         iSolution: i32,
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFi2d_FilletAlgo_result(
-                self as *mut Self,
-                thePoint,
-                theEdge1,
-                theEdge2,
-                iSolution,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFi2d_FilletAlgo_result(
+                    self as *mut Self,
+                    thePoint,
+                    theEdge1,
+                    theEdge2,
+                    iSolution,
+                ),
+            ))
         }
     }
 }
@@ -890,11 +954,11 @@ impl FilletAlgo {
 /// **Source:** `ChFi2d_FilletAlgo.hxx`:141 - `FilletPoint`
 /// Private class. Corresponds to the point on the first curve, computed
 /// fillet function and derivative on it.
-pub use crate::ffi::FilletPoint;
+pub use crate::ffi_types::FilletPoint;
 
 unsafe impl crate::CppDeletable for FilletPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FilletPoint_destructor(ptr);
+        crate::ffi_extern_TKFillet::FilletPoint_destructor(ptr);
     }
 }
 
@@ -903,9 +967,9 @@ impl FilletPoint {
     /// Creates a point on a first curve by parameter on this curve.
     pub fn new_real(theParam: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FilletPoint_ctor_real(
-                theParam,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::FilletPoint_ctor_real(theParam),
+            ))
         }
     }
 
@@ -913,27 +977,31 @@ impl FilletPoint {
     /// Changes the point position by changing point parameter on the first curve.
     pub fn set_param(&mut self, theParam: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_set_param(self as *mut Self, theParam)
+            crate::ffi_extern_TKFillet::FilletPoint_set_param(self as *mut Self, theParam)
         })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:151 - `FilletPoint::getParam()`
     /// Returns the point parameter on the first curve.
     pub fn get_param(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FilletPoint_get_param(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::FilletPoint_get_param(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:154 - `FilletPoint::getNBValues()`
     /// Returns number of found values of function in this point.
     pub fn get_nb_values(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FilletPoint_get_nb_values(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::FilletPoint_get_nb_values(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:157 - `FilletPoint::getValue()`
     /// Returns value of function in this point.
     pub fn get_value(&mut self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_get_value(self as *mut Self, theIndex)
+            crate::ffi_extern_TKFillet::FilletPoint_get_value(self as *mut Self, theIndex)
         })
     }
 
@@ -941,7 +1009,7 @@ impl FilletPoint {
     /// Returns derivatives of function in this point.
     pub fn get_diff(&mut self, theIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_get_diff(self as *mut Self, theIndex)
+            crate::ffi_extern_TKFillet::FilletPoint_get_diff(self as *mut Self, theIndex)
         })
     }
 
@@ -949,7 +1017,7 @@ impl FilletPoint {
     /// Returns true if function is valid (rediuses vectors of fillet do not intersect any curve).
     pub fn is_valid(&mut self, theIndex: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_is_valid(self as *mut Self, theIndex)
+            crate::ffi_extern_TKFillet::FilletPoint_is_valid(self as *mut Self, theIndex)
         })
     }
 
@@ -957,7 +1025,7 @@ impl FilletPoint {
     /// Returns the index of the nearest value
     pub fn get_near(&mut self, theIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_get_near(self as *mut Self, theIndex)
+            crate::ffi_extern_TKFillet::FilletPoint_get_near(self as *mut Self, theIndex)
         })
     }
 
@@ -965,21 +1033,23 @@ impl FilletPoint {
     /// Defines the parameter of the projected point on the second curve.
     pub fn set_param2(&mut self, theParam2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_set_param2(self as *mut Self, theParam2)
+            crate::ffi_extern_TKFillet::FilletPoint_set_param2(self as *mut Self, theParam2)
         })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:172 - `FilletPoint::getParam2()`
     /// Returns the parameter of the projected point on the second curve.
     pub fn get_param2(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FilletPoint_get_param2(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::FilletPoint_get_param2(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:175 - `FilletPoint::setCenter()`
     /// Center of the fillet.
     pub fn set_center(&mut self, thePoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_set_center(self as *mut Self, thePoint)
+            crate::ffi_extern_TKFillet::FilletPoint_set_center(self as *mut Self, thePoint)
         })
     }
 
@@ -987,9 +1057,9 @@ impl FilletPoint {
     /// Center of the fillet.
     pub fn get_center(&mut self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FilletPoint_get_center(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::FilletPoint_get_center(self as *mut Self),
+            ))
         }
     }
 
@@ -997,7 +1067,11 @@ impl FilletPoint {
     /// Appends value of the function.
     pub fn append_value(&mut self, theValue: f64, theValid: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_append_value(self as *mut Self, theValue, theValid)
+            crate::ffi_extern_TKFillet::FilletPoint_append_value(
+                self as *mut Self,
+                theValue,
+                theValid,
+            )
         })
     }
 
@@ -1005,7 +1079,10 @@ impl FilletPoint {
     /// Computes difference between this point and the given. Stores difference in myD.
     pub fn calculate_diff(&mut self, arg0: &mut FilletPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_calculate_diff(self as *mut Self, arg0 as *mut _)
+            crate::ffi_extern_TKFillet::FilletPoint_calculate_diff(
+                self as *mut Self,
+                arg0 as *mut _,
+            )
         })
     }
 
@@ -1013,7 +1090,7 @@ impl FilletPoint {
     /// Filters out the values and leaves the most optimal one.
     pub fn filter_points(&mut self, arg0: &mut FilletPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _)
+            crate::ffi_extern_TKFillet::FilletPoint_filter_points(self as *mut Self, arg0 as *mut _)
         })
     }
 
@@ -1022,8 +1099,9 @@ impl FilletPoint {
     /// warning: this is not the full copy! Copies only: myParam, myV, myD, myValid
     pub fn copy(&mut self) -> Option<&mut FilletPoint> {
         {
-            let __val =
-                crate::check_result(unsafe { crate::ffi::FilletPoint_copy(self as *mut Self) });
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKFillet::FilletPoint_copy(self as *mut Self)
+            });
             if __val.is_null() {
                 None
             } else {
@@ -1036,21 +1114,23 @@ impl FilletPoint {
     /// Returns the index of the solution or zero if there is no solution
     pub fn has_solution(&mut self, theRadius: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FilletPoint_has_solution(self as *mut Self, theRadius)
+            crate::ffi_extern_TKFillet::FilletPoint_has_solution(self as *mut Self, theRadius)
         })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:197 - `FilletPoint::LowerValue()`
     /// For debug only
     pub fn lower_value(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FilletPoint_lower_value(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::FilletPoint_lower_value(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFi2d_FilletAlgo.hxx`:213 - `FilletPoint::remove()`
     /// Removes the found value by the given index.
     pub fn remove(&mut self, theIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FilletPoint_remove(self as *mut Self, theIndex)
+            crate::ffi_extern_TKFillet::FilletPoint_remove(self as *mut Self, theIndex)
         })
     }
 }

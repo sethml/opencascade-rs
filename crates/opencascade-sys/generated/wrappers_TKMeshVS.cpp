@@ -5,8 +5,9 @@
 
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_NListOfEntityOwner.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_SequenceOfColor.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
 #include <Convert_SequenceOfArray1OfPoles.hxx>
@@ -19,7 +20,7 @@
 #include <Graphic3d_MapOfObject.hxx>
 #include <Graphic3d_MapOfStructure.hxx>
 #include <Graphic3d_MaterialAspect.hxx>
-#include <Graphic3d_Vec2.hxx>
+#include <Graphic3d_ShaderVariable.hxx>
 #include <MeshVS_Array1OfSequenceOfInteger.hxx>
 #include <MeshVS_Buffer.hxx>
 #include <MeshVS_CommonSensitiveEntity.hxx>
@@ -72,10 +73,10 @@
 #include <SelectBasics_SelectingVolumeManager.hxx>
 #include <SelectMgr_EntityOwner.hxx>
 #include <SelectMgr_SelectableObject.hxx>
-#include <SelectMgr_SelectableObjectSet.hxx>
 #include <SelectMgr_Selection.hxx>
 #include <SelectMgr_SequenceOfOwner.hxx>
 #include <SelectMgr_SequenceOfSelection.hxx>
+#include <SelectMgr_ViewerSelector.hxx>
 #include <Standard_Handle.hxx>
 #include <Standard_Type.hxx>
 #include <Standard_TypeDef.hxx>
@@ -86,7 +87,6 @@
 #include <TColStd_HPackedMapOfInteger.hxx>
 #include <TColgp_Array1OfPnt.hxx>
 #include <TColgp_Array1OfPnt2d.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopLoc_Location.hxx>
 #include <V3d_ListOfView.hxx>
 #include <gp_GTrsf.hxx>

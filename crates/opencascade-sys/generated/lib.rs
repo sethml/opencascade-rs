@@ -2,8 +2,60 @@
 // Nested C++ types use Parent_Child naming, which is intentional
 #![allow(non_camel_case_types)]
 
-// Core FFI module with all types (pub(crate) to prevent direct access, use module re-exports instead)
-pub(crate) mod ffi;
+// FFI type definitions (opaque structs, POD structs, handles)
+pub(crate) mod ffi_types;
+
+// Per-toolkit FFI extern blocks
+pub(crate) mod ffi_extern_TKBO;
+pub(crate) mod ffi_extern_TKBRep;
+pub(crate) mod ffi_extern_TKBin;
+pub(crate) mod ffi_extern_TKBinL;
+pub(crate) mod ffi_extern_TKBinTObj;
+pub(crate) mod ffi_extern_TKBinXCAF;
+pub(crate) mod ffi_extern_TKBool;
+pub(crate) mod ffi_extern_TKCAF;
+pub(crate) mod ffi_extern_TKCDF;
+pub(crate) mod ffi_extern_TKDE;
+pub(crate) mod ffi_extern_TKDECascade;
+pub(crate) mod ffi_extern_TKDEGLTF;
+pub(crate) mod ffi_extern_TKDEIGES;
+pub(crate) mod ffi_extern_TKDEOBJ;
+pub(crate) mod ffi_extern_TKDEPLY;
+pub(crate) mod ffi_extern_TKDESTEP;
+pub(crate) mod ffi_extern_TKDESTL;
+pub(crate) mod ffi_extern_TKDEVRML;
+pub(crate) mod ffi_extern_TKExpress;
+pub(crate) mod ffi_extern_TKFeat;
+pub(crate) mod ffi_extern_TKFillet;
+pub(crate) mod ffi_extern_TKG2d;
+pub(crate) mod ffi_extern_TKG3d;
+pub(crate) mod ffi_extern_TKGeomAlgo;
+pub(crate) mod ffi_extern_TKGeomBase;
+pub(crate) mod ffi_extern_TKHLR;
+pub(crate) mod ffi_extern_TKLCAF;
+pub(crate) mod ffi_extern_TKMath;
+pub(crate) mod ffi_extern_TKMesh;
+pub(crate) mod ffi_extern_TKMeshVS;
+pub(crate) mod ffi_extern_TKOffset;
+pub(crate) mod ffi_extern_TKPrim;
+pub(crate) mod ffi_extern_TKRWMesh;
+pub(crate) mod ffi_extern_TKService;
+pub(crate) mod ffi_extern_TKShHealing;
+pub(crate) mod ffi_extern_TKStd;
+pub(crate) mod ffi_extern_TKStdL;
+pub(crate) mod ffi_extern_TKTObj;
+pub(crate) mod ffi_extern_TKTopAlgo;
+pub(crate) mod ffi_extern_TKV3d;
+pub(crate) mod ffi_extern_TKVCAF;
+pub(crate) mod ffi_extern_TKXCAF;
+pub(crate) mod ffi_extern_TKXMesh;
+pub(crate) mod ffi_extern_TKXSBase;
+pub(crate) mod ffi_extern_TKXml;
+pub(crate) mod ffi_extern_TKXmlL;
+pub(crate) mod ffi_extern_TKXmlTObj;
+pub(crate) mod ffi_extern_TKXmlXCAF;
+pub(crate) mod ffi_extern_TKernel;
+pub(crate) mod ffi_extern_misc;
 
 // Per-module re-exports
 pub mod adaptor2d;

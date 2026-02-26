@@ -7,7 +7,7 @@
 #include <Adaptor2d_Line2d.hxx>
 #include <Adaptor2d_OffsetCurve.hxx>
 #include <BRepAdaptor_Curve2d.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bisector_BisecAna.hxx>
 #include <Bisector_BisecCC.hxx>
 #include <Bisector_BisecPC.hxx>

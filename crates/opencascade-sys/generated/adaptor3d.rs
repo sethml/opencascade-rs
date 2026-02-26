@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleBRepAdaptorCompCurve, HandleBRepAdaptorCurve, HandleBRepAdaptorSurface,
     HandleBRepTopAdaptorHVertex, HandleBRepTopAdaptorTopolTool, HandleBiTgteCurveOnEdge,
     HandleBiTgteCurveOnVertex, HandleChFiDSElSpine, HandleGeomAdaptorCurve,
@@ -34,11 +34,11 @@ pub use crate::ffi::{
 /// Polynomial coefficients of BSpline curves used for their evaluation are
 /// cached for better performance. Therefore these evaluations are not
 /// thread-safe and parallel evaluations need to be prevented.
-pub use crate::ffi::Adaptor3d_Curve as Curve;
+pub use crate::ffi_types::Adaptor3d_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_Curve_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_Curve_destructor(ptr);
     }
 }
 
@@ -47,23 +47,27 @@ impl Curve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_Curve_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Curve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:57 - `Adaptor3d_Curve::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Curve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_shallow_copy(self as *const Self),
             ))
         }
     }
@@ -71,21 +75,21 @@ impl Curve {
     /// **Source:** `Adaptor3d_Curve.hxx`:59 - `Adaptor3d_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_first_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:61 - `Adaptor3d_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_last_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:63 - `Adaptor3d_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_continuity(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -95,7 +99,7 @@ impl Curve {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_nb_intervals(self as *const Self, S.into())
         })
     }
 
@@ -105,9 +109,13 @@ impl Curve {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_intervals(self as *const Self, T, S.into())
         })
     }
 
@@ -121,40 +129,47 @@ impl Curve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_is_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:86 - `Adaptor3d_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_is_periodic(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:88 - `Adaptor3d_Curve::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_period(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:91 - `Adaptor3d_Curve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_value(self as *const Self, U),
+            ))
         }
     }
 
@@ -162,7 +177,7 @@ impl Curve {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_d0(self as *const Self, U, P)
         })
     }
 
@@ -173,7 +188,7 @@ impl Curve {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -190,7 +205,7 @@ impl Curve {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
@@ -208,7 +223,7 @@ impl Curve {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_d3(self as *const Self, U, P, V1, V2, V3)
         })
     }
 
@@ -220,11 +235,9 @@ impl Curve {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_dn(self as *const Self, U, N),
+            ))
         }
     }
 
@@ -233,7 +246,7 @@ impl Curve {
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_resolution(self as *const Self, R3d)
         })
     }
 
@@ -243,7 +256,7 @@ impl Curve {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_get_type(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -251,91 +264,99 @@ impl Curve {
     /// **Source:** `Adaptor3d_Curve.hxx`:134 - `Adaptor3d_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_line(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_line(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:136 - `Adaptor3d_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_circle(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_circle(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:138 - `Adaptor3d_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_ellipse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_ellipse(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:140 - `Adaptor3d_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_hyperbola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:142 - `Adaptor3d_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_parabola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_is_rational(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_is_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_nb_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Curve_nb_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:152 - `Adaptor3d_Curve::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_bezier(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_bezier(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:154 - `Adaptor3d_Curve::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_b_spline(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_b_spline(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Curve_offset_curve(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_offset_curve(self as *const Self),
             ))
         }
     }
@@ -344,7 +365,7 @@ impl Curve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_Curve_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -352,14 +373,16 @@ impl Curve {
     }
 
     /// **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Adaptor3d_Curve_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Curve_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_Curve_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Curve_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -368,34 +391,39 @@ impl Curve {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_Curve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Curve_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -403,7 +431,7 @@ impl Curve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_Curve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -416,58 +444,72 @@ impl Curve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Curve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Curve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dCurve;
+pub use crate::ffi_types::HandleAdaptor3dCurve;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dCurve {
     /// Dereference this Handle to access the underlying Adaptor3d_Curve
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_Curve {
-        unsafe { &*crate::check_result(crate::ffi::HandleAdaptor3dCurve_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Curve {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_Curve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_Curve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dCurve_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_Curve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dCurve_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -477,9 +519,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `Adaptor3d_CurveOnSurface` (or subclass).
     pub fn downcast_to_curve_on_surface(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurveOnSurface>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dCurveOnSurface(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dCurveOnSurface(
                 self as *const Self,
             )
         });
@@ -495,9 +537,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `Adaptor3d_IsoCurve` (or subclass).
     pub fn downcast_to_iso_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAdaptor3dIsoCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dIsoCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dIsoCurve(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleAdaptor3dIsoCurve(
                 self as *const Self,
             )
         });
@@ -513,9 +555,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `BRepAdaptor_CompCurve` (or subclass).
     pub fn downcast_to_comp_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCompCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepAdaptorCompCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCompCurve(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCompCurve(
                 self as *const Self,
             )
         });
@@ -531,9 +573,11 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `BRepAdaptor_Curve` (or subclass).
     pub fn downcast_to_b_rep_adaptor_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepAdaptorCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCurve(self as *const Self)
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleBRepAdaptorCurve(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -547,9 +591,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `BiTgte_CurveOnEdge` (or subclass).
     pub fn downcast_to_curve_on_edge(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnEdge>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBiTgteCurveOnEdge>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnEdge(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnEdge(
                 self as *const Self,
             )
         });
@@ -565,9 +609,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `BiTgte_CurveOnVertex` (or subclass).
     pub fn downcast_to_curve_on_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBiTgteCurveOnVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBiTgteCurveOnVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnVertex(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleBiTgteCurveOnVertex(
                 self as *const Self,
             )
         });
@@ -581,9 +625,13 @@ impl HandleAdaptor3dCurve {
     /// Downcast Handle<Adaptor3d_Curve> to Handle<ChFiDS_ElSpine>
     ///
     /// Returns `None` if the handle does not point to a `ChFiDS_ElSpine` (or subclass).
-    pub fn downcast_to_el_spine(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine>> {
+    pub fn downcast_to_el_spine(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleChFiDSElSpine(self as *const Self)
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleChFiDSElSpine(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -597,9 +645,11 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_Curve` (or subclass).
     pub fn downcast_to_geom_adaptor_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleGeomAdaptorCurve(self as *const Self)
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleGeomAdaptorCurve(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -613,9 +663,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `GeomFill_SnglrFunc` (or subclass).
     pub fn downcast_to_snglr_func(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSnglrFunc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillSnglrFunc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleGeomFillSnglrFunc(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleGeomFillSnglrFunc(
                 self as *const Self,
             )
         });
@@ -631,9 +681,9 @@ impl HandleAdaptor3dCurve {
     /// Returns `None` if the handle does not point to a `ProjLib_ProjectOnPlane` (or subclass).
     pub fn downcast_to_project_on_plane(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleProjLibProjectOnPlane>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleProjLibProjectOnPlane>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dCurve_downcast_to_HandleProjLibProjectOnPlane(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dCurve_downcast_to_HandleProjLibProjectOnPlane(
                 self as *const Self,
             )
         });
@@ -655,11 +705,11 @@ impl HandleAdaptor3dCurve {
 /// required of the curve by algorithms which use it. The
 /// curve is defined as a 2D curve from the Geom2d
 /// package, in the parametric space of the surface.
-pub use crate::ffi::Adaptor3d_CurveOnSurface as CurveOnSurface;
+pub use crate::ffi_types::Adaptor3d_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_CurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_destructor(ptr);
     }
 }
 
@@ -668,18 +718,18 @@ impl CurveOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_ctor(),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_ctor(),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:40 - `Adaptor3d_CurveOnSurface::Adaptor3d_CurveOnSurface()`
     pub fn new_handleadaptor3dsurface(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_ctor_handleadaptor3dsurface(S),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_ctor_handleadaptor3dsurface(S),
             ))
         }
     }
@@ -688,18 +738,18 @@ impl CurveOnSurface {
     /// Creates a CurveOnSurface from the 2d curve <C> and
     /// the surface <S>.
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface(C, S)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface(C, S)))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:36 - `Adaptor3d_CurveOnSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -707,27 +757,33 @@ impl CurveOnSurface {
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:48 - `Adaptor3d_CurveOnSurface::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_shallow_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:51 - `Adaptor3d_CurveOnSurface::Load()`
     /// Changes the surface.
-    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_load_handleadaptor3dsurface(self as *mut Self, S)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_load_handleadaptor3dsurface(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:54 - `Adaptor3d_CurveOnSurface::Load()`
     /// Changes the 2d curve.
-    pub fn load_handleadaptor2dcurve2d(&mut self, C: &crate::ffi::HandleAdaptor2dCurve2d) {
+    pub fn load_handleadaptor2dcurve2d(&mut self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_load_handleadaptor2dcurve2d(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_load_handleadaptor2dcurve2d(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
@@ -735,72 +791,68 @@ impl CurveOnSurface {
     /// Load both curve and surface.
     pub fn load_handleadaptor2dcurve2d_handleadaptor3dsurface(
         &mut self,
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_load_handleadaptor2dcurve2d_handleadaptor3dsurface(
-                self as *mut Self,
-                C,
-                S,
-            )
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_load_handleadaptor2dcurve2d_handleadaptor3dsurface(self as *mut Self, C, S)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:59 - `Adaptor3d_CurveOnSurface::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_get_curve(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_get_curve(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:61 - `Adaptor3d_CurveOnSurface::GetSurface()`
-    pub fn get_surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+    pub fn get_surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_get_surface(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_get_surface(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:63 - `Adaptor3d_CurveOnSurface::ChangeCurve()`
-    pub fn change_curve(&mut self) -> &mut crate::ffi::HandleAdaptor2dCurve2d {
+    pub fn change_curve(&mut self) -> &mut crate::ffi_types::HandleAdaptor2dCurve2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_change_curve(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_change_curve(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:65 - `Adaptor3d_CurveOnSurface::ChangeSurface()`
-    pub fn change_surface(&mut self) -> &mut crate::ffi::HandleAdaptor3dSurface {
+    pub fn change_surface(&mut self) -> &mut crate::ffi_types::HandleAdaptor3dSurface {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_change_surface(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_change_surface(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:67 - `Adaptor3d_CurveOnSurface::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_first_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:69 - `Adaptor3d_CurveOnSurface::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_last_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:71 - `Adaptor3d_CurveOnSurface::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_continuity(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -810,7 +862,10 @@ impl CurveOnSurface {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -820,9 +875,17 @@ impl CurveOnSurface {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -836,10 +899,15 @@ impl CurveOnSurface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_trim(self as *const Self, First, Last, Tol),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
             ))
         }
     }
@@ -847,21 +915,21 @@ impl CurveOnSurface {
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:93 - `Adaptor3d_CurveOnSurface::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_is_closed(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_is_closed(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:95 - `Adaptor3d_CurveOnSurface::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_is_periodic(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:97 - `Adaptor3d_CurveOnSurface::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_period(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_period(self as *const Self)
         })
     }
 
@@ -870,7 +938,7 @@ impl CurveOnSurface {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_value(self as *const Self, U),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_value(self as *const Self, U),
             ))
         }
     }
@@ -879,7 +947,7 @@ impl CurveOnSurface {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_d0(self as *const Self, U, P)
         })
     }
 
@@ -890,7 +958,7 @@ impl CurveOnSurface {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -907,7 +975,7 @@ impl CurveOnSurface {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
@@ -925,7 +993,14 @@ impl CurveOnSurface {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_d3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
         })
     }
 
@@ -937,11 +1012,9 @@ impl CurveOnSurface {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_dn(self as *const Self, U, N),
+            ))
         }
     }
 
@@ -950,7 +1023,7 @@ impl CurveOnSurface {
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_resolution(self as *const Self, R3d)
         })
     }
 
@@ -960,7 +1033,7 @@ impl CurveOnSurface {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_get_type(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -969,7 +1042,7 @@ impl CurveOnSurface {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_line(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_line(self as *const Self),
             ))
         }
     }
@@ -978,7 +1051,7 @@ impl CurveOnSurface {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_circle(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_circle(self as *const Self),
             ))
         }
     }
@@ -987,7 +1060,7 @@ impl CurveOnSurface {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_ellipse(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_ellipse(self as *const Self),
             ))
         }
     }
@@ -996,7 +1069,7 @@ impl CurveOnSurface {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_hyperbola(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_hyperbola(self as *const Self),
             ))
         }
     }
@@ -1005,7 +1078,7 @@ impl CurveOnSurface {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_parabola(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_parabola(self as *const Self),
             ))
         }
     }
@@ -1013,45 +1086,45 @@ impl CurveOnSurface {
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:157 - `Adaptor3d_CurveOnSurface::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_degree(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_degree(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:159 - `Adaptor3d_CurveOnSurface::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_is_rational(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_is_rational(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:161 - `Adaptor3d_CurveOnSurface::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_nb_poles(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_nb_poles(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:163 - `Adaptor3d_CurveOnSurface::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_nb_knots(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_nb_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:165 - `Adaptor3d_CurveOnSurface::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_bezier(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_bezier(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:167 - `Adaptor3d_CurveOnSurface::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_b_spline(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_b_spline(self as *const Self),
             ))
         }
     }
@@ -1060,7 +1133,7 @@ impl CurveOnSurface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1068,36 +1141,44 @@ impl CurveOnSurface {
     }
 
     /// **Source:** `Adaptor3d_CurveOnSurface.hxx`:36 - `Adaptor3d_CurveOnSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_curve(&self) -> &Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_as_Adaptor3d_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_CurveOnSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1105,7 +1186,9 @@ impl CurveOnSurface {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1113,34 +1196,42 @@ impl CurveOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurveOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_CurveOnSurface_inherited_OffsetCurve(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_OffsetCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1148,7 +1239,9 @@ impl CurveOnSurface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_CurveOnSurface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1161,64 +1254,70 @@ impl CurveOnSurface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_CurveOnSurface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_CurveOnSurface_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dCurveOnSurface;
+pub use crate::ffi_types::HandleAdaptor3dCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dCurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dCurveOnSurface {
     /// Dereference this Handle to access the underlying Adaptor3d_CurveOnSurface
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_CurveOnSurface {
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_CurveOnSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAdaptor3dCurveOnSurface_get(
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_CurveOnSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_CurveOnSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_CurveOnSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dCurveOnSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Adaptor3d_CurveOnSurface> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dCurveOnSurface_to_HandleAdaptor3dCurve(
+                crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_to_HandleAdaptor3dCurve(
                     self as *const Self,
                 ),
             ))
@@ -1226,10 +1325,12 @@ impl HandleAdaptor3dCurveOnSurface {
     }
 
     /// Upcast Handle<Adaptor3d_CurveOnSurface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dCurveOnSurface_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::HandleAdaptor3dCurveOnSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1242,11 +1343,11 @@ impl HandleAdaptor3dCurveOnSurface {
 // ========================
 
 /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:40 - `Adaptor3d_HSurfaceTool`
-pub use crate::ffi::Adaptor3d_HSurfaceTool as HSurfaceTool;
+pub use crate::ffi_types::Adaptor3d_HSurfaceTool as HSurfaceTool;
 
 unsafe impl crate::CppDeletable for HSurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_HSurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_destructor(ptr);
     }
 }
 
@@ -1255,89 +1356,103 @@ impl HSurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::Adaptor3d_HSurfaceTool_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:45 - `Adaptor3d_HSurfaceTool::FirstUParameter()`
-    pub fn first_u_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+    pub fn first_u_parameter(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_first_u_parameter(theSurf)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_first_u_parameter(theSurf)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:50 - `Adaptor3d_HSurfaceTool::FirstVParameter()`
-    pub fn first_v_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
+    pub fn first_v_parameter(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_first_v_parameter(theSurf)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_first_v_parameter(theSurf)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:55 - `Adaptor3d_HSurfaceTool::LastUParameter()`
-    pub fn last_u_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_last_u_parameter(theSurf) })
+    pub fn last_u_parameter(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_last_u_parameter(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:60 - `Adaptor3d_HSurfaceTool::LastVParameter()`
-    pub fn last_v_parameter(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_last_v_parameter(theSurf) })
+    pub fn last_v_parameter(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_last_v_parameter(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:65 - `Adaptor3d_HSurfaceTool::NbUIntervals()`
     pub fn nb_u_intervals(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theSh: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_u_intervals(theSurf, theSh.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_u_intervals(theSurf, theSh.into())
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:71 - `Adaptor3d_HSurfaceTool::NbVIntervals()`
     pub fn nb_v_intervals(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theSh: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_v_intervals(theSurf, theSh.into())
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:77 - `Adaptor3d_HSurfaceTool::UIntervals()`
     pub fn u_intervals(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-        theTab: &mut crate::ffi::TColStd_Array1OfReal,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theTab: &mut crate::ffi_types::TColStd_Array1OfReal,
         theSh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_u_intervals(theSurf, theTab, theSh.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_u_intervals(
+                theSurf,
+                theTab,
+                theSh.into(),
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:84 - `Adaptor3d_HSurfaceTool::VIntervals()`
     pub fn v_intervals(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-        theTab: &mut crate::ffi::TColStd_Array1OfReal,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+        theTab: &mut crate::ffi_types::TColStd_Array1OfReal,
         theSh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_v_intervals(theSurf, theTab, theSh.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_v_intervals(
+                theSurf,
+                theTab,
+                theSh.into(),
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:92 - `Adaptor3d_HSurfaceTool::UTrim()`
     /// If <First> >= <Last>
     pub fn u_trim(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theFirst: f64,
         theLast: f64,
         theTol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_u_trim(theSurf, theFirst, theLast, theTol),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_u_trim(
+                    theSurf, theFirst, theLast, theTol,
+                ),
             ))
         }
     }
@@ -1345,76 +1460,90 @@ impl HSurfaceTool {
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:101 - `Adaptor3d_HSurfaceTool::VTrim()`
     /// If <First> >= <Last>
     pub fn v_trim(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theFirst: f64,
         theLast: f64,
         theTol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_v_trim(theSurf, theFirst, theLast, theTol),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_v_trim(
+                    theSurf, theFirst, theLast, theTol,
+                ),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:109 - `Adaptor3d_HSurfaceTool::IsUClosed()`
-    pub fn is_u_closed(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_is_u_closed(theSurf) })
+    pub fn is_u_closed(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_is_u_closed(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:114 - `Adaptor3d_HSurfaceTool::IsVClosed()`
-    pub fn is_v_closed(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_is_v_closed(theSurf) })
+    pub fn is_v_closed(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_is_v_closed(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:119 - `Adaptor3d_HSurfaceTool::IsUPeriodic()`
-    pub fn is_u_periodic(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_is_u_periodic(theSurf) })
+    pub fn is_u_periodic(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_is_u_periodic(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:124 - `Adaptor3d_HSurfaceTool::UPeriod()`
-    pub fn u_period(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_u_period(theSurf) })
+    pub fn u_period(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_u_period(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:129 - `Adaptor3d_HSurfaceTool::IsVPeriodic()`
-    pub fn is_v_periodic(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_is_v_periodic(theSurf) })
+    pub fn is_v_periodic(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_is_v_periodic(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:134 - `Adaptor3d_HSurfaceTool::VPeriod()`
-    pub fn v_period(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_v_period(theSurf) })
+    pub fn v_period(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_v_period(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:139 - `Adaptor3d_HSurfaceTool::Value()`
     pub fn value(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_value(theSurf, theU, theV),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_value(theSurf, theU, theV),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:146 - `Adaptor3d_HSurfaceTool::D0()`
     pub fn d0(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
         thePnt: &mut crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_d0(theSurf, theU, theV, thePnt)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_d0(theSurf, theU, theV, thePnt)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:154 - `Adaptor3d_HSurfaceTool::D1()`
     pub fn d1(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
         thePnt: &mut crate::gp::Pnt,
@@ -1422,13 +1551,15 @@ impl HSurfaceTool {
         theD1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_d1(theSurf, theU, theV, thePnt, theD1U, theD1V)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_d1(
+                theSurf, theU, theV, thePnt, theD1U, theD1V,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:164 - `Adaptor3d_HSurfaceTool::D2()`
     pub fn d2(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
         thePnt: &mut crate::gp::Pnt,
@@ -1439,7 +1570,7 @@ impl HSurfaceTool {
         theD2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_d2(
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_d2(
                 theSurf, theU, theV, thePnt, theD1U, theD1V, theD2U, theD2V, theD2UV,
             )
         })
@@ -1447,7 +1578,7 @@ impl HSurfaceTool {
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:177 - `Adaptor3d_HSurfaceTool::D3()`
     pub fn d3(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
         thePnt: &mut crate::gp::Pnt,
@@ -1462,7 +1593,7 @@ impl HSurfaceTool {
         theD3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_d3(
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_d3(
                 theSurf, theU, theV, thePnt, theD1U, theD1V, theD2U, theD2V, theD2UV, theD3U,
                 theD3V, theD3UUV, theD3UVV,
             )
@@ -1471,209 +1602,223 @@ impl HSurfaceTool {
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:205 - `Adaptor3d_HSurfaceTool::DN()`
     pub fn dn(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theU: f64,
         theV: f64,
         theNU: i32,
         theNV: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_HSurfaceTool_dn(
-                theSurf, theU, theV, theNU, theNV,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_dn(
+                    theSurf, theU, theV, theNU, theNV,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:214 - `Adaptor3d_HSurfaceTool::UResolution()`
-    pub fn u_resolution(theSurf: &crate::ffi::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
+    pub fn u_resolution(theSurf: &crate::ffi_types::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_u_resolution(theSurf, theR3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_u_resolution(theSurf, theR3d)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:220 - `Adaptor3d_HSurfaceTool::VResolution()`
-    pub fn v_resolution(theSurf: &crate::ffi::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
+    pub fn v_resolution(theSurf: &crate::ffi_types::HandleAdaptor3dSurface, theR3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_v_resolution(theSurf, theR3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_v_resolution(theSurf, theR3d)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:226 - `Adaptor3d_HSurfaceTool::GetType()`
-    pub fn get_type(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> crate::geom_abs::SurfaceType {
+    pub fn get_type(
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_get_type(theSurf)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_get_type(theSurf)
         }))
         .unwrap()
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:231 - `Adaptor3d_HSurfaceTool::Plane()`
-    pub fn plane(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> crate::OwnedPtr<crate::gp::Pln> {
+    pub fn plane(
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_plane(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_plane(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:233 - `Adaptor3d_HSurfaceTool::Cylinder()`
     pub fn cylinder(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_cylinder(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_cylinder(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:238 - `Adaptor3d_HSurfaceTool::Cone()`
-    pub fn cone(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> crate::OwnedPtr<crate::gp::Cone> {
+    pub fn cone(
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_HSurfaceTool_cone(
-                theSurf,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_cone(theSurf),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:240 - `Adaptor3d_HSurfaceTool::Torus()`
     pub fn torus(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_torus(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_torus(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:242 - `Adaptor3d_HSurfaceTool::Sphere()`
     pub fn sphere(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_sphere(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_sphere(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:244 - `Adaptor3d_HSurfaceTool::Bezier()`
     pub fn bezier(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_bezier(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_bezier(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:249 - `Adaptor3d_HSurfaceTool::BSpline()`
     pub fn b_spline(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_b_spline(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_b_spline(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:254 - `Adaptor3d_HSurfaceTool::AxeOfRevolution()`
     pub fn axe_of_revolution(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_axe_of_revolution(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_axe_of_revolution(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:259 - `Adaptor3d_HSurfaceTool::Direction()`
     pub fn direction(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_direction(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_direction(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:261 - `Adaptor3d_HSurfaceTool::BasisCurve()`
     pub fn basis_curve(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_basis_curve(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_basis_curve(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:266 - `Adaptor3d_HSurfaceTool::BasisSurface()`
     pub fn basis_surface(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HSurfaceTool_basis_surface(theSurf),
+                crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_basis_surface(theSurf),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:271 - `Adaptor3d_HSurfaceTool::OffsetValue()`
-    pub fn offset_value(theSurf: &crate::ffi::HandleAdaptor3dSurface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_HSurfaceTool_offset_value(theSurf) })
+    pub fn offset_value(theSurf: &crate::ffi_types::HandleAdaptor3dSurface) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_offset_value(theSurf)
+        })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:276 - `Adaptor3d_HSurfaceTool::IsSurfG1()`
     pub fn is_surf_g1(
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theAlongU: bool,
         theAngTol: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_is_surf_g1(theSurf, theAlongU, theAngTol)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_is_surf_g1(
+                theSurf, theAlongU, theAngTol,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:281 - `Adaptor3d_HSurfaceTool::NbSamplesU()`
-    pub fn nb_samples_u_handleadaptor3dsurface(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+    pub fn nb_samples_u_handleadaptor3dsurface(
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface(S)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface(S)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:283 - `Adaptor3d_HSurfaceTool::NbSamplesV()`
-    pub fn nb_samples_v_handleadaptor3dsurface(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
+    pub fn nb_samples_v_handleadaptor3dsurface(
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface(S)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface(S)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:285 - `Adaptor3d_HSurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_handleadaptor3dsurface_real2(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         u1: f64,
         u2: f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface_real2(S, u1, u2)
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_samples_u_handleadaptor3dsurface_real2(S, u1, u2)
         })
     }
 
     /// **Source:** `Adaptor3d_HSurfaceTool.hxx`:289 - `Adaptor3d_HSurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_handleadaptor3dsurface_real2(
-        arg0: &crate::ffi::HandleAdaptor3dSurface,
+        arg0: &crate::ffi_types::HandleAdaptor3dSurface,
         v1: f64,
         v2: f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface_real2(
-                arg0, v1, v2,
-            )
+            crate::ffi_extern_TKG3d::Adaptor3d_HSurfaceTool_nb_samples_v_handleadaptor3dsurface_real2(arg0, v1, v2)
         })
     }
 }
@@ -1683,11 +1828,11 @@ impl HSurfaceTool {
 // ========================
 
 /// **Source:** `Adaptor3d_HVertex.hxx`:27 - `Adaptor3d_HVertex`
-pub use crate::ffi::Adaptor3d_HVertex as HVertex;
+pub use crate::ffi_types::Adaptor3d_HVertex as HVertex;
 
 unsafe impl crate::CppDeletable for HVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_HVertex_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_HVertex_destructor(ptr);
     }
 }
 
@@ -1695,7 +1840,9 @@ impl HVertex {
     /// **Source:** `Adaptor3d_HVertex.hxx`:31 - `Adaptor3d_HVertex::Adaptor3d_HVertex()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_HVertex_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_ctor(),
+            ))
         }
     }
 
@@ -1707,7 +1854,7 @@ impl HVertex {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_HVertex_ctor_pnt2d_orientation_real(
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_ctor_pnt2d_orientation_real(
                     P,
                     Ori.into(),
                     Resolution,
@@ -1719,46 +1866,48 @@ impl HVertex {
     /// **Source:** `Adaptor3d_HVertex.hxx`:37 - `Adaptor3d_HVertex::Value()`
     pub fn value(&mut self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_HVertex_value(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_value(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:39 - `Adaptor3d_HVertex::Parameter()`
-    pub fn parameter(&mut self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn parameter(&mut self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_parameter(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_parameter(self as *mut Self, C)
         })
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:42 - `Adaptor3d_HVertex::Resolution()`
     /// Parametric resolution (2d).
-    pub fn resolution(&mut self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn resolution(&mut self, C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_resolution(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_resolution(self as *mut Self, C)
         })
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:44 - `Adaptor3d_HVertex::Orientation()`
     pub fn orientation(&mut self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_orientation(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_orientation(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:46 - `Adaptor3d_HVertex::IsSame()`
-    pub fn is_same(&mut self, Other: &crate::ffi::HandleAdaptor3dHVertex) -> bool {
+    pub fn is_same(&mut self, Other: &crate::ffi_types::HandleAdaptor3dHVertex) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_is_same(self as *mut Self, Other)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_is_same(self as *mut Self, Other)
         })
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:48 - `Adaptor3d_HVertex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_HVertex_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_HVertex_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1766,7 +1915,7 @@ impl HVertex {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_HVertex_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1774,14 +1923,16 @@ impl HVertex {
     }
 
     /// **Source:** `Adaptor3d_HVertex.hxx`:48 - `Adaptor3d_HVertex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Adaptor3d_HVertex_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_HVertex_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_HVertex_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_HVertex_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1790,34 +1941,42 @@ impl HVertex {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_HVertex_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dHVertex> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_HVertex_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1825,7 +1984,7 @@ impl HVertex {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_HVertex_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1838,60 +1997,72 @@ impl HVertex {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_HVertex_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_HVertex_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dHVertex;
+pub use crate::ffi_types::HandleAdaptor3dHVertex;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dHVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dHVertex_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dHVertex {
     /// Dereference this Handle to access the underlying Adaptor3d_HVertex
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_HVertex {
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_HVertex {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAdaptor3dHVertex_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_HVertex
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_HVertex {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_HVertex {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dHVertex_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_HVertex> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dHVertex_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1901,9 +2072,9 @@ impl HandleAdaptor3dHVertex {
     /// Returns `None` if the handle does not point to a `BRepTopAdaptor_HVertex` (or subclass).
     pub fn downcast_to_h_vertex(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorHVertex>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTopAdaptorHVertex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dHVertex_downcast_to_HandleBRepTopAdaptorHVertex(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dHVertex_downcast_to_HandleBRepTopAdaptorHVertex(
                 self as *const Self,
             )
         });
@@ -1925,11 +2096,11 @@ impl HandleAdaptor3dHVertex {
 /// Adpator_CurveOnSurface  relatively  to    the
 /// discontinuities of the surface. Used to
 /// find the roots of the functions
-pub use crate::ffi::Adaptor3d_InterFunc as InterFunc;
+pub use crate::ffi_types::Adaptor3d_InterFunc as InterFunc;
 
 unsafe impl crate::CppDeletable for InterFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_InterFunc_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_destructor(ptr);
     }
 }
 
@@ -1938,13 +2109,13 @@ impl InterFunc {
     /// build the function  U(t)=FixVal   if Fix =1 or
     /// V(t)=FixVal if Fix=2
     pub fn new_handleadaptor2dcurve2d_real_int(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         FixVal: f64,
         Fix: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_InterFunc_ctor_handleadaptor2dcurve2d_real_int(
+                crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_ctor_handleadaptor2dcurve2d_real_int(
                     C, FixVal, Fix,
                 ),
             ))
@@ -1957,7 +2128,7 @@ impl InterFunc {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_InterFunc_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_value(self as *mut Self, X, F)
         })
     }
 
@@ -1968,7 +2139,7 @@ impl InterFunc {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_InterFunc_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_derivative(self as *mut Self, X, D)
         })
     }
 
@@ -1979,16 +2150,18 @@ impl InterFunc {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_InterFunc_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_values(self as *mut Self, X, F, D)
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1998,7 +2171,7 @@ impl InterFunc {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Adaptor3d_InterFunc_as_math_FunctionWithDerivative_mut(
+                crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_as_math_FunctionWithDerivative_mut(
                     self as *mut Self,
                 ),
             )
@@ -2008,7 +2181,7 @@ impl InterFunc {
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_InterFunc_as_math_Function(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_as_math_Function(
                 self as *const Self,
             ))
         }
@@ -2017,16 +2190,18 @@ impl InterFunc {
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_InterFunc_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_InterFunc_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_InterFunc_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -2040,11 +2215,11 @@ impl InterFunc {
 /// type  of isoparametric curve  (U  or V) is defined
 /// with the   enumeration  IsoType from   GeomAbs  if
 /// NoneIso is given an error is raised.
-pub use crate::ffi::Adaptor3d_IsoCurve as IsoCurve;
+pub use crate::ffi_types::Adaptor3d_IsoCurve as IsoCurve;
 
 unsafe impl crate::CppDeletable for IsoCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_IsoCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_destructor(ptr);
     }
 }
 
@@ -2053,18 +2228,20 @@ impl IsoCurve {
     /// The iso is set to NoneIso.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:37 - `Adaptor3d_IsoCurve::Adaptor3d_IsoCurve()`
     /// The surface is loaded. The iso is set to NoneIso.
     pub fn new_handleadaptor3dsurface(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface(S),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface(S),
             ))
         }
     }
@@ -2075,18 +2252,12 @@ impl IsoCurve {
     /// the iso. The bounds  of  the iso are the bounds
     /// of the surface.
     pub fn new_handleadaptor3dsurface_isotype_real(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         Iso: crate::geom_abs::IsoType,
         Param: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real(
-                    S,
-                    Iso.into(),
-                    Param,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real(S, Iso.into(), Param)))
         }
     }
 
@@ -2095,29 +2266,21 @@ impl IsoCurve {
     /// (isoU or isov).  Param defines the value of the
     /// iso. WFirst,WLast define the bounds of the iso.
     pub fn new_handleadaptor3dsurface_isotype_real3(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         Iso: crate::geom_abs::IsoType,
         Param: f64,
         WFirst: f64,
         WLast: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real3(
-                    S,
-                    Iso.into(),
-                    Param,
-                    WFirst,
-                    WLast,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_ctor_handleadaptor3dsurface_isotype_real3(S, Iso.into(), Param, WFirst, WLast)))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:31 - `Adaptor3d_IsoCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2125,10 +2288,10 @@ impl IsoCurve {
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:57 - `Adaptor3d_IsoCurve::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_shallow_copy(self as *const Self),
             ))
         }
     }
@@ -2136,9 +2299,12 @@ impl IsoCurve {
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:61 - `Adaptor3d_IsoCurve::Load()`
     /// Changes  the surface.  The  iso  is  reset  to
     /// NoneIso.
-    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn load_handleadaptor3dsurface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_load_handleadaptor3dsurface(self as *mut Self, S)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_load_handleadaptor3dsurface(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
@@ -2146,7 +2312,11 @@ impl IsoCurve {
     /// Changes the iso on the current surface.
     pub fn load_isotype_real(&mut self, Iso: crate::geom_abs::IsoType, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_load_isotype_real(self as *mut Self, Iso.into(), Param)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_load_isotype_real(
+                self as *mut Self,
+                Iso.into(),
+                Param,
+            )
         })
     }
 
@@ -2160,7 +2330,7 @@ impl IsoCurve {
         WLast: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_load_isotype_real3(
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_load_isotype_real3(
                 self as *mut Self,
                 Iso.into(),
                 Param,
@@ -2171,16 +2341,18 @@ impl IsoCurve {
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:72 - `Adaptor3d_IsoCurve::Surface()`
-    pub fn surface(&self) -> &crate::ffi::HandleAdaptor3dSurface {
+    pub fn surface(&self) -> &crate::ffi_types::HandleAdaptor3dSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_surface(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_surface(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:74 - `Adaptor3d_IsoCurve::Iso()`
     pub fn iso(&self) -> crate::geom_abs::IsoType {
         crate::geom_abs::IsoType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_iso(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_iso(self as *const Self)
         }))
         .unwrap()
     }
@@ -2188,28 +2360,28 @@ impl IsoCurve {
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:76 - `Adaptor3d_IsoCurve::Parameter()`
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:78 - `Adaptor3d_IsoCurve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_first_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:80 - `Adaptor3d_IsoCurve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_last_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:82 - `Adaptor3d_IsoCurve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_continuity(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -2219,7 +2391,7 @@ impl IsoCurve {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_nb_intervals(self as *const Self, S.into())
         })
     }
 
@@ -2229,9 +2401,13 @@ impl IsoCurve {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_intervals(self as *const Self, T, S.into())
         })
     }
 
@@ -2245,44 +2421,47 @@ impl IsoCurve {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:104 - `Adaptor3d_IsoCurve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_is_closed(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_is_closed(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:106 - `Adaptor3d_IsoCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_is_periodic(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:108 - `Adaptor3d_IsoCurve::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_IsoCurve_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_period(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:111 - `Adaptor3d_IsoCurve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_value(self as *const Self, U),
+            ))
         }
     }
 
@@ -2290,7 +2469,7 @@ impl IsoCurve {
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_d0(self as *const Self, U, P)
         })
     }
 
@@ -2301,7 +2480,7 @@ impl IsoCurve {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -2318,7 +2497,7 @@ impl IsoCurve {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
@@ -2336,7 +2515,7 @@ impl IsoCurve {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_d3(self as *const Self, U, P, V1, V2, V3)
         })
     }
 
@@ -2348,11 +2527,9 @@ impl IsoCurve {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_dn(self as *const Self, U, N),
+            ))
         }
     }
 
@@ -2361,7 +2538,7 @@ impl IsoCurve {
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_resolution(self as *const Self, R3d)
         })
     }
 
@@ -2371,7 +2548,7 @@ impl IsoCurve {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_get_type(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -2379,27 +2556,27 @@ impl IsoCurve {
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:158 - `Adaptor3d_IsoCurve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_line(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_line(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:160 - `Adaptor3d_IsoCurve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_circle(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_circle(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:162 - `Adaptor3d_IsoCurve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_ellipse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_ellipse(self as *const Self),
+            ))
         }
     }
 
@@ -2407,7 +2584,7 @@ impl IsoCurve {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_hyperbola(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_hyperbola(self as *const Self),
             ))
         }
     }
@@ -2415,49 +2592,55 @@ impl IsoCurve {
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:166 - `Adaptor3d_IsoCurve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_parabola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:168 - `Adaptor3d_IsoCurve::Degree()`
     pub fn degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_IsoCurve_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:170 - `Adaptor3d_IsoCurve::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_is_rational(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_is_rational(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:172 - `Adaptor3d_IsoCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_IsoCurve_nb_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:174 - `Adaptor3d_IsoCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_IsoCurve_nb_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:176 - `Adaptor3d_IsoCurve::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_bezier(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_bezier(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:178 - `Adaptor3d_IsoCurve::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_b_spline(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_b_spline(self as *const Self),
+            ))
         }
     }
 
@@ -2465,7 +2648,7 @@ impl IsoCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2473,14 +2656,18 @@ impl IsoCurve {
     }
 
     /// **Source:** `Adaptor3d_IsoCurve.hxx`:31 - `Adaptor3d_IsoCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Adaptor3d_IsoCurve_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_curve(&self) -> &Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_as_Adaptor3d_Curve(
                 self as *const Self,
             ))
         }
@@ -2489,61 +2676,75 @@ impl IsoCurve {
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_curve_mut(&mut self) -> &mut Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_IsoCurve_as_Adaptor3d_Curve_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_as_Adaptor3d_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_IsoCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_IsoCurve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dIsoCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dIsoCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_IsoCurve_inherited_OffsetCurve(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_OffsetCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2551,7 +2752,7 @@ impl IsoCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_IsoCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2564,71 +2765,83 @@ impl IsoCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_IsoCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_IsoCurve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dIsoCurve;
+pub use crate::ffi_types::HandleAdaptor3dIsoCurve;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dIsoCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dIsoCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dIsoCurve {
     /// Dereference this Handle to access the underlying Adaptor3d_IsoCurve
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_IsoCurve {
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_IsoCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAdaptor3dIsoCurve_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_IsoCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_IsoCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_IsoCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dIsoCurve_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_IsoCurve> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dIsoCurve_to_HandleAdaptor3dCurve(self as *const Self),
+                crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_to_HandleAdaptor3dCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_IsoCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dIsoCurve_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKG3d::HandleAdaptor3dIsoCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2658,11 +2871,11 @@ impl HandleAdaptor3dIsoCurve {
 /// Polynomial coefficients of BSpline surfaces used for their evaluation are cached for better
 /// performance. Therefore these evaluations are not thread-safe and parallel evaluations need to be
 /// prevented.
-pub use crate::ffi::Adaptor3d_Surface as Surface;
+pub use crate::ffi_types::Adaptor3d_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_Surface_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_Surface_destructor(ptr);
     }
 }
 
@@ -2671,23 +2884,27 @@ impl Surface {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_Surface_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Surface_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:63 - `Adaptor3d_Surface::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Surface_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_shallow_copy(self as *const Self),
             ))
         }
     }
@@ -2695,35 +2912,35 @@ impl Surface {
     /// **Source:** `Adaptor3d_Surface.hxx`:65 - `Adaptor3d_Surface::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_first_u_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_first_u_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:67 - `Adaptor3d_Surface::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_last_u_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_last_u_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:69 - `Adaptor3d_Surface::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_first_v_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_first_v_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:71 - `Adaptor3d_Surface::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_last_v_parameter(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_last_v_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:73 - `Adaptor3d_Surface::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_u_continuity(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -2731,7 +2948,7 @@ impl Surface {
     /// **Source:** `Adaptor3d_Surface.hxx`:75 - `Adaptor3d_Surface::VContinuity()`
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_v_continuity(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -2741,7 +2958,7 @@ impl Surface {
     /// <S>. May be one if UContinuity(me) >= <S>
     pub fn nb_u_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_u_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_u_intervals(self as *const Self, S.into())
         })
     }
 
@@ -2750,25 +2967,33 @@ impl Surface {
     /// <S>. May be one if VContinuity(me) >= <S>
     pub fn nb_v_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_v_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_v_intervals(self as *const Self, S.into())
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:87 - `Adaptor3d_Surface::UIntervals()`
     /// Returns the  intervals with the requested continuity
     /// in the U direction.
-    pub fn u_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn u_intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_u_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_intervals(self as *const Self, T, S.into())
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:91 - `Adaptor3d_Surface::VIntervals()`
     /// Returns the  intervals with the requested continuity
     /// in the V direction.
-    pub fn v_intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn v_intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_v_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_intervals(self as *const Self, T, S.into())
         })
     }
 
@@ -2783,14 +3008,16 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_u_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
+            ))
         }
     }
 
@@ -2804,53 +3031,59 @@ impl Surface {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_v_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:110 - `Adaptor3d_Surface::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_u_closed(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_u_closed(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:112 - `Adaptor3d_Surface::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_v_closed(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_v_closed(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:114 - `Adaptor3d_Surface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_u_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:116 - `Adaptor3d_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Surface_u_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_period(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:118 - `Adaptor3d_Surface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_v_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:120 - `Adaptor3d_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Surface_v_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_period(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:124 - `Adaptor3d_Surface::Value()`
@@ -2858,11 +3091,9 @@ impl Surface {
     /// Tip: use GeomLib::NormEstim() to calculate surface normal at specified (U, V) point.
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_value(
-                self as *const Self,
-                U,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_value(self as *const Self, U, V),
+            ))
         }
     }
 
@@ -2870,7 +3101,7 @@ impl Surface {
     /// Computes the point of parameters U,V on the surface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_d0(self as *const Self, U, V, P)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_d0(self as *const Self, U, V, P)
         })
     }
 
@@ -2888,7 +3119,7 @@ impl Surface {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
         })
     }
 
@@ -2909,7 +3140,17 @@ impl Surface {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
         })
     }
 
@@ -2934,7 +3175,7 @@ impl Surface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_d3(
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_d3(
                 self as *const Self,
                 U,
                 V,
@@ -2960,13 +3201,9 @@ impl Surface {
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_dn(
-                self as *const Self,
-                U,
-                V,
-                Nu,
-                Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_dn(self as *const Self, U, V, Nu, Nv),
+            ))
         }
     }
 
@@ -2975,7 +3212,7 @@ impl Surface {
     /// to the real space resolution <R3d>.
     pub fn u_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_u_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_resolution(self as *const Self, R3d)
         })
     }
 
@@ -2984,7 +3221,7 @@ impl Surface {
     /// to the real space resolution <R3d>.
     pub fn v_resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_v_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_resolution(self as *const Self, R3d)
         })
     }
 
@@ -2995,7 +3232,7 @@ impl Surface {
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_get_type(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -3003,115 +3240,119 @@ impl Surface {
     /// **Source:** `Adaptor3d_Surface.hxx`:193 - `Adaptor3d_Surface::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_plane(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:195 - `Adaptor3d_Surface::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_cylinder(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_cylinder(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:197 - `Adaptor3d_Surface::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_cone(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_cone(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:199 - `Adaptor3d_Surface::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_sphere(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_sphere(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:201 - `Adaptor3d_Surface::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_torus(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_torus(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:203 - `Adaptor3d_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Surface_u_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:205 - `Adaptor3d_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_u_poles(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_u_poles(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:207 - `Adaptor3d_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_Surface_v_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:209 - `Adaptor3d_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_v_poles(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_v_poles(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:211 - `Adaptor3d_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_u_knots(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_u_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:213 - `Adaptor3d_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_nb_v_knots(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_nb_v_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:215 - `Adaptor3d_Surface::IsURational()`
     pub fn is_u_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_u_rational(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_u_rational(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:217 - `Adaptor3d_Surface::IsVRational()`
     pub fn is_v_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_is_v_rational(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_is_v_rational(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:219 - `Adaptor3d_Surface::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_bezier(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_bezier(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:221 - `Adaptor3d_Surface::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_b_spline(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_b_spline(self as *const Self),
+            ))
         }
     }
 
@@ -3119,7 +3360,7 @@ impl Surface {
     pub fn axe_of_revolution(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Surface_axe_of_revolution(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_axe_of_revolution(self as *const Self),
             ))
         }
     }
@@ -3127,26 +3368,26 @@ impl Surface {
     /// **Source:** `Adaptor3d_Surface.hxx`:225 - `Adaptor3d_Surface::Direction()`
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_direction(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_direction(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:227 - `Adaptor3d_Surface::BasisCurve()`
-    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn basis_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Surface_basis_curve(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_basis_curve(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:229 - `Adaptor3d_Surface::BasisSurface()`
-    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    pub fn basis_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_Surface_basis_surface(self as *const Self),
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_basis_surface(self as *const Self),
             ))
         }
     }
@@ -3154,7 +3395,7 @@ impl Surface {
     /// **Source:** `Adaptor3d_Surface.hxx`:231 - `Adaptor3d_Surface::OffsetValue()`
     pub fn offset_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_offset_value(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_offset_value(self as *const Self)
         })
     }
 
@@ -3162,7 +3403,7 @@ impl Surface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_Surface_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3170,14 +3411,16 @@ impl Surface {
     }
 
     /// **Source:** `Adaptor3d_Surface.hxx`:60 - `Adaptor3d_Surface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Adaptor3d_Surface_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Surface_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_Surface_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_Surface_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3186,34 +3429,42 @@ impl Surface {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_Surface_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_Surface_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3221,7 +3472,7 @@ impl Surface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_Surface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3234,60 +3485,72 @@ impl Surface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_Surface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_Surface_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dSurface;
+pub use crate::ffi_types::HandleAdaptor3dSurface;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dSurface {
     /// Dereference this Handle to access the underlying Adaptor3d_Surface
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_Surface {
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAdaptor3dSurface_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_Surface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_Surface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dSurface_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_Surface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dSurface_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3297,9 +3560,9 @@ impl HandleAdaptor3dSurface {
     /// Returns `None` if the handle does not point to a `BRepAdaptor_Surface` (or subclass).
     pub fn downcast_to_b_rep_adaptor_surface(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepAdaptorSurface>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepAdaptorSurface>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleBRepAdaptorSurface(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_downcast_to_HandleBRepAdaptorSurface(
                 self as *const Self,
             )
         });
@@ -3315,9 +3578,9 @@ impl HandleAdaptor3dSurface {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_Surface` (or subclass).
     pub fn downcast_to_geom_adaptor_surface(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurface>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurface>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurface(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurface(
                 self as *const Self,
             )
         });
@@ -3333,11 +3596,9 @@ impl HandleAdaptor3dSurface {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfLinearExtrusion` (or subclass).
     pub fn downcast_to_surface_of_linear_extrusion(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfLinearExtrusion>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfLinearExtrusion(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3351,11 +3612,9 @@ impl HandleAdaptor3dSurface {
     /// Returns `None` if the handle does not point to a `GeomAdaptor_SurfaceOfRevolution` (or subclass).
     pub fn downcast_to_surface_of_revolution(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomAdaptorSurfaceOfRevolution>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomAdaptorSurfaceOfRevolution>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleAdaptor3dSurface_downcast_to_HandleGeomAdaptorSurfaceOfRevolution(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3374,11 +3633,11 @@ impl HandleAdaptor3dSurface {
 /// based on the Umin,Vmin,Umax,Vmax of an HSurface from Adaptor3d.
 /// All methods and fields may be redefined when inheriting from this class.
 /// This class is used to instantiate algorithms as Intersection, outlines,...
-pub use crate::ffi::Adaptor3d_TopolTool as TopolTool;
+pub use crate::ffi_types::Adaptor3d_TopolTool as TopolTool;
 
 unsafe impl crate::CppDeletable for TopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Adaptor3d_TopolTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_destructor(ptr);
     }
 }
 
@@ -3386,17 +3645,19 @@ impl TopolTool {
     /// **Source:** `Adaptor3d_TopolTool.hxx`:40 - `Adaptor3d_TopolTool::Adaptor3d_TopolTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_TopolTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:42 - `Adaptor3d_TopolTool::Adaptor3d_TopolTool()`
     pub fn new_handleadaptor3dsurface(
-        Surface: &crate::ffi::HandleAdaptor3dSurface,
+        Surface: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_TopolTool_ctor_handleadaptor3dsurface(Surface),
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_ctor_handleadaptor3dsurface(Surface),
             ))
         }
     }
@@ -3404,24 +3665,30 @@ impl TopolTool {
     /// **Source:** `Adaptor3d_TopolTool.hxx`:44 - `Adaptor3d_TopolTool::Initialize()`
     pub fn initialize(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_initialize(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_initialize(self as *mut Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:46 - `Adaptor3d_TopolTool::Initialize()`
-    pub fn initialize_handleadaptor3dsurface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn initialize_handleadaptor3dsurface(
+        &mut self,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_initialize_handleadaptor3dsurface(self as *mut Self, S)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_initialize_handleadaptor3dsurface(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:48 - `Adaptor3d_TopolTool::Initialize()`
     pub fn initialize_handleadaptor2dcurve2d(
         &mut self,
-        Curve: &crate::ffi::HandleAdaptor2dCurve2d,
+        Curve: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_initialize_handleadaptor2dcurve2d(
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_initialize_handleadaptor2dcurve2d(
                 self as *mut Self,
                 Curve,
             )
@@ -3430,55 +3697,61 @@ impl TopolTool {
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:50 - `Adaptor3d_TopolTool::Init()`
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Adaptor3d_TopolTool_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:52 - `Adaptor3d_TopolTool::More()`
     pub fn more(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_TopolTool_more(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_more(self as *mut Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:54 - `Adaptor3d_TopolTool::Value()`
-    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+    pub fn value(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_TopolTool_value(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_value(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:56 - `Adaptor3d_TopolTool::Next()`
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Adaptor3d_TopolTool_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:58 - `Adaptor3d_TopolTool::InitVertexIterator()`
     pub fn init_vertex_iterator(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_init_vertex_iterator(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_init_vertex_iterator(self as *mut Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:60 - `Adaptor3d_TopolTool::MoreVertex()`
     pub fn more_vertex(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_more_vertex(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_more_vertex(self as *mut Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:62 - `Adaptor3d_TopolTool::Vertex()`
-    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dHVertex> {
+    pub fn vertex(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dHVertex> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_TopolTool_vertex(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_vertex(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:64 - `Adaptor3d_TopolTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_next_vertex(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_next_vertex(self as *mut Self)
         })
     }
 
@@ -3490,7 +3763,12 @@ impl TopolTool {
         ReacdreOnPeriodic: bool,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_classify(self as *mut Self, P, Tol, ReacdreOnPeriodic)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_classify(
+                self as *mut Self,
+                P,
+                Tol,
+                ReacdreOnPeriodic,
+            )
         }))
         .unwrap()
     }
@@ -3503,7 +3781,7 @@ impl TopolTool {
         ReacdreOnPeriodic: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_is_the_point_on(
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_is_the_point_on(
                 self as *mut Self,
                 P,
                 Tol,
@@ -3520,10 +3798,13 @@ impl TopolTool {
     /// considered as an arc on the surface.
     pub fn orientation_handleadaptor2dcurve2d(
         &mut self,
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor2dcurve2d(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_orientation_handleadaptor2dcurve2d(
+                self as *mut Self,
+                C,
+            )
         }))
         .unwrap()
     }
@@ -3535,10 +3816,13 @@ impl TopolTool {
     /// of the vertex on this arc.
     pub fn orientation_handleadaptor3dhvertex(
         &mut self,
-        V: &crate::ffi::HandleAdaptor3dHVertex,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(self as *mut Self, V)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_orientation_handleadaptor3dhvertex(
+                self as *mut Self,
+                V,
+            )
         }))
         .unwrap()
     }
@@ -3549,11 +3833,11 @@ impl TopolTool {
     /// vertices in account.
     pub fn identical(
         &mut self,
-        V1: &crate::ffi::HandleAdaptor3dHVertex,
-        V2: &crate::ffi::HandleAdaptor3dHVertex,
+        V1: &crate::ffi_types::HandleAdaptor3dHVertex,
+        V2: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_identical(self as *mut Self, V1, V2)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_identical(self as *mut Self, V1, V2)
         })
     }
 
@@ -3561,40 +3845,56 @@ impl TopolTool {
     /// answers if arcs and vertices may have 3d representations,
     /// so that we could use Tol3d and Pnt methods.
     pub fn has3d(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_TopolTool_has3d(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_has3d(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:100 - `Adaptor3d_TopolTool::Tol3d()`
     /// returns 3d tolerance of the arc C
-    pub fn tol3d_handleadaptor2dcurve2d(&self, C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
+    pub fn tol3d_handleadaptor2dcurve2d(
+        &self,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_tol3d_handleadaptor2dcurve2d(self as *const Self, C)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_tol3d_handleadaptor2dcurve2d(
+                self as *const Self,
+                C,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:103 - `Adaptor3d_TopolTool::Tol3d()`
     /// returns 3d tolerance of the vertex V
-    pub fn tol3d_handleadaptor3dhvertex(&self, V: &crate::ffi::HandleAdaptor3dHVertex) -> f64 {
+    pub fn tol3d_handleadaptor3dhvertex(
+        &self,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+    ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_tol3d_handleadaptor3dhvertex(self as *const Self, V)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_tol3d_handleadaptor3dhvertex(
+                self as *const Self,
+                V,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:106 - `Adaptor3d_TopolTool::Pnt()`
     /// returns 3d point of the vertex V
-    pub fn pnt(&self, V: &crate::ffi::HandleAdaptor3dHVertex) -> crate::OwnedPtr<crate::gp::Pnt> {
+    pub fn pnt(
+        &self,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Adaptor3d_TopolTool_pnt(
-                self as *const Self,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_pnt(self as *const Self, V),
+            ))
         }
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:108 - `Adaptor3d_TopolTool::ComputeSamplePoints()`
     pub fn compute_sample_points(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_compute_sample_points(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_compute_sample_points(self as *mut Self)
         })
     }
 
@@ -3602,7 +3902,7 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples_u(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_nb_samples_u(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_nb_samples_u(self as *mut Self)
         })
     }
 
@@ -3610,7 +3910,7 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples_v(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_nb_samples_v(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_nb_samples_v(self as *mut Self)
         })
     }
 
@@ -3618,25 +3918,25 @@ impl TopolTool {
     /// compute the sample-points for the intersections algorithms
     pub fn nb_samples(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_nb_samples(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_nb_samples(self as *mut Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:121 - `Adaptor3d_TopolTool::UParameters()`
     /// return the set of U parameters on the surface
     /// obtained by the method SamplePnts
-    pub fn u_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn u_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_u_parameters(self as *const Self, theArray)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_u_parameters(self as *const Self, theArray)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:125 - `Adaptor3d_TopolTool::VParameters()`
     /// return the set of V parameters on the surface
     /// obtained by the method SamplePnts
-    pub fn v_parameters(&self, theArray: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn v_parameters(&self, theArray: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_v_parameters(self as *const Self, theArray)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_v_parameters(self as *const Self, theArray)
         })
     }
 
@@ -3648,20 +3948,27 @@ impl TopolTool {
         P3d: &mut crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_sample_point(self as *mut Self, Index, P2d, P3d)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_sample_point(
+                self as *mut Self,
+                Index,
+                P2d,
+                P3d,
+            )
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:131 - `Adaptor3d_TopolTool::DomainIsInfinite()`
     pub fn domain_is_infinite(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_domain_is_infinite(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_domain_is_infinite(self as *mut Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:133 - `Adaptor3d_TopolTool::Edge()`
     pub unsafe fn edge(&self) -> *mut std::ffi::c_void {
-        crate::check_result(unsafe { crate::ffi::Adaptor3d_TopolTool_edge(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_edge(self as *const Self)
+        })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:141 - `Adaptor3d_TopolTool::SamplePnts()`
@@ -3673,7 +3980,7 @@ impl TopolTool {
     /// @param[in] theNVmin  minimal nb points for V
     pub fn sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_sample_pnts(
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_sample_pnts(
                 self as *mut Self,
                 theDefl,
                 theNUmin,
@@ -3690,7 +3997,7 @@ impl TopolTool {
     /// @param[in] theNVmin  minimal nb points for V
     pub fn b_spl_sample_pnts(&mut self, theDefl: f64, theNUmin: i32, theNVmin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_b_spl_sample_pnts(
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_b_spl_sample_pnts(
                 self as *mut Self,
                 theDefl,
                 theNUmin,
@@ -3703,14 +4010,14 @@ impl TopolTool {
     /// Returns true if provide uniform sampling of points.
     pub fn is_uniform_sampling(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_is_uniform_sampling(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_is_uniform_sampling(self as *const Self)
         })
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:165 - `Adaptor3d_TopolTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Adaptor3d_TopolTool_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3723,7 +4030,7 @@ impl TopolTool {
     /// @param[in] theV V parameter of cone's apex
     pub fn get_cone_apex_param(theC: &crate::gp::Cone, theU: &mut f64, theV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_get_cone_apex_param(theC, theU, theV)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_get_cone_apex_param(theC, theU, theV)
         })
     }
 
@@ -3731,7 +4038,7 @@ impl TopolTool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Adaptor3d_TopolTool_get_type_name(),
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3739,50 +4046,64 @@ impl TopolTool {
     }
 
     /// **Source:** `Adaptor3d_TopolTool.hxx`:165 - `Adaptor3d_TopolTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Adaptor3d_TopolTool_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Adaptor3d_TopolTool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Adaptor3d_TopolTool_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dTopolTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dTopolTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Adaptor3d_TopolTool_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3790,7 +4111,7 @@ impl TopolTool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Adaptor3d_TopolTool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3803,62 +4124,70 @@ impl TopolTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Adaptor3d_TopolTool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::Adaptor3d_TopolTool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdaptor3dTopolTool;
+pub use crate::ffi_types::HandleAdaptor3dTopolTool;
 
 unsafe impl crate::CppDeletable for HandleAdaptor3dTopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdaptor3dTopolTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_destructor(ptr);
     }
 }
 
 impl HandleAdaptor3dTopolTool {
     /// Dereference this Handle to access the underlying Adaptor3d_TopolTool
-    pub fn get(&self) -> &crate::ffi::Adaptor3d_TopolTool {
+    pub fn get(&self) -> &crate::ffi_types::Adaptor3d_TopolTool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAdaptor3dTopolTool_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Adaptor3d_TopolTool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Adaptor3d_TopolTool {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Adaptor3d_TopolTool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdaptor3dTopolTool_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Adaptor3d_TopolTool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdaptor3dTopolTool_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3870,11 +4199,9 @@ impl HandleAdaptor3dTopolTool {
     /// Returns `None` if the handle does not point to a `BRepTopAdaptor_TopolTool` (or subclass).
     pub fn downcast_to_b_rep_top_adaptor_topol_tool(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepTopAdaptorTopolTool>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepTopAdaptorTopolTool>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dTopolTool_downcast_to_HandleBRepTopAdaptorTopolTool(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_downcast_to_HandleBRepTopAdaptorTopolTool(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3888,9 +4215,9 @@ impl HandleAdaptor3dTopolTool {
     /// Returns `None` if the handle does not point to a `IntTools_TopolTool` (or subclass).
     pub fn downcast_to_int_tools_topol_tool(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIntToolsTopolTool>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIntToolsTopolTool>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAdaptor3dTopolTool_downcast_to_HandleIntToolsTopolTool(
+            crate::ffi_extern_TKG3d::HandleAdaptor3dTopolTool_downcast_to_HandleIntToolsTopolTool(
                 self as *const Self,
             )
         });

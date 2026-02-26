@@ -9,13 +9,18 @@
 /// **Source:** `SelectMgr.hxx`:29 - `SelectMgr::ComputeSensitivePrs`
 /// Compute debug presentation for sensitive objects.
 pub fn compute_sensitive_prs(
-    theStructure: &crate::ffi::HandleGraphic3dStructure,
-    theSel: &crate::ffi::HandleSelectMgrSelection,
+    theStructure: &crate::ffi_types::HandleGraphic3dStructure,
+    theSel: &crate::ffi_types::HandleSelectMgrSelection,
     theLoc: &crate::gp::Trsf,
-    theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+    theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::SelectMgr_compute_sensitive_prs(theStructure, theSel, theLoc, theTrsfPers)
+        crate::ffi_extern_TKV3d::SelectMgr_compute_sensitive_prs(
+            theStructure,
+            theSel,
+            theLoc,
+            theTrsfPers,
+        )
     })
 }
 
@@ -261,7 +266,7 @@ impl TryFrom<i32> for TypeOfUpdate {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleAISAttributeFilter, HandleAISAxis, HandleAISBadEdgeFilter, HandleAISC0RegularityFilter,
     HandleAISCameraFrustum, HandleAISCircle, HandleAISColorScale, HandleAISColoredShape,
     HandleAISConnectedInteractive, HandleAISExclusionFilter, HandleAISInteractiveObject,
@@ -292,11 +297,11 @@ pub use crate::ffi::{
 /// **Source:** `SelectMgr_AndFilter.hxx`:31 - `SelectMgr_AndFilter`
 /// A framework to define a selection filter for two or
 /// more types of entity.
-pub use crate::ffi::SelectMgr_AndFilter as AndFilter;
+pub use crate::ffi_types::SelectMgr_AndFilter as AndFilter;
 
 unsafe impl crate::CppDeletable for AndFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_AndFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_AndFilter_destructor(ptr);
     }
 }
 
@@ -306,21 +311,23 @@ impl AndFilter {
     /// more types of entity.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::SelectMgr_AndFilter_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:40 - `SelectMgr_AndFilter::IsOk()`
-    pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anobj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_is_ok(self as *const Self, anobj)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_is_ok(self as *const Self, anobj)
         })
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:42 - `SelectMgr_AndFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AndFilter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_AndFilter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -330,7 +337,7 @@ impl AndFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_AndFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -338,16 +345,22 @@ impl AndFilter {
     }
 
     /// **Source:** `SelectMgr_AndFilter.hxx`:42 - `SelectMgr_AndFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_AndFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -355,7 +368,7 @@ impl AndFilter {
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_SelectMgr_CompositionFilter_mut(
                     self as *mut Self,
                 ),
             )
@@ -365,7 +378,7 @@ impl AndFilter {
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter(
+            &*crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_SelectMgr_Filter(
                 self as *const Self,
             ))
         }
@@ -374,89 +387,103 @@ impl AndFilter {
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_AndFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_AndFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAndFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AndFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
-    pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn add(&mut self, afilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_Add(self as *mut Self, afilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_Add(self as *mut Self, afilter)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
-    pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn remove(&mut self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_Remove(self as *mut Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_Remove(
+                self as *mut Self,
+                aFilter,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
-    pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
+    pub fn is_in(&self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IsIn(self as *const Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_IsIn(
+                self as *const Self,
+                aFilter,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
-    pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
+    pub fn stored_filters(&self) -> &crate::ffi_types::SelectMgr_ListOfFilter {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AndFilter_inherited_StoredFilters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_StoredFilters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_ActsOn(
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_ActsOn(
                 self as *const Self,
                 aStandardMode.into(),
             )
@@ -464,16 +491,22 @@ impl AndFilter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -481,7 +514,7 @@ impl AndFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_AndFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -494,52 +527,58 @@ impl AndFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrAndFilter;
+pub use crate::ffi_types::HandleSelectMgrAndFilter;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrAndFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrAndFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrAndFilter {
     /// Dereference this Handle to access the underlying SelectMgr_AndFilter
-    pub fn get(&self) -> &crate::ffi::SelectMgr_AndFilter {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_AndFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrAndFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AndFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AndFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_AndFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrAndFilter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_get_mut(
                 self as *mut Self,
             ))
         }
@@ -548,30 +587,30 @@ impl HandleSelectMgrAndFilter {
     /// Upcast Handle<SelectMgr_AndFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrCompositionFilter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_to_HandleSelectMgrCompositionFilter(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<SelectMgr_AndFilter> to Handle<SelectMgr_Filter>
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndFilter_to_HandleSelectMgrCompositionFilter(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
                 ),
             ))
         }
     }
 
-    /// Upcast Handle<SelectMgr_AndFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndFilter_to_HandleSelectMgrFilter(self as *const Self),
-            ))
-        }
-    }
-
     /// Upcast Handle<SelectMgr_AndFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndFilter_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAndFilter_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -587,11 +626,11 @@ impl HandleSelectMgrAndFilter {
 /// A framework to define an OR or AND selection filter.
 /// To use an AND selection filter call SetUseOrFilter with False parameter.
 /// By default the OR selection filter is used.
-pub use crate::ffi::SelectMgr_AndOrFilter as AndOrFilter;
+pub use crate::ffi_types::SelectMgr_AndOrFilter as AndOrFilter;
 
 unsafe impl crate::CppDeletable for AndOrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_AndOrFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_destructor(ptr);
     }
 }
 
@@ -601,16 +640,18 @@ impl AndOrFilter {
     pub fn new_filtertype(theFilterType: crate::select_mgr::FilterType) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AndOrFilter_ctor_filtertype(theFilterType.into()),
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_ctor_filtertype(
+                    theFilterType.into(),
+                ),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:37 - `SelectMgr_AndOrFilter::IsOk()`
     /// Indicates that the selected Interactive Object passes the filter.
-    pub fn is_ok(&self, theObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, theObj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_is_ok(self as *const Self, theObj)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_is_ok(self as *const Self, theObj)
         })
     }
 
@@ -618,7 +659,7 @@ impl AndOrFilter {
     /// @return a selection filter type (@sa SelectMgr_FilterType).
     pub fn filter_type(&self) -> crate::select_mgr::FilterType {
         crate::select_mgr::FilterType::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_filter_type(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_filter_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -629,7 +670,7 @@ impl AndOrFilter {
     /// @param theFilterType the filter type.
     pub fn set_filter_type(&mut self, theFilterType: crate::select_mgr::FilterType) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_set_filter_type(
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_set_filter_type(
                 self as *mut Self,
                 theFilterType.into(),
             )
@@ -637,9 +678,9 @@ impl AndOrFilter {
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:51 - `SelectMgr_AndOrFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AndOrFilter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -649,7 +690,7 @@ impl AndOrFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_AndOrFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -657,16 +698,22 @@ impl AndOrFilter {
     }
 
     /// **Source:** `SelectMgr_AndOrFilter.hxx`:51 - `SelectMgr_AndOrFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_AndOrFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -674,7 +721,7 @@ impl AndOrFilter {
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_SelectMgr_CompositionFilter_mut(
                     self as *mut Self,
                 ),
             )
@@ -684,98 +731,114 @@ impl AndOrFilter {
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_SelectMgr_Filter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_AndOrFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_AndOrFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAndOrFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndOrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AndOrFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
-    pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn add(&mut self, afilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_Add(self as *mut Self, afilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_Add(self as *mut Self, afilter)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
-    pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn remove(&mut self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_Remove(self as *mut Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_Remove(
+                self as *mut Self,
+                aFilter,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
-    pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
+    pub fn is_in(&self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IsIn(self as *const Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_IsIn(
+                self as *const Self,
+                aFilter,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
-    pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
+    pub fn stored_filters(&self) -> &crate::ffi_types::SelectMgr_ListOfFilter {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AndOrFilter_inherited_StoredFilters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_StoredFilters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_ActsOn(
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_ActsOn(
                 self as *const Self,
                 aStandardMode.into(),
             )
@@ -783,16 +846,22 @@ impl AndOrFilter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -800,7 +869,7 @@ impl AndOrFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_AndOrFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -813,52 +882,60 @@ impl AndOrFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AndOrFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AndOrFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrAndOrFilter;
+pub use crate::ffi_types::HandleSelectMgrAndOrFilter;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrAndOrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrAndOrFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrAndOrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_AndOrFilter
-    pub fn get(&self) -> &crate::ffi::SelectMgr_AndOrFilter {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_AndOrFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrAndOrFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AndOrFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AndOrFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_AndOrFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrAndOrFilter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_get_mut(
                 self as *mut Self,
             ))
         }
@@ -867,21 +944,17 @@ impl HandleSelectMgrAndOrFilter {
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrCompositionFilter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndOrFilter_to_HandleSelectMgrCompositionFilter(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_to_HandleSelectMgrCompositionFilter(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndOrFilter_to_HandleSelectMgrFilter(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
                 ),
             ))
@@ -889,10 +962,12 @@ impl HandleSelectMgrAndOrFilter {
     }
 
     /// Upcast Handle<SelectMgr_AndOrFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAndOrFilter_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAndOrFilter_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -914,11 +989,11 @@ impl HandleSelectMgrAndOrFilter {
 /// **Source:** `SelectMgr_AxisIntersector.hxx`:23 - `SelectMgr_AxisIntersector`
 /// This class contains representation of selecting axis, created in case of point selection
 /// and algorithms for overlap detection between this axis and sensitive entities.
-pub use crate::ffi::SelectMgr_AxisIntersector as AxisIntersector;
+pub use crate::ffi_types::SelectMgr_AxisIntersector as AxisIntersector;
 
 unsafe impl crate::CppDeletable for AxisIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_AxisIntersector_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_destructor(ptr);
     }
 }
 
@@ -928,7 +1003,7 @@ impl AxisIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_ctor(),
             ))
         }
     }
@@ -937,7 +1012,7 @@ impl AxisIntersector {
     /// Initializes selecting axis according to the input one
     pub fn init(&mut self, theAxis: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_init(self as *mut Self, theAxis)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_init(self as *mut Self, theAxis)
         })
     }
 
@@ -946,16 +1021,19 @@ impl AxisIntersector {
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_build(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_AxisIntersector.hxx`:41 - `SelectMgr_AxisIntersector::SetCamera()`
     /// Saves camera definition.
     /// Do nothing for axis intersector (not applicable to this volume).
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_set_camera(
+                self as *mut Self,
+                theCamera,
+            )
         })
     }
 
@@ -963,7 +1041,7 @@ impl AxisIntersector {
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_is_scalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_is_scalable(self as *const Self)
         })
     }
 
@@ -976,11 +1054,11 @@ impl AxisIntersector {
         &self,
         theScaleFactor: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_scale_and_transform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
@@ -996,11 +1074,11 @@ impl AxisIntersector {
     /// frustum from scratch. In this class, builder is not used and theBuilder parameter is ignored.
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -1012,19 +1090,13 @@ impl AxisIntersector {
     /// Intersection test between defined axis and given axis-aligned box
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theBoxMin, theBoxMax, theClipRange, thePickResult)
         })
     }
 
@@ -1033,12 +1105,12 @@ impl AxisIntersector {
     /// with minimum corner at point theMinPt and maximum at point theMaxPt
     pub unsafe fn overlaps_box_vec32_boolptr(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -1056,12 +1128,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
         })
     }
 
@@ -1069,7 +1136,10 @@ impl AxisIntersector {
     /// Intersection test between defined axis and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_point_pnt(self as *const Self, thePnt)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_point_pnt(
+                self as *const Self,
+                thePnt,
+            )
         })
     }
 
@@ -1079,13 +1149,13 @@ impl AxisIntersector {
     /// boundary line defined by segments depending on given sensitivity type
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -1105,7 +1175,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -1129,7 +1199,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -1151,7 +1221,7 @@ impl AxisIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_boolptr(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -1171,13 +1241,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
         })
     }
 
@@ -1195,7 +1259,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
         })
     }
 
@@ -1212,15 +1276,7 @@ impl AxisIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -1238,7 +1294,7 @@ impl AxisIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
         })
     }
 
@@ -1255,13 +1311,7 @@ impl AxisIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theRadius,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theRadius, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -1269,7 +1319,7 @@ impl AxisIntersector {
     /// Measures distance between start axis point and given point theCOG.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_dist_to_geometry_center(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_dist_to_geometry_center(
                 self as *const Self,
                 theCOG,
             )
@@ -1282,7 +1332,10 @@ impl AxisIntersector {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_detected_point(self as *const Self, theDepth),
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_detected_point(
+                    self as *const Self,
+                    theDepth,
+                ),
             ))
         }
     }
@@ -1291,9 +1344,11 @@ impl AxisIntersector {
     /// Returns near point along axis.
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AxisIntersector_get_near_pnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_get_near_pnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1301,7 +1356,7 @@ impl AxisIntersector {
     /// Returns far point along axis (infinite).
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AxisIntersector_get_far_pnt(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_get_far_pnt(
                 self as *const Self,
             )))
         }
@@ -1311,9 +1366,11 @@ impl AxisIntersector {
     /// Returns axis direction.
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AxisIntersector_get_view_ray_direction(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_get_view_ray_direction(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1321,7 +1378,7 @@ impl AxisIntersector {
     pub fn as_base_intersector(&self) -> &BaseIntersector {
         unsafe {
             &*crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector(
                     self as *const Self,
                 ),
             )
@@ -1332,7 +1389,7 @@ impl AxisIntersector {
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_as_SelectMgr_BaseIntersector_mut(
                     self as *mut Self,
                 ),
             )
@@ -1342,9 +1399,11 @@ impl AxisIntersector {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1352,7 +1411,9 @@ impl AxisIntersector {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1360,10 +1421,10 @@ impl AxisIntersector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrAxisIntersector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAxisIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1371,7 +1432,9 @@ impl AxisIntersector {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
         crate::select_mgr::SelectionType::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_GetSelectionType(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_GetSelectionType(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1379,7 +1442,7 @@ impl AxisIntersector {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:59 - `SelectMgr_BaseIntersector::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetPixelTolerance(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_SetPixelTolerance(
                 self as *mut Self,
                 theTol,
             )
@@ -1387,18 +1450,20 @@ impl AxisIntersector {
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AxisIntersector_inherited_Camera(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_Camera(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:92 - `SelectMgr_BaseIntersector::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_WindowSize(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_WindowSize(
                 self as *const Self,
                 theWidth,
                 theHeight,
@@ -1409,7 +1474,7 @@ impl AxisIntersector {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:97 - `SelectMgr_BaseIntersector::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetWindowSize(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_SetWindowSize(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -1420,7 +1485,7 @@ impl AxisIntersector {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:102 - `SelectMgr_BaseIntersector::SetViewport()`
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_SetViewport(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_SetViewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -1434,7 +1499,7 @@ impl AxisIntersector {
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_AxisIntersector_inherited_GetMousePosition(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_GetMousePosition(
                     self as *const Self,
                 ),
             ))
@@ -1444,10 +1509,10 @@ impl AxisIntersector {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_GetPlanes(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_GetPlanes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -1465,7 +1530,7 @@ impl AxisIntersector {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RaySphereIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_RaySphereIntersection(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -1490,7 +1555,7 @@ impl AxisIntersector {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RayCylinderIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_RayCylinderIntersection(
                 self as *const Self,
                 theBottomRadius,
                 theTopRadius,
@@ -1514,7 +1579,7 @@ impl AxisIntersector {
         theTime: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_RayCircleIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_RayCircleIntersection(
                 self as *const Self,
                 theRadius,
                 theLoc,
@@ -1526,25 +1591,33 @@ impl AxisIntersector {
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_AxisIntersector_inherited_DynamicType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_DynamicType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1552,7 +1625,9 @@ impl AxisIntersector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_AxisIntersector_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1565,77 +1640,81 @@ impl AxisIntersector {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_AxisIntersector_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_AxisIntersector_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrAxisIntersector;
+pub use crate::ffi_types::HandleSelectMgrAxisIntersector;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrAxisIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrAxisIntersector_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrAxisIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_AxisIntersector
-    pub fn get(&self) -> &crate::ffi::SelectMgr_AxisIntersector {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_AxisIntersector {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrAxisIntersector_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_AxisIntersector
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_AxisIntersector {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_AxisIntersector {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrAxisIntersector_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_AxisIntersector> to Handle<SelectMgr_BaseIntersector>
     pub fn to_handle_base_intersector(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAxisIntersector_to_HandleSelectMgrBaseIntersector(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_to_HandleSelectMgrBaseIntersector(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_AxisIntersector> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrAxisIntersector_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrAxisIntersector_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1650,11 +1729,11 @@ impl HandleSelectMgrAxisIntersector {
 /// **Source:** `SelectMgr_BVHThreadPool.hxx`:26 - `SelectMgr_BVHThreadPool`
 /// Class defining a thread pool for building BVH for the list of Select3D_SensitiveEntity within
 /// background thread(s).
-pub use crate::ffi::SelectMgr_BVHThreadPool as BVHThreadPool;
+pub use crate::ffi_types::SelectMgr_BVHThreadPool as BVHThreadPool;
 
 unsafe impl crate::CppDeletable for BVHThreadPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_BVHThreadPool_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_destructor(ptr);
     }
 }
 
@@ -1664,15 +1743,15 @@ impl BVHThreadPool {
     pub fn new_int(theNbThreads: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_ctor_int(theNbThreads),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_ctor_int(theNbThreads),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:28 - `SelectMgr_BVHThreadPool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BVHThreadPool_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1680,9 +1759,12 @@ impl BVHThreadPool {
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:92 - `SelectMgr_BVHThreadPool::AddEntity()`
     /// Queue a sensitive entity to build its BVH
-    pub fn add_entity(&mut self, theEntity: &crate::ffi::HandleSelect3DSensitiveEntity) {
+    pub fn add_entity(&mut self, theEntity: &crate::ffi_types::HandleSelect3DSensitiveEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_add_entity(self as *mut Self, theEntity)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_add_entity(
+                self as *mut Self,
+                theEntity,
+            )
         })
     }
 
@@ -1690,7 +1772,7 @@ impl BVHThreadPool {
     /// Stops threads
     pub fn stop_threads(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_stop_threads(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_stop_threads(self as *mut Self)
         })
     }
 
@@ -1698,7 +1780,7 @@ impl BVHThreadPool {
     /// Waits for all threads finish their jobs
     pub fn wait_threads(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_wait_threads(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_wait_threads(self as *mut Self)
         })
     }
 
@@ -1706,7 +1788,7 @@ impl BVHThreadPool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1714,18 +1796,22 @@ impl BVHThreadPool {
     }
 
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:28 - `SelectMgr_BVHThreadPool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BVHThreadPool_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1733,7 +1819,9 @@ impl BVHThreadPool {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1741,25 +1829,31 @@ impl BVHThreadPool {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBVHThreadPool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBVHThreadPool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1767,7 +1861,7 @@ impl BVHThreadPool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_BVHThreadPool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1780,62 +1874,72 @@ impl BVHThreadPool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrBVHThreadPool;
+pub use crate::ffi_types::HandleSelectMgrBVHThreadPool;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrBVHThreadPool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrBVHThreadPool_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrBVHThreadPool {
     /// Dereference this Handle to access the underlying SelectMgr_BVHThreadPool
-    pub fn get(&self) -> &crate::ffi::SelectMgr_BVHThreadPool {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_BVHThreadPool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrBVHThreadPool_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying SelectMgr_BVHThreadPool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BVHThreadPool {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrBVHThreadPool_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying SelectMgr_BVHThreadPool
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_BVHThreadPool {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<SelectMgr_BVHThreadPool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrBVHThreadPool_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrBVHThreadPool_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1852,11 +1956,11 @@ impl HandleSelectMgrBVHThreadPool {
 
 /// **Source:** `SelectMgr_BVHThreadPool.hxx`:38 - `SelectMgr_BVHThreadPool_BVHThread`
 /// Thread with back reference to thread pool and thread mutex in it.
-pub use crate::ffi::SelectMgr_BVHThreadPool_BVHThread as BVHThreadPool_BVHThread;
+pub use crate::ffi_types::SelectMgr_BVHThreadPool_BVHThread as BVHThreadPool_BVHThread;
 
 unsafe impl crate::CppDeletable for BVHThreadPool_BVHThread {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_BVHThreadPool_BVHThread_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_destructor(ptr);
     }
 }
 
@@ -1865,7 +1969,7 @@ impl BVHThreadPool_BVHThread {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_ctor(),
             ))
         }
     }
@@ -1874,9 +1978,11 @@ impl BVHThreadPool_BVHThread {
     /// Returns mutex used for BVH building
     pub fn bvh_mutex(&mut self) -> &mut crate::standard::Mutex {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_bvh_mutex(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_bvh_mutex(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -1884,16 +1990,21 @@ impl BVHThreadPool_BVHThread {
     /// Assignment operator.
     pub fn assign(&mut self, theCopy: &BVHThreadPool_BVHThread) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_assign(self as *mut Self, theCopy)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_assign(
+                self as *mut Self,
+                theCopy,
+            )
         })
     }
 
     /// Upcast to OSD_Thread
     pub fn as_osd_thread(&self) -> &crate::osd::Thread {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1901,7 +2012,9 @@ impl BVHThreadPool_BVHThread {
     pub fn as_osd_thread_mut(&mut self) -> &mut crate::osd::Thread {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_as_OSD_Thread_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1910,7 +2023,9 @@ impl BVHThreadPool_BVHThread {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_BVHThread_to_owned(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_to_owned(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1918,7 +2033,7 @@ impl BVHThreadPool_BVHThread {
     /// Inherited: **Source:** `OSD_Thread.hxx`:55 - `OSD_Thread::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_SetPriority(
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_inherited_SetPriority(
                 self as *mut Self,
                 thePriority,
             )
@@ -1928,7 +2043,7 @@ impl BVHThreadPool_BVHThread {
     /// Inherited: **Source:** `OSD_Thread.hxx`:70 - `OSD_Thread::Run()`
     pub unsafe fn run(&mut self, data: *mut std::ffi::c_void, WNTStackSize: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Run(
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_inherited_Run(
                 self as *mut Self,
                 data,
                 WNTStackSize,
@@ -1939,32 +2054,38 @@ impl BVHThreadPool_BVHThread {
     /// Inherited: **Source:** `OSD_Thread.hxx`:80 - `OSD_Thread::Detach()`
     pub fn detach(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Detach(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_inherited_Detach(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:83 - `OSD_Thread::Wait()`
     pub fn wait(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_Wait(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_inherited_Wait(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `OSD_Thread.hxx`:107 - `OSD_Thread::GetId()`
     pub fn get_id(&self) -> std::ffi::c_ulong {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_BVHThread_inherited_GetId(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_BVHThread_inherited_GetId(
+                self as *const Self,
+            )
         })
     }
 }
 
 /// **Source:** `SelectMgr_BVHThreadPool.hxx`:105 - `SelectMgr_BVHThreadPool_Sentry`
 /// Class providing a simple interface to mutexes for list of BVHThread
-pub use crate::ffi::SelectMgr_BVHThreadPool_Sentry as BVHThreadPool_Sentry;
+pub use crate::ffi_types::SelectMgr_BVHThreadPool_Sentry as BVHThreadPool_Sentry;
 
 unsafe impl crate::CppDeletable for BVHThreadPool_Sentry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_BVHThreadPool_Sentry_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_destructor(ptr);
     }
 }
 
@@ -1972,14 +2093,10 @@ impl BVHThreadPool_Sentry {
     /// **Source:** `SelectMgr_BVHThreadPool.hxx`:109 - `SelectMgr_BVHThreadPool_Sentry::SelectMgr_BVHThreadPool_Sentry()`
     /// Constructor - initializes the sentry object and locks list of mutexes immediately
     pub fn new_handleselectmgrbvhthreadpool(
-        thePool: &crate::ffi::HandleSelectMgrBVHThreadPool,
+        thePool: &crate::ffi_types::HandleSelectMgrBVHThreadPool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_Sentry_ctor_handleselectmgrbvhthreadpool(
-                    thePool,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_ctor_handleselectmgrbvhthreadpool(thePool)))
         }
     }
 
@@ -1987,7 +2104,7 @@ impl BVHThreadPool_Sentry {
     /// Lock list of mutexes
     pub fn lock(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_Sentry_lock(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_lock(self as *mut Self)
         })
     }
 
@@ -1995,7 +2112,7 @@ impl BVHThreadPool_Sentry {
     /// Unlock list of mutexes
     pub fn unlock(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BVHThreadPool_Sentry_unlock(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_unlock(self as *mut Self)
         })
     }
 
@@ -2003,7 +2120,9 @@ impl BVHThreadPool_Sentry {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BVHThreadPool_Sentry_to_owned(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_BVHThreadPool_Sentry_to_owned(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2019,42 +2138,48 @@ impl BVHThreadPool_Sentry {
 /// selection. It contains signatures of functions for detection of
 /// overlap by sensitive entity and initializes some data for building
 /// the selecting frustum
-pub use crate::ffi::SelectMgr_BaseFrustum as BaseFrustum;
+pub use crate::ffi_types::SelectMgr_BaseFrustum as BaseFrustum;
 
 unsafe impl crate::CppDeletable for BaseFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_BaseFrustum_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_destructor(ptr);
     }
 }
 
 impl BaseFrustum {
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:37 - `SelectMgr_BaseFrustum::SetBuilder()`
     /// Nullifies the builder created in the constructor and copies the pointer given
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_builder(self as *mut Self, theBuilder)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_set_builder(
+                self as *mut Self,
+                theBuilder,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:40 - `SelectMgr_BaseFrustum::SetCamera()`
     /// Saves camera definition and passes it to builder
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_set_camera(self as *mut Self, theCamera)
         })
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:43 - `SelectMgr_BaseFrustum::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_pixel_tolerance(self as *mut Self, theTol)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_set_pixel_tolerance(
+                self as *mut Self,
+                theTol,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:45 - `SelectMgr_BaseFrustum::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_set_window_size(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -2065,7 +2190,11 @@ impl BaseFrustum {
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:48 - `SelectMgr_BaseFrustum::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_window_size(self as *const Self, theWidth, theHeight)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_window_size(
+                self as *const Self,
+                theWidth,
+                theHeight,
+            )
         })
     }
 
@@ -2073,7 +2202,7 @@ impl BaseFrustum {
     /// Passes viewport parameters to builder
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_set_viewport(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_set_viewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -2091,11 +2220,11 @@ impl BaseFrustum {
         theCenter: &crate::gp::Pnt,
         theRadius: f64,
         thePlaneNormal: &crate::gp::Dir,
-        theBoundaries: &crate::ffi::TColgp_Array1OfPnt,
+        theBoundaries: &crate::ffi_types::TColgp_Array1OfPnt,
         theBoundaryInside: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_is_boundary_intersect_sphere(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_is_boundary_intersect_sphere(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -2107,9 +2236,9 @@ impl BaseFrustum {
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2119,7 +2248,7 @@ impl BaseFrustum {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2127,16 +2256,22 @@ impl BaseFrustum {
     }
 
     /// **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_BaseIntersector
     pub fn as_base_intersector(&self) -> &BaseIntersector {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2144,7 +2279,7 @@ impl BaseFrustum {
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_as_SelectMgr_BaseIntersector_mut(
                     self as *mut Self,
                 ),
             )
@@ -2154,32 +2289,38 @@ impl BaseFrustum {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_BaseFrustum_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:47 - `SelectMgr_BaseIntersector::Build()`
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_Build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_Build(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
         crate::select_mgr::SelectionType::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_GetSelectionType(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetSelectionType(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2187,7 +2328,7 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:54 - `SelectMgr_BaseIntersector::IsScalable()`
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IsScalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_IsScalable(self as *const Self)
         })
     }
 
@@ -2196,11 +2337,11 @@ impl BaseFrustum {
         &self,
         theScaleFactor: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_inherited_ScaleAndTransform(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_ScaleAndTransform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
@@ -2213,11 +2354,11 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:80 - `SelectMgr_BaseIntersector::CopyWithBuilder()`
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_inherited_CopyWithBuilder(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_CopyWithBuilder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -2226,29 +2367,35 @@ impl BaseFrustum {
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_inherited_Camera(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_Camera(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:109 - `SelectMgr_BaseIntersector::GetNearPnt()`
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_inherited_GetNearPnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetNearPnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:113 - `SelectMgr_BaseIntersector::GetFarPnt()`
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_inherited_GetFarPnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetFarPnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2256,7 +2403,7 @@ impl BaseFrustum {
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_inherited_GetViewRayDirection(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetViewRayDirection(
                     self as *const Self,
                 ),
             ))
@@ -2266,19 +2413,21 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:121 - `SelectMgr_BaseIntersector::GetMousePosition()`
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseFrustum_inherited_GetMousePosition(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetMousePosition(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:126 - `SelectMgr_BaseIntersector::GetPlanes()`
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_GetPlanes(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetPlanes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -2288,13 +2437,13 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:133 - `SelectMgr_BaseIntersector::OverlapsBox()`
     pub fn overlaps_box(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsBox(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsBox(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -2312,7 +2461,7 @@ impl BaseFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPoint(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsPoint(
                 self as *const Self,
                 thePnt,
                 theClipRange,
@@ -2324,13 +2473,13 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:158 - `SelectMgr_BaseIntersector::OverlapsPolygon()`
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsPolygon(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsPolygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -2349,7 +2498,7 @@ impl BaseFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSegment(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsSegment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -2370,7 +2519,7 @@ impl BaseFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsTriangle(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsTriangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -2390,7 +2539,7 @@ impl BaseFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsSphere(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsSphere(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -2411,7 +2560,7 @@ impl BaseFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCylinder(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsCylinder(
                 self as *const Self,
                 theBottomRad,
                 theTopRad,
@@ -2434,7 +2583,7 @@ impl BaseFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_OverlapsCircle(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_OverlapsCircle(
                 self as *const Self,
                 theBottomRad,
                 theTrsf,
@@ -2448,7 +2597,7 @@ impl BaseFrustum {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:237 - `SelectMgr_BaseIntersector::DistToGeometryCenter()`
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_DistToGeometryCenter(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_DistToGeometryCenter(
                 self as *const Self,
                 theCOG,
             )
@@ -2459,7 +2608,7 @@ impl BaseFrustum {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseFrustum_inherited_DetectedPoint(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_DetectedPoint(
                     self as *const Self,
                     theDepth,
                 ),
@@ -2478,7 +2627,7 @@ impl BaseFrustum {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RaySphereIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_RaySphereIntersection(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -2503,7 +2652,7 @@ impl BaseFrustum {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RayCylinderIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_RayCylinderIntersection(
                 self as *const Self,
                 theBottomRadius,
                 theTopRadius,
@@ -2527,7 +2676,7 @@ impl BaseFrustum {
         theTime: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_RayCircleIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_RayCircleIntersection(
                 self as *const Self,
                 theRadius,
                 theLoc,
@@ -2539,16 +2688,22 @@ impl BaseFrustum {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2556,7 +2711,7 @@ impl BaseFrustum {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_BaseFrustum_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2569,52 +2724,60 @@ impl BaseFrustum {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseFrustum_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseFrustum_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrBaseFrustum;
+pub use crate::ffi_types::HandleSelectMgrBaseFrustum;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrBaseFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrBaseFrustum_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrBaseFrustum {
     /// Dereference this Handle to access the underlying SelectMgr_BaseFrustum
-    pub fn get(&self) -> &crate::ffi::SelectMgr_BaseFrustum {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_BaseFrustum {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrBaseFrustum_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_BaseFrustum
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BaseFrustum {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_BaseFrustum {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrBaseFrustum_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_get_mut(
                 self as *mut Self,
             ))
         }
@@ -2623,21 +2786,19 @@ impl HandleSelectMgrBaseFrustum {
     /// Upcast Handle<SelectMgr_BaseFrustum> to Handle<SelectMgr_BaseIntersector>
     pub fn to_handle_base_intersector(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrBaseFrustum_to_HandleSelectMgrBaseIntersector(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_to_HandleSelectMgrBaseIntersector(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_BaseFrustum> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrBaseFrustum_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2649,11 +2810,9 @@ impl HandleSelectMgrBaseFrustum {
     /// Returns `None` if the handle does not point to a `SelectMgr_TriangularFrustumSet` (or subclass).
     pub fn downcast_to_triangular_frustum_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustumSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrTriangularFrustumSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrBaseFrustum_downcast_to_HandleSelectMgrTriangularFrustumSet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrBaseFrustum_downcast_to_HandleSelectMgrTriangularFrustumSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2673,11 +2832,11 @@ impl HandleSelectMgrBaseFrustum {
 /// selection. It contains signatures of functions for detection of
 /// overlap by sensitive entity and initializes some data for building
 /// the selecting intersector
-pub use crate::ffi::SelectMgr_BaseIntersector as BaseIntersector;
+pub use crate::ffi_types::SelectMgr_BaseIntersector as BaseIntersector;
 
 unsafe impl crate::CppDeletable for BaseIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_BaseIntersector_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_destructor(ptr);
     }
 }
 
@@ -2686,7 +2845,7 @@ impl BaseIntersector {
     /// Builds intersector according to internal parameters
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_build(self as *mut Self)
         })
     }
 
@@ -2694,7 +2853,9 @@ impl BaseIntersector {
     /// Returns selection type of this intersector
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
         crate::select_mgr::SelectionType::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_get_selection_type(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_selection_type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2703,7 +2864,7 @@ impl BaseIntersector {
     /// Checks if it is possible to scale this intersector.
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_is_scalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_is_scalable(self as *const Self)
         })
     }
 
@@ -2713,7 +2874,10 @@ impl BaseIntersector {
     /// This method does nothing for the base class.
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_pixel_tolerance(self as *mut Self, theTol)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_set_pixel_tolerance(
+                self as *mut Self,
+                theTol,
+            )
         })
     }
 
@@ -2732,11 +2896,11 @@ impl BaseIntersector {
         &self,
         theScaleFactor: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseIntersector_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_scale_and_transform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
@@ -2753,11 +2917,11 @@ impl BaseIntersector {
     /// @return a copy of the frustum with the input builder assigned
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseIntersector_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -2767,9 +2931,9 @@ impl BaseIntersector {
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
     /// Return camera definition.
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_camera(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_camera(
                 self as *const Self,
             )))
         }
@@ -2777,9 +2941,12 @@ impl BaseIntersector {
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:88 - `SelectMgr_BaseIntersector::SetCamera()`
     /// Saves camera definition.
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_set_camera(
+                self as *mut Self,
+                theCamera,
+            )
         })
     }
 
@@ -2788,7 +2955,7 @@ impl BaseIntersector {
     /// This method doesn't set any output values for the base class.
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_window_size(
                 self as *const Self,
                 theWidth,
                 theHeight,
@@ -2801,7 +2968,7 @@ impl BaseIntersector {
     /// This method does nothing for the base class.
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_set_window_size(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -2814,7 +2981,7 @@ impl BaseIntersector {
     /// This method does nothing for the base class.
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_set_viewport(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_set_viewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -2829,9 +2996,11 @@ impl BaseIntersector {
     /// This method returns zero point for the base class.
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_get_near_pnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_near_pnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2840,7 +3009,7 @@ impl BaseIntersector {
     /// This method returns zero point for the base class.
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_get_far_pnt(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_far_pnt(
                 self as *const Self,
             )))
         }
@@ -2851,9 +3020,11 @@ impl BaseIntersector {
     /// This method returns zero direction for the base class.
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_get_view_ray_direction(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_view_ray_direction(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2862,9 +3033,11 @@ impl BaseIntersector {
     /// This method returns infinite point for the base class.
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_get_mouse_position(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_mouse_position(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2874,10 +3047,13 @@ impl BaseIntersector {
     /// This method only clears input vector for the base class.
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_get_planes(self as *const Self, thePlaneEquations)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_planes(
+                self as *const Self,
+                thePlaneEquations,
+            )
         })
     }
 
@@ -2885,19 +3061,13 @@ impl BaseIntersector {
     /// SAT intersection test between defined volume and given axis-aligned box
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theBoxMin, theBoxMax, theClipRange, thePickResult)
         })
     }
 
@@ -2906,12 +3076,12 @@ impl BaseIntersector {
     /// with minimum corner at point theMinPt and maximum at point theMaxPt
     pub fn overlaps_box_vec32_boolptr(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -2929,12 +3099,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
         })
     }
 
@@ -2945,7 +3110,10 @@ impl BaseIntersector {
     /// selection mode activated.
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_point_pnt(self as *const Self, thePnt)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_point_pnt(
+                self as *const Self,
+                thePnt,
+            )
         })
     }
 
@@ -2955,13 +3123,13 @@ impl BaseIntersector {
     /// boundary line defined by segments depending on given sensitivity type
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -2981,7 +3149,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -3005,7 +3173,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -3027,7 +3195,7 @@ impl BaseIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_boolptr(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -3047,13 +3215,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
         })
     }
 
@@ -3071,7 +3233,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
         })
     }
 
@@ -3088,15 +3250,7 @@ impl BaseIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -3114,7 +3268,7 @@ impl BaseIntersector {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
         })
     }
 
@@ -3131,13 +3285,7 @@ impl BaseIntersector {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theBottomRad, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -3148,7 +3296,7 @@ impl BaseIntersector {
     /// This method returns infinite value for the base class.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_dist_to_geometry_center(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_dist_to_geometry_center(
                 self as *const Self,
                 theCOG,
             )
@@ -3162,7 +3310,10 @@ impl BaseIntersector {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_BaseIntersector_detected_point(self as *const Self, theDepth),
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_detected_point(
+                    self as *const Self,
+                    theDepth,
+                ),
             ))
         }
     }
@@ -3180,7 +3331,7 @@ impl BaseIntersector {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_sphere_intersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_ray_sphere_intersection(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -3215,7 +3366,7 @@ impl BaseIntersector {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_cylinder_intersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_ray_cylinder_intersection(
                 self as *const Self,
                 theBottomRadius,
                 theTopRadius,
@@ -3246,7 +3397,7 @@ impl BaseIntersector {
         theTime: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_ray_circle_intersection(
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_ray_circle_intersection(
                 self as *const Self,
                 theRadius,
                 theLoc,
@@ -3258,11 +3409,13 @@ impl BaseIntersector {
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3270,7 +3423,7 @@ impl BaseIntersector {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_BaseIntersector_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3278,18 +3431,22 @@ impl BaseIntersector {
     }
 
     /// **Source:** `SelectMgr_BaseIntersector.hxx`:290 - `SelectMgr_BaseIntersector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_BaseIntersector_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3297,22 +3454,30 @@ impl BaseIntersector {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_BaseIntersector_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3320,7 +3485,9 @@ impl BaseIntersector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_BaseIntersector_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3333,64 +3500,72 @@ impl BaseIntersector {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_BaseIntersector_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_BaseIntersector_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrBaseIntersector;
+pub use crate::ffi_types::HandleSelectMgrBaseIntersector;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrBaseIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrBaseIntersector_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrBaseIntersector {
     /// Dereference this Handle to access the underlying SelectMgr_BaseIntersector
-    pub fn get(&self) -> &crate::ffi::SelectMgr_BaseIntersector {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_BaseIntersector {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrBaseIntersector_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_BaseIntersector
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_BaseIntersector {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_BaseIntersector {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrBaseIntersector_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_BaseIntersector> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrBaseIntersector_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3402,11 +3577,9 @@ impl HandleSelectMgrBaseIntersector {
     /// Returns `None` if the handle does not point to a `SelectMgr_AxisIntersector` (or subclass).
     pub fn downcast_to_axis_intersector(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAxisIntersector>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAxisIntersector>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrAxisIntersector(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrAxisIntersector(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3420,11 +3593,9 @@ impl HandleSelectMgrBaseIntersector {
     /// Returns `None` if the handle does not point to a `SelectMgr_BaseFrustum` (or subclass).
     pub fn downcast_to_base_frustum(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseFrustum>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseFrustum>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrBaseFrustum(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrBaseFrustum(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3438,9 +3609,9 @@ impl HandleSelectMgrBaseIntersector {
     /// Returns `None` if the handle does not point to a `SelectMgr_TriangularFrustumSet` (or subclass).
     pub fn downcast_to_triangular_frustum_set(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustumSet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrTriangularFrustumSet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrTriangularFrustumSet(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrBaseIntersector_downcast_to_HandleSelectMgrTriangularFrustumSet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3457,11 +3628,11 @@ impl HandleSelectMgrBaseIntersector {
 /// **Source:** `SelectMgr_CompositionFilter.hxx`:28 - `SelectMgr_CompositionFilter`
 /// A framework to define a compound filter composed of
 /// two or more simple filters.
-pub use crate::ffi::SelectMgr_CompositionFilter as CompositionFilter;
+pub use crate::ffi_types::SelectMgr_CompositionFilter as CompositionFilter;
 
 unsafe impl crate::CppDeletable for CompositionFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_CompositionFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_destructor(ptr);
     }
 }
 
@@ -3469,17 +3640,17 @@ impl CompositionFilter {
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
     /// Adds the filter afilter to a filter object created by a
     /// filter class inheriting this framework.
-    pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn add(&mut self, afilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_add(self as *mut Self, afilter)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_add(self as *mut Self, afilter)
         })
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
     /// Removes the filter aFilter from this framework.
-    pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn remove(&mut self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_remove(self as *mut Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_remove(self as *mut Self, aFilter)
         })
     }
 
@@ -3487,25 +3658,27 @@ impl CompositionFilter {
     /// Returns true if this framework is empty.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_is_empty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_is_empty(self as *const Self)
         })
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
     /// Returns true if the filter aFilter is in this framework.
-    pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
+    pub fn is_in(&self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_is_in(self as *const Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_is_in(self as *const Self, aFilter)
         })
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
     /// Returns the list of stored filters from this framework.
-    pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
+    pub fn stored_filters(&self) -> &crate::ffi_types::SelectMgr_ListOfFilter {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_CompositionFilter_stored_filters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_stored_filters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3513,14 +3686,14 @@ impl CompositionFilter {
     /// Clears the filters used in this framework.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_acts_on(
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_acts_on(
                 self as *const Self,
                 aStandardMode.into(),
             )
@@ -3528,11 +3701,13 @@ impl CompositionFilter {
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:54 - `SelectMgr_CompositionFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_CompositionFilter_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3540,7 +3715,7 @@ impl CompositionFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_CompositionFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3548,18 +3723,22 @@ impl CompositionFilter {
     }
 
     /// **Source:** `SelectMgr_CompositionFilter.hxx`:54 - `SelectMgr_CompositionFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_CompositionFilter_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_as_SelectMgr_Filter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3567,7 +3746,9 @@ impl CompositionFilter {
     pub fn as_filter_mut(&mut self) -> &mut Filter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_CompositionFilter_as_SelectMgr_Filter_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3575,9 +3756,11 @@ impl CompositionFilter {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3585,7 +3768,7 @@ impl CompositionFilter {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_CompositionFilter_as_Standard_Transient_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -3593,16 +3776,19 @@ impl CompositionFilter {
     }
 
     /// Inherited: **Source:** `SelectMgr_Filter.hxx`:57 - `SelectMgr_Filter::IsOk()`
-    pub fn is_ok(&self, anObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anObj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsOk(self as *const Self, anObj)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_IsOk(
+                self as *const Self,
+                anObj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3610,9 +3796,12 @@ impl CompositionFilter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3620,7 +3809,9 @@ impl CompositionFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_CompositionFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3633,64 +3824,74 @@ impl CompositionFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_CompositionFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_CompositionFilter_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrCompositionFilter;
+pub use crate::ffi_types::HandleSelectMgrCompositionFilter;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrCompositionFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrCompositionFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrCompositionFilter {
     /// Dereference this Handle to access the underlying SelectMgr_CompositionFilter
-    pub fn get(&self) -> &crate::ffi::SelectMgr_CompositionFilter {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_CompositionFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrCompositionFilter_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_CompositionFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_CompositionFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_CompositionFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrCompositionFilter_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_CompositionFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrCompositionFilter_to_HandleSelectMgrFilter(
+                crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
                 ),
             ))
@@ -3698,13 +3899,11 @@ impl HandleSelectMgrCompositionFilter {
     }
 
     /// Upcast Handle<SelectMgr_CompositionFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrCompositionFilter_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -3713,11 +3912,9 @@ impl HandleSelectMgrCompositionFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_AndFilter` (or subclass).
     pub fn downcast_to_and_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrAndFilter(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrAndFilter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3731,11 +3928,9 @@ impl HandleSelectMgrCompositionFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_AndOrFilter` (or subclass).
     pub fn downcast_to_and_or_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndOrFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndOrFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrAndOrFilter(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrAndOrFilter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3749,11 +3944,9 @@ impl HandleSelectMgrCompositionFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_OrFilter` (or subclass).
     pub fn downcast_to_or_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrOrFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrOrFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrOrFilter(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrCompositionFilter_downcast_to_HandleSelectMgrOrFilter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3772,11 +3965,11 @@ impl HandleSelectMgrCompositionFilter {
 /// The owner is the link between application and selection data structures.
 /// For the application to make its own objects selectable, it must define owner classes inheriting
 /// this framework.
-pub use crate::ffi::SelectMgr_EntityOwner as EntityOwner;
+pub use crate::ffi_types::SelectMgr_EntityOwner as EntityOwner;
 
 unsafe impl crate::CppDeletable for EntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_EntityOwner_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_destructor(ptr);
     }
 }
 
@@ -3786,7 +3979,7 @@ impl EntityOwner {
     pub fn new_int(aPriority: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_ctor_int(aPriority),
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_ctor_int(aPriority),
             ))
         }
     }
@@ -3795,15 +3988,11 @@ impl EntityOwner {
     /// Constructs a framework with the selectable object
     /// anSO being attributed the selection priority aPriority.
     pub fn new_handleselectmgrselectableobject_int(
-        aSO: &crate::ffi::HandleSelectMgrSelectableObject,
+        aSO: &crate::ffi_types::HandleSelectMgrSelectableObject,
         aPriority: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_ctor_handleselectmgrselectableobject_int(
-                    aSO, aPriority,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_ctor_handleselectmgrselectableobject_int(aSO, aPriority)))
         }
     }
 
@@ -3811,12 +4000,12 @@ impl EntityOwner {
     /// Constructs a framework from existing one
     /// anSO being attributed the selection priority aPriority.
     pub fn new_handleselectmgrentityowner_int(
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
         aPriority: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_ctor_handleselectmgrentityowner_int(
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_ctor_handleselectmgrentityowner_int(
                     theOwner, aPriority,
                 ),
             ))
@@ -3833,7 +4022,7 @@ impl EntityOwner {
     /// Constructs a framework with the selectable object
     /// anSO being attributed the selection priority aPriority.
     pub fn new_handleselectmgrselectableobject(
-        aSO: &crate::ffi::HandleSelectMgrSelectableObject,
+        aSO: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrselectableobject_int(aSO, 0)
     }
@@ -3842,15 +4031,15 @@ impl EntityOwner {
     /// Constructs a framework from existing one
     /// anSO being attributed the selection priority aPriority.
     pub fn new_handleselectmgrentityowner(
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleselectmgrentityowner_int(theOwner, 0)
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:34 - `SelectMgr_EntityOwner::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_EntityOwner_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3864,7 +4053,7 @@ impl EntityOwner {
     /// simultaneously detected, the vertex will only be hilighted.
     pub fn priority(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_priority(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_priority(self as *const Self)
         })
     }
 
@@ -3872,7 +4061,10 @@ impl EntityOwner {
     /// Sets the selectable priority of the owner within range [0-9].
     pub fn set_priority(&mut self, thePriority: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_priority(self as *mut Self, thePriority)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_priority(
+                self as *mut Self,
+                thePriority,
+            )
         })
     }
 
@@ -3880,25 +4072,31 @@ impl EntityOwner {
     /// Returns true if there is a selectable object to serve as an owner.
     pub fn has_selectable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_has_selectable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_has_selectable(self as *const Self)
         })
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:63 - `SelectMgr_EntityOwner::Selectable()`
     /// Returns a selectable object detected in the working context.
-    pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
+    pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSelectableObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_selectable(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_selectable(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
     /// Sets the selectable object.
-    pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
+    pub fn set_selectable(
+        &mut self,
+        theSelObj: &crate::ffi_types::HandleSelectMgrSelectableObject,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_selectable(self as *mut Self, theSelObj)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_selectable(
+                self as *mut Self,
+                theSelObj,
+            )
         })
     }
 
@@ -3912,13 +4110,13 @@ impl EntityOwner {
     /// @return TRUE if object handled click
     pub fn handle_mouse_click(
         &mut self,
-        thePoint: &crate::ffi::Graphic3d_Vec2i,
+        thePoint: &crate::ffi_types::Graphic3d_Vec2i,
         theButton: u32,
         theModifiers: u32,
         theIsDoubleClick: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_handle_mouse_click(
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_handle_mouse_click(
                 self as *mut Self,
                 thePoint,
                 theButton,
@@ -3933,11 +4131,15 @@ impl EntityOwner {
     /// mode.
     pub fn is_hilighted(
         &self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
         theMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_hilighted(self as *const Self, thePrsMgr, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_is_hilighted(
+                self as *const Self,
+                thePrsMgr,
+                theMode,
+            )
         })
     }
 
@@ -3948,12 +4150,12 @@ impl EntityOwner {
     /// SelectMgr_SelectableObject::HilightOwnerWithColor method.
     pub fn hilight_with_color(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
-        theStyle: &crate::ffi::HandlePrs3dDrawer,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        theStyle: &crate::ffi_types::HandlePrs3dDrawer,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_hilight_with_color(
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_hilight_with_color(
                 self as *mut Self,
                 thePrsMgr,
                 theStyle,
@@ -3969,20 +4171,32 @@ impl EntityOwner {
     /// @param theMode   obsolete argument for compatibility, should be ignored by implementations
     pub fn unhilight(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_unhilight(self as *mut Self, thePrsMgr, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_unhilight(
+                self as *mut Self,
+                thePrsMgr,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:122 - `SelectMgr_EntityOwner::Clear()`
     /// Clears the owners matching the value of the selection
     /// mode aMode from the presentation manager object aPM.
-    pub fn clear(&mut self, thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager, theMode: i32) {
+    pub fn clear(
+        &mut self,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        theMode: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_clear(self as *mut Self, thePrsMgr, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_clear(
+                self as *mut Self,
+                thePrsMgr,
+                theMode,
+            )
         })
     }
 
@@ -3990,7 +4204,7 @@ impl EntityOwner {
     /// Returns TRUE if selectable has transformation.
     pub fn has_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_has_location(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_has_location(self as *const Self)
         })
     }
 
@@ -3999,7 +4213,7 @@ impl EntityOwner {
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_location(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_location(self as *const Self),
             ))
         }
     }
@@ -4008,7 +4222,10 @@ impl EntityOwner {
     /// Change owner location (callback for handling change of location of selectable object).
     pub fn set_location(&mut self, theLocation: &crate::top_loc::Location) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_location(self as *mut Self, theLocation)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_location(
+                self as *mut Self,
+                theLocation,
+            )
         })
     }
 
@@ -4016,7 +4233,7 @@ impl EntityOwner {
     /// @return Standard_True if the owner is selected.
     pub fn is_selected(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_selected(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_is_selected(self as *const Self)
         })
     }
 
@@ -4025,7 +4242,10 @@ impl EntityOwner {
     /// @param[in] theIsSelected  shows if owner is selected.
     pub fn set_selected(&mut self, theIsSelected: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_selected(self as *mut Self, theIsSelected)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_selected(
+                self as *mut Self,
+                theIsSelected,
+            )
         })
     }
 
@@ -4035,7 +4255,7 @@ impl EntityOwner {
     /// @param[in] theIsDetected flag of object detection
     pub fn select(&self, theSelScheme: crate::ais::SelectionScheme, theIsDetected: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_select(
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_select(
                 self as *const Self,
                 theSelScheme.into(),
                 theIsDetected,
@@ -4048,7 +4268,7 @@ impl EntityOwner {
     /// The method is deprecated. Use SetSelected() instead.
     pub fn state(&mut self, theStatus: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_state(self as *mut Self, theStatus)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_state(self as *mut Self, theStatus)
         })
     }
 
@@ -4057,7 +4277,7 @@ impl EntityOwner {
     /// HilightSelected of SelectableObject
     pub fn is_auto_hilight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_auto_hilight(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_is_auto_hilight(self as *const Self)
         })
     }
 
@@ -4066,7 +4286,7 @@ impl EntityOwner {
     /// when the owner is detected. By default it always return FALSE.
     pub fn is_forced_hilight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_forced_hilight(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_is_forced_hilight(self as *const Self)
         })
     }
 
@@ -4074,7 +4294,10 @@ impl EntityOwner {
     /// Set Z layer ID and update all presentations.
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_z_layer(self as *mut Self, theLayerId)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_z_layer(
+                self as *mut Self,
+                theLayerId,
+            )
         })
     }
 
@@ -4083,12 +4306,12 @@ impl EntityOwner {
     /// highlight structure
     pub fn update_highlight_trsf(
         &mut self,
-        theViewer: &crate::ffi::HandleV3dViewer,
-        theManager: &crate::ffi::HandlePrsMgrPresentationManager,
+        theViewer: &crate::ffi_types::HandleV3dViewer,
+        theManager: &crate::ffi_types::HandlePrsMgrPresentationManager,
         theDispMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_update_highlight_trsf(
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_update_highlight_trsf(
                 self as *mut Self,
                 theViewer,
                 theManager,
@@ -4101,10 +4324,13 @@ impl EntityOwner {
     /// Returns true if pointer to selectable object of this owner is equal to the given one
     pub fn is_same_selectable(
         &self,
-        theOther: &crate::ffi::HandleSelectMgrSelectableObject,
+        theOther: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_is_same_selectable(self as *const Self, theOther)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_is_same_selectable(
+                self as *const Self,
+                theOther,
+            )
         })
     }
 
@@ -4112,7 +4338,9 @@ impl EntityOwner {
     /// Returns TRUE if this owner points to a part of object and FALSE for entire object.
     pub fn comes_from_decomposition(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_comes_from_decomposition(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_comes_from_decomposition(
+                self as *const Self,
+            )
         })
     }
 
@@ -4120,7 +4348,7 @@ impl EntityOwner {
     /// Sets flag indicating this owner points to a part of object (TRUE) or to entire object (FALSE).
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_set_comes_from_decomposition(
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_set_comes_from_decomposition(
                 self as *mut Self,
                 theIsFromDecomposition,
             )
@@ -4131,7 +4359,7 @@ impl EntityOwner {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4139,50 +4367,64 @@ impl EntityOwner {
     }
 
     /// **Source:** `SelectMgr_EntityOwner.hxx`:34 - `SelectMgr_EntityOwner::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_EntityOwner_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_EntityOwner_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrEntityOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_EntityOwner_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4190,7 +4432,7 @@ impl EntityOwner {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_EntityOwner_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4203,62 +4445,72 @@ impl EntityOwner {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_EntityOwner_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_EntityOwner_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrEntityOwner;
+pub use crate::ffi_types::HandleSelectMgrEntityOwner;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrEntityOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrEntityOwner_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrEntityOwner {
     /// Dereference this Handle to access the underlying SelectMgr_EntityOwner
-    pub fn get(&self) -> &crate::ffi::SelectMgr_EntityOwner {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_EntityOwner {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrEntityOwner_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_EntityOwner
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_EntityOwner {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_EntityOwner {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrEntityOwner_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<SelectMgr_EntityOwner> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrEntityOwner_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4270,11 +4522,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `AIS_LightSourceOwner` (or subclass).
     pub fn downcast_to_light_source_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLightSourceOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISLightSourceOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleAISLightSourceOwner(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleAISLightSourceOwner(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4288,11 +4538,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `AIS_ManipulatorOwner` (or subclass).
     pub fn downcast_to_manipulator_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISManipulatorOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISManipulatorOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleAISManipulatorOwner(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleAISManipulatorOwner(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4306,9 +4554,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `AIS_PointCloudOwner` (or subclass).
     pub fn downcast_to_point_cloud_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPointCloudOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISPointCloudOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleAISPointCloudOwner(
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleAISPointCloudOwner(
                 self as *const Self,
             )
         });
@@ -4324,9 +4572,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `AIS_TrihedronOwner` (or subclass).
     pub fn downcast_to_trihedron_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTrihedronOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTrihedronOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleAISTrihedronOwner(
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleAISTrihedronOwner(
                 self as *const Self,
             )
         });
@@ -4342,9 +4590,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `AIS_ViewCubeOwner` (or subclass).
     pub fn downcast_to_view_cube_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCubeOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISViewCubeOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleAISViewCubeOwner(
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleAISViewCubeOwner(
                 self as *const Self,
             )
         });
@@ -4360,11 +4608,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `MeshVS_MeshEntityOwner` (or subclass).
     pub fn downcast_to_mesh_entity_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshEntityOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSMeshEntityOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleMeshVSMeshEntityOwner(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleMeshVSMeshEntityOwner(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4378,9 +4624,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `MeshVS_MeshOwner` (or subclass).
     pub fn downcast_to_mesh_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMeshOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSMeshOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleMeshVSMeshOwner(
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleMeshVSMeshOwner(
                 self as *const Self,
             )
         });
@@ -4396,11 +4642,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `PrsDim_DimensionOwner` (or subclass).
     pub fn downcast_to_dimension_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDimensionOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimDimensionOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandlePrsDimDimensionOwner(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandlePrsDimDimensionOwner(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4414,9 +4658,9 @@ impl HandleSelectMgrEntityOwner {
     /// Returns `None` if the handle does not point to a `StdSelect_BRepOwner` (or subclass).
     pub fn downcast_to_b_rep_owner(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectBRepOwner>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdSelectBRepOwner>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrEntityOwner_downcast_to_HandleStdSelectBRepOwner(
+            crate::ffi_extern_TKV3d::HandleSelectMgrEntityOwner_downcast_to_HandleStdSelectBRepOwner(
                 self as *const Self,
             )
         });
@@ -4442,11 +4686,11 @@ impl HandleSelectMgrEntityOwner {
 /// You can create your own filters by defining new filter
 /// classes inheriting this framework. You use these
 /// filters by loading them into an AIS interactive context.
-pub use crate::ffi::SelectMgr_Filter as Filter;
+pub use crate::ffi_types::SelectMgr_Filter as Filter;
 
 unsafe impl crate::CppDeletable for Filter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_Filter_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_Filter_destructor(ptr);
     }
 }
 
@@ -4466,9 +4710,9 @@ impl Filter {
     /// framework, and the daughter class is to be used in
     /// an AIS local context, you will need to implement the
     /// virtual function ActsOn.
-    pub fn is_ok(&self, anObj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anObj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_is_ok(self as *const Self, anObj)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_is_ok(self as *const Self, anObj)
         })
     }
 
@@ -4479,14 +4723,19 @@ impl Filter {
     /// This function completes IsOk in an AIS local context.
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_acts_on(self as *const Self, aStandardMode.into())
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_acts_on(
+                self as *const Self,
+                aStandardMode.into(),
+            )
         })
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:66 - `SelectMgr_Filter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_Filter_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_Filter_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4494,7 +4743,7 @@ impl Filter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_Filter_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_Filter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4502,14 +4751,16 @@ impl Filter {
     }
 
     /// **Source:** `SelectMgr_Filter.hxx`:66 - `SelectMgr_Filter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_Filter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_Filter_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_Filter_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_Filter_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4518,23 +4769,28 @@ impl Filter {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_Filter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_Filter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4542,7 +4798,7 @@ impl Filter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_Filter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4555,58 +4811,72 @@ impl Filter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Filter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Filter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrFilter;
+pub use crate::ffi_types::HandleSelectMgrFilter;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrFilter_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_Filter
-    pub fn get(&self) -> &crate::ffi::SelectMgr_Filter {
-        unsafe { &*crate::check_result(crate::ffi::HandleSelectMgrFilter_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_Filter {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrFilter_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_Filter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_Filter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrFilter_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrFilter_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<SelectMgr_Filter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrFilter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleSelectMgrFilter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4616,9 +4886,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_AttributeFilter` (or subclass).
     pub fn downcast_to_attribute_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAttributeFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISAttributeFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISAttributeFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISAttributeFilter(
                 self as *const Self,
             )
         });
@@ -4634,9 +4904,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_BadEdgeFilter` (or subclass).
     pub fn downcast_to_bad_edge_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISBadEdgeFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISBadEdgeFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISBadEdgeFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISBadEdgeFilter(
                 self as *const Self,
             )
         });
@@ -4652,9 +4922,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_C0RegularityFilter` (or subclass).
     pub fn downcast_to_c0_regularity_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISC0RegularityFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISC0RegularityFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISC0RegularityFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISC0RegularityFilter(
                 self as *const Self,
             )
         });
@@ -4670,9 +4940,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_ExclusionFilter` (or subclass).
     pub fn downcast_to_exclusion_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISExclusionFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISExclusionFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISExclusionFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISExclusionFilter(
                 self as *const Self,
             )
         });
@@ -4688,9 +4958,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_SignatureFilter` (or subclass).
     pub fn downcast_to_signature_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISSignatureFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISSignatureFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISSignatureFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISSignatureFilter(
                 self as *const Self,
             )
         });
@@ -4706,9 +4976,11 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `AIS_TypeFilter` (or subclass).
     pub fn downcast_to_type_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTypeFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTypeFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleAISTypeFilter(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleAISTypeFilter(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -4722,9 +4994,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_AndFilter` (or subclass).
     pub fn downcast_to_and_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleSelectMgrAndFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleSelectMgrAndFilter(
                 self as *const Self,
             )
         });
@@ -4740,9 +5012,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_AndOrFilter` (or subclass).
     pub fn downcast_to_and_or_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrAndOrFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrAndOrFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleSelectMgrAndOrFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleSelectMgrAndOrFilter(
                 self as *const Self,
             )
         });
@@ -4758,11 +5030,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_CompositionFilter` (or subclass).
     pub fn downcast_to_composition_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrCompositionFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleSelectMgrCompositionFilter(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleSelectMgrCompositionFilter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4776,9 +5046,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `SelectMgr_OrFilter` (or subclass).
     pub fn downcast_to_or_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelectMgrOrFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelectMgrOrFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleSelectMgrOrFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleSelectMgrOrFilter(
                 self as *const Self,
             )
         });
@@ -4794,9 +5064,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `StdSelect_EdgeFilter` (or subclass).
     pub fn downcast_to_edge_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectEdgeFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdSelectEdgeFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleStdSelectEdgeFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleStdSelectEdgeFilter(
                 self as *const Self,
             )
         });
@@ -4812,9 +5082,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `StdSelect_FaceFilter` (or subclass).
     pub fn downcast_to_face_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectFaceFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdSelectFaceFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleStdSelectFaceFilter(
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleStdSelectFaceFilter(
                 self as *const Self,
             )
         });
@@ -4830,11 +5100,9 @@ impl HandleSelectMgrFilter {
     /// Returns `None` if the handle does not point to a `StdSelect_ShapeTypeFilter` (or subclass).
     pub fn downcast_to_shape_type_filter(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdSelectShapeTypeFilter>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdSelectShapeTypeFilter>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrFilter_downcast_to_HandleStdSelectShapeTypeFilter(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrFilter_downcast_to_HandleStdSelectShapeTypeFilter(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4852,11 +5120,11 @@ impl HandleSelectMgrFilter {
 /// The purpose of this class is to provide unified interface for building
 /// selecting frustum depending on current camera projection and orientation
 /// matrices, window size and viewport parameters.
-pub use crate::ffi::SelectMgr_FrustumBuilder as FrustumBuilder;
+pub use crate::ffi_types::SelectMgr_FrustumBuilder as FrustumBuilder;
 
 unsafe impl crate::CppDeletable for FrustumBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_FrustumBuilder_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_destructor(ptr);
     }
 }
 
@@ -4866,16 +5134,16 @@ impl FrustumBuilder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_FrustumBuilder_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_ctor(),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:33 - `SelectMgr_FrustumBuilder::Camera()`
     /// Returns current camera
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_FrustumBuilder_camera(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_camera(
                 self as *const Self,
             )))
         }
@@ -4883,9 +5151,12 @@ impl FrustumBuilder {
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:36 - `SelectMgr_FrustumBuilder::SetCamera()`
     /// Stores current camera
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_set_camera(
+                self as *mut Self,
+                theCamera,
+            )
         })
     }
 
@@ -4893,7 +5164,7 @@ impl FrustumBuilder {
     /// Stores current window width and height
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_set_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_set_window_size(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -4905,7 +5176,7 @@ impl FrustumBuilder {
     /// Stores current viewport coordinates
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_set_viewport(
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_set_viewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -4918,14 +5189,14 @@ impl FrustumBuilder {
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:48 - `SelectMgr_FrustumBuilder::InvalidateViewport()`
     pub fn invalidate_viewport(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_invalidate_viewport(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_invalidate_viewport(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:50 - `SelectMgr_FrustumBuilder::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_window_size(
                 self as *const Self,
                 theWidth,
                 theHeight,
@@ -4938,11 +5209,11 @@ impl FrustumBuilder {
     /// theEq and point thePnt
     pub fn signed_plane_pnt_dist(
         &self,
-        theEq: &crate::ffi::SelectMgr_Vec3,
-        thePnt: &crate::ffi::SelectMgr_Vec3,
+        theEq: &crate::ffi_types::SelectMgr_Vec3,
+        thePnt: &crate::ffi_types::SelectMgr_Vec3,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_signed_plane_pnt_dist(
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_signed_plane_pnt_dist(
                 self as *const Self,
                 theEq,
                 thePnt,
@@ -4962,7 +5233,7 @@ impl FrustumBuilder {
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_FrustumBuilder_project_pnt_on_view_plane(
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_project_pnt_on_view_plane(
                     self as *const Self,
                     theX,
                     theY,
@@ -4973,9 +5244,9 @@ impl FrustumBuilder {
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:64 - `SelectMgr_FrustumBuilder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_FrustumBuilder_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4985,7 +5256,7 @@ impl FrustumBuilder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_FrustumBuilder_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4993,18 +5264,22 @@ impl FrustumBuilder {
     }
 
     /// **Source:** `SelectMgr_FrustumBuilder.hxx`:64 - `SelectMgr_FrustumBuilder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_FrustumBuilder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5012,7 +5287,9 @@ impl FrustumBuilder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_FrustumBuilder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5020,25 +5297,31 @@ impl FrustumBuilder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFrustumBuilder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFrustumBuilder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_FrustumBuilder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5046,7 +5329,9 @@ impl FrustumBuilder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_FrustumBuilder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5059,64 +5344,72 @@ impl FrustumBuilder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_FrustumBuilder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_FrustumBuilder_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrFrustumBuilder;
+pub use crate::ffi_types::HandleSelectMgrFrustumBuilder;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrFrustumBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrFrustumBuilder_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrFrustumBuilder {
     /// Dereference this Handle to access the underlying SelectMgr_FrustumBuilder
-    pub fn get(&self) -> &crate::ffi::SelectMgr_FrustumBuilder {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_FrustumBuilder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrFrustumBuilder_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_FrustumBuilder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_FrustumBuilder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_FrustumBuilder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrFrustumBuilder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_FrustumBuilder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrFrustumBuilder_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrFrustumBuilder_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5131,11 +5424,11 @@ impl HandleSelectMgrFrustumBuilder {
 /// **Source:** `SelectMgr_OrFilter.hxx`:31 - `SelectMgr_OrFilter`
 /// A framework to define an or selection filter.
 /// This selects one or another type of sensitive entity.
-pub use crate::ffi::SelectMgr_OrFilter as OrFilter;
+pub use crate::ffi_types::SelectMgr_OrFilter as OrFilter;
 
 unsafe impl crate::CppDeletable for OrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_OrFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_OrFilter_destructor(ptr);
     }
 }
 
@@ -5144,21 +5437,23 @@ impl OrFilter {
     /// Constructs an empty or selection filter.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::SelectMgr_OrFilter_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:39 - `SelectMgr_OrFilter::IsOk()`
-    pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anobj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_is_ok(self as *const Self, anobj)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_is_ok(self as *const Self, anobj)
         })
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:41 - `SelectMgr_OrFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_OrFilter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_OrFilter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5168,7 +5463,7 @@ impl OrFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_OrFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5176,16 +5471,22 @@ impl OrFilter {
     }
 
     /// **Source:** `SelectMgr_OrFilter.hxx`:41 - `SelectMgr_OrFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_OrFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_CompositionFilter
     pub fn as_composition_filter(&self) -> &CompositionFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5193,7 +5494,7 @@ impl OrFilter {
     pub fn as_composition_filter_mut(&mut self) -> &mut CompositionFilter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_SelectMgr_CompositionFilter_mut(
                     self as *mut Self,
                 ),
             )
@@ -5203,7 +5504,7 @@ impl OrFilter {
     /// Upcast to SelectMgr_Filter
     pub fn as_filter(&self) -> &Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter(
+            &*crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_SelectMgr_Filter(
                 self as *const Self,
             ))
         }
@@ -5212,89 +5513,97 @@ impl OrFilter {
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_filter_mut(&mut self) -> &mut Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_OrFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_OrFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_OrFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrOrFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrOrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_OrFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:34 - `SelectMgr_CompositionFilter::Add()`
-    pub fn add(&mut self, afilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn add(&mut self, afilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_Add(self as *mut Self, afilter)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_Add(self as *mut Self, afilter)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:37 - `SelectMgr_CompositionFilter::Remove()`
-    pub fn remove(&mut self, aFilter: &crate::ffi::HandleSelectMgrFilter) {
+    pub fn remove(&mut self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_Remove(self as *mut Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_Remove(self as *mut Self, aFilter)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:40 - `SelectMgr_CompositionFilter::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:43 - `SelectMgr_CompositionFilter::IsIn()`
-    pub fn is_in(&self, aFilter: &crate::ffi::HandleSelectMgrFilter) -> bool {
+    pub fn is_in(&self, aFilter: &crate::ffi_types::HandleSelectMgrFilter) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_IsIn(self as *const Self, aFilter)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_IsIn(self as *const Self, aFilter)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:46 - `SelectMgr_CompositionFilter::StoredFilters()`
-    pub fn stored_filters(&self) -> &crate::ffi::SelectMgr_ListOfFilter {
+    pub fn stored_filters(&self) -> &crate::ffi_types::SelectMgr_ListOfFilter {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_OrFilter_inherited_StoredFilters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_StoredFilters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:49 - `SelectMgr_CompositionFilter::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_CompositionFilter.hxx`:51 - `SelectMgr_CompositionFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_ActsOn(
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_ActsOn(
                 self as *const Self,
                 aStandardMode.into(),
             )
@@ -5302,16 +5611,22 @@ impl OrFilter {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5319,7 +5634,7 @@ impl OrFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_OrFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5332,52 +5647,58 @@ impl OrFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_OrFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_OrFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrOrFilter;
+pub use crate::ffi_types::HandleSelectMgrOrFilter;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrOrFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrOrFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrOrFilter {
     /// Dereference this Handle to access the underlying SelectMgr_OrFilter
-    pub fn get(&self) -> &crate::ffi::SelectMgr_OrFilter {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_OrFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrOrFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_OrFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_OrFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_OrFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrOrFilter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_get_mut(
                 self as *mut Self,
             ))
         }
@@ -5386,30 +5707,32 @@ impl HandleSelectMgrOrFilter {
     /// Upcast Handle<SelectMgr_OrFilter> to Handle<SelectMgr_CompositionFilter>
     pub fn to_handle_composition_filter(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrCompositionFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrCompositionFilter> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_to_HandleSelectMgrCompositionFilter(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<SelectMgr_OrFilter> to Handle<SelectMgr_Filter>
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrOrFilter_to_HandleSelectMgrCompositionFilter(
+                crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
                 ),
             ))
         }
     }
 
-    /// Upcast Handle<SelectMgr_OrFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrOrFilter_to_HandleSelectMgrFilter(self as *const Self),
-            ))
-        }
-    }
-
     /// Upcast Handle<SelectMgr_OrFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrOrFilter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleSelectMgrOrFilter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5431,11 +5754,11 @@ impl HandleSelectMgrOrFilter {
 /// These 2 projected rectangles define parallel bases of selecting frustum.
 /// Overlap detection tests are implemented according to the terms of separating axis
 /// theorem (SAT).
-pub use crate::ffi::SelectMgr_RectangularFrustum as RectangularFrustum;
+pub use crate::ffi_types::SelectMgr_RectangularFrustum as RectangularFrustum;
 
 unsafe impl crate::CppDeletable for RectangularFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_RectangularFrustum_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_destructor(ptr);
     }
 }
 
@@ -5445,7 +5768,7 @@ impl RectangularFrustum {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_ctor(),
             ))
         }
     }
@@ -5454,7 +5777,10 @@ impl RectangularFrustum {
     /// Initializes volume according to the point and given pixel tolerance
     pub fn init_pnt2d(&mut self, thePoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d(self as *mut Self, thePoint)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_init_pnt2d(
+                self as *mut Self,
+                thePoint,
+            )
         })
     }
 
@@ -5462,7 +5788,7 @@ impl RectangularFrustum {
     /// Initializes volume according to the selected rectangle
     pub fn init_pnt2d2(&mut self, theMinPnt: &crate::gp::Pnt2d, theMaxPnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_init_pnt2d2(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_init_pnt2d2(
                 self as *mut Self,
                 theMinPnt,
                 theMaxPnt,
@@ -5477,10 +5803,10 @@ impl RectangularFrustum {
         theRadius: f64,
         theCenter: &crate::gp::Pnt,
         theTrsf: &crate::gp::Trsf,
-        theVertices: &crate::ffi::TColgp_Array1OfPnt,
+        theVertices: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_is_intersect_circle(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_is_intersect_circle(
                 self as *const Self,
                 theRadius,
                 theCenter,
@@ -5500,7 +5826,7 @@ impl RectangularFrustum {
         thePnt2Seg2: &crate::gp::Pnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_is_segments_intersect(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_is_segments_intersect(
                 self as *const Self,
                 thePnt1Seg1,
                 thePnt2Seg1,
@@ -5515,7 +5841,7 @@ impl RectangularFrustum {
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_build(self as *mut Self)
         })
     }
 
@@ -5524,7 +5850,7 @@ impl RectangularFrustum {
     /// It is true for frustum built on a single point.
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_is_scalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_is_scalable(self as *const Self)
         })
     }
 
@@ -5542,11 +5868,11 @@ impl RectangularFrustum {
         &self,
         theScaleFactor: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_scale_and_transform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
@@ -5565,11 +5891,11 @@ impl RectangularFrustum {
     /// @return a copy of the frustum with the input builder assigned
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -5581,19 +5907,13 @@ impl RectangularFrustum {
     /// SAT intersection test between defined volume and given axis-aligned box
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theBoxMin, theBoxMax, theClipRange, thePickResult)
         })
     }
 
@@ -5602,12 +5922,12 @@ impl RectangularFrustum {
     /// with minimum corner at point theMinPt and maximum at point theMaxPt
     pub unsafe fn overlaps_box_vec32_boolptr(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -5625,12 +5945,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
         })
     }
 
@@ -5638,7 +5953,10 @@ impl RectangularFrustum {
     /// Intersection test between defined volume and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_point_pnt(self as *const Self, thePnt)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_point_pnt(
+                self as *const Self,
+                thePnt,
+            )
         })
     }
 
@@ -5648,13 +5966,13 @@ impl RectangularFrustum {
     /// boundary line defined by segments depending on given sensitivity type
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -5674,7 +5992,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -5698,7 +6016,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -5720,7 +6038,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
         })
     }
 
@@ -5733,7 +6051,7 @@ impl RectangularFrustum {
         theInside: *mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_sphere_pnt_real_boolptr(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -5756,7 +6074,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
         })
     }
 
@@ -5773,15 +6091,7 @@ impl RectangularFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -5799,7 +6109,7 @@ impl RectangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
         })
     }
 
@@ -5816,13 +6126,7 @@ impl RectangularFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theBottomRad, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -5832,7 +6136,7 @@ impl RectangularFrustum {
     /// It makes sense only for frustums built on a single point.
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_dist_to_geometry_center(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_dist_to_geometry_center(
                 self as *const Self,
                 theCOG,
             )
@@ -5845,7 +6149,7 @@ impl RectangularFrustum {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_detected_point(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_detected_point(
                     self as *const Self,
                     theDepth,
                 ),
@@ -5858,7 +6162,9 @@ impl RectangularFrustum {
     pub fn get_vertices(&self) -> Option<&crate::gp::Pnt> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_RectangularFrustum_get_vertices(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_vertices(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5874,9 +6180,11 @@ impl RectangularFrustum {
     /// correspondingly) onto near view frustum plane
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_RectangularFrustum_get_near_pnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_near_pnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5886,9 +6194,11 @@ impl RectangularFrustum {
     /// correspondingly) onto far view frustum plane
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_RectangularFrustum_get_far_pnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_far_pnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5897,7 +6207,7 @@ impl RectangularFrustum {
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_get_view_ray_direction(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_view_ray_direction(
                     self as *const Self,
                 ),
             ))
@@ -5908,9 +6218,11 @@ impl RectangularFrustum {
     /// Returns current mouse coordinates.
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_RectangularFrustum_get_mouse_position(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_mouse_position(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5919,10 +6231,10 @@ impl RectangularFrustum {
     /// Ax + By + Cz + D = 0) to the given vector
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_get_planes(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_get_planes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -5933,11 +6245,11 @@ impl RectangularFrustum {
 /// **Source:** `SelectMgr_RectangularFrustum.hxx`:37 - `SelectMgr_RectangularFrustum_SelectionRectangle`
 /// Auxiliary structure to define selection primitive (point or box)
 /// In case of point selection min and max points are identical.
-pub use crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle as RectangularFrustum_SelectionRectangle;
+pub use crate::ffi_types::SelectMgr_RectangularFrustum_SelectionRectangle as RectangularFrustum_SelectionRectangle;
 
 unsafe impl crate::CppDeletable for RectangularFrustum_SelectionRectangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_destructor(ptr);
     }
 }
 
@@ -5946,7 +6258,7 @@ impl RectangularFrustum_SelectionRectangle {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_ctor(),
             ))
         }
     }
@@ -5955,7 +6267,7 @@ impl RectangularFrustum_SelectionRectangle {
     pub fn mouse_pos(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_mouse_pos(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_mouse_pos(
                     self as *const Self,
                 ),
             ))
@@ -5965,7 +6277,7 @@ impl RectangularFrustum_SelectionRectangle {
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:47 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMousePos()`
     pub fn set_mouse_pos(&mut self, thePos: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_mouse_pos(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_set_mouse_pos(
                 self as *mut Self,
                 thePos,
             )
@@ -5976,7 +6288,7 @@ impl RectangularFrustum_SelectionRectangle {
     pub fn min_pnt(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_min_pnt(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_min_pnt(
                     self as *const Self,
                 ),
             ))
@@ -5986,7 +6298,7 @@ impl RectangularFrustum_SelectionRectangle {
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:55 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMinPnt()`
     pub fn set_min_pnt(&mut self, theMinPnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_min_pnt(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_set_min_pnt(
                 self as *mut Self,
                 theMinPnt,
             )
@@ -5997,7 +6309,7 @@ impl RectangularFrustum_SelectionRectangle {
     pub fn max_pnt(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_max_pnt(
+                crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_max_pnt(
                     self as *const Self,
                 ),
             ))
@@ -6007,7 +6319,7 @@ impl RectangularFrustum_SelectionRectangle {
     /// **Source:** `SelectMgr_RectangularFrustum.hxx`:59 - `SelectMgr_RectangularFrustum_SelectionRectangle::SetMaxPnt()`
     pub fn set_max_pnt(&mut self, theMaxPnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_RectangularFrustum_SelectionRectangle_set_max_pnt(
+            crate::ffi_extern_TKV3d::SelectMgr_RectangularFrustum_SelectionRectangle_set_max_pnt(
                 self as *mut Self,
                 theMaxPnt,
             )
@@ -6037,21 +6349,23 @@ impl RectangularFrustum_SelectionRectangle {
 /// Consider defining an enumeration of supported Selection Mode indexes for particular
 /// Interactive Object or class of Interactive Objects.
 /// - ComputeSelection() computing selectable entities for the given selection mode index.
-pub use crate::ffi::SelectMgr_SelectableObject as SelectableObject;
+pub use crate::ffi_types::SelectMgr_SelectableObject as SelectableObject;
 
 unsafe impl crate::CppDeletable for SelectableObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectableObject_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_destructor(ptr);
     }
 }
 
 impl SelectableObject {
     /// **Source:** `SelectMgr_SelectableObject.hxx`:47 - `SelectMgr_SelectableObject::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6062,11 +6376,11 @@ impl SelectableObject {
     /// @param theMode selection mode to create sensitive primitives
     pub fn compute_selection(
         &mut self,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_compute_selection(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_compute_selection(
                 self as *mut Self,
                 theSelection,
                 theMode,
@@ -6079,7 +6393,9 @@ impl SelectableObject {
     /// dynamic selection. The most used Interactive Object is AIS_Shape.
     pub fn accept_shape_decomposition(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_accept_shape_decomposition(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_accept_shape_decomposition(
+                self as *const Self,
+            )
         })
     }
 
@@ -6090,7 +6406,9 @@ impl SelectableObject {
     /// it refers to. TO UPDATE SELECTION properly from outside classes, use method UpdateSelection.
     pub fn recompute_primitives(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_recompute_primitives(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_recompute_primitives(
+                self as *mut Self,
+            )
         })
     }
 
@@ -6102,7 +6420,7 @@ impl SelectableObject {
     /// outside classes, use method UpdateSelection.
     pub fn recompute_primitives_int(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_recompute_primitives_int(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_recompute_primitives_int(
                 self as *mut Self,
                 theMode,
             )
@@ -6112,9 +6430,13 @@ impl SelectableObject {
     /// **Source:** `SelectMgr_SelectableObject.hxx`:80 - `SelectMgr_SelectableObject::AddSelection()`
     /// Adds the selection aSelection with the selection mode
     /// index aMode to this framework.
-    pub fn add_selection(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection, aMode: i32) {
+    pub fn add_selection(
+        &mut self,
+        aSelection: &crate::ffi_types::HandleSelectMgrSelection,
+        aMode: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_add_selection(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_add_selection(
                 self as *mut Self,
                 aSelection,
                 aMode,
@@ -6131,15 +6453,18 @@ impl SelectableObject {
     /// completely) when some selection mode is activated not for the first time.
     pub fn clear_selections(&mut self, update: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_clear_selections(self as *mut Self, update)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_clear_selections(
+                self as *mut Self,
+                update,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:92 - `SelectMgr_SelectableObject::Selection()`
     /// Returns the selection having specified selection mode or NULL.
-    pub fn selection(&self, theMode: i32) -> &crate::ffi::HandleSelectMgrSelection {
+    pub fn selection(&self, theMode: i32) -> &crate::ffi_types::HandleSelectMgrSelection {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_selection(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_selection(
                 self as *const Self,
                 theMode,
             )))
@@ -6151,15 +6476,18 @@ impl SelectableObject {
     /// object.
     pub fn has_selection(&self, theMode: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_has_selection(self as *const Self, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_has_selection(
+                self as *const Self,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:103 - `SelectMgr_SelectableObject::Selections()`
     /// Return the sequence of selections.
-    pub fn selections(&self) -> &crate::ffi::SelectMgr_SequenceOfSelection {
+    pub fn selections(&self) -> &crate::ffi_types::SelectMgr_SequenceOfSelection {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_selections(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_selections(
                 self as *const Self,
             )))
         }
@@ -6168,7 +6496,9 @@ impl SelectableObject {
     /// **Source:** `SelectMgr_SelectableObject.hxx`:105 - `SelectMgr_SelectableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_reset_transformation(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_reset_transformation(
+                self as *mut Self,
+            )
         })
     }
 
@@ -6176,16 +6506,21 @@ impl SelectableObject {
     /// Recomputes the location of the selection aSelection.
     pub fn update_transformation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_update_transformation(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_update_transformation(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:112 - `SelectMgr_SelectableObject::UpdateTransformations()`
     /// Updates locations in all sensitive entities from <aSelection>
     /// and in corresponding entity owners.
-    pub fn update_transformations(&mut self, aSelection: &crate::ffi::HandleSelectMgrSelection) {
+    pub fn update_transformations(
+        &mut self,
+        aSelection: &crate::ffi_types::HandleSelectMgrSelection,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_update_transformations(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_update_transformations(
                 self as *mut Self,
                 aSelection,
             )
@@ -6196,11 +6531,11 @@ impl SelectableObject {
     /// Method which draws selected owners ( for fast presentation draw )
     pub fn hilight_selected(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
-        theSeq: &crate::ffi::SelectMgr_SequenceOfOwner,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        theSeq: &crate::ffi_types::SelectMgr_SequenceOfOwner,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_hilight_selected(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_hilight_selected(
                 self as *mut Self,
                 thePrsMgr,
                 theSeq,
@@ -6213,7 +6548,7 @@ impl SelectableObject {
     /// to this selectable object ( for fast presentation draw )
     pub fn clear_selected(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_clear_selected(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_clear_selected(self as *mut Self)
         })
     }
 
@@ -6225,10 +6560,10 @@ impl SelectableObject {
     /// manager.
     pub fn clear_dynamic_highlight(
         &mut self,
-        theMgr: &crate::ffi::HandlePrsMgrPresentationManager,
+        theMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_clear_dynamic_highlight(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_clear_dynamic_highlight(
                 self as *mut Self,
                 theMgr,
             )
@@ -6240,12 +6575,12 @@ impl SelectableObject {
     /// this selectable object  ( for fast presentation draw )
     pub fn hilight_owner_with_color(
         &mut self,
-        thePM: &crate::ffi::HandlePrsMgrPresentationManager,
-        theStyle: &crate::ffi::HandlePrs3dDrawer,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        thePM: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        theStyle: &crate::ffi_types::HandlePrs3dDrawer,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_hilight_owner_with_color(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_hilight_owner_with_color(
                 self as *mut Self,
                 thePM,
                 theStyle,
@@ -6260,7 +6595,7 @@ impl SelectableObject {
     /// for highlighting selected entity owners belonging to this selectable object.
     pub fn is_auto_hilight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_is_auto_hilight(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_is_auto_hilight(self as *const Self)
         })
     }
 
@@ -6268,7 +6603,7 @@ impl SelectableObject {
     /// Set AutoHilight property to true or false.
     pub fn set_auto_hilight(&mut self, theAutoHilight: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_set_auto_hilight(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_set_auto_hilight(
                 self as *mut Self,
                 theAutoHilight,
             )
@@ -6281,11 +6616,11 @@ impl SelectableObject {
     /// @return existing or newly created presentation (when thePrsMgr is not NULL)
     pub fn get_hilight_presentation(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_get_hilight_presentation(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_get_hilight_presentation(
                     self as *mut Self,
                     thePrsMgr,
                 ),
@@ -6299,11 +6634,11 @@ impl SelectableObject {
     /// @return existing or newly created presentation (when thePrsMgr is not NULL)
     pub fn get_select_presentation(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dStructure> {
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dStructure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_get_select_presentation(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_get_select_presentation(
                     self as *mut Self,
                     thePrsMgr,
                 ),
@@ -6315,7 +6650,7 @@ impl SelectableObject {
     /// Removes presentations returned by GetHilightPresentation() and GetSelectPresentation().
     pub fn erase_presentations(&mut self, theToRemove: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_erase_presentations(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_erase_presentations(
                 self as *mut Self,
                 theToRemove,
             )
@@ -6328,7 +6663,10 @@ impl SelectableObject {
     /// layers.
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_set_z_layer(self as *mut Self, theLayerId)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_set_z_layer(
+                self as *mut Self,
+                theLayerId,
+            )
         })
     }
 
@@ -6337,7 +6675,10 @@ impl SelectableObject {
     /// UpdateSelection from outer classes to prevent BVH structures from being outdated.
     pub fn update_selection(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_update_selection(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_update_selection(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
@@ -6345,11 +6686,11 @@ impl SelectableObject {
     /// Sets common entity owner for assembly sensitive object entities
     pub fn set_assembly_owner(
         &mut self,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_set_assembly_owner(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_set_assembly_owner(
                 self as *mut Self,
                 theOwner,
                 theMode,
@@ -6361,27 +6702,35 @@ impl SelectableObject {
     /// Returns the mode for selection of object as a whole; 0 by default.
     pub fn global_selection_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_global_selection_mode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_global_selection_mode(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:184 - `SelectMgr_SelectableObject::GlobalSelOwner()`
     /// Returns the owner of mode for selection of object as a whole
-    pub fn global_sel_owner(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+    pub fn global_sel_owner(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrEntityOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_global_sel_owner(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_global_sel_owner(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:187 - `SelectMgr_SelectableObject::GetAssemblyOwner()`
     /// Returns common entity owner if the object is an assembly
-    pub fn get_assembly_owner(&self) -> &crate::ffi::HandleSelectMgrEntityOwner {
+    pub fn get_assembly_owner(&self) -> &crate::ffi_types::HandleSelectMgrEntityOwner {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_get_assembly_owner(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_get_assembly_owner(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6389,7 +6738,7 @@ impl SelectableObject {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6397,9 +6746,11 @@ impl SelectableObject {
     }
 
     /// **Source:** `SelectMgr_SelectableObject.hxx`:47 - `SelectMgr_SelectableObject::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_get_type_descriptor(),
+            ))
         }
     }
 
@@ -6407,7 +6758,7 @@ impl SelectableObject {
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
         unsafe {
             &*crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject(
                     self as *const Self,
                 ),
             )
@@ -6418,7 +6769,7 @@ impl SelectableObject {
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_as_PrsMgr_PresentableObject_mut(
                     self as *mut Self,
                 ),
             )
@@ -6428,9 +6779,11 @@ impl SelectableObject {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6438,16 +6791,20 @@ impl SelectableObject {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
-    pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
+    pub fn presentations(&mut self) -> &mut crate::ffi_types::PrsMgr_Presentations {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_Presentations(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Presentations(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -6455,21 +6812,25 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
     pub fn z_layer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_ZLayer(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_ZLayer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
     pub fn is_mutable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsMutable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IsMutable(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetMutable(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetMutable(
                 self as *mut Self,
                 theIsMutable,
             )
@@ -6477,32 +6838,38 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
-    pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
+    pub fn view_affinity(&self) -> &crate::ffi_types::HandleGraphic3dViewAffinity {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_inherited_ViewAffinity(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_ViewAffinity(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
     pub fn has_display_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasDisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasDisplayMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_DisplayMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetDisplayMode(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetDisplayMode(
                 self as *mut Self,
                 theMode,
             )
@@ -6512,28 +6879,34 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetDisplayMode(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetDisplayMode(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
     pub fn has_hilight_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasHilightMode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasHilightMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
     pub fn hilight_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HilightMode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HilightMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightMode(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetHilightMode(
                 self as *mut Self,
                 theMode,
             )
@@ -6543,14 +6916,16 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightMode(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetHilightMode(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:149 - `PrsMgr_PresentableObject::AcceptDisplayMode()`
     pub fn accept_display_mode(&self, theMode: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AcceptDisplayMode(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_AcceptDisplayMode(
                 self as *const Self,
                 theMode,
             )
@@ -6560,14 +6935,16 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
     pub fn default_display_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DefaultDisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_DefaultDisplayMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
     pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_ToBeUpdated(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_ToBeUpdated(
                 self as *const Self,
                 theToIncludeHidden,
             )
@@ -6577,21 +6954,26 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetToUpdate(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetToUpdate(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsInfinite(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IsInfinite(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetInfiniteState(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetInfiniteState(
                 self as *mut Self,
                 theFlag,
             )
@@ -6601,7 +6983,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
     pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
         crate::prs_mgr::TypeOfPresentation3d::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_TypeOfPresentation3d(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_TypeOfPresentation3d(
                 self as *const Self,
             )
         }))
@@ -6611,7 +6993,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTypeOfPresentation(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetTypeOfPresentation(
                 self as *mut Self,
                 theType.into(),
             )
@@ -6621,24 +7003,28 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
     pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
         crate::prs_mgr::DisplayStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DisplayStatus(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_DisplayStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:191 - `PrsMgr_PresentableObject::Attributes()`
-    pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_inherited_Attributes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Attributes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
-    pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_attributes(&mut self, theDrawer: &crate::ffi_types::HandlePrs3dDrawer) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetAttributes(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetAttributes(
                 self as *mut Self,
                 theDrawer,
             )
@@ -6646,10 +7032,10 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
-    pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn hilight_attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_HilightAttributes(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HilightAttributes(
                     self as *const Self,
                 ),
             ))
@@ -6657,9 +7043,9 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
-    pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi_types::HandlePrs3dDrawer) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetHilightAttributes(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetHilightAttributes(
                 self as *mut Self,
                 theDrawer,
             )
@@ -6667,30 +7053,26 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:212 - `PrsMgr_PresentableObject::DynamicHilightAttributes()`
-    pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn dynamic_hilight_attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_DynamicHilightAttributes(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_DynamicHilightAttributes(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
-    pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_dynamic_hilight_attributes(
+        &mut self,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetDynamicHilightAttributes(
-                self as *mut Self,
-                theDrawer,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetDynamicHilightAttributes(self as *mut Self, theDrawer)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetHilightAttributes(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetHilightAttributes(
                 self as *mut Self,
             )
         })
@@ -6699,15 +7081,17 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SynchronizeAspects(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SynchronizeAspects(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_TransformPersistence(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_TransformPersistence(
                     self as *const Self,
                 ),
             ))
@@ -6717,10 +7101,10 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:246 - `PrsMgr_PresentableObject::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -6728,20 +7112,16 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:252 - `PrsMgr_PresentableObject::LocalTransformationGeom()`
-    pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn local_transformation_geom(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformationGeom(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_LocalTransformationGeom(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetLocalTransformation(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetLocalTransformation(
                 self as *mut Self,
                 theTrsf,
             )
@@ -6751,15 +7131,17 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
     pub fn has_transformation(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasTransformation(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasTransformation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
-    pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn transformation_geom(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_TransformationGeom(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_TransformationGeom(
                     self as *const Self,
                 ),
             ))
@@ -6770,7 +7152,7 @@ impl SelectableObject {
     pub fn local_transformation(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_LocalTransformation(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_LocalTransformation(
                     self as *const Self,
                 ),
             ))
@@ -6781,7 +7163,7 @@ impl SelectableObject {
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_Transformation(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Transformation(
                     self as *const Self,
                 ),
             ))
@@ -6791,29 +7173,24 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
     pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_InversedTransformation(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_InversedTransformation(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
-    pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn combined_parent_transformation(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObject_inherited_CombinedParentTransformation(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_CombinedParentTransformation(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
-    pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn recompute_transformation(
+        &mut self,
+        theProjector: &crate::ffi_types::HandleGraphic3dCamera,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RecomputeTransformation(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_RecomputeTransformation(
                 self as *mut Self,
                 theProjector,
             )
@@ -6821,18 +7198,23 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:324 - `PrsMgr_PresentableObject::ClipPlanes()`
-    pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
+    pub fn clip_planes(&self) -> &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_inherited_ClipPlanes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_ClipPlanes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
-    pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
+    pub fn set_clip_planes(
+        &mut self,
+        thePlanes: &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetClipPlanes(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetClipPlanes(
                 self as *mut Self,
                 thePlanes,
             )
@@ -6840,9 +7222,9 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
-    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddClipPlane(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_AddClipPlane(
                 self as *mut Self,
                 thePlane,
             )
@@ -6850,9 +7232,9 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
-    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveClipPlane(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_RemoveClipPlane(
                 self as *mut Self,
                 thePlane,
             )
@@ -6863,7 +7245,9 @@ impl SelectableObject {
     pub fn parent(&self) -> Option<&crate::prs_mgr::PresentableObject> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SelectableObject_inherited_Parent(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Parent(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6874,38 +7258,40 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
-    pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
+    pub fn children(&self) -> &crate::ffi_types::PrsMgr_ListOfPresentableObjects {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObject_inherited_Children(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Children(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
-    pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+    pub fn add_child(&mut self, theObject: &crate::ffi_types::HandlePrsMgrPresentableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddChild(self as *mut Self, theObject)
-        })
-    }
-
-    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
-    pub fn add_child_with_current_transformation(
-        &mut self,
-        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_AddChildWithCurrentTransformation(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_AddChild(
                 self as *mut Self,
                 theObject,
             )
         })
     }
 
-    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
-    pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
+    pub fn add_child_with_current_transformation(
+        &mut self,
+        theObject: &crate::ffi_types::HandlePrsMgrPresentableObject,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChild(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_AddChildWithCurrentTransformation(self as *mut Self, theObject)
+        })
+    }
+
+    /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
+    pub fn remove_child(&mut self, theObject: &crate::ffi_types::HandlePrsMgrPresentableObject) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_RemoveChild(
                 self as *mut Self,
                 theObject,
             )
@@ -6915,20 +7301,17 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:370 - `PrsMgr_PresentableObject::RemoveChildWithRestoreTransformation()`
     pub fn remove_child_with_restore_transformation(
         &mut self,
-        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
+        theObject: &crate::ffi_types::HandlePrsMgrPresentableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_RemoveChildWithRestoreTransformation(
-                self as *mut Self,
-                theObject,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_RemoveChildWithRestoreTransformation(self as *mut Self, theObject)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
     pub fn has_own_presentations(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasOwnPresentations(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasOwnPresentations(
                 self as *const Self,
             )
         })
@@ -6937,7 +7320,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_BoundingBox(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_BoundingBox(
                 self as *mut Self,
                 theBndBox,
             )
@@ -6947,7 +7330,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetIsoOnTriangulation(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetIsoOnTriangulation(
                 self as *mut Self,
                 theIsEnabled,
             )
@@ -6957,7 +7340,9 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
     pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
         crate::aspect::TypeOfFacingModel::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_CurrentFacingModel(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_CurrentFacingModel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6965,7 +7350,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetCurrentFacingModel(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetCurrentFacingModel(
                 self as *mut Self,
                 theModel.into(),
             )
@@ -6975,70 +7360,91 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasColor(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Color(self as *const Self, theColor)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Color(
+                self as *const Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetColor(
+                self as *mut Self,
+                theColor,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
     pub fn unset_color(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetColor(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetColor(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
     pub fn has_width(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasWidth(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasWidth(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
     pub fn width(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Width(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Width(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetWidth(self as *mut Self, theWidth)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetWidth(
+                self as *mut Self,
+                theWidth,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     pub fn unset_width(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetWidth(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetWidth(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasMaterial(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasMaterial(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:513 - `PrsMgr_PresentableObject::Material()`
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
         crate::graphic3d::NameOfMaterial::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Material(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Material(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -7046,35 +7452,44 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:519 - `PrsMgr_PresentableObject::SetMaterial()`
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetMaterial(self as *mut Self, aName)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetMaterial(
+                self as *mut Self,
+                aName,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     pub fn unset_material(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetMaterial(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetMaterial(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
     pub fn is_transparent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsTransparent(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IsTransparent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:530 - `PrsMgr_PresentableObject::Transparency()`
     pub fn transparency(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Transparency(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Transparency(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
     pub fn set_transparency(&mut self, aValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetTransparency(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetTransparency(
                 self as *mut Self,
                 aValue,
             )
@@ -7084,21 +7499,25 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetTransparency(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetTransparency(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
     pub fn has_polygon_offsets(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_HasPolygonOffsets(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_HasPolygonOffsets(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_PolygonOffsets(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_PolygonOffsets(
                 self as *const Self,
                 aMode,
                 aFactor,
@@ -7110,7 +7529,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetPolygonOffsets(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetPolygonOffsets(
                 self as *mut Self,
                 aMode,
                 aFactor,
@@ -7122,14 +7541,16 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_UnsetAttributes(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_UnsetAttributes(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
     pub fn to_propagate_visual_state(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_ToPropagateVisualState(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_ToPropagateVisualState(
                 self as *const Self,
             )
         })
@@ -7138,7 +7559,7 @@ impl SelectableObject {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_SetPropagateVisualState(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_SetPropagateVisualState(
                 self as *mut Self,
                 theFlag,
             )
@@ -7146,9 +7567,9 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -7156,9 +7577,12 @@ impl SelectableObject {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7166,7 +7590,9 @@ impl SelectableObject {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SelectableObject_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7179,77 +7605,83 @@ impl SelectableObject {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObject_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObject_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSelectableObject;
+pub use crate::ffi_types::HandleSelectMgrSelectableObject;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSelectableObject {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSelectableObject_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSelectableObject {
     /// Dereference this Handle to access the underlying SelectMgr_SelectableObject
-    pub fn get(&self) -> &crate::ffi::SelectMgr_SelectableObject {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectableObject {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSelectableObject_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectableObject
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectableObject {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_SelectableObject {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSelectableObject_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectableObject> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePrsMgrPresentableObject> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSelectableObject_to_HandlePrsMgrPresentableObject(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_to_HandlePrsMgrPresentableObject(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectableObject> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSelectableObject_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7259,9 +7691,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Axis>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Axis` (or subclass).
-    pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISAxis>> {
+    pub fn downcast_to_axis(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISAxis>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISAxis(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISAxis(
                 self as *const Self,
             )
         });
@@ -7277,11 +7709,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_CameraFrustum` (or subclass).
     pub fn downcast_to_camera_frustum(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISCameraFrustum>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISCameraFrustum>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISCameraFrustum(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISCameraFrustum(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7293,9 +7723,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Circle>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Circle` (or subclass).
-    pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISCircle>> {
+    pub fn downcast_to_circle(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISCircle>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISCircle(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISCircle(
                 self as *const Self,
             )
         });
@@ -7311,9 +7741,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_ColorScale` (or subclass).
     pub fn downcast_to_color_scale(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColorScale>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISColorScale>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISColorScale(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISColorScale(
                 self as *const Self,
             )
         });
@@ -7329,11 +7759,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_ColoredShape` (or subclass).
     pub fn downcast_to_colored_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISColoredShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISColoredShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISColoredShape(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISColoredShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7347,11 +7775,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_ConnectedInteractive` (or subclass).
     pub fn downcast_to_connected_interactive(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISConnectedInteractive>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISConnectedInteractive>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISConnectedInteractive(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISConnectedInteractive(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7365,11 +7791,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_InteractiveObject` (or subclass).
     pub fn downcast_to_interactive_object(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISInteractiveObject>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISInteractiveObject>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISInteractiveObject(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISInteractiveObject(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7383,11 +7807,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_LightSource` (or subclass).
     pub fn downcast_to_light_source(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLightSource>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISLightSource>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISLightSource(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISLightSource(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7399,9 +7821,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Line>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Line` (or subclass).
-    pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISLine>> {
+    pub fn downcast_to_line(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISLine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISLine(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISLine(
                 self as *const Self,
             )
         });
@@ -7417,11 +7839,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_Manipulator` (or subclass).
     pub fn downcast_to_manipulator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISManipulator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISManipulator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISManipulator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISManipulator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7435,11 +7855,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_MediaPlayer` (or subclass).
     pub fn downcast_to_media_player(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISMediaPlayer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISMediaPlayer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISMediaPlayer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISMediaPlayer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7453,9 +7871,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_MultipleConnectedInteractive` (or subclass).
     pub fn downcast_to_multiple_connected_interactive(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISMultipleConnectedInteractive>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISMultipleConnectedInteractive>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISMultipleConnectedInteractive(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISMultipleConnectedInteractive(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7467,9 +7885,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Plane>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Plane` (or subclass).
-    pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPlane>> {
+    pub fn downcast_to_plane(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISPlane>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISPlane(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISPlane(
                 self as *const Self,
             )
         });
@@ -7485,11 +7903,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_PlaneTrihedron` (or subclass).
     pub fn downcast_to_plane_trihedron(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPlaneTrihedron>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISPlaneTrihedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISPlaneTrihedron(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISPlaneTrihedron(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7501,9 +7917,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Point>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Point` (or subclass).
-    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPoint>> {
+    pub fn downcast_to_point(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISPoint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISPoint(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISPoint(
                 self as *const Self,
             )
         });
@@ -7519,9 +7935,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_PointCloud` (or subclass).
     pub fn downcast_to_point_cloud(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISPointCloud>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISPointCloud>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISPointCloud(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISPointCloud(
                 self as *const Self,
             )
         });
@@ -7537,9 +7953,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_RubberBand` (or subclass).
     pub fn downcast_to_rubber_band(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISRubberBand>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISRubberBand>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISRubberBand(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISRubberBand(
                 self as *const Self,
             )
         });
@@ -7553,9 +7969,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Shape>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Shape` (or subclass).
-    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISShape>> {
+    pub fn downcast_to_shape(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISShape(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISShape(
                 self as *const Self,
             )
         });
@@ -7571,9 +7987,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_TextLabel` (or subclass).
     pub fn downcast_to_text_label(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTextLabel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTextLabel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISTextLabel(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISTextLabel(
                 self as *const Self,
             )
         });
@@ -7589,11 +8005,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_TexturedShape` (or subclass).
     pub fn downcast_to_textured_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTexturedShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTexturedShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISTexturedShape(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISTexturedShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7607,11 +8021,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_Triangulation` (or subclass).
     pub fn downcast_to_triangulation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTriangulation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTriangulation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISTriangulation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISTriangulation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7623,9 +8035,11 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_Trihedron>
     ///
     /// Returns `None` if the handle does not point to a `AIS_Trihedron` (or subclass).
-    pub fn downcast_to_trihedron(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISTrihedron>> {
+    pub fn downcast_to_trihedron(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISTrihedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISTrihedron(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISTrihedron(
                 self as *const Self,
             )
         });
@@ -7639,9 +8053,11 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<AIS_ViewCube>
     ///
     /// Returns `None` if the handle does not point to a `AIS_ViewCube` (or subclass).
-    pub fn downcast_to_view_cube(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleAISViewCube>> {
+    pub fn downcast_to_view_cube(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISViewCube>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISViewCube(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISViewCube(
                 self as *const Self,
             )
         });
@@ -7657,11 +8073,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `AIS_XRTrackedDevice` (or subclass).
     pub fn downcast_to_xr_tracked_device(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAISXRTrackedDevice>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAISXRTrackedDevice>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleAISXRTrackedDevice(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleAISXRTrackedDevice(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7673,9 +8087,9 @@ impl HandleSelectMgrSelectableObject {
     /// Downcast Handle<SelectMgr_SelectableObject> to Handle<MeshVS_Mesh>
     ///
     /// Returns `None` if the handle does not point to a `MeshVS_Mesh` (or subclass).
-    pub fn downcast_to_mesh(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleMeshVSMesh>> {
+    pub fn downcast_to_mesh(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleMeshVSMesh>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleMeshVSMesh(
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleMeshVSMesh(
                 self as *const Self,
             )
         });
@@ -7691,11 +8105,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_AngleDimension` (or subclass).
     pub fn downcast_to_angle_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimAngleDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimAngleDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimAngleDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimAngleDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7709,11 +8121,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_Chamf2dDimension` (or subclass).
     pub fn downcast_to_chamf2d_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimChamf2dDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimChamf2dDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimChamf2dDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimChamf2dDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7727,11 +8137,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_Chamf3dDimension` (or subclass).
     pub fn downcast_to_chamf3d_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimChamf3dDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimChamf3dDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimChamf3dDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimChamf3dDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7745,11 +8153,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_ConcentricRelation` (or subclass).
     pub fn downcast_to_concentric_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimConcentricRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimConcentricRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimConcentricRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimConcentricRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7763,11 +8169,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_DiameterDimension` (or subclass).
     pub fn downcast_to_diameter_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDiameterDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimDiameterDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimDiameterDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimDiameterDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7781,11 +8185,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_Dimension` (or subclass).
     pub fn downcast_to_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7799,9 +8201,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_EllipseRadiusDimension` (or subclass).
     pub fn downcast_to_ellipse_radius_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEllipseRadiusDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimEllipseRadiusDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEllipseRadiusDimension(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEllipseRadiusDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7815,9 +8217,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_EqualDistanceRelation` (or subclass).
     pub fn downcast_to_equal_distance_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEqualDistanceRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimEqualDistanceRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEqualDistanceRelation(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEqualDistanceRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7831,11 +8233,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_EqualRadiusRelation` (or subclass).
     pub fn downcast_to_equal_radius_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimEqualRadiusRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimEqualRadiusRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEqualRadiusRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimEqualRadiusRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7849,11 +8249,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_FixRelation` (or subclass).
     pub fn downcast_to_fix_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimFixRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimFixRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimFixRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimFixRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7867,11 +8265,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_IdenticRelation` (or subclass).
     pub fn downcast_to_identic_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimIdenticRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimIdenticRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimIdenticRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimIdenticRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7885,11 +8281,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_LengthDimension` (or subclass).
     pub fn downcast_to_length_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimLengthDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimLengthDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimLengthDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimLengthDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7903,11 +8297,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_MaxRadiusDimension` (or subclass).
     pub fn downcast_to_max_radius_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMaxRadiusDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimMaxRadiusDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMaxRadiusDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMaxRadiusDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7921,11 +8313,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_MidPointRelation` (or subclass).
     pub fn downcast_to_mid_point_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMidPointRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimMidPointRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMidPointRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMidPointRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7939,11 +8329,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_MinRadiusDimension` (or subclass).
     pub fn downcast_to_min_radius_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimMinRadiusDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimMinRadiusDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMinRadiusDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimMinRadiusDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7957,11 +8345,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_OffsetDimension` (or subclass).
     pub fn downcast_to_offset_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimOffsetDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimOffsetDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimOffsetDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimOffsetDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7975,11 +8361,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_ParallelRelation` (or subclass).
     pub fn downcast_to_parallel_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimParallelRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimParallelRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimParallelRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimParallelRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7993,9 +8377,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_PerpendicularRelation` (or subclass).
     pub fn downcast_to_perpendicular_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimPerpendicularRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimPerpendicularRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimPerpendicularRelation(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimPerpendicularRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8009,11 +8393,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_RadiusDimension` (or subclass).
     pub fn downcast_to_radius_dimension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimRadiusDimension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimRadiusDimension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimRadiusDimension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimRadiusDimension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8027,11 +8409,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_Relation` (or subclass).
     pub fn downcast_to_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8045,11 +8425,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_SymmetricRelation` (or subclass).
     pub fn downcast_to_symmetric_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimSymmetricRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimSymmetricRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimSymmetricRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimSymmetricRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8063,11 +8441,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `PrsDim_TangentRelation` (or subclass).
     pub fn downcast_to_tangent_relation(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePrsDimTangentRelation>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePrsDimTangentRelation>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimTangentRelation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandlePrsDimTangentRelation(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8081,11 +8457,9 @@ impl HandleSelectMgrSelectableObject {
     /// Returns `None` if the handle does not point to a `XCAFPrs_AISObject` (or subclass).
     pub fn downcast_to_ais_object(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFPrsAISObject>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXCAFPrsAISObject>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSelectMgrSelectableObject_downcast_to_HandleXCAFPrsAISObject(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKV3d::HandleSelectMgrSelectableObject_downcast_to_HandleXCAFPrsAISObject(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8114,11 +8488,11 @@ impl HandleSelectMgrSelectableObject {
 /// depends only on camera's projection and the corresponding BVH tree needs to be updated when
 /// camera's projection parameters change, while another tree for non-persistent objects can be left
 /// unchanged in this case.
-pub use crate::ffi::SelectMgr_SelectableObjectSet as SelectableObjectSet;
+pub use crate::ffi_types::SelectMgr_SelectableObjectSet as SelectableObjectSet;
 
 unsafe impl crate::CppDeletable for SelectableObjectSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectableObjectSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_destructor(ptr);
     }
 }
 
@@ -8128,7 +8502,7 @@ impl SelectableObjectSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObjectSet_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_ctor(),
             ))
         }
     }
@@ -8139,9 +8513,15 @@ impl SelectableObjectSet {
     /// marks the corresponding BVH tree for rebuild.
     /// @return true if selectable object is added, otherwise returns false (selectable object is
     /// already in the set).
-    pub fn append(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
+    pub fn append(
+        &mut self,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_append(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_append(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
@@ -8151,9 +8531,15 @@ impl SelectableObjectSet {
     /// BVH tree for rebuild.
     /// @return true if selectable object is removed, otherwise returns false (selectable object is
     /// not in the set).
-    pub fn remove(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
+    pub fn remove(
+        &mut self,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_remove(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_remove(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
@@ -8161,9 +8547,12 @@ impl SelectableObjectSet {
     /// Performs necessary updates when object's persistence types changes.
     /// This method should be called right after changing transformation persistence flags of the
     /// objects and before updating BVH tree - to provide up-to-date state of the object set.
-    pub fn change_subset(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) {
+    pub fn change_subset(&mut self, theObject: &crate::ffi_types::HandleSelectMgrSelectableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_change_subset(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_change_subset(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
@@ -8172,11 +8561,11 @@ impl SelectableObjectSet {
     /// camera view-projection matrices and viewport (window) dimensions.
     pub fn update_bvh(
         &mut self,
-        theCam: &crate::ffi::HandleGraphic3dCamera,
-        theWinSize: &crate::ffi::Graphic3d_Vec2i,
+        theCam: &crate::ffi_types::HandleGraphic3dCamera,
+        theWinSize: &crate::ffi_types::Graphic3d_Vec2i,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_update_bvh(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_update_bvh(
                 self as *mut Self,
                 theCam,
                 theWinSize,
@@ -8188,15 +8577,18 @@ impl SelectableObjectSet {
     /// Marks every BVH subset for update.
     pub fn mark_dirty(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_mark_dirty(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_mark_dirty(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:155 - `SelectMgr_SelectableObjectSet::Contains()`
     /// Returns true if this objects set contains theObject given.
-    pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
+    pub fn contains(&self, theObject: &crate::ffi_types::HandleSelectMgrSelectableObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_contains(self as *const Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_contains(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
@@ -8204,7 +8596,7 @@ impl SelectableObjectSet {
     /// Returns true if the object set does not contain any selectable objects.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_is_empty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_is_empty(self as *const Self)
         })
     }
 
@@ -8212,10 +8604,10 @@ impl SelectableObjectSet {
     /// Returns true if the specified object subset is empty.
     pub fn is_empty_bvhsubset(
         &self,
-        theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
+        theSubset: &crate::ffi_types::SelectMgr_SelectableObjectSet_BVHSubset,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_is_empty_bvhsubset(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_is_empty_bvhsubset(
                 self as *const Self,
                 theSubset,
             )
@@ -8227,15 +8619,17 @@ impl SelectableObjectSet {
     /// object referred by the index of an element of the subset's BVH tree.
     pub fn get_object_by_id(
         &self,
-        theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
+        theSubset: &crate::ffi_types::SelectMgr_SelectableObjectSet_BVHSubset,
         theIndex: i32,
-    ) -> &crate::ffi::HandleSelectMgrSelectableObject {
+    ) -> &crate::ffi_types::HandleSelectMgrSelectableObject {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObjectSet_get_object_by_id(
-                self as *const Self,
-                theSubset,
-                theIndex,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_get_object_by_id(
+                    self as *const Self,
+                    theSubset,
+                    theIndex,
+                ),
+            ))
         }
     }
 
@@ -8243,10 +8637,10 @@ impl SelectableObjectSet {
     /// Returns computed BVH for the theSubset given.
     pub fn bvh(
         &self,
-        theSubset: &crate::ffi::SelectMgr_SelectableObjectSet_BVHSubset,
-    ) -> &crate::ffi::HandleBVHTreedouble3 {
+        theSubset: &crate::ffi_types::SelectMgr_SelectableObjectSet_BVHSubset,
+    ) -> &crate::ffi_types::HandleBVHTreedouble3 {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObjectSet_bvh(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_bvh(
                 self as *const Self,
                 theSubset,
             )))
@@ -8256,11 +8650,11 @@ impl SelectableObjectSet {
 
 /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:68 - `SelectMgr_SelectableObjectSet_Iterator`
 /// Class to iterate sequentually over all objects from every subset.
-pub use crate::ffi::SelectMgr_SelectableObjectSet_Iterator as SelectableObjectSet_Iterator;
+pub use crate::ffi_types::SelectMgr_SelectableObjectSet_Iterator as SelectableObjectSet_Iterator;
 
 unsafe impl crate::CppDeletable for SelectableObjectSet_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectableObjectSet_Iterator_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_destructor(ptr);
     }
 }
 
@@ -8270,7 +8664,7 @@ impl SelectableObjectSet_Iterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_ctor(),
             ))
         }
     }
@@ -8279,9 +8673,7 @@ impl SelectableObjectSet_Iterator {
     /// Constructs and initializes the iterator.
     pub fn new_selectableobjectset(theSet: &SelectableObjectSet) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectableObjectSet_Iterator_ctor_selectableobjectset(theSet),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_ctor_selectableobjectset(theSet)))
         }
     }
 
@@ -8289,7 +8681,10 @@ impl SelectableObjectSet_Iterator {
     /// Initializes the iterator.
     pub fn init(&mut self, theSet: &SelectableObjectSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_Iterator_init(self as *mut Self, theSet)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_init(
+                self as *mut Self,
+                theSet,
+            )
         })
     }
 
@@ -8297,7 +8692,7 @@ impl SelectableObjectSet_Iterator {
     /// Returns false when there is no more objects to iterate over.
     pub fn more(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_Iterator_more(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_more(self as *mut Self)
         })
     }
 
@@ -8305,17 +8700,19 @@ impl SelectableObjectSet_Iterator {
     /// Steps to next selectable object in the set.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectableObjectSet_Iterator_next(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_next(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_SelectableObjectSet.hxx`:112 - `SelectMgr_SelectableObjectSet_Iterator::Value()`
     /// Returns current object.
-    pub fn value(&self) -> &crate::ffi::HandleSelectMgrSelectableObject {
+    pub fn value(&self) -> &crate::ffi_types::HandleSelectMgrSelectableObject {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectableObjectSet_Iterator_value(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectableObjectSet_Iterator_value(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -8335,11 +8732,11 @@ impl SelectableObjectSet_Iterator {
 /// aMgr.SetWindowSize (aWidth, aHeight);
 /// aMgr.BuildSelectingVolume();
 /// @endcode
-pub use crate::ffi::SelectMgr_SelectingVolumeManager as SelectingVolumeManager;
+pub use crate::ffi_types::SelectMgr_SelectingVolumeManager as SelectingVolumeManager;
 
 unsafe impl crate::CppDeletable for SelectingVolumeManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectingVolumeManager_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_destructor(ptr);
     }
 }
 
@@ -8349,7 +8746,7 @@ impl SelectingVolumeManager {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_ctor(),
             ))
         }
     }
@@ -8358,7 +8755,7 @@ impl SelectingVolumeManager {
     /// Creates, initializes and activates rectangular selecting frustum for point selection
     pub fn init_point_selecting_volume(&mut self, thePoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_point_selecting_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_init_point_selecting_volume(
                 self as *mut Self,
                 thePoint,
             )
@@ -8373,7 +8770,7 @@ impl SelectingVolumeManager {
         theMaxPt: &crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_box_selecting_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_init_box_selecting_volume(
                 self as *mut Self,
                 theMinPt,
                 theMaxPt,
@@ -8383,9 +8780,12 @@ impl SelectingVolumeManager {
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:50 - `SelectMgr_SelectingVolumeManager::InitPolylineSelectingVolume()`
     /// Creates, initializes and activates set of triangular selecting frustums for polyline selection
-    pub fn init_polyline_selecting_volume(&mut self, thePoints: &crate::ffi::TColgp_Array1OfPnt2d) {
+    pub fn init_polyline_selecting_volume(
+        &mut self,
+        thePoints: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_polyline_selecting_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_init_polyline_selecting_volume(
                 self as *mut Self,
                 thePoints,
             )
@@ -8396,7 +8796,7 @@ impl SelectingVolumeManager {
     /// Creates and activates axis selector for point selection
     pub fn init_axis_selecting_volume(&mut self, theAxis: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_axis_selecting_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_init_axis_selecting_volume(
                 self as *mut Self,
                 theAxis,
             )
@@ -8407,10 +8807,10 @@ impl SelectingVolumeManager {
     /// Sets as active the custom selecting volume
     pub fn init_selecting_volume(
         &mut self,
-        theVolume: &crate::ffi::HandleSelectMgrBaseIntersector,
+        theVolume: &crate::ffi_types::HandleSelectMgrBaseIntersector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_init_selecting_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_init_selecting_volume(
                 self as *mut Self,
                 theVolume,
             )
@@ -8421,25 +8821,29 @@ impl SelectingVolumeManager {
     /// Builds previously initialized selecting volume.
     pub fn build_selecting_volume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_build_selecting_volume(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_build_selecting_volume(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:63 - `SelectMgr_SelectingVolumeManager::ActiveVolume()`
     /// Returns active selecting volume that was built during last
     /// run of OCCT selection mechanism
-    pub fn active_volume(&self) -> &crate::ffi::HandleSelectMgrBaseIntersector {
+    pub fn active_volume(&self) -> &crate::ffi_types::HandleSelectMgrBaseIntersector {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_active_volume(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_active_volume(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:66 - `SelectMgr_SelectingVolumeManager::GetActiveSelectionType()`
     pub fn get_active_selection_type(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_get_active_selection_type(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_active_selection_type(
                 self as *const Self,
             )
         })
@@ -8460,11 +8864,11 @@ impl SelectingVolumeManager {
         &self,
         theScaleFactor: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<SelectingVolumeManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_scale_and_transform(
                     self as *const Self,
                     theScaleFactor,
                     theTrsf,
@@ -8480,11 +8884,11 @@ impl SelectingVolumeManager {
     /// re-constructing transformed frustum from scratch.
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
     ) -> crate::OwnedPtr<SelectingVolumeManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -8494,11 +8898,13 @@ impl SelectingVolumeManager {
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:91 - `SelectMgr_SelectingVolumeManager::Camera()`
     /// Returns current camera definition.
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_camera(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_camera(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8506,9 +8912,12 @@ impl SelectingVolumeManager {
     /// Updates camera projection and orientation matrices in all selecting volumes
     /// Note: this method should be called after selection volume building
     /// else exception will be thrown
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_camera(self as *mut Self, theCamera)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_camera(
+                self as *mut Self,
+                theCamera,
+            )
         })
     }
 
@@ -8518,7 +8927,7 @@ impl SelectingVolumeManager {
     /// else exception will be thrown
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_viewport(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_viewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -8534,7 +8943,7 @@ impl SelectingVolumeManager {
     /// else exception will be thrown
     pub fn set_pixel_tolerance(&mut self, theTolerance: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_pixel_tolerance(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_pixel_tolerance(
                 self as *mut Self,
                 theTolerance,
             )
@@ -8545,7 +8954,7 @@ impl SelectingVolumeManager {
     /// Returns window size
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_window_size(
                 self as *const Self,
                 theWidth,
                 theHeight,
@@ -8559,7 +8968,7 @@ impl SelectingVolumeManager {
     /// else exception will be thrown
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_window_size(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_window_size(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -8571,12 +8980,12 @@ impl SelectingVolumeManager {
     /// SAT intersection test between defined volume and given axis-aligned box
     pub fn overlaps_box_vec32_pickresult(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_pickresult(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_pickresult(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -8590,12 +8999,12 @@ impl SelectingVolumeManager {
     /// with minimum corner at point theMinPt and maximum at point theMaxPt
     pub fn overlaps_box_vec32_boolptr(
         &self,
-        theBoxMin: &crate::ffi::SelectMgr_Vec3,
-        theBoxMax: &crate::ffi::SelectMgr_Vec3,
+        theBoxMin: &crate::ffi_types::SelectMgr_Vec3,
+        theBoxMax: &crate::ffi_types::SelectMgr_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -8612,7 +9021,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt_pickresult(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_point_pnt_pickresult(
                 self as *const Self,
                 thePnt,
                 thePickResult,
@@ -8624,7 +9033,7 @@ impl SelectingVolumeManager {
     /// Intersection test between defined volume and given point
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_point_pnt(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_point_pnt(
                 self as *const Self,
                 thePnt,
             )
@@ -8637,12 +9046,12 @@ impl SelectingVolumeManager {
     /// boundary line defined by segments depending on given sensitivity type
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: i32,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPts,
                 theSensType,
@@ -8660,7 +9069,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -8682,7 +9091,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -8702,12 +9111,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(self as *const Self, theCenter, theRadius, thePickResult)
         })
     }
 
@@ -8720,12 +9124,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(self as *const Self, theCenter, theRadius, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -8742,7 +9141,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
         })
     }
 
@@ -8759,15 +9158,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -8784,13 +9175,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, thePickResult)
         })
     }
 
@@ -8807,13 +9192,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theBottomRad, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -8822,7 +9201,7 @@ impl SelectingVolumeManager {
     /// screen point and given point theCOG
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_dist_to_geometry_center(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_dist_to_geometry_center(
                 self as *const Self,
                 theCOG,
             )
@@ -8835,7 +9214,7 @@ impl SelectingVolumeManager {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_detected_point(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_detected_point(
                     self as *const Self,
                     theDepth,
                 ),
@@ -8848,7 +9227,7 @@ impl SelectingVolumeManager {
     /// algorithm will mark both included and overlapped entities as matched
     pub fn allow_overlap_detection(&mut self, theIsToAllow: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_allow_overlap_detection(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_allow_overlap_detection(
                 self as *mut Self,
                 theIsToAllow,
             )
@@ -8858,27 +9237,33 @@ impl SelectingVolumeManager {
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:232 - `SelectMgr_SelectingVolumeManager::IsOverlapAllowed()`
     pub fn is_overlap_allowed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_is_overlap_allowed(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_is_overlap_allowed(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:235 - `SelectMgr_SelectingVolumeManager::ViewClipping()`
     /// Return view clipping planes.
-    pub fn view_clipping(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
+    pub fn view_clipping(&self) -> &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_view_clipping(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_view_clipping(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_SelectingVolumeManager.hxx`:238 - `SelectMgr_SelectingVolumeManager::ObjectClipping()`
     /// Return object clipping planes.
-    pub fn object_clipping(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
+    pub fn object_clipping(&self) -> &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_object_clipping(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_object_clipping(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8890,12 +9275,12 @@ impl SelectingVolumeManager {
     /// @param[in] theWorldSelMgr  selection volume in world space for computing clipping plane ranges
     pub fn set_view_clipping_handlegraphic3dsequenceofhclipplane2_selectingvolumemanagerptr(
         &mut self,
-        theViewPlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane,
-        theObjPlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane,
+        theViewPlanes: &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane,
+        theObjPlanes: &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane,
         theWorldSelMgr: &SelectingVolumeManager,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_handlegraphic3dsequenceofhclipplane2_selectingvolumemanagerptr(self as *mut Self, theViewPlanes, theObjPlanes, theWorldSelMgr as *const _)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_view_clipping_handlegraphic3dsequenceofhclipplane2_selectingvolumemanagerptr(self as *mut Self, theViewPlanes, theObjPlanes, theWorldSelMgr as *const _)
         })
     }
 
@@ -8903,10 +9288,7 @@ impl SelectingVolumeManager {
     /// Copy clipping planes from another volume manager.
     pub fn set_view_clipping_selectingvolumemanager(&mut self, theOther: &SelectingVolumeManager) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clipping_selectingvolumemanager(
-                self as *mut Self,
-                theOther,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_view_clipping_selectingvolumemanager(self as *mut Self, theOther)
         })
     }
 
@@ -8914,9 +9296,11 @@ impl SelectingVolumeManager {
     /// Return clipping range.
     pub fn view_clip_ranges(&self) -> &ViewClipRange {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_view_clip_ranges(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_view_clip_ranges(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8924,7 +9308,7 @@ impl SelectingVolumeManager {
     /// Set clipping range.
     pub fn set_view_clip_ranges(&mut self, theRange: &ViewClipRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_set_view_clip_ranges(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_set_view_clip_ranges(
                 self as *mut Self,
                 theRange,
             )
@@ -8936,7 +9320,9 @@ impl SelectingVolumeManager {
     pub fn get_vertices(&self) -> Option<&crate::gp::Pnt> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_vertices(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_vertices(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8954,7 +9340,7 @@ impl SelectingVolumeManager {
     pub fn get_near_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_near_picked_pnt(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_near_picked_pnt(
                     self as *const Self,
                 ),
             ))
@@ -8969,7 +9355,7 @@ impl SelectingVolumeManager {
     pub fn get_far_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_far_picked_pnt(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_far_picked_pnt(
                     self as *const Self,
                 ),
             ))
@@ -8982,7 +9368,7 @@ impl SelectingVolumeManager {
     pub fn get_view_ray_direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_view_ray_direction(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_view_ray_direction(
                     self as *const Self,
                 ),
             ))
@@ -8993,7 +9379,7 @@ impl SelectingVolumeManager {
     /// Checks if it is possible to scale current active selecting volume
     pub fn is_scalable_active_volume(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_is_scalable_active_volume(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_is_scalable_active_volume(
                 self as *const Self,
             )
         })
@@ -9006,7 +9392,7 @@ impl SelectingVolumeManager {
     pub fn get_mouse_position(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_get_mouse_position(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_mouse_position(
                     self as *const Self,
                 ),
             ))
@@ -9018,10 +9404,10 @@ impl SelectingVolumeManager {
     /// Ax + By + Cz + D = 0) to the given vector
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectingVolumeManager_get_planes(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_get_planes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -9033,11 +9419,7 @@ impl SelectingVolumeManager {
         &self,
     ) -> &crate::select_basics::SelectingVolumeManager {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager(self as *const Self))
         }
     }
 
@@ -9046,7 +9428,7 @@ impl SelectingVolumeManager {
         &mut self,
     ) -> &mut crate::select_basics::SelectingVolumeManager {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectingVolumeManager_as_SelectBasics_SelectingVolumeManager_mut(self as *mut Self))
         }
     }
 }
@@ -9091,11 +9473,11 @@ impl SelectingVolumeManager {
 /// -   mode 4 : selection of the faces
 /// -   mode 5 : selection of the shells
 /// -   mode 6 :   selection of the constituent solids.
-pub use crate::ffi::SelectMgr_Selection as Selection;
+pub use crate::ffi_types::SelectMgr_Selection as Selection;
 
 unsafe impl crate::CppDeletable for Selection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_Selection_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_Selection_destructor(ptr);
     }
 }
 
@@ -9106,7 +9488,7 @@ impl Selection {
     pub fn new_int(theModeIdx: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_Selection_ctor_int(theModeIdx),
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_ctor_int(theModeIdx),
             ))
         }
     }
@@ -9119,9 +9501,9 @@ impl Selection {
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:64 - `SelectMgr_Selection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_Selection_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_Selection_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -9130,16 +9512,16 @@ impl Selection {
     /// **Source:** `SelectMgr_Selection.hxx`:72 - `SelectMgr_Selection::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_destroy(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_destroy(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:76 - `SelectMgr_Selection::Add()`
     /// Adds the sensitive primitive to the list of stored entities in this object.
     /// Raises NullObject if the primitive is a null handle.
-    pub fn add(&mut self, theSensitive: &crate::ffi::HandleSelect3DSensitiveEntity) {
+    pub fn add(&mut self, theSensitive: &crate::ffi_types::HandleSelect3DSensitiveEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_add(self as *mut Self, theSensitive)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_add(self as *mut Self, theSensitive)
         })
     }
 
@@ -9147,7 +9529,7 @@ impl Selection {
     /// empties the selection from all the stored entities
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_clear(self as *mut Self)
         })
     }
 
@@ -9155,23 +9537,27 @@ impl Selection {
     /// returns true if no sensitive entity is stored.
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_is_empty(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_is_empty(self as *const Self)
         })
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:85 - `SelectMgr_Selection::Mode()`
     /// returns the selection mode represented by this selection
     pub fn mode(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::SelectMgr_Selection_mode(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_mode(self as *const Self)
+        })
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:88 - `SelectMgr_Selection::Entities()`
     /// Return entities.
     pub fn entities(
         &self,
-    ) -> &crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
+    ) -> &crate::ffi_types::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_Selection_entities(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_Selection_entities(
+                self as *const Self,
+            )))
         }
     }
 
@@ -9179,11 +9565,12 @@ impl Selection {
     /// Return entities.
     pub fn change_entities(
         &mut self,
-    ) -> &mut crate::ffi::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity {
+    ) -> &mut crate::ffi_types::NCollection_Vector_opencascade_handle_SelectMgr_SensitiveEntity
+    {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::SelectMgr_Selection_change_entities(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_change_entities(self as *mut Self),
+            ))
         }
     }
 
@@ -9196,7 +9583,7 @@ impl Selection {
     /// -   none.
     pub fn update_status(&self) -> crate::select_mgr::TypeOfUpdate {
         crate::select_mgr::TypeOfUpdate::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_update_status(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_update_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -9204,7 +9591,7 @@ impl Selection {
     /// **Source:** `SelectMgr_Selection.hxx`:104 - `SelectMgr_Selection::UpdateStatus()`
     pub fn update_status_typeofupdate(&mut self, theStatus: crate::select_mgr::TypeOfUpdate) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_update_status_typeofupdate(
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_update_status_typeofupdate(
                 self as *mut Self,
                 theStatus.into(),
             )
@@ -9214,14 +9601,17 @@ impl Selection {
     /// **Source:** `SelectMgr_Selection.hxx`:106 - `SelectMgr_Selection::UpdateBVHStatus()`
     pub fn update_bvh_status(&mut self, theStatus: crate::select_mgr::TypeOfBVHUpdate) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_update_bvh_status(self as *mut Self, theStatus.into())
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_update_bvh_status(
+                self as *mut Self,
+                theStatus.into(),
+            )
         })
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:108 - `SelectMgr_Selection::BVHUpdateStatus()`
     pub fn bvh_update_status(&self) -> crate::select_mgr::TypeOfBVHUpdate {
         crate::select_mgr::TypeOfBVHUpdate::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_bvh_update_status(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_bvh_update_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -9230,7 +9620,7 @@ impl Selection {
     /// Returns status of selection
     pub fn get_selection_state(&self) -> crate::select_mgr::StateOfSelection {
         crate::select_mgr::StateOfSelection::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_get_selection_state(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_get_selection_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -9239,7 +9629,7 @@ impl Selection {
     /// Sets status of selection
     pub fn set_selection_state(&self, theState: crate::select_mgr::StateOfSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_set_selection_state(
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_set_selection_state(
                 self as *const Self,
                 theState.into(),
             )
@@ -9250,7 +9640,7 @@ impl Selection {
     /// Returns sensitivity of the selection
     pub fn sensitivity(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_sensitivity(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_sensitivity(self as *const Self)
         })
     }
 
@@ -9260,7 +9650,10 @@ impl Selection {
     /// proper updates use SelectMgr_SelectionManager::SetSelectionSensitivity method.
     pub fn set_sensitivity(&mut self, theNewSens: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_set_sensitivity(self as *mut Self, theNewSens)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_set_sensitivity(
+                self as *mut Self,
+                theNewSens,
+            )
         })
     }
 
@@ -9268,7 +9661,7 @@ impl Selection {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_Selection_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9276,50 +9669,64 @@ impl Selection {
     }
 
     /// **Source:** `SelectMgr_Selection.hxx`:64 - `SelectMgr_Selection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::SelectMgr_Selection_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_Selection_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::SelectMgr_Selection_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSelection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_Selection_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9327,7 +9734,7 @@ impl Selection {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_Selection_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9340,62 +9747,70 @@ impl Selection {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_Selection_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_Selection_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSelection;
+pub use crate::ffi_types::HandleSelectMgrSelection;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSelection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSelection_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSelection_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSelection {
     /// Dereference this Handle to access the underlying SelectMgr_Selection
-    pub fn get(&self) -> &crate::ffi::SelectMgr_Selection {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_Selection {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSelection_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelection_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_Selection
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_Selection {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_Selection {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSelection_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelection_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<SelectMgr_Selection> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSelection_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelection_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -9410,11 +9825,11 @@ impl HandleSelectMgrSelection {
 /// **Source:** `SelectMgr_SelectionImageFiller.hxx`:26 - `SelectMgr_SelectionImageFiller`
 /// Abstract class for filling pixel with color.
 /// This is internal tool for SelectMgr_ViewerSelector::ToPixMap().
-pub use crate::ffi::SelectMgr_SelectionImageFiller as SelectionImageFiller;
+pub use crate::ffi_types::SelectMgr_SelectionImageFiller as SelectionImageFiller;
 
 unsafe impl crate::CppDeletable for SelectionImageFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectionImageFiller_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_destructor(ptr);
     }
 }
 
@@ -9423,7 +9838,7 @@ impl SelectionImageFiller {
     /// Fill pixel at specified position.
     pub fn fill(&mut self, theCol: i32, theRow: i32, thePicked: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_fill(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_fill(
                 self as *mut Self,
                 theCol,
                 theRow,
@@ -9436,7 +9851,7 @@ impl SelectionImageFiller {
     /// Flush results into final image.
     pub fn flush(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_flush(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_flush(self as *mut Self)
         })
     }
 
@@ -9446,10 +9861,10 @@ impl SelectionImageFiller {
         thePixMap: &mut crate::image::PixMap,
         theSelector: &mut ViewerSelector,
         theType: crate::std_select::TypeOfSelectionImage,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionImageFiller> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSelectionImageFiller> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectionImageFiller_create_filler(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_create_filler(
                     thePixMap,
                     theSelector as *mut _,
                     theType.into(),
@@ -9461,9 +9876,11 @@ impl SelectionImageFiller {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9471,7 +9888,7 @@ impl SelectionImageFiller {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_SelectionImageFiller_as_Standard_Transient_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -9479,10 +9896,10 @@ impl SelectionImageFiller {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_SelectionImageFiller_inherited_DynamicType(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_DynamicType(
                     self as *const Self,
                 ),
             ))
@@ -9490,9 +9907,9 @@ impl SelectionImageFiller {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9500,9 +9917,9 @@ impl SelectionImageFiller {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IsKind(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -9513,7 +9930,9 @@ impl SelectionImageFiller {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SelectionImageFiller_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9526,14 +9945,16 @@ impl SelectionImageFiller {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9542,7 +9963,7 @@ impl SelectionImageFiller {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9551,46 +9972,48 @@ impl SelectionImageFiller {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionImageFiller_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionImageFiller_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSelectionImageFiller;
+pub use crate::ffi_types::HandleSelectMgrSelectionImageFiller;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSelectionImageFiller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSelectionImageFiller_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSelectionImageFiller {
     /// Dereference this Handle to access the underlying SelectMgr_SelectionImageFiller
-    pub fn get(&self) -> &crate::ffi::SelectMgr_SelectionImageFiller {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectionImageFiller {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSelectionImageFiller_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectionImageFiller
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectionImageFiller {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_SelectionImageFiller {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSelectionImageFiller_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectionImageFiller> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSelectionImageFiller_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectionImageFiller_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9603,11 +10026,11 @@ impl HandleSelectMgrSelectionImageFiller {
 /// A framework to manage selection from the point of view of viewer selectors.
 /// These can be added and removed, and selection modes can be activated and deactivated.
 /// In addition, objects may be known to all selectors or only to some.
-pub use crate::ffi::SelectMgr_SelectionManager as SelectionManager;
+pub use crate::ffi_types::SelectMgr_SelectionManager as SelectionManager;
 
 unsafe impl crate::CppDeletable for SelectionManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SelectionManager_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_destructor(ptr);
     }
 }
 
@@ -9615,31 +10038,29 @@ impl SelectionManager {
     /// **Source:** `SelectMgr_SelectionManager.hxx`:33 - `SelectMgr_SelectionManager::SelectMgr_SelectionManager()`
     /// Constructs an empty selection manager object.
     pub fn new_handleselectmgrviewerselector(
-        theSelector: &crate::ffi::HandleSelectMgrViewerSelector,
+        theSelector: &crate::ffi_types::HandleSelectMgrViewerSelector,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectionManager_ctor_handleselectmgrviewerselector(
-                    theSelector,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_ctor_handleselectmgrviewerselector(theSelector)))
+        }
+    }
+
+    /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_dynamic_type(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectionManager_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `SelectMgr_SelectionManager.hxx`:36 - `SelectMgr_SelectionManager::Selector()`
     /// Return the Selector.
-    pub fn selector(&self) -> &crate::ffi::HandleSelectMgrViewerSelector {
+    pub fn selector(&self) -> &crate::ffi_types::HandleSelectMgrViewerSelector {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectionManager_selector(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_selector(
                 self as *const Self,
             )))
         }
@@ -9647,9 +10068,12 @@ impl SelectionManager {
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:40 - `SelectMgr_SelectionManager::Contains()`
     /// Returns true if the manager contains the selectable object theObject.
-    pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
+    pub fn contains(&self, theObject: &crate::ffi_types::HandleSelectMgrSelectableObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_contains(self as *const Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_contains(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
@@ -9657,18 +10081,26 @@ impl SelectionManager {
     /// Loads and computes selection mode theMode (if it is not equal to -1) in global context and
     /// adds selectable object to BVH tree. If the object theObject has an already calculated
     /// selection with mode theMode and it was removed, the selection will be recalculated.
-    pub fn load(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject, theMode: i32) {
+    pub fn load(
+        &mut self,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+        theMode: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_load(self as *mut Self, theObject, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_load(
+                self as *mut Self,
+                theObject,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:50 - `SelectMgr_SelectionManager::Remove()`
     /// Removes selectable object theObject from all viewer selectors it was added to previously,
     /// removes it from all contexts and clears all computed selections of theObject.
-    pub fn remove(&mut self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) {
+    pub fn remove(&mut self, theObject: &crate::ffi_types::HandleSelectMgrSelectableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_remove(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_remove(self as *mut Self, theObject)
         })
     }
 
@@ -9678,11 +10110,15 @@ impl SelectionManager {
     /// selection with the mode theMode will be activated in all the viewers available.
     pub fn activate(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_activate(self as *mut Self, theObject, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_activate(
+                self as *mut Self,
+                theObject,
+                theMode,
+            )
         })
     }
 
@@ -9692,11 +10128,15 @@ impl SelectionManager {
     /// default (NULL), theMode will be deactivated in all viewer selectors.
     pub fn deactivate(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_deactivate(self as *mut Self, theObject, theMode)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_deactivate(
+                self as *mut Self,
+                theObject,
+                theMode,
+            )
         })
     }
 
@@ -9706,11 +10146,11 @@ impl SelectionManager {
     /// active selection in any known viewer selector for object theObject.
     pub fn is_activated(
         &self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_is_activated(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_is_activated(
                 self as *const Self,
                 theObject,
                 theMode,
@@ -9724,11 +10164,11 @@ impl SelectionManager {
     /// or it was recomputed somehow.
     pub fn clear_selection_structures(
         &mut self,
-        theObj: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObj: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_clear_selection_structures(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_clear_selection_structures(
                 self as *mut Self,
                 theObj,
                 theMode,
@@ -9741,11 +10181,11 @@ impl SelectionManager {
     /// defined by mode theMode to all viewer selectors contained that selection.
     pub fn restore_selection_structures(
         &mut self,
-        theObj: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObj: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_restore_selection_structures(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_restore_selection_structures(
                 self as *mut Self,
                 theObj,
                 theMode,
@@ -9760,12 +10200,12 @@ impl SelectionManager {
     /// will be recomputed regardless of its activation status.
     pub fn recompute_selection(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theIsForce: bool,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_recompute_selection(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_recompute_selection(
                 self as *mut Self,
                 theObject,
                 theIsForce,
@@ -9779,11 +10219,15 @@ impl SelectionManager {
     /// status. If theIsForce is set to true, the call is equal to recomputation.
     pub fn update(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theIsForce: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_update(self as *mut Self, theObject, theIsForce)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_update(
+                self as *mut Self,
+                theObject,
+                theIsForce,
+            )
         })
     }
 
@@ -9791,11 +10235,11 @@ impl SelectionManager {
     /// Sets type of update of all selections of theObject to the given theType.
     pub fn set_update_mode_handleselectmgrselectableobject_typeofupdate(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theType: crate::select_mgr::TypeOfUpdate,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_typeofupdate(self as *mut Self, theObject, theType.into())
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_typeofupdate(self as *mut Self, theObject, theType.into())
         })
     }
 
@@ -9803,12 +10247,12 @@ impl SelectionManager {
     /// Sets type of update of selection with theMode of theObject to the given theType.
     pub fn set_update_mode_handleselectmgrselectableobject_int_typeofupdate(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
         theType: crate::select_mgr::TypeOfUpdate,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_int_typeofupdate(self as *mut Self, theObject, theMode, theType.into())
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_set_update_mode_handleselectmgrselectableobject_int_typeofupdate(self as *mut Self, theObject, theMode, theType.into())
         })
     }
 
@@ -9818,12 +10262,12 @@ impl SelectionManager {
     /// to the given theNewSensitivity.
     pub fn set_selection_sensitivity(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
         theNewSens: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_set_selection_sensitivity(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_set_selection_sensitivity(
                 self as *mut Self,
                 theObject,
                 theMode,
@@ -9834,9 +10278,12 @@ impl SelectionManager {
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:111 - `SelectMgr_SelectionManager::UpdateSelection()`
     /// Re-adds selectable object in BVHs in all viewer selectors.
-    pub fn update_selection(&mut self, theObj: &crate::ffi::HandleSelectMgrSelectableObject) {
+    pub fn update_selection(&mut self, theObj: &crate::ffi_types::HandleSelectMgrSelectableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_update_selection(self as *mut Self, theObj)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_update_selection(
+                self as *mut Self,
+                theObj,
+            )
         })
     }
 
@@ -9844,7 +10291,7 @@ impl SelectionManager {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_SelectionManager_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9852,18 +10299,22 @@ impl SelectionManager {
     }
 
     /// **Source:** `SelectMgr_SelectionManager.hxx`:30 - `SelectMgr_SelectionManager::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SelectionManager_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9871,7 +10322,9 @@ impl SelectionManager {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_SelectionManager_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9879,18 +10332,18 @@ impl SelectionManager {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectionManager> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSelectionManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SelectionManager_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9898,9 +10351,12 @@ impl SelectionManager {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9908,7 +10364,9 @@ impl SelectionManager {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SelectionManager_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9921,64 +10379,74 @@ impl SelectionManager {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SelectionManager_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SelectionManager_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSelectionManager;
+pub use crate::ffi_types::HandleSelectMgrSelectionManager;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSelectionManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSelectionManager_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSelectionManager {
     /// Dereference this Handle to access the underlying SelectMgr_SelectionManager
-    pub fn get(&self) -> &crate::ffi::SelectMgr_SelectionManager {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_SelectionManager {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSelectionManager_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SelectionManager
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SelectionManager {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_SelectionManager {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSelectionManager_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_SelectionManager> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSelectionManager_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSelectionManager_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -9993,11 +10461,11 @@ impl HandleSelectMgrSelectionManager {
 /// **Source:** `SelectMgr_SensitiveEntity.hxx`:25 - `SelectMgr_SensitiveEntity`
 /// The purpose of this class is to mark sensitive entities selectable or not
 /// depending on current active selection of parent object for proper BVH traverse
-pub use crate::ffi::SelectMgr_SensitiveEntity as SensitiveEntity;
+pub use crate::ffi_types::SelectMgr_SensitiveEntity as SensitiveEntity;
 
 unsafe impl crate::CppDeletable for SensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SensitiveEntity_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_destructor(ptr);
     }
 }
 
@@ -10005,12 +10473,10 @@ impl SensitiveEntity {
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:29 - `SelectMgr_SensitiveEntity::SelectMgr_SensitiveEntity()`
     /// Creates new inactive for selection object with base entity theEntity
     pub fn new_handleselect3dsensitiveentity(
-        theEntity: &crate::ffi::HandleSelect3DSensitiveEntity,
+        theEntity: &crate::ffi_types::HandleSelect3DSensitiveEntity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntity_ctor_handleselect3dsensitiveentity(theEntity),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_ctor_handleselect3dsensitiveentity(theEntity)))
         }
     }
 
@@ -10018,17 +10484,19 @@ impl SensitiveEntity {
     /// Clears up all resources and memory
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:37 - `SelectMgr_SensitiveEntity::BaseSensitive()`
     /// Returns related instance of SelectBasics class
-    pub fn base_sensitive(&self) -> &crate::ffi::HandleSelect3DSensitiveEntity {
+    pub fn base_sensitive(&self) -> &crate::ffi_types::HandleSelect3DSensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntity_base_sensitive(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_base_sensitive(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10037,7 +10505,9 @@ impl SensitiveEntity {
     /// mode of parent object
     pub fn is_active_for_selection(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_is_active_for_selection(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_is_active_for_selection(
+                self as *const Self,
+            )
         })
     }
 
@@ -10045,7 +10515,9 @@ impl SensitiveEntity {
     /// Marks entity as inactive for selection
     pub fn reset_selection_active_status(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_reset_selection_active_status(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_reset_selection_active_status(
+                self as *const Self,
+            )
         })
     }
 
@@ -10053,16 +10525,20 @@ impl SensitiveEntity {
     /// Marks entity as active for selection
     pub fn set_active_for_selection(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_set_active_for_selection(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_set_active_for_selection(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:53 - `SelectMgr_SensitiveEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10070,7 +10546,7 @@ impl SensitiveEntity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntity_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10078,18 +10554,22 @@ impl SensitiveEntity {
     }
 
     /// **Source:** `SelectMgr_SensitiveEntity.hxx`:53 - `SelectMgr_SensitiveEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntity_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10097,7 +10577,9 @@ impl SensitiveEntity {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntity_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10105,25 +10587,31 @@ impl SensitiveEntity {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSensitiveEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSensitiveEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10131,7 +10619,9 @@ impl SensitiveEntity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_SensitiveEntity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10144,64 +10634,72 @@ impl SensitiveEntity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntity_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSensitiveEntity;
+pub use crate::ffi_types::HandleSelectMgrSensitiveEntity;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSensitiveEntity_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSensitiveEntity {
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntity
-    pub fn get(&self) -> &crate::ffi::SelectMgr_SensitiveEntity {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_SensitiveEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSensitiveEntity_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SensitiveEntity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SensitiveEntity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_SensitiveEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSensitiveEntity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_SensitiveEntity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrSensitiveEntity_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntity_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -10217,11 +10715,11 @@ impl HandleSelectMgrSensitiveEntity {
 /// This class is used to store all calculated sensitive entities of one selectable object.
 /// It provides an interface for building BVH tree which is used to speed-up
 /// the performance of searching for overlap among sensitives of one selectable object
-pub use crate::ffi::SelectMgr_SensitiveEntitySet as SensitiveEntitySet;
+pub use crate::ffi_types::SelectMgr_SensitiveEntitySet as SensitiveEntitySet;
 
 unsafe impl crate::CppDeletable for SensitiveEntitySet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SensitiveEntitySet_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_destructor(ptr);
     }
 }
 
@@ -10229,21 +10727,25 @@ impl SensitiveEntitySet {
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:36 - `SelectMgr_SensitiveEntitySet::SelectMgr_SensitiveEntitySet()`
     /// Empty constructor.
     pub fn new_handlebvhbuilderdouble3(
-        theBuilder: &crate::ffi::HandleBVHBuilderdouble3,
+        theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntitySet_ctor_handlebvhbuilderdouble3(theBuilder),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_ctor_handlebvhbuilderdouble3(
+                    theBuilder,
+                ),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntitySet_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10251,13 +10753,10 @@ impl SensitiveEntitySet {
     /// Adds new entity to the set and marks BVH tree for rebuild
     pub fn append_handleselectmgrsensitiveentity(
         &mut self,
-        theEntity: &crate::ffi::HandleSelectMgrSensitiveEntity,
+        theEntity: &crate::ffi_types::HandleSelectMgrSensitiveEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrsensitiveentity(
-                self as *mut Self,
-                theEntity,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_append_handleselectmgrsensitiveentity(self as *mut Self, theEntity)
         })
     }
 
@@ -10266,10 +10765,10 @@ impl SensitiveEntitySet {
     /// BVH tree for rebuild
     pub fn append_handleselectmgrselection(
         &mut self,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_append_handleselectmgrselection(
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_append_handleselectmgrselection(
                 self as *mut Self,
                 theSelection,
             )
@@ -10279,18 +10778,24 @@ impl SensitiveEntitySet {
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:49 - `SelectMgr_SensitiveEntitySet::Remove()`
     /// Removes every entity of selection theSelection from the set
     /// and marks BVH tree for rebuild
-    pub fn remove(&mut self, theSelection: &crate::ffi::HandleSelectMgrSelection) {
+    pub fn remove(&mut self, theSelection: &crate::ffi_types::HandleSelectMgrSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_remove(self as *mut Self, theSelection)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_remove(
+                self as *mut Self,
+                theSelection,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:52 - `SelectMgr_SensitiveEntitySet::Box()`
     /// Returns bounding box of entity with index theIdx
-    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi::Select3D_BndBox3d> {
+    pub fn box_(&self, theIndex: i32) -> crate::OwnedPtr<crate::ffi_types::Select3D_BndBox3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntitySet_box_(self as *const Self, theIndex),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_box_(
+                    self as *const Self,
+                    theIndex,
+                ),
             ))
         }
     }
@@ -10300,7 +10805,11 @@ impl SensitiveEntitySet {
     /// along the given axis theAxis
     pub fn center(&self, theIndex: i32, theAxis: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_center(self as *const Self, theIndex, theAxis)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_center(
+                self as *const Self,
+                theIndex,
+                theAxis,
+            )
         })
     }
 
@@ -10308,7 +10817,11 @@ impl SensitiveEntitySet {
     /// Swaps items with indexes theIdx1 and theIdx2
     pub fn swap(&mut self, theIndex1: i32, theIndex2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_swap(self as *mut Self, theIndex1, theIndex2)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_swap(
+                self as *mut Self,
+                theIndex1,
+                theIndex2,
+            )
         })
     }
 
@@ -10316,7 +10829,7 @@ impl SensitiveEntitySet {
     /// Returns the amount of entities
     pub fn size(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_size(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_size(self as *const Self)
         })
     }
 
@@ -10325,30 +10838,34 @@ impl SensitiveEntitySet {
     pub fn get_sensitive_by_id(
         &self,
         theIndex: i32,
-    ) -> &crate::ffi::HandleSelectMgrSensitiveEntity {
+    ) -> &crate::ffi_types::HandleSelectMgrSensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntitySet_get_sensitive_by_id(
-                self as *const Self,
-                theIndex,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_get_sensitive_by_id(
+                    self as *const Self,
+                    theIndex,
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:76 - `SelectMgr_SensitiveEntitySet::Sensitives()`
     /// Returns map of entities.
-    pub fn sensitives(&self) -> &crate::ffi::SelectMgr_IndexedMapOfHSensitive {
+    pub fn sensitives(&self) -> &crate::ffi_types::SelectMgr_IndexedMapOfHSensitive {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntitySet_sensitives(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_sensitives(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:79 - `SelectMgr_SensitiveEntitySet::Owners()`
     /// Returns map of owners.
-    pub fn owners(&self) -> &crate::ffi::SelectMgr_MapOfOwners {
+    pub fn owners(&self) -> &crate::ffi_types::SelectMgr_MapOfOwners {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntitySet_owners(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_owners(
                 self as *const Self,
             )))
         }
@@ -10358,7 +10875,7 @@ impl SensitiveEntitySet {
     /// Returns map of entities.
     pub fn has_entity_with_persistence(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SensitiveEntitySet_has_entity_with_persistence(
+            crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_has_entity_with_persistence(
                 self as *const Self,
             )
         })
@@ -10368,7 +10885,7 @@ impl SensitiveEntitySet {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntitySet_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10376,48 +10893,52 @@ impl SensitiveEntitySet {
     }
 
     /// **Source:** `SelectMgr_SensitiveEntitySet.hxx`:33 - `SelectMgr_SensitiveEntitySet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_SensitiveEntitySet_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_get_type_descriptor(),
+            ))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSensitiveEntitySet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSensitiveEntitySet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SensitiveEntitySet_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_SensitiveEntitySet_to_handle(obj.into_raw()),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleSelectMgrSensitiveEntitySet;
+pub use crate::ffi_types::HandleSelectMgrSensitiveEntitySet;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrSensitiveEntitySet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrSensitiveEntitySet_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrSensitiveEntitySet {
     /// Dereference this Handle to access the underlying SelectMgr_SensitiveEntitySet
-    pub fn get(&self) -> &crate::ffi::SelectMgr_SensitiveEntitySet {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_SensitiveEntitySet {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrSensitiveEntitySet_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_SensitiveEntitySet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_SensitiveEntitySet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_SensitiveEntitySet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrSensitiveEntitySet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrSensitiveEntitySet_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -10429,11 +10950,11 @@ impl HandleSelectMgrSensitiveEntitySet {
 /// **Source:** `SelectMgr_SortCriterion.hxx`:26 - `SelectMgr_SortCriterion`
 /// This class provides data and criterion for sorting candidate
 /// entities in the process of interactive selection by mouse click
-pub use crate::ffi::SelectMgr_SortCriterion as SortCriterion;
+pub use crate::ffi_types::SelectMgr_SortCriterion as SortCriterion;
 
 unsafe impl crate::CppDeletable for SortCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_SortCriterion_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_SortCriterion_destructor(ptr);
     }
 }
 
@@ -10443,7 +10964,7 @@ impl SortCriterion {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_SortCriterion_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_SortCriterion_ctor(),
             ))
         }
     }
@@ -10452,7 +10973,10 @@ impl SortCriterion {
     /// Compare with another item by depth, priority and minDist.
     pub fn is_closer_depth(&self, theOther: &SortCriterion) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SortCriterion_is_closer_depth(self as *const Self, theOther)
+            crate::ffi_extern_TKV3d::SelectMgr_SortCriterion_is_closer_depth(
+                self as *const Self,
+                theOther,
+            )
         })
     }
 
@@ -10461,7 +10985,10 @@ impl SortCriterion {
     /// preceding depth.
     pub fn is_higher_priority(&self, theOther: &SortCriterion) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_SortCriterion_is_higher_priority(self as *const Self, theOther)
+            crate::ffi_extern_TKV3d::SelectMgr_SortCriterion_is_higher_priority(
+                self as *const Self,
+                theOther,
+            )
         })
     }
 }
@@ -10476,11 +11003,11 @@ impl SortCriterion {
 /// tolerance value will be recalculated. If a user enables custom precision using
 /// StdSelect_ViewerSelector3d::SetPixelTolerance, it will be applied to all sensitive entities
 /// without any checks.
-pub use crate::ffi::SelectMgr_ToleranceMap as ToleranceMap;
+pub use crate::ffi_types::SelectMgr_ToleranceMap as ToleranceMap;
 
 unsafe impl crate::CppDeletable for ToleranceMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_ToleranceMap_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_destructor(ptr);
     }
 }
 
@@ -10489,9 +11016,9 @@ impl ToleranceMap {
     /// Sets tolerance values to -1.0
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::SelectMgr_ToleranceMap_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_ctor(),
+            ))
         }
     }
 
@@ -10500,7 +11027,7 @@ impl ToleranceMap {
     /// should be replaced by theTolerance
     pub fn add(&mut self, theTolerance: &i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_add(self as *mut Self, theTolerance)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_add(self as *mut Self, theTolerance)
         })
     }
 
@@ -10509,7 +11036,10 @@ impl ToleranceMap {
     /// should be recalculated
     pub fn decrement(&mut self, theTolerance: &i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_decrement(self as *mut Self, theTolerance)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_decrement(
+                self as *mut Self,
+                theTolerance,
+            )
         })
     }
 
@@ -10517,7 +11047,7 @@ impl ToleranceMap {
     /// Returns a current tolerance that must be applied
     pub fn tolerance(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_tolerance(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_tolerance(self as *const Self)
         })
     }
 
@@ -10525,7 +11055,10 @@ impl ToleranceMap {
     /// Sets tolerance to the given one and disables adaptive checks
     pub fn set_custom_tolerance(&mut self, theTolerance: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_set_custom_tolerance(self as *mut Self, theTolerance)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_set_custom_tolerance(
+                self as *mut Self,
+                theTolerance,
+            )
         })
     }
 
@@ -10533,7 +11066,7 @@ impl ToleranceMap {
     /// Unsets a custom tolerance and enables adaptive checks
     pub fn reset_defaults(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_reset_defaults(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_reset_defaults(self as *mut Self)
         })
     }
 
@@ -10541,7 +11074,7 @@ impl ToleranceMap {
     /// Returns the value of custom tolerance regardless of it validity
     pub fn custom_tolerance(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_custom_tolerance(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_custom_tolerance(self as *const Self)
         })
     }
 
@@ -10549,7 +11082,7 @@ impl ToleranceMap {
     /// Returns true if custom tolerance value is greater than zero
     pub fn is_custom_tol_set(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ToleranceMap_is_custom_tol_set(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ToleranceMap_is_custom_tol_set(self as *const Self)
         })
     }
 }
@@ -10564,11 +11097,11 @@ impl ToleranceMap {
 /// sensitive entities. Overlap detection tests are implemented according to the terms of separating
 /// axis theorem (SAT). NOTE: the object of this class can be created only as part of
 /// SelectMgr_TriangularFrustumSet.
-pub use crate::ffi::SelectMgr_TriangularFrustum as TriangularFrustum;
+pub use crate::ffi_types::SelectMgr_TriangularFrustum as TriangularFrustum;
 
 unsafe impl crate::CppDeletable for TriangularFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_TriangularFrustum_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_destructor(ptr);
     }
 }
 
@@ -10582,7 +11115,12 @@ impl TriangularFrustum {
         theP3: &crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_init(self as *mut Self, theP1, theP2, theP3)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_init(
+                self as *mut Self,
+                theP1,
+                theP2,
+                theP3,
+            )
         })
     }
 
@@ -10592,7 +11130,7 @@ impl TriangularFrustum {
     /// NOTE: it should be called after Init() method
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_build(self as *mut Self)
         })
     }
 
@@ -10600,7 +11138,7 @@ impl TriangularFrustum {
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_is_scalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_is_scalable(self as *const Self)
         })
     }
 
@@ -10610,11 +11148,11 @@ impl TriangularFrustum {
         &self,
         theScale: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustum_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_scale_and_transform(
                     self as *const Self,
                     theScale,
                     theTrsf,
@@ -10633,11 +11171,11 @@ impl TriangularFrustum {
     /// @return a copy of the frustum with the input builder assigned
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustum_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -10650,19 +11188,13 @@ impl TriangularFrustum {
     /// SAT intersection test between defined volume and given axis-aligned box
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
         &self,
-        theMinPnt: &crate::ffi::SelectMgr_Vec3,
-        theMaxPnt: &crate::ffi::SelectMgr_Vec3,
+        theMinPnt: &crate::ffi_types::SelectMgr_Vec3,
+        theMaxPnt: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theMinPnt,
-                theMaxPnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theMinPnt, theMaxPnt, theClipRange, thePickResult)
         })
     }
 
@@ -10671,12 +11203,12 @@ impl TriangularFrustum {
     /// with minimum corner at point theMinPt and maximum at point theMaxPt
     pub unsafe fn overlaps_box_vec32_boolptr(
         &self,
-        theMinPt: &crate::ffi::SelectMgr_Vec3,
-        theMaxPt: &crate::ffi::SelectMgr_Vec3,
+        theMinPt: &crate::ffi_types::SelectMgr_Vec3,
+        theMaxPt: &crate::ffi_types::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theMinPt,
                 theMaxPt,
@@ -10694,12 +11226,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
         })
     }
 
@@ -10707,7 +11234,10 @@ impl TriangularFrustum {
     /// Always returns FALSE (not applicable to this selector).
     pub fn overlaps_point_pnt(&self, arg0: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_point_pnt(self as *const Self, arg0)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_point_pnt(
+                self as *const Self,
+                arg0,
+            )
         })
     }
 
@@ -10717,13 +11247,13 @@ impl TriangularFrustum {
     /// boundary line defined by segments depending on given sensitivity type
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -10743,7 +11273,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -10767,7 +11297,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -10789,7 +11319,7 @@ impl TriangularFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_boolptr(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -10809,7 +11339,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
         })
     }
 
@@ -10827,7 +11357,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
         })
     }
 
@@ -10844,15 +11374,7 @@ impl TriangularFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -10870,7 +11392,7 @@ impl TriangularFrustum {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, theClipRange, thePickResult)
         })
     }
 
@@ -10887,13 +11409,7 @@ impl TriangularFrustum {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theRadius,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theRadius, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -10901,7 +11417,7 @@ impl TriangularFrustum {
     /// Nullifies the handle to corresponding builder instance to prevent memory leaks
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_clear(self as *mut Self)
         })
     }
 
@@ -10910,10 +11426,10 @@ impl TriangularFrustum {
     /// Ax + By + Cz + D = 0) to the given vector
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustum_get_planes(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_get_planes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -10921,11 +11437,13 @@ impl TriangularFrustum {
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_TriangularFrustum_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10933,7 +11451,7 @@ impl TriangularFrustum {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustum_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10941,59 +11459,63 @@ impl TriangularFrustum {
     }
 
     /// **Source:** `SelectMgr_TriangularFrustum.hxx`:202 - `SelectMgr_TriangularFrustum::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_TriangularFrustum_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_get_type_descriptor(),
+            ))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustum> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrTriangularFrustum> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustum_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_to_handle(obj.into_raw()),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleSelectMgrTriangularFrustum;
+pub use crate::ffi_types::HandleSelectMgrTriangularFrustum;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustum {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrTriangularFrustum_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrTriangularFrustum {
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustum
-    pub fn get(&self) -> &crate::ffi::SelectMgr_TriangularFrustum {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_TriangularFrustum {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrTriangularFrustum_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_TriangularFrustum
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_TriangularFrustum {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_TriangularFrustum {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrTriangularFrustum_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustum_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `SelectMgr_TriangularFrustum.hxx`:30 - `SelectMgr_TriangularFrustum_SelectionTriangle`
 /// Auxiliary structure to define selection triangle
-pub use crate::ffi::SelectMgr_TriangularFrustum_SelectionTriangle as TriangularFrustum_SelectionTriangle;
+pub use crate::ffi_types::SelectMgr_TriangularFrustum_SelectionTriangle as TriangularFrustum_SelectionTriangle;
 
 unsafe impl crate::CppDeletable for TriangularFrustum_SelectionTriangle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_TriangularFrustum_SelectionTriangle_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_SelectionTriangle_destructor(ptr);
     }
 }
 
@@ -11003,7 +11525,7 @@ impl TriangularFrustum_SelectionTriangle {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustum_SelectionTriangle_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustum_SelectionTriangle_ctor(),
             ))
         }
     }
@@ -11021,11 +11543,11 @@ impl TriangularFrustum_SelectionTriangle {
 /// onto near and far view frustum planes. Thus, the projected triangles make up the bases of
 /// selecting frustum. When the set of such frustums is created, the function determining selection
 /// iterates through triangular frustum set and searches for overlap with any frustum.
-pub use crate::ffi::SelectMgr_TriangularFrustumSet as TriangularFrustumSet;
+pub use crate::ffi_types::SelectMgr_TriangularFrustumSet as TriangularFrustumSet;
 
 unsafe impl crate::CppDeletable for TriangularFrustumSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_TriangularFrustumSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_destructor(ptr);
     }
 }
 
@@ -11035,16 +11557,19 @@ impl TriangularFrustumSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_ctor(),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:48 - `SelectMgr_TriangularFrustumSet::Init()`
     /// Initializes set of triangular frustums by polyline
-    pub fn init(&mut self, thePoints: &crate::ffi::TColgp_Array1OfPnt2d) {
+    pub fn init(&mut self, thePoints: &crate::ffi_types::TColgp_Array1OfPnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_init(self as *mut Self, thePoints)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_init(
+                self as *mut Self,
+                thePoints,
+            )
         })
     }
 
@@ -11054,7 +11579,7 @@ impl TriangularFrustumSet {
     /// frustum base NOTE: it should be called after Init() method
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_build(self as *mut Self)
         })
     }
 
@@ -11062,7 +11587,7 @@ impl TriangularFrustumSet {
     /// Returns FALSE (not applicable to this volume).
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_is_scalable(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_is_scalable(self as *const Self)
         })
     }
 
@@ -11072,11 +11597,11 @@ impl TriangularFrustumSet {
         &self,
         theScale: i32,
         theTrsf: &crate::gp::GTrsf,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_scale_and_transform(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_scale_and_transform(
                     self as *const Self,
                     theScale,
                     theTrsf,
@@ -11095,11 +11620,11 @@ impl TriangularFrustumSet {
     /// @return a copy of the frustum with the input builder assigned
     pub fn copy_with_builder(
         &self,
-        theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+        theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_copy_with_builder(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_copy_with_builder(
                     self as *const Self,
                     theBuilder,
                 ),
@@ -11110,31 +11635,25 @@ impl TriangularFrustumSet {
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:74 - `SelectMgr_TriangularFrustumSet::OverlapsBox()`
     pub fn overlaps_box_vec32_viewcliprange_pickresult(
         &self,
-        theMinPnt: &crate::ffi::SelectMgr_Vec3,
-        theMaxPnt: &crate::ffi::SelectMgr_Vec3,
+        theMinPnt: &crate::ffi_types::SelectMgr_Vec3,
+        theMaxPnt: &crate::ffi_types::SelectMgr_Vec3,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_viewcliprange_pickresult(
-                self as *const Self,
-                theMinPnt,
-                theMaxPnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_viewcliprange_pickresult(self as *const Self, theMinPnt, theMaxPnt, theClipRange, thePickResult)
         })
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:80 - `SelectMgr_TriangularFrustumSet::OverlapsBox()`
     pub unsafe fn overlaps_box_vec32_boolptr(
         &self,
-        theMinPnt: &crate::ffi::SelectMgr_Vec3,
-        theMaxPnt: &crate::ffi::SelectMgr_Vec3,
+        theMinPnt: &crate::ffi_types::SelectMgr_Vec3,
+        theMaxPnt: &crate::ffi_types::SelectMgr_Vec3,
         theInside: *mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theMinPnt,
                 theMaxPnt,
@@ -11151,12 +11670,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt_viewcliprange_pickresult(
-                self as *const Self,
-                thePnt,
-                theClipRange,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_point_pnt_viewcliprange_pickresult(self as *const Self, thePnt, theClipRange, thePickResult)
         })
     }
 
@@ -11164,20 +11678,23 @@ impl TriangularFrustumSet {
     /// Always returns FALSE (not applicable to this selector).
     pub fn overlaps_point_pnt(&self, arg0: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_point_pnt(self as *const Self, arg0)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_point_pnt(
+                self as *const Self,
+                arg0,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:96 - `SelectMgr_TriangularFrustumSet::OverlapsPolygon()`
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPnts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPnts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: crate::select3_d::TypeOfSensitivity,
         theClipRange: &ViewClipRange,
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPnts,
                 theSensType.into(),
@@ -11196,7 +11713,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_segment(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -11217,7 +11734,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_triangle(
                 self as *const Self,
                 thePnt1,
                 thePnt2,
@@ -11235,7 +11752,7 @@ impl TriangularFrustumSet {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_detected_point(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_detected_point(
                     self as *const Self,
                     theDepth,
                 ),
@@ -11253,7 +11770,7 @@ impl TriangularFrustumSet {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_boolptr(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_boolptr(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -11273,7 +11790,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_sphere_pnt_real_viewcliprange_pickresult(self as *const Self, theCenter, theRadius, theClipRange, thePickResult)
         })
     }
 
@@ -11291,7 +11808,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theClipRange, thePickResult)
         })
     }
 
@@ -11308,15 +11825,7 @@ impl TriangularFrustumSet {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTopRad,
-                theHeight,
-                theTrsf,
-                theIsHollow,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -11332,7 +11841,7 @@ impl TriangularFrustumSet {
         thePickResult: &mut crate::select_basics::PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_viewcliprange_pickresult(self as *const Self, theBottomRad, theTrsf, theIsFilled, theClipRange, thePickResult)
         })
     }
 
@@ -11347,13 +11856,7 @@ impl TriangularFrustumSet {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theBottomRad,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theBottomRad, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -11362,10 +11865,10 @@ impl TriangularFrustumSet {
     /// Ax + By + Cz + D = 0) to the given vector
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_SelectMgr_Vec4,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_SelectMgr_Vec4,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_get_planes(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_get_planes(
                 self as *const Self,
                 thePlaneEquations,
             )
@@ -11377,7 +11880,7 @@ impl TriangularFrustumSet {
     /// algorithm will mark both included and overlapped entities as matched
     pub fn set_allow_overlap_detection(&mut self, theIsToAllow: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_set_allow_overlap_detection(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_set_allow_overlap_detection(
                 self as *mut Self,
                 theIsToAllow,
             )
@@ -11388,7 +11891,7 @@ impl TriangularFrustumSet {
     pub fn as_base_frustum(&self) -> &BaseFrustum {
         unsafe {
             &*crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum(
                     self as *const Self,
                 ),
             )
@@ -11398,42 +11901,32 @@ impl TriangularFrustumSet {
     /// Upcast to SelectMgr_BaseFrustum (mutable)
     pub fn as_base_frustum_mut(&mut self) -> &mut BaseFrustum {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseFrustum_mut(self as *mut Self))
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector
     pub fn as_base_intersector(&self) -> &BaseIntersector {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector(self as *const Self))
         }
     }
 
     /// Upcast to SelectMgr_BaseIntersector (mutable)
     pub fn as_base_intersector_mut(&mut self) -> &mut BaseIntersector {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_SelectMgr_BaseIntersector_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11441,7 +11934,7 @@ impl TriangularFrustumSet {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_as_Standard_Transient_mut(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -11451,18 +11944,18 @@ impl TriangularFrustumSet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrTriangularFrustumSet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrTriangularFrustumSet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:37 - `SelectMgr_BaseFrustum::SetBuilder()`
-    pub fn set_builder(&mut self, theBuilder: &crate::ffi::HandleSelectMgrFrustumBuilder) {
+    pub fn set_builder(&mut self, theBuilder: &crate::ffi_types::HandleSelectMgrFrustumBuilder) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetBuilder(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_SetBuilder(
                 self as *mut Self,
                 theBuilder,
             )
@@ -11470,9 +11963,9 @@ impl TriangularFrustumSet {
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:40 - `SelectMgr_BaseFrustum::SetCamera()`
-    pub fn set_camera(&mut self, theCamera: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn set_camera(&mut self, theCamera: &crate::ffi_types::HandleGraphic3dCamera) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetCamera(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_SetCamera(
                 self as *mut Self,
                 theCamera,
             )
@@ -11482,7 +11975,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:43 - `SelectMgr_BaseFrustum::SetPixelTolerance()`
     pub fn set_pixel_tolerance(&mut self, theTol: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetPixelTolerance(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_SetPixelTolerance(
                 self as *mut Self,
                 theTol,
             )
@@ -11492,7 +11985,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:45 - `SelectMgr_BaseFrustum::SetWindowSize()`
     pub fn set_window_size(&mut self, theWidth: i32, theHeight: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetWindowSize(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_SetWindowSize(
                 self as *mut Self,
                 theWidth,
                 theHeight,
@@ -11503,7 +11996,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:48 - `SelectMgr_BaseFrustum::WindowSize()`
     pub fn window_size(&self, theWidth: &mut i32, theHeight: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_WindowSize(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_WindowSize(
                 self as *const Self,
                 theWidth,
                 theHeight,
@@ -11514,7 +12007,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:52 - `SelectMgr_BaseFrustum::SetViewport()`
     pub fn set_viewport(&mut self, theX: f64, theY: f64, theWidth: f64, theHeight: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_SetViewport(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_SetViewport(
                 self as *mut Self,
                 theX,
                 theY,
@@ -11530,26 +12023,19 @@ impl TriangularFrustumSet {
         theCenter: &crate::gp::Pnt,
         theRadius: f64,
         thePlaneNormal: &crate::gp::Dir,
-        theBoundaries: &crate::ffi::TColgp_Array1OfPnt,
+        theBoundaries: &crate::ffi_types::TColgp_Array1OfPnt,
         theBoundaryInside: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsBoundaryIntersectSphere(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePlaneNormal,
-                theBoundaries,
-                theBoundaryInside,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_IsBoundaryIntersectSphere(self as *const Self, theCenter, theRadius, thePlaneNormal, theBoundaries, theBoundaryInside)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseFrustum.hxx`:70 - `SelectMgr_BaseFrustum::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DynamicType(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_DynamicType(
                     self as *const Self,
                 ),
             ))
@@ -11559,7 +12045,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:50 - `SelectMgr_BaseIntersector::GetSelectionType()`
     pub fn get_selection_type(&self) -> crate::select_mgr::SelectionType {
         crate::select_mgr::SelectionType::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetSelectionType(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetSelectionType(
                 self as *const Self,
             )
         }))
@@ -11567,11 +12053,13 @@ impl TriangularFrustumSet {
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:85 - `SelectMgr_BaseIntersector::Camera()`
-    pub fn camera(&self) -> &crate::ffi::HandleGraphic3dCamera {
+    pub fn camera(&self) -> &crate::ffi_types::HandleGraphic3dCamera {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Camera(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_Camera(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11579,7 +12067,7 @@ impl TriangularFrustumSet {
     pub fn get_near_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetNearPnt(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetNearPnt(
                     self as *const Self,
                 ),
             ))
@@ -11589,20 +12077,18 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:113 - `SelectMgr_BaseIntersector::GetFarPnt()`
     pub fn get_far_pnt(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetFarPnt(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetFarPnt(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:117 - `SelectMgr_BaseIntersector::GetViewRayDirection()`
     pub fn get_view_ray_direction(&self) -> &crate::gp::Dir {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetViewRayDirection(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetViewRayDirection(self as *const Self)))
         }
     }
 
@@ -11610,7 +12096,7 @@ impl TriangularFrustumSet {
     pub fn get_mouse_position(&self) -> &crate::gp::Pnt2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetMousePosition(
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetMousePosition(
                     self as *const Self,
                 ),
             ))
@@ -11620,7 +12106,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `SelectMgr_BaseIntersector.hxx`:237 - `SelectMgr_BaseIntersector::DistToGeometryCenter()`
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DistToGeometryCenter(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_DistToGeometryCenter(
                 self as *const Self,
                 theCOG,
             )
@@ -11638,7 +12124,7 @@ impl TriangularFrustumSet {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RaySphereIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_RaySphereIntersection(
                 self as *const Self,
                 theCenter,
                 theRadius,
@@ -11663,17 +12149,7 @@ impl TriangularFrustumSet {
         theTimeLeave: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCylinderIntersection(
-                self as *const Self,
-                theBottomRadius,
-                theTopRadius,
-                theHeight,
-                theLoc,
-                theRayDir,
-                theIsHollow,
-                theTimeEnter,
-                theTimeLeave,
-            )
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_RayCylinderIntersection(self as *const Self, theBottomRadius, theTopRadius, theHeight, theLoc, theRayDir, theIsHollow, theTimeEnter, theTimeLeave)
         })
     }
 
@@ -11687,7 +12163,7 @@ impl TriangularFrustumSet {
         theTime: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_RayCircleIntersection(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_RayCircleIntersection(
                 self as *const Self,
                 theRadius,
                 theLoc,
@@ -11699,9 +12175,9 @@ impl TriangularFrustumSet {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsInstance(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -11709,9 +12185,9 @@ impl TriangularFrustumSet {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IsKind(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -11722,7 +12198,9 @@ impl TriangularFrustumSet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_TriangularFrustumSet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11735,14 +12213,16 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -11751,7 +12231,7 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -11760,83 +12240,77 @@ impl TriangularFrustumSet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_TriangularFrustumSet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrTriangularFrustumSet;
+pub use crate::ffi_types::HandleSelectMgrTriangularFrustumSet;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrTriangularFrustumSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrTriangularFrustumSet_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrTriangularFrustumSet {
     /// Dereference this Handle to access the underlying SelectMgr_TriangularFrustumSet
-    pub fn get(&self) -> &crate::ffi::SelectMgr_TriangularFrustumSet {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_TriangularFrustumSet {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrTriangularFrustumSet_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_TriangularFrustumSet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_TriangularFrustumSet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_TriangularFrustumSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrTriangularFrustumSet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_TriangularFrustumSet> to Handle<SelectMgr_BaseFrustum>
     pub fn to_handle_base_frustum(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseFrustum> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseFrustum> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseFrustum(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseFrustum(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_TriangularFrustumSet> to Handle<SelectMgr_BaseIntersector>
     pub fn to_handle_base_intersector(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrBaseIntersector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrBaseIntersector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseIntersector(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_to_HandleSelectMgrBaseIntersector(self as *const Self)))
         }
     }
 
     /// Upcast Handle<SelectMgr_TriangularFrustumSet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrTriangularFrustumSet_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrTriangularFrustumSet_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
 
 /// **Source:** `SelectMgr_TriangularFrustumSet.hxx`:35 - `SelectMgr_TriangularFrustumSet_SelectionPolyline`
 /// Auxiliary structure to define selection polyline
-pub use crate::ffi::SelectMgr_TriangularFrustumSet_SelectionPolyline as TriangularFrustumSet_SelectionPolyline;
+pub use crate::ffi_types::SelectMgr_TriangularFrustumSet_SelectionPolyline as TriangularFrustumSet_SelectionPolyline;
 
 unsafe impl crate::CppDeletable for TriangularFrustumSet_SelectionPolyline {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_TriangularFrustumSet_SelectionPolyline_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_SelectionPolyline_destructor(ptr);
     }
 }
 
@@ -11846,7 +12320,7 @@ impl TriangularFrustumSet_SelectionPolyline {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_TriangularFrustumSet_SelectionPolyline_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_TriangularFrustumSet_SelectionPolyline_ctor(),
             ))
         }
     }
@@ -11860,11 +12334,11 @@ impl TriangularFrustumSet_SelectionPolyline {
 /// Class for handling depth clipping range.
 /// It is used to perform checks in case if global (for the whole view)
 /// clipping planes are defined inside of SelectMgr_RectangularFrustum class methods.
-pub use crate::ffi::SelectMgr_ViewClipRange as ViewClipRange;
+pub use crate::ffi_types::SelectMgr_ViewClipRange as ViewClipRange;
 
 unsafe impl crate::CppDeletable for ViewClipRange {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_ViewClipRange_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_destructor(ptr);
     }
 }
 
@@ -11874,7 +12348,7 @@ impl ViewClipRange {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewClipRange_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_ctor(),
             ))
         }
     }
@@ -11884,7 +12358,10 @@ impl ViewClipRange {
     /// e.g. TRUE means depth is clipped.
     pub fn is_clipped(&self, theDepth: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_is_clipped(self as *const Self, theDepth)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_is_clipped(
+                self as *const Self,
+                theDepth,
+            )
         })
     }
 
@@ -11893,7 +12370,7 @@ impl ViewClipRange {
     /// Returns FALSE if the whole range is clipped.
     pub fn get_nearest_depth(&self, theRange: &crate::bnd::Range, theDepth: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_get_nearest_depth(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_get_nearest_depth(
                 self as *const Self,
                 theRange,
                 theDepth,
@@ -11905,7 +12382,7 @@ impl ViewClipRange {
     /// Clears clipping range.
     pub fn set_void(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_set_void(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_set_void(self as *mut Self)
         })
     }
 
@@ -11917,7 +12394,7 @@ impl ViewClipRange {
         thePickRay: &crate::gp::Ax1,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_add_clipping_planes(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_add_clipping_planes(
                 self as *mut Self,
                 thePlanes,
                 thePickRay,
@@ -11929,9 +12406,11 @@ impl ViewClipRange {
     /// Returns the main unclipped range; [-inf, inf] by default.
     pub fn change_unclip_range(&mut self) -> &mut crate::bnd::Range {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::SelectMgr_ViewClipRange_change_unclip_range(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_change_unclip_range(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -11939,7 +12418,10 @@ impl ViewClipRange {
     /// Adds a clipping sub-range (for clipping chains).
     pub fn add_clip_sub_range(&mut self, theRange: &crate::bnd::Range) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewClipRange_add_clip_sub_range(self as *mut Self, theRange)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewClipRange_add_clip_sub_range(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 }
@@ -11979,11 +12461,11 @@ impl ViewClipRange {
 /// BVH traverse;
 /// 2. if tolerance of sensitive entity is less than mytolerance, the frustum for
 /// intersection detection will be resized according to its sensitivity.
-pub use crate::ffi::SelectMgr_ViewerSelector as ViewerSelector;
+pub use crate::ffi_types::SelectMgr_ViewerSelector as ViewerSelector;
 
 unsafe impl crate::CppDeletable for ViewerSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectMgr_ViewerSelector_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_destructor(ptr);
     }
 }
 
@@ -11993,15 +12475,15 @@ impl ViewerSelector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_ctor(),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_ctor(),
             ))
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:87 - `SelectMgr_ViewerSelector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -12011,7 +12493,9 @@ impl ViewerSelector {
     /// Returns custom pixel tolerance value.
     pub fn custom_pixel_tolerance(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_custom_pixel_tolerance(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_custom_pixel_tolerance(
+                self as *const Self,
+            )
         })
     }
 
@@ -12019,7 +12503,7 @@ impl ViewerSelector {
     /// Sets the pixel tolerance <theTolerance>.
     pub fn set_pixel_tolerance(&mut self, theTolerance: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_pixel_tolerance(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_set_pixel_tolerance(
                 self as *mut Self,
                 theTolerance,
             )
@@ -12030,7 +12514,7 @@ impl ViewerSelector {
     /// Returns the largest sensitivity of picking
     pub fn sensitivity(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_sensitivity(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_sensitivity(self as *const Self)
         })
     }
 
@@ -12038,7 +12522,7 @@ impl ViewerSelector {
     /// Returns the largest pixel tolerance.
     pub fn pixel_tolerance(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pixel_tolerance(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_pixel_tolerance(self as *const Self)
         })
     }
 
@@ -12046,17 +12530,17 @@ impl ViewerSelector {
     /// Sorts the detected entities by priority and distance.
     pub fn sort_result(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_sort_result(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_sort_result(self as *const Self)
         })
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:111 - `SelectMgr_ViewerSelector::OnePicked()`
     /// Returns the picked element with the highest priority,
     /// and which is the closest to the last successful mouse position.
-    pub fn one_picked(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+    pub fn one_picked(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrEntityOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_one_picked(self as *const Self),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_one_picked(self as *const Self),
             ))
         }
     }
@@ -12068,7 +12552,7 @@ impl ViewerSelector {
     /// entities with higher priority will be in front regardless of their depth (like x-ray).
     pub fn to_pick_closest(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_to_pick_closest(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_to_pick_closest(self as *const Self)
         })
     }
 
@@ -12076,7 +12560,7 @@ impl ViewerSelector {
     /// Set flag determining precedence of picked depth over entity priority in sorted results.
     pub fn set_pick_closest(&mut self, theToPreferClosest: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_pick_closest(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_set_pick_closest(
                 self as *mut Self,
                 theToPreferClosest,
             )
@@ -12088,7 +12572,9 @@ impl ViewerSelector {
     /// from eye to entity); SelectMgr_TypeOfDepthTolerance_SensitivityFactor by default.
     pub fn depth_tolerance_type(&self) -> crate::select_mgr::TypeOfDepthTolerance {
         crate::select_mgr::TypeOfDepthTolerance::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_depth_tolerance_type(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_depth_tolerance_type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -12098,7 +12584,7 @@ impl ViewerSelector {
     /// entity).
     pub fn depth_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_depth_tolerance(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_depth_tolerance(self as *const Self)
         })
     }
 
@@ -12116,7 +12602,7 @@ impl ViewerSelector {
         theTolerance: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_depth_tolerance(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_set_depth_tolerance(
                 self as *mut Self,
                 theType.into(),
                 theTolerance,
@@ -12128,7 +12614,7 @@ impl ViewerSelector {
     /// Returns the number of detected owners.
     pub fn nb_picked(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_nb_picked(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_nb_picked(self as *const Self)
         })
     }
 
@@ -12136,7 +12622,7 @@ impl ViewerSelector {
     /// Clears picking results.
     pub fn clear_picked(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_clear_picked(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_clear_picked(self as *mut Self)
         })
     }
 
@@ -12144,17 +12630,23 @@ impl ViewerSelector {
     /// Empties all the tables, removes all selections...
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_clear(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:157 - `SelectMgr_ViewerSelector::Picked()`
     /// Returns the entity Owner for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
-    pub fn picked(&self, theRank: i32) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+    pub fn picked(
+        &self,
+        theRank: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrEntityOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_picked(self as *const Self, theRank),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_picked(
+                    self as *const Self,
+                    theRank,
+                ),
             ))
         }
     }
@@ -12164,7 +12656,7 @@ impl ViewerSelector {
     /// @param theRank rank of detected object within range 1...NbPicked()
     pub fn picked_data(&self, theRank: i32) -> &SortCriterion {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_picked_data(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_picked_data(
                 self as *const Self,
                 theRank,
             )))
@@ -12174,12 +12666,14 @@ impl ViewerSelector {
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:165 - `SelectMgr_ViewerSelector::PickedEntity()`
     /// Returns the Entity for the object picked at specified position.
     /// @param theRank rank of detected object within range 1...NbPicked()
-    pub fn picked_entity(&self, theRank: i32) -> &crate::ffi::HandleSelect3DSensitiveEntity {
+    pub fn picked_entity(&self, theRank: i32) -> &crate::ffi_types::HandleSelect3DSensitiveEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_picked_entity(
-                self as *const Self,
-                theRank,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_picked_entity(
+                    self as *const Self,
+                    theRank,
+                ),
+            ))
         }
     }
 
@@ -12190,7 +12684,10 @@ impl ViewerSelector {
     pub fn picked_point(&self, theRank: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_picked_point(self as *const Self, theRank),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_picked_point(
+                    self as *const Self,
+                    theRank,
+                ),
             ))
         }
     }
@@ -12199,26 +12696,36 @@ impl ViewerSelector {
     /// Remove picked entities associated with specified object.
     pub fn remove_picked(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_remove_picked(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_remove_picked(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:180 - `SelectMgr_ViewerSelector::Contains()`
-    pub fn contains(&self, theObject: &crate::ffi::HandleSelectMgrSelectableObject) -> bool {
+    pub fn contains(&self, theObject: &crate::ffi_types::HandleSelectMgrSelectableObject) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_contains(self as *const Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_contains(
+                self as *const Self,
+                theObject,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:183 - `SelectMgr_ViewerSelector::EntitySetBuilder()`
     /// Returns the default builder used to construct BVH of entity set.
-    pub fn entity_set_builder(&mut self) -> crate::OwnedPtr<crate::ffi::HandleBVHBuilderdouble3> {
+    pub fn entity_set_builder(
+        &mut self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBVHBuilderdouble3> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_entity_set_builder(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_entity_set_builder(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -12227,9 +12734,12 @@ impl ViewerSelector {
     /// Sets the default builder used to construct BVH of entity set.
     /// The new builder will be also assigned for already defined objects, but computed BVH trees will
     /// not be invalidated.
-    pub fn set_entity_set_builder(&mut self, theBuilder: &crate::ffi::HandleBVHBuilderdouble3) {
+    pub fn set_entity_set_builder(
+        &mut self,
+        theBuilder: &crate::ffi_types::HandleBVHBuilderdouble3,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_entity_set_builder(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_set_entity_set_builder(
                 self as *mut Self,
                 theBuilder,
             )
@@ -12244,12 +12754,12 @@ impl ViewerSelector {
     /// in this selector.
     pub fn modes(
         &self,
-        theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
-        theModeList: &mut crate::ffi::TColStd_ListOfInteger,
+        theSelectableObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+        theModeList: &mut crate::ffi_types::TColStd_ListOfInteger,
         theWantedState: crate::select_mgr::StateOfSelection,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_modes(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_modes(
                 self as *const Self,
                 theSelectableObject,
                 theModeList,
@@ -12264,11 +12774,11 @@ impl ViewerSelector {
     /// is active in this selector.
     pub fn is_active(
         &self,
-        theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theSelectableObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_is_active(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_is_active(
                 self as *const Self,
                 theSelectableObject,
                 theMode,
@@ -12282,11 +12792,11 @@ impl ViewerSelector {
     /// is in this selector.
     pub fn is_inside(
         &self,
-        theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theSelectableObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_is_inside(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_is_inside(
                 self as *const Self,
                 theSelectableObject,
                 theMode,
@@ -12298,10 +12808,10 @@ impl ViewerSelector {
     /// Returns the selection status Status of the selection aSelection.
     pub fn status_handleselectmgrselection(
         &self,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
     ) -> crate::select_mgr::StateOfSelection {
         crate::select_mgr::StateOfSelection::try_from(crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_status_handleselectmgrselection(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_status_handleselectmgrselection(
                 self as *const Self,
                 theSelection,
             )
@@ -12312,23 +12822,21 @@ impl ViewerSelector {
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:219 - `SelectMgr_ViewerSelector::Status()`
     pub fn status_handleselectmgrselectableobject(
         &self,
-        theSelectableObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theSelectableObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_status_handleselectmgrselectableobject(
-                    self as *const Self,
-                    theSelectableObject,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_status_handleselectmgrselectableobject(self as *const Self, theSelectableObject)))
         }
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:222 - `SelectMgr_ViewerSelector::ActiveOwners()`
     /// Returns the list of active entity owners
-    pub fn active_owners(&self, theOwners: &mut crate::ffi::AIS_NListOfEntityOwner) {
+    pub fn active_owners(&self, theOwners: &mut crate::ffi_types::AIS_NListOfEntityOwner) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_active_owners(self as *const Self, theOwners)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_active_owners(
+                self as *const Self,
+                theOwners,
+            )
         })
     }
 
@@ -12336,10 +12844,13 @@ impl ViewerSelector {
     /// Adds new object to the map of selectable objects
     pub fn add_selectable_object(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_add_selectable_object(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_add_selectable_object(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
@@ -12347,11 +12858,11 @@ impl ViewerSelector {
     /// Adds new selection to the object and builds its BVH tree
     pub fn add_selection_to_object(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_add_selection_to_object(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_add_selection_to_object(
                 self as *mut Self,
                 theObject,
                 theSelection,
@@ -12364,10 +12875,10 @@ impl ViewerSelector {
     /// to set of transform persistence objects (or vice versa).
     pub fn move_selectable_object(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_move_selectable_object(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_move_selectable_object(
                 self as *mut Self,
                 theObject,
             )
@@ -12378,10 +12889,10 @@ impl ViewerSelector {
     /// Removes selectable object from map of selectable ones
     pub fn remove_selectable_object(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_remove_selectable_object(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_remove_selectable_object(
                 self as *mut Self,
                 theObject,
             )
@@ -12392,11 +12903,11 @@ impl ViewerSelector {
     /// Removes selection of the object and marks its BVH tree for rebuild
     pub fn remove_selection_of_object(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_remove_selection_of_object(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_remove_selection_of_object(
                 self as *mut Self,
                 theObject,
                 theSelection,
@@ -12409,7 +12920,10 @@ impl ViewerSelector {
     /// guarantees that 1st level BVH for the viewer selector will be rebuilt during this call
     pub fn rebuild_objects_tree(&mut self, theIsForce: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_rebuild_objects_tree(self as *mut Self, theIsForce)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_rebuild_objects_tree(
+                self as *mut Self,
+                theIsForce,
+            )
         })
     }
 
@@ -12419,11 +12933,11 @@ impl ViewerSelector {
     /// rebuilt during this call
     pub fn rebuild_sensitives_tree(
         &mut self,
-        theObject: &crate::ffi::HandleSelectMgrSelectableObject,
+        theObject: &crate::ffi_types::HandleSelectMgrSelectableObject,
         theIsForce: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_rebuild_sensitives_tree(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_rebuild_sensitives_tree(
                 self as *mut Self,
                 theObject,
                 theIsForce,
@@ -12435,9 +12949,9 @@ impl ViewerSelector {
     /// Returns instance of selecting volume manager of the viewer selector
     pub fn get_manager(&mut self) -> &mut SelectingVolumeManager {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_get_manager(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_get_manager(self as *mut Self),
+            ))
         }
     }
 
@@ -12445,9 +12959,11 @@ impl ViewerSelector {
     /// Return map of selectable objects.
     pub fn selectable_objects(&self) -> &SelectableObjectSet {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_selectable_objects(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_selectable_objects(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -12455,7 +12971,7 @@ impl ViewerSelector {
     /// Marks all added sensitive entities of all objects as non-selectable
     pub fn reset_selection_activation_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_reset_selection_activation_status(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_reset_selection_activation_status(
                 self as *mut Self,
             )
         })
@@ -12467,7 +12983,7 @@ impl ViewerSelector {
     /// algorithm will mark both included and overlapped entities as matched
     pub fn allow_overlap_detection(&mut self, theIsToAllow: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_allow_overlap_detection(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_allow_overlap_detection(
                 self as *mut Self,
                 theIsToAllow,
             )
@@ -12481,10 +12997,10 @@ impl ViewerSelector {
         &mut self,
         theXPix: i32,
         theYPix: i32,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_int2_handlev3dview(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_pick_int2_handlev3dview(
                 self as *mut Self,
                 theXPix,
                 theYPix,
@@ -12503,10 +13019,10 @@ impl ViewerSelector {
         theYPMin: i32,
         theXPMax: i32,
         theYPMax: i32,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_int4_handlev3dview(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_pick_int4_handlev3dview(
                 self as *mut Self,
                 theXPMin,
                 theYPMin,
@@ -12521,11 +13037,11 @@ impl ViewerSelector {
     /// pick action - input pixel values for polyline selection for selection.
     pub fn pick_array1ofpnt2d_handlev3dview(
         &mut self,
-        thePolyline: &crate::ffi::TColgp_Array1OfPnt2d,
-        theView: &crate::ffi::HandleV3dView,
+        thePolyline: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        theView: &crate::ffi_types::HandleV3dView,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_array1ofpnt2d_handlev3dview(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_pick_array1ofpnt2d_handlev3dview(
                 self as *mut Self,
                 thePolyline,
                 theView,
@@ -12540,10 +13056,10 @@ impl ViewerSelector {
     pub fn pick_ax1_handlev3dview(
         &mut self,
         theAxis: &crate::gp::Ax1,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_pick_ax1_handlev3dview(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_pick_ax1_handlev3dview(
                 self as *mut Self,
                 theAxis,
                 theView,
@@ -12562,12 +13078,12 @@ impl ViewerSelector {
     pub fn to_pix_map(
         &mut self,
         theImage: &mut crate::image::PixMap,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
         theType: crate::std_select::TypeOfSelectionImage,
         thePickedIndex: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_to_pix_map(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_to_pix_map(
                 self as *mut Self,
                 theImage,
                 theView,
@@ -12579,9 +13095,9 @@ impl ViewerSelector {
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:306 - `SelectMgr_ViewerSelector::DisplaySensitive()`
     /// Displays sensitives in view <theView>.
-    pub fn display_sensitive_handlev3dview(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn display_sensitive_handlev3dview(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handlev3dview(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_display_sensitive_handlev3dview(
                 self as *mut Self,
                 theView,
             )
@@ -12589,22 +13105,25 @@ impl ViewerSelector {
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:308 - `SelectMgr_ViewerSelector::ClearSensitive()`
-    pub fn clear_sensitive(&mut self, theView: &crate::ffi::HandleV3dView) {
+    pub fn clear_sensitive(&mut self, theView: &crate::ffi_types::HandleV3dView) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_clear_sensitive(self as *mut Self, theView)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_clear_sensitive(
+                self as *mut Self,
+                theView,
+            )
         })
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:310 - `SelectMgr_ViewerSelector::DisplaySensitive()`
     pub fn display_sensitive_handleselectmgrselection_trsf_handlev3dview_bool(
         &mut self,
-        theSel: &crate::ffi::HandleSelectMgrSelection,
+        theSel: &crate::ffi_types::HandleSelectMgrSelection,
         theTrsf: &crate::gp::Trsf,
-        theView: &crate::ffi::HandleV3dView,
+        theView: &crate::ffi_types::HandleV3dView,
         theToClearOthers: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_display_sensitive_handleselectmgrselection_trsf_handlev3dview_bool(self as *mut Self, theSel, theTrsf, theView, theToClearOthers)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_display_sensitive_handleselectmgrselection_trsf_handlev3dview_bool(self as *mut Self, theSel, theTrsf, theView, theToClearOthers)
         })
     }
 
@@ -12612,7 +13131,7 @@ impl ViewerSelector {
     /// Enables/disables building BVH for sensitives in separate threads
     pub fn set_to_prebuild_bvh(&mut self, theToPrebuild: bool, theThreadsNum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_set_to_prebuild_bvh(
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_set_to_prebuild_bvh(
                 self as *mut Self,
                 theToPrebuild,
                 theThreadsNum,
@@ -12622,9 +13141,12 @@ impl ViewerSelector {
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:324 - `SelectMgr_ViewerSelector::QueueBVHBuild()`
     /// Queues a sensitive entity to build its BVH
-    pub fn queue_bvh_build(&mut self, theEntity: &crate::ffi::HandleSelect3DSensitiveEntity) {
+    pub fn queue_bvh_build(&mut self, theEntity: &crate::ffi_types::HandleSelect3DSensitiveEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_queue_bvh_build(self as *mut Self, theEntity)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_queue_bvh_build(
+                self as *mut Self,
+                theEntity,
+            )
         })
     }
 
@@ -12632,7 +13154,7 @@ impl ViewerSelector {
     /// Waits BVH threads finished building
     pub fn wait_for_bvh_build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_wait_for_bvh_build(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_wait_for_bvh_build(self as *mut Self)
         })
     }
 
@@ -12640,7 +13162,7 @@ impl ViewerSelector {
     /// Returns TRUE if building BVH for sensitives in separate threads is enabled
     pub fn to_prebuild_bvh(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_to_prebuild_bvh(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_to_prebuild_bvh(self as *const Self)
         })
     }
 
@@ -12648,7 +13170,7 @@ impl ViewerSelector {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_get_type_name(),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -12656,18 +13178,22 @@ impl ViewerSelector {
     }
 
     /// **Source:** `SelectMgr_ViewerSelector.hxx`:87 - `SelectMgr_ViewerSelector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectMgr_ViewerSelector_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12675,7 +13201,9 @@ impl ViewerSelector {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12683,25 +13211,31 @@ impl ViewerSelector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrViewerSelector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrViewerSelector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectMgr_ViewerSelector_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -12709,7 +13243,9 @@ impl ViewerSelector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::SelectMgr_ViewerSelector_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -12722,64 +13258,72 @@ impl ViewerSelector {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectMgr_ViewerSelector_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectMgr_ViewerSelector_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSelectMgrViewerSelector;
+pub use crate::ffi_types::HandleSelectMgrViewerSelector;
 
 unsafe impl crate::CppDeletable for HandleSelectMgrViewerSelector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSelectMgrViewerSelector_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_destructor(ptr);
     }
 }
 
 impl HandleSelectMgrViewerSelector {
     /// Dereference this Handle to access the underlying SelectMgr_ViewerSelector
-    pub fn get(&self) -> &crate::ffi::SelectMgr_ViewerSelector {
+    pub fn get(&self) -> &crate::ffi_types::SelectMgr_ViewerSelector {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSelectMgrViewerSelector_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying SelectMgr_ViewerSelector
-    pub fn get_mut(&mut self) -> &mut crate::ffi::SelectMgr_ViewerSelector {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::SelectMgr_ViewerSelector {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSelectMgrViewerSelector_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<SelectMgr_ViewerSelector> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSelectMgrViewerSelector_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleSelectMgrViewerSelector_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -12791,7 +13335,7 @@ impl HandleSelectMgrViewerSelector {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     SelectMgr_IndexedMapOfHSensitive as IndexedMapOfHSensitive,
     SelectMgr_ListOfFilter as ListOfFilter, SelectMgr_MapOfOwners as MapOfOwners,
     SelectMgr_SequenceOfOwner as SequenceOfOwner,

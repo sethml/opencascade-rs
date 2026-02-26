@@ -76,11 +76,11 @@ impl TryFrom<i32> for IntersectionType {
 // ========================
 
 /// **Source:** `HatchGen_Domain.hxx`:27 - `HatchGen_Domain`
-pub use crate::ffi::HatchGen_Domain as Domain;
+pub use crate::ffi_types::HatchGen_Domain as Domain;
 
 unsafe impl crate::CppDeletable for Domain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HatchGen_Domain_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_destructor(ptr);
     }
 }
 
@@ -89,7 +89,9 @@ impl Domain {
     /// Creates an infinite domain.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HatchGen_Domain_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_ctor(),
+            ))
         }
     }
 
@@ -101,7 +103,7 @@ impl Domain {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_Domain_ctor_pointonhatching2(P1, P2),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_ctor_pointonhatching2(P1, P2),
             ))
         }
     }
@@ -113,7 +115,7 @@ impl Domain {
     pub fn new_pointonhatching_bool(P: &PointOnHatching, First: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_Domain_ctor_pointonhatching_bool(P, First),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_ctor_pointonhatching_bool(P, First),
             ))
         }
     }
@@ -122,7 +124,11 @@ impl Domain {
     /// Sets the first and the second points of the domain.
     pub fn set_points_pointonhatching2(&mut self, P1: &PointOnHatching, P2: &PointOnHatching) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_points_pointonhatching2(self as *mut Self, P1, P2)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_points_pointonhatching2(
+                self as *mut Self,
+                P1,
+                P2,
+            )
         })
     }
 
@@ -131,7 +137,7 @@ impl Domain {
     /// as the infinite.
     pub fn set_points(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_points(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_points(self as *mut Self)
         })
     }
 
@@ -139,7 +145,10 @@ impl Domain {
     /// Sets the first point of the domain.
     pub fn set_first_point_pointonhatching(&mut self, P: &PointOnHatching) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_first_point_pointonhatching(self as *mut Self, P)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_first_point_pointonhatching(
+                self as *mut Self,
+                P,
+            )
         })
     }
 
@@ -148,7 +157,7 @@ impl Domain {
     /// infinite.
     pub fn set_first_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_first_point(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_first_point(self as *mut Self)
         })
     }
 
@@ -156,7 +165,10 @@ impl Domain {
     /// Sets the second point of the domain.
     pub fn set_second_point_pointonhatching(&mut self, P: &PointOnHatching) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_second_point_pointonhatching(self as *mut Self, P)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_second_point_pointonhatching(
+                self as *mut Self,
+                P,
+            )
         })
     }
 
@@ -165,7 +177,7 @@ impl Domain {
     /// infinite.
     pub fn set_second_point(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_set_second_point(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_set_second_point(self as *mut Self)
         })
     }
 
@@ -173,7 +185,7 @@ impl Domain {
     /// Returns True if the domain has a first point.
     pub fn has_first_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_Domain_has_first_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_has_first_point(self as *const Self)
         })
     }
 
@@ -183,7 +195,9 @@ impl Domain {
     /// HasFirstPoint returns False.
     pub fn first_point(&self) -> &PointOnHatching {
         unsafe {
-            &*(crate::check_result(crate::ffi::HatchGen_Domain_first_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_first_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -191,7 +205,7 @@ impl Domain {
     /// Returns True if the domain has a second point.
     pub fn has_second_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_Domain_has_second_point(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_has_second_point(self as *const Self)
         })
     }
 
@@ -201,7 +215,9 @@ impl Domain {
     /// HasSecondPoint returns False.
     pub fn second_point(&self) -> &PointOnHatching {
         unsafe {
-            &*(crate::check_result(crate::ffi::HatchGen_Domain_second_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_second_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -209,7 +225,7 @@ impl Domain {
     /// Dump of the domain.
     pub fn dump(&self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_Domain_dump(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_Domain_dump(self as *const Self, Index)
         })
     }
 }
@@ -219,14 +235,17 @@ impl Domain {
 // ========================
 
 /// **Source:** `HatchGen_IntersectionPoint.hxx`:29 - `HatchGen_IntersectionPoint`
-pub use crate::ffi::HatchGen_IntersectionPoint as IntersectionPoint;
+pub use crate::ffi_types::HatchGen_IntersectionPoint as IntersectionPoint;
 
 impl IntersectionPoint {
     /// **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
     /// Sets the index of the supporting curve.
     pub fn set_index(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_index(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_index(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -234,7 +253,7 @@ impl IntersectionPoint {
     /// Returns the index of the supporting curve.
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_index(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_index(self as *const Self)
         })
     }
 
@@ -242,7 +261,10 @@ impl IntersectionPoint {
     /// Sets the parameter on the curve.
     pub fn set_parameter(&mut self, Parameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_parameter(self as *mut Self, Parameter)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_parameter(
+                self as *mut Self,
+                Parameter,
+            )
         })
     }
 
@@ -250,7 +272,7 @@ impl IntersectionPoint {
     /// Returns the parameter on the curve.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_parameter(self as *const Self)
         })
     }
 
@@ -258,7 +280,10 @@ impl IntersectionPoint {
     /// Sets the position of the point on the curve.
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_position(self as *mut Self, Position.into())
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_position(
+                self as *mut Self,
+                Position.into(),
+            )
         })
     }
 
@@ -266,7 +291,7 @@ impl IntersectionPoint {
     /// Returns the position of the point on the curve.
     pub fn position(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_position(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_position(self as *const Self)
         }))
         .unwrap()
     }
@@ -275,7 +300,10 @@ impl IntersectionPoint {
     /// Sets the transition state before the intersection.
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_state_before(self as *mut Self, State.into())
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_state_before(
+                self as *mut Self,
+                State.into(),
+            )
         })
     }
 
@@ -283,7 +311,9 @@ impl IntersectionPoint {
     /// Returns the transition state before the intersection.
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_state_before(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_state_before(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -292,7 +322,10 @@ impl IntersectionPoint {
     /// Sets the transition state after the intersection.
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_state_after(self as *mut Self, State.into())
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_state_after(
+                self as *mut Self,
+                State.into(),
+            )
         })
     }
 
@@ -300,7 +333,9 @@ impl IntersectionPoint {
     /// Returns the transition state after of the intersection.
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_state_after(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_state_after(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -309,7 +344,10 @@ impl IntersectionPoint {
     /// Sets the flag that the point is the beginning of a segment.
     pub fn set_segment_beginning(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_segment_beginning(self as *mut Self, State)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_segment_beginning(
+                self as *mut Self,
+                State,
+            )
         })
     }
 
@@ -317,7 +355,9 @@ impl IntersectionPoint {
     /// Returns the flag that the point is the beginning of a segment.
     pub fn segment_beginning(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_segment_beginning(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_segment_beginning(
+                self as *const Self,
+            )
         })
     }
 
@@ -325,7 +365,10 @@ impl IntersectionPoint {
     /// Sets the flag that the point is the end of a segment.
     pub fn set_segment_end(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_set_segment_end(self as *mut Self, State)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_set_segment_end(
+                self as *mut Self,
+                State,
+            )
         })
     }
 
@@ -333,7 +376,9 @@ impl IntersectionPoint {
     /// Returns the flag that the point is the end of a segment.
     pub fn segment_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_segment_end(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_segment_end(
+                self as *const Self,
+            )
         })
     }
 
@@ -341,7 +386,10 @@ impl IntersectionPoint {
     /// Dump of the point on element.
     pub fn dump(&self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_IntersectionPoint_dump(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_IntersectionPoint_dump(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -351,11 +399,11 @@ impl IntersectionPoint {
 // ========================
 
 /// **Source:** `HatchGen_PointOnElement.hxx`:30 - `HatchGen_PointOnElement`
-pub use crate::ffi::HatchGen_PointOnElement as PointOnElement;
+pub use crate::ffi_types::HatchGen_PointOnElement as PointOnElement;
 
 unsafe impl crate::CppDeletable for PointOnElement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HatchGen_PointOnElement_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_destructor(ptr);
     }
 }
 
@@ -365,7 +413,7 @@ impl PointOnElement {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_PointOnElement_ctor(),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_ctor(),
             ))
         }
     }
@@ -377,7 +425,7 @@ impl PointOnElement {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_PointOnElement_ctor_intersectionpoint(Point),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_ctor_intersectionpoint(Point),
             ))
         }
     }
@@ -386,7 +434,7 @@ impl PointOnElement {
     /// Sets the intersection type at this point.
     pub fn set_intersection_type(&mut self, Type: crate::hatch_gen::IntersectionType) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_set_intersection_type(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_set_intersection_type(
                 self as *mut Self,
                 Type.into(),
             )
@@ -397,7 +445,9 @@ impl PointOnElement {
     /// Returns the intersection type at this point.
     pub fn intersection_type(&self) -> crate::hatch_gen::IntersectionType {
         crate::hatch_gen::IntersectionType::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_intersection_type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_intersection_type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -415,7 +465,11 @@ impl PointOnElement {
     /// P1.myType   = P2.myType
     pub fn is_identical(&self, Point: &PointOnElement, Confusion: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_is_identical(self as *const Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_is_identical(
+                self as *const Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -423,7 +477,11 @@ impl PointOnElement {
     /// Tests if the point is different from an other.
     pub fn is_different(&self, Point: &PointOnElement, Confusion: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_is_different(self as *const Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_is_different(
+                self as *const Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -431,7 +489,7 @@ impl PointOnElement {
     /// Dump of the point on element.
     pub fn dump(&self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_dump(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_dump(self as *const Self, Index)
         })
     }
 
@@ -439,7 +497,7 @@ impl PointOnElement {
     pub fn as_intersection_point(&self) -> &IntersectionPoint {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint(
+                crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint(
                     self as *const Self,
                 ),
             )
@@ -449,46 +507,52 @@ impl PointOnElement {
     /// Upcast to HatchGen_IntersectionPoint (mutable)
     pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_as_HatchGen_IntersectionPoint_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
     pub fn set_index(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetIndex(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetIndex(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:38 - `HatchGen_IntersectionPoint::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_Index(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_Index(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:41 - `HatchGen_IntersectionPoint::SetParameter()`
     pub fn set_parameter(&mut self, Parameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetParameter(self as *mut Self, Parameter)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetParameter(
+                self as *mut Self,
+                Parameter,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:44 - `HatchGen_IntersectionPoint::Parameter()`
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_Parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_Parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:47 - `HatchGen_IntersectionPoint::SetPosition()`
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetPosition(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetPosition(
                 self as *mut Self,
                 Position.into(),
             )
@@ -498,7 +562,9 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:50 - `HatchGen_IntersectionPoint::Position()`
     pub fn position(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_Position(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_Position(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -506,7 +572,7 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:53 - `HatchGen_IntersectionPoint::SetStateBefore()`
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetStateBefore(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetStateBefore(
                 self as *mut Self,
                 State.into(),
             )
@@ -516,7 +582,9 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:56 - `HatchGen_IntersectionPoint::StateBefore()`
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_StateBefore(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_StateBefore(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -524,7 +592,7 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:59 - `HatchGen_IntersectionPoint::SetStateAfter()`
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetStateAfter(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetStateAfter(
                 self as *mut Self,
                 State.into(),
             )
@@ -534,7 +602,9 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:62 - `HatchGen_IntersectionPoint::StateAfter()`
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_StateAfter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_StateAfter(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -542,7 +612,7 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:65 - `HatchGen_IntersectionPoint::SetSegmentBeginning()`
     pub fn set_segment_beginning(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetSegmentBeginning(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetSegmentBeginning(
                 self as *mut Self,
                 State,
             )
@@ -552,21 +622,28 @@ impl PointOnElement {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:68 - `HatchGen_IntersectionPoint::SegmentBeginning()`
     pub fn segment_beginning(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SegmentBeginning(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SegmentBeginning(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:71 - `HatchGen_IntersectionPoint::SetSegmentEnd()`
     pub fn set_segment_end(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SetSegmentEnd(self as *mut Self, State)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SetSegmentEnd(
+                self as *mut Self,
+                State,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:74 - `HatchGen_IntersectionPoint::SegmentEnd()`
     pub fn segment_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnElement_inherited_SegmentEnd(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnElement_inherited_SegmentEnd(
+                self as *const Self,
+            )
         })
     }
 }
@@ -576,11 +653,11 @@ impl PointOnElement {
 // ========================
 
 /// **Source:** `HatchGen_PointOnHatching.hxx`:30 - `HatchGen_PointOnHatching`
-pub use crate::ffi::HatchGen_PointOnHatching as PointOnHatching;
+pub use crate::ffi_types::HatchGen_PointOnHatching as PointOnHatching;
 
 unsafe impl crate::CppDeletable for PointOnHatching {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HatchGen_PointOnHatching_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_destructor(ptr);
     }
 }
 
@@ -590,7 +667,7 @@ impl PointOnHatching {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_PointOnHatching_ctor(),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_ctor(),
             ))
         }
     }
@@ -602,7 +679,9 @@ impl PointOnHatching {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HatchGen_PointOnHatching_ctor_intersectionpoint(Point),
+                crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_ctor_intersectionpoint(
+                    Point,
+                ),
             ))
         }
     }
@@ -611,7 +690,11 @@ impl PointOnHatching {
     /// Adds a point on element to the point.
     pub fn add_point(&mut self, Point: &PointOnElement, Confusion: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_add_point(self as *mut Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_add_point(
+                self as *mut Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -620,7 +703,7 @@ impl PointOnHatching {
     /// hatching at this point.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_nb_points(self as *const Self)
         })
     }
 
@@ -630,7 +713,7 @@ impl PointOnHatching {
     /// Index > NbPoints.
     pub fn point(&self, Index: i32) -> &PointOnElement {
         unsafe {
-            &*(crate::check_result(crate::ffi::HatchGen_PointOnHatching_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_point(
                 self as *const Self,
                 Index,
             )))
@@ -643,7 +726,10 @@ impl PointOnHatching {
     /// Index > NbPoints.
     pub fn rem_point(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_rem_point(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_rem_point(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -651,7 +737,7 @@ impl PointOnHatching {
     /// Removes all the points on element of the point.
     pub fn clr_points(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_clr_points(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_clr_points(self as *mut Self)
         })
     }
 
@@ -662,7 +748,11 @@ impl PointOnHatching {
     /// P2.myParam - P1.myParam > Confusion
     pub fn is_lower(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_is_lower(self as *const Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_is_lower(
+                self as *const Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -673,7 +763,11 @@ impl PointOnHatching {
     /// | P2.myParam - P1.myParam | <= Confusion
     pub fn is_equal(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_is_equal(self as *const Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_is_equal(
+                self as *const Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -684,7 +778,11 @@ impl PointOnHatching {
     /// P1.myParam - P2.myParam > Confusion
     pub fn is_greater(&self, Point: &PointOnHatching, Confusion: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_is_greater(self as *const Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_is_greater(
+                self as *const Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -692,50 +790,47 @@ impl PointOnHatching {
     /// Dump of the point.
     pub fn dump(&self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_dump(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_dump(self as *const Self, Index)
         })
     }
 
     /// Upcast to HatchGen_IntersectionPoint
     pub fn as_intersection_point(&self) -> &IntersectionPoint {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint(self as *const Self))
         }
     }
 
     /// Upcast to HatchGen_IntersectionPoint (mutable)
     pub fn as_intersection_point_mut(&mut self) -> &mut IntersectionPoint {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_as_HatchGen_IntersectionPoint_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:35 - `HatchGen_IntersectionPoint::SetIndex()`
     pub fn set_index(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetIndex(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetIndex(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:38 - `HatchGen_IntersectionPoint::Index()`
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_Index(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_Index(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:41 - `HatchGen_IntersectionPoint::SetParameter()`
     pub fn set_parameter(&mut self, Parameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetParameter(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetParameter(
                 self as *mut Self,
                 Parameter,
             )
@@ -745,14 +840,16 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:44 - `HatchGen_IntersectionPoint::Parameter()`
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_Parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_Parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:47 - `HatchGen_IntersectionPoint::SetPosition()`
     pub fn set_position(&mut self, Position: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetPosition(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetPosition(
                 self as *mut Self,
                 Position.into(),
             )
@@ -762,7 +859,9 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:50 - `HatchGen_IntersectionPoint::Position()`
     pub fn position(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_Position(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_Position(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -770,7 +869,7 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:53 - `HatchGen_IntersectionPoint::SetStateBefore()`
     pub fn set_state_before(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetStateBefore(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetStateBefore(
                 self as *mut Self,
                 State.into(),
             )
@@ -780,7 +879,9 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:56 - `HatchGen_IntersectionPoint::StateBefore()`
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_StateBefore(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_StateBefore(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -788,7 +889,7 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:59 - `HatchGen_IntersectionPoint::SetStateAfter()`
     pub fn set_state_after(&mut self, State: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetStateAfter(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetStateAfter(
                 self as *mut Self,
                 State.into(),
             )
@@ -798,7 +899,9 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:62 - `HatchGen_IntersectionPoint::StateAfter()`
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_StateAfter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_StateAfter(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -806,7 +909,7 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:65 - `HatchGen_IntersectionPoint::SetSegmentBeginning()`
     pub fn set_segment_beginning(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetSegmentBeginning(
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetSegmentBeginning(
                 self as *mut Self,
                 State,
             )
@@ -816,21 +919,28 @@ impl PointOnHatching {
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:68 - `HatchGen_IntersectionPoint::SegmentBeginning()`
     pub fn segment_beginning(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SegmentBeginning(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SegmentBeginning(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:71 - `HatchGen_IntersectionPoint::SetSegmentEnd()`
     pub fn set_segment_end(&mut self, State: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SetSegmentEnd(self as *mut Self, State)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SetSegmentEnd(
+                self as *mut Self,
+                State,
+            )
         })
     }
 
     /// Inherited: **Source:** `HatchGen_IntersectionPoint.hxx`:74 - `HatchGen_IntersectionPoint::SegmentEnd()`
     pub fn segment_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HatchGen_PointOnHatching_inherited_SegmentEnd(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HatchGen_PointOnHatching_inherited_SegmentEnd(
+                self as *const Self,
+            )
         })
     }
 }

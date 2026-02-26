@@ -18,11 +18,11 @@
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the
 /// Value function returns the constructed arc of circle.
-pub use crate::ffi::GC_MakeArcOfCircle as MakeArcOfCircle;
+pub use crate::ffi_types::GC_MakeArcOfCircle as MakeArcOfCircle;
 
 unsafe impl crate::CppDeletable for MakeArcOfCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeArcOfCircle_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_destructor(ptr);
     }
 }
 
@@ -39,7 +39,9 @@ impl MakeArcOfCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfCircle_ctor_circ_real2_bool(Circ, Alpha1, Alpha2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_real2_bool(
+                    Circ, Alpha1, Alpha2, Sense,
+                ),
             ))
         }
     }
@@ -56,7 +58,9 @@ impl MakeArcOfCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfCircle_ctor_circ_pnt_real_bool(Circ, P, Alpha, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_pnt_real_bool(
+                    Circ, P, Alpha, Sense,
+                ),
             ))
         }
     }
@@ -72,7 +76,9 @@ impl MakeArcOfCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfCircle_ctor_circ_pnt2_bool(Circ, P1, P2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_circ_pnt2_bool(
+                    Circ, P1, P2, Sense,
+                ),
             ))
         }
     }
@@ -87,7 +93,7 @@ impl MakeArcOfCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfCircle_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt3(P1, P2, P3),
             ))
         }
     }
@@ -120,7 +126,7 @@ impl MakeArcOfCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_ctor_pnt_vec_pnt(P1, V, P2),
             ))
         }
     }
@@ -128,39 +134,43 @@ impl MakeArcOfCircle {
     /// **Source:** `GC_MakeArcOfCircle.hxx`:94 - `GC_MakeArcOfCircle::Value()`
     /// Returns the constructed arc of circle.
     /// Exceptions StdFail_NotDone if no arc of circle is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeArcOfCircle_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeArcOfCircle_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeArcOfCircle_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_as_GC_Root_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfCircle_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfCircle_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfCircle_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -178,11 +188,11 @@ impl MakeArcOfCircle {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the
 /// Value function returns the constructed arc of ellipse.
-pub use crate::ffi::GC_MakeArcOfEllipse as MakeArcOfEllipse;
+pub use crate::ffi_types::GC_MakeArcOfEllipse as MakeArcOfEllipse;
 
 unsafe impl crate::CppDeletable for MakeArcOfEllipse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeArcOfEllipse_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_destructor(ptr);
     }
 }
 
@@ -198,7 +208,9 @@ impl MakeArcOfEllipse {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfEllipse_ctor_elips_real2_bool(Elips, Alpha1, Alpha2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_real2_bool(
+                    Elips, Alpha1, Alpha2, Sense,
+                ),
             ))
         }
     }
@@ -215,7 +227,9 @@ impl MakeArcOfEllipse {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfEllipse_ctor_elips_pnt_real_bool(Elips, P, Alpha, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_pnt_real_bool(
+                    Elips, P, Alpha, Sense,
+                ),
             ))
         }
     }
@@ -237,46 +251,52 @@ impl MakeArcOfEllipse {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfEllipse_ctor_elips_pnt2_bool(Elips, P1, P2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_ctor_elips_pnt2_bool(
+                    Elips, P1, P2, Sense,
+                ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeArcOfEllipse.hxx`:71 - `GC_MakeArcOfEllipse::Value()`
     /// Returns the constructed arc of ellipse.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeArcOfEllipse_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeArcOfEllipse_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeArcOfEllipse_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_as_GC_Root_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfEllipse_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfEllipse_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfEllipse_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -294,11 +314,11 @@ impl MakeArcOfEllipse {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the
 /// Value function returns the constructed arc of hyperbola.
-pub use crate::ffi::GC_MakeArcOfHyperbola as MakeArcOfHyperbola;
+pub use crate::ffi_types::GC_MakeArcOfHyperbola as MakeArcOfHyperbola;
 
 unsafe impl crate::CppDeletable for MakeArcOfHyperbola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeArcOfHyperbola_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_destructor(ptr);
     }
 }
 
@@ -315,7 +335,9 @@ impl MakeArcOfHyperbola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_real2_bool(Hypr, Alpha1, Alpha2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_real2_bool(
+                    Hypr, Alpha1, Alpha2, Sense,
+                ),
             ))
         }
     }
@@ -332,7 +354,9 @@ impl MakeArcOfHyperbola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_pnt_real_bool(Hypr, P, Alpha, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_pnt_real_bool(
+                    Hypr, P, Alpha, Sense,
+                ),
             ))
         }
     }
@@ -351,46 +375,58 @@ impl MakeArcOfHyperbola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfHyperbola_ctor_hypr_pnt2_bool(Hypr, P1, P2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_ctor_hypr_pnt2_bool(
+                    Hypr, P1, P2, Sense,
+                ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeArcOfHyperbola.hxx`:69 - `GC_MakeArcOfHyperbola::Value()`
     /// Returns the constructed arc of hyperbola.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeArcOfHyperbola_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeArcOfHyperbola_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeArcOfHyperbola_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfHyperbola_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfHyperbola_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfHyperbola_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -408,11 +444,11 @@ impl MakeArcOfHyperbola {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the
 /// Value function returns the constructed arc of parabola.
-pub use crate::ffi::GC_MakeArcOfParabola as MakeArcOfParabola;
+pub use crate::ffi_types::GC_MakeArcOfParabola as MakeArcOfParabola;
 
 unsafe impl crate::CppDeletable for MakeArcOfParabola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeArcOfParabola_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_destructor(ptr);
     }
 }
 
@@ -429,7 +465,7 @@ impl MakeArcOfParabola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfParabola_ctor_parab_real2_bool(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_real2_bool(
                     Parab, Alpha1, Alpha2, Sense,
                 ),
             ))
@@ -448,7 +484,9 @@ impl MakeArcOfParabola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfParabola_ctor_parab_pnt_real_bool(Parab, P, Alpha, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_pnt_real_bool(
+                    Parab, P, Alpha, Sense,
+                ),
             ))
         }
     }
@@ -464,46 +502,54 @@ impl MakeArcOfParabola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeArcOfParabola_ctor_parab_pnt2_bool(Parab, P1, P2, Sense),
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_ctor_parab_pnt2_bool(
+                    Parab, P1, P2, Sense,
+                ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeArcOfParabola.hxx`:66 - `GC_MakeArcOfParabola::Value()`
     /// Returns the constructed arc of parabola.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeArcOfParabola_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeArcOfParabola_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeArcOfParabola_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfParabola_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeArcOfParabola_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeArcOfParabola_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -531,11 +577,11 @@ impl MakeArcOfParabola {
 /// The center of the circle is the Location point of its axis
 /// placement. The XDirection of the axis placement defines the
 /// origin of the parametrization.
-pub use crate::ffi::GC_MakeCircle as MakeCircle;
+pub use crate::ffi_types::GC_MakeCircle as MakeCircle;
 
 unsafe impl crate::CppDeletable for MakeCircle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeCircle_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeCircle_destructor(ptr);
     }
 }
 
@@ -544,7 +590,9 @@ impl MakeCircle {
     /// creates a circle from a non persistent circle C by its conversion.
     pub fn new_circ(C: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeCircle_ctor_circ(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ(C),
+            ))
         }
     }
 
@@ -554,9 +602,9 @@ impl MakeCircle {
     /// Status is "NegativeRadius" if Radius < 0.
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeCircle_ctor_ax2_real(
-                A2, Radius,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax2_real(A2, Radius),
+            ))
         }
     }
 
@@ -569,7 +617,7 @@ impl MakeCircle {
     pub fn new_circ_real(Circ: &crate::gp::Circ, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCircle_ctor_circ_real(Circ, Dist),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_real(Circ, Dist),
             ))
         }
     }
@@ -579,9 +627,9 @@ impl MakeCircle {
     /// Circ <Circ> and passing through a Pnt <Point>.
     pub fn new_circ_pnt(Circ: &crate::gp::Circ, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeCircle_ctor_circ_pnt(
-                Circ, Point,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_circ_pnt(Circ, Point),
+            ))
         }
     }
 
@@ -594,9 +642,9 @@ impl MakeCircle {
         P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeCircle_ctor_pnt3(
-                P1, P2, P3,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt3(P1, P2, P3),
+            ))
         }
     }
 
@@ -611,7 +659,7 @@ impl MakeCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCircle_ctor_pnt_dir_real(Center, Norm, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt_dir_real(Center, Norm, Radius),
             ))
         }
     }
@@ -627,7 +675,7 @@ impl MakeCircle {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCircle_ctor_pnt2_real(Center, PtAxis, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_pnt2_real(Center, PtAxis, Radius),
             ))
         }
     }
@@ -637,9 +685,9 @@ impl MakeCircle {
     /// <Center> and its radius <Radius>.
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeCircle_ctor_ax1_real(
-                Axis, Radius,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCircle_ctor_ax1_real(Axis, Radius),
+            ))
         }
     }
 
@@ -647,33 +695,43 @@ impl MakeCircle {
     /// Returns the constructed circle.
     /// Exceptions
     /// StdFail_NotDone if no circle is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomCircle {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeCircle_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomCircle {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*crate::check_result(crate::ffi::GC_MakeCircle_as_GC_Root(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle_as_GC_Root(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeCircle_as_GC_Root_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCircle_as_GC_Root_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeCircle_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeCircle_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeCircle_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -712,11 +770,11 @@ impl MakeCircle {
 /// When you create a ConicalSurface the U and V directions of
 /// parametrization are such that at each point of the surface the
 /// normal is oriented towards the "outside region".
-pub use crate::ffi::GC_MakeConicalSurface as MakeConicalSurface;
+pub use crate::ffi_types::GC_MakeConicalSurface as MakeConicalSurface;
 
 unsafe impl crate::CppDeletable for MakeConicalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeConicalSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_destructor(ptr);
     }
 }
 
@@ -738,7 +796,7 @@ impl MakeConicalSurface {
     pub fn new_ax2_real2(A2: &crate::gp::Ax2, Ang: f64, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeConicalSurface_ctor_ax2_real2(A2, Ang, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_ax2_real2(A2, Ang, Radius),
             ))
         }
     }
@@ -748,7 +806,7 @@ impl MakeConicalSurface {
     pub fn new_cone(C: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeConicalSurface_ctor_cone(C),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_cone(C),
             ))
         }
     }
@@ -771,7 +829,7 @@ impl MakeConicalSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeConicalSurface_ctor_pnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt4(P1, P2, P3, P4),
             ))
         }
     }
@@ -790,7 +848,7 @@ impl MakeConicalSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeConicalSurface_ctor_pnt2_real2(P1, P2, R1, R2),
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_ctor_pnt2_real2(P1, P2, R1, R2),
             ))
         }
     }
@@ -799,39 +857,49 @@ impl MakeConicalSurface {
     /// Returns the constructed cone.
     /// Exceptions
     /// StdFail_NotDone if no cone is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomConicalSurface {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomConicalSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeConicalSurface_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeConicalSurface_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeConicalSurface_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeConicalSurface_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeConicalSurface_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeConicalSurface_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -866,11 +934,11 @@ impl MakeConicalSurface {
 /// the symmetry axis. The "XAxis" defines the origin of the
 /// parameter U = 0.  The trigonometric sense gives the positive
 /// orientation for the parameter U.
-pub use crate::ffi::GC_MakeCylindricalSurface as MakeCylindricalSurface;
+pub use crate::ffi_types::GC_MakeCylindricalSurface as MakeCylindricalSurface;
 
 unsafe impl crate::CppDeletable for MakeCylindricalSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeCylindricalSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_destructor(ptr);
     }
 }
 
@@ -889,7 +957,7 @@ impl MakeCylindricalSurface {
     pub fn new_ax2_real(A2: &crate::gp::Ax2, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_ax2_real(A2, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax2_real(A2, Radius),
             ))
         }
     }
@@ -900,7 +968,7 @@ impl MakeCylindricalSurface {
     pub fn new_cylinder(C: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder(C),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder(C),
             ))
         }
     }
@@ -916,7 +984,9 @@ impl MakeCylindricalSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder_pnt(Cyl, Point),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder_pnt(
+                    Cyl, Point,
+                ),
             ))
         }
     }
@@ -931,7 +1001,9 @@ impl MakeCylindricalSurface {
     pub fn new_cylinder_real(Cyl: &crate::gp::Cylinder, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_cylinder_real(Cyl, Dist),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_cylinder_real(
+                    Cyl, Dist,
+                ),
             ))
         }
     }
@@ -948,7 +1020,7 @@ impl MakeCylindricalSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_pnt3(P1, P2, P3),
             ))
         }
     }
@@ -959,7 +1031,7 @@ impl MakeCylindricalSurface {
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Radius: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_ax1_real(Axis, Radius),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_ax1_real(Axis, Radius),
             ))
         }
     }
@@ -969,7 +1041,7 @@ impl MakeCylindricalSurface {
     pub fn new_circ(Circ: &crate::gp::Circ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeCylindricalSurface_ctor_circ(Circ),
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_ctor_circ(Circ),
             ))
         }
     }
@@ -977,9 +1049,9 @@ impl MakeCylindricalSurface {
     /// **Source:** `GC_MakeCylindricalSurface.hxx`:107 - `GC_MakeCylindricalSurface::Value()`
     /// Returns the constructed cylinder.
     /// Exceptions StdFail_NotDone if no cylinder is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomCylindricalSurface {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomCylindricalSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeCylindricalSurface_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_value(
                 self as *const Self,
             )))
         }
@@ -988,32 +1060,40 @@ impl MakeCylindricalSurface {
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeCylindricalSurface_as_GC_Root(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_as_GC_Root(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeCylindricalSurface_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeCylindricalSurface_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeCylindricalSurface_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeCylindricalSurface_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1031,11 +1111,11 @@ impl MakeCylindricalSurface {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed ellipse.
-pub use crate::ffi::GC_MakeEllipse as MakeEllipse;
+pub use crate::ffi_types::GC_MakeEllipse as MakeEllipse;
 
 unsafe impl crate::CppDeletable for MakeEllipse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeEllipse_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeEllipse_destructor(ptr);
     }
 }
 
@@ -1044,7 +1124,9 @@ impl MakeEllipse {
     /// Creates an ellipse from a non persistent ellipse E from package gp by its conversion.
     pub fn new_elips(E: &crate::gp::Elips) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeEllipse_ctor_elips(E)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_elips(E),
+            ))
         }
     }
 
@@ -1073,7 +1155,11 @@ impl MakeEllipse {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeEllipse_ctor_ax2_real2(A2, MajorRadius, MinorRadius),
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_ax2_real2(
+                    A2,
+                    MajorRadius,
+                    MinorRadius,
+                ),
             ))
         }
     }
@@ -1090,42 +1176,52 @@ impl MakeEllipse {
         Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeEllipse_ctor_pnt3(
-                S1, S2, Center,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeEllipse_ctor_pnt3(S1, S2, Center),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeEllipse.hxx`:76 - `GC_MakeEllipse::Value()`
     /// Returns the constructed ellipse.
     /// Exceptions StdFail_NotDone if no ellipse is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomEllipse {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeEllipse_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomEllipse {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*crate::check_result(crate::ffi::GC_MakeEllipse_as_GC_Root(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse_as_GC_Root(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeEllipse_as_GC_Root_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeEllipse_as_GC_Root_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeEllipse_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeEllipse_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeEllipse_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1166,11 +1262,11 @@ impl MakeEllipse {
 /// of the hyperbola C and the apex of the First (or Second)
 /// Conjugate branch. The minor axis is the YAxis.
 /// The major radius can be lower than the minor radius.
-pub use crate::ffi::GC_MakeHyperbola as MakeHyperbola;
+pub use crate::ffi_types::GC_MakeHyperbola as MakeHyperbola;
 
 unsafe impl crate::CppDeletable for MakeHyperbola {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeHyperbola_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_destructor(ptr);
     }
 }
 
@@ -1179,9 +1275,9 @@ impl MakeHyperbola {
     /// Creates  an Hyperbola from a non persistent hyperbola  from package gp by conversion.
     pub fn new_hypr(H: &crate::gp::Hypr) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeHyperbola_ctor_hypr(
-                H,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_hypr(H),
+            ))
         }
     }
 
@@ -1197,7 +1293,11 @@ impl MakeHyperbola {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeHyperbola_ctor_ax2_real2(A2, MajorRadius, MinorRadius),
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_ax2_real2(
+                    A2,
+                    MajorRadius,
+                    MinorRadius,
+                ),
             ))
         }
     }
@@ -1214,46 +1314,52 @@ impl MakeHyperbola {
         Center: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeHyperbola_ctor_pnt3(
-                S1, S2, Center,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_ctor_pnt3(S1, S2, Center),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeHyperbola.hxx`:86 - `GC_MakeHyperbola::Value()`
     /// Returns the constructed hyperbola.
     /// Exceptions StdFail_NotDone if no hyperbola is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomHyperbola {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeHyperbola_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomHyperbola {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeHyperbola_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeHyperbola_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_as_GC_Root_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeHyperbola_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeHyperbola_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeHyperbola_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1274,11 +1380,11 @@ impl MakeHyperbola {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed line.
-pub use crate::ffi::GC_MakeLine as MakeLine;
+pub use crate::ffi_types::GC_MakeLine as MakeLine;
 
 unsafe impl crate::CppDeletable for MakeLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeLine_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeLine_destructor(ptr);
     }
 }
 
@@ -1288,7 +1394,9 @@ impl MakeLine {
     /// The Location of A1 is the origin of the line.
     pub fn new_ax1(A1: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeLine_ctor_ax1(A1)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_ax1(A1),
+            ))
         }
     }
 
@@ -1296,7 +1404,9 @@ impl MakeLine {
     /// Creates a line from a non persistent line from package gp.
     pub fn new_lin(L: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeLine_ctor_lin(L)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin(L),
+            ))
         }
     }
 
@@ -1304,9 +1414,9 @@ impl MakeLine {
     /// P is the origin and V is the direction of the line.
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeLine_ctor_pnt_dir(
-                P, V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt_dir(P, V),
+            ))
         }
     }
 
@@ -1315,9 +1425,9 @@ impl MakeLine {
     /// Lin <Lin> and passing through a Pnt <Point>.
     pub fn new_lin_pnt(Lin: &crate::gp::Lin, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeLine_ctor_lin_pnt(
-                Lin, Point,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_lin_pnt(Lin, Point),
+            ))
         }
     }
 
@@ -1330,42 +1440,52 @@ impl MakeLine {
     /// IsDone returns false), the Status function returns gce_ConfusedPoints.
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeLine_ctor_pnt2(
-                P1, P2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeLine_ctor_pnt2(P1, P2),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeLine.hxx`:71 - `GC_MakeLine::Value()`
     /// Returns the constructed line.
     /// Exceptions StdFail_NotDone if no line is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomLine {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeLine_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomLine {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*crate::check_result(crate::ffi::GC_MakeLine_as_GC_Root(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine_as_GC_Root(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeLine_as_GC_Root_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeLine_as_GC_Root_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeLine_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeLine_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeLine_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeLine_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1383,11 +1503,11 @@ impl MakeLine {
 /// -   defining the construction of the transformation,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GC_MakeMirror as MakeMirror;
+pub use crate::ffi_types::GC_MakeMirror as MakeMirror;
 
 unsafe impl crate::CppDeletable for MakeMirror {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeMirror_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeMirror_destructor(ptr);
     }
 }
 
@@ -1395,23 +1515,27 @@ impl MakeMirror {
     /// **Source:** `GC_MakeMirror.hxx`:44 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_pnt(Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_pnt(
-                Point,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt(Point),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeMirror.hxx`:46 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_ax1(Axis)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax1(Axis),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeMirror.hxx`:48 - `GC_MakeMirror::GC_MakeMirror()`
     pub fn new_lin(Line: &crate::gp::Lin) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_lin(Line)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_lin(Line),
+            ))
         }
     }
 
@@ -1420,9 +1544,9 @@ impl MakeMirror {
     /// <Point> and <Direc>.
     pub fn new_pnt_dir(Point: &crate::gp::Pnt, Direc: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_pnt_dir(
-                Point, Direc,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pnt_dir(Point, Direc),
+            ))
         }
     }
 
@@ -1430,9 +1554,9 @@ impl MakeMirror {
     /// Make a symmetry transformation of plane <Plane>.
     pub fn new_pln(Plane: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_pln(
-                Plane,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_pln(Plane),
+            ))
         }
     }
 
@@ -1440,16 +1564,20 @@ impl MakeMirror {
     /// Make a symmetry transformation of plane <Plane>.
     pub fn new_ax2(Plane: &crate::gp::Ax2) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeMirror_ctor_ax2(
-                Plane,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeMirror_ctor_ax2(Plane),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeMirror.hxx`:61 - `GC_MakeMirror::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeMirror_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeMirror_value(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -1469,11 +1597,11 @@ impl MakeMirror {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed plane.
-pub use crate::ffi::GC_MakePlane as MakePlane;
+pub use crate::ffi_types::GC_MakePlane as MakePlane;
 
 unsafe impl crate::CppDeletable for MakePlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakePlane_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakePlane_destructor(ptr);
     }
 }
 
@@ -1482,7 +1610,9 @@ impl MakePlane {
     /// Creates a plane from a non persistent plane from package gp.
     pub fn new_pln(Pl: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_pln(Pl)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln(Pl),
+            ))
         }
     }
 
@@ -1491,9 +1621,9 @@ impl MakePlane {
     /// V is the direction normal to the plane.
     pub fn new_pnt_dir(P: &crate::gp::Pnt, V: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_pnt_dir(
-                P, V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt_dir(P, V),
+            ))
         }
     }
 
@@ -1504,9 +1634,9 @@ impl MakePlane {
     /// <= Resolution from gp
     pub fn new_real4(A: f64, B: f64, C: f64, D: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_real4(
-                A, B, C, D,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_real4(A, B, C, D),
+            ))
         }
     }
 
@@ -1515,9 +1645,9 @@ impl MakePlane {
     /// Pln <Pln> and passing through a Pnt <Point>.
     pub fn new_pln_pnt(Pln: &crate::gp::Pln, Point: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_pln_pnt(
-                Pln, Point,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_pnt(Pln, Point),
+            ))
         }
     }
 
@@ -1531,9 +1661,9 @@ impl MakePlane {
     /// Otherwise it is in the opposite direction.
     pub fn new_pln_real(Pln: &crate::gp::Pln, Dist: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_pln_real(
-                Pln, Dist,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pln_real(Pln, Dist),
+            ))
         }
     }
 
@@ -1547,9 +1677,9 @@ impl MakePlane {
         P3: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_pnt3(
-                P1, P2, P3,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_pnt3(P1, P2, P3),
+            ))
         }
     }
 
@@ -1558,40 +1688,52 @@ impl MakePlane {
     /// normal to the Direction of <Axis>.
     pub fn new_ax1(Axis: &crate::gp::Ax1) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakePlane_ctor_ax1(Axis)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakePlane_ctor_ax1(Axis),
+            ))
         }
     }
 
     /// **Source:** `GC_MakePlane.hxx`:88 - `GC_MakePlane::Value()`
     /// Returns the constructed plane.
     /// Exceptions StdFail_NotDone if no plane is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomPlane {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakePlane_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomPlane {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakePlane_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*crate::check_result(crate::ffi::GC_MakePlane_as_GC_Root(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakePlane_as_GC_Root(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakePlane_as_GC_Root_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakePlane_as_GC_Root_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakePlane_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakePlane_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakePlane_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakePlane_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1609,11 +1751,11 @@ impl MakePlane {
 /// -   defining the construction of the transformation,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GC_MakeRotation as MakeRotation;
+pub use crate::ffi_types::GC_MakeRotation as MakeRotation;
 
 unsafe impl crate::CppDeletable for MakeRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeRotation_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeRotation_destructor(ptr);
     }
 }
 
@@ -1623,7 +1765,7 @@ impl MakeRotation {
     pub fn new_lin_real(Line: &crate::gp::Lin, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeRotation_ctor_lin_real(Line, Angle),
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_lin_real(Line, Angle),
             ))
         }
     }
@@ -1633,7 +1775,7 @@ impl MakeRotation {
     pub fn new_ax1_real(Axis: &crate::gp::Ax1, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeRotation_ctor_ax1_real(Axis, Angle),
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_ax1_real(Axis, Angle),
             ))
         }
     }
@@ -1648,15 +1790,21 @@ impl MakeRotation {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeRotation_ctor_pnt_dir_real(Point, Direc, Angle),
+                crate::ffi_extern_TKGeomBase::GC_MakeRotation_ctor_pnt_dir_real(
+                    Point, Direc, Angle,
+                ),
             ))
         }
     }
 
     /// **Source:** `GC_MakeRotation.hxx`:56 - `GC_MakeRotation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeRotation_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeRotation_value(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -1673,11 +1821,11 @@ impl MakeRotation {
 /// -   defining the construction of the transformation,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GC_MakeScale as MakeScale;
+pub use crate::ffi_types::GC_MakeScale as MakeScale;
 
 unsafe impl crate::CppDeletable for MakeScale {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeScale_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeScale_destructor(ptr);
     }
 }
 
@@ -1688,16 +1836,20 @@ impl MakeScale {
     /// -   Scale as the scale factor.
     pub fn new_pnt_real(Point: &crate::gp::Pnt, Scale: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeScale_ctor_pnt_real(
-                Point, Scale,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeScale_ctor_pnt_real(Point, Scale),
+            ))
         }
     }
 
     /// **Source:** `GC_MakeScale.hxx`:47 - `GC_MakeScale::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeScale_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeScale_value(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -1715,11 +1867,11 @@ impl MakeScale {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed line segment.
-pub use crate::ffi::GC_MakeSegment as MakeSegment;
+pub use crate::ffi_types::GC_MakeSegment as MakeSegment;
 
 unsafe impl crate::CppDeletable for MakeSegment {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeSegment_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeSegment_destructor(ptr);
     }
 }
 
@@ -1729,9 +1881,9 @@ impl MakeSegment {
     /// It returns NullObject if <P1> and <P2> are confused.
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeSegment_ctor_pnt2(
-                P1, P2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_pnt2(P1, P2),
+            ))
         }
     }
 
@@ -1742,7 +1894,7 @@ impl MakeSegment {
     pub fn new_lin_real2(Line: &crate::gp::Lin, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeSegment_ctor_lin_real2(Line, U1, U2),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_real2(Line, U1, U2),
             ))
         }
     }
@@ -1758,7 +1910,7 @@ impl MakeSegment {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt_real(Line, Point, Ulast),
             ))
         }
     }
@@ -1774,40 +1926,50 @@ impl MakeSegment {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeSegment_ctor_lin_pnt2(Line, P1, P2),
+                crate::ffi_extern_TKGeomBase::GC_MakeSegment_ctor_lin_pnt2(Line, P1, P2),
             ))
         }
     }
 
     /// **Source:** `GC_MakeSegment.hxx`:68 - `GC_MakeSegment::Value()`
     /// Returns the constructed line segment.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTrimmedCurve {
-        unsafe { &*(crate::check_result(crate::ffi::GC_MakeSegment_value(self as *const Self))) }
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTrimmedCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
-        unsafe { &*crate::check_result(crate::ffi::GC_MakeSegment_as_GC_Root(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment_as_GC_Root(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeSegment_as_GC_Root_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeSegment_as_GC_Root_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeSegment_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeSegment_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeSegment_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1825,11 +1987,11 @@ impl MakeSegment {
 /// -   defining the construction of the transformation,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GC_MakeTranslation as MakeTranslation;
+pub use crate::ffi_types::GC_MakeTranslation as MakeTranslation;
 
 unsafe impl crate::CppDeletable for MakeTranslation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeTranslation_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeTranslation_destructor(ptr);
     }
 }
 
@@ -1838,9 +2000,9 @@ impl MakeTranslation {
     /// Constructs a translation along the vector " Vect "
     pub fn new_vec(Vect: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_MakeTranslation_ctor_vec(
-                Vect,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_vec(Vect),
+            ))
         }
     }
 
@@ -1850,16 +2012,18 @@ impl MakeTranslation {
     pub fn new_pnt2(Point1: &crate::gp::Pnt, Point2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTranslation_ctor_pnt2(Point1, Point2),
+                crate::ffi_extern_TKGeomBase::GC_MakeTranslation_ctor_pnt2(Point1, Point2),
             ))
         }
     }
 
     /// **Source:** `GC_MakeTranslation.hxx`:48 - `GC_MakeTranslation::Value()`
     /// Returns the constructed transformation.
-    pub fn value(&self) -> &crate::ffi::HandleGeomTransformation {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomTransformation {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeTranslation_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTranslation_value(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1877,11 +2041,11 @@ impl MakeTranslation {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed trimmed cone.
-pub use crate::ffi::GC_MakeTrimmedCone as MakeTrimmedCone;
+pub use crate::ffi_types::GC_MakeTrimmedCone as MakeTrimmedCone;
 
 unsafe impl crate::CppDeletable for MakeTrimmedCone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeTrimmedCone_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_destructor(ptr);
     }
 }
 
@@ -1904,7 +2068,7 @@ impl MakeTrimmedCone {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTrimmedCone_ctor_pnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt4(P1, P2, P3, P4),
             ))
         }
     }
@@ -1934,7 +2098,7 @@ impl MakeTrimmedCone {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTrimmedCone_ctor_pnt2_real2(P1, P2, R1, R2),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_ctor_pnt2_real2(P1, P2, R1, R2),
             ))
         }
     }
@@ -1942,39 +2106,43 @@ impl MakeTrimmedCone {
     /// **Source:** `GC_MakeTrimmedCone.hxx`:79 - `GC_MakeTrimmedCone::Value()`
     /// Returns the constructed trimmed cone.
     /// StdFail_NotDone if no trimmed cone is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomRectangularTrimmedSurface {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomRectangularTrimmedSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeTrimmedCone_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeTrimmedCone_as_GC_Root(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_as_GC_Root(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeTrimmedCone_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_as_GC_Root_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeTrimmedCone_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeTrimmedCone_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCone_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1993,11 +2161,11 @@ impl MakeTrimmedCone {
 /// -   implementing the construction algorithm, and
 /// -   consulting the results. In particular, the Value
 /// function returns the constructed trimmed cylinder.
-pub use crate::ffi::GC_MakeTrimmedCylinder as MakeTrimmedCylinder;
+pub use crate::ffi_types::GC_MakeTrimmedCylinder as MakeTrimmedCylinder;
 
 unsafe impl crate::CppDeletable for MakeTrimmedCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_MakeTrimmedCylinder_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_destructor(ptr);
     }
 }
 
@@ -2014,7 +2182,7 @@ impl MakeTrimmedCylinder {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTrimmedCylinder_ctor_pnt3(P1, P2, P3),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_pnt3(P1, P2, P3),
             ))
         }
     }
@@ -2029,7 +2197,7 @@ impl MakeTrimmedCylinder {
     pub fn new_circ_real(Circ: &crate::gp::Circ, Height: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTrimmedCylinder_ctor_circ_real(Circ, Height),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_circ_real(Circ, Height),
             ))
         }
     }
@@ -2045,7 +2213,9 @@ impl MakeTrimmedCylinder {
     pub fn new_ax1_real2(A1: &crate::gp::Ax1, Radius: f64, Height: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GC_MakeTrimmedCylinder_ctor_ax1_real2(A1, Radius, Height),
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_ctor_ax1_real2(
+                    A1, Radius, Height,
+                ),
             ))
         }
     }
@@ -2054,16 +2224,18 @@ impl MakeTrimmedCylinder {
     /// Returns the constructed trimmed cylinder.
     /// Exceptions
     /// StdFail_NotDone if no trimmed cylinder is constructed.
-    pub fn value(&self) -> &crate::ffi::HandleGeomRectangularTrimmedSurface {
+    pub fn value(&self) -> &crate::ffi_types::HandleGeomRectangularTrimmedSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GC_MakeTrimmedCylinder_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GC_Root
     pub fn as_root(&self) -> &Root {
         unsafe {
-            &*crate::check_result(crate::ffi::GC_MakeTrimmedCylinder_as_GC_Root(
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_as_GC_Root(
                 self as *const Self,
             ))
         }
@@ -2072,23 +2244,29 @@ impl MakeTrimmedCylinder {
     /// Upcast to GC_Root (mutable)
     pub fn as_root_mut(&mut self) -> &mut Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GC_MakeTrimmedCylinder_as_GC_Root_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_as_GC_Root_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GC_MakeTrimmedCylinder_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_MakeTrimmedCylinder_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_MakeTrimmedCylinder_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2101,11 +2279,11 @@ impl MakeTrimmedCylinder {
 /// **Source:** `GC_Root.hxx`:32 - `GC_Root`
 /// This class implements the common services for
 /// all classes of gce which report error.
-pub use crate::ffi::GC_Root as Root;
+pub use crate::ffi_types::GC_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GC_Root_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::GC_Root_destructor(ptr);
     }
 }
 
@@ -2113,13 +2291,19 @@ impl Root {
     /// **Source:** `GC_Root.hxx` - `GC_Root::GC_Root()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GC_Root_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::GC_Root_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `GC_Root.hxx`:38 - `GC_Root::IsDone()`
     /// Returns true if the construction is successful.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GC_Root_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::GC_Root_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GC_Root.hxx`:44 - `GC_Root::Status()`
@@ -2129,7 +2313,7 @@ impl Root {
     /// indicating why the construction failed.
     pub fn status(&self) -> crate::gce::ErrorType {
         crate::gce::ErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::GC_Root_status(self as *const Self)
+            crate::ffi_extern_TKGeomBase::GC_Root_status(self as *const Self)
         }))
         .unwrap()
     }

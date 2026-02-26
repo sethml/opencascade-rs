@@ -8,32 +8,32 @@
 
 /// **Source:** `ShapeProcess.hxx`:77 - `ShapeProcess::RegisterOperator`
 /// Registers operator to make it visible for Performer
-pub fn register_operator(name: &str, op: &crate::ffi::HandleShapeProcessOperator) -> bool {
+pub fn register_operator(name: &str, op: &crate::ffi_types::HandleShapeProcessOperator) -> bool {
     let c_name = std::ffi::CString::new(name).unwrap();
-    crate::check_result(unsafe { crate::ffi::ShapeProcess_register_operator(c_name.as_ptr(), op) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKShHealing::ShapeProcess_register_operator(c_name.as_ptr(), op)
+    })
 }
 /// **Source:** `ShapeProcess.hxx`:81 - `ShapeProcess::FindOperator`
 /// Finds operator by its name
-pub fn find_operator(name: &str, op: &mut crate::ffi::HandleShapeProcessOperator) -> bool {
+pub fn find_operator(name: &str, op: &mut crate::ffi_types::HandleShapeProcessOperator) -> bool {
     let c_name = std::ffi::CString::new(name).unwrap();
-    crate::check_result(unsafe { crate::ffi::ShapeProcess_find_operator(c_name.as_ptr(), op) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKShHealing::ShapeProcess_find_operator(c_name.as_ptr(), op)
+    })
 }
 /// **Source:** `ShapeProcess.hxx`:87 - `ShapeProcess::Perform`
 /// Performs a specified sequence of operators on Context
 /// Resource file and other data should be already loaded
 /// to Context (including description of sequence seq)
 pub fn perform_handleshapeprocesscontext_charptr_progressrange(
-    context: &crate::ffi::HandleShapeProcessContext,
+    context: &crate::ffi_types::HandleShapeProcessContext,
     seq: &str,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     let c_seq = std::ffi::CString::new(seq).unwrap();
     crate::check_result(unsafe {
-        crate::ffi::ShapeProcess_perform_handleshapeprocesscontext_charptr_progressrange(
-            context,
-            c_seq.as_ptr(),
-            theProgress,
-        )
+        crate::ffi_extern_TKShHealing::ShapeProcess_perform_handleshapeprocesscontext_charptr_progressrange(context, c_seq.as_ptr(), theProgress)
     })
 }
 /// **Source:** `ShapeProcess.hxx`:100 - `ShapeProcess::Perform`
@@ -46,21 +46,17 @@ pub fn perform_handleshapeprocesscontext_charptr_progressrange(
 /// @param theProgress Progress indicator.
 /// @return true if at least one operation was performed, false otherwise.
 pub fn perform_handleshapeprocesscontext_operationsflags_progressrange(
-    theContext: &crate::ffi::HandleShapeProcessContext,
-    theOperations: &crate::ffi::ShapeProcess_OperationsFlags,
+    theContext: &crate::ffi_types::HandleShapeProcessContext,
+    theOperations: &crate::ffi_types::ShapeProcess_OperationsFlags,
     theProgress: &crate::message::ProgressRange,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::ShapeProcess_perform_handleshapeprocesscontext_operationsflags_progressrange(
-            theContext,
-            theOperations,
-            theProgress,
-        )
+        crate::ffi_extern_TKShHealing::ShapeProcess_perform_handleshapeprocesscontext_operationsflags_progressrange(theContext, theOperations, theProgress)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From ShapeProcess_Context.hxx
@@ -73,11 +69,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// if scope is defined as "ToV4" and requested parameter
 /// is "exec.op", value of "ToV4.exec.op" parameter from
 /// the resource file will be returned
-pub use crate::ffi::ShapeProcess_Context as Context;
+pub use crate::ffi_types::ShapeProcess_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcess_Context_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcess_Context_destructor(ptr);
     }
 }
 
@@ -86,7 +82,9 @@ impl Context {
     /// Creates an empty tool
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeProcess_Context_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_ctor(),
+            ))
         }
     }
 
@@ -99,7 +97,10 @@ impl Context {
         let c_scope = std::ffi::CString::new(scope).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_Context_ctor_charptr2(c_file.as_ptr(), c_scope.as_ptr()),
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_ctor_charptr2(
+                    c_file.as_ptr(),
+                    c_scope.as_ptr(),
+                ),
             ))
         }
     }
@@ -112,7 +113,7 @@ impl Context {
         let c_file = std::ffi::CString::new(file).unwrap();
         let c_scope = std::ffi::CString::new(scope).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_init(
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_init(
                 self as *mut Self,
                 c_file.as_ptr(),
                 c_scope.as_ptr(),
@@ -127,11 +128,11 @@ impl Context {
     pub fn load_resource_manager(
         &mut self,
         file: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleResourceManager> {
         let c_file = std::ffi::CString::new(file).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_Context_load_resource_manager(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_load_resource_manager(
                     self as *mut Self,
                     c_file.as_ptr(),
                 ),
@@ -141,11 +142,13 @@ impl Context {
 
     /// **Source:** `ShapeProcess_Context.hxx`:63 - `ShapeProcess_Context::ResourceManager()`
     /// Returns internal Resource_Manager object
-    pub fn resource_manager(&self) -> &crate::ffi::HandleResourceManager {
+    pub fn resource_manager(&self) -> &crate::ffi_types::HandleResourceManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_Context_resource_manager(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_resource_manager(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -154,7 +157,10 @@ impl Context {
     pub fn set_scope(&mut self, scope: &str) {
         let c_scope = std::ffi::CString::new(scope).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_set_scope(self as *mut Self, c_scope.as_ptr())
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_set_scope(
+                self as *mut Self,
+                c_scope.as_ptr(),
+            )
         })
     }
 
@@ -162,7 +168,7 @@ impl Context {
     /// Go out of current scope
     pub fn un_set_scope(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_un_set_scope(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_un_set_scope(self as *mut Self)
         })
     }
 
@@ -171,7 +177,10 @@ impl Context {
     pub fn is_param_set(&self, param: &str) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_is_param_set(self as *const Self, c_param.as_ptr())
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_is_param_set(
+                self as *const Self,
+                c_param.as_ptr(),
+            )
         })
     }
 
@@ -179,7 +188,11 @@ impl Context {
     pub fn get_real(&self, param: &str, val: &mut f64) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_get_real(self as *const Self, c_param.as_ptr(), val)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_real(
+                self as *const Self,
+                c_param.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -187,7 +200,11 @@ impl Context {
     pub fn get_integer(&self, param: &str, val: &mut i32) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_get_integer(self as *const Self, c_param.as_ptr(), val)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_integer(
+                self as *const Self,
+                c_param.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -195,7 +212,11 @@ impl Context {
     pub fn get_boolean(&self, param: &str, val: &mut bool) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_get_boolean(self as *const Self, c_param.as_ptr(), val)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_boolean(
+                self as *const Self,
+                c_param.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -205,7 +226,11 @@ impl Context {
     pub fn get_string(&self, param: &str, val: &mut crate::t_collection::AsciiString) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_get_string(self as *const Self, c_param.as_ptr(), val)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_string(
+                self as *const Self,
+                c_param.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -213,7 +238,11 @@ impl Context {
     pub fn real_val(&self, param: &str, def: f64) -> f64 {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_real_val(self as *const Self, c_param.as_ptr(), def)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_real_val(
+                self as *const Self,
+                c_param.as_ptr(),
+                def,
+            )
         })
     }
 
@@ -221,7 +250,11 @@ impl Context {
     pub fn integer_val(&self, param: &str, def: i32) -> i32 {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_integer_val(self as *const Self, c_param.as_ptr(), def)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_integer_val(
+                self as *const Self,
+                c_param.as_ptr(),
+                def,
+            )
         })
     }
 
@@ -229,7 +262,11 @@ impl Context {
     pub fn boolean_val(&self, param: &str, def: bool) -> bool {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_boolean_val(self as *const Self, c_param.as_ptr(), def)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_boolean_val(
+                self as *const Self,
+                c_param.as_ptr(),
+                def,
+            )
         })
     }
 
@@ -242,7 +279,7 @@ impl Context {
         let c_def = std::ffi::CString::new(def).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeProcess_Context_string_val(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_string_val(
                     self as *const Self,
                     c_param.as_ptr(),
                     c_def.as_ptr(),
@@ -255,18 +292,21 @@ impl Context {
 
     /// **Source:** `ShapeProcess_Context.hxx`:103 - `ShapeProcess_Context::SetMessenger()`
     /// Sets Messenger used for outputting messages.
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_set_messenger(self as *mut Self, messenger)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_set_messenger(
+                self as *mut Self,
+                messenger,
+            )
         })
     }
 
     /// **Source:** `ShapeProcess_Context.hxx`:106 - `ShapeProcess_Context::Messenger()`
     /// Returns Messenger used for outputting messages.
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_Context_messenger(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_messenger(self as *const Self),
             ))
         }
     }
@@ -280,7 +320,10 @@ impl Context {
     /// Default is 1 : Errors traced
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_set_trace_level(self as *mut Self, tracelev)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_set_trace_level(
+                self as *mut Self,
+                tracelev,
+            )
         })
     }
 
@@ -288,16 +331,18 @@ impl Context {
     /// Returns trace level used for outputting messages.
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_trace_level(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_trace_level(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_Context_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -305,7 +350,7 @@ impl Context {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeProcess_Context_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -313,50 +358,64 @@ impl Context {
     }
 
     /// **Source:** `ShapeProcess_Context.hxx`:119 - `ShapeProcess_Context::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeProcess_Context_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_Context_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeProcess_Context_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeProcessContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_Context_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -364,7 +423,9 @@ impl Context {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeProcess_Context_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -377,62 +438,74 @@ impl Context {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Context_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Context_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeProcessContext;
+pub use crate::ffi_types::HandleShapeProcessContext;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeProcessContext_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeProcessContext_destructor(ptr);
     }
 }
 
 impl HandleShapeProcessContext {
     /// Dereference this Handle to access the underlying ShapeProcess_Context
-    pub fn get(&self) -> &crate::ffi::ShapeProcess_Context {
+    pub fn get(&self) -> &crate::ffi_types::ShapeProcess_Context {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeProcessContext_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeProcess_Context
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Context {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeProcessContext_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessContext_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeProcess_Context
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeProcess_Context {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessContext_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeProcess_Context> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessContext_to_HandleStandardTransient(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessContext_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -444,11 +517,9 @@ impl HandleShapeProcessContext {
     /// Returns `None` if the handle does not point to a `ShapeProcess_ShapeContext` (or subclass).
     pub fn downcast_to_shape_context(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeProcessShapeContext>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeProcessShapeContext>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeProcessContext_downcast_to_HandleShapeProcessShapeContext(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeProcessContext_downcast_to_HandleShapeProcessShapeContext(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -481,11 +552,11 @@ impl HandleShapeProcessContext {
 /// DropSmallEdges
 /// FixShape
 /// SplitClosedEdges
-pub use crate::ffi::ShapeProcess_OperLibrary as OperLibrary;
+pub use crate::ffi_types::ShapeProcess_OperLibrary as OperLibrary;
 
 unsafe impl crate::CppDeletable for OperLibrary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcess_OperLibrary_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_destructor(ptr);
     }
 }
 
@@ -495,7 +566,7 @@ impl OperLibrary {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_OperLibrary_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_ctor(),
             ))
         }
     }
@@ -503,7 +574,9 @@ impl OperLibrary {
     /// **Source:** `ShapeProcess_OperLibrary.hxx`:53 - `ShapeProcess_OperLibrary::Init()`
     /// Registers all the operators
     pub fn init() {
-        crate::check_void_result(unsafe { crate::ffi::ShapeProcess_OperLibrary_init() })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_init()
+        })
     }
 
     /// **Source:** `ShapeProcess_OperLibrary.hxx`:59 - `ShapeProcess_OperLibrary::ApplyModifier()`
@@ -513,15 +586,15 @@ impl OperLibrary {
     /// can be modified during the modification process.
     pub fn apply_modifier(
         S: &crate::topo_ds::Shape,
-        context: &crate::ffi::HandleShapeProcessShapeContext,
-        M: &crate::ffi::HandleBRepToolsModification,
-        map: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+        context: &crate::ffi_types::HandleShapeProcessShapeContext,
+        M: &crate::ffi_types::HandleBRepToolsModification,
+        map: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        msg: &crate::ffi_types::HandleShapeExtendMsgRegistrator,
         theMutableInput: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_OperLibrary_apply_modifier(
+                crate::ffi_extern_TKShHealing::ShapeProcess_OperLibrary_apply_modifier(
                     S,
                     context,
                     M,
@@ -541,11 +614,11 @@ impl OperLibrary {
 /// **Source:** `ShapeProcess_Operator.hxx`:31 - `ShapeProcess_Operator`
 /// Abstract Operator class providing a tool to
 /// perform an operation on Context
-pub use crate::ffi::ShapeProcess_Operator as Operator;
+pub use crate::ffi_types::ShapeProcess_Operator as Operator;
 
 unsafe impl crate::CppDeletable for Operator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcess_Operator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcess_Operator_destructor(ptr);
     }
 }
 
@@ -555,20 +628,26 @@ impl Operator {
     /// changes in the context
     pub fn perform(
         &mut self,
-        context: &crate::ffi::HandleShapeProcessContext,
+        context: &crate::ffi_types::HandleShapeProcessContext,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_perform(self as *mut Self, context, theProgress)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_perform(
+                self as *mut Self,
+                context,
+                theProgress,
+            )
         })
     }
 
     /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_Operator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -576,7 +655,7 @@ impl Operator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeProcess_Operator_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -584,39 +663,53 @@ impl Operator {
     }
 
     /// **Source:** `ShapeProcess_Operator.hxx`:41 - `ShapeProcess_Operator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeProcess_Operator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_Operator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeProcess_Operator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -624,7 +717,9 @@ impl Operator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeProcess_Operator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -637,65 +732,75 @@ impl Operator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_Operator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_Operator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeProcessOperator;
+pub use crate::ffi_types::HandleShapeProcessOperator;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeProcessOperator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_destructor(ptr);
     }
 }
 
 impl HandleShapeProcessOperator {
     /// Dereference this Handle to access the underlying ShapeProcess_Operator
-    pub fn get(&self) -> &crate::ffi::ShapeProcess_Operator {
+    pub fn get(&self) -> &crate::ffi_types::ShapeProcess_Operator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeProcessOperator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeProcess_Operator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_Operator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeProcess_Operator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeProcessOperator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeProcess_Operator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessOperator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -704,11 +809,9 @@ impl HandleShapeProcessOperator {
     /// Returns `None` if the handle does not point to a `ShapeProcess_UOperator` (or subclass).
     pub fn downcast_to_u_operator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeProcessUOperator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeProcessUOperator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeProcessOperator_downcast_to_HandleShapeProcessUOperator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeProcessOperator_downcast_to_HandleShapeProcessUOperator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -726,11 +829,11 @@ impl HandleShapeProcessOperator {
 /// Extends Context to handle shapes
 /// Contains map of shape-shape, and messages
 /// attached to shapes
-pub use crate::ffi::ShapeProcess_ShapeContext as ShapeContext;
+pub use crate::ffi_types::ShapeProcess_ShapeContext as ShapeContext;
 
 unsafe impl crate::CppDeletable for ShapeContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcess_ShapeContext_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_destructor(ptr);
     }
 }
 
@@ -741,7 +844,7 @@ impl ShapeContext {
         let c_seq = std::ffi::CString::new(seq).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_ctor_charptr2(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_ctor_charptr2(
                     c_file.as_ptr(),
                     c_seq.as_ptr(),
                 ),
@@ -761,7 +864,7 @@ impl ShapeContext {
         let c_seq = std::ffi::CString::new(seq).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_ctor_shape_charptr2(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_ctor_shape_charptr2(
                     S,
                     c_file.as_ptr(),
                     c_seq.as_ptr(),
@@ -774,7 +877,7 @@ impl ShapeContext {
     /// Initializes tool by a new shape and clears all results
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_init(self as *mut Self, S)
         })
     }
 
@@ -782,7 +885,7 @@ impl ShapeContext {
     /// Returns shape being processed
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_shape(
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_shape(
                 self as *const Self,
             )))
         }
@@ -792,27 +895,33 @@ impl ShapeContext {
     /// Returns current result
     pub fn result(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_result(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_result(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:63 - `ShapeProcess_ShapeContext::Map()`
     /// Returns map of replacements shape -> shape
     /// This map is not recursive
-    pub fn map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+    pub fn map(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_map(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_map(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:65 - `ShapeProcess_ShapeContext::Messages()`
-    pub fn messages(&self) -> &crate::ffi::HandleShapeExtendMsgRegistrator {
+    pub fn messages(&self) -> &crate::ffi_types::HandleShapeExtendMsgRegistrator {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_messages(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_messages(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -820,18 +929,23 @@ impl ShapeContext {
     /// Returns messages recorded during shape processing
     /// It can be nullified before processing in order to
     /// avoid recording messages
-    pub fn messages_mut(&mut self) -> &mut crate::ffi::HandleShapeExtendMsgRegistrator {
+    pub fn messages_mut(&mut self) -> &mut crate::ffi_types::HandleShapeExtendMsgRegistrator {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_messages_mut(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_messages_mut(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:72 - `ShapeProcess_ShapeContext::SetDetalisation()`
     pub fn set_detalisation(&mut self, level: crate::top_abs::ShapeEnum) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_set_detalisation(self as *mut Self, level.into())
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_set_detalisation(
+                self as *mut Self,
+                level.into(),
+            )
         })
     }
 
@@ -844,7 +958,9 @@ impl ShapeContext {
     /// The default level is TopAbs_FACE
     pub fn get_detalisation(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_get_detalisation(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_get_detalisation(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -858,42 +974,42 @@ impl ShapeContext {
     /// result to a new one
     pub fn set_result(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_set_result(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_set_result(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:90 - `ShapeProcess_ShapeContext::RecordModification()`
     pub fn record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(
         &mut self,
-        repl: &crate::ffi::TopTools_DataMapOfShapeShape,
-        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+        repl: &crate::ffi_types::TopTools_DataMapOfShapeShape,
+        msg: &crate::ffi_types::HandleShapeExtendMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_record_modification_datamapofshapeshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
         })
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:93 - `ShapeProcess_ShapeContext::RecordModification()`
     pub fn record_modification_handleshapebuildreshape_handleshapeextendmsgregistrator(
         &mut self,
-        repl: &crate::ffi::HandleShapeBuildReShape,
-        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+        repl: &crate::ffi_types::HandleShapeBuildReShape,
+        msg: &crate::ffi_types::HandleShapeExtendMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape_handleshapeextendmsgregistrator(self as *mut Self, repl, msg)
         })
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:96 - `ShapeProcess_ShapeContext::RecordModification()`
     pub fn record_modification_handleshapebuildreshape(
         &mut self,
-        repl: &crate::ffi::HandleShapeBuildReShape,
+        repl: &crate::ffi_types::HandleShapeBuildReShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape(
-                self as *mut Self,
-                repl,
-            )
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_record_modification_handleshapebuildreshape(self as *mut Self, repl)
         })
     }
 
@@ -912,10 +1028,10 @@ impl ShapeContext {
         &mut self,
         sh: &crate::topo_ds::Shape,
         repl: &crate::b_rep_tools::Modifier,
-        msg: &crate::ffi::HandleShapeExtendMsgRegistrator,
+        msg: &crate::ffi_types::HandleShapeExtendMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_record_modification_shape_modifier_handleshapeextendmsgregistrator(self as *mut Self, sh, repl, msg)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_record_modification_shape_modifier_handleshapeextendmsgregistrator(self as *mut Self, sh, repl, msg)
         })
     }
 
@@ -931,7 +1047,7 @@ impl ShapeContext {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_add_message(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_add_message(
                 self as *mut Self,
                 S,
                 msg,
@@ -947,7 +1063,7 @@ impl ShapeContext {
         let c_param = std::ffi::CString::new(param).unwrap();
         let mut val_i32_: i32 = (*val).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_get_continuity(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_get_continuity(
                 self as *const Self,
                 c_param.as_ptr(),
                 &mut val_i32_,
@@ -968,7 +1084,7 @@ impl ShapeContext {
     ) -> crate::geom_abs::Shape {
         let c_param = std::ffi::CString::new(param).unwrap();
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_continuity_val(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_continuity_val(
                 self as *const Self,
                 c_param.as_ptr(),
                 def.into(),
@@ -981,7 +1097,9 @@ impl ShapeContext {
     /// Prints statistics on Shape Processing onto the current Messenger.
     pub fn print_statistics(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_print_statistics(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_print_statistics(
+                self as *const Self,
+            )
         })
     }
 
@@ -989,7 +1107,7 @@ impl ShapeContext {
     /// Set NonManifold flag
     pub fn set_non_manifold(&mut self, theNonManifold: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_set_non_manifold(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_set_non_manifold(
                 self as *mut Self,
                 theNonManifold,
             )
@@ -1000,16 +1118,20 @@ impl ShapeContext {
     /// Get NonManifold flag
     pub fn is_non_manifold(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_is_non_manifold(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_is_non_manifold(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1017,7 +1139,7 @@ impl ShapeContext {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1025,38 +1147,40 @@ impl ShapeContext {
     }
 
     /// **Source:** `ShapeProcess_ShapeContext.hxx`:140 - `ShapeProcess_ShapeContext::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_ShapeContext_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeProcess_Context
     pub fn as_context(&self) -> &Context {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_ShapeContext_as_ShapeProcess_Context(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_as_ShapeProcess_Context(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeProcess_Context (mutable)
     pub fn as_context_mut(&mut self) -> &mut Context {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_as_ShapeProcess_Context_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_as_ShapeProcess_Context_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_ShapeContext_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1064,7 +1188,9 @@ impl ShapeContext {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1072,19 +1198,19 @@ impl ShapeContext {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessShapeContext> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeProcessShapeContext> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:63 - `ShapeProcess_Context::ResourceManager()`
-    pub fn resource_manager(&self) -> &crate::ffi::HandleResourceManager {
+    pub fn resource_manager(&self) -> &crate::ffi_types::HandleResourceManager {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_inherited_ResourceManager(
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_ResourceManager(
                     self as *const Self,
                 ),
             ))
@@ -1094,14 +1220,16 @@ impl ShapeContext {
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:69 - `ShapeProcess_Context::UnSetScope()`
     pub fn un_set_scope(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_UnSetScope(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_UnSetScope(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:103 - `ShapeProcess_Context::SetMessenger()`
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_SetMessenger(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_SetMessenger(
                 self as *mut Self,
                 messenger,
             )
@@ -1109,10 +1237,12 @@ impl ShapeContext {
     }
 
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:106 - `ShapeProcess_Context::Messenger()`
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_ShapeContext_inherited_Messenger(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_Messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1120,7 +1250,7 @@ impl ShapeContext {
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:114 - `ShapeProcess_Context::SetTraceLevel()`
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_SetTraceLevel(
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_SetTraceLevel(
                 self as *mut Self,
                 tracelev,
             )
@@ -1130,21 +1260,29 @@ impl ShapeContext {
     /// Inherited: **Source:** `ShapeProcess_Context.hxx`:117 - `ShapeProcess_Context::TraceLevel()`
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_TraceLevel(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_TraceLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1152,7 +1290,9 @@ impl ShapeContext {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeProcess_ShapeContext_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1165,78 +1305,86 @@ impl ShapeContext {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_ShapeContext_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_ShapeContext_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeProcessShapeContext;
+pub use crate::ffi_types::HandleShapeProcessShapeContext;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessShapeContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeProcessShapeContext_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_destructor(ptr);
     }
 }
 
 impl HandleShapeProcessShapeContext {
     /// Dereference this Handle to access the underlying ShapeProcess_ShapeContext
-    pub fn get(&self) -> &crate::ffi::ShapeProcess_ShapeContext {
+    pub fn get(&self) -> &crate::ffi_types::ShapeProcess_ShapeContext {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeProcessShapeContext_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeProcess_ShapeContext
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_ShapeContext {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeProcess_ShapeContext {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeProcessShapeContext_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeProcess_ShapeContext> to Handle<ShapeProcess_Context>
-    pub fn to_handle_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessContext> {
+    pub fn to_handle_context(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeProcessContext> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessShapeContext_to_HandleShapeProcessContext(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_to_HandleShapeProcessContext(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeProcess_ShapeContext> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessShapeContext_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessShapeContext_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1249,11 +1397,11 @@ impl HandleShapeProcessShapeContext {
 /// Defines operator as container for static function
 /// OperFunc. This allows user to create new operators
 /// without creation of new classes
-pub use crate::ffi::ShapeProcess_UOperator as UOperator;
+pub use crate::ffi_types::ShapeProcess_UOperator as UOperator;
 
 unsafe impl crate::CppDeletable for UOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcess_UOperator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_destructor(ptr);
     }
 }
 
@@ -1261,10 +1409,10 @@ impl UOperator {
     /// **Source:** `ShapeProcess_UOperator.hxx`:37 - `ShapeProcess_UOperator::ShapeProcess_UOperator()`
     /// Creates operator with implementation defined as
     /// OperFunc (static function)
-    pub fn new_operfunc(func: &crate::ffi::ShapeProcess_OperFunc) -> crate::OwnedPtr<Self> {
+    pub fn new_operfunc(func: &crate::ffi_types::ShapeProcess_OperFunc) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_UOperator_ctor_operfunc(func),
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_ctor_operfunc(func),
             ))
         }
     }
@@ -1273,20 +1421,26 @@ impl UOperator {
     /// Performs operation and records changes in the context
     pub fn perform(
         &mut self,
-        context: &crate::ffi::HandleShapeProcessContext,
+        context: &crate::ffi_types::HandleShapeProcessContext,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_perform(self as *mut Self, context, theProgress)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_perform(
+                self as *mut Self,
+                context,
+                theProgress,
+            )
         })
     }
 
     /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcess_UOperator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1294,7 +1448,7 @@ impl UOperator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeProcess_UOperator_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1302,16 +1456,22 @@ impl UOperator {
     }
 
     /// **Source:** `ShapeProcess_UOperator.hxx`:44 - `ShapeProcess_UOperator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeProcess_UOperator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ShapeProcess_Operator
     pub fn as_operator(&self) -> &Operator {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_UOperator_as_ShapeProcess_Operator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_as_ShapeProcess_Operator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1319,7 +1479,9 @@ impl UOperator {
     pub fn as_operator_mut(&mut self) -> &mut Operator {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeProcess_UOperator_as_ShapeProcess_Operator_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_as_ShapeProcess_Operator_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1327,43 +1489,53 @@ impl UOperator {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeProcess_UOperator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeProcess_UOperator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessUOperator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeProcessUOperator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcess_UOperator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1371,7 +1543,9 @@ impl UOperator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeProcess_UOperator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1384,76 +1558,84 @@ impl UOperator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcess_UOperator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcess_UOperator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeProcessUOperator;
+pub use crate::ffi_types::HandleShapeProcessUOperator;
 
 unsafe impl crate::CppDeletable for HandleShapeProcessUOperator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeProcessUOperator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_destructor(ptr);
     }
 }
 
 impl HandleShapeProcessUOperator {
     /// Dereference this Handle to access the underlying ShapeProcess_UOperator
-    pub fn get(&self) -> &crate::ffi::ShapeProcess_UOperator {
+    pub fn get(&self) -> &crate::ffi_types::ShapeProcess_UOperator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeProcessUOperator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeProcess_UOperator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeProcess_UOperator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeProcess_UOperator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeProcessUOperator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeProcess_UOperator> to Handle<ShapeProcess_Operator>
-    pub fn to_handle_operator(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeProcessOperator> {
+    pub fn to_handle_operator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeProcessOperator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessUOperator_to_HandleShapeProcessOperator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_to_HandleShapeProcessOperator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeProcess_UOperator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeProcessUOperator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeProcessUOperator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1462,4 +1644,4 @@ impl HandleShapeProcessUOperator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ShapeProcess_OperFunc as OperFunc;
+pub use crate::ffi_types::ShapeProcess_OperFunc as OperFunc;

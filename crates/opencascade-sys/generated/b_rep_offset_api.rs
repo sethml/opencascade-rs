@@ -34,11 +34,11 @@
 /// - Any face, which is continuous in tangency with the
 /// face to be tapered, will also be tapered. These
 /// connected faces must also respect the above criteria.
-pub use crate::ffi::BRepOffsetAPI_DraftAngle as DraftAngle;
+pub use crate::ffi_types::BRepOffsetAPI_DraftAngle as DraftAngle;
 
 unsafe impl crate::CppDeletable for DraftAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_DraftAngle_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_destructor(ptr);
     }
 }
 
@@ -50,7 +50,7 @@ impl DraftAngle {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_ctor(),
             ))
         }
     }
@@ -62,7 +62,7 @@ impl DraftAngle {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_ctor_shape(S),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_ctor_shape(S),
             ))
         }
     }
@@ -73,7 +73,7 @@ impl DraftAngle {
     /// results will have been defined by successive calls to the function Add.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_clear(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_clear(self as *mut Self)
         })
     }
 
@@ -82,7 +82,7 @@ impl DraftAngle {
     /// S will be referred to as the initial shape of this algorithm.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_init(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_init(self as *mut Self, S)
         })
     }
 
@@ -128,7 +128,7 @@ impl DraftAngle {
         Flag: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_add(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_add(
                 self as *mut Self,
                 F,
                 Direction,
@@ -155,7 +155,7 @@ impl DraftAngle {
     /// initialized with the non-empty constructor or the .Init function.
     pub fn add_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_add_done(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_add_done(self as *const Self)
         })
     }
 
@@ -175,7 +175,7 @@ impl DraftAngle {
     /// or has already been removed.
     pub fn remove(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_remove(self as *mut Self, F)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_remove(self as *mut Self, F)
         })
     }
 
@@ -188,9 +188,11 @@ impl DraftAngle {
     /// the non-empty constructor or the Init function.
     pub fn problematic_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_problematic_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_problematic_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -202,7 +204,7 @@ impl DraftAngle {
     /// IsDone returns Standard_False.
     pub fn status(&self) -> crate::draft::ErrorStatus {
         crate::draft::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_status(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -219,23 +221,27 @@ impl DraftAngle {
     pub unsafe fn connected_faces(
         &self,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_connected_faces(
-                self as *const Self,
-                F,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_connected_faces(
+                    self as *const Self,
+                    F,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:174 - `BRepOffsetAPI_DraftAngle::ModifiedFaces()`
     /// Returns all the faces  on which a modification has
     /// been given.
-    pub fn modified_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn modified_faces(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_modified_faces(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_modified_faces(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -243,14 +249,14 @@ impl DraftAngle {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_build(self as *mut Self, theRange)
         })
     }
 
     /// **Source:** `BRepOffsetAPI_DraftAngle.hxx`:180 - `BRepOffsetAPI_DraftAngle::CorrectWires()`
     pub fn correct_wires(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_correct_wires(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_correct_wires(self as *mut Self)
         })
     }
 
@@ -266,9 +272,9 @@ impl DraftAngle {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_generated(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_generated(
                 self as *mut Self,
                 S,
             )))
@@ -287,9 +293,9 @@ impl DraftAngle {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_modified(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_modified(
                 self as *mut Self,
                 S,
             )))
@@ -309,7 +315,10 @@ impl DraftAngle {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_modified_shape(self as *const Self, S),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_modified_shape(
+                    self as *const Self,
+                    S,
+                ),
             ))
         }
     }
@@ -318,7 +327,7 @@ impl DraftAngle {
     pub fn as_b_rep_builder_api_modify_shape(&self) -> &crate::b_rep_builder_api::ModifyShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape(
                     self as *const Self,
                 ),
             )
@@ -330,20 +339,18 @@ impl DraftAngle {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::ModifyShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_ModifyShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -352,20 +359,18 @@ impl DraftAngle {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -373,7 +378,7 @@ impl DraftAngle {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -383,30 +388,39 @@ impl DraftAngle {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_DraftAngle_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_DraftAngle_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -428,11 +442,11 @@ impl DraftAngle {
 /// - compute -> Perform
 /// - output couples of connected edges for control
 /// - output the problems if any
-pub use crate::ffi::BRepOffsetAPI_FindContigousEdges as FindContigousEdges;
+pub use crate::ffi_types::BRepOffsetAPI_FindContigousEdges as FindContigousEdges;
 
 unsafe impl crate::CppDeletable for FindContigousEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_FindContigousEdges_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_destructor(ptr);
     }
 }
 
@@ -449,7 +463,9 @@ impl FindContigousEdges {
     pub fn new_real_bool(tolerance: f64, option: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_FindContigousEdges_ctor_real_bool(tolerance, option),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_ctor_real_bool(
+                    tolerance, option,
+                ),
             ))
         }
     }
@@ -489,7 +505,11 @@ impl FindContigousEdges {
     /// Sets <option> to false.
     pub fn init(&mut self, tolerance: f64, option: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_init(self as *mut Self, tolerance, option)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_init(
+                self as *mut Self,
+                tolerance,
+                option,
+            )
         })
     }
 
@@ -501,7 +521,10 @@ impl FindContigousEdges {
     /// and the function ContigousEdge to return these edges.
     pub fn add(&mut self, shape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_add(self as *mut Self, shape)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_add(
+                self as *mut Self,
+                shape,
+            )
         })
     }
 
@@ -520,7 +543,7 @@ impl FindContigousEdges {
     /// further shapes subsequently and then to repeat the call to Perform.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_perform(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_perform(self as *mut Self)
         })
     }
 
@@ -528,7 +551,9 @@ impl FindContigousEdges {
     /// Gives the number of edges (free edges + contiguous edges + multiple edge)
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_edges(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_nb_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -537,7 +562,9 @@ impl FindContigousEdges {
     /// function Perform on the shapes added to this algorithm.
     pub fn nb_contigous_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_contigous_edges(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_nb_contigous_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -551,10 +578,12 @@ impl FindContigousEdges {
     /// edges found by the function Perform on the shapes added to this algorithm.
     pub fn contigous_edge(&self, index: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_FindContigousEdges_contigous_edge(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_contigous_edge(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -568,10 +597,10 @@ impl FindContigousEdges {
     /// - index is less than 1, or
     /// - index is greater than the number of contiguous edges
     /// found by the function Perform on the shapes added to this algorithm.
-    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn contigous_edge_couple(&self, index: i32) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_contigous_edge_couple(
                     self as *const Self,
                     index,
                 ),
@@ -604,7 +633,7 @@ impl FindContigousEdges {
     ) -> &crate::topo_ds::Edge {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BRepOffsetAPI_FindContigousEdges_section_to_boundary(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_section_to_boundary(
                     self as *const Self,
                     section,
                 ),
@@ -616,7 +645,9 @@ impl FindContigousEdges {
     /// Gives the number of degenerated shapes
     pub fn nb_degenerated_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_nb_degenerated_shapes(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_nb_degenerated_shapes(
+                self as *const Self,
+            )
         })
     }
 
@@ -624,10 +655,12 @@ impl FindContigousEdges {
     /// Gives a degenerated shape
     pub fn degenerated_shape(&self, index: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_FindContigousEdges_degenerated_shape(
-                self as *const Self,
-                index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_degenerated_shape(
+                    self as *const Self,
+                    index,
+                ),
+            ))
         }
     }
 
@@ -635,7 +668,10 @@ impl FindContigousEdges {
     /// Indicates if a input shape is degenerated
     pub fn is_degenerated(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_is_degenerated(self as *const Self, shape)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_is_degenerated(
+                self as *const Self,
+                shape,
+            )
         })
     }
 
@@ -648,7 +684,10 @@ impl FindContigousEdges {
     /// added to this algorithm.
     pub fn is_modified(&self, shape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_is_modified(self as *const Self, shape)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_is_modified(
+                self as *const Self,
+                shape,
+            )
         })
     }
 
@@ -663,10 +702,12 @@ impl FindContigousEdges {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn modified(&self, shape: &crate::topo_ds::Shape) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_FindContigousEdges_modified(
-                self as *const Self,
-                shape,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_modified(
+                    self as *const Self,
+                    shape,
+                ),
+            ))
         }
     }
 
@@ -674,7 +715,7 @@ impl FindContigousEdges {
     /// Dump properties of resulting shape.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_FindContigousEdges_dump(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_FindContigousEdges_dump(self as *const Self)
         })
     }
 }
@@ -685,11 +726,11 @@ impl FindContigousEdges {
 
 /// **Source:** `BRepOffsetAPI_MakeDraft.hxx`:35 - `BRepOffsetAPI_MakeDraft`
 /// Build a draft surface along a wire
-pub use crate::ffi::BRepOffsetAPI_MakeDraft as MakeDraft;
+pub use crate::ffi_types::BRepOffsetAPI_MakeDraft as MakeDraft;
 
 unsafe impl crate::CppDeletable for MakeDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeDraft_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_destructor(ptr);
     }
 }
 
@@ -709,7 +750,9 @@ impl MakeDraft {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(Shape, Dir, Angle),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_ctor_shape_dir_real(
+                    Shape, Dir, Angle,
+                ),
             ))
         }
     }
@@ -732,7 +775,7 @@ impl MakeDraft {
         AngleMax: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_set_options(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_set_options(
                 self as *mut Self,
                 Style.into(),
                 AngleMin,
@@ -747,7 +790,10 @@ impl MakeDraft {
     /// Shape used in the constructor.
     pub fn set_draft(&mut self, IsInternal: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_set_draft(self as *mut Self, IsInternal)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_set_draft(
+                self as *mut Self,
+                IsInternal,
+            )
         })
     }
 
@@ -756,7 +802,10 @@ impl MakeDraft {
     /// maximum length for the corner edge between two draft faces.
     pub fn perform_real(&mut self, LengthMax: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_perform_real(self as *mut Self, LengthMax)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_perform_real(
+                self as *mut Self,
+                LengthMax,
+            )
         })
     }
 
@@ -766,11 +815,11 @@ impl MakeDraft {
     /// the draft is kept in the result.
     pub fn perform_handlegeomsurface_bool(
         &mut self,
-        Surface: &crate::ffi::HandleGeomSurface,
+        Surface: &crate::ffi_types::HandleGeomSurface,
         KeepInsideSurface: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_perform_handlegeomsurface_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_perform_handlegeomsurface_bool(
                 self as *mut Self,
                 Surface,
                 KeepInsideSurface,
@@ -784,7 +833,7 @@ impl MakeDraft {
     /// outside the Draft is kept in the result.
     pub fn perform_shape_bool(&mut self, StopShape: &crate::topo_ds::Shape, KeepOutSide: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_perform_shape_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_perform_shape_bool(
                 self as *mut Self,
                 StopShape,
                 KeepOutSide,
@@ -798,7 +847,7 @@ impl MakeDraft {
     pub fn shell(&self) -> crate::OwnedPtr<crate::topo_ds::Shell> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeDraft_shell(self as *const Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_shell(self as *const Self),
             ))
         }
     }
@@ -815,9 +864,9 @@ impl MakeDraft {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeDraft_generated(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_generated(
                 self as *mut Self,
                 S,
             )))
@@ -827,9 +876,11 @@ impl MakeDraft {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -839,7 +890,7 @@ impl MakeDraft {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -849,9 +900,11 @@ impl MakeDraft {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -859,7 +912,7 @@ impl MakeDraft {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -869,37 +922,47 @@ impl MakeDraft {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeDraft_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeDraft_inherited_Check(self as *const Self)
         })
     }
 }
@@ -954,11 +1017,11 @@ impl MakeDraft {
 /// in the result of Pipe-algorithm will be removed by
 /// BOPAlgo_MakerVolume algorithm. At that the arguments
 /// "theJoinType", "theIsAxeProf", "theIsProfOnSpine" are not used.
-pub use crate::ffi::BRepOffsetAPI_MakeEvolved as MakeEvolved;
+pub use crate::ffi_types::BRepOffsetAPI_MakeEvolved as MakeEvolved;
 
 unsafe impl crate::CppDeletable for MakeEvolved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeEvolved_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_destructor(ptr);
     }
 }
 
@@ -967,7 +1030,7 @@ impl MakeEvolved {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeEvolved_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_ctor(),
             ))
         }
     }
@@ -989,19 +1052,7 @@ impl MakeEvolved {
         theRunInParallel: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(
-                    theSpine,
-                    theProfile,
-                    theJoinType.into(),
-                    theIsAxeProf,
-                    theIsSolid,
-                    theIsProfOnSpine,
-                    theTol,
-                    theIsVolume,
-                    theRunInParallel,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_ctor_shape_wire_jointype_bool3_real_bool2(theSpine, theProfile, theJoinType.into(), theIsAxeProf, theIsSolid, theIsProfOnSpine, theTol, theIsVolume, theRunInParallel)))
         }
     }
 
@@ -1161,7 +1212,7 @@ impl MakeEvolved {
     /// **Source:** `BRepOffsetAPI_MakeEvolved.hxx`:99 - `BRepOffsetAPI_MakeEvolved::Evolved()`
     pub fn evolved(&self) -> &crate::b_rep_fill::Evolved {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_evolved(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_evolved(
                 self as *const Self,
             )))
         }
@@ -1171,7 +1222,7 @@ impl MakeEvolved {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeEvolved_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_build(self as *mut Self, theRange)
         })
     }
 
@@ -1189,13 +1240,15 @@ impl MakeEvolved {
         &self,
         SpineShape: &crate::topo_ds::Shape,
         ProfShape: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_generated_shapes(
-                self as *const Self,
-                SpineShape,
-                ProfShape,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_generated_shapes(
+                    self as *const Self,
+                    SpineShape,
+                    ProfShape,
+                ),
+            ))
         }
     }
 
@@ -1203,7 +1256,9 @@ impl MakeEvolved {
     /// Return the face Top if <Solid> is True in the constructor.
     pub fn top(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_top(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_top(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1211,7 +1266,7 @@ impl MakeEvolved {
     /// Return the face Bottom  if <Solid> is True in the constructor.
     pub fn bottom(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_bottom(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_bottom(
                 self as *const Self,
             )))
         }
@@ -1221,7 +1276,7 @@ impl MakeEvolved {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -1233,20 +1288,18 @@ impl MakeEvolved {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1254,7 +1307,7 @@ impl MakeEvolved {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -1264,30 +1317,39 @@ impl MakeEvolved {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeEvolved_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeEvolved_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -1327,11 +1389,11 @@ impl MakeEvolved {
 /// * Deformation of a face to satisfy internal constraints
 /// * Deformation of a face to improve Gi continuity with
 /// connected faces
-pub use crate::ffi::BRepOffsetAPI_MakeFilling as MakeFilling;
+pub use crate::ffi_types::BRepOffsetAPI_MakeFilling as MakeFilling;
 
 unsafe impl crate::CppDeletable for MakeFilling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeFilling_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_destructor(ptr);
     }
 }
 
@@ -1367,7 +1429,7 @@ impl MakeFilling {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_ctor_int3_bool_real4_int2(
                     Degree,
                     NbPtsOnCur,
                     NbIter,
@@ -1719,7 +1781,7 @@ impl MakeFilling {
     /// the surface and the constraint
     pub fn set_constr_param(&mut self, Tol2d: f64, Tol3d: f64, TolAng: f64, TolCurv: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_set_constr_param(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_set_constr_param(
                 self as *mut Self,
                 Tol2d,
                 Tol3d,
@@ -1752,7 +1814,7 @@ impl MakeFilling {
         Anisotropie: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_set_resol_param(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_set_resol_param(
                 self as *mut Self,
                 Degree,
                 NbPtsOnCur,
@@ -1771,7 +1833,7 @@ impl MakeFilling {
     /// which the filling surface can have.
     pub fn set_approx_param(&mut self, MaxDeg: i32, MaxSegments: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_set_approx_param(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_set_approx_param(
                 self as *mut Self,
                 MaxDeg,
                 MaxSegments,
@@ -1797,7 +1859,10 @@ impl MakeFilling {
     /// are possible.
     pub fn load_init_surface(&mut self, Surf: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_load_init_surface(self as *mut Self, Surf)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_load_init_surface(
+                self as *mut Self,
+                Surf,
+            )
         })
     }
 
@@ -1822,7 +1887,7 @@ impl MakeFilling {
         IsBound: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_add_edge_shape_bool(
                 self as *mut Self,
                 Constr,
                 Order.into(),
@@ -1852,7 +1917,7 @@ impl MakeFilling {
         IsBound: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_add_edge_face_shape_bool(
                 self as *mut Self,
                 Constr,
                 Support,
@@ -1871,7 +1936,7 @@ impl MakeFilling {
         Order: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_add_face_shape(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_add_face_shape(
                 self as *mut Self,
                 Support,
                 Order.into(),
@@ -1883,7 +1948,7 @@ impl MakeFilling {
     /// Adds a punctual constraint.
     pub fn add_pnt(&mut self, Point: &crate::gp::Pnt) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_add_pnt(self as *mut Self, Point)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_add_pnt(self as *mut Self, Point)
         })
     }
 
@@ -1897,7 +1962,7 @@ impl MakeFilling {
         Order: crate::geom_abs::Shape,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_add_real2_face_shape(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_add_real2_face_shape(
                 self as *mut Self,
                 U,
                 V,
@@ -1911,7 +1976,7 @@ impl MakeFilling {
     /// Builds the resulting faces
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_build(self as *mut Self, theRange)
         })
     }
 
@@ -1919,7 +1984,7 @@ impl MakeFilling {
     /// Tests whether computation of the filling plate has been completed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_is_done(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_is_done(self as *const Self)
         })
     }
 
@@ -1935,12 +2000,14 @@ impl MakeFilling {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeFilling_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -1949,7 +2016,7 @@ impl MakeFilling {
     /// the constraints. This is set at construction time.
     pub fn g0_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g0_error(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g0_error(self as *const Self)
         })
     }
 
@@ -1958,7 +2025,7 @@ impl MakeFilling {
     /// constraints. This is set at construction time.
     pub fn g1_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g1_error(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g1_error(self as *const Self)
         })
     }
 
@@ -1967,7 +2034,7 @@ impl MakeFilling {
     /// constraints. This is set at construction time.
     pub fn g2_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g2_error(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g2_error(self as *const Self)
         })
     }
 
@@ -1976,7 +2043,10 @@ impl MakeFilling {
     /// result and the constraint Index. This is set at construction time.
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g0_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g0_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -1985,7 +2055,10 @@ impl MakeFilling {
     /// constraints. This is set at construction time.
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g1_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g1_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -1994,7 +2067,10 @@ impl MakeFilling {
     /// between the result and the constraint Index.
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_g2_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_g2_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -2002,7 +2078,7 @@ impl MakeFilling {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -2014,20 +2090,18 @@ impl MakeFilling {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2035,7 +2109,7 @@ impl MakeFilling {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -2045,23 +2119,30 @@ impl MakeFilling {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeFilling_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeFilling_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2077,11 +2158,11 @@ impl MakeFilling {
 /// - defining the construction of an offset,
 /// - implementing the construction algorithm, and
 /// - consulting the result.
-pub use crate::ffi::BRepOffsetAPI_MakeOffset as MakeOffset;
+pub use crate::ffi_types::BRepOffsetAPI_MakeOffset as MakeOffset;
 
 unsafe impl crate::CppDeletable for MakeOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeOffset_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_destructor(ptr);
     }
 }
 
@@ -2091,7 +2172,7 @@ impl MakeOffset {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_ctor(),
             ))
         }
     }
@@ -2106,7 +2187,7 @@ impl MakeOffset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_ctor_face_jointype_bool(
                     Spine,
                     Join.into(),
                     IsOpenResult,
@@ -2123,7 +2204,7 @@ impl MakeOffset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_ctor_wire_jointype_bool(
                     Spine,
                     Join.into(),
                     IsOpenResult,
@@ -2166,7 +2247,7 @@ impl MakeOffset {
         IsOpenResult: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_init_face_jointype_bool(
                 self as *mut Self,
                 Spine,
                 Join.into(),
@@ -2179,7 +2260,7 @@ impl MakeOffset {
     /// Initialize the evaluation of Offsetting.
     pub fn init_jointype_bool(&mut self, Join: crate::geom_abs::JoinType, IsOpenResult: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_init_jointype_bool(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_init_jointype_bool(
                 self as *mut Self,
                 Join.into(),
                 IsOpenResult,
@@ -2193,7 +2274,10 @@ impl MakeOffset {
     /// 2D circular arcs and 2D linear segments only.
     pub fn set_approx(&mut self, ToApprox: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_set_approx(self as *mut Self, ToApprox)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_set_approx(
+                self as *mut Self,
+                ToApprox,
+            )
         })
     }
 
@@ -2201,7 +2285,7 @@ impl MakeOffset {
     /// Initializes the algorithm to construct parallels to the wire Spine.
     pub fn add_wire(&mut self, Spine: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_add_wire(self as *mut Self, Spine)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_add_wire(self as *mut Self, Spine)
         })
     }
 
@@ -2212,7 +2296,11 @@ impl MakeOffset {
     /// Exceptions: StdFail_NotDone if the offset is not built.
     pub fn perform(&mut self, Offset: f64, Alt: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_perform(self as *mut Self, Offset, Alt)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_perform(
+                self as *mut Self,
+                Offset,
+                Alt,
+            )
         })
     }
 
@@ -2220,7 +2308,7 @@ impl MakeOffset {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_build(self as *mut Self, theRange)
         })
     }
 
@@ -2236,9 +2324,9 @@ impl MakeOffset {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffset_generated(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_generated(
                 self as *mut Self,
                 S,
             )))
@@ -2254,7 +2342,10 @@ impl MakeOffset {
     ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_convert_face(theFace, theAngleTolerance),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_convert_face(
+                    theFace,
+                    theAngleTolerance,
+                ),
             ))
         }
     }
@@ -2262,9 +2353,11 @@ impl MakeOffset {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2273,20 +2366,18 @@ impl MakeOffset {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2294,7 +2385,7 @@ impl MakeOffset {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -2304,30 +2395,39 @@ impl MakeOffset {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffset_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffset_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2343,11 +2443,11 @@ impl MakeOffset {
 /// - defining the construction of a shell
 /// - implementing the construction algorithm
 /// - consulting the result.
-pub use crate::ffi::BRepOffsetAPI_MakeOffsetShape as MakeOffsetShape;
+pub use crate::ffi_types::BRepOffsetAPI_MakeOffsetShape as MakeOffsetShape;
 
 unsafe impl crate::CppDeletable for MakeOffsetShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeOffsetShape_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_destructor(ptr);
     }
 }
 
@@ -2357,7 +2457,7 @@ impl MakeOffsetShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffsetShape_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_ctor(),
             ))
         }
     }
@@ -2367,7 +2467,7 @@ impl MakeOffsetShape {
     /// computation.
     pub fn perform_by_simple(&mut self, theS: &crate::topo_ds::Shape, theOffsetValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_perform_by_simple(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_perform_by_simple(
                 self as *mut Self,
                 theS,
                 theOffsetValue,
@@ -2444,7 +2544,7 @@ impl MakeOffsetShape {
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_perform_by_join(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_perform_by_join(
                 self as *mut Self,
                 S,
                 Offset,
@@ -2463,9 +2563,11 @@ impl MakeOffsetShape {
     /// Returns instance of the underlying intersection / arc algorithm.
     pub fn make_offset(&self) -> &crate::b_rep_offset::MakeOffset {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffsetShape_make_offset(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_make_offset(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2473,7 +2575,10 @@ impl MakeOffsetShape {
     /// Does nothing.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -2488,12 +2593,14 @@ impl MakeOffsetShape {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffsetShape_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -2508,12 +2615,14 @@ impl MakeOffsetShape {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffsetShape_modified(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_modified(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -2521,7 +2630,10 @@ impl MakeOffsetShape {
     /// Returns true if the shape has been removed from the result.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_is_deleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
@@ -2529,7 +2641,9 @@ impl MakeOffsetShape {
     /// Returns offset join type.
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_get_join_type(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_get_join_type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2537,11 +2651,7 @@ impl MakeOffsetShape {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape(self as *const Self))
         }
     }
 
@@ -2550,11 +2660,7 @@ impl MakeOffsetShape {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
@@ -2562,7 +2668,7 @@ impl MakeOffsetShape {
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command(
                     self as *const Self,
                 ),
             )
@@ -2572,34 +2678,36 @@ impl MakeOffsetShape {
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeOffsetShape_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeOffsetShape_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2620,11 +2728,11 @@ impl MakeOffsetShape {
 /// Warning
 /// The MakePipe class implements pipe constructions
 /// with G1 continuous spines only.
-pub use crate::ffi::BRepOffsetAPI_MakePipe as MakePipe;
+pub use crate::ffi_types::BRepOffsetAPI_MakePipe as MakePipe;
 
 unsafe impl crate::CppDeletable for MakePipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakePipe_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_destructor(ptr);
     }
 }
 
@@ -2647,7 +2755,7 @@ impl MakePipe {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape(Spine, Profile),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_ctor_wire_shape(Spine, Profile),
             ))
         }
     }
@@ -2665,7 +2773,7 @@ impl MakePipe {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_ctor_wire_shape_trihedron_bool(
                     Spine,
                     Profile,
                     aMode.into(),
@@ -2691,7 +2799,9 @@ impl MakePipe {
     /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:68 - `BRepOffsetAPI_MakePipe::Pipe()`
     pub fn pipe(&self) -> &crate::b_rep_fill::Pipe {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_pipe(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_pipe(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2699,7 +2809,7 @@ impl MakePipe {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipe_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_build(self as *mut Self, theRange)
         })
     }
 
@@ -2708,7 +2818,7 @@ impl MakePipe {
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_first_shape(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_first_shape(self as *mut Self),
             ))
         }
     }
@@ -2718,7 +2828,7 @@ impl MakePipe {
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_last_shape(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_last_shape(self as *mut Self),
             ))
         }
     }
@@ -2733,12 +2843,14 @@ impl MakePipe {
     pub unsafe fn generated_shape(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_generated_shape(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_generated_shape(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -2750,7 +2862,7 @@ impl MakePipe {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_generated_shape2(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_generated_shape2(
                     self as *mut Self,
                     SSpine,
                     SProfile,
@@ -2762,16 +2874,18 @@ impl MakePipe {
     /// **Source:** `BRepOffsetAPI_MakePipe.hxx`:85 - `BRepOffsetAPI_MakePipe::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipe_error_on_surface(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_error_on_surface(self as *const Self)
         })
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_b_rep_prim_api_make_sweep(&self) -> &crate::b_rep_prim_api::MakeSweep {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2779,7 +2893,9 @@ impl MakePipe {
     pub fn as_b_rep_prim_api_make_sweep_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeSweep {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepPrimAPI_MakeSweep_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2787,9 +2903,11 @@ impl MakePipe {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2799,7 +2917,7 @@ impl MakePipe {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -2809,9 +2927,11 @@ impl MakePipe {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2819,7 +2939,9 @@ impl MakePipe {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2827,30 +2949,35 @@ impl MakePipe {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipe_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipe_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipe_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipe_inherited_Check(self as *const Self)
         })
     }
 }
@@ -2878,11 +3005,11 @@ impl MakePipe {
 /// Warning: some limitations exist
 /// -- Mode with auxiliary spine is incompatible with hometetic laws
 /// -- Mode with auxiliary spine and keep contact produce only CO surface.
-pub use crate::ffi::BRepOffsetAPI_MakePipeShell as MakePipeShell;
+pub use crate::ffi_types::BRepOffsetAPI_MakePipeShell as MakePipeShell;
 
 unsafe impl crate::CppDeletable for MakePipeShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakePipeShell_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_destructor(ptr);
     }
 }
 
@@ -2894,7 +3021,7 @@ impl MakePipeShell {
     pub fn new_wire(Spine: &crate::topo_ds::Wire) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_ctor_wire(Spine),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_ctor_wire(Spine),
             ))
         }
     }
@@ -2905,7 +3032,10 @@ impl MakePipeShell {
     /// If IsFrenet is false, a corrected Frenet trihedron is used.
     pub fn set_mode_bool(&mut self, IsFrenet: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_bool(self as *mut Self, IsFrenet)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_mode_bool(
+                self as *mut Self,
+                IsFrenet,
+            )
         })
     }
 
@@ -2914,7 +3044,9 @@ impl MakePipeShell {
     /// to  perform  the  sweeping
     pub fn set_discrete_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_discrete_mode(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_discrete_mode(
+                self as *mut Self,
+            )
         })
     }
 
@@ -2923,7 +3055,10 @@ impl MakePipeShell {
     /// all sections will be parallel.
     pub fn set_mode_ax2(&mut self, Axe: &crate::gp::Ax2) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_ax2(self as *mut Self, Axe)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_mode_ax2(
+                self as *mut Self,
+                Axe,
+            )
         })
     }
 
@@ -2933,7 +3068,10 @@ impl MakePipeShell {
     /// section(s) and <BiNormal> will be constant
     pub fn set_mode_dir(&mut self, BiNormal: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_dir(self as *mut Self, BiNormal)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_mode_dir(
+                self as *mut Self,
+                BiNormal,
+            )
         })
     }
 
@@ -2944,7 +3082,10 @@ impl MakePipeShell {
     /// have a representation on one face of<SpineSupport>
     pub fn set_mode_shape(&mut self, SpineSupport: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_shape(self as *mut Self, SpineSupport)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_mode_shape(
+                self as *mut Self,
+                SpineSupport,
+            )
         })
     }
 
@@ -2984,7 +3125,7 @@ impl MakePipeShell {
         KeepContact: crate::b_rep_fill::TypeOfContact,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_mode_wire_bool_typeofcontact(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_mode_wire_bool_typeofcontact(
                 self as *mut Self,
                 AuxiliarySpine,
                 CurvilinearEquivalence,
@@ -3011,7 +3152,7 @@ impl MakePipeShell {
         WithCorrection: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_add_shape_bool2(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_add_shape_bool2(
                 self as *mut Self,
                 Profile,
                 WithContact,
@@ -3033,7 +3174,7 @@ impl MakePipeShell {
         WithCorrection: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_add_shape_vertex_bool2(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_add_shape_vertex_bool2(
                 self as *mut Self,
                 Profile,
                 Location,
@@ -3053,18 +3194,12 @@ impl MakePipeShell {
     pub fn set_law_shape_handlelawfunction_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi::HandleLawFunction,
+        L: &crate::ffi_types::HandleLawFunction,
         WithContact: bool,
         WithCorrection: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_bool2(
-                self as *mut Self,
-                Profile,
-                L,
-                WithContact,
-                WithCorrection,
-            )
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_bool2(self as *mut Self, Profile, L, WithContact, WithCorrection)
         })
     }
 
@@ -3078,20 +3213,13 @@ impl MakePipeShell {
     pub fn set_law_shape_handlelawfunction_vertex_bool2(
         &mut self,
         Profile: &crate::topo_ds::Shape,
-        L: &crate::ffi::HandleLawFunction,
+        L: &crate::ffi_types::HandleLawFunction,
         Location: &crate::topo_ds::Vertex,
         WithContact: bool,
         WithCorrection: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_vertex_bool2(
-                self as *mut Self,
-                Profile,
-                L,
-                Location,
-                WithContact,
-                WithCorrection,
-            )
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_law_shape_handlelawfunction_vertex_bool2(self as *mut Self, Profile, L, Location, WithContact, WithCorrection)
         })
     }
 
@@ -3099,7 +3227,10 @@ impl MakePipeShell {
     /// Removes the section Profile from this framework.
     pub fn delete(&mut self, Profile: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_delete(self as *mut Self, Profile)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_delete(
+                self as *mut Self,
+                Profile,
+            )
         })
     }
 
@@ -3108,7 +3239,7 @@ impl MakePipeShell {
     /// shape, i.e. has a definition for the wire section Profile.
     pub fn is_ready(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_is_ready(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_is_ready(self as *const Self)
         })
     }
 
@@ -3120,7 +3251,7 @@ impl MakePipeShell {
     /// BRepBuilderAPI_ImpossibleContact.
     pub fn get_status(&self) -> crate::b_rep_builder_api::PipeError {
         crate::b_rep_builder_api::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_get_status(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -3132,7 +3263,7 @@ impl MakePipeShell {
     /// - angular tolerance TolAngular.
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, TolAngular: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_tolerance(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_tolerance(
                 self as *mut Self,
                 Tol3d,
                 BoundTol,
@@ -3145,7 +3276,10 @@ impl MakePipeShell {
     /// Define the maximum V degree of resulting surface
     pub fn set_max_degree(&mut self, NewMaxDegree: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_max_degree(self as *mut Self, NewMaxDegree)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_max_degree(
+                self as *mut Self,
+                NewMaxDegree,
+            )
         })
     }
 
@@ -3154,7 +3288,7 @@ impl MakePipeShell {
     /// on resulting surface
     pub fn set_max_segments(&mut self, NewMaxSegments: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_max_segments(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_max_segments(
                 self as *mut Self,
                 NewMaxSegments,
             )
@@ -3167,7 +3301,7 @@ impl MakePipeShell {
     /// to be C0.
     pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_force_approx_c1(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_force_approx_c1(
                 self as *mut Self,
                 ForceApproxC1,
             )
@@ -3214,7 +3348,7 @@ impl MakePipeShell {
     /// orthogonal to the spine.
     pub fn set_transition_mode(&mut self, Mode: crate::b_rep_builder_api::TransitionMode) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_set_transition_mode(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_set_transition_mode(
                 self as *mut Self,
                 Mode.into(),
             )
@@ -3234,10 +3368,10 @@ impl MakePipeShell {
     pub fn simulate(
         &mut self,
         NumberOfSection: i32,
-        Result: &mut crate::ffi::TopTools_ListOfShape,
+        Result: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_simulate(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_simulate(
                 self as *mut Self,
                 NumberOfSection,
                 Result,
@@ -3249,7 +3383,10 @@ impl MakePipeShell {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -3258,7 +3395,7 @@ impl MakePipeShell {
     /// If a propfile is not closed returns False
     pub fn make_solid(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_make_solid(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_make_solid(self as *mut Self)
         })
     }
 
@@ -3267,7 +3404,9 @@ impl MakePipeShell {
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_first_shape(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_first_shape(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -3277,7 +3416,9 @@ impl MakePipeShell {
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_last_shape(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_last_shape(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -3296,27 +3437,34 @@ impl MakePipeShell {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipeShell_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:275 - `BRepOffsetAPI_MakePipeShell::ErrorOnSurface()`
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_error_on_surface(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_error_on_surface(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepOffsetAPI_MakePipeShell.hxx`:278 - `BRepOffsetAPI_MakePipeShell::Profiles()`
     /// Returns the list of original profiles
-    pub fn profiles(&mut self, theProfiles: &mut crate::ffi::TopTools_ListOfShape) {
+    pub fn profiles(&mut self, theProfiles: &mut crate::ffi_types::TopTools_ListOfShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_profiles(self as *mut Self, theProfiles)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_profiles(
+                self as *mut Self,
+                theProfiles,
+            )
         })
     }
 
@@ -3324,7 +3472,7 @@ impl MakePipeShell {
     /// Returns the spine
     pub fn spine(&mut self) -> &crate::topo_ds::Wire {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipeShell_spine(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_spine(
                 self as *mut Self,
             )))
         }
@@ -3333,20 +3481,18 @@ impl MakePipeShell {
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_b_rep_prim_api_make_sweep(&self) -> &crate::b_rep_prim_api::MakeSweep {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepPrimAPI_MakeSweep (mutable)
     pub fn as_b_rep_prim_api_make_sweep_mut(&mut self) -> &mut crate::b_rep_prim_api::MakeSweep {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepPrimAPI_MakeSweep_mut(self as *mut Self))
         }
     }
 
@@ -3354,7 +3500,7 @@ impl MakePipeShell {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -3366,11 +3512,7 @@ impl MakePipeShell {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
@@ -3378,7 +3520,7 @@ impl MakePipeShell {
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command(
                     self as *const Self,
                 ),
             )
@@ -3388,41 +3530,46 @@ impl MakePipeShell {
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakePipeShell_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakePipeShell_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3447,11 +3594,11 @@ impl MakePipeShell {
 /// - defining the cross-section of a hollowed solid,
 /// - implementing the construction algorithm, and
 /// - consulting the result.
-pub use crate::ffi::BRepOffsetAPI_MakeThickSolid as MakeThickSolid;
+pub use crate::ffi_types::BRepOffsetAPI_MakeThickSolid as MakeThickSolid;
 
 unsafe impl crate::CppDeletable for MakeThickSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MakeThickSolid_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_destructor(ptr);
     }
 }
 
@@ -3461,7 +3608,7 @@ impl MakeThickSolid {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_ctor(),
             ))
         }
     }
@@ -3478,7 +3625,7 @@ impl MakeThickSolid {
         theOffsetValue: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_simple(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_simple(
                 self as *mut Self,
                 theS,
                 theOffsetValue,
@@ -3530,7 +3677,7 @@ impl MakeThickSolid {
     pub fn make_thick_solid_by_join(
         &mut self,
         S: &crate::topo_ds::Shape,
-        ClosingFaces: &crate::ffi::TopTools_ListOfShape,
+        ClosingFaces: &crate::ffi_types::TopTools_ListOfShape,
         Offset: f64,
         Tol: f64,
         Mode: crate::b_rep_offset::Mode,
@@ -3541,7 +3688,7 @@ impl MakeThickSolid {
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_make_thick_solid_by_join(
                 self as *mut Self,
                 S,
                 ClosingFaces,
@@ -3560,7 +3707,10 @@ impl MakeThickSolid {
     /// **Source:** `BRepOffsetAPI_MakeThickSolid.hxx`:115 - `BRepOffsetAPI_MakeThickSolid::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -3576,45 +3726,35 @@ impl MakeThickSolid {
     pub unsafe fn modified(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeThickSolid_modified(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_modified(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
     /// Upcast to BRepOffsetAPI_MakeOffsetShape
     pub fn as_make_offset_shape(&self) -> &MakeOffsetShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape(self as *const Self))
         }
     }
 
     /// Upcast to BRepOffsetAPI_MakeOffsetShape (mutable)
     pub fn as_make_offset_shape_mut(&mut self) -> &mut MakeOffsetShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepOffsetAPI_MakeOffsetShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape(self as *const Self))
         }
     }
 
@@ -3623,11 +3763,7 @@ impl MakeThickSolid {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
@@ -3635,7 +3771,7 @@ impl MakeThickSolid {
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command(
                     self as *const Self,
                 ),
             )
@@ -3645,18 +3781,14 @@ impl MakeThickSolid {
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:48 - `BRepOffsetAPI_MakeOffsetShape::PerformBySimple()`
     pub fn perform_by_simple(&mut self, theS: &crate::topo_ds::Shape, theOffsetValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_PerformBySimple(
                 self as *mut Self,
                 theS,
                 theOffsetValue,
@@ -3678,7 +3810,7 @@ impl MakeThickSolid {
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_PerformByJoin(
                 self as *mut Self,
                 S,
                 Offset,
@@ -3696,23 +3828,30 @@ impl MakeThickSolid {
     /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:118 - `BRepOffsetAPI_MakeOffsetShape::MakeOffset()`
     pub fn make_offset(&self) -> &crate::b_rep_offset::MakeOffset {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_MakeOffset(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:133 - `BRepOffsetAPI_MakeOffsetShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepOffsetAPI_MakeOffsetShape.hxx`:136 - `BRepOffsetAPI_MakeOffsetShape::GetJoinType()`
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_GetJoinType(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3720,23 +3859,29 @@ impl MakeThickSolid {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MakeThickSolid_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MakeThickSolid_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3748,11 +3893,11 @@ impl MakeThickSolid {
 /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:30 - `BRepOffsetAPI_MiddlePath`
 /// Describes functions to build a middle path of a
 /// pipe-like shape
-pub use crate::ffi::BRepOffsetAPI_MiddlePath as MiddlePath;
+pub use crate::ffi_types::BRepOffsetAPI_MiddlePath as MiddlePath;
 
 unsafe impl crate::CppDeletable for MiddlePath {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_MiddlePath_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_destructor(ptr);
     }
 }
 
@@ -3768,7 +3913,9 @@ impl MiddlePath {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_MiddlePath_ctor_shape3(aShape, StartShape, EndShape),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_ctor_shape3(
+                    aShape, StartShape, EndShape,
+                ),
             ))
         }
     }
@@ -3776,16 +3923,18 @@ impl MiddlePath {
     /// **Source:** `BRepOffsetAPI_MiddlePath.hxx`:42 - `BRepOffsetAPI_MiddlePath::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MiddlePath_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_build(self as *mut Self, theRange)
         })
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3794,20 +3943,18 @@ impl MiddlePath {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3815,7 +3962,7 @@ impl MiddlePath {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -3825,30 +3972,39 @@ impl MiddlePath {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MiddlePath_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_MiddlePath_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_MiddlePath_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3861,11 +4017,11 @@ impl MiddlePath {
 /// A framework to define projection onto a shape
 /// according to the normal from each point to be projected.
 /// The target shape is a face, and the source shape is an edge or a wire.
-pub use crate::ffi::BRepOffsetAPI_NormalProjection as NormalProjection;
+pub use crate::ffi_types::BRepOffsetAPI_NormalProjection as NormalProjection;
 
 unsafe impl crate::CppDeletable for NormalProjection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_NormalProjection_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_destructor(ptr);
     }
 }
 
@@ -3877,7 +4033,7 @@ impl NormalProjection {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_ctor(),
             ))
         }
     }
@@ -3891,7 +4047,7 @@ impl NormalProjection {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_ctor_shape(S),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_ctor_shape(S),
             ))
         }
     }
@@ -3900,7 +4056,7 @@ impl NormalProjection {
     /// Initializes the empty constructor framework with the shape S.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_init(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_init(self as *mut Self, S)
         })
     }
 
@@ -3912,7 +4068,10 @@ impl NormalProjection {
     /// Standard_ConstructionError if ToProj is not added.
     pub fn add(&mut self, ToProj: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_add(self as *mut Self, ToProj)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_add(
+                self as *mut Self,
+                ToProj,
+            )
         })
     }
 
@@ -3933,7 +4092,7 @@ impl NormalProjection {
         MaxSeg: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_set_params(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_set_params(
                 self as *mut Self,
                 Tol3D,
                 Tol2D,
@@ -3951,7 +4110,10 @@ impl NormalProjection {
     /// if MaxDist < 0 then this method does not affect the algorithm
     pub fn set_max_distance(&mut self, MaxDist: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_set_max_distance(self as *mut Self, MaxDist)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_set_max_distance(
+                self as *mut Self,
+                MaxDist,
+            )
         })
     }
 
@@ -3959,7 +4121,10 @@ impl NormalProjection {
     /// Manage  limitation  of  projected  edges.
     pub fn set_limit(&mut self, FaceBoundaries: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_set_limit(self as *mut Self, FaceBoundaries)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_set_limit(
+                self as *mut Self,
+                FaceBoundaries,
+            )
         })
     }
 
@@ -3968,7 +4133,10 @@ impl NormalProjection {
     /// returned and an initial 3D curve is kept to build the resulting edges.
     pub fn compute3d(&mut self, With3d: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_compute3d(self as *mut Self, With3d)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_compute3d(
+                self as *mut Self,
+                With3d,
+            )
         })
     }
 
@@ -3977,7 +4145,10 @@ impl NormalProjection {
     /// wires. Tries to build oriented wires.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -3991,7 +4162,7 @@ impl NormalProjection {
     /// (typically the Shape function).
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_is_done(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_is_done(self as *const Self)
         })
     }
 
@@ -4002,9 +4173,11 @@ impl NormalProjection {
     /// StdFail_NotDone if the projection was not performed.
     pub fn projection(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_NormalProjection_projection(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_projection(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4022,10 +4195,12 @@ impl NormalProjection {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn couple(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_NormalProjection_couple(
-                self as *const Self,
-                E,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_couple(
+                    self as *const Self,
+                    E,
+                ),
+            ))
         }
     }
 
@@ -4041,12 +4216,14 @@ impl NormalProjection {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_NormalProjection_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
@@ -4065,30 +4242,31 @@ impl NormalProjection {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn ancestor(&self, E: &crate::topo_ds::Edge) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_NormalProjection_ancestor(
-                self as *const Self,
-                E,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_ancestor(
+                    self as *const Self,
+                    E,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepOffsetAPI_NormalProjection.hxx`:129 - `BRepOffsetAPI_NormalProjection::BuildWire()`
     /// build the result as a list of wire if possible in --
     /// a first returns a wire only if there is only a wire.
-    pub fn build_wire(&self, Liste: &mut crate::ffi::TopTools_ListOfShape) -> bool {
+    pub fn build_wire(&self, Liste: &mut crate::ffi_types::TopTools_ListOfShape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_build_wire(self as *const Self, Liste)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_build_wire(
+                self as *const Self,
+                Liste,
+            )
         })
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape(self as *const Self))
         }
     }
 
@@ -4097,56 +4275,51 @@ impl NormalProjection {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command(self as *const Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_NormalProjection_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_NormalProjection_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4160,11 +4333,11 @@ impl NormalProjection {
 /// solid passing through a set of sections in a given
 /// sequence. Usually sections are wires, but the first and
 /// the last sections may be vertices (punctual sections).
-pub use crate::ffi::BRepOffsetAPI_ThruSections as ThruSections;
+pub use crate::ffi_types::BRepOffsetAPI_ThruSections as ThruSections;
 
 unsafe impl crate::CppDeletable for ThruSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffsetAPI_ThruSections_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_destructor(ptr);
     }
 }
 
@@ -4185,7 +4358,9 @@ impl ThruSections {
     pub fn new_bool2_real(isSolid: bool, ruled: bool, pres3d: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_ThruSections_ctor_bool2_real(isSolid, ruled, pres3d),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_ctor_bool2_real(
+                    isSolid, ruled, pres3d,
+                ),
             ))
         }
     }
@@ -4256,7 +4431,12 @@ impl ThruSections {
     /// sections of the shell or solid to be built.
     pub fn init(&mut self, isSolid: bool, ruled: bool, pres3d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_init(self as *mut Self, isSolid, ruled, pres3d)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_init(
+                self as *mut Self,
+                isSolid,
+                ruled,
+                pres3d,
+            )
         })
     }
 
@@ -4266,7 +4446,7 @@ impl ThruSections {
     /// Use the Build function to construct the shape.
     pub fn add_wire(&mut self, wire: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_add_wire(self as *mut Self, wire)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_add_wire(self as *mut Self, wire)
         })
     }
 
@@ -4278,7 +4458,10 @@ impl ThruSections {
     /// Use the Build function to construct the shape.
     pub fn add_vertex(&mut self, aVertex: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_add_vertex(self as *mut Self, aVertex)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_add_vertex(
+                self as *mut Self,
+                aVertex,
+            )
         })
     }
 
@@ -4288,7 +4471,10 @@ impl ThruSections {
     /// and update wires to have same number of edges.
     pub fn check_compatibility(&mut self, check: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_check_compatibility(self as *mut Self, check)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_check_compatibility(
+                self as *mut Self,
+                check,
+            )
         })
     }
 
@@ -4296,7 +4482,10 @@ impl ThruSections {
     /// Define the approximation algorithm
     pub fn set_smoothing(&mut self, UseSmoothing: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_smoothing(self as *mut Self, UseSmoothing)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_smoothing(
+                self as *mut Self,
+                UseSmoothing,
+            )
         })
     }
 
@@ -4304,7 +4493,10 @@ impl ThruSections {
     /// Define the type of parametrization   used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_par_type(self as *mut Self, ParType.into())
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_par_type(
+                self as *mut Self,
+                ParType.into(),
+            )
         })
     }
 
@@ -4312,7 +4504,10 @@ impl ThruSections {
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_continuity(self as *mut Self, C.into())
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_continuity(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
@@ -4323,7 +4518,7 @@ impl ThruSections {
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_criterium_weight(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_criterium_weight(
                 self as *mut Self,
                 W1,
                 W2,
@@ -4336,7 +4531,10 @@ impl ThruSections {
     /// Define the maximal U degree of result surface
     pub fn set_max_degree(&mut self, MaxDeg: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_max_degree(self as *mut Self, MaxDeg)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_max_degree(
+                self as *mut Self,
+                MaxDeg,
+            )
         })
     }
 
@@ -4344,7 +4542,7 @@ impl ThruSections {
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_par_type(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_par_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -4353,7 +4551,7 @@ impl ThruSections {
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_continuity(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -4362,7 +4560,7 @@ impl ThruSections {
     /// returns the maximal U degree of result surface
     pub fn max_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_max_degree(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_max_degree(self as *const Self)
         })
     }
 
@@ -4370,7 +4568,9 @@ impl ThruSections {
     /// Define the approximation algorithm
     pub fn use_smoothing(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_use_smoothing(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_use_smoothing(
+                self as *const Self,
+            )
         })
     }
 
@@ -4379,14 +4579,22 @@ impl ThruSections {
     /// the  optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_criterium_weight(self as *const Self, W1, W2, W3)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_criterium_weight(
+                self as *const Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
     /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:139 - `BRepOffsetAPI_ThruSections::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -4394,9 +4602,11 @@ impl ThruSections {
     /// Returns the TopoDS Shape of the bottom of the loft if solid
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_first_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_first_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4404,9 +4614,11 @@ impl ThruSections {
     /// Returns the TopoDS Shape of the top of the loft if solid
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_last_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_last_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4422,7 +4634,10 @@ impl ThruSections {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffsetAPI_ThruSections_generated_face(self as *const Self, Edge),
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_generated_face(
+                    self as *const Self,
+                    Edge,
+                ),
             ))
         }
     }
@@ -4433,7 +4648,7 @@ impl ThruSections {
     /// the thrusection operation. Default value is true.
     pub fn set_mutable_input(&mut self, theIsMutableInput: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_set_mutable_input(
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_set_mutable_input(
                 self as *mut Self,
                 theIsMutableInput,
             )
@@ -4454,20 +4669,22 @@ impl ThruSections {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_generated(
-                self as *mut Self,
-                S,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_generated(
+                    self as *mut Self,
+                    S,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepOffsetAPI_ThruSections.hxx`:168 - `BRepOffsetAPI_ThruSections::Wires()`
     /// Returns the list of original wires
-    pub fn wires(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn wires(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_wires(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_wires(
                 self as *const Self,
             )))
         }
@@ -4477,7 +4694,9 @@ impl ThruSections {
     /// Returns the current mutable input state
     pub fn is_mutable_input(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_is_mutable_input(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_is_mutable_input(
+                self as *const Self,
+            )
         })
     }
 
@@ -4485,7 +4704,7 @@ impl ThruSections {
     /// Returns the status of thrusection operation
     pub fn get_status(&self) -> crate::b_rep_fill::ThruSectionErrorStatus {
         crate::b_rep_fill::ThruSectionErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_get_status(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -4494,7 +4713,7 @@ impl ThruSections {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -4506,61 +4725,64 @@ impl ThruSections {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command (mutable)
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_as_BRepBuilderAPI_Command_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffsetAPI_ThruSections_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffsetAPI_ThruSections_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffsetAPI_ThruSections_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }

@@ -178,7 +178,7 @@
 #include <BinMDF_DerivedDriver.hxx>
 #include <BinMDF_ReferenceDriver.hxx>
 #include <BinMDF_TagSourceDriver.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <BinMDataStd_AsciiStringDriver.hxx>
 #include <BinMDataStd_BooleanArrayDriver.hxx>
 #include <BinMDataStd_BooleanListDriver.hxx>
@@ -999,7 +999,7 @@
 #include <MoniTool_Timer.hxx>
 #include <MoniTool_TransientElem.hxx>
 #include <MoniTool_TypedValue.hxx>
-#include <MoniTool_ValueInterpret.hxx>
+#include <MoniTool_ValueSatisfies.hxx>
 #include <NCollection_AccAllocator.hxx>
 #include <NCollection_AlignedAllocator.hxx>
 #include <NCollection_BaseAllocator.hxx>
@@ -2465,6 +2465,7 @@
 #include <TNaming_UsedShapes.hxx>
 #include <TObj_Application.hxx>
 #include <TObj_CheckModel.hxx>
+#include <TObj_Container.hxx>
 #include <TObj_HiddenPartition.hxx>
 #include <TObj_ModelIterator.hxx>
 #include <TObj_Object.hxx>

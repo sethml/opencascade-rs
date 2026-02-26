@@ -11,11 +11,11 @@
 // ========================
 
 /// **Source:** `TopBas_TestInterference.hxx`:27 - `TopBas_TestInterference`
-pub use crate::ffi::TopBas_TestInterference as TestInterference;
+pub use crate::ffi_types::TopBas_TestInterference as TestInterference;
 
 unsafe impl crate::CppDeletable for TestInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopBas_TestInterference_destructor(ptr);
+        crate::ffi_extern_TKHLR::TopBas_TestInterference_destructor(ptr);
     }
 }
 
@@ -24,7 +24,7 @@ impl TestInterference {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopBas_TestInterference_ctor(),
+                crate::ffi_extern_TKHLR::TopBas_TestInterference_ctor(),
             ))
         }
     }
@@ -39,7 +39,7 @@ impl TestInterference {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopBas_TestInterference_ctor_real_int_orientation3(
+                crate::ffi_extern_TKHLR::TopBas_TestInterference_ctor_real_int_orientation3(
                     Inters,
                     Bound,
                     Orient.into(),
@@ -53,35 +53,41 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:40 - `TopBas_TestInterference::Intersection()`
     pub fn intersection_real(&mut self, I: &f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopBas_TestInterference_intersection_real(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_intersection_real(self as *mut Self, I)
         })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:42 - `TopBas_TestInterference::Boundary()`
     pub fn boundary_int(&mut self, B: &i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopBas_TestInterference_boundary_int(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_boundary_int(self as *mut Self, B)
         })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:44 - `TopBas_TestInterference::Orientation()`
     pub fn orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopBas_TestInterference_orientation_orientation(self as *mut Self, O.into())
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_orientation_orientation(
+                self as *mut Self,
+                O.into(),
+            )
         })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:46 - `TopBas_TestInterference::Transition()`
     pub fn transition_orientation(&mut self, Tr: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopBas_TestInterference_transition_orientation(self as *mut Self, Tr.into())
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_transition_orientation(
+                self as *mut Self,
+                Tr.into(),
+            )
         })
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:48 - `TopBas_TestInterference::BoundaryTransition()`
     pub fn boundary_transition_orientation(&mut self, BTr: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopBas_TestInterference_boundary_transition_orientation(
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_boundary_transition_orientation(
                 self as *mut Self,
                 BTr.into(),
             )
@@ -91,7 +97,7 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:50 - `TopBas_TestInterference::Intersection()`
     pub fn intersection(&self) -> &f64 {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopBas_TestInterference_intersection(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::TopBas_TestInterference_intersection(
                 self as *const Self,
             )))
         }
@@ -100,16 +106,18 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:52 - `TopBas_TestInterference::ChangeIntersection()`
     pub fn change_intersection(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopBas_TestInterference_change_intersection(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::TopBas_TestInterference_change_intersection(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:54 - `TopBas_TestInterference::Boundary()`
     pub fn boundary(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopBas_TestInterference_boundary(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::TopBas_TestInterference_boundary(
                 self as *const Self,
             )))
         }
@@ -118,16 +126,16 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:56 - `TopBas_TestInterference::ChangeBoundary()`
     pub fn change_boundary(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopBas_TestInterference_change_boundary(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::TopBas_TestInterference_change_boundary(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `TopBas_TestInterference.hxx`:58 - `TopBas_TestInterference::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopBas_TestInterference_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -135,7 +143,7 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:60 - `TopBas_TestInterference::Transition()`
     pub fn transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopBas_TestInterference_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_transition(self as *const Self)
         }))
         .unwrap()
     }
@@ -143,7 +151,9 @@ impl TestInterference {
     /// **Source:** `TopBas_TestInterference.hxx`:62 - `TopBas_TestInterference::BoundaryTransition()`
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopBas_TestInterference_boundary_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::TopBas_TestInterference_boundary_transition(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }

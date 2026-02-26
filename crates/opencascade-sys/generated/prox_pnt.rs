@@ -10,4 +10,4 @@
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::ProxPnt_Status as Status;
+pub use crate::ffi_types::ProxPnt_Status as Status;

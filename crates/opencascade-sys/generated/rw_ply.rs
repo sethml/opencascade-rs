@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From RWPly_CafWriter.hxx
@@ -15,11 +15,11 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `RWPly_CafWriter.hxx`:34 - `RWPly_CafWriter`
 /// PLY writer context from XCAF document.
-pub use crate::ffi::RWPly_CafWriter as CafWriter;
+pub use crate::ffi_types::RWPly_CafWriter as CafWriter;
 
 unsafe impl crate::CppDeletable for CafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::RWPly_CafWriter_destructor(ptr);
+        crate::ffi_extern_TKDEPLY::RWPly_CafWriter_destructor(ptr);
     }
 }
 
@@ -30,15 +30,17 @@ impl CafWriter {
     pub fn new_asciistring(theFile: &crate::t_collection::AsciiString) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::RWPly_CafWriter_ctor_asciistring(theFile),
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_ctor_asciistring(theFile),
             ))
         }
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::RWPly_CafWriter_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -46,9 +48,11 @@ impl CafWriter {
     /// Return transformation from OCCT to PLY coordinate system.
     pub fn coordinate_system_converter(&self) -> &crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
-            &*(crate::check_result(crate::ffi::RWPly_CafWriter_coordinate_system_converter(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_coordinate_system_converter(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -59,7 +63,9 @@ impl CafWriter {
     ) -> &mut crate::rw_mesh::CoordinateSystemConverter {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::RWPly_CafWriter_change_coordinate_system_converter(self as *mut Self),
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_change_coordinate_system_converter(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -71,7 +77,7 @@ impl CafWriter {
         theConverter: &crate::rw_mesh::CoordinateSystemConverter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_coordinate_system_converter(
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_coordinate_system_converter(
                 self as *mut Self,
                 theConverter,
             )
@@ -82,7 +88,9 @@ impl CafWriter {
     /// Return default material definition to be used for nodes with only color defined.
     pub fn default_style(&self) -> &crate::xcaf_prs::Style {
         unsafe {
-            &*(crate::check_result(crate::ffi::RWPly_CafWriter_default_style(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_default_style(
+                self as *const Self,
+            )))
         }
     }
 
@@ -90,7 +98,10 @@ impl CafWriter {
     /// Set default material definition to be used for nodes with only color defined.
     pub fn set_default_style(&mut self, theStyle: &crate::xcaf_prs::Style) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_default_style(self as *mut Self, theStyle)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_default_style(
+                self as *mut Self,
+                theStyle,
+            )
         })
     }
 
@@ -99,7 +110,7 @@ impl CafWriter {
     /// default.
     pub fn is_double_precision(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_is_double_precision(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_is_double_precision(self as *const Self)
         })
     }
 
@@ -107,21 +118,26 @@ impl CafWriter {
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_double_precision(self as *mut Self, theDoublePrec)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_double_precision(
+                self as *mut Self,
+                theDoublePrec,
+            )
         })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:72 - `RWPly_CafWriter::HasNormals()`
     /// Return TRUE if normals should be written; TRUE by default.
     pub fn has_normals(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::RWPly_CafWriter_has_normals(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_has_normals(self as *const Self)
+        })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:75 - `RWPly_CafWriter::SetNormals()`
     /// Set if normals are defined.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_normals(self as *mut Self, theHasNormals)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_normals(self as *mut Self, theHasNormals)
         })
     }
 
@@ -129,7 +145,7 @@ impl CafWriter {
     /// Return TRUE if UV / texture coordinates should be written; FALSE by default.
     pub fn has_tex_coords(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_has_tex_coords(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_has_tex_coords(self as *const Self)
         })
     }
 
@@ -137,28 +153,35 @@ impl CafWriter {
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_tex_coords(self as *mut Self, theHasTexCoords)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_tex_coords(
+                self as *mut Self,
+                theHasTexCoords,
+            )
         })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:84 - `RWPly_CafWriter::HasColors()`
     /// Return TRUE if point colors should be written; TRUE by default.
     pub fn has_colors(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::RWPly_CafWriter_has_colors(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_has_colors(self as *const Self)
+        })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:87 - `RWPly_CafWriter::SetColors()`
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_colors(self as *mut Self, theToWrite)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_colors(self as *mut Self, theToWrite)
         })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:90 - `RWPly_CafWriter::HasPartId()`
     /// Return TRUE if part Id should be written as element attribute; TRUE by default.
     pub fn has_part_id(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::RWPly_CafWriter_has_part_id(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_has_part_id(self as *const Self)
+        })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:94 - `RWPly_CafWriter::SetPartId()`
@@ -166,14 +189,16 @@ impl CafWriter {
     /// Cannot be combined with HasFaceId().
     pub fn set_part_id(&mut self, theSurfId: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_part_id(self as *mut Self, theSurfId)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_part_id(self as *mut Self, theSurfId)
         })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:101 - `RWPly_CafWriter::HasFaceId()`
     /// Return TRUE if face Id should be written as element attribute; FALSE by default.
     pub fn has_face_id(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::RWPly_CafWriter_has_face_id(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_has_face_id(self as *const Self)
+        })
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:105 - `RWPly_CafWriter::SetFaceId()`
@@ -181,7 +206,7 @@ impl CafWriter {
     /// Cannot be combined with HasPartId().
     pub fn set_face_id(&mut self, theSurfId: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_set_face_id(self as *mut Self, theSurfId)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_set_face_id(self as *mut Self, theSurfId)
         })
     }
 
@@ -199,14 +224,14 @@ impl CafWriter {
     /// @return FALSE on file writing failure
     pub fn perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(
         &mut self,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theRootLabels: &crate::ffi::TDF_LabelSequence,
-        theLabelFilter: &crate::ffi::TColStd_MapOfAsciiString,
-        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theRootLabels: &crate::ffi_types::TDF_LabelSequence,
+        theLabelFilter: &crate::ffi_types::TColStd_MapOfAsciiString,
+        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_labelsequence_mapofasciistringptr_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theRootLabels, theLabelFilter as *const _, theFileInfo, theProgress)
         })
     }
 
@@ -219,12 +244,12 @@ impl CafWriter {
     /// @return FALSE on file writing failure
     pub fn perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(
         &mut self,
-        theDocument: &crate::ffi::HandleTDocStdDocument,
-        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theDocument: &crate::ffi_types::HandleTDocStdDocument,
+        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_perform_handletdocstddocument_indexeddatamapofstringstring_progressrange(self as *mut Self, theDocument, theFileInfo, theProgress)
         })
     }
 
@@ -232,7 +257,7 @@ impl CafWriter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::RWPly_CafWriter_get_type_name(),
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -240,14 +265,16 @@ impl CafWriter {
     }
 
     /// **Source:** `RWPly_CafWriter.hxx`:36 - `RWPly_CafWriter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::RWPly_CafWriter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::RWPly_CafWriter_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKDEPLY::RWPly_CafWriter_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -256,34 +283,42 @@ impl CafWriter {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::RWPly_CafWriter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleRWPlyCafWriter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleRWPlyCafWriter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::RWPly_CafWriter_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -291,7 +326,7 @@ impl CafWriter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::RWPly_CafWriter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -304,58 +339,72 @@ impl CafWriter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_CafWriter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_CafWriter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleRWPlyCafWriter;
+pub use crate::ffi_types::HandleRWPlyCafWriter;
 
 unsafe impl crate::CppDeletable for HandleRWPlyCafWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleRWPlyCafWriter_destructor(ptr);
+        crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_destructor(ptr);
     }
 }
 
 impl HandleRWPlyCafWriter {
     /// Dereference this Handle to access the underlying RWPly_CafWriter
-    pub fn get(&self) -> &crate::ffi::RWPly_CafWriter {
-        unsafe { &*crate::check_result(crate::ffi::HandleRWPlyCafWriter_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::RWPly_CafWriter {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying RWPly_CafWriter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::RWPly_CafWriter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::RWPly_CafWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleRWPlyCafWriter_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<RWPly_CafWriter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleRWPlyCafWriter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEPLY::HandleRWPlyCafWriter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -367,11 +416,11 @@ impl HandleRWPlyCafWriter {
 
 /// **Source:** `RWPly_PlyWriterContext.hxx`:25 - `RWPly_PlyWriterContext`
 /// Auxiliary low-level tool writing PLY file.
-pub use crate::ffi::RWPly_PlyWriterContext as PlyWriterContext;
+pub use crate::ffi_types::RWPly_PlyWriterContext as PlyWriterContext;
 
 unsafe impl crate::CppDeletable for PlyWriterContext {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::RWPly_PlyWriterContext_destructor(ptr);
+        crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_destructor(ptr);
     }
 }
 
@@ -380,9 +429,9 @@ impl PlyWriterContext {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::RWPly_PlyWriterContext_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_ctor(),
+            ))
         }
     }
 
@@ -392,7 +441,9 @@ impl PlyWriterContext {
     /// default.
     pub fn is_double_precision(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_is_double_precision(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_is_double_precision(
+                self as *const Self,
+            )
         })
     }
 
@@ -400,7 +451,7 @@ impl PlyWriterContext {
     /// Set if vertex position should be stored with double floating point precision.
     pub fn set_double_precision(&mut self, theDoublePrec: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_double_precision(
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_double_precision(
                 self as *mut Self,
                 theDoublePrec,
             )
@@ -411,7 +462,7 @@ impl PlyWriterContext {
     /// Return TRUE if normals should be written as vertex attribute; FALSE by default.
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_has_normals(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_has_normals(self as *const Self)
         })
     }
 
@@ -419,7 +470,10 @@ impl PlyWriterContext {
     /// Set if normals should be written.
     pub fn set_normals(&mut self, theHasNormals: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_normals(self as *mut Self, theHasNormals)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_normals(
+                self as *mut Self,
+                theHasNormals,
+            )
         })
     }
 
@@ -428,7 +482,7 @@ impl PlyWriterContext {
     /// default.
     pub fn has_tex_coords(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_has_tex_coords(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_has_tex_coords(self as *const Self)
         })
     }
 
@@ -436,7 +490,10 @@ impl PlyWriterContext {
     /// Set if UV / texture coordinates should be written.
     pub fn set_tex_coords(&mut self, theHasTexCoords: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_tex_coords(self as *mut Self, theHasTexCoords)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_tex_coords(
+                self as *mut Self,
+                theHasTexCoords,
+            )
         })
     }
 
@@ -444,7 +501,7 @@ impl PlyWriterContext {
     /// Return TRUE if point colors should be written as vertex attribute; FALSE by default.
     pub fn has_colors(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_has_colors(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_has_colors(self as *const Self)
         })
     }
 
@@ -452,7 +509,10 @@ impl PlyWriterContext {
     /// Set if point colors should be written.
     pub fn set_colors(&mut self, theToWrite: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_colors(self as *mut Self, theToWrite)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_colors(
+                self as *mut Self,
+                theToWrite,
+            )
         })
     }
 
@@ -461,7 +521,7 @@ impl PlyWriterContext {
     /// Return TRUE if surface Id should be written as element attribute; FALSE by default.
     pub fn has_surface_id(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_has_surface_id(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_has_surface_id(self as *const Self)
         })
     }
 
@@ -469,7 +529,10 @@ impl PlyWriterContext {
     /// Set if surface Id should be written as element attribute; FALSE by default.
     pub fn set_surface_id_bool(&mut self, theSurfId: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_surface_id_bool(self as *mut Self, theSurfId)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_surface_id_bool(
+                self as *mut Self,
+                theSurfId,
+            )
         })
     }
 
@@ -478,7 +541,7 @@ impl PlyWriterContext {
     /// Return TRUE if file has been opened.
     pub fn is_opened(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_is_opened(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_is_opened(self as *const Self)
         })
     }
 
@@ -487,10 +550,14 @@ impl PlyWriterContext {
     pub fn open(
         &mut self,
         theName: &crate::t_collection::AsciiString,
-        theStream: &crate::ffi::std_shared_ptr_std_ostream,
+        theStream: &crate::ffi_types::std_shared_ptr_std_ostream,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_open(self as *mut Self, theName, theStream)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_open(
+                self as *mut Self,
+                theName,
+                theStream,
+            )
         })
     }
 
@@ -503,10 +570,10 @@ impl PlyWriterContext {
         &mut self,
         theNbNodes: i32,
         theNbElems: i32,
-        theFileInfo: &crate::ffi::TColStd_IndexedDataMapOfStringString,
+        theFileInfo: &crate::ffi_types::TColStd_IndexedDataMapOfStringString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_write_header(
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_header(
                 self as *mut Self,
                 theNbNodes,
                 theNbElems,
@@ -524,12 +591,12 @@ impl PlyWriterContext {
     pub fn write_vertex(
         &mut self,
         thePoint: &crate::gp::Pnt,
-        theNorm: &crate::ffi::Graphic3d_Vec3,
-        theUV: &crate::ffi::Graphic3d_Vec2,
-        theColor: &crate::ffi::Graphic3d_Vec4ub,
+        theNorm: &crate::ffi_types::Graphic3d_Vec3,
+        theUV: &crate::ffi_types::Graphic3d_Vec2,
+        theColor: &crate::ffi_types::Graphic3d_Vec4ub,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_write_vertex(
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_vertex(
                 self as *mut Self,
                 thePoint,
                 theNorm,
@@ -543,7 +610,9 @@ impl PlyWriterContext {
     /// Return number of written vertices.
     pub fn nb_written_vertices(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_nb_written_vertices(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_nb_written_vertices(
+                self as *const Self,
+            )
         })
     }
 
@@ -551,7 +620,7 @@ impl PlyWriterContext {
     /// Return vertex offset to be applied to element indices; 0 by default.
     pub fn vertex_offset(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_vertex_offset(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_vertex_offset(self as *const Self)
         })
     }
 
@@ -559,7 +628,10 @@ impl PlyWriterContext {
     /// Set vertex offset to be applied to element indices.
     pub fn set_vertex_offset(&mut self, theOffset: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_vertex_offset(self as *mut Self, theOffset)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_vertex_offset(
+                self as *mut Self,
+                theOffset,
+            )
         })
     }
 
@@ -567,7 +639,7 @@ impl PlyWriterContext {
     /// Return surface id to write with element; 0 by default.
     pub fn surface_id(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_surface_id(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_surface_id(self as *const Self)
         })
     }
 
@@ -575,23 +647,29 @@ impl PlyWriterContext {
     /// Set surface id to write with element.
     pub fn set_surface_id_int(&mut self, theSurfId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_set_surface_id_int(self as *mut Self, theSurfId)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_set_surface_id_int(
+                self as *mut Self,
+                theSurfId,
+            )
         })
     }
 
     /// **Source:** `RWPly_PlyWriterContext.hxx`:111 - `RWPly_PlyWriterContext::WriteTriangle()`
     /// Writing a triangle.
-    pub fn write_triangle(&mut self, theTri: &crate::ffi::Graphic3d_Vec3i) -> bool {
+    pub fn write_triangle(&mut self, theTri: &crate::ffi_types::Graphic3d_Vec3i) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_write_triangle(self as *mut Self, theTri)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_triangle(
+                self as *mut Self,
+                theTri,
+            )
         })
     }
 
     /// **Source:** `RWPly_PlyWriterContext.hxx`:114 - `RWPly_PlyWriterContext::WriteQuad()`
     /// Writing a quad.
-    pub fn write_quad(&mut self, theQuad: &crate::ffi::Graphic3d_Vec4i) -> bool {
+    pub fn write_quad(&mut self, theQuad: &crate::ffi_types::Graphic3d_Vec4i) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_write_quad(self as *mut Self, theQuad)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_write_quad(self as *mut Self, theQuad)
         })
     }
 
@@ -599,7 +677,9 @@ impl PlyWriterContext {
     /// Return number of written elements.
     pub fn nb_written_elements(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_nb_written_elements(self as *const Self)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_nb_written_elements(
+                self as *const Self,
+            )
         })
     }
 
@@ -608,7 +688,7 @@ impl PlyWriterContext {
     /// @return FALSE in case of writing error
     pub fn close(&mut self, theIsAborted: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::RWPly_PlyWriterContext_close(self as *mut Self, theIsAborted)
+            crate::ffi_extern_TKDEPLY::RWPly_PlyWriterContext_close(self as *mut Self, theIsAborted)
         })
     }
 }

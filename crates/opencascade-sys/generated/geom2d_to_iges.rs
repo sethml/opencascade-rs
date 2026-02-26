@@ -25,11 +25,11 @@
 /// * Line
 /// * Parabola
 /// . OffsetCurve
-pub use crate::ffi::Geom2dToIGES_Geom2dCurve as Geom2dCurve;
+pub use crate::ffi_types::Geom2dToIGES_Geom2dCurve as Geom2dCurve;
 
 unsafe impl crate::CppDeletable for Geom2dCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dToIGES_Geom2dCurve_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_destructor(ptr);
     }
 }
 
@@ -38,7 +38,7 @@ impl Geom2dCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_ctor(),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_ctor(),
             ))
         }
     }
@@ -49,7 +49,7 @@ impl Geom2dCurve {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_ctor_geom2dentity(G2dE),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_ctor_geom2dentity(G2dE),
             ))
         }
     }
@@ -59,13 +59,13 @@ impl Geom2dCurve {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_curve(
         &mut self,
-        start: &crate::ffi::HandleGeom2dCurve,
+        start: &crate::ffi_types::HandleGeom2dCurve,
         Udeb: f64,
         Ufin: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_transfer2d_curve(
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_transfer2d_curve(
                     self as *mut Self,
                     start,
                     Udeb,
@@ -79,7 +79,7 @@ impl Geom2dCurve {
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity(
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity(
                     self as *const Self,
                 ),
             )
@@ -89,26 +89,27 @@ impl Geom2dCurve {
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_as_Geom2dToIGES_Geom2dEntity_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -116,14 +117,19 @@ impl Geom2dCurve {
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:50 - `Geom2dToIGES_Geom2dEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dCurve_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dCurve_inherited_GetUnit(
+                self as *const Self,
+            )
         })
     }
 }
@@ -134,11 +140,11 @@ impl Geom2dCurve {
 
 /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:27 - `Geom2dToIGES_Geom2dEntity`
 /// provides methods to transfer Geom2d entity from CASCADE to IGES.
-pub use crate::ffi::Geom2dToIGES_Geom2dEntity as Geom2dEntity;
+pub use crate::ffi_types::Geom2dToIGES_Geom2dEntity as Geom2dEntity;
 
 unsafe impl crate::CppDeletable for Geom2dEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dToIGES_Geom2dEntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_destructor(ptr);
     }
 }
 
@@ -148,25 +154,30 @@ impl Geom2dEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dEntity_ctor(),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_ctor(),
             ))
         }
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
     /// Set the value of "TheModel"
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dEntity_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_set_model(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
     /// Returns the value of "TheModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dEntity_get_model(self as *const Self),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_get_model(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -175,7 +186,7 @@ impl Geom2dEntity {
     /// Sets the value of the UnitFlag
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dEntity_set_unit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_set_unit(self as *mut Self, unit)
         })
     }
 
@@ -184,7 +195,7 @@ impl Geom2dEntity {
     /// in millimeters.
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dEntity_get_unit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_get_unit(self as *const Self)
         })
     }
 
@@ -192,7 +203,7 @@ impl Geom2dEntity {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dEntity_to_owned(self as *const Self),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dEntity_to_owned(self as *const Self),
             ))
         }
     }
@@ -207,11 +218,11 @@ impl Geom2dEntity {
 /// to IGES . These are :
 /// . 2dPoint
 /// * 2dCartesianPoint
-pub use crate::ffi::Geom2dToIGES_Geom2dPoint as Geom2dPoint;
+pub use crate::ffi_types::Geom2dToIGES_Geom2dPoint as Geom2dPoint;
 
 unsafe impl crate::CppDeletable for Geom2dPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dToIGES_Geom2dPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_destructor(ptr);
     }
 }
 
@@ -220,7 +231,7 @@ impl Geom2dPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_ctor(),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_ctor(),
             ))
         }
     }
@@ -231,7 +242,7 @@ impl Geom2dPoint {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_ctor_geom2dentity(G2dE),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_ctor_geom2dentity(G2dE),
             ))
         }
     }
@@ -241,15 +252,10 @@ impl Geom2dPoint {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_point_handlegeom2dpoint(
         &mut self,
-        start: &crate::ffi::HandleGeom2dPoint,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::HandleGeom2dPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dpoint(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dpoint(self as *mut Self, start)))
         }
     }
 
@@ -258,15 +264,10 @@ impl Geom2dPoint {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_point_handlegeom2dcartesianpoint(
         &mut self,
-        start: &crate::ffi::HandleGeom2dCartesianPoint,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPoint> {
+        start: &crate::ffi_types::HandleGeom2dCartesianPoint,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPoint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dcartesianpoint(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_transfer2d_point_handlegeom2dcartesianpoint(self as *mut Self, start)))
         }
     }
 
@@ -274,7 +275,7 @@ impl Geom2dPoint {
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity(
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity(
                     self as *const Self,
                 ),
             )
@@ -284,26 +285,27 @@ impl Geom2dPoint {
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_as_Geom2dToIGES_Geom2dEntity_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -311,14 +313,19 @@ impl Geom2dPoint {
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:50 - `Geom2dToIGES_Geom2dEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dPoint_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dPoint_inherited_GetUnit(
+                self as *const Self,
+            )
         })
     }
 }
@@ -333,11 +340,11 @@ impl Geom2dPoint {
 /// . Vector
 /// * Direction
 /// * VectorWithMagnitude
-pub use crate::ffi::Geom2dToIGES_Geom2dVector as Geom2dVector;
+pub use crate::ffi_types::Geom2dToIGES_Geom2dVector as Geom2dVector;
 
 unsafe impl crate::CppDeletable for Geom2dVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dToIGES_Geom2dVector_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_destructor(ptr);
     }
 }
 
@@ -346,7 +353,7 @@ impl Geom2dVector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_ctor(),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_ctor(),
             ))
         }
     }
@@ -357,7 +364,7 @@ impl Geom2dVector {
     pub fn new_geom2dentity(G2dE: &Geom2dEntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_ctor_geom2dentity(G2dE),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_ctor_geom2dentity(G2dE),
             ))
         }
     }
@@ -368,40 +375,30 @@ impl Geom2dVector {
     /// Entity could not be converted, this member returns a NullEntity.
     pub fn transfer2d_vector_handlegeom2dvector(
         &mut self,
-        start: &crate::ffi::HandleGeom2dVector,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeom2dVector,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvector(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvector(self as *mut Self, start)))
         }
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:51 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
     pub fn transfer2d_vector_handlegeom2dvectorwithmagnitude(
         &mut self,
-        start: &crate::ffi::HandleGeom2dVectorWithMagnitude,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeom2dVectorWithMagnitude,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvectorwithmagnitude(self as *mut Self, start)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2dvectorwithmagnitude(self as *mut Self, start)))
         }
     }
 
     /// **Source:** `Geom2dToIGES_Geom2dVector.hxx`:54 - `Geom2dToIGES_Geom2dVector::Transfer2dVector()`
     pub fn transfer2d_vector_handlegeom2ddirection(
         &mut self,
-        start: &crate::ffi::HandleGeom2dDirection,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomDirection> {
+        start: &crate::ffi_types::HandleGeom2dDirection,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomDirection> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2ddirection(
-                    self as *mut Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_transfer2d_vector_handlegeom2ddirection(self as *mut Self, start)))
         }
     }
 
@@ -409,7 +406,7 @@ impl Geom2dVector {
     pub fn as_geom2d_entity(&self) -> &Geom2dEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity(
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity(
                     self as *const Self,
                 ),
             )
@@ -419,26 +416,27 @@ impl Geom2dVector {
     /// Upcast to Geom2dToIGES_Geom2dEntity (mutable)
     pub fn as_geom2d_entity_mut(&mut self) -> &mut Geom2dEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_as_Geom2dToIGES_Geom2dEntity_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:40 - `Geom2dToIGES_Geom2dEntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dVector_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:43 - `Geom2dToIGES_Geom2dEntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dToIGES_Geom2dVector_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -446,14 +444,19 @@ impl Geom2dVector {
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:46 - `Geom2dToIGES_Geom2dEntity::SetUnit()`
     pub fn set_unit(&mut self, unit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dVector_inherited_SetUnit(self as *mut Self, unit)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_SetUnit(
+                self as *mut Self,
+                unit,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom2dToIGES_Geom2dEntity.hxx`:50 - `Geom2dToIGES_Geom2dEntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dToIGES_Geom2dVector_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::Geom2dToIGES_Geom2dVector_inherited_GetUnit(
+                self as *const Self,
+            )
         })
     }
 }

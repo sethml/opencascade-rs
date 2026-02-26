@@ -11,26 +11,34 @@
 /// - a Null Handle if no Header Protocol was yet defined
 /// - a simple Protocol if only one was defined
 /// - a FileProtocol if more than one Protocol was yet defined
-pub fn header_protocol() -> crate::OwnedPtr<crate::ffi::HandleStepDataProtocol> {
+pub fn header_protocol() -> crate::OwnedPtr<crate::ffi_types::HandleStepDataProtocol> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_header_protocol()))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDESTEP::StepData_header_protocol(),
+        ))
     }
 }
 /// **Source:** `StepData.hxx`:41 - `StepData::AddHeaderProtocol`
 /// Adds a new Header Protocol to the Header Definition
-pub fn add_header_protocol(headerproto: &crate::ffi::HandleStepDataProtocol) {
-    crate::check_void_result(unsafe { crate::ffi::StepData_add_header_protocol(headerproto) })
+pub fn add_header_protocol(headerproto: &crate::ffi_types::HandleStepDataProtocol) {
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKDESTEP::StepData_add_header_protocol(headerproto)
+    })
 }
 /// **Source:** `StepData.hxx`:45 - `StepData::Init`
 /// Prepares General Data required to work with this package,
 /// which are the Protocol and Modules to be loaded into Libraries
 pub fn init() {
-    crate::check_void_result(unsafe { crate::ffi::StepData_init() })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKDESTEP::StepData_init() })
 }
 /// **Source:** `StepData.hxx`:48 - `StepData::Protocol`
 /// Returns a Protocol from StepData (avoids to create it)
-pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleStepDataProtocol> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_protocol())) }
+pub fn protocol() -> crate::OwnedPtr<crate::ffi_types::HandleStepDataProtocol> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDESTEP::StepData_protocol(),
+        ))
+    }
 }
 
 /// A Standard Definition for STEP (which knows Boolean too)
@@ -63,7 +71,7 @@ impl TryFrom<i32> for Logical {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleHeaderSectionProtocol, HandleInterfaceFileReaderData, HandleInterfaceGeneralModule,
     HandleInterfaceInterfaceModel, HandleInterfaceProtocol, HandleInterfaceReaderModule,
     HandleRWHeaderSectionGeneralModule, HandleRWHeaderSectionReadWriteModule,
@@ -84,11 +92,11 @@ pub use crate::ffi::{
 /// **Source:** `StepData_DefaultGeneral.hxx`:36 - `StepData_DefaultGeneral`
 /// DefaultGeneral defines a GeneralModule which processes
 /// Unknown Entity from StepData  only
-pub use crate::ffi::StepData_DefaultGeneral as DefaultGeneral;
+pub use crate::ffi_types::StepData_DefaultGeneral as DefaultGeneral;
 
 unsafe impl crate::CppDeletable for DefaultGeneral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_DefaultGeneral_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_destructor(ptr);
     }
 }
 
@@ -98,7 +106,7 @@ impl DefaultGeneral {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_ctor(),
             ))
         }
     }
@@ -109,11 +117,11 @@ impl DefaultGeneral {
     pub fn fill_shared_case(
         &self,
         casenum: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_fill_shared_case(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_fill_shared_case(
                 self as *const Self,
                 casenum,
                 ent,
@@ -127,12 +135,12 @@ impl DefaultGeneral {
     pub fn check_case(
         &self,
         casenum: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_check_case(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_check_case(
                 self as *const Self,
                 casenum,
                 ent,
@@ -144,9 +152,13 @@ impl DefaultGeneral {
 
     /// **Source:** `StepData_DefaultGeneral.hxx`:57 - `StepData_DefaultGeneral::NewVoid()`
     /// Specific creation of a new void entity
-    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_new_void(self as *const Self, CN, entto)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_new_void(
+                self as *const Self,
+                CN,
+                entto,
+            )
         })
     }
 
@@ -157,12 +169,12 @@ impl DefaultGeneral {
     pub fn copy_case(
         &self,
         casenum: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_copy_case(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_copy_case(
                 self as *const Self,
                 casenum,
                 entfrom,
@@ -173,11 +185,13 @@ impl DefaultGeneral {
     }
 
     /// **Source:** `StepData_DefaultGeneral.hxx`:67 - `StepData_DefaultGeneral::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_DefaultGeneral_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -185,7 +199,7 @@ impl DefaultGeneral {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -193,18 +207,22 @@ impl DefaultGeneral {
     }
 
     /// **Source:** `StepData_DefaultGeneral.hxx`:67 - `StepData_DefaultGeneral::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_DefaultGeneral_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to StepData_GeneralModule
     pub fn as_general_module(&self) -> &GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_DefaultGeneral_as_StepData_GeneralModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_StepData_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -212,7 +230,7 @@ impl DefaultGeneral {
     pub fn as_general_module_mut(&mut self) -> &mut GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_as_StepData_GeneralModule_mut(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_StepData_GeneralModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -222,9 +240,11 @@ impl DefaultGeneral {
     /// Upcast to Interface_GeneralModule
     pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_DefaultGeneral_as_Interface_GeneralModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_Interface_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -232,7 +252,7 @@ impl DefaultGeneral {
     pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_as_Interface_GeneralModule_mut(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_Interface_GeneralModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -242,9 +262,11 @@ impl DefaultGeneral {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_DefaultGeneral_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -252,7 +274,9 @@ impl DefaultGeneral {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -260,10 +284,10 @@ impl DefaultGeneral {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataDefaultGeneral> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDefaultGeneral> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -271,13 +295,13 @@ impl DefaultGeneral {
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
     pub fn fill_shared(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_FillShared(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_FillShared(
                 self as *const Self,
                 model,
                 CN,
@@ -291,23 +315,27 @@ impl DefaultGeneral {
     pub fn share(
         &self,
         iter: &mut crate::interface::EntityIterator,
-        shared: &crate::ffi::HandleStandardTransient,
+        shared: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_Share(self as *const Self, iter, shared)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_Share(
+                self as *const Self,
+                iter,
+                shared,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
     pub fn list_implied(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_ListImplied(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_ListImplied(
                 self as *const Self,
                 model,
                 CN,
@@ -321,11 +349,11 @@ impl DefaultGeneral {
     pub fn list_implied_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_ListImpliedCase(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_ListImpliedCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -335,9 +363,13 @@ impl DefaultGeneral {
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:104 - `Interface_GeneralModule::CanCopy()`
-    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_CanCopy(self as *const Self, CN, ent)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_CanCopy(
+                self as *const Self,
+                CN,
+                ent,
+            )
         })
     }
 
@@ -345,12 +377,12 @@ impl DefaultGeneral {
     pub fn dispatch(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_Dispatch(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_Dispatch(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -364,12 +396,12 @@ impl DefaultGeneral {
     pub fn new_copied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_NewCopiedCase(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_NewCopiedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -383,12 +415,12 @@ impl DefaultGeneral {
     pub fn renew_implied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_RenewImpliedCase(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_RenewImpliedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -402,11 +434,11 @@ impl DefaultGeneral {
     pub fn when_delete_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         dispatched: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_WhenDeleteCase(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_WhenDeleteCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -419,11 +451,11 @@ impl DefaultGeneral {
     pub fn category_number(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_CategoryNumber(
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_CategoryNumber(
                 self as *const Self,
                 CN,
                 ent,
@@ -436,12 +468,12 @@ impl DefaultGeneral {
     pub fn name(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_DefaultGeneral_inherited_Name(
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_Name(
                     self as *const Self,
                     CN,
                     ent,
@@ -452,16 +484,22 @@ impl DefaultGeneral {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -469,7 +507,9 @@ impl DefaultGeneral {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_DefaultGeneral_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -482,88 +522,92 @@ impl DefaultGeneral {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_DefaultGeneral_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_DefaultGeneral_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataDefaultGeneral;
+pub use crate::ffi_types::HandleStepDataDefaultGeneral;
 
 unsafe impl crate::CppDeletable for HandleStepDataDefaultGeneral {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataDefaultGeneral_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_destructor(ptr);
     }
 }
 
 impl HandleStepDataDefaultGeneral {
     /// Dereference this Handle to access the underlying StepData_DefaultGeneral
-    pub fn get(&self) -> &crate::ffi::StepData_DefaultGeneral {
+    pub fn get(&self) -> &crate::ffi_types::StepData_DefaultGeneral {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataDefaultGeneral_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_DefaultGeneral
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_DefaultGeneral {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_DefaultGeneral {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataDefaultGeneral_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_DefaultGeneral> to Handle<StepData_GeneralModule>
     pub fn to_handle_step_data_general_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataGeneralModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataDefaultGeneral_to_HandleStepDataGeneralModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_to_HandleStepDataGeneralModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_DefaultGeneral> to Handle<Interface_GeneralModule>
     pub fn to_handle_interface_general_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGeneralModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataDefaultGeneral_to_HandleInterfaceGeneralModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_to_HandleInterfaceGeneralModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_DefaultGeneral> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataDefaultGeneral_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataDefaultGeneral_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -578,21 +622,21 @@ impl HandleStepDataDefaultGeneral {
 /// **Source:** `StepData_Described.hxx`:35 - `StepData_Described`
 /// General frame to describe entities with Description (Simple or
 /// Complex)
-pub use crate::ffi::StepData_Described as Described;
+pub use crate::ffi_types::StepData_Described as Described;
 
 unsafe impl crate::CppDeletable for Described {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Described_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Described_destructor(ptr);
     }
 }
 
 impl Described {
     /// **Source:** `StepData_Described.hxx`:40 - `StepData_Described::Description()`
     /// Returns the Description used to define this entity
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Described_description(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_Described_description(self as *const Self),
             ))
         }
     }
@@ -601,7 +645,7 @@ impl Described {
     /// Tells if a described entity is complex
     pub fn is_complex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_is_complex(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Described_is_complex(self as *const Self)
         })
     }
 
@@ -612,7 +656,10 @@ impl Described {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Described_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
@@ -620,13 +667,15 @@ impl Described {
     /// Returns a Simple Entity which matches with a Type in <me> :
     /// For a Simple Entity : me if it matches, else a null handle
     /// For a Complex Entity : the member which matches, else null
-    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi::HandleStepDataSimple> {
+    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple> {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Described_as_(
-                self as *const Self,
-                c_steptype.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Described_as_(
+                    self as *const Self,
+                    c_steptype.as_ptr(),
+                ),
+            ))
         }
     }
 
@@ -635,7 +684,10 @@ impl Described {
     pub fn has_field(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_has_field(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Described_has_field(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -650,7 +702,7 @@ impl Described {
     pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Described_field(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Described_field(
                 self as *const Self,
                 c_name.as_ptr(),
             )))
@@ -668,7 +720,7 @@ impl Described {
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_Described_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Described_c_field(
                 self as *mut Self,
                 c_name.as_ptr(),
             )))
@@ -677,9 +729,9 @@ impl Described {
 
     /// **Source:** `StepData_Described.hxx`:65 - `StepData_Described::Check()`
     /// Fills a Check by using its Description
-    pub fn check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+    pub fn check(&self, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Described_check(self as *const Self, ach)
+            crate::ffi_extern_TKDESTEP::StepData_Described_check(self as *const Self, ach)
         })
     }
 
@@ -687,14 +739,14 @@ impl Described {
     /// Fills an EntityIterator with entities shared by <me>
     pub fn shared(&self, list: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Described_shared(self as *const Self, list)
+            crate::ffi_extern_TKDESTEP::StepData_Described_shared(self as *const Self, list)
         })
     }
 
     /// **Source:** `StepData_Described.hxx`:70 - `StepData_Described::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Described_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Described_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -704,7 +756,7 @@ impl Described {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_Described_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_Described_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -712,39 +764,53 @@ impl Described {
     }
 
     /// **Source:** `StepData_Described.hxx`:70 - `StepData_Described::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_Described_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Described_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Described_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Described_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Described_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Described_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -752,7 +818,7 @@ impl Described {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_Described_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_Described_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -765,62 +831,74 @@ impl Described {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Described_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Described_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Described_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Described_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataDescribed;
+pub use crate::ffi_types::HandleStepDataDescribed;
 
 unsafe impl crate::CppDeletable for HandleStepDataDescribed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataDescribed_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_destructor(ptr);
     }
 }
 
 impl HandleStepDataDescribed {
     /// Dereference this Handle to access the underlying StepData_Described
-    pub fn get(&self) -> &crate::ffi::StepData_Described {
+    pub fn get(&self) -> &crate::ffi_types::StepData_Described {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataDescribed_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_Described
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_Described {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_Described {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataDescribed_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StepData_Described> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataDescribed_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -828,9 +906,13 @@ impl HandleStepDataDescribed {
     /// Downcast Handle<StepData_Described> to Handle<StepData_Plex>
     ///
     /// Returns `None` if the handle does not point to a `StepData_Plex` (or subclass).
-    pub fn downcast_to_plex(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataPlex>> {
+    pub fn downcast_to_plex(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataPlex>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataDescribed_downcast_to_HandleStepDataPlex(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_downcast_to_HandleStepDataPlex(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -842,9 +924,11 @@ impl HandleStepDataDescribed {
     /// Downcast Handle<StepData_Described> to Handle<StepData_Simple>
     ///
     /// Returns `None` if the handle does not point to a `StepData_Simple` (or subclass).
-    pub fn downcast_to_simple(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSimple>> {
+    pub fn downcast_to_simple(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataDescribed_downcast_to_HandleStepDataSimple(
+            crate::ffi_extern_TKDESTEP::HandleStepDataDescribed_downcast_to_HandleStepDataSimple(
                 self as *const Self,
             )
         });
@@ -862,11 +946,11 @@ impl HandleStepDataDescribed {
 
 /// **Source:** `StepData_ECDescr.hxx`:35 - `StepData_ECDescr`
 /// Describes a Complex Entity (Plex) as a list of Simple ones
-pub use crate::ffi::StepData_ECDescr as ECDescr;
+pub use crate::ffi_types::StepData_ECDescr as ECDescr;
 
 unsafe impl crate::CppDeletable for ECDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_ECDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_ECDescr_destructor(ptr);
     }
 }
 
@@ -875,43 +959,48 @@ impl ECDescr {
     /// Creates an ECDescr, empty
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ECDescr_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:44 - `StepData_ECDescr::Add()`
     /// Adds a member
     /// Warning : members are added in alphabetic order
-    pub fn add(&mut self, member: &crate::ffi::HandleStepDataESDescr) {
+    pub fn add(&mut self, member: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ECDescr_add(self as *mut Self, member)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_add(self as *mut Self, member)
         })
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:47 - `StepData_ECDescr::NbMembers()`
     /// Returns the count of members
     pub fn nb_members(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_ECDescr_nb_members(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_nb_members(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:50 - `StepData_ECDescr::Member()`
     /// Returns a Member from its rank
-    pub fn member(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    pub fn member(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ECDescr_member(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_member(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:53 - `StepData_ECDescr::TypeList()`
     /// Returns the ordered list of types
-    pub fn type_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+    pub fn type_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ECDescr_type_list(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_type_list(self as *const Self),
+            ))
         }
     }
 
@@ -920,31 +1009,38 @@ impl ECDescr {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_ECDescr_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:59 - `StepData_ECDescr::IsComplex()`
     /// Returns True
     pub fn is_complex(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_ECDescr_is_complex(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_is_complex(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:63 - `StepData_ECDescr::NewEntity()`
     /// Creates a described entity (i.e. a complex one, made of one
     /// simple entity per member)
-    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataDescribed> {
+    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDescribed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ECDescr_new_entity(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_new_entity(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:65 - `StepData_ECDescr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ECDescr_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ECDescr_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -952,7 +1048,7 @@ impl ECDescr {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_ECDescr_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -960,14 +1056,18 @@ impl ECDescr {
     }
 
     /// **Source:** `StepData_ECDescr.hxx`:65 - `StepData_ECDescr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_ECDescr_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_EDescr
     pub fn as_e_descr(&self) -> &EDescr {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ECDescr_as_StepData_EDescr(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ECDescr_as_StepData_EDescr(
                 self as *const Self,
             ))
         }
@@ -976,52 +1076,64 @@ impl ECDescr {
     /// Upcast to StepData_EDescr (mutable)
     pub fn as_e_descr_mut(&mut self) -> &mut EDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_ECDescr_as_StepData_EDescr_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_as_StepData_EDescr_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ECDescr_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_ECDescr_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataECDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataECDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ECDescr_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1029,7 +1141,7 @@ impl ECDescr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_ECDescr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1042,67 +1154,83 @@ impl ECDescr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ECDescr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ECDescr_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataECDescr;
+pub use crate::ffi_types::HandleStepDataECDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataECDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataECDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_destructor(ptr);
     }
 }
 
 impl HandleStepDataECDescr {
     /// Dereference this Handle to access the underlying StepData_ECDescr
-    pub fn get(&self) -> &crate::ffi::StepData_ECDescr {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataECDescr_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_ECDescr {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_ECDescr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_ECDescr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_ECDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataECDescr_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_ECDescr> to Handle<StepData_EDescr>
-    pub fn to_handle_e_descr(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn to_handle_e_descr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataECDescr_to_HandleStepDataEDescr(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_to_HandleStepDataEDescr(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StepData_ECDescr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataECDescr_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataECDescr_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1115,11 +1243,11 @@ impl HandleStepDataECDescr {
 /// **Source:** `StepData_EDescr.hxx`:31 - `StepData_EDescr`
 /// This class is intended to describe the authorized form for an
 /// entity, either Simple or Plex
-pub use crate::ffi::StepData_EDescr as EDescr;
+pub use crate::ffi_types::StepData_EDescr as EDescr;
 
 unsafe impl crate::CppDeletable for EDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_EDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_EDescr_destructor(ptr);
     }
 }
 
@@ -1129,30 +1257,37 @@ impl EDescr {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_EDescr_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_EDescr.hxx`:39 - `StepData_EDescr::IsComplex()`
     /// Tells if a EDescr is complex (ECDescr) or simple (ESDescr)
     pub fn is_complex(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_EDescr_is_complex(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_is_complex(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_EDescr.hxx`:42 - `StepData_EDescr::NewEntity()`
     /// Creates a described entity (i.e. a simple one)
-    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataDescribed> {
+    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDescribed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_EDescr_new_entity(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_new_entity(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_EDescr.hxx`:44 - `StepData_EDescr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_EDescr_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_EDescr_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1160,7 +1295,7 @@ impl EDescr {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_EDescr_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1168,39 +1303,53 @@ impl EDescr {
     }
 
     /// **Source:** `StepData_EDescr.hxx`:44 - `StepData_EDescr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_EDescr_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_EDescr_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_EDescr_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1208,7 +1357,7 @@ impl EDescr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_EDescr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1221,58 +1370,72 @@ impl EDescr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_EDescr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_EDescr_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataEDescr;
+pub use crate::ffi_types::HandleStepDataEDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataEDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataEDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_destructor(ptr);
     }
 }
 
 impl HandleStepDataEDescr {
     /// Dereference this Handle to access the underlying StepData_EDescr
-    pub fn get(&self) -> &crate::ffi::StepData_EDescr {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataEDescr_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_EDescr {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_EDescr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_EDescr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_EDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataEDescr_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_EDescr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataEDescr_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1282,9 +1445,11 @@ impl HandleStepDataEDescr {
     /// Returns `None` if the handle does not point to a `StepData_ECDescr` (or subclass).
     pub fn downcast_to_ec_descr(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataECDescr>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataECDescr>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataEDescr_downcast_to_HandleStepDataECDescr(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_downcast_to_HandleStepDataECDescr(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1298,9 +1463,11 @@ impl HandleStepDataEDescr {
     /// Returns `None` if the handle does not point to a `StepData_ESDescr` (or subclass).
     pub fn downcast_to_es_descr(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataESDescr>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataEDescr_downcast_to_HandleStepDataESDescr(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataEDescr_downcast_to_HandleStepDataESDescr(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1317,11 +1484,11 @@ impl HandleStepDataEDescr {
 /// **Source:** `StepData_ESDescr.hxx`:38 - `StepData_ESDescr`
 /// This class is intended to describe the authorized form for a
 /// Simple (not Plex) Entity, as a list of fields
-pub use crate::ffi::StepData_ESDescr as ESDescr;
+pub use crate::ffi_types::StepData_ESDescr as ESDescr;
 
 unsafe impl crate::CppDeletable for ESDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_ESDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_ESDescr_destructor(ptr);
     }
 }
 
@@ -1332,7 +1499,7 @@ impl ESDescr {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_ESDescr_ctor_charptr(c_name.as_ptr()),
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_ctor_charptr(c_name.as_ptr()),
             ))
         }
     }
@@ -1342,17 +1509,27 @@ impl ESDescr {
     /// Each one is described by a PDescr
     pub fn set_nb_fields(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_set_nb_fields(self as *mut Self, nb)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_set_nb_fields(self as *mut Self, nb)
         })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:51 - `StepData_ESDescr::SetField()`
     /// Sets a PDescr to describe a field
     /// A Field is designated by its rank and name
-    pub fn set_field(&mut self, num: i32, name: &str, descr: &crate::ffi::HandleStepDataPDescr) {
+    pub fn set_field(
+        &mut self,
+        num: i32,
+        name: &str,
+        descr: &crate::ffi_types::HandleStepDataPDescr,
+    ) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_set_field(self as *mut Self, num, c_name.as_ptr(), descr)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_set_field(
+                self as *mut Self,
+                num,
+                c_name.as_ptr(),
+                descr,
+            )
         })
     }
 
@@ -1360,18 +1537,18 @@ impl ESDescr {
     /// Sets an ESDescr as based on another one
     /// Hence, if there are inherited fields, the derived ESDescr
     /// cumulates all them, while the base just records its own ones
-    pub fn set_base(&mut self, base: &crate::ffi::HandleStepDataESDescr) {
+    pub fn set_base(&mut self, base: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_set_base(self as *mut Self, base)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_set_base(self as *mut Self, base)
         })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:62 - `StepData_ESDescr::SetSuper()`
     /// Sets an ESDescr as "super-type". Applies an a base (non
     /// derived) ESDescr
-    pub fn set_super(&mut self, super_: &crate::ffi::HandleStepDataESDescr) {
+    pub fn set_super(&mut self, super_: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_set_super(self as *mut Self, super_)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_set_super(self as *mut Self, super_)
         })
     }
 
@@ -1379,9 +1556,9 @@ impl ESDescr {
     /// Returns the type name given at creation time
     pub fn type_name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_ESDescr_type_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_type_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -1391,42 +1568,46 @@ impl ESDescr {
     /// Returns the type name as an AsciiString
     pub fn step_type(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ESDescr_step_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ESDescr_step_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:71 - `StepData_ESDescr::Base()`
     /// Returns the basic ESDescr, null if <me> is not derived
-    pub fn base(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    pub fn base(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ESDescr_base(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_base(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:74 - `StepData_ESDescr::Super()`
     /// Returns the super-type ESDescr, null if <me> is root
-    pub fn super_(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    pub fn super_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ESDescr_super_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_super_(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:77 - `StepData_ESDescr::IsSub()`
     /// Tells if <me> is sub-type of (or equal to) another one
-    pub fn is_sub(&self, other: &crate::ffi::HandleStepDataESDescr) -> bool {
+    pub fn is_sub(&self, other: &crate::ffi_types::HandleStepDataESDescr) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_is_sub(self as *const Self, other)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_is_sub(self as *const Self, other)
         })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:80 - `StepData_ESDescr::NbFields()`
     /// Returns the count of fields
     pub fn nb_fields(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_ESDescr_nb_fields(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_nb_fields(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:83 - `StepData_ESDescr::Rank()`
@@ -1434,7 +1615,7 @@ impl ESDescr {
     pub fn rank(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_rank(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_rank(self as *const Self, c_name.as_ptr())
         })
     }
 
@@ -1442,10 +1623,9 @@ impl ESDescr {
     /// Returns the name of a field from its rank. empty if outofrange
     pub fn name(&self, num: i32) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_ESDescr_name(
-                self as *const Self,
-                num,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_name(self as *const Self, num),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -1453,22 +1633,27 @@ impl ESDescr {
 
     /// **Source:** `StepData_ESDescr.hxx`:89 - `StepData_ESDescr::Field()`
     /// Returns the PDescr for the field <num> (or Null)
-    pub fn field(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    pub fn field(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ESDescr_field(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_field(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:92 - `StepData_ESDescr::NamedField()`
     /// Returns the PDescr for the field named <name> (or Null)
-    pub fn named_field(&self, name: &str) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    pub fn named_field(
+        &self,
+        name: &str,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_ESDescr_named_field(self as *const Self, c_name.as_ptr()),
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_named_field(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                ),
             ))
         }
     }
@@ -1478,30 +1663,37 @@ impl ESDescr {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:98 - `StepData_ESDescr::IsComplex()`
     /// Returns False
     pub fn is_complex(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_ESDescr_is_complex(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_is_complex(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:101 - `StepData_ESDescr::NewEntity()`
     /// Creates a described entity (i.e. a simple one)
-    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataDescribed> {
+    pub fn new_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDescribed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ESDescr_new_entity(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_new_entity(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:103 - `StepData_ESDescr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ESDescr_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ESDescr_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1509,7 +1701,7 @@ impl ESDescr {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_ESDescr_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1517,14 +1709,18 @@ impl ESDescr {
     }
 
     /// **Source:** `StepData_ESDescr.hxx`:103 - `StepData_ESDescr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_ESDescr_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_EDescr
     pub fn as_e_descr(&self) -> &EDescr {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ESDescr_as_StepData_EDescr(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ESDescr_as_StepData_EDescr(
                 self as *const Self,
             ))
         }
@@ -1533,52 +1729,64 @@ impl ESDescr {
     /// Upcast to StepData_EDescr (mutable)
     pub fn as_e_descr_mut(&mut self) -> &mut EDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_ESDescr_as_StepData_EDescr_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_as_StepData_EDescr_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ESDescr_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_ESDescr_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_ESDescr_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1586,7 +1794,7 @@ impl ESDescr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_ESDescr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1599,67 +1807,83 @@ impl ESDescr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ESDescr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ESDescr_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataESDescr;
+pub use crate::ffi_types::HandleStepDataESDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataESDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataESDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_destructor(ptr);
     }
 }
 
 impl HandleStepDataESDescr {
     /// Dereference this Handle to access the underlying StepData_ESDescr
-    pub fn get(&self) -> &crate::ffi::StepData_ESDescr {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataESDescr_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_ESDescr {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_ESDescr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_ESDescr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_ESDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataESDescr_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_ESDescr> to Handle<StepData_EDescr>
-    pub fn to_handle_e_descr(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn to_handle_e_descr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataESDescr_to_HandleStepDataEDescr(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_to_HandleStepDataEDescr(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StepData_ESDescr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataESDescr_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataESDescr_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1686,11 +1910,11 @@ impl HandleStepDataESDescr {
 /// It is possible to define subclasses on it, which directly give
 /// the good list of definition texts, and accepts a enumeration
 /// of the good type instead of an integer
-pub use crate::ffi::StepData_EnumTool as EnumTool;
+pub use crate::ffi_types::StepData_EnumTool as EnumTool;
 
 unsafe impl crate::CppDeletable for EnumTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_EnumTool_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_EnumTool_destructor(ptr);
     }
 }
 
@@ -1792,7 +2016,7 @@ impl EnumTool {
         let c_e39 = std::ffi::CString::new(e39).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_EnumTool_ctor_charptr40(
+                crate::ffi_extern_TKDESTEP::StepData_EnumTool_ctor_charptr40(
                     c_e0.as_ptr(),
                     c_e1.as_ptr(),
                     c_e2.as_ptr(),
@@ -1848,7 +2072,10 @@ impl EnumTool {
     pub fn add_definition(&mut self, term: &str) {
         let c_term = std::ffi::CString::new(term).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_EnumTool_add_definition(self as *mut Self, c_term.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_add_definition(
+                self as *mut Self,
+                c_term.as_ptr(),
+            )
         })
     }
 
@@ -1864,7 +2091,9 @@ impl EnumTool {
     /// ...
     /// }
     pub fn is_set(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_EnumTool_is_set(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_is_set(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_EnumTool.hxx`:125 - `StepData_EnumTool::MaxValue()`
@@ -1872,7 +2101,9 @@ impl EnumTool {
     /// Remark : while values begin at zero, MaxValue is the count of
     /// recorded values minus one
     pub fn max_value(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_EnumTool_max_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_max_value(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_EnumTool.hxx`:131 - `StepData_EnumTool::Optional()`
@@ -1882,7 +2113,7 @@ impl EnumTool {
     /// Default is True (if a null value is defined)
     pub fn optional(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_EnumTool_optional(self as *mut Self, mode)
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_optional(self as *mut Self, mode)
         })
     }
 
@@ -1893,7 +2124,7 @@ impl EnumTool {
     /// Null Value has been specified by definition "$"
     pub fn null_value(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EnumTool_null_value(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_null_value(self as *const Self)
         })
     }
 
@@ -1903,7 +2134,10 @@ impl EnumTool {
     /// If num is out of range, returns an empty string
     pub fn text(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_EnumTool_text(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_EnumTool_text(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -1914,7 +2148,10 @@ impl EnumTool {
     pub fn value_charptr(&self, txt: &str) -> i32 {
         let c_txt = std::ffi::CString::new(txt).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_EnumTool_value_charptr(self as *const Self, c_txt.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_value_charptr(
+                self as *const Self,
+                c_txt.as_ptr(),
+            )
         })
     }
 
@@ -1922,7 +2159,10 @@ impl EnumTool {
     /// Same as above but works on an AsciiString
     pub fn value_asciistring(&self, txt: &crate::t_collection::AsciiString) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_EnumTool_value_asciistring(self as *const Self, txt)
+            crate::ffi_extern_TKDESTEP::StepData_EnumTool_value_asciistring(
+                self as *const Self,
+                txt,
+            )
         })
     }
 }
@@ -1933,11 +2173,11 @@ impl EnumTool {
 
 /// **Source:** `StepData_Factors.hxx`:24 - `StepData_Factors`
 /// Class for using units variables
-pub use crate::ffi::StepData_Factors as Factors;
+pub use crate::ffi_types::StepData_Factors as Factors;
 
 unsafe impl crate::CppDeletable for Factors {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Factors_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Factors_destructor(ptr);
     }
 }
 
@@ -1946,7 +2186,9 @@ impl Factors {
     /// Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Factors_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Factors_ctor(),
+            ))
         }
     }
 
@@ -1959,7 +2201,7 @@ impl Factors {
         theSolidAngleFactor: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Factors_initialize_factors(
+            crate::ffi_extern_TKDESTEP::StepData_Factors_initialize_factors(
                 self as *mut Self,
                 theLengthFactor,
                 thePlaneAngleFactor,
@@ -1972,7 +2214,10 @@ impl Factors {
     /// Sets length unit for current transfer process
     pub fn set_cascade_unit(&mut self, theUnit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Factors_set_cascade_unit(self as *mut Self, theUnit)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_set_cascade_unit(
+                self as *mut Self,
+                theUnit,
+            )
         })
     }
 
@@ -1980,7 +2225,7 @@ impl Factors {
     /// Returns length unit for current transfer process (mm by default)
     pub fn cascade_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_cascade_unit(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_cascade_unit(self as *const Self)
         })
     }
 
@@ -1989,7 +2234,7 @@ impl Factors {
     /// at one stage of transfer process
     pub fn length_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_length_factor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_length_factor(self as *const Self)
         })
     }
 
@@ -1998,7 +2243,7 @@ impl Factors {
     /// at one stage of transfer process
     pub fn plane_angle_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_plane_angle_factor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_plane_angle_factor(self as *const Self)
         })
     }
 
@@ -2007,7 +2252,7 @@ impl Factors {
     /// at one stage of transfer process
     pub fn solid_angle_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_solid_angle_factor(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_solid_angle_factor(self as *const Self)
         })
     }
 
@@ -2016,7 +2261,7 @@ impl Factors {
     /// at one stage of transfer process
     pub fn factor_radian_degree(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_factor_radian_degree(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_factor_radian_degree(self as *const Self)
         })
     }
 
@@ -2025,7 +2270,7 @@ impl Factors {
     /// at one stage of transfer process
     pub fn factor_degree_radian(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Factors_factor_degree_radian(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Factors_factor_degree_radian(self as *const Self)
         })
     }
 }
@@ -2046,11 +2291,11 @@ impl Factors {
 /// declared as for a kind (Integer String etc), then declared as
 /// a list with its initial size, after this its items are set
 /// Also it can be set in once if the HArray is ready
-pub use crate::ffi::StepData_Field as Field;
+pub use crate::ffi_types::StepData_Field as Field;
 
 unsafe impl crate::CppDeletable for Field {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Field_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Field_destructor(ptr);
     }
 }
 
@@ -2058,14 +2303,18 @@ impl Field {
     /// **Source:** `StepData_Field.hxx`:46 - `StepData_Field::StepData_Field()`
     /// Creates a Field, empty ("no value defined")
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Field_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StepData_Field.hxx`:54 - `StepData_Field::CopyFrom()`
     /// Gets the copy of the values of another field
     pub fn copy_from(&mut self, other: &Field) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_copy_from(self as *mut Self, other)
+            crate::ffi_extern_TKDESTEP::StepData_Field_copy_from(self as *mut Self, other)
         })
     }
 
@@ -2075,7 +2324,7 @@ impl Field {
     /// A Kind can be directly set here to declare a type
     pub fn clear(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_clear(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_Field_clear(self as *mut Self, kind)
         })
     }
 
@@ -2083,7 +2332,7 @@ impl Field {
     /// Codes a Field as derived (no proper value)
     pub fn set_derived(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_derived(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_derived(self as *mut Self)
         })
     }
 
@@ -2092,7 +2341,7 @@ impl Field {
     /// Integer, Boolean, Logical, or Enum (does not change Kind)
     pub fn set_int_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_int_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_int_int(self as *mut Self, val)
         })
     }
 
@@ -2100,7 +2349,7 @@ impl Field {
     /// Sets an Integer value (before SetList* declares it as Integer)
     pub fn set_integer_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_integer_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_integer_int(self as *mut Self, val)
         })
     }
 
@@ -2108,7 +2357,7 @@ impl Field {
     /// Sets a Boolean value (or predeclares a list as boolean)
     pub fn set_boolean_bool(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_boolean_bool(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_boolean_bool(self as *mut Self, val)
         })
     }
 
@@ -2116,7 +2365,10 @@ impl Field {
     /// Sets a Logical Value (or predeclares a list as logical)
     pub fn set_logical_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_logical_logical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_logical_logical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
@@ -2124,7 +2376,7 @@ impl Field {
     /// Sets a Real    Value (or predeclares a list as Real);
     pub fn set_real_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_real_real(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_real_real(self as *mut Self, val)
         })
     }
 
@@ -2134,7 +2386,10 @@ impl Field {
     pub fn set_string_charptr(&mut self, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_string_charptr(self as *mut Self, c_val.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_string_charptr(
+                self as *mut Self,
+                c_val.as_ptr(),
+            )
         })
     }
 
@@ -2146,16 +2401,20 @@ impl Field {
     pub fn set_enum_int_charptr(&mut self, val: i32, text: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_enum_int_charptr(self as *mut Self, val, c_text.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_enum_int_charptr(
+                self as *mut Self,
+                val,
+                c_text.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:99 - `StepData_Field::SetSelectMember()`
     /// Sets a SelectMember (for Integer,Boolean,Enum,Real,Logical)
     /// Hence, the value of the field is accessed through this member
-    pub fn set_select_member(&mut self, val: &crate::ffi::HandleStepDataSelectMember) {
+    pub fn set_select_member(&mut self, val: &crate::ffi_types::HandleStepDataSelectMember) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_select_member(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_select_member(self as *mut Self, val)
         })
     }
 
@@ -2163,10 +2422,13 @@ impl Field {
     /// Sets an Entity Value
     pub fn set_entity_handlestandardtransient(
         &mut self,
-        val: &crate::ffi::HandleStandardTransient,
+        val: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_entity_handlestandardtransient(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_entity_handlestandardtransient(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
@@ -2174,7 +2436,7 @@ impl Field {
     /// Predeclares a list as of entity
     pub fn set_entity(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_entity(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_entity(self as *mut Self)
         })
     }
 
@@ -2185,7 +2447,7 @@ impl Field {
     /// If no Set* before, sets it as "any" (transient/select)
     pub fn set_list(&mut self, size: i32, first: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_list(self as *mut Self, size, first)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_list(self as *mut Self, size, first)
         })
     }
 
@@ -2194,7 +2456,13 @@ impl Field {
     /// sizes, and initial lowers
     pub fn set_list2(&mut self, siz1: i32, siz2: i32, f1: i32, f2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_list2(self as *mut Self, siz1, siz2, f1, f2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_list2(
+                self as *mut Self,
+                siz1,
+                siz2,
+                f1,
+                f2,
+            )
         })
     }
 
@@ -2202,8 +2470,10 @@ impl Field {
     /// Sets an undetermined value : can be String, SelectMember,
     /// HArray(1-2) ... else, an Entity
     /// In case of an HArray, determines and records its size(s)
-    pub fn set(&mut self, val: &crate::ffi::HandleStandardTransient) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_Field_set(self as *mut Self, val) })
+    pub fn set(&mut self, val: &crate::ffi_types::HandleStandardTransient) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_set(self as *mut Self, val)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:127 - `StepData_Field::ClearItem()`
@@ -2211,7 +2481,7 @@ impl Field {
     /// (ignored if list not defined as String,Entity or Any)
     pub fn clear_item(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_clear_item(self as *mut Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_Field_clear_item(self as *mut Self, num)
         })
     }
 
@@ -2219,7 +2489,12 @@ impl Field {
     /// Internal access to an Integer Value for a list, plus its kind
     pub fn set_int_int3(&mut self, num: i32, val: i32, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_int_int3(self as *mut Self, num, val, kind)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_int_int3(
+                self as *mut Self,
+                num,
+                val,
+                kind,
+            )
         })
     }
 
@@ -2228,21 +2503,29 @@ impl Field {
     /// (recognizes a SelectMember)
     pub fn set_integer_int2(&mut self, num: i32, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_integer_int2(self as *mut Self, num, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_integer_int2(self as *mut Self, num, val)
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:138 - `StepData_Field::SetBoolean()`
     pub fn set_boolean_int_bool(&mut self, num: i32, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_boolean_int_bool(self as *mut Self, num, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_boolean_int_bool(
+                self as *mut Self,
+                num,
+                val,
+            )
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:140 - `StepData_Field::SetLogical()`
     pub fn set_logical_int_logical(&mut self, num: i32, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_logical_int_logical(self as *mut Self, num, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_logical_int_logical(
+                self as *mut Self,
+                num,
+                val.into(),
+            )
         })
     }
 
@@ -2252,7 +2535,7 @@ impl Field {
     pub fn set_enum_int2_charptr(&mut self, num: i32, val: i32, text: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_enum_int2_charptr(
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_enum_int2_charptr(
                 self as *mut Self,
                 num,
                 val,
@@ -2264,7 +2547,11 @@ impl Field {
     /// **Source:** `StepData_Field.hxx`:148 - `StepData_Field::SetReal()`
     pub fn set_real_int_real(&mut self, num: i32, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_real_int_real(self as *mut Self, num, val)
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_real_int_real(
+                self as *mut Self,
+                num,
+                val,
+            )
         })
     }
 
@@ -2272,7 +2559,7 @@ impl Field {
     pub fn set_string_int_charptr(&mut self, num: i32, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_string_int_charptr(
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_string_int_charptr(
                 self as *mut Self,
                 num,
                 c_val.as_ptr(),
@@ -2284,10 +2571,10 @@ impl Field {
     pub fn set_entity_int_handlestandardtransient(
         &mut self,
         num: i32,
-        val: &crate::ffi::HandleStandardTransient,
+        val: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Field_set_entity_int_handlestandardtransient(
+            crate::ffi_extern_TKDESTEP::StepData_Field_set_entity_int_handlestandardtransient(
                 self as *mut Self,
                 num,
                 val,
@@ -2298,7 +2585,7 @@ impl Field {
     /// **Source:** `StepData_Field.hxx`:154 - `StepData_Field::IsSet()`
     pub fn is_set(&self, n1: i32, n2: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_is_set(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_is_set(self as *const Self, n1, n2)
         })
     }
 
@@ -2308,7 +2595,7 @@ impl Field {
     /// case the true kind is determined and returned
     pub fn item_kind(&self, n1: i32, n2: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_item_kind(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_item_kind(self as *const Self, n1, n2)
         })
     }
 
@@ -2317,66 +2604,74 @@ impl Field {
     /// <type> True (D) : returns only the type itself
     /// else, returns the complete kind
     pub fn kind(&self, type_: bool) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Field_kind(self as *const Self, type_) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_kind(self as *const Self, type_)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:168 - `StepData_Field::Arity()`
     pub fn arity(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Field_arity(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_arity(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:170 - `StepData_Field::Length()`
     pub fn length(&self, index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_length(self as *const Self, index)
+            crate::ffi_extern_TKDESTEP::StepData_Field_length(self as *const Self, index)
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:172 - `StepData_Field::Lower()`
     pub fn lower(&self, index: i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Field_lower(self as *const Self, index) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_lower(self as *const Self, index)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:174 - `StepData_Field::Int()`
     pub fn int(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Field_int(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_int(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:176 - `StepData_Field::Integer()`
     pub fn integer(&self, n1: i32, n2: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_integer(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_integer(self as *const Self, n1, n2)
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:179 - `StepData_Field::Boolean()`
     pub fn boolean(&self, n1: i32, n2: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_boolean(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_boolean(self as *const Self, n1, n2)
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:182 - `StepData_Field::Logical()`
     pub fn logical(&self, n1: i32, n2: i32) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_Field_logical(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_logical(self as *const Self, n1, n2)
         }))
         .unwrap()
     }
 
     /// **Source:** `StepData_Field.hxx`:185 - `StepData_Field::Real()`
     pub fn real(&self, n1: i32, n2: i32) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StepData_Field_real(self as *const Self, n1, n2) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Field_real(self as *const Self, n1, n2)
+        })
     }
 
     /// **Source:** `StepData_Field.hxx`:188 - `StepData_Field::String()`
     pub fn string(&self, n1: i32, n2: i32) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_Field_string(
-                self as *const Self,
-                n1,
-                n2,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_string(self as *const Self, n1, n2),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -2385,49 +2680,49 @@ impl Field {
     /// **Source:** `StepData_Field.hxx`:191 - `StepData_Field::Enum()`
     pub fn enum_(&self, n1: i32, n2: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Field_enum_(self as *const Self, n1, n2)
+            crate::ffi_extern_TKDESTEP::StepData_Field_enum_(self as *const Self, n1, n2)
         })
     }
 
     /// **Source:** `StepData_Field.hxx`:194 - `StepData_Field::EnumText()`
     pub fn enum_text(&self, n1: i32, n2: i32) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_Field_enum_text(
-                self as *const Self,
-                n1,
-                n2,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_enum_text(self as *const Self, n1, n2),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `StepData_Field.hxx`:197 - `StepData_Field::Entity()`
-    pub fn entity(&self, n1: i32, n2: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn entity(
+        &self,
+        n1: i32,
+        n2: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Field_entity(
-                self as *const Self,
-                n1,
-                n2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_entity(self as *const Self, n1, n2),
+            ))
         }
     }
 
     /// **Source:** `StepData_Field.hxx`:200 - `StepData_Field::Transient()`
-    pub fn transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn transient(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Field_transient(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_transient(self as *const Self),
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Field_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Field_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -2440,11 +2735,11 @@ impl Field {
 /// Describes a list of fields, in a general way
 /// This basic class is for a null size list
 /// Subclasses are for 1, N (fixed) or Dynamic sizes
-pub use crate::ffi::StepData_FieldList as FieldList;
+pub use crate::ffi_types::StepData_FieldList as FieldList;
 
 unsafe impl crate::CppDeletable for FieldList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FieldList_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FieldList_destructor(ptr);
     }
 }
 
@@ -2453,7 +2748,9 @@ impl FieldList {
     /// Creates a FieldList of 0 Field
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_FieldList_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldList_ctor(),
+            ))
         }
     }
 
@@ -2461,7 +2758,7 @@ impl FieldList {
     /// Returns the count of fields. Here, returns 0
     pub fn nb_fields(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FieldList_nb_fields(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FieldList_nb_fields(self as *const Self)
         })
     }
 
@@ -2469,7 +2766,10 @@ impl FieldList {
     /// Returns the field n0 <num> between 1 and NbFields (read only)
     pub fn field(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FieldList_field(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldList_field(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -2478,7 +2778,7 @@ impl FieldList {
     /// modify its content
     pub fn c_field(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_FieldList_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldList_c_field(
                 self as *mut Self,
                 num,
             )))
@@ -2489,7 +2789,7 @@ impl FieldList {
     /// Fills an iterator with the entities shared by <me>
     pub fn fill_shared(&self, iter: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FieldList_fill_shared(self as *const Self, iter)
+            crate::ffi_extern_TKDESTEP::StepData_FieldList_fill_shared(self as *const Self, iter)
         })
     }
 }
@@ -2500,11 +2800,11 @@ impl FieldList {
 
 /// **Source:** `StepData_FieldList1.hxx`:28 - `StepData_FieldList1`
 /// Describes a list of ONE field
-pub use crate::ffi::StepData_FieldList1 as FieldList1;
+pub use crate::ffi_types::StepData_FieldList1 as FieldList1;
 
 unsafe impl crate::CppDeletable for FieldList1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FieldList1_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FieldList1_destructor(ptr);
     }
 }
 
@@ -2513,7 +2813,9 @@ impl FieldList1 {
     /// Creates a FieldList of 1 Field
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_FieldList1_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldList1_ctor(),
+            ))
         }
     }
 
@@ -2521,7 +2823,7 @@ impl FieldList1 {
     /// Returns the count of fields. Here, returns 1
     pub fn nb_fields(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FieldList1_nb_fields(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FieldList1_nb_fields(self as *const Self)
         })
     }
 
@@ -2529,7 +2831,10 @@ impl FieldList1 {
     /// Returns the field n0 <num> between 1 and NbFields (read only)
     pub fn field(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FieldList1_field(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldList1_field(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -2538,7 +2843,7 @@ impl FieldList1 {
     /// modify its content
     pub fn c_field(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_FieldList1_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldList1_c_field(
                 self as *mut Self,
                 num,
             )))
@@ -2548,25 +2853,32 @@ impl FieldList1 {
     /// Upcast to StepData_FieldList
     pub fn as_field_list(&self) -> &FieldList {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FieldList1_as_StepData_FieldList(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldList1_as_StepData_FieldList(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_FieldList (mutable)
     pub fn as_field_list_mut(&mut self) -> &mut FieldList {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FieldList1_as_StepData_FieldList_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldList1_as_StepData_FieldList_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `StepData_FieldList.hxx`:52 - `StepData_FieldList::FillShared()`
     pub fn fill_shared(&self, iter: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FieldList1_inherited_FillShared(self as *const Self, iter)
+            crate::ffi_extern_TKDESTEP::StepData_FieldList1_inherited_FillShared(
+                self as *const Self,
+                iter,
+            )
         })
     }
 }
@@ -2579,11 +2891,11 @@ impl FieldList1 {
 /// Describes a list of fields, in a general way
 /// This basic class is for a null size list
 /// Subclasses are for 1, N (fixed) or Dynamic sizes
-pub use crate::ffi::StepData_FieldListD as FieldListD;
+pub use crate::ffi_types::StepData_FieldListD as FieldListD;
 
 unsafe impl crate::CppDeletable for FieldListD {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FieldListD_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FieldListD_destructor(ptr);
     }
 }
 
@@ -2593,7 +2905,7 @@ impl FieldListD {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FieldListD_ctor_int(nb),
+                crate::ffi_extern_TKDESTEP::StepData_FieldListD_ctor_int(nb),
             ))
         }
     }
@@ -2602,7 +2914,7 @@ impl FieldListD {
     /// Sets a new count of Fields. Former contents are lost
     pub fn set_nb(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FieldListD_set_nb(self as *mut Self, nb)
+            crate::ffi_extern_TKDESTEP::StepData_FieldListD_set_nb(self as *mut Self, nb)
         })
     }
 
@@ -2610,7 +2922,7 @@ impl FieldListD {
     /// Returns the count of fields. Here, returns starting <nb>
     pub fn nb_fields(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FieldListD_nb_fields(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FieldListD_nb_fields(self as *const Self)
         })
     }
 
@@ -2618,7 +2930,10 @@ impl FieldListD {
     /// Returns the field n0 <num> between 1 and NbFields (read only)
     pub fn field(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FieldListD_field(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldListD_field(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -2627,7 +2942,7 @@ impl FieldListD {
     /// modify its content
     pub fn c_field(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_FieldListD_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldListD_c_field(
                 self as *mut Self,
                 num,
             )))
@@ -2637,25 +2952,32 @@ impl FieldListD {
     /// Upcast to StepData_FieldList
     pub fn as_field_list(&self) -> &FieldList {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FieldListD_as_StepData_FieldList(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldListD_as_StepData_FieldList(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_FieldList (mutable)
     pub fn as_field_list_mut(&mut self) -> &mut FieldList {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FieldListD_as_StepData_FieldList_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldListD_as_StepData_FieldList_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `StepData_FieldList.hxx`:52 - `StepData_FieldList::FillShared()`
     pub fn fill_shared(&self, iter: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FieldListD_inherited_FillShared(self as *const Self, iter)
+            crate::ffi_extern_TKDESTEP::StepData_FieldListD_inherited_FillShared(
+                self as *const Self,
+                iter,
+            )
         })
     }
 }
@@ -2668,11 +2990,11 @@ impl FieldListD {
 /// Describes a list of fields, in a general way
 /// This basic class is for a null size list
 /// Subclasses are for 1, N (fixed) or Dynamic sizes
-pub use crate::ffi::StepData_FieldListN as FieldListN;
+pub use crate::ffi_types::StepData_FieldListN as FieldListN;
 
 unsafe impl crate::CppDeletable for FieldListN {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FieldListN_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FieldListN_destructor(ptr);
     }
 }
 
@@ -2682,7 +3004,7 @@ impl FieldListN {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FieldListN_ctor_int(nb),
+                crate::ffi_extern_TKDESTEP::StepData_FieldListN_ctor_int(nb),
             ))
         }
     }
@@ -2691,7 +3013,7 @@ impl FieldListN {
     /// Returns the count of fields. Here, returns starting <nb>
     pub fn nb_fields(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FieldListN_nb_fields(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FieldListN_nb_fields(self as *const Self)
         })
     }
 
@@ -2699,7 +3021,10 @@ impl FieldListN {
     /// Returns the field n0 <num> between 1 and NbFields (read only)
     pub fn field(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FieldListN_field(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldListN_field(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -2708,7 +3033,7 @@ impl FieldListN {
     /// modify its content
     pub fn c_field(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_FieldListN_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FieldListN_c_field(
                 self as *mut Self,
                 num,
             )))
@@ -2718,25 +3043,32 @@ impl FieldListN {
     /// Upcast to StepData_FieldList
     pub fn as_field_list(&self) -> &FieldList {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FieldListN_as_StepData_FieldList(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldListN_as_StepData_FieldList(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_FieldList (mutable)
     pub fn as_field_list_mut(&mut self) -> &mut FieldList {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FieldListN_as_StepData_FieldList_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FieldListN_as_StepData_FieldList_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `StepData_FieldList.hxx`:52 - `StepData_FieldList::FillShared()`
     pub fn fill_shared(&self, iter: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FieldListN_inherited_FillShared(self as *const Self, iter)
+            crate::ffi_extern_TKDESTEP::StepData_FieldListN_inherited_FillShared(
+                self as *const Self,
+                iter,
+            )
         })
     }
 }
@@ -2752,11 +3084,11 @@ impl FieldListN {
 /// specific Protocol. Thus, a File defined with a compound Schema
 /// is processed as any other one, once built the equivalent
 /// compound Protocol, a FileProtocol
-pub use crate::ffi::StepData_FileProtocol as FileProtocol;
+pub use crate::ffi_types::StepData_FileProtocol as FileProtocol;
 
 unsafe impl crate::CppDeletable for FileProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FileProtocol_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FileProtocol_destructor(ptr);
     }
 }
 
@@ -2765,7 +3097,9 @@ impl FileProtocol {
     /// Creates an empty FileProtocol
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_FileProtocol_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_ctor(),
+            ))
         }
     }
 
@@ -2773,9 +3107,9 @@ impl FileProtocol {
     /// Adds a Protocol to the definition list of the FileProtocol
     /// But ensures that each class of Protocol is present only once
     /// in this list
-    pub fn add(&mut self, protocol: &crate::ffi::HandleStepDataProtocol) {
+    pub fn add(&mut self, protocol: &crate::ffi_types::HandleStepDataProtocol) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_add(self as *mut Self, protocol)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_add(self as *mut Self, protocol)
         })
     }
 
@@ -2784,16 +3118,19 @@ impl FileProtocol {
     /// i.e. the count of Protocol recorded by calling the method Add
     pub fn nb_resources(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_nb_resources(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_nb_resources(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_FileProtocol.hxx`:56 - `StepData_FileProtocol::Resource()`
     /// Returns a Resource, given a rank. Here, rank of calling Add
-    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_resource(self as *const Self, num),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_resource(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -2802,9 +3139,12 @@ impl FileProtocol {
     /// Returns a Case Number, specific of each recognized Type
     /// Here, NO Type at all is recognized properly : all Types are
     /// recognized by the resources
-    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn type_number(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_type_number(self as *const Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_type_number(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
@@ -2813,10 +3153,14 @@ impl FileProtocol {
     pub fn global_check(
         &self,
         G: &crate::interface::Graph,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_global_check(self as *const Self, G, ach)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_global_check(
+                self as *const Self,
+                G,
+                ach,
+            )
         })
     }
 
@@ -2827,11 +3171,14 @@ impl FileProtocol {
     /// was C++ : return const
     pub fn schema_name(
         &self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_FileProtocol_schema_name(self as *const Self, theModel),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_schema_name(
+                    self as *const Self,
+                    theModel,
+                ),
             ))
         }
         .to_string_lossy()
@@ -2839,9 +3186,9 @@ impl FileProtocol {
     }
 
     /// **Source:** `StepData_FileProtocol.hxx`:77 - `StepData_FileProtocol::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FileProtocol_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FileProtocol_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2851,7 +3198,7 @@ impl FileProtocol {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_FileProtocol_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2859,140 +3206,184 @@ impl FileProtocol {
     }
 
     /// **Source:** `StepData_FileProtocol.hxx`:77 - `StepData_FileProtocol::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_FileProtocol_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_Protocol
     pub fn as_protocol(&self) -> &Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FileProtocol_as_StepData_Protocol(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_StepData_Protocol(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_Protocol (mutable)
     pub fn as_protocol_mut(&mut self) -> &mut Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FileProtocol_as_StepData_Protocol_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_StepData_Protocol_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_Protocol
     pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FileProtocol_as_Interface_Protocol(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_Interface_Protocol(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_Protocol (mutable)
     pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FileProtocol_as_Interface_Protocol_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_Interface_Protocol_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FileProtocol_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_FileProtocol_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataFileProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataFileProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:58 - `StepData_Protocol::CaseNumber()`
-    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn case_number(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_CaseNumber(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_CaseNumber(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:74 - `StepData_Protocol::NewModel()`
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_inherited_NewModel(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_NewModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:78 - `StepData_Protocol::IsSuitableModel()`
-    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+    pub fn is_suitable_model(
+        &self,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IsSuitableModel(self as *const Self, model)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IsSuitableModel(
+                self as *const Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:81 - `StepData_Protocol::UnknownEntity()`
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_inherited_UnknownEntity(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_UnknownEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:86 - `StepData_Protocol::IsUnknownEntity()`
-    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_unknown_entity(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IsUnknownEntity(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IsUnknownEntity(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:92 - `StepData_Protocol::DescrNumber()`
-    pub fn descr_number(&self, adescr: &crate::ffi::HandleStepDataEDescr) -> i32 {
+    pub fn descr_number(&self, adescr: &crate::ffi_types::HandleStepDataEDescr) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_DescrNumber(self as *const Self, adescr)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_DescrNumber(
+                self as *const Self,
+                adescr,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:97 - `StepData_Protocol::AddDescr()`
-    pub fn add_descr(&mut self, adescr: &crate::ffi::HandleStepDataEDescr, CN: i32) {
+    pub fn add_descr(&mut self, adescr: &crate::ffi_types::HandleStepDataEDescr, CN: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_AddDescr(self as *mut Self, adescr, CN)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_AddDescr(
+                self as *mut Self,
+                adescr,
+                CN,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:101 - `StepData_Protocol::HasDescr()`
     pub fn has_descr(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_HasDescr(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_HasDescr(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:104 - `StepData_Protocol::Descr()`
-    pub fn descr(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn descr(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_inherited_Descr(self as *const Self, num),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_Descr(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -3000,12 +3391,12 @@ impl FileProtocol {
     /// Inherited: **Source:** `StepData_Protocol.hxx`:121 - `StepData_Protocol::ECDescr()`
     pub fn ec_descr(
         &self,
-        names: &crate::ffi::TColStd_SequenceOfAsciiString,
+        names: &crate::ffi_types::TColStd_SequenceOfAsciiString,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataECDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataECDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_inherited_ECDescr(
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_ECDescr(
                     self as *const Self,
                     names,
                     anylevel,
@@ -3015,57 +3406,79 @@ impl FileProtocol {
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:126 - `StepData_Protocol::AddPDescr()`
-    pub fn add_p_descr(&mut self, pdescr: &crate::ffi::HandleStepDataPDescr) {
+    pub fn add_p_descr(&mut self, pdescr: &crate::ffi_types::HandleStepDataPDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_AddPDescr(self as *mut Self, pdescr)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_AddPDescr(
+                self as *mut Self,
+                pdescr,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_Protocol.hxx`:136 - `StepData_Protocol::AddBasicDescr()`
-    pub fn add_basic_descr(&mut self, esdescr: &crate::ffi::HandleStepDataESDescr) {
+    pub fn add_basic_descr(&mut self, esdescr: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_AddBasicDescr(self as *mut Self, esdescr)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_AddBasicDescr(
+                self as *mut Self,
+                esdescr,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
-    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_dynamic_type(&self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IsDynamicType(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IsDynamicType(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
-    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_NbTypes(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_NbTypes(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
     pub fn type_(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         nt: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileProtocol_inherited_Type(self as *const Self, obj, nt),
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_Type(
+                    self as *const Self,
+                    obj,
+                    nt,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3073,7 +3486,9 @@ impl FileProtocol {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_FileProtocol_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3086,64 +3501,72 @@ impl FileProtocol {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileProtocol_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileProtocol_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataFileProtocol;
+pub use crate::ffi_types::HandleStepDataFileProtocol;
 
 unsafe impl crate::CppDeletable for HandleStepDataFileProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataFileProtocol_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_destructor(ptr);
     }
 }
 
 impl HandleStepDataFileProtocol {
     /// Dereference this Handle to access the underlying StepData_FileProtocol
-    pub fn get(&self) -> &crate::ffi::StepData_FileProtocol {
+    pub fn get(&self) -> &crate::ffi_types::StepData_FileProtocol {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataFileProtocol_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_FileProtocol
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_FileProtocol {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_FileProtocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataFileProtocol_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_FileProtocol> to Handle<StepData_Protocol>
     pub fn to_handle_step_data_protocol(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataFileProtocol_to_HandleStepDataProtocol(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_to_HandleStepDataProtocol(
                     self as *const Self,
                 ),
             ))
@@ -3153,10 +3576,10 @@ impl HandleStepDataFileProtocol {
     /// Upcast Handle<StepData_FileProtocol> to Handle<Interface_Protocol>
     pub fn to_handle_interface_protocol(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataFileProtocol_to_HandleInterfaceProtocol(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_to_HandleInterfaceProtocol(
                     self as *const Self,
                 ),
             ))
@@ -3164,10 +3587,12 @@ impl HandleStepDataFileProtocol {
     }
 
     /// Upcast Handle<StepData_FileProtocol> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataFileProtocol_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileProtocol_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3180,11 +3605,11 @@ impl HandleStepDataFileProtocol {
 // ========================
 
 /// **Source:** `StepData_FileRecognizer.hxx`:31 - `StepData_FileRecognizer`
-pub use crate::ffi::StepData_FileRecognizer as FileRecognizer;
+pub use crate::ffi_types::StepData_FileRecognizer as FileRecognizer;
 
 unsafe impl crate::CppDeletable for FileRecognizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FileRecognizer_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_destructor(ptr);
     }
 }
 
@@ -3198,19 +3623,23 @@ impl FileRecognizer {
     pub fn evaluate(
         &mut self,
         akey: &crate::t_collection::AsciiString,
-        res: &mut crate::ffi::HandleStandardTransient,
+        res: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_evaluate(self as *mut Self, akey, res)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_evaluate(
+                self as *mut Self,
+                akey,
+                res,
+            )
         })
     }
 
     /// **Source:** `StepData_FileRecognizer.hxx`:44 - `StepData_FileRecognizer::Result()`
     /// Returns result of last recognition (call of Evaluate)
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FileRecognizer_result(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_result(self as *const Self),
             ))
         }
     }
@@ -3221,18 +3650,20 @@ impl FileRecognizer {
     /// Hence, when Eval has failed to recognize, Evaluate will call
     /// Evaluate from the first added Recognizer if there is one,
     /// and to the second if there is still no result, and so on
-    pub fn add(&mut self, reco: &crate::ffi::HandleStepDataFileRecognizer) {
+    pub fn add(&mut self, reco: &crate::ffi_types::HandleStepDataFileRecognizer) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_add(self as *mut Self, reco)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_add(self as *mut Self, reco)
         })
     }
 
     /// **Source:** `StepData_FileRecognizer.hxx`:53 - `StepData_FileRecognizer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FileRecognizer_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3240,7 +3671,7 @@ impl FileRecognizer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_FileRecognizer_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3248,18 +3679,22 @@ impl FileRecognizer {
     }
 
     /// **Source:** `StepData_FileRecognizer.hxx`:53 - `StepData_FileRecognizer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FileRecognizer_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FileRecognizer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3267,22 +3702,30 @@ impl FileRecognizer {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_FileRecognizer_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3290,7 +3733,9 @@ impl FileRecognizer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_FileRecognizer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3303,62 +3748,74 @@ impl FileRecognizer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FileRecognizer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FileRecognizer_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataFileRecognizer;
+pub use crate::ffi_types::HandleStepDataFileRecognizer;
 
 unsafe impl crate::CppDeletable for HandleStepDataFileRecognizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataFileRecognizer_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_destructor(ptr);
     }
 }
 
 impl HandleStepDataFileRecognizer {
     /// Dereference this Handle to access the underlying StepData_FileRecognizer
-    pub fn get(&self) -> &crate::ffi::StepData_FileRecognizer {
+    pub fn get(&self) -> &crate::ffi_types::StepData_FileRecognizer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataFileRecognizer_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepData_FileRecognizer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_FileRecognizer {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataFileRecognizer_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying StepData_FileRecognizer
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_FileRecognizer {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<StepData_FileRecognizer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataFileRecognizer_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFileRecognizer_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3376,11 +3833,11 @@ impl HandleStepDataFileRecognizer {
 /// It is implemented with an array of fields
 /// A Complex entity can be defined, as a chain of FreeFormEntity
 /// (see Next and As)
-pub use crate::ffi::StepData_FreeFormEntity as FreeFormEntity;
+pub use crate::ffi_types::StepData_FreeFormEntity as FreeFormEntity;
 
 unsafe impl crate::CppDeletable for FreeFormEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_FreeFormEntity_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_destructor(ptr);
     }
 }
 
@@ -3390,7 +3847,7 @@ impl FreeFormEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_ctor(),
             ))
         }
     }
@@ -3401,7 +3858,10 @@ impl FreeFormEntity {
     pub fn set_step_type(&mut self, typenam: &str) {
         let c_typenam = std::ffi::CString::new(typenam).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_set_step_type(self as *mut Self, c_typenam.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_set_step_type(
+                self as *mut Self,
+                c_typenam.as_ptr(),
+            )
         })
     }
 
@@ -3411,7 +3871,7 @@ impl FreeFormEntity {
     pub fn step_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_step_type(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_step_type(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -3424,19 +3884,23 @@ impl FreeFormEntity {
     /// If <last> is True (D), this next will be set as last of list
     /// Else, it is inserted just as next of <me>
     /// If <next> is Null, Next is cleared
-    pub fn set_next(&mut self, next: &crate::ffi::HandleStepDataFreeFormEntity, last: bool) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleStepDataFreeFormEntity, last: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_set_next(self as *mut Self, next, last)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_set_next(
+                self as *mut Self,
+                next,
+                last,
+            )
         })
     }
 
     /// **Source:** `StepData_FreeFormEntity.hxx`:63 - `StepData_FreeFormEntity::Next()`
     /// Returns the next member of a Complex entity
     /// (remark : the last member has none)
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataFreeFormEntity> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataFreeFormEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_next(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_next(self as *const Self),
             ))
         }
     }
@@ -3445,7 +3909,7 @@ impl FreeFormEntity {
     /// Returns True if a FreeFormEntity is Complex (i.e. has Next)
     pub fn is_complex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_is_complex(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_is_complex(self as *const Self)
         })
     }
 
@@ -3455,11 +3919,14 @@ impl FreeFormEntity {
     pub fn typed(
         &self,
         typenam: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataFreeFormEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataFreeFormEntity> {
         let c_typenam = std::ffi::CString::new(typenam).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_typed(self as *const Self, c_typenam.as_ptr()),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_typed(
+                    self as *const Self,
+                    c_typenam.as_ptr(),
+                ),
             ))
         }
     }
@@ -3467,10 +3934,12 @@ impl FreeFormEntity {
     /// **Source:** `StepData_FreeFormEntity.hxx`:74 - `StepData_FreeFormEntity::TypeList()`
     /// Returns the list of types (one type for a simple entity),
     /// as is (non reordered)
-    pub fn type_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+    pub fn type_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_type_list(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_type_list(self as *const Self),
             ))
         }
     }
@@ -3479,7 +3948,7 @@ impl FreeFormEntity {
     /// Sets a count of Fields, from scratch
     pub fn set_nb_fields(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_set_nb_fields(self as *mut Self, nb)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_set_nb_fields(self as *mut Self, nb)
         })
     }
 
@@ -3487,7 +3956,7 @@ impl FreeFormEntity {
     /// Returns the count of fields
     pub fn nb_fields(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_nb_fields(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_nb_fields(self as *const Self)
         })
     }
 
@@ -3495,7 +3964,7 @@ impl FreeFormEntity {
     /// Returns a field from its rank, for read-only use
     pub fn field(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FreeFormEntity_field(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_field(
                 self as *const Self,
                 num,
             )))
@@ -3506,19 +3975,20 @@ impl FreeFormEntity {
     /// Returns a field from its rank, in order to modify it
     pub fn c_field(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_FreeFormEntity_c_field(
-                self as *mut Self,
-                num,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_c_field(self as *mut Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_FreeFormEntity.hxx`:94 - `StepData_FreeFormEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FreeFormEntity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3527,15 +3997,17 @@ impl FreeFormEntity {
     /// are not in alphabetic order
     /// Returns False if nothing done (order was OK or simple entity),
     /// True plus modified <ent> if <ent> has been reordered
-    pub fn reorder(ent: &mut crate::ffi::HandleStepDataFreeFormEntity) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_FreeFormEntity_reorder(ent) })
+    pub fn reorder(ent: &mut crate::ffi_types::HandleStepDataFreeFormEntity) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_reorder(ent)
+        })
     }
 
     /// **Source:** `StepData_FreeFormEntity.hxx`:94 - `StepData_FreeFormEntity::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3543,18 +4015,22 @@ impl FreeFormEntity {
     }
 
     /// **Source:** `StepData_FreeFormEntity.hxx`:94 - `StepData_FreeFormEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_FreeFormEntity_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_FreeFormEntity_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3562,7 +4038,9 @@ impl FreeFormEntity {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3570,25 +4048,31 @@ impl FreeFormEntity {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataFreeFormEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataFreeFormEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_FreeFormEntity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3596,7 +4080,9 @@ impl FreeFormEntity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_FreeFormEntity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3609,62 +4095,74 @@ impl FreeFormEntity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_FreeFormEntity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_FreeFormEntity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataFreeFormEntity;
+pub use crate::ffi_types::HandleStepDataFreeFormEntity;
 
 unsafe impl crate::CppDeletable for HandleStepDataFreeFormEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataFreeFormEntity_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_destructor(ptr);
     }
 }
 
 impl HandleStepDataFreeFormEntity {
     /// Dereference this Handle to access the underlying StepData_FreeFormEntity
-    pub fn get(&self) -> &crate::ffi::StepData_FreeFormEntity {
+    pub fn get(&self) -> &crate::ffi_types::StepData_FreeFormEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataFreeFormEntity_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepData_FreeFormEntity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_FreeFormEntity {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataFreeFormEntity_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying StepData_FreeFormEntity
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_FreeFormEntity {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<StepData_FreeFormEntity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataFreeFormEntity_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataFreeFormEntity_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3678,11 +4176,11 @@ impl HandleStepDataFreeFormEntity {
 
 /// **Source:** `StepData_GeneralModule.hxx`:35 - `StepData_GeneralModule`
 /// Specific features for General Services adapted to STEP
-pub use crate::ffi::StepData_GeneralModule as GeneralModule;
+pub use crate::ffi_types::StepData_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_GeneralModule_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_GeneralModule_destructor(ptr);
     }
 }
 
@@ -3693,11 +4191,11 @@ impl GeneralModule {
     pub fn fill_shared_case(
         &self,
         casenum: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_fill_shared_case(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_fill_shared_case(
                 self as *const Self,
                 casenum,
                 ent,
@@ -3711,12 +4209,12 @@ impl GeneralModule {
     pub fn check_case(
         &self,
         casenum: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_check_case(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_check_case(
                 self as *const Self,
                 casenum,
                 ent,
@@ -3737,12 +4235,12 @@ impl GeneralModule {
     pub fn copy_case(
         &self,
         casenum: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_copy_case(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_copy_case(
                 self as *const Self,
                 casenum,
                 entfrom,
@@ -3753,11 +4251,13 @@ impl GeneralModule {
     }
 
     /// **Source:** `StepData_GeneralModule.hxx`:64 - `StepData_GeneralModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GeneralModule_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3765,7 +4265,7 @@ impl GeneralModule {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_GeneralModule_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3773,16 +4273,22 @@ impl GeneralModule {
     }
 
     /// **Source:** `StepData_GeneralModule.hxx`:64 - `StepData_GeneralModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_GeneralModule_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Interface_GeneralModule
     pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_GeneralModule_as_Interface_GeneralModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_as_Interface_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3790,7 +4296,7 @@ impl GeneralModule {
     pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_GeneralModule_as_Interface_GeneralModule_mut(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_as_Interface_GeneralModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -3800,31 +4306,35 @@ impl GeneralModule {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_GeneralModule_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_GeneralModule_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
     pub fn fill_shared(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_FillShared(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_FillShared(
                 self as *const Self,
                 model,
                 CN,
@@ -3838,23 +4348,27 @@ impl GeneralModule {
     pub fn share(
         &self,
         iter: &mut crate::interface::EntityIterator,
-        shared: &crate::ffi::HandleStandardTransient,
+        shared: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_Share(self as *const Self, iter, shared)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_Share(
+                self as *const Self,
+                iter,
+                shared,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
     pub fn list_implied(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_ListImplied(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_ListImplied(
                 self as *const Self,
                 model,
                 CN,
@@ -3868,11 +4382,11 @@ impl GeneralModule {
     pub fn list_implied_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_ListImpliedCase(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_ListImpliedCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -3882,9 +4396,13 @@ impl GeneralModule {
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:104 - `Interface_GeneralModule::CanCopy()`
-    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_CanCopy(self as *const Self, CN, ent)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_CanCopy(
+                self as *const Self,
+                CN,
+                ent,
+            )
         })
     }
 
@@ -3892,12 +4410,12 @@ impl GeneralModule {
     pub fn dispatch(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_Dispatch(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_Dispatch(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -3908,9 +4426,13 @@ impl GeneralModule {
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:134 - `Interface_GeneralModule::NewVoid()`
-    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_NewVoid(self as *const Self, CN, entto)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_NewVoid(
+                self as *const Self,
+                CN,
+                entto,
+            )
         })
     }
 
@@ -3918,12 +4440,12 @@ impl GeneralModule {
     pub fn new_copied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_NewCopiedCase(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_NewCopiedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -3937,12 +4459,12 @@ impl GeneralModule {
     pub fn renew_implied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_RenewImpliedCase(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_RenewImpliedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -3956,11 +4478,11 @@ impl GeneralModule {
     pub fn when_delete_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         dispatched: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_WhenDeleteCase(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_WhenDeleteCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -3973,11 +4495,11 @@ impl GeneralModule {
     pub fn category_number(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_CategoryNumber(
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_CategoryNumber(
                 self as *const Self,
                 CN,
                 ent,
@@ -3990,12 +4512,12 @@ impl GeneralModule {
     pub fn name(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_GeneralModule_inherited_Name(
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_Name(
                     self as *const Self,
                     CN,
                     ent,
@@ -4006,16 +4528,22 @@ impl GeneralModule {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4023,7 +4551,9 @@ impl GeneralModule {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_GeneralModule_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4036,75 +4566,81 @@ impl GeneralModule {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GeneralModule_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_GeneralModule_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataGeneralModule;
+pub use crate::ffi_types::HandleStepDataGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleStepDataGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataGeneralModule_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_destructor(ptr);
     }
 }
 
 impl HandleStepDataGeneralModule {
     /// Dereference this Handle to access the underlying StepData_GeneralModule
-    pub fn get(&self) -> &crate::ffi::StepData_GeneralModule {
+    pub fn get(&self) -> &crate::ffi_types::StepData_GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataGeneralModule_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_GeneralModule
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_GeneralModule {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_GeneralModule {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataGeneralModule_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_GeneralModule> to Handle<Interface_GeneralModule>
     pub fn to_handle_general_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGeneralModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataGeneralModule_to_HandleInterfaceGeneralModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_to_HandleInterfaceGeneralModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_GeneralModule> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataGeneralModule_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4116,11 +4652,9 @@ impl HandleStepDataGeneralModule {
     /// Returns `None` if the handle does not point to a `RWHeaderSection_GeneralModule` (or subclass).
     pub fn downcast_to_general_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionGeneralModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWHeaderSectionGeneralModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataGeneralModule_downcast_to_HandleRWHeaderSectionGeneralModule(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_downcast_to_HandleRWHeaderSectionGeneralModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4134,11 +4668,9 @@ impl HandleStepDataGeneralModule {
     /// Returns `None` if the handle does not point to a `StepData_DefaultGeneral` (or subclass).
     pub fn downcast_to_default_general(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataDefaultGeneral>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataDefaultGeneral>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataGeneralModule_downcast_to_HandleStepDataDefaultGeneral(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataGeneralModule_downcast_to_HandleStepDataDefaultGeneral(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4153,11 +4685,11 @@ impl HandleStepDataGeneralModule {
 // ========================
 
 /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:33 - `StepData_GlobalNodeOfWriterLib`
-pub use crate::ffi::StepData_GlobalNodeOfWriterLib as GlobalNodeOfWriterLib;
+pub use crate::ffi_types::StepData_GlobalNodeOfWriterLib as GlobalNodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for GlobalNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_GlobalNodeOfWriterLib_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_destructor(ptr);
     }
 }
 
@@ -4167,7 +4699,7 @@ impl GlobalNodeOfWriterLib {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_GlobalNodeOfWriterLib_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_ctor(),
             ))
         }
     }
@@ -4179,51 +4711,63 @@ impl GlobalNodeOfWriterLib {
     /// Once added, stores its attached Protocol in correspondence
     pub fn add(
         &mut self,
-        amodule: &crate::ffi::HandleStepDataReadWriteModule,
-        aprotocol: &crate::ffi::HandleStepDataProtocol,
+        amodule: &crate::ffi_types::HandleStepDataReadWriteModule,
+        aprotocol: &crate::ffi_types::HandleStepDataProtocol,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_add(self as *mut Self, amodule, aprotocol)
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_add(
+                self as *mut Self,
+                amodule,
+                aprotocol,
+            )
         })
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:48 - `StepData_GlobalNodeOfWriterLib::Module()`
     /// Returns the Module stored in a given GlobalNode
-    pub fn module(&self) -> &crate::ffi::HandleStepDataReadWriteModule {
+    pub fn module(&self) -> &crate::ffi_types::HandleStepDataReadWriteModule {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_module(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_module(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:51 - `StepData_GlobalNodeOfWriterLib::Protocol()`
     /// Returns the attached Protocol stored in a given GlobalNode
-    pub fn protocol(&self) -> &crate::ffi::HandleStepDataProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleStepDataProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_protocol(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_protocol(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:55 - `StepData_GlobalNodeOfWriterLib::Next()`
     /// Returns the Next GlobalNode. If none is defined, returned
     /// value is a Null Handle
-    pub fn next(&self) -> &crate::ffi::HandleStepDataGlobalNodeOfWriterLib {
+    pub fn next(&self) -> &crate::ffi_types::HandleStepDataGlobalNodeOfWriterLib {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_next(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_next(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:57 - `StepData_GlobalNodeOfWriterLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4231,7 +4775,7 @@ impl GlobalNodeOfWriterLib {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_GlobalNodeOfWriterLib_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4239,47 +4783,49 @@ impl GlobalNodeOfWriterLib {
     }
 
     /// **Source:** `StepData_GlobalNodeOfWriterLib.hxx`:57 - `StepData_GlobalNodeOfWriterLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_GlobalNodeOfWriterLib_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::StepData_GlobalNodeOfWriterLib_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataGlobalNodeOfWriterLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataGlobalNodeOfWriterLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_GlobalNodeOfWriterLib_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_IsInstance(
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4287,9 +4833,9 @@ impl GlobalNodeOfWriterLib {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_IsKind(
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -4300,7 +4846,9 @@ impl GlobalNodeOfWriterLib {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4313,14 +4861,16 @@ impl GlobalNodeOfWriterLib {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -4329,7 +4879,7 @@ impl GlobalNodeOfWriterLib {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -4338,46 +4888,50 @@ impl GlobalNodeOfWriterLib {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_GlobalNodeOfWriterLib_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_GlobalNodeOfWriterLib_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataGlobalNodeOfWriterLib;
+pub use crate::ffi_types::HandleStepDataGlobalNodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for HandleStepDataGlobalNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataGlobalNodeOfWriterLib_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_destructor(ptr);
     }
 }
 
 impl HandleStepDataGlobalNodeOfWriterLib {
     /// Dereference this Handle to access the underlying StepData_GlobalNodeOfWriterLib
-    pub fn get(&self) -> &crate::ffi::StepData_GlobalNodeOfWriterLib {
+    pub fn get(&self) -> &crate::ffi_types::StepData_GlobalNodeOfWriterLib {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataGlobalNodeOfWriterLib_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_GlobalNodeOfWriterLib
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_GlobalNodeOfWriterLib {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_GlobalNodeOfWriterLib {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataGlobalNodeOfWriterLib_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<StepData_GlobalNodeOfWriterLib> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataGlobalNodeOfWriterLib_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataGlobalNodeOfWriterLib_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4387,11 +4941,11 @@ impl HandleStepDataGlobalNodeOfWriterLib {
 // ========================
 
 /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField`
-pub use crate::ffi::StepData_HArray1OfField as HArray1OfField;
+pub use crate::ffi_types::StepData_HArray1OfField as HArray1OfField;
 
 unsafe impl crate::CppDeletable for HArray1OfField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_HArray1OfField_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_destructor(ptr);
     }
 }
 
@@ -4400,7 +4954,7 @@ impl HArray1OfField {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_ctor(),
             ))
         }
     }
@@ -4409,7 +4963,7 @@ impl HArray1OfField {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -4418,7 +4972,9 @@ impl HArray1OfField {
     pub fn new_int2_field(theLower: i32, theUpper: i32, theValue: &Field) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_ctor_int2_field(theLower, theUpper, theValue),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_ctor_int2_field(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -4432,7 +4988,7 @@ impl HArray1OfField {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_ctor_field_int2_bool(
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_ctor_field_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -4441,37 +4997,43 @@ impl HArray1OfField {
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::StepData_HArray1OfField()`
     pub fn new_array1offield(
-        theOther: &crate::ffi::StepData_Array1OfField,
+        theOther: &crate::ffi_types::StepData_Array1OfField,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_ctor_array1offield(theOther),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_ctor_array1offield(theOther),
             ))
         }
     }
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::Array1()`
-    pub fn array1(&self) -> &crate::ffi::StepData_Array1OfField {
+    pub fn array1(&self) -> &crate::ffi_types::StepData_Array1OfField {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_HArray1OfField_array1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::StepData_Array1OfField {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::StepData_Array1OfField {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_HArray1OfField_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_HArray1OfField_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4479,7 +5041,7 @@ impl HArray1OfField {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4487,18 +5049,22 @@ impl HArray1OfField {
     }
 
     /// **Source:** `StepData_HArray1OfField.hxx`:23 - `StepData_HArray1OfField::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_HArray1OfField_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_HArray1OfField_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4506,7 +5072,9 @@ impl HArray1OfField {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_HArray1OfField_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4514,25 +5082,31 @@ impl HArray1OfField {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataHArray1OfField> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataHArray1OfField> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_HArray1OfField_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4540,7 +5114,9 @@ impl HArray1OfField {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_HArray1OfField_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4553,62 +5129,74 @@ impl HArray1OfField {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_HArray1OfField_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_HArray1OfField_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataHArray1OfField;
+pub use crate::ffi_types::HandleStepDataHArray1OfField;
 
 unsafe impl crate::CppDeletable for HandleStepDataHArray1OfField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataHArray1OfField_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_destructor(ptr);
     }
 }
 
 impl HandleStepDataHArray1OfField {
     /// Dereference this Handle to access the underlying StepData_HArray1OfField
-    pub fn get(&self) -> &crate::ffi::StepData_HArray1OfField {
+    pub fn get(&self) -> &crate::ffi_types::StepData_HArray1OfField {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataHArray1OfField_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepData_HArray1OfField
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_HArray1OfField {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataHArray1OfField_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying StepData_HArray1OfField
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_HArray1OfField {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<StepData_HArray1OfField> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataHArray1OfField_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataHArray1OfField_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4621,11 +5209,11 @@ impl HandleStepDataHArray1OfField {
 // ========================
 
 /// **Source:** `StepData_NodeOfWriterLib.hxx`:33 - `StepData_NodeOfWriterLib`
-pub use crate::ffi::StepData_NodeOfWriterLib as NodeOfWriterLib;
+pub use crate::ffi_types::StepData_NodeOfWriterLib as NodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for NodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_NodeOfWriterLib_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_destructor(ptr);
     }
 }
 
@@ -4635,7 +5223,7 @@ impl NodeOfWriterLib {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_NodeOfWriterLib_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_ctor(),
             ))
         }
     }
@@ -4643,17 +5231,17 @@ impl NodeOfWriterLib {
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:42 - `StepData_NodeOfWriterLib::AddNode()`
     /// Adds a couple (Module,Protocol), that is, stores it into
     /// itself if not yet done, else creates a Next Node to do it
-    pub fn add_node(&mut self, anode: &crate::ffi::HandleStepDataGlobalNodeOfWriterLib) {
+    pub fn add_node(&mut self, anode: &crate::ffi_types::HandleStepDataGlobalNodeOfWriterLib) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_add_node(self as *mut Self, anode)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_add_node(self as *mut Self, anode)
         })
     }
 
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:45 - `StepData_NodeOfWriterLib::Module()`
     /// Returns the Module designated by a precise Node
-    pub fn module(&self) -> &crate::ffi::HandleStepDataReadWriteModule {
+    pub fn module(&self) -> &crate::ffi_types::HandleStepDataReadWriteModule {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_NodeOfWriterLib_module(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_module(
                 self as *const Self,
             )))
         }
@@ -4661,9 +5249,9 @@ impl NodeOfWriterLib {
 
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:48 - `StepData_NodeOfWriterLib::Protocol()`
     /// Returns the Protocol designated by a precise Node
-    pub fn protocol(&self) -> &crate::ffi::HandleStepDataProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleStepDataProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_NodeOfWriterLib_protocol(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_protocol(
                 self as *const Self,
             )))
         }
@@ -4672,18 +5260,22 @@ impl NodeOfWriterLib {
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:52 - `StepData_NodeOfWriterLib::Next()`
     /// Returns the Next Node. If none was defined, returned value
     /// is a Null Handle
-    pub fn next(&self) -> &crate::ffi::HandleStepDataNodeOfWriterLib {
+    pub fn next(&self) -> &crate::ffi_types::HandleStepDataNodeOfWriterLib {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_NodeOfWriterLib_next(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_next(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:54 - `StepData_NodeOfWriterLib::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_NodeOfWriterLib_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4691,7 +5283,7 @@ impl NodeOfWriterLib {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_NodeOfWriterLib_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4699,18 +5291,22 @@ impl NodeOfWriterLib {
     }
 
     /// **Source:** `StepData_NodeOfWriterLib.hxx`:54 - `StepData_NodeOfWriterLib::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_NodeOfWriterLib_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_NodeOfWriterLib_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4718,7 +5314,9 @@ impl NodeOfWriterLib {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_NodeOfWriterLib_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4726,25 +5324,31 @@ impl NodeOfWriterLib {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataNodeOfWriterLib> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataNodeOfWriterLib> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_NodeOfWriterLib_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4752,7 +5356,9 @@ impl NodeOfWriterLib {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_NodeOfWriterLib_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4765,67 +5371,75 @@ impl NodeOfWriterLib {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_NodeOfWriterLib_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_NodeOfWriterLib_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataNodeOfWriterLib;
+pub use crate::ffi_types::HandleStepDataNodeOfWriterLib;
 
 unsafe impl crate::CppDeletable for HandleStepDataNodeOfWriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataNodeOfWriterLib_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_destructor(ptr);
     }
 }
 
 impl HandleStepDataNodeOfWriterLib {
     /// Dereference this Handle to access the underlying StepData_NodeOfWriterLib
-    pub fn get(&self) -> &crate::ffi::StepData_NodeOfWriterLib {
+    pub fn get(&self) -> &crate::ffi_types::StepData_NodeOfWriterLib {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataNodeOfWriterLib_get(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_NodeOfWriterLib
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_NodeOfWriterLib {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_NodeOfWriterLib {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataNodeOfWriterLib_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<StepData_NodeOfWriterLib> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataNodeOfWriterLib_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataNodeOfWriterLib_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4840,11 +5454,11 @@ impl HandleStepDataNodeOfWriterLib {
 ///
 /// A PDescr firstly describes a type, which can be SELECT, i.e.
 /// have several members
-pub use crate::ffi::StepData_PDescr as PDescr;
+pub use crate::ffi_types::StepData_PDescr as PDescr;
 
 unsafe impl crate::CppDeletable for PDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_PDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_PDescr_destructor(ptr);
     }
 }
 
@@ -4852,7 +5466,9 @@ impl PDescr {
     /// **Source:** `StepData_PDescr.hxx`:44 - `StepData_PDescr::StepData_PDescr()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_PDescr_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_ctor(),
+            ))
         }
     }
 
@@ -4860,16 +5476,16 @@ impl PDescr {
     pub fn set_name(&mut self, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_name(self as *mut Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_name(self as *mut Self, c_name.as_ptr())
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:48 - `StepData_PDescr::Name()`
     pub fn name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_PDescr_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -4880,15 +5496,15 @@ impl PDescr {
     /// <me> itself can be the first member
     pub fn set_select(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_select(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_select(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:55 - `StepData_PDescr::AddMember()`
     /// Adds a member to a SELECT description
-    pub fn add_member(&mut self, member: &crate::ffi::HandleStepDataPDescr) {
+    pub fn add_member(&mut self, member: &crate::ffi_types::HandleStepDataPDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_add_member(self as *mut Self, member)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_add_member(self as *mut Self, member)
         })
     }
 
@@ -4898,7 +5514,10 @@ impl PDescr {
     pub fn set_member_name(&mut self, memname: &str) {
         let c_memname = std::ffi::CString::new(memname).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_member_name(self as *mut Self, c_memname.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_member_name(
+                self as *mut Self,
+                c_memname.as_ptr(),
+            )
         })
     }
 
@@ -4906,21 +5525,23 @@ impl PDescr {
     /// Sets <me> for an Integer value
     pub fn set_integer(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_integer(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_integer(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:65 - `StepData_PDescr::SetReal()`
     /// Sets <me> for a Real value
     pub fn set_real(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_PDescr_set_real(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_real(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:68 - `StepData_PDescr::SetString()`
     /// Sets <me> for a String value
     pub fn set_string(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_string(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_string(self as *mut Self)
         })
     }
 
@@ -4928,7 +5549,7 @@ impl PDescr {
     /// Sets <me> for a Boolean value (false,true)
     pub fn set_boolean(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_boolean(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_boolean(self as *mut Self)
         })
     }
 
@@ -4936,7 +5557,7 @@ impl PDescr {
     /// Sets <me> for a Logical value (false,true,unknown)
     pub fn set_logical(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_logical(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_logical(self as *mut Self)
         })
     }
 
@@ -4944,7 +5565,9 @@ impl PDescr {
     /// Sets <me> for an Enum value
     /// Then, call AddEnumDef ordered from the first one (value 0)
     pub fn set_enum(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_PDescr_set_enum(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_enum(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:81 - `StepData_PDescr::AddEnumDef()`
@@ -4952,15 +5575,18 @@ impl PDescr {
     pub fn add_enum_def(&mut self, enumdef: &str) {
         let c_enumdef = std::ffi::CString::new(enumdef).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_add_enum_def(self as *mut Self, c_enumdef.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_add_enum_def(
+                self as *mut Self,
+                c_enumdef.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:84 - `StepData_PDescr::SetType()`
     /// Sets <me> for an Entity which must match a Type (early-bound)
-    pub fn set_type(&mut self, atype: &crate::ffi::HandleStandardType) {
+    pub fn set_type(&mut self, atype: &crate::ffi_types::HandleStandardType) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_type(self as *mut Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_type(self as *mut Self, atype)
         })
     }
 
@@ -4970,7 +5596,10 @@ impl PDescr {
     pub fn set_descr(&mut self, dscnam: &str) {
         let c_dscnam = std::ffi::CString::new(dscnam).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_descr(self as *mut Self, c_dscnam.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_descr(
+                self as *mut Self,
+                c_dscnam.as_ptr(),
+            )
         })
     }
 
@@ -4981,7 +5610,7 @@ impl PDescr {
     /// 2 : a simple field passes to a LIST OF LIST
     pub fn add_arity(&mut self, arity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_add_arity(self as *mut Self, arity)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_add_arity(self as *mut Self, arity)
         })
     }
 
@@ -4992,16 +5621,16 @@ impl PDescr {
     /// 2 : LIST OF LIST
     pub fn set_arity(&mut self, arity: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_arity(self as *mut Self, arity)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_arity(self as *mut Self, arity)
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:104 - `StepData_PDescr::SetFrom()`
     /// Sets <me> as <other> but duplicated
     /// Hence, some definition may be changed
-    pub fn set_from(&mut self, other: &crate::ffi::HandleStepDataPDescr) {
+    pub fn set_from(&mut self, other: &crate::ffi_types::HandleStepDataPDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_from(self as *mut Self, other)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_from(self as *mut Self, other)
         })
     }
 
@@ -5009,7 +5638,7 @@ impl PDescr {
     /// Sets/Unsets <me> to accept undefined values
     pub fn set_optional(&mut self, opt: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_optional(self as *mut Self, opt)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_optional(self as *mut Self, opt)
         })
     }
 
@@ -5017,7 +5646,7 @@ impl PDescr {
     /// Sets/Unsets <me> to be for a derived field
     pub fn set_derived(&mut self, der: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_derived(self as *mut Self, der)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_derived(self as *mut Self, der)
         })
     }
 
@@ -5027,14 +5656,20 @@ impl PDescr {
     pub fn set_field(&mut self, name: &str, rank: i32) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_set_field(self as *mut Self, c_name.as_ptr(), rank)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_set_field(
+                self as *mut Self,
+                c_name.as_ptr(),
+                rank,
+            )
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:117 - `StepData_PDescr::IsSelect()`
     /// Tells if <me> is for a SELECT
     pub fn is_select(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_select(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_select(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:127 - `StepData_PDescr::Member()`
@@ -5046,44 +5681,56 @@ impl PDescr {
     /// Hence, following IsInteger .. Enum* only apply on <me> and
     /// require Member
     /// While IsType applies on <me> and all Select Members
-    pub fn member(&self, name: &str) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    pub fn member(&self, name: &str) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_PDescr_member(
-                self as *const Self,
-                c_name.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_member(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_PDescr.hxx`:130 - `StepData_PDescr::IsInteger()`
     /// Tells if <me> is for an Integer
     pub fn is_integer(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_integer(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_integer(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:133 - `StepData_PDescr::IsReal()`
     /// Tells if <me> is for a Real value
     pub fn is_real(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_real(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_real(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:136 - `StepData_PDescr::IsString()`
     /// Tells if <me> is for a String value
     pub fn is_string(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_string(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_string(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:139 - `StepData_PDescr::IsBoolean()`
     /// Tells if <me> is for a Boolean value (false,true)
     pub fn is_boolean(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_boolean(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_boolean(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:142 - `StepData_PDescr::IsLogical()`
     /// Tells if <me> is for a Logical value (false,true,unknown)
     pub fn is_logical(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_logical(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_logical(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:147 - `StepData_PDescr::IsEnum()`
@@ -5091,13 +5738,17 @@ impl PDescr {
     /// Then, call AddEnumDef ordered from the first one (value 0)
     /// Managed by an EnumTool
     pub fn is_enum(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_enum(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_enum(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:150 - `StepData_PDescr::EnumMax()`
     /// Returns the maximum integer for a suitable value (count - 1)
     pub fn enum_max(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_enum_max(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_enum_max(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:155 - `StepData_PDescr::EnumValue()`
@@ -5107,7 +5758,10 @@ impl PDescr {
     pub fn enum_value(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_enum_value(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_enum_value(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -5116,10 +5770,9 @@ impl PDescr {
     /// between 0 and EnumMax. It is limited by dots
     pub fn enum_text(&self, val: i32) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_PDescr_enum_text(
-                self as *const Self,
-                val,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_enum_text(self as *const Self, val),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -5128,26 +5781,28 @@ impl PDescr {
     /// **Source:** `StepData_PDescr.hxx`:162 - `StepData_PDescr::IsEntity()`
     /// Tells if <me> is for an Entity, either Described or CDL Type
     pub fn is_entity(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_entity(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_entity(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:166 - `StepData_PDescr::IsType()`
     /// Tells if <me> is for an entity of a given CDL type (early-bnd)
     /// (works for <me> + nexts if <me> is a Select)
-    pub fn is_type(&self, atype: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_type(&self, atype: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_is_type(self as *const Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_type(self as *const Self, atype)
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:170 - `StepData_PDescr::Type()`
     /// Returns the type to match (IsKind), for a CDL Entity
     /// (else, null handle)
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_PDescr_type_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_type_(self as *const Self),
+            ))
         }
     }
 
@@ -5155,9 +5810,9 @@ impl PDescr {
     /// Tells if <me> is for a Described entity of a given EDescr
     /// (does this EDescr match description name ?). For late-bnd
     /// (works for <me> + nexts if <me> is a Select)
-    pub fn is_descr(&self, descr: &crate::ffi::HandleStepDataEDescr) -> bool {
+    pub fn is_descr(&self, descr: &crate::ffi_types::HandleStepDataEDescr) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_is_descr(self as *const Self, descr)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_descr(self as *const Self, descr)
         })
     }
 
@@ -5166,9 +5821,9 @@ impl PDescr {
     /// (else, empty string)
     pub fn descr_name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_PDescr_descr_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_descr_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -5177,7 +5832,9 @@ impl PDescr {
     /// **Source:** `StepData_PDescr.hxx`:182 - `StepData_PDescr::Arity()`
     /// Returns the arity of <me>
     pub fn arity(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_arity(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_arity(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:189 - `StepData_PDescr::Simple()`
@@ -5186,38 +5843,44 @@ impl PDescr {
     /// This allows to have different attributes for Optional for
     /// instance, on a field, and on the parameter of a LIST :
     /// [OPTIONAL] LIST OF [OPTIONAL] ...
-    pub fn simple(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    pub fn simple(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_PDescr_simple(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_simple(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_PDescr.hxx`:192 - `StepData_PDescr::IsOptional()`
     /// Tells if <me> is Optional
     pub fn is_optional(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_optional(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_optional(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:195 - `StepData_PDescr::IsDerived()`
     /// Tells if <me> is Derived
     pub fn is_derived(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_derived(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_derived(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:198 - `StepData_PDescr::IsField()`
     /// Tells if <me> is a Field. Else it is a Type
     pub fn is_field(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_is_field(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_is_field(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:200 - `StepData_PDescr::FieldName()`
     pub fn field_name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_PDescr_field_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_field_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -5225,22 +5888,26 @@ impl PDescr {
 
     /// **Source:** `StepData_PDescr.hxx`:202 - `StepData_PDescr::FieldRank()`
     pub fn field_rank(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_PDescr_field_rank(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_field_rank(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:206 - `StepData_PDescr::Check()`
     /// Semantic Check of a Field : does it complies with the given
     /// description ?
-    pub fn check(&self, afild: &Field, ach: &mut crate::ffi::HandleInterfaceCheck) {
+    pub fn check(&self, afild: &Field, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_check(self as *const Self, afild, ach)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_check(self as *const Self, afild, ach)
         })
     }
 
     /// **Source:** `StepData_PDescr.hxx`:209 - `StepData_PDescr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_PDescr_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_PDescr_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5248,7 +5915,7 @@ impl PDescr {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_PDescr_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5256,50 +5923,64 @@ impl PDescr {
     }
 
     /// **Source:** `StepData_PDescr.hxx`:209 - `StepData_PDescr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_PDescr_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_PDescr_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_PDescr_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_PDescr_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5307,7 +5988,7 @@ impl PDescr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_PDescr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5320,58 +6001,72 @@ impl PDescr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_PDescr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_PDescr_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataPDescr;
+pub use crate::ffi_types::HandleStepDataPDescr;
 
 unsafe impl crate::CppDeletable for HandleStepDataPDescr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataPDescr_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_destructor(ptr);
     }
 }
 
 impl HandleStepDataPDescr {
     /// Dereference this Handle to access the underlying StepData_PDescr
-    pub fn get(&self) -> &crate::ffi::StepData_PDescr {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataPDescr_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_PDescr {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_PDescr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_PDescr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_PDescr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataPDescr_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_PDescr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataPDescr_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataPDescr_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5385,11 +6080,11 @@ impl HandleStepDataPDescr {
 /// A Plex (for Complex) Entity is defined as a list of Simple
 /// Members ("external mapping")
 /// The types of these members must be in alphabetic order
-pub use crate::ffi::StepData_Plex as Plex;
+pub use crate::ffi_types::StepData_Plex as Plex;
 
 unsafe impl crate::CppDeletable for Plex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Plex_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Plex_destructor(ptr);
     }
 }
 
@@ -5398,37 +6093,39 @@ impl Plex {
     /// Creates a Plex (empty). The complete creation is made by the
     /// ECDescr itself, by calling Add
     pub fn new_handlestepdataecdescr(
-        descr: &crate::ffi::HandleStepDataECDescr,
+        descr: &crate::ffi_types::HandleStepDataECDescr,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Plex_ctor_handlestepdataecdescr(descr),
+                crate::ffi_extern_TKDESTEP::StepData_Plex_ctor_handlestepdataecdescr(descr),
             ))
         }
     }
 
     /// **Source:** `StepData_Plex.hxx`:48 - `StepData_Plex::Add()`
     /// Adds a member to <me>
-    pub fn add(&mut self, member: &crate::ffi::HandleStepDataSimple) {
+    pub fn add(&mut self, member: &crate::ffi_types::HandleStepDataSimple) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Plex_add(self as *mut Self, member)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_add(self as *mut Self, member)
         })
     }
 
     /// **Source:** `StepData_Plex.hxx`:51 - `StepData_Plex::ECDescr()`
     /// Returns the Description as for a Plex
-    pub fn ec_descr(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataECDescr> {
+    pub fn ec_descr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataECDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Plex_ec_descr(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_ec_descr(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_Plex.hxx`:54 - `StepData_Plex::IsComplex()`
     /// Returns False
     pub fn is_complex(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_Plex_is_complex(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Plex_is_complex(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Plex.hxx`:59 - `StepData_Plex::Matches()`
@@ -5438,7 +6135,10 @@ impl Plex {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Plex_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
@@ -5446,13 +6146,15 @@ impl Plex {
     /// Returns a Simple Entity which matches with a Type in <me> :
     /// For a Simple Entity : me if it matches, else a null handle
     /// For a Complex Entity : the member which matches, else null
-    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi::HandleStepDataSimple> {
+    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple> {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Plex_as_(
-                self as *const Self,
-                c_steptype.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_as_(
+                    self as *const Self,
+                    c_steptype.as_ptr(),
+                ),
+            ))
         }
     }
 
@@ -5461,7 +6163,10 @@ impl Plex {
     pub fn has_field(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_has_field(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Plex_has_field(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -5476,7 +6181,7 @@ impl Plex {
     pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Plex_field(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_field(
                 self as *const Self,
                 c_name.as_ptr(),
             )))
@@ -5494,7 +6199,7 @@ impl Plex {
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_Plex_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_c_field(
                 self as *mut Self,
                 c_name.as_ptr(),
             )))
@@ -5504,35 +6209,38 @@ impl Plex {
     /// **Source:** `StepData_Plex.hxx`:77 - `StepData_Plex::NbMembers()`
     /// Returns the count of simple members
     pub fn nb_members(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Plex_nb_members(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Plex_nb_members(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Plex.hxx`:80 - `StepData_Plex::Member()`
     /// Returns a simple member from its rank
-    pub fn member(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataSimple> {
+    pub fn member(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Plex_member(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_member(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_Plex.hxx`:83 - `StepData_Plex::TypeList()`
     /// Returns the actual list of members types
-    pub fn type_list(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+    pub fn type_list(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Plex_type_list(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_type_list(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_Plex.hxx`:86 - `StepData_Plex::Check()`
     /// Fills a Check by using its Description
-    pub fn check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+    pub fn check(&self, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Plex_check(self as *const Self, ach)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_check(self as *const Self, ach)
         })
     }
 
@@ -5540,35 +6248,41 @@ impl Plex {
     /// Fills an EntityIterator with entities shared by <me>
     pub fn shared(&self, list: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Plex_shared(self as *const Self, list)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_shared(self as *const Self, list)
         })
     }
 
     /// **Source:** `StepData_Plex.hxx`:91 - `StepData_Plex::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Plex_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_Plex.hxx`:91 - `StepData_Plex::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_Plex_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `StepData_Plex.hxx`:91 - `StepData_Plex::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_Plex_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_get_type_descriptor()))
+        }
     }
 
     /// Upcast to StepData_Described
     pub fn as_described(&self) -> &Described {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Plex_as_StepData_Described(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_as_StepData_Described(
                 self as *const Self,
             ))
         }
@@ -5577,16 +6291,18 @@ impl Plex {
     /// Upcast to StepData_Described (mutable)
     pub fn as_described_mut(&mut self) -> &mut Described {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Plex_as_StepData_Described_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_as_StepData_Described_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Plex_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Plex_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -5595,43 +6311,50 @@ impl Plex {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Plex_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataPlex> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPlex> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Plex_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Plex_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Described.hxx`:40 - `StepData_Described::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Plex_inherited_Description(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_Description(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -5639,7 +6362,7 @@ impl Plex {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_Plex_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5652,67 +6375,85 @@ impl Plex {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Plex_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Plex_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataPlex;
+pub use crate::ffi_types::HandleStepDataPlex;
 
 unsafe impl crate::CppDeletable for HandleStepDataPlex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataPlex_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataPlex_destructor(ptr);
     }
 }
 
 impl HandleStepDataPlex {
     /// Dereference this Handle to access the underlying StepData_Plex
-    pub fn get(&self) -> &crate::ffi::StepData_Plex {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataPlex_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_Plex {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPlex_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_Plex
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_Plex {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_Plex {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataPlex_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataPlex_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_Plex> to Handle<StepData_Described>
-    pub fn to_handle_described(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataDescribed> {
+    pub fn to_handle_described(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDescribed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataPlex_to_HandleStepDataDescribed(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataPlex_to_HandleStepDataDescribed(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StepData_Plex> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataPlex_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataPlex_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5728,11 +6469,11 @@ impl HandleStepDataPlex {
 /// Protocol, which recognizes only UnknownEntities.
 /// Sub-classes will redefine CaseNumber and, if necessary,
 /// NbResources and Resources.
-pub use crate::ffi::StepData_Protocol as Protocol;
+pub use crate::ffi_types::StepData_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Protocol_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Protocol_destructor(ptr);
     }
 }
 
@@ -5740,7 +6481,9 @@ impl Protocol {
     /// **Source:** `StepData_Protocol.hxx`:45 - `StepData_Protocol::StepData_Protocol()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_ctor(),
+            ))
         }
     }
 
@@ -5749,18 +6492,17 @@ impl Protocol {
     /// Here, No resource
     pub fn nb_resources(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_nb_resources(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_nb_resources(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_Protocol.hxx`:52 - `StepData_Protocol::Resource()`
     /// Returns a Resource, given a rank. Here, none
-    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_resource(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_resource(self as *const Self, num),
+            ))
         }
     }
 
@@ -5768,18 +6510,18 @@ impl Protocol {
     /// Returns a unique positive number for any recognized entity
     /// Redefined to work by calling both TypeNumber and, for a
     /// Described Entity (late binding) DescrNumber
-    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn case_number(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_case_number(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_case_number(self as *const Self, obj)
         })
     }
 
     /// **Source:** `StepData_Protocol.hxx`:64 - `StepData_Protocol::TypeNumber()`
     /// Returns a Case Number, specific of each recognized Type
     /// Here, only Unknown Entity is recognized
-    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn type_number(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_type_number(self as *const Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_type_number(self as *const Self, atype)
         })
     }
 
@@ -5790,11 +6532,14 @@ impl Protocol {
     /// was C++ : return const
     pub fn schema_name(
         &self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_Protocol_schema_name(self as *const Self, theModel),
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_schema_name(
+                    self as *const Self,
+                    theModel,
+                ),
             ))
         }
         .to_string_lossy()
@@ -5803,28 +6548,34 @@ impl Protocol {
 
     /// **Source:** `StepData_Protocol.hxx`:74 - `StepData_Protocol::NewModel()`
     /// Creates an empty Model for Step Norm
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_new_model(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_new_model(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_Protocol.hxx`:78 - `StepData_Protocol::IsSuitableModel()`
     /// Returns True if <model> is a Model of Step Norm
-    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+    pub fn is_suitable_model(
+        &self,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_is_suitable_model(self as *const Self, model)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_is_suitable_model(
+                self as *const Self,
+                model,
+            )
         })
     }
 
     /// **Source:** `StepData_Protocol.hxx`:81 - `StepData_Protocol::UnknownEntity()`
     /// Creates a new Unknown Entity for Step (UndefinedEntity)
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Protocol_unknown_entity(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_unknown_entity(self as *const Self),
             ))
         }
     }
@@ -5832,9 +6583,12 @@ impl Protocol {
     /// **Source:** `StepData_Protocol.hxx`:86 - `StepData_Protocol::IsUnknownEntity()`
     /// Returns True if <ent> is an Unknown Entity for the Norm, i.e.
     /// Type UndefinedEntity, status Unknown
-    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_unknown_entity(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_is_unknown_entity(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_is_unknown_entity(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -5843,9 +6597,9 @@ impl Protocol {
     /// an EDescr (late binding)
     /// Warning : TypeNumber and DescrNumber must give together a unique
     /// positive case number for each distinct case, type or descr
-    pub fn descr_number(&self, adescr: &crate::ffi::HandleStepDataEDescr) -> i32 {
+    pub fn descr_number(&self, adescr: &crate::ffi_types::HandleStepDataEDescr) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_descr_number(self as *const Self, adescr)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_descr_number(self as *const Self, adescr)
         })
     }
 
@@ -5853,9 +6607,9 @@ impl Protocol {
     /// Records an EDescr with its case number
     /// Also records its name for an ESDescr (simple type): an ESDescr
     /// is then used, for case number, or for type name
-    pub fn add_descr(&mut self, adescr: &crate::ffi::HandleStepDataEDescr, CN: i32) {
+    pub fn add_descr(&mut self, adescr: &crate::ffi_types::HandleStepDataEDescr, CN: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Protocol_add_descr(self as *mut Self, adescr, CN)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_add_descr(self as *mut Self, adescr, CN)
         })
     }
 
@@ -5863,17 +6617,18 @@ impl Protocol {
     /// Tells if a Protocol brings at least one ESDescr, i.e. if it
     /// defines at least one entity description by ESDescr mechanism
     pub fn has_descr(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_Protocol_has_descr(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_has_descr(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Protocol.hxx`:104 - `StepData_Protocol::Descr()`
     /// Returns the description attached to a case number, or null
-    pub fn descr_int(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn descr_int(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_descr_int(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_descr_int(self as *const Self, num),
+            ))
         }
     }
 
@@ -5885,11 +6640,11 @@ impl Protocol {
         &self,
         name: &str,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Protocol_descr_charptr_bool(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_descr_charptr_bool(
                     self as *const Self,
                     c_name.as_ptr(),
                     anylevel,
@@ -5904,14 +6659,16 @@ impl Protocol {
         &self,
         name: &str,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_es_descr(
-                self as *const Self,
-                c_name.as_ptr(),
-                anylevel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_es_descr(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                    anylevel,
+                ),
+            ))
         }
     }
 
@@ -5921,23 +6678,25 @@ impl Protocol {
     /// <anylevel> False : for <me> only
     pub fn ec_descr(
         &self,
-        names: &crate::ffi::TColStd_SequenceOfAsciiString,
+        names: &crate::ffi_types::TColStd_SequenceOfAsciiString,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataECDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataECDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_ec_descr(
-                self as *const Self,
-                names,
-                anylevel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_ec_descr(
+                    self as *const Self,
+                    names,
+                    anylevel,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_Protocol.hxx`:126 - `StepData_Protocol::AddPDescr()`
     /// Records an PDescr
-    pub fn add_p_descr(&mut self, pdescr: &crate::ffi::HandleStepDataPDescr) {
+    pub fn add_p_descr(&mut self, pdescr: &crate::ffi_types::HandleStepDataPDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Protocol_add_p_descr(self as *mut Self, pdescr)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_add_p_descr(self as *mut Self, pdescr)
         })
     }
 
@@ -5949,22 +6708,27 @@ impl Protocol {
         &self,
         name: &str,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_p_descr(
-                self as *const Self,
-                c_name.as_ptr(),
-                anylevel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_p_descr(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                    anylevel,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StepData_Protocol.hxx`:136 - `StepData_Protocol::AddBasicDescr()`
     /// Records an ESDescr, intended to build complex descriptions
-    pub fn add_basic_descr(&mut self, esdescr: &crate::ffi::HandleStepDataESDescr) {
+    pub fn add_basic_descr(&mut self, esdescr: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Protocol_add_basic_descr(self as *mut Self, esdescr)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_add_basic_descr(
+                self as *mut Self,
+                esdescr,
+            )
         })
     }
 
@@ -5976,11 +6740,11 @@ impl Protocol {
         &self,
         name: &str,
         anylevel: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Protocol_basic_descr(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_basic_descr(
                     self as *const Self,
                     c_name.as_ptr(),
                     anylevel,
@@ -5990,9 +6754,11 @@ impl Protocol {
     }
 
     /// **Source:** `StepData_Protocol.hxx`:145 - `StepData_Protocol::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Protocol_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Protocol_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -6000,7 +6766,7 @@ impl Protocol {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_Protocol_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6008,80 +6774,102 @@ impl Protocol {
     }
 
     /// **Source:** `StepData_Protocol.hxx`:145 - `StepData_Protocol::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_Protocol_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Interface_Protocol
     pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Protocol_as_Interface_Protocol(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_as_Interface_Protocol(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_Protocol (mutable)
     pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Protocol_as_Interface_Protocol_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_as_Interface_Protocol_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Protocol_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Protocol_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataProtocol> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Protocol_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
-    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_dynamic_type(&self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_IsDynamicType(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_IsDynamicType(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
-    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_NbTypes(self as *const Self, obj)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_NbTypes(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
     pub fn type_(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         nt: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Protocol_inherited_Type(self as *const Self, obj, nt),
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_Type(
+                    self as *const Self,
+                    obj,
+                    nt,
+                ),
             ))
         }
     }
@@ -6090,24 +6878,34 @@ impl Protocol {
     pub fn global_check(
         &self,
         G: &crate::interface::Graph,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_GlobalCheck(self as *const Self, G, ach)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_GlobalCheck(
+                self as *const Self,
+                G,
+                ach,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6115,7 +6913,7 @@ impl Protocol {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_Protocol_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -6128,69 +6926,83 @@ impl Protocol {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Protocol_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Protocol_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataProtocol;
+pub use crate::ffi_types::HandleStepDataProtocol;
 
 unsafe impl crate::CppDeletable for HandleStepDataProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataProtocol_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_destructor(ptr);
     }
 }
 
 impl HandleStepDataProtocol {
     /// Dereference this Handle to access the underlying StepData_Protocol
-    pub fn get(&self) -> &crate::ffi::StepData_Protocol {
+    pub fn get(&self) -> &crate::ffi_types::StepData_Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataProtocol_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_Protocol
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_Protocol {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataProtocol_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_Protocol> to Handle<Interface_Protocol>
-    pub fn to_handle_protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn to_handle_protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataProtocol_to_HandleInterfaceProtocol(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_to_HandleInterfaceProtocol(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StepData_Protocol> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataProtocol_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6200,11 +7012,9 @@ impl HandleStepDataProtocol {
     /// Returns `None` if the handle does not point to a `HeaderSection_Protocol` (or subclass).
     pub fn downcast_to_header_section_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleHeaderSectionProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleHeaderSectionProtocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataProtocol_downcast_to_HandleHeaderSectionProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_downcast_to_HandleHeaderSectionProtocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6218,9 +7028,9 @@ impl HandleStepDataProtocol {
     /// Returns `None` if the handle does not point to a `StepAP214_Protocol` (or subclass).
     pub fn downcast_to_step_ap214_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepAP214Protocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepAP214Protocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataProtocol_downcast_to_HandleStepAP214Protocol(
+            crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_downcast_to_HandleStepAP214Protocol(
                 self as *const Self,
             )
         });
@@ -6236,11 +7046,9 @@ impl HandleStepDataProtocol {
     /// Returns `None` if the handle does not point to a `StepData_FileProtocol` (or subclass).
     pub fn downcast_to_file_protocol(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataFileProtocol>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataFileProtocol>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataProtocol_downcast_to_HandleStepDataFileProtocol(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataProtocol_downcast_to_HandleStepDataFileProtocol(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6262,11 +7070,11 @@ impl HandleStepDataProtocol {
 /// Protocol, must use the same definition for Case Numbers (give
 /// the same Value for a StepType defined as a String from a File
 /// as the Protocol does for the corresponding Entity)
-pub use crate::ffi::StepData_ReadWriteModule as ReadWriteModule;
+pub use crate::ffi_types::StepData_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_ReadWriteModule_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_destructor(ptr);
     }
 }
 
@@ -6279,9 +7087,17 @@ impl ReadWriteModule {
     /// CaseNum (this type)
     /// Warning : The methods CaseStep, StepType and Recognize,
     /// must be in phase (triplets CaseNum-StepType-Type of Object)
-    pub fn case_num(&self, data: &crate::ffi::HandleInterfaceFileReaderData, num: i32) -> i32 {
+    pub fn case_num(
+        &self,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
+        num: i32,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_case_num(self as *const Self, data, num)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_case_num(
+                self as *const Self,
+                data,
+                num,
+            )
         })
     }
 
@@ -6292,7 +7108,10 @@ impl ReadWriteModule {
     /// Entity type which corresponds to this Type given as a String
     pub fn case_step_asciistring(&self, atype: &crate::t_collection::AsciiString) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_case_step_asciistring(self as *const Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_case_step_asciistring(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
@@ -6301,10 +7120,10 @@ impl ReadWriteModule {
     /// The provided Default recognizes nothing
     pub fn case_step_sequenceofasciistring(
         &self,
-        types: &crate::ffi::TColStd_SequenceOfAsciiString,
+        types: &crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_case_step_sequenceofasciistring(
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_case_step_sequenceofasciistring(
                 self as *const Self,
                 types,
             )
@@ -6319,7 +7138,7 @@ impl ReadWriteModule {
     /// possible Plexes, this method must be redefined.
     pub fn is_complex(&self, CN: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_is_complex(self as *const Self, CN)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_is_complex(self as *const Self, CN)
         })
     }
 
@@ -6334,7 +7153,7 @@ impl ReadWriteModule {
     /// (Complex Type must be managed by users)
     pub fn step_type(&self, CN: i32) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ReadWriteModule_step_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_step_type(
                 self as *const Self,
                 CN,
             )))
@@ -6349,7 +7168,10 @@ impl ReadWriteModule {
     pub fn short_type(&self, CN: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_ReadWriteModule_short_type(self as *const Self, CN),
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_short_type(
+                    self as *const Self,
+                    CN,
+                ),
             ))
         }
     }
@@ -6363,10 +7185,14 @@ impl ReadWriteModule {
     pub fn complex_type(
         &self,
         CN: i32,
-        types: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        types: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_complex_type(self as *const Self, CN, types)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_complex_type(
+                self as *const Self,
+                CN,
+                types,
+            )
         })
     }
 
@@ -6375,13 +7201,20 @@ impl ReadWriteModule {
     pub fn read(
         &self,
         CN: i32,
-        data: &crate::ffi::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_read(self as *const Self, CN, data, num, ach, ent)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_read(
+                self as *const Self,
+                CN,
+                data,
+                num,
+                ach,
+                ent,
+            )
         })
     }
 
@@ -6390,13 +7223,13 @@ impl ReadWriteModule {
     pub fn read_step(
         &self,
         CN: i32,
-        data: &crate::ffi::HandleStepDataStepReaderData,
+        data: &crate::ffi_types::HandleStepDataStepReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_read_step(
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_read_step(
                 self as *const Self,
                 CN,
                 data,
@@ -6413,19 +7246,26 @@ impl ReadWriteModule {
         &self,
         CN: i32,
         SW: &mut StepWriter,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_write_step(self as *const Self, CN, SW, ent)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_write_step(
+                self as *const Self,
+                CN,
+                SW,
+                ent,
+            )
         })
     }
 
     /// **Source:** `StepData_ReadWriteModule.hxx`:117 - `StepData_ReadWriteModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ReadWriteModule_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6433,7 +7273,7 @@ impl ReadWriteModule {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_ReadWriteModule_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6441,18 +7281,22 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `StepData_ReadWriteModule.hxx`:117 - `StepData_ReadWriteModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_ReadWriteModule_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Interface_ReaderModule
     pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ReadWriteModule_as_Interface_ReaderModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_as_Interface_ReaderModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6460,7 +7304,7 @@ impl ReadWriteModule {
     pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_ReadWriteModule_as_Interface_ReaderModule_mut(
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_as_Interface_ReaderModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -6470,9 +7314,11 @@ impl ReadWriteModule {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_ReadWriteModule_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6480,7 +7326,9 @@ impl ReadWriteModule {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_ReadWriteModule_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6489,13 +7337,13 @@ impl ReadWriteModule {
     pub fn new_read(
         &self,
         casenum: i32,
-        data: &crate::ffi::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_NewRead(
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_NewRead(
                 self as *const Self,
                 casenum,
                 data,
@@ -6507,16 +7355,22 @@ impl ReadWriteModule {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6524,7 +7378,9 @@ impl ReadWriteModule {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_ReadWriteModule_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6537,80 +7393,84 @@ impl ReadWriteModule {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_ReadWriteModule_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_ReadWriteModule_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataReadWriteModule;
+pub use crate::ffi_types::HandleStepDataReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleStepDataReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataReadWriteModule_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_destructor(ptr);
     }
 }
 
 impl HandleStepDataReadWriteModule {
     /// Dereference this Handle to access the underlying StepData_ReadWriteModule
-    pub fn get(&self) -> &crate::ffi::StepData_ReadWriteModule {
+    pub fn get(&self) -> &crate::ffi_types::StepData_ReadWriteModule {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataReadWriteModule_get(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_ReadWriteModule
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_ReadWriteModule {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_ReadWriteModule {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataReadWriteModule_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<StepData_ReadWriteModule> to Handle<Interface_ReaderModule>
     pub fn to_handle_reader_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceReaderModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataReadWriteModule_to_HandleInterfaceReaderModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_to_HandleInterfaceReaderModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_ReadWriteModule> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataReadWriteModule_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -6619,9 +7479,9 @@ impl HandleStepDataReadWriteModule {
     /// Returns `None` if the handle does not point to a `RWHeaderSection_ReadWriteModule` (or subclass).
     pub fn downcast_to_read_write_module(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleRWHeaderSectionReadWriteModule>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleRWHeaderSectionReadWriteModule>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataReadWriteModule_downcast_to_HandleRWHeaderSectionReadWriteModule(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataReadWriteModule_downcast_to_HandleRWHeaderSectionReadWriteModule(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6636,11 +7496,11 @@ impl HandleStepDataReadWriteModule {
 // ========================
 
 /// **Source:** `StepData_SelectArrReal.hxx`:28 - `StepData_SelectArrReal`
-pub use crate::ffi::StepData_SelectArrReal as SelectArrReal;
+pub use crate::ffi_types::StepData_SelectArrReal as SelectArrReal;
 
 unsafe impl crate::CppDeletable for SelectArrReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectArrReal_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_destructor(ptr);
     }
 }
 
@@ -6648,39 +7508,43 @@ impl SelectArrReal {
     /// **Source:** `StepData_SelectArrReal.hxx`:32 - `StepData_SelectArrReal::StepData_SelectArrReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::StepData_SelectArrReal_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:34 - `StepData_SelectArrReal::Kind()`
     pub fn kind(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectArrReal_kind(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_kind(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:36 - `StepData_SelectArrReal::ArrReal()`
-    pub fn arr_real(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn arr_real(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectArrReal_arr_real(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_arr_real(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:38 - `StepData_SelectArrReal::SetArrReal()`
-    pub fn set_arr_real(&mut self, arr: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn set_arr_real(&mut self, arr: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_set_arr_real(self as *mut Self, arr)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_set_arr_real(self as *mut Self, arr)
         })
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:40 - `StepData_SelectArrReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectArrReal_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6688,7 +7552,7 @@ impl SelectArrReal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectArrReal_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6696,16 +7560,22 @@ impl SelectArrReal {
     }
 
     /// **Source:** `StepData_SelectArrReal.hxx`:40 - `StepData_SelectArrReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_SelectArrReal_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_SelectNamed
     pub fn as_select_named(&self) -> &SelectNamed {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectArrReal_as_StepData_SelectNamed(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_StepData_SelectNamed(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6713,7 +7583,9 @@ impl SelectArrReal {
     pub fn as_select_named_mut(&mut self) -> &mut SelectNamed {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_SelectArrReal_as_StepData_SelectNamed_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_StepData_SelectNamed_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6721,9 +7593,11 @@ impl SelectArrReal {
     /// Upcast to StepData_SelectMember
     pub fn as_select_member(&self) -> &SelectMember {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectArrReal_as_StepData_SelectMember(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_StepData_SelectMember(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6731,7 +7605,9 @@ impl SelectArrReal {
     pub fn as_select_member_mut(&mut self) -> &mut SelectMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_SelectArrReal_as_StepData_SelectMember_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_StepData_SelectMember_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6739,28 +7615,32 @@ impl SelectArrReal {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectArrReal_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectArrReal_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectArrReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectArrReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectArrReal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -6768,67 +7648,84 @@ impl SelectArrReal {
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:41 - `StepData_SelectNamed::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectArrReal_inherited_Field(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Field(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_SelectArrReal_inherited_CField(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_CField(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetKind(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetKind(
+                self as *mut Self,
+                kind,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:57 - `StepData_SelectNamed::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Int(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Int(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetInt(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetInt(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Real(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Real(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetReal(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetReal(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_ParamType(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_ParamType(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6836,35 +7733,47 @@ impl SelectArrReal {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Integer(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Integer(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetInteger(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetInteger(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Boolean(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Boolean(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetBoolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetBoolean(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Logical(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6872,28 +7781,37 @@ impl SelectArrReal {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_SetLogical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_SetLogical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Enum(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Enum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6901,7 +7819,9 @@ impl SelectArrReal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_SelectArrReal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6914,86 +7834,90 @@ impl SelectArrReal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectArrReal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectArrReal_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSelectArrReal;
+pub use crate::ffi_types::HandleStepDataSelectArrReal;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectArrReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSelectArrReal_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_destructor(ptr);
     }
 }
 
 impl HandleStepDataSelectArrReal {
     /// Dereference this Handle to access the underlying StepData_SelectArrReal
-    pub fn get(&self) -> &crate::ffi::StepData_SelectArrReal {
+    pub fn get(&self) -> &crate::ffi_types::StepData_SelectArrReal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataSelectArrReal_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_SelectArrReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectArrReal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_SelectArrReal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSelectArrReal_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_SelectArrReal> to Handle<StepData_SelectNamed>
-    pub fn to_handle_select_named(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectNamed> {
+    pub fn to_handle_select_named(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectArrReal_to_HandleStepDataSelectNamed(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_to_HandleStepDataSelectNamed(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_SelectArrReal> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectArrReal_to_HandleStepDataSelectMember(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_to_HandleStepDataSelectMember(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_SelectArrReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectArrReal_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7005,9 +7929,9 @@ impl HandleStepDataSelectArrReal {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor23dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor23d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor23dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor23dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectArrReal_downcast_to_HandleStepFEASymmetricTensor23dMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_downcast_to_HandleStepFEASymmetricTensor23dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7021,9 +7945,9 @@ impl HandleStepDataSelectArrReal {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor43dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor43d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor43dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor43dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectArrReal_downcast_to_HandleStepFEASymmetricTensor43dMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectArrReal_downcast_to_HandleStepFEASymmetricTensor43dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7042,11 +7966,11 @@ impl HandleStepDataSelectArrReal {
 /// type in a select which also accepts entities : this one has
 /// NO NAME.
 /// For a named select, see SelectNamed
-pub use crate::ffi::StepData_SelectInt as SelectInt;
+pub use crate::ffi_types::StepData_SelectInt as SelectInt;
 
 unsafe impl crate::CppDeletable for SelectInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectInt_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectInt_destructor(ptr);
     }
 }
 
@@ -7054,38 +7978,44 @@ impl SelectInt {
     /// **Source:** `StepData_SelectInt.hxx`:37 - `StepData_SelectInt::StepData_SelectInt()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectInt_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:39 - `StepData_SelectInt::Kind()`
     pub fn kind(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectInt_kind(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_kind(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:41 - `StepData_SelectInt::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_set_kind(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_set_kind(self as *mut Self, kind)
         })
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:43 - `StepData_SelectInt::Int()`
     pub fn int(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectInt_int(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_int(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:45 - `StepData_SelectInt::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_set_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_set_int(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectInt_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectInt_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7095,7 +8025,7 @@ impl SelectInt {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectInt_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7103,53 +8033,65 @@ impl SelectInt {
     }
 
     /// **Source:** `StepData_SelectInt.hxx`:47 - `StepData_SelectInt::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_SelectInt_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_SelectMember
     pub fn as_select_member(&self) -> &SelectMember {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectInt_as_StepData_SelectMember(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_as_StepData_SelectMember(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_SelectMember (mutable)
     pub fn as_select_member_mut(&mut self) -> &mut SelectMember {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectInt_as_StepData_SelectMember_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_as_StepData_SelectMember_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectInt_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectInt_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectInt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectInt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectInt_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -7157,14 +8099,14 @@ impl SelectInt {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:54 - `StepData_SelectMember::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_ParamType(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_ParamType(self as *const Self)
         }))
         .unwrap()
     }
@@ -7172,35 +8114,41 @@ impl SelectInt {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Integer(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Integer(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_SetInteger(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_SetInteger(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Boolean(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Boolean(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_SetBoolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_SetBoolean(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Logical(self as *const Self)
         }))
         .unwrap()
     }
@@ -7208,42 +8156,51 @@ impl SelectInt {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_SetLogical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_SetLogical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:97 - `StepData_SelectMember::Real()`
     pub fn real(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Real(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Real(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:99 - `StepData_SelectMember::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_SetReal(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_SetReal(self as *mut Self, val)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Enum(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Enum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7251,7 +8208,7 @@ impl SelectInt {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_SelectInt_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7264,52 +8221,60 @@ impl SelectInt {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectInt_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectInt_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSelectInt;
+pub use crate::ffi_types::HandleStepDataSelectInt;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSelectInt_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_destructor(ptr);
     }
 }
 
 impl HandleStepDataSelectInt {
     /// Dereference this Handle to access the underlying StepData_SelectInt
-    pub fn get(&self) -> &crate::ffi::StepData_SelectInt {
+    pub fn get(&self) -> &crate::ffi_types::StepData_SelectInt {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataSelectInt_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_SelectInt
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectInt {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_SelectInt {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSelectInt_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_get_mut(
                 self as *mut Self,
             ))
         }
@@ -7318,10 +8283,10 @@ impl HandleStepDataSelectInt {
     /// Upcast Handle<StepData_SelectInt> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectInt_to_HandleStepDataSelectMember(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_to_HandleStepDataSelectMember(
                     self as *const Self,
                 ),
             ))
@@ -7329,10 +8294,14 @@ impl HandleStepDataSelectInt {
     }
 
     /// Upcast Handle<StepData_SelectInt> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectInt_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7342,10 +8311,10 @@ impl HandleStepDataSelectInt {
     /// Returns `None` if the handle does not point to a `StepDimTol_SimpleDatumReferenceModifierMember` (or subclass).
     pub fn downcast_to_simple_datum_reference_modifier_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDimTolSimpleDatumReferenceModifierMember>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectInt_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7359,11 +8328,9 @@ impl HandleStepDataSelectInt {
     /// Returns `None` if the handle does not point to a `StepVisual_MarkerMember` (or subclass).
     pub fn downcast_to_marker_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualMarkerMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepVisualMarkerMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectInt_downcast_to_HandleStepVisualMarkerMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_downcast_to_HandleStepVisualMarkerMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7377,11 +8344,9 @@ impl HandleStepDataSelectInt {
     /// Returns `None` if the handle does not point to a `StepVisual_NullStyleMember` (or subclass).
     pub fn downcast_to_null_style_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualNullStyleMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepVisualNullStyleMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectInt_downcast_to_HandleStepVisualNullStyleMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectInt_downcast_to_HandleStepVisualNullStyleMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7412,11 +8377,11 @@ impl HandleStepDataSelectInt {
 ///
 /// Remark : this class itself could be deferred, because at least
 /// one of its virtual methods must be redefined to be usable
-pub use crate::ffi::StepData_SelectMember as SelectMember;
+pub use crate::ffi_types::StepData_SelectMember as SelectMember;
 
 unsafe impl crate::CppDeletable for SelectMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectMember_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectMember_destructor(ptr);
     }
 }
 
@@ -7424,7 +8389,9 @@ impl SelectMember {
     /// **Source:** `StepData_SelectMember.hxx`:51 - `StepData_SelectMember::StepData_SelectMember()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectMember_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_ctor(),
+            ))
         }
     }
 
@@ -7432,7 +8399,7 @@ impl SelectMember {
     /// Tells if a SelectMember has a name. Default is False
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_has_name(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_has_name(self as *const Self)
         })
     }
 
@@ -7440,9 +8407,9 @@ impl SelectMember {
     /// Returns the name of a SelectMember. Default is empty
     pub fn name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_SelectMember_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -7455,7 +8422,10 @@ impl SelectMember {
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_name(self as *mut Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_name(
+                self as *mut Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -7465,19 +8435,24 @@ impl SelectMember {
     pub fn matches(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_matches(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_matches(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:68 - `StepData_SelectMember::Kind()`
     pub fn kind(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectMember_kind(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_kind(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:70 - `StepData_SelectMember::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_kind(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_kind(self as *mut Self, kind)
         })
     }
 
@@ -7486,7 +8461,7 @@ impl SelectMember {
     /// enum ParamType
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_param_type(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_param_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -7495,7 +8470,9 @@ impl SelectMember {
     /// This internal method gives access to a value implemented by an
     /// Integer (to read it)
     pub fn int(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectMember_int(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_int(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::SetInt()`
@@ -7503,7 +8480,7 @@ impl SelectMember {
     /// Integer (to set it)
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_int(self as *mut Self, val)
         })
     }
 
@@ -7511,35 +8488,35 @@ impl SelectMember {
     /// Gets the value as an Integer
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_integer(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_integer(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_integer(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_integer(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_boolean(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_boolean(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_boolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_boolean(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_logical(self as *const Self)
         }))
         .unwrap()
     }
@@ -7547,28 +8524,33 @@ impl SelectMember {
     /// **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_logical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_logical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:97 - `StepData_SelectMember::Real()`
     pub fn real(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectMember_real(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_real(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:99 - `StepData_SelectMember::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_real(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_real(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:101 - `StepData_SelectMember::String()`
     pub fn string(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_SelectMember_string(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_string(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -7578,20 +8560,25 @@ impl SelectMember {
     pub fn set_string(&mut self, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_string(self as *mut Self, c_val.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_string(
+                self as *mut Self,
+                c_val.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectMember_enum_(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_enum_(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:107 - `StepData_SelectMember::EnumText()`
     pub fn enum_text(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectMember_enum_text(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_enum_text(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -7602,7 +8589,11 @@ impl SelectMember {
     pub fn set_enum(&mut self, val: i32, text: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_enum(self as *mut Self, val, c_text.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_enum(
+                self as *mut Self,
+                val,
+                c_text.as_ptr(),
+            )
         })
     }
 
@@ -7610,14 +8601,18 @@ impl SelectMember {
     pub fn set_enum_text(&mut self, val: i32, text: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_set_enum_text(self as *mut Self, val, c_text.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_set_enum_text(
+                self as *mut Self,
+                val,
+                c_text.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectMember_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectMember_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -7627,7 +8622,7 @@ impl SelectMember {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectMember_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7635,50 +8630,64 @@ impl SelectMember {
     }
 
     /// **Source:** `StepData_SelectMember.hxx`:113 - `StepData_SelectMember::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_SelectMember_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectMember_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectMember_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectMember_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7686,7 +8695,9 @@ impl SelectMember {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_SelectMember_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7699,62 +8710,72 @@ impl SelectMember {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectMember_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectMember_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSelectMember;
+pub use crate::ffi_types::HandleStepDataSelectMember;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectMember {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSelectMember_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_destructor(ptr);
     }
 }
 
 impl HandleStepDataSelectMember {
     /// Dereference this Handle to access the underlying StepData_SelectMember
-    pub fn get(&self) -> &crate::ffi::StepData_SelectMember {
+    pub fn get(&self) -> &crate::ffi_types::StepData_SelectMember {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataSelectMember_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying StepData_SelectMember
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectMember {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSelectMember_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying StepData_SelectMember
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_SelectMember {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<StepData_SelectMember> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectMember_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -7766,11 +8787,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepBasic_MeasureValueMember` (or subclass).
     pub fn downcast_to_measure_value_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureValueMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepBasicMeasureValueMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepBasicMeasureValueMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepBasicMeasureValueMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7784,11 +8803,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepBasic_SizeMember` (or subclass).
     pub fn downcast_to_size_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSizeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepBasicSizeMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepBasicSizeMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepBasicSizeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7802,11 +8819,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepData_SelectArrReal` (or subclass).
     pub fn downcast_to_select_arr_real(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectArrReal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectArrReal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectArrReal(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectArrReal(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7820,11 +8835,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepData_SelectInt` (or subclass).
     pub fn downcast_to_select_int(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectInt>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectInt>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectInt(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectInt(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7838,11 +8851,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepData_SelectNamed` (or subclass).
     pub fn downcast_to_select_named(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectNamed>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectNamed(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectNamed(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7856,11 +8867,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepData_SelectReal` (or subclass).
     pub fn downcast_to_select_real(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectReal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectReal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectReal(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepDataSelectReal(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7874,10 +8883,10 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepDimTol_SimpleDatumReferenceModifierMember` (or subclass).
     pub fn downcast_to_simple_datum_reference_modifier_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDimTolSimpleDatumReferenceModifierMember>>
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDimTolSimpleDatumReferenceModifierMember>>
     {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepDimTolSimpleDatumReferenceModifierMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7891,9 +8900,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_CurveElementFreedomMember` (or subclass).
     pub fn downcast_to_curve_element_freedom_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementFreedomMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementFreedomMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementCurveElementFreedomMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementCurveElementFreedomMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7907,9 +8916,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_CurveElementPurposeMember` (or subclass).
     pub fn downcast_to_curve_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementPurposeMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementCurveElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementCurveElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7923,11 +8932,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_ElementAspectMember` (or subclass).
     pub fn downcast_to_element_aspect_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementElementAspectMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementElementAspectMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementElementAspectMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementElementAspectMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7941,9 +8948,10 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_MeasureOrUnspecifiedValueMember` (or subclass).
     pub fn downcast_to_measure_or_unspecified_value_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementMeasureOrUnspecifiedValueMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementMeasureOrUnspecifiedValueMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementMeasureOrUnspecifiedValueMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementMeasureOrUnspecifiedValueMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7957,9 +8965,10 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_SurfaceElementPurposeMember` (or subclass).
     pub fn downcast_to_surface_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceElementPurposeMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementSurfaceElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementSurfaceElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7973,9 +8982,10 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepElement_VolumeElementPurposeMember` (or subclass).
     pub fn downcast_to_volume_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementVolumeElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementVolumeElementPurposeMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepElementVolumeElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepElementVolumeElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7989,11 +8999,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepFEA_DegreeOfFreedomMember` (or subclass).
     pub fn downcast_to_degree_of_freedom_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEADegreeOfFreedomMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEADegreeOfFreedomMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepFEADegreeOfFreedomMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepFEADegreeOfFreedomMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8007,11 +9015,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor23dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor23d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor23dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor23dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepFEASymmetricTensor23dMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepFEASymmetricTensor23dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8025,11 +9031,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor43dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor43d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor43dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor43dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepFEASymmetricTensor43dMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepFEASymmetricTensor43dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8043,11 +9047,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepGeom_TrimmingMember` (or subclass).
     pub fn downcast_to_trimming_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomTrimmingMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepGeomTrimmingMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepGeomTrimmingMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepGeomTrimmingMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8061,11 +9063,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepVisual_MarkerMember` (or subclass).
     pub fn downcast_to_marker_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualMarkerMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepVisualMarkerMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepVisualMarkerMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepVisualMarkerMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8079,11 +9079,9 @@ impl HandleStepDataSelectMember {
     /// Returns `None` if the handle does not point to a `StepVisual_NullStyleMember` (or subclass).
     pub fn downcast_to_null_style_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepVisualNullStyleMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepVisualNullStyleMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectMember_downcast_to_HandleStepVisualNullStyleMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectMember_downcast_to_HandleStepVisualNullStyleMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8101,11 +9099,11 @@ impl HandleStepDataSelectMember {
 /// This select member can be of any kind, and be named
 /// But its takes more memory than some specialised ones
 /// This class allows one name for the instance
-pub use crate::ffi::StepData_SelectNamed as SelectNamed;
+pub use crate::ffi_types::StepData_SelectNamed as SelectNamed;
 
 unsafe impl crate::CppDeletable for SelectNamed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectNamed_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectNamed_destructor(ptr);
     }
 }
 
@@ -8113,23 +9111,25 @@ impl SelectNamed {
     /// **Source:** `StepData_SelectNamed.hxx`:39 - `StepData_SelectNamed::StepData_SelectNamed()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectNamed_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:41 - `StepData_SelectNamed::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_has_name(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_has_name(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:43 - `StepData_SelectNamed::Name()`
     pub fn name(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_SelectNamed_name(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_name(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -8139,33 +9139,42 @@ impl SelectNamed {
     pub fn set_name(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_set_name(self as *mut Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_set_name(
+                self as *mut Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:47 - `StepData_SelectNamed::Field()`
     pub fn field(&self) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectNamed_field(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectNamed_field(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:49 - `StepData_SelectNamed::CField()`
     pub fn c_field(&mut self) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_SelectNamed_c_field(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectNamed_c_field(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:51 - `StepData_SelectNamed::Kind()`
     pub fn kind(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectNamed_kind(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_kind(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:53 - `StepData_SelectNamed::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_set_kind(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_set_kind(self as *mut Self, kind)
         })
     }
 
@@ -8173,7 +9182,9 @@ impl SelectNamed {
     /// This internal method gives access to a value implemented by an
     /// Integer (to read it)
     pub fn int(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectNamed_int(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_int(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:61 - `StepData_SelectNamed::SetInt()`
@@ -8181,28 +9192,30 @@ impl SelectNamed {
     /// Integer (to set it)
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_set_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_set_int(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:63 - `StepData_SelectNamed::Real()`
     pub fn real(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectNamed_real(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_real(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:65 - `StepData_SelectNamed::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_set_real(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_set_real(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:67 - `StepData_SelectNamed::String()`
     pub fn string(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_SelectNamed_string(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_string(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -8212,14 +9225,17 @@ impl SelectNamed {
     pub fn set_string(&mut self, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_set_string(self as *mut Self, c_val.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_set_string(
+                self as *mut Self,
+                c_val.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:71 - `StepData_SelectNamed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectNamed_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectNamed_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -8229,7 +9245,7 @@ impl SelectNamed {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectNamed_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8237,16 +9253,22 @@ impl SelectNamed {
     }
 
     /// **Source:** `StepData_SelectNamed.hxx`:71 - `StepData_SelectNamed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_SelectNamed_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_SelectMember
     pub fn as_select_member(&self) -> &SelectMember {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectNamed_as_StepData_SelectMember(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_as_StepData_SelectMember(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8254,7 +9276,9 @@ impl SelectNamed {
     pub fn as_select_member_mut(&mut self) -> &mut SelectMember {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_SelectNamed_as_StepData_SelectMember_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_as_StepData_SelectMember_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8262,28 +9286,32 @@ impl SelectNamed {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectNamed_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectNamed_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectNamed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectNamed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectNamed_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -8291,7 +9319,9 @@ impl SelectNamed {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_ParamType(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_ParamType(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -8299,35 +9329,41 @@ impl SelectNamed {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_Integer(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_Integer(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_SetInteger(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_SetInteger(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_Boolean(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_Boolean(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_SetBoolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_SetBoolean(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_Logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_Logical(self as *const Self)
         }))
         .unwrap()
     }
@@ -8335,28 +9371,37 @@ impl SelectNamed {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_SetLogical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_SetLogical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_Enum(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_Enum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8364,7 +9409,7 @@ impl SelectNamed {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_SelectNamed_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -8377,64 +9422,72 @@ impl SelectNamed {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectNamed_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectNamed_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSelectNamed;
+pub use crate::ffi_types::HandleStepDataSelectNamed;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectNamed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSelectNamed_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_destructor(ptr);
     }
 }
 
 impl HandleStepDataSelectNamed {
     /// Dereference this Handle to access the underlying StepData_SelectNamed
-    pub fn get(&self) -> &crate::ffi::StepData_SelectNamed {
+    pub fn get(&self) -> &crate::ffi_types::StepData_SelectNamed {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataSelectNamed_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_SelectNamed
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectNamed {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_SelectNamed {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSelectNamed_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_SelectNamed> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectNamed_to_HandleStepDataSelectMember(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_to_HandleStepDataSelectMember(
                     self as *const Self,
                 ),
             ))
@@ -8442,10 +9495,12 @@ impl HandleStepDataSelectNamed {
     }
 
     /// Upcast Handle<StepData_SelectNamed> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectNamed_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -8457,11 +9512,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepData_SelectArrReal` (or subclass).
     pub fn downcast_to_select_arr_real(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepDataSelectArrReal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectArrReal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepDataSelectArrReal(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepDataSelectArrReal(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8475,9 +9528,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_CurveElementFreedomMember` (or subclass).
     pub fn downcast_to_curve_element_freedom_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementFreedomMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementFreedomMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementCurveElementFreedomMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementCurveElementFreedomMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8491,9 +9544,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_CurveElementPurposeMember` (or subclass).
     pub fn downcast_to_curve_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementCurveElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementCurveElementPurposeMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementCurveElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementCurveElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8507,11 +9560,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_ElementAspectMember` (or subclass).
     pub fn downcast_to_element_aspect_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementElementAspectMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementElementAspectMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementElementAspectMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementElementAspectMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8525,9 +9576,10 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_MeasureOrUnspecifiedValueMember` (or subclass).
     pub fn downcast_to_measure_or_unspecified_value_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementMeasureOrUnspecifiedValueMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementMeasureOrUnspecifiedValueMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementMeasureOrUnspecifiedValueMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementMeasureOrUnspecifiedValueMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8541,9 +9593,10 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_SurfaceElementPurposeMember` (or subclass).
     pub fn downcast_to_surface_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementSurfaceElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementSurfaceElementPurposeMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementSurfaceElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementSurfaceElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8557,9 +9610,10 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepElement_VolumeElementPurposeMember` (or subclass).
     pub fn downcast_to_volume_element_purpose_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepElementVolumeElementPurposeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepElementVolumeElementPurposeMember>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepElementVolumeElementPurposeMember(self as *const Self)
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepElementVolumeElementPurposeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8573,11 +9627,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepFEA_DegreeOfFreedomMember` (or subclass).
     pub fn downcast_to_degree_of_freedom_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEADegreeOfFreedomMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEADegreeOfFreedomMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepFEADegreeOfFreedomMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepFEADegreeOfFreedomMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8591,11 +9643,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor23dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor23d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor23dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor23dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepFEASymmetricTensor23dMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepFEASymmetricTensor23dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8609,11 +9659,9 @@ impl HandleStepDataSelectNamed {
     /// Returns `None` if the handle does not point to a `StepFEA_SymmetricTensor43dMember` (or subclass).
     pub fn downcast_to_symmetric_tensor43d_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepFEASymmetricTensor43dMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepFEASymmetricTensor43dMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectNamed_downcast_to_HandleStepFEASymmetricTensor43dMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectNamed_downcast_to_HandleStepFEASymmetricTensor43dMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8632,11 +9680,11 @@ impl HandleStepDataSelectNamed {
 /// type in a select which also accepts entities : this one has
 /// NO NAME
 /// For a named select, see SelectNamed
-pub use crate::ffi::StepData_SelectReal as SelectReal;
+pub use crate::ffi_types::StepData_SelectReal as SelectReal;
 
 unsafe impl crate::CppDeletable for SelectReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectReal_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectReal_destructor(ptr);
     }
 }
 
@@ -8644,31 +9692,37 @@ impl SelectReal {
     /// **Source:** `StepData_SelectReal.hxx`:37 - `StepData_SelectReal::StepData_SelectReal()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectReal_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:39 - `StepData_SelectReal::Kind()`
     pub fn kind(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectReal_kind(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_kind(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:41 - `StepData_SelectReal::Real()`
     pub fn real(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectReal_real(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_real(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:43 - `StepData_SelectReal::SetReal()`
     pub fn set_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_set_real(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_set_real(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:45 - `StepData_SelectReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectReal_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectReal_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -8678,7 +9732,7 @@ impl SelectReal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectReal_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8686,53 +9740,65 @@ impl SelectReal {
     }
 
     /// **Source:** `StepData_SelectReal.hxx`:45 - `StepData_SelectReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_SelectReal_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_SelectMember
     pub fn as_select_member(&self) -> &SelectMember {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectReal_as_StepData_SelectMember(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_as_StepData_SelectMember(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_SelectMember (mutable)
     pub fn as_select_member_mut(&mut self) -> &mut SelectMember {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectReal_as_StepData_SelectMember_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_as_StepData_SelectMember_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_SelectReal_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_SelectReal_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectReal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -8740,21 +9806,24 @@ impl SelectReal {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:54 - `StepData_SelectMember::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:70 - `StepData_SelectMember::SetKind()`
     pub fn set_kind(&mut self, kind: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_SetKind(self as *mut Self, kind)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_SetKind(
+                self as *mut Self,
+                kind,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:74 - `StepData_SelectMember::ParamType()`
     pub fn param_type(&self) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_ParamType(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_ParamType(self as *const Self)
         }))
         .unwrap()
     }
@@ -8762,49 +9831,55 @@ impl SelectReal {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:78 - `StepData_SelectMember::Int()`
     pub fn int(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Int(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Int(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:82 - `StepData_SelectMember::SetInt()`
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_SetInt(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_SetInt(self as *mut Self, val)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:85 - `StepData_SelectMember::Integer()`
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Integer(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Integer(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:87 - `StepData_SelectMember::SetInteger()`
     pub fn set_integer(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_SetInteger(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_SetInteger(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:89 - `StepData_SelectMember::Boolean()`
     pub fn boolean(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Boolean(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Boolean(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:91 - `StepData_SelectMember::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_SetBoolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_SetBoolean(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:93 - `StepData_SelectMember::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Logical(self as *const Self)
         }))
         .unwrap()
     }
@@ -8812,28 +9887,37 @@ impl SelectReal {
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:95 - `StepData_SelectMember::SetLogical()`
     pub fn set_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_SetLogical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_SetLogical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `StepData_SelectMember.hxx`:105 - `StepData_SelectMember::Enum()`
     pub fn enum_(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Enum(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Enum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8841,7 +9925,7 @@ impl SelectReal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_SelectReal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -8854,52 +9938,60 @@ impl SelectReal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectReal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectReal_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSelectReal;
+pub use crate::ffi_types::HandleStepDataSelectReal;
 
 unsafe impl crate::CppDeletable for HandleStepDataSelectReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSelectReal_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_destructor(ptr);
     }
 }
 
 impl HandleStepDataSelectReal {
     /// Dereference this Handle to access the underlying StepData_SelectReal
-    pub fn get(&self) -> &crate::ffi::StepData_SelectReal {
+    pub fn get(&self) -> &crate::ffi_types::StepData_SelectReal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataSelectReal_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_SelectReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_SelectReal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_SelectReal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSelectReal_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_get_mut(
                 self as *mut Self,
             ))
         }
@@ -8908,10 +10000,10 @@ impl HandleStepDataSelectReal {
     /// Upcast Handle<StepData_SelectReal> to Handle<StepData_SelectMember>
     pub fn to_handle_select_member(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectReal_to_HandleStepDataSelectMember(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_to_HandleStepDataSelectMember(
                     self as *const Self,
                 ),
             ))
@@ -8919,10 +10011,12 @@ impl HandleStepDataSelectReal {
     }
 
     /// Upcast Handle<StepData_SelectReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSelectReal_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -8934,11 +10028,9 @@ impl HandleStepDataSelectReal {
     /// Returns `None` if the handle does not point to a `StepBasic_MeasureValueMember` (or subclass).
     pub fn downcast_to_measure_value_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicMeasureValueMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepBasicMeasureValueMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectReal_downcast_to_HandleStepBasicMeasureValueMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_downcast_to_HandleStepBasicMeasureValueMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8952,11 +10044,9 @@ impl HandleStepDataSelectReal {
     /// Returns `None` if the handle does not point to a `StepBasic_SizeMember` (or subclass).
     pub fn downcast_to_size_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepBasicSizeMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepBasicSizeMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectReal_downcast_to_HandleStepBasicSizeMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_downcast_to_HandleStepBasicSizeMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8970,11 +10060,9 @@ impl HandleStepDataSelectReal {
     /// Returns `None` if the handle does not point to a `StepGeom_TrimmingMember` (or subclass).
     pub fn downcast_to_trimming_member(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStepGeomTrimmingMember>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStepGeomTrimmingMember>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStepDataSelectReal_downcast_to_HandleStepGeomTrimmingMember(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleStepDataSelectReal_downcast_to_HandleStepGeomTrimmingMember(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -9007,11 +10095,11 @@ impl HandleStepDataSelectReal {
 /// with the definition of the SelectType
 /// - and (if judged useful) give the stored Entity under the good
 /// Type rather than simply "Transient".
-pub use crate::ffi::StepData_SelectType as SelectType;
+pub use crate::ffi_types::StepData_SelectType as SelectType;
 
 unsafe impl crate::CppDeletable for SelectType {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_SelectType_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_SelectType_destructor(ptr);
     }
 }
 
@@ -9020,9 +10108,9 @@ impl SelectType {
     /// Recognizes the Type of an Entity. Returns a positive Number
     /// which identifies the Type in the definition List of the
     /// SelectType. Returns Zero if its Type in not in this List.
-    pub fn case_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn case_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_case_num(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_case_num(self as *const Self, ent)
         })
     }
 
@@ -9031,9 +10119,9 @@ impl SelectType {
     /// definition list of the SelectType.
     /// Also checks for a SelectMember
     /// Default Implementation looks for CaseNum  or CaseMem positive
-    pub fn matches(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn matches(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_matches(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_matches(self as *const Self, ent)
         })
     }
 
@@ -9041,9 +10129,9 @@ impl SelectType {
     /// Stores an Entity. This allows to define a specific SelectType
     /// class with one read method per member Type, which returns the
     /// Value casted with the good Type.
-    pub fn set_value(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+    pub fn set_value(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_value(self as *mut Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_value(self as *mut Self, ent)
         })
     }
 
@@ -9051,33 +10139,37 @@ impl SelectType {
     /// Nullifies the Stored Entity
     pub fn nullify(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_nullify(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_nullify(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:76 - `StepData_SelectType::Value()`
     /// Returns the Stored Entity. Can be used to define specific
     /// read methods (see above)
-    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_SelectType_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_SelectType_value(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_SelectType.hxx`:79 - `StepData_SelectType::IsNull()`
     /// Returns True if there is no Stored Entity (i.e. it is Null)
     pub fn is_null(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectType_is_null(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_is_null(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:83 - `StepData_SelectType::Type()`
     /// Returns the Effective (Dynamic) Type of the Stored Entity
     /// If it is Null, returns TYPE(Transient)
-    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn type_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectType_type_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectType_type_(self as *const Self),
+            ))
         }
     }
 
@@ -9086,7 +10178,7 @@ impl SelectType {
     /// Null or SelectMember. Calls the first method CaseNum on Value
     pub fn case_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_case_number(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_case_number(self as *const Self)
         })
     }
 
@@ -9096,10 +10188,10 @@ impl SelectType {
     /// used to control reading an check validity.
     /// Default returns a Null Handle, i.e. undefined description
     /// It can suffice if CaseNum and CaseMem give enough control
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataPDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataPDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectType_description(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectType_description(self as *const Self),
             ))
         }
     }
@@ -9113,10 +10205,10 @@ impl SelectType {
     /// specific SelectMember than SelectNamed. For instance for a
     /// Real plus a Name, a SelectReal plus a case number is a good
     /// solution, lighter than SelectNamed which is very multipurpose
-    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    pub fn new_member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_SelectType_new_member(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectType_new_member(self as *const Self),
             ))
         }
     }
@@ -9127,9 +10219,9 @@ impl SelectType {
     /// (distinct from the List of Entity Types). Zero if not
     /// recognizes
     /// Default returns 0, saying that no immediate value is allowed
-    pub fn case_mem(&self, ent: &crate::ffi::HandleStepDataSelectMember) -> i32 {
+    pub fn case_mem(&self, ent: &crate::ffi_types::HandleStepDataSelectMember) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_case_mem(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_case_mem(self as *const Self, ent)
         })
     }
 
@@ -9138,17 +10230,17 @@ impl SelectType {
     /// Null or Entity. Calls the method CaseMem on Value
     pub fn case_member(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_case_member(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_case_member(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:118 - `StepData_SelectType::Member()`
     /// Returns Value as a SelectMember. Null if not a SelectMember
-    pub fn member(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataSelectMember> {
+    pub fn member(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSelectMember> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_SelectType_member(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_SelectType_member(self as *const Self),
+            ))
         }
     }
 
@@ -9159,7 +10251,7 @@ impl SelectType {
     pub fn select_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_SelectType_select_name(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_SelectType_select_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -9170,7 +10262,9 @@ impl SelectType {
     /// This internal method gives access to a value implemented by an
     /// Integer (to read it)
     pub fn int(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectType_int(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_int(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:131 - `StepData_SelectType::SetInt()`
@@ -9178,14 +10272,16 @@ impl SelectType {
     /// Integer (to set it) : a SelectMember MUST ALREADY BE THERE !
     pub fn set_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_int(self as *mut Self, val)
         })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:134 - `StepData_SelectType::Integer()`
     /// Gets the value as an Integer
     pub fn integer(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectType_integer(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_integer(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:139 - `StepData_SelectType::SetInteger()`
@@ -9195,27 +10291,37 @@ impl SelectType {
     pub fn set_integer(&mut self, val: i32, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_integer(self as *mut Self, val, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_integer(
+                self as *mut Self,
+                val,
+                c_name.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:141 - `StepData_SelectType::Boolean()`
     pub fn boolean(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectType_boolean(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_boolean(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:143 - `StepData_SelectType::SetBoolean()`
     pub fn set_boolean(&mut self, val: bool, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_boolean(self as *mut Self, val, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_boolean(
+                self as *mut Self,
+                val,
+                c_name.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:145 - `StepData_SelectType::Logical()`
     pub fn logical(&self) -> crate::step_data::Logical {
         crate::step_data::Logical::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_SelectType_logical(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_logical(self as *const Self)
         }))
         .unwrap()
     }
@@ -9224,7 +10330,7 @@ impl SelectType {
     pub fn set_logical(&mut self, val: crate::step_data::Logical, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_logical(
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_logical(
                 self as *mut Self,
                 val.into(),
                 c_name.as_ptr(),
@@ -9234,14 +10340,20 @@ impl SelectType {
 
     /// **Source:** `StepData_SelectType.hxx`:149 - `StepData_SelectType::Real()`
     pub fn real(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StepData_SelectType_real(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_real(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_SelectType.hxx`:151 - `StepData_SelectType::SetReal()`
     pub fn set_real(&mut self, val: f64, name: &str) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_SelectType_set_real(self as *mut Self, val, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_SelectType_set_real(
+                self as *mut Self,
+                val,
+                c_name.as_ptr(),
+            )
         })
     }
 }
@@ -9253,11 +10365,11 @@ impl SelectType {
 /// **Source:** `StepData_Simple.hxx`:37 - `StepData_Simple`
 /// A Simple Entity is defined by a type (which can heve super
 /// types) and a list of parameters
-pub use crate::ffi::StepData_Simple as Simple;
+pub use crate::ffi_types::StepData_Simple as Simple;
 
 unsafe impl crate::CppDeletable for Simple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_Simple_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_Simple_destructor(ptr);
     }
 }
 
@@ -9265,22 +10377,22 @@ impl Simple {
     /// **Source:** `StepData_Simple.hxx`:42 - `StepData_Simple::StepData_Simple()`
     /// Creates a Simple Entity
     pub fn new_handlestepdataesdescr(
-        descr: &crate::ffi::HandleStepDataESDescr,
+        descr: &crate::ffi_types::HandleStepDataESDescr,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Simple_ctor_handlestepdataesdescr(descr),
+                crate::ffi_extern_TKDESTEP::StepData_Simple_ctor_handlestepdataesdescr(descr),
             ))
         }
     }
 
     /// **Source:** `StepData_Simple.hxx`:45 - `StepData_Simple::ESDescr()`
     /// Returns description, as for simple
-    pub fn es_descr(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataESDescr> {
+    pub fn es_descr(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataESDescr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Simple_es_descr(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_es_descr(self as *const Self),
+            ))
         }
     }
 
@@ -9288,9 +10400,9 @@ impl Simple {
     /// Returns the recorded StepType (TypeName of its ESDescr)
     pub fn step_type(&self) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::StepData_Simple_step_type(
-                self as *const Self,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_step_type(self as *const Self),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -9299,7 +10411,9 @@ impl Simple {
     /// **Source:** `StepData_Simple.hxx`:51 - `StepData_Simple::IsComplex()`
     /// Returns False
     pub fn is_complex(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_Simple_is_complex(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Simple_is_complex(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Simple.hxx`:56 - `StepData_Simple::Matches()`
@@ -9309,7 +10423,10 @@ impl Simple {
     pub fn matches(&self, steptype: &str) -> bool {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_matches(self as *const Self, c_steptype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Simple_matches(
+                self as *const Self,
+                c_steptype.as_ptr(),
+            )
         })
     }
 
@@ -9317,13 +10434,15 @@ impl Simple {
     /// Returns a Simple Entity which matches with a Type in <me> :
     /// For a Simple Entity : me if it matches, else a null handle
     /// For a Complex Entity : the member which matches, else null
-    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi::HandleStepDataSimple> {
+    pub fn as_(&self, steptype: &str) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple> {
         let c_steptype = std::ffi::CString::new(steptype).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Simple_as_(
-                self as *const Self,
-                c_steptype.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_as_(
+                    self as *const Self,
+                    c_steptype.as_ptr(),
+                ),
+            ))
         }
     }
 
@@ -9332,7 +10451,10 @@ impl Simple {
     pub fn has_field(&self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_has_field(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_Simple_has_field(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -9347,7 +10469,7 @@ impl Simple {
     pub unsafe fn field(&self, name: &str) -> &Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Simple_field(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_field(
                 self as *const Self,
                 c_name.as_ptr(),
             )))
@@ -9365,7 +10487,7 @@ impl Simple {
     pub unsafe fn c_field(&mut self, name: &str) -> &mut Field {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_Simple_c_field(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_c_field(
                 self as *mut Self,
                 c_name.as_ptr(),
             )))
@@ -9375,14 +10497,19 @@ impl Simple {
     /// **Source:** `StepData_Simple.hxx`:74 - `StepData_Simple::NbFields()`
     /// Returns the count of fields
     pub fn nb_fields(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StepData_Simple_nb_fields(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_Simple_nb_fields(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_Simple.hxx`:77 - `StepData_Simple::FieldNum()`
     /// Returns a field from its rank, for read-only use
     pub fn field_num(&self, num: i32) -> &Field {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Simple_field_num(self as *const Self, num)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_field_num(
+                self as *const Self,
+                num,
+            )))
         }
     }
 
@@ -9390,7 +10517,7 @@ impl Simple {
     /// Returns a field from its rank, in order to modify it
     pub fn c_field_num(&mut self, num: i32) -> &mut Field {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_Simple_c_field_num(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_c_field_num(
                 self as *mut Self,
                 num,
             )))
@@ -9400,22 +10527,28 @@ impl Simple {
     /// **Source:** `StepData_Simple.hxx`:83 - `StepData_Simple::Fields()`
     /// Returns the entire field list, read-only
     pub fn fields(&self) -> &FieldListN {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_Simple_fields(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_fields(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `StepData_Simple.hxx`:86 - `StepData_Simple::CFields()`
     /// Returns the entire field list, read or write
     pub fn c_fields(&mut self) -> &mut FieldListN {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_Simple_c_fields(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_c_fields(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_Simple.hxx`:89 - `StepData_Simple::Check()`
     /// Fills a Check by using its Description
-    pub fn check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+    pub fn check(&self, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Simple_check(self as *const Self, ach)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_check(self as *const Self, ach)
         })
     }
 
@@ -9423,14 +10556,16 @@ impl Simple {
     /// Fills an EntityIterator with entities shared by <me>
     pub fn shared(&self, list: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Simple_shared(self as *const Self, list)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_shared(self as *const Self, list)
         })
     }
 
     /// **Source:** `StepData_Simple.hxx`:94 - `StepData_Simple::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_Simple_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_Simple_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -9438,7 +10573,7 @@ impl Simple {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_Simple_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_Simple_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9446,77 +10581,97 @@ impl Simple {
     }
 
     /// **Source:** `StepData_Simple.hxx`:94 - `StepData_Simple::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_Simple_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StepData_Described
     pub fn as_described(&self) -> &Described {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Simple_as_StepData_Described(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_as_StepData_Described(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to StepData_Described (mutable)
     pub fn as_described_mut(&mut self) -> &mut Described {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Simple_as_StepData_Described_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_as_StepData_Described_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_Simple_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_Simple_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataSimple> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataSimple> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_Simple_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_Simple_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `StepData_Described.hxx`:40 - `StepData_Described::Description()`
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataEDescr> {
+    pub fn description(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataEDescr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_Simple_inherited_Description(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_Description(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9524,7 +10679,7 @@ impl Simple {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_Simple_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9537,67 +10692,85 @@ impl Simple {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_Simple_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_Simple_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataSimple;
+pub use crate::ffi_types::HandleStepDataSimple;
 
 unsafe impl crate::CppDeletable for HandleStepDataSimple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataSimple_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataSimple_destructor(ptr);
     }
 }
 
 impl HandleStepDataSimple {
     /// Dereference this Handle to access the underlying StepData_Simple
-    pub fn get(&self) -> &crate::ffi::StepData_Simple {
-        unsafe { &*crate::check_result(crate::ffi::HandleStepDataSimple_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StepData_Simple {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSimple_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_Simple
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_Simple {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_Simple {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataSimple_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataSimple_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StepData_Simple> to Handle<StepData_Described>
-    pub fn to_handle_described(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataDescribed> {
+    pub fn to_handle_described(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataDescribed> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSimple_to_HandleStepDataDescribed(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataSimple_to_HandleStepDataDescribed(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StepData_Simple> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataSimple_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataSimple_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9616,11 +10789,11 @@ impl HandleStepDataSimple {
 /// - possibility to look for an entity itself (only its Type or
 /// with its content), an entity and it shared items (one level)
 /// or all the entities its refers to, directly or recursively.
-pub use crate::ffi::StepData_StepDumper as StepDumper;
+pub use crate::ffi_types::StepData_StepDumper as StepDumper;
 
 unsafe impl crate::CppDeletable for StepDumper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_StepDumper_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_StepDumper_destructor(ptr);
     }
 }
 
@@ -9635,12 +10808,12 @@ impl StepDumper {
     /// 1 for label  (and corresponding numbers are displayed apart)
     /// 2 for label without anymore
     pub fn new_handlestepdatastepmodel_handlestepdataprotocol_int(
-        amodel: &crate::ffi::HandleStepDataStepModel,
-        protocol: &crate::ffi::HandleStepDataProtocol,
+        amodel: &crate::ffi_types::HandleStepDataStepModel,
+        protocol: &crate::ffi_types::HandleStepDataProtocol,
         mode: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepDumper_ctor_handlestepdatastepmodel_handlestepdataprotocol_int(amodel, protocol, mode)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepDumper_ctor_handlestepdatastepmodel_handlestepdataprotocol_int(amodel, protocol, mode)))
         }
     }
 
@@ -9654,8 +10827,8 @@ impl StepDumper {
     /// 1 for label  (and corresponding numbers are displayed apart)
     /// 2 for label without anymore
     pub fn new_handlestepdatastepmodel_handlestepdataprotocol(
-        amodel: &crate::ffi::HandleStepDataStepModel,
-        protocol: &crate::ffi::HandleStepDataProtocol,
+        amodel: &crate::ffi_types::HandleStepDataStepModel,
+        protocol: &crate::ffi_types::HandleStepDataProtocol,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlestepdatastepmodel_handlestepdataprotocol_int(amodel, protocol, 0)
     }
@@ -9665,9 +10838,9 @@ impl StepDumper {
     /// to acts on some parameters : Floating Format, Scopes ...
     pub fn step_writer(&mut self) -> &mut StepWriter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepDumper_step_writer(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepDumper_step_writer(self as *mut Self),
+            ))
         }
     }
 
@@ -9690,12 +10863,12 @@ impl StepDumper {
     /// numbers of the corresponding entities in the Model
     pub fn dump_ostream_handlestandardtransient_int(
         &mut self,
-        S: &mut crate::ffi::Standard_OStream,
-        ent: &crate::ffi::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
+        ent: &crate::ffi_types::HandleStandardTransient,
         level: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepDumper_dump_ostream_handlestandardtransient_int(
+            crate::ffi_extern_TKDESTEP::StepData_StepDumper_dump_ostream_handlestandardtransient_int(
                 self as *mut Self,
                 S,
                 ent,
@@ -9710,12 +10883,17 @@ impl StepDumper {
     /// Returns False, also if <num> is out of range
     pub fn dump_ostream_int2(
         &mut self,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         num: i32,
         level: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepDumper_dump_ostream_int2(self as *mut Self, S, num, level)
+            crate::ffi_extern_TKDESTEP::StepData_StepDumper_dump_ostream_int2(
+                self as *mut Self,
+                S,
+                num,
+                level,
+            )
         })
     }
 }
@@ -9728,11 +10906,11 @@ impl StepDumper {
 /// Gives access to
 /// - entities in a STEP file,
 /// - the STEP file header.
-pub use crate::ffi::StepData_StepModel as StepModel;
+pub use crate::ffi_types::StepData_StepModel as StepModel;
 
 unsafe impl crate::CppDeletable for StepModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_StepModel_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_StepModel_destructor(ptr);
     }
 }
 
@@ -9741,36 +10919,42 @@ impl StepModel {
     /// Creates an empty STEP model with an empty header.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepModel_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:47 - `StepData_StepModel::Entity()`
     /// returns entity given its rank.
     /// Same as InterfaceEntity, but with a shorter name
-    pub fn entity(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn entity(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepModel_entity(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_entity(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:50 - `StepData_StepModel::GetFromAnother()`
     /// gets header from another Model (uses Header Protocol)
-    pub fn get_from_another(&mut self, other: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn get_from_another(&mut self, other: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_get_from_another(self as *mut Self, other)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_get_from_another(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:54 - `StepData_StepModel::NewEmptyModel()`
     /// Returns a New Empty Model, same type as <me>, i.e. StepModel
-    pub fn new_empty_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_empty_model(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_new_empty_model(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_new_empty_model(self as *const Self),
             ))
         }
     }
@@ -9779,17 +10963,20 @@ impl StepModel {
     /// returns Header entities under the form of an iterator
     pub fn header(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepModel_header(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_header(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StepData_StepModel.hxx`:60 - `StepData_StepModel::HasHeaderEntity()`
     /// says if a Header entity has a specified type
-    pub fn has_header_entity(&self, atype: &crate::ffi::HandleStandardType) -> bool {
+    pub fn has_header_entity(&self, atype: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_has_header_entity(self as *const Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_has_header_entity(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
@@ -9797,11 +10984,14 @@ impl StepModel {
     /// Returns Header entity with specified type, if there is
     pub fn header_entity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_header_entity(self as *const Self, atype),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_header_entity(
+                    self as *const Self,
+                    atype,
+                ),
             ))
         }
     }
@@ -9810,23 +11000,23 @@ impl StepModel {
     /// Clears the Header
     pub fn clear_header(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_clear_header(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_clear_header(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:69 - `StepData_StepModel::AddHeaderEntity()`
     /// Adds an Entity to the Header
-    pub fn add_header_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+    pub fn add_header_entity(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_add_header_entity(self as *mut Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_add_header_entity(self as *mut Self, ent)
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:72 - `StepData_StepModel::VerifyCheck()`
     /// Specific Check, checks Header Items with HeaderProtocol
-    pub fn verify_check(&self, ach: &mut crate::ffi::HandleInterfaceCheck) {
+    pub fn verify_check(&self, ach: &mut crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_verify_check(self as *const Self, ach)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_verify_check(self as *const Self, ach)
         })
     }
 
@@ -9836,9 +11026,13 @@ impl StepModel {
     /// prints its Type. Else sends the Header under the form of
     /// HEADER Section of an Ascii Step File
     /// <level> is not used because Header is not so big
-    pub fn dump_header(&self, S: &mut crate::ffi::Standard_OStream, level: i32) {
+    pub fn dump_header(&self, S: &mut crate::ffi_types::Standard_OStream, level: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_dump_header(self as *const Self, S, level)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_dump_header(
+                self as *const Self,
+                S,
+                level,
+            )
         })
     }
 
@@ -9846,24 +11040,28 @@ impl StepModel {
     /// erases specific labels, i.e. clears the map (entity-ident)
     pub fn clear_labels(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_clear_labels(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_clear_labels(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:87 - `StepData_StepModel::SetIdentLabel()`
     /// Attaches an ident to an entity to produce a label
     /// (does nothing if <ent> is not in <me>)
-    pub fn set_ident_label(&mut self, ent: &crate::ffi::HandleStandardTransient, ident: i32) {
+    pub fn set_ident_label(&mut self, ent: &crate::ffi_types::HandleStandardTransient, ident: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_set_ident_label(self as *mut Self, ent, ident)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_set_ident_label(
+                self as *mut Self,
+                ent,
+                ident,
+            )
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:91 - `StepData_StepModel::IdentLabel()`
     /// returns the label ident attached to an entity, 0 if not in me
-    pub fn ident_label(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn ident_label(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_ident_label(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_ident_label(self as *const Self, ent)
         })
     }
 
@@ -9873,11 +11071,11 @@ impl StepModel {
     /// the number in the model with '#' and between ()
     pub fn print_label(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        S: &mut crate::ffi::Standard_OStream,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_print_label(self as *const Self, ent, S)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_print_label(self as *const Self, ent, S)
         })
     }
 
@@ -9886,11 +11084,14 @@ impl StepModel {
     /// same form as for PrintLabel
     pub fn string_label(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_string_label(self as *const Self, ent),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_string_label(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -9901,7 +11102,7 @@ impl StepModel {
     /// default.
     pub fn source_code_page(&self) -> crate::resource::FormatType {
         crate::resource::FormatType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_source_code_page(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_source_code_page(self as *const Self)
         }))
         .unwrap()
     }
@@ -9910,7 +11111,10 @@ impl StepModel {
     /// Return the encoding of STEP file for converting names into UNICODE.
     pub fn set_source_code_page(&mut self, theCode: crate::resource::FormatType) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_set_source_code_page(self as *mut Self, theCode.into())
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_set_source_code_page(
+                self as *mut Self,
+                theCode.into(),
+            )
         })
     }
 
@@ -9918,7 +11122,10 @@ impl StepModel {
     /// Sets local length unit using for transfer process
     pub fn set_local_length_unit(&mut self, theUnit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_set_local_length_unit(self as *mut Self, theUnit)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_set_local_length_unit(
+                self as *mut Self,
+                theUnit,
+            )
         })
     }
 
@@ -9926,7 +11133,7 @@ impl StepModel {
     /// Returns local length unit using for transfer process (1 by default)
     pub fn local_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_local_length_unit(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_local_length_unit(self as *const Self)
         })
     }
 
@@ -9934,7 +11141,10 @@ impl StepModel {
     /// Sets length unit using for writing process
     pub fn set_write_length_unit(&mut self, theUnit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_set_write_length_unit(self as *mut Self, theUnit)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_set_write_length_unit(
+                self as *mut Self,
+                theUnit,
+            )
         })
     }
 
@@ -9942,7 +11152,7 @@ impl StepModel {
     /// Returns length unit using for writing process (1 by default)
     pub fn write_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_write_length_unit(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_write_length_unit(self as *const Self)
         })
     }
 
@@ -9952,14 +11162,14 @@ impl StepModel {
     /// False - the unit value was not initialized, the default value is used
     pub fn is_initialized_unit(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_is_initialized_unit(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_is_initialized_unit(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepModel_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepModel_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -9969,7 +11179,7 @@ impl StepModel {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_StepModel_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9977,16 +11187,22 @@ impl StepModel {
     }
 
     /// **Source:** `StepData_StepModel.hxx`:132 - `StepData_StepModel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StepData_StepModel_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Interface_InterfaceModel
     pub fn as_interface_interface_model(&self) -> &crate::interface::InterfaceModel {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_StepModel_as_Interface_InterfaceModel(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_as_Interface_InterfaceModel(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9994,7 +11210,9 @@ impl StepModel {
     pub fn as_interface_interface_model_mut(&mut self) -> &mut crate::interface::InterfaceModel {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_StepModel_as_Interface_InterfaceModel_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_as_Interface_InterfaceModel_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10002,28 +11220,32 @@ impl StepModel {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_StepModel_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StepData_StepModel_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -10031,38 +11253,46 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:71 - `Interface_InterfaceModel::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Destroy(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Destroy(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:78 - `Interface_InterfaceModel::SetProtocol()`
-    pub fn set_protocol(&mut self, proto: &crate::ffi::HandleInterfaceProtocol) {
+    pub fn set_protocol(&mut self, proto: &crate::ffi_types::HandleInterfaceProtocol) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_SetProtocol(self as *mut Self, proto)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_SetProtocol(
+                self as *mut Self,
+                proto,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:82 - `Interface_InterfaceModel::Protocol()`
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_Protocol(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Protocol(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:85 - `Interface_InterfaceModel::SetGTool()`
-    pub fn set_g_tool(&mut self, gtool: &crate::ffi::HandleInterfaceGTool) {
+    pub fn set_g_tool(&mut self, gtool: &crate::ffi_types::HandleInterfaceGTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_SetGTool(self as *mut Self, gtool)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_SetGTool(
+                self as *mut Self,
+                gtool,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:88 - `Interface_InterfaceModel::GTool()`
-    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGTool> {
+    pub fn g_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_GTool(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_GTool(self as *const Self),
             ))
         }
     }
@@ -10070,51 +11300,61 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:94 - `Interface_InterfaceModel::DispatchStatus()`
     pub fn dispatch_status(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepModel_inherited_DispatchStatus(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_DispatchStatus(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:99 - `Interface_InterfaceModel::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:103 - `Interface_InterfaceModel::ClearEntities()`
     pub fn clear_entities(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_ClearEntities(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ClearEntities(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:113 - `Interface_InterfaceModel::NbEntities()`
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_NbEntities(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_NbEntities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:117 - `Interface_InterfaceModel::Contains()`
-    pub fn contains(&self, anentity: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn contains(&self, anentity: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Contains(self as *const Self, anentity)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Contains(
+                self as *const Self,
+                anentity,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:124 - `Interface_InterfaceModel::Number()`
-    pub fn number(&self, anentity: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn number(&self, anentity: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Number(self as *const Self, anentity)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Number(
+                self as *const Self,
+                anentity,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:133 - `Interface_InterfaceModel::Value()`
-    pub fn value(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn value(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepModel_inherited_Value(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Value(
                 self as *const Self,
                 num,
             )))
@@ -10122,21 +11362,28 @@ impl StepModel {
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:138 - `Interface_InterfaceModel::NbTypes()`
-    pub fn nb_types(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_NbTypes(self as *const Self, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_NbTypes(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:142 - `Interface_InterfaceModel::Type()`
     pub fn type_(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_Type(self as *const Self, ent, num),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Type(
+                    self as *const Self,
+                    ent,
+                    num,
+                ),
             ))
         }
     }
@@ -10144,7 +11391,10 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:158 - `Interface_InterfaceModel::EntityState()`
     pub fn entity_state(&self, num: i32) -> crate::interface::DataState {
         crate::interface::DataState::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_EntityState(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_EntityState(
+                self as *const Self,
+                num,
+            )
         }))
         .unwrap()
     }
@@ -10152,7 +11402,7 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:170 - `Interface_InterfaceModel::IsReportEntity()`
     pub fn is_report_entity(&self, num: i32, semantic: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsReportEntity(
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsReportEntity(
                 self as *const Self,
                 num,
                 semantic,
@@ -10165,10 +11415,10 @@ impl StepModel {
         &self,
         num: i32,
         semantic: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReportEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceReportEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_ReportEntity(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ReportEntity(
                     self as *const Self,
                     num,
                     semantic,
@@ -10180,21 +11430,30 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:185 - `Interface_InterfaceModel::IsErrorEntity()`
     pub fn is_error_entity(&self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsErrorEntity(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsErrorEntity(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:192 - `Interface_InterfaceModel::IsRedefinedContent()`
     pub fn is_redefined_content(&self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsRedefinedContent(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsRedefinedContent(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:197 - `Interface_InterfaceModel::ClearReportEntity()`
     pub fn clear_report_entity(&mut self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_ClearReportEntity(self as *mut Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ClearReportEntity(
+                self as *mut Self,
+                num,
+            )
         })
     }
 
@@ -10202,21 +11461,25 @@ impl StepModel {
     pub fn set_report_entity(
         &mut self,
         num: i32,
-        rep: &crate::ffi::HandleInterfaceReportEntity,
+        rep: &crate::ffi_types::HandleInterfaceReportEntity,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_SetReportEntity(self as *mut Self, num, rep)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_SetReportEntity(
+                self as *mut Self,
+                num,
+                rep,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:210 - `Interface_InterfaceModel::AddReportEntity()`
     pub fn add_report_entity(
         &mut self,
-        rep: &crate::ffi::HandleInterfaceReportEntity,
+        rep: &crate::ffi_types::HandleInterfaceReportEntity,
         semantic: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_AddReportEntity(
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_AddReportEntity(
                 self as *mut Self,
                 rep,
                 semantic,
@@ -10227,14 +11490,17 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:215 - `Interface_InterfaceModel::IsUnknownEntity()`
     pub fn is_unknown_entity(&self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsUnknownEntity(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsUnknownEntity(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:222 - `Interface_InterfaceModel::FillSemanticChecks()`
     pub fn fill_semantic_checks(&mut self, checks: &crate::interface::CheckIterator, clear: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_FillSemanticChecks(
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_FillSemanticChecks(
                 self as *mut Self,
                 checks,
                 clear,
@@ -10245,14 +11511,16 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:226 - `Interface_InterfaceModel::HasSemanticChecks()`
     pub fn has_semantic_checks(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_HasSemanticChecks(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_HasSemanticChecks(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:233 - `Interface_InterfaceModel::Check()`
-    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+    pub fn check(&self, num: i32, syntactic: bool) -> &crate::ffi_types::HandleInterfaceCheck {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepModel_inherited_Check(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Check(
                 self as *const Self,
                 num,
                 syntactic,
@@ -10263,27 +11531,33 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:240 - `Interface_InterfaceModel::Reservate()`
     pub fn reservate(&mut self, nbent: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Reservate(self as *mut Self, nbent)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Reservate(
+                self as *mut Self,
+                nbent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:249 - `Interface_InterfaceModel::AddEntity()`
-    pub fn add_entity(&mut self, anentity: &crate::ffi::HandleStandardTransient) {
+    pub fn add_entity(&mut self, anentity: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_AddEntity(self as *mut Self, anentity)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_AddEntity(
+                self as *mut Self,
+                anentity,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:262 - `Interface_InterfaceModel::AddWithRefs()`
     pub fn add_with_refs(
         &mut self,
-        anent: &crate::ffi::HandleStandardTransient,
-        proto: &crate::ffi::HandleInterfaceProtocol,
+        anent: &crate::ffi_types::HandleStandardTransient,
+        proto: &crate::ffi_types::HandleInterfaceProtocol,
         level: i32,
         listall: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_AddWithRefs(
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_AddWithRefs(
                 self as *mut Self,
                 anent,
                 proto,
@@ -10294,23 +11568,34 @@ impl StepModel {
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:279 - `Interface_InterfaceModel::ReplaceEntity()`
-    pub fn replace_entity(&mut self, nument: i32, anent: &crate::ffi::HandleStandardTransient) {
+    pub fn replace_entity(
+        &mut self,
+        nument: i32,
+        anent: &crate::ffi_types::HandleStandardTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_ReplaceEntity(self as *mut Self, nument, anent)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ReplaceEntity(
+                self as *mut Self,
+                nument,
+                anent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:287 - `Interface_InterfaceModel::ReverseOrders()`
     pub fn reverse_orders(&mut self, after: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_ReverseOrders(self as *mut Self, after)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ReverseOrders(
+                self as *mut Self,
+                after,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:294 - `Interface_InterfaceModel::ChangeOrder()`
     pub fn change_order(&mut self, oldnum: i32, newnum: i32, count: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_ChangeOrder(
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_ChangeOrder(
                 self as *mut Self,
                 oldnum,
                 newnum,
@@ -10322,28 +11607,41 @@ impl StepModel {
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:300 - `Interface_InterfaceModel::GetFromTransfer()`
     pub fn get_from_transfer(&mut self, aniter: &crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_GetFromTransfer(self as *mut Self, aniter)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_GetFromTransfer(
+                self as *mut Self,
+                aniter,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:314 - `Interface_InterfaceModel::SetCategoryNumber()`
     pub fn set_category_number(&mut self, num: i32, val: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_SetCategoryNumber(self as *mut Self, num, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_SetCategoryNumber(
+                self as *mut Self,
+                num,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:319 - `Interface_InterfaceModel::CategoryNumber()`
     pub fn category_number(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_CategoryNumber(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_CategoryNumber(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:322 - `Interface_InterfaceModel::FillIterator()`
     pub fn fill_iterator(&self, iter: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_FillIterator(self as *const Self, iter)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_FillIterator(
+                self as *const Self,
+                iter,
+            )
         })
     }
 
@@ -10351,7 +11649,9 @@ impl StepModel {
     pub fn entities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_Entities(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Entities(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10360,7 +11660,10 @@ impl StepModel {
     pub fn reports(&self, semantic: bool) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_Reports(self as *const Self, semantic),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Reports(
+                    self as *const Self,
+                    semantic,
+                ),
             ))
         }
     }
@@ -10369,62 +11672,84 @@ impl StepModel {
     pub fn redefineds(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepModel_inherited_Redefineds(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Redefineds(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:344 - `Interface_InterfaceModel::GlobalCheck()`
-    pub fn global_check(&self, syntactic: bool) -> &crate::ffi::HandleInterfaceCheck {
+    pub fn global_check(&self, syntactic: bool) -> &crate::ffi_types::HandleInterfaceCheck {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepModel_inherited_GlobalCheck(
-                self as *const Self,
-                syntactic,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_GlobalCheck(
+                    self as *const Self,
+                    syntactic,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:349 - `Interface_InterfaceModel::SetGlobalCheck()`
-    pub fn set_global_check(&mut self, ach: &crate::ffi::HandleInterfaceCheck) {
+    pub fn set_global_check(&mut self, ach: &crate::ffi_types::HandleInterfaceCheck) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_SetGlobalCheck(self as *mut Self, ach)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_SetGlobalCheck(
+                self as *mut Self,
+                ach,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:370 - `Interface_InterfaceModel::Print()`
     pub fn print(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        s: &mut crate::ffi::Standard_OStream,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        s: &mut crate::ffi_types::Standard_OStream,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Print(self as *const Self, ent, s, mode)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Print(
+                self as *const Self,
+                ent,
+                s,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_InterfaceModel.hxx`:383 - `Interface_InterfaceModel::PrintToLog()`
     pub fn print_to_log(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        S: &mut crate::ffi::Standard_OStream,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_PrintToLog(self as *const Self, ent, S)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_PrintToLog(
+                self as *const Self,
+                ent,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10432,7 +11757,7 @@ impl StepModel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_StepModel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -10445,52 +11770,60 @@ impl StepModel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepModel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepModel_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataStepModel;
+pub use crate::ffi_types::HandleStepDataStepModel;
 
 unsafe impl crate::CppDeletable for HandleStepDataStepModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataStepModel_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_destructor(ptr);
     }
 }
 
 impl HandleStepDataStepModel {
     /// Dereference this Handle to access the underlying StepData_StepModel
-    pub fn get(&self) -> &crate::ffi::StepData_StepModel {
+    pub fn get(&self) -> &crate::ffi_types::StepData_StepModel {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataStepModel_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_StepModel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_StepModel {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_StepModel {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataStepModel_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_get_mut(
                 self as *mut Self,
             ))
         }
@@ -10499,21 +11832,21 @@ impl HandleStepDataStepModel {
     /// Upcast Handle<StepData_StepModel> to Handle<Interface_InterfaceModel>
     pub fn to_handle_interface_model(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataStepModel_to_HandleInterfaceInterfaceModel(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_to_HandleInterfaceInterfaceModel(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_StepModel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataStepModel_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDESTEP::HandleStepDataStepModel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10529,11 +11862,11 @@ impl HandleStepDataStepModel {
 /// as a string, ident, parameter list)
 /// provides references evaluation, plus access to literal data
 /// and specific access methods (Boolean, XY, XYZ)
-pub use crate::ffi::StepData_StepReaderData as StepReaderData;
+pub use crate::ffi_types::StepData_StepReaderData as StepReaderData;
 
 unsafe impl crate::CppDeletable for StepReaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_StepReaderData_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_StepReaderData_destructor(ptr);
     }
 }
 
@@ -10551,7 +11884,7 @@ impl StepReaderData {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderData_ctor_int3_formattype(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_ctor_int3_formattype(
                     nbheader,
                     nbtotal,
                     nbpar,
@@ -10567,7 +11900,7 @@ impl StepReaderData {
         let c_ident = std::ffi::CString::new(ident).unwrap();
         let c_type_ = std::ffi::CString::new(type_).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_set_record(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_set_record(
                 self as *mut Self,
                 num,
                 c_ident.as_ptr(),
@@ -10589,7 +11922,7 @@ impl StepReaderData {
     ) {
         let c_aval = std::ffi::CString::new(aval).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_add_step_param(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_add_step_param(
                 self as *mut Self,
                 num,
                 c_aval.as_ptr(),
@@ -10603,10 +11936,12 @@ impl StepReaderData {
     /// Returns Record Type
     pub fn record_type(&self, num: i32) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_record_type(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_record_type(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
@@ -10616,7 +11951,10 @@ impl StepReaderData {
     pub fn c_type(&self, num: i32) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_StepReaderData_c_type(self as *const Self, num),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_c_type(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
         .to_string_lossy()
@@ -10628,7 +11966,10 @@ impl StepReaderData {
     /// If returned ident is not positive : Sub-List or Scope mark
     pub fn record_ident(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_record_ident(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_record_ident(
+                self as *const Self,
+                num,
+            )
         })
     }
 
@@ -10639,7 +11980,7 @@ impl StepReaderData {
     /// is not for the last parameter
     pub fn sub_list_number(&self, num: i32, nump: i32, aslast: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_sub_list_number(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_sub_list_number(
                 self as *const Self,
                 num,
                 nump,
@@ -10653,7 +11994,7 @@ impl StepReaderData {
     /// (as can be defined by ANDOR Express clause)
     pub fn is_complex(&self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_is_complex(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_is_complex(self as *const Self, num)
         })
     }
 
@@ -10661,9 +12002,17 @@ impl StepReaderData {
     /// Returns the List of Types which correspond to a Complex Type
     /// Entity. If not Complex, there is just one Type in it
     /// For a SubList or a Scope mark, <types> remains empty
-    pub fn complex_type(&self, num: i32, types: &mut crate::ffi::TColStd_SequenceOfAsciiString) {
+    pub fn complex_type(
+        &self,
+        num: i32,
+        types: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_complex_type(self as *const Self, num, types)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_complex_type(
+                self as *const Self,
+                num,
+                types,
+            )
         })
     }
 
@@ -10673,7 +12022,10 @@ impl StepReaderData {
     /// Returns 0 for a Simple Type or for the last Component
     pub fn next_for_complex(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_next_for_complex(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_next_for_complex(
+                self as *const Self,
+                num,
+            )
         })
     }
 
@@ -10698,17 +12050,11 @@ impl StepReaderData {
         name: &str,
         num0: i32,
         num: &mut i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_named_for_complex_charptr_int2_handleinterfacecheck(
-                self as *const Self,
-                c_name.as_ptr(),
-                num0,
-                num,
-                ach,
-            )
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_named_for_complex_charptr_int2_handleinterfacecheck(self as *const Self, c_name.as_ptr(), num0, num, ach)
         })
     }
 
@@ -10734,19 +12080,12 @@ impl StepReaderData {
         theShortName: &str,
         num0: i32,
         num: &mut i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         let c_theShortName = std::ffi::CString::new(theShortName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_named_for_complex_charptr2_int2_handleinterfacecheck(
-                self as *const Self,
-                c_theName.as_ptr(),
-                c_theShortName.as_ptr(),
-                num0,
-                num,
-                ach,
-            )
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_named_for_complex_charptr2_int2_handleinterfacecheck(self as *const Self, c_theName.as_ptr(), c_theShortName.as_ptr(), num0, num, ach)
         })
     }
 
@@ -10759,12 +12098,12 @@ impl StepReaderData {
         &self,
         num: i32,
         nbreq: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         mess: &str,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_check_nb_params(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_check_nb_params(
                 self as *const Self,
                 num,
                 nbreq,
@@ -10788,7 +12127,7 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         numsub: &mut i32,
         optional: bool,
         lenmin: i32,
@@ -10796,7 +12135,7 @@ impl StepReaderData {
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_sub_list(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_sub_list(
                 self as *const Self,
                 num,
                 nump,
@@ -10823,13 +12162,13 @@ impl StepReaderData {
         &self,
         numsub: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        descr: &crate::ffi::HandleStepDataPDescr,
-        val: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        descr: &crate::ffi_types::HandleStepDataPDescr,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> i32 {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_sub(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_sub(
                 self as *const Self,
                 numsub,
                 c_mess.as_ptr(),
@@ -10856,12 +12195,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        val: &mut crate::ffi::HandleStepDataSelectMember,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        val: &mut crate::ffi_types::HandleStepDataSelectMember,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_member(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_member(
                 self as *const Self,
                 num,
                 nump,
@@ -10885,13 +12224,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        descr: &crate::ffi::HandleStepDataPDescr,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        descr: &crate::ffi_types::HandleStepDataPDescr,
         fild: &mut Field,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_field(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_field(
                 self as *const Self,
                 num,
                 nump,
@@ -10908,12 +12247,12 @@ impl StepReaderData {
     pub fn read_list(
         &self,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        descr: &crate::ffi::HandleStepDataESDescr,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        descr: &crate::ffi_types::HandleStepDataESDescr,
         list: &mut FieldList,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_list(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_list(
                 self as *const Self,
                 num,
                 ach,
@@ -10945,13 +12284,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        descr: &crate::ffi::HandleStepDataPDescr,
-        val: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        descr: &crate::ffi_types::HandleStepDataPDescr,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_any(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_any(
                 self as *const Self,
                 num,
                 nump,
@@ -10974,13 +12313,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         X: &mut f64,
         Y: &mut f64,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_xy(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_xy(
                 self as *const Self,
                 num,
                 nump,
@@ -11001,14 +12340,14 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         X: &mut f64,
         Y: &mut f64,
         Z: &mut f64,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_xyz(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_xyz(
                 self as *const Self,
                 num,
                 nump,
@@ -11029,12 +12368,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         val: &mut f64,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_real(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_real(
                 self as *const Self,
                 num,
                 nump,
@@ -11058,13 +12397,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        atype: &crate::ffi::HandleStandardType,
-        ent: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        atype: &crate::ffi_types::HandleStandardType,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_entity_int2_charptr_handleinterfacecheck_handlestandardtype_handlestandardtransient(self as *const Self, num, nump, c_mess.as_ptr(), ach, atype, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_entity_int2_charptr_handleinterfacecheck_handlestandardtype_handlestandardtransient(self as *const Self, num, nump, c_mess.as_ptr(), ach, atype, ent)
         })
     }
 
@@ -11076,12 +12415,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         sel: &mut SelectType,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_entity_int2_charptr_handleinterfacecheck_selecttype(self as *const Self, num, nump, c_mess.as_ptr(), ach, sel)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_entity_int2_charptr_handleinterfacecheck_selecttype(self as *const Self, num, nump, c_mess.as_ptr(), ach, sel)
         })
     }
 
@@ -11093,12 +12432,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         val: &mut i32,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_integer(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_integer(
                 self as *const Self,
                 num,
                 nump,
@@ -11118,12 +12457,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         flag: &mut bool,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_boolean(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_boolean(
                 self as *const Self,
                 num,
                 nump,
@@ -11143,13 +12482,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         flag: &mut crate::step_data::Logical,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let mut flag_i32_: i32 = (*flag).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_logical(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_logical(
                 self as *const Self,
                 num,
                 nump,
@@ -11171,12 +12510,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        val: &mut crate::ffi::HandleTCollectionHAsciiString,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        val: &mut crate::ffi_types::HandleTCollectionHAsciiString,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_string(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_string(
                 self as *const Self,
                 num,
                 nump,
@@ -11193,12 +12532,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         text: &mut *const std::ffi::c_char,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_enum_param(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_enum_param(
                 self as *const Self,
                 num,
                 nump,
@@ -11218,11 +12557,11 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_fail_enum_value(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_fail_enum_value(
                 self as *const Self,
                 num,
                 nump,
@@ -11242,13 +12581,13 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         enumtool: &EnumTool,
         val: &mut i32,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_enum(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_enum(
                 self as *const Self,
                 num,
                 nump,
@@ -11277,14 +12616,14 @@ impl StepReaderData {
         nump: i32,
         mustbetyped: bool,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         numr: &mut i32,
         numrp: &mut i32,
         typ: &mut crate::t_collection::AsciiString,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_read_typed_param(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_read_typed_param(
                 self as *const Self,
                 num,
                 nump,
@@ -11309,12 +12648,12 @@ impl StepReaderData {
         num: i32,
         nump: i32,
         mess: &str,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
         errstat: bool,
     ) -> bool {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_check_derived(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_check_derived(
                 self as *const Self,
                 num,
                 nump,
@@ -11329,7 +12668,7 @@ impl StepReaderData {
     /// Returns total count of Entities (including Header)
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_nb_entities(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_nb_entities(self as *const Self)
         })
     }
 
@@ -11339,7 +12678,10 @@ impl StepReaderData {
     /// Note : skips Header records, which are accessed separately
     pub fn find_next_record(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_find_next_record(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_find_next_record(
+                self as *const Self,
+                num,
+            )
         })
     }
 
@@ -11354,7 +12696,10 @@ impl StepReaderData {
     /// this option can be used only to test this algorithm
     pub fn set_entity_numbers(&mut self, withmap: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_set_entity_numbers(self as *mut Self, withmap)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_set_entity_numbers(
+                self as *mut Self,
+                withmap,
+            )
         })
     }
 
@@ -11363,7 +12708,10 @@ impl StepReaderData {
     /// works as FindNextRecord, but treats only Header records
     pub fn find_next_header_record(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_find_next_header_record(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_find_next_header_record(
+                self as *const Self,
+                num,
+            )
         })
     }
 
@@ -11372,27 +12720,31 @@ impl StepReaderData {
     /// there are no Reference, only Sub-Lists
     pub fn prepare_header(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_prepare_header(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_prepare_header(self as *mut Self)
         })
     }
 
     /// **Source:** `StepData_StepReaderData.hxx`:452 - `StepData_StepReaderData::GlobalCheck()`
     /// Returns the Global Check. It can record Fail messages about
     /// Undefined References (detected by SetEntityNumbers)
-    pub fn global_check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn global_check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderData_global_check(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_global_check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `StepData_StepReaderData.hxx`:454 - `StepData_StepReaderData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11400,7 +12752,7 @@ impl StepReaderData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_StepReaderData_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11408,18 +12760,22 @@ impl StepReaderData {
     }
 
     /// **Source:** `StepData_StepReaderData.hxx`:454 - `StepData_StepReaderData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Interface_FileReaderData
     pub fn as_interface_file_reader_data(&self) -> &crate::interface::FileReaderData {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_StepReaderData_as_Interface_FileReaderData(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_as_Interface_FileReaderData(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11427,7 +12783,7 @@ impl StepReaderData {
     pub fn as_interface_file_reader_data_mut(&mut self) -> &mut crate::interface::FileReaderData {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_StepReaderData_as_Interface_FileReaderData_mut(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_as_Interface_FileReaderData_mut(
                     self as *mut Self,
                 ),
             )
@@ -11437,9 +12793,11 @@ impl StepReaderData {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_StepReaderData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11447,7 +12805,9 @@ impl StepReaderData {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_StepReaderData_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -11455,10 +12815,10 @@ impl StepReaderData {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepReaderData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepReaderData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderData_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -11466,36 +12826,52 @@ impl StepReaderData {
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:57 - `Interface_FileReaderData::NbRecords()`
     pub fn nb_records(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_NbRecords(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_NbRecords(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:73 - `Interface_FileReaderData::InitParams()`
     pub fn init_params(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_InitParams(self as *mut Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_InitParams(
+                self as *mut Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:100 - `Interface_FileReaderData::SetParam()`
     pub fn set_param(&mut self, num: i32, nump: i32, FP: &crate::interface::FileParameter) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_SetParam(self as *mut Self, num, nump, FP)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_SetParam(
+                self as *mut Self,
+                num,
+                nump,
+                FP,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:106 - `Interface_FileReaderData::NbParams()`
     pub fn nb_params(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_NbParams(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_NbParams(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:110 - `Interface_FileReaderData::Params()`
-    pub fn params(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceParamList> {
+    pub fn params(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceParamList> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderData_inherited_Params(self as *const Self, num),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_Params(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -11503,29 +12879,37 @@ impl StepReaderData {
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:114 - `Interface_FileReaderData::Param()`
     pub fn param(&self, num: i32, nump: i32) -> &crate::interface::FileParameter {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_inherited_Param(
-                self as *const Self,
-                num,
-                nump,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_Param(
+                    self as *const Self,
+                    num,
+                    nump,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:118 - `Interface_FileReaderData::ChangeParam()`
     pub fn change_param(&mut self, num: i32, nump: i32) -> &mut crate::interface::FileParameter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepReaderData_inherited_ChangeParam(
-                self as *mut Self,
-                num,
-                nump,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ChangeParam(
+                    self as *mut Self,
+                    num,
+                    nump,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:124 - `Interface_FileReaderData::ParamType()`
     pub fn param_type(&self, num: i32, nump: i32) -> crate::interface::ParamType {
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_ParamType(self as *const Self, num, nump)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ParamType(
+                self as *const Self,
+                num,
+                nump,
+            )
         }))
         .unwrap()
     }
@@ -11533,7 +12917,7 @@ impl StepReaderData {
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:134 - `Interface_FileReaderData::IsParamDefined()`
     pub fn is_param_defined(&self, num: i32, nump: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_IsParamDefined(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_IsParamDefined(
                 self as *const Self,
                 num,
                 nump,
@@ -11544,7 +12928,7 @@ impl StepReaderData {
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:141 - `Interface_FileReaderData::ParamNumber()`
     pub fn param_number(&self, num: i32, nump: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_ParamNumber(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ParamNumber(
                 self as *const Self,
                 num,
                 nump,
@@ -11553,79 +12937,103 @@ impl StepReaderData {
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:146 - `Interface_FileReaderData::ParamEntity()`
-    pub fn param_entity(&self, num: i32, nump: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn param_entity(&self, num: i32, nump: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_inherited_ParamEntity(
-                self as *const Self,
-                num,
-                nump,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ParamEntity(
+                    self as *const Self,
+                    num,
+                    nump,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:151 - `Interface_FileReaderData::ParamFirstRank()`
     pub fn param_first_rank(&self, num: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_ParamFirstRank(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ParamFirstRank(
+                self as *const Self,
+                num,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:154 - `Interface_FileReaderData::BoundEntity()`
-    pub fn bound_entity(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn bound_entity(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_StepReaderData_inherited_BoundEntity(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_BoundEntity(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:157 - `Interface_FileReaderData::BindEntity()`
-    pub fn bind_entity(&mut self, num: i32, ent: &crate::ffi::HandleStandardTransient) {
+    pub fn bind_entity(&mut self, num: i32, ent: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_BindEntity(self as *mut Self, num, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_BindEntity(
+                self as *mut Self,
+                num,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:169 - `Interface_FileReaderData::SetErrorLoad()`
     pub fn set_error_load(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_SetErrorLoad(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_SetErrorLoad(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:173 - `Interface_FileReaderData::IsErrorLoad()`
     pub fn is_error_load(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_IsErrorLoad(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_IsErrorLoad(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:177 - `Interface_FileReaderData::ResetErrorLoad()`
     pub fn reset_error_load(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_ResetErrorLoad(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_ResetErrorLoad(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderData.hxx`:180 - `Interface_FileReaderData::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_Destroy(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_Destroy(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11633,7 +13041,9 @@ impl StepReaderData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_StepReaderData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11646,75 +13056,83 @@ impl StepReaderData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderData_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataStepReaderData;
+pub use crate::ffi_types::HandleStepDataStepReaderData;
 
 unsafe impl crate::CppDeletable for HandleStepDataStepReaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataStepReaderData_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_destructor(ptr);
     }
 }
 
 impl HandleStepDataStepReaderData {
     /// Dereference this Handle to access the underlying StepData_StepReaderData
-    pub fn get(&self) -> &crate::ffi::StepData_StepReaderData {
+    pub fn get(&self) -> &crate::ffi_types::StepData_StepReaderData {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataStepReaderData_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_StepReaderData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_StepReaderData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_StepReaderData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataStepReaderData_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StepData_StepReaderData> to Handle<Interface_FileReaderData>
     pub fn to_handle_file_reader_data(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceFileReaderData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceFileReaderData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataStepReaderData_to_HandleInterfaceFileReaderData(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_to_HandleInterfaceFileReaderData(self as *const Self)))
         }
     }
 
     /// Upcast Handle<StepData_StepReaderData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataStepReaderData_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleStepDataStepReaderData_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -11731,11 +13149,11 @@ impl HandleStepDataStepReaderData {
 /// provides references evaluation, plus access to literal data
 /// and specific methods defined by FileReaderTool
 /// Remarks : works with a ReaderLib to load Entities
-pub use crate::ffi::StepData_StepReaderTool as StepReaderTool;
+pub use crate::ffi_types::StepData_StepReaderTool as StepReaderTool;
 
 unsafe impl crate::CppDeletable for StepReaderTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_StepReaderTool_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_destructor(ptr);
     }
 }
 
@@ -11744,11 +13162,11 @@ impl StepReaderTool {
     /// creates StepReaderTool to work with a StepReaderData according
     /// to a Step Protocol. Defines the ReaderLib at this time
     pub fn new_handlestepdatastepreaderdata_handlestepdataprotocol(
-        reader: &crate::ffi::HandleStepDataStepReaderData,
-        protocol: &crate::ffi::HandleStepDataProtocol,
+        reader: &crate::ffi_types::HandleStepDataStepReaderData,
+        protocol: &crate::ffi_types::HandleStepDataProtocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepReaderTool_ctor_handlestepdatastepreaderdata_handlestepdataprotocol(reader, protocol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_ctor_handlestepdatastepreaderdata_handlestepdataprotocol(reader, protocol)))
         }
     }
 
@@ -11761,7 +13179,10 @@ impl StepReaderTool {
     /// which are normally avoided (see also StepReaderData)
     pub fn prepare_bool(&mut self, optimize: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_prepare_bool(self as *mut Self, optimize)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_prepare_bool(
+                self as *mut Self,
+                optimize,
+            )
         })
     }
 
@@ -11772,15 +13193,11 @@ impl StepReaderTool {
     /// <optimize : same as above
     pub fn prepare_handlestepdatafilerecognizer_bool(
         &mut self,
-        reco: &crate::ffi::HandleStepDataFileRecognizer,
+        reco: &crate::ffi_types::HandleStepDataFileRecognizer,
         optimize: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_prepare_handlestepdatafilerecognizer_bool(
-                self as *mut Self,
-                reco,
-                optimize,
-            )
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_prepare_handlestepdatafilerecognizer_bool(self as *mut Self, reco, optimize)
         })
     }
 
@@ -11791,11 +13208,16 @@ impl StepReaderTool {
     pub fn recognize(
         &mut self,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_recognize(self as *mut Self, num, ach, ent)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_recognize(
+                self as *mut Self,
+                num,
+                ach,
+                ent,
+            )
         })
     }
 
@@ -11805,9 +13227,12 @@ impl StepReaderTool {
     /// (N.B.: in Header, no Ident and no reference)
     /// FileRecognizer is to specify Entities which are allowed to be
     /// defined in the Header (not every type can be)
-    pub fn prepare_header(&mut self, reco: &crate::ffi::HandleStepDataFileRecognizer) {
+    pub fn prepare_header(&mut self, reco: &crate::ffi_types::HandleStepDataFileRecognizer) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_prepare_header(self as *mut Self, reco)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_prepare_header(
+                self as *mut Self,
+                reco,
+            )
         })
     }
 
@@ -11815,9 +13240,12 @@ impl StepReaderTool {
     /// fills model's header; that is, gives to it Header entities
     /// and commands their loading. Also fills StepModel's Global
     /// Check from StepReaderData's GlobalCheck
-    pub fn begin_read(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn begin_read(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_begin_read(self as *mut Self, amodel)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_begin_read(
+                self as *mut Self,
+                amodel,
+            )
         })
     }
 
@@ -11828,11 +13256,11 @@ impl StepReaderTool {
     pub fn analyse_record(
         &mut self,
         num: i32,
-        anent: &crate::ffi::HandleStandardTransient,
-        acheck: &mut crate::ffi::HandleInterfaceCheck,
+        anent: &crate::ffi_types::HandleStandardTransient,
+        acheck: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_analyse_record(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_analyse_record(
                 self as *mut Self,
                 num,
                 anent,
@@ -11844,18 +13272,20 @@ impl StepReaderTool {
     /// **Source:** `StepData_StepReaderTool.hxx`:92 - `StepData_StepReaderTool::EndRead()`
     /// Ends file reading after reading all the entities
     /// Here, it binds in the model, Idents to Entities (for checks)
-    pub fn end_read(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn end_read(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_end_read(self as *mut Self, amodel)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_end_read(self as *mut Self, amodel)
         })
     }
 
     /// Upcast to Interface_FileReaderTool
     pub fn as_interface_file_reader_tool(&self) -> &crate::interface::FileReaderTool {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_StepReaderTool_as_Interface_FileReaderTool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_as_Interface_FileReaderTool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11863,7 +13293,7 @@ impl StepReaderTool {
     pub fn as_interface_file_reader_tool_mut(&mut self) -> &mut crate::interface::FileReaderTool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_StepReaderTool_as_Interface_FileReaderTool_mut(
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_as_Interface_FileReaderTool_mut(
                     self as *mut Self,
                 ),
             )
@@ -11873,11 +13303,11 @@ impl StepReaderTool {
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:54 - `Interface_FileReaderTool::SetData()`
     pub fn set_data(
         &mut self,
-        reader: &crate::ffi::HandleInterfaceFileReaderData,
-        protocol: &crate::ffi::HandleInterfaceProtocol,
+        reader: &crate::ffi_types::HandleInterfaceFileReaderData,
+        protocol: &crate::ffi_types::HandleInterfaceProtocol,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetData(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetData(
                 self as *mut Self,
                 reader,
                 protocol,
@@ -11886,51 +13316,65 @@ impl StepReaderTool {
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:58 - `Interface_FileReaderTool::Protocol()`
-    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn protocol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_Protocol(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_Protocol(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:61 - `Interface_FileReaderTool::Data()`
-    pub fn data(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceFileReaderData> {
+    pub fn data(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceFileReaderData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_Data(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_Data(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:64 - `Interface_FileReaderTool::SetModel()`
-    pub fn set_model(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetModel(self as *mut Self, amodel)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetModel(
+                self as *mut Self,
+                amodel,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:67 - `Interface_FileReaderTool::Model()`
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_Model(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_Model(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:70 - `Interface_FileReaderTool::SetMessenger()`
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetMessenger(self as *mut Self, messenger)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetMessenger(
+                self as *mut Self,
+                messenger,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:75 - `Interface_FileReaderTool::Messenger()`
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_Messenger(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_Messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11938,35 +13382,47 @@ impl StepReaderTool {
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:83 - `Interface_FileReaderTool::SetTraceLevel()`
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetTraceLevel(self as *mut Self, tracelev)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetTraceLevel(
+                self as *mut Self,
+                tracelev,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:86 - `Interface_FileReaderTool::TraceLevel()`
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_TraceLevel(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_TraceLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:93 - `Interface_FileReaderTool::SetErrorHandle()`
     pub fn set_error_handle(&mut self, err: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetErrorHandle(self as *mut Self, err)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetErrorHandle(
+                self as *mut Self,
+                err,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:96 - `Interface_FileReaderTool::ErrorHandle()`
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_ErrorHandle(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_ErrorHandle(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:102 - `Interface_FileReaderTool::SetEntities()`
     pub fn set_entities(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_SetEntities(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_SetEntities(
+                self as *mut Self,
+            )
         })
     }
 
@@ -11976,11 +13432,11 @@ impl StepReaderTool {
         num: i32,
         glib: &mut crate::interface::GeneralLib,
         rlib: &mut crate::interface::ReaderLib,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_RecognizeByLib(
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_RecognizeByLib(
                 self as *const Self,
                 num,
                 glib,
@@ -11992,27 +13448,34 @@ impl StepReaderTool {
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:138 - `Interface_FileReaderTool::UnknownEntity()`
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_UnknownEntity(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_UnknownEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:141 - `Interface_FileReaderTool::NewModel()`
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_NewModel(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_NewModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:152 - `Interface_FileReaderTool::LoadModel()`
-    pub fn load_model(&mut self, amodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn load_model(&mut self, amodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_LoadModel(self as *mut Self, amodel)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_LoadModel(
+                self as *mut Self,
+                amodel,
+            )
         })
     }
 
@@ -12020,10 +13483,13 @@ impl StepReaderTool {
     pub fn loaded_entity(
         &mut self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepReaderTool_inherited_LoadedEntity(self as *mut Self, num),
+                crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_LoadedEntity(
+                    self as *mut Self,
+                    num,
+                ),
             ))
         }
     }
@@ -12031,7 +13497,7 @@ impl StepReaderTool {
     /// Inherited: **Source:** `Interface_FileReaderTool.hxx`:188 - `Interface_FileReaderTool::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepReaderTool_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepReaderTool_inherited_Clear(self as *mut Self)
         })
     }
 }
@@ -12047,11 +13513,11 @@ impl StepReaderTool {
 /// writes it
 /// A stream cannot be used because Step limits line length at 72
 /// In more, a specific object offers more appropriate functions
-pub use crate::ffi::StepData_StepWriter as StepWriter;
+pub use crate::ffi_types::StepData_StepWriter as StepWriter;
 
 unsafe impl crate::CppDeletable for StepWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_StepWriter_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_StepWriter_destructor(ptr);
     }
 }
 
@@ -12060,11 +13526,13 @@ impl StepWriter {
     /// Creates an empty StepWriter from a StepModel. The StepModel
     /// provides the Number of Entities, as identifiers for File
     pub fn new_handlestepdatastepmodel(
-        amodel: &crate::ffi::HandleStepDataStepModel,
+        amodel: &crate::ffi_types::HandleStepDataStepModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepWriter_ctor_handlestepdatastepmodel(amodel),
+                crate::ffi_extern_TKDESTEP::StepData_StepWriter_ctor_handlestepdatastepmodel(
+                    amodel,
+                ),
             ))
         }
     }
@@ -12076,7 +13544,7 @@ impl StepWriter {
     /// Warning : conflicts are not controlled
     pub fn label_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepWriter_label_mode(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepWriter_label_mode(
                 self as *mut Self,
             )))
         }
@@ -12089,7 +13557,7 @@ impl StepWriter {
     /// long form is then used)
     pub fn type_mode(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepWriter_type_mode(
+            &mut *(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_StepWriter_type_mode(
                 self as *mut Self,
             )))
         }
@@ -12102,9 +13570,9 @@ impl StepWriter {
     /// because it is returned as the address of its field
     pub fn float_writer(&mut self) -> &mut crate::interface::FloatWriter {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StepData_StepWriter_float_writer(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepWriter_float_writer(self as *mut Self),
+            ))
         }
     }
 
@@ -12118,7 +13586,11 @@ impl StepWriter {
     /// (not checked here)
     pub fn set_scope(&mut self, numscope: i32, numin: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_set_scope(self as *mut Self, numscope, numin)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_set_scope(
+                self as *mut Self,
+                numscope,
+                numin,
+            )
         })
     }
 
@@ -12126,7 +13598,7 @@ impl StepWriter {
     /// Returns True if an Entity identified by its Number is in a Scope
     pub fn is_in_scope(&self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepWriter_is_in_scope(self as *const Self, num)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_is_in_scope(self as *const Self, num)
         })
     }
 
@@ -12135,9 +13607,17 @@ impl StepWriter {
     /// Works with a WriterLib defined through a Protocol
     /// If <headeronly> is given True, only the HEADER Section is sent
     /// (used to Dump the Header of a StepModel)
-    pub fn send_model(&mut self, protocol: &crate::ffi::HandleStepDataProtocol, headeronly: bool) {
+    pub fn send_model(
+        &mut self,
+        protocol: &crate::ffi_types::HandleStepDataProtocol,
+        headeronly: bool,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_model(self as *mut Self, protocol, headeronly)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_model(
+                self as *mut Self,
+                protocol,
+                headeronly,
+            )
         })
     }
 
@@ -12145,7 +13625,7 @@ impl StepWriter {
     /// Begins model header
     pub fn send_header(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_header(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_header(self as *mut Self)
         })
     }
 
@@ -12153,7 +13633,7 @@ impl StepWriter {
     /// Begins data section; error if EndSec was not set
     pub fn send_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_data(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_data(self as *mut Self)
         })
     }
 
@@ -12162,7 +13642,11 @@ impl StepWriter {
     /// Scope, also Sends the Scope information and contained Items
     pub fn send_entity(&mut self, nument: i32, lib: &WriterLib) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_entity(self as *mut Self, nument, lib)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_entity(
+                self as *mut Self,
+                nument,
+                lib,
+            )
         })
     }
 
@@ -12170,7 +13654,7 @@ impl StepWriter {
     /// sets end of section; to be done before passing to next one
     pub fn end_sec(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_end_sec(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_end_sec(self as *mut Self)
         })
     }
 
@@ -12178,7 +13662,7 @@ impl StepWriter {
     /// sets end of file; error is EndSec was not set
     pub fn end_file(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_end_file(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_end_file(self as *mut Self)
         })
     }
 
@@ -12187,7 +13671,7 @@ impl StepWriter {
     /// empty line) if evenempty is True; else, skips it
     pub fn new_line(&mut self, evenempty: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_new_line(self as *mut Self, evenempty)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_new_line(self as *mut Self, evenempty)
         })
     }
 
@@ -12198,7 +13682,7 @@ impl StepWriter {
     /// completed
     pub fn join_last(&mut self, newline: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_join_last(self as *mut Self, newline)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_join_last(self as *mut Self, newline)
         })
     }
 
@@ -12209,7 +13693,7 @@ impl StepWriter {
     /// (except for text continuation, which must begin at true zero)
     pub fn indent(&mut self, onent: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_indent(self as *mut Self, onent)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_indent(self as *mut Self, onent)
         })
     }
 
@@ -12219,7 +13703,7 @@ impl StepWriter {
     /// Warning : <ident> must be, either Number or Label, according LabelMode
     pub fn send_ident(&mut self, ident: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_ident(self as *mut Self, ident)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_ident(self as *mut Self, ident)
         })
     }
 
@@ -12227,7 +13711,7 @@ impl StepWriter {
     /// sets a begin of Scope (ends this line)
     pub fn send_scope(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_scope(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_scope(self as *mut Self)
         })
     }
 
@@ -12235,7 +13719,7 @@ impl StepWriter {
     /// sets an end of Scope  (on a separate line)
     pub fn send_endscope(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_endscope(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_endscope(self as *mut Self)
         })
     }
 
@@ -12244,7 +13728,7 @@ impl StepWriter {
     /// if mode is False, ends Comment zone (if one is begun)
     pub fn comment(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_comment(self as *mut Self, mode)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_comment(self as *mut Self, mode)
         })
     }
 
@@ -12252,13 +13736,10 @@ impl StepWriter {
     /// sends a comment. Error if we are not inside a comment zone
     pub fn send_comment_handletcollectionhasciistring(
         &mut self,
-        text: &crate::ffi::HandleTCollectionHAsciiString,
+        text: &crate::ffi_types::HandleTCollectionHAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_comment_handletcollectionhasciistring(
-                self as *mut Self,
-                text,
-            )
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_comment_handletcollectionhasciistring(self as *mut Self, text)
         })
     }
 
@@ -12267,7 +13748,10 @@ impl StepWriter {
     pub fn send_comment_charptr(&mut self, text: &str) {
         let c_text = std::ffi::CString::new(text).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_comment_charptr(self as *mut Self, c_text.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_comment_charptr(
+                self as *mut Self,
+                c_text.as_ptr(),
+            )
         })
     }
 
@@ -12282,7 +13766,7 @@ impl StepWriter {
     /// EndComplex must be called, then and only then EndEntity
     pub fn start_entity(&mut self, atype: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_start_entity(self as *mut Self, atype)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_start_entity(self as *mut Self, atype)
         })
     }
 
@@ -12293,7 +13777,7 @@ impl StepWriter {
     /// components, each one begins by StartEntity
     pub fn start_complex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_start_complex(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_start_complex(self as *mut Self)
         })
     }
 
@@ -12303,7 +13787,7 @@ impl StepWriter {
     /// the final call to EndEntity
     pub fn end_complex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_end_complex(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_end_complex(self as *mut Self)
         })
     }
 
@@ -12311,9 +13795,13 @@ impl StepWriter {
     /// Sends the content of a field, controlled by its descriptor
     /// If the descriptor is not defined, follows the description
     /// detained by the field itself
-    pub fn send_field(&mut self, fild: &Field, descr: &crate::ffi::HandleStepDataPDescr) {
+    pub fn send_field(&mut self, fild: &Field, descr: &crate::ffi_types::HandleStepDataPDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_field(self as *mut Self, fild, descr)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_field(
+                self as *mut Self,
+                fild,
+                descr,
+            )
         })
     }
 
@@ -12321,11 +13809,15 @@ impl StepWriter {
     /// Sends a SelectMember, which cab be named or not
     pub fn send_select(
         &mut self,
-        sm: &crate::ffi::HandleStepDataSelectMember,
-        descr: &crate::ffi::HandleStepDataPDescr,
+        sm: &crate::ffi_types::HandleStepDataSelectMember,
+        descr: &crate::ffi_types::HandleStepDataPDescr,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_select(self as *mut Self, sm, descr)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_select(
+                self as *mut Self,
+                sm,
+                descr,
+            )
         })
     }
 
@@ -12333,9 +13825,13 @@ impl StepWriter {
     /// Send the content of an entity as being a FieldList controlled
     /// by its descriptor. This includes start and end brackets but
     /// not the entity type
-    pub fn send_list(&mut self, list: &FieldList, descr: &crate::ffi::HandleStepDataESDescr) {
+    pub fn send_list(&mut self, list: &FieldList, descr: &crate::ffi_types::HandleStepDataESDescr) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_list(self as *mut Self, list, descr)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_list(
+                self as *mut Self,
+                list,
+                descr,
+            )
         })
     }
 
@@ -12343,7 +13839,7 @@ impl StepWriter {
     /// open a sublist by a '('
     pub fn open_sub(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_open_sub(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_open_sub(self as *mut Self)
         })
     }
 
@@ -12352,7 +13848,10 @@ impl StepWriter {
     pub fn open_typed_sub(&mut self, subtype: &str) {
         let c_subtype = std::ffi::CString::new(subtype).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_open_typed_sub(self as *mut Self, c_subtype.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_open_typed_sub(
+                self as *mut Self,
+                c_subtype.as_ptr(),
+            )
         })
     }
 
@@ -12360,7 +13859,7 @@ impl StepWriter {
     /// closes a sublist by a ')'
     pub fn close_sub(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_close_sub(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_close_sub(self as *mut Self)
         })
     }
 
@@ -12370,7 +13869,7 @@ impl StepWriter {
     /// a totally empty parameter (with no literal value)
     pub fn add_param(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_add_param(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_add_param(self as *mut Self)
         })
     }
 
@@ -12378,7 +13877,7 @@ impl StepWriter {
     /// sends an integer parameter
     pub fn send_int(&mut self, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_int(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_int(self as *mut Self, val)
         })
     }
 
@@ -12386,7 +13885,7 @@ impl StepWriter {
     /// sends a real parameter (works with FloatWriter)
     pub fn send_real(&mut self, val: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_real(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_real(self as *mut Self, val)
         })
     }
 
@@ -12394,7 +13893,7 @@ impl StepWriter {
     /// sends a text given as string (it will be set between '...')
     pub fn send_asciistring(&mut self, val: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_asciistring(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_asciistring(self as *mut Self, val)
         })
     }
 
@@ -12403,9 +13902,15 @@ impl StepWriter {
     /// REMARK 1 : a Null <val> is interpreted as "Undefined"
     /// REMARK 2 : for an HAsciiString which is not recorded in the
     /// Model, it is send as its String Content, between quotes
-    pub fn send_handlestandardtransient(&mut self, val: &crate::ffi::HandleStandardTransient) {
+    pub fn send_handlestandardtransient(
+        &mut self,
+        val: &crate::ffi_types::HandleStandardTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_handlestandardtransient(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_handlestandardtransient(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
@@ -12414,7 +13919,7 @@ impl StepWriter {
     /// (it is an useful case of Enum, which is built-in)
     pub fn send_boolean(&mut self, val: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_boolean(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_boolean(self as *mut Self, val)
         })
     }
 
@@ -12423,7 +13928,10 @@ impl StepWriter {
     /// (it is a standard case of Enum for Step, and is built-in)
     pub fn send_logical(&mut self, val: crate::step_data::Logical) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_logical(self as *mut Self, val.into())
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_logical(
+                self as *mut Self,
+                val.into(),
+            )
         })
     }
 
@@ -12431,7 +13939,10 @@ impl StepWriter {
     /// sends a string exactly as it is given
     pub fn send_string_asciistring(&mut self, val: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_string_asciistring(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_string_asciistring(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
@@ -12440,7 +13951,10 @@ impl StepWriter {
     pub fn send_string_charptr(&mut self, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_string_charptr(self as *mut Self, c_val.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_string_charptr(
+                self as *mut Self,
+                c_val.as_ptr(),
+            )
         })
     }
 
@@ -12451,7 +13965,10 @@ impl StepWriter {
     /// StepWriter.SendEnum (myenum.Text(enumval));
     pub fn send_enum_asciistring(&mut self, val: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_enum_asciistring(self as *mut Self, val)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_enum_asciistring(
+                self as *mut Self,
+                val,
+            )
         })
     }
 
@@ -12461,15 +13978,18 @@ impl StepWriter {
     pub fn send_enum_charptr(&mut self, val: &str) {
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_enum_charptr(self as *mut Self, c_val.as_ptr())
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_enum_charptr(
+                self as *mut Self,
+                c_val.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `StepData_StepWriter.hxx`:241 - `StepData_StepWriter::SendArrReal()`
     /// sends an array of real
-    pub fn send_arr_real(&mut self, anArr: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn send_arr_real(&mut self, anArr: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_arr_real(self as *mut Self, anArr)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_arr_real(self as *mut Self, anArr)
         })
     }
 
@@ -12477,7 +13997,7 @@ impl StepWriter {
     /// sends an undefined (optional absent) parameter (by '$')
     pub fn send_undef(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_undef(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_undef(self as *mut Self)
         })
     }
 
@@ -12487,7 +14007,7 @@ impl StepWriter {
     /// computed by a function. Hence its value in file is senseless.
     pub fn send_derived(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_send_derived(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_send_derived(self as *mut Self)
         })
     }
 
@@ -12496,7 +14016,7 @@ impl StepWriter {
     /// Error if count of opened-closed brackets is not null
     pub fn end_entity(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_StepWriter_end_entity(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_end_entity(self as *mut Self)
         })
     }
 
@@ -12507,7 +14027,7 @@ impl StepWriter {
     pub fn check_list(&self) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_StepWriter_check_list(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_StepWriter_check_list(self as *const Self),
             ))
         }
     }
@@ -12516,26 +14036,30 @@ impl StepWriter {
     /// Returns count of Lines
     pub fn nb_lines(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_StepWriter_nb_lines(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_nb_lines(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_StepWriter.hxx`:264 - `StepData_StepWriter::Line()`
     /// Returns a Line given its rank in the File
-    pub fn line(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn line(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_StepWriter_line(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_StepWriter_line(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `StepData_StepWriter.hxx`:268 - `StepData_StepWriter::Print()`
     /// writes result on an output defined as an OStream
     /// then clears it
-    pub fn print(&mut self, S: &mut crate::ffi::Standard_OStream) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_StepWriter_print(self as *mut Self, S) })
+    pub fn print(&mut self, S: &mut crate::ffi_types::Standard_OStream) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_StepWriter_print(self as *mut Self, S)
+        })
     }
 }
 
@@ -12549,11 +14073,11 @@ impl StepWriter {
 /// Uses an UndefinedContent, that from Interface is suitable.
 /// Also an Entity defined by STEP can be "Complex Type" (see
 /// ANDOR clause in Express).
-pub use crate::ffi::StepData_UndefinedEntity as UndefinedEntity;
+pub use crate::ffi_types::StepData_UndefinedEntity as UndefinedEntity;
 
 unsafe impl crate::CppDeletable for UndefinedEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_UndefinedEntity_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_destructor(ptr);
     }
 }
 
@@ -12563,7 +14087,7 @@ impl UndefinedEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_ctor(),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_ctor(),
             ))
         }
     }
@@ -12574,7 +14098,7 @@ impl UndefinedEntity {
     pub fn new_bool(issub: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_ctor_bool(issub),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_ctor_bool(issub),
             ))
         }
     }
@@ -12583,10 +14107,12 @@ impl UndefinedEntity {
     /// Returns the UndefinedContent which brings the Parameters
     pub fn undefined_content(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceUndefinedContent> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceUndefinedContent> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_undefined_content(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_undefined_content(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12595,16 +14121,16 @@ impl UndefinedEntity {
     /// Returns True if an Unndefined Entity is SubPart of another one
     pub fn is_sub(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_is_sub(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_is_sub(self as *const Self)
         })
     }
 
     /// **Source:** `StepData_UndefinedEntity.hxx`:59 - `StepData_UndefinedEntity::Super()`
     /// Returns the "super-entity" of a sub-part
-    pub fn super_(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataUndefinedEntity> {
+    pub fn super_(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataUndefinedEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_super_(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_super_(self as *const Self),
             ))
         }
     }
@@ -12613,7 +14139,7 @@ impl UndefinedEntity {
     /// Returns True if <me> defines a Multiple Type Entity (see ANDOR)
     pub fn is_complex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_is_complex(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_is_complex(self as *const Self)
         })
     }
 
@@ -12621,10 +14147,10 @@ impl UndefinedEntity {
     /// For a Multiple Type Entity, returns the Next "Component"
     /// For more than two Types, iterative definition (Next->Next...)
     /// Returns a Null Handle for the end of the List
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataUndefinedEntity> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataUndefinedEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_next(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_next(self as *const Self),
             ))
         }
     }
@@ -12637,7 +14163,7 @@ impl UndefinedEntity {
     pub fn step_type(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_step_type(self as *const Self),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_step_type(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -12649,12 +14175,17 @@ impl UndefinedEntity {
     /// StepType and parameters stored in the UndefinedContent
     pub fn read_record(
         &mut self,
-        SR: &crate::ffi::HandleStepDataStepReaderData,
+        SR: &crate::ffi_types::HandleStepDataStepReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_read_record(self as *mut Self, SR, num, ach)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_read_record(
+                self as *mut Self,
+                SR,
+                num,
+                ach,
+            )
         })
     }
 
@@ -12662,7 +14193,10 @@ impl UndefinedEntity {
     /// write data to StepWriter, taken from UndefinedContent
     pub fn write_params(&self, SW: &mut StepWriter) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_write_params(self as *const Self, SW)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_write_params(
+                self as *const Self,
+                SW,
+            )
         })
     }
 
@@ -12670,11 +14204,15 @@ impl UndefinedEntity {
     /// reads another UndefinedEntity from StepData
     pub fn get_from_another(
         &mut self,
-        other: &crate::ffi::HandleStepDataUndefinedEntity,
+        other: &crate::ffi_types::HandleStepDataUndefinedEntity,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_get_from_another(self as *mut Self, other, TC)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_get_from_another(
+                self as *mut Self,
+                other,
+                TC,
+            )
         })
     }
 
@@ -12682,16 +14220,21 @@ impl UndefinedEntity {
     /// Fills the list of shared entities
     pub fn fill_shared(&self, list: &mut crate::interface::EntityIterator) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_fill_shared(self as *const Self, list)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_fill_shared(
+                self as *const Self,
+                list,
+            )
         })
     }
 
     /// **Source:** `StepData_UndefinedEntity.hxx`:91 - `StepData_UndefinedEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_UndefinedEntity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -12699,7 +14242,7 @@ impl UndefinedEntity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_get_type_name(),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -12707,18 +14250,22 @@ impl UndefinedEntity {
     }
 
     /// **Source:** `StepData_UndefinedEntity.hxx`:91 - `StepData_UndefinedEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_UndefinedEntity_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StepData_UndefinedEntity_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12726,7 +14273,9 @@ impl UndefinedEntity {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12734,25 +14283,31 @@ impl UndefinedEntity {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStepDataUndefinedEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataUndefinedEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_UndefinedEntity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -12760,7 +14315,9 @@ impl UndefinedEntity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StepData_UndefinedEntity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -12773,67 +14330,75 @@ impl UndefinedEntity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_UndefinedEntity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::StepData_UndefinedEntity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStepDataUndefinedEntity;
+pub use crate::ffi_types::HandleStepDataUndefinedEntity;
 
 unsafe impl crate::CppDeletable for HandleStepDataUndefinedEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStepDataUndefinedEntity_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_destructor(ptr);
     }
 }
 
 impl HandleStepDataUndefinedEntity {
     /// Dereference this Handle to access the underlying StepData_UndefinedEntity
-    pub fn get(&self) -> &crate::ffi::StepData_UndefinedEntity {
+    pub fn get(&self) -> &crate::ffi_types::StepData_UndefinedEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStepDataUndefinedEntity_get(
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StepData_UndefinedEntity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StepData_UndefinedEntity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StepData_UndefinedEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStepDataUndefinedEntity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<StepData_UndefinedEntity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStepDataUndefinedEntity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleStepDataUndefinedEntity_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -12843,11 +14408,11 @@ impl HandleStepDataUndefinedEntity {
 // ========================
 
 /// **Source:** `StepData_WriterLib.hxx`:32 - `StepData_WriterLib`
-pub use crate::ffi::StepData_WriterLib as WriterLib;
+pub use crate::ffi_types::StepData_WriterLib as WriterLib;
 
 unsafe impl crate::CppDeletable for WriterLib {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StepData_WriterLib_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::StepData_WriterLib_destructor(ptr);
     }
 }
 
@@ -12858,11 +14423,13 @@ impl WriterLib {
     /// This creation gets the Modules from the global set, those
     /// which are bound to the given Protocol and its Resources
     pub fn new_handlestepdataprotocol(
-        aprotocol: &crate::ffi::HandleStepDataProtocol,
+        aprotocol: &crate::ffi_types::HandleStepDataProtocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StepData_WriterLib_ctor_handlestepdataprotocol(aprotocol),
+                crate::ffi_extern_TKDESTEP::StepData_WriterLib_ctor_handlestepdataprotocol(
+                    aprotocol,
+                ),
             ))
         }
     }
@@ -12872,7 +14439,9 @@ impl WriterLib {
     /// AddProtocol
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StepData_WriterLib_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::StepData_WriterLib_ctor(),
+            ))
         }
     }
 
@@ -12880,9 +14449,12 @@ impl WriterLib {
     /// Adds a couple (Module-Protocol) to the Library, given the
     /// class of a Protocol. Takes Resources into account.
     /// (if <aprotocol> is not of type TheProtocol, it is not added)
-    pub fn add_protocol(&mut self, aprotocol: &crate::ffi::HandleStandardTransient) {
+    pub fn add_protocol(&mut self, aprotocol: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_WriterLib_add_protocol(self as *mut Self, aprotocol)
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_add_protocol(
+                self as *mut Self,
+                aprotocol,
+            )
         })
     }
 
@@ -12891,7 +14463,9 @@ impl WriterLib {
     /// redefine the order of Modules before action : Clear then
     /// refill the Library by calls to AddProtocol)
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_WriterLib_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:64 - `StepData_WriterLib::SetComplete()`
@@ -12899,7 +14473,7 @@ impl WriterLib {
     /// (all the couples Protocol/Modules recorded in it)
     pub fn set_complete(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_WriterLib_set_complete(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_set_complete(self as *mut Self)
         })
     }
 
@@ -12912,47 +14486,62 @@ impl WriterLib {
     /// (Select can work on any criterium, such as Object DynamicType)
     pub fn select(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
-        module: &mut crate::ffi::HandleStepDataReadWriteModule,
+        obj: &crate::ffi_types::HandleStandardTransient,
+        module: &mut crate::ffi_types::HandleStepDataReadWriteModule,
         CN: &mut i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StepData_WriterLib_select(self as *const Self, obj, module, CN)
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_select(
+                self as *const Self,
+                obj,
+                module,
+                CN,
+            )
         })
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:77 - `StepData_WriterLib::Start()`
     /// Starts Iteration on the Modules (sets it on the first one)
     pub fn start(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_WriterLib_start(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_start(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:80 - `StepData_WriterLib::More()`
     /// Returns True if there are more Modules to iterate on
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StepData_WriterLib_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_more(self as *const Self)
+        })
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:84 - `StepData_WriterLib::Next()`
     /// Iterates by getting the next Module in the list
     /// If there is none, the exception will be raised by Value
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StepData_WriterLib_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:87 - `StepData_WriterLib::Module()`
     /// Returns the current Module in the Iteration
-    pub fn module(&self) -> &crate::ffi::HandleStepDataReadWriteModule {
+    pub fn module(&self) -> &crate::ffi_types::HandleStepDataReadWriteModule {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_WriterLib_module(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_WriterLib_module(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StepData_WriterLib.hxx`:90 - `StepData_WriterLib::Protocol()`
     /// Returns the current Protocol in the Iteration
-    pub fn protocol(&self) -> &crate::ffi::HandleStepDataProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleStepDataProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::StepData_WriterLib_protocol(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::StepData_WriterLib_protocol(
+                self as *const Self,
+            )))
         }
     }
 
@@ -12960,11 +14549,11 @@ impl WriterLib {
     /// Adds a couple (Module-Protocol) into the global definition set
     /// for this class of Library.
     pub fn set_global(
-        amodule: &crate::ffi::HandleStepDataReadWriteModule,
-        aprotocol: &crate::ffi::HandleStepDataProtocol,
+        amodule: &crate::ffi_types::HandleStepDataReadWriteModule,
+        aprotocol: &crate::ffi_types::HandleStepDataProtocol,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StepData_WriterLib_set_global(amodule, aprotocol)
+            crate::ffi_extern_TKDESTEP::StepData_WriterLib_set_global(amodule, aprotocol)
         })
     }
 }
@@ -12973,4 +14562,4 @@ impl WriterLib {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StepData_Array1OfField as Array1OfField;
+pub use crate::ffi_types::StepData_Array1OfField as Array1OfField;

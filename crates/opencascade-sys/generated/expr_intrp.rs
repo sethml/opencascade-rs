@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi_types::{HandleStandardFailure, HandleStandardTransient};
 
 // ========================
 // From ExprIntrp_Analysis.hxx
 // ========================
 
 /// **Source:** `ExprIntrp_Analysis.hxx`:40 - `ExprIntrp_Analysis`
-pub use crate::ffi::ExprIntrp_Analysis as Analysis;
+pub use crate::ffi_types::ExprIntrp_Analysis as Analysis;
 
 unsafe impl crate::CppDeletable for Analysis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_Analysis_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_Analysis_destructor(ptr);
     }
 }
 
@@ -26,66 +26,68 @@ impl Analysis {
     /// **Source:** `ExprIntrp_Analysis.hxx`:45 - `ExprIntrp_Analysis::ExprIntrp_Analysis()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_Analysis_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:47 - `ExprIntrp_Analysis::SetMaster()`
-    pub fn set_master(&mut self, agen: &crate::ffi::HandleExprIntrpGenerator) {
+    pub fn set_master(&mut self, agen: &crate::ffi_types::HandleExprIntrpGenerator) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_set_master(self as *mut Self, agen)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_set_master(self as *mut Self, agen)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:49 - `ExprIntrp_Analysis::Push()`
-    pub fn push(&mut self, exp: &crate::ffi::HandleExprGeneralExpression) {
+    pub fn push(&mut self, exp: &crate::ffi_types::HandleExprGeneralExpression) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_push(self as *mut Self, exp)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_push(self as *mut Self, exp)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:51 - `ExprIntrp_Analysis::PushRelation()`
-    pub fn push_relation(&mut self, rel: &crate::ffi::HandleExprGeneralRelation) {
+    pub fn push_relation(&mut self, rel: &crate::ffi_types::HandleExprGeneralRelation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_push_relation(self as *mut Self, rel)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_push_relation(self as *mut Self, rel)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:53 - `ExprIntrp_Analysis::PushName()`
     pub fn push_name(&mut self, name: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_push_name(self as *mut Self, name)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_push_name(self as *mut Self, name)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:55 - `ExprIntrp_Analysis::PushValue()`
     pub fn push_value(&mut self, degree: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_push_value(self as *mut Self, degree)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_push_value(self as *mut Self, degree)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:57 - `ExprIntrp_Analysis::PushFunction()`
-    pub fn push_function(&mut self, func: &crate::ffi::HandleExprGeneralFunction) {
+    pub fn push_function(&mut self, func: &crate::ffi_types::HandleExprGeneralFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_push_function(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_push_function(self as *mut Self, func)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:59 - `ExprIntrp_Analysis::Pop()`
-    pub fn pop(&mut self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    pub fn pop(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleExprGeneralExpression> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_Analysis_pop(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_pop(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:61 - `ExprIntrp_Analysis::PopRelation()`
-    pub fn pop_relation(&mut self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+    pub fn pop_relation(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleExprGeneralRelation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Analysis_pop_relation(self as *mut Self),
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_pop_relation(self as *mut Self),
             ))
         }
     }
@@ -93,22 +95,24 @@ impl Analysis {
     /// **Source:** `ExprIntrp_Analysis.hxx`:63 - `ExprIntrp_Analysis::PopName()`
     pub fn pop_name(&mut self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_Analysis_pop_name(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_pop_name(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:65 - `ExprIntrp_Analysis::PopValue()`
     pub fn pop_value(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ExprIntrp_Analysis_pop_value(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_pop_value(self as *mut Self)
+        })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:67 - `ExprIntrp_Analysis::PopFunction()`
-    pub fn pop_function(&mut self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralFunction> {
+    pub fn pop_function(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleExprGeneralFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Analysis_pop_function(self as *mut Self),
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_pop_function(self as *mut Self),
             ))
         }
     }
@@ -116,35 +120,47 @@ impl Analysis {
     /// **Source:** `ExprIntrp_Analysis.hxx`:69 - `ExprIntrp_Analysis::IsExpStackEmpty()`
     pub fn is_exp_stack_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_is_exp_stack_empty(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_is_exp_stack_empty(self as *const Self)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:71 - `ExprIntrp_Analysis::IsRelStackEmpty()`
     pub fn is_rel_stack_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_is_rel_stack_empty(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_is_rel_stack_empty(self as *const Self)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:73 - `ExprIntrp_Analysis::ResetAll()`
     pub fn reset_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_reset_all(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_reset_all(self as *mut Self)
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:75 - `ExprIntrp_Analysis::Use()`
-    pub fn use_handleexprnamedfunction(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+    pub fn use_handleexprnamedfunction(
+        &mut self,
+        func: &crate::ffi_types::HandleExprNamedFunction,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_use_handleexprnamedfunction(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_use_handleexprnamedfunction(
+                self as *mut Self,
+                func,
+            )
         })
     }
 
     /// **Source:** `ExprIntrp_Analysis.hxx`:77 - `ExprIntrp_Analysis::Use()`
-    pub fn use_handleexprnamedexpression(&mut self, named: &crate::ffi::HandleExprNamedExpression) {
+    pub fn use_handleexprnamedexpression(
+        &mut self,
+        named: &crate::ffi_types::HandleExprNamedExpression,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Analysis_use_handleexprnamedexpression(self as *mut Self, named)
+            crate::ffi_extern_TKExpress::ExprIntrp_Analysis_use_handleexprnamedexpression(
+                self as *mut Self,
+                named,
+            )
         })
     }
 
@@ -152,10 +168,10 @@ impl Analysis {
     pub fn get_named(
         &mut self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedExpression> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Analysis_get_named(self as *mut Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_get_named(self as *mut Self, name),
             ))
         }
     }
@@ -164,10 +180,13 @@ impl Analysis {
     pub fn get_function(
         &mut self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Analysis_get_function(self as *mut Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_Analysis_get_function(
+                    self as *mut Self,
+                    name,
+                ),
             ))
         }
     }
@@ -182,11 +201,11 @@ impl Analysis {
 /// kind of expression of package Expr by using
 /// built-in functions such as Sin,Cos, etc, and by
 /// creating variables.
-pub use crate::ffi::ExprIntrp_GenExp as GenExp;
+pub use crate::ffi_types::ExprIntrp_GenExp as GenExp;
 
 unsafe impl crate::CppDeletable for GenExp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_GenExp_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_GenExp_destructor(ptr);
     }
 }
 
@@ -195,7 +214,7 @@ impl GenExp {
     /// Processes given string.
     pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_process(self as *mut Self, str)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_process(self as *mut Self, str)
         })
     }
 
@@ -203,31 +222,37 @@ impl GenExp {
     /// Returns false if any syntax error has occurred during
     /// process.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ExprIntrp_GenExp_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `ExprIntrp_GenExp.hxx`:49 - `ExprIntrp_GenExp::Expression()`
     /// Returns expression generated. Raises an exception if
     /// IsDone answers false.
-    pub fn expression(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralExpression> {
+    pub fn expression(&self) -> crate::OwnedPtr<crate::ffi_types::HandleExprGeneralExpression> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenExp_expression(
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_expression(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_GenExp_dynamic_type(
                 self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenExp_dynamic_type(self as *const Self)))
-        }
-    }
-
     /// **Source:** `ExprIntrp_GenExp.hxx`:38 - `ExprIntrp_GenExp::Create()`
-    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp> {
+    pub fn create() -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenExp> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenExp_create()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_create(),
+            ))
         }
     }
 
@@ -235,7 +260,7 @@ impl GenExp {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ExprIntrp_GenExp_get_type_name(),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -243,79 +268,95 @@ impl GenExp {
     }
 
     /// **Source:** `ExprIntrp_GenExp.hxx`:51 - `ExprIntrp_GenExp::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ExprIntrp_GenExp_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ExprIntrp_Generator
     pub fn as_generator(&self) -> &Generator {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenExp_as_ExprIntrp_Generator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_as_ExprIntrp_Generator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ExprIntrp_Generator (mutable)
     pub fn as_generator_mut(&mut self) -> &mut Generator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenExp_as_ExprIntrp_Generator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_as_ExprIntrp_Generator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenExp_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenExp_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenExp> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenExp_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
-    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+    pub fn use_(&mut self, func: &crate::ffi_types::HandleExprNamedFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_Use(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_Use(self as *mut Self, func)
         })
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+    pub fn get_named(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedExpression {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenExp_inherited_GetNamed(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetNamed(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+    pub fn get_functions(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedFunction {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenExp_inherited_GetFunctions(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetFunctions(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -323,25 +364,34 @@ impl GenExp {
     pub fn get_function(
         &self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_GenExp_inherited_GetFunction(self as *const Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetFunction(
+                    self as *const Self,
+                    name,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -349,7 +399,7 @@ impl GenExp {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ExprIntrp_GenExp_inherited_This(self as *const Self)
+                crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -362,67 +412,85 @@ impl GenExp {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenExp_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenExp_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleExprIntrpGenExp;
+pub use crate::ffi_types::HandleExprIntrpGenExp;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenExp {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleExprIntrpGenExp_destructor(ptr);
+        crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_destructor(ptr);
     }
 }
 
 impl HandleExprIntrpGenExp {
     /// Dereference this Handle to access the underlying ExprIntrp_GenExp
-    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenExp {
-        unsafe { &*crate::check_result(crate::ffi::HandleExprIntrpGenExp_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenExp {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ExprIntrp_GenExp
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenExp {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ExprIntrp_GenExp {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleExprIntrpGenExp_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenExp> to Handle<ExprIntrp_Generator>
-    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+    pub fn to_handle_generator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenerator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_to_HandleExprIntrpGenerator(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenExp> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenExp_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenExp_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -436,11 +504,11 @@ impl HandleExprIntrpGenExp {
 /// Implements an interpreter for defining functions.
 /// All its functionalities can be found in class
 /// GenExp.
-pub use crate::ffi::ExprIntrp_GenFct as GenFct;
+pub use crate::ffi_types::ExprIntrp_GenFct as GenFct;
 
 unsafe impl crate::CppDeletable for GenFct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_GenFct_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_GenFct_destructor(ptr);
     }
 }
 
@@ -448,26 +516,32 @@ impl GenFct {
     /// **Source:** `ExprIntrp_GenFct.hxx`:37 - `ExprIntrp_GenFct::Process()`
     pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_process(self as *mut Self, str)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_process(self as *mut Self, str)
         })
     }
 
     /// **Source:** `ExprIntrp_GenFct.hxx`:39 - `ExprIntrp_GenFct::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ExprIntrp_GenFct_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenFct_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_GenFct_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ExprIntrp_GenFct.hxx`:35 - `ExprIntrp_GenFct::Create()`
-    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct> {
+    pub fn create() -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenFct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenFct_create()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_create(),
+            ))
         }
     }
 
@@ -475,7 +549,7 @@ impl GenFct {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ExprIntrp_GenFct_get_type_name(),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -483,79 +557,95 @@ impl GenFct {
     }
 
     /// **Source:** `ExprIntrp_GenFct.hxx`:41 - `ExprIntrp_GenFct::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ExprIntrp_GenFct_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ExprIntrp_Generator
     pub fn as_generator(&self) -> &Generator {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenFct_as_ExprIntrp_Generator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_as_ExprIntrp_Generator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ExprIntrp_Generator (mutable)
     pub fn as_generator_mut(&mut self) -> &mut Generator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenFct_as_ExprIntrp_Generator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_as_ExprIntrp_Generator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenFct_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenFct_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenFct> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenFct_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
-    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+    pub fn use_(&mut self, func: &crate::ffi_types::HandleExprNamedFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_Use(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_Use(self as *mut Self, func)
         })
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+    pub fn get_named(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedExpression {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenFct_inherited_GetNamed(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetNamed(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+    pub fn get_functions(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedFunction {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenFct_inherited_GetFunctions(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetFunctions(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -563,25 +653,34 @@ impl GenFct {
     pub fn get_function(
         &self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_GenFct_inherited_GetFunction(self as *const Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetFunction(
+                    self as *const Self,
+                    name,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -589,7 +688,7 @@ impl GenFct {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ExprIntrp_GenFct_inherited_This(self as *const Self)
+                crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -602,67 +701,85 @@ impl GenFct {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenFct_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenFct_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleExprIntrpGenFct;
+pub use crate::ffi_types::HandleExprIntrpGenFct;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenFct {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleExprIntrpGenFct_destructor(ptr);
+        crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_destructor(ptr);
     }
 }
 
 impl HandleExprIntrpGenFct {
     /// Dereference this Handle to access the underlying ExprIntrp_GenFct
-    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenFct {
-        unsafe { &*crate::check_result(crate::ffi::HandleExprIntrpGenFct_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenFct {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ExprIntrp_GenFct
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenFct {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ExprIntrp_GenFct {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleExprIntrpGenFct_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenFct> to Handle<ExprIntrp_Generator>
-    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+    pub fn to_handle_generator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenerator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_to_HandleExprIntrpGenerator(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenFct> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenFct_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenFct_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -675,11 +792,11 @@ impl HandleExprIntrpGenFct {
 /// **Source:** `ExprIntrp_GenRel.hxx`:32 - `ExprIntrp_GenRel`
 /// Implements an interpreter for equations or system
 /// of equations made of expressions of package Expr.
-pub use crate::ffi::ExprIntrp_GenRel as GenRel;
+pub use crate::ffi_types::ExprIntrp_GenRel as GenRel;
 
 unsafe impl crate::CppDeletable for GenRel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_GenRel_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_GenRel_destructor(ptr);
     }
 }
 
@@ -688,7 +805,7 @@ impl GenRel {
     /// Processes given string.
     pub fn process(&mut self, str: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_process(self as *mut Self, str)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_process(self as *mut Self, str)
         })
     }
 
@@ -696,31 +813,37 @@ impl GenRel {
     /// Returns false if any syntax error has occurred during
     /// process.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ExprIntrp_GenRel_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `ExprIntrp_GenRel.hxx`:47 - `ExprIntrp_GenRel::Relation()`
     /// Returns relation generated. Raises an exception if
     /// IsDone answers false.
-    pub fn relation(&self) -> crate::OwnedPtr<crate::ffi::HandleExprGeneralRelation> {
+    pub fn relation(&self) -> crate::OwnedPtr<crate::ffi_types::HandleExprGeneralRelation> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenRel_relation(
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_relation(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_GenRel_dynamic_type(
                 self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenRel_dynamic_type(self as *const Self)))
-        }
-    }
-
     /// **Source:** `ExprIntrp_GenRel.hxx`:36 - `ExprIntrp_GenRel::Create()`
-    pub fn create() -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel> {
+    pub fn create() -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenRel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenRel_create()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_create(),
+            ))
         }
     }
 
@@ -728,7 +851,7 @@ impl GenRel {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ExprIntrp_GenRel_get_type_name(),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -736,79 +859,95 @@ impl GenRel {
     }
 
     /// **Source:** `ExprIntrp_GenRel.hxx`:49 - `ExprIntrp_GenRel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ExprIntrp_GenRel_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ExprIntrp_Generator
     pub fn as_generator(&self) -> &Generator {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenRel_as_ExprIntrp_Generator(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_as_ExprIntrp_Generator(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ExprIntrp_Generator (mutable)
     pub fn as_generator_mut(&mut self) -> &mut Generator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenRel_as_ExprIntrp_Generator_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_as_ExprIntrp_Generator_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_GenRel_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_GenRel_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenRel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_GenRel_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
-    pub fn use_(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+    pub fn use_(&mut self, func: &crate::ffi_types::HandleExprNamedFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_Use(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_Use(self as *mut Self, func)
         })
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+    pub fn get_named(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedExpression {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenRel_inherited_GetNamed(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetNamed(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+    pub fn get_functions(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedFunction {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_GenRel_inherited_GetFunctions(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetFunctions(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -816,25 +955,34 @@ impl GenRel {
     pub fn get_function(
         &self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_GenRel_inherited_GetFunction(self as *const Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetFunction(
+                    self as *const Self,
+                    name,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -842,7 +990,7 @@ impl GenRel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ExprIntrp_GenRel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -855,67 +1003,85 @@ impl GenRel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_GenRel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_GenRel_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleExprIntrpGenRel;
+pub use crate::ffi_types::HandleExprIntrpGenRel;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenRel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleExprIntrpGenRel_destructor(ptr);
+        crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_destructor(ptr);
     }
 }
 
 impl HandleExprIntrpGenRel {
     /// Dereference this Handle to access the underlying ExprIntrp_GenRel
-    pub fn get(&self) -> &crate::ffi::ExprIntrp_GenRel {
-        unsafe { &*crate::check_result(crate::ffi::HandleExprIntrpGenRel_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ExprIntrp_GenRel {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ExprIntrp_GenRel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_GenRel {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ExprIntrp_GenRel {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleExprIntrpGenRel_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenRel> to Handle<ExprIntrp_Generator>
-    pub fn to_handle_generator(&self) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+    pub fn to_handle_generator(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenerator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_to_HandleExprIntrpGenerator(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ExprIntrp_GenRel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenRel_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenRel_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -928,40 +1094,54 @@ impl HandleExprIntrpGenRel {
 /// **Source:** `ExprIntrp_Generator.hxx`:34 - `ExprIntrp_Generator`
 /// Implements general services for interpretation of
 /// expressions.
-pub use crate::ffi::ExprIntrp_Generator as Generator;
+pub use crate::ffi_types::ExprIntrp_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_Generator_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_Generator_destructor(ptr);
     }
 }
 
 impl Generator {
     /// **Source:** `ExprIntrp_Generator.hxx`:38 - `ExprIntrp_Generator::Use()`
-    pub fn use_handleexprnamedfunction(&mut self, func: &crate::ffi::HandleExprNamedFunction) {
+    pub fn use_handleexprnamedfunction(
+        &mut self,
+        func: &crate::ffi_types::HandleExprNamedFunction,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_use_handleexprnamedfunction(self as *mut Self, func)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_use_handleexprnamedfunction(
+                self as *mut Self,
+                func,
+            )
         })
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:40 - `ExprIntrp_Generator::Use()`
-    pub fn use_handleexprnamedexpression(&mut self, named: &crate::ffi::HandleExprNamedExpression) {
+    pub fn use_handleexprnamedexpression(
+        &mut self,
+        named: &crate::ffi_types::HandleExprNamedExpression,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_use_handleexprnamedexpression(self as *mut Self, named)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_use_handleexprnamedexpression(
+                self as *mut Self,
+                named,
+            )
         })
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:42 - `ExprIntrp_Generator::GetNamed()`
-    pub fn get_named(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedExpression {
+    pub fn get_named(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedExpression {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_Generator_get_named(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_named(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:44 - `ExprIntrp_Generator::GetFunctions()`
-    pub fn get_functions(&self) -> &crate::ffi::ExprIntrp_SequenceOfNamedFunction {
+    pub fn get_functions(&self) -> &crate::ffi_types::ExprIntrp_SequenceOfNamedFunction {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_Generator_get_functions(
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_functions(
                 self as *const Self,
             )))
         }
@@ -974,10 +1154,13 @@ impl Generator {
     pub fn get_named_asciistring(
         &self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedExpression> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedExpression> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Generator_get_named_asciistring(self as *const Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_named_asciistring(
+                    self as *const Self,
+                    name,
+                ),
             ))
         }
     }
@@ -989,18 +1172,21 @@ impl Generator {
     pub fn get_function(
         &self,
         name: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprNamedFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprNamedFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Generator_get_function(self as *const Self, name),
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_function(
+                    self as *const Self,
+                    name,
+                ),
             ))
         }
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_Generator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKExpress::ExprIntrp_Generator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1010,7 +1196,7 @@ impl Generator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ExprIntrp_Generator_get_type_name(),
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1018,50 +1204,64 @@ impl Generator {
     }
 
     /// **Source:** `ExprIntrp_Generator.hxx`:56 - `ExprIntrp_Generator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ExprIntrp_Generator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_Generator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_Generator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpGenerator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenerator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_Generator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1069,7 +1269,7 @@ impl Generator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ExprIntrp_Generator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1082,62 +1282,72 @@ impl Generator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_Generator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_Generator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleExprIntrpGenerator;
+pub use crate::ffi_types::HandleExprIntrpGenerator;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleExprIntrpGenerator_destructor(ptr);
+        crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_destructor(ptr);
     }
 }
 
 impl HandleExprIntrpGenerator {
     /// Dereference this Handle to access the underlying ExprIntrp_Generator
-    pub fn get(&self) -> &crate::ffi::ExprIntrp_Generator {
+    pub fn get(&self) -> &crate::ffi_types::ExprIntrp_Generator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleExprIntrpGenerator_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ExprIntrp_Generator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_Generator {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleExprIntrpGenerator_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_Generator
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ExprIntrp_Generator {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ExprIntrp_Generator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpGenerator_to_HandleStandardTransient(
+                crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1149,9 +1359,9 @@ impl HandleExprIntrpGenerator {
     /// Returns `None` if the handle does not point to a `ExprIntrp_GenExp` (or subclass).
     pub fn downcast_to_gen_exp(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenExp>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenExp>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenExp(
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenExp(
                 self as *const Self,
             )
         });
@@ -1167,9 +1377,9 @@ impl HandleExprIntrpGenerator {
     /// Returns `None` if the handle does not point to a `ExprIntrp_GenFct` (or subclass).
     pub fn downcast_to_gen_fct(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenFct>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenFct>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenFct(
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenFct(
                 self as *const Self,
             )
         });
@@ -1185,9 +1395,9 @@ impl HandleExprIntrpGenerator {
     /// Returns `None` if the handle does not point to a `ExprIntrp_GenRel` (or subclass).
     pub fn downcast_to_gen_rel(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleExprIntrpGenRel>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleExprIntrpGenRel>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenRel(
+            crate::ffi_extern_TKExpress::HandleExprIntrpGenerator_downcast_to_HandleExprIntrpGenRel(
                 self as *const Self,
             )
         });
@@ -1204,11 +1414,11 @@ impl HandleExprIntrpGenerator {
 // ========================
 
 /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError`
-pub use crate::ffi::ExprIntrp_SyntaxError as SyntaxError;
+pub use crate::ffi_types::ExprIntrp_SyntaxError as SyntaxError;
 
 unsafe impl crate::CppDeletable for SyntaxError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ExprIntrp_SyntaxError_destructor(ptr);
+        crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_destructor(ptr);
     }
 }
 
@@ -1216,7 +1426,9 @@ impl SyntaxError {
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::ExprIntrp_SyntaxError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ExprIntrp_SyntaxError_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_ctor(),
+            ))
         }
     }
 
@@ -1225,7 +1437,9 @@ impl SyntaxError {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -1236,7 +1450,7 @@ impl SyntaxError {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_ctor_charptr2(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -1245,11 +1459,13 @@ impl SyntaxError {
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ExprIntrp_SyntaxError_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1257,25 +1473,27 @@ impl SyntaxError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_raise_sstream(theMessage)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpSyntaxError> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -1284,12 +1502,12 @@ impl SyntaxError {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpSyntaxError> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_new_instance_charptr2(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -1301,7 +1519,7 @@ impl SyntaxError {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_get_type_name(),
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1309,89 +1527,110 @@ impl SyntaxError {
     }
 
     /// **Source:** `ExprIntrp_SyntaxError.hxx`:36 - `ExprIntrp_SyntaxError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ExprIntrp_SyntaxError_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ExprIntrp_SyntaxError_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleExprIntrpSyntaxError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleExprIntrpSyntaxError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ExprIntrp_SyntaxError_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1399,7 +1638,9 @@ impl SyntaxError {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ExprIntrp_SyntaxError_inherited_This(self as *const Self)
+                crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1412,62 +1653,70 @@ impl SyntaxError {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ExprIntrp_SyntaxError_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKExpress::ExprIntrp_SyntaxError_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleExprIntrpSyntaxError;
+pub use crate::ffi_types::HandleExprIntrpSyntaxError;
 
 unsafe impl crate::CppDeletable for HandleExprIntrpSyntaxError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleExprIntrpSyntaxError_destructor(ptr);
+        crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_destructor(ptr);
     }
 }
 
 impl HandleExprIntrpSyntaxError {
     /// Dereference this Handle to access the underlying ExprIntrp_SyntaxError
-    pub fn get(&self) -> &crate::ffi::ExprIntrp_SyntaxError {
+    pub fn get(&self) -> &crate::ffi_types::ExprIntrp_SyntaxError {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleExprIntrpSyntaxError_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ExprIntrp_SyntaxError
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ExprIntrp_SyntaxError {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleExprIntrpSyntaxError_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ExprIntrp_SyntaxError
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ExprIntrp_SyntaxError {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpSyntaxError_to_HandleStandardFailure(
+                crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_to_HandleStandardFailure(
                     self as *const Self,
                 ),
             ))
@@ -1475,10 +1724,12 @@ impl HandleExprIntrpSyntaxError {
     }
 
     /// Upcast Handle<ExprIntrp_SyntaxError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleExprIntrpSyntaxError_to_HandleStandardTransient(
+                crate::ffi_extern_TKExpress::HandleExprIntrpSyntaxError_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1490,7 +1741,7 @@ impl HandleExprIntrpSyntaxError {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     ExprIntrp_SequenceOfNamedExpression as SequenceOfNamedExpression,
     ExprIntrp_SequenceOfNamedFunction as SequenceOfNamedFunction,
 };

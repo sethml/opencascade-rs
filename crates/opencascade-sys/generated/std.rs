@@ -10,7 +10,7 @@
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     std_pair_Standard_Integer_Standard_Integer as pair_Standard_Integer_Standard_Integer,
     std_pair_Standard_Real_Standard_Real as pair_Standard_Real_Standard_Real,
     std_shared_ptr_std_istream as shared_ptr_std_istream,

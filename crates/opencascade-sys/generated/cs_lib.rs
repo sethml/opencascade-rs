@@ -15,12 +15,12 @@
 pub fn dnnuv_int2_array2ofvec(
     Nu: i32,
     Nv: i32,
-    DerSurf: &crate::ffi::TColgp_Array2OfVec,
+    DerSurf: &crate::ffi_types::TColgp_Array2OfVec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dnnuv_int2_array2ofvec(
-            Nu, Nv, DerSurf,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_array2ofvec(Nu, Nv, DerSurf),
+        ))
     }
 }
 /// **Source:** `CSLib.hxx`:135 - `CSLib::DNNUV`
@@ -31,13 +31,13 @@ pub fn dnnuv_int2_array2ofvec(
 pub fn dnnuv_int2_array2ofvec2(
     Nu: i32,
     Nv: i32,
-    DerSurf1: &crate::ffi::TColgp_Array2OfVec,
-    DerSurf2: &crate::ffi::TColgp_Array2OfVec,
+    DerSurf1: &crate::ffi_types::TColgp_Array2OfVec,
+    DerSurf2: &crate::ffi_types::TColgp_Array2OfVec,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dnnuv_int2_array2ofvec2(
-            Nu, Nv, DerSurf1, DerSurf2,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKMath::CSLib_dnnuv_int2_array2ofvec2(Nu, Nv, DerSurf1, DerSurf2),
+        ))
     }
 }
 /// **Source:** `CSLib.hxx`:148 - `CSLib::DNNormal`
@@ -52,12 +52,12 @@ pub fn dnnuv_int2_array2ofvec2(
 pub fn dn_normal(
     Nu: i32,
     Nv: i32,
-    DerNUV: &crate::ffi::TColgp_Array2OfVec,
+    DerNUV: &crate::ffi_types::TColgp_Array2OfVec,
     Iduref: i32,
     Idvref: i32,
 ) -> crate::OwnedPtr<crate::gp::Vec> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CSLib_dn_normal(
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::CSLib_dn_normal(
             Nu, Nv, DerNUV, Iduref, Idvref,
         )))
     }
@@ -182,11 +182,11 @@ impl TryFrom<i32> for NormalStatus {
 /// **Source:** `CSLib_Class2d.hxx`:33 - `CSLib_Class2d`
 /// *** Class2d    : Low level algorithm for 2d classification
 /// this class was moved from package BRepTopAdaptor
-pub use crate::ffi::CSLib_Class2d as Class2d;
+pub use crate::ffi_types::CSLib_Class2d as Class2d;
 
 unsafe impl crate::CppDeletable for Class2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CSLib_Class2d_destructor(ptr);
+        crate::ffi_extern_TKMath::CSLib_Class2d_destructor(ptr);
     }
 }
 
@@ -201,7 +201,7 @@ impl Class2d {
     /// theUmin, theVmin, theUmax, theVmax are
     /// UV-bounds of the polygon.
     pub fn new_array1ofpnt2d_real6(
-        thePnts2d: &crate::ffi::TColgp_Array1OfPnt2d,
+        thePnts2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
         theTolU: f64,
         theTolV: f64,
         theUMin: f64,
@@ -211,7 +211,7 @@ impl Class2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CSLib_Class2d_ctor_array1ofpnt2d_real6(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_array1ofpnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
                 ),
             ))
@@ -228,7 +228,7 @@ impl Class2d {
     /// theUmin, theVmin, theUmax, theVmax are
     /// UV-bounds of the polygon.
     pub fn new_sequenceofpnt2d_real6(
-        thePnts2d: &crate::ffi::TColgp_SequenceOfPnt2d,
+        thePnts2d: &crate::ffi_types::TColgp_SequenceOfPnt2d,
         theTolU: f64,
         theTolV: f64,
         theUMin: f64,
@@ -238,7 +238,7 @@ impl Class2d {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CSLib_Class2d_ctor_sequenceofpnt2d_real6(
+                crate::ffi_extern_TKMath::CSLib_Class2d_ctor_sequenceofpnt2d_real6(
                     thePnts2d, theTolU, theTolV, theUMin, theVMin, theUMax, theVMax,
                 ),
             ))
@@ -247,27 +247,33 @@ impl Class2d {
 
     /// **Source:** `CSLib_Class2d.hxx`:70 - `CSLib_Class2d::SiDans()`
     pub fn si_dans(&self, P: &crate::gp::Pnt2d) -> i32 {
-        crate::check_result(unsafe { crate::ffi::CSLib_Class2d_si_dans(self as *const Self, P) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::CSLib_Class2d_si_dans(self as *const Self, P)
+        })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:72 - `CSLib_Class2d::SiDans_OnMode()`
     pub fn si_dans_on_mode(&self, P: &crate::gp::Pnt2d, Tol: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol)
+            crate::ffi_extern_TKMath::CSLib_Class2d_si_dans_on_mode(self as *const Self, P, Tol)
         })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:74 - `CSLib_Class2d::InternalSiDans()`
     pub fn internal_si_dans(&self, X: f64, Y: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_Class2d_internal_si_dans(self as *const Self, X, Y)
+            crate::ffi_extern_TKMath::CSLib_Class2d_internal_si_dans(self as *const Self, X, Y)
         })
     }
 
     /// **Source:** `CSLib_Class2d.hxx`:77 - `CSLib_Class2d::InternalSiDansOuOn()`
     pub fn internal_si_dans_ou_on(&self, X: f64, Y: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_Class2d_internal_si_dans_ou_on(self as *const Self, X, Y)
+            crate::ffi_extern_TKMath::CSLib_Class2d_internal_si_dans_ou_on(
+                self as *const Self,
+                X,
+                Y,
+            )
         })
     }
 }
@@ -277,11 +283,11 @@ impl Class2d {
 // ========================
 
 /// **Source:** `CSLib_NormalPolyDef.hxx`:28 - `CSLib_NormalPolyDef`
-pub use crate::ffi::CSLib_NormalPolyDef as NormalPolyDef;
+pub use crate::ffi_types::CSLib_NormalPolyDef as NormalPolyDef;
 
 unsafe impl crate::CppDeletable for NormalPolyDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CSLib_NormalPolyDef_destructor(ptr);
+        crate::ffi_extern_TKMath::CSLib_NormalPolyDef_destructor(ptr);
     }
 }
 
@@ -289,11 +295,11 @@ impl NormalPolyDef {
     /// **Source:** `CSLib_NormalPolyDef.hxx`:33 - `CSLib_NormalPolyDef::CSLib_NormalPolyDef()`
     pub fn new_int_array1ofreal(
         k0: i32,
-        li: &crate::ffi::TColStd_Array1OfReal,
+        li: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li),
+                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_ctor_int_array1ofreal(k0, li),
             ))
         }
     }
@@ -304,7 +310,7 @@ impl NormalPolyDef {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_NormalPolyDef_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_value(self as *mut Self, X, F)
         })
     }
 
@@ -315,7 +321,7 @@ impl NormalPolyDef {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_NormalPolyDef_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_derivative(self as *mut Self, X, D)
         })
     }
 
@@ -326,16 +332,18 @@ impl NormalPolyDef {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_values(self as *mut Self, X, F, D)
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -345,7 +353,7 @@ impl NormalPolyDef {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::CSLib_NormalPolyDef_as_math_FunctionWithDerivative_mut(
+                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_as_math_FunctionWithDerivative_mut(
                     self as *mut Self,
                 ),
             )
@@ -355,7 +363,7 @@ impl NormalPolyDef {
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_Function(
+            &*crate::check_result(crate::ffi_extern_TKMath::CSLib_NormalPolyDef_as_math_Function(
                 self as *const Self,
             ))
         }
@@ -364,16 +372,20 @@ impl NormalPolyDef {
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CSLib_NormalPolyDef_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::CSLib_NormalPolyDef_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CSLib_NormalPolyDef_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKMath::CSLib_NormalPolyDef_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }

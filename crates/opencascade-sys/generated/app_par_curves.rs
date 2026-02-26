@@ -41,7 +41,7 @@ impl TryFrom<i32> for Constraint {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From AppParCurves_ConstraintCouple.hxx
@@ -50,11 +50,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// **Source:** `AppParCurves_ConstraintCouple.hxx`:28 - `AppParCurves_ConstraintCouple`
 /// associates an index and a constraint for an object.
 /// This couple is used by AppDef_TheVariational when performing approximations.
-pub use crate::ffi::AppParCurves_ConstraintCouple as ConstraintCouple;
+pub use crate::ffi_types::AppParCurves_ConstraintCouple as ConstraintCouple;
 
 unsafe impl crate::CppDeletable for ConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_ConstraintCouple_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_destructor(ptr);
     }
 }
 
@@ -64,7 +64,7 @@ impl ConstraintCouple {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_ConstraintCouple_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_ctor(),
             ))
         }
     }
@@ -78,7 +78,7 @@ impl ConstraintCouple {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_ConstraintCouple_ctor_int_constraint(
+                crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_ctor_int_constraint(
                     TheIndex,
                     Cons.into(),
                 ),
@@ -90,7 +90,7 @@ impl ConstraintCouple {
     /// returns the index of the constraint object.
     pub fn index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_ConstraintCouple_index(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_index(self as *const Self)
         })
     }
 
@@ -98,7 +98,9 @@ impl ConstraintCouple {
     /// returns the constraint of the object.
     pub fn constraint(&self) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppParCurves_ConstraintCouple_constraint(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_constraint(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -107,7 +109,10 @@ impl ConstraintCouple {
     /// Changes the index of the constraint object.
     pub fn set_index(&mut self, TheIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_ConstraintCouple_set_index(self as *mut Self, TheIndex)
+            crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_set_index(
+                self as *mut Self,
+                TheIndex,
+            )
         })
     }
 
@@ -115,7 +120,10 @@ impl ConstraintCouple {
     /// Changes the constraint of the object.
     pub fn set_constraint(&mut self, Cons: crate::app_par_curves::Constraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_ConstraintCouple_set_constraint(self as *mut Self, Cons.into())
+            crate::ffi_extern_TKGeomBase::AppParCurves_ConstraintCouple_set_constraint(
+                self as *mut Self,
+                Cons.into(),
+            )
         })
     }
 }
@@ -125,11 +133,11 @@ impl ConstraintCouple {
 // ========================
 
 /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple`
-pub use crate::ffi::AppParCurves_HArray1OfConstraintCouple as HArray1OfConstraintCouple;
+pub use crate::ffi_types::AppParCurves_HArray1OfConstraintCouple as HArray1OfConstraintCouple;
 
 unsafe impl crate::CppDeletable for HArray1OfConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_HArray1OfConstraintCouple_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_destructor(ptr);
     }
 }
 
@@ -138,7 +146,7 @@ impl HArray1OfConstraintCouple {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_ctor(),
             ))
         }
     }
@@ -147,7 +155,9 @@ impl HArray1OfConstraintCouple {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -159,11 +169,7 @@ impl HArray1OfConstraintCouple {
         theValue: &ConstraintCouple,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_int2_constraintcouple(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_ctor_int2_constraintcouple(theLower, theUpper, theValue)))
         }
     }
 
@@ -175,50 +181,48 @@ impl HArray1OfConstraintCouple {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_constraintcouple_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_ctor_constraintcouple_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::AppParCurves_HArray1OfConstraintCouple()`
     pub fn new_array1ofconstraintcouple(
-        theOther: &crate::ffi::AppParCurves_Array1OfConstraintCouple,
+        theOther: &crate::ffi_types::AppParCurves_Array1OfConstraintCouple,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_ctor_array1ofconstraintcouple(
-                    theOther,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_ctor_array1ofconstraintcouple(theOther)))
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::Array1()`
+    pub fn array1(&self) -> &crate::ffi_types::AppParCurves_Array1OfConstraintCouple {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_array1(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::Array1()`
-    pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfConstraintCouple {
-        unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfConstraintCouple_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfConstraintCouple {
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi_types::AppParCurves_Array1OfConstraintCouple {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_change_array1(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_dynamic_type(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_dynamic_type(
                     self as *const Self,
                 ),
             ))
@@ -229,7 +233,8 @@ impl HArray1OfConstraintCouple {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_get_type_name(
+                ),
             ))
         }
         .to_string_lossy()
@@ -237,61 +242,50 @@ impl HArray1OfConstraintCouple {
     }
 
     /// **Source:** `AppParCurves_HArray1OfConstraintCouple.hxx`:23 - `AppParCurves_HArray1OfConstraintCouple::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IsKind(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -302,7 +296,7 @@ impl HArray1OfConstraintCouple {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_This(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_This(
                     self as *const Self,
                 )
             });
@@ -317,73 +311,71 @@ impl HArray1OfConstraintCouple {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_GetRefCount(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfConstraintCouple_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfConstraintCouple_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple;
+pub use crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfConstraintCouple {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_destructor(ptr);
     }
 }
 
 impl HandleAppParCurvesHArray1OfConstraintCouple {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfConstraintCouple
-    pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfConstraintCouple {
+    pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfConstraintCouple {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfConstraintCouple
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfConstraintCouple {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppParCurves_HArray1OfConstraintCouple {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_get_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfConstraintCouple> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfConstraintCouple_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -393,11 +385,11 @@ impl HandleAppParCurvesHArray1OfConstraintCouple {
 // ========================
 
 /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve`
-pub use crate::ffi::AppParCurves_HArray1OfMultiBSpCurve as HArray1OfMultiBSpCurve;
+pub use crate::ffi_types::AppParCurves_HArray1OfMultiBSpCurve as HArray1OfMultiBSpCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfMultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_destructor(ptr);
     }
 }
 
@@ -406,7 +398,7 @@ impl HArray1OfMultiBSpCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_ctor(),
             ))
         }
     }
@@ -415,7 +407,9 @@ impl HArray1OfMultiBSpCurve {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -427,11 +421,7 @@ impl HArray1OfMultiBSpCurve {
         theValue: &MultiBSpCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2_multibspcurve(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_ctor_int2_multibspcurve(theLower, theUpper, theValue)))
         }
     }
 
@@ -443,51 +433,49 @@ impl HArray1OfMultiBSpCurve {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_multibspcurve_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_ctor_multibspcurve_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::AppParCurves_HArray1OfMultiBSpCurve()`
     pub fn new_array1ofmultibspcurve(
-        theOther: &crate::ffi::AppParCurves_Array1OfMultiBSpCurve,
+        theOther: &crate::ffi_types::AppParCurves_Array1OfMultiBSpCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_ctor_array1ofmultibspcurve(
-                    theOther,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_ctor_array1ofmultibspcurve(theOther)))
+        }
+    }
+
+    /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::Array1()`
+    pub fn array1(&self) -> &crate::ffi_types::AppParCurves_Array1OfMultiBSpCurve {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_array1(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::Array1()`
-    pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiBSpCurve {
-        unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiBSpCurve {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::AppParCurves_Array1OfMultiBSpCurve {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_change_array1(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -495,7 +483,7 @@ impl HArray1OfMultiBSpCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -503,51 +491,43 @@ impl HArray1OfMultiBSpCurve {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiBSpCurve.hxx`:24 - `AppParCurves_HArray1OfMultiBSpCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppParCurvesHArray1OfMultiBSpCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -555,9 +535,9 @@ impl HArray1OfMultiBSpCurve {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsKind(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -568,7 +548,9 @@ impl HArray1OfMultiBSpCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -581,7 +563,7 @@ impl HArray1OfMultiBSpCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_GetRefCount(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -590,64 +572,64 @@ impl HArray1OfMultiBSpCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiBSpCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiBSpCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve;
+pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiBSpCurve;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_destructor(ptr);
     }
 }
 
 impl HandleAppParCurvesHArray1OfMultiBSpCurve {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiBSpCurve
-    pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiBSpCurve {
+    pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiBSpCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiBSpCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiBSpCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppParCurves_HArray1OfMultiBSpCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiBSpCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppParCurvesHArray1OfMultiBSpCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiBSpCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -657,11 +639,11 @@ impl HandleAppParCurvesHArray1OfMultiBSpCurve {
 // ========================
 
 /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve`
-pub use crate::ffi::AppParCurves_HArray1OfMultiCurve as HArray1OfMultiCurve;
+pub use crate::ffi_types::AppParCurves_HArray1OfMultiCurve as HArray1OfMultiCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_HArray1OfMultiCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_destructor(ptr);
     }
 }
 
@@ -670,7 +652,7 @@ impl HArray1OfMultiCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_ctor(),
             ))
         }
     }
@@ -679,7 +661,9 @@ impl HArray1OfMultiCurve {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -692,7 +676,7 @@ impl HArray1OfMultiCurve {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_int2_multicurve(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_ctor_int2_multicurve(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -707,49 +691,49 @@ impl HArray1OfMultiCurve {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_multicurve_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_ctor_multicurve_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::AppParCurves_HArray1OfMultiCurve()`
     pub fn new_array1ofmulticurve(
-        theOther: &crate::ffi::AppParCurves_Array1OfMultiCurve,
+        theOther: &crate::ffi_types::AppParCurves_Array1OfMultiCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_ctor_array1ofmulticurve(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_ctor_array1ofmulticurve(theOther)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::Array1()`
-    pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiCurve {
+    pub fn array1(&self) -> &crate::ffi_types::AppParCurves_Array1OfMultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiCurve_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiCurve {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::AppParCurves_Array1OfMultiCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiCurve_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -757,7 +741,7 @@ impl HArray1OfMultiCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -765,10 +749,11 @@ impl HArray1OfMultiCurve {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiCurve.hxx`:24 - `AppParCurves_HArray1OfMultiCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_get_type_descriptor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -776,40 +761,34 @@ impl HArray1OfMultiCurve {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppParCurvesHArray1OfMultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -817,9 +796,9 @@ impl HArray1OfMultiCurve {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IsKind(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -830,7 +809,9 @@ impl HArray1OfMultiCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -843,71 +824,73 @@ impl HArray1OfMultiCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppParCurvesHArray1OfMultiCurve;
+pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiCurve;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_destructor(ptr);
     }
 }
 
 impl HandleAppParCurvesHArray1OfMultiCurve {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiCurve
-    pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiCurve {
+    pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppParCurves_HArray1OfMultiCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppParCurvesHArray1OfMultiCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -917,11 +900,11 @@ impl HandleAppParCurvesHArray1OfMultiCurve {
 // ========================
 
 /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint`
-pub use crate::ffi::AppParCurves_HArray1OfMultiPoint as HArray1OfMultiPoint;
+pub use crate::ffi_types::AppParCurves_HArray1OfMultiPoint as HArray1OfMultiPoint;
 
 unsafe impl crate::CppDeletable for HArray1OfMultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_HArray1OfMultiPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_destructor(ptr);
     }
 }
 
@@ -930,7 +913,7 @@ impl HArray1OfMultiPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_ctor(),
             ))
         }
     }
@@ -939,7 +922,9 @@ impl HArray1OfMultiPoint {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -952,7 +937,7 @@ impl HArray1OfMultiPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_int2_multipoint(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_ctor_int2_multipoint(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -967,49 +952,49 @@ impl HArray1OfMultiPoint {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_multipoint_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_ctor_multipoint_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::AppParCurves_HArray1OfMultiPoint()`
     pub fn new_array1ofmultipoint(
-        theOther: &crate::ffi::AppParCurves_Array1OfMultiPoint,
+        theOther: &crate::ffi_types::AppParCurves_Array1OfMultiPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_ctor_array1ofmultipoint(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_ctor_array1ofmultipoint(theOther)))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::Array1()`
-    pub fn array1(&self) -> &crate::ffi::AppParCurves_Array1OfMultiPoint {
+    pub fn array1(&self) -> &crate::ffi_types::AppParCurves_Array1OfMultiPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiPoint_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::AppParCurves_Array1OfMultiPoint {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::AppParCurves_Array1OfMultiPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiPoint_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_HArray1OfMultiPoint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1017,7 +1002,7 @@ impl HArray1OfMultiPoint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1025,10 +1010,11 @@ impl HArray1OfMultiPoint {
     }
 
     /// **Source:** `AppParCurves_HArray1OfMultiPoint.hxx`:24 - `AppParCurves_HArray1OfMultiPoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_get_type_descriptor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -1036,40 +1022,34 @@ impl HArray1OfMultiPoint {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppParCurvesHArray1OfMultiPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppParCurvesHArray1OfMultiPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1077,9 +1057,9 @@ impl HArray1OfMultiPoint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IsKind(
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1090,7 +1070,9 @@ impl HArray1OfMultiPoint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1103,71 +1085,73 @@ impl HArray1OfMultiPoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_HArray1OfMultiPoint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_HArray1OfMultiPoint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppParCurvesHArray1OfMultiPoint;
+pub use crate::ffi_types::HandleAppParCurvesHArray1OfMultiPoint;
 
 unsafe impl crate::CppDeletable for HandleAppParCurvesHArray1OfMultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_destructor(ptr);
     }
 }
 
 impl HandleAppParCurvesHArray1OfMultiPoint {
     /// Dereference this Handle to access the underlying AppParCurves_HArray1OfMultiPoint
-    pub fn get(&self) -> &crate::ffi::AppParCurves_HArray1OfMultiPoint {
+    pub fn get(&self) -> &crate::ffi_types::AppParCurves_HArray1OfMultiPoint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppParCurves_HArray1OfMultiPoint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppParCurves_HArray1OfMultiPoint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppParCurves_HArray1OfMultiPoint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<AppParCurves_HArray1OfMultiPoint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppParCurvesHArray1OfMultiPoint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppParCurvesHArray1OfMultiPoint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1200,11 +1184,11 @@ impl HandleAppParCurvesHArray1OfMultiPoint {
 /// MultiBSpCurves are created by the SplineValue method in the ComputeLine
 /// class, and by the Value method in TheVariational class. MultiBSpCurve
 /// provides the information required to create the BSpline defined by the approximation.
-pub use crate::ffi::AppParCurves_MultiBSpCurve as MultiBSpCurve;
+pub use crate::ffi_types::AppParCurves_MultiBSpCurve as MultiBSpCurve;
 
 unsafe impl crate::CppDeletable for MultiBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_MultiBSpCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_destructor(ptr);
     }
 }
 
@@ -1214,7 +1198,7 @@ impl MultiBSpCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiBSpCurve_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_ctor(),
             ))
         }
     }
@@ -1226,7 +1210,7 @@ impl MultiBSpCurve {
     pub fn new_int(NbPol: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiBSpCurve_ctor_int(NbPol),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_ctor_int(NbPol),
             ))
         }
     }
@@ -1236,12 +1220,12 @@ impl MultiBSpCurve {
     /// containing the same number of MultiPoint.
     /// Each MultiPoint must have NbCurves Poles.
     pub fn new_array1ofmultipoint_array1ofreal_array1ofinteger(
-        tabMU: &crate::ffi::AppParCurves_Array1OfMultiPoint,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        tabMU: &crate::ffi_types::AppParCurves_Array1OfMultiPoint,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppParCurves_MultiBSpCurve_ctor_array1ofmultipoint_array1ofreal_array1ofinteger(tabMU, Knots, Mults)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_ctor_array1ofmultipoint_array1ofreal_array1ofinteger(tabMU, Knots, Mults)))
         }
     }
 
@@ -1250,41 +1234,43 @@ impl MultiBSpCurve {
     /// curves, taking control points from <SC>.
     pub fn new_multicurve_array1ofreal_array1ofinteger(
         SC: &MultiCurve,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiBSpCurve_ctor_multicurve_array1ofreal_array1ofinteger(
-                    SC, Knots, Mults,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_ctor_multicurve_array1ofreal_array1ofinteger(SC, Knots, Mults)))
         }
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:87 - `AppParCurves_MultiBSpCurve::SetKnots()`
     /// Knots of the multiBSpCurve are assigned to <theknots>.
-    pub fn set_knots(&mut self, theKnots: &crate::ffi::TColStd_Array1OfReal) {
+    pub fn set_knots(&mut self, theKnots: &crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_set_knots(self as *mut Self, theKnots)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_set_knots(
+                self as *mut Self,
+                theKnots,
+            )
         })
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:91 - `AppParCurves_MultiBSpCurve::SetMultiplicities()`
     /// Multiplicities of the multiBSpCurve are assigned
     /// to <theMults>.
-    pub fn set_multiplicities(&mut self, theMults: &crate::ffi::TColStd_Array1OfInteger) {
+    pub fn set_multiplicities(&mut self, theMults: &crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_set_multiplicities(self as *mut Self, theMults)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_set_multiplicities(
+                self as *mut Self,
+                theMults,
+            )
         })
     }
 
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:95 - `AppParCurves_MultiBSpCurve::Knots()`
     /// Returns an array of Reals containing
     /// the multiplicities of curves resulting from the approximation.
-    pub fn knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiBSpCurve_knots(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_knots(
                 self as *const Self,
             )))
         }
@@ -1293,11 +1279,13 @@ impl MultiBSpCurve {
     /// **Source:** `AppParCurves_MultiBSpCurve.hxx`:99 - `AppParCurves_MultiBSpCurve::Multiplicities()`
     /// Returns an array of Reals containing the
     /// multiplicities of curves resulting from the approximation.
-    pub fn multiplicities(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn multiplicities(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiBSpCurve_multiplicities(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_multiplicities(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1305,7 +1293,7 @@ impl MultiBSpCurve {
     /// returns the degree of the curve(s).
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_degree(self as *const Self)
         })
     }
 
@@ -1316,7 +1304,7 @@ impl MultiBSpCurve {
     /// An exception is raised if the curve dimension is 2d.
     pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_value_int_real_pnt(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1332,7 +1320,7 @@ impl MultiBSpCurve {
     /// An exception is raised if the curve dimension is 3d.
     pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_value_int_real_pnt2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_value_int_real_pnt2d(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1354,7 +1342,7 @@ impl MultiBSpCurve {
         V1: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_d1_int_real_pnt_vec(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1377,7 +1365,7 @@ impl MultiBSpCurve {
         V1: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d1_int_real_pnt2d_vec2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_d1_int_real_pnt2d_vec2d(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1401,7 +1389,7 @@ impl MultiBSpCurve {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_d2_int_real_pnt_vec2(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1426,7 +1414,7 @@ impl MultiBSpCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_d2_int_real_pnt2d_vec2d2(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_d2_int_real_pnt2d_vec2d2(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1441,9 +1429,9 @@ impl MultiBSpCurve {
     /// Prints on the stream o information on the current
     /// state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_dump(self as *const Self, o)
         })
     }
 
@@ -1451,7 +1439,7 @@ impl MultiBSpCurve {
     pub fn as_multi_curve(&self) -> &MultiCurve {
         unsafe {
             &*crate::check_result(
-                crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve(
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve(
                     self as *const Self,
                 ),
             )
@@ -1461,25 +1449,24 @@ impl MultiBSpCurve {
     /// Upcast to AppParCurves_MultiCurve (mutable)
     pub fn as_multi_curve_mut(&mut self) -> &mut MultiCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_as_AppParCurves_MultiCurve_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:79 - `AppParCurves_MultiCurve::SetNbPoles()`
     pub fn set_nb_poles(&mut self, nbPoles: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetNbPoles(self as *mut Self, nbPoles)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_SetNbPoles(
+                self as *mut Self,
+                nbPoles,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:84 - `AppParCurves_MultiCurve::SetValue()`
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_SetValue(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_SetValue(
                 self as *mut Self,
                 Index,
                 MPoint,
@@ -1490,28 +1477,35 @@ impl MultiBSpCurve {
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:89 - `AppParCurves_MultiCurve::NbCurves()`
     pub fn nb_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbCurves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_NbCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:92 - `AppParCurves_MultiCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:99 - `AppParCurves_MultiCurve::Dimension()`
     pub fn dimension(&self, CuIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Dimension(self as *const Self, CuIndex)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Dimension(
+                self as *const Self,
+                CuIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:104 - `AppParCurves_MultiCurve::Curve()`
-    pub fn curve(&self, CuIndex: i32, TabPnt: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn curve(&self, CuIndex: i32, TabPnt: &mut crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Curve(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Curve(
                 self as *const Self,
                 CuIndex,
                 TabPnt,
@@ -1522,29 +1516,33 @@ impl MultiBSpCurve {
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:117 - `AppParCurves_MultiCurve::Pole()`
     pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole(
-                self as *const Self,
-                CuIndex,
-                Nieme,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Pole(
+                    self as *const Self,
+                    CuIndex,
+                    Nieme,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:122 - `AppParCurves_MultiCurve::Pole2d()`
     pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiBSpCurve_inherited_Pole2d(
-                self as *const Self,
-                CuIndex,
-                Nieme,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Pole2d(
+                    self as *const Self,
+                    CuIndex,
+                    Nieme,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:130 - `AppParCurves_MultiCurve::Transform()`
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Transform(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -1560,7 +1558,7 @@ impl MultiBSpCurve {
     /// Inherited: **Source:** `AppParCurves_MultiCurve.hxx`:142 - `AppParCurves_MultiCurve::Transform2d()`
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiBSpCurve_inherited_Transform2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiBSpCurve_inherited_Transform2d(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -1598,11 +1596,11 @@ impl MultiBSpCurve {
 ///
 /// (Pi, Qi, ...Ri), i= 1,...NbPoles are MultiPoints.
 /// each MultiPoint has got NbPol Poles.
-pub use crate::ffi::AppParCurves_MultiCurve as MultiCurve;
+pub use crate::ffi_types::AppParCurves_MultiCurve as MultiCurve;
 
 unsafe impl crate::CppDeletable for MultiCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_MultiCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_destructor(ptr);
     }
 }
 
@@ -1612,7 +1610,7 @@ impl MultiCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiCurve_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_ctor(),
             ))
         }
     }
@@ -1624,7 +1622,7 @@ impl MultiCurve {
     pub fn new_int(NbPol: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiCurve_ctor_int(NbPol),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_ctor_int(NbPol),
             ))
         }
     }
@@ -1634,11 +1632,13 @@ impl MultiCurve {
     /// containing the same number of MultiPoint.
     /// Each MultiPoint must have NbCurves Poles.
     pub fn new_array1ofmultipoint(
-        tabMU: &crate::ffi::AppParCurves_Array1OfMultiPoint,
+        tabMU: &crate::ffi_types::AppParCurves_Array1OfMultiPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiCurve_ctor_array1ofmultipoint(tabMU),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_ctor_array1ofmultipoint(
+                    tabMU,
+                ),
             ))
         }
     }
@@ -1648,7 +1648,10 @@ impl MultiCurve {
     /// will be set to <nbPoles>.
     pub fn set_nb_poles(&mut self, nbPoles: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_set_nb_poles(self as *mut Self, nbPoles)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_set_nb_poles(
+                self as *mut Self,
+                nbPoles,
+            )
         })
     }
 
@@ -1658,7 +1661,11 @@ impl MultiCurve {
     /// An exception is raised if Index <0 or Index >NbMPoint.
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPoint) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_set_value(self as *mut Self, Index, MPoint)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_set_value(
+                self as *mut Self,
+                Index,
+                MPoint,
+            )
         })
     }
 
@@ -1667,7 +1674,7 @@ impl MultiCurve {
     /// approximation of a MultiLine.
     pub fn nb_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_nb_curves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_nb_curves(self as *const Self)
         })
     }
 
@@ -1675,7 +1682,7 @@ impl MultiCurve {
     /// Returns the number of poles on curves resulting from the approximation of a MultiLine.
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_nb_poles(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_nb_poles(self as *const Self)
         })
     }
 
@@ -1683,7 +1690,7 @@ impl MultiCurve {
     /// returns the degree of the curves.
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_degree(self as *const Self)
         })
     }
 
@@ -1692,7 +1699,10 @@ impl MultiCurve {
     /// An exception is raised if CuIndex<0 or CuIndex>NbCurves.
     pub fn dimension(&self, CuIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_dimension(self as *const Self, CuIndex)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_dimension(
+                self as *const Self,
+                CuIndex,
+            )
         })
     }
 
@@ -1700,9 +1710,13 @@ impl MultiCurve {
     /// returns the Pole array of the curve of range CuIndex.
     /// An exception is raised if the dimension of the curve
     /// is 2d.
-    pub fn curve_int_array1ofpnt(&self, CuIndex: i32, TabPnt: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn curve_int_array1ofpnt(
+        &self,
+        CuIndex: i32,
+        TabPnt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_curve_int_array1ofpnt(
                 self as *const Self,
                 CuIndex,
                 TabPnt,
@@ -1717,10 +1731,10 @@ impl MultiCurve {
     pub fn curve_int_array1ofpnt2d(
         &self,
         CuIndex: i32,
-        TabPnt: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        TabPnt: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_curve_int_array1ofpnt2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_curve_int_array1ofpnt2d(
                 self as *const Self,
                 CuIndex,
                 TabPnt,
@@ -1733,10 +1747,12 @@ impl MultiCurve {
     /// An exception is raised if Index <0 or Index >Degree+1.
     pub fn value_int(&self, Index: i32) -> &MultiPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiCurve_value_int(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_value_int(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -1745,7 +1761,7 @@ impl MultiCurve {
     /// the curve must be a 3D curve.
     pub fn pole(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiCurve_pole(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_pole(
                 self as *const Self,
                 CuIndex,
                 Nieme,
@@ -1758,7 +1774,7 @@ impl MultiCurve {
     /// the curve must be a 2D curve.
     pub fn pole2d(&self, CuIndex: i32, Nieme: i32) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiCurve_pole2d(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_pole2d(
                 self as *const Self,
                 CuIndex,
                 Nieme,
@@ -1774,7 +1790,7 @@ impl MultiCurve {
     /// newz = z + dz*oldz
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_transform(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_transform(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -1794,7 +1810,7 @@ impl MultiCurve {
     /// newy = y + dy*oldy    for all points of the curve.
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_transform2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_transform2d(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -1812,7 +1828,7 @@ impl MultiCurve {
     /// An exception is raised if the curve dimension is 2d.
     pub fn value_int_real_pnt(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_value_int_real_pnt(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1828,7 +1844,7 @@ impl MultiCurve {
     /// An exception is raised if the curve dimension is 3d.
     pub fn value_int_real_pnt2d(&self, CuIndex: i32, U: f64, Pt: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_value_int_real_pnt2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_value_int_real_pnt2d(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1850,7 +1866,7 @@ impl MultiCurve {
         V1: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_d1_int_real_pnt_vec(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1873,7 +1889,7 @@ impl MultiCurve {
         V1: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d1_int_real_pnt2d_vec2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_d1_int_real_pnt2d_vec2d(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1897,7 +1913,7 @@ impl MultiCurve {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_d2_int_real_pnt_vec2(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1922,7 +1938,7 @@ impl MultiCurve {
         V2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_d2_int_real_pnt2d_vec2d2(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_d2_int_real_pnt2d_vec2d2(
                 self as *const Self,
                 CuIndex,
                 U,
@@ -1937,9 +1953,9 @@ impl MultiCurve {
     /// Prints on the stream o information on the current
     /// state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiCurve_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiCurve_dump(self as *const Self, o)
         })
     }
 }
@@ -1955,11 +1971,11 @@ impl MultiCurve {
 /// They are Poles of a Bezier Curve.
 /// This class is used either to define data input or
 /// results when performing the approximation of several lines in parallel.
-pub use crate::ffi::AppParCurves_MultiPoint as MultiPoint;
+pub use crate::ffi_types::AppParCurves_MultiPoint as MultiPoint;
 
 unsafe impl crate::CppDeletable for MultiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppParCurves_MultiPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_destructor(ptr);
     }
 }
 
@@ -1969,7 +1985,7 @@ impl MultiPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiPoint_ctor(),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_ctor(),
             ))
         }
     }
@@ -1984,27 +2000,31 @@ impl MultiPoint {
     pub fn new_int2(NbPoints: i32, NbPoints2d: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiPoint_ctor_int2(NbPoints, NbPoints2d),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_ctor_int2(
+                    NbPoints, NbPoints2d,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:57 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
     /// creates a MultiPoint only composed of 3D points.
-    pub fn new_array1ofpnt(tabP: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt(tabP: &crate::ffi_types::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt(tabP),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_ctor_array1ofpnt(tabP),
             ))
         }
     }
 
     /// **Source:** `AppParCurves_MultiPoint.hxx`:60 - `AppParCurves_MultiPoint::AppParCurves_MultiPoint()`
     /// creates a MultiPoint only composed of 2D points.
-    pub fn new_array1ofpnt2d(tabP2d: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt2d(
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt2d(tabP2d),
+                crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_ctor_array1ofpnt2d(tabP2d),
             ))
         }
     }
@@ -2016,13 +2036,11 @@ impl MultiPoint {
     /// Points will be initialized with SetPoint and SetPoint2d.
     /// NbPoints is the total number of Points.
     pub fn new_array1ofpnt_array1ofpnt2d(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppParCurves_MultiPoint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d)))
         }
     }
 
@@ -2033,7 +2051,11 @@ impl MultiPoint {
     /// Index > number of 3d Points.
     pub fn set_point(&mut self, Index: i32, Point: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_set_point(self as *mut Self, Index, Point)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_set_point(
+                self as *mut Self,
+                Index,
+                Point,
+            )
         })
     }
 
@@ -2043,7 +2065,7 @@ impl MultiPoint {
     /// Index < number of 3d Points.
     pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiPoint_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_point(
                 self as *const Self,
                 Index,
             )))
@@ -2056,7 +2078,11 @@ impl MultiPoint {
     /// Index > total number of Points.
     pub fn set_point2d(&mut self, Index: i32, Point: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_set_point2d(self as *mut Self, Index, Point)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_set_point2d(
+                self as *mut Self,
+                Index,
+                Point,
+            )
         })
     }
 
@@ -2066,7 +2092,7 @@ impl MultiPoint {
     /// 3d Points or Index > total number of Points.
     pub fn point2d(&self, Index: i32) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppParCurves_MultiPoint_point2d(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_point2d(
                 self as *const Self,
                 Index,
             )))
@@ -2078,7 +2104,10 @@ impl MultiPoint {
     /// An exception is raised if Index <0 or Index > NbCurves.
     pub fn dimension(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_dimension(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_dimension(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2086,7 +2115,7 @@ impl MultiPoint {
     /// returns the number of points of dimension 3D.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_nb_points(self as *const Self)
         })
     }
 
@@ -2094,7 +2123,7 @@ impl MultiPoint {
     /// returns the number of points of dimension 2D.
     pub fn nb_points2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_nb_points2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_nb_points2d(self as *const Self)
         })
     }
 
@@ -2106,7 +2135,7 @@ impl MultiPoint {
     /// newz = z + dz*oldz
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_transform(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_transform(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -2126,7 +2155,7 @@ impl MultiPoint {
     /// newy = y + dy*oldy    for all points of the curve.
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_transform2d(
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_transform2d(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -2141,9 +2170,9 @@ impl MultiPoint {
     /// Prints on the stream o information on the current
     /// state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppParCurves_MultiPoint_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppParCurves_MultiPoint_dump(self as *const Self, o)
         })
     }
 }
@@ -2152,7 +2181,7 @@ impl MultiPoint {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     AppParCurves_Array1OfConstraintCouple as Array1OfConstraintCouple,
     AppParCurves_Array1OfMultiBSpCurve as Array1OfMultiBSpCurve,
     AppParCurves_Array1OfMultiCurve as Array1OfMultiCurve,

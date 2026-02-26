@@ -55,11 +55,11 @@ impl TryFrom<i32> for ResultType {
 /// **Source:** `IntAna_Curve.hxx`:32 - `IntAna_Curve`
 /// Definition of a parametric Curve which is the result
 /// of the intersection between two quadrics.
-pub use crate::ffi::IntAna_Curve as Curve;
+pub use crate::ffi_types::IntAna_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_Curve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_Curve_destructor(ptr);
     }
 }
 
@@ -67,7 +67,11 @@ impl Curve {
     /// **Source:** `IntAna_Curve.hxx`:38 - `IntAna_Curve::IntAna_Curve()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Curve_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Curve_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `IntAna_Curve.hxx`:42 - `IntAna_Curve::SetCylinderQuadValues()`
@@ -93,7 +97,7 @@ impl Curve {
         ZIsPositive: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_set_cylinder_quad_values(
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_set_cylinder_quad_values(
                 self as *mut Self,
                 Cylinder,
                 Qxx,
@@ -138,7 +142,7 @@ impl Curve {
         ZIsPositive: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_set_cone_quad_values(
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_set_cone_quad_values(
                 self as *mut Self,
                 Cone,
                 Qxx,
@@ -164,43 +168,54 @@ impl Curve {
     /// Returns TRUE if the curve is not  infinite  at the
     /// last parameter or at the first parameter of the domain.
     pub fn is_open(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Curve_is_open(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_is_open(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:83 - `IntAna_Curve::Domain()`
     /// Returns the parametric domain of the curve.
     pub fn domain(&self, theFirst: &mut f64, theLast: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_domain(self as *const Self, theFirst, theLast)
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_domain(
+                self as *const Self,
+                theFirst,
+                theLast,
+            )
         })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:86 - `IntAna_Curve::IsConstant()`
     /// Returns TRUE if the function is constant.
     pub fn is_constant(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Curve_is_constant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:89 - `IntAna_Curve::IsFirstOpen()`
     /// Returns TRUE if the domain is open at the beginning.
     pub fn is_first_open(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Curve_is_first_open(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_is_first_open(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:92 - `IntAna_Curve::IsLastOpen()`
     /// Returns TRUE if the domain is open at the end.
     pub fn is_last_open(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Curve_is_last_open(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_is_last_open(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:95 - `IntAna_Curve::Value()`
     /// Returns the point at parameter Theta on the curve.
     pub fn value(&mut self, Theta: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Curve_value(
-                self as *mut Self,
-                Theta,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Curve_value(self as *mut Self, Theta),
+            ))
         }
     }
 
@@ -208,7 +223,9 @@ impl Curve {
     /// Returns the point and the first derivative at parameter
     /// Theta on the curve.
     pub fn d1u(&mut self, Theta: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Curve_d1u(self as *mut Self, Theta, P, V) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_d1u(self as *mut Self, Theta, P, V)
+        })
     }
 
     /// **Source:** `IntAna_Curve.hxx`:106 - `IntAna_Curve::FindParameter()`
@@ -220,10 +237,14 @@ impl Curve {
     pub fn find_parameter(
         &self,
         P: &crate::gp::Pnt,
-        theParams: &mut crate::ffi::TColStd_ListOfReal,
+        theParams: &mut crate::ffi_types::TColStd_ListOfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_find_parameter(self as *const Self, P, theParams)
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_find_parameter(
+                self as *const Self,
+                P,
+                theParams,
+            )
         })
     }
 
@@ -232,7 +253,7 @@ impl Curve {
     /// first parameter of its domain.
     pub fn set_is_first_open(&mut self, Flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_set_is_first_open(self as *mut Self, Flag)
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_set_is_first_open(self as *mut Self, Flag)
         })
     }
 
@@ -241,7 +262,7 @@ impl Curve {
     /// first parameter of its domain.
     pub fn set_is_last_open(&mut self, Flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_set_is_last_open(self as *mut Self, Flag)
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_set_is_last_open(self as *mut Self, Flag)
         })
     }
 
@@ -249,7 +270,11 @@ impl Curve {
     /// Trims this curve
     pub fn set_domain(&mut self, theFirst: f64, theLast: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Curve_set_domain(self as *mut Self, theFirst, theLast)
+            crate::ffi_extern_TKGeomBase::IntAna_Curve_set_domain(
+                self as *mut Self,
+                theFirst,
+                theLast,
+            )
         })
     }
 }
@@ -262,18 +287,22 @@ impl Curve {
 /// Intersection between 3 planes. The algorithm searches
 /// for an intersection point. If two of the planes are
 /// parallel or identical, IsEmpty returns TRUE.
-pub use crate::ffi::IntAna_Int3Pln as Int3Pln;
+pub use crate::ffi_types::IntAna_Int3Pln as Int3Pln;
 
 unsafe impl crate::CppDeletable for Int3Pln {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_Int3Pln_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_destructor(ptr);
     }
 }
 
 impl Int3Pln {
     /// **Source:** `IntAna_Int3Pln.hxx`:34 - `IntAna_Int3Pln::IntAna_Int3Pln()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Int3Pln_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `IntAna_Int3Pln.hxx`:38 - `IntAna_Int3Pln::IntAna_Int3Pln()`
@@ -285,9 +314,9 @@ impl Int3Pln {
         P3: &crate::gp::Pln,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Int3Pln_ctor_pln3(
-                P1, P2, P3,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_ctor_pln3(P1, P2, P3),
+            ))
         }
     }
 
@@ -296,14 +325,16 @@ impl Int3Pln {
     /// 3 planes.
     pub fn perform(&mut self, P1: &crate::gp::Pln, P2: &crate::gp::Pln, P3: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Int3Pln_perform(self as *mut Self, P1, P2, P3)
+            crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_perform(self as *mut Self, P1, P2, P3)
         })
     }
 
     /// **Source:** `IntAna_Int3Pln.hxx`:45 - `IntAna_Int3Pln::IsDone()`
     /// Returns True if the computation was successful.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Int3Pln_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Int3Pln.hxx`:50 - `IntAna_Int3Pln::IsEmpty()`
@@ -311,13 +342,19 @@ impl Int3Pln {
     /// If 2 planes are identical or parallel, IsEmpty
     /// will return TRUE.
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_Int3Pln_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_Int3Pln.hxx`:53 - `IntAna_Int3Pln::Value()`
     /// Returns the intersection point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::IntAna_Int3Pln_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_Int3Pln_value(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -342,11 +379,11 @@ impl Int3Pln {
 /// or :
 /// IntAna_IntConicQuad Inter(L,SPH) (it is necessary
 /// to include IntAna_Quadric.hxx in this case)
-pub use crate::ffi::IntAna_IntConicQuad as IntConicQuad;
+pub use crate::ffi_types::IntAna_IntConicQuad as IntConicQuad;
 
 unsafe impl crate::CppDeletable for IntConicQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_IntConicQuad_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_destructor(ptr);
     }
 }
 
@@ -355,7 +392,9 @@ impl IntConicQuad {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_IntConicQuad_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor(),
+            ))
         }
     }
 
@@ -364,7 +403,7 @@ impl IntConicQuad {
     pub fn new_lin_quadric(L: &crate::gp::Lin, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_lin_quadric(L, Q),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_lin_quadric(L, Q),
             ))
         }
     }
@@ -374,7 +413,7 @@ impl IntConicQuad {
     pub fn new_circ_quadric(C: &crate::gp::Circ, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_circ_quadric(C, Q),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_circ_quadric(C, Q),
             ))
         }
     }
@@ -384,7 +423,7 @@ impl IntConicQuad {
     pub fn new_elips_quadric(E: &crate::gp::Elips, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_elips_quadric(E, Q),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_elips_quadric(E, Q),
             ))
         }
     }
@@ -394,7 +433,7 @@ impl IntConicQuad {
     pub fn new_parab_quadric(P: &crate::gp::Parab, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_parab_quadric(P, Q),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_parab_quadric(P, Q),
             ))
         }
     }
@@ -405,7 +444,7 @@ impl IntConicQuad {
     pub fn new_hypr_quadric(H: &crate::gp::Hypr, Q: &Quadric) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_hypr_quadric(H, Q),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_hypr_quadric(H, Q),
             ))
         }
     }
@@ -425,7 +464,9 @@ impl IntConicQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_lin_pln_real3(L, P, Tolang, Tol, Len),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_lin_pln_real3(
+                    L, P, Tolang, Tol, Len,
+                ),
             ))
         }
     }
@@ -443,7 +484,9 @@ impl IntConicQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_circ_pln_real2(C, P, Tolang, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_circ_pln_real2(
+                    C, P, Tolang, Tol,
+                ),
             ))
         }
     }
@@ -461,7 +504,9 @@ impl IntConicQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_elips_pln_real2(E, P, Tolang, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_elips_pln_real2(
+                    E, P, Tolang, Tol,
+                ),
             ))
         }
     }
@@ -477,7 +522,9 @@ impl IntConicQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_parab_pln_real(Pb, P, Tolang),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_parab_pln_real(
+                    Pb, P, Tolang,
+                ),
             ))
         }
     }
@@ -493,7 +540,7 @@ impl IntConicQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntConicQuad_ctor_hypr_pln_real(H, P, Tolang),
+                crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_ctor_hypr_pln_real(H, P, Tolang),
             ))
         }
     }
@@ -531,7 +578,11 @@ impl IntConicQuad {
     /// Intersects a line and a quadric.
     pub fn perform_lin_quadric(&mut self, L: &crate::gp::Lin, Q: &Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_lin_quadric(self as *mut Self, L, Q)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_lin_quadric(
+                self as *mut Self,
+                L,
+                Q,
+            )
         })
     }
 
@@ -539,7 +590,11 @@ impl IntConicQuad {
     /// Intersects a circle and a quadric.
     pub fn perform_circ_quadric(&mut self, C: &crate::gp::Circ, Q: &Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_circ_quadric(self as *mut Self, C, Q)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_circ_quadric(
+                self as *mut Self,
+                C,
+                Q,
+            )
         })
     }
 
@@ -547,7 +602,11 @@ impl IntConicQuad {
     /// Intersects an ellipse and a quadric.
     pub fn perform_elips_quadric(&mut self, E: &crate::gp::Elips, Q: &Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_elips_quadric(self as *mut Self, E, Q)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_elips_quadric(
+                self as *mut Self,
+                E,
+                Q,
+            )
         })
     }
 
@@ -555,7 +614,11 @@ impl IntConicQuad {
     /// Intersects a parabola and a quadric.
     pub fn perform_parab_quadric(&mut self, P: &crate::gp::Parab, Q: &Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_parab_quadric(self as *mut Self, P, Q)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_parab_quadric(
+                self as *mut Self,
+                P,
+                Q,
+            )
         })
     }
 
@@ -563,7 +626,11 @@ impl IntConicQuad {
     /// Intersects an hyperbola and a quadric.
     pub fn perform_hypr_quadric(&mut self, H: &crate::gp::Hypr, Q: &Quadric) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_hypr_quadric(self as *mut Self, H, Q)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_hypr_quadric(
+                self as *mut Self,
+                H,
+                Q,
+            )
         })
     }
 
@@ -582,7 +649,7 @@ impl IntConicQuad {
         Len: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_lin_pln_real3(
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_lin_pln_real3(
                 self as *mut Self,
                 L,
                 P,
@@ -606,7 +673,7 @@ impl IntConicQuad {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_circ_pln_real2(
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_circ_pln_real2(
                 self as *mut Self,
                 C,
                 P,
@@ -629,7 +696,7 @@ impl IntConicQuad {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_elips_pln_real2(
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_elips_pln_real2(
                 self as *mut Self,
                 E,
                 P,
@@ -650,7 +717,12 @@ impl IntConicQuad {
         Tolang: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_parab_pln_real(self as *mut Self, Pb, P, Tolang)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_parab_pln_real(
+                self as *mut Self,
+                Pb,
+                P,
+                Tolang,
+            )
         })
     }
 
@@ -660,21 +732,28 @@ impl IntConicQuad {
     /// vectors is null.
     pub fn perform_hypr_pln_real(&mut self, H: &crate::gp::Hypr, P: &crate::gp::Pln, Tolang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_perform_hypr_pln_real(self as *mut Self, H, P, Tolang)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_perform_hypr_pln_real(
+                self as *mut Self,
+                H,
+                P,
+                Tolang,
+            )
         })
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:171 - `IntAna_IntConicQuad::IsDone()`
     /// Returns TRUE if the creation completed.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_IntConicQuad_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_IntConicQuad.hxx`:174 - `IntAna_IntConicQuad::IsInQuadric()`
     /// Returns TRUE if the conic is in the quadric.
     pub fn is_in_quadric(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_is_in_quadric(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_is_in_quadric(self as *const Self)
         })
     }
 
@@ -683,7 +762,7 @@ impl IntConicQuad {
     /// is parallel to the quadric.
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_is_parallel(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_is_parallel(self as *const Self)
         })
     }
 
@@ -691,7 +770,7 @@ impl IntConicQuad {
     /// Returns the number of intersection point.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_nb_points(self as *const Self)
         })
     }
 
@@ -699,7 +778,10 @@ impl IntConicQuad {
     /// Returns the point of range N.
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_IntConicQuad_point(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
@@ -708,7 +790,7 @@ impl IntConicQuad {
     /// point of range N.
     pub fn param_on_conic(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntConicQuad_param_on_conic(self as *const Self, N)
+            crate::ffi_extern_TKGeomBase::IntAna_IntConicQuad_param_on_conic(self as *const Self, N)
         })
     }
 }
@@ -719,11 +801,11 @@ impl IntConicQuad {
 
 /// **Source:** `IntAna_IntLinTorus.hxx`:29 - `IntAna_IntLinTorus`
 /// Intersection between a line and a torus.
-pub use crate::ffi::IntAna_IntLinTorus as IntLinTorus;
+pub use crate::ffi_types::IntAna_IntLinTorus as IntLinTorus;
 
 unsafe impl crate::CppDeletable for IntLinTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_IntLinTorus_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_destructor(ptr);
     }
 }
 
@@ -731,7 +813,9 @@ impl IntLinTorus {
     /// **Source:** `IntAna_IntLinTorus.hxx`:34 - `IntAna_IntLinTorus::IntAna_IntLinTorus()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_IntLinTorus_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_ctor(),
+            ))
         }
     }
 
@@ -740,7 +824,7 @@ impl IntLinTorus {
     pub fn new_lin_torus(L: &crate::gp::Lin, T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntLinTorus_ctor_lin_torus(L, T),
+                crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_ctor_lin_torus(L, T),
             ))
         }
     }
@@ -749,21 +833,23 @@ impl IntLinTorus {
     /// Intersects a line and a torus.
     pub fn perform(&mut self, L: &crate::gp::Lin, T: &crate::gp::Torus) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntLinTorus_perform(self as *mut Self, L, T)
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_perform(self as *mut Self, L, T)
         })
     }
 
     /// **Source:** `IntAna_IntLinTorus.hxx`:43 - `IntAna_IntLinTorus::IsDone()`
     /// Returns True if the computation was successful.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_IntLinTorus_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_IntLinTorus.hxx`:46 - `IntAna_IntLinTorus::NbPoints()`
     /// Returns the number of intersection points.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntLinTorus_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_nb_points(self as *const Self)
         })
     }
 
@@ -771,7 +857,7 @@ impl IntLinTorus {
     /// Returns the intersection point of range Index.
     pub fn value(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_IntLinTorus_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_value(
                 self as *const Self,
                 Index,
             )))
@@ -783,7 +869,10 @@ impl IntLinTorus {
     /// point of range Index.
     pub fn param_on_line(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntLinTorus_param_on_line(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_param_on_line(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -792,7 +881,12 @@ impl IntLinTorus {
     /// point of range Index.
     pub fn param_on_torus(&self, Index: i32, FI: &mut f64, THETA: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntLinTorus_param_on_torus(self as *const Self, Index, FI, THETA)
+            crate::ffi_extern_TKGeomBase::IntAna_IntLinTorus_param_on_torus(
+                self as *const Self,
+                Index,
+                FI,
+                THETA,
+            )
         })
     }
 }
@@ -811,11 +905,11 @@ impl IntLinTorus {
 /// The result of the intersection may be
 /// - Curves as defined in the class Curve from IntAna
 /// - Points (Pnt from gp)
-pub use crate::ffi::IntAna_IntQuadQuad as IntQuadQuad;
+pub use crate::ffi_types::IntAna_IntQuadQuad as IntQuadQuad;
 
 unsafe impl crate::CppDeletable for IntQuadQuad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_IntQuadQuad_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_destructor(ptr);
     }
 }
 
@@ -824,7 +918,9 @@ impl IntQuadQuad {
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_IntQuadQuad_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_ctor(),
+            ))
         }
     }
 
@@ -838,7 +934,9 @@ impl IntQuadQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntQuadQuad_ctor_cylinder_quadric_real(C, Q, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_ctor_cylinder_quadric_real(
+                    C, Q, Tol,
+                ),
             ))
         }
     }
@@ -853,7 +951,7 @@ impl IntQuadQuad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_IntQuadQuad_ctor_cone_quadric_real(C, Q, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_ctor_cone_quadric_real(C, Q, Tol),
             ))
         }
     }
@@ -868,7 +966,7 @@ impl IntQuadQuad {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_perform_cylinder_quadric_real(
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_perform_cylinder_quadric_real(
                 self as *mut Self,
                 C,
                 Q,
@@ -882,14 +980,21 @@ impl IntQuadQuad {
     /// Tol est a definir plus precisemment.
     pub fn perform_cone_quadric_real(&mut self, C: &crate::gp::Cone, Q: &Quadric, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_perform_cone_quadric_real(self as *mut Self, C, Q, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_perform_cone_quadric_real(
+                self as *mut Self,
+                C,
+                Q,
+                Tol,
+            )
         })
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:70 - `IntAna_IntQuadQuad::IsDone()`
     /// Returns True if the computation was successful.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_IntQuadQuad_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:74 - `IntAna_IntQuadQuad::IdenticalElements()`
@@ -897,35 +1002,45 @@ impl IntQuadQuad {
     /// is identical to the quadric.
     pub fn identical_elements(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_identical_elements(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_identical_elements(self as *const Self)
         })
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:77 - `IntAna_IntQuadQuad::NbCurve()`
     /// Returns the number of curves solution.
     pub fn nb_curve(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IntAna_IntQuadQuad_nb_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_nb_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:80 - `IntAna_IntQuadQuad::Curve()`
     /// Returns the curve of range N.
     pub fn curve(&self, N: i32) -> &Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_IntQuadQuad_curve(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_curve(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:83 - `IntAna_IntQuadQuad::NbPnt()`
     /// Returns the number of contact point.
     pub fn nb_pnt(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IntAna_IntQuadQuad_nb_pnt(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_nb_pnt(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_IntQuadQuad.hxx`:86 - `IntAna_IntQuadQuad::Point()`
     /// Returns the point of range N.
     pub fn point(&self, N: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_IntQuadQuad_point(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
@@ -935,7 +1050,12 @@ impl IntQuadQuad {
     /// range N.
     pub fn parameters(&self, N: i32, U1: &mut f64, U2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_parameters(self as *const Self, N, U1, U2)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_parameters(
+                self as *const Self,
+                N,
+                U1,
+                U2,
+            )
         })
     }
 
@@ -944,7 +1064,7 @@ impl IntQuadQuad {
     /// with another curve.
     pub fn has_next_curve(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_has_next_curve(self as *const Self, I)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_has_next_curve(self as *const Self, I)
         })
     }
 
@@ -959,7 +1079,11 @@ impl IntQuadQuad {
     /// point.
     pub fn next_curve(&self, I: i32, theOpposite: &mut bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_next_curve(self as *const Self, I, theOpposite)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_next_curve(
+                self as *const Self,
+                I,
+                theOpposite,
+            )
         })
     }
 
@@ -968,7 +1092,10 @@ impl IntQuadQuad {
     /// with another curve.
     pub fn has_previous_curve(&self, I: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_has_previous_curve(self as *const Self, I)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_has_previous_curve(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -983,7 +1110,11 @@ impl IntQuadQuad {
     /// same point.
     pub fn previous_curve(&self, I: i32, theOpposite: &mut bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_IntQuadQuad_previous_curve(self as *const Self, I, theOpposite)
+            crate::ffi_extern_TKGeomBase::IntAna_IntQuadQuad_previous_curve(
+                self as *const Self,
+                I,
+                theOpposite,
+            )
         })
     }
 }
@@ -1008,11 +1139,11 @@ impl IntQuadQuad {
 /// - NoGeometricSolution : there may be an intersection, but it
 /// is necessary to use an analytic algorithm to determine
 /// it. See class IntQuadQuad from IntAna.
-pub use crate::ffi::IntAna_QuadQuadGeo as QuadQuadGeo;
+pub use crate::ffi_types::IntAna_QuadQuadGeo as QuadQuadGeo;
 
 unsafe impl crate::CppDeletable for QuadQuadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_QuadQuadGeo_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_destructor(ptr);
     }
 }
 
@@ -1021,7 +1152,9 @@ impl QuadQuadGeo {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor(),
+            ))
         }
     }
 
@@ -1039,7 +1172,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_pln2_real2(P1, P2, TolAng, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_pln2_real2(
+                    P1, P2, TolAng, Tol,
+                ),
             ))
         }
     }
@@ -1063,7 +1198,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_pln_cylinder_real3(P, C, Tolang, Tol, H),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_pln_cylinder_real3(
+                    P, C, Tolang, Tol, H,
+                ),
             ))
         }
     }
@@ -1073,7 +1210,7 @@ impl QuadQuadGeo {
     pub fn new_pln_sphere(P: &crate::gp::Pln, S: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_pln_sphere(P, S),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_pln_sphere(P, S),
             ))
         }
     }
@@ -1094,7 +1231,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_pln_cone_real2(P, C, Tolang, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_pln_cone_real2(
+                    P, C, Tolang, Tol,
+                ),
             ))
         }
     }
@@ -1108,7 +1247,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder2_real(Cyl1, Cyl2, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cylinder2_real(
+                    Cyl1, Cyl2, Tol,
+                ),
             ))
         }
     }
@@ -1122,7 +1263,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_sphere_real(Cyl, Sph, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cylinder_sphere_real(
+                    Cyl, Sph, Tol,
+                ),
             ))
         }
     }
@@ -1136,7 +1279,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_cone_real(Cyl, Con, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cylinder_cone_real(
+                    Cyl, Con, Tol,
+                ),
             ))
         }
     }
@@ -1150,7 +1295,7 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_sphere2_real(Sph1, Sph2, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_sphere2_real(Sph1, Sph2, Tol),
             ))
         }
     }
@@ -1164,7 +1309,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_sphere_cone_real(Sph, Con, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_sphere_cone_real(
+                    Sph, Con, Tol,
+                ),
             ))
         }
     }
@@ -1178,7 +1325,7 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cone2_real(Con1, Con2, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cone2_real(Con1, Con2, Tol),
             ))
         }
     }
@@ -1192,7 +1339,7 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_pln_torus_real(Pln, Tor, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_pln_torus_real(Pln, Tor, Tol),
             ))
         }
     }
@@ -1206,7 +1353,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cylinder_torus_real(Cyl, Tor, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cylinder_torus_real(
+                    Cyl, Tor, Tol,
+                ),
             ))
         }
     }
@@ -1220,7 +1369,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_cone_torus_real(Con, Tor, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_cone_torus_real(
+                    Con, Tor, Tol,
+                ),
             ))
         }
     }
@@ -1234,7 +1385,9 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_sphere_torus_real(Sph, Tor, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_sphere_torus_real(
+                    Sph, Tor, Tol,
+                ),
             ))
         }
     }
@@ -1248,7 +1401,7 @@ impl QuadQuadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_ctor_torus2_real(Tor1, Tor2, Tol),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ctor_torus2_real(Tor1, Tor2, Tol),
             ))
         }
     }
@@ -1286,7 +1439,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_pln2_real2(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_pln2_real2(
                 self as *mut Self,
                 P1,
                 P2,
@@ -1315,7 +1468,7 @@ impl QuadQuadGeo {
         H: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_pln_cylinder_real3(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_pln_cylinder_real3(
                 self as *mut Self,
                 P,
                 C,
@@ -1330,7 +1483,11 @@ impl QuadQuadGeo {
     /// Intersects a plane and a sphere.
     pub fn perform_pln_sphere(&mut self, P: &crate::gp::Pln, S: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_pln_sphere(self as *mut Self, P, S)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_pln_sphere(
+                self as *mut Self,
+                P,
+                S,
+            )
         })
     }
 
@@ -1350,7 +1507,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_pln_cone_real2(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_pln_cone_real2(
                 self as *mut Self,
                 P,
                 C,
@@ -1369,7 +1526,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cylinder2_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cylinder2_real(
                 self as *mut Self,
                 Cyl1,
                 Cyl2,
@@ -1387,7 +1544,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_sphere_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cylinder_sphere_real(
                 self as *mut Self,
                 Cyl,
                 Sph,
@@ -1405,7 +1562,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_cone_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cylinder_cone_real(
                 self as *mut Self,
                 Cyl,
                 Con,
@@ -1423,7 +1580,12 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_sphere2_real(self as *mut Self, Sph1, Sph2, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_sphere2_real(
+                self as *mut Self,
+                Sph1,
+                Sph2,
+                Tol,
+            )
         })
     }
 
@@ -1436,7 +1598,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_sphere_cone_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_sphere_cone_real(
                 self as *mut Self,
                 Sph,
                 Con,
@@ -1449,7 +1611,12 @@ impl QuadQuadGeo {
     /// Intersects two cones.
     pub fn perform_cone2_real(&mut self, Con1: &crate::gp::Cone, Con2: &crate::gp::Cone, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cone2_real(self as *mut Self, Con1, Con2, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cone2_real(
+                self as *mut Self,
+                Con1,
+                Con2,
+                Tol,
+            )
         })
     }
 
@@ -1462,7 +1629,12 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_pln_torus_real(self as *mut Self, Pln, Tor, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_pln_torus_real(
+                self as *mut Self,
+                Pln,
+                Tor,
+                Tol,
+            )
         })
     }
 
@@ -1475,7 +1647,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cylinder_torus_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cylinder_torus_real(
                 self as *mut Self,
                 Cyl,
                 Tor,
@@ -1493,7 +1665,12 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_cone_torus_real(self as *mut Self, Con, Tor, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_cone_torus_real(
+                self as *mut Self,
+                Con,
+                Tor,
+                Tol,
+            )
         })
     }
 
@@ -1506,7 +1683,7 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_sphere_torus_real(
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_sphere_torus_real(
                 self as *mut Self,
                 Sph,
                 Tor,
@@ -1524,21 +1701,28 @@ impl QuadQuadGeo {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_perform_torus2_real(self as *mut Self, Tor1, Tor2, Tol)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_perform_torus2_real(
+                self as *mut Self,
+                Tor1,
+                Tor2,
+                Tol,
+            )
         })
     }
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:238 - `IntAna_QuadQuadGeo::IsDone()`
     /// Returns Standard_True if the computation was successful.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IntAna_QuadQuadGeo_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:241 - `IntAna_QuadQuadGeo::TypeInter()`
     /// Returns the type of intersection.
     pub fn type_inter(&self) -> crate::int_ana::ResultType {
         crate::int_ana::ResultType::try_from(crate::check_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_type_inter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_type_inter(self as *const Self)
         }))
         .unwrap()
     }
@@ -1555,7 +1739,7 @@ impl QuadQuadGeo {
     /// - 1 or 2 hyperbola(s).
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_nb_solutions(self as *const Self)
         })
     }
 
@@ -1563,10 +1747,9 @@ impl QuadQuadGeo {
     /// Returns the point solution of range Num.
     pub fn point(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_point(
-                self as *const Self,
-                Num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_point(self as *const Self, Num),
+            ))
         }
     }
 
@@ -1574,10 +1757,9 @@ impl QuadQuadGeo {
     /// Returns the line solution of range Num.
     pub fn line(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_line(
-                self as *const Self,
-                Num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_line(self as *const Self, Num),
+            ))
         }
     }
 
@@ -1585,10 +1767,9 @@ impl QuadQuadGeo {
     /// Returns the circle solution of range Num.
     pub fn circle(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_circle(
-                self as *const Self,
-                Num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_circle(self as *const Self, Num),
+            ))
         }
     }
 
@@ -1596,10 +1777,9 @@ impl QuadQuadGeo {
     /// Returns the ellipse solution of range Num.
     pub fn ellipse(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_ellipse(
-                self as *const Self,
-                Num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_ellipse(self as *const Self, Num),
+            ))
         }
     }
 
@@ -1607,10 +1787,9 @@ impl QuadQuadGeo {
     /// Returns the parabola solution of range Num.
     pub fn parabola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_parabola(
-                self as *const Self,
-                Num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_parabola(self as *const Self, Num),
+            ))
         }
     }
 
@@ -1619,7 +1798,10 @@ impl QuadQuadGeo {
     pub fn hyperbola(&self, Num: i32) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_QuadQuadGeo_hyperbola(self as *const Self, Num),
+                crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_hyperbola(
+                    self as *const Self,
+                    Num,
+                ),
             ))
         }
     }
@@ -1627,14 +1809,16 @@ impl QuadQuadGeo {
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:272 - `IntAna_QuadQuadGeo::HasCommonGen()`
     pub fn has_common_gen(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntAna_QuadQuadGeo_has_common_gen(self as *const Self)
+            crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_has_common_gen(self as *const Self)
         })
     }
 
     /// **Source:** `IntAna_QuadQuadGeo.hxx`:274 - `IntAna_QuadQuadGeo::PChar()`
     pub fn p_char(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_QuadQuadGeo_p_char(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_QuadQuadGeo_p_char(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1646,11 +1830,11 @@ impl QuadQuadGeo {
 /// **Source:** `IntAna_Quadric.hxx`:30 - `IntAna_Quadric`
 /// This class provides a description of Quadrics by their
 /// Coefficients in natural coordinate system.
-pub use crate::ffi::IntAna_Quadric as Quadric;
+pub use crate::ffi_types::IntAna_Quadric as Quadric;
 
 unsafe impl crate::CppDeletable for Quadric {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntAna_Quadric_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::IntAna_Quadric_destructor(ptr);
     }
 }
 
@@ -1658,14 +1842,20 @@ impl Quadric {
     /// **Source:** `IntAna_Quadric.hxx`:36 - `IntAna_Quadric::IntAna_Quadric()`
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Quadric_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Quadric_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `IntAna_Quadric.hxx`:39 - `IntAna_Quadric::IntAna_Quadric()`
     /// Creates a Quadric from a Pln
     pub fn new_pln(P: &crate::gp::Pln) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Quadric_ctor_pln(P)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Quadric_ctor_pln(P),
+            ))
         }
     }
 
@@ -1673,9 +1863,9 @@ impl Quadric {
     /// Creates a Quadric from a Sphere
     pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Quadric_ctor_sphere(
-                Sph,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Quadric_ctor_sphere(Sph),
+            ))
         }
     }
 
@@ -1684,7 +1874,7 @@ impl Quadric {
     pub fn new_cylinder(Cyl: &crate::gp::Cylinder) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntAna_Quadric_ctor_cylinder(Cyl),
+                crate::ffi_extern_TKGeomBase::IntAna_Quadric_ctor_cylinder(Cyl),
             ))
         }
     }
@@ -1693,9 +1883,9 @@ impl Quadric {
     /// Creates a Quadric from a Cone
     pub fn new_cone(Cone: &crate::gp::Cone) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntAna_Quadric_ctor_cone(
-                Cone,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::IntAna_Quadric_ctor_cone(Cone),
+            ))
         }
     }
 
@@ -1703,7 +1893,7 @@ impl Quadric {
     /// Initializes the quadric with a Pln
     pub fn set_quadric_pln(&mut self, P: &crate::gp::Pln) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_set_quadric_pln(self as *mut Self, P)
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_set_quadric_pln(self as *mut Self, P)
         })
     }
 
@@ -1711,7 +1901,7 @@ impl Quadric {
     /// Initialize the quadric with a Sphere
     pub fn set_quadric_sphere(&mut self, Sph: &crate::gp::Sphere) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_set_quadric_sphere(self as *mut Self, Sph)
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_set_quadric_sphere(self as *mut Self, Sph)
         })
     }
 
@@ -1719,7 +1909,7 @@ impl Quadric {
     /// Initializes the quadric with a Cone
     pub fn set_quadric_cone(&mut self, Con: &crate::gp::Cone) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_set_quadric_cone(self as *mut Self, Con)
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_set_quadric_cone(self as *mut Self, Con)
         })
     }
 
@@ -1727,7 +1917,10 @@ impl Quadric {
     /// Initializes the quadric with a Cylinder
     pub fn set_quadric_cylinder(&mut self, Cyl: &crate::gp::Cylinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_set_quadric_cylinder(self as *mut Self, Cyl)
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_set_quadric_cylinder(
+                self as *mut Self,
+                Cyl,
+            )
         })
     }
 
@@ -1752,7 +1945,7 @@ impl Quadric {
         xCCte: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_coefficients(
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_coefficients(
                 self as *const Self,
                 xCXX,
                 xCYY,
@@ -1787,7 +1980,7 @@ impl Quadric {
         Axis: &crate::gp::Ax3,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntAna_Quadric_new_coefficients(
+            crate::ffi_extern_TKGeomBase::IntAna_Quadric_new_coefficients(
                 self as *const Self,
                 xCXX,
                 xCYY,
@@ -1806,9 +1999,11 @@ impl Quadric {
 
     /// **Source:** `IntAna_Quadric.hxx`:95 - `IntAna_Quadric::SpecialPoints()`
     /// Returns the list of special points (with singularities)
-    pub fn special_points(&self) -> &crate::ffi::NCollection_List_gp_Pnt {
+    pub fn special_points(&self) -> &crate::ffi_types::NCollection_List_gp_Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntAna_Quadric_special_points(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::IntAna_Quadric_special_points(
+                self as *const Self,
+            )))
         }
     }
 }

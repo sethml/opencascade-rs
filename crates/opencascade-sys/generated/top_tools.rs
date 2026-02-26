@@ -10,8 +10,8 @@
 /// A set of Shapes. Can be dump, wrote or read.
 /// Dumps the topological structure  of <Sh>  on the
 /// stream <S>.
-pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream) {
-    crate::check_void_result(unsafe { crate::ffi::TopTools_dump_mut(Sh, S) })
+pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi_types::Standard_OStream) {
+    crate::check_void_result(unsafe { crate::ffi_extern_TKBRep::TopTools_dump_mut(Sh, S) })
 }
 /// **Source:** `TopTools.hxx`:81 - `TopTools::Dummy`
 /// This is to bypass an extraction bug. It will force
@@ -19,7 +19,7 @@ pub fn dump_mut(Sh: &crate::topo_ds::Shape, S: &mut crate::ffi::Standard_OStream
 /// including Standard_OStream.hxx  at   the   correct
 /// position.
 pub fn dummy(I: i32) {
-    crate::check_void_result(unsafe { crate::ffi::TopTools_dummy(I) })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKBRep::TopTools_dummy(I) })
 }
 
 /// Defined TopTools format version
@@ -54,7 +54,7 @@ impl TryFrom<i32> for FormatVersion {
     }
 }
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TopTools_DataMapOfShapeShape as DataMapOfShapeShape,
     TopTools_IndexedDataMapOfShapeListOfShape as IndexedDataMapOfShapeListOfShape,
     TopTools_IndexedMapOfShape as IndexedMapOfShape, TopTools_ListOfShape as ListOfShape,
@@ -64,30 +64,32 @@ pub use crate::ffi::{
 impl DataMapOfShapeShape {
     /// Create a new empty DataMapOfShapeShape
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_DataMapOfShapeShape_new()) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_new())
+        }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_DataMapOfShapeShape_size(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_size(self as *const Self) }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_DataMapOfShapeShape_clear(self as *mut Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_clear(self as *mut Self) }
     }
 
     /// Bind a key to a value
     pub fn bind(
         &mut self,
-        key: &crate::ffi::TopoDS_Shape,
-        value: &crate::ffi::TopoDS_Shape,
+        key: &crate::ffi_types::TopoDS_Shape,
+        value: &crate::ffi_types::TopoDS_Shape,
     ) -> bool {
         unsafe {
-            crate::ffi::TopTools_DataMapOfShapeShape_bind(
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_bind(
                 self as *mut Self,
-                key as *const crate::ffi::TopoDS_Shape,
-                value as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
+                value as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
@@ -95,30 +97,30 @@ impl DataMapOfShapeShape {
     /// Find a value by key (returns nullptr if not found)
     pub fn find(
         &self,
-        key: &crate::ffi::TopoDS_Shape,
-    ) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+        key: &crate::ffi_types::TopoDS_Shape,
+    ) -> crate::OwnedPtr<crate::ffi_types::TopoDS_Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_DataMapOfShapeShape_find(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_find(
                 self as *const Self,
-                key as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
             ))
         }
     }
 
     /// Check if key exists
-    pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn contains(&self, key: &crate::ffi_types::TopoDS_Shape) -> bool {
         unsafe {
-            crate::ffi::TopTools_DataMapOfShapeShape_contains(
+            crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_contains(
                 self as *const Self,
-                key as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::DataMapOfShapeShapeIterator> {
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::DataMapOfShapeShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_DataMapOfShapeShape_iter(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_iter(
                 self as *const Self,
             ))
         }
@@ -127,8 +129,10 @@ impl DataMapOfShapeShape {
 
 impl DataMapOfShapeShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
-        let ptr = unsafe { crate::ffi::DataMapOfShapeShapeIterator_next_key(self as *mut Self) };
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let ptr = unsafe {
+            crate::ffi_extern_TKBRep::DataMapOfShapeShapeIterator_next_key(self as *mut Self)
+        };
         if ptr.is_null() {
             None
         } else {
@@ -139,13 +143,13 @@ impl DataMapOfShapeShapeIterator {
 
 unsafe impl crate::CppDeletable for DataMapOfShapeShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::DataMapOfShapeShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::DataMapOfShapeShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for DataMapOfShapeShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_DataMapOfShapeShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_DataMapOfShapeShape_destructor(ptr);
     }
 }
 
@@ -153,31 +157,41 @@ impl IndexedDataMapOfShapeListOfShape {
     /// Create a new empty IndexedDataMapOfShapeListOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_new())
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_new(),
+            )
         }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_size(self as *const Self) }
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_size(
+                self as *const Self,
+            )
+        }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_clear(self as *mut Self) }
+        unsafe {
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_clear(
+                self as *mut Self,
+            )
+        }
     }
 
     /// Add a key-value pair, returns index
     pub fn add(
         &mut self,
-        key: &crate::ffi::TopoDS_Shape,
-        value: &crate::ffi::TopTools_ListOfShape,
+        key: &crate::ffi_types::TopoDS_Shape,
+        value: &crate::ffi_types::TopTools_ListOfShape,
     ) -> i32 {
         unsafe {
-            crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_add(
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_add(
                 self as *mut Self,
-                key as *const crate::ffi::TopoDS_Shape,
-                value as *const crate::ffi::TopTools_ListOfShape,
+                key as *const crate::ffi_types::TopoDS_Shape,
+                value as *const crate::ffi_types::TopTools_ListOfShape,
             )
         }
     }
@@ -185,20 +199,20 @@ impl IndexedDataMapOfShapeListOfShape {
     /// Find value by key
     pub fn find_from_key<'a>(
         &'a self,
-        key: &crate::ffi::TopoDS_Shape,
-    ) -> &'a crate::ffi::TopTools_ListOfShape {
+        key: &crate::ffi_types::TopoDS_Shape,
+    ) -> &'a crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_from_key(
+            &*crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_find_from_key(
                 self as *const Self,
-                key as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Find value by 1-based index
-    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a crate::ffi::TopTools_ListOfShape {
+    pub fn find_from_index<'a>(&'a self, index: i32) -> &'a crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_from_index(
+            &*crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_find_from_index(
                 self as *const Self,
                 index,
             )
@@ -206,10 +220,10 @@ impl IndexedDataMapOfShapeListOfShape {
     }
 
     /// Find key by 1-based index
-    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<crate::ffi::TopoDS_Shape> {
+    pub fn find_key(&self, index: i32) -> crate::OwnedPtr<crate::ffi_types::TopoDS_Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(
-                crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_key(
+                crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_find_key(
                     self as *const Self,
                     index,
                 ),
@@ -218,40 +232,46 @@ impl IndexedDataMapOfShapeListOfShape {
     }
 
     /// Find index by key (returns 0 if not found)
-    pub fn find_index(&self, key: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn find_index(&self, key: &crate::ffi_types::TopoDS_Shape) -> i32 {
         unsafe {
-            crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_find_index(
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_find_index(
                 self as *const Self,
-                key as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Check if key exists
-    pub fn contains(&self, key: &crate::ffi::TopoDS_Shape) -> bool {
+    pub fn contains(&self, key: &crate::ffi_types::TopoDS_Shape) -> bool {
         unsafe {
-            crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_contains(
+            crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_contains(
                 self as *const Self,
-                key as *const crate::ffi::TopoDS_Shape,
+                key as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::IndexedDataMapOfShapeListOfShapeIterator> {
+    pub fn iter(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::IndexedDataMapOfShapeListOfShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_iter(
-                self as *const Self,
-            ))
+            crate::OwnedPtr::from_raw(
+                crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_iter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 }
 
 impl IndexedDataMapOfShapeListOfShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
         let ptr = unsafe {
-            crate::ffi::IndexedDataMapOfShapeListOfShapeIterator_next_key(self as *mut Self)
+            crate::ffi_extern_TKBRep::IndexedDataMapOfShapeListOfShapeIterator_next_key(
+                self as *mut Self,
+            )
         };
         if ptr.is_null() {
             None
@@ -263,51 +283,58 @@ impl IndexedDataMapOfShapeListOfShapeIterator {
 
 unsafe impl crate::CppDeletable for IndexedDataMapOfShapeListOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IndexedDataMapOfShapeListOfShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::IndexedDataMapOfShapeListOfShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for IndexedDataMapOfShapeListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_IndexedDataMapOfShapeListOfShape_destructor(ptr);
     }
 }
 
 impl IndexedMapOfShape {
     /// Create a new empty IndexedMapOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_IndexedMapOfShape_new()) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_new())
+        }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_IndexedMapOfShape_size(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_size(self as *const Self) }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_IndexedMapOfShape_clear(self as *mut Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_clear(self as *mut Self) }
     }
 
     /// Add an element, returns index
-    pub fn add(&mut self, item: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn add(&mut self, item: &crate::ffi_types::TopoDS_Shape) -> i32 {
         unsafe {
-            crate::ffi::TopTools_IndexedMapOfShape_add(
+            crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_add(
                 self as *mut Self,
-                item as *const crate::ffi::TopoDS_Shape,
+                item as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Get element at 1-based index
-    pub fn find_key(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*crate::ffi::TopTools_IndexedMapOfShape_find_key(self as *const Self, index) }
+    pub fn find_key(&self, index: i32) -> &crate::ffi_types::TopoDS_Shape {
+        unsafe {
+            &*crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_find_key(
+                self as *const Self,
+                index,
+            )
+        }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::IndexedMapOfShapeIterator> {
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::IndexedMapOfShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_IndexedMapOfShape_iter(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_iter(
                 self as *const Self,
             ))
         }
@@ -316,8 +343,9 @@ impl IndexedMapOfShape {
 
 impl IndexedMapOfShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
-        let ptr = unsafe { crate::ffi::IndexedMapOfShapeIterator_next(self as *mut Self) };
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let ptr =
+            unsafe { crate::ffi_extern_TKBRep::IndexedMapOfShapeIterator_next(self as *mut Self) };
         if ptr.is_null() {
             None
         } else {
@@ -328,64 +356,66 @@ impl IndexedMapOfShapeIterator {
 
 unsafe impl crate::CppDeletable for IndexedMapOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IndexedMapOfShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::IndexedMapOfShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for IndexedMapOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_IndexedMapOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_IndexedMapOfShape_destructor(ptr);
     }
 }
 
 impl ListOfShape {
     /// Create a new empty ListOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_ListOfShape_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_ListOfShape_new()) }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_ListOfShape_size(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_ListOfShape_size(self as *const Self) }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_ListOfShape_clear(self as *mut Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_ListOfShape_clear(self as *mut Self) }
     }
 
     /// Append an element
-    pub fn append(&mut self, item: &crate::ffi::TopoDS_Shape) {
+    pub fn append(&mut self, item: &crate::ffi_types::TopoDS_Shape) {
         unsafe {
-            crate::ffi::TopTools_ListOfShape_append(
+            crate::ffi_extern_TKBRep::TopTools_ListOfShape_append(
                 self as *mut Self,
-                item as *const crate::ffi::TopoDS_Shape,
+                item as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Prepend an element
-    pub fn prepend(&mut self, item: &crate::ffi::TopoDS_Shape) {
+    pub fn prepend(&mut self, item: &crate::ffi_types::TopoDS_Shape) {
         unsafe {
-            crate::ffi::TopTools_ListOfShape_prepend(
+            crate::ffi_extern_TKBRep::TopTools_ListOfShape_prepend(
                 self as *mut Self,
-                item as *const crate::ffi::TopoDS_Shape,
+                item as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::ListOfShapeIterator> {
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::ListOfShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_ListOfShape_iter(self as *const Self))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_ListOfShape_iter(
+                self as *const Self,
+            ))
         }
     }
 }
 
 impl ListOfShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
-        let ptr = unsafe { crate::ffi::ListOfShapeIterator_next(self as *mut Self) };
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi_extern_TKBRep::ListOfShapeIterator_next(self as *mut Self) };
         if ptr.is_null() {
             None
         } else {
@@ -396,54 +426,56 @@ impl ListOfShapeIterator {
 
 unsafe impl crate::CppDeletable for ListOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ListOfShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::ListOfShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for ListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_ListOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_ListOfShape_destructor(ptr);
     }
 }
 
 impl MapOfShape {
     /// Create a new empty MapOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_MapOfShape_new()) }
+        unsafe { crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_MapOfShape_new()) }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_MapOfShape_size(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_MapOfShape_size(self as *const Self) }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_MapOfShape_clear(self as *mut Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_MapOfShape_clear(self as *mut Self) }
     }
 
     /// Add an element, returns index
-    pub fn add(&mut self, item: &crate::ffi::TopoDS_Shape) -> i32 {
+    pub fn add(&mut self, item: &crate::ffi_types::TopoDS_Shape) -> i32 {
         unsafe {
-            crate::ffi::TopTools_MapOfShape_add(
+            crate::ffi_extern_TKBRep::TopTools_MapOfShape_add(
                 self as *mut Self,
-                item as *const crate::ffi::TopoDS_Shape,
+                item as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::MapOfShapeIterator> {
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::MapOfShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_MapOfShape_iter(self as *const Self))
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_MapOfShape_iter(
+                self as *const Self,
+            ))
         }
     }
 }
 
 impl MapOfShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
-        let ptr = unsafe { crate::ffi::MapOfShapeIterator_next(self as *mut Self) };
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let ptr = unsafe { crate::ffi_extern_TKBRep::MapOfShapeIterator_next(self as *mut Self) };
         if ptr.is_null() {
             None
         } else {
@@ -454,51 +486,55 @@ impl MapOfShapeIterator {
 
 unsafe impl crate::CppDeletable for MapOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MapOfShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::MapOfShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for MapOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_MapOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_MapOfShape_destructor(ptr);
     }
 }
 
 impl SequenceOfShape {
     /// Create a new empty SequenceOfShape
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::ffi::TopTools_SequenceOfShape_new()) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_new())
+        }
     }
 
     /// Get number of elements
     pub fn size(&self) -> i32 {
-        unsafe { crate::ffi::TopTools_SequenceOfShape_size(self as *const Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_size(self as *const Self) }
     }
 
     /// Remove all elements
     pub fn clear(&mut self) {
-        unsafe { crate::ffi::TopTools_SequenceOfShape_clear(self as *mut Self) }
+        unsafe { crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_clear(self as *mut Self) }
     }
 
     /// Append an element
-    pub fn append(&mut self, item: &crate::ffi::TopoDS_Shape) {
+    pub fn append(&mut self, item: &crate::ffi_types::TopoDS_Shape) {
         unsafe {
-            crate::ffi::TopTools_SequenceOfShape_append(
+            crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_append(
                 self as *mut Self,
-                item as *const crate::ffi::TopoDS_Shape,
+                item as *const crate::ffi_types::TopoDS_Shape,
             )
         }
     }
 
     /// Get element at 1-based index
-    pub fn value(&self, index: i32) -> &crate::ffi::TopoDS_Shape {
-        unsafe { &*crate::ffi::TopTools_SequenceOfShape_value(self as *const Self, index) }
+    pub fn value(&self, index: i32) -> &crate::ffi_types::TopoDS_Shape {
+        unsafe {
+            &*crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_value(self as *const Self, index)
+        }
     }
 
     /// Create an iterator over the collection
-    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi::SequenceOfShapeIterator> {
+    pub fn iter(&self) -> crate::OwnedPtr<crate::ffi_types::SequenceOfShapeIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::ffi::TopTools_SequenceOfShape_iter(
+            crate::OwnedPtr::from_raw(crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_iter(
                 self as *const Self,
             ))
         }
@@ -507,8 +543,9 @@ impl SequenceOfShape {
 
 impl SequenceOfShapeIterator {
     /// Get next element (returns None when done)
-    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi::TopoDS_Shape>> {
-        let ptr = unsafe { crate::ffi::SequenceOfShapeIterator_next(self as *mut Self) };
+    pub fn next(&mut self) -> Option<crate::OwnedPtr<crate::ffi_types::TopoDS_Shape>> {
+        let ptr =
+            unsafe { crate::ffi_extern_TKBRep::SequenceOfShapeIterator_next(self as *mut Self) };
         if ptr.is_null() {
             None
         } else {
@@ -519,29 +556,29 @@ impl SequenceOfShapeIterator {
 
 unsafe impl crate::CppDeletable for SequenceOfShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SequenceOfShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKBRep::SequenceOfShapeIterator_destructor(ptr);
     }
 }
 
 unsafe impl crate::CppDeletable for SequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_SequenceOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_SequenceOfShape_destructor(ptr);
     }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From TopTools_HArray1OfListOfShape.hxx
 // ========================
 
 /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape`
-pub use crate::ffi::TopTools_HArray1OfListOfShape as HArray1OfListOfShape;
+pub use crate::ffi_types::TopTools_HArray1OfListOfShape as HArray1OfListOfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_HArray1OfListOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_destructor(ptr);
     }
 }
 
@@ -550,7 +587,7 @@ impl HArray1OfListOfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_ctor(),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_ctor(),
             ))
         }
     }
@@ -559,7 +596,9 @@ impl HArray1OfListOfShape {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -568,11 +607,11 @@ impl HArray1OfListOfShape {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TopTools_Array1OfListOfShape_value_type,
+        theValue: &crate::ffi_types::TopTools_Array1OfListOfShape_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_ctor_int2_type(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_ctor_int2_type(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -581,14 +620,14 @@ impl HArray1OfListOfShape {
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TopTools_Array1OfListOfShape_value_type,
+        theBegin: &crate::ffi_types::TopTools_Array1OfListOfShape_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_ctor_type_int2_bool(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -597,39 +636,45 @@ impl HArray1OfListOfShape {
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::TopTools_HArray1OfListOfShape()`
     pub fn new_array1oflistofshape(
-        theOther: &crate::ffi::TopTools_Array1OfListOfShape,
+        theOther: &crate::ffi_types::TopTools_Array1OfListOfShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(theOther),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_ctor_array1oflistofshape(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TopTools_Array1OfListOfShape {
+    pub fn array1(&self) -> &crate::ffi_types::TopTools_Array1OfListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfListOfShape_array1(
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_array1(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TopTools_Array1OfListOfShape {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TopTools_Array1OfListOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_HArray1OfListOfShape_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfListOfShape_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -637,7 +682,7 @@ impl HArray1OfListOfShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -645,18 +690,22 @@ impl HArray1OfListOfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfListOfShape.hxx`:23 - `TopTools_HArray1OfListOfShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfListOfShape_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -664,7 +713,7 @@ impl HArray1OfListOfShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -674,18 +723,18 @@ impl HArray1OfListOfShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray1OfListOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray1OfListOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfListOfShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_IsInstance(
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -693,9 +742,12 @@ impl HArray1OfListOfShape {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -703,7 +755,9 @@ impl HArray1OfListOfShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopTools_HArray1OfListOfShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -716,14 +770,16 @@ impl HArray1OfListOfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -732,7 +788,7 @@ impl HArray1OfListOfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -741,46 +797,48 @@ impl HArray1OfListOfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray1OfListOfShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfListOfShape_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTopToolsHArray1OfListOfShape;
+pub use crate::ffi_types::HandleTopToolsHArray1OfListOfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfListOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopToolsHArray1OfListOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_destructor(ptr);
     }
 }
 
 impl HandleTopToolsHArray1OfListOfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfListOfShape
-    pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfListOfShape {
+    pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfListOfShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopToolsHArray1OfListOfShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfListOfShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray1OfListOfShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopTools_HArray1OfListOfShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopToolsHArray1OfListOfShape_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TopTools_HArray1OfListOfShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopToolsHArray1OfListOfShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfListOfShape_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -790,11 +848,11 @@ impl HandleTopToolsHArray1OfListOfShape {
 // ========================
 
 /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape`
-pub use crate::ffi::TopTools_HArray1OfShape as HArray1OfShape;
+pub use crate::ffi_types::TopTools_HArray1OfShape as HArray1OfShape;
 
 unsafe impl crate::CppDeletable for HArray1OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_HArray1OfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_destructor(ptr);
     }
 }
 
@@ -803,7 +861,7 @@ impl HArray1OfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_ctor(),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_ctor(),
             ))
         }
     }
@@ -812,7 +870,7 @@ impl HArray1OfShape {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -825,7 +883,9 @@ impl HArray1OfShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_ctor_int2_shape(theLower, theUpper, theValue),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_ctor_int2_shape(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -839,7 +899,7 @@ impl HArray1OfShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_ctor_shape_int2_bool(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_ctor_shape_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -848,35 +908,37 @@ impl HArray1OfShape {
 
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::TopTools_HArray1OfShape()`
     pub fn new_array1ofshape(
-        theOther: &crate::ffi::TopTools_Array1OfShape,
+        theOther: &crate::ffi_types::TopTools_Array1OfShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_ctor_array1ofshape(theOther),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_ctor_array1ofshape(theOther),
             ))
         }
     }
 
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TopTools_Array1OfShape {
+    pub fn array1(&self) -> &crate::ffi_types::TopTools_Array1OfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfShape_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TopTools_Array1OfShape {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_HArray1OfShape_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TopTools_Array1OfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfShape_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -886,7 +948,7 @@ impl HArray1OfShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -894,18 +956,22 @@ impl HArray1OfShape {
     }
 
     /// **Source:** `TopTools_HArray1OfShape.hxx`:24 - `TopTools_HArray1OfShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray1OfShape_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -913,7 +979,9 @@ impl HArray1OfShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -921,25 +989,31 @@ impl HArray1OfShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray1OfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray1OfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray1OfShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -947,7 +1021,9 @@ impl HArray1OfShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopTools_HArray1OfShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -960,62 +1036,72 @@ impl HArray1OfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray1OfShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray1OfShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopToolsHArray1OfShape;
+pub use crate::ffi_types::HandleTopToolsHArray1OfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray1OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopToolsHArray1OfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_destructor(ptr);
     }
 }
 
 impl HandleTopToolsHArray1OfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray1OfShape
-    pub fn get(&self) -> &crate::ffi::TopTools_HArray1OfShape {
+    pub fn get(&self) -> &crate::ffi_types::TopTools_HArray1OfShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopToolsHArray1OfShape_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray1OfShape {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopToolsHArray1OfShape_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TopTools_HArray1OfShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopTools_HArray1OfShape {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TopTools_HArray1OfShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopToolsHArray1OfShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::HandleTopToolsHArray1OfShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1028,11 +1114,11 @@ impl HandleTopToolsHArray1OfShape {
 // ========================
 
 /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape`
-pub use crate::ffi::TopTools_HArray2OfShape as HArray2OfShape;
+pub use crate::ffi_types::TopTools_HArray2OfShape as HArray2OfShape;
 
 unsafe impl crate::CppDeletable for HArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_HArray2OfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_destructor(ptr);
     }
 }
 
@@ -1046,7 +1132,7 @@ impl HArray2OfShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_ctor_int4(
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -1063,7 +1149,7 @@ impl HArray2OfShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_ctor_int4_shape(
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_ctor_int4_shape(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -1072,35 +1158,37 @@ impl HArray2OfShape {
 
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::TopTools_HArray2OfShape()`
     pub fn new_array2ofshape(
-        theOther: &crate::ffi::TopTools_Array2OfShape,
+        theOther: &crate::ffi_types::TopTools_Array2OfShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_ctor_array2ofshape(theOther),
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_ctor_array2ofshape(theOther),
             ))
         }
     }
 
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TopTools_Array2OfShape {
+    pub fn array2(&self) -> &crate::ffi_types::TopTools_Array2OfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray2OfShape_array2(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TopTools_Array2OfShape {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_HArray2OfShape_change_array2(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_array2(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::ChangeArray2()`
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TopTools_Array2OfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray2OfShape_dynamic_type(
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_change_array2(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1110,7 +1198,7 @@ impl HArray2OfShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1118,18 +1206,22 @@ impl HArray2OfShape {
     }
 
     /// **Source:** `TopTools_HArray2OfShape.hxx`:24 - `TopTools_HArray2OfShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HArray2OfShape_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1137,7 +1229,9 @@ impl HArray2OfShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1145,25 +1239,31 @@ impl HArray2OfShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHArray2OfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHArray2OfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HArray2OfShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1171,7 +1271,9 @@ impl HArray2OfShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopTools_HArray2OfShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1184,62 +1286,72 @@ impl HArray2OfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HArray2OfShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HArray2OfShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTopToolsHArray2OfShape;
+pub use crate::ffi_types::HandleTopToolsHArray2OfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHArray2OfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopToolsHArray2OfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_destructor(ptr);
     }
 }
 
 impl HandleTopToolsHArray2OfShape {
     /// Dereference this Handle to access the underlying TopTools_HArray2OfShape
-    pub fn get(&self) -> &crate::ffi::TopTools_HArray2OfShape {
+    pub fn get(&self) -> &crate::ffi_types::TopTools_HArray2OfShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopToolsHArray2OfShape_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TopTools_HArray2OfShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HArray2OfShape {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopToolsHArray2OfShape_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying TopTools_HArray2OfShape
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopTools_HArray2OfShape {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<TopTools_HArray2OfShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopToolsHArray2OfShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::HandleTopToolsHArray2OfShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1252,11 +1364,11 @@ impl HandleTopToolsHArray2OfShape {
 // ========================
 
 /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape`
-pub use crate::ffi::TopTools_HSequenceOfShape as HSequenceOfShape;
+pub use crate::ffi_types::TopTools_HSequenceOfShape as HSequenceOfShape;
 
 unsafe impl crate::CppDeletable for HSequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_HSequenceOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_destructor(ptr);
     }
 }
 
@@ -1265,26 +1377,26 @@ impl HSequenceOfShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_ctor(),
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_ctor(),
             ))
         }
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::TopTools_HSequenceOfShape()`
     pub fn new_sequenceofshape(
-        theOther: &crate::ffi::TopTools_SequenceOfShape,
+        theOther: &crate::ffi_types::TopTools_SequenceOfShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_ctor_sequenceofshape(theOther),
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_ctor_sequenceofshape(theOther),
             ))
         }
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+    pub fn sequence(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HSequenceOfShape_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_sequence(
                 self as *const Self,
             )))
         }
@@ -1293,17 +1405,20 @@ impl HSequenceOfShape {
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
     pub fn append_shape(&mut self, theItem: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_append_shape(self as *mut Self, theItem)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_append_shape(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::Append()`
     pub fn append_sequenceofshape(
         &mut self,
-        theSequence: &mut crate::ffi::TopTools_SequenceOfShape,
+        theSequence: &mut crate::ffi_types::TopTools_SequenceOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_append_sequenceofshape(
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_append_sequenceofshape(
                 self as *mut Self,
                 theSequence,
             )
@@ -1311,20 +1426,24 @@ impl HSequenceOfShape {
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TopTools_SequenceOfShape {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_HSequenceOfShape_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HSequenceOfShape_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1332,7 +1451,7 @@ impl HSequenceOfShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_get_type_name(),
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1340,9 +1459,11 @@ impl HSequenceOfShape {
     }
 
     /// **Source:** `TopTools_HSequenceOfShape.hxx`:24 - `TopTools_HSequenceOfShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_HSequenceOfShape_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_get_type_descriptor(),
+            ))
         }
     }
 
@@ -1350,7 +1471,7 @@ impl HSequenceOfShape {
     pub fn as_sequence_of_shape(&self) -> &SequenceOfShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape(
                     self as *const Self,
                 ),
             )
@@ -1361,7 +1482,7 @@ impl HSequenceOfShape {
     pub fn as_sequence_of_shape_mut(&mut self) -> &mut SequenceOfShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_as_TopTools_SequenceOfShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -1371,9 +1492,11 @@ impl HSequenceOfShape {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1381,7 +1504,9 @@ impl HSequenceOfShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1389,25 +1514,31 @@ impl HSequenceOfShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_HSequenceOfShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1415,7 +1546,9 @@ impl HSequenceOfShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopTools_HSequenceOfShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1428,64 +1561,74 @@ impl HSequenceOfShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_HSequenceOfShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBRep::TopTools_HSequenceOfShape_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTopToolsHSequenceOfShape;
+pub use crate::ffi_types::HandleTopToolsHSequenceOfShape;
 
 unsafe impl crate::CppDeletable for HandleTopToolsHSequenceOfShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTopToolsHSequenceOfShape_destructor(ptr);
+        crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_destructor(ptr);
     }
 }
 
 impl HandleTopToolsHSequenceOfShape {
     /// Dereference this Handle to access the underlying TopTools_HSequenceOfShape
-    pub fn get(&self) -> &crate::ffi::TopTools_HSequenceOfShape {
+    pub fn get(&self) -> &crate::ffi_types::TopTools_HSequenceOfShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTopToolsHSequenceOfShape_get(
+            &*crate::check_result(crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TopTools_HSequenceOfShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TopTools_HSequenceOfShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TopTools_HSequenceOfShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTopToolsHSequenceOfShape_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<TopTools_HSequenceOfShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTopToolsHSequenceOfShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKBRep::HandleTopToolsHSequenceOfShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1506,11 +1649,11 @@ impl HandleTopToolsHSequenceOfShape {
 /// It can create Locations.
 ///
 /// It can be write and read from a stream.
-pub use crate::ffi::TopTools_LocationSet as LocationSet;
+pub use crate::ffi_types::TopTools_LocationSet as LocationSet;
 
 unsafe impl crate::CppDeletable for LocationSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_LocationSet_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_LocationSet_destructor(ptr);
     }
 }
 
@@ -1519,7 +1662,9 @@ impl LocationSet {
     /// Returns an empty set of locations.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopTools_LocationSet_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_LocationSet_ctor(),
+            ))
         }
     }
 
@@ -1527,7 +1672,7 @@ impl LocationSet {
     /// Clears the content of the set.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_LocationSet_clear(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_clear(self as *mut Self)
         })
     }
 
@@ -1535,14 +1680,16 @@ impl LocationSet {
     /// Incorporate a new Location in the  set and returns
     /// its index.
     pub fn add(&mut self, L: &crate::top_loc::Location) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopTools_LocationSet_add(self as *mut Self, L) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_add(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TopTools_LocationSet.hxx`:55 - `TopTools_LocationSet::Location()`
     /// Returns the location of index <I>.
     pub fn location(&self, I: i32) -> &crate::top_loc::Location {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_LocationSet_location(
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_LocationSet_location(
                 self as *const Self,
                 I,
             )))
@@ -1553,15 +1700,15 @@ impl LocationSet {
     /// Returns the index of <L>.
     pub fn index(&self, L: &crate::top_loc::Location) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TopTools_LocationSet_index(self as *const Self, L)
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_index(self as *const Self, L)
         })
     }
 
     /// **Source:** `TopTools_LocationSet.hxx`:61 - `TopTools_LocationSet::Dump()`
     /// Dumps the content of me on the stream <OS>.
-    pub fn dump(&self, OS: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, OS: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_LocationSet_dump(self as *const Self, OS)
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_dump(self as *const Self, OS)
         })
     }
 
@@ -1570,11 +1717,15 @@ impl LocationSet {
     /// format that can be read back by Read.
     pub fn write(
         &self,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_LocationSet_write(self as *const Self, OS, theProgress)
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_write(
+                self as *const Self,
+                OS,
+                theProgress,
+            )
         })
     }
 
@@ -1583,11 +1734,11 @@ impl LocationSet {
     /// is first cleared.
     pub fn read(
         &mut self,
-        IS: &mut crate::ffi::Standard_IStream,
+        IS: &mut crate::ffi_types::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_LocationSet_read(self as *mut Self, IS, theProgress)
+            crate::ffi_extern_TKBRep::TopTools_LocationSet_read(self as *mut Self, IS, theProgress)
         })
     }
 }
@@ -1599,11 +1750,11 @@ impl LocationSet {
 /// **Source:** `TopTools_MutexForShapeProvider.hxx`:28 - `TopTools_MutexForShapeProvider`
 /// Class TopTools_MutexForShapeProvider
 /// This class is used to create and store mutexes associated with shapes.
-pub use crate::ffi::TopTools_MutexForShapeProvider as MutexForShapeProvider;
+pub use crate::ffi_types::TopTools_MutexForShapeProvider as MutexForShapeProvider;
 
 unsafe impl crate::CppDeletable for MutexForShapeProvider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_MutexForShapeProvider_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_destructor(ptr);
     }
 }
 
@@ -1613,7 +1764,7 @@ impl MutexForShapeProvider {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopTools_MutexForShapeProvider_ctor(),
+                crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_ctor(),
             ))
         }
     }
@@ -1626,7 +1777,7 @@ impl MutexForShapeProvider {
         theType: crate::top_abs::ShapeEnum,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(
+            crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_create_mutexes_for_sub_shapes(
                 self as *mut Self,
                 theShape,
                 theType.into(),
@@ -1638,7 +1789,7 @@ impl MutexForShapeProvider {
     /// Creates and associates mutex with theShape
     pub fn create_mutex_for_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_MutexForShapeProvider_create_mutex_for_shape(
+            crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_create_mutex_for_shape(
                 self as *mut Self,
                 theShape,
             )
@@ -1651,7 +1802,10 @@ impl MutexForShapeProvider {
     pub fn get_mutex(&self, theShape: &crate::topo_ds::Shape) -> Option<&crate::standard::Mutex> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TopTools_MutexForShapeProvider_get_mutex(self as *const Self, theShape)
+                crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_get_mutex(
+                    self as *const Self,
+                    theShape,
+                )
             });
             if __val.is_null() {
                 None
@@ -1665,7 +1819,9 @@ impl MutexForShapeProvider {
     /// Removes all mutexes
     pub fn remove_all_mutexes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_MutexForShapeProvider_remove_all_mutexes(self as *mut Self)
+            crate::ffi_extern_TKBRep::TopTools_MutexForShapeProvider_remove_all_mutexes(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1680,11 +1836,11 @@ impl MutexForShapeProvider {
 /// and read.
 ///
 /// Methods to handle the geometry can be redefined.
-pub use crate::ffi::TopTools_ShapeSet as ShapeSet;
+pub use crate::ffi_types::TopTools_ShapeSet as ShapeSet;
 
 unsafe impl crate::CppDeletable for ShapeSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopTools_ShapeSet_destructor(ptr);
+        crate::ffi_extern_TKBRep::TopTools_ShapeSet_destructor(ptr);
     }
 }
 
@@ -1693,7 +1849,9 @@ impl ShapeSet {
     /// Builds an empty ShapeSet.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TopTools_ShapeSet_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_ShapeSet_ctor(),
+            ))
         }
     }
 
@@ -1701,57 +1859,73 @@ impl ShapeSet {
     /// Sets the TopTools_FormatVersion
     pub fn set_format_nb(&mut self, theFormatNb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_set_format_nb(self as *mut Self, theFormatNb)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_set_format_nb(
+                self as *mut Self,
+                theFormatNb,
+            )
         })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:53 - `TopTools_ShapeSet::FormatNb()`
     /// Returns the TopTools_FormatVersion
     pub fn format_nb(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopTools_ShapeSet_format_nb(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_format_nb(self as *const Self)
+        })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:57 - `TopTools_ShapeSet::Clear()`
     /// Clears the content of the set.  This method can be
     /// redefined.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TopTools_ShapeSet_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:61 - `TopTools_ShapeSet::Add()`
     /// Stores <S> and its sub-shape. Returns the index of <S>.
     /// The method AddGeometry is called on each sub-shape.
     pub fn add(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopTools_ShapeSet_add(self as *mut Self, S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_add(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:64 - `TopTools_ShapeSet::Shape()`
     /// Returns the sub-shape of index <I>.
     pub fn shape(&self, I: i32) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_ShapeSet_shape(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_ShapeSet_shape(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:67 - `TopTools_ShapeSet::Index()`
     /// Returns the index of <S>.
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopTools_ShapeSet_index(self as *const Self, S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_index(self as *const Self, S)
+        })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:69 - `TopTools_ShapeSet::Locations()`
     pub fn locations(&self) -> &LocationSet {
         unsafe {
-            &*(crate::check_result(crate::ffi::TopTools_ShapeSet_locations(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKBRep::TopTools_ShapeSet_locations(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:71 - `TopTools_ShapeSet::ChangeLocations()`
     pub fn change_locations(&mut self) -> &mut LocationSet {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_ShapeSet_change_locations(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_ShapeSet_change_locations(self as *mut Self),
+            ))
         }
     }
 
@@ -1766,13 +1940,15 @@ impl ShapeSet {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump_extent_ostream(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TopTools_ShapeSet_dump_extent_ostream(
-                self as *mut Self,
-                OS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_extent_ostream(
+                    self as *mut Self,
+                    OS,
+                ),
+            ))
         }
     }
 
@@ -1781,7 +1957,10 @@ impl ShapeSet {
     /// (Number of shapes of each type)
     pub fn dump_extent_asciistring(&self, S: &mut crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_dump_extent_asciistring(self as *const Self, S)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_extent_asciistring(
+                self as *const Self,
+                S,
+            )
         })
     }
 
@@ -1796,9 +1975,9 @@ impl ShapeSet {
     /// Dumps the geometry calling DumpGeometry.
     ///
     /// Dumps the locations.
-    pub fn dump_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
+    pub fn dump_ostream(&self, OS: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_dump_ostream(self as *const Self, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_ostream(self as *const Self, OS)
         })
     }
 
@@ -1817,11 +1996,11 @@ impl ShapeSet {
     /// Write the flags, the subshapes.
     pub fn write_ostream_progressrange(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_write_ostream_progressrange(
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_write_ostream_progressrange(
                 self as *mut Self,
                 OS,
                 theProgress,
@@ -1844,11 +2023,11 @@ impl ShapeSet {
     /// Reads the flag, the subshapes.
     pub fn read_istream_progressrange(
         &mut self,
-        IS: &mut crate::ffi::Standard_IStream,
+        IS: &mut crate::ffi_types::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_read_istream_progressrange(
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_read_istream_progressrange(
                 self as *mut Self,
                 IS,
                 theProgress,
@@ -1863,10 +2042,14 @@ impl ShapeSet {
     pub fn dump_shape_ostream(
         &self,
         S: &crate::topo_ds::Shape,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_dump_shape_ostream(self as *const Self, S, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_shape_ostream(
+                self as *const Self,
+                S,
+                OS,
+            )
         })
     }
 
@@ -1877,10 +2060,14 @@ impl ShapeSet {
     pub fn write_shape_ostream(
         &self,
         S: &crate::topo_ds::Shape,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_write_shape_ostream(self as *const Self, S, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_write_shape_ostream(
+                self as *const Self,
+                S,
+                OS,
+            )
         })
     }
 
@@ -1889,10 +2076,14 @@ impl ShapeSet {
     pub fn read_shape_istream(
         &self,
         S: &mut crate::topo_ds::Shape,
-        IS: &mut crate::ffi::Standard_IStream,
+        IS: &mut crate::ffi_types::Standard_IStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_read_shape_istream(self as *const Self, S, IS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_read_shape_istream(
+                self as *const Self,
+                S,
+                IS,
+            )
         })
     }
 
@@ -1900,15 +2091,18 @@ impl ShapeSet {
     /// Stores the geometry of <S>.
     pub fn add_geometry(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_add_geometry(self as *mut Self, S)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_add_geometry(self as *mut Self, S)
         })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:142 - `TopTools_ShapeSet::DumpGeometry()`
     /// Dumps the geometry of me on the stream <OS>.
-    pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi::Standard_OStream) {
+    pub fn dump_geometry_ostream(&self, OS: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_dump_geometry_ostream(self as *const Self, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_geometry_ostream(
+                self as *const Self,
+                OS,
+            )
         })
     }
 
@@ -1917,11 +2111,11 @@ impl ShapeSet {
     /// format that can be read back by Read.
     pub fn write_geometry_ostream_progressrange(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_write_geometry_ostream_progressrange(
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_write_geometry_ostream_progressrange(
                 self as *mut Self,
                 OS,
                 theProgress,
@@ -1933,11 +2127,11 @@ impl ShapeSet {
     /// Reads the geometry of me from the  stream  <IS>.
     pub fn read_geometry_istream_progressrange(
         &mut self,
-        IS: &mut crate::ffi::Standard_IStream,
+        IS: &mut crate::ffi_types::Standard_IStream,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_read_geometry_istream_progressrange(
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_read_geometry_istream_progressrange(
                 self as *mut Self,
                 IS,
                 theProgress,
@@ -1950,10 +2144,14 @@ impl ShapeSet {
     pub fn dump_geometry_shape_ostream(
         &self,
         S: &crate::topo_ds::Shape,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_dump_geometry_shape_ostream(self as *const Self, S, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_dump_geometry_shape_ostream(
+                self as *const Self,
+                S,
+                OS,
+            )
         })
     }
 
@@ -1963,10 +2161,14 @@ impl ShapeSet {
     pub fn write_geometry_shape_ostream(
         &self,
         S: &crate::topo_ds::Shape,
-        OS: &mut crate::ffi::Standard_OStream,
+        OS: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_write_geometry_shape_ostream(self as *const Self, S, OS)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_write_geometry_shape_ostream(
+                self as *const Self,
+                S,
+                OS,
+            )
         })
     }
 
@@ -1976,11 +2178,11 @@ impl ShapeSet {
     pub fn read_geometry_shapeenum_istream_shape(
         &mut self,
         T: crate::top_abs::ShapeEnum,
-        IS: &mut crate::ffi::Standard_IStream,
+        IS: &mut crate::ffi_types::Standard_IStream,
         S: &mut crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_read_geometry_shapeenum_istream_shape(
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_read_geometry_shapeenum_istream_shape(
                 self as *mut Self,
                 T.into(),
                 IS,
@@ -1995,7 +2197,7 @@ impl ShapeSet {
     /// builder.
     pub fn add_shapes(&mut self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_add_shapes(self as *mut Self, S1, S2)
         })
     }
 
@@ -2007,14 +2209,16 @@ impl ShapeSet {
     /// shapes.
     pub fn check(&mut self, T: crate::top_abs::ShapeEnum, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopTools_ShapeSet_check(self as *mut Self, T.into(), S)
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_check(self as *mut Self, T.into(), S)
         })
     }
 
     /// **Source:** `TopTools_ShapeSet.hxx`:181 - `TopTools_ShapeSet::NbShapes()`
     /// Returns number of shapes read from file.
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TopTools_ShapeSet_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBRep::TopTools_ShapeSet_nb_shapes(self as *const Self)
+        })
     }
 }
 
@@ -2022,7 +2226,7 @@ impl ShapeSet {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     DataMapOfShapeShapeIterator, IndexedDataMapOfShapeListOfShapeIterator,
     IndexedMapOfShapeIterator, ListOfShapeIterator, MapOfShapeIterator, SequenceOfShapeIterator,
     TopTools_Array1OfListOfShape as Array1OfListOfShape, TopTools_Array1OfShape as Array1OfShape,

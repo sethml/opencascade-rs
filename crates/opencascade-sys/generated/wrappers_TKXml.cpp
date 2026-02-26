@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDM_ListOfDocument.hxx>
 #include <LDOM_Document.hxx>
 #include <LDOM_Element.hxx>
@@ -20,7 +20,7 @@
 #include <Standard_TypeDef.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeMap.hxx>
+#include <TDF_AttributeIndexedMap.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>
 #include <TopAbs_Orientation.hxx>

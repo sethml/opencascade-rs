@@ -11,11 +11,11 @@
 // ========================
 
 /// **Source:** `LProp3d_CLProps.hxx`:34 - `LProp3d_CLProps`
-pub use crate::ffi::LProp3d_CLProps as CLProps;
+pub use crate::ffi_types::LProp3d_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LProp3d_CLProps_destructor(ptr);
+        crate::ffi_extern_TKG3d::LProp3d_CLProps_destructor(ptr);
     }
 }
 
@@ -31,13 +31,15 @@ impl CLProps {
     /// <Resolution> is the linear tolerance (it is used to test
     /// if a vector is null).
     pub fn new_handleadaptor3dcurve_int_real(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_CLProps_ctor_handleadaptor3dcurve_int_real(C, N, Resolution),
+                crate::ffi_extern_TKG3d::LProp3d_CLProps_ctor_handleadaptor3dcurve_int_real(
+                    C, N, Resolution,
+                ),
             ))
         }
     }
@@ -47,14 +49,14 @@ impl CLProps {
     /// set to the value <U>.
     /// All the computations done will be related to <C> and <U>.
     pub fn new_handleadaptor3dcurve_real_int_real(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_CLProps_ctor_handleadaptor3dcurve_real_int_real(
+                crate::ffi_extern_TKG3d::LProp3d_CLProps_ctor_handleadaptor3dcurve_real_int_real(
                     C, U, N, Resolution,
                 ),
             ))
@@ -71,7 +73,7 @@ impl CLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_CLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKG3d::LProp3d_CLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -81,44 +83,54 @@ impl CLProps {
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_CLProps_set_parameter(self as *mut Self, U)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_set_parameter(self as *mut Self, U)
         })
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:74 - `LProp3d_CLProps::SetCurve()`
     /// Initializes the local properties of the curve
     /// for the new curve.
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_CLProps_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:77 - `LProp3d_CLProps::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_CLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_CLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:81 - `LProp3d_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_CLProps_d1(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_CLProps_d1(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:85 - `LProp3d_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_CLProps_d2(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_CLProps_d2(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:89 - `LProp3d_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_CLProps_d3(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_CLProps_d3(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:94 - `LProp3d_CLProps::IsTangentDefined()`
@@ -127,7 +139,7 @@ impl CLProps {
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_CLProps_is_tangent_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_is_tangent_defined(self as *mut Self)
         })
     }
 
@@ -135,21 +147,23 @@ impl CLProps {
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_CLProps_tangent(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_tangent(self as *mut Self, D)
         })
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:100 - `LProp3d_CLProps::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_CLProps_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `LProp3d_CLProps.hxx`:103 - `LProp3d_CLProps::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_CLProps_normal(self as *mut Self, N)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_normal(self as *mut Self, N)
         })
     }
 
@@ -157,7 +171,7 @@ impl CLProps {
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_CLProps_centre_of_curvature(self as *mut Self, P)
+            crate::ffi_extern_TKG3d::LProp3d_CLProps_centre_of_curvature(self as *mut Self, P)
         })
     }
 }
@@ -167,11 +181,11 @@ impl CLProps {
 // ========================
 
 /// **Source:** `LProp3d_CurveTool.hxx`:29 - `LProp3d_CurveTool`
-pub use crate::ffi::LProp3d_CurveTool as CurveTool;
+pub use crate::ffi_types::LProp3d_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LProp3d_CurveTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::LProp3d_CurveTool_destructor(ptr);
     }
 }
 
@@ -180,39 +194,47 @@ impl CurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LProp3d_CurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::LProp3d_CurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:35 - `LProp3d_CurveTool::Value()`
     /// Computes the point <P> of parameter <U> on the HCurve <C>.
-    pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::LProp3d_CurveTool_value(C, U, P) })
+    pub fn value(C: &crate::ffi_types::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CurveTool_value(C, U, P)
+        })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:41 - `LProp3d_CurveTool::D1()`
     /// Computes the point <P> and first derivative <V1> of
     /// parameter <U> on the HCurve <C>.
     pub fn d1(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::LProp3d_CurveTool_d1(C, U, P, V1) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CurveTool_d1(C, U, P, V1)
+        })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:48 - `LProp3d_CurveTool::D2()`
     /// Computes the point <P>, the first derivative <V1> and second
     /// derivative <V2> of parameter <U> on the HCurve <C>.
     pub fn d2(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::LProp3d_CurveTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:57 - `LProp3d_CurveTool::D3()`
@@ -220,14 +242,16 @@ impl CurveTool {
     /// second derivative <V2> and third derivative <V3> of
     /// parameter <U> on the HCurve <C>.
     pub fn d3(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::LProp3d_CurveTool_d3(C, U, P, V1, V2, V3) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CurveTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:68 - `LProp3d_CurveTool::Continuity()`
@@ -235,21 +259,23 @@ impl CurveTool {
     /// returns 1 : first derivative only is computable
     /// returns 2 : first and second derivative only are computable.
     /// returns 3 : first, second and third are computable.
-    pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_CurveTool_continuity(C) })
+    pub fn continuity(C: &crate::ffi_types::HandleAdaptor3dCurve) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKG3d::LProp3d_CurveTool_continuity(C) })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:71 - `LProp3d_CurveTool::FirstParameter()`
     /// returns the first parameter bound of the HCurve.
-    pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_CurveTool_first_parameter(C) })
+    pub fn first_parameter(C: &crate::ffi_types::HandleAdaptor3dCurve) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_CurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `LProp3d_CurveTool.hxx`:75 - `LProp3d_CurveTool::LastParameter()`
     /// returns the last parameter bound of the HCurve.
     /// FirstParameter must be less than LastParamenter.
-    pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_CurveTool_last_parameter(C) })
+    pub fn last_parameter(C: &crate::ffi_types::HandleAdaptor3dCurve) -> f64 {
+        crate::check_result(unsafe { crate::ffi_extern_TKG3d::LProp3d_CurveTool_last_parameter(C) })
     }
 }
 
@@ -258,11 +284,11 @@ impl CurveTool {
 // ========================
 
 /// **Source:** `LProp3d_SLProps.hxx`:22 - `LProp3d_SLProps`
-pub use crate::ffi::LProp3d_SLProps as SLProps;
+pub use crate::ffi_types::LProp3d_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LProp3d_SLProps_destructor(ptr);
+        crate::ffi_extern_TKG3d::LProp3d_SLProps_destructor(ptr);
     }
 }
 
@@ -279,7 +305,7 @@ impl SLProps {
     /// <Resolution> is the linear tolerance (it is used to test
     /// if a vector is null).
     pub fn new_handleadaptor3dsurface_real2_int_real(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         U: f64,
         V: f64,
         N: i32,
@@ -287,7 +313,7 @@ impl SLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_SLProps_ctor_handleadaptor3dsurface_real2_int_real(
+                crate::ffi_extern_TKG3d::LProp3d_SLProps_ctor_handleadaptor3dsurface_real2_int_real(
                     S, U, V, N, Resolution,
                 ),
             ))
@@ -298,13 +324,15 @@ impl SLProps {
     /// idem as previous constructor but without setting the value
     /// of parameters <U> and <V>.
     pub fn new_handleadaptor3dsurface_int_real(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_SLProps_ctor_handleadaptor3dsurface_int_real(S, N, Resolution),
+                crate::ffi_extern_TKG3d::LProp3d_SLProps_ctor_handleadaptor3dsurface_int_real(
+                    S, N, Resolution,
+                ),
             ))
         }
     }
@@ -316,7 +344,7 @@ impl SLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LProp3d_SLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKG3d::LProp3d_SLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -324,9 +352,9 @@ impl SLProps {
     /// **Source:** `LProp3d_SLProps.hxx`:56 - `LProp3d_SLProps::SetSurface()`
     /// Initializes the local properties of the surface S
     /// for the new surface.
-    pub fn set_surface(&mut self, S: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn set_surface(&mut self, S: &crate::ffi_types::HandleAdaptor3dSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SLProps_set_surface(self as *mut Self, S)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_set_surface(self as *mut Self, S)
         })
     }
 
@@ -335,49 +363,63 @@ impl SLProps {
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SLProps_set_parameters(self as *mut Self, U, V)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_set_parameters(self as *mut Self, U, V)
         })
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:63 - `LProp3d_SLProps::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:67 - `LProp3d_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_d1u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_d1u(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:71 - `LProp3d_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_d1v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_d1v(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:75 - `LProp3d_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
     pub fn d2u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_d2u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_d2u(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:79 - `LProp3d_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_d2v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_d2v(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:83 - `LProp3d_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
     pub fn duv(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_duv(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_duv(self as *mut Self)))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:88 - `LProp3d_SLProps::IsTangentUDefined()`
@@ -386,7 +428,7 @@ impl SLProps {
     /// two first U derivatives are null.
     pub fn is_tangent_u_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_is_tangent_u_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_is_tangent_u_defined(self as *mut Self)
         })
     }
 
@@ -394,7 +436,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SLProps_tangent_u(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_tangent_u(self as *mut Self, D)
         })
     }
 
@@ -404,7 +446,7 @@ impl SLProps {
     /// two first V derivatives are null.
     pub fn is_tangent_v_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_is_tangent_v_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_is_tangent_v_defined(self as *mut Self)
         })
     }
 
@@ -412,7 +454,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SLProps_tangent_v(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_tangent_v(self as *mut Self, D)
         })
     }
 
@@ -420,21 +462,25 @@ impl SLProps {
     /// Tells if the normal is defined.
     pub fn is_normal_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_is_normal_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_is_normal_defined(self as *mut Self)
         })
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:105 - `LProp3d_SLProps::Normal()`
     /// Returns the normal direction.
     pub fn normal(&mut self) -> &crate::gp::Dir {
-        unsafe { &*(crate::check_result(crate::ffi::LProp3d_SLProps_normal(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::LProp3d_SLProps_normal(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:108 - `LProp3d_SLProps::IsCurvatureDefined()`
     /// returns True if the curvature is defined.
     pub fn is_curvature_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_is_curvature_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_is_curvature_defined(self as *mut Self)
         })
     }
 
@@ -442,19 +488,25 @@ impl SLProps {
     /// returns True if the point is umbilic (i.e. if the
     /// curvature is constant).
     pub fn is_umbilic(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LProp3d_SLProps_is_umbilic(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_is_umbilic(self as *mut Self)
+        })
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:115 - `LProp3d_SLProps::MaxCurvature()`
     /// Returns the maximum curvature
     pub fn max_curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_SLProps_max_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_max_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:118 - `LProp3d_SLProps::MinCurvature()`
     /// Returns the minimum curvature
     pub fn min_curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_SLProps_min_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_min_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `LProp3d_SLProps.hxx`:122 - `LProp3d_SLProps::CurvatureDirections()`
@@ -462,7 +514,11 @@ impl SLProps {
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_curvature_directions(
+                self as *mut Self,
+                MaxD,
+                MinD,
+            )
         })
     }
 
@@ -470,7 +526,7 @@ impl SLProps {
     /// Returns the mean curvature.
     pub fn mean_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_mean_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_mean_curvature(self as *mut Self)
         })
     }
 
@@ -478,7 +534,7 @@ impl SLProps {
     /// Returns the Gaussian curvature
     pub fn gaussian_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LProp3d_SLProps_gaussian_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::LProp3d_SLProps_gaussian_curvature(self as *mut Self)
         })
     }
 }
@@ -488,11 +544,11 @@ impl SLProps {
 // ========================
 
 /// **Source:** `LProp3d_SurfaceTool.hxx`:21 - `LProp3d_SurfaceTool`
-pub use crate::ffi::LProp3d_SurfaceTool as SurfaceTool;
+pub use crate::ffi_types::LProp3d_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LProp3d_SurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_destructor(ptr);
     }
 }
 
@@ -501,22 +557,31 @@ impl SurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LProp3d_SurfaceTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LProp3d_SurfaceTool.hxx`:28 - `LProp3d_SurfaceTool::Value()`
     /// Computes the point <P> of parameter <U> and <V> on the
     /// HSurface <S>.
-    pub fn value(S: &crate::ffi::HandleAdaptor3dSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::LProp3d_SurfaceTool_value(S, U, V, P) })
+    pub fn value(
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        U: f64,
+        V: f64,
+        P: &mut crate::gp::Pnt,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_value(S, U, V, P)
+        })
     }
 
     /// **Source:** `LProp3d_SurfaceTool.hxx`:35 - `LProp3d_SurfaceTool::D1()`
     /// Computes the point <P> and first derivative <D1*> of
     /// parameter <U> and <V> on the HSurface <S>.
     pub fn d1(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -524,7 +589,7 @@ impl SurfaceTool {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SurfaceTool_d1(S, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_d1(S, U, V, P, D1U, D1V)
         })
     }
 
@@ -532,7 +597,7 @@ impl SurfaceTool {
     /// Computes the point <P>, the first derivative <D1*> and second
     /// derivative <D2*> of parameter <U> and <V> on the HSurface <S>.
     pub fn d2(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -543,22 +608,22 @@ impl SurfaceTool {
         DUV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV)
+            crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV)
         })
     }
 
     /// **Source:** `LProp3d_SurfaceTool.hxx`:54 - `LProp3d_SurfaceTool::DN()`
     pub fn dn(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         U: f64,
         V: f64,
         IU: i32,
         IV: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LProp3d_SurfaceTool_dn(
-                S, U, V, IU, IV,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_dn(S, U, V, IU, IV),
+            ))
         }
     }
 
@@ -566,21 +631,21 @@ impl SurfaceTool {
     /// returns the order of continuity of the HSurface <S>.
     /// returns 1 : first derivative only is computable
     /// returns 2 : first and second derivative only are computable.
-    pub fn continuity(S: &crate::ffi::HandleAdaptor3dSurface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::LProp3d_SurfaceTool_continuity(S) })
+    pub fn continuity(S: &crate::ffi_types::HandleAdaptor3dSurface) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_continuity(S) })
     }
 
     /// **Source:** `LProp3d_SurfaceTool.hxx`:66 - `LProp3d_SurfaceTool::Bounds()`
     /// returns the bounds of the HSurface.
     pub fn bounds(
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         U1: &mut f64,
         V1: &mut f64,
         U2: &mut f64,
         V2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LProp3d_SurfaceTool_bounds(S, U1, V1, U2, V2)
+            crate::ffi_extern_TKG3d::LProp3d_SurfaceTool_bounds(S, U1, V1, U2, V2)
         })
     }
 }

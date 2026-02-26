@@ -20,13 +20,17 @@
 ///
 /// Returns either original surface or its modified copy (if some poles have been moved).
 pub fn collapse_singularities(
-    theSurface: &crate::ffi::HandleGeomSurface,
+    theSurface: &crate::ffi_types::HandleGeomSurface,
     theFace: &crate::topo_ds::Face,
     thePrecision: f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::BRepOffset_collapse_singularities(theSurface, theFace, thePrecision),
+            crate::ffi_extern_TKOffset::BRepOffset_collapse_singularities(
+                theSurface,
+                theFace,
+                thePrecision,
+            ),
         ))
     }
 }
@@ -186,7 +190,7 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleBRepToolsModification, HandleStandardTransient};
+pub use crate::ffi_types::{HandleBRepToolsModification, HandleStandardTransient};
 
 // ========================
 // From BRepOffset_Analyse.hxx
@@ -195,11 +199,11 @@ pub use crate::ffi::{HandleBRepToolsModification, HandleStandardTransient};
 /// **Source:** `BRepOffset_Analyse.hxx`:43 - `BRepOffset_Analyse`
 /// Analyses the shape to find the parts of edges
 /// connecting the convex, concave or tangent faces.
-pub use crate::ffi::BRepOffset_Analyse as Analyse;
+pub use crate::ffi_types::BRepOffset_Analyse as Analyse;
 
 unsafe impl crate::CppDeletable for Analyse {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Analyse_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Analyse_destructor(ptr);
     }
 }
 
@@ -209,7 +213,9 @@ impl Analyse {
     /// Empty c-tor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Analyse_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Analyse_ctor(),
+            ))
         }
     }
 
@@ -218,7 +224,7 @@ impl Analyse {
     pub fn new_shape_real(theS: &crate::topo_ds::Shape, theAngle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Analyse_ctor_shape_real(theS, theAngle),
+                crate::ffi_extern_TKOffset::BRepOffset_Analyse_ctor_shape_real(theS, theAngle),
             ))
         }
     }
@@ -233,7 +239,12 @@ impl Analyse {
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_perform(self as *mut Self, theS, theAngle, theRange)
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_perform(
+                self as *mut Self,
+                theS,
+                theAngle,
+                theRange,
+            )
         })
     }
 
@@ -241,7 +252,9 @@ impl Analyse {
     /// @name Results
     /// Returns status of the algorithm
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepOffset_Analyse_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepOffset_Analyse.hxx`:66 - `BRepOffset_Analyse::Type()`
@@ -255,9 +268,12 @@ impl Analyse {
     pub unsafe fn type_(
         &self,
         theE: &crate::topo_ds::Edge,
-    ) -> &crate::ffi::BRepOffset_ListOfInterval {
+    ) -> &crate::ffi_types::BRepOffset_ListOfInterval {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_Analyse_type_(self as *const Self, theE)))
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Analyse_type_(
+                self as *const Self,
+                theE,
+            )))
         }
     }
 
@@ -268,10 +284,10 @@ impl Analyse {
         &self,
         theV: &crate::topo_ds::Vertex,
         theType: crate::ch_fi_ds::TypeOfConcavity,
-        theL: &mut crate::ffi::TopTools_ListOfShape,
+        theL: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_edges_vertex_typeofconcavity_listofshape(
                 self as *const Self,
                 theV,
                 theType.into(),
@@ -287,10 +303,10 @@ impl Analyse {
         &self,
         theF: &crate::topo_ds::Face,
         theType: crate::ch_fi_ds::TypeOfConcavity,
-        theL: &mut crate::ffi::TopTools_ListOfShape,
+        theL: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_edges_face_typeofconcavity_listofshape(
                 self as *const Self,
                 theF,
                 theType.into(),
@@ -306,10 +322,10 @@ impl Analyse {
         &self,
         theEdge: &crate::topo_ds::Edge,
         theVertex: &crate::topo_ds::Vertex,
-        theEdges: &mut crate::ffi::TopTools_ListOfShape,
+        theEdges: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_tangent_edges(
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_tangent_edges(
                 self as *const Self,
                 theEdge,
                 theVertex,
@@ -322,7 +338,7 @@ impl Analyse {
     /// Checks if the given shape has ancestors
     pub fn has_ancestor(&self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_has_ancestor(self as *const Self, theS)
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_has_ancestor(self as *const Self, theS)
         })
     }
 
@@ -337,9 +353,9 @@ impl Analyse {
     pub unsafe fn ancestors(
         &self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_Analyse_ancestors(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Analyse_ancestors(
                 self as *const Self,
                 theS,
             )))
@@ -351,11 +367,11 @@ impl Analyse {
     /// all the connex edges are of type <Side>
     pub fn explode_listofshape_typeofconcavity(
         &self,
-        theL: &mut crate::ffi::TopTools_ListOfShape,
+        theL: &mut crate::ffi_types::TopTools_ListOfShape,
         theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity(
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_explode_listofshape_typeofconcavity(
                 self as *const Self,
                 theL,
                 theType.into(),
@@ -368,12 +384,12 @@ impl Analyse {
     /// all the connex edges are of type <Side1> or <Side2>
     pub fn explode_listofshape_typeofconcavity2(
         &self,
-        theL: &mut crate::ffi::TopTools_ListOfShape,
+        theL: &mut crate::ffi_types::TopTools_ListOfShape,
         theType1: crate::ch_fi_ds::TypeOfConcavity,
         theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_explode_listofshape_typeofconcavity2(
                 self as *const Self,
                 theL,
                 theType1.into(),
@@ -389,17 +405,11 @@ impl Analyse {
         &self,
         theFace: &crate::topo_ds::Face,
         theCo: &mut crate::topo_ds::Compound,
-        theMap: &mut crate::ffi::TopTools_MapOfShape,
+        theMap: &mut crate::ffi_types::TopTools_MapOfShape,
         theType: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(
-                self as *const Self,
-                theFace,
-                theCo,
-                theMap,
-                theType.into(),
-            )
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity(self as *const Self, theFace, theCo, theMap, theType.into())
         })
     }
 
@@ -410,43 +420,44 @@ impl Analyse {
         &self,
         theFace: &crate::topo_ds::Face,
         theCo: &mut crate::topo_ds::Compound,
-        theMap: &mut crate::ffi::TopTools_MapOfShape,
+        theMap: &mut crate::ffi_types::TopTools_MapOfShape,
         theType1: crate::ch_fi_ds::TypeOfConcavity,
         theType2: crate::ch_fi_ds::TypeOfConcavity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(
-                self as *const Self,
-                theFace,
-                theCo,
-                theMap,
-                theType1.into(),
-                theType2.into(),
-            )
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_add_faces_face_compound_mapofshape_typeofconcavity2(self as *const Self, theFace, theCo, theMap, theType1.into(), theType2.into())
         })
     }
 
     /// **Source:** `BRepOffset_Analyse.hxx`:124 - `BRepOffset_Analyse::SetOffsetValue()`
     pub fn set_offset_value(&mut self, theOffset: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_set_offset_value(self as *mut Self, theOffset)
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_set_offset_value(
+                self as *mut Self,
+                theOffset,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_Analyse.hxx`:127 - `BRepOffset_Analyse::SetFaceOffsetMap()`
     /// Sets the face-offset data map to analyze tangential cases
-    pub fn set_face_offset_map(&mut self, theMap: &crate::ffi::TopTools_DataMapOfShapeReal) {
+    pub fn set_face_offset_map(&mut self, theMap: &crate::ffi_types::TopTools_DataMapOfShapeReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_set_face_offset_map(self as *mut Self, theMap)
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_set_face_offset_map(
+                self as *mut Self,
+                theMap,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_Analyse.hxx`:131 - `BRepOffset_Analyse::NewFaces()`
     /// Returns the new faces constructed between tangent faces
     /// having different offset values on the shape
-    pub fn new_faces(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn new_faces(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_Analyse_new_faces(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Analyse_new_faces(
+                self as *const Self,
+            )))
         }
     }
 
@@ -459,7 +470,7 @@ impl Analyse {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Analyse_generated(self as *const Self, theS),
+                crate::ffi_extern_TKOffset::BRepOffset_Analyse_generated(self as *const Self, theS),
             ))
         }
     }
@@ -468,7 +479,7 @@ impl Analyse {
     /// Checks if the edge has generated a new face.
     pub fn has_generated(&self, theS: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Analyse_has_generated(self as *const Self, theS)
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_has_generated(self as *const Self, theS)
         })
     }
 
@@ -487,11 +498,13 @@ impl Analyse {
         theEdge: &crate::topo_ds::Edge,
     ) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_Analyse_edge_replacement(
-                self as *const Self,
-                theFace,
-                theEdge,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Analyse_edge_replacement(
+                    self as *const Self,
+                    theFace,
+                    theEdge,
+                ),
+            ))
         }
     }
 
@@ -501,10 +514,14 @@ impl Analyse {
         &self,
         theS: &crate::topo_ds::Shape,
         theUpdate: bool,
-    ) -> Option<&crate::ffi::TopTools_ListOfShape> {
+    ) -> Option<&crate::ffi_types::TopTools_ListOfShape> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepOffset_Analyse_descendants(self as *const Self, theS, theUpdate)
+                crate::ffi_extern_TKOffset::BRepOffset_Analyse_descendants(
+                    self as *const Self,
+                    theS,
+                    theUpdate,
+                )
             });
             if __val.is_null() {
                 None
@@ -518,7 +535,9 @@ impl Analyse {
     /// @name Clearing the content
     /// Clears the content of the algorithm
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepOffset_Analyse_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Analyse_clear(self as *mut Self)
+        })
     }
 }
 
@@ -529,11 +548,11 @@ impl Analyse {
 /// **Source:** `BRepOffset_Inter2d.hxx`:35 - `BRepOffset_Inter2d`
 /// Computes the intersections between edges on a face
 /// stores result is SD as AsDes from BRepOffset.
-pub use crate::ffi::BRepOffset_Inter2d as Inter2d;
+pub use crate::ffi_types::BRepOffset_Inter2d as Inter2d;
 
 unsafe impl crate::CppDeletable for Inter2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Inter2d_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Inter2d_destructor(ptr);
     }
 }
 
@@ -542,7 +561,9 @@ impl Inter2d {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Inter2d_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Inter2d_ctor(),
+            ))
         }
     }
 
@@ -554,16 +575,16 @@ impl Inter2d {
     /// vertices have to be fused using the FuseVertices method.
     /// theDMVV contains the vertices that should be fused
     pub fn compute(
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         F: &crate::topo_ds::Face,
-        NewEdges: &crate::ffi::TopTools_IndexedMapOfShape,
+        NewEdges: &crate::ffi_types::TopTools_IndexedMapOfShape,
         Tol: f64,
-        theEdgeIntEdges: &crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theDMVV: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theEdgeIntEdges: &crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theDMVV: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter2d_compute(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_compute(
                 AsDes,
                 F,
                 NewEdges,
@@ -584,21 +605,21 @@ impl Inter2d {
     pub fn connex_int_by_int(
         FI: &crate::topo_ds::Face,
         OFI: &mut Offset,
-        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Build: &crate::ffi::TopTools_DataMapOfShapeShape,
-        theAsDes: &crate::ffi::HandleBRepAlgoAsDes,
-        AsDes2d: &crate::ffi::HandleBRepAlgoAsDes,
+        MES: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Build: &crate::ffi_types::TopTools_DataMapOfShapeShape,
+        theAsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
+        AsDes2d: &crate::ffi_types::HandleBRepAlgoAsDes,
         Offset: f64,
         Tol: f64,
         Analyse: &Analyse,
-        FacesWithVerts: &mut crate::ffi::TopTools_IndexedMapOfShape,
+        FacesWithVerts: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
         theImageVV: &mut crate::b_rep_algo::Image,
-        theEdgeIntEdges: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
-        theDMVV: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theEdgeIntEdges: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
+        theDMVV: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
         theRange: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Inter2d_connex_int_by_int(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_connex_int_by_int(
                 FI,
                 OFI,
                 MES,
@@ -627,17 +648,17 @@ impl Inter2d {
     pub fn connex_int_by_int_in_vert(
         FI: &crate::topo_ds::Face,
         OFI: &mut Offset,
-        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Build: &crate::ffi::TopTools_DataMapOfShapeShape,
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
-        AsDes2d: &crate::ffi::HandleBRepAlgoAsDes,
+        MES: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Build: &crate::ffi_types::TopTools_DataMapOfShapeShape,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
+        AsDes2d: &crate::ffi_types::HandleBRepAlgoAsDes,
         Tol: f64,
         Analyse: &Analyse,
-        theDMVV: &mut crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theDMVV: &mut crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter2d_connex_int_by_int_in_vert(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_connex_int_by_int_in_vert(
                 FI, OFI, MES, Build, AsDes, AsDes2d, Tol, Analyse, theDMVV, theRange,
             )
         })
@@ -648,12 +669,14 @@ impl Inter2d {
     /// and updates AsDes by replacing the old vertices
     /// with the new ones.
     pub fn fuse_vertices(
-        theDMVV: &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
-        theAsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        theDMVV: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
+        theAsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         theImageVV: &mut crate::b_rep_algo::Image,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Inter2d_fuse_vertices(theDMVV, theAsDes, theImageVV)
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_fuse_vertices(
+                theDMVV, theAsDes, theImageVV,
+            )
         })
     }
 
@@ -664,7 +687,9 @@ impl Inter2d {
         NE: &mut crate::topo_ds::Edge,
         theOffset: f64,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepOffset_Inter2d_extent_edge(E, NE, theOffset) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Inter2d_extent_edge(E, NE, theOffset)
+        })
     }
 }
 
@@ -676,11 +701,11 @@ impl Inter2d {
 /// Computes the connection of the offset and not offset faces
 /// according to the connection type required.
 /// Store the result in AsDes tool.
-pub use crate::ffi::BRepOffset_Inter3d as Inter3d;
+pub use crate::ffi_types::BRepOffset_Inter3d as Inter3d;
 
 unsafe impl crate::CppDeletable for Inter3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Inter3d_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Inter3d_destructor(ptr);
     }
 }
 
@@ -688,13 +713,13 @@ impl Inter3d {
     /// **Source:** `BRepOffset_Inter3d.hxx`:47 - `BRepOffset_Inter3d::BRepOffset_Inter3d()`
     /// Constructor
     pub fn new_handlebrepalgoasdes_state_real(
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         Side: crate::top_abs::State,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Inter3d_ctor_handlebrepalgoasdes_state_real(
+                crate::ffi_extern_TKOffset::BRepOffset_Inter3d_ctor_handlebrepalgoasdes_state_real(
                     AsDes,
                     Side.into(),
                     Tol,
@@ -706,12 +731,12 @@ impl Inter3d {
     /// **Source:** `BRepOffset_Inter3d.hxx`:52 - `BRepOffset_Inter3d::CompletInt()`
     pub fn complet_int(
         &mut self,
-        SetOfFaces: &crate::ffi::TopTools_ListOfShape,
+        SetOfFaces: &crate::ffi_types::TopTools_ListOfShape,
         InitOffsetFace: &crate::b_rep_algo::Image,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_complet_int(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_complet_int(
                 self as *mut Self,
                 SetOfFaces,
                 InitOffsetFace,
@@ -729,7 +754,12 @@ impl Inter3d {
         InitOffsetFace: &crate::b_rep_algo::Image,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_face_inter(self as *mut Self, F1, F2, InitOffsetFace)
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_face_inter(
+                self as *mut Self,
+                F1,
+                F2,
+                InitOffsetFace,
+            )
         })
     }
 
@@ -737,14 +767,14 @@ impl Inter3d {
     /// Computes connections of the offset faces that have to be connected by arcs.
     pub fn connex_int_by_arc(
         &mut self,
-        SetOfFaces: &crate::ffi::TopTools_ListOfShape,
+        SetOfFaces: &crate::ffi_types::TopTools_ListOfShape,
         ShapeInit: &crate::topo_ds::Shape,
         Analyse: &Analyse,
         InitOffsetFace: &crate::b_rep_algo::Image,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_connex_int_by_arc(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_connex_int_by_arc(
                 self as *mut Self,
                 SetOfFaces,
                 ShapeInit,
@@ -761,16 +791,16 @@ impl Inter3d {
     pub fn connex_int_by_int(
         &mut self,
         SI: &crate::topo_ds::Shape,
-        MapSF: &crate::ffi::BRepOffset_DataMapOfShapeOffset,
+        MapSF: &crate::ffi_types::BRepOffset_DataMapOfShapeOffset,
         A: &Analyse,
-        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Build: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Failed: &mut crate::ffi::TopTools_ListOfShape,
+        MES: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Build: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Failed: &mut crate::ffi_types::TopTools_ListOfShape,
         theRange: &crate::message::ProgressRange,
         bIsPlanar: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_connex_int_by_int(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_connex_int_by_int(
                 self as *mut Self,
                 SI,
                 MapSF,
@@ -788,18 +818,18 @@ impl Inter3d {
     /// Computes intersection with not offset faces .
     pub fn context_int_by_int(
         &mut self,
-        ContextFaces: &crate::ffi::TopTools_IndexedMapOfShape,
+        ContextFaces: &crate::ffi_types::TopTools_IndexedMapOfShape,
         ExtentContext: bool,
-        MapSF: &crate::ffi::BRepOffset_DataMapOfShapeOffset,
+        MapSF: &crate::ffi_types::BRepOffset_DataMapOfShapeOffset,
         A: &Analyse,
-        MES: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Build: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        Failed: &mut crate::ffi::TopTools_ListOfShape,
+        MES: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Build: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        Failed: &mut crate::ffi_types::TopTools_ListOfShape,
         theRange: &crate::message::ProgressRange,
         bIsPlanar: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_context_int_by_int(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_context_int_by_int(
                 self as *mut Self,
                 ContextFaces,
                 ExtentContext,
@@ -818,7 +848,7 @@ impl Inter3d {
     /// Computes connections of the not offset faces that have to be connected by arcs
     pub fn context_int_by_arc(
         &mut self,
-        ContextFaces: &crate::ffi::TopTools_IndexedMapOfShape,
+        ContextFaces: &crate::ffi_types::TopTools_IndexedMapOfShape,
         ExtentContext: bool,
         Analyse: &Analyse,
         InitOffsetFace: &crate::b_rep_algo::Image,
@@ -826,7 +856,7 @@ impl Inter3d {
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_context_int_by_arc(
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_context_int_by_arc(
                 self as *mut Self,
                 ContextFaces,
                 ExtentContext,
@@ -842,7 +872,7 @@ impl Inter3d {
     /// Marks the pair of faces as already intersected
     pub fn set_done(&mut self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_set_done(self as *mut Self, F1, F2)
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_set_done(self as *mut Self, F1, F2)
         })
     }
 
@@ -850,35 +880,37 @@ impl Inter3d {
     /// Checks if the pair of faces has already been treated.
     pub fn is_done(&self, F1: &crate::topo_ds::Face, F2: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Inter3d_is_done(self as *const Self, F1, F2)
+            crate::ffi_extern_TKOffset::BRepOffset_Inter3d_is_done(self as *const Self, F1, F2)
         })
     }
 
     /// **Source:** `BRepOffset_Inter3d.hxx`:105 - `BRepOffset_Inter3d::TouchedFaces()`
     /// Returns touched faces
-    pub fn touched_faces(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
+    pub fn touched_faces(&mut self) -> &mut crate::ffi_types::TopTools_IndexedMapOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepOffset_Inter3d_touched_faces(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Inter3d_touched_faces(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_Inter3d.hxx`:108 - `BRepOffset_Inter3d::AsDes()`
     /// Returns AsDes tool
-    pub fn as_des(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepAlgoAsDes> {
+    pub fn as_des(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepAlgoAsDes> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Inter3d_as_des(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Inter3d_as_des(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_Inter3d.hxx`:111 - `BRepOffset_Inter3d::NewEdges()`
     /// Returns new edges
-    pub fn new_edges(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
+    pub fn new_edges(&mut self) -> &mut crate::ffi_types::TopTools_IndexedMapOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepOffset_Inter3d_new_edges(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Inter3d_new_edges(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -888,11 +920,11 @@ impl Inter3d {
 // ========================
 
 /// **Source:** `BRepOffset_Interval.hxx`:27 - `BRepOffset_Interval`
-pub use crate::ffi::BRepOffset_Interval as Interval;
+pub use crate::ffi_types::BRepOffset_Interval as Interval;
 
 unsafe impl crate::CppDeletable for Interval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Interval_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Interval_destructor(ptr);
     }
 }
 
@@ -900,7 +932,9 @@ impl Interval {
     /// **Source:** `BRepOffset_Interval.hxx`:32 - `BRepOffset_Interval::BRepOffset_Interval()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Interval_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Interval_ctor(),
+            ))
         }
     }
 
@@ -912,7 +946,11 @@ impl Interval {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Interval_ctor_real2_typeofconcavity(U1, U2, Type.into()),
+                crate::ffi_extern_TKOffset::BRepOffset_Interval_ctor_real2_typeofconcavity(
+                    U1,
+                    U2,
+                    Type.into(),
+                ),
             ))
         }
     }
@@ -920,38 +958,45 @@ impl Interval {
     /// **Source:** `BRepOffset_Interval.hxx`:38 - `BRepOffset_Interval::First()`
     pub fn first_real(&mut self, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Interval_first_real(self as *mut Self, U)
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_first_real(self as *mut Self, U)
         })
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:40 - `BRepOffset_Interval::Last()`
     pub fn last_real(&mut self, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Interval_last_real(self as *mut Self, U)
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_last_real(self as *mut Self, U)
         })
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:42 - `BRepOffset_Interval::Type()`
     pub fn type_typeofconcavity(&mut self, T: crate::ch_fi_ds::TypeOfConcavity) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Interval_type_typeofconcavity(self as *mut Self, T.into())
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_type_typeofconcavity(
+                self as *mut Self,
+                T.into(),
+            )
         })
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:44 - `BRepOffset_Interval::First()`
     pub fn first(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepOffset_Interval_first(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_first(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:46 - `BRepOffset_Interval::Last()`
     pub fn last(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepOffset_Interval_last(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_last(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepOffset_Interval.hxx`:48 - `BRepOffset_Interval::Type()`
     pub fn type_(&self) -> crate::ch_fi_ds::TypeOfConcavity {
         crate::ch_fi_ds::TypeOfConcavity::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Interval_type_(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_Interval_type_(self as *const Self)
         }))
         .unwrap()
     }
@@ -962,11 +1007,11 @@ impl Interval {
 // ========================
 
 /// **Source:** `BRepOffset_MakeLoops.hxx`:32 - `BRepOffset_MakeLoops`
-pub use crate::ffi::BRepOffset_MakeLoops as MakeLoops;
+pub use crate::ffi_types::BRepOffset_MakeLoops as MakeLoops;
 
 unsafe impl crate::CppDeletable for MakeLoops {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_MakeLoops_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_destructor(ptr);
     }
 }
 
@@ -974,21 +1019,23 @@ impl MakeLoops {
     /// **Source:** `BRepOffset_MakeLoops.hxx`:37 - `BRepOffset_MakeLoops::BRepOffset_MakeLoops()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_MakeLoops_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_MakeLoops.hxx`:39 - `BRepOffset_MakeLoops::Build()`
     pub fn build(
         &mut self,
-        LF: &crate::ffi::TopTools_ListOfShape,
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        LF: &crate::ffi_types::TopTools_ListOfShape,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         Image: &mut crate::b_rep_algo::Image,
         theImageVV: &mut crate::b_rep_algo::Image,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeLoops_build(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_build(
                 self as *mut Self,
                 LF,
                 AsDes,
@@ -1002,15 +1049,15 @@ impl MakeLoops {
     /// **Source:** `BRepOffset_MakeLoops.hxx`:45 - `BRepOffset_MakeLoops::BuildOnContext()`
     pub fn build_on_context(
         &mut self,
-        LContext: &crate::ffi::TopTools_ListOfShape,
+        LContext: &crate::ffi_types::TopTools_ListOfShape,
         Analyse: &Analyse,
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         Image: &mut crate::b_rep_algo::Image,
         InSide: bool,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeLoops_build_on_context(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_build_on_context(
                 self as *mut Self,
                 LContext,
                 Analyse,
@@ -1025,13 +1072,13 @@ impl MakeLoops {
     /// **Source:** `BRepOffset_MakeLoops.hxx`:52 - `BRepOffset_MakeLoops::BuildFaces()`
     pub fn build_faces(
         &mut self,
-        LF: &crate::ffi::TopTools_ListOfShape,
-        AsDes: &crate::ffi::HandleBRepAlgoAsDes,
+        LF: &crate::ffi_types::TopTools_ListOfShape,
+        AsDes: &crate::ffi_types::HandleBRepAlgoAsDes,
         Image: &mut crate::b_rep_algo::Image,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeLoops_build_faces(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeLoops_build_faces(
                 self as *mut Self,
                 LF,
                 AsDes,
@@ -1047,11 +1094,11 @@ impl MakeLoops {
 // ========================
 
 /// **Source:** `BRepOffset_MakeOffset.hxx`:43 - `BRepOffset_MakeOffset`
-pub use crate::ffi::BRepOffset_MakeOffset as MakeOffset;
+pub use crate::ffi_types::BRepOffset_MakeOffset as MakeOffset;
 
 unsafe impl crate::CppDeletable for MakeOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_MakeOffset_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_destructor(ptr);
     }
 }
 
@@ -1059,7 +1106,9 @@ impl MakeOffset {
     /// **Source:** `BRepOffset_MakeOffset.hxx`:48 - `BRepOffset_MakeOffset::BRepOffset_MakeOffset()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_MakeOffset_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_ctor(),
+            ))
         }
     }
 
@@ -1077,7 +1126,7 @@ impl MakeOffset {
         theRange: &crate::message::ProgressRange,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(S, Offset, Tol, Mode.into(), Intersection, SelfInter, Join.into(), Thickening, RemoveIntEdges, theRange)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_ctor_shape_real2_mode_bool2_jointype_bool2_progressrange(S, Offset, Tol, Mode.into(), Intersection, SelfInter, Join.into(), Thickening, RemoveIntEdges, theRange)))
         }
     }
 
@@ -1095,7 +1144,7 @@ impl MakeOffset {
         RemoveIntEdges: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_initialize(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_initialize(
                 self as *mut Self,
                 S,
                 Offset,
@@ -1113,7 +1162,7 @@ impl MakeOffset {
     /// **Source:** `BRepOffset_MakeOffset.hxx`:72 - `BRepOffset_MakeOffset::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_clear(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_clear(self as *mut Self)
         })
     }
 
@@ -1121,7 +1170,10 @@ impl MakeOffset {
     /// Changes the flag allowing the linearization
     pub fn allow_linearization(&mut self, theIsAllowed: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_allow_linearization(self as *mut Self, theIsAllowed)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_allow_linearization(
+                self as *mut Self,
+                theIsAllowed,
+            )
         })
     }
 
@@ -1130,7 +1182,7 @@ impl MakeOffset {
     /// shape S.
     pub fn add_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_add_face(self as *mut Self, F)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_add_face(self as *mut Self, F)
         })
     }
 
@@ -1138,28 +1190,38 @@ impl MakeOffset {
     /// set the offset <Off> on the Face <F>
     pub fn set_offset_on_face(&mut self, F: &crate::topo_ds::Face, Off: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_set_offset_on_face(self as *mut Self, F, Off)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_set_offset_on_face(
+                self as *mut Self,
+                F,
+                Off,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:84 - `BRepOffset_MakeOffset::MakeOffsetShape()`
     pub fn make_offset_shape(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_make_offset_shape(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_make_offset_shape(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:87 - `BRepOffset_MakeOffset::MakeThickSolid()`
     pub fn make_thick_solid(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_make_thick_solid(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_make_thick_solid(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:90 - `BRepOffset_MakeOffset::GetAnalyse()`
     pub fn get_analyse(&self) -> &Analyse {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_get_analyse(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_get_analyse(
                 self as *const Self,
             )))
         }
@@ -1168,21 +1230,23 @@ impl MakeOffset {
     /// **Source:** `BRepOffset_MakeOffset.hxx`:92 - `BRepOffset_MakeOffset::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_is_done(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:94 - `BRepOffset_MakeOffset::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:96 - `BRepOffset_MakeOffset::InitShape()`
     pub fn init_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_init_shape(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_init_shape(
                 self as *const Self,
             )))
         }
@@ -1192,7 +1256,7 @@ impl MakeOffset {
     /// returns information about offset state.
     pub fn error(&self) -> crate::b_rep_offset::Error {
         crate::b_rep_offset::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_error(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -1202,9 +1266,11 @@ impl MakeOffset {
     /// shapes and offset faces.
     pub fn offset_faces_from_shapes(&self) -> &crate::b_rep_algo::Image {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_offset_faces_from_shapes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_offset_faces_from_shapes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1212,7 +1278,7 @@ impl MakeOffset {
     /// Returns myJoin.
     pub fn get_join_type(&self) -> crate::geom_abs::JoinType {
         crate::geom_abs::JoinType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_get_join_type(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_get_join_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -1222,19 +1288,23 @@ impl MakeOffset {
     /// shapes and offset edges.
     pub fn offset_edges_from_shapes(&self) -> &crate::b_rep_algo::Image {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_offset_edges_from_shapes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_offset_edges_from_shapes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_MakeOffset.hxx`:113 - `BRepOffset_MakeOffset::ClosingFaces()`
     /// Returns the list of closing faces stores by AddFace
-    pub fn closing_faces(&self) -> &crate::ffi::TopTools_IndexedMapOfShape {
+    pub fn closing_faces(&self) -> &crate::ffi_types::TopTools_IndexedMapOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_closing_faces(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_closing_faces(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1248,7 +1318,10 @@ impl MakeOffset {
     /// @return True if possible make computations and false otherwise.
     pub fn check_input_data(&mut self, theRange: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_check_input_data(self as *mut Self, theRange)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_check_input_data(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
@@ -1256,9 +1329,11 @@ impl MakeOffset {
     /// Return bad shape, which obtained in CheckInputData.
     pub fn get_bad_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_get_bad_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_get_bad_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1274,9 +1349,9 @@ impl MakeOffset {
     pub unsafe fn generated(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_generated(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_generated(
                 self as *mut Self,
                 theS,
             )))
@@ -1294,9 +1369,9 @@ impl MakeOffset {
     pub unsafe fn modified(
         &mut self,
         theS: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeOffset_modified(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_modified(
                 self as *mut Self,
                 theS,
             )))
@@ -1307,7 +1382,7 @@ impl MakeOffset {
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeOffset_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeOffset_is_deleted(self as *mut Self, S)
         })
     }
 }
@@ -1327,11 +1402,11 @@ impl MakeOffset {
 /// the output. It should be noted that the actual tolerance growth depends on the offset distance
 /// and the quality of joints between the input faces. Anyway the good input shell (smooth
 /// connections between adjacent faces) will lead to good result.
-pub use crate::ffi::BRepOffset_MakeSimpleOffset as MakeSimpleOffset;
+pub use crate::ffi_types::BRepOffset_MakeSimpleOffset as MakeSimpleOffset;
 
 unsafe impl crate::CppDeletable for MakeSimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_MakeSimpleOffset_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_destructor(ptr);
     }
 }
 
@@ -1341,7 +1416,7 @@ impl MakeSimpleOffset {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_MakeSimpleOffset_ctor(),
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_ctor(),
             ))
         }
     }
@@ -1354,7 +1429,7 @@ impl MakeSimpleOffset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_MakeSimpleOffset_ctor_shape_real(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_ctor_shape_real(
                     theInputShape,
                     theOffsetValue,
                 ),
@@ -1366,7 +1441,7 @@ impl MakeSimpleOffset {
     /// Initialise shape for modifications.
     pub fn initialize(&mut self, theInputShape: &crate::topo_ds::Shape, theOffsetValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_initialize(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_initialize(
                 self as *mut Self,
                 theInputShape,
                 theOffsetValue,
@@ -1378,7 +1453,7 @@ impl MakeSimpleOffset {
     /// Computes offset shape.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_perform(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_perform(self as *mut Self)
         })
     }
 
@@ -1387,7 +1462,9 @@ impl MakeSimpleOffset {
     pub fn get_error_message(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_MakeSimpleOffset_get_error_message(self as *const Self),
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_error_message(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1396,7 +1473,7 @@ impl MakeSimpleOffset {
     /// Gets error code.
     pub fn get_error(&self) -> crate::b_rep_offset::Simple_Status {
         crate::b_rep_offset::Simple_Status::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_get_error(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_error(self as *const Self)
         }))
         .unwrap()
     }
@@ -1405,7 +1482,9 @@ impl MakeSimpleOffset {
     /// Gets solid building flag.
     pub fn get_build_solid_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_get_build_solid_flag(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_build_solid_flag(
+                self as *const Self,
+            )
         })
     }
 
@@ -1413,7 +1492,7 @@ impl MakeSimpleOffset {
     /// Sets solid building flag.
     pub fn set_build_solid_flag(&mut self, theBuildFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_set_build_solid_flag(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_set_build_solid_flag(
                 self as *mut Self,
                 theBuildFlag,
             )
@@ -1424,7 +1503,9 @@ impl MakeSimpleOffset {
     /// Gets offset value.
     pub fn get_offset_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_get_offset_value(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_offset_value(
+                self as *const Self,
+            )
         })
     }
 
@@ -1432,7 +1513,7 @@ impl MakeSimpleOffset {
     /// Sets offset value.
     pub fn set_offset_value(&mut self, theOffsetValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_set_offset_value(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_set_offset_value(
                 self as *mut Self,
                 theOffsetValue,
             )
@@ -1443,7 +1524,9 @@ impl MakeSimpleOffset {
     /// Gets tolerance (used for handling singularities).
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_get_tolerance(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_tolerance(
+                self as *const Self,
+            )
         })
     }
 
@@ -1451,7 +1534,10 @@ impl MakeSimpleOffset {
     /// Sets tolerance (used for handling singularities).
     pub fn set_tolerance(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_set_tolerance(self as *mut Self, theValue)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_set_tolerance(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
@@ -1459,7 +1545,7 @@ impl MakeSimpleOffset {
     /// Gets done state.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_is_done(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_is_done(self as *const Self)
         })
     }
 
@@ -1467,9 +1553,11 @@ impl MakeSimpleOffset {
     /// Returns result shape.
     pub fn get_result_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_MakeSimpleOffset_get_result_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_result_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1477,7 +1565,7 @@ impl MakeSimpleOffset {
     /// Computes max safe offset value for the given tolerance.
     pub fn get_safe_offset(&mut self, theExpectedToler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_MakeSimpleOffset_get_safe_offset(
+            crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_get_safe_offset(
                 self as *mut Self,
                 theExpectedToler,
             )
@@ -1492,7 +1580,10 @@ impl MakeSimpleOffset {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_MakeSimpleOffset_generated(self as *const Self, theShape),
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_generated(
+                    self as *const Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1505,7 +1596,10 @@ impl MakeSimpleOffset {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_MakeSimpleOffset_modified(self as *const Self, theShape),
+                crate::ffi_extern_TKOffset::BRepOffset_MakeSimpleOffset_modified(
+                    self as *const Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1521,11 +1615,11 @@ impl MakeSimpleOffset {
 /// 1 - from a face.
 /// 2 - from an edge.
 /// 3 - from a vertex.
-pub use crate::ffi::BRepOffset_Offset as Offset;
+pub use crate::ffi_types::BRepOffset_Offset as Offset;
 
 unsafe impl crate::CppDeletable for Offset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Offset_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Offset_destructor(ptr);
     }
 }
 
@@ -1533,7 +1627,9 @@ impl Offset {
     /// **Source:** `BRepOffset_Offset.hxx`:48 - `BRepOffset_Offset::BRepOffset_Offset()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Offset_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor(),
+            ))
         }
     }
 
@@ -1546,7 +1642,7 @@ impl Offset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Offset_ctor_face_real_bool_jointype(
+                crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor_face_real_bool_jointype(
                     Face,
                     Offset,
                     OffsetOutside,
@@ -1572,20 +1668,12 @@ impl Offset {
     pub fn new_face_real_datamapofshapeshape_bool_jointype(
         Face: &crate::topo_ds::Face,
         Offset: f64,
-        Created: &crate::ffi::TopTools_DataMapOfShapeShape,
+        Created: &crate::ffi_types::TopTools_DataMapOfShapeShape,
         OffsetOutside: bool,
         JoinType: crate::geom_abs::JoinType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(
-                    Face,
-                    Offset,
-                    Created,
-                    OffsetOutside,
-                    JoinType.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor_face_real_datamapofshapeshape_bool_jointype(Face, Offset, Created, OffsetOutside, JoinType.into())))
         }
     }
 
@@ -1601,7 +1689,7 @@ impl Offset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
+                crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor_edge3_real_bool_real_shape(
                     Path,
                     Edge1,
                     Edge2,
@@ -1628,7 +1716,7 @@ impl Offset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
+                crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor_edge3_real_edge2_bool_real_shape(
                     Path,
                     Edge1,
                     Edge2,
@@ -1648,23 +1736,14 @@ impl Offset {
     /// (Used to perform the approximation)
     pub fn new_vertex_listofshape_real_bool_real_shape(
         Vertex: &crate::topo_ds::Vertex,
-        LEdge: &crate::ffi::TopTools_ListOfShape,
+        LEdge: &crate::ffi_types::TopTools_ListOfShape,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
         Conti: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(
-                    Vertex,
-                    LEdge,
-                    Offset,
-                    Polynomial,
-                    Tol,
-                    Conti.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Offset_ctor_vertex_listofshape_real_bool_real_shape(Vertex, LEdge, Offset, Polynomial, Tol, Conti.into())))
         }
     }
 
@@ -1677,7 +1756,7 @@ impl Offset {
         JoinType: crate::geom_abs::JoinType,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_face_real_bool_jointype(
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_face_real_bool_jointype(
                 self as *mut Self,
                 Face,
                 Offset,
@@ -1692,19 +1771,12 @@ impl Offset {
         &mut self,
         Face: &crate::topo_ds::Face,
         Offset: f64,
-        Created: &crate::ffi::TopTools_DataMapOfShapeShape,
+        Created: &crate::ffi_types::TopTools_DataMapOfShapeShape,
         OffsetOutside: bool,
         JoinType: crate::geom_abs::JoinType,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(
-                self as *mut Self,
-                Face,
-                Offset,
-                Created,
-                OffsetOutside,
-                JoinType.into(),
-            )
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_face_real_datamapofshapeshape_bool_jointype(self as *mut Self, Face, Offset, Created, OffsetOutside, JoinType.into())
         })
     }
 
@@ -1720,7 +1792,7 @@ impl Offset {
         Conti: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_edge3_real_bool_real_shape(
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_edge3_real_bool_real_shape(
                 self as *mut Self,
                 Path,
                 Edge1,
@@ -1747,7 +1819,7 @@ impl Offset {
         Conti: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_edge3_real_edge2_bool_real_shape(
                 self as *mut Self,
                 Path,
                 Edge1,
@@ -1768,22 +1840,14 @@ impl Offset {
     pub fn init_vertex_listofshape_real_bool_real_shape(
         &mut self,
         Vertex: &crate::topo_ds::Vertex,
-        LEdge: &crate::ffi::TopTools_ListOfShape,
+        LEdge: &crate::ffi_types::TopTools_ListOfShape,
         Offset: f64,
         Polynomial: bool,
         Tol: f64,
         Conti: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(
-                self as *mut Self,
-                Vertex,
-                LEdge,
-                Offset,
-                Polynomial,
-                Tol,
-                Conti.into(),
-            )
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_vertex_listofshape_real_bool_real_shape(self as *mut Self, Vertex, LEdge, Offset, Polynomial, Tol, Conti.into())
         })
     }
 
@@ -1791,14 +1855,18 @@ impl Offset {
     /// Only used in Rolling Ball. Pipe on Free Boundary
     pub fn init_edge_real(&mut self, Edge: &crate::topo_ds::Edge, Offset: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Offset_init_edge_real(self as *mut Self, Edge, Offset)
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_init_edge_real(
+                self as *mut Self,
+                Edge,
+                Offset,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_Offset.hxx`:141 - `BRepOffset_Offset::InitialShape()`
     pub fn initial_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_Offset_initial_shape(
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Offset_initial_shape(
                 self as *const Self,
             )))
         }
@@ -1806,7 +1874,11 @@ impl Offset {
 
     /// **Source:** `BRepOffset_Offset.hxx`:143 - `BRepOffset_Offset::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::check_result(crate::ffi::BRepOffset_Offset_face(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKOffset::BRepOffset_Offset_face(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepOffset_Offset.hxx`:145 - `BRepOffset_Offset::Generated()`
@@ -1815,17 +1887,16 @@ impl Offset {
         Shape: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Offset_generated(
-                self as *const Self,
-                Shape,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Offset_generated(self as *const Self, Shape),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_Offset.hxx`:147 - `BRepOffset_Offset::Status()`
     pub fn status(&self) -> crate::b_rep_offset::Status {
         crate::b_rep_offset::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Offset_status(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_Offset_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1846,11 +1917,11 @@ impl Offset {
 /// - Position of each vertex in a result shell is computed as average point of all ends of edges
 /// shared by that vertex.
 /// - Tolerances are updated according to the resulting geometry.
-pub use crate::ffi::BRepOffset_SimpleOffset as SimpleOffset;
+pub use crate::ffi_types::BRepOffset_SimpleOffset as SimpleOffset;
 
 unsafe impl crate::CppDeletable for SimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_SimpleOffset_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_destructor(ptr);
     }
 }
 
@@ -1867,7 +1938,7 @@ impl SimpleOffset {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_SimpleOffset_ctor_shape_real2(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_ctor_shape_real2(
                     theInputShape,
                     theOffsetValue,
                     theTolerance,
@@ -1877,11 +1948,13 @@ impl SimpleOffset {
     }
 
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:47 - `BRepOffset_SimpleOffset::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_SimpleOffset_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1900,14 +1973,14 @@ impl SimpleOffset {
     pub fn new_surface(
         &mut self,
         F: &crate::topo_ds::Face,
-        S: &mut crate::ffi::HandleGeomSurface,
+        S: &mut crate::ffi_types::HandleGeomSurface,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
         RevWires: &mut bool,
         RevFace: &mut bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_new_surface(
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_new_surface(
                 self as *mut Self,
                 F,
                 S,
@@ -1929,12 +2002,18 @@ impl SimpleOffset {
     pub fn new_curve(
         &mut self,
         E: &crate::topo_ds::Edge,
-        C: &mut crate::ffi::HandleGeomCurve,
+        C: &mut crate::ffi_types::HandleGeomCurve,
         L: &mut crate::top_loc::Location,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_new_curve(self as *mut Self, E, C, L, Tol)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_new_curve(
+                self as *mut Self,
+                E,
+                C,
+                L,
+                Tol,
+            )
         })
     }
 
@@ -1951,7 +2030,12 @@ impl SimpleOffset {
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_new_point(self as *mut Self, V, P, Tol)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_new_point(
+                self as *mut Self,
+                V,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -1968,11 +2052,11 @@ impl SimpleOffset {
         F: &crate::topo_ds::Face,
         NewE: &crate::topo_ds::Edge,
         NewF: &crate::topo_ds::Face,
-        C: &mut crate::ffi::HandleGeom2dCurve,
+        C: &mut crate::ffi_types::HandleGeom2dCurve,
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_new_curve2d(
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_new_curve2d(
                 self as *mut Self,
                 E,
                 F,
@@ -1998,7 +2082,13 @@ impl SimpleOffset {
         Tol: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_new_parameter(self as *mut Self, V, E, P, Tol)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_new_parameter(
+                self as *mut Self,
+                V,
+                E,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -2019,7 +2109,7 @@ impl SimpleOffset {
         NewF2: &crate::topo_ds::Face,
     ) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_continuity(
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_continuity(
                 self as *mut Self,
                 E,
                 F1,
@@ -2036,7 +2126,7 @@ impl SimpleOffset {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepOffset_SimpleOffset_get_type_name(),
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2044,18 +2134,22 @@ impl SimpleOffset {
     }
 
     /// **Source:** `BRepOffset_SimpleOffset.hxx`:47 - `BRepOffset_SimpleOffset::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepOffset_SimpleOffset_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BRepTools_Modification
     pub fn as_b_rep_tools_modification(&self) -> &crate::b_rep_tools::Modification {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_as_BRepTools_Modification(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2063,7 +2157,7 @@ impl SimpleOffset {
     pub fn as_b_rep_tools_modification_mut(&mut self) -> &mut crate::b_rep_tools::Modification {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffset_SimpleOffset_as_BRepTools_Modification_mut(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_as_BRepTools_Modification_mut(
                     self as *mut Self,
                 ),
             )
@@ -2073,9 +2167,11 @@ impl SimpleOffset {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2083,7 +2179,9 @@ impl SimpleOffset {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepOffset_SimpleOffset_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2091,10 +2189,10 @@ impl SimpleOffset {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepOffsetSimpleOffset> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepOffsetSimpleOffset> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepOffset_SimpleOffset_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2103,10 +2201,14 @@ impl SimpleOffset {
     pub fn new_triangulation(
         &mut self,
         F: &crate::topo_ds::Face,
-        T: &mut crate::ffi::HandlePolyTriangulation,
+        T: &mut crate::ffi_types::HandlePolyTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_NewTriangulation(self as *mut Self, F, T)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_NewTriangulation(
+                self as *mut Self,
+                F,
+                T,
+            )
         })
     }
 
@@ -2114,10 +2216,14 @@ impl SimpleOffset {
     pub fn new_polygon(
         &mut self,
         E: &crate::topo_ds::Edge,
-        P: &mut crate::ffi::HandlePolyPolygon3D,
+        P: &mut crate::ffi_types::HandlePolyPolygon3D,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_NewPolygon(self as *mut Self, E, P)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_NewPolygon(
+                self as *mut Self,
+                E,
+                P,
+            )
         })
     }
 
@@ -2126,10 +2232,10 @@ impl SimpleOffset {
         &mut self,
         E: &crate::topo_ds::Edge,
         F: &crate::topo_ds::Face,
-        P: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
+        P: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_NewPolygonOnTriangulation(
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_NewPolygonOnTriangulation(
                 self as *mut Self,
                 E,
                 F,
@@ -2139,16 +2245,22 @@ impl SimpleOffset {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2156,7 +2268,9 @@ impl SimpleOffset {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepOffset_SimpleOffset_inherited_This(self as *const Self)
+                crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2169,75 +2283,83 @@ impl SimpleOffset {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_SimpleOffset_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKOffset::BRepOffset_SimpleOffset_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBRepOffsetSimpleOffset;
+pub use crate::ffi_types::HandleBRepOffsetSimpleOffset;
 
 unsafe impl crate::CppDeletable for HandleBRepOffsetSimpleOffset {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepOffsetSimpleOffset_destructor(ptr);
+        crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_destructor(ptr);
     }
 }
 
 impl HandleBRepOffsetSimpleOffset {
     /// Dereference this Handle to access the underlying BRepOffset_SimpleOffset
-    pub fn get(&self) -> &crate::ffi::BRepOffset_SimpleOffset {
+    pub fn get(&self) -> &crate::ffi_types::BRepOffset_SimpleOffset {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepOffsetSimpleOffset_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepOffset_SimpleOffset
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepOffset_SimpleOffset {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepOffset_SimpleOffset {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepOffsetSimpleOffset_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<BRepTools_Modification>
     pub fn to_handle_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepToolsModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepToolsModification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_to_HandleBRepToolsModification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepOffset_SimpleOffset> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(
+                crate::ffi_extern_TKOffset::HandleBRepOffsetSimpleOffset_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2250,11 +2372,11 @@ impl HandleBRepOffsetSimpleOffset {
 // ========================
 
 /// **Source:** `BRepOffset_Tool.hxx`:42 - `BRepOffset_Tool`
-pub use crate::ffi::BRepOffset_Tool as Tool;
+pub use crate::ffi_types::BRepOffset_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepOffset_Tool_destructor(ptr);
+        crate::ffi_extern_TKOffset::BRepOffset_Tool_destructor(ptr);
     }
 }
 
@@ -2263,7 +2385,9 @@ impl Tool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Tool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Tool_ctor(),
+            ))
         }
     }
 
@@ -2275,7 +2399,9 @@ impl Tool {
         V1: &mut crate::topo_ds::Vertex,
         V2: &mut crate::topo_ds::Vertex,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepOffset_Tool_edge_vertices(E, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_edge_vertices(E, V1, V2)
+        })
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:56 - `BRepOffset_Tool::OrientSection()`
@@ -2292,7 +2418,13 @@ impl Tool {
         let mut O1_i32_: i32 = (*O1).into();
         let mut O2_i32_: i32 = (*O2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_orient_section(E, F1, F2, &mut O1_i32_, &mut O2_i32_)
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_orient_section(
+                E,
+                F1,
+                F2,
+                &mut O1_i32_,
+                &mut O2_i32_,
+            )
         });
         *O1 = crate::top_abs::Orientation::try_from(O1_i32_).unwrap();
         *O2 = crate::top_abs::Orientation::try_from(O2_i32_).unwrap();
@@ -2306,11 +2438,11 @@ impl Tool {
     pub fn find_common_shapes_face2_listofshape2(
         theF1: &crate::topo_ds::Face,
         theF2: &crate::topo_ds::Face,
-        theLE: &mut crate::ffi::TopTools_ListOfShape,
-        theLV: &mut crate::ffi::TopTools_ListOfShape,
+        theLE: &mut crate::ffi_types::TopTools_ListOfShape,
+        theLV: &mut crate::ffi_types::TopTools_ListOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Tool_find_common_shapes_face2_listofshape2(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_find_common_shapes_face2_listofshape2(
                 theF1, theF2, theLE, theLV,
             )
         })
@@ -2324,15 +2456,10 @@ impl Tool {
         theS1: &crate::topo_ds::Shape,
         theS2: &crate::topo_ds::Shape,
         theType: crate::top_abs::ShapeEnum,
-        theLSC: &mut crate::ffi::TopTools_ListOfShape,
+        theLSC: &mut crate::ffi_types::TopTools_ListOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Tool_find_common_shapes_shape2_shapeenum_listofshape(
-                theS1,
-                theS2,
-                theType.into(),
-                theLSC,
-            )
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_find_common_shapes_shape2_shapeenum_listofshape(theS1, theS2, theType.into(), theLSC)
         })
     }
 
@@ -2344,15 +2471,15 @@ impl Tool {
     pub fn inter3_d(
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        LInt1: &mut crate::ffi::TopTools_ListOfShape,
-        LInt2: &mut crate::ffi::TopTools_ListOfShape,
+        LInt1: &mut crate::ffi_types::TopTools_ListOfShape,
+        LInt2: &mut crate::ffi_types::TopTools_ListOfShape,
         Side: crate::top_abs::State,
         RefEdge: &crate::topo_ds::Edge,
         RefFace1: &crate::topo_ds::Face,
         RefFace2: &crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_inter3_d(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_inter3_d(
                 F1,
                 F2,
                 LInt1,
@@ -2373,14 +2500,14 @@ impl Tool {
     pub fn try_project(
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        Edges: &crate::ffi::TopTools_ListOfShape,
-        LInt1: &mut crate::ffi::TopTools_ListOfShape,
-        LInt2: &mut crate::ffi::TopTools_ListOfShape,
+        Edges: &crate::ffi_types::TopTools_ListOfShape,
+        LInt1: &mut crate::ffi_types::TopTools_ListOfShape,
+        LInt2: &mut crate::ffi_types::TopTools_ListOfShape,
         Side: crate::top_abs::State,
         TolConf: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Tool_try_project(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_try_project(
                 F1,
                 F2,
                 Edges,
@@ -2396,12 +2523,18 @@ impl Tool {
     pub fn pipe_inter(
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        LInt1: &mut crate::ffi::TopTools_ListOfShape,
-        LInt2: &mut crate::ffi::TopTools_ListOfShape,
+        LInt1: &mut crate::ffi_types::TopTools_ListOfShape,
+        LInt2: &mut crate::ffi_types::TopTools_ListOfShape,
         Side: crate::top_abs::State,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_pipe_inter(F1, F2, LInt1, LInt2, Side.into())
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_pipe_inter(
+                F1,
+                F2,
+                LInt1,
+                LInt2,
+                Side.into(),
+            )
         })
     }
 
@@ -2410,22 +2543,30 @@ impl Tool {
         F: &crate::topo_ds::Face,
         E1: &crate::topo_ds::Edge,
         E2: &crate::topo_ds::Edge,
-        LV: &mut crate::ffi::TopTools_ListOfShape,
+        LV: &mut crate::ffi_types::TopTools_ListOfShape,
         Tol: f64,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepOffset_Tool_inter2d(F, E1, E2, LV, Tol) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_inter2d(F, E1, E2, LV, Tol)
+        })
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:116 - `BRepOffset_Tool::InterOrExtent()`
     pub fn inter_or_extent(
         F1: &crate::topo_ds::Face,
         F2: &crate::topo_ds::Face,
-        LInt1: &mut crate::ffi::TopTools_ListOfShape,
-        LInt2: &mut crate::ffi::TopTools_ListOfShape,
+        LInt1: &mut crate::ffi_types::TopTools_ListOfShape,
+        LInt2: &mut crate::ffi_types::TopTools_ListOfShape,
         Side: crate::top_abs::State,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_inter_or_extent(F1, F2, LInt1, LInt2, Side.into())
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_inter_or_extent(
+                F1,
+                F2,
+                LInt1,
+                LInt2,
+                Side.into(),
+            )
         })
     }
 
@@ -2438,7 +2579,7 @@ impl Tool {
         enlargeVlast: &mut bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_check_bounds(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_check_bounds(
                 F,
                 Analyse,
                 enlargeU,
@@ -2480,7 +2621,7 @@ impl Tool {
         theLenAfterVlast: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Tool_en_large_face(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_en_large_face(
                 F,
                 NF,
                 ChangeGeom,
@@ -2500,14 +2641,14 @@ impl Tool {
     /// **Source:** `BRepOffset_Tool.hxx`:158 - `BRepOffset_Tool::ExtentFace()`
     pub fn extent_face(
         F: &crate::topo_ds::Face,
-        ConstShapes: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        ToBuild: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        ConstShapes: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        ToBuild: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
         Side: crate::top_abs::State,
         TolConf: f64,
         NF: &mut crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_extent_face(
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_extent_face(
                 F,
                 ConstShapes,
                 ToBuild,
@@ -2527,11 +2668,11 @@ impl Tool {
     pub fn build_neighbour(
         W: &crate::topo_ds::Wire,
         F: &crate::topo_ds::Face,
-        NOnV1: &mut crate::ffi::TopTools_DataMapOfShapeShape,
-        NOnV2: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+        NOnV1: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+        NOnV2: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_build_neighbour(W, F, NOnV1, NOnV2)
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_build_neighbour(W, F, NOnV1, NOnV2)
         })
     }
 
@@ -2541,9 +2682,11 @@ impl Tool {
     /// An Edge is Store only one Time for a vertex.
     pub fn map_vertex_edges(
         S: &crate::topo_ds::Shape,
-        MVE: &mut crate::ffi::TopTools_DataMapOfShapeListOfShape,
+        MVE: &mut crate::ffi_types::TopTools_DataMapOfShapeListOfShape,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepOffset_Tool_map_vertex_edges(S, MVE) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_map_vertex_edges(S, MVE)
+        })
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:187 - `BRepOffset_Tool::Deboucle3D()`
@@ -2555,31 +2698,33 @@ impl Tool {
     /// in this version only the first point is implemented.
     pub fn deboucle3_d(
         S: &crate::topo_ds::Shape,
-        Boundary: &crate::ffi::TopTools_MapOfShape,
+        Boundary: &crate::ffi_types::TopTools_MapOfShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepOffset_Tool_deboucle3_d(
-                S, Boundary,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKOffset::BRepOffset_Tool_deboucle3_d(S, Boundary),
+            ))
         }
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:190 - `BRepOffset_Tool::CorrectOrientation()`
     pub fn correct_orientation(
         SI: &crate::topo_ds::Shape,
-        NewEdges: &crate::ffi::TopTools_IndexedMapOfShape,
-        AsDes: &mut crate::ffi::HandleBRepAlgoAsDes,
+        NewEdges: &crate::ffi_types::TopTools_IndexedMapOfShape,
+        AsDes: &mut crate::ffi_types::HandleBRepAlgoAsDes,
         InitOffset: &mut crate::b_rep_algo::Image,
         Offset: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepOffset_Tool_correct_orientation(SI, NewEdges, AsDes, InitOffset, Offset)
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_correct_orientation(
+                SI, NewEdges, AsDes, InitOffset, Offset,
+            )
         })
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:196 - `BRepOffset_Tool::Gabarit()`
-    pub fn gabarit(aCurve: &crate::ffi::HandleGeomCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepOffset_Tool_gabarit(aCurve) })
+    pub fn gabarit(aCurve: &crate::ffi_types::HandleGeomCurve) -> f64 {
+        crate::check_result(unsafe { crate::ffi_extern_TKOffset::BRepOffset_Tool_gabarit(aCurve) })
     }
 
     /// **Source:** `BRepOffset_Tool.hxx`:200 - `BRepOffset_Tool::CheckPlanesNormals()`
@@ -2591,7 +2736,9 @@ impl Tool {
         theTolAng: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepOffset_Tool_check_planes_normals(theFace1, theFace2, theTolAng)
+            crate::ffi_extern_TKOffset::BRepOffset_Tool_check_planes_normals(
+                theFace1, theFace2, theTolAng,
+            )
         })
     }
 }
@@ -2600,7 +2747,7 @@ impl Tool {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     BRepOffset_DataMapOfShapeOffset as DataMapOfShapeOffset,
     BRepOffset_ListOfInterval as ListOfInterval,
 };

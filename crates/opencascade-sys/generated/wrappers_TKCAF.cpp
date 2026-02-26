@@ -4,7 +4,7 @@
 #include "occt_preamble.hxx"
 
 #include <AppStd_Application.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_ListOfDocument.hxx>

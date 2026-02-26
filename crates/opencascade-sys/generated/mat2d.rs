@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From MAT2d_BiInt.hxx
@@ -15,11 +15,11 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `MAT2d_BiInt.hxx`:28 - `MAT2d_BiInt`
 /// BiInt is a set of two integers.
-pub use crate::ffi::MAT2d_BiInt as BiInt;
+pub use crate::ffi_types::MAT2d_BiInt as BiInt;
 
 unsafe impl crate::CppDeletable for BiInt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_BiInt_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_destructor(ptr);
     }
 }
 
@@ -27,39 +27,45 @@ impl BiInt {
     /// **Source:** `MAT2d_BiInt.hxx`:33 - `MAT2d_BiInt::MAT2d_BiInt()`
     pub fn new_int2(I1: i32, I2: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_BiInt_ctor_int2(
-                I1, I2,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_ctor_int2(I1, I2),
+            ))
         }
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:35 - `MAT2d_BiInt::FirstIndex()`
     pub fn first_index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::MAT2d_BiInt_first_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_first_index(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:37 - `MAT2d_BiInt::SecondIndex()`
     pub fn second_index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::MAT2d_BiInt_second_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_second_index(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:39 - `MAT2d_BiInt::FirstIndex()`
     pub fn first_index_int(&mut self, I1: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_BiInt_first_index_int(self as *mut Self, I1)
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_first_index_int(self as *mut Self, I1)
         })
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:41 - `MAT2d_BiInt::SecondIndex()`
     pub fn second_index_int(&mut self, I2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_BiInt_second_index_int(self as *mut Self, I2)
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_second_index_int(self as *mut Self, I2)
         })
     }
 
     /// **Source:** `MAT2d_BiInt.hxx`:43 - `MAT2d_BiInt::IsEqual()`
     pub fn is_equal(&self, B: &BiInt) -> bool {
-        crate::check_result(unsafe { crate::ffi::MAT2d_BiInt_is_equal(self as *const Self, B) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_BiInt_is_equal(self as *const Self, B)
+        })
     }
 }
 
@@ -71,11 +77,11 @@ impl BiInt {
 /// Constructs a circuit on a set of lines.
 /// EquiCircuit gives a Circuit passing by all the lines
 /// in a set and all the connexions of the minipath associated.
-pub use crate::ffi::MAT2d_Circuit as Circuit;
+pub use crate::ffi_types::MAT2d_Circuit as Circuit;
 
 unsafe impl crate::CppDeletable for Circuit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_Circuit_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_destructor(ptr);
     }
 }
 
@@ -87,7 +93,10 @@ impl Circuit {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MAT2d_Circuit_ctor_jointype_bool(aJoinType.into(), IsOpenResult),
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_ctor_jointype_bool(
+                    aJoinType.into(),
+                    IsOpenResult,
+                ),
             ))
         }
     }
@@ -100,13 +109,13 @@ impl Circuit {
     /// **Source:** `MAT2d_Circuit.hxx`:50 - `MAT2d_Circuit::Perform()`
     pub fn perform(
         &mut self,
-        aFigure: &mut crate::ffi::MAT2d_SequenceOfSequenceOfGeometry,
-        IsClosed: &crate::ffi::TColStd_SequenceOfBoolean,
+        aFigure: &mut crate::ffi_types::MAT2d_SequenceOfSequenceOfGeometry,
+        IsClosed: &crate::ffi_types::TColStd_SequenceOfBoolean,
         IndRefLine: i32,
         Trigo: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Circuit_perform(
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_perform(
                 self as *mut Self,
                 aFigure,
                 IsClosed,
@@ -120,18 +129,17 @@ impl Circuit {
     /// Returns the Number of Items .
     pub fn number_of_items(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_number_of_items(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_number_of_items(self as *const Self)
         })
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:59 - `MAT2d_Circuit::Value()`
     /// Returns the item at position <Index> in <me>.
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Circuit_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_value(self as *const Self, Index),
+            ))
         }
     }
 
@@ -139,7 +147,7 @@ impl Circuit {
     /// Returns the number of items on the line <IndexLine>.
     pub fn line_length(&self, IndexLine: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_line_length(self as *const Self, IndexLine)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_line_length(self as *const Self, IndexLine)
         })
     }
 
@@ -151,9 +159,9 @@ impl Circuit {
         &self,
         IndLine: i32,
         IndCurve: i32,
-    ) -> &crate::ffi::TColStd_SequenceOfInteger {
+    ) -> &crate::ffi_types::TColStd_SequenceOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Circuit_ref_to_equi(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_ref_to_equi(
                 self as *const Self,
                 IndLine,
                 IndCurve,
@@ -163,12 +171,11 @@ impl Circuit {
 
     /// **Source:** `MAT2d_Circuit.hxx`:71 - `MAT2d_Circuit::Connexion()`
     /// Returns the Connexion on the item <Index> in me.
-    pub fn connexion(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
+    pub fn connexion(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dConnexion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Circuit_connexion(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_connexion(self as *const Self, Index),
+            ))
         }
     }
 
@@ -177,35 +184,41 @@ impl Circuit {
     /// in <me>.
     pub fn connexion_on(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_connexion_on(self as *const Self, Index)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_connexion_on(self as *const Self, Index)
         })
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Circuit_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::MAT2d_Circuit_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `MAT2d_Circuit.hxx`:77 - `MAT2d_Circuit::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::MAT2d_Circuit_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::MAT2d_Circuit_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -214,34 +227,42 @@ impl Circuit {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::MAT2d_Circuit_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMAT2dCircuit> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dCircuit> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Circuit_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -249,7 +270,7 @@ impl Circuit {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::MAT2d_Circuit_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -262,58 +283,72 @@ impl Circuit {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Circuit_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Circuit_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMAT2dCircuit;
+pub use crate::ffi_types::HandleMAT2dCircuit;
 
 unsafe impl crate::CppDeletable for HandleMAT2dCircuit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMAT2dCircuit_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_destructor(ptr);
     }
 }
 
 impl HandleMAT2dCircuit {
     /// Dereference this Handle to access the underlying MAT2d_Circuit
-    pub fn get(&self) -> &crate::ffi::MAT2d_Circuit {
-        unsafe { &*crate::check_result(crate::ffi::HandleMAT2dCircuit_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::MAT2d_Circuit {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT2d_Circuit
-    pub fn get_mut(&mut self) -> &mut crate::ffi::MAT2d_Circuit {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT2d_Circuit {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMAT2dCircuit_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<MAT2d_Circuit> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMAT2dCircuit_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::HandleMAT2dCircuit_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -328,11 +363,11 @@ impl HandleMAT2dCircuit {
 /// of  lines. It s contains two  points and their paramatric
 /// definitions on the lines.
 /// The items can be points or curves.
-pub use crate::ffi::MAT2d_Connexion as Connexion;
+pub use crate::ffi_types::MAT2d_Connexion as Connexion;
 
 unsafe impl crate::CppDeletable for Connexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_Connexion_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_destructor(ptr);
     }
 }
 
@@ -340,7 +375,9 @@ impl Connexion {
     /// **Source:** `MAT2d_Connexion.hxx`:38 - `MAT2d_Connexion::MAT2d_Connexion()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Connexion_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_ctor(),
+            ))
         }
     }
 
@@ -358,7 +395,7 @@ impl Connexion {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MAT2d_Connexion_ctor_int4_real3_pnt2d2(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_ctor_int4_real3_pnt2d2(
                     LineA,
                     LineB,
                     ItemA,
@@ -377,7 +414,7 @@ impl Connexion {
     /// Returns the Index on the first line.
     pub fn index_first_line(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_first_line(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_first_line(self as *const Self)
         })
     }
 
@@ -385,7 +422,7 @@ impl Connexion {
     /// Returns the Index on the Second line.
     pub fn index_second_line(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_second_line(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_second_line(self as *const Self)
         })
     }
 
@@ -393,7 +430,7 @@ impl Connexion {
     /// Returns the Index of the item on the first line.
     pub fn index_item_on_first(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_item_on_first(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_item_on_first(self as *const Self)
         })
     }
 
@@ -401,7 +438,7 @@ impl Connexion {
     /// Returns the Index of the item on the second line.
     pub fn index_item_on_second(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_item_on_second(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_item_on_second(self as *const Self)
         })
     }
 
@@ -409,7 +446,7 @@ impl Connexion {
     /// Returns the parameter of the point on the firstline.
     pub fn parameter_on_first(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_parameter_on_first(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_parameter_on_first(self as *const Self)
         })
     }
 
@@ -417,7 +454,7 @@ impl Connexion {
     /// Returns the parameter of the point on the secondline.
     pub fn parameter_on_second(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_parameter_on_second(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_parameter_on_second(self as *const Self)
         })
     }
 
@@ -426,7 +463,7 @@ impl Connexion {
     pub fn point_on_first(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MAT2d_Connexion_point_on_first(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_point_on_first(self as *const Self),
             ))
         }
     }
@@ -436,7 +473,7 @@ impl Connexion {
     pub fn point_on_second(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MAT2d_Connexion_point_on_second(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_point_on_second(self as *const Self),
             ))
         }
     }
@@ -444,69 +481,95 @@ impl Connexion {
     /// **Source:** `MAT2d_Connexion.hxx`:75 - `MAT2d_Connexion::Distance()`
     /// Returns the distance between the two points.
     pub fn distance(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::MAT2d_Connexion_distance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_distance(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:77 - `MAT2d_Connexion::IndexFirstLine()`
     pub fn index_first_line_int(&mut self, anIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_first_line_int(self as *mut Self, anIndex)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_first_line_int(
+                self as *mut Self,
+                anIndex,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:79 - `MAT2d_Connexion::IndexSecondLine()`
     pub fn index_second_line_int(&mut self, anIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_second_line_int(self as *mut Self, anIndex)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_second_line_int(
+                self as *mut Self,
+                anIndex,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:81 - `MAT2d_Connexion::IndexItemOnFirst()`
     pub fn index_item_on_first_int(&mut self, anIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_item_on_first_int(self as *mut Self, anIndex)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_item_on_first_int(
+                self as *mut Self,
+                anIndex,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:83 - `MAT2d_Connexion::IndexItemOnSecond()`
     pub fn index_item_on_second_int(&mut self, anIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_index_item_on_second_int(self as *mut Self, anIndex)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_index_item_on_second_int(
+                self as *mut Self,
+                anIndex,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:85 - `MAT2d_Connexion::ParameterOnFirst()`
     pub fn parameter_on_first_real(&mut self, aParameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_parameter_on_first_real(self as *mut Self, aParameter)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_parameter_on_first_real(
+                self as *mut Self,
+                aParameter,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:87 - `MAT2d_Connexion::ParameterOnSecond()`
     pub fn parameter_on_second_real(&mut self, aParameter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_parameter_on_second_real(self as *mut Self, aParameter)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_parameter_on_second_real(
+                self as *mut Self,
+                aParameter,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:89 - `MAT2d_Connexion::PointOnFirst()`
     pub fn point_on_first_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_point_on_first_pnt2d(self as *mut Self, aPoint)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_point_on_first_pnt2d(
+                self as *mut Self,
+                aPoint,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:91 - `MAT2d_Connexion::PointOnSecond()`
     pub fn point_on_second_pnt2d(&mut self, aPoint: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_point_on_second_pnt2d(self as *mut Self, aPoint)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_point_on_second_pnt2d(
+                self as *mut Self,
+                aPoint,
+            )
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:93 - `MAT2d_Connexion::Distance()`
     pub fn distance_real(&mut self, aDistance: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_distance_real(self as *mut Self, aDistance)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_distance_real(self as *mut Self, aDistance)
         })
     }
 
@@ -514,11 +577,11 @@ impl Connexion {
     /// Returns the reverse connexion of <me>.
     /// the firstpoint  is the secondpoint.
     /// the secondpoint is the firstpoint.
-    pub fn reverse(&self) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
+    pub fn reverse(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dConnexion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Connexion_reverse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_reverse(self as *const Self),
+            ))
         }
     }
 
@@ -528,9 +591,17 @@ impl Connexion {
     /// is after the firstpoint of <aConnexion> on the line.
     /// <aSense> = 1 if <aConnexion> is on the Left of its
     /// firstline, else <aSense> = -1.
-    pub fn is_after(&self, aConnexion: &crate::ffi::HandleMAT2dConnexion, aSense: f64) -> bool {
+    pub fn is_after(
+        &self,
+        aConnexion: &crate::ffi_types::HandleMAT2dConnexion,
+        aSense: f64,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_is_after(self as *const Self, aConnexion, aSense)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_is_after(
+                self as *const Self,
+                aConnexion,
+                aSense,
+            )
         })
     }
 
@@ -538,14 +609,16 @@ impl Connexion {
     /// Print <me>.
     pub fn dump(&self, Deep: i32, Offset: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_dump(self as *const Self, Deep, Offset)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_dump(self as *const Self, Deep, Offset)
         })
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Connexion_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -553,7 +626,7 @@ impl Connexion {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::MAT2d_Connexion_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -561,50 +634,64 @@ impl Connexion {
     }
 
     /// **Source:** `MAT2d_Connexion.hxx`:112 - `MAT2d_Connexion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::MAT2d_Connexion_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::MAT2d_Connexion_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::MAT2d_Connexion_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dConnexion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Connexion_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -612,7 +699,7 @@ impl Connexion {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::MAT2d_Connexion_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -625,58 +712,72 @@ impl Connexion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Connexion_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Connexion_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleMAT2dConnexion;
+pub use crate::ffi_types::HandleMAT2dConnexion;
 
 unsafe impl crate::CppDeletable for HandleMAT2dConnexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleMAT2dConnexion_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_destructor(ptr);
     }
 }
 
 impl HandleMAT2dConnexion {
     /// Dereference this Handle to access the underlying MAT2d_Connexion
-    pub fn get(&self) -> &crate::ffi::MAT2d_Connexion {
-        unsafe { &*crate::check_result(crate::ffi::HandleMAT2dConnexion_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::MAT2d_Connexion {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying MAT2d_Connexion
-    pub fn get_mut(&mut self) -> &mut crate::ffi::MAT2d_Connexion {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::MAT2d_Connexion {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleMAT2dConnexion_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<MAT2d_Connexion> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleMAT2dConnexion_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::HandleMAT2dConnexion_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -690,25 +791,29 @@ impl HandleMAT2dConnexion {
 /// Cuts a curve at the extremas of curvature
 /// and at the inflections. Constructs a trimmed
 /// Curve for each interval.
-pub use crate::ffi::MAT2d_CutCurve as CutCurve;
+pub use crate::ffi_types::MAT2d_CutCurve as CutCurve;
 
 unsafe impl crate::CppDeletable for CutCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_CutCurve_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_destructor(ptr);
     }
 }
 
 impl CutCurve {
     /// **Source:** `MAT2d_CutCurve.hxx`:38 - `MAT2d_CutCurve::MAT2d_CutCurve()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_CutCurve_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `MAT2d_CutCurve.hxx`:40 - `MAT2d_CutCurve::MAT2d_CutCurve()`
-    pub fn new_handlegeom2dcurve(C: &crate::ffi::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeom2dcurve(C: &crate::ffi_types::HandleGeom2dCurve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::MAT2d_CutCurve_ctor_handlegeom2dcurve(C),
+                crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_ctor_handlegeom2dcurve(C),
             ))
         }
     }
@@ -716,9 +821,12 @@ impl CutCurve {
     /// **Source:** `MAT2d_CutCurve.hxx`:44 - `MAT2d_CutCurve::Perform()`
     /// Cuts a curve at the extremas of curvature
     /// and at the inflections.
-    pub fn perform_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+    pub fn perform_handlegeom2dcurve(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_CutCurve_perform_handlegeom2dcurve(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_perform_handlegeom2dcurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
@@ -727,11 +835,11 @@ impl CutCurve {
     /// of curvature where the concavity is on <aSide>.
     pub fn perform_handlegeom2dcurve_side(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         aSide: crate::mat::Side,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_CutCurve_perform_handlegeom2dcurve_side(
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_perform_handlegeom2dcurve_side(
                 self as *mut Self,
                 C,
                 aSide.into(),
@@ -741,16 +849,18 @@ impl CutCurve {
 
     /// **Source:** `MAT2d_CutCurve.hxx`:51 - `MAT2d_CutCurve::PerformInf()`
     /// Cuts a curve at the inflections.
-    pub fn perform_inf(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+    pub fn perform_inf(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_CutCurve_perform_inf(self as *mut Self, C)
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_perform_inf(self as *mut Self, C)
         })
     }
 
     /// **Source:** `MAT2d_CutCurve.hxx`:54 - `MAT2d_CutCurve::UnModified()`
     /// Returns True if the curve is not cut.
     pub fn un_modified(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::MAT2d_CutCurve_un_modified(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_un_modified(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_CutCurve.hxx`:60 - `MAT2d_CutCurve::NbCurves()`
@@ -759,18 +869,19 @@ impl CutCurve {
     ///
     /// raises if the Curve is UnModified;
     pub fn nb_curves(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::MAT2d_CutCurve_nb_curves(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_nb_curves(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_CutCurve.hxx`:64 - `MAT2d_CutCurve::Value()`
     /// Returns the Indexth curve.
     /// raises if Index not in the range [1,NbCurves()]
-    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dTrimmedCurve> {
+    pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dTrimmedCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_CutCurve_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_CutCurve_value(self as *const Self, Index),
+            ))
         }
     }
 }
@@ -782,11 +893,11 @@ impl CutCurve {
 /// **Source:** `MAT2d_Mat2d.hxx`:36 - `MAT2d_Mat2d`
 /// this class contains the generic algorithm of
 /// computation of the bisecting locus.
-pub use crate::ffi::MAT2d_Mat2d as Mat2d;
+pub use crate::ffi_types::MAT2d_Mat2d as Mat2d;
 
 unsafe impl crate::CppDeletable for Mat2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_Mat2d_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_destructor(ptr);
     }
 }
 
@@ -795,9 +906,9 @@ impl Mat2d {
     /// Empty constructor.
     pub fn new_bool(IsOpenResult: bool) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Mat2d_ctor_bool(
-                IsOpenResult,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_ctor_bool(IsOpenResult),
+            ))
         }
     }
 
@@ -811,7 +922,7 @@ impl Mat2d {
     /// Algorithm of computation of the bisecting locus.
     pub fn create_mat(&mut self, aTool: &mut Tool2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Mat2d_create_mat(self as *mut Self, aTool)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_create_mat(self as *mut Self, aTool)
         })
     }
 
@@ -820,42 +931,50 @@ impl Mat2d {
     /// open wire.
     pub fn create_mat_open(&mut self, aTool: &mut Tool2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Mat2d_create_mat_open(self as *mut Self, aTool)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_create_mat_open(self as *mut Self, aTool)
         })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:54 - `MAT2d_Mat2d::IsDone()`
     /// Returns <TRUE> if CreateMat has succeeded.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::MAT2d_Mat2d_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:58 - `MAT2d_Mat2d::Init()`
     /// Initialize an iterator on the set of the roots
     /// of the trees of bisectors.
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::MAT2d_Mat2d_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:61 - `MAT2d_Mat2d::More()`
     /// Return False if there is no more roots.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::MAT2d_Mat2d_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_more(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:64 - `MAT2d_Mat2d::Next()`
     /// Move to the next root.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::MAT2d_Mat2d_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:67 - `MAT2d_Mat2d::Bisector()`
     /// Returns the current root.
-    pub fn bisector(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBisector> {
+    pub fn bisector(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBisector> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Mat2d_bisector(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_bisector(self as *const Self),
+            ))
         }
     }
 
@@ -863,14 +982,16 @@ impl Mat2d {
     /// Returns True if there are semi_infinite bisectors.
     /// So there is a tree for each semi_infinte bisector.
     pub fn semi_infinite(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::MAT2d_Mat2d_semi_infinite(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_semi_infinite(self as *const Self)
+        })
     }
 
     /// **Source:** `MAT2d_Mat2d.hxx`:74 - `MAT2d_Mat2d::NumberOfBisectors()`
     /// Returns the total number of bisectors.
     pub fn number_of_bisectors(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Mat2d_number_of_bisectors(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Mat2d_number_of_bisectors(self as *const Self)
         })
     }
 }
@@ -893,18 +1014,22 @@ impl Mat2d {
 /// The children of a line are ordered by the relation
 /// <IsAfter> defined on the connexions.
 /// (See MAT2s_Connexion.cdl).
-pub use crate::ffi::MAT2d_MiniPath as MiniPath;
+pub use crate::ffi_types::MAT2d_MiniPath as MiniPath;
 
 unsafe impl crate::CppDeletable for MiniPath {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_MiniPath_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_destructor(ptr);
     }
 }
 
 impl MiniPath {
     /// **Source:** `MAT2d_MiniPath.hxx`:49 - `MAT2d_MiniPath::MAT2d_MiniPath()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_MiniPath_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:55 - `MAT2d_MiniPath::Perform()`
@@ -914,12 +1039,17 @@ impl MiniPath {
     /// trigonometric  sense.
     pub fn perform(
         &mut self,
-        Figure: &crate::ffi::MAT2d_SequenceOfSequenceOfGeometry,
+        Figure: &crate::ffi_types::MAT2d_SequenceOfSequenceOfGeometry,
         IndStart: i32,
         Sense: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_MiniPath_perform(self as *mut Self, Figure, IndStart, Sense)
+            crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_perform(
+                self as *mut Self,
+                Figure,
+                IndStart,
+                Sense,
+            )
         })
     }
 
@@ -938,15 +1068,19 @@ impl MiniPath {
     /// E->F, F->E, E->A.
     pub fn run_on_connexions(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_MiniPath_run_on_connexions(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_run_on_connexions(self as *mut Self)
         })
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:75 - `MAT2d_MiniPath::Path()`
     /// Returns  the  sequence of  connexions corresponding to
     /// the  path.
-    pub fn path(&self) -> &crate::ffi::MAT2d_SequenceOfConnexion {
-        unsafe { &*(crate::check_result(crate::ffi::MAT2d_MiniPath_path(self as *const Self))) }
+    pub fn path(&self) -> &crate::ffi_types::MAT2d_SequenceOfConnexion {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_path(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:79 - `MAT2d_MiniPath::IsConnexionsFrom()`
@@ -954,19 +1088,27 @@ impl MiniPath {
     /// on line designed by <Index>.
     pub fn is_connexions_from(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_MiniPath_is_connexions_from(self as *const Self, Index)
+            crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_is_connexions_from(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:83 - `MAT2d_MiniPath::ConnexionsFrom()`
     /// Returns    the  connexions  which   start  on line
     /// designed  by <Index>.
-    pub fn connexions_from(&mut self, Index: i32) -> &mut crate::ffi::MAT2d_SequenceOfConnexion {
+    pub fn connexions_from(
+        &mut self,
+        Index: i32,
+    ) -> &mut crate::ffi_types::MAT2d_SequenceOfConnexion {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::MAT2d_MiniPath_connexions_from(
-                self as *mut Self,
-                Index,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_connexions_from(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -975,19 +1117,21 @@ impl MiniPath {
     /// the root.
     pub fn is_root(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_MiniPath_is_root(self as *const Self, Index)
+            crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_is_root(self as *const Self, Index)
         })
     }
 
     /// **Source:** `MAT2d_MiniPath.hxx`:91 - `MAT2d_MiniPath::Father()`
     /// Returns    the  connexion  which ends  on line
     /// designed  by <Index>.
-    pub fn father(&mut self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleMAT2dConnexion> {
+    pub fn father(
+        &mut self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dConnexion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_MiniPath_father(
-                self as *mut Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_MiniPath_father(self as *mut Self, Index),
+            ))
         }
     }
 }
@@ -999,11 +1143,11 @@ impl MiniPath {
 /// **Source:** `MAT2d_Tool2d.hxx`:40 - `MAT2d_Tool2d`
 /// Set of the methods useful for the MAT's computation.
 /// Tool2d contains the geometry of the bisecting locus.
-pub use crate::ffi::MAT2d_Tool2d as Tool2d;
+pub use crate::ffi_types::MAT2d_Tool2d as Tool2d;
 
 unsafe impl crate::CppDeletable for Tool2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::MAT2d_Tool2d_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_destructor(ptr);
     }
 }
 
@@ -1011,21 +1155,28 @@ impl Tool2d {
     /// **Source:** `MAT2d_Tool2d.hxx`:46 - `MAT2d_Tool2d::MAT2d_Tool2d()`
     /// Empty Constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Tool2d_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:49 - `MAT2d_Tool2d::Sense()`
     /// <aSide> defines the side of the computation of the map.
     pub fn sense(&mut self, aside: crate::mat::Side) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_sense(self as *mut Self, aside.into())
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_sense(self as *mut Self, aside.into())
         })
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:51 - `MAT2d_Tool2d::SetJoinType()`
     pub fn set_join_type(&mut self, aJoinType: crate::geom_abs::JoinType) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_set_join_type(self as *mut Self, aJoinType.into())
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_set_join_type(
+                self as *mut Self,
+                aJoinType.into(),
+            )
         })
     }
 
@@ -1033,9 +1184,9 @@ impl Tool2d {
     /// InitItems cuts the line in Items.
     /// this Items are the geometrics representations of
     /// the BasicElts from MAT.
-    pub fn init_items(&mut self, aCircuit: &crate::ffi::HandleMAT2dCircuit) {
+    pub fn init_items(&mut self, aCircuit: &crate::ffi_types::HandleMAT2dCircuit) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_init_items(self as *mut Self, aCircuit)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_init_items(self as *mut Self, aCircuit)
         })
     }
 
@@ -1043,7 +1194,7 @@ impl Tool2d {
     /// Returns the Number of Items .
     pub fn number_of_items(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_number_of_items(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_number_of_items(self as *const Self)
         })
     }
 
@@ -1051,7 +1202,7 @@ impl Tool2d {
     /// Returns tolerance to test the confusion of two points.
     pub fn tolerance_of_confusion(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_tolerance_of_confusion(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_tolerance_of_confusion(self as *const Self)
         })
     }
 
@@ -1062,7 +1213,7 @@ impl Tool2d {
     /// Returns the index of this point in <theGeomPnts>.
     pub fn first_point(&mut self, anitem: i32, dist: &mut f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_first_point(self as *mut Self, anitem, dist)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_first_point(self as *mut Self, anitem, dist)
         })
     }
 
@@ -1072,7 +1223,11 @@ impl Tool2d {
     /// <theGeomVecs>
     pub fn tangent_before(&mut self, anitem: i32, IsOpenResult: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_tangent_before(self as *mut Self, anitem, IsOpenResult)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_tangent_before(
+                self as *mut Self,
+                anitem,
+                IsOpenResult,
+            )
         })
     }
 
@@ -1082,7 +1237,11 @@ impl Tool2d {
     /// <theGeomVecs>
     pub fn tangent_after(&mut self, anitem: i32, IsOpenResult: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_tangent_after(self as *mut Self, anitem, IsOpenResult)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_tangent_after(
+                self as *mut Self,
+                anitem,
+                IsOpenResult,
+            )
         })
     }
 
@@ -1092,15 +1251,15 @@ impl Tool2d {
     /// <theGeomVecs>
     pub fn tangent(&mut self, bisector: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_tangent(self as *mut Self, bisector)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_tangent(self as *mut Self, bisector)
         })
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:88 - `MAT2d_Tool2d::CreateBisector()`
     /// Creates the geometric bisector defined by <abisector>.
-    pub fn create_bisector(&mut self, abisector: &crate::ffi::HandleMATBisector) {
+    pub fn create_bisector(&mut self, abisector: &crate::ffi_types::HandleMATBisector) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_create_bisector(self as *mut Self, abisector)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_create_bisector(self as *mut Self, abisector)
         })
     }
 
@@ -1111,10 +1270,13 @@ impl Tool2d {
     /// else Return True.
     pub fn trim_bisector_handlematbisector(
         &mut self,
-        abisector: &crate::ffi::HandleMATBisector,
+        abisector: &crate::ffi_types::HandleMATBisector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_trim_bisector_handlematbisector(self as *mut Self, abisector)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_trim_bisector_handlematbisector(
+                self as *mut Self,
+                abisector,
+            )
         })
     }
 
@@ -1125,11 +1287,11 @@ impl Tool2d {
     /// else Return True.
     pub fn trim_bisector_handlematbisector_int(
         &mut self,
-        abisector: &crate::ffi::HandleMATBisector,
+        abisector: &crate::ffi_types::HandleMATBisector,
         apoint: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_trim_bisector_handlematbisector_int(
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_trim_bisector_handlematbisector_int(
                 self as *mut Self,
                 abisector,
                 apoint,
@@ -1146,12 +1308,12 @@ impl Tool2d {
     /// from the bisector else Return <RealLast>.
     pub fn intersect_bisector(
         &mut self,
-        bisectorone: &crate::ffi::HandleMATBisector,
-        bisectortwo: &crate::ffi::HandleMATBisector,
+        bisectorone: &crate::ffi_types::HandleMATBisector,
+        bisectortwo: &crate::ffi_types::HandleMATBisector,
         intpnt: &mut i32,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_intersect_bisector(
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_intersect_bisector(
                 self as *mut Self,
                 bisectorone,
                 bisectortwo,
@@ -1165,12 +1327,17 @@ impl Tool2d {
     /// by their parameters on <abisector>.
     pub fn distance(
         &self,
-        abisector: &crate::ffi::HandleMATBisector,
+        abisector: &crate::ffi_types::HandleMATBisector,
         param1: f64,
         param2: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_distance(self as *const Self, abisector, param1, param2)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_distance(
+                self as *const Self,
+                abisector,
+                param1,
+                param2,
+            )
         })
     }
 
@@ -1179,7 +1346,7 @@ impl Tool2d {
     /// <bisector>.
     pub fn dump(&self, bisector: i32, erease: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_dump(self as *const Self, bisector, erease)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_dump(self as *const Self, bisector, erease)
         })
     }
 
@@ -1188,18 +1355,20 @@ impl Tool2d {
     /// <theGeomBisectors>.
     pub fn geom_bis(&self, Index: i32) -> &crate::bisector::Bisec {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Tool2d_geom_bis(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_geom_bis(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:128 - `MAT2d_Tool2d::GeomElt()`
     /// Returns the Geometry of index <Index> in <theGeomElts>.
-    pub fn geom_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+    pub fn geom_elt(&self, Index: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Tool2d_geom_elt(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_geom_elt(self as *const Self, Index),
+            ))
         }
     }
 
@@ -1207,7 +1376,10 @@ impl Tool2d {
     /// Returns the point of index <Index> in the <theGeomPnts>.
     pub fn geom_pnt(&self, Index: i32) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Tool2d_geom_pnt(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_geom_pnt(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -1216,23 +1388,30 @@ impl Tool2d {
     /// <theGeomVecs>.
     pub fn geom_vec(&self, Index: i32) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::MAT2d_Tool2d_geom_vec(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_geom_vec(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:137 - `MAT2d_Tool2d::Circuit()`
-    pub fn circuit(&self) -> crate::OwnedPtr<crate::ffi::HandleMAT2dCircuit> {
+    pub fn circuit(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMAT2dCircuit> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::MAT2d_Tool2d_circuit(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_circuit(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `MAT2d_Tool2d.hxx`:139 - `MAT2d_Tool2d::BisecFusion()`
     pub fn bisec_fusion(&mut self, Index1: i32, Index2: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::MAT2d_Tool2d_bisec_fusion(self as *mut Self, Index1, Index2)
+            crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_bisec_fusion(
+                self as *mut Self,
+                Index1,
+                Index2,
+            )
         })
     }
 
@@ -1241,7 +1420,7 @@ impl Tool2d {
     /// <theGeomBisectors>.
     pub fn change_geom_bis(&mut self, Index: i32) -> &mut crate::bisector::Bisec {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::MAT2d_Tool2d_change_geom_bis(
+            &mut *(crate::check_result(crate::ffi_extern_TKTopAlgo::MAT2d_Tool2d_change_geom_bis(
                 self as *mut Self,
                 Index,
             )))
@@ -1253,7 +1432,7 @@ impl Tool2d {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     MAT2d_SequenceOfConnexion as SequenceOfConnexion,
     MAT2d_SequenceOfSequenceOfGeometry as SequenceOfSequenceOfGeometry,
 };

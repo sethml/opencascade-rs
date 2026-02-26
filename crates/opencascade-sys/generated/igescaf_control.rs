@@ -11,14 +11,16 @@
 /// Converts IGES color index to CASCADE color
 pub fn decode_color(col: i32) -> crate::OwnedPtr<crate::quantity::Color> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_decode_color(col)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_decode_color(col),
+        ))
     }
 }
 /// **Source:** `IGESCAFControl.hxx`:38 - `IGESCAFControl::EncodeColor`
 /// Tries to Convert CASCADE color to IGES color index
 /// If no corresponding color defined in IGES, returns 0
 pub fn encode_color(col: &crate::quantity::Color) -> i32 {
-    crate::check_result(unsafe { crate::ffi::IGESCAFControl_encode_color(col) })
+    crate::check_result(unsafe { crate::ffi_extern_TKDEIGES::IGESCAFControl_encode_color(col) })
 }
 
 // ========================
@@ -44,11 +46,11 @@ pub fn encode_color(col: &crate::quantity::Color) -> i32 {
 /// Names
 /// reader.SetNameMode(namemode);
 /// Standard_Boolean namemode = reader.GetNameMode();
-pub use crate::ffi::IGESCAFControl_Reader as Reader;
+pub use crate::ffi_types::IGESCAFControl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESCAFControl_Reader_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_destructor(ptr);
     }
 }
 
@@ -58,23 +60,8 @@ impl Reader {
     /// IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_Reader_ctor()))
-        }
-    }
-
-    /// **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader()`
-    /// Creates a reader tool and attaches it to an already existing Session
-    /// Clears the session if it was not yet set for IGES
-    pub fn new_handlexscontrolworksession_bool(
-        theWS: &crate::ffi::HandleXSControlWorkSession,
-        FromScratch: bool,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_ctor_handlexscontrolworksession_bool(
-                    theWS,
-                    FromScratch,
-                ),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_ctor(),
             ))
         }
     }
@@ -82,8 +69,20 @@ impl Reader {
     /// **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader()`
     /// Creates a reader tool and attaches it to an already existing Session
     /// Clears the session if it was not yet set for IGES
+    pub fn new_handlexscontrolworksession_bool(
+        theWS: &crate::ffi_types::HandleXSControlWorkSession,
+        FromScratch: bool,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_ctor_handlexscontrolworksession_bool(theWS, FromScratch)))
+        }
+    }
+
+    /// **Source:** `IGESCAFControl_Reader.hxx`:62 - `IGESCAFControl_Reader::IGESCAFControl_Reader()`
+    /// Creates a reader tool and attaches it to an already existing Session
+    /// Clears the session if it was not yet set for IGES
     pub fn new_handlexscontrolworksession(
-        theWS: &crate::ffi::HandleXSControlWorkSession,
+        theWS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(theWS, true)
     }
@@ -93,11 +92,15 @@ impl Reader {
     /// Returns True if succeeded, and False in case of fail
     pub fn transfer(
         &mut self,
-        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_transfer(self as *mut Self, theDoc, theProgress)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_transfer(
+                self as *mut Self,
+                theDoc,
+                theProgress,
+            )
         })
     }
 
@@ -105,11 +108,11 @@ impl Reader {
     pub fn perform_asciistring_handletdocstddocument_progressrange(
         &mut self,
         theFileName: &crate::t_collection::AsciiString,
-        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, theFileName, theDoc, theProgress)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_perform_asciistring_handletdocstddocument_progressrange(self as *mut Self, theFileName, theDoc, theProgress)
         })
     }
 
@@ -119,17 +122,12 @@ impl Reader {
     pub fn perform_charptr_handletdocstddocument_progressrange(
         &mut self,
         theFileName: &str,
-        theDoc: &crate::ffi::HandleTDocStdDocument,
+        theDoc: &crate::ffi_types::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(
-                self as *mut Self,
-                c_theFileName.as_ptr(),
-                theDoc,
-                theProgress,
-            )
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_perform_charptr_handletdocstddocument_progressrange(self as *mut Self, c_theFileName.as_ptr(), theDoc, theProgress)
         })
     }
 
@@ -137,14 +135,17 @@ impl Reader {
     /// Set ColorMode for indicate read Colors or not.
     pub fn set_color_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_set_color_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_set_color_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:94 - `IGESCAFControl_Reader::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_get_color_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_get_color_mode(self as *const Self)
         })
     }
 
@@ -152,14 +153,17 @@ impl Reader {
     /// Set NameMode for indicate read Name or not.
     pub fn set_name_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_set_name_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_set_name_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:99 - `IGESCAFControl_Reader::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_get_name_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_get_name_mode(self as *const Self)
         })
     }
 
@@ -167,72 +171,90 @@ impl Reader {
     /// Set LayerMode for indicate read Layers or not.
     pub fn set_layer_mode(&mut self, theMode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_set_layer_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_set_layer_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Reader.hxx`:104 - `IGESCAFControl_Reader::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_get_layer_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_get_layer_mode(self as *const Self)
         })
     }
 
     /// Upcast to IGESControl_Reader
     pub fn as_iges_control_reader(&self) -> &crate::iges_control::Reader {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_as_IGESControl_Reader(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESControl_Reader (mutable)
     pub fn as_iges_control_reader_mut(&mut self) -> &mut crate::iges_control::Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESCAFControl_Reader_as_IGESControl_Reader_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_as_IGESControl_Reader_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_as_XSControl_Reader(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESCAFControl_Reader_as_XSControl_Reader_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_as_XSControl_Reader_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:79 - `IGESControl_Reader::SetReadVisible()`
     pub fn set_read_visible(&mut self, ReadRoot: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_SetReadVisible(self as *mut Self, ReadRoot)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_SetReadVisible(
+                self as *mut Self,
+                ReadRoot,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:81 - `IGESControl_Reader::GetReadVisible()`
     pub fn get_read_visible(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_GetReadVisible(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_GetReadVisible(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:85 - `IGESControl_Reader::IGESModel()`
-    pub fn iges_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn iges_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_IGESModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_IGESModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -240,7 +262,9 @@ impl Reader {
     /// Inherited: **Source:** `IGESControl_Reader.hxx`:90 - `IGESControl_Reader::NbRootsForTransfer()`
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_NbRootsForTransfer(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_NbRootsForTransfer(
+                self as *mut Self,
+            )
         })
     }
 
@@ -251,7 +275,7 @@ impl Reader {
         mode: crate::if_select::PrintCount,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_PrintTransferInfo(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_PrintTransferInfo(
                 self as *const Self,
                 failwarn.into(),
                 mode.into(),
@@ -260,26 +284,32 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
-    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+    pub fn set_ws(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession, scratch: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_SetWS(
+                self as *mut Self,
+                WS,
+                scratch,
+            )
         })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
-    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_WS(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_WS(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_Model(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_Model(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -288,10 +318,13 @@ impl Reader {
     pub fn root_for_transfer(
         &mut self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_RootForTransfer(self as *mut Self, num),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_RootForTransfer(
+                    self as *mut Self,
+                    num,
+                ),
             ))
         }
     }
@@ -303,7 +336,7 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_TransferOneRoot(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_TransferOneRoot(
                 self as *mut Self,
                 num,
                 theProgress,
@@ -314,7 +347,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
     pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_TransferOne(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_TransferOne(
                 self as *mut Self,
                 num,
                 theProgress,
@@ -325,11 +358,11 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
     pub fn transfer_entity(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_TransferEntity(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_TransferEntity(
                 self as *mut Self,
                 start,
                 theProgress,
@@ -340,11 +373,11 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_TransferList(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_TransferList(
                 self as *mut Self,
                 list,
                 theProgress,
@@ -355,7 +388,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
     pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_TransferRoots(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_TransferRoots(
                 self as *mut Self,
                 theProgress,
             )
@@ -365,14 +398,18 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     pub fn clear_shapes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_ClearShapes(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_ClearShapes(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_NbShapes(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_NbShapes(
+                self as *const Self,
+            )
         })
     }
 
@@ -380,7 +417,10 @@ impl Reader {
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_Shape(self as *const Self, num),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_Shape(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -389,7 +429,9 @@ impl Reader {
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_OneShape(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_OneShape(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -397,7 +439,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckLoad(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_PrintCheckLoad(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -408,7 +450,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_PrintCheckTransfer(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_PrintCheckTransfer(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -419,7 +461,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_PrintStatsTransfer(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_PrintStatsTransfer(
                 self as *const Self,
                 what,
                 mode,
@@ -430,13 +472,13 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn get_stats_transfer(
         &self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         nbMapped: &mut i32,
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_GetStatsTransfer(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_GetStatsTransfer(
                 self as *const Self,
                 list,
                 nbMapped,
@@ -449,10 +491,10 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -460,10 +502,12 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_GetShapeFixParameters(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_GetShapeFixParameters(
                     self as *const Self,
                 ),
             ))
@@ -471,9 +515,12 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Reader_inherited_SetShapeProcessFlags(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_SetShapeProcessFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -481,10 +528,12 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::IGESCAFControl_Reader_inherited_GetShapeProcessFlags(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Reader_inherited_GetShapeProcessFlags(
                     self as *const Self,
                 ),
             ))
@@ -516,11 +565,11 @@ impl Reader {
 /// Names
 /// writer.SetNameMode(namemode);
 /// Standard_Boolean namemode = writer.GetNameMode();
-pub use crate::ffi::IGESCAFControl_Writer as Writer;
+pub use crate::ffi_types::IGESCAFControl_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESCAFControl_Writer_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_destructor(ptr);
     }
 }
 
@@ -530,7 +579,9 @@ impl Writer {
     /// IGES model and sets ColorMode, LayerMode and NameMode to Standard_True.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESCAFControl_Writer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_ctor(),
+            ))
         }
     }
 
@@ -538,13 +589,11 @@ impl Writer {
     /// Creates a reader tool and attaches it to an already existing Session
     /// Clears the session if it was not yet set for IGES
     pub fn new_handlexscontrolworksession_bool(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch)))
         }
     }
 
@@ -553,17 +602,12 @@ impl Writer {
     /// Clears the session if it was not yet set for IGES
     /// Sets target Unit for the writing process.
     pub fn new_handlexscontrolworksession_charptr(
-        theWS: &crate::ffi::HandleXSControlWorkSession,
+        theWS: &crate::ffi_types::HandleXSControlWorkSession,
         theUnit: &str,
     ) -> crate::OwnedPtr<Self> {
         let c_theUnit = std::ffi::CString::new(theUnit).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESCAFControl_Writer_ctor_handlexscontrolworksession_charptr(
-                    theWS,
-                    c_theUnit.as_ptr(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_ctor_handlexscontrolworksession_charptr(theWS, c_theUnit.as_ptr())))
         }
     }
 
@@ -571,7 +615,7 @@ impl Writer {
     /// Creates a reader tool and attaches it to an already existing Session
     /// Clears the session if it was not yet set for IGES
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
     }
@@ -581,15 +625,11 @@ impl Writer {
     /// Returns True if translation is OK
     pub fn transfer_handletdocstddocument_progressrange(
         &mut self,
-        doc: &crate::ffi::HandleTDocStdDocument,
+        doc: &crate::ffi_types::HandleTDocStdDocument,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_transfer_handletdocstddocument_progressrange(
-                self as *mut Self,
-                doc,
-                theProgress,
-            )
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_transfer_handletdocstddocument_progressrange(self as *mut Self, doc, theProgress)
         })
     }
 
@@ -598,11 +638,11 @@ impl Writer {
     /// Returns True if translation is OK
     pub fn transfer_labelsequence_progressrange(
         &mut self,
-        labels: &crate::ffi::TDF_LabelSequence,
+        labels: &crate::ffi_types::TDF_LabelSequence,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_transfer_labelsequence_progressrange(
                 self as *mut Self,
                 labels,
                 theProgress,
@@ -619,7 +659,7 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_transfer_label_progressrange(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_transfer_label_progressrange(
                 self as *mut Self,
                 label,
                 theProgress,
@@ -630,12 +670,12 @@ impl Writer {
     /// **Source:** `IGESCAFControl_Writer.hxx`:94 - `IGESCAFControl_Writer::Perform()`
     pub fn perform_handletdocstddocument_asciistring_progressrange(
         &mut self,
-        doc: &crate::ffi::HandleTDocStdDocument,
+        doc: &crate::ffi_types::HandleTDocStdDocument,
         filename: &crate::t_collection::AsciiString,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, doc, filename, theProgress)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_perform_handletdocstddocument_asciistring_progressrange(self as *mut Self, doc, filename, theProgress)
         })
     }
 
@@ -644,18 +684,13 @@ impl Writer {
     /// Returns True if translation is OK
     pub fn perform_handletdocstddocument_charptr_progressrange(
         &mut self,
-        doc: &crate::ffi::HandleTDocStdDocument,
+        doc: &crate::ffi_types::HandleTDocStdDocument,
         filename: &str,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(
-                self as *mut Self,
-                doc,
-                c_filename.as_ptr(),
-                theProgress,
-            )
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_perform_handletdocstddocument_charptr_progressrange(self as *mut Self, doc, c_filename.as_ptr(), theProgress)
         })
     }
 
@@ -663,14 +698,17 @@ impl Writer {
     /// Set ColorMode for indicate write Colors or not.
     pub fn set_color_mode(&mut self, colormode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_set_color_mode(self as *mut Self, colormode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_set_color_mode(
+                self as *mut Self,
+                colormode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:108 - `IGESCAFControl_Writer::GetColorMode()`
     pub fn get_color_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_get_color_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_get_color_mode(self as *const Self)
         })
     }
 
@@ -678,14 +716,17 @@ impl Writer {
     /// Set NameMode for indicate write Name or not.
     pub fn set_name_mode(&mut self, namemode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_set_name_mode(self as *mut Self, namemode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_set_name_mode(
+                self as *mut Self,
+                namemode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:113 - `IGESCAFControl_Writer::GetNameMode()`
     pub fn get_name_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_get_name_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_get_name_mode(self as *const Self)
         })
     }
 
@@ -693,57 +734,71 @@ impl Writer {
     /// Set LayerMode for indicate write Layers or not.
     pub fn set_layer_mode(&mut self, layermode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_set_layer_mode(self as *mut Self, layermode)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_set_layer_mode(
+                self as *mut Self,
+                layermode,
+            )
         })
     }
 
     /// **Source:** `IGESCAFControl_Writer.hxx`:118 - `IGESCAFControl_Writer::GetLayerMode()`
     pub fn get_layer_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_get_layer_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_get_layer_mode(self as *const Self)
         })
     }
 
     /// Upcast to IGESControl_Writer
     pub fn as_iges_control_writer(&self) -> &crate::iges_control::Writer {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_as_IGESControl_Writer(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESControl_Writer (mutable)
     pub fn as_iges_control_writer_mut(&mut self) -> &mut crate::iges_control::Writer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESCAFControl_Writer_as_IGESControl_Writer_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_as_IGESControl_Writer_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:79 - `IGESControl_Writer::Model()`
-    pub fn model(&self) -> &crate::ffi::HandleIGESDataIGESModel {
+    pub fn model(&self) -> &crate::ffi_types::HandleIGESDataIGESModel {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESCAFControl_Writer_inherited_Model(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_Model(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:81 - `IGESControl_Writer::TransferProcess()`
-    pub fn transfer_process(&self) -> &crate::ffi::HandleTransferFinderProcess {
+    pub fn transfer_process(&self) -> &crate::ffi_types::HandleTransferFinderProcess {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESCAFControl_Writer_inherited_TransferProcess(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_TransferProcess(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:85 - `IGESControl_Writer::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
@@ -754,45 +809,61 @@ impl Writer {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_AddShape(self as *mut Self, sh, theProgress)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_AddShape(
+                self as *mut Self,
+                sh,
+                theProgress,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:97 - `IGESControl_Writer::AddGeom()`
-    pub fn add_geom(&mut self, geom: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn add_geom(&mut self, geom: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_AddGeom(self as *mut Self, geom)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_AddGeom(
+                self as *mut Self,
+                geom,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:100 - `IGESControl_Writer::AddEntity()`
-    pub fn add_entity(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn add_entity(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_AddEntity(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_AddEntity(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:105 - `IGESControl_Writer::ComputeModel()`
     pub fn compute_model(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_ComputeModel(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_ComputeModel(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:109 - `IGESControl_Writer::Write()`
-    pub fn write(&mut self, S: &mut crate::ffi::Standard_OStream, fnes: bool) -> bool {
+    pub fn write(&mut self, S: &mut crate::ffi_types::Standard_OStream, fnes: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_Write(self as *mut Self, S, fnes)
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_Write(
+                self as *mut Self,
+                S,
+                fnes,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:122 - `IGESControl_Writer::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -800,10 +871,12 @@ impl Writer {
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:142 - `IGESControl_Writer::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::IGESCAFControl_Writer_inherited_GetShapeFixParameters(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_GetShapeFixParameters(
                     self as *const Self,
                 ),
             ))
@@ -811,9 +884,12 @@ impl Writer {
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:149 - `IGESControl_Writer::SetShapeProcessFlags()`
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESCAFControl_Writer_inherited_SetShapeProcessFlags(
+            crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_SetShapeProcessFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -821,10 +897,10 @@ impl Writer {
     }
 
     /// Inherited: **Source:** `IGESControl_Writer.hxx`:153 - `IGESControl_Writer::GetShapeProcessFlags()`
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::ShapeProcess_OperationsFlags {
+    pub fn get_shape_process_flags(&self) -> &crate::ffi_types::ShapeProcess_OperationsFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::IGESCAFControl_Writer_inherited_GetShapeProcessFlags(
+                crate::ffi_extern_TKDEIGES::IGESCAFControl_Writer_inherited_GetShapeProcessFlags(
                     self as *const Self,
                 ),
             ))

@@ -9,19 +9,23 @@
 /// **Source:** `HLRBRep.hxx`:38 - `HLRBRep::MakeEdge`
 pub fn make_edge(ec: &Curve, U1: f64, U2: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_make_edge(ec, U1, U2)))
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_make_edge(
+            ec, U1, U2,
+        )))
     }
 }
 /// **Source:** `HLRBRep.hxx`:42 - `HLRBRep::MakeEdge3d`
 pub fn make_edge3d(ec: &Curve, U1: f64, U2: f64) -> crate::OwnedPtr<crate::topo_ds::Edge> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_make_edge3d(ec, U1, U2)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKHLR::HLRBRep_make_edge3d(ec, U1, U2),
+        ))
     }
 }
 /// **Source:** `HLRBRep.hxx`:46 - `HLRBRep::PolyHLRAngleAndDeflection`
 pub fn poly_hlr_angle_and_deflection(InAngl: f64, OutAngl: &mut f64, OutDefl: &mut f64) {
     crate::check_void_result(unsafe {
-        crate::ffi::HLRBRep_poly_hlr_angle_and_deflection(InAngl, OutAngl, OutDefl)
+        crate::ffi_extern_TKHLR::HLRBRep_poly_hlr_angle_and_deflection(InAngl, OutAngl, OutDefl)
     })
 }
 
@@ -66,7 +70,7 @@ impl TryFrom<i32> for TypeOfResultingEdge {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From HLRBRep_Algo.hxx
@@ -105,11 +109,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// -   Note that this is not the sort of algorithm used in generating shading, which
 /// calculates the visible and hidden parts of each face in a shape to be visualized by
 /// comparing each face in the shape with every other face in the same shape.
-pub use crate::ffi::HLRBRep_Algo as Algo;
+pub use crate::ffi_types::HLRBRep_Algo as Algo;
 
 unsafe impl crate::CppDeletable for Algo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Algo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Algo_destructor(ptr);
     }
 }
 
@@ -123,14 +127,18 @@ impl Algo {
     /// -   Update to compute the outlines of the shape, and
     /// -   Hide to compute the visible and hidden lines of the shape.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Algo_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:75 - `HLRBRep_Algo::HLRBRep_Algo()`
-    pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
+    pub fn new_handlehlrbrepalgo(A: &crate::ffi_types::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_Algo_ctor_handlehlrbrepalgo(A),
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_ctor_handlehlrbrepalgo(A),
             ))
         }
     }
@@ -140,11 +148,11 @@ impl Algo {
     pub fn add_shape_handlestandardtransient_int(
         &mut self,
         S: &crate::topo_ds::Shape,
-        SData: &crate::ffi::HandleStandardTransient,
+        SData: &crate::ffi_types::HandleStandardTransient,
         nbIso: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_add_shape_handlestandardtransient_int(
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_add_shape_handlestandardtransient_int(
                 self as *mut Self,
                 S,
                 SData,
@@ -159,7 +167,7 @@ impl Algo {
     /// You may add as many shapes as you wish. Use the function Add once for each shape.
     pub fn add_shape_int(&mut self, S: &crate::topo_ds::Shape, nbIso: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_add_shape_int(self as *mut Self, S, nbIso)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_add_shape_int(self as *mut Self, S, nbIso)
         })
     }
 
@@ -167,42 +175,50 @@ impl Algo {
     /// return  the index  of  the  Shape <S>  and
     /// return 0 if the Shape <S> is not found.
     pub fn index(&mut self, S: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Algo_index(self as *mut Self, S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_index(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:92 - `HLRBRep_Algo::OutLinedShapeNullify()`
     /// nullify all the results of OutLiner from HLRTopoBRep.
     pub fn out_lined_shape_nullify(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_out_lined_shape_nullify(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_out_lined_shape_nullify(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Algo_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Algo_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::HLRBRep_Algo_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `HLRBRep_Algo.hxx`:94 - `HLRBRep_Algo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Algo_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Algo_get_type_descriptor()))
+        }
     }
 
     /// Upcast to HLRBRep_InternalAlgo
     pub fn as_internal_algo(&self) -> &InternalAlgo {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Algo_as_HLRBRep_InternalAlgo(
                 self as *const Self,
             ))
         }
@@ -211,16 +227,18 @@ impl Algo {
     /// Upcast to HLRBRep_InternalAlgo (mutable)
     pub fn as_internal_algo_mut(&mut self) -> &mut InternalAlgo {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_as_HLRBRep_InternalAlgo_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_Algo_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Algo_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -229,170 +247,171 @@ impl Algo {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_Algo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAlgo> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Algo_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:44 - `HLRBRep_InternalAlgo::Projector()`
     pub fn projector(&mut self, P: &crate::hlr_algo::Projector) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Projector(self as *mut Self, P)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Projector(self as *mut Self, P)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:50 - `HLRBRep_InternalAlgo::Update()`
     pub fn update(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Update(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Update(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:53 - `HLRBRep_InternalAlgo::Load()`
     pub fn load(
         &mut self,
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
-        SData: &crate::ffi::HandleStandardTransient,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi_types::HandleStandardTransient,
         nbIso: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Load(self as *mut Self, S, SData, nbIso)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Load(self as *mut Self, S, SData, nbIso)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:66 - `HLRBRep_InternalAlgo::Remove()`
     pub fn remove(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Remove(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Remove(self as *mut Self, I)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
-    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
+    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_ShapeData(self as *mut Self, I, SData)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_ShapeData(self as *mut Self, I, SData)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
-    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
+    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi_types::HLRBRep_SeqOfShapeBounds {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Algo_inherited_SeqOfShapeBounds(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_SeqOfShapeBounds(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_NbShapes(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_NbShapes(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:75 - `HLRBRep_InternalAlgo::ShapeBounds()`
     pub fn shape_bounds(&mut self, I: i32) -> &mut ShapeBounds {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Algo_inherited_ShapeBounds(
-                self as *mut Self,
-                I,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_ShapeBounds(self as *mut Self, I),
+            ))
         }
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:79 - `HLRBRep_InternalAlgo::InitEdgeStatus()`
     pub fn init_edge_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_InitEdgeStatus(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_InitEdgeStatus(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:82 - `HLRBRep_InternalAlgo::Select()`
     pub fn select(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Select(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Select(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:88 - `HLRBRep_InternalAlgo::SelectEdge()`
     pub fn select_edge(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_SelectEdge(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_SelectEdge(self as *mut Self, I)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:91 - `HLRBRep_InternalAlgo::SelectFace()`
     pub fn select_face(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_SelectFace(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_SelectFace(self as *mut Self, I)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:94 - `HLRBRep_InternalAlgo::ShowAll()`
     pub fn show_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_ShowAll(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_ShowAll(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:100 - `HLRBRep_InternalAlgo::HideAll()`
     pub fn hide_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_HideAll(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_HideAll(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:107 - `HLRBRep_InternalAlgo::PartialHide()`
     pub fn partial_hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_PartialHide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_PartialHide(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:110 - `HLRBRep_InternalAlgo::Hide()`
     pub fn hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Hide(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:118 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug(&mut self, deb: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Debug(self as *mut Self, deb)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Debug(self as *mut Self, deb)
         })
     }
 
     /// Inherited: **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
-    pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
+    pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_Algo_inherited_DataStructure(self as *const Self),
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_DataStructure(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -400,7 +419,7 @@ impl Algo {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_Algo_inherited_This(self as *const Self)
+                crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -413,69 +432,81 @@ impl Algo {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Algo_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Algo_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleHLRBRepAlgo;
+pub use crate::ffi_types::HandleHLRBRepAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleHLRBRepAlgo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_destructor(ptr);
     }
 }
 
 impl HandleHLRBRepAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_Algo
-    pub fn get(&self) -> &crate::ffi::HLRBRep_Algo {
-        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepAlgo_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::HLRBRep_Algo {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_Algo
-    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_Algo {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRBRep_Algo {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleHLRBRepAlgo_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<HLRBRep_Algo> to Handle<HLRBRep_InternalAlgo>
     pub fn to_handle_internal_algo(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepInternalAlgo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepInternalAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(self as *const Self),
+                crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_to_HandleHLRBRepInternalAlgo(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<HLRBRep_Algo> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepAlgo_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKHLR::HandleHLRBRepAlgo_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -489,11 +520,11 @@ impl HandleHLRBRepAlgo {
 /// The  private  nested class AreaLimit represents   a --
 /// vertex on  the Edge with the  state on the left and --
 /// the right.
-pub use crate::ffi::HLRBRep_AreaLimit as AreaLimit;
+pub use crate::ffi_types::HLRBRep_AreaLimit as AreaLimit;
 
 unsafe impl crate::CppDeletable for AreaLimit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_AreaLimit_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_destructor(ptr);
     }
 }
 
@@ -511,7 +542,7 @@ impl AreaLimit {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_AreaLimit_ctor_intersection_bool2_state4(
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_ctor_intersection_bool2_state4(
                     V,
                     Boundary,
                     Interference,
@@ -527,70 +558,93 @@ impl AreaLimit {
     /// **Source:** `HLRBRep_AreaLimit.hxx`:46 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn state_before_state(&mut self, St: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_state_before_state(self as *mut Self, St.into())
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_state_before_state(
+                self as *mut Self,
+                St.into(),
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:48 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn state_after_state(&mut self, St: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_state_after_state(self as *mut Self, St.into())
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_state_after_state(
+                self as *mut Self,
+                St.into(),
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:50 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn edge_before_state(&mut self, St: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_edge_before_state(self as *mut Self, St.into())
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_edge_before_state(
+                self as *mut Self,
+                St.into(),
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:52 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn edge_after_state(&mut self, St: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_edge_after_state(self as *mut Self, St.into())
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_edge_after_state(
+                self as *mut Self,
+                St.into(),
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:54 - `HLRBRep_AreaLimit::Previous()`
-    pub fn previous_handlehlrbreparealimit(&mut self, P: &crate::ffi::HandleHLRBRepAreaLimit) {
+    pub fn previous_handlehlrbreparealimit(
+        &mut self,
+        P: &crate::ffi_types::HandleHLRBRepAreaLimit,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_previous_handlehlrbreparealimit(self as *mut Self, P)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_previous_handlehlrbreparealimit(
+                self as *mut Self,
+                P,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:56 - `HLRBRep_AreaLimit::Next()`
-    pub fn next_handlehlrbreparealimit(&mut self, N: &crate::ffi::HandleHLRBRepAreaLimit) {
+    pub fn next_handlehlrbreparealimit(&mut self, N: &crate::ffi_types::HandleHLRBRepAreaLimit) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_next_handlehlrbreparealimit(self as *mut Self, N)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_next_handlehlrbreparealimit(
+                self as *mut Self,
+                N,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:58 - `HLRBRep_AreaLimit::Vertex()`
     pub fn vertex(&self) -> &crate::hlr_algo::Intersection {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:60 - `HLRBRep_AreaLimit::IsBoundary()`
     pub fn is_boundary(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_is_boundary(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_is_boundary(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:62 - `HLRBRep_AreaLimit::IsInterference()`
     pub fn is_interference(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_is_interference(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_is_interference(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:64 - `HLRBRep_AreaLimit::StateBefore()`
     pub fn state_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_state_before(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_state_before(self as *const Self)
         }))
         .unwrap()
     }
@@ -598,7 +652,7 @@ impl AreaLimit {
     /// **Source:** `HLRBRep_AreaLimit.hxx`:66 - `HLRBRep_AreaLimit::StateAfter()`
     pub fn state_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_state_after(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_state_after(self as *const Self)
         }))
         .unwrap()
     }
@@ -606,7 +660,7 @@ impl AreaLimit {
     /// **Source:** `HLRBRep_AreaLimit.hxx`:68 - `HLRBRep_AreaLimit::EdgeBefore()`
     pub fn edge_before(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_edge_before(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_edge_before(self as *const Self)
         }))
         .unwrap()
     }
@@ -614,38 +668,42 @@ impl AreaLimit {
     /// **Source:** `HLRBRep_AreaLimit.hxx`:70 - `HLRBRep_AreaLimit::EdgeAfter()`
     pub fn edge_after(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_edge_after(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_edge_after(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:72 - `HLRBRep_AreaLimit::Previous()`
-    pub fn previous(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
+    pub fn previous(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAreaLimit> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_previous(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_previous(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:74 - `HLRBRep_AreaLimit::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAreaLimit> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_next(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_next(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:76 - `HLRBRep_AreaLimit::Clear()`
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_AreaLimit_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -653,7 +711,7 @@ impl AreaLimit {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::HLRBRep_AreaLimit_get_type_name(),
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -661,14 +719,16 @@ impl AreaLimit {
     }
 
     /// **Source:** `HLRBRep_AreaLimit.hxx`:78 - `HLRBRep_AreaLimit::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_AreaLimit_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -677,34 +737,42 @@ impl AreaLimit {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_AreaLimit_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAreaLimit> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_AreaLimit_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -712,7 +780,7 @@ impl AreaLimit {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_AreaLimit_inherited_This(self as *const Self)
+                crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -725,60 +793,72 @@ impl AreaLimit {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_AreaLimit_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_AreaLimit_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleHLRBRepAreaLimit;
+pub use crate::ffi_types::HandleHLRBRepAreaLimit;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepAreaLimit {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleHLRBRepAreaLimit_destructor(ptr);
+        crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_destructor(ptr);
     }
 }
 
 impl HandleHLRBRepAreaLimit {
     /// Dereference this Handle to access the underlying HLRBRep_AreaLimit
-    pub fn get(&self) -> &crate::ffi::HLRBRep_AreaLimit {
+    pub fn get(&self) -> &crate::ffi_types::HLRBRep_AreaLimit {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleHLRBRepAreaLimit_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_AreaLimit
-    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_AreaLimit {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRBRep_AreaLimit {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleHLRBRepAreaLimit_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<HLRBRep_AreaLimit> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepAreaLimit_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKHLR::HandleHLRBRepAreaLimit_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -789,11 +869,11 @@ impl HandleHLRBRepAreaLimit {
 // ========================
 
 /// **Source:** `HLRBRep_BCurveTool.hxx`:42 - `HLRBRep_BCurveTool`
-pub use crate::ffi::HLRBRep_BCurveTool as BCurveTool;
+pub use crate::ffi_types::HLRBRep_BCurveTool as BCurveTool;
 
 unsafe impl crate::CppDeletable for BCurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_BCurveTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_destructor(ptr);
     }
 }
 
@@ -802,24 +882,30 @@ impl BCurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:47 - `HLRBRep_BCurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_first_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:49 - `HLRBRep_BCurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_last_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_last_parameter(C)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:51 - `HLRBRep_BCurveTool::Continuity()`
     pub fn continuity(C: &crate::b_rep_adaptor::Curve) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BCurveTool_continuity(C)
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_continuity(C)
         }))
         .unwrap()
     }
@@ -828,7 +914,9 @@ impl BCurveTool {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub fn nb_intervals(C: &crate::b_rep_adaptor::Curve, S: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_intervals(C, S.into()) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:62 - `HLRBRep_BCurveTool::Intervals()`
@@ -839,43 +927,43 @@ impl BCurveTool {
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
         C: &crate::b_rep_adaptor::Curve,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BCurveTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_intervals(C, T, S.into())
         })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:64 - `HLRBRep_BCurveTool::IsClosed()`
     pub fn is_closed(C: &crate::b_rep_adaptor::Curve) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_closed(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:66 - `HLRBRep_BCurveTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::b_rep_adaptor::Curve) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_periodic(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:68 - `HLRBRep_BCurveTool::Period()`
     pub fn period(C: &crate::b_rep_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_period(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:71 - `HLRBRep_BCurveTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(C: &crate::b_rep_adaptor::Curve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_value(
-                C, U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_value(C, U),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:74 - `HLRBRep_BCurveTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(C: &crate::b_rep_adaptor::Curve, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d0(C, U, P) })
+        crate::check_void_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:80 - `HLRBRep_BCurveTool::D1()`
@@ -889,7 +977,9 @@ impl BCurveTool {
         P: &mut crate::gp::Pnt,
         V: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d1(C, U, P, V) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:86 - `HLRBRep_BCurveTool::D2()`
@@ -904,7 +994,9 @@ impl BCurveTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:96 - `HLRBRep_BCurveTool::D3()`
@@ -920,7 +1012,9 @@ impl BCurveTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_d3(C, U, P, V1, V2, V3) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:108 - `HLRBRep_BCurveTool::DN()`
@@ -931,9 +1025,9 @@ impl BCurveTool {
     /// Raised if N < 1.
     pub fn dn(C: &crate::b_rep_adaptor::Curve, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_dn(
-                C, U, N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_dn(C, U, N),
+            ))
         }
     }
 
@@ -941,7 +1035,9 @@ impl BCurveTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::b_rep_adaptor::Curve, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_resolution(C, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_resolution(C, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:117 - `HLRBRep_BCurveTool::GetType()`
@@ -950,7 +1046,7 @@ impl BCurveTool {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::b_rep_adaptor::Curve) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BCurveTool_get_type(C)
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_get_type(C)
         }))
         .unwrap()
     }
@@ -958,23 +1054,27 @@ impl BCurveTool {
     /// **Source:** `HLRBRep_BCurveTool.hxx`:119 - `HLRBRep_BCurveTool::Line()`
     pub fn line(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_line(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:121 - `HLRBRep_BCurveTool::Circle()`
     pub fn circle(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_circle(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_circle(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:123 - `HLRBRep_BCurveTool::Ellipse()`
     pub fn ellipse(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_ellipse(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_ellipse(C),
+            ))
         }
     }
 
@@ -982,7 +1082,7 @@ impl BCurveTool {
     pub fn hyperbola(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BCurveTool_hyperbola(C),
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_hyperbola(C),
             ))
         }
     }
@@ -990,71 +1090,75 @@ impl BCurveTool {
     /// **Source:** `HLRBRep_BCurveTool.hxx`:127 - `HLRBRep_BCurveTool::Parabola()`
     pub fn parabola(C: &crate::b_rep_adaptor::Curve) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_parabola(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_parabola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:129 - `HLRBRep_BCurveTool::Bezier()`
     pub fn bezier(
         C: &crate::b_rep_adaptor::Curve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_bezier(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_bezier(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:131 - `HLRBRep_BCurveTool::BSpline()`
     pub fn b_spline(
         C: &crate::b_rep_adaptor::Curve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BCurveTool_b_spline(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_b_spline(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:133 - `HLRBRep_BCurveTool::Degree()`
     pub fn degree(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_degree(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_degree(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:135 - `HLRBRep_BCurveTool::IsRational()`
     pub fn is_rational(C: &crate::b_rep_adaptor::Curve) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_is_rational(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_is_rational(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:137 - `HLRBRep_BCurveTool::NbPoles()`
     pub fn nb_poles(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_poles(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_nb_poles(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:139 - `HLRBRep_BCurveTool::NbKnots()`
     pub fn nb_knots(C: &crate::b_rep_adaptor::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_knots(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_nb_knots(C) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:141 - `HLRBRep_BCurveTool::Poles()`
-    pub fn poles(C: &crate::b_rep_adaptor::Curve, T: &mut crate::ffi::TColgp_Array1OfPnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BCurveTool_poles(C, T) })
+    pub fn poles(C: &crate::b_rep_adaptor::Curve, T: &mut crate::ffi_types::TColgp_Array1OfPnt) {
+        crate::check_void_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_poles(C, T) })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:143 - `HLRBRep_BCurveTool::PolesAndWeights()`
     pub fn poles_and_weights(
         C: &crate::b_rep_adaptor::Curve,
-        T: &mut crate::ffi::TColgp_Array1OfPnt,
-        W: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        W: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BCurveTool_poles_and_weights(C, T, W)
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_poles_and_weights(C, T, W)
         })
     }
 
     /// **Source:** `HLRBRep_BCurveTool.hxx`:147 - `HLRBRep_BCurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::b_rep_adaptor::Curve, U0: f64, U1: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BCurveTool_nb_samples(C, U0, U1) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BCurveTool_nb_samples(C, U0, U1)
+        })
     }
 }
 
@@ -1063,11 +1167,11 @@ impl BCurveTool {
 // ========================
 
 /// **Source:** `HLRBRep_BSurfaceTool.hxx`:40 - `HLRBRep_BSurfaceTool`
-pub use crate::ffi::HLRBRep_BSurfaceTool as BSurfaceTool;
+pub use crate::ffi_types::HLRBRep_BSurfaceTool as BSurfaceTool;
 
 unsafe impl crate::CppDeletable for BSurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_BSurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_destructor(ptr);
     }
 }
 
@@ -1076,63 +1180,73 @@ impl BSurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:45 - `HLRBRep_BSurfaceTool::FirstUParameter()`
     pub fn first_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_first_u_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:47 - `HLRBRep_BSurfaceTool::FirstVParameter()`
     pub fn first_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_first_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_first_v_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:49 - `HLRBRep_BSurfaceTool::LastUParameter()`
     pub fn last_u_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_last_u_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:51 - `HLRBRep_BSurfaceTool::LastVParameter()`
     pub fn last_v_parameter(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_last_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_last_v_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:53 - `HLRBRep_BSurfaceTool::NbUIntervals()`
     pub fn nb_u_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_nb_u_intervals(S, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_u_intervals(S, Sh.into())
         })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:55 - `HLRBRep_BSurfaceTool::NbVIntervals()`
     pub fn nb_v_intervals(S: &crate::b_rep_adaptor::Surface, Sh: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_nb_v_intervals(S, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_v_intervals(S, Sh.into())
         })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:57 - `HLRBRep_BSurfaceTool::UIntervals()`
     pub fn u_intervals(
         S: &crate::b_rep_adaptor::Surface,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_u_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_intervals(S, T, Sh.into())
         })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:61 - `HLRBRep_BSurfaceTool::VIntervals()`
     pub fn v_intervals(
         S: &crate::b_rep_adaptor::Surface,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_v_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_intervals(S, T, Sh.into())
         })
     }
 
@@ -1143,11 +1257,11 @@ impl BSurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_u_trim(
-                S, First, Last, Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_trim(S, First, Last, Tol),
+            ))
         }
     }
 
@@ -1158,42 +1272,46 @@ impl BSurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_v_trim(
-                S, First, Last, Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_trim(S, First, Last, Tol),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:77 - `HLRBRep_BSurfaceTool::IsUClosed()`
     pub fn is_u_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_closed(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_u_closed(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:79 - `HLRBRep_BSurfaceTool::IsVClosed()`
     pub fn is_v_closed(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_closed(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_v_closed(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:81 - `HLRBRep_BSurfaceTool::IsUPeriodic()`
     pub fn is_u_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_u_periodic(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:83 - `HLRBRep_BSurfaceTool::UPeriod()`
     pub fn u_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_period(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_period(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:85 - `HLRBRep_BSurfaceTool::IsVPeriodic()`
     pub fn is_v_periodic(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_v_periodic(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:87 - `HLRBRep_BSurfaceTool::VPeriod()`
     pub fn v_period(S: &crate::b_rep_adaptor::Surface) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_period(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_period(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:89 - `HLRBRep_BSurfaceTool::Value()`
@@ -1203,15 +1321,17 @@ impl BSurfaceTool {
         v: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_value(
-                S, u, v,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_value(S, u, v),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:91 - `HLRBRep_BSurfaceTool::D0()`
     pub fn d0(S: &crate::b_rep_adaptor::Surface, u: f64, v: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_d0(S, u, v, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_d0(S, u, v, P)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:96 - `HLRBRep_BSurfaceTool::D1()`
@@ -1224,7 +1344,7 @@ impl BSurfaceTool {
         D1v: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_d1(S, u, v, P, D1u, D1v)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_d1(S, u, v, P, D1u, D1v)
         })
     }
 
@@ -1241,7 +1361,7 @@ impl BSurfaceTool {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
         })
     }
 
@@ -1262,7 +1382,7 @@ impl BSurfaceTool {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_d3(
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_d3(
                 S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
             )
         })
@@ -1277,16 +1397,16 @@ impl BSurfaceTool {
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_dn(
-                S, u, v, Nu, Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_dn(S, u, v, Nu, Nv),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:133 - `HLRBRep_BSurfaceTool::UContinuity()`
     pub fn u_continuity(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_u_continuity(S)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_continuity(S)
         }))
         .unwrap()
     }
@@ -1294,65 +1414,73 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:135 - `HLRBRep_BSurfaceTool::VContinuity()`
     pub fn v_continuity(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_v_continuity(S)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_continuity(S)
         }))
         .unwrap()
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:137 - `HLRBRep_BSurfaceTool::UDegree()`
     pub fn u_degree(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_degree(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_degree(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:139 - `HLRBRep_BSurfaceTool::NbUPoles()`
     pub fn nb_u_poles(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_poles(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_u_poles(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:141 - `HLRBRep_BSurfaceTool::NbUKnots()`
     pub fn nb_u_knots(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_u_knots(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_u_knots(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:143 - `HLRBRep_BSurfaceTool::IsURational()`
     pub fn is_u_rational(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_u_rational(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_u_rational(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:145 - `HLRBRep_BSurfaceTool::VDegree()`
     pub fn v_degree(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_degree(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_degree(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:147 - `HLRBRep_BSurfaceTool::NbVPoles()`
     pub fn nb_v_poles(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_poles(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_v_poles(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:149 - `HLRBRep_BSurfaceTool::NbVKnots()`
     pub fn nb_v_knots(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_v_knots(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_v_knots(S) })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:151 - `HLRBRep_BSurfaceTool::IsVRational()`
     pub fn is_v_rational(S: &crate::b_rep_adaptor::Surface) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_is_v_rational(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_is_v_rational(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:153 - `HLRBRep_BSurfaceTool::UResolution()`
     pub fn u_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_u_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_u_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:155 - `HLRBRep_BSurfaceTool::VResolution()`
     pub fn v_resolution(S: &crate::b_rep_adaptor::Surface, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_v_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_v_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:157 - `HLRBRep_BSurfaceTool::GetType()`
     pub fn get_type(S: &crate::b_rep_adaptor::Surface) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_get_type(S)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_get_type(S)
         }))
         .unwrap()
     }
@@ -1360,9 +1488,9 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:159 - `HLRBRep_BSurfaceTool::Plane()`
     pub fn plane(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_plane(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_plane(S),
+            ))
         }
     }
 
@@ -1370,7 +1498,7 @@ impl BSurfaceTool {
     pub fn cylinder(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BSurfaceTool_cylinder(S),
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_cylinder(S),
             ))
         }
     }
@@ -1378,46 +1506,48 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:163 - `HLRBRep_BSurfaceTool::Cone()`
     pub fn cone(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_cone(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_cone(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:165 - `HLRBRep_BSurfaceTool::Torus()`
     pub fn torus(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_torus(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_torus(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:167 - `HLRBRep_BSurfaceTool::Sphere()`
     pub fn sphere(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_sphere(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_sphere(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:169 - `HLRBRep_BSurfaceTool::Bezier()`
     pub fn bezier(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_bezier(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_bezier(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:171 - `HLRBRep_BSurfaceTool::BSpline()`
     pub fn b_spline(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BSurfaceTool_b_spline(S),
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_b_spline(S),
             ))
         }
     }
@@ -1426,7 +1556,7 @@ impl BSurfaceTool {
     pub fn axe_of_revolution(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BSurfaceTool_axe_of_revolution(S),
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_axe_of_revolution(S),
             ))
         }
     }
@@ -1435,7 +1565,7 @@ impl BSurfaceTool {
     pub fn direction(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BSurfaceTool_direction(S),
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_direction(S),
             ))
         }
     }
@@ -1443,10 +1573,10 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:177 - `HLRBRep_BSurfaceTool::BasisCurve()`
     pub fn basis_curve(
         S: &crate::b_rep_adaptor::Surface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BSurfaceTool_basis_curve(S),
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_basis_curve(S),
             ))
         }
     }
@@ -1454,31 +1584,37 @@ impl BSurfaceTool {
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:179 - `HLRBRep_BSurfaceTool::Axis()`
     pub fn axis(S: &crate::b_rep_adaptor::Surface) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BSurfaceTool_axis(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_axis(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:181 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_samples_u_surface(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:183 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface(S: &crate::b_rep_adaptor::Surface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_samples_v_surface(S)
+        })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:185 - `HLRBRep_BSurfaceTool::NbSamplesU()`
     pub fn nb_samples_u_surface_real2(S: &crate::b_rep_adaptor::Surface, u1: f64, u2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_nb_samples_u_surface_real2(S, u1, u2)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_samples_u_surface_real2(S, u1, u2)
         })
     }
 
     /// **Source:** `HLRBRep_BSurfaceTool.hxx`:189 - `HLRBRep_BSurfaceTool::NbSamplesV()`
     pub fn nb_samples_v_surface_real2(S: &crate::b_rep_adaptor::Surface, v1: f64, v2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_BSurfaceTool_nb_samples_v_surface_real2(S, v1, v2)
+            crate::ffi_extern_TKHLR::HLRBRep_BSurfaceTool_nb_samples_v_surface_real2(S, v1, v2)
         })
     }
 }
@@ -1489,11 +1625,11 @@ impl BSurfaceTool {
 
 /// **Source:** `HLRBRep_BiPnt2D.hxx`:27 - `HLRBRep_BiPnt2D`
 /// Contains the colors of a shape.
-pub use crate::ffi::HLRBRep_BiPnt2D as BiPnt2D;
+pub use crate::ffi_types::HLRBRep_BiPnt2D as BiPnt2D;
 
 unsafe impl crate::CppDeletable for BiPnt2D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_BiPnt2D_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_destructor(ptr);
     }
 }
 
@@ -1501,7 +1637,9 @@ impl BiPnt2D {
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:32 - `HLRBRep_BiPnt2D::HLRBRep_BiPnt2D()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_ctor(),
+            ))
         }
     }
 
@@ -1519,7 +1657,7 @@ impl BiPnt2D {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BiPnt2D_ctor_real4_shape_bool4(
+                crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_ctor_real4_shape_bool4(
                     x1, y1, x2, y2, S, reg1, regn, outl, intl,
                 ),
             ))
@@ -1538,7 +1676,7 @@ impl BiPnt2D {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BiPnt2D_ctor_xy2_shape_bool4(
+                crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_ctor_xy2_shape_bool4(
                     thePoint1, thePoint2, S, reg1, regn, outl, intl,
                 ),
             ))
@@ -1547,71 +1685,91 @@ impl BiPnt2D {
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:76 - `HLRBRep_BiPnt2D::P1()`
     pub fn p1(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_p1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_p1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:78 - `HLRBRep_BiPnt2D::P2()`
     pub fn p2(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_p2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_p2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:80 - `HLRBRep_BiPnt2D::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPnt2D_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:82 - `HLRBRep_BiPnt2D::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPnt2D_shape_shape(self as *mut Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_shape_shape(self as *mut Self, S)
         })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:84 - `HLRBRep_BiPnt2D::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_rg1_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_rg1_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:86 - `HLRBRep_BiPnt2D::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPnt2D_rg1_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_rg1_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:88 - `HLRBRep_BiPnt2D::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_rg_n_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_rg_n_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:90 - `HLRBRep_BiPnt2D::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPnt2D_rg_n_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_rg_n_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:92 - `HLRBRep_BiPnt2D::OutLine()`
     pub fn out_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_out_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_out_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:94 - `HLRBRep_BiPnt2D::OutLine()`
     pub fn out_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPnt2D_out_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_out_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:96 - `HLRBRep_BiPnt2D::IntLine()`
     pub fn int_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPnt2D_int_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_int_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPnt2D.hxx`:98 - `HLRBRep_BiPnt2D::IntLine()`
     pub fn int_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPnt2D_int_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPnt2D_int_line_bool(self as *mut Self, B)
         })
     }
 }
@@ -1622,11 +1780,11 @@ impl BiPnt2D {
 
 /// **Source:** `HLRBRep_BiPoint.hxx`:29 - `HLRBRep_BiPoint`
 /// Contains the colors of a shape.
-pub use crate::ffi::HLRBRep_BiPoint as BiPoint;
+pub use crate::ffi_types::HLRBRep_BiPoint as BiPoint;
 
 unsafe impl crate::CppDeletable for BiPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_BiPoint_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_BiPoint_destructor(ptr);
     }
 }
 
@@ -1634,7 +1792,9 @@ impl BiPoint {
     /// **Source:** `HLRBRep_BiPoint.hxx`:34 - `HLRBRep_BiPoint::HLRBRep_BiPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_BiPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_BiPoint_ctor(),
+            ))
         }
     }
 
@@ -1654,7 +1814,7 @@ impl BiPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_BiPoint_ctor_real6_shape_bool4(
+                crate::ffi_extern_TKHLR::HLRBRep_BiPoint_ctor_real6_shape_bool4(
                     x1, y1, z1, x2, y2, z2, S, reg1, regn, outl, intl,
                 ),
             ))
@@ -1663,71 +1823,91 @@ impl BiPoint {
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:63 - `HLRBRep_BiPoint::P1()`
     pub fn p1(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_p1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPoint_p1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:65 - `HLRBRep_BiPoint::P2()`
     pub fn p2(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_p2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPoint_p2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:67 - `HLRBRep_BiPoint::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_BiPoint_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_BiPoint_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:69 - `HLRBRep_BiPoint::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPoint_shape_shape(self as *mut Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_shape_shape(self as *mut Self, S)
         })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:71 - `HLRBRep_BiPoint::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_rg1_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_rg1_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:73 - `HLRBRep_BiPoint::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPoint_rg1_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_rg1_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:75 - `HLRBRep_BiPoint::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_rg_n_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_rg_n_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:77 - `HLRBRep_BiPoint::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPoint_rg_n_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_rg_n_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:79 - `HLRBRep_BiPoint::OutLine()`
     pub fn out_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_out_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_out_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:81 - `HLRBRep_BiPoint::OutLine()`
     pub fn out_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPoint_out_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_out_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:83 - `HLRBRep_BiPoint::IntLine()`
     pub fn int_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_BiPoint_int_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_int_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_BiPoint.hxx`:85 - `HLRBRep_BiPoint::IntLine()`
     pub fn int_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_BiPoint_int_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_BiPoint_int_line_bool(self as *mut Self, B)
         })
     }
 }
@@ -1737,11 +1917,11 @@ impl BiPoint {
 // ========================
 
 /// **Source:** `HLRBRep_CInter.hxx`:43 - `HLRBRep_CInter`
-pub use crate::ffi::HLRBRep_CInter as CInter;
+pub use crate::ffi_types::HLRBRep_CInter as CInter;
 
 unsafe impl crate::CppDeletable for CInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_CInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_CInter_destructor(ptr);
     }
 }
 
@@ -1749,7 +1929,11 @@ impl CInter {
     /// **Source:** `HLRBRep_CInter.hxx`:49 - `HLRBRep_CInter::HLRBRep_CInter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CInter_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:52 - `HLRBRep_CInter::HLRBRep_CInter()`
@@ -1761,7 +1945,7 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address_real2(C, TolConf, Tol),
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address_real2(C, TolConf, Tol),
             ))
         }
     }
@@ -1776,7 +1960,9 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address_domain_real2(C, D, TolConf, Tol),
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address_domain_real2(
+                    C, D, TolConf, Tol,
+                ),
             ))
         }
     }
@@ -1791,7 +1977,7 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address2_real2(C1, C2, TolConf, Tol),
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address2_real2(C1, C2, TolConf, Tol),
             ))
         }
     }
@@ -1807,7 +1993,7 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address_domain_address_real2(
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address_domain_address_real2(
                     C1, D1, C2, TolConf, Tol,
                 ),
             ))
@@ -1825,7 +2011,9 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address2_domain_real2(C1, C2, D2, TolConf, Tol),
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address2_domain_real2(
+                    C1, C2, D2, TolConf, Tol,
+                ),
             ))
         }
     }
@@ -1842,7 +2030,7 @@ impl CInter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_ctor_address_domain_address_domain_real2(
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_ctor_address_domain_address_domain_real2(
                     C1, D1, C2, D2, TolConf, Tol,
                 ),
             ))
@@ -1861,7 +2049,7 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address_domain_address_domain_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address_domain_address_domain_real2(
                 self as *mut Self,
                 C1,
                 D1,
@@ -1883,7 +2071,7 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address2_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address2_real2(
                 self as *mut Self,
                 C1,
                 C2,
@@ -1903,7 +2091,7 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address_domain_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address_domain_real2(
                 self as *mut Self,
                 C1,
                 D1,
@@ -1922,7 +2110,12 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address_real2(self as *mut Self, C1, TolConf, Tol)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address_real2(
+                self as *mut Self,
+                C1,
+                TolConf,
+                Tol,
+            )
         })
     }
 
@@ -1937,7 +2130,7 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address_domain_address_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address_domain_address_real2(
                 self as *mut Self,
                 C1,
                 D1,
@@ -1959,7 +2152,7 @@ impl CInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_perform_address2_domain_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_perform_address2_domain_real2(
                 self as *mut Self,
                 C1,
                 C2,
@@ -1979,7 +2172,11 @@ impl CInter {
     ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CInter_compute_domain(self as *const Self, C1, TolDomain),
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_compute_domain(
+                    self as *const Self,
+                    C1,
+                    TolDomain,
+                ),
             ))
         }
     }
@@ -1988,21 +2185,24 @@ impl CInter {
     /// Set / get minimum number of points in polygon intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_set_min_nb_samples(self as *mut Self, theMinNbSamples)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_set_min_nb_samples(
+                self as *mut Self,
+                theMinNbSamples,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_CInter.hxx`:133 - `HLRBRep_CInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CInter_get_min_nb_samples(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_get_min_nb_samples(self as *const Self)
         })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CInter_as_IntRes2d_Intersection(
                 self as *const Self,
             ))
         }
@@ -2011,37 +2211,39 @@ impl CInter {
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_CInter_as_IntRes2d_Intersection_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CInter_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CInter_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CInter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CInter_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_NbPoints(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_CInter_inherited_Point(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_Point(
                 self as *const Self,
                 N,
             )))
@@ -2051,14 +2253,14 @@ impl CInter {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CInter_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_NbSegments(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_CInter_inherited_Segment(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_Segment(
                 self as *const Self,
                 N,
             )))
@@ -2068,7 +2270,7 @@ impl CInter {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CInter_inherited_SetReversedParameters(
+            crate::ffi_extern_TKHLR::HLRBRep_CInter_inherited_SetReversedParameters(
                 self as *mut Self,
                 Reverseflag,
             )
@@ -2081,11 +2283,11 @@ impl CInter {
 // ========================
 
 /// **Source:** `HLRBRep_CLProps.hxx`:38 - `HLRBRep_CLProps`
-pub use crate::ffi::HLRBRep_CLProps as CLProps;
+pub use crate::ffi_types::HLRBRep_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_CLProps_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_CLProps_destructor(ptr);
     }
 }
 
@@ -2107,7 +2309,7 @@ impl CLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CLProps_ctor_curveptr_int_real(C, N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_CLProps_ctor_curveptr_int_real(C, N, Resolution),
             ))
         }
     }
@@ -2124,7 +2326,9 @@ impl CLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CLProps_ctor_curveptr_real_int_real(C, U, N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_CLProps_ctor_curveptr_real_int_real(
+                    C, U, N, Resolution,
+                ),
             ))
         }
     }
@@ -2139,7 +2343,7 @@ impl CLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_CLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_CLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -2149,7 +2353,7 @@ impl CLProps {
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_set_parameter(self as *mut Self, U)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_set_parameter(self as *mut Self, U)
         })
     }
 
@@ -2158,35 +2362,45 @@ impl CLProps {
     /// for the new curve.
     pub unsafe fn set_curve(&mut self, C: &mut *const Curve) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:81 - `HLRBRep_CLProps::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:85 - `HLRBRep_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d1(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CLProps_d1(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:89 - `HLRBRep_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d2(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CLProps_d2(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:93 - `HLRBRep_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec2d {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_CLProps_d3(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_CLProps_d3(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:98 - `HLRBRep_CLProps::IsTangentDefined()`
@@ -2195,7 +2409,7 @@ impl CLProps {
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_is_tangent_defined(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_is_tangent_defined(self as *mut Self)
         })
     }
 
@@ -2203,21 +2417,23 @@ impl CLProps {
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_tangent(self as *mut Self, D)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_tangent(self as *mut Self, D)
         })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:104 - `HLRBRep_CLProps::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CLProps_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_CLProps.hxx`:107 - `HLRBRep_CLProps::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_normal(self as *mut Self, N)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_normal(self as *mut Self, N)
         })
     }
 
@@ -2225,7 +2441,7 @@ impl CLProps {
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLProps_centre_of_curvature(self as *mut Self, P)
+            crate::ffi_extern_TKHLR::HLRBRep_CLProps_centre_of_curvature(self as *mut Self, P)
         })
     }
 }
@@ -2235,11 +2451,11 @@ impl CLProps {
 // ========================
 
 /// **Source:** `HLRBRep_CLPropsATool.hxx`:28 - `HLRBRep_CLPropsATool`
-pub use crate::ffi::HLRBRep_CLPropsATool as CLPropsATool;
+pub use crate::ffi_types::HLRBRep_CLPropsATool as CLPropsATool;
 
 unsafe impl crate::CppDeletable for CLPropsATool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_CLPropsATool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_destructor(ptr);
     }
 }
 
@@ -2248,7 +2464,9 @@ impl CLPropsATool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CLPropsATool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_ctor(),
+            ))
         }
     }
 
@@ -2257,7 +2475,7 @@ impl CLPropsATool {
     /// Curve from HLRBRep <C>.
     pub fn value(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_value(A as *const _, U, P)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_value(A as *const _, U, P)
         })
     }
 
@@ -2266,7 +2484,7 @@ impl CLPropsATool {
     /// of parameter <U> on the curve <C>.
     pub fn d1(A: &Curve, U: f64, P: &mut crate::gp::Pnt2d, V1: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_d1(A as *const _, U, P, V1)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_d1(A as *const _, U, P, V1)
         })
     }
 
@@ -2282,7 +2500,7 @@ impl CLPropsATool {
         V2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_d2(A as *const _, U, P, V1, V2)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_d2(A as *const _, U, P, V1, V2)
         })
     }
 
@@ -2299,7 +2517,7 @@ impl CLPropsATool {
         V3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_d3(A as *const _, U, P, V1, V2, V3)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_d3(A as *const _, U, P, V1, V2, V3)
         })
     }
 
@@ -2310,14 +2528,16 @@ impl CLPropsATool {
     /// computable.  returns  3 : first,  second and third
     /// are computable.
     pub fn continuity(A: &Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CLPropsATool_continuity(A as *const _) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_continuity(A as *const _)
+        })
     }
 
     /// **Source:** `HLRBRep_CLPropsATool.hxx`:68 - `HLRBRep_CLPropsATool::FirstParameter()`
     /// returns the first parameter bound of the curve.
     pub fn first_parameter(A: &Curve) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_first_parameter(A as *const _)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_first_parameter(A as *const _)
         })
     }
 
@@ -2326,7 +2546,7 @@ impl CLPropsATool {
     /// FirstParameter must be less than LastParamenter.
     pub fn last_parameter(A: &Curve) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CLPropsATool_last_parameter(A as *const _)
+            crate::ffi_extern_TKHLR::HLRBRep_CLPropsATool_last_parameter(A as *const _)
         })
     }
 }
@@ -2339,11 +2559,11 @@ impl CLPropsATool {
 /// Defines a 2d curve by projection of  a 3D curve on
 /// a    plane     with  an     optional   perspective
 /// transformation.
-pub use crate::ffi::HLRBRep_Curve as Curve;
+pub use crate::ffi_types::HLRBRep_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Curve_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Curve_destructor(ptr);
     }
 }
 
@@ -2351,34 +2571,46 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:55 - `HLRBRep_Curve::HLRBRep_Curve()`
     /// Creates an undefined Curve.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:57 - `HLRBRep_Curve::Projector()`
     pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_projector(self as *mut Self, Proj as *const _)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_projector(self as *mut Self, Proj as *const _)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:60 - `HLRBRep_Curve::Curve()`
     /// Returns the 3D curve.
     pub fn curve(&mut self) -> &mut crate::b_rep_adaptor::Curve {
-        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Curve_curve(self as *mut Self))) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Curve_curve(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:63 - `HLRBRep_Curve::Curve()`
     /// Sets the 3D curve to be projected.
     pub fn curve_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_curve_edge(self as *mut Self, E)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_curve_edge(self as *mut Self, E)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:66 - `HLRBRep_Curve::GetCurve()`
     /// Returns the 3D curve.
     pub fn get_curve(&self) -> &crate::b_rep_adaptor::Curve {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Curve_get_curve(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Curve_get_curve(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:70 - `HLRBRep_Curve::Parameter2d()`
@@ -2386,7 +2618,7 @@ impl Curve {
     /// parameter on the 3d curve.
     pub fn parameter2d(&self, P3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_parameter2d(self as *const Self, P3d)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_parameter2d(self as *const Self, P3d)
         })
     }
 
@@ -2395,7 +2627,7 @@ impl Curve {
     /// parameter on the 2d curve.
     pub fn parameter3d(&self, P2d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_parameter3d(self as *const Self, P2d)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_parameter3d(self as *const Self, P2d)
         })
     }
 
@@ -2403,7 +2635,7 @@ impl Curve {
     /// Update the minmax and the internal data
     pub fn update(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_update(
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_update(
                 self as *mut Self,
                 TotMin.as_mut_ptr(),
                 TotMax.as_mut_ptr(),
@@ -2415,7 +2647,7 @@ impl Curve {
     /// Update the minmax returns tol for enlarge;
     pub fn update_min_max(&mut self, TotMin: &mut [f64; 16], TotMax: &mut [f64; 16]) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_update_min_max(
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_update_min_max(
                 self as *mut Self,
                 TotMin.as_mut_ptr(),
                 TotMax.as_mut_ptr(),
@@ -2427,7 +2659,9 @@ impl Curve {
     /// Computes the Z    coordinate  of the  point  of
     /// parameter U on the curve in the viewing coordinate system
     pub fn z(&self, U: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_z(self as *const Self, U) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_z(self as *const Self, U)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:88 - `HLRBRep_Curve::Value3D()`
@@ -2435,10 +2669,9 @@ impl Curve {
     /// curve.
     pub fn value3_d(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_value3_d(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_value3_d(self as *const Self, U),
+            ))
         }
     }
 
@@ -2447,7 +2680,7 @@ impl Curve {
     /// curve.
     pub fn d0_real_pnt(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d0_real_pnt(self as *const Self, U, P)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d0_real_pnt(self as *const Self, U, P)
         })
     }
 
@@ -2456,7 +2689,7 @@ impl Curve {
     /// with its first derivative.
     pub fn d1_real_pnt_vec(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d1_real_pnt_vec(self as *const Self, U, P, V)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d1_real_pnt_vec(self as *const Self, U, P, V)
         })
     }
 
@@ -2467,28 +2700,28 @@ impl Curve {
     /// with the second derivative.
     pub fn tangent(&self, AtStart: bool, P: &mut crate::gp::Pnt2d, D: &mut crate::gp::Dir2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_tangent(self as *const Self, AtStart, P, D)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_tangent(self as *const Self, AtStart, P, D)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:104 - `HLRBRep_Curve::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_first_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:106 - `HLRBRep_Curve::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_last_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:108 - `HLRBRep_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_continuity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -2499,7 +2732,7 @@ impl Curve {
     /// intervals.
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_nb_intervals(self as *const Self, S.into())
         })
     }
 
@@ -2509,35 +2742,44 @@ impl Curve {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_intervals(self as *const Self, T, S.into())
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:122 - `HLRBRep_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:124 - `HLRBRep_Curve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_periodic(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:126 - `HLRBRep_Curve::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_period(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:129 - `HLRBRep_Curve::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_value(self as *const Self, U),
+            ))
         }
     }
 
@@ -2545,7 +2787,7 @@ impl Curve {
     /// Computes the point of parameter U on the curve.
     pub fn d0_real_pnt2d(&self, U: f64, P: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d0_real_pnt2d(self as *const Self, U, P)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d0_real_pnt2d(self as *const Self, U, P)
         })
     }
 
@@ -2556,7 +2798,7 @@ impl Curve {
     /// is not C1.
     pub fn d1_real_pnt2d_vec2d(&self, U: f64, P: &mut crate::gp::Pnt2d, V: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d1_real_pnt2d_vec2d(self as *const Self, U, P, V)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d1_real_pnt2d_vec2d(self as *const Self, U, P, V)
         })
     }
 
@@ -2571,7 +2813,7 @@ impl Curve {
         V2: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
@@ -2589,7 +2831,7 @@ impl Curve {
         V3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_d3(self as *const Self, U, P, V1, V2, V3)
         })
     }
 
@@ -2601,11 +2843,9 @@ impl Curve {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_dn(self as *const Self, U, N),
+            ))
         }
     }
 
@@ -2614,7 +2854,7 @@ impl Curve {
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_resolution(self as *const Self, R3d)
         })
     }
 
@@ -2624,7 +2864,7 @@ impl Curve {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Curve_get_type(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -2632,78 +2872,84 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:170 - `HLRBRep_Curve::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_line(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_line(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:172 - `HLRBRep_Curve::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_circle(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_circle(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:174 - `HLRBRep_Curve::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_ellipse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_ellipse(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:176 - `HLRBRep_Curve::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_hyperbola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:178 - `HLRBRep_Curve::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Curve_parabola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Curve_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:180 - `HLRBRep_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_is_rational(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_is_rational(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:182 - `HLRBRep_Curve::Degree()`
     pub fn degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:184 - `HLRBRep_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_nb_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:186 - `HLRBRep_Curve::Poles()`
-    pub fn poles_array1ofpnt2d(&self, TP: &mut crate::ffi::TColgp_Array1OfPnt2d) {
+    pub fn poles_array1ofpnt2d(&self, TP: &mut crate::ffi_types::TColgp_Array1OfPnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_poles_array1ofpnt2d(self as *const Self, TP)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_poles_array1ofpnt2d(self as *const Self, TP)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:188 - `HLRBRep_Curve::Poles()`
     pub fn poles_handlegeombsplinecurve_array1ofpnt2d(
         &self,
-        aCurve: &crate::ffi::HandleGeomBSplineCurve,
-        TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        aCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        TP: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_poles_handlegeombsplinecurve_array1ofpnt2d(
                 self as *const Self,
                 aCurve,
                 TP,
@@ -2714,11 +2960,11 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:191 - `HLRBRep_Curve::PolesAndWeights()`
     pub fn poles_and_weights_array1ofpnt2d_array1ofreal(
         &self,
-        TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TW: &mut crate::ffi::TColStd_Array1OfReal,
+        TP: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TW: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_poles_and_weights_array1ofpnt2d_array1ofreal(
                 self as *const Self,
                 TP,
                 TW,
@@ -2729,31 +2975,33 @@ impl Curve {
     /// **Source:** `HLRBRep_Curve.hxx`:193 - `HLRBRep_Curve::PolesAndWeights()`
     pub fn poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(
         &self,
-        aCurve: &crate::ffi::HandleGeomBSplineCurve,
-        TP: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TW: &mut crate::ffi::TColStd_Array1OfReal,
+        aCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        TP: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TW: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(self as *const Self, aCurve, TP, TW)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_poles_and_weights_handlegeombsplinecurve_array1ofpnt2d_array1ofreal(self as *const Self, aCurve, TP, TW)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:197 - `HLRBRep_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Curve_nb_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:199 - `HLRBRep_Curve::Knots()`
-    pub fn knots(&self, kn: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, kn: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_knots(self as *const Self, kn)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_knots(self as *const Self, kn)
         })
     }
 
     /// **Source:** `HLRBRep_Curve.hxx`:201 - `HLRBRep_Curve::Multiplicities()`
-    pub fn multiplicities(&self, mu: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn multiplicities(&self, mu: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Curve_multiplicities(self as *const Self, mu)
+            crate::ffi_extern_TKHLR::HLRBRep_Curve_multiplicities(self as *const Self, mu)
         })
     }
 }
@@ -2763,11 +3011,11 @@ impl Curve {
 // ========================
 
 /// **Source:** `HLRBRep_CurveTool.hxx`:40 - `HLRBRep_CurveTool`
-pub use crate::ffi::HLRBRep_CurveTool as CurveTool;
+pub use crate::ffi_types::HLRBRep_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_CurveTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_CurveTool_destructor(ptr);
     }
 }
 
@@ -2776,24 +3024,28 @@ impl CurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:45 - `HLRBRep_CurveTool::FirstParameter()`
     pub unsafe fn first_parameter(C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_first_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:47 - `HLRBRep_CurveTool::LastParameter()`
     pub unsafe fn last_parameter(C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_last_parameter(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_last_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:49 - `HLRBRep_CurveTool::Continuity()`
     pub unsafe fn continuity(C: *mut std::ffi::c_void) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CurveTool_continuity(C)
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_continuity(C)
         }))
         .unwrap()
     }
@@ -2802,7 +3054,7 @@ impl CurveTool {
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
     pub unsafe fn nb_intervals(C: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_nb_intervals(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_nb_intervals(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:60 - `HLRBRep_CurveTool::Intervals()`
@@ -2811,8 +3063,13 @@ impl CurveTool {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub unsafe fn intervals(C: *mut std::ffi::c_void, T: &mut crate::ffi::TColStd_Array1OfReal) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_intervals(C, T) })
+    pub unsafe fn intervals(
+        C: *mut std::ffi::c_void,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_intervals(C, T)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:64 - `HLRBRep_CurveTool::GetInterval()`
@@ -2821,44 +3078,44 @@ impl CurveTool {
     pub unsafe fn get_interval(
         C: *mut std::ffi::c_void,
         Index: i32,
-        Tab: &crate::ffi::TColStd_Array1OfReal,
+        Tab: &crate::ffi_types::TColStd_Array1OfReal,
         U1: &mut f64,
         U2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_CurveTool_get_interval(C, Index, Tab, U1, U2)
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_get_interval(C, Index, Tab, U1, U2)
         })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:70 - `HLRBRep_CurveTool::IsClosed()`
     pub unsafe fn is_closed(C: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_is_closed(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:72 - `HLRBRep_CurveTool::IsPeriodic()`
     pub unsafe fn is_periodic(C: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_is_periodic(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:74 - `HLRBRep_CurveTool::Period()`
     pub unsafe fn period(C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_period(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:77 - `HLRBRep_CurveTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub unsafe fn value(C: *mut std::ffi::c_void, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_value(
-                C, U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_value(C, U),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:80 - `HLRBRep_CurveTool::D0()`
     /// Computes the point of parameter U on the curve.
     pub unsafe fn d0(C: *mut std::ffi::c_void, U: f64, P: &mut crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d0(C, U, P) })
+        crate::check_void_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:86 - `HLRBRep_CurveTool::D1()`
@@ -2872,7 +3129,9 @@ impl CurveTool {
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d1(C, U, P, V) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:92 - `HLRBRep_CurveTool::D2()`
@@ -2887,7 +3146,9 @@ impl CurveTool {
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:102 - `HLRBRep_CurveTool::D3()`
@@ -2903,7 +3164,9 @@ impl CurveTool {
         V2: &mut crate::gp::Vec2d,
         V3: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_CurveTool_d3(C, U, P, V1, V2, V3) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:114 - `HLRBRep_CurveTool::DN()`
@@ -2918,9 +3181,9 @@ impl CurveTool {
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_dn(
-                C, U, N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_dn(C, U, N),
+            ))
         }
     }
 
@@ -2928,7 +3191,9 @@ impl CurveTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub unsafe fn resolution(C: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_resolution(C, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_resolution(C, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:123 - `HLRBRep_CurveTool::GetType()`
@@ -2937,7 +3202,7 @@ impl CurveTool {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub unsafe fn get_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CurveTool_get_type(C)
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_get_type(C)
         }))
         .unwrap()
     }
@@ -2948,7 +3213,7 @@ impl CurveTool {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub unsafe fn the_type(C: *mut std::ffi::c_void) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CurveTool_the_type(C)
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_the_type(C)
         }))
         .unwrap()
     }
@@ -2956,82 +3221,92 @@ impl CurveTool {
     /// **Source:** `HLRBRep_CurveTool.hxx`:130 - `HLRBRep_CurveTool::Line()`
     pub unsafe fn line(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_line(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:132 - `HLRBRep_CurveTool::Circle()`
     pub unsafe fn circle(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_circle(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_circle(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:134 - `HLRBRep_CurveTool::Ellipse()`
     pub unsafe fn ellipse(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_ellipse(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_ellipse(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:136 - `HLRBRep_CurveTool::Hyperbola()`
     pub unsafe fn hyperbola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_hyperbola(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_hyperbola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:138 - `HLRBRep_CurveTool::Parabola()`
     pub unsafe fn parabola(C: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_parabola(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_parabola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:140 - `HLRBRep_CurveTool::Bezier()`
     pub unsafe fn bezier(
         C: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_bezier(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_bezier(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:142 - `HLRBRep_CurveTool::BSpline()`
     pub unsafe fn b_spline(
         C: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_CurveTool_b_spline(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_CurveTool_b_spline(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:144 - `HLRBRep_CurveTool::EpsX()`
     pub unsafe fn eps_x(C: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_eps_x(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_eps_x(C) })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:146 - `HLRBRep_CurveTool::NbSamples()`
     pub unsafe fn nb_samples_address_real2(C: *mut std::ffi::c_void, U0: f64, U1: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_CurveTool_nb_samples_address_real2(C, U0, U1)
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_nb_samples_address_real2(C, U0, U1)
         })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:150 - `HLRBRep_CurveTool::NbSamples()`
     pub unsafe fn nb_samples_address(C: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_nb_samples_address(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_CurveTool_nb_samples_address(C)
+        })
     }
 
     /// **Source:** `HLRBRep_CurveTool.hxx`:152 - `HLRBRep_CurveTool::Degree()`
     pub unsafe fn degree(C: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_CurveTool_degree(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_CurveTool_degree(C) })
     }
 }
 
@@ -3040,11 +3315,11 @@ impl CurveTool {
 // ========================
 
 /// **Source:** `HLRBRep_Data.hxx`:54 - `HLRBRep_Data`
-pub use crate::ffi::HLRBRep_Data as Data;
+pub use crate::ffi_types::HLRBRep_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Data_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Data_destructor(ptr);
     }
 }
 
@@ -3054,32 +3329,36 @@ impl Data {
     /// <NE> edges and <NF> faces.
     pub fn new_int3(NV: i32, NE: i32, NF: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Data_ctor_int3(
-                NV, NE, NF,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Data_ctor_int3(NV, NE, NF),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:66 - `HLRBRep_Data::Write()`
     /// Write <DS>    in   me  with   a     translation of
     /// <dv>,<de>,<df>.
-    pub fn write(&mut self, DS: &crate::ffi::HandleHLRBRepData, dv: i32, de: i32, df: i32) {
+    pub fn write(&mut self, DS: &crate::ffi_types::HandleHLRBRepData, dv: i32, de: i32, df: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_write(self as *mut Self, DS, dv, de, df)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_write(self as *mut Self, DS, dv, de, df)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:71 - `HLRBRep_Data::EDataArray()`
-    pub fn e_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfEData {
+    pub fn e_data_array(&mut self) -> &mut crate::ffi_types::HLRBRep_Array1OfEData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_e_data_array(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_e_data_array(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:73 - `HLRBRep_Data::FDataArray()`
-    pub fn f_data_array(&mut self) -> &mut crate::ffi::HLRBRep_Array1OfFData {
+    pub fn f_data_array(&mut self) -> &mut crate::ffi_types::HLRBRep_Array1OfFData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_f_data_array(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_f_data_array(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3088,7 +3367,7 @@ impl Data {
     /// exploration
     pub fn tolerance_float(&mut self, tol: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_tolerance_float(self as *mut Self, tol)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_tolerance_float(self as *mut Self, tol)
         })
     }
 
@@ -3096,46 +3375,66 @@ impl Data {
     /// returns  the tolerance for the  rejections  during
     /// the exploration
     pub fn tolerance(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_tolerance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_tolerance(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:85 - `HLRBRep_Data::Update()`
     /// end of building  of the Data and updating
     /// all the information linked to the projection.
     pub fn update(&mut self, P: &crate::hlr_algo::Projector) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_Data_update(self as *mut Self, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_update(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:87 - `HLRBRep_Data::Projector()`
     pub fn projector(&mut self) -> &mut crate::hlr_algo::Projector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_projector(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_projector(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:89 - `HLRBRep_Data::NbVertices()`
     pub fn nb_vertices(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_vertices(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_nb_vertices(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:91 - `HLRBRep_Data::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_edges(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_nb_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:93 - `HLRBRep_Data::NbFaces()`
     pub fn nb_faces(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_nb_faces(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_nb_faces(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:95 - `HLRBRep_Data::EdgeMap()`
-    pub fn edge_map(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
-        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Data_edge_map(self as *mut Self))) }
+    pub fn edge_map(&mut self) -> &mut crate::ffi_types::TopTools_IndexedMapOfShape {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_edge_map(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:97 - `HLRBRep_Data::FaceMap()`
-    pub fn face_map(&mut self) -> &mut crate::ffi::TopTools_IndexedMapOfShape {
-        unsafe { &mut *(crate::check_result(crate::ffi::HLRBRep_Data_face_map(self as *mut Self))) }
+    pub fn face_map(&mut self) -> &mut crate::ffi_types::TopTools_IndexedMapOfShape {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_face_map(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:100 - `HLRBRep_Data::InitBoundSort()`
@@ -3147,35 +3446,48 @@ impl Data {
         e2: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_init_bound_sort(self as *mut Self, MinMaxTot, e1, e2)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_init_bound_sort(
+                self as *mut Self,
+                MinMaxTot,
+                e1,
+                e2,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:106 - `HLRBRep_Data::InitEdge()`
     /// Begin an iteration only  on visible Edges
     /// crossing the face number <FI>.
-    pub fn init_edge(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
+    pub fn init_edge(
+        &mut self,
+        FI: i32,
+        MST: &mut crate::ffi_types::BRepTopAdaptor_MapOfShapeTool,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_init_edge(self as *mut Self, FI, MST)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_init_edge(self as *mut Self, FI, MST)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:108 - `HLRBRep_Data::MoreEdge()`
     pub fn more_edge(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_more_edge(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_more_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:110 - `HLRBRep_Data::NextEdge()`
     pub fn next_edge(&mut self, skip: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_next_edge(self as *mut Self, skip)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_next_edge(self as *mut Self, skip)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:113 - `HLRBRep_Data::Edge()`
     /// Returns the  current Edge
     pub fn edge(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_edge(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_edge(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:117 - `HLRBRep_Data::HidingTheFace()`
@@ -3183,7 +3495,7 @@ impl Data {
     /// belongs to the hiding face.
     pub fn hiding_the_face(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_hiding_the_face(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_hiding_the_face(self as *const Self)
         })
     }
 
@@ -3192,7 +3504,7 @@ impl Data {
     /// auto-intersected one.
     pub fn simple_hiding_face(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_simple_hiding_face(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_simple_hiding_face(self as *const Self)
         })
     }
 
@@ -3202,21 +3514,21 @@ impl Data {
     /// the More, Next, and Value methods.
     pub fn init_interference(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_init_interference(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_init_interference(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:128 - `HLRBRep_Data::MoreInterference()`
     pub fn more_interference(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_more_interference(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_more_interference(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:130 - `HLRBRep_Data::NextInterference()`
     pub fn next_interference(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_next_interference(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_next_interference(self as *mut Self)
         })
     }
 
@@ -3224,7 +3536,7 @@ impl Data {
     /// Returns  True if the  interference is rejected.
     pub fn rejected_interference(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_rejected_interference(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_rejected_interference(self as *mut Self)
         })
     }
 
@@ -3233,14 +3545,16 @@ impl Data {
     /// the face.
     pub fn above_interference(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_above_interference(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_above_interference(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:139 - `HLRBRep_Data::Interference()`
     pub fn interference(&mut self) -> &mut crate::hlr_algo::Interference {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Data_interference(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_interference(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3255,7 +3569,13 @@ impl Data {
         Cu: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_local_le_geometry2_d(self as *mut Self, Param, Tg, Nm, Cu)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_local_le_geometry2_d(
+                self as *mut Self,
+                Param,
+                Tg,
+                Nm,
+                Cu,
+            )
         })
     }
 
@@ -3271,7 +3591,14 @@ impl Data {
         Cu: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_local_fe_geometry2_d(self as *mut Self, FE, Param, Tg, Nm, Cu)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_local_fe_geometry2_d(
+                self as *mut Self,
+                FE,
+                Param,
+                Tg,
+                Nm,
+                Cu,
+            )
         })
     }
 
@@ -3289,7 +3616,7 @@ impl Data {
         let mut stbef_i32_: i32 = (*stbef).into();
         let mut staf_i32_: i32 = (*staf).into();
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_edge_state(
+            crate::ffi_extern_TKHLR::HLRBRep_Data_edge_state(
                 self as *mut Self,
                 p1,
                 p2,
@@ -3306,7 +3633,11 @@ impl Data {
     /// Hiding Face.
     pub fn edge_of_the_hiding_face(&self, E: i32, ED: &EdgeData) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_edge_of_the_hiding_face(self as *const Self, E, ED)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_edge_of_the_hiding_face(
+                self as *const Self,
+                E,
+                ED,
+            )
         })
     }
 
@@ -3319,10 +3650,10 @@ impl Data {
         &mut self,
         E: i32,
         ED: &EdgeData,
-        IL: &crate::ffi::HLRAlgo_InterferenceList,
+        IL: &crate::ffi_types::HLRAlgo_InterferenceList,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_hiding_start_level(self as *mut Self, E, ED, IL)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_hiding_start_level(self as *mut Self, E, ED, IL)
         })
     }
 
@@ -3331,7 +3662,7 @@ impl Data {
     /// classification.
     pub fn compare(&mut self, E: i32, ED: &EdgeData) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_compare(self as *mut Self, E, ED)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_compare(self as *mut Self, E, ED)
         }))
         .unwrap()
     }
@@ -3349,7 +3680,14 @@ impl Data {
         p2: f64,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_simpl_classify(self as *mut Self, E, ED, Nbp, p1, p2)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_simpl_classify(
+                self as *mut Self,
+                E,
+                ED,
+                Nbp,
+                p1,
+                p2,
+            )
         }))
         .unwrap()
     }
@@ -3365,7 +3703,14 @@ impl Data {
         param: f64,
     ) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_classify(self as *mut Self, E, ED, LevelFlag, Level, param)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_classify(
+                self as *mut Self,
+                E,
+                ED,
+                LevelFlag,
+                Level,
+                param,
+            )
         }))
         .unwrap()
     }
@@ -3373,39 +3718,49 @@ impl Data {
     /// **Source:** `HLRBRep_Data.hxx`:197 - `HLRBRep_Data::IsBadFace()`
     /// Returns true if the current face is bad.
     pub fn is_bad_face(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Data_is_bad_face(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_is_bad_face(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:199 - `HLRBRep_Data::Destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_Data_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Data_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Data_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::HLRBRep_Data_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Data_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `HLRBRep_Data.hxx`:203 - `HLRBRep_Data::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_Data_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_Data_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Data_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3414,32 +3769,34 @@ impl Data {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_Data_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Data_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Data_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Data_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -3447,7 +3804,7 @@ impl Data {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_Data_inherited_This(self as *const Self)
+                crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3460,58 +3817,68 @@ impl Data {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Data_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Data_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleHLRBRepData;
+pub use crate::ffi_types::HandleHLRBRepData;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleHLRBRepData_destructor(ptr);
+        crate::ffi_extern_TKHLR::HandleHLRBRepData_destructor(ptr);
     }
 }
 
 impl HandleHLRBRepData {
     /// Dereference this Handle to access the underlying HLRBRep_Data
-    pub fn get(&self) -> &crate::ffi::HLRBRep_Data {
-        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepData_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::HLRBRep_Data {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepData_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_Data
-    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_Data {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRBRep_Data {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleHLRBRepData_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepData_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<HLRBRep_Data> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepData_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKHLR::HandleHLRBRepData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3522,11 +3889,11 @@ impl HandleHLRBRepData {
 // ========================
 
 /// **Source:** `HLRBRep_EdgeBuilder.hxx`:31 - `HLRBRep_EdgeBuilder`
-pub use crate::ffi::HLRBRep_EdgeBuilder as EdgeBuilder;
+pub use crate::ffi_types::HLRBRep_EdgeBuilder as EdgeBuilder;
 
 unsafe impl crate::CppDeletable for EdgeBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_EdgeBuilder_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_destructor(ptr);
     }
 }
 
@@ -3539,7 +3906,7 @@ impl EdgeBuilder {
     pub fn new_vertexlist(VList: &mut VertexList) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_EdgeBuilder_ctor_vertexlist(VList),
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_ctor_vertexlist(VList),
             ))
         }
     }
@@ -3548,7 +3915,7 @@ impl EdgeBuilder {
     /// Initialize an iteration on the areas.
     pub fn init_areas(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_init_areas(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_init_areas(self as *mut Self)
         })
     }
 
@@ -3556,7 +3923,7 @@ impl EdgeBuilder {
     /// Set the current area to the next area.
     pub fn next_area(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_next_area(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_next_area(self as *mut Self)
         })
     }
 
@@ -3564,7 +3931,7 @@ impl EdgeBuilder {
     /// Set the current area to the previous area.
     pub fn previous_area(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_previous_area(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_previous_area(self as *mut Self)
         })
     }
 
@@ -3572,7 +3939,7 @@ impl EdgeBuilder {
     /// Returns True if there is a current area.
     pub fn has_area(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_has_area(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_has_area(self as *const Self)
         })
     }
 
@@ -3580,7 +3947,7 @@ impl EdgeBuilder {
     /// Returns the state of the current area.
     pub fn area_state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_area_state(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_area_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -3589,7 +3956,7 @@ impl EdgeBuilder {
     /// Returns the edge state of the current area.
     pub fn area_edge_state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_area_edge_state(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_area_edge_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -3598,10 +3965,10 @@ impl EdgeBuilder {
     /// Returns the  AreaLimit beginning the current area.
     /// This is a NULL handle when the area is infinite on
     /// the left.
-    pub fn left_limit(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
+    pub fn left_limit(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAreaLimit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_EdgeBuilder_left_limit(self as *const Self),
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_left_limit(self as *const Self),
             ))
         }
     }
@@ -3610,10 +3977,10 @@ impl EdgeBuilder {
     /// Returns the  AreaLimit   ending  the current area.
     /// This is a NULL handle when the area is infinite on
     /// the right.
-    pub fn right_limit(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepAreaLimit> {
+    pub fn right_limit(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAreaLimit> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_EdgeBuilder_right_limit(self as *const Self),
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_right_limit(self as *const Self),
             ))
         }
     }
@@ -3624,7 +3991,7 @@ impl EdgeBuilder {
     /// after construction the default is <ToBuild> = IN.
     pub fn builds(&mut self, ToBuild: crate::top_abs::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_builds(self as *mut Self, ToBuild.into())
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_builds(self as *mut Self, ToBuild.into())
         })
     }
 
@@ -3632,7 +3999,7 @@ impl EdgeBuilder {
     /// Returns True if there are more new edges to build.
     pub fn more_edges(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_more_edges(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_more_edges(self as *const Self)
         })
     }
 
@@ -3641,7 +4008,7 @@ impl EdgeBuilder {
     /// remaining vertices on the current edge.
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_next_edge(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_next_edge(self as *mut Self)
         })
     }
 
@@ -3650,7 +4017,7 @@ impl EdgeBuilder {
     /// edge.
     pub fn more_vertices(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_more_vertices(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_more_vertices(self as *const Self)
         })
     }
 
@@ -3658,7 +4025,7 @@ impl EdgeBuilder {
     /// Proceeds to the next vertex of the current edge.
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_next_vertex(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_next_vertex(self as *mut Self)
         })
     }
 
@@ -3666,7 +4033,9 @@ impl EdgeBuilder {
     /// Returns the current vertex of the current edge.
     pub fn current(&self) -> &crate::hlr_algo::Intersection {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_EdgeBuilder_current(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_current(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3675,7 +4044,7 @@ impl EdgeBuilder {
     /// boundary of the edge.
     pub fn is_boundary(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_is_boundary(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_is_boundary(self as *const Self)
         })
     }
 
@@ -3684,7 +4053,7 @@ impl EdgeBuilder {
     /// interference.
     pub fn is_interference(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_is_interference(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_is_interference(self as *const Self)
         })
     }
 
@@ -3692,7 +4061,7 @@ impl EdgeBuilder {
     /// Returns the new orientation of the current vertex.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -3700,7 +4069,7 @@ impl EdgeBuilder {
     /// **Source:** `HLRBRep_EdgeBuilder.hxx`:103 - `HLRBRep_EdgeBuilder::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeBuilder_destroy(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeBuilder_destroy(self as *mut Self)
         })
     }
 }
@@ -3710,11 +4079,11 @@ impl EdgeBuilder {
 // ========================
 
 /// **Source:** `HLRBRep_EdgeData.hxx`:35 - `HLRBRep_EdgeData`
-pub use crate::ffi::HLRBRep_EdgeData as EdgeData;
+pub use crate::ffi_types::HLRBRep_EdgeData as EdgeData;
 
 unsafe impl crate::CppDeletable for EdgeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_EdgeData_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_EdgeData_destructor(ptr);
     }
 }
 
@@ -3722,7 +4091,9 @@ impl EdgeData {
     /// **Source:** `HLRBRep_EdgeData.hxx`:40 - `HLRBRep_EdgeData::HLRBRep_EdgeData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeData_ctor(),
+            ))
         }
     }
 
@@ -3744,7 +4115,7 @@ impl EdgeData {
         TolEnd: f32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_set(
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_set(
                 self as *mut Self,
                 Reg1,
                 RegN,
@@ -3765,223 +4136,263 @@ impl EdgeData {
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:61 - `HLRBRep_EdgeData::Selected()`
     pub fn selected(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_selected(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_selected(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:63 - `HLRBRep_EdgeData::Selected()`
     pub fn selected_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_selected_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_selected_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:65 - `HLRBRep_EdgeData::Rg1Line()`
     pub fn rg1_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_rg1_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_rg1_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:67 - `HLRBRep_EdgeData::Rg1Line()`
     pub fn rg1_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_rg1_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_rg1_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:69 - `HLRBRep_EdgeData::RgNLine()`
     pub fn rg_n_line(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_rg_n_line(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_rg_n_line(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:71 - `HLRBRep_EdgeData::RgNLine()`
     pub fn rg_n_line_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_rg_n_line_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_rg_n_line_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:73 - `HLRBRep_EdgeData::Vertical()`
     pub fn vertical(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_vertical(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_vertical(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:75 - `HLRBRep_EdgeData::Vertical()`
     pub fn vertical_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_vertical_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_vertical_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:77 - `HLRBRep_EdgeData::Simple()`
     pub fn simple(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_simple(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_simple(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:79 - `HLRBRep_EdgeData::Simple()`
     pub fn simple_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_simple_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_simple_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:81 - `HLRBRep_EdgeData::OutLVSta()`
     pub fn out_lv_sta(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_sta(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_out_lv_sta(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:83 - `HLRBRep_EdgeData::OutLVSta()`
     pub fn out_lv_sta_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_out_lv_sta_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_out_lv_sta_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:85 - `HLRBRep_EdgeData::OutLVEnd()`
     pub fn out_lv_end(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_out_lv_end(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_out_lv_end(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:87 - `HLRBRep_EdgeData::OutLVEnd()`
     pub fn out_lv_end_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_out_lv_end_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_out_lv_end_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:89 - `HLRBRep_EdgeData::CutAtSta()`
     pub fn cut_at_sta(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_sta(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_cut_at_sta(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:91 - `HLRBRep_EdgeData::CutAtSta()`
     pub fn cut_at_sta_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_cut_at_sta_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_cut_at_sta_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:93 - `HLRBRep_EdgeData::CutAtEnd()`
     pub fn cut_at_end(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_cut_at_end(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_cut_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:95 - `HLRBRep_EdgeData::CutAtEnd()`
     pub fn cut_at_end_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_cut_at_end_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_cut_at_end_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:97 - `HLRBRep_EdgeData::VerAtSta()`
     pub fn ver_at_sta(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_sta(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_ver_at_sta(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:99 - `HLRBRep_EdgeData::VerAtSta()`
     pub fn ver_at_sta_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_ver_at_sta_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_ver_at_sta_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:101 - `HLRBRep_EdgeData::VerAtEnd()`
     pub fn ver_at_end(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_ver_at_end(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_ver_at_end(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:103 - `HLRBRep_EdgeData::VerAtEnd()`
     pub fn ver_at_end_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_ver_at_end_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_ver_at_end_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:105 - `HLRBRep_EdgeData::AutoIntersectionDone()`
     pub fn auto_intersection_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_auto_intersection_done(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_auto_intersection_done(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:107 - `HLRBRep_EdgeData::AutoIntersectionDone()`
     pub fn auto_intersection_done_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_auto_intersection_done_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_auto_intersection_done_bool(
+                self as *mut Self,
+                B,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:109 - `HLRBRep_EdgeData::Used()`
     pub fn used(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_used(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_used(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:111 - `HLRBRep_EdgeData::Used()`
     pub fn used_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_used_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_used_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:113 - `HLRBRep_EdgeData::HideCount()`
     pub fn hide_count(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_hide_count(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_hide_count(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:115 - `HLRBRep_EdgeData::HideCount()`
     pub fn hide_count_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_hide_count_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_hide_count_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:117 - `HLRBRep_EdgeData::VSta()`
     pub fn v_sta(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_v_sta(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_v_sta(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:119 - `HLRBRep_EdgeData::VSta()`
     pub fn v_sta_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_v_sta_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_v_sta_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:121 - `HLRBRep_EdgeData::VEnd()`
     pub fn v_end(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_v_end(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_v_end(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:123 - `HLRBRep_EdgeData::VEnd()`
     pub fn v_end_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_v_end_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_v_end_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:125 - `HLRBRep_EdgeData::UpdateMinMax()`
     pub fn update_min_max(&mut self, theTotMinMax: &crate::hlr_algo::EdgesBlock_MinMaxIndices) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeData_update_min_max(self as *mut Self, theTotMinMax)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_update_min_max(
+                self as *mut Self,
+                theTotMinMax,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:130 - `HLRBRep_EdgeData::MinMax()`
     pub fn min_max(&mut self) -> &mut crate::hlr_algo::EdgesBlock_MinMaxIndices {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_min_max(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_EdgeData_min_max(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:132 - `HLRBRep_EdgeData::Status()`
     pub fn status(&mut self) -> &mut crate::hlr_algo::EdgeStatus {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_status(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_EdgeData_status(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:134 - `HLRBRep_EdgeData::ChangeGeometry()`
     pub fn change_geometry(&mut self) -> &mut Curve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_EdgeData_change_geometry(
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_EdgeData_change_geometry(
                 self as *mut Self,
             )))
         }
@@ -3990,7 +4401,9 @@ impl EdgeData {
     /// **Source:** `HLRBRep_EdgeData.hxx`:136 - `HLRBRep_EdgeData::Geometry()`
     pub fn geometry(&self) -> &Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_EdgeData_geometry(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_EdgeData_geometry(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3998,7 +4411,7 @@ impl EdgeData {
     pub fn curve(&mut self) -> Option<&mut Curve> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_EdgeData_curve(self as *mut Self)
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeData_curve(self as *mut Self)
             });
             if __val.is_null() {
                 None
@@ -4010,7 +4423,9 @@ impl EdgeData {
 
     /// **Source:** `HLRBRep_EdgeData.hxx`:140 - `HLRBRep_EdgeData::Tolerance()`
     pub fn tolerance(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeData_tolerance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeData_tolerance(self as *const Self)
+        })
     }
 }
 
@@ -4023,11 +4438,11 @@ impl EdgeData {
 /// given parameter on a Curve and a Surface.  It also
 /// compute the signed  curvature value in a direction
 /// at a given u,v point on a surface.
-pub use crate::ffi::HLRBRep_EdgeFaceTool as EdgeFaceTool;
+pub use crate::ffi_types::HLRBRep_EdgeFaceTool as EdgeFaceTool;
 
 unsafe impl crate::CppDeletable for EdgeFaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_EdgeFaceTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_destructor(ptr);
     }
 }
 
@@ -4036,7 +4451,9 @@ impl EdgeFaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeFaceTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_ctor(),
+            ))
         }
     }
 
@@ -4048,7 +4465,7 @@ impl EdgeFaceTool {
         Tg: &crate::gp::Dir,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeFaceTool_curvature_value(F, U, V, Tg)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_curvature_value(F, U, V, Tg)
         })
     }
 
@@ -4061,7 +4478,9 @@ impl EdgeFaceTool {
         U: &mut f64,
         V: &mut f64,
     ) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_EdgeFaceTool_uv_point(Par, E, F, U, V) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeFaceTool_uv_point(Par, E, F, U, V)
+        })
     }
 }
 
@@ -4070,11 +4489,11 @@ impl EdgeFaceTool {
 // ========================
 
 /// **Source:** `HLRBRep_EdgeIList.hxx`:28 - `HLRBRep_EdgeIList`
-pub use crate::ffi::HLRBRep_EdgeIList as EdgeIList;
+pub use crate::ffi_types::HLRBRep_EdgeIList as EdgeIList;
 
 unsafe impl crate::CppDeletable for EdgeIList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_EdgeIList_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_destructor(ptr);
     }
 }
 
@@ -4083,29 +4502,33 @@ impl EdgeIList {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_EdgeIList_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeIList.hxx`:34 - `HLRBRep_EdgeIList::AddInterference()`
     /// Add the interference <I> to the list <IL>.
     pub fn add_interference(
-        IL: &mut crate::ffi::HLRAlgo_InterferenceList,
+        IL: &mut crate::ffi_types::HLRAlgo_InterferenceList,
         I: &crate::hlr_algo::Interference,
         T: &EdgeInterferenceTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeIList_add_interference(IL, I, T)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_add_interference(IL, I, T)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeIList.hxx`:39 - `HLRBRep_EdgeIList::ProcessComplex()`
     /// Process complex transitions on the list IL.
     pub fn process_complex(
-        IL: &mut crate::ffi::HLRAlgo_InterferenceList,
+        IL: &mut crate::ffi_types::HLRAlgo_InterferenceList,
         T: &EdgeInterferenceTool,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_EdgeIList_process_complex(IL, T) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeIList_process_complex(IL, T)
+        })
     }
 }
 
@@ -4116,20 +4539,22 @@ impl EdgeIList {
 /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:33 - `HLRBRep_EdgeInterferenceTool`
 /// Implements the  methods required  to  instantiates
 /// the EdgeInterferenceList from HLRAlgo.
-pub use crate::ffi::HLRBRep_EdgeInterferenceTool as EdgeInterferenceTool;
+pub use crate::ffi_types::HLRBRep_EdgeInterferenceTool as EdgeInterferenceTool;
 
 unsafe impl crate::CppDeletable for EdgeInterferenceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_EdgeInterferenceTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_destructor(ptr);
     }
 }
 
 impl EdgeInterferenceTool {
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:38 - `HLRBRep_EdgeInterferenceTool::HLRBRep_EdgeInterferenceTool()`
-    pub fn new_handlehlrbrepdata(DS: &crate::ffi::HandleHLRBRepData) -> crate::OwnedPtr<Self> {
+    pub fn new_handlehlrbrepdata(
+        DS: &crate::ffi_types::HandleHLRBRepData,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_EdgeInterferenceTool_ctor_handlehlrbrepdata(DS),
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_ctor_handlehlrbrepdata(DS),
             ))
         }
     }
@@ -4137,44 +4562,48 @@ impl EdgeInterferenceTool {
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:40 - `HLRBRep_EdgeInterferenceTool::LoadEdge()`
     pub fn load_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_load_edge(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_load_edge(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:42 - `HLRBRep_EdgeInterferenceTool::InitVertices()`
     pub fn init_vertices(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_init_vertices(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_init_vertices(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:44 - `HLRBRep_EdgeInterferenceTool::MoreVertices()`
     pub fn more_vertices(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_more_vertices(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_more_vertices(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:46 - `HLRBRep_EdgeInterferenceTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_next_vertex(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_next_vertex(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:48 - `HLRBRep_EdgeInterferenceTool::CurrentVertex()`
     pub fn current_vertex(&self) -> &crate::hlr_algo::Intersection {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_EdgeInterferenceTool_current_vertex(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_current_vertex(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:50 - `HLRBRep_EdgeInterferenceTool::CurrentOrientation()`
     pub fn current_orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_current_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_current_orientation(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -4182,14 +4611,16 @@ impl EdgeInterferenceTool {
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:52 - `HLRBRep_EdgeInterferenceTool::CurrentParameter()`
     pub fn current_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_current_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_current_parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:54 - `HLRBRep_EdgeInterferenceTool::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_is_periodic(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_is_periodic(self as *const Self)
         })
     }
 
@@ -4205,7 +4636,7 @@ impl EdgeInterferenceTool {
         Curv: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_edge_geometry(
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_edge_geometry(
                 self as *const Self,
                 Param,
                 Tgt,
@@ -4218,7 +4649,7 @@ impl EdgeInterferenceTool {
     /// **Source:** `HLRBRep_EdgeInterferenceTool.hxx`:64 - `HLRBRep_EdgeInterferenceTool::ParameterOfInterference()`
     pub fn parameter_of_interference(&self, I: &crate::hlr_algo::Interference) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_parameter_of_interference(
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_parameter_of_interference(
                 self as *const Self,
                 I,
             )
@@ -4234,7 +4665,11 @@ impl EdgeInterferenceTool {
         I2: &crate::hlr_algo::Interference,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_same_interferences(self as *const Self, I1, I2)
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_same_interferences(
+                self as *const Self,
+                I1,
+                I2,
+            )
         })
     }
 
@@ -4243,7 +4678,7 @@ impl EdgeInterferenceTool {
     /// are on the same geometric locus.
     pub fn same_vertex_and_interference(&self, I: &crate::hlr_algo::Interference) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_same_vertex_and_interference(
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_same_vertex_and_interference(
                 self as *const Self,
                 I,
             )
@@ -4263,7 +4698,7 @@ impl EdgeInterferenceTool {
         Curv: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_EdgeInterferenceTool_interference_boundary_geometry(
+            crate::ffi_extern_TKHLR::HLRBRep_EdgeInterferenceTool_interference_boundary_geometry(
                 self as *const Self,
                 I,
                 Tang,
@@ -4279,11 +4714,11 @@ impl EdgeInterferenceTool {
 // ========================
 
 /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:33 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter`
-pub use crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter as ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter as ExactIntersectionPointOfTheIntPCurvePCurveOfCInter;
 
 unsafe impl crate::CppDeletable for ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -4295,7 +4730,7 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(C1, C2, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_ctor_address2_real(C1, C2, Tol)))
         }
     }
 
@@ -4310,51 +4745,35 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
         ParamOnSeg2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_thepolygon2doftheintpcurvepcurveofcinter2_int2_real2(self as *mut Self, Poly1, Poly2, NumSegOn1, NumSegOn2, ParamOnSeg1, ParamOnSeg2)
         })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:50 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Perform()`
     pub fn perform_real6(&mut self, Uo: f64, Vo: f64, UInf: f64, VInf: f64, USup: f64, VSup: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(
-                self as *mut Self,
-                Uo,
-                Vo,
-                UInf,
-                VInf,
-                USup,
-                VSup,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_perform_real6(self as *mut Self, Uo, Vo, UInf, VInf, USup, VSup)
         })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_nb_roots(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_nb_roots(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:59 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::Roots()`
     pub fn roots(&mut self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_roots(
-                self as *mut Self,
-                U,
-                V,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_roots(self as *mut Self, U, V)
         })
     }
 
     /// **Source:** `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter.hxx`:61 - `HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter::AnErrorOccurred()`
     pub fn an_error_occurred(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_an_error_occurred(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ExactIntersectionPointOfTheIntPCurvePCurveOfCInter_an_error_occurred(self as *const Self)
         })
     }
 }
@@ -4364,11 +4783,11 @@ impl ExactIntersectionPointOfTheIntPCurvePCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_FaceData.hxx`:30 - `HLRBRep_FaceData`
-pub use crate::ffi::HLRBRep_FaceData as FaceData;
+pub use crate::ffi_types::HLRBRep_FaceData as FaceData;
 
 unsafe impl crate::CppDeletable for FaceData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_FaceData_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_FaceData_destructor(ptr);
     }
 }
 
@@ -4376,7 +4795,9 @@ impl FaceData {
     /// **Source:** `HLRBRep_FaceData.hxx`:35 - `HLRBRep_FaceData::HLRBRep_FaceData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_FaceData_ctor(),
+            ))
         }
     }
 
@@ -4393,7 +4814,7 @@ impl FaceData {
         NW: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_set(self as *mut Self, FG, Or.into(), Cl, NW)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_set(self as *mut Self, FG, Or.into(), Cl, NW)
         })
     }
 
@@ -4402,7 +4823,7 @@ impl FaceData {
     /// <WI>.
     pub fn set_wire(&mut self, WI: i32, NE: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_set_wire(self as *mut Self, WI, NE)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_set_wire(self as *mut Self, WI, NE)
         })
     }
 
@@ -4420,7 +4841,7 @@ impl FaceData {
         IsoL: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_set_w_edge(
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_set_w_edge(
                 self as *mut Self,
                 WI,
                 EWI,
@@ -4436,176 +4857,204 @@ impl FaceData {
 
     /// **Source:** `HLRBRep_FaceData.hxx`:60 - `HLRBRep_FaceData::Selected()`
     pub fn selected(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_selected(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_selected(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:62 - `HLRBRep_FaceData::Selected()`
     pub fn selected_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_selected_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_selected_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:64 - `HLRBRep_FaceData::Back()`
     pub fn back(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_back(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_back(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:66 - `HLRBRep_FaceData::Back()`
     pub fn back_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_back_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_back_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:68 - `HLRBRep_FaceData::Side()`
     pub fn side(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_side(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_side(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:70 - `HLRBRep_FaceData::Side()`
     pub fn side_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_side_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_side_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:72 - `HLRBRep_FaceData::Closed()`
     pub fn closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:74 - `HLRBRep_FaceData::Closed()`
     pub fn closed_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_closed_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_closed_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:76 - `HLRBRep_FaceData::Hiding()`
     pub fn hiding(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_hiding(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_hiding(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:78 - `HLRBRep_FaceData::Hiding()`
     pub fn hiding_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_hiding_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_hiding_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:80 - `HLRBRep_FaceData::Simple()`
     pub fn simple(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_simple(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_simple(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:82 - `HLRBRep_FaceData::Simple()`
     pub fn simple_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_simple_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_simple_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:84 - `HLRBRep_FaceData::Cut()`
     pub fn cut(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cut(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cut(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:86 - `HLRBRep_FaceData::Cut()`
     pub fn cut_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_cut_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cut_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:88 - `HLRBRep_FaceData::WithOutL()`
     pub fn with_out_l(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_with_out_l(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_with_out_l(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:90 - `HLRBRep_FaceData::WithOutL()`
     pub fn with_out_l_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_with_out_l_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_with_out_l_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:92 - `HLRBRep_FaceData::Plane()`
     pub fn plane(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_plane(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_plane(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:94 - `HLRBRep_FaceData::Plane()`
     pub fn plane_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_plane_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_plane_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:96 - `HLRBRep_FaceData::Cylinder()`
     pub fn cylinder(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cylinder(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cylinder(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:98 - `HLRBRep_FaceData::Cylinder()`
     pub fn cylinder_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_cylinder_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cylinder_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:100 - `HLRBRep_FaceData::Cone()`
     pub fn cone(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_cone(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cone(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:102 - `HLRBRep_FaceData::Cone()`
     pub fn cone_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_cone_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_cone_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:104 - `HLRBRep_FaceData::Sphere()`
     pub fn sphere(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_sphere(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_sphere(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:106 - `HLRBRep_FaceData::Sphere()`
     pub fn sphere_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_sphere_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_sphere_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:108 - `HLRBRep_FaceData::Torus()`
     pub fn torus(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_torus(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_torus(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:110 - `HLRBRep_FaceData::Torus()`
     pub fn torus_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_torus_bool(self as *mut Self, B)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_torus_bool(self as *mut Self, B)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:112 - `HLRBRep_FaceData::Size()`
     pub fn size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_size(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:114 - `HLRBRep_FaceData::Size()`
     pub fn size_real(&mut self, S: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_size_real(self as *mut Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_size_real(self as *mut Self, S)
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:116 - `HLRBRep_FaceData::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -4613,27 +5062,36 @@ impl FaceData {
     /// **Source:** `HLRBRep_FaceData.hxx`:118 - `HLRBRep_FaceData::Orientation()`
     pub fn orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceData_orientation_orientation(self as *mut Self, O.into())
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_orientation_orientation(
+                self as *mut Self,
+                O.into(),
+            )
         })
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:120 - `HLRBRep_FaceData::Wires()`
-    pub fn wires(&mut self) -> &mut crate::ffi::HandleHLRAlgoWiresBlock {
+    pub fn wires(&mut self) -> &mut crate::ffi_types::HandleHLRAlgoWiresBlock {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_FaceData_wires(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_FaceData_wires(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:122 - `HLRBRep_FaceData::Geometry()`
     pub fn geometry(&mut self) -> &mut Surface {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_FaceData_geometry(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_FaceData_geometry(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_FaceData.hxx`:124 - `HLRBRep_FaceData::Tolerance()`
     pub fn tolerance(&self) -> f32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceData_tolerance(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceData_tolerance(self as *const Self)
+        })
     }
 }
 
@@ -4642,11 +5100,11 @@ impl FaceData {
 // ========================
 
 /// **Source:** `HLRBRep_FaceIterator.hxx`:30 - `HLRBRep_FaceIterator`
-pub use crate::ffi::HLRBRep_FaceIterator as FaceIterator;
+pub use crate::ffi_types::HLRBRep_FaceIterator as FaceIterator;
 
 unsafe impl crate::CppDeletable for FaceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_FaceIterator_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_destructor(ptr);
     }
 }
 
@@ -4654,7 +5112,9 @@ impl FaceIterator {
     /// **Source:** `HLRBRep_FaceIterator.hxx`:35 - `HLRBRep_FaceIterator::HLRBRep_FaceIterator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceIterator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_ctor(),
+            ))
         }
     }
 
@@ -4662,21 +5122,21 @@ impl FaceIterator {
     /// Begin an exploration of the edges of the face <fd>
     pub fn init_edge(&mut self, fd: &mut FaceData) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_init_edge(self as *mut Self, fd)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_init_edge(self as *mut Self, fd)
         })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:40 - `HLRBRep_FaceIterator::MoreEdge()`
     pub fn more_edge(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_more_edge(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_more_edge(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:42 - `HLRBRep_FaceIterator::NextEdge()`
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_next_edge(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_next_edge(self as *mut Self)
         })
     }
 
@@ -4685,7 +5145,7 @@ impl FaceIterator {
     /// wire.
     pub fn beginning_of_wire(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_beginning_of_wire(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_beginning_of_wire(self as *const Self)
         })
     }
 
@@ -4694,7 +5154,7 @@ impl FaceIterator {
     /// wire.
     pub fn end_of_wire(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_end_of_wire(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_end_of_wire(self as *const Self)
         })
     }
 
@@ -4702,29 +5162,31 @@ impl FaceIterator {
     /// Skip the current wire in the exploration.
     pub fn skip_wire(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_skip_wire(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_skip_wire(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:56 - `HLRBRep_FaceIterator::Wire()`
     /// Returns the edges of the current wire.
-    pub fn wire(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRAlgoEdgesBlock> {
+    pub fn wire(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRAlgoEdgesBlock> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_FaceIterator_wire(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_wire(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:58 - `HLRBRep_FaceIterator::Edge()`
     pub fn edge(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceIterator_edge(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_edge(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:60 - `HLRBRep_FaceIterator::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -4732,26 +5194,28 @@ impl FaceIterator {
     /// **Source:** `HLRBRep_FaceIterator.hxx`:62 - `HLRBRep_FaceIterator::OutLine()`
     pub fn out_line(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_out_line(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_out_line(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:64 - `HLRBRep_FaceIterator::Internal()`
     pub fn internal(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_internal(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_internal(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:66 - `HLRBRep_FaceIterator::Double()`
     pub fn double(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_FaceIterator_double(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_double(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_FaceIterator.hxx`:68 - `HLRBRep_FaceIterator::IsoLine()`
     pub fn iso_line(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_FaceIterator_iso_line(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_FaceIterator_iso_line(self as *const Self)
         })
     }
 }
@@ -4789,11 +5253,11 @@ impl FaceIterator {
 /// new computation of the algorithm, but only
 /// reads its internal results.
 /// The methods of this shape are almost identic to those of the HLRBrep_PolyHLRToShape class.
-pub use crate::ffi::HLRBRep_HLRToShape as HLRToShape;
+pub use crate::ffi_types::HLRBRep_HLRToShape as HLRToShape;
 
 unsafe impl crate::CppDeletable for HLRToShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_HLRToShape_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_destructor(ptr);
     }
 }
 
@@ -4802,10 +5266,10 @@ impl HLRToShape {
     /// Constructs a framework for filtering the
     /// results of the HLRBRep_Algo algorithm, A.
     /// Use the extraction filters to obtain the results you want for A.
-    pub fn new_handlehlrbrepalgo(A: &crate::ffi::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
+    pub fn new_handlehlrbrepalgo(A: &crate::ffi_types::HandleHLRBRepAlgo) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(A),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_ctor_handlehlrbrepalgo(A),
             ))
         }
     }
@@ -4814,7 +5278,7 @@ impl HLRToShape {
     pub fn v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_v_compound(self as *mut Self),
             ))
         }
     }
@@ -4826,7 +5290,7 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_v_compound_shape(self as *mut Self, S),
             ))
         }
     }
@@ -4835,7 +5299,7 @@ impl HLRToShape {
     pub fn rg1_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg1_line_v_compound(self as *mut Self),
             ))
         }
     }
@@ -4847,7 +5311,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg1_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4856,7 +5323,7 @@ impl HLRToShape {
     pub fn rg_n_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg_n_line_v_compound(self as *mut Self),
             ))
         }
     }
@@ -4868,7 +5335,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg_n_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4877,7 +5347,7 @@ impl HLRToShape {
     pub fn out_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_out_line_v_compound(self as *mut Self),
             ))
         }
     }
@@ -4886,7 +5356,9 @@ impl HLRToShape {
     pub fn out_line_v_compound3d(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound3d(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_out_line_v_compound3d(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -4898,7 +5370,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_out_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_out_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4907,7 +5382,7 @@ impl HLRToShape {
     pub fn iso_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_iso_line_v_compound(self as *mut Self),
             ))
         }
     }
@@ -4919,7 +5394,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_iso_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_iso_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4928,7 +5406,7 @@ impl HLRToShape {
     pub fn h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_h_compound(self as *mut Self),
             ))
         }
     }
@@ -4940,7 +5418,7 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_h_compound_shape(self as *mut Self, S),
             ))
         }
     }
@@ -4949,7 +5427,7 @@ impl HLRToShape {
     pub fn rg1_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg1_line_h_compound(self as *mut Self),
             ))
         }
     }
@@ -4961,7 +5439,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg1_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg1_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4970,7 +5451,7 @@ impl HLRToShape {
     pub fn rg_n_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg_n_line_h_compound(self as *mut Self),
             ))
         }
     }
@@ -4982,7 +5463,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_rg_n_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -4991,7 +5475,7 @@ impl HLRToShape {
     pub fn out_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_out_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_out_line_h_compound(self as *mut Self),
             ))
         }
     }
@@ -5003,7 +5487,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_out_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_out_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -5012,7 +5499,7 @@ impl HLRToShape {
     pub fn iso_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_iso_line_h_compound(self as *mut Self),
             ))
         }
     }
@@ -5024,7 +5511,10 @@ impl HLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_iso_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_iso_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -5041,14 +5531,7 @@ impl HLRToShape {
         In3d: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_compound_of_edges_typeofresultingedge_bool2(
-                    self as *mut Self,
-                    type_.into(),
-                    visible,
-                    In3d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_compound_of_edges_typeofresultingedge_bool2(self as *mut Self, type_.into(), visible, In3d)))
         }
     }
 
@@ -5066,15 +5549,7 @@ impl HLRToShape {
         In3d: bool,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_HLRToShape_compound_of_edges_shape_typeofresultingedge_bool2(
-                    self as *mut Self,
-                    S,
-                    type_.into(),
-                    visible,
-                    In3d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_HLRToShape_compound_of_edges_shape_typeofresultingedge_bool2(self as *mut Self, S, type_.into(), visible, In3d)))
         }
     }
 }
@@ -5084,11 +5559,11 @@ impl HLRToShape {
 // ========================
 
 /// **Source:** `HLRBRep_Hider.hxx`:28 - `HLRBRep_Hider`
-pub use crate::ffi::HLRBRep_Hider as Hider;
+pub use crate::ffi_types::HLRBRep_Hider as Hider;
 
 unsafe impl crate::CppDeletable for Hider {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Hider_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Hider_destructor(ptr);
     }
 }
 
@@ -5097,10 +5572,12 @@ impl Hider {
     /// Creates a Hider processing  the set  of  Edges and
     /// hiding faces described by <DS>.  Stores the hidden
     /// parts in <DS>.
-    pub fn new_handlehlrbrepdata(DS: &crate::ffi::HandleHLRBRepData) -> crate::OwnedPtr<Self> {
+    pub fn new_handlehlrbrepdata(
+        DS: &crate::ffi_types::HandleHLRBRepData,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_Hider_ctor_handlehlrbrepdata(DS),
+                crate::ffi_extern_TKHLR::HLRBRep_Hider_ctor_handlehlrbrepdata(DS),
             ))
         }
     }
@@ -5109,16 +5586,16 @@ impl Hider {
     /// own hiding the side face number <FI>.
     pub fn own_hiding(&mut self, FI: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Hider_own_hiding(self as *mut Self, FI)
+            crate::ffi_extern_TKHLR::HLRBRep_Hider_own_hiding(self as *mut Self, FI)
         })
     }
 
     /// **Source:** `HLRBRep_Hider.hxx`:43 - `HLRBRep_Hider::Hide()`
     /// Removes from the edges,   the parts hidden by  the
     /// hiding face number <FI>.
-    pub fn hide(&mut self, FI: i32, MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool) {
+    pub fn hide(&mut self, FI: i32, MST: &mut crate::ffi_types::BRepTopAdaptor_MapOfShapeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Hider_hide(self as *mut Self, FI, MST)
+            crate::ffi_extern_TKHLR::HLRBRep_Hider_hide(self as *mut Self, FI, MST)
         })
     }
 }
@@ -5128,11 +5605,11 @@ impl Hider {
 // ========================
 
 /// **Source:** `HLRBRep_IntConicCurveOfCInter.hxx`:39 - `HLRBRep_IntConicCurveOfCInter`
-pub use crate::ffi::HLRBRep_IntConicCurveOfCInter as IntConicCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_IntConicCurveOfCInter as IntConicCurveOfCInter;
 
 unsafe impl crate::CppDeletable for IntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_IntConicCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -5142,7 +5619,7 @@ impl IntConicCurveOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor(),
             ))
         }
     }
@@ -5158,11 +5635,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
-                    L, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(L, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -5177,11 +5650,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(
-                    C, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(C, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -5196,11 +5665,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(
-                    E, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -5215,11 +5680,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(
-                    Prb, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -5235,11 +5696,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(
-                    H, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(H, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -5255,15 +5712,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
-                self as *mut Self,
-                L,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(self as *mut Self, L, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -5279,15 +5728,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
-                self as *mut Self,
-                C,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -5303,15 +5744,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
-                self as *mut Self,
-                E,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -5327,15 +5760,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
-                self as *mut Self,
-                Prb,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -5352,15 +5777,7 @@ impl IntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
-                self as *mut Self,
-                H,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -5368,7 +5785,7 @@ impl IntConicCurveOfCInter {
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection(
+                crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection(
                     self as *const Self,
                 ),
             )
@@ -5379,7 +5796,7 @@ impl IntConicCurveOfCInter {
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
+                crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
                     self as *mut Self,
                 ),
             )
@@ -5389,55 +5806,67 @@ impl IntConicCurveOfCInter {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_IntConicCurveOfCInter_inherited_SetReversedParameters(
+            crate::ffi_extern_TKHLR::HLRBRep_IntConicCurveOfCInter_inherited_SetReversedParameters(
                 self as *mut Self,
                 Reverseflag,
             )
@@ -5450,11 +5879,11 @@ impl IntConicCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_InterCSurf.hxx`:46 - `HLRBRep_InterCSurf`
-pub use crate::ffi::HLRBRep_InterCSurf as InterCSurf;
+pub use crate::ffi_types::HLRBRep_InterCSurf as InterCSurf;
 
 unsafe impl crate::CppDeletable for InterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_InterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_destructor(ptr);
     }
 }
 
@@ -5463,7 +5892,9 @@ impl InterCSurf {
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_InterCSurf_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_ctor(),
+            ))
         }
     }
 
@@ -5476,7 +5907,11 @@ impl InterCSurf {
         Surface: &*mut std::ffi::c_void,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_perform_lin_address(self as *mut Self, Curve, Surface)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_perform_lin_address(
+                self as *mut Self,
+                Curve,
+                Surface,
+            )
         })
     }
 
@@ -5491,7 +5926,7 @@ impl InterCSurf {
         Surface: &*mut std::ffi::c_void,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address(
                 self as *mut Self,
                 Curve,
                 Polygon,
@@ -5513,7 +5948,7 @@ impl InterCSurf {
         Polyhedron: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron)
         })
     }
 
@@ -5531,7 +5966,7 @@ impl InterCSurf {
         BndBSB: &mut crate::bnd::BoundSortBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_perform_lin_thepolygonofintercsurf_address_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, Curve, ThePolygon, Surface, Polyhedron, BndBSB)
         })
     }
 
@@ -5546,21 +5981,18 @@ impl InterCSurf {
         Polyhedron: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(
-                self as *mut Self,
-                Curve,
-                Surface,
-                Polyhedron,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_perform_lin_address_thepolyhedronofintercsurf(self as *mut Self, Curve, Surface, Polyhedron)
         })
     }
 
     /// Upcast to IntCurveSurface_Intersection
     pub fn as_int_curve_surface_intersection(&self) -> &crate::int_curve_surface::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5570,7 +6002,7 @@ impl InterCSurf {
     ) -> &mut crate::int_curve_surface::Intersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(
+                crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_as_IntCurveSurface_Intersection_mut(
                     self as *mut Self,
                 ),
             )
@@ -5580,21 +6012,21 @@ impl InterCSurf {
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:36 - `IntCurveSurface_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:41 - `IntCurveSurface_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_NbPoints(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:47 - `IntCurveSurface_Intersection::Point()`
     pub fn point(&self, Index: i32) -> &crate::int_curve_surface::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_InterCSurf_inherited_Point(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_Point(
                 self as *const Self,
                 Index,
             )))
@@ -5604,14 +6036,14 @@ impl InterCSurf {
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:53 - `IntCurveSurface_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_NbSegments(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:59 - `IntCurveSurface_Intersection::Segment()`
     pub fn segment(&self, Index: i32) -> &crate::int_curve_surface::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_InterCSurf_inherited_Segment(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_Segment(
                 self as *const Self,
                 Index,
             )))
@@ -5621,14 +6053,14 @@ impl InterCSurf {
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:65 - `IntCurveSurface_Intersection::IsParallel()`
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_inherited_IsParallel(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_IsParallel(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntCurveSurface_Intersection.hxx`:68 - `IntCurveSurface_Intersection::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InterCSurf_inherited_Dump(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InterCSurf_inherited_Dump(self as *const Self)
         })
     }
 }
@@ -5638,11 +6070,11 @@ impl InterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_InternalAlgo.hxx`:35 - `HLRBRep_InternalAlgo`
-pub use crate::ffi::HLRBRep_InternalAlgo as InternalAlgo;
+pub use crate::ffi_types::HLRBRep_InternalAlgo as InternalAlgo;
 
 unsafe impl crate::CppDeletable for InternalAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_InternalAlgo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_destructor(ptr);
     }
 }
 
@@ -5650,17 +6082,19 @@ impl InternalAlgo {
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:39 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:41 - `HLRBRep_InternalAlgo::HLRBRep_InternalAlgo()`
     pub fn new_handlehlrbrepinternalalgo(
-        A: &crate::ffi::HandleHLRBRepInternalAlgo,
+        A: &crate::ffi_types::HandleHLRBRepInternalAlgo,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_InternalAlgo_ctor_handlehlrbrepinternalalgo(A),
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_ctor_handlehlrbrepinternalalgo(A),
             ))
         }
     }
@@ -5669,7 +6103,7 @@ impl InternalAlgo {
     /// set the projector.
     pub fn projector_projector(&mut self, P: &crate::hlr_algo::Projector) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_projector_projector(self as *mut Self, P)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_projector_projector(self as *mut Self, P)
         })
     }
 
@@ -5677,7 +6111,7 @@ impl InternalAlgo {
     /// set the projector.
     pub fn projector(&mut self) -> &mut crate::hlr_algo::Projector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_projector(
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_projector(
                 self as *mut Self,
             )))
         }
@@ -5687,7 +6121,7 @@ impl InternalAlgo {
     /// update the DataStructure.
     pub fn update(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_update(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_update(self as *mut Self)
         })
     }
 
@@ -5695,12 +6129,12 @@ impl InternalAlgo {
     /// add the shape <S>.
     pub fn load_handlehlrtopobrepoutliner_handlestandardtransient_int(
         &mut self,
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
-        SData: &crate::ffi::HandleStandardTransient,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi_types::HandleStandardTransient,
         nbIso: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(self as *mut Self, S, SData, nbIso)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_handlestandardtransient_int(self as *mut Self, S, SData, nbIso)
         })
     }
 
@@ -5708,11 +6142,11 @@ impl InternalAlgo {
     /// add the shape <S>.
     pub fn load_handlehlrtopobrepoutliner_int(
         &mut self,
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
         nbIso: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_load_handlehlrtopobrepoutliner_int(
                 self as *mut Self,
                 S,
                 nbIso,
@@ -5723,9 +6157,9 @@ impl InternalAlgo {
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:63 - `HLRBRep_InternalAlgo::Index()`
     /// return the index of the Shape <S> and  return 0 if
     /// the Shape <S> is not found.
-    pub fn index(&self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) -> i32 {
+    pub fn index(&self, S: &crate::ffi_types::HandleHLRTopoBRepOutLiner) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_index(self as *const Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_index(self as *const Self, S)
         })
     }
 
@@ -5733,38 +6167,40 @@ impl InternalAlgo {
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_remove(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_remove(self as *mut Self, I)
         })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:69 - `HLRBRep_InternalAlgo::ShapeData()`
     /// Change the Shape Data of the Shape of index <I>.
-    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi::HandleStandardTransient) {
+    pub fn shape_data(&mut self, I: i32, SData: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_shape_data(self as *mut Self, I, SData)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_shape_data(self as *mut Self, I, SData)
         })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:71 - `HLRBRep_InternalAlgo::SeqOfShapeBounds()`
-    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi::HLRBRep_SeqOfShapeBounds {
+    pub fn seq_of_shape_bounds(&mut self) -> &mut crate::ffi_types::HLRBRep_SeqOfShapeBounds {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_seq_of_shape_bounds(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_seq_of_shape_bounds(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:73 - `HLRBRep_InternalAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_nb_shapes(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_nb_shapes(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:75 - `HLRBRep_InternalAlgo::ShapeBounds()`
     pub fn shape_bounds(&mut self, I: i32) -> &mut ShapeBounds {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_shape_bounds(
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_shape_bounds(
                 self as *mut Self,
                 I,
             )))
@@ -5776,7 +6212,7 @@ impl InternalAlgo {
     /// the back faces of a closed shell.
     pub fn init_edge_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_init_edge_status(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_init_edge_status(self as *mut Self)
         })
     }
 
@@ -5784,7 +6220,7 @@ impl InternalAlgo {
     /// select all the DataStructure.
     pub fn select(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_select(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_select(self as *mut Self)
         })
     }
 
@@ -5792,7 +6228,7 @@ impl InternalAlgo {
     /// select  only   the Shape of index <I>.
     pub fn select_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_select_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_select_int(self as *mut Self, I)
         })
     }
 
@@ -5800,7 +6236,7 @@ impl InternalAlgo {
     /// select only the edges of the Shape <S>.
     pub fn select_edge(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_select_edge(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_select_edge(self as *mut Self, I)
         })
     }
 
@@ -5808,7 +6244,7 @@ impl InternalAlgo {
     /// select only the faces of the Shape <S>.
     pub fn select_face(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_select_face(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_select_face(self as *mut Self, I)
         })
     }
 
@@ -5816,7 +6252,7 @@ impl InternalAlgo {
     /// set to visible all the edges.
     pub fn show_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_show_all(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_show_all(self as *mut Self)
         })
     }
 
@@ -5824,7 +6260,7 @@ impl InternalAlgo {
     /// set to visible all the edges of the Shape <S>.
     pub fn show_all_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_show_all_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_show_all_int(self as *mut Self, I)
         })
     }
 
@@ -5832,7 +6268,7 @@ impl InternalAlgo {
     /// set to hide all the edges.
     pub fn hide_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_hide_all(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_hide_all(self as *mut Self)
         })
     }
 
@@ -5840,7 +6276,7 @@ impl InternalAlgo {
     /// set to  hide all the  edges of the  Shape <S>.
     pub fn hide_all_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_hide_all_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_hide_all_int(self as *mut Self, I)
         })
     }
 
@@ -5849,7 +6285,7 @@ impl InternalAlgo {
     /// without hiding by each other.
     pub fn partial_hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_partial_hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_partial_hide(self as *mut Self)
         })
     }
 
@@ -5857,7 +6293,7 @@ impl InternalAlgo {
     /// hide all the DataStructure.
     pub fn hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_hide(self as *mut Self)
         })
     }
 
@@ -5865,7 +6301,7 @@ impl InternalAlgo {
     /// hide the Shape <S> by itself.
     pub fn hide_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_hide_int(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_hide_int(self as *mut Self, I)
         })
     }
 
@@ -5873,35 +6309,37 @@ impl InternalAlgo {
     /// hide the Shape <S1> by the shape <S2>.
     pub fn hide_int2(&mut self, I: i32, J: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_hide_int2(self as *mut Self, I, J)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_hide_int2(self as *mut Self, I, J)
         })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:118 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug_bool(&mut self, deb: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_debug_bool(self as *mut Self, deb)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_debug_bool(self as *mut Self, deb)
         })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:120 - `HLRBRep_InternalAlgo::Debug()`
     pub fn debug(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_InternalAlgo_debug(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_debug(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:122 - `HLRBRep_InternalAlgo::DataStructure()`
-    pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
+    pub fn data_structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_InternalAlgo_data_structure(self as *const Self),
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_data_structure(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5911,7 +6349,7 @@ impl InternalAlgo {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::HLRBRep_InternalAlgo_get_type_name(),
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5919,50 +6357,64 @@ impl InternalAlgo {
     }
 
     /// **Source:** `HLRBRep_InternalAlgo.hxx`:124 - `HLRBRep_InternalAlgo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_InternalAlgo_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_InternalAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepInternalAlgo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepInternalAlgo> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_InternalAlgo_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5970,7 +6422,7 @@ impl InternalAlgo {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_InternalAlgo_inherited_This(self as *const Self)
+                crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5983,62 +6435,70 @@ impl InternalAlgo {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_InternalAlgo_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_InternalAlgo_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleHLRBRepInternalAlgo;
+pub use crate::ffi_types::HandleHLRBRepInternalAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepInternalAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleHLRBRepInternalAlgo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_destructor(ptr);
     }
 }
 
 impl HandleHLRBRepInternalAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_InternalAlgo
-    pub fn get(&self) -> &crate::ffi::HLRBRep_InternalAlgo {
+    pub fn get(&self) -> &crate::ffi_types::HLRBRep_InternalAlgo {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleHLRBRepInternalAlgo_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_InternalAlgo
-    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_InternalAlgo {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRBRep_InternalAlgo {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleHLRBRepInternalAlgo_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<HLRBRep_InternalAlgo> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepInternalAlgo_to_HandleStandardTransient(
+                crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6048,9 +6508,11 @@ impl HandleHLRBRepInternalAlgo {
     /// Downcast Handle<HLRBRep_InternalAlgo> to Handle<HLRBRep_Algo>
     ///
     /// Returns `None` if the handle does not point to a `HLRBRep_Algo` (or subclass).
-    pub fn downcast_to_algo(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleHLRBRepAlgo>> {
+    pub fn downcast_to_algo(&self) -> Option<crate::OwnedPtr<crate::ffi_types::HandleHLRBRepAlgo>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(self as *const Self)
+            crate::ffi_extern_TKHLR::HandleHLRBRepInternalAlgo_downcast_to_HandleHLRBRepAlgo(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -6067,11 +6529,11 @@ impl HandleHLRBRepInternalAlgo {
 /// **Source:** `HLRBRep_Intersector.hxx`:33 - `HLRBRep_Intersector`
 /// The Intersector  computes 2D  intersections of the projections of 3D curves.
 /// It can also computes the intersection of a 3D line and a surface.
-pub use crate::ffi::HLRBRep_Intersector as Intersector;
+pub use crate::ffi_types::HLRBRep_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Intersector_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Intersector_destructor(ptr);
     }
 }
 
@@ -6079,7 +6541,9 @@ impl Intersector {
     /// **Source:** `HLRBRep_Intersector.hxx`:38 - `HLRBRep_Intersector::HLRBRep_Intersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Intersector_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Intersector_ctor(),
+            ))
         }
     }
 
@@ -6088,7 +6552,12 @@ impl Intersector {
     /// The edge domain is cut at start with da1*(b-a) and at end with db1*(b-a).
     pub unsafe fn perform_address_real2(&mut self, A1: *mut std::ffi::c_void, da1: f64, db1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_perform_address_real2(self as *mut Self, A1, da1, db1)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_perform_address_real2(
+                self as *mut Self,
+                A1,
+                da1,
+                db1,
+            )
         })
     }
 
@@ -6108,18 +6577,7 @@ impl Intersector {
         NoBound: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(
-                self as *mut Self,
-                nA,
-                A1,
-                da1,
-                db1,
-                nB,
-                A2,
-                da2,
-                db2,
-                NoBound,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_perform_int_address_real2_int_address_real2_bool(self as *mut Self, nA, A1, da1, db1, nB, A2, da2, db2, NoBound)
         })
     }
 
@@ -6134,47 +6592,58 @@ impl Intersector {
         V: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_simulate_one_point(self as *mut Self, A1, U, A2, V)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_simulate_one_point(
+                self as *mut Self,
+                A1,
+                U,
+                A2,
+                V,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:65 - `HLRBRep_Intersector::Load()`
     pub unsafe fn load(&mut self, A: &mut *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_load(self as *mut Self, A)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_load(self as *mut Self, A)
         })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:67 - `HLRBRep_Intersector::Perform()`
     pub fn perform_lin_real(&mut self, L: &crate::gp::Lin, P: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_perform_lin_real(self as *mut Self, L, P)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_perform_lin_real(self as *mut Self, L, P)
         })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:69 - `HLRBRep_Intersector::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Intersector_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:71 - `HLRBRep_Intersector::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_nb_points(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_nb_points(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:73 - `HLRBRep_Intersector::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_point(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Intersector_point(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:75 - `HLRBRep_Intersector::CSPoint()`
     pub fn cs_point(&self, N: i32) -> &crate::int_curve_surface::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_cs_point(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Intersector_cs_point(
                 self as *const Self,
                 N,
             )))
@@ -6184,21 +6653,24 @@ impl Intersector {
     /// **Source:** `HLRBRep_Intersector.hxx`:77 - `HLRBRep_Intersector::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_nb_segments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_nb_segments(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:79 - `HLRBRep_Intersector::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_segment(self as *const Self, N)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Intersector_segment(
+                self as *const Self,
+                N,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_Intersector.hxx`:81 - `HLRBRep_Intersector::CSSegment()`
     pub fn cs_segment(&self, N: i32) -> &crate::int_curve_surface::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_Intersector_cs_segment(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Intersector_cs_segment(
                 self as *const Self,
                 N,
             )))
@@ -6208,7 +6680,7 @@ impl Intersector {
     /// **Source:** `HLRBRep_Intersector.hxx`:84 - `HLRBRep_Intersector::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Intersector_destroy(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Intersector_destroy(self as *mut Self)
         })
     }
 }
@@ -6220,11 +6692,11 @@ impl Intersector {
 /// **Source:** `HLRBRep_LineTool.hxx`:48 - `HLRBRep_LineTool`
 /// The  LineTool  class  provides  class  methods to
 /// access the methodes of the Line.
-pub use crate::ffi::HLRBRep_LineTool as LineTool;
+pub use crate::ffi_types::HLRBRep_LineTool as LineTool;
 
 unsafe impl crate::CppDeletable for LineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_LineTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_LineTool_destructor(ptr);
     }
 }
 
@@ -6233,24 +6705,26 @@ impl LineTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:53 - `HLRBRep_LineTool::FirstParameter()`
     pub fn first_parameter(C: &crate::gp::Lin) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_first_parameter(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_first_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:55 - `HLRBRep_LineTool::LastParameter()`
     pub fn last_parameter(C: &crate::gp::Lin) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_last_parameter(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_last_parameter(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:57 - `HLRBRep_LineTool::Continuity()`
     pub fn continuity(C: &crate::gp::Lin) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_continuity(C)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_continuity(C)
         }))
         .unwrap()
     }
@@ -6260,68 +6734,74 @@ impl LineTool {
     /// continuity <S>.     And   returns  the  number  of
     /// intervals.
     pub fn nb_intervals(C: &crate::gp::Lin, S: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_intervals(C, S.into()) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:65 - `HLRBRep_LineTool::Intervals()`
     /// Sets the current working interval.
     pub fn intervals(
         C: &crate::gp::Lin,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_intervals(C, T, Sh.into()) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_intervals(C, T, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:69 - `HLRBRep_LineTool::IntervalFirst()`
     /// Returns  the  first  parameter    of  the  current
     /// interval.
     pub fn interval_first(C: &crate::gp::Lin) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_interval_first(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_interval_first(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:73 - `HLRBRep_LineTool::IntervalLast()`
     /// Returns  the  last  parameter    of  the  current
     /// interval.
     pub fn interval_last(C: &crate::gp::Lin) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_interval_last(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_interval_last(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:75 - `HLRBRep_LineTool::IntervalContinuity()`
     pub fn interval_continuity(C: &crate::gp::Lin) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_interval_continuity(C)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_interval_continuity(C)
         }))
         .unwrap()
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:77 - `HLRBRep_LineTool::IsClosed()`
     pub fn is_closed(C: &crate::gp::Lin) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_closed(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_is_closed(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:79 - `HLRBRep_LineTool::IsPeriodic()`
     pub fn is_periodic(C: &crate::gp::Lin) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_periodic(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_is_periodic(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:81 - `HLRBRep_LineTool::Period()`
     pub fn period(C: &crate::gp::Lin) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_period(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_period(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:84 - `HLRBRep_LineTool::Value()`
     /// Computes the point of parameter U on the line.
     pub fn value(C: &crate::gp::Lin, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_value(C, U)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_value(C, U),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:87 - `HLRBRep_LineTool::D0()`
     /// Computes the point of parameter U on the line.
     pub fn d0(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d0(C, U, P) })
+        crate::check_void_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_d0(C, U, P) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:93 - `HLRBRep_LineTool::D1()`
@@ -6330,7 +6810,9 @@ impl LineTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(C: &crate::gp::Lin, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d1(C, U, P, V) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:99 - `HLRBRep_LineTool::D2()`
@@ -6345,7 +6827,9 @@ impl LineTool {
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:105 - `HLRBRep_LineTool::D3()`
@@ -6361,7 +6845,9 @@ impl LineTool {
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_d3(C, U, P, V1, V2, V3) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:117 - `HLRBRep_LineTool::DN()`
@@ -6372,7 +6858,9 @@ impl LineTool {
     /// Raised if N < 1.
     pub fn dn(C: &crate::gp::Lin, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_dn(C, U, N)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_dn(C, U, N),
+            ))
         }
     }
 
@@ -6380,7 +6868,7 @@ impl LineTool {
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
     pub fn resolution(C: &crate::gp::Lin, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_resolution(C, R3d) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_resolution(C, R3d) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:126 - `HLRBRep_LineTool::GetType()`
@@ -6389,7 +6877,7 @@ impl LineTool {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(C: &crate::gp::Lin) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_get_type(C)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_get_type(C)
         }))
         .unwrap()
     }
@@ -6397,104 +6885,120 @@ impl LineTool {
     /// **Source:** `HLRBRep_LineTool.hxx`:128 - `HLRBRep_LineTool::Line()`
     pub fn line(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_line(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:130 - `HLRBRep_LineTool::Circle()`
     pub fn circle(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_circle(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_circle(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:132 - `HLRBRep_LineTool::Ellipse()`
     pub fn ellipse(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_ellipse(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_ellipse(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:134 - `HLRBRep_LineTool::Hyperbola()`
     pub fn hyperbola(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_hyperbola(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_hyperbola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:136 - `HLRBRep_LineTool::Parabola()`
     pub fn parabola(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_parabola(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_parabola(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:138 - `HLRBRep_LineTool::Bezier()`
-    pub fn bezier(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_bezier(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_bezier(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:140 - `HLRBRep_LineTool::BSpline()`
-    pub fn b_spline(C: &crate::gp::Lin) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(
+        C: &crate::gp::Lin,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_LineTool_b_spline(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_LineTool_b_spline(C),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:142 - `HLRBRep_LineTool::Degree()`
     pub fn degree(C: &crate::gp::Lin) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_degree(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_degree(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:144 - `HLRBRep_LineTool::NbPoles()`
     pub fn nb_poles(C: &crate::gp::Lin) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_poles(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_nb_poles(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:146 - `HLRBRep_LineTool::Poles()`
-    pub fn poles(C: &crate::gp::Lin, TP: &mut crate::ffi::TColgp_Array1OfPnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_LineTool_poles(C, TP) })
+    pub fn poles(C: &crate::gp::Lin, TP: &mut crate::ffi_types::TColgp_Array1OfPnt) {
+        crate::check_void_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_poles(C, TP) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:148 - `HLRBRep_LineTool::IsRational()`
     pub fn is_rational(C: &crate::gp::Lin) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_is_rational(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_is_rational(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:150 - `HLRBRep_LineTool::PolesAndWeights()`
     pub fn poles_and_weights(
         C: &crate::gp::Lin,
-        TP: &mut crate::ffi::TColgp_Array1OfPnt,
-        TW: &mut crate::ffi::TColStd_Array1OfReal,
+        TP: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        TW: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_poles_and_weights(C, TP, TW)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_poles_and_weights(C, TP, TW)
         })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:152 - `HLRBRep_LineTool::NbKnots()`
     pub fn nb_knots(C: &crate::gp::Lin) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_knots(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_LineTool_nb_knots(C) })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:154 - `HLRBRep_LineTool::KnotsAndMultiplicities()`
     pub fn knots_and_multiplicities(
         C: &crate::gp::Lin,
-        TK: &mut crate::ffi::TColStd_Array1OfReal,
-        TM: &mut crate::ffi::TColStd_Array1OfInteger,
+        TK: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TM: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_knots_and_multiplicities(C, TK, TM)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_knots_and_multiplicities(C, TK, TM)
         })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:158 - `HLRBRep_LineTool::NbSamples()`
     pub fn nb_samples(C: &crate::gp::Lin, U0: f64, U1: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_LineTool_nb_samples(C, U0, U1) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_nb_samples(C, U0, U1)
+        })
     }
 
     /// **Source:** `HLRBRep_LineTool.hxx`:162 - `HLRBRep_LineTool::SamplePars()`
@@ -6504,10 +7008,10 @@ impl LineTool {
         U1: f64,
         Defl: f64,
         NbMin: i32,
-        Pars: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        Pars: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_LineTool_sample_pars(C, U0, U1, Defl, NbMin, Pars)
+            crate::ffi_extern_TKHLR::HLRBRep_LineTool_sample_pars(C, U0, U1, Defl, NbMin, Pars)
         })
     }
 }
@@ -6517,11 +7021,11 @@ impl LineTool {
 // ========================
 
 /// **Source:** `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter.hxx`:30 - `HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter`
-pub use crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter as MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter as MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter;
 
 unsafe impl crate::CppDeletable for MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -6533,7 +7037,7 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
         PC: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IT, PC)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_address(IT, PC)))
         }
     }
 
@@ -6543,11 +7047,7 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     /// on the parametrised curve.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_value(
-                self as *mut Self,
-                Param,
-                F,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_value(self as *mut Self, Param, F)
         })
     }
 
@@ -6556,11 +7056,7 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     /// parameter Param.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_derivative(
-                self as *mut Self,
-                Param,
-                D,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_derivative(self as *mut Self, Param, D)
         })
     }
 
@@ -6568,19 +7064,14 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
     /// Computes the value and the derivative of the function.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_values(
-                self as *mut Self,
-                Param,
-                F,
-                D,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_values(self as *mut Self, Param, F, D)
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -6589,28 +7080,28 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function(self as *const Self))
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_as_math_Function_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -6620,11 +7111,13 @@ impl MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter.hxx`:37 - `HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter`
-pub use crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter as PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
+pub use crate::ffi_types::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter as PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter;
 
 unsafe impl crate::CppDeletable for PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_destructor(
+            ptr,
+        );
     }
 }
 
@@ -6633,7 +7126,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor(),
             ))
         }
     }
@@ -6644,11 +7137,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         C: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(
-                    P, C,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address(P, C)))
         }
     }
 
@@ -6656,7 +7145,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// sets the field mycurve of the function.
     pub unsafe fn initialize(&mut self, C: &*mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_initialize(
                 self as *mut Self,
                 C,
             )
@@ -6667,7 +7156,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// sets the field P of the function.
     pub fn set_point(&mut self, P: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_set_point(
                 self as *mut Self,
                 P,
             )
@@ -6678,7 +7167,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Calculation of F(U).
     pub fn value(&mut self, U: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_value(
                 self as *mut Self,
                 U,
                 F,
@@ -6690,7 +7179,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Calculation of F'(U).
     pub fn derivative(&mut self, U: f64, DF: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_derivative(
                 self as *mut Self,
                 U,
                 DF,
@@ -6702,7 +7191,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Calculation of F(U) and F'(U).
     pub fn values(&mut self, U: f64, F: &mut f64, DF: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_values(
                 self as *mut Self,
                 U,
                 F,
@@ -6715,9 +7204,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Save the found extremum.
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_get_state_number(self as *mut Self)
         })
     }
 
@@ -6725,7 +7212,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Return the number of found extrema.
     pub fn nb_ext(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_nb_ext(
                 self as *const Self,
             )
         })
@@ -6735,10 +7222,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Returns the Nth distance.
     pub fn square_distance(&self, N: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(
-                self as *const Self,
-                N,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_square_distance(self as *const Self, N)
         })
     }
 
@@ -6746,7 +7230,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Shows if the Nth distance is a minimum.
     pub fn is_min(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_is_min(
                 self as *const Self,
                 N,
             )
@@ -6758,7 +7242,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     pub fn point(&self, N: i32) -> &crate::extrema::POnCurv2d {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_point(
+                crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_point(
                     self as *const Self,
                     N,
                 ),
@@ -6770,11 +7254,7 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// Determines boundaries of subinterval for find of root.
     pub fn sub_interval_initialize(&mut self, theUfirst: f64, theUlast: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(
-                self as *mut Self,
-                theUfirst,
-                theUlast,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_sub_interval_initialize(self as *mut Self, theUfirst, theUlast)
         })
     }
 
@@ -6783,16 +7263,14 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
     /// |D1|<Tol, it is considered D1=0.
     pub fn search_of_tolerance(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_search_of_tolerance(self as *mut Self)
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -6801,25 +7279,21 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function(self as *const Self))
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter_as_math_Function_mut(self as *mut Self))
         }
     }
 }
@@ -6875,11 +7349,11 @@ impl PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter {
 /// the visible and hidden parts of each face in a
 /// shape to be visualized by comparing each
 /// face in the shape with every other face in the same shape.
-pub use crate::ffi::HLRBRep_PolyAlgo as PolyAlgo;
+pub use crate::ffi_types::HLRBRep_PolyAlgo as PolyAlgo;
 
 unsafe impl crate::CppDeletable for PolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_PolyAlgo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_destructor(ptr);
     }
 }
 
@@ -6895,17 +7369,19 @@ impl PolyAlgo {
     /// The shape or shapes to be visualized must have already been triangulated.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:106 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn new_handlehlrbreppolyalgo(
-        A: &crate::ffi::HandleHLRBRepPolyAlgo,
+        A: &crate::ffi_types::HandleHLRBRepPolyAlgo,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyAlgo_ctor_handlehlrbreppolyalgo(A),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_ctor_handlehlrbreppolyalgo(A),
             ))
         }
     }
@@ -6913,21 +7389,26 @@ impl PolyAlgo {
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:108 - `HLRBRep_PolyAlgo::HLRBRep_PolyAlgo()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_ctor_shape(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_ctor_shape(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:110 - `HLRBRep_PolyAlgo::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:112 - `HLRBRep_PolyAlgo::Shape()`
     pub fn shape(&mut self, I: i32) -> &mut crate::topo_ds::Shape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_shape(self as *mut Self, I)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_shape(
+                self as *mut Self,
+                I,
+            )))
         }
     }
 
@@ -6935,7 +7416,7 @@ impl PolyAlgo {
     /// remove the Shape of Index <I>.
     pub fn remove(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_remove(self as *mut Self, I)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_remove(self as *mut Self, I)
         })
     }
 
@@ -6943,7 +7424,9 @@ impl PolyAlgo {
     /// return the index of the Shape <S> and  return 0 if
     /// the Shape <S> is not found.
     pub fn index(&self, S: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_index(self as *const Self, S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_index(self as *const Self, S)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:123 - `HLRBRep_PolyAlgo::Load()`
@@ -6951,13 +7434,17 @@ impl PolyAlgo {
     /// Warning S must have already been triangulated.
     pub fn load(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_load(self as *mut Self, theShape)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_load(self as *mut Self, theShape)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:125 - `HLRBRep_PolyAlgo::Algo()`
-    pub fn algo(&self) -> &crate::ffi::HandleHLRAlgoPolyAlgo {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_algo(self as *const Self))) }
+    pub fn algo(&self) -> &crate::ffi_types::HandleHLRAlgoPolyAlgo {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_algo(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:130 - `HLRBRep_PolyAlgo::Projector()`
@@ -6966,40 +7453,47 @@ impl PolyAlgo {
     /// which is returned by the Projector function on a Prs3d_Projector object.
     pub fn projector(&self) -> &crate::hlr_algo::Projector {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_projector(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_projector(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:132 - `HLRBRep_PolyAlgo::Projector()`
     pub fn projector_projector(&mut self, theProj: &crate::hlr_algo::Projector) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_projector_projector(self as *mut Self, theProj)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_projector_projector(
+                self as *mut Self,
+                theProj,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:134 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn tol_angular(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_tol_angular(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_tol_angular(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:136 - `HLRBRep_PolyAlgo::TolAngular()`
     pub fn tol_angular_real(&mut self, theTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_tol_angular_real(self as *mut Self, theTol)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_tol_angular_real(self as *mut Self, theTol)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:138 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn tol_coef(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_tol_coef(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_tol_coef(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:140 - `HLRBRep_PolyAlgo::TolCoef()`
     pub fn tol_coef_real(&mut self, theTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_tol_coef_real(self as *mut Self, theTol)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_tol_coef_real(self as *mut Self, theTol)
         })
     }
 
@@ -7008,25 +7502,29 @@ impl PolyAlgo {
     /// visualized by this framework. Used after setting the point of view and
     /// defining the shape or shapes to be visualized.
     pub fn update(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_update(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_update(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:151 - `HLRBRep_PolyAlgo::InitHide()`
     pub fn init_hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_init_hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_init_hide(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:153 - `HLRBRep_PolyAlgo::MoreHide()`
     pub fn more_hide(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_more_hide(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_more_hide(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:155 - `HLRBRep_PolyAlgo::NextHide()`
     pub fn next_hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_next_hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_next_hide(self as *mut Self)
         })
     }
 
@@ -7047,7 +7545,7 @@ impl PolyAlgo {
         intl: &mut bool,
     ) -> &mut crate::hlr_algo::BiPoint_PointsT {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_hide(
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_hide(
                 self as *mut Self,
                 status,
                 S,
@@ -7062,19 +7560,21 @@ impl PolyAlgo {
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:164 - `HLRBRep_PolyAlgo::InitShow()`
     pub fn init_show(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_init_show(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_init_show(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:166 - `HLRBRep_PolyAlgo::MoreShow()`
     pub fn more_show(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_more_show(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_more_show(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:168 - `HLRBRep_PolyAlgo::NextShow()`
     pub fn next_show(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_next_show(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_next_show(self as *mut Self)
         })
     }
 
@@ -7094,7 +7594,7 @@ impl PolyAlgo {
         intl: &mut bool,
     ) -> &mut crate::hlr_algo::BiPoint_PointsT {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_show(
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_show(
                 self as *mut Self,
                 S,
                 reg1,
@@ -7114,27 +7614,31 @@ impl PolyAlgo {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyAlgo_out_lined_shape(self as *const Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_out_lined_shape(self as *const Self, S),
             ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:180 - `HLRBRep_PolyAlgo::Debug()`
     pub fn debug(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_PolyAlgo_debug(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_debug(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:182 - `HLRBRep_PolyAlgo::Debug()`
     pub fn debug_bool(&mut self, theDebug: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_debug_bool(self as *mut Self, theDebug)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_debug_bool(self as *mut Self, theDebug)
         })
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7142,7 +7646,7 @@ impl PolyAlgo {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::HLRBRep_PolyAlgo_get_type_name(),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7150,14 +7654,16 @@ impl PolyAlgo {
     }
 
     /// **Source:** `HLRBRep_PolyAlgo.hxx`:184 - `HLRBRep_PolyAlgo::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -7166,34 +7672,39 @@ impl PolyAlgo {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_PolyAlgo_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepPolyAlgo> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepPolyAlgo> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_PolyAlgo_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -7201,7 +7712,7 @@ impl PolyAlgo {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::HLRBRep_PolyAlgo_inherited_This(self as *const Self)
+                crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7214,58 +7725,72 @@ impl PolyAlgo {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyAlgo_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyAlgo_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleHLRBRepPolyAlgo;
+pub use crate::ffi_types::HandleHLRBRepPolyAlgo;
 
 unsafe impl crate::CppDeletable for HandleHLRBRepPolyAlgo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleHLRBRepPolyAlgo_destructor(ptr);
+        crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_destructor(ptr);
     }
 }
 
 impl HandleHLRBRepPolyAlgo {
     /// Dereference this Handle to access the underlying HLRBRep_PolyAlgo
-    pub fn get(&self) -> &crate::ffi::HLRBRep_PolyAlgo {
-        unsafe { &*crate::check_result(crate::ffi::HandleHLRBRepPolyAlgo_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::HLRBRep_PolyAlgo {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying HLRBRep_PolyAlgo
-    pub fn get_mut(&mut self) -> &mut crate::ffi::HLRBRep_PolyAlgo {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::HLRBRep_PolyAlgo {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleHLRBRepPolyAlgo_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<HLRBRep_PolyAlgo> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleHLRBRepPolyAlgo_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKHLR::HandleHLRBRepPolyAlgo_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7303,11 +7828,11 @@ impl HandleHLRBRepPolyAlgo {
 /// The construction of the shape does not call a
 /// new computation of the algorithm, but only
 /// reads its internal results.
-pub use crate::ffi::HLRBRep_PolyHLRToShape as PolyHLRToShape;
+pub use crate::ffi_types::HLRBRep_PolyHLRToShape as PolyHLRToShape;
 
 unsafe impl crate::CppDeletable for PolyHLRToShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_PolyHLRToShape_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_destructor(ptr);
     }
 }
 
@@ -7318,30 +7843,30 @@ impl PolyHLRToShape {
     /// Use the extraction filters to obtain the results you want for A.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::HLRBRep_PolyHLRToShape_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:67 - `HLRBRep_PolyHLRToShape::Update()`
-    pub fn update(&mut self, A: &crate::ffi::HandleHLRBRepPolyAlgo) {
+    pub fn update(&mut self, A: &crate::ffi_types::HandleHLRBRepPolyAlgo) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyHLRToShape_update(self as *mut Self, A)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_update(self as *mut Self, A)
         })
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:69 - `HLRBRep_PolyHLRToShape::Show()`
     pub fn show(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyHLRToShape_show(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_show(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_PolyHLRToShape.hxx`:71 - `HLRBRep_PolyHLRToShape::Hide()`
     pub fn hide(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_PolyHLRToShape_hide(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_hide(self as *mut Self)
         })
     }
 
@@ -7349,7 +7874,7 @@ impl PolyHLRToShape {
     pub fn v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_v_compound(self as *mut Self),
             ))
         }
     }
@@ -7361,7 +7886,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7371,7 +7899,9 @@ impl PolyHLRToShape {
     pub fn rg1_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg1_line_v_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7383,7 +7913,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg1_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7393,7 +7926,9 @@ impl PolyHLRToShape {
     pub fn rg_n_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg_n_line_v_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7405,7 +7940,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg_n_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7414,7 +7952,9 @@ impl PolyHLRToShape {
     pub fn out_line_v_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_out_line_v_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7427,7 +7967,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_v_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_out_line_v_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7436,7 +7979,7 @@ impl PolyHLRToShape {
     pub fn h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_h_compound(self as *mut Self),
             ))
         }
     }
@@ -7448,7 +7991,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7457,7 +8003,9 @@ impl PolyHLRToShape {
     pub fn rg1_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg1_line_h_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7470,7 +8018,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg1_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg1_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7479,7 +8030,9 @@ impl PolyHLRToShape {
     pub fn rg_n_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg_n_line_h_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7492,7 +8045,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_rg_n_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_rg_n_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7501,7 +8057,9 @@ impl PolyHLRToShape {
     pub fn out_line_h_compound(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound(self as *mut Self),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_out_line_h_compound(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7516,7 +8074,10 @@ impl PolyHLRToShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_PolyHLRToShape_out_line_h_compound_shape(self as *mut Self, S),
+                crate::ffi_extern_TKHLR::HLRBRep_PolyHLRToShape_out_line_h_compound_shape(
+                    self as *mut Self,
+                    S,
+                ),
             ))
         }
     }
@@ -7527,11 +8088,11 @@ impl PolyHLRToShape {
 // ========================
 
 /// **Source:** `HLRBRep_SLProps.hxx`:37 - `HLRBRep_SLProps`
-pub use crate::ffi::HLRBRep_SLProps as SLProps;
+pub use crate::ffi_types::HLRBRep_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_SLProps_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_SLProps_destructor(ptr);
     }
 }
 
@@ -7556,7 +8117,9 @@ impl SLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SLProps_ctor_address_real2_int_real(S, U, V, N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_SLProps_ctor_address_real2_int_real(
+                    S, U, V, N, Resolution,
+                ),
             ))
         }
     }
@@ -7571,7 +8134,7 @@ impl SLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SLProps_ctor_address_int_real(S, N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_SLProps_ctor_address_int_real(S, N, Resolution),
             ))
         }
     }
@@ -7583,7 +8146,7 @@ impl SLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKHLR::HLRBRep_SLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -7593,7 +8156,7 @@ impl SLProps {
     /// for the new surface.
     pub unsafe fn set_surface(&mut self, S: &*mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_set_surface(self as *mut Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_set_surface(self as *mut Self, S)
         })
     }
 
@@ -7602,49 +8165,63 @@ impl SLProps {
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_set_parameters(self as *mut Self, U, V)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_set_parameters(self as *mut Self, U, V)
         })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:78 - `HLRBRep_SLProps::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:82 - `HLRBRep_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d1u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_d1u(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:86 - `HLRBRep_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d1v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_d1v(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:90 - `HLRBRep_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
     pub fn d2u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d2u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_d2u(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:94 - `HLRBRep_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_d2v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_d2v(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:98 - `HLRBRep_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
     pub fn duv(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_duv(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_duv(self as *mut Self)))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:103 - `HLRBRep_SLProps::IsTangentUDefined()`
@@ -7653,7 +8230,7 @@ impl SLProps {
     /// two first U derivatives are null.
     pub fn is_tangent_u_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_is_tangent_u_defined(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_is_tangent_u_defined(self as *mut Self)
         })
     }
 
@@ -7661,7 +8238,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_tangent_u(self as *mut Self, D)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_tangent_u(self as *mut Self, D)
         })
     }
 
@@ -7671,7 +8248,7 @@ impl SLProps {
     /// two first V derivatives are null.
     pub fn is_tangent_v_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_is_tangent_v_defined(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_is_tangent_v_defined(self as *mut Self)
         })
     }
 
@@ -7679,7 +8256,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_tangent_v(self as *mut Self, D)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_tangent_v(self as *mut Self, D)
         })
     }
 
@@ -7687,21 +8264,25 @@ impl SLProps {
     /// Tells if the normal is defined.
     pub fn is_normal_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_is_normal_defined(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_is_normal_defined(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:120 - `HLRBRep_SLProps::Normal()`
     /// Returns the normal direction.
     pub fn normal(&mut self) -> &crate::gp::Dir {
-        unsafe { &*(crate::check_result(crate::ffi::HLRBRep_SLProps_normal(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_SLProps_normal(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:123 - `HLRBRep_SLProps::IsCurvatureDefined()`
     /// returns True if the curvature is defined.
     pub fn is_curvature_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_is_curvature_defined(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_is_curvature_defined(self as *mut Self)
         })
     }
 
@@ -7709,19 +8290,25 @@ impl SLProps {
     /// returns True if the point is umbilic (i.e. if the
     /// curvature is constant).
     pub fn is_umbilic(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_is_umbilic(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_is_umbilic(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:130 - `HLRBRep_SLProps::MaxCurvature()`
     /// Returns the maximum curvature
     pub fn max_curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_max_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_max_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:133 - `HLRBRep_SLProps::MinCurvature()`
     /// Returns the minimum curvature
     pub fn min_curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SLProps_min_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_min_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_SLProps.hxx`:137 - `HLRBRep_SLProps::CurvatureDirections()`
@@ -7729,7 +8316,11 @@ impl SLProps {
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_curvature_directions(
+                self as *mut Self,
+                MaxD,
+                MinD,
+            )
         })
     }
 
@@ -7737,7 +8328,7 @@ impl SLProps {
     /// Returns the mean curvature.
     pub fn mean_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_mean_curvature(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_mean_curvature(self as *mut Self)
         })
     }
 
@@ -7745,7 +8336,7 @@ impl SLProps {
     /// Returns the Gaussian curvature
     pub fn gaussian_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SLProps_gaussian_curvature(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_SLProps_gaussian_curvature(self as *mut Self)
         })
     }
 }
@@ -7755,11 +8346,11 @@ impl SLProps {
 // ========================
 
 /// **Source:** `HLRBRep_SLPropsATool.hxx`:28 - `HLRBRep_SLPropsATool`
-pub use crate::ffi::HLRBRep_SLPropsATool as SLPropsATool;
+pub use crate::ffi_types::HLRBRep_SLPropsATool as SLPropsATool;
 
 unsafe impl crate::CppDeletable for SLPropsATool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_SLPropsATool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_destructor(ptr);
     }
 }
 
@@ -7768,7 +8359,9 @@ impl SLPropsATool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SLPropsATool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_ctor(),
+            ))
         }
     }
 
@@ -7776,7 +8369,9 @@ impl SLPropsATool {
     /// Computes the point  <P> of 	parameter <U> and <V>
     /// on the Surface <A>.
     pub unsafe fn value(A: *mut std::ffi::c_void, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_SLPropsATool_value(A, U, V, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_value(A, U, V, P)
+        })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:42 - `HLRBRep_SLPropsATool::D1()`
@@ -7791,7 +8386,7 @@ impl SLPropsATool {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLPropsATool_d1(A, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_d1(A, U, V, P, D1U, D1V)
         })
     }
 
@@ -7811,7 +8406,7 @@ impl SLPropsATool {
         DUV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLPropsATool_d2(A, U, V, P, D1U, D1V, D2U, D2V, DUV)
+            crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_d2(A, U, V, P, D1U, D1V, D2U, D2V, DUV)
         })
     }
 
@@ -7824,9 +8419,9 @@ impl SLPropsATool {
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SLPropsATool_dn(
-                A, U, V, Nu, Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_dn(A, U, V, Nu, Nv),
+            ))
         }
     }
 
@@ -7836,7 +8431,7 @@ impl SLPropsATool {
     /// computable returns 2 : first and second derivative
     /// only are computable.
     pub unsafe fn continuity(A: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SLPropsATool_continuity(A) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_continuity(A) })
     }
 
     /// **Source:** `HLRBRep_SLPropsATool.hxx`:75 - `HLRBRep_SLPropsATool::Bounds()`
@@ -7849,7 +8444,7 @@ impl SLPropsATool {
         V2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SLPropsATool_bounds(A, U1, V1, U2, V2)
+            crate::ffi_extern_TKHLR::HLRBRep_SLPropsATool_bounds(A, U1, V1, U2, V2)
         })
     }
 }
@@ -7861,11 +8456,11 @@ impl SLPropsATool {
 /// **Source:** `HLRBRep_ShapeBounds.hxx`:31 - `HLRBRep_ShapeBounds`
 /// Contains  a Shape and the  bounds of its vertices,
 /// edges and faces in the DataStructure.
-pub use crate::ffi::HLRBRep_ShapeBounds as ShapeBounds;
+pub use crate::ffi_types::HLRBRep_ShapeBounds as ShapeBounds;
 
 unsafe impl crate::CppDeletable for ShapeBounds {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ShapeBounds_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_destructor(ptr);
     }
 }
 
@@ -7873,14 +8468,16 @@ impl ShapeBounds {
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:36 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:38 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn new_handlehlrtopobrepoutliner_handlestandardtransient_int7(
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
-        SData: &crate::ffi::HandleStandardTransient,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
+        SData: &crate::ffi_types::HandleStandardTransient,
         nbIso: i32,
         V1: i32,
         V2: i32,
@@ -7890,13 +8487,13 @@ impl ShapeBounds {
         F2: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(S, SData, nbIso, V1, V2, E1, E2, F1, F2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_handlestandardtransient_int7(S, SData, nbIso, V1, V2, E1, E2, F1, F2)))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:48 - `HLRBRep_ShapeBounds::HLRBRep_ShapeBounds()`
     pub fn new_handlehlrtopobrepoutliner_int7(
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
         nbIso: i32,
         V1: i32,
         V2: i32,
@@ -7907,7 +8504,7 @@ impl ShapeBounds {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_int7(
+                crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_ctor_handlehlrtopobrepoutliner_int7(
                     S, nbIso, V1, V2, E1, E2, F1, F2,
                 ),
             ))
@@ -7917,28 +8514,39 @@ impl ShapeBounds {
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:57 - `HLRBRep_ShapeBounds::Translate()`
     pub fn translate(&mut self, NV: i32, NE: i32, NF: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_translate(self as *mut Self, NV, NE, NF)
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:61 - `HLRBRep_ShapeBounds::Shape()`
-    pub fn shape_handlehlrtopobrepoutliner(&mut self, S: &crate::ffi::HandleHLRTopoBRepOutLiner) {
+    pub fn shape_handlehlrtopobrepoutliner(
+        &mut self,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(self as *mut Self, S)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_shape_handlehlrtopobrepoutliner(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:63 - `HLRBRep_ShapeBounds::Shape()`
-    pub fn shape(&self) -> &crate::ffi::HandleHLRTopoBRepOutLiner {
+    pub fn shape(&self) -> &crate::ffi_types::HandleHLRTopoBRepOutLiner {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:65 - `HLRBRep_ShapeBounds::ShapeData()`
-    pub fn shape_data_handlestandardtransient(&mut self, SD: &crate::ffi::HandleStandardTransient) {
+    pub fn shape_data_handlestandardtransient(
+        &mut self,
+        SD: &crate::ffi_types::HandleStandardTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_shape_data_handlestandardtransient(
                 self as *mut Self,
                 SD,
             )
@@ -7946,30 +8554,32 @@ impl ShapeBounds {
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:67 - `HLRBRep_ShapeBounds::ShapeData()`
-    pub fn shape_data(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn shape_data(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_shape_data(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_shape_data(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:69 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso_int(&mut self, nbIso: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_nb_of_iso_int(self as *mut Self, nbIso)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_nb_of_iso_int(self as *mut Self, nbIso)
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:71 - `HLRBRep_ShapeBounds::NbOfIso()`
     pub fn nb_of_iso(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_nb_of_iso(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:73 - `HLRBRep_ShapeBounds::Sizes()`
     pub fn sizes(&self, NV: &mut i32, NE: &mut i32, NF: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_sizes(self as *const Self, NV, NE, NF)
         })
     }
 
@@ -7984,21 +8594,34 @@ impl ShapeBounds {
         F2: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_bounds(self as *const Self, V1, V2, E1, E2, F1, F2)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_bounds(
+                self as *const Self,
+                V1,
+                V2,
+                E1,
+                E2,
+                F1,
+                F2,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:84 - `HLRBRep_ShapeBounds::UpdateMinMax()`
     pub fn update_min_max(&mut self, theTotMinMax: &crate::hlr_algo::EdgesBlock_MinMaxIndices) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ShapeBounds_update_min_max(self as *mut Self, theTotMinMax)
+            crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_update_min_max(
+                self as *mut Self,
+                theTotMinMax,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ShapeBounds.hxx`:89 - `HLRBRep_ShapeBounds::MinMax()`
     pub fn min_max(&mut self) -> &mut crate::hlr_algo::EdgesBlock_MinMaxIndices {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_ShapeBounds_min_max(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ShapeBounds_min_max(
+                self as *mut Self,
+            )))
         }
     }
 }
@@ -8011,11 +8634,11 @@ impl ShapeBounds {
 /// compute  the   OutLinedShape  of  a Shape with  an
 /// OutLiner,    a  Projector  and   create  the  Data
 /// Structure of a Shape.
-pub use crate::ffi::HLRBRep_ShapeToHLR as ShapeToHLR;
+pub use crate::ffi_types::HLRBRep_ShapeToHLR as ShapeToHLR;
 
 unsafe impl crate::CppDeletable for ShapeToHLR {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ShapeToHLR_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ShapeToHLR_destructor(ptr);
     }
 }
 
@@ -8024,7 +8647,9 @@ impl ShapeToHLR {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeToHLR_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ShapeToHLR_ctor(),
+            ))
         }
     }
 
@@ -8032,15 +8657,15 @@ impl ShapeToHLR {
     /// Creates  a DataStructure   containing the OutLiner
     /// <S> depending on the projector <P> and nbIso.
     pub fn load(
-        S: &crate::ffi::HandleHLRTopoBRepOutLiner,
+        S: &crate::ffi_types::HandleHLRTopoBRepOutLiner,
         P: &crate::hlr_algo::Projector,
-        MST: &mut crate::ffi::BRepTopAdaptor_MapOfShapeTool,
+        MST: &mut crate::ffi_types::BRepTopAdaptor_MapOfShapeTool,
         nbIso: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleHLRBRepData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleHLRBRepData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ShapeToHLR_load(
-                S, P, MST, nbIso,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ShapeToHLR_load(S, P, MST, nbIso),
+            ))
         }
     }
 }
@@ -8050,11 +8675,11 @@ impl ShapeToHLR {
 // ========================
 
 /// **Source:** `HLRBRep_Surface.hxx`:40 - `HLRBRep_Surface`
-pub use crate::ffi::HLRBRep_Surface as Surface;
+pub use crate::ffi_types::HLRBRep_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_Surface_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_Surface_destructor(ptr);
     }
 }
 
@@ -8063,14 +8688,16 @@ impl Surface {
     /// Creates an undefined surface with no face loaded.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:48 - `HLRBRep_Surface::Projector()`
     pub fn projector(&mut self, Proj: &crate::hlr_algo::Projector) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_projector(self as *mut Self, Proj as *const _)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_projector(self as *mut Self, Proj as *const _)
         })
     }
 
@@ -8078,7 +8705,9 @@ impl Surface {
     /// Returns the 3D Surface.
     pub fn surface(&mut self) -> &mut crate::b_rep_adaptor::Surface {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_Surface_surface(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_Surface_surface(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -8086,7 +8715,7 @@ impl Surface {
     /// Sets the 3D Surface to be projected.
     pub fn surface_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_surface_face(self as *mut Self, F)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_surface_face(self as *mut Self, F)
         })
     }
 
@@ -8094,49 +8723,54 @@ impl Surface {
     /// returns true if it is a side face
     pub fn is_side(&self, tolf: f64, toler: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_is_side(self as *const Self, tolf, toler)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_side(self as *const Self, tolf, toler)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:60 - `HLRBRep_Surface::IsAbove()`
     pub fn is_above(&self, back: bool, A: &Curve, tolC: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_is_above(self as *const Self, back, A as *const _, tolC)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_above(
+                self as *const Self,
+                back,
+                A as *const _,
+                tolC,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:64 - `HLRBRep_Surface::FirstUParameter()`
     pub fn first_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_first_u_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_first_u_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:66 - `HLRBRep_Surface::LastUParameter()`
     pub fn last_u_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_last_u_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_last_u_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:68 - `HLRBRep_Surface::FirstVParameter()`
     pub fn first_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_first_v_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_first_v_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:70 - `HLRBRep_Surface::LastVParameter()`
     pub fn last_v_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_last_v_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_last_v_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:72 - `HLRBRep_Surface::UContinuity()`
     pub fn u_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_u_continuity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_u_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -8144,7 +8778,7 @@ impl Surface {
     /// **Source:** `HLRBRep_Surface.hxx`:74 - `HLRBRep_Surface::VContinuity()`
     pub fn v_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_v_continuity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_v_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -8155,7 +8789,7 @@ impl Surface {
     /// intervals.
     pub fn nb_u_intervals(&mut self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_nb_u_intervals(self as *mut Self, S.into())
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_u_intervals(self as *mut Self, S.into())
         })
     }
 
@@ -8165,14 +8799,14 @@ impl Surface {
     /// intervals.
     pub fn nb_v_intervals(&mut self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_nb_v_intervals(self as *mut Self, S.into())
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_v_intervals(self as *mut Self, S.into())
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:86 - `HLRBRep_Surface::UIntervalContinuity()`
     pub fn u_interval_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_u_interval_continuity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_u_interval_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -8180,54 +8814,60 @@ impl Surface {
     /// **Source:** `HLRBRep_Surface.hxx`:88 - `HLRBRep_Surface::VIntervalContinuity()`
     pub fn v_interval_continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_v_interval_continuity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_v_interval_continuity(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:90 - `HLRBRep_Surface::IsUClosed()`
     pub fn is_u_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_is_u_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_u_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:92 - `HLRBRep_Surface::IsVClosed()`
     pub fn is_v_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_is_v_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_v_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:94 - `HLRBRep_Surface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_u_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:96 - `HLRBRep_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_u_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_u_period(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:98 - `HLRBRep_Surface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_is_v_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:100 - `HLRBRep_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_v_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_v_period(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:103 - `HLRBRep_Surface::Value()`
     /// Computes the point of parameters U,V on the surface.
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_value(
-                self as *const Self,
-                U,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_value(self as *const Self, U, V),
+            ))
         }
     }
 
@@ -8235,7 +8875,7 @@ impl Surface {
     /// Computes the point of parameters U,V on the surface.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_d0(self as *const Self, U, V, P)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_d0(self as *const Self, U, V, P)
         })
     }
 
@@ -8253,7 +8893,7 @@ impl Surface {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
         })
     }
 
@@ -8274,7 +8914,17 @@ impl Surface {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
         })
     }
 
@@ -8299,7 +8949,7 @@ impl Surface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_Surface_d3(
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_d3(
                 self as *const Self,
                 U,
                 V,
@@ -8326,13 +8976,9 @@ impl Surface {
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_dn(
-                self as *const Self,
-                U,
-                V,
-                Nu,
-                Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_dn(self as *const Self, U, V, Nu, Nv),
+            ))
         }
     }
 
@@ -8343,7 +8989,7 @@ impl Surface {
     /// SurfaceOfExtrusion, OtherSurface
     pub fn get_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_Surface_get_type(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -8351,84 +8997,96 @@ impl Surface {
     /// **Source:** `HLRBRep_Surface.hxx`:161 - `HLRBRep_Surface::Plane()`
     pub fn plane(&self) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_plane(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:163 - `HLRBRep_Surface::Cylinder()`
     pub fn cylinder(&self) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_cylinder(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_cylinder(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:165 - `HLRBRep_Surface::Cone()`
     pub fn cone(&self) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_cone(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_cone(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:167 - `HLRBRep_Surface::Sphere()`
     pub fn sphere(&self) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_sphere(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_sphere(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:169 - `HLRBRep_Surface::Torus()`
     pub fn torus(&self) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_torus(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_torus(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:171 - `HLRBRep_Surface::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_u_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:173 - `HLRBRep_Surface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_u_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_u_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:175 - `HLRBRep_Surface::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_v_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:177 - `HLRBRep_Surface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_v_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_v_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:179 - `HLRBRep_Surface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_u_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_u_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:181 - `HLRBRep_Surface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_Surface_nb_v_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_Surface_nb_v_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_Surface.hxx`:183 - `HLRBRep_Surface::Axis()`
     pub fn axis(&self) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_Surface_axis(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_Surface_axis(self as *const Self),
+            ))
         }
     }
 }
@@ -8438,11 +9096,11 @@ impl Surface {
 // ========================
 
 /// **Source:** `HLRBRep_SurfaceTool.hxx`:40 - `HLRBRep_SurfaceTool`
-pub use crate::ffi::HLRBRep_SurfaceTool as SurfaceTool;
+pub use crate::ffi_types::HLRBRep_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_SurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_destructor(ptr);
     }
 }
 
@@ -8451,59 +9109,73 @@ impl SurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:45 - `HLRBRep_SurfaceTool::FirstUParameter()`
     pub unsafe fn first_u_parameter(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_first_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_first_u_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:47 - `HLRBRep_SurfaceTool::FirstVParameter()`
     pub unsafe fn first_v_parameter(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_first_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_first_v_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:49 - `HLRBRep_SurfaceTool::LastUParameter()`
     pub unsafe fn last_u_parameter(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_last_u_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_last_u_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:51 - `HLRBRep_SurfaceTool::LastVParameter()`
     pub unsafe fn last_v_parameter(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_last_v_parameter(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_last_v_parameter(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:53 - `HLRBRep_SurfaceTool::NbUIntervals()`
     pub unsafe fn nb_u_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_u_intervals(S, Sh.into()) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_u_intervals(S, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:55 - `HLRBRep_SurfaceTool::NbVIntervals()`
     pub unsafe fn nb_v_intervals(S: *mut std::ffi::c_void, Sh: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_v_intervals(S, Sh.into()) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_v_intervals(S, Sh.into())
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:57 - `HLRBRep_SurfaceTool::UIntervals()`
     pub unsafe fn u_intervals(
         S: *mut std::ffi::c_void,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_u_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_u_intervals(S, T, Sh.into())
         })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:59 - `HLRBRep_SurfaceTool::VIntervals()`
     pub unsafe fn v_intervals(
         S: *mut std::ffi::c_void,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         Sh: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_v_intervals(S, T, Sh.into())
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_v_intervals(S, T, Sh.into())
         })
     }
 
@@ -8514,11 +9186,11 @@ impl SurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_u_trim(
-                S, First, Last, Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_u_trim(S, First, Last, Tol),
+            ))
         }
     }
 
@@ -8529,42 +9201,46 @@ impl SurfaceTool {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_v_trim(
-                S, First, Last, Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_v_trim(S, First, Last, Tol),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:73 - `HLRBRep_SurfaceTool::IsUClosed()`
     pub unsafe fn is_u_closed(S: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_closed(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_is_u_closed(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:75 - `HLRBRep_SurfaceTool::IsVClosed()`
     pub unsafe fn is_v_closed(S: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_closed(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_is_v_closed(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:77 - `HLRBRep_SurfaceTool::IsUPeriodic()`
     pub unsafe fn is_u_periodic(S: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_u_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_is_u_periodic(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:79 - `HLRBRep_SurfaceTool::UPeriod()`
     pub unsafe fn u_period(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_u_period(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_u_period(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:81 - `HLRBRep_SurfaceTool::IsVPeriodic()`
     pub unsafe fn is_v_periodic(S: *mut std::ffi::c_void) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_is_v_periodic(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_is_v_periodic(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:83 - `HLRBRep_SurfaceTool::VPeriod()`
     pub unsafe fn v_period(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_v_period(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_v_period(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:85 - `HLRBRep_SurfaceTool::Value()`
@@ -8574,15 +9250,17 @@ impl SurfaceTool {
         v: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_value(
-                S, u, v,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_value(S, u, v),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:87 - `HLRBRep_SurfaceTool::D0()`
     pub unsafe fn d0(S: *mut std::ffi::c_void, u: f64, v: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_d0(S, u, v, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_d0(S, u, v, P)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:89 - `HLRBRep_SurfaceTool::D1()`
@@ -8595,7 +9273,7 @@ impl SurfaceTool {
         D1v: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_d1(S, u, v, P, D1u, D1v)
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_d1(S, u, v, P, D1u, D1v)
         })
     }
 
@@ -8612,7 +9290,7 @@ impl SurfaceTool {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_d2(S, u, v, P, D1U, D1V, D2U, D2V, D2UV)
         })
     }
 
@@ -8633,7 +9311,7 @@ impl SurfaceTool {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_d3(
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_d3(
                 S, u, v, P, D1U, D1V, D2U, D2V, D2UV, D3U, D3V, D3UUV, D3UVV,
             )
         })
@@ -8648,26 +9326,30 @@ impl SurfaceTool {
         Nv: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_dn(
-                S, u, v, Nu, Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_dn(S, u, v, Nu, Nv),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:126 - `HLRBRep_SurfaceTool::UResolution()`
     pub unsafe fn u_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_u_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_u_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:128 - `HLRBRep_SurfaceTool::VResolution()`
     pub unsafe fn v_resolution(S: *mut std::ffi::c_void, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_v_resolution(S, R3d) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_v_resolution(S, R3d)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:130 - `HLRBRep_SurfaceTool::GetType()`
     pub unsafe fn get_type(S: *mut std::ffi::c_void) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_get_type(S)
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_get_type(S)
         }))
         .unwrap()
     }
@@ -8675,7 +9357,9 @@ impl SurfaceTool {
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:132 - `HLRBRep_SurfaceTool::Plane()`
     pub unsafe fn plane(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Pln> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_plane(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_plane(S),
+            ))
         }
     }
 
@@ -8683,7 +9367,7 @@ impl SurfaceTool {
     pub unsafe fn cylinder(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cylinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_cylinder(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_cylinder(S),
             ))
         }
     }
@@ -8691,44 +9375,48 @@ impl SurfaceTool {
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:136 - `HLRBRep_SurfaceTool::Cone()`
     pub unsafe fn cone(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Cone> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_cone(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_cone(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:138 - `HLRBRep_SurfaceTool::Torus()`
     pub unsafe fn torus(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Torus> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_torus(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_torus(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:140 - `HLRBRep_SurfaceTool::Sphere()`
     pub unsafe fn sphere(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Sphere> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_sphere(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_sphere(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:142 - `HLRBRep_SurfaceTool::Bezier()`
     pub unsafe fn bezier(
         S: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_SurfaceTool_bezier(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_bezier(S),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:144 - `HLRBRep_SurfaceTool::BSpline()`
     pub unsafe fn b_spline(
         S: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_b_spline(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_b_spline(S),
             ))
         }
     }
@@ -8737,7 +9425,7 @@ impl SurfaceTool {
     pub unsafe fn axe_of_revolution(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Ax1> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_axe_of_revolution(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_axe_of_revolution(S),
             ))
         }
     }
@@ -8746,7 +9434,7 @@ impl SurfaceTool {
     pub unsafe fn direction(S: *mut std::ffi::c_void) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_direction(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_direction(S),
             ))
         }
     }
@@ -8754,10 +9442,10 @@ impl SurfaceTool {
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:150 - `HLRBRep_SurfaceTool::BasisCurve()`
     pub unsafe fn basis_curve(
         S: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_basis_curve(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_basis_curve(S),
             ))
         }
     }
@@ -8765,40 +9453,44 @@ impl SurfaceTool {
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:152 - `HLRBRep_SurfaceTool::BasisSurface()`
     pub unsafe fn basis_surface(
         S: *mut std::ffi::c_void,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_SurfaceTool_basis_surface(S),
+                crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_basis_surface(S),
             ))
         }
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:154 - `HLRBRep_SurfaceTool::OffsetValue()`
     pub unsafe fn offset_value(S: *mut std::ffi::c_void) -> f64 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_offset_value(S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_offset_value(S) })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:156 - `HLRBRep_SurfaceTool::NbSamplesU()`
     pub unsafe fn nb_samples_u_address(S: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_samples_u_address(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:158 - `HLRBRep_SurfaceTool::NbSamplesV()`
     pub unsafe fn nb_samples_v_address(S: *mut std::ffi::c_void) -> i32 {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address(S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_samples_v_address(S)
+        })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:160 - `HLRBRep_SurfaceTool::NbSamplesU()`
     pub unsafe fn nb_samples_u_address_real2(S: *mut std::ffi::c_void, u1: f64, u2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_nb_samples_u_address_real2(S, u1, u2)
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_samples_u_address_real2(S, u1, u2)
         })
     }
 
     /// **Source:** `HLRBRep_SurfaceTool.hxx`:164 - `HLRBRep_SurfaceTool::NbSamplesV()`
     pub unsafe fn nb_samples_v_address_real2(S: *mut std::ffi::c_void, v1: f64, v2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_SurfaceTool_nb_samples_v_address_real2(S, v1, v2)
+            crate::ffi_extern_TKHLR::HLRBRep_SurfaceTool_nb_samples_v_address_real2(S, v1, v2)
         })
     }
 }
@@ -8808,11 +9500,11 @@ impl SurfaceTool {
 // ========================
 
 /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:35 - `HLRBRep_TheCSFunctionOfInterCSurf`
-pub use crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf as TheCSFunctionOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_TheCSFunctionOfInterCSurf as TheCSFunctionOfInterCSurf;
 
 unsafe impl crate::CppDeletable for TheCSFunctionOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -8824,7 +9516,7 @@ impl TheCSFunctionOfInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(S, C),
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_ctor_address_lin(S, C),
             ))
         }
     }
@@ -8832,78 +9524,105 @@ impl TheCSFunctionOfInterCSurf {
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:42 - `HLRBRep_TheCSFunctionOfInterCSurf::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:44 - `HLRBRep_TheCSFunctionOfInterCSurf::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:46 - `HLRBRep_TheCSFunctionOfInterCSurf::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:48 - `HLRBRep_TheCSFunctionOfInterCSurf::Derivatives()`
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:50 - `HLRBRep_TheCSFunctionOfInterCSurf::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:52 - `HLRBRep_TheCSFunctionOfInterCSurf::Point()`
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_point(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_point(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:54 - `HLRBRep_TheCSFunctionOfInterCSurf::Root()`
     pub fn root(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_root(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_root(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:56 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarSurface()`
     pub unsafe fn auxillar_surface(&self) -> &*mut std::ffi::c_void {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_surface(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_TheCSFunctionOfInterCSurf.hxx`:58 - `HLRBRep_TheCSFunctionOfInterCSurf::AuxillarCurve()`
     pub fn auxillar_curve(&self) -> &crate::gp::Lin {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_curve(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_auxillar_curve(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8912,11 +9631,7 @@ impl TheCSFunctionOfInterCSurf {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -8925,7 +9640,7 @@ impl TheCSFunctionOfInterCSurf {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
@@ -8933,7 +9648,7 @@ impl TheCSFunctionOfInterCSurf {
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet(
                     self as *const Self,
                 ),
             )
@@ -8944,7 +9659,7 @@ impl TheCSFunctionOfInterCSurf {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -8954,7 +9669,7 @@ impl TheCSFunctionOfInterCSurf {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetStateNumber(
+            crate::ffi_extern_TKHLR::HLRBRep_TheCSFunctionOfInterCSurf_inherited_GetStateNumber(
                 self as *mut Self,
             )
         })
@@ -8966,11 +9681,11 @@ impl TheCSFunctionOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter.hxx`:29 - `HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter`
-pub use crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter as TheCurveLocatorOfTheProjPCurOfCInter;
+pub use crate::ffi_types::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter as TheCurveLocatorOfTheProjPCurOfCInter;
 
 unsafe impl crate::CppDeletable for TheCurveLocatorOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_destructor(ptr);
     }
 }
 
@@ -8980,7 +9695,7 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_ctor(),
             ))
         }
     }
@@ -8996,7 +9711,7 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(P, C, NbU, Papp)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_poncurv2d(P, C, NbU, Papp)
         })
     }
 
@@ -9014,7 +9729,7 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         Papp: &mut crate::extrema::POnCurv2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
+            crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_pnt2d_address_int_real2_poncurv2d(P, C, NbU, Umin, Usup, Papp)
         })
     }
 
@@ -9032,9 +9747,7 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
         Papp2: &mut crate::extrema::POnCurv2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(
-                C1, C2, NbU, NbV, Papp1, Papp2,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheCurveLocatorOfTheProjPCurOfCInter_locate_address2_int2_poncurv2d2(C1, C2, NbU, NbV, Papp1, Papp2)
         })
     }
 }
@@ -9044,11 +9757,11 @@ impl TheCurveLocatorOfTheProjPCurOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter.hxx`:30 - `HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter`
-pub use crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter as TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter as TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter;
 
 unsafe impl crate::CppDeletable for TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -9059,11 +9772,7 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         curve2: &*mut std::ffi::c_void,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(
-                    curve1, curve2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_ctor_address2(curve1, curve2)))
         }
     }
 
@@ -9071,9 +9780,7 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// returns 2.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_variables(self as *const Self)
         })
     }
 
@@ -9081,9 +9788,7 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// returns 2.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_equations(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_nb_equations(self as *const Self)
         })
     }
 
@@ -9092,9 +9797,13 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_value(
                 self as *mut Self,
                 X,
                 F,
@@ -9109,15 +9818,11 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(
-                self as *mut Self,
-                X,
-                D,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -9128,17 +9833,12 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(
-                self as *mut Self,
-                X,
-                F,
-                D,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -9147,7 +9847,7 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -9156,28 +9856,28 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet(self as *const Self))
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -9187,11 +9887,11 @@ impl TheDistBetweenPCurvesOfTheIntPCurvePCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:35 - `HLRBRep_TheExactInterCSurf`
-pub use crate::ffi::HLRBRep_TheExactInterCSurf as TheExactInterCSurf;
+pub use crate::ffi_types::HLRBRep_TheExactInterCSurf as TheExactInterCSurf;
 
 unsafe impl crate::CppDeletable for TheExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheExactInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_destructor(ptr);
     }
 }
 
@@ -9209,16 +9909,7 @@ impl TheExactInterCSurf {
         MarginCoef: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheExactInterCSurf_ctor_real3_thecsfunctionofintercsurf_real2(
-                    U,
-                    V,
-                    W,
-                    F,
-                    TolTangency,
-                    MarginCoef,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_ctor_real3_thecsfunctionofintercsurf_real2(U, V, W, F, TolTangency, MarginCoef)))
         }
     }
 
@@ -9229,12 +9920,7 @@ impl TheExactInterCSurf {
         TolTangency: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheExactInterCSurf_ctor_thecsfunctionofintercsurf_real(
-                    F,
-                    TolTangency,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_ctor_thecsfunctionofintercsurf_real(F, TolTangency)))
         }
     }
 
@@ -9289,7 +9975,7 @@ impl TheExactInterCSurf {
         w1: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheExactInterCSurf_perform(
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_perform(
                 self as *mut Self,
                 U,
                 V,
@@ -9309,14 +9995,14 @@ impl TheExactInterCSurf {
     /// Returns TRUE if the creation completed without failure.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheExactInterCSurf_is_done(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:90 - `HLRBRep_TheExactInterCSurf::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheExactInterCSurf_is_empty(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_is_empty(self as *const Self)
         })
     }
 
@@ -9326,7 +10012,7 @@ impl TheExactInterCSurf {
     /// The exception DomainError is raised if IsEmpty is true.
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheExactInterCSurf_point(
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_point(
                 self as *const Self,
             )))
         }
@@ -9335,14 +10021,20 @@ impl TheExactInterCSurf {
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:97 - `HLRBRep_TheExactInterCSurf::ParameterOnCurve()`
     pub fn parameter_on_curve(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_curve(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_parameter_on_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheExactInterCSurf.hxx`:99 - `HLRBRep_TheExactInterCSurf::ParameterOnSurface()`
     pub fn parameter_on_surface(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheExactInterCSurf_parameter_on_surface(self as *const Self, U, V)
+            crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_parameter_on_surface(
+                self as *const Self,
+                U,
+                V,
+            )
         })
     }
 
@@ -9351,9 +10043,9 @@ impl TheExactInterCSurf {
     /// is used to compute the intersection
     pub fn function(&mut self) -> &mut TheCSFunctionOfInterCSurf {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::HLRBRep_TheExactInterCSurf_function(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheExactInterCSurf_function(self as *mut Self),
+            ))
         }
     }
 }
@@ -9363,11 +10055,11 @@ impl TheExactInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_TheIntConicCurveOfCInter.hxx`:36 - `HLRBRep_TheIntConicCurveOfCInter`
-pub use crate::ffi::HLRBRep_TheIntConicCurveOfCInter as TheIntConicCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_TheIntConicCurveOfCInter as TheIntConicCurveOfCInter;
 
 unsafe impl crate::CppDeletable for TheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheIntConicCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -9377,7 +10069,7 @@ impl TheIntConicCurveOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor(),
             ))
         }
     }
@@ -9393,11 +10085,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(
-                    L, D1, PCurve, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor_lin2d_domain_address_domain_real2(L, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -9412,7 +10100,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(C, D1, PCurve, D2, TolConf, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor_circ2d_domain_address_domain_real2(C, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -9427,7 +10115,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor_elips2d_domain_address_domain_real2(E, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -9442,7 +10130,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor_parab2d_domain_address_domain_real2(Prb, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -9458,7 +10146,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(H, D1, PCurve, D2, TolConf, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_ctor_hypr2d_domain_address_domain_real2(H, D1, PCurve, D2, TolConf, Tol)))
         }
     }
 
@@ -9474,15 +10162,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(
-                self as *mut Self,
-                L,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_perform_lin2d_domain_address_domain_real2(self as *mut Self, L, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -9498,15 +10178,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(
-                self as *mut Self,
-                C,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_perform_circ2d_domain_address_domain_real2(self as *mut Self, C, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -9522,15 +10194,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(
-                self as *mut Self,
-                E,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_perform_elips2d_domain_address_domain_real2(self as *mut Self, E, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -9546,15 +10210,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(
-                self as *mut Self,
-                Prb,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_perform_parab2d_domain_address_domain_real2(self as *mut Self, Prb, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -9571,15 +10227,7 @@ impl TheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(
-                self as *mut Self,
-                H,
-                D1,
-                PCurve,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_perform_hypr2d_domain_address_domain_real2(self as *mut Self, H, D1, PCurve, D2, TolConf, Tol)
         })
     }
 
@@ -9587,7 +10235,7 @@ impl TheIntConicCurveOfCInter {
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection(
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection(
                     self as *const Self,
                 ),
             )
@@ -9597,69 +10245,74 @@ impl TheIntConicCurveOfCInter {
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntConicCurveOfCInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntConicCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
         })
     }
 }
@@ -9669,11 +10322,11 @@ impl TheIntConicCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:33 - `HLRBRep_TheIntPCurvePCurveOfCInter`
-pub use crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter as TheIntPCurvePCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_TheIntPCurvePCurveOfCInter as TheIntPCurvePCurveOfCInter;
 
 unsafe impl crate::CppDeletable for TheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -9682,7 +10335,7 @@ impl TheIntPCurvePCurveOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_ctor(),
             ))
         }
     }
@@ -9698,7 +10351,7 @@ impl TheIntPCurvePCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_address_domain_real2(self as *mut Self, Curve1, Domain1, Curve2, Domain2, TolConf, Tol)
         })
     }
 
@@ -9711,7 +10364,7 @@ impl TheIntPCurvePCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_perform_address_domain_real2(
                 self as *mut Self,
                 Curve1,
                 Domain1,
@@ -9725,7 +10378,7 @@ impl TheIntPCurvePCurveOfCInter {
     /// Set / get minimum number of points in polygon for intersection.
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_set_min_nb_samples(
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_set_min_nb_samples(
                 self as *mut Self,
                 theMinNbSamples,
             )
@@ -9735,67 +10388,71 @@ impl TheIntPCurvePCurveOfCInter {
     /// **Source:** `HLRBRep_TheIntPCurvePCurveOfCInter.hxx`:54 - `HLRBRep_TheIntPCurvePCurveOfCInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_get_min_nb_samples(
+                self as *const Self,
+            )
         })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection(self as *const Self))
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
@@ -9803,7 +10460,7 @@ impl TheIntPCurvePCurveOfCInter {
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Segment(
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_Segment(
                     self as *const Self,
                     N,
                 ),
@@ -9814,10 +10471,7 @@ impl TheIntPCurvePCurveOfCInter {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntPCurvePCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
         })
     }
 }
@@ -9827,11 +10481,11 @@ impl TheIntPCurvePCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheInterferenceOfInterCSurf.hxx`:36 - `HLRBRep_TheInterferenceOfInterCSurf`
-pub use crate::ffi::HLRBRep_TheInterferenceOfInterCSurf as TheInterferenceOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_TheInterferenceOfInterCSurf as TheInterferenceOfInterCSurf;
 
 unsafe impl crate::CppDeletable for TheInterferenceOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -9842,7 +10496,7 @@ impl TheInterferenceOfInterCSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor(),
             ))
         }
     }
@@ -9855,7 +10509,7 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf(thePolyg, thePolyh)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf(thePolyg, thePolyh)))
         }
     }
 
@@ -9867,11 +10521,7 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf(
-                    theLin, thePolyh,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf(theLin, thePolyh)))
         }
     }
 
@@ -9879,11 +10529,11 @@ impl TheInterferenceOfInterCSurf {
     /// Constructs   and   computes  an  interference   between the
     /// Straight Lines and the Polyhedron.
     pub fn new_array1oflin_thepolyhedronofintercsurf(
-        theLins: &crate::ffi::Intf_Array1OfLin,
+        theLins: &crate::ffi_types::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf(theLins, thePolyh)))
         }
     }
 
@@ -9896,7 +10546,7 @@ impl TheInterferenceOfInterCSurf {
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(thePolyg, thePolyh, theBoundSB)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(thePolyg, thePolyh, theBoundSB)))
         }
     }
 
@@ -9909,7 +10559,7 @@ impl TheInterferenceOfInterCSurf {
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_lin_thepolyhedronofintercsurf_boundsortbox(theLin, thePolyh, theBoundSB)))
         }
     }
 
@@ -9917,12 +10567,12 @@ impl TheInterferenceOfInterCSurf {
     /// Constructs   and   computes  an  interference   between the
     /// Straight Lines and the Polyhedron.
     pub fn new_array1oflin_thepolyhedronofintercsurf_boundsortbox(
-        theLins: &crate::ffi::Intf_Array1OfLin,
+        theLins: &crate::ffi_types::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_ctor_array1oflin_thepolyhedronofintercsurf_boundsortbox(theLins, thePolyh, theBoundSB)))
         }
     }
 
@@ -9935,7 +10585,7 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
         })
     }
 
@@ -9948,11 +10598,7 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf(
-                self as *mut Self,
-                theLin,
-                thePolyh,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf(self as *mut Self, theLin, thePolyh)
         })
     }
 
@@ -9961,11 +10607,11 @@ impl TheInterferenceOfInterCSurf {
     /// the Polyhedron.
     pub fn perform_array1oflin_thepolyhedronofintercsurf(
         &mut self,
-        theLins: &crate::ffi::Intf_Array1OfLin,
+        theLins: &crate::ffi_types::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(self as *mut Self, theLins, thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf(self as *mut Self, theLins, thePolyh)
         })
     }
 
@@ -9979,7 +10625,7 @@ impl TheInterferenceOfInterCSurf {
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
         })
     }
 
@@ -9993,7 +10639,7 @@ impl TheInterferenceOfInterCSurf {
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_lin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLin, thePolyh, theBoundSB)
         })
     }
 
@@ -10002,12 +10648,12 @@ impl TheInterferenceOfInterCSurf {
     /// the Polyhedron.
     pub fn perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(
         &mut self,
-        theLins: &crate::ffi::Intf_Array1OfLin,
+        theLins: &crate::ffi_types::Intf_Array1OfLin,
         thePolyh: &ThePolyhedronOfInterCSurf,
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_perform_array1oflin_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, theLins, thePolyh, theBoundSB)
         })
     }
 
@@ -10021,7 +10667,7 @@ impl TheInterferenceOfInterCSurf {
         theBoundSB: &mut crate::bnd::BoundSortBox,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf_boundsortbox(self as *mut Self, thePolyg, thePolyh, theBoundSB)
         })
     }
 
@@ -10034,7 +10680,7 @@ impl TheInterferenceOfInterCSurf {
         thePolyh: &ThePolyhedronOfInterCSurf,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_interference_thepolygonofintercsurf_thepolyhedronofintercsurf(self as *mut Self, thePolyg, thePolyh)
         })
     }
 
@@ -10042,7 +10688,7 @@ impl TheInterferenceOfInterCSurf {
     pub fn as_intf_interference(&self) -> &crate::intf::Interference {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference(
+                crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference(
                     self as *const Self,
                 ),
             )
@@ -10052,18 +10698,14 @@ impl TheInterferenceOfInterCSurf {
     /// Upcast to Intf_Interference (mutable)
     pub fn as_intf_interference_mut(&mut self) -> &mut crate::intf::Interference {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_as_Intf_Interference_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Intf_Interference.hxx`:43 - `Intf_Interference::NbSectionPoints()`
     pub fn nb_section_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionPoints(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionPoints(
                 self as *const Self,
             )
         })
@@ -10073,7 +10715,7 @@ impl TheInterferenceOfInterCSurf {
     pub fn pnt_value(&self, Index: i32) -> &crate::intf::SectionPoint {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_PntValue(
+                crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_PntValue(
                     self as *const Self,
                     Index,
                 ),
@@ -10084,7 +10726,7 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:51 - `Intf_Interference::NbSectionLines()`
     pub fn nb_section_lines(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionLines(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbSectionLines(
                 self as *const Self,
             )
         })
@@ -10094,7 +10736,7 @@ impl TheInterferenceOfInterCSurf {
     pub fn line_value(&self, Index: i32) -> &crate::intf::SectionLine {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_LineValue(
+                crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_LineValue(
                     self as *const Self,
                     Index,
                 ),
@@ -10105,7 +10747,7 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:58 - `Intf_Interference::NbTangentZones()`
     pub fn nb_tangent_zones(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbTangentZones(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_NbTangentZones(
                 self as *const Self,
             )
         })
@@ -10115,7 +10757,7 @@ impl TheInterferenceOfInterCSurf {
     pub fn zone_value(&self, Index: i32) -> &crate::intf::TangentZone {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_ZoneValue(
+                crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_ZoneValue(
                     self as *const Self,
                     Index,
                 ),
@@ -10126,7 +10768,7 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:65 - `Intf_Interference::GetTolerance()`
     pub fn get_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_GetTolerance(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_GetTolerance(
                 self as *const Self,
             )
         })
@@ -10135,7 +10777,7 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:69 - `Intf_Interference::Contains()`
     pub fn contains(&self, ThePnt: &crate::intf::SectionPoint) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Contains(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_Contains(
                 self as *const Self,
                 ThePnt,
             )
@@ -10145,7 +10787,7 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:74 - `Intf_Interference::Insert()`
     pub fn insert(&mut self, TheZone: &crate::intf::TangentZone) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Insert(
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_Insert(
                 self as *mut Self,
                 TheZone,
             )
@@ -10155,7 +10797,9 @@ impl TheInterferenceOfInterCSurf {
     /// Inherited: **Source:** `Intf_Interference.hxx`:80 - `Intf_Interference::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheInterferenceOfInterCSurf_inherited_Dump(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheInterferenceOfInterCSurf_inherited_Dump(
+                self as *const Self,
+            )
         })
     }
 }
@@ -10165,11 +10809,11 @@ impl TheInterferenceOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter.hxx`:34 - `HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter`
-pub use crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter as TheIntersectorOfTheIntConicCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter as TheIntersectorOfTheIntConicCurveOfCInter;
 
 unsafe impl crate::CppDeletable for TheIntersectorOfTheIntConicCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -10179,7 +10823,7 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor(),
             ))
         }
     }
@@ -10199,7 +10843,7 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_ctor_iconictool_domain_address_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)))
         }
     }
 
@@ -10219,7 +10863,7 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_perform(
                 self as *mut Self,
                 ITool,
                 Dom1,
@@ -10240,7 +10884,7 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         IntCurve_IConicTool: &crate::int_curve::IConicTool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_u(
                 self as *const Self,
                 parameter,
                 point,
@@ -10263,7 +10907,7 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         Tolerance: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_find_v(
                 self as *const Self,
                 parameter,
                 point,
@@ -10285,95 +10929,77 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
         TheImpCurveDomain: &crate::int_res2d::Domain,
         TheParCurveDomain: &crate::int_res2d::Domain,
         NbResultats: &mut i32,
-        Inter2_And_Domain2: &mut crate::ffi::TColStd_Array1OfReal,
-        Inter1: &mut crate::ffi::TColStd_Array1OfReal,
-        Resultat1: &mut crate::ffi::TColStd_Array1OfReal,
-        Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
+        Inter2_And_Domain2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Inter1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Resultat1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Resultat2: &mut crate::ffi_types::TColStd_Array1OfReal,
         EpsNul: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_and_domaine_objet1_intersections(self as *const Self, IntCurve_IConicTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
         })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection(self as *const Self))
         }
     }
 
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsDone(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsEmpty(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_IsEmpty(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbPoints(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbPoints(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Point(
-                    self as *const Self,
-                    N,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Point(self as *const Self, N)))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbSegments(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_NbSegments(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Segment(
-                    self as *const Self,
-                    N,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_Segment(self as *const Self, N)))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
+            crate::ffi_extern_TKHLR::HLRBRep_TheIntersectorOfTheIntConicCurveOfCInter_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
         })
     }
 }
@@ -10383,11 +11009,11 @@ impl TheIntersectorOfTheIntConicCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter.hxx`:35 - `HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter`
-pub use crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter as TheLocateExtPCOfTheProjPCurOfCInter;
+pub use crate::ffi_types::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter as TheLocateExtPCOfTheProjPCurOfCInter;
 
 unsafe impl crate::CppDeletable for TheLocateExtPCOfTheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_destructor(ptr);
     }
 }
 
@@ -10396,7 +11022,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor(),
             ))
         }
     }
@@ -10416,11 +11042,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(
-                    P, C, U0, TolU,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real2(P, C, U0, TolU)))
         }
     }
 
@@ -10442,11 +11064,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         TolU: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(
-                    P, C, U0, Umin, Usup, TolU,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_ctor_pnt2d_address_real4(P, C, U0, Umin, Usup, TolU)))
         }
     }
 
@@ -10460,7 +11078,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
         TolU: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_initialize(
                 self as *mut Self,
                 C,
                 Umin,
@@ -10476,7 +11094,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// been initialized.
     pub fn perform(&mut self, P: &crate::gp::Pnt2d, U0: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_perform(
                 self as *mut Self,
                 P,
                 U0,
@@ -10488,7 +11106,9 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// Returns True if the distance is found.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -10496,7 +11116,7 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// Returns the value of the extremum square distance.
     pub fn square_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_square_distance(
                 self as *const Self,
             )
         })
@@ -10506,7 +11126,9 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// Returns True if the extremum distance is a minimum.
     pub fn is_min(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_is_min(
+                self as *const Self,
+            )
         })
     }
 
@@ -10514,9 +11136,11 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
     /// Returns the point of the extremum distance.
     pub fn point(&self) -> &crate::extrema::POnCurv2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_TheLocateExtPCOfTheProjPCurOfCInter_point(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -10526,11 +11150,11 @@ impl TheLocateExtPCOfTheProjPCurOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:35 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter`
-pub use crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter as ThePolygon2dOfTheIntPCurvePCurveOfCInter;
+pub use crate::ffi_types::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter as ThePolygon2dOfTheIntPCurvePCurveOfCInter;
 
 unsafe impl crate::CppDeletable for ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_destructor(ptr);
     }
 }
 
@@ -10544,7 +11168,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Curve, NbPnt, Domain, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_ctor_address_int_domain_real(Curve, NbPnt, Domain, Tol)))
         }
     }
 
@@ -10560,34 +11184,28 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         OtherBox: &crate::bnd::Box2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(
-                self as *mut Self,
-                Curve,
-                OtherBox,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_compute_with_box(self as *mut Self, Curve, OtherBox)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:53 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_deflection_over_estimation(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_deflection_over_estimation(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:55 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_set_deflection_over_estimation(self as *mut Self, x)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_set_deflection_over_estimation(self as *mut Self, x)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:57 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Closed()`
     pub fn closed_bool(&mut self, clos: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed_bool(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed_bool(
                 self as *mut Self,
                 clos,
             )
@@ -10598,7 +11216,9 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// Returns True if the polyline is closed.
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_closed(
+                self as *const Self,
+            )
         })
     }
 
@@ -10606,7 +11226,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_nb_segments(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_nb_segments(
                 self as *const Self,
             )
         })
@@ -10621,7 +11241,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
         theEnd: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_segment(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_segment(
                 self as *const Self,
                 theIndex,
                 theBegin,
@@ -10635,7 +11255,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inf_parameter(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inf_parameter(
                 self as *const Self,
             )
         })
@@ -10646,7 +11266,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_sup_parameter(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_sup_parameter(
                 self as *const Self,
             )
         })
@@ -10655,7 +11275,7 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:78 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::AutoIntersectionIsPossible()`
     pub fn auto_intersection_is_possible(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_auto_intersection_is_possible(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_auto_intersection_is_possible(self as *const Self)
         })
     }
 
@@ -10664,18 +11284,14 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_approx_param_on_curve(
-                self as *const Self,
-                Index,
-                ParamOnLine,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_approx_param_on_curve(self as *const Self, Index, ParamOnLine)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:85 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::CalculRegion()`
     pub fn calcul_region(&self, x: f64, y: f64, x1: f64, x2: f64, y1: f64, y2: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_calcul_region(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_calcul_region(
                 self as *const Self,
                 x,
                 y,
@@ -10690,40 +11306,30 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
     /// **Source:** `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter.hxx`:92 - `HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_dump(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_dump(
+                self as *const Self,
+            )
         })
     }
 
     /// Upcast to Intf_Polygon2d
     pub fn as_intf_polygon2d(&self) -> &crate::intf::Polygon2d {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d(self as *const Self))
         }
     }
 
     /// Upcast to Intf_Polygon2d (mutable)
     pub fn as_intf_polygon2d_mut(&mut self) -> &mut crate::intf::Polygon2d {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_as_Intf_Polygon2d_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Intf_Polygon2d.hxx`:35 - `Intf_Polygon2d::Bounding()`
     pub fn bounding(&self) -> &crate::bnd::Box2d {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inherited_Bounding(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ThePolygon2dOfTheIntPCurvePCurveOfCInter_inherited_Bounding(self as *const Self)))
         }
     }
 }
@@ -10733,11 +11339,11 @@ impl ThePolygon2dOfTheIntPCurvePCurveOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:35 - `HLRBRep_ThePolygonOfInterCSurf`
-pub use crate::ffi::HLRBRep_ThePolygonOfInterCSurf as ThePolygonOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_ThePolygonOfInterCSurf as ThePolygonOfInterCSurf;
 
 unsafe impl crate::CppDeletable for ThePolygonOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ThePolygonOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -10746,7 +11352,7 @@ impl ThePolygonOfInterCSurf {
     pub fn new_lin_int(Curve: &crate::gp::Lin, NbPnt: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_int(Curve, NbPnt),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_int(Curve, NbPnt),
             ))
         }
     }
@@ -10760,7 +11366,9 @@ impl ThePolygonOfInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(Curve, U1, U2, NbPnt),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_real2_int(
+                    Curve, U1, U2, NbPnt,
+                ),
             ))
         }
     }
@@ -10768,11 +11376,13 @@ impl ThePolygonOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:47 - `HLRBRep_ThePolygonOfInterCSurf::HLRBRep_ThePolygonOfInterCSurf()`
     pub fn new_lin_array1ofreal(
         Curve: &crate::gp::Lin,
-        Upars: &crate::ffi::TColStd_Array1OfReal,
+        Upars: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(Curve, Upars),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_ctor_lin_array1ofreal(
+                    Curve, Upars,
+                ),
             ))
         }
     }
@@ -10781,16 +11391,18 @@ impl ThePolygonOfInterCSurf {
     /// Give the bounding box of the polygon.
     pub fn bounding(&self) -> &crate::bnd::Box {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_bounding(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_bounding(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:53 - `HLRBRep_ThePolygonOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_deflection_over_estimation(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_deflection_over_estimation(
                 self as *const Self,
             )
         })
@@ -10799,7 +11411,7 @@ impl ThePolygonOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:55 - `HLRBRep_ThePolygonOfInterCSurf::SetDeflectionOverEstimation()`
     pub fn set_deflection_over_estimation(&mut self, x: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_set_deflection_over_estimation(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_set_deflection_over_estimation(
                 self as *mut Self,
                 x,
             )
@@ -10809,14 +11421,17 @@ impl ThePolygonOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:61 - `HLRBRep_ThePolygonOfInterCSurf::Closed()`
     pub fn closed_bool(&mut self, flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed_bool(self as *mut Self, flag)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_closed_bool(
+                self as *mut Self,
+                flag,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:64 - `HLRBRep_ThePolygonOfInterCSurf::Closed()`
     pub fn closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_closed(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_closed(self as *const Self)
         })
     }
 
@@ -10824,7 +11439,7 @@ impl ThePolygonOfInterCSurf {
     /// Give the number of Segments in the polyline.
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_nb_segments(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_nb_segments(self as *const Self)
         })
     }
 
@@ -10832,10 +11447,12 @@ impl ThePolygonOfInterCSurf {
     /// Give the point of range Index in the Polygon.
     pub fn begin_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_begin_of_seg(
-                self as *const Self,
-                theIndex,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_begin_of_seg(
+                    self as *const Self,
+                    theIndex,
+                ),
+            ))
         }
     }
 
@@ -10843,10 +11460,12 @@ impl ThePolygonOfInterCSurf {
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(&self, theIndex: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonOfInterCSurf_end_of_seg(
-                self as *const Self,
-                theIndex,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_end_of_seg(
+                    self as *const Self,
+                    theIndex,
+                ),
+            ))
         }
     }
 
@@ -10855,7 +11474,9 @@ impl ThePolygonOfInterCSurf {
     /// of the first point of the Polygon
     pub fn inf_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_inf_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_inf_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -10864,7 +11485,9 @@ impl ThePolygonOfInterCSurf {
     /// of the last point of the Polygon
     pub fn sup_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_sup_parameter(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_sup_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -10873,7 +11496,7 @@ impl ThePolygonOfInterCSurf {
     /// according to the discretization of the Curve.
     pub fn approx_param_on_curve(&self, Index: i32, ParamOnLine: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_approx_param_on_curve(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_approx_param_on_curve(
                 self as *const Self,
                 Index,
                 ParamOnLine,
@@ -10884,7 +11507,7 @@ impl ThePolygonOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolygonOfInterCSurf.hxx`:90 - `HLRBRep_ThePolygonOfInterCSurf::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonOfInterCSurf_dump(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonOfInterCSurf_dump(self as *const Self)
         })
     }
 }
@@ -10894,11 +11517,11 @@ impl ThePolygonOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:31 - `HLRBRep_ThePolygonToolOfInterCSurf`
-pub use crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf as ThePolygonToolOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_ThePolygonToolOfInterCSurf as ThePolygonToolOfInterCSurf;
 
 unsafe impl crate::CppDeletable for ThePolygonToolOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -10908,7 +11531,7 @@ impl ThePolygonToolOfInterCSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_ctor(),
             ))
         }
     }
@@ -10917,30 +11540,32 @@ impl ThePolygonToolOfInterCSurf {
     /// Give the bounding box of the polygon.
     pub fn bounding(thePolygon: &ThePolygonOfInterCSurf) -> &'static crate::bnd::Box {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_bounding(
-                thePolygon,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_bounding(thePolygon),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:39 - `HLRBRep_ThePolygonToolOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(thePolygon: &ThePolygonOfInterCSurf) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_deflection_over_estimation(thePolygon)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_deflection_over_estimation(
+                thePolygon,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:41 - `HLRBRep_ThePolygonToolOfInterCSurf::Closed()`
     pub fn closed(thePolygon: &ThePolygonOfInterCSurf) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_closed(thePolygon)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_closed(thePolygon)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:43 - `HLRBRep_ThePolygonToolOfInterCSurf::NbSegments()`
     pub fn nb_segments(thePolygon: &ThePolygonOfInterCSurf) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_nb_segments(thePolygon)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_nb_segments(thePolygon)
         })
     }
 
@@ -10951,9 +11576,11 @@ impl ThePolygonToolOfInterCSurf {
         Index: i32,
     ) -> &'static crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_begin_of_seg(
-                thePolygon, Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_begin_of_seg(
+                    thePolygon, Index,
+                ),
+            ))
         }
     }
 
@@ -10961,16 +11588,18 @@ impl ThePolygonToolOfInterCSurf {
     /// Give the point of range Index in the Polygon.
     pub fn end_of_seg(thePolygon: &ThePolygonOfInterCSurf, Index: i32) -> &'static crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_end_of_seg(
-                thePolygon, Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_end_of_seg(
+                    thePolygon, Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolygonToolOfInterCSurf.hxx`:53 - `HLRBRep_ThePolygonToolOfInterCSurf::Dump()`
     pub fn dump(thePolygon: &ThePolygonOfInterCSurf) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolygonToolOfInterCSurf_dump(thePolygon)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolygonToolOfInterCSurf_dump(thePolygon)
         })
     }
 }
@@ -10980,11 +11609,11 @@ impl ThePolygonToolOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:34 - `HLRBRep_ThePolyhedronOfInterCSurf`
-pub use crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf as ThePolyhedronOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_ThePolyhedronOfInterCSurf as ThePolyhedronOfInterCSurf;
 
 unsafe impl crate::CppDeletable for ThePolyhedronOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -11001,7 +11630,7 @@ impl ThePolyhedronOfInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_int2_real4(
                     Surface, nbdU, nbdV, U1, V1, U2, V2,
                 ),
             ))
@@ -11011,32 +11640,25 @@ impl ThePolyhedronOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:47 - `HLRBRep_ThePolyhedronOfInterCSurf::HLRBRep_ThePolyhedronOfInterCSurf()`
     pub unsafe fn new_address_array1ofreal2(
         Surface: &*mut std::ffi::c_void,
-        Upars: &crate::ffi::TColStd_Array1OfReal,
-        Vpars: &crate::ffi::TColStd_Array1OfReal,
+        Upars: &crate::ffi_types::TColStd_Array1OfReal,
+        Vpars: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(
-                    Surface, Upars, Vpars,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_ctor_address_array1ofreal2(Surface, Upars, Vpars)))
         }
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:51 - `HLRBRep_ThePolyhedronOfInterCSurf::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_destroy(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_destroy(self as *mut Self)
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:55 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation_real(&mut self, flec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(
-                self as *mut Self,
-                flec,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation_real(self as *mut Self, flec)
         })
     }
 
@@ -11047,7 +11669,7 @@ impl ThePolyhedronOfInterCSurf {
         Index: i32,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_deflection_on_triangle(
                 self as *const Self,
                 Surface,
                 Index,
@@ -11058,28 +11680,40 @@ impl ThePolyhedronOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:60 - `HLRBRep_ThePolyhedronOfInterCSurf::UMinSingularity()`
     pub fn u_min_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(self as *mut Self, Sing)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_u_min_singularity(
+                self as *mut Self,
+                Sing,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:62 - `HLRBRep_ThePolyhedronOfInterCSurf::UMaxSingularity()`
     pub fn u_max_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_u_max_singularity(self as *mut Self, Sing)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_u_max_singularity(
+                self as *mut Self,
+                Sing,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:64 - `HLRBRep_ThePolyhedronOfInterCSurf::VMinSingularity()`
     pub fn v_min_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_min_singularity(self as *mut Self, Sing)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_v_min_singularity(
+                self as *mut Self,
+                Sing,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:66 - `HLRBRep_ThePolyhedronOfInterCSurf::VMaxSingularity()`
     pub fn v_max_singularity(&mut self, Sing: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_v_max_singularity(self as *mut Self, Sing)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_v_max_singularity(
+                self as *mut Self,
+                Sing,
+            )
         })
     }
 
@@ -11087,7 +11721,11 @@ impl ThePolyhedronOfInterCSurf {
     /// get the size of the discretization.
     pub fn size(&self, nbdu: &mut i32, nbdv: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_size(self as *const Self, nbdu, nbdv)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_size(
+                self as *const Self,
+                nbdu,
+                nbdv,
+            )
         })
     }
 
@@ -11095,7 +11733,9 @@ impl ThePolyhedronOfInterCSurf {
     /// Give the number of triangles in this double array of
     pub fn nb_triangles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_nb_triangles(
+                self as *const Self,
+            )
         })
     }
 
@@ -11104,7 +11744,7 @@ impl ThePolyhedronOfInterCSurf {
     /// the double array of triangles.
     pub fn triangle(&self, Index: i32, P1: &mut i32, P2: &mut i32, P3: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_triangle(
                 self as *const Self,
                 Index,
                 P1,
@@ -11130,7 +11770,7 @@ impl ThePolyhedronOfInterCSurf {
         OtherP: &mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_tri_connex(
                 self as *const Self,
                 Triang,
                 Pivot,
@@ -11146,7 +11786,9 @@ impl ThePolyhedronOfInterCSurf {
     /// triangles ((nbdu+1)*(nbdv+1)).
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_nb_points(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_nb_points(
+                self as *const Self,
+            )
         })
     }
 
@@ -11162,7 +11804,7 @@ impl ThePolyhedronOfInterCSurf {
         V: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_pnt_int2_real2(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_point_pnt_int2_real2(
                 self as *mut Self,
                 thePnt,
                 lig,
@@ -11183,12 +11825,14 @@ impl ThePolyhedronOfInterCSurf {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn point_int_real2(&self, Index: i32, U: &mut f64, V: &mut f64) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
-                self as *const Self,
-                Index,
-                U,
-                V,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_point_int_real2(
+                    self as *const Self,
+                    Index,
+                    U,
+                    V,
+                ),
+            ))
         }
     }
 
@@ -11196,10 +11840,12 @@ impl ThePolyhedronOfInterCSurf {
     /// Give the point of index i in the MaTriangle.
     pub fn point_int(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_point_int(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -11207,7 +11853,7 @@ impl ThePolyhedronOfInterCSurf {
     /// Give the point of index i in the MaTriangle.
     pub fn point_int_pnt(&self, Index: i32, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_point_int_pnt(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_point_int_pnt(
                 self as *const Self,
                 Index,
                 P,
@@ -11219,9 +11865,11 @@ impl ThePolyhedronOfInterCSurf {
     /// Give the bounding box of the MaTriangle.
     pub fn bounding(&self) -> &crate::bnd::Box {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_bounding(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_bounding(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11230,17 +11878,19 @@ impl ThePolyhedronOfInterCSurf {
     /// to the triangle <n>.
     pub fn fill_bounding(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_fill_bounding(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:125 - `HLRBRep_ThePolyhedronOfInterCSurf::ComponentsBounding()`
     /// Give the array of boxes. The box <n> corresponding
     /// to the triangle <n>.
-    pub fn components_bounding(&self) -> &crate::ffi::HandleBndHArray1OfBox {
+    pub fn components_bounding(&self) -> &crate::ffi_types::HandleBndHArray1OfBox {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_components_bounding(
                     self as *const Self,
                 ),
             ))
@@ -11250,7 +11900,7 @@ impl ThePolyhedronOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:127 - `HLRBRep_ThePolyhedronOfInterCSurf::DeflectionOverEstimation()`
     pub fn deflection_over_estimation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_deflection_over_estimation(
                 self as *const Self,
             )
         })
@@ -11259,28 +11909,36 @@ impl ThePolyhedronOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:129 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMinSingularity()`
     pub fn has_u_min_singularity(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_min_singularity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_has_u_min_singularity(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:131 - `HLRBRep_ThePolyhedronOfInterCSurf::HasUMaxSingularity()`
     pub fn has_u_max_singularity(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_u_max_singularity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_has_u_max_singularity(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:133 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMinSingularity()`
     pub fn has_v_min_singularity(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_min_singularity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_has_v_min_singularity(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:135 - `HLRBRep_ThePolyhedronOfInterCSurf::HasVMaxSingularity()`
     pub fn has_v_max_singularity(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_has_v_max_singularity(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_has_v_max_singularity(
+                self as *const Self,
+            )
         })
     }
 
@@ -11293,7 +11951,7 @@ impl ThePolyhedronOfInterCSurf {
         PolarDistance: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_plane_equation(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_plane_equation(
                 self as *const Self,
                 Triang,
                 NormalVector,
@@ -11306,7 +11964,7 @@ impl ThePolyhedronOfInterCSurf {
     /// Give the plane equation of the triangle of address Triang.
     pub fn contain(&self, Triang: i32, ThePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_contain(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_contain(
                 self as *const Self,
                 Triang,
                 ThePnt,
@@ -11317,7 +11975,7 @@ impl ThePolyhedronOfInterCSurf {
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:146 - `HLRBRep_ThePolyhedronOfInterCSurf::Parameters()`
     pub fn parameters(&self, Index: i32, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_parameters(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_parameters(
                 self as *const Self,
                 Index,
                 U,
@@ -11333,7 +11991,7 @@ impl ThePolyhedronOfInterCSurf {
     /// this edge.
     pub fn is_on_bound(&self, Index1: i32, Index2: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_is_on_bound(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_is_on_bound(
                 self as *const Self,
                 Index1,
                 Index2,
@@ -11345,14 +12003,16 @@ impl ThePolyhedronOfInterCSurf {
     /// This method returns a border deflection.
     pub fn get_border_deflection(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_get_border_deflection(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_get_border_deflection(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronOfInterCSurf.hxx`:160 - `HLRBRep_ThePolyhedronOfInterCSurf::Dump()`
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronOfInterCSurf_dump(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronOfInterCSurf_dump(self as *const Self)
         })
     }
 }
@@ -11362,11 +12022,11 @@ impl ThePolyhedronOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:33 - `HLRBRep_ThePolyhedronToolOfInterCSurf`
-pub use crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf as ThePolyhedronToolOfInterCSurf;
+pub use crate::ffi_types::HLRBRep_ThePolyhedronToolOfInterCSurf as ThePolyhedronToolOfInterCSurf;
 
 unsafe impl crate::CppDeletable for ThePolyhedronToolOfInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_destructor(ptr);
     }
 }
 
@@ -11376,7 +12036,7 @@ impl ThePolyhedronToolOfInterCSurf {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_ctor(),
             ))
         }
     }
@@ -11385,9 +12045,9 @@ impl ThePolyhedronToolOfInterCSurf {
     /// Give the bounding box of the PolyhedronTool.
     pub fn bounding(thePolyh: &ThePolyhedronOfInterCSurf) -> &'static crate::bnd::Box {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(
-                thePolyh,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_bounding(thePolyh),
+            ))
         }
     }
 
@@ -11396,10 +12056,12 @@ impl ThePolyhedronToolOfInterCSurf {
     /// to the triangle <n>.
     pub fn components_bounding(
         thePolyh: &ThePolyhedronOfInterCSurf,
-    ) -> &'static crate::ffi::HandleBndHArray1OfBox {
+    ) -> &'static crate::ffi_types::HandleBndHArray1OfBox {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(thePolyh),
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_components_bounding(
+                    thePolyh,
+                ),
             ))
         }
     }
@@ -11408,7 +12070,7 @@ impl ThePolyhedronToolOfInterCSurf {
     /// Give the tolerance of the polygon.
     pub fn deflection_over_estimation(thePolyh: &ThePolyhedronOfInterCSurf) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_deflection_over_estimation(thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_deflection_over_estimation(thePolyh)
         })
     }
 
@@ -11416,7 +12078,7 @@ impl ThePolyhedronToolOfInterCSurf {
     /// Give the number of triangles in this polyhedral surface.
     pub fn nb_triangles(thePolyh: &ThePolyhedronOfInterCSurf) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_nb_triangles(thePolyh)
         })
     }
 
@@ -11431,7 +12093,9 @@ impl ThePolyhedronToolOfInterCSurf {
         P3: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(thePolyh, Index, P1, P2, P3)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_triangle(
+                thePolyh, Index, P1, P2, P3,
+            )
         })
     }
 
@@ -11439,9 +12103,11 @@ impl ThePolyhedronToolOfInterCSurf {
     /// Give the point of index i in the polyhedral surface.
     pub fn point(thePolyh: &ThePolyhedronOfInterCSurf, Index: i32) -> &'static crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_point(
-                thePolyh, Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_point(
+                    thePolyh, Index,
+                ),
+            ))
         }
     }
 
@@ -11461,7 +12127,7 @@ impl ThePolyhedronToolOfInterCSurf {
         OtherP: &mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_tri_connex(
                 thePolyh, Triang, Pivot, Pedge, TriCon, OtherP,
             )
         })
@@ -11473,7 +12139,9 @@ impl ThePolyhedronToolOfInterCSurf {
     /// It is necessary to take into account the boundary deflection for this edge.
     pub fn is_on_bound(thePolyh: &ThePolyhedronOfInterCSurf, Index1: i32, Index2: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_is_on_bound(thePolyh, Index1, Index2)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_is_on_bound(
+                thePolyh, Index1, Index2,
+            )
         })
     }
 
@@ -11481,14 +12149,16 @@ impl ThePolyhedronToolOfInterCSurf {
     /// This method returns a border deflection of the polyhedron.
     pub fn get_border_deflection(thePolyh: &ThePolyhedronOfInterCSurf) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_get_border_deflection(thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_get_border_deflection(
+                thePolyh,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_ThePolyhedronToolOfInterCSurf.hxx`:87 - `HLRBRep_ThePolyhedronToolOfInterCSurf::Dump()`
     pub fn dump(thePolyh: &ThePolyhedronOfInterCSurf) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_ThePolyhedronToolOfInterCSurf_dump(thePolyh)
+            crate::ffi_extern_TKHLR::HLRBRep_ThePolyhedronToolOfInterCSurf_dump(thePolyh)
         })
     }
 }
@@ -11498,11 +12168,11 @@ impl ThePolyhedronToolOfInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_TheProjPCurOfCInter.hxx`:31 - `HLRBRep_TheProjPCurOfCInter`
-pub use crate::ffi::HLRBRep_TheProjPCurOfCInter as TheProjPCurOfCInter;
+pub use crate::ffi_types::HLRBRep_TheProjPCurOfCInter as TheProjPCurOfCInter;
 
 unsafe impl crate::CppDeletable for TheProjPCurOfCInter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheProjPCurOfCInter_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_destructor(ptr);
     }
 }
 
@@ -11512,7 +12182,7 @@ impl TheProjPCurOfCInter {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheProjPCurOfCInter_ctor(),
+                crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_ctor(),
             ))
         }
     }
@@ -11535,7 +12205,9 @@ impl TheProjPCurOfCInter {
         Tol: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(C, Pnt, Tol)
+            crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real(
+                C, Pnt, Tol,
+            )
         })
     }
 
@@ -11562,7 +12234,7 @@ impl TheProjPCurOfCInter {
         Tol: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
+            crate::ffi_extern_TKHLR::HLRBRep_TheProjPCurOfCInter_find_parameter_address_pnt2d_real3(
                 C,
                 Pnt,
                 LowParameter,
@@ -11578,11 +12250,11 @@ impl TheProjPCurOfCInter {
 // ========================
 
 /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:31 - `HLRBRep_TheQuadCurvExactInterCSurf`
-pub use crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf as TheQuadCurvExactInterCSurf;
+pub use crate::ffi_types::HLRBRep_TheQuadCurvExactInterCSurf as TheQuadCurvExactInterCSurf;
 
 unsafe impl crate::CppDeletable for TheQuadCurvExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_destructor(ptr);
     }
 }
 
@@ -11596,7 +12268,7 @@ impl TheQuadCurvExactInterCSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(S, C),
+                crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_ctor_address_lin(S, C),
             ))
         }
     }
@@ -11604,28 +12276,35 @@ impl TheQuadCurvExactInterCSurf {
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:40 - `HLRBRep_TheQuadCurvExactInterCSurf::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_is_done(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:42 - `HLRBRep_TheQuadCurvExactInterCSurf::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_roots(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_nb_roots(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:44 - `HLRBRep_TheQuadCurvExactInterCSurf::Root()`
     pub fn root(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_root(self as *const Self, Index)
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_root(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `HLRBRep_TheQuadCurvExactInterCSurf.hxx`:46 - `HLRBRep_TheQuadCurvExactInterCSurf::NbIntervals()`
     pub fn nb_intervals(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_nb_intervals(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_nb_intervals(
+                self as *const Self,
+            )
         })
     }
 
@@ -11634,7 +12313,7 @@ impl TheQuadCurvExactInterCSurf {
     /// a segment on the curve.
     pub fn intervals(&self, Index: i32, U1: &mut f64, U2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvExactInterCSurf_intervals(
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvExactInterCSurf_intervals(
                 self as *const Self,
                 Index,
                 U1,
@@ -11649,11 +12328,13 @@ impl TheQuadCurvExactInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf.hxx`:32 - `HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf`
-pub use crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf as TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
+pub use crate::ffi_types::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf as TheQuadCurvFuncOfTheQuadCurvExactInterCSurf;
 
 unsafe impl crate::CppDeletable for TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_destructor(
+            ptr,
+        );
     }
 }
 
@@ -11665,11 +12346,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
         C: &crate::gp::Lin,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_ctor_quadric_lin(
-                    Q, C,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_ctor_quadric_lin(Q, C)))
         }
     }
 
@@ -11680,7 +12357,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// Value always returns True.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_value(
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_value(
                 self as *mut Self,
                 Param,
                 F,
@@ -11694,7 +12371,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// Derivative always returns True.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_derivative(
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_derivative(
                 self as *mut Self,
                 Param,
                 D,
@@ -11707,7 +12384,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// returns True.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_values(
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_values(
                 self as *mut Self,
                 Param,
                 F,
@@ -11719,7 +12396,7 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -11728,34 +12405,28 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function(self as *const Self))
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_as_math_Function_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKHLR::HLRBRep_TheQuadCurvFuncOfTheQuadCurvExactInterCSurf_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -11765,11 +12436,11 @@ impl TheQuadCurvFuncOfTheQuadCurvExactInterCSurf {
 // ========================
 
 /// **Source:** `HLRBRep_VertexList.hxx`:30 - `HLRBRep_VertexList`
-pub use crate::ffi::HLRBRep_VertexList as VertexList;
+pub use crate::ffi_types::HLRBRep_VertexList as VertexList;
 
 unsafe impl crate::CppDeletable for VertexList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRBRep_VertexList_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRBRep_VertexList_destructor(ptr);
     }
 }
 
@@ -11777,10 +12448,10 @@ impl VertexList {
     /// **Source:** `HLRBRep_VertexList.hxx`:35 - `HLRBRep_VertexList::HLRBRep_VertexList()`
     pub fn new_edgeinterferencetool_listiteratorofinterferencelist(
         T: &EdgeInterferenceTool,
-        I: &crate::ffi::HLRAlgo_ListIteratorOfInterferenceList,
+        I: &crate::ffi_types::HLRAlgo_ListIteratorOfInterferenceList,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(T, I)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_VertexList_ctor_edgeinterferencetool_listiteratorofinterferencelist(T, I)))
         }
     }
 
@@ -11788,27 +12459,33 @@ impl VertexList {
     /// Returns True when the curve is periodic.
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_is_periodic(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:42 - `HLRBRep_VertexList::More()`
     /// Returns True when there are more vertices.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::HLRBRep_VertexList_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_more(self as *const Self)
+        })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:45 - `HLRBRep_VertexList::Next()`
     /// Proceeds to the next vertex.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::HLRBRep_VertexList_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `HLRBRep_VertexList.hxx`:48 - `HLRBRep_VertexList::Current()`
     /// Returns the current vertex
     pub fn current(&self) -> &crate::hlr_algo::Intersection {
         unsafe {
-            &*(crate::check_result(crate::ffi::HLRBRep_VertexList_current(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKHLR::HLRBRep_VertexList_current(
+                self as *const Self,
+            )))
         }
     }
 
@@ -11816,7 +12493,7 @@ impl VertexList {
     /// Returns True if the current vertex is on the boundary of the edge.
     pub fn is_boundary(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_is_boundary(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_is_boundary(self as *const Self)
         })
     }
 
@@ -11825,7 +12502,7 @@ impl VertexList {
     /// interference.
     pub fn is_interference(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_is_interference(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_is_interference(self as *const Self)
         })
     }
 
@@ -11834,7 +12511,7 @@ impl VertexList {
     /// it is on the boundary of the edge.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_orientation(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -11844,7 +12521,7 @@ impl VertexList {
     /// it is an interference.
     pub fn transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_transition(self as *const Self)
         }))
         .unwrap()
     }
@@ -11854,7 +12531,7 @@ impl VertexList {
     /// relative to the boundary if it is an interference.
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::HLRBRep_VertexList_boundary_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::HLRBRep_VertexList_boundary_transition(self as *const Self)
         }))
         .unwrap()
     }
@@ -11864,7 +12541,7 @@ impl VertexList {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HLRBRep_Array1OfEData as Array1OfEData, HLRBRep_Array1OfFData as Array1OfFData,
     HLRBRep_SeqOfShapeBounds as SeqOfShapeBounds,
 };

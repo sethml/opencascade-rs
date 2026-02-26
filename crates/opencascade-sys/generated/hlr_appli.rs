@@ -14,11 +14,11 @@
 /// This class builds reflect lines on a shape
 /// according to the axes of view defined by user.
 /// Reflect lines are represented by edges in 3d.
-pub use crate::ffi::HLRAppli_ReflectLines as ReflectLines;
+pub use crate::ffi_types::HLRAppli_ReflectLines as ReflectLines;
 
 unsafe impl crate::CppDeletable for ReflectLines {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HLRAppli_ReflectLines_destructor(ptr);
+        crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_destructor(ptr);
     }
 }
 
@@ -28,7 +28,7 @@ impl ReflectLines {
     pub fn new_shape(aShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRAppli_ReflectLines_ctor_shape(aShape),
+                crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_ctor_shape(aShape),
             ))
         }
     }
@@ -50,7 +50,7 @@ impl ReflectLines {
         ZUp: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRAppli_ReflectLines_set_axes(
+            crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_set_axes(
                 self as *mut Self,
                 Nx,
                 Ny,
@@ -68,7 +68,7 @@ impl ReflectLines {
     /// **Source:** `HLRAppli_ReflectLines.hxx`:54 - `HLRAppli_ReflectLines::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::HLRAppli_ReflectLines_perform(self as *mut Self)
+            crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_perform(self as *mut Self)
         })
     }
 
@@ -78,7 +78,7 @@ impl ReflectLines {
     pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRAppli_ReflectLines_get_result(self as *const Self),
+                crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_get_result(self as *const Self),
             ))
         }
     }
@@ -95,7 +95,7 @@ impl ReflectLines {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HLRAppli_ReflectLines_get_compound_of3d_edges(
+                crate::ffi_extern_TKHLR::HLRAppli_ReflectLines_get_compound_of3d_edges(
                     self as *const Self,
                     type_.into(),
                     visible,

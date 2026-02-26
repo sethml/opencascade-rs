@@ -8,10 +8,11 @@
 #include <Adaptor3d_HVertex.hxx>
 #include <Adaptor3d_TopolTool.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
 #include <BRepTopAdaptor_MapOfShapeTool.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -184,7 +185,6 @@
 #include <TColgp_Array1OfPnt2d.hxx>
 #include <TColgp_Array1OfXYZ.hxx>
 #include <TColgp_HArray1OfXYZ.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
 #include <TopBas_TestInterference.hxx>

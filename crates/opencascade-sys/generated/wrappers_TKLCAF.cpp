@@ -5,7 +5,8 @@
 
 #include <AppStdL_Application.hxx>
 #include <AppStd_Application.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDF_Application.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>

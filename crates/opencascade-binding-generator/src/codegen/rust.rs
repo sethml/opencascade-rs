@@ -8,6 +8,20 @@ use std::collections::{BTreeSet, HashSet};
 use std::fmt::Write as _;
 use crate::type_mapping;
 
+/// Post-process a generated per-module .rs file to replace `crate::ffi::` references
+/// with the correct split module paths.
+///
+/// - `crate::ffi::name(` (function calls) → `crate::ffi_extern_{toolkit}::name(`
+/// - remaining `crate::ffi::` (type refs) → `crate::ffi_types::`
+pub fn postprocess_ffi_paths(code: &str, toolkit: &str) -> String {
+    // First pass: replace function calls (identified by trailing `(`)
+    let re = regex::Regex::new(r"crate::ffi::(\w+)\(").unwrap();
+    let replacement = format!("crate::ffi_extern_{}::$1(", toolkit);
+    let code = re.replace_all(code, replacement.as_str());
+    // Second pass: replace remaining type references
+    code.replace("crate::ffi::", "crate::ffi_types::")
+}
+
 /// Generate source attribution for a declaration (header, line number, and C++ identifier)
 fn format_source_attribution(header: &str, line: Option<u32>, cpp_name: &str) -> String {
     match line {
@@ -117,260 +131,20 @@ pub fn is_primitive_type(name: &str) -> bool {
 // FFI MODULE GENERATION
 // =============================================================================
 //
-// These functions generate the FFI module containing ALL types,
-// plus per-module re-export files. This avoids cross-module type filtering
-// issues and simplifies the architecture.
+// Generates per-toolkit FFI modules: ffi_types.rs containing type definitions
+// (opaque structs, POD structs, handles) and ffi_extern_TK*.rs files containing
+// extern "C" blocks with function declarations.
 
-/// Generate the ffi.rs file containing ALL types from all modules
+/// Generate per-toolkit FFI files: ffi_types.rs for type definitions and
+/// ffi_extern_TK*.rs for extern "C" function declarations.
 ///
-/// This generates extern "C" declarations with all types using full C++ names
-/// (e.g., gp_Pnt, TopoDS_Shape) to avoid collisions and make the mapping obvious.
-///
-/// Returns the generated Rust code as a String.
-pub fn generate_ffi(
-    all_classes: &[&ParsedClass],
-    all_functions: &[&crate::model::ParsedFunction],
-    all_headers: &[String],
-    collections: &[super::collections::CollectionInfo],
-    symbol_table: &crate::resolver::SymbolTable,
-    all_bindings: &[super::bindings::ClassBindings],
-    function_bindings: &[super::bindings::FunctionBinding],
-    handle_able_classes: &HashSet<String>,
-    extra_typedef_names: &HashSet<String>,
-    non_allocatable_classes: &HashSet<String>,
-) -> (String, Vec<NestedTypeInfo>) {
-    // Get all classes with protected destructors, and merge in non-allocatable classes
-    // (non-allocatable classes should not get destructors/CppDeletable either)
-    let mut protected_destructor_class_names = symbol_table.protected_destructor_class_names();
-    for cls in non_allocatable_classes {
-        protected_destructor_class_names.insert(cls.clone());
-    }
-
-    // All enum names (needed for opaque type filtering)
-    let all_enum_names = &symbol_table.all_enum_names;
-
-    // Collect collection type names to exclude from class generation
-    // Collections are generated separately with specialized wrappers
-    let collection_type_names: HashSet<String> = collections.iter()
-        .map(|c| c.typedef_name.clone())
-        .collect();
-
-    // Emit ffi declarations from pre-computed ClassBindings
-    let class_items: String = all_bindings
-        .iter()
-        .filter(|b| !collection_type_names.contains(&b.cpp_name))
-        .map(|b| super::bindings::emit_ffi_class(b))
-        .collect();
-
-    // Generate namespace-level free functions from pre-computed FunctionBindings
-    let function_items = generate_functions_from_bindings(function_bindings);
-
-    // Generate Handle type declarations
-    let handle_decls = generate_handle_declarations(all_classes, handle_able_classes, &symbol_table.handle_able_classes);
-
-    // Collect opaque type declarations (types referenced but not defined)
-    let collected_types = collect_referenced_types(all_classes, all_functions, handle_able_classes);
-    let (opaque_type_decls, nested_types) = generate_opaque_declarations(
-        &collected_types,
-        all_classes,
-        all_enum_names,
-        &protected_destructor_class_names,
-        &collection_type_names,
-        extra_typedef_names,
-    );
-
-    // Generate destructor declarations for nested types and extra typedef types
-    let nested_destructor_decls = if nested_types.is_empty() {
-        String::new()
-    } else {
-        let mut s = String::new();
-        writeln!(s).unwrap();
-        writeln!(s, "    // ========================================").unwrap();
-        writeln!(s, "    // Nested type & typedef type destructors").unwrap();
-        writeln!(s, "    // ========================================").unwrap();
-        writeln!(s).unwrap();
-        for nt in &nested_types {
-            writeln!(s, "    pub fn {}_destructor(self_: *mut {});", nt.ffi_name, nt.ffi_name).unwrap();
-        }
-        s
-    };
-
-    // Generate CppDeletable impls for nested types and extra typedef types
-    let nested_deletable_impls = if nested_types.is_empty() {
-        String::new()
-    } else {
-        let mut s = String::new();
-        writeln!(s).unwrap();
-        writeln!(s, "// CppDeletable impls for nested and typedef types").unwrap();
-        for nt in &nested_types {
-            writeln!(s, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
-            writeln!(s, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
-            writeln!(s, "        {}_destructor(ptr);", nt.ffi_name).unwrap();
-            writeln!(s, "    }}").unwrap();
-            writeln!(s, "}}").unwrap();
-        }
-        s
-    };
-
-    // Build the output
-    let mut out = String::new();
-
-    // File header
-    let header_count = all_headers.len();
-    writeln!(out, "//! extern \"C\" FFI for OpenCASCADE").unwrap();
-    writeln!(out, "//!").unwrap();
-    writeln!(out, "//! This file was automatically generated by opencascade-binding-generator").unwrap();
-    writeln!(out, "//! from {} OCCT headers.", header_count).unwrap();
-    writeln!(out, "//!").unwrap();
-    writeln!(out, "//! Do not edit this file directly.").unwrap();
-    writeln!(out).unwrap();
-    writeln!(out, "#![allow(dead_code)]").unwrap();
-    writeln!(out, "#![allow(non_snake_case)]").unwrap();
-    writeln!(out, "#![allow(clippy::missing_safety_doc)]").unwrap();
-    writeln!(out).unwrap();
-
-    // Handle types section (opaque structs outside extern "C")
-    if !handle_decls.is_empty() {
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out, "// Handle types").unwrap();
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out).unwrap();
-        out.push_str(&handle_decls);
-        writeln!(out).unwrap();
-    }
-
-    // Class types (opaque structs outside extern "C")
-    {
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out, "// Class types (opaque)").unwrap();
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out).unwrap();
-        for b in all_bindings.iter().filter(|b| !b.is_pod_struct).filter(|b| !collection_type_names.contains(&b.cpp_name)) {
-            writeln!(out, "#[repr(C)]").unwrap();
-            writeln!(out, "pub struct {} {{ _opaque: [u8; 0] }}", b.cpp_name).unwrap();
-        }
-        writeln!(out).unwrap();
-    }
-
-    // POD struct types (transparent repr(C) with real fields)
-    {
-        let pod_structs: Vec<_> = all_bindings.iter().filter(|b| b.is_pod_struct).collect();
-        if !pod_structs.is_empty() {
-            writeln!(out, "// ========================").unwrap();
-            writeln!(out, "// POD struct types").unwrap();
-            writeln!(out, "// ========================").unwrap();
-            writeln!(out).unwrap();
-            for b in &pod_structs {
-                writeln!(out, "#[repr(C)]").unwrap();
-                writeln!(out, "#[derive(Debug, Clone, Copy)]").unwrap();
-                writeln!(out, "pub struct {} {{", b.cpp_name).unwrap();
-                for field in &b.pod_fields {
-                    if let Some(ref comment) = field.doc_comment {
-                        emit_doc_comment(&mut out, comment, "    ");
-                    }
-                    if let Some(size) = field.array_size {
-                        writeln!(out, "    pub {}: [{}; {}],", field.rust_name, field.rust_type, size).unwrap();
-                    } else {
-                        writeln!(out, "    pub {}: {},", field.rust_name, field.rust_type).unwrap();
-                    }
-                }
-                writeln!(out, "}}").unwrap();
-                writeln!(out).unwrap();
-            }
-        }
-    }
-
-    // Referenced types (opaque structs outside extern "C")
-    if !opaque_type_decls.is_empty() {
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out, "// Referenced types (opaque)").unwrap();
-        writeln!(out, "// ========================").unwrap();
-        writeln!(out).unwrap();
-        out.push_str(&opaque_type_decls);
-        writeln!(out).unwrap();
-    }
-
-    // Insert collection opaque type declarations outside extern "C"
-    if !collections.is_empty() {
-        let (coll_type_aliases, coll_ffi_decls) =
-            super::collections::generate_rust_ffi_collections(collections);
-        out.push_str(&coll_type_aliases);
-
-        // Open extern "C" block
-        writeln!(out, "extern \"C\" {{").unwrap();
-
-        // All types and methods section
-        if !class_items.is_empty() {
-            writeln!(out).unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out, "    // All types and methods").unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out).unwrap();
-            out.push_str(&class_items);
-        }
-
-        // Free functions section
-        if !function_items.is_empty() {
-            writeln!(out).unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out, "    // Free functions").unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out).unwrap();
-            out.push_str(&function_items);
-        }
-
-        out.push_str(&coll_ffi_decls);
-
-        // Nested type destructor declarations
-        out.push_str(&nested_destructor_decls);
-
-        // Close extern "C" block
-        writeln!(out, "}}").unwrap();
-
-        // CppDeletable impls for nested types (must be after extern block)
-        out.push_str(&nested_deletable_impls);
-    } else {
-        // Open extern "C" block
-        writeln!(out, "extern \"C\" {{").unwrap();
-
-        // All types and methods section
-        if !class_items.is_empty() {
-            writeln!(out).unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out, "    // All types and methods").unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out).unwrap();
-            out.push_str(&class_items);
-        }
-
-        // Free functions section
-        if !function_items.is_empty() {
-            writeln!(out).unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out, "    // Free functions").unwrap();
-            writeln!(out, "    // ========================").unwrap();
-            writeln!(out).unwrap();
-            out.push_str(&function_items);
-        }
-
-        // Nested type destructor declarations
-        out.push_str(&nested_destructor_decls);
-
-        // Close extern "C" block
-        writeln!(out, "}}").unwrap();
-
-        // CppDeletable impls for nested types (must be after extern block)
-        out.push_str(&nested_deletable_impls);
-    }
-
-    (out, nested_types)
-}
-
-/// Generate per-toolkit extern "C" block files and a facade ffi.rs for split mode.
-///
-/// Returns (ffi_facade_code, per_toolkit_extern_files) where:
-/// - ffi_facade_code is the ffi.rs content with struct defs + include!() macros
+/// Returns (ffi_types_code, nested_types, per_toolkit_extern_files) where:
+/// - ffi_types_code is the ffi_types.rs content with all type definitions
+/// - nested_types tracks types needing destructor generation
 /// - per_toolkit_extern_files is a Vec of (toolkit_name, extern_block_code)
+///
+/// Each extern file is a standalone module with `use crate::ffi_types::*;`.
+/// Collection functions are distributed to their respective toolkit extern blocks.
 pub fn generate_ffi_split(
     all_classes: &[&ParsedClass],
     all_functions: &[&crate::model::ParsedFunction],
@@ -384,29 +158,118 @@ pub fn generate_ffi_split(
     non_allocatable_classes: &HashSet<String>,
     module_to_toolkit: &std::collections::HashMap<String, String>,
 ) -> (String, Vec<NestedTypeInfo>, Vec<(String, String)>) {
-    // First generate the monolithic output to extract struct definitions
-    let (monolithic, nested_types) = generate_ffi(
-        all_classes, all_functions, all_headers, collections,
-        symbol_table, all_bindings, function_bindings,
-        handle_able_classes, extra_typedef_names, non_allocatable_classes,
-    );
-
-    // Split the monolithic output at the last extern "C" block
-    // The struct defs are before it, the methods are inside it
-    // Find the main extern "C" { block (the one containing class methods)
-    // It's the last "extern \"C\" {" in the file
-    let extern_pos = monolithic.rfind("\nextern \"C\" {").map(|p| p + 1);
-    let (struct_defs, _extern_block) = if let Some(pos) = extern_pos {
-        (&monolithic[..pos], &monolithic[pos..])
-    } else {
-        (monolithic.as_str(), "")
-    };
-
+    // Get all classes with protected destructors, and merge in non-allocatable classes
+    let mut protected_destructor_class_names = symbol_table.protected_destructor_class_names();
+    for cls in non_allocatable_classes {
+        protected_destructor_class_names.insert(cls.clone());
+    }
+    let all_enum_names = &symbol_table.all_enum_names;
     let collection_type_names: HashSet<String> = collections.iter()
         .map(|c| c.typedef_name.clone())
         .collect();
 
-    // Helper to extract C++ module from name prefix
+    // ============================
+    // ffi_types.rs: type definitions
+    // ============================
+    let mut ffi_types = String::new();
+
+    // File header
+    let header_count = all_headers.len();
+    writeln!(ffi_types, "//! Type definitions for OpenCASCADE FFI").unwrap();
+    writeln!(ffi_types, "//!").unwrap();
+    writeln!(ffi_types, "//! Generated by opencascade-binding-generator from {} OCCT headers.", header_count).unwrap();
+    writeln!(ffi_types, "//! Do not edit this file directly.").unwrap();
+    writeln!(ffi_types).unwrap();
+    writeln!(ffi_types, "#![allow(dead_code)]").unwrap();
+    writeln!(ffi_types, "#![allow(non_snake_case)]").unwrap();
+    writeln!(ffi_types, "#![allow(clippy::missing_safety_doc)]").unwrap();
+    writeln!(ffi_types).unwrap();
+
+    // Handle types (opaque structs + extra handle destructor extern block + CppDeletable)
+    let handle_decls = generate_handle_declarations(all_classes, handle_able_classes, &symbol_table.handle_able_classes);
+    if !handle_decls.is_empty() {
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types, "// Handle types").unwrap();
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types).unwrap();
+        ffi_types.push_str(&handle_decls);
+        writeln!(ffi_types).unwrap();
+    }
+
+    // Class types (opaque structs)
+    {
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types, "// Class types (opaque)").unwrap();
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types).unwrap();
+        for b in all_bindings.iter()
+            .filter(|b| !b.is_pod_struct)
+            .filter(|b| !collection_type_names.contains(&b.cpp_name))
+        {
+            writeln!(ffi_types, "#[repr(C)]").unwrap();
+            writeln!(ffi_types, "pub struct {} {{ _opaque: [u8; 0] }}", b.cpp_name).unwrap();
+        }
+        writeln!(ffi_types).unwrap();
+    }
+
+    // POD struct types (transparent repr(C) with real fields)
+    {
+        let pod_structs: Vec<_> = all_bindings.iter().filter(|b| b.is_pod_struct).collect();
+        if !pod_structs.is_empty() {
+            writeln!(ffi_types, "// ========================").unwrap();
+            writeln!(ffi_types, "// POD struct types").unwrap();
+            writeln!(ffi_types, "// ========================").unwrap();
+            writeln!(ffi_types).unwrap();
+            for b in &pod_structs {
+                writeln!(ffi_types, "#[repr(C)]").unwrap();
+                writeln!(ffi_types, "#[derive(Debug, Clone, Copy)]").unwrap();
+                writeln!(ffi_types, "pub struct {} {{", b.cpp_name).unwrap();
+                for field in &b.pod_fields {
+                    if let Some(ref comment) = field.doc_comment {
+                        emit_doc_comment(&mut ffi_types, comment, "    ");
+                    }
+                    if let Some(size) = field.array_size {
+                        writeln!(ffi_types, "    pub {}: [{}; {}],", field.rust_name, field.rust_type, size).unwrap();
+                    } else {
+                        writeln!(ffi_types, "    pub {}: {},", field.rust_name, field.rust_type).unwrap();
+                    }
+                }
+                writeln!(ffi_types, "}}").unwrap();
+                writeln!(ffi_types).unwrap();
+            }
+        }
+    }
+
+    // Referenced types (opaque structs for types used in signatures but not directly bound)
+    let collected_types = collect_referenced_types(all_classes, all_functions, handle_able_classes);
+    let (opaque_type_decls, nested_types) = generate_opaque_declarations(
+        &collected_types,
+        all_classes,
+        all_enum_names,
+        &protected_destructor_class_names,
+        &collection_type_names,
+        extra_typedef_names,
+    );
+    if !opaque_type_decls.is_empty() {
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types, "// Referenced types (opaque)").unwrap();
+        writeln!(ffi_types, "// ========================").unwrap();
+        writeln!(ffi_types).unwrap();
+        ffi_types.push_str(&opaque_type_decls);
+        writeln!(ffi_types).unwrap();
+    }
+
+    // Collection type aliases (struct definitions, without extern declarations)
+    if !collections.is_empty() {
+        let (coll_type_aliases, _) =
+            super::collections::generate_rust_ffi_collections(collections);
+        ffi_types.push_str(&coll_type_aliases);
+    }
+
+    // ============================
+    // Per-toolkit extern files
+    // ============================
+
     let cpp_module = |name: &str| -> String {
         name.split('_').next().unwrap_or("").to_string()
     };
@@ -418,8 +281,7 @@ pub fn generate_ffi_split(
         if collection_type_names.contains(&b.cpp_name) {
             continue;
         }
-        let module = cpp_module(&b.cpp_name);
-        let toolkit = module_to_toolkit.get(&module)
+        let toolkit = module_to_toolkit.get(&b.module)
             .cloned()
             .unwrap_or_else(|| "misc".to_string());
         tk_bindings.entry(toolkit).or_default().push(b);
@@ -429,19 +291,50 @@ pub fn generate_ffi_split(
     let mut tk_functions: std::collections::HashMap<String, Vec<&super::bindings::FunctionBinding>> =
         std::collections::HashMap::new();
     for fb in function_bindings {
-        let module = &fb.namespace;
-        let toolkit = module_to_toolkit.get(module)
+        let toolkit = module_to_toolkit.get(&fb.namespace)
             .cloned()
             .unwrap_or_else(|| "misc".to_string());
         tk_functions.entry(toolkit).or_default().push(fb);
+    }
+
+    // Group collections by toolkit
+    let mut tk_collections: std::collections::HashMap<String, Vec<&super::collections::CollectionInfo>> =
+        std::collections::HashMap::new();
+    for coll in collections {
+        let module = cpp_module(&coll.typedef_name);
+        let toolkit = module_to_toolkit.get(&module)
+            .cloned()
+            .unwrap_or_else(|| "misc".to_string());
+        tk_collections.entry(toolkit).or_default().push(coll);
+    }
+
+    // Group nested type destructors by toolkit
+    let mut tk_nested: std::collections::HashMap<String, Vec<&NestedTypeInfo>> =
+        std::collections::HashMap::new();
+    for nt in &nested_types {
+        let module = cpp_module(&nt.cpp_name);
+        let toolkit = module_to_toolkit.get(&module)
+            .cloned()
+            .unwrap_or_else(|| "misc".to_string());
+        tk_nested.entry(toolkit).or_default().push(nt);
     }
 
     // Collect all toolkit names
     let mut all_toolkits: std::collections::HashSet<String> = std::collections::HashSet::new();
     all_toolkits.extend(tk_bindings.keys().cloned());
     all_toolkits.extend(tk_functions.keys().cloned());
+    all_toolkits.extend(tk_collections.keys().cloned());
+    all_toolkits.extend(tk_nested.keys().cloned());
     let mut sorted_toolkits: Vec<_> = all_toolkits.into_iter().collect();
     sorted_toolkits.sort();
+
+    // Build nested type → toolkit map for CppDeletable impls
+    let mut nested_to_toolkit: std::collections::HashMap<String, String> = std::collections::HashMap::new();
+    for (toolkit, nested) in &tk_nested {
+        for nt in nested {
+            nested_to_toolkit.insert(nt.ffi_name.clone(), toolkit.clone());
+        }
+    }
 
     // Generate per-toolkit extern block files
     let mut toolkit_files: Vec<(String, String)> = Vec::new();
@@ -450,6 +343,11 @@ pub fn generate_ffi_split(
         writeln!(out, "// Generated by opencascade-binding-generator").unwrap();
         writeln!(out, "// FFI extern block for toolkit: {}", toolkit).unwrap();
         writeln!(out, "// Do not edit this file directly.").unwrap();
+        writeln!(out).unwrap();
+        writeln!(out, "#![allow(dead_code)]").unwrap();
+        writeln!(out, "#![allow(clippy::missing_safety_doc)]").unwrap();
+        writeln!(out).unwrap();
+        writeln!(out, "use crate::ffi_types::*;").unwrap();
         writeln!(out).unwrap();
         writeln!(out, "extern \"C\" {{").unwrap();
 
@@ -469,66 +367,49 @@ pub fn generate_ffi_split(
             }
         }
 
-        writeln!(out, "}}").unwrap();
-        toolkit_files.push((toolkit.clone(), out));
-    }
+        // Collection functions
+        if let Some(colls) = tk_collections.get(toolkit.as_str()) {
+            if !colls.is_empty() {
+                writeln!(out).unwrap();
+                writeln!(out, "    // Collection type wrappers").unwrap();
+                let (_, coll_ffi_decls) =
+                    super::collections::generate_rust_ffi_collections(colls);
+                out.push_str(&coll_ffi_decls);
+            }
+        }
 
-    // Generate collection extern block (goes in a separate include)
-    let coll_extern = if !collections.is_empty() {
-        let (_coll_type_aliases, coll_ffi_decls) =
-            super::collections::generate_rust_ffi_collections(collections);
-        let mut out = String::new();
-        writeln!(out, "// Generated by opencascade-binding-generator").unwrap();
-        writeln!(out, "// FFI extern block for collection types").unwrap();
-        writeln!(out).unwrap();
-        writeln!(out, "extern \"C\" {{").unwrap();
-        out.push_str(&coll_ffi_decls);
-
-        // Nested type destructor declarations
-        if !nested_types.is_empty() {
-            writeln!(out).unwrap();
-            writeln!(out, "    // Nested type & typedef type destructors").unwrap();
-            for nt in &nested_types {
-                writeln!(out, "    pub fn {}_destructor(self_: *mut {});", nt.ffi_name, nt.ffi_name).unwrap();
+        // Nested type destructors
+        if let Some(nested) = tk_nested.get(toolkit.as_str()) {
+            if !nested.is_empty() {
+                writeln!(out).unwrap();
+                writeln!(out, "    // Nested type & typedef type destructors").unwrap();
+                for nt in nested {
+                    writeln!(out, "    pub fn {}_destructor(self_: *mut {});", nt.ffi_name, nt.ffi_name).unwrap();
+                }
             }
         }
 
         writeln!(out, "}}").unwrap();
-        Some(out)
-    } else {
-        None
-    };
-
-    // Build ffi.rs facade
-    // struct_defs already includes handle destructor extern block from generate_ffi()
-    let mut facade = String::new();
-    facade.push_str(struct_defs);
-
-    // Include per-toolkit extern blocks
-    for toolkit in &sorted_toolkits {
-        writeln!(facade, "include!(\"ffi_extern_{}.rs\");", toolkit).unwrap();
+        toolkit_files.push((toolkit.clone(), out));
     }
 
-    // Include collection extern block
-    if let Some(coll_code) = coll_extern {
-        writeln!(facade, "include!(\"ffi_extern_collections.rs\");").unwrap();
-        toolkit_files.push(("__collections".to_string(), coll_code));
-    }
-
-    // CppDeletable impls for nested types (after all extern blocks)
+    // CppDeletable impls for nested types (in ffi_types.rs, referencing toolkit extern modules)
     if !nested_types.is_empty() {
-        writeln!(facade).unwrap();
-        writeln!(facade, "// CppDeletable impls for nested and typedef types").unwrap();
+        writeln!(ffi_types).unwrap();
+        writeln!(ffi_types, "// CppDeletable impls for nested and typedef types").unwrap();
         for nt in &nested_types {
-            writeln!(facade, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
-            writeln!(facade, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
-            writeln!(facade, "        {}_destructor(ptr);", nt.ffi_name).unwrap();
-            writeln!(facade, "    }}").unwrap();
-            writeln!(facade, "}}").unwrap();
+            let toolkit = nested_to_toolkit.get(&nt.ffi_name)
+                .map(|s| s.as_str())
+                .unwrap_or("misc");
+            writeln!(ffi_types, "unsafe impl crate::CppDeletable for {} {{", nt.ffi_name).unwrap();
+            writeln!(ffi_types, "    unsafe fn cpp_delete(ptr: *mut Self) {{").unwrap();
+            writeln!(ffi_types, "        crate::ffi_extern_{}::{}_destructor(ptr);", toolkit, nt.ffi_name).unwrap();
+            writeln!(ffi_types, "    }}").unwrap();
+            writeln!(ffi_types, "}}").unwrap();
         }
     }
 
-    (facade, nested_types, toolkit_files)
+    (ffi_types, nested_types, toolkit_files)
 }
 
 /// Generate free function declarations from pre-computed FunctionBindings.

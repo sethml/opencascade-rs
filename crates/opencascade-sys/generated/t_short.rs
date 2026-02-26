@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From TShort_HArray1OfShortReal.hxx
 // ========================
 
 /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal`
-pub use crate::ffi::TShort_HArray1OfShortReal as HArray1OfShortReal;
+pub use crate::ffi_types::TShort_HArray1OfShortReal as HArray1OfShortReal;
 
 unsafe impl crate::CppDeletable for HArray1OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TShort_HArray1OfShortReal_destructor(ptr);
+        crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_destructor(ptr);
     }
 }
 
@@ -27,7 +27,7 @@ impl HArray1OfShortReal {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_ctor(),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_ctor(),
             ))
         }
     }
@@ -36,7 +36,7 @@ impl HArray1OfShortReal {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -45,25 +45,27 @@ impl HArray1OfShortReal {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TShort_Array1OfShortReal_value_type,
+        theValue: &crate::ffi_types::TShort_Array1OfShortReal_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TShort_Array1OfShortReal_value_type,
+        theBegin: &crate::ffi_types::TShort_Array1OfShortReal_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_ctor_type_int2_bool(
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -72,39 +74,45 @@ impl HArray1OfShortReal {
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::TShort_HArray1OfShortReal()`
     pub fn new_array1ofshortreal(
-        theOther: &crate::ffi::TShort_Array1OfShortReal,
+        theOther: &crate::ffi_types::TShort_Array1OfShortReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_ctor_array1ofshortreal(theOther),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_ctor_array1ofshortreal(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TShort_Array1OfShortReal {
+    pub fn array1(&self) -> &crate::ffi_types::TShort_Array1OfShortReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray1OfShortReal_array1(
+            &*(crate::check_result(crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_array1(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TShort_Array1OfShortReal {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::TShort_Array1OfShortReal {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TShort_HArray1OfShortReal_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray1OfShortReal_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -112,7 +120,7 @@ impl HArray1OfShortReal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_get_type_name(),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -120,18 +128,22 @@ impl HArray1OfShortReal {
     }
 
     /// **Source:** `TShort_HArray1OfShortReal.hxx`:22 - `TShort_HArray1OfShortReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray1OfShortReal_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TShort_HArray1OfShortReal_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -139,7 +151,9 @@ impl HArray1OfShortReal {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -147,25 +161,31 @@ impl HArray1OfShortReal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray1OfShortReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTShortHArray1OfShortReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray1OfShortReal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -173,7 +193,9 @@ impl HArray1OfShortReal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TShort_HArray1OfShortReal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -186,67 +208,75 @@ impl HArray1OfShortReal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TShort_HArray1OfShortReal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::TShort_HArray1OfShortReal_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTShortHArray1OfShortReal;
+pub use crate::ffi_types::HandleTShortHArray1OfShortReal;
 
 unsafe impl crate::CppDeletable for HandleTShortHArray1OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTShortHArray1OfShortReal_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_destructor(ptr);
     }
 }
 
 impl HandleTShortHArray1OfShortReal {
     /// Dereference this Handle to access the underlying TShort_HArray1OfShortReal
-    pub fn get(&self) -> &crate::ffi::TShort_HArray1OfShortReal {
+    pub fn get(&self) -> &crate::ffi_types::TShort_HArray1OfShortReal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTShortHArray1OfShortReal_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TShort_HArray1OfShortReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TShort_HArray1OfShortReal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TShort_HArray1OfShortReal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTShortHArray1OfShortReal_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TShort_HArray1OfShortReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTShortHArray1OfShortReal_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray1OfShortReal_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -256,11 +286,11 @@ impl HandleTShortHArray1OfShortReal {
 // ========================
 
 /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal`
-pub use crate::ffi::TShort_HArray2OfShortReal as HArray2OfShortReal;
+pub use crate::ffi_types::TShort_HArray2OfShortReal as HArray2OfShortReal;
 
 unsafe impl crate::CppDeletable for HArray2OfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TShort_HArray2OfShortReal_destructor(ptr);
+        crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_destructor(ptr);
     }
 }
 
@@ -274,7 +304,7 @@ impl HArray2OfShortReal {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_ctor_int4(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -287,11 +317,11 @@ impl HArray2OfShortReal {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::TShort_Array2OfShortReal_value_type,
+        theValue: &crate::ffi_types::TShort_Array2OfShortReal_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_ctor_int4_type(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_ctor_int4_type(
                     theRowLow, theRowUpp, theColLow, theColUpp, theValue,
                 ),
             ))
@@ -300,39 +330,45 @@ impl HArray2OfShortReal {
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::TShort_HArray2OfShortReal()`
     pub fn new_array2ofshortreal(
-        theOther: &crate::ffi::TShort_Array2OfShortReal,
+        theOther: &crate::ffi_types::TShort_Array2OfShortReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_ctor_array2ofshortreal(theOther),
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_ctor_array2ofshortreal(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::Array2()`
-    pub fn array2(&self) -> &crate::ffi::TShort_Array2OfShortReal {
+    pub fn array2(&self) -> &crate::ffi_types::TShort_Array2OfShortReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray2OfShortReal_array2(
+            &*(crate::check_result(crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_array2(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::TShort_Array2OfShortReal {
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::TShort_Array2OfShortReal {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TShort_HArray2OfShortReal_change_array2(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_change_array2(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray2OfShortReal_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -340,7 +376,7 @@ impl HArray2OfShortReal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_get_type_name(),
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -348,242 +384,22 @@ impl HArray2OfShortReal {
     }
 
     /// **Source:** `TShort_HArray2OfShortReal.hxx`:22 - `TShort_HArray2OfShortReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HArray2OfShortReal_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TShort_HArray2OfShortReal_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTShortHArray2OfShortReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HArray2OfShortReal_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::TShort_HArray2OfShortReal_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TShort_HArray2OfShortReal_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleTShortHArray2OfShortReal;
-
-unsafe impl crate::CppDeletable for HandleTShortHArray2OfShortReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTShortHArray2OfShortReal_destructor(ptr);
-    }
-}
-
-impl HandleTShortHArray2OfShortReal {
-    /// Dereference this Handle to access the underlying TShort_HArray2OfShortReal
-    pub fn get(&self) -> &crate::ffi::TShort_HArray2OfShortReal {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleTShortHArray2OfShortReal_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying TShort_HArray2OfShortReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TShort_HArray2OfShortReal {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTShortHArray2OfShortReal_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<TShort_HArray2OfShortReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTShortHArray2OfShortReal_to_HandleStandardTransient(
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_as_Standard_Transient(
                     self as *const Self,
                 ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From TShort_HSequenceOfShortReal.hxx
-// ========================
-
-/// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal`
-pub use crate::ffi::TShort_HSequenceOfShortReal as HSequenceOfShortReal;
-
-unsafe impl crate::CppDeletable for HSequenceOfShortReal {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TShort_HSequenceOfShortReal_destructor(ptr);
-    }
-}
-
-impl HSequenceOfShortReal {
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HSequenceOfShortReal_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
-    pub fn new_sequenceofshortreal(
-        theOther: &crate::ffi::TShort_SequenceOfShortReal,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HSequenceOfShortReal_ctor_sequenceofshortreal(theOther),
-            ))
-        }
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::TShort_SequenceOfShortReal {
-        unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HSequenceOfShortReal_sequence(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::TShort_SequenceOfShortReal_value_type) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_append_type(self as *mut Self, theItem)
-        })
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
-    pub fn append_sequenceofshortreal(
-        &mut self,
-        theSequence: &mut crate::ffi::TShort_SequenceOfShortReal,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_append_sequenceofshortreal(
-                self as *mut Self,
-                theSequence,
             )
-        })
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::TShort_SequenceOfShortReal {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::TShort_HSequenceOfShortReal_change_sequence(
-                self as *mut Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HSequenceOfShortReal_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TShort_HSequenceOfShortReal_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::TShort_HSequenceOfShortReal_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::TShort_HSequenceOfShortReal_as_Standard_Transient(
-                self as *const Self,
-            ))
         }
     }
 
@@ -591,7 +407,7 @@ impl HSequenceOfShortReal {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TShort_HSequenceOfShortReal_as_Standard_Transient_mut(
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -601,18 +417,18 @@ impl HSequenceOfShortReal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTShortHSequenceOfShortReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTShortHArray2OfShortReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TShort_HSequenceOfShortReal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_IsInstance(
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -620,9 +436,12 @@ impl HSequenceOfShortReal {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -630,7 +449,9 @@ impl HSequenceOfShortReal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TShort_HSequenceOfShortReal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -643,67 +464,335 @@ impl HSequenceOfShortReal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TShort_HSequenceOfShortReal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::TShort_HArray2OfShortReal_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTShortHSequenceOfShortReal;
+pub use crate::ffi_types::HandleTShortHArray2OfShortReal;
+
+unsafe impl crate::CppDeletable for HandleTShortHArray2OfShortReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_destructor(ptr);
+    }
+}
+
+impl HandleTShortHArray2OfShortReal {
+    /// Dereference this Handle to access the underlying TShort_HArray2OfShortReal
+    pub fn get(&self) -> &crate::ffi_types::TShort_HArray2OfShortReal {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying TShort_HArray2OfShortReal
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TShort_HArray2OfShortReal {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<TShort_HArray2OfShortReal> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleTShortHArray2OfShortReal_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From TShort_HSequenceOfShortReal.hxx
+// ========================
+
+/// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal`
+pub use crate::ffi_types::TShort_HSequenceOfShortReal as HSequenceOfShortReal;
+
+unsafe impl crate::CppDeletable for HSequenceOfShortReal {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_destructor(ptr);
+    }
+}
+
+impl HSequenceOfShortReal {
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::TShort_HSequenceOfShortReal()`
+    pub fn new_sequenceofshortreal(
+        theOther: &crate::ffi_types::TShort_SequenceOfShortReal,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_ctor_sequenceofshortreal(
+                    theOther,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Sequence()`
+    pub fn sequence(&self) -> &crate::ffi_types::TShort_SequenceOfShortReal {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_sequence(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
+    pub fn append_type(
+        &mut self,
+        theItem: &crate::ffi_types::TShort_SequenceOfShortReal_value_type,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_append_type(
+                self as *mut Self,
+                theItem,
+            )
+        })
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::Append()`
+    pub fn append_sequenceofshortreal(
+        &mut self,
+        theSequence: &mut crate::ffi_types::TShort_SequenceOfShortReal,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_append_sequenceofshortreal(
+                self as *mut Self,
+                theSequence,
+            )
+        })
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::ChangeSequence()`
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::TShort_SequenceOfShortReal {
+        unsafe {
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `TShort_HSequenceOfShortReal.hxx`:22 - `TShort_HSequenceOfShortReal::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTShortHSequenceOfShortReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::TShort_HSequenceOfShortReal_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleTShortHSequenceOfShortReal;
 
 unsafe impl crate::CppDeletable for HandleTShortHSequenceOfShortReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTShortHSequenceOfShortReal_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_destructor(ptr);
     }
 }
 
 impl HandleTShortHSequenceOfShortReal {
     /// Dereference this Handle to access the underlying TShort_HSequenceOfShortReal
-    pub fn get(&self) -> &crate::ffi::TShort_HSequenceOfShortReal {
+    pub fn get(&self) -> &crate::ffi_types::TShort_HSequenceOfShortReal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTShortHSequenceOfShortReal_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TShort_HSequenceOfShortReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TShort_HSequenceOfShortReal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TShort_HSequenceOfShortReal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTShortHSequenceOfShortReal_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TShort_HSequenceOfShortReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTShortHSequenceOfShortReal_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleTShortHSequenceOfShortReal_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -712,7 +801,7 @@ impl HandleTShortHSequenceOfShortReal {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TShort_Array1OfShortReal as Array1OfShortReal, TShort_Array2OfShortReal as Array2OfShortReal,
     TShort_SequenceOfShortReal as SequenceOfShortReal,
 };

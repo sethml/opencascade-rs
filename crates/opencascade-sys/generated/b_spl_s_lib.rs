@@ -100,7 +100,9 @@ pub fn rational_derivative_int4_real2_bool(
     All: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BSplSLib_rational_derivative_int4_real2_bool(UDeg, VDeg, N, M, Ders, RDers, All)
+        crate::ffi_extern_TKMath::BSplSLib_rational_derivative_int4_real2_bool(
+            UDeg, VDeg, N, M, Ders, RDers, All,
+        )
     })
 }
 /// **Source:** `BSplSLib.hxx`:313 - `BSplSLib::Reverse`
@@ -114,27 +116,27 @@ pub fn rational_derivative_int4_real2_bool(
 /// (sum of multiplicities(but  for the last) + degree
 /// - 1)
 pub fn reverse_array2ofpnt_int_bool(
-    Poles: &mut crate::ffi::TColgp_Array2OfPnt,
+    Poles: &mut crate::ffi_types::TColgp_Array2OfPnt,
     Last: i32,
     UDirection: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection)
+        crate::ffi_extern_TKMath::BSplSLib_reverse_array2ofpnt_int_bool(Poles, Last, UDirection)
     })
 }
 /// **Source:** `BSplSLib.hxx`:647 - `BSplSLib::PolesCoefficients`
 /// Warning! To be used for BezierSurfaces ONLY!!!
 pub fn poles_coefficients_array2ofpnt2(
-    Poles: &crate::ffi::TColgp_Array2OfPnt,
-    CachePoles: &mut crate::ffi::TColgp_Array2OfPnt,
+    Poles: &crate::ffi_types::TColgp_Array2OfPnt,
+    CachePoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles)
+        crate::ffi_extern_TKMath::BSplSLib_poles_coefficients_array2ofpnt2(Poles, CachePoles)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From BSplSLib_Cache.hxx
@@ -145,11 +147,11 @@ pub use crate::ffi::HandleStandardTransient;
 ///
 /// Defines all data, that can be cached on a span of the surface.
 /// The data should be recalculated in going from span to span.
-pub use crate::ffi::BSplSLib_Cache as Cache;
+pub use crate::ffi_types::BSplSLib_Cache as Cache;
 
 unsafe impl crate::CppDeletable for Cache {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BSplSLib_Cache_destructor(ptr);
+        crate::ffi_extern_TKMath::BSplSLib_Cache_destructor(ptr);
     }
 }
 
@@ -166,14 +168,14 @@ impl Cache {
     pub fn new_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(
         theDegreeU: &i32,
         thePeriodicU: &bool,
-        theFlatKnotsU: &crate::ffi::TColStd_Array1OfReal,
+        theFlatKnotsU: &crate::ffi_types::TColStd_Array1OfReal,
         theDegreeV: &i32,
         thePeriodicV: &bool,
-        theFlatKnotsV: &crate::ffi::TColStd_Array1OfReal,
-        theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
+        theFlatKnotsV: &crate::ffi_types::TColStd_Array1OfReal,
+        theWeights: Option<&crate::ffi_types::TColStd_Array2OfReal>,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(theDegreeU, thePeriodicU, theFlatKnotsU, theDegreeV, thePeriodicV, theFlatKnotsV, theWeights.map_or(std::ptr::null(), |r| r as *const _))))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::BSplSLib_Cache_ctor_int_bool_array1ofreal_int_bool_array1ofreal_array2ofrealptr(theDegreeU, thePeriodicU, theFlatKnotsU, theDegreeV, thePeriodicV, theFlatKnotsV, theWeights.map_or(std::ptr::null(), |r| r as *const _))))
         }
     }
 
@@ -183,7 +185,7 @@ impl Cache {
     /// \param theParameterV  second parameter of the point placed in the span
     pub fn is_cache_valid(&self, theParameterU: f64, theParameterV: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BSplSLib_Cache_is_cache_valid(
+            crate::ffi_extern_TKMath::BSplSLib_Cache_is_cache_valid(
                 self as *const Self,
                 theParameterU,
                 theParameterV,
@@ -207,13 +209,13 @@ impl Cache {
         &mut self,
         theParameterU: &f64,
         theParameterV: &f64,
-        theFlatKnotsU: &crate::ffi::TColStd_Array1OfReal,
-        theFlatKnotsV: &crate::ffi::TColStd_Array1OfReal,
-        thePoles: &crate::ffi::TColgp_Array2OfPnt,
-        theWeights: Option<&crate::ffi::TColStd_Array2OfReal>,
+        theFlatKnotsU: &crate::ffi_types::TColStd_Array1OfReal,
+        theFlatKnotsV: &crate::ffi_types::TColStd_Array1OfReal,
+        thePoles: &crate::ffi_types::TColgp_Array2OfPnt,
+        theWeights: Option<&crate::ffi_types::TColStd_Array2OfReal>,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_build_cache(
+            crate::ffi_extern_TKMath::BSplSLib_Cache_build_cache(
                 self as *mut Self,
                 theParameterU,
                 theParameterV,
@@ -232,7 +234,7 @@ impl Cache {
     /// \param[out] thePoint  the result of calculation (the point on the surface)
     pub fn d0(&self, theU: &f64, theV: &f64, thePoint: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_d0(self as *const Self, theU, theV, thePoint)
         })
     }
 
@@ -252,7 +254,7 @@ impl Cache {
         theTangentV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_d1(
+            crate::ffi_extern_TKMath::BSplSLib_Cache_d1(
                 self as *const Self,
                 theU,
                 theV,
@@ -285,7 +287,7 @@ impl Cache {
         theCurvatureUV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_d2(
+            crate::ffi_extern_TKMath::BSplSLib_Cache_d2(
                 self as *const Self,
                 theU,
                 theV,
@@ -300,32 +302,36 @@ impl Cache {
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BSplSLib_Cache_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::BSplSLib_Cache_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::BSplSLib_Cache_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKMath::BSplSLib_Cache_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `BSplSLib_Cache.hxx`:107 - `BSplSLib_Cache::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BSplSLib_Cache_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::BSplSLib_Cache_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BSplSLib_Cache_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKMath::BSplSLib_Cache_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -334,34 +340,39 @@ impl Cache {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BSplSLib_Cache_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::BSplSLib_Cache_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBSplSLibCache> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBSplSLibCache> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BSplSLib_Cache_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::BSplSLib_Cache_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -369,7 +380,7 @@ impl Cache {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BSplSLib_Cache_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -382,58 +393,72 @@ impl Cache {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_Cache_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::BSplSLib_Cache_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBSplSLibCache;
+pub use crate::ffi_types::HandleBSplSLibCache;
 
 unsafe impl crate::CppDeletable for HandleBSplSLibCache {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBSplSLibCache_destructor(ptr);
+        crate::ffi_extern_TKMath::HandleBSplSLibCache_destructor(ptr);
     }
 }
 
 impl HandleBSplSLibCache {
     /// Dereference this Handle to access the underlying BSplSLib_Cache
-    pub fn get(&self) -> &crate::ffi::BSplSLib_Cache {
-        unsafe { &*crate::check_result(crate::ffi::HandleBSplSLibCache_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::BSplSLib_Cache {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKMath::HandleBSplSLibCache_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BSplSLib_Cache
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BSplSLib_Cache {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BSplSLib_Cache {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBSplSLibCache_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandleBSplSLibCache_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<BSplSLib_Cache> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBSplSLibCache_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandleBSplSLibCache_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -444,11 +469,11 @@ impl HandleBSplSLibCache {
 // ========================
 
 /// **Source:** `BSplSLib_EvaluatorFunction.hxx`:31 - `BSplSLib_EvaluatorFunction`
-pub use crate::ffi::BSplSLib_EvaluatorFunction as EvaluatorFunction;
+pub use crate::ffi_types::BSplSLib_EvaluatorFunction as EvaluatorFunction;
 
 unsafe impl crate::CppDeletable for EvaluatorFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BSplSLib_EvaluatorFunction_destructor(ptr);
+        crate::ffi_extern_TKMath::BSplSLib_EvaluatorFunction_destructor(ptr);
     }
 }
 
@@ -464,7 +489,7 @@ impl EvaluatorFunction {
         theErrorCode: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BSplSLib_EvaluatorFunction_evaluate(
+            crate::ffi_extern_TKMath::BSplSLib_EvaluatorFunction_evaluate(
                 self as *const Self,
                 theDerivativeRequest,
                 theUParameter,

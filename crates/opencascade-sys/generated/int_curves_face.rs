@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From IntCurvesFace_Intersector.hxx
 // ========================
 
 /// **Source:** `IntCurvesFace_Intersector.hxx`:42 - `IntCurvesFace_Intersector`
-pub use crate::ffi::IntCurvesFace_Intersector as Intersector;
+pub use crate::ffi_types::IntCurvesFace_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurvesFace_Intersector_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_destructor(ptr);
     }
 }
 
@@ -45,7 +45,7 @@ impl Intersector {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurvesFace_Intersector_ctor_face_real_bool2(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_ctor_face_real_bool2(
                     F, aTol, aRestr, UseBToler,
                 ),
             ))
@@ -93,11 +93,13 @@ impl Intersector {
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_Intersector_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -112,7 +114,7 @@ impl Intersector {
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_perform_lin_real2(
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_perform_lin_real2(
                 self as *mut Self,
                 L,
                 PInf,
@@ -126,17 +128,12 @@ impl Intersector {
     /// PInf an PSup can also be - and + INF.
     pub fn perform_handleadaptor3dcurve_real2(
         &mut self,
-        HCu: &crate::ffi::HandleAdaptor3dCurve,
+        HCu: &crate::ffi_types::HandleAdaptor3dCurve,
         PInf: f64,
         PSup: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(
-                self as *mut Self,
-                HCu,
-                PInf,
-                PSup,
-            )
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_perform_handleadaptor3dcurve_real2(self as *mut Self, HCu, PInf, PSup)
         })
     }
 
@@ -144,7 +141,7 @@ impl Intersector {
     /// Return the surface type
     pub fn surface_type(&self) -> crate::geom_abs::SurfaceType {
         crate::geom_abs::SurfaceType::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_surface_type(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_surface_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -153,14 +150,14 @@ impl Intersector {
     /// True is returned when the intersection have been computed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:89 - `IntCurvesFace_Intersector::NbPnt()`
     pub fn nb_pnt(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_nb_pnt(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_nb_pnt(self as *const Self)
         })
     }
 
@@ -169,7 +166,10 @@ impl Intersector {
     /// on the surface.
     pub fn u_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_u_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_u_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -178,7 +178,10 @@ impl Intersector {
     /// on the surface.
     pub fn v_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_v_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_v_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -187,7 +190,10 @@ impl Intersector {
     /// on the line.
     pub fn w_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_w_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_w_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -196,7 +202,7 @@ impl Intersector {
     /// between the line and the surface.
     pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_Intersector_pnt(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_pnt(
                 self as *const Self,
                 I,
             )))
@@ -207,7 +213,10 @@ impl Intersector {
     /// Returns the ith transition of the line on the surface.
     pub fn transition(&self, I: i32) -> crate::int_curve_surface::TransitionOnCurve {
         crate::int_curve_surface::TransitionOnCurve::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_transition(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_transition(
+                self as *const Self,
+                I,
+            )
         }))
         .unwrap()
     }
@@ -220,7 +229,7 @@ impl Intersector {
     /// ( the point is on a boundary of the face).
     pub fn state(&self, I: i32) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_state(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_state(self as *const Self, I)
         }))
         .unwrap()
     }
@@ -231,7 +240,7 @@ impl Intersector {
     /// of analytical curves and surfaces (plane - line, ...)
     pub fn is_parallel(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_is_parallel(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_is_parallel(self as *const Self)
         })
     }
 
@@ -240,14 +249,19 @@ impl Intersector {
     /// the intersection.
     pub fn face(&self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_Intersector_face(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_face(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:126 - `IntCurvesFace_Intersector::ClassifyUVPoint()`
     pub fn classify_uv_point(&self, Puv: &crate::gp::Pnt2d) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_classify_uv_point(self as *const Self, Puv)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_classify_uv_point(
+                self as *const Self,
+                Puv,
+            )
         }))
         .unwrap()
     }
@@ -256,7 +270,9 @@ impl Intersector {
     pub fn bounding(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurvesFace_Intersector_bounding(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_bounding(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -265,7 +281,10 @@ impl Intersector {
     /// Sets the boundary tolerance flag
     pub fn set_use_bound_toler(&mut self, UseBToler: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_set_use_bound_toler(self as *mut Self, UseBToler)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_set_use_bound_toler(
+                self as *mut Self,
+                UseBToler,
+            )
         })
     }
 
@@ -273,7 +292,9 @@ impl Intersector {
     /// Returns the boundary tolerance flag
     pub fn get_use_bound_toler(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_get_use_bound_toler(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_get_use_bound_toler(
+                self as *const Self,
+            )
         })
     }
 
@@ -281,7 +302,7 @@ impl Intersector {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IntCurvesFace_Intersector_get_type_name(),
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -289,18 +310,22 @@ impl Intersector {
     }
 
     /// **Source:** `IntCurvesFace_Intersector.hxx`:44 - `IntCurvesFace_Intersector::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_Intersector_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -308,7 +333,9 @@ impl Intersector {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IntCurvesFace_Intersector_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -316,25 +343,31 @@ impl Intersector {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIntCurvesFaceIntersector> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIntCurvesFaceIntersector> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurvesFace_Intersector_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -342,7 +375,9 @@ impl Intersector {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IntCurvesFace_Intersector_inherited_This(self as *const Self)
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -355,67 +390,75 @@ impl Intersector {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_Intersector_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_Intersector_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIntCurvesFaceIntersector;
+pub use crate::ffi_types::HandleIntCurvesFaceIntersector;
 
 unsafe impl crate::CppDeletable for HandleIntCurvesFaceIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIntCurvesFaceIntersector_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_destructor(ptr);
     }
 }
 
 impl HandleIntCurvesFaceIntersector {
     /// Dereference this Handle to access the underlying IntCurvesFace_Intersector
-    pub fn get(&self) -> &crate::ffi::IntCurvesFace_Intersector {
+    pub fn get(&self) -> &crate::ffi_types::IntCurvesFace_Intersector {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIntCurvesFaceIntersector_get(
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IntCurvesFace_Intersector
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IntCurvesFace_Intersector {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntCurvesFace_Intersector {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIntCurvesFaceIntersector_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IntCurvesFace_Intersector> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIntCurvesFaceIntersector_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::HandleIntCurvesFaceIntersector_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -425,11 +468,11 @@ impl HandleIntCurvesFaceIntersector {
 // ========================
 
 /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:40 - `IntCurvesFace_ShapeIntersector`
-pub use crate::ffi::IntCurvesFace_ShapeIntersector as ShapeIntersector;
+pub use crate::ffi_types::IntCurvesFace_ShapeIntersector as ShapeIntersector;
 
 unsafe impl crate::CppDeletable for ShapeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurvesFace_ShapeIntersector_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_destructor(ptr);
     }
 }
 
@@ -438,7 +481,7 @@ impl ShapeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurvesFace_ShapeIntersector_ctor(),
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_ctor(),
             ))
         }
     }
@@ -446,7 +489,11 @@ impl ShapeIntersector {
     /// **Source:** `IntCurvesFace_ShapeIntersector.hxx`:47 - `IntCurvesFace_ShapeIntersector::Load()`
     pub fn load(&mut self, Sh: &crate::topo_ds::Shape, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_load(self as *mut Self, Sh, Tol)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_load(
+                self as *mut Self,
+                Sh,
+                Tol,
+            )
         })
     }
 
@@ -461,7 +508,7 @@ impl ShapeIntersector {
     /// +/- RealLast.
     pub fn perform_lin_real2(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_lin_real2(
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_perform_lin_real2(
                 self as *mut Self,
                 L,
                 PInf,
@@ -481,7 +528,7 @@ impl ShapeIntersector {
     /// +/- RealLast.
     pub fn perform_nearest(&mut self, L: &crate::gp::Lin, PInf: f64, PSup: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_nearest(
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_perform_nearest(
                 self as *mut Self,
                 L,
                 PInf,
@@ -495,17 +542,12 @@ impl ShapeIntersector {
     /// PInf an PSup can also be -INF and +INF.
     pub fn perform_handleadaptor3dcurve_real2(
         &mut self,
-        HCu: &crate::ffi::HandleAdaptor3dCurve,
+        HCu: &crate::ffi_types::HandleAdaptor3dCurve,
         PInf: f64,
         PSup: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(
-                self as *mut Self,
-                HCu,
-                PInf,
-                PSup,
-            )
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_perform_handleadaptor3dcurve_real2(self as *mut Self, HCu, PInf, PSup)
         })
     }
 
@@ -513,7 +555,7 @@ impl ShapeIntersector {
     /// True when the intersection has been computed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_is_done(self as *const Self)
         })
     }
 
@@ -521,7 +563,7 @@ impl ShapeIntersector {
     /// Returns the number of the intersection points
     pub fn nb_pnt(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_nb_pnt(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_nb_pnt(self as *const Self)
         })
     }
 
@@ -530,7 +572,10 @@ impl ShapeIntersector {
     /// on the surface.
     pub fn u_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_u_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_u_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -539,7 +584,10 @@ impl ShapeIntersector {
     /// on the surface.
     pub fn v_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_v_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_v_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -548,7 +596,10 @@ impl ShapeIntersector {
     /// on the line.
     pub fn w_parameter(&self, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_w_parameter(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_w_parameter(
+                self as *const Self,
+                I,
+            )
         })
     }
 
@@ -557,10 +608,12 @@ impl ShapeIntersector {
     /// between the line and the surface.
     pub fn pnt(&self, I: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_ShapeIntersector_pnt(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_pnt(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
@@ -568,7 +621,10 @@ impl ShapeIntersector {
     /// Returns the ith transition of the line on the surface.
     pub fn transition(&self, I: i32) -> crate::int_curve_surface::TransitionOnCurve {
         crate::int_curve_surface::TransitionOnCurve::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_transition(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_transition(
+                self as *const Self,
+                I,
+            )
         }))
         .unwrap()
     }
@@ -581,7 +637,10 @@ impl ShapeIntersector {
     /// ( the point is on a boundary of the face).
     pub fn state(&self, I: i32) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_state(self as *const Self, I)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_state(
+                self as *const Self,
+                I,
+            )
         }))
         .unwrap()
     }
@@ -591,10 +650,12 @@ impl ShapeIntersector {
     /// the intersection.
     pub fn face(&self, I: i32) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurvesFace_ShapeIntersector_face(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_face(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
@@ -603,7 +664,9 @@ impl ShapeIntersector {
     /// parameter.
     pub fn sort_result(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurvesFace_ShapeIntersector_sort_result(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::IntCurvesFace_ShapeIntersector_sort_result(
+                self as *mut Self,
+            )
         })
     }
 }

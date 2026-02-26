@@ -12,11 +12,11 @@
 
 /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:34 - `ShapeProcessAPI_ApplySequence`
 /// Applies one of the sequence read from resource file.
-pub use crate::ffi::ShapeProcessAPI_ApplySequence as ApplySequence;
+pub use crate::ffi_types::ShapeProcessAPI_ApplySequence as ApplySequence;
 
 unsafe impl crate::CppDeletable for ApplySequence {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeProcessAPI_ApplySequence_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_destructor(ptr);
     }
 }
 
@@ -29,7 +29,7 @@ impl ApplySequence {
         let c_seqName = std::ffi::CString::new(seqName).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcessAPI_ApplySequence_ctor_charptr2(
+                crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_ctor_charptr2(
                     c_rscName.as_ptr(),
                     c_seqName.as_ptr(),
                 ),
@@ -40,11 +40,13 @@ impl ApplySequence {
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:46 - `ShapeProcessAPI_ApplySequence::Context()`
     /// Returns object for managing resource file and sequence of
     /// operators.
-    pub fn context(&mut self) -> &mut crate::ffi::HandleShapeProcessShapeContext {
+    pub fn context(&mut self) -> &mut crate::ffi_types::HandleShapeProcessShapeContext {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeProcessAPI_ApplySequence_context(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_context(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -62,7 +64,7 @@ impl ApplySequence {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeProcessAPI_ApplySequence_prepare_shape(
+                crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_prepare_shape(
                     self as *mut Self,
                     shape,
                     fillmap,
@@ -77,17 +79,21 @@ impl ApplySequence {
     /// Clears myMap with accumulated history.
     pub fn clear_map(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcessAPI_ApplySequence_clear_map(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_clear_map(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `ShapeProcessAPI_ApplySequence.hxx`:62 - `ShapeProcessAPI_ApplySequence::Map()`
     /// Returns myMap with accumulated history.
-    pub fn map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+    pub fn map(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeProcessAPI_ApplySequence_map(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_map(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -97,7 +103,9 @@ impl ApplySequence {
     /// it method ClearMap was not called before PrepareShape.
     pub fn print_preparation_result(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeProcessAPI_ApplySequence_print_preparation_result(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeProcessAPI_ApplySequence_print_preparation_result(
+                self as *const Self,
+            )
         })
     }
 }

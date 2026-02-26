@@ -19,11 +19,11 @@
 ///
 /// or
 /// Curve2d from Adaptor2d, Pnt2d from gp, Vec2d from gp
-pub use crate::ffi::CPnts_AbscissaPoint as AbscissaPoint;
+pub use crate::ffi_types::CPnts_AbscissaPoint as AbscissaPoint;
 
 unsafe impl crate::CppDeletable for AbscissaPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CPnts_AbscissaPoint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_destructor(ptr);
     }
 }
 
@@ -31,7 +31,9 @@ impl AbscissaPoint {
     /// **Source:** `CPnts_AbscissaPoint.hxx`:75 - `CPnts_AbscissaPoint::CPnts_AbscissaPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CPnts_AbscissaPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_ctor(),
+            ))
         }
     }
 
@@ -48,7 +50,9 @@ impl AbscissaPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_AbscissaPoint_ctor_curve_real3(C, Abscissa, U0, Resolution),
+                crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_ctor_curve_real3(
+                    C, Abscissa, U0, Resolution,
+                ),
             ))
         }
     }
@@ -66,7 +70,9 @@ impl AbscissaPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real3(C, Abscissa, U0, Resolution),
+                crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_ctor_curve2d_real3(
+                    C, Abscissa, U0, Resolution,
+                ),
             ))
         }
     }
@@ -88,7 +94,9 @@ impl AbscissaPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_AbscissaPoint_ctor_curve_real4(C, Abscissa, U0, Ui, Resolution),
+                crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_ctor_curve_real4(
+                    C, Abscissa, U0, Ui, Resolution,
+                ),
             ))
         }
     }
@@ -110,7 +118,9 @@ impl AbscissaPoint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_AbscissaPoint_ctor_curve2d_real4(C, Abscissa, U0, Ui, Resolution),
+                crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_ctor_curve2d_real4(
+                    C, Abscissa, U0, Ui, Resolution,
+                ),
             ))
         }
     }
@@ -119,7 +129,7 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve(&mut self, C: &crate::adaptor3d::Curve) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve(self as *mut Self, C)
         })
     }
 
@@ -127,7 +137,7 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d(&mut self, C: &crate::adaptor2d::Curve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve2d(self as *mut Self, C)
         })
     }
 
@@ -135,7 +145,11 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve_real(&mut self, C: &crate::adaptor3d::Curve, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve_real(self as *mut Self, C, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve_real(
+                self as *mut Self,
+                C,
+                Tol,
+            )
         })
     }
 
@@ -143,7 +157,11 @@ impl AbscissaPoint {
     /// Initializes the resolution function with <C>.
     pub fn init_curve2d_real(&mut self, C: &crate::adaptor2d::Curve2d, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve2d_real(self as *mut Self, C, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve2d_real(
+                self as *mut Self,
+                C,
+                Tol,
+            )
         })
     }
 
@@ -152,7 +170,12 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve_real2(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve_real2(self as *mut Self, C, U1, U2)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve_real2(
+                self as *mut Self,
+                C,
+                U1,
+                U2,
+            )
         })
     }
 
@@ -161,7 +184,12 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve2d_real2(&mut self, C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve2d_real2(self as *mut Self, C, U1, U2)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve2d_real2(
+                self as *mut Self,
+                C,
+                U1,
+                U2,
+            )
         })
     }
 
@@ -170,7 +198,13 @@ impl AbscissaPoint {
     /// between U1 and U2.
     pub fn init_curve_real3(&mut self, C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve_real3(self as *mut Self, C, U1, U2, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve_real3(
+                self as *mut Self,
+                C,
+                U1,
+                U2,
+                Tol,
+            )
         })
     }
 
@@ -185,7 +219,13 @@ impl AbscissaPoint {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_init_curve2d_real3(self as *mut Self, C, U1, U2, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_init_curve2d_real3(
+                self as *mut Self,
+                C,
+                U1,
+                U2,
+                Tol,
+            )
         })
     }
 
@@ -196,7 +236,7 @@ impl AbscissaPoint {
     /// is measured.
     pub fn perform_real3(&mut self, Abscissa: f64, U0: f64, Resolution: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_perform_real3(
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_perform_real3(
                 self as *mut Self,
                 Abscissa,
                 U0,
@@ -213,7 +253,7 @@ impl AbscissaPoint {
     /// process (should be close to the final solution).
     pub fn perform_real4(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_perform_real4(
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_perform_real4(
                 self as *mut Self,
                 Abscissa,
                 U0,
@@ -234,7 +274,7 @@ impl AbscissaPoint {
     /// process (should be close to the final solution).
     pub fn adv_perform(&mut self, Abscissa: f64, U0: f64, Ui: f64, Resolution: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_adv_perform(
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_adv_perform(
                 self as *mut Self,
                 Abscissa,
                 U0,
@@ -247,14 +287,16 @@ impl AbscissaPoint {
     /// **Source:** `CPnts_AbscissaPoint.hxx`:191 - `CPnts_AbscissaPoint::IsDone()`
     /// True if the computation was successful, False otherwise.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CPnts_AbscissaPoint_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:194 - `CPnts_AbscissaPoint::Parameter()`
     /// Returns the parameter of the solution.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_parameter(self as *const Self)
         })
     }
 
@@ -262,39 +304,47 @@ impl AbscissaPoint {
     /// Enforce the solution, used by GCPnts.
     pub fn set_parameter(&mut self, P: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_set_parameter(self as *mut Self, P)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_set_parameter(self as *mut Self, P)
         })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:41 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C>.
     pub fn length_curve(C: &crate::adaptor3d::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve(C)
+        })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:44 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C>.
     pub fn length_curve2d(C: &crate::adaptor2d::Curve2d) -> f64 {
-        crate::check_result(unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve2d(C)
+        })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:47 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> with the given tolerance.
     pub fn length_curve_real(C: &crate::adaptor3d::Curve, Tol: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve_real(C, Tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve_real(C, Tol)
+        })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:50 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> with the given tolerance.
     pub fn length_curve2d_real(C: &crate::adaptor2d::Curve2d, Tol: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::CPnts_AbscissaPoint_length_curve2d_real(C, Tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve2d_real(C, Tol)
+        })
     }
 
     /// **Source:** `CPnts_AbscissaPoint.hxx`:53 - `CPnts_AbscissaPoint::Length()`
     /// Computes the length of the Curve <C> between <U1> and <U2>.
     pub fn length_curve_real2(C: &crate::adaptor3d::Curve, U1: f64, U2: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve_real2(C, U1, U2)
         })
     }
 
@@ -302,7 +352,7 @@ impl AbscissaPoint {
     /// Computes the length of the Curve <C> between <U1> and <U2>.
     pub fn length_curve2d_real2(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve2d_real2(C, U1, U2)
         })
     }
 
@@ -310,7 +360,7 @@ impl AbscissaPoint {
     /// Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
     pub fn length_curve_real3(C: &crate::adaptor3d::Curve, U1: f64, U2: f64, Tol: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve_real3(C, U1, U2, Tol)
         })
     }
 
@@ -319,7 +369,7 @@ impl AbscissaPoint {
     /// creation of a indefinite AbscissaPoint.
     pub fn length_curve2d_real3(C: &crate::adaptor2d::Curve2d, U1: f64, U2: f64, Tol: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_AbscissaPoint_length_curve2d_real3(C, U1, U2, Tol)
         })
     }
 }
@@ -330,11 +380,11 @@ impl AbscissaPoint {
 
 /// **Source:** `CPnts_MyGaussFunction.hxx`:29 - `CPnts_MyGaussFunction`
 /// for implementation, compute values for Gauss
-pub use crate::ffi::CPnts_MyGaussFunction as MyGaussFunction;
+pub use crate::ffi_types::CPnts_MyGaussFunction as MyGaussFunction;
 
 unsafe impl crate::CppDeletable for MyGaussFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CPnts_MyGaussFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_destructor(ptr);
     }
 }
 
@@ -342,39 +392,47 @@ impl MyGaussFunction {
     /// **Source:** `CPnts_MyGaussFunction.hxx`:34 - `CPnts_MyGaussFunction::CPnts_MyGaussFunction()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CPnts_MyGaussFunction_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_ctor(),
+            ))
         }
     }
 
     /// **Source:** `CPnts_MyGaussFunction.hxx`:41 - `CPnts_MyGaussFunction::Value()`
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyGaussFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_value(self as *mut Self, X, F)
         })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::CPnts_MyGaussFunction_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CPnts_MyGaussFunction_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyGaussFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::CPnts_MyGaussFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -395,11 +453,11 @@ impl MyGaussFunction {
 /// Implements a function for the Newton algorithm to find the
 /// solution of Integral(F) = L
 /// (compute Length  and Derivative of the curve for Newton)
-pub use crate::ffi::CPnts_MyRootFunction as MyRootFunction;
+pub use crate::ffi_types::CPnts_MyRootFunction as MyRootFunction;
 
 unsafe impl crate::CppDeletable for MyRootFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CPnts_MyRootFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_destructor(ptr);
     }
 }
 
@@ -407,7 +465,9 @@ impl MyRootFunction {
     /// **Source:** `CPnts_MyRootFunction.hxx`:37 - `CPnts_MyRootFunction::CPnts_MyRootFunction()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CPnts_MyRootFunction_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_ctor(),
+            ))
         }
     }
 
@@ -415,7 +475,7 @@ impl MyRootFunction {
     /// We want to solve Integral(X0,X,F(X,D)) = L
     pub fn init_real2(&mut self, X0: f64, L: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_init_real2(self as *mut Self, X0, L)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_init_real2(self as *mut Self, X0, L)
         })
     }
 
@@ -424,7 +484,12 @@ impl MyRootFunction {
     /// with given tolerance
     pub fn init_real3(&mut self, X0: f64, L: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_init_real3(self as *mut Self, X0, L, Tol)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_init_real3(
+                self as *mut Self,
+                X0,
+                L,
+                Tol,
+            )
         })
     }
 
@@ -432,7 +497,7 @@ impl MyRootFunction {
     /// This is Integral(X0,X,F(X,D)) - L
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -440,23 +505,25 @@ impl MyRootFunction {
     /// This is F(X,D)
     pub fn derivative(&mut self, X: f64, Df: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_derivative(self as *mut Self, X, Df)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_derivative(self as *mut Self, X, Df)
         })
     }
 
     /// **Source:** `CPnts_MyRootFunction.hxx`:58 - `CPnts_MyRootFunction::Values()`
     pub fn values(&mut self, X: f64, F: &mut f64, Df: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_values(self as *mut Self, X, F, Df)
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -465,36 +532,38 @@ impl MyRootFunction {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::CPnts_MyRootFunction_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CPnts_MyRootFunction_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_MyRootFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::CPnts_MyRootFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -536,11 +605,11 @@ impl MyRootFunction {
 /// if(!Iter1.IsAllDone()) {
 /// ... something wrong happened
 /// }
-pub use crate::ffi::CPnts_UniformDeflection as UniformDeflection;
+pub use crate::ffi_types::CPnts_UniformDeflection as UniformDeflection;
 
 unsafe impl crate::CppDeletable for UniformDeflection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CPnts_UniformDeflection_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_destructor(ptr);
     }
 }
 
@@ -550,7 +619,7 @@ impl UniformDeflection {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_ctor(),
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_ctor(),
             ))
         }
     }
@@ -578,7 +647,7 @@ impl UniformDeflection {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_ctor_curve_real2_bool(
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_ctor_curve_real2_bool(
                     C,
                     Deflection,
                     Resolution,
@@ -598,7 +667,7 @@ impl UniformDeflection {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_ctor_curve2d_real2_bool(
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_ctor_curve2d_real2_bool(
                     C,
                     Deflection,
                     Resolution,
@@ -623,7 +692,7 @@ impl UniformDeflection {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_ctor_curve_real4_bool(
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_ctor_curve_real4_bool(
                     C,
                     Deflection,
                     U1,
@@ -647,7 +716,7 @@ impl UniformDeflection {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_ctor_curve2d_real4_bool(
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_ctor_curve2d_real4_bool(
                     C,
                     Deflection,
                     U1,
@@ -670,7 +739,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_initialize_curve_real2_bool(
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_initialize_curve_real2_bool(
                 self as *mut Self,
                 C,
                 Deflection,
@@ -691,7 +760,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real2_bool(
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_initialize_curve2d_real2_bool(
                 self as *mut Self,
                 C,
                 Deflection,
@@ -714,7 +783,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_initialize_curve_real4_bool(
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_initialize_curve_real4_bool(
                 self as *mut Self,
                 C,
                 Deflection,
@@ -739,7 +808,7 @@ impl UniformDeflection {
         WithControl: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_initialize_curve2d_real4_bool(
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_initialize_curve2d_real4_bool(
                 self as *mut Self,
                 C,
                 Deflection,
@@ -758,7 +827,7 @@ impl UniformDeflection {
     /// Returns True if the calculus was successful.
     pub fn is_all_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_is_all_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_is_all_done(self as *const Self)
         })
     }
 
@@ -766,21 +835,23 @@ impl UniformDeflection {
     /// go to the next Point.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_next(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_next(self as *mut Self)
         })
     }
 
     /// **Source:** `CPnts_UniformDeflection.hxx`:146 - `CPnts_UniformDeflection::More()`
     /// returns True if it exists a next Point.
     pub fn more(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CPnts_UniformDeflection_more(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_more(self as *mut Self)
+        })
     }
 
     /// **Source:** `CPnts_UniformDeflection.hxx`:149 - `CPnts_UniformDeflection::Value()`
     /// return the computed parameter
     pub fn value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::CPnts_UniformDeflection_value(self as *const Self)
+            crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_value(self as *const Self)
         })
     }
 
@@ -789,7 +860,7 @@ impl UniformDeflection {
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CPnts_UniformDeflection_point(self as *const Self),
+                crate::ffi_extern_TKGeomBase::CPnts_UniformDeflection_point(self as *const Self),
             ))
         }
     }
@@ -799,4 +870,4 @@ impl UniformDeflection {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::CPnts_RealFunction as RealFunction;
+pub use crate::ffi_types::CPnts_RealFunction as RealFunction;

@@ -13,11 +13,11 @@
 /// **Source:** `IntCurve_IConicTool.hxx`:36 - `IntCurve_IConicTool`
 /// Implementation of the ImpTool from IntImpParGen
 /// for conics of gp.
-pub use crate::ffi::IntCurve_IConicTool as IConicTool;
+pub use crate::ffi_types::IntCurve_IConicTool as IConicTool;
 
 unsafe impl crate::CppDeletable for IConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_IConicTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_destructor(ptr);
     }
 }
 
@@ -25,7 +25,9 @@ impl IConicTool {
     /// **Source:** `IntCurve_IConicTool.hxx`:41 - `IntCurve_IConicTool::IntCurve_IConicTool()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_IConicTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor(),
+            ))
         }
     }
 
@@ -33,7 +35,7 @@ impl IConicTool {
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_ctor_elips2d(E),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor_elips2d(E),
             ))
         }
     }
@@ -42,7 +44,7 @@ impl IConicTool {
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_ctor_lin2d(L),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor_lin2d(L),
             ))
         }
     }
@@ -51,7 +53,7 @@ impl IConicTool {
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_ctor_circ2d(C),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor_circ2d(C),
             ))
         }
     }
@@ -60,7 +62,7 @@ impl IConicTool {
     pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_ctor_parab2d(P),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor_parab2d(P),
             ))
         }
     }
@@ -69,7 +71,7 @@ impl IConicTool {
     pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_ctor_hypr2d(H),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_ctor_hypr2d(H),
             ))
         }
     }
@@ -77,17 +79,16 @@ impl IConicTool {
     /// **Source:** `IntCurve_IConicTool.hxx`:55 - `IntCurve_IConicTool::Value()`
     pub fn value(&self, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_IConicTool_value(
-                self as *const Self,
-                X,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_value(self as *const Self, X),
+            ))
         }
     }
 
     /// **Source:** `IntCurve_IConicTool.hxx`:57 - `IntCurve_IConicTool::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IConicTool_d1(self as *const Self, U, P, T)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_d1(self as *const Self, U, P, T)
         })
     }
 
@@ -100,7 +101,7 @@ impl IConicTool {
         N: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IConicTool_d2(self as *const Self, U, P, T, N)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_d2(self as *const Self, U, P, T, N)
         })
     }
 
@@ -109,7 +110,7 @@ impl IConicTool {
     /// the point P and the implicit curve.
     pub fn distance(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IConicTool_distance(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_distance(self as *const Self, P)
         })
     }
 
@@ -120,7 +121,10 @@ impl IConicTool {
     pub fn grad_distance(&self, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_grad_distance(self as *const Self, P),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_grad_distance(
+                    self as *const Self,
+                    P,
+                ),
             ))
         }
     }
@@ -131,7 +135,7 @@ impl IConicTool {
     /// implicit curve must be coherent with the way of determination of the signed distance.
     pub fn find_parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IConicTool_find_parameter(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_find_parameter(self as *const Self, P)
         })
     }
 
@@ -139,7 +143,7 @@ impl IConicTool {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IConicTool_to_owned(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IConicTool_to_owned(self as *const Self),
             ))
         }
     }
@@ -157,11 +161,11 @@ impl IConicTool {
 /// an Ellipse (i-e Elips2d from  gp) do not have a closed
 /// domain (use the  SetEquivalentParameters method for a domain
 /// on a circle or an ellipse).
-pub use crate::ffi::IntCurve_IntConicConic as IntConicConic;
+pub use crate::ffi_types::IntCurve_IntConicConic as IntConicConic;
 
 unsafe impl crate::CppDeletable for IntConicConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_IntConicConic_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_destructor(ptr);
     }
 }
 
@@ -170,9 +174,9 @@ impl IntConicConic {
     /// Empty Constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::IntCurve_IntConicConic_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor(),
+            ))
         }
     }
 
@@ -187,11 +191,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_lin2d_domain_lin2d_domain_real2(
-                    L1, D1, L2, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_lin2d_domain_lin2d_domain_real2(L1, D1, L2, D2, TolConf, Tol)))
         }
     }
 
@@ -208,11 +208,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_lin2d_domain_circ2d_domain_real2(
-                    L, DL, C, DC, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_lin2d_domain_circ2d_domain_real2(L, DL, C, DC, TolConf, Tol)))
         }
     }
 
@@ -229,11 +225,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_lin2d_domain_elips2d_domain_real2(
-                    L, DL, E, DE, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_lin2d_domain_elips2d_domain_real2(L, DL, E, DE, TolConf, Tol)))
         }
     }
 
@@ -248,11 +240,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_lin2d_domain_parab2d_domain_real2(
-                    L, DL, P, DP, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_lin2d_domain_parab2d_domain_real2(L, DL, P, DP, TolConf, Tol)))
         }
     }
 
@@ -267,11 +255,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_lin2d_domain_hypr2d_domain_real2(
-                    L, DL, H, DH, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_lin2d_domain_hypr2d_domain_real2(L, DL, H, DH, TolConf, Tol)))
         }
     }
 
@@ -288,11 +272,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_circ2d_domain_circ2d_domain_real2(
-                    C1, D1, C2, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_circ2d_domain_circ2d_domain_real2(C1, D1, C2, D2, TolConf, Tol)))
         }
     }
 
@@ -309,11 +289,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_circ2d_domain_elips2d_domain_real2(
-                    C, DC, E, DE, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_circ2d_domain_elips2d_domain_real2(C, DC, E, DE, TolConf, Tol)))
         }
     }
 
@@ -330,11 +306,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_circ2d_domain_parab2d_domain_real2(
-                    C, DC, P, DP, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_circ2d_domain_parab2d_domain_real2(C, DC, P, DP, TolConf, Tol)))
         }
     }
 
@@ -351,11 +323,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_circ2d_domain_hypr2d_domain_real2(
-                    C, DC, H, DH, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_circ2d_domain_hypr2d_domain_real2(C, DC, H, DH, TolConf, Tol)))
         }
     }
 
@@ -372,11 +340,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_elips2d_domain_elips2d_domain_real2(
-                    E1, D1, E2, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_elips2d_domain_elips2d_domain_real2(E1, D1, E2, D2, TolConf, Tol)))
         }
     }
 
@@ -393,11 +357,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_elips2d_domain_parab2d_domain_real2(
-                    E, DE, P, DP, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_elips2d_domain_parab2d_domain_real2(E, DE, P, DP, TolConf, Tol)))
         }
     }
 
@@ -414,11 +374,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_elips2d_domain_hypr2d_domain_real2(
-                    E, DE, H, DH, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_elips2d_domain_hypr2d_domain_real2(E, DE, H, DH, TolConf, Tol)))
         }
     }
 
@@ -433,11 +389,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_parab2d_domain_parab2d_domain_real2(
-                    P1, D1, P2, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_parab2d_domain_parab2d_domain_real2(P1, D1, P2, D2, TolConf, Tol)))
         }
     }
 
@@ -452,11 +404,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_parab2d_domain_hypr2d_domain_real2(
-                    P, DP, H, DH, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_parab2d_domain_hypr2d_domain_real2(P, DP, H, DH, TolConf, Tol)))
         }
     }
 
@@ -471,11 +419,7 @@ impl IntConicConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_ctor_hypr2d_domain_hypr2d_domain_real2(
-                    H1, D1, H2, D2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_ctor_hypr2d_domain_hypr2d_domain_real2(H1, D1, H2, D2, TolConf, Tol)))
         }
     }
 
@@ -491,15 +435,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_lin2d_domain_real2(
-                self as *mut Self,
-                L1,
-                D1,
-                L2,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_lin2d_domain_lin2d_domain_real2(self as *mut Self, L1, D1, L2, D2, TolConf, Tol)
         })
     }
 
@@ -517,15 +453,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_circ2d_domain_real2(
-                self as *mut Self,
-                L,
-                DL,
-                C,
-                DC,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_lin2d_domain_circ2d_domain_real2(self as *mut Self, L, DL, C, DC, TolConf, Tol)
         })
     }
 
@@ -543,15 +471,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_elips2d_domain_real2(
-                self as *mut Self,
-                L,
-                DL,
-                E,
-                DE,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_lin2d_domain_elips2d_domain_real2(self as *mut Self, L, DL, E, DE, TolConf, Tol)
         })
     }
 
@@ -567,15 +487,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_parab2d_domain_real2(
-                self as *mut Self,
-                L,
-                DL,
-                P,
-                DP,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_lin2d_domain_parab2d_domain_real2(self as *mut Self, L, DL, P, DP, TolConf, Tol)
         })
     }
 
@@ -591,15 +503,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_lin2d_domain_hypr2d_domain_real2(
-                self as *mut Self,
-                L,
-                DL,
-                H,
-                DH,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_lin2d_domain_hypr2d_domain_real2(self as *mut Self, L, DL, H, DH, TolConf, Tol)
         })
     }
 
@@ -617,15 +521,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_circ2d_domain_real2(
-                self as *mut Self,
-                C1,
-                D1,
-                C2,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_circ2d_domain_circ2d_domain_real2(self as *mut Self, C1, D1, C2, D2, TolConf, Tol)
         })
     }
 
@@ -643,15 +539,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_elips2d_domain_real2(
-                self as *mut Self,
-                C,
-                DC,
-                E,
-                DE,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_circ2d_domain_elips2d_domain_real2(self as *mut Self, C, DC, E, DE, TolConf, Tol)
         })
     }
 
@@ -669,15 +557,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_parab2d_domain_real2(
-                self as *mut Self,
-                C,
-                DC,
-                P,
-                DP,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_circ2d_domain_parab2d_domain_real2(self as *mut Self, C, DC, P, DP, TolConf, Tol)
         })
     }
 
@@ -695,15 +575,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_circ2d_domain_hypr2d_domain_real2(
-                self as *mut Self,
-                C,
-                DC,
-                H,
-                DH,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_circ2d_domain_hypr2d_domain_real2(self as *mut Self, C, DC, H, DH, TolConf, Tol)
         })
     }
 
@@ -721,15 +593,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_elips2d_domain_real2(
-                self as *mut Self,
-                E1,
-                D1,
-                E2,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_elips2d_domain_elips2d_domain_real2(self as *mut Self, E1, D1, E2, D2, TolConf, Tol)
         })
     }
 
@@ -747,15 +611,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_parab2d_domain_real2(
-                self as *mut Self,
-                E,
-                DE,
-                P,
-                DP,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_elips2d_domain_parab2d_domain_real2(self as *mut Self, E, DE, P, DP, TolConf, Tol)
         })
     }
 
@@ -773,15 +629,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_elips2d_domain_hypr2d_domain_real2(
-                self as *mut Self,
-                E,
-                DE,
-                H,
-                DH,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_elips2d_domain_hypr2d_domain_real2(self as *mut Self, E, DE, H, DH, TolConf, Tol)
         })
     }
 
@@ -797,15 +645,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_parab2d_domain_parab2d_domain_real2(
-                self as *mut Self,
-                P1,
-                D1,
-                P2,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_parab2d_domain_parab2d_domain_real2(self as *mut Self, P1, D1, P2, D2, TolConf, Tol)
         })
     }
 
@@ -821,15 +661,7 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_parab2d_domain_hypr2d_domain_real2(
-                self as *mut Self,
-                P,
-                DP,
-                H,
-                DH,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_parab2d_domain_hypr2d_domain_real2(self as *mut Self, P, DP, H, DH, TolConf, Tol)
         })
     }
 
@@ -845,24 +677,18 @@ impl IntConicConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_perform_hypr2d_domain_hypr2d_domain_real2(
-                self as *mut Self,
-                H1,
-                D1,
-                H2,
-                D2,
-                TolConf,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_perform_hypr2d_domain_hypr2d_domain_real2(self as *mut Self, H1, D1, H2, D2, TolConf, Tol)
         })
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -870,7 +696,9 @@ impl IntConicConic {
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IntCurve_IntConicConic_as_IntRes2d_Intersection_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -878,55 +706,67 @@ impl IntConicConic {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurve_IntConicConic_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurve_IntConicConic_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntConicConic_inherited_SetReversedParameters(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntConicConic_inherited_SetReversedParameters(
                 self as *mut Self,
                 Reverseflag,
             )
@@ -939,20 +779,20 @@ impl IntConicConic {
 // ========================
 
 /// **Source:** `IntCurve_IntConicConic_Tool.hxx`:47 - `Interval`
-pub use crate::ffi::Interval;
+pub use crate::ffi_types::Interval;
 
 unsafe impl crate::CppDeletable for Interval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Interval_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Interval_destructor(ptr);
     }
 }
 
 /// **Source:** `IntCurve_IntConicConic_Tool.hxx`:70 - `PeriodicInterval`
-pub use crate::ffi::PeriodicInterval;
+pub use crate::ffi_types::PeriodicInterval;
 
 unsafe impl crate::CppDeletable for PeriodicInterval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PeriodicInterval_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::PeriodicInterval_destructor(ptr);
     }
 }
 
@@ -961,11 +801,11 @@ unsafe impl crate::CppDeletable for PeriodicInterval {
 // ========================
 
 /// **Source:** `IntCurve_IntImpConicParConic.hxx`:35 - `IntCurve_IntImpConicParConic`
-pub use crate::ffi::IntCurve_IntImpConicParConic as IntImpConicParConic;
+pub use crate::ffi_types::IntCurve_IntImpConicParConic as IntImpConicParConic;
 
 unsafe impl crate::CppDeletable for IntImpConicParConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_IntImpConicParConic_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_destructor(ptr);
     }
 }
 
@@ -975,7 +815,7 @@ impl IntImpConicParConic {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntImpConicParConic_ctor(),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_ctor(),
             ))
         }
     }
@@ -995,11 +835,7 @@ impl IntImpConicParConic {
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_IntImpConicParConic_ctor_iconictool_domain_pconic_domain_real2(
-                    ITool, Dom1, PCurve, Dom2, TolConf, Tol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_ctor_iconictool_domain_pconic_domain_real2(ITool, Dom1, PCurve, Dom2, TolConf, Tol)))
         }
     }
 
@@ -1019,7 +855,7 @@ impl IntImpConicParConic {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_perform(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_perform(
                 self as *mut Self,
                 ITool,
                 Dom1,
@@ -1040,7 +876,7 @@ impl IntImpConicParConic {
         TheImpTool: &IConicTool,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_find_u(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_find_u(
                 self as *const Self,
                 parameter,
                 point,
@@ -1063,7 +899,7 @@ impl IntImpConicParConic {
         Tolerance: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_find_v(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_find_v(
                 self as *const Self,
                 parameter,
                 point,
@@ -1085,26 +921,14 @@ impl IntImpConicParConic {
         TheImpCurveDomain: &crate::int_res2d::Domain,
         TheParCurveDomain: &crate::int_res2d::Domain,
         NbResultats: &mut i32,
-        Inter2_And_Domain2: &mut crate::ffi::TColStd_Array1OfReal,
-        Inter1: &mut crate::ffi::TColStd_Array1OfReal,
-        Resultat1: &mut crate::ffi::TColStd_Array1OfReal,
-        Resultat2: &mut crate::ffi::TColStd_Array1OfReal,
+        Inter2_And_Domain2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Inter1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Resultat1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Resultat2: &mut crate::ffi_types::TColStd_Array1OfReal,
         EpsNul: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(
-                self as *const Self,
-                TheImpTool,
-                TheParCurve,
-                TheImpCurveDomain,
-                TheParCurveDomain,
-                NbResultats,
-                Inter2_And_Domain2,
-                Inter1,
-                Resultat1,
-                Resultat2,
-                EpsNul,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_and_domaine_objet1_intersections(self as *const Self, TheImpTool, TheParCurve, TheImpCurveDomain, TheParCurveDomain, NbResultats, Inter2_And_Domain2, Inter1, Resultat1, Resultat2, EpsNul)
         })
     }
 
@@ -1112,7 +936,7 @@ impl IntImpConicParConic {
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
             &*crate::check_result(
-                crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection(
                     self as *const Self,
                 ),
             )
@@ -1122,69 +946,74 @@ impl IntImpConicParConic {
     /// Upcast to IntRes2d_Intersection (mutable)
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_as_IntRes2d_Intersection_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurve_IntImpConicParConic_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntCurve_IntImpConicParConic_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_IntImpConicParConic_inherited_SetReversedParameters(
-                self as *mut Self,
-                Reverseflag,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_IntImpConicParConic_inherited_SetReversedParameters(self as *mut Self, Reverseflag)
         })
     }
 }
@@ -1194,11 +1023,11 @@ impl IntImpConicParConic {
 // ========================
 
 /// **Source:** `IntCurve_MyImpParToolOfIntImpConicParConic.hxx`:31 - `IntCurve_MyImpParToolOfIntImpConicParConic`
-pub use crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic as MyImpParToolOfIntImpConicParConic;
+pub use crate::ffi_types::IntCurve_MyImpParToolOfIntImpConicParConic as MyImpParToolOfIntImpConicParConic;
 
 unsafe impl crate::CppDeletable for MyImpParToolOfIntImpConicParConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_destructor(ptr);
     }
 }
 
@@ -1207,11 +1036,7 @@ impl MyImpParToolOfIntImpConicParConic {
     /// Constructor of the class.
     pub fn new_iconictool_pconic(IT: &IConicTool, PC: &PConic) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_ctor_iconictool_pconic(
-                    IT, PC,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_ctor_iconictool_pconic(IT, PC)))
         }
     }
 
@@ -1221,7 +1046,7 @@ impl MyImpParToolOfIntImpConicParConic {
     /// on the parametrised curve.
     pub fn value(&mut self, Param: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_value(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_value(
                 self as *mut Self,
                 Param,
                 F,
@@ -1234,7 +1059,7 @@ impl MyImpParToolOfIntImpConicParConic {
     /// parameter Param.
     pub fn derivative(&mut self, Param: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_derivative(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_derivative(
                 self as *mut Self,
                 Param,
                 D,
@@ -1246,7 +1071,7 @@ impl MyImpParToolOfIntImpConicParConic {
     /// Computes the value and the derivative of the function.
     pub fn values(&mut self, Param: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_values(
+            crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_values(
                 self as *mut Self,
                 Param,
                 F,
@@ -1258,7 +1083,7 @@ impl MyImpParToolOfIntImpConicParConic {
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -1267,38 +1092,28 @@ impl MyImpParToolOfIntImpConicParConic {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function(self as *const Self))
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_as_math_Function_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_MyImpParToolOfIntImpConicParConic_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_MyImpParToolOfIntImpConicParConic_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -1311,11 +1126,11 @@ impl MyImpParToolOfIntImpConicParConic {
 /// This class represents a conic from gp as a
 /// parametric curve ( in order to be used by the
 /// class PConicTool from IntCurve).
-pub use crate::ffi::IntCurve_PConic as PConic;
+pub use crate::ffi_types::IntCurve_PConic as PConic;
 
 unsafe impl crate::CppDeletable for PConic {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_PConic_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_destructor(ptr);
     }
 }
 
@@ -1324,7 +1139,7 @@ impl PConic {
     pub fn new_elips2d(E: &crate::gp::Elips2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_PConic_ctor_elips2d(E),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_ctor_elips2d(E),
             ))
         }
     }
@@ -1332,9 +1147,9 @@ impl PConic {
     /// **Source:** `IntCurve_PConic.hxx`:44 - `IntCurve_PConic::IntCurve_PConic()`
     pub fn new_circ2d(C: &crate::gp::Circ2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConic_ctor_circ2d(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_ctor_circ2d(C),
+            ))
         }
     }
 
@@ -1342,7 +1157,7 @@ impl PConic {
     pub fn new_parab2d(P: &crate::gp::Parab2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_PConic_ctor_parab2d(P),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_ctor_parab2d(P),
             ))
         }
     }
@@ -1350,18 +1165,18 @@ impl PConic {
     /// **Source:** `IntCurve_PConic.hxx`:48 - `IntCurve_PConic::IntCurve_PConic()`
     pub fn new_hypr2d(H: &crate::gp::Hypr2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConic_ctor_hypr2d(
-                H,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_ctor_hypr2d(H),
+            ))
         }
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:50 - `IntCurve_PConic::IntCurve_PConic()`
     pub fn new_lin2d(L: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConic_ctor_lin2d(
-                L,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_ctor_lin2d(L),
+            ))
         }
     }
 
@@ -1371,7 +1186,7 @@ impl PConic {
     /// (See FunctionAllRoots for more details)
     pub fn set_eps_x(&mut self, EpsDist: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_PConic_set_eps_x(self as *mut Self, EpsDist)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_set_eps_x(self as *mut Self, EpsDist)
         })
     }
 
@@ -1380,18 +1195,22 @@ impl PConic {
     /// approximate the parametric curve on its domain.
     pub fn set_accuracy(&mut self, Nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntCurve_PConic_set_accuracy(self as *mut Self, Nb)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_set_accuracy(self as *mut Self, Nb)
         })
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:61 - `IntCurve_PConic::Accuracy()`
     pub fn accuracy(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConic_accuracy(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_accuracy(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:63 - `IntCurve_PConic::EpsX()`
     pub fn eps_x(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConic_eps_x(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_eps_x(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:68 - `IntCurve_PConic::TypeCurve()`
@@ -1400,32 +1219,40 @@ impl PConic {
     /// Type Curve is used to select the correct Conic.
     pub fn type_curve(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::IntCurve_PConic_type_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_type_curve(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:70 - `IntCurve_PConic::Axis2()`
     pub fn axis2(&self) -> &crate::gp::Ax22d {
-        unsafe { &*(crate::check_result(crate::ffi::IntCurve_PConic_axis2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_axis2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:72 - `IntCurve_PConic::Param1()`
     pub fn param1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConic_param1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_param1(self as *const Self)
+        })
     }
 
     /// **Source:** `IntCurve_PConic.hxx`:74 - `IntCurve_PConic::Param2()`
     pub fn param2(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConic_param2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_param2(self as *const Self)
+        })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConic_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConic_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1437,11 +1264,11 @@ impl PConic {
 /// **Source:** `IntCurve_PConicTool.hxx`:30 - `IntCurve_PConicTool`
 /// Implementation of the ParTool from IntImpParGen
 /// for conics of gp, using the class PConic from IntCurve.
-pub use crate::ffi::IntCurve_PConicTool as PConicTool;
+pub use crate::ffi_types::IntCurve_PConicTool as PConicTool;
 
 unsafe impl crate::CppDeletable for PConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_PConicTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_destructor(ptr);
     }
 }
 
@@ -1450,39 +1277,45 @@ impl PConicTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConicTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:35 - `IntCurve_PConicTool::EpsX()`
     pub fn eps_x(C: &PConic) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConicTool_eps_x(C) })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_eps_x(C) })
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:37 - `IntCurve_PConicTool::NbSamples()`
     pub fn nb_samples_pconic(C: &PConic) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IntCurve_PConicTool_nb_samples_pconic(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_nb_samples_pconic(C)
+        })
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:39 - `IntCurve_PConicTool::NbSamples()`
     pub fn nb_samples_pconic_real2(C: &PConic, U0: f64, U1: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_PConicTool_nb_samples_pconic_real2(C, U0, U1)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_nb_samples_pconic_real2(C, U0, U1)
         })
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:43 - `IntCurve_PConicTool::Value()`
     pub fn value(C: &PConic, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntCurve_PConicTool_value(
-                C, X,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_value(C, X),
+            ))
         }
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:45 - `IntCurve_PConicTool::D1()`
     pub fn d1(C: &PConic, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
-        crate::check_void_result(unsafe { crate::ffi::IntCurve_PConicTool_d1(C, U, P, T) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_d1(C, U, P, T)
+        })
     }
 
     /// **Source:** `IntCurve_PConicTool.hxx`:50 - `IntCurve_PConicTool::D2()`
@@ -1493,7 +1326,9 @@ impl PConicTool {
         T: &mut crate::gp::Vec2d,
         N: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::IntCurve_PConicTool_d2(C, U, P, T, N) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::IntCurve_PConicTool_d2(C, U, P, T, N)
+        })
     }
 }
 
@@ -1504,11 +1339,11 @@ impl PConicTool {
 /// **Source:** `IntCurve_ProjectOnPConicTool.hxx`:28 - `IntCurve_ProjectOnPConicTool`
 /// This class provides a tool which computes the parameter
 /// of a point near a parametric conic.
-pub use crate::ffi::IntCurve_ProjectOnPConicTool as ProjectOnPConicTool;
+pub use crate::ffi_types::IntCurve_ProjectOnPConicTool as ProjectOnPConicTool;
 
 unsafe impl crate::CppDeletable for ProjectOnPConicTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntCurve_ProjectOnPConicTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_destructor(ptr);
     }
 }
 
@@ -1518,7 +1353,7 @@ impl ProjectOnPConicTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntCurve_ProjectOnPConicTool_ctor(),
+                crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_ctor(),
             ))
         }
     }
@@ -1536,7 +1371,7 @@ impl ProjectOnPConicTool {
     /// curve.
     pub fn find_parameter_pconic_pnt2d_real(C: &PConic, Pnt: &crate::gp::Pnt2d, Tol: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real(C, Pnt, Tol)
+            crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real(C, Pnt, Tol)
         })
     }
 
@@ -1561,13 +1396,7 @@ impl ProjectOnPConicTool {
         Tol: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real3(
-                C,
-                Pnt,
-                LowParameter,
-                HighParameter,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::IntCurve_ProjectOnPConicTool_find_parameter_pconic_pnt2d_real3(C, Pnt, LowParameter, HighParameter, Tol)
         })
     }
 }

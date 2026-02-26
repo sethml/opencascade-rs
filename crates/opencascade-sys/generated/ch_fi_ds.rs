@@ -187,7 +187,7 @@ impl TryFrom<i32> for TypeOfConcavity {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleAdaptor3dCurve, HandleStandardTransient};
+pub use crate::ffi_types::{HandleAdaptor3dCurve, HandleStandardTransient};
 
 // ========================
 // From ChFiDS_ChamfSpine.hxx
@@ -196,11 +196,11 @@ pub use crate::ffi::{HandleAdaptor3dCurve, HandleStandardTransient};
 /// **Source:** `ChFiDS_ChamfSpine.hxx`:31 - `ChFiDS_ChamfSpine`
 /// Provides  data specific to chamfers
 /// distances on  each  of faces.
-pub use crate::ffi::ChFiDS_ChamfSpine as ChamfSpine;
+pub use crate::ffi_types::ChFiDS_ChamfSpine as ChamfSpine;
 
 unsafe impl crate::CppDeletable for ChamfSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_ChamfSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_destructor(ptr);
     }
 }
 
@@ -208,65 +208,78 @@ impl ChamfSpine {
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:35 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:37 - `ChFiDS_ChamfSpine::ChFiDS_ChamfSpine()`
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_ctor_real(
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_ctor_real(Tol),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:39 - `ChFiDS_ChamfSpine::SetDist()`
     pub fn set_dist(&mut self, Dis: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_set_dist(self as *mut Self, Dis)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_set_dist(self as *mut Self, Dis)
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:41 - `ChFiDS_ChamfSpine::GetDist()`
     pub fn get_dist(&self, Dis: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_get_dist(self as *const Self, Dis)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_get_dist(self as *const Self, Dis)
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:43 - `ChFiDS_ChamfSpine::SetDists()`
     pub fn set_dists(&mut self, Dis1: f64, Dis2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_set_dists(self as *mut Self, Dis1, Dis2)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_set_dists(self as *mut Self, Dis1, Dis2)
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:45 - `ChFiDS_ChamfSpine::Dists()`
     pub fn dists(&self, Dis1: &mut f64, Dis2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_dists(self as *const Self, Dis1, Dis2)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_dists(self as *const Self, Dis1, Dis2)
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:47 - `ChFiDS_ChamfSpine::GetDistAngle()`
     pub fn get_dist_angle(&self, Dis: &mut f64, Angle: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_get_dist_angle(self as *const Self, Dis, Angle)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_get_dist_angle(
+                self as *const Self,
+                Dis,
+                Angle,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:49 - `ChFiDS_ChamfSpine::SetDistAngle()`
     pub fn set_dist_angle(&mut self, Dis: f64, Angle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_set_dist_angle(self as *mut Self, Dis, Angle)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_set_dist_angle(
+                self as *mut Self,
+                Dis,
+                Angle,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:51 - `ChFiDS_ChamfSpine::SetMode()`
     pub fn set_mode(&mut self, theMode: crate::ch_fi_ds::ChamfMode) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_set_mode(self as *mut Self, theMode.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_set_mode(
+                self as *mut Self,
+                theMode.into(),
+            )
         })
     }
 
@@ -274,15 +287,17 @@ impl ChamfSpine {
     /// Return the method of chamfers used
     pub fn is_chamfer(&self) -> crate::ch_fi_ds::ChamfMethod {
         crate::ch_fi_ds::ChamfMethod::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_is_chamfer(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_is_chamfer(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -290,7 +305,7 @@ impl ChamfSpine {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_get_type_name(),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -298,14 +313,18 @@ impl ChamfSpine {
     }
 
     /// **Source:** `ChFiDS_ChamfSpine.hxx`:59 - `ChFiDS_ChamfSpine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ChFiDS_Spine
     pub fn as_spine(&self) -> &Spine {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_as_ChFiDS_Spine(
                 self as *const Self,
             ))
         }
@@ -314,80 +333,92 @@ impl ChamfSpine {
     /// Upcast to ChFiDS_Spine (mutable)
     pub fn as_spine_mut(&mut self) -> &mut Spine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_ChamfSpine_as_ChFiDS_Spine_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_as_ChFiDS_Spine_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_ChamfSpine_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSChamfSpine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSChamfSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetEdges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetEdges(self as *mut Self, E)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetOffsetEdges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetOffsetEdges(
+                self as *mut Self,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_PutInFirst(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_PutInFirst(self as *mut Self, E)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_PutInFirstOffset(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_PutInFirstOffset(
+                self as *mut Self,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_NbEdges(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_NbEdges(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
     pub fn edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_inherited_Edges(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Edges(
                 self as *const Self,
                 I,
             )))
@@ -397,64 +428,85 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
     pub fn offset_edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_inherited_OffsetEdges(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_OffsetEdges(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstStatus(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetFirstStatus(
+                self as *mut Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastStatus(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetLastStatus(
+                self as *mut Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
-    pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_AppendElSpine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_AppendElSpine(
+                self as *mut Self,
+                Els,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
-    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_AppendOffsetElSpine(
+                self as *mut Self,
+                Els,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
-    pub fn el_spine(&self, IE: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    pub fn el_spine(&self, IE: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_ElSpine(self as *const Self, IE),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ElSpine(
+                    self as *const Self,
+                    IE,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_inherited_ChangeElSpines(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ChangeElSpines(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(self as *mut Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ChangeOffsetElSpines(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -462,98 +514,122 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Reset(self as *mut Self, AllData)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Reset(
+                self as *mut Self,
+                AllData,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SplitDone(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SplitDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
     pub fn load(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Load(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Load(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Resolution(
+                self as *const Self,
+                R3d,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IsClosed(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IsClosed(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_FirstParameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_FirstParameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_LastParameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_LastParameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstParameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetFirstParameter(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastParameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetLastParameter(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
     pub fn length(&self, IndexSpine: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Length(self as *const Self, IndexSpine)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Length(
+                self as *const Self,
+                IndexSpine,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IsPeriodic(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Period(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Period(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
     pub fn absc(&mut self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Absc(self as *mut Self, U)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Absc(self as *mut Self, U)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Parameter(self as *mut Self, AbsC, U, Oriented)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Parameter(
+                self as *mut Self,
+                AbsC,
+                U,
+                Oriented,
+            )
         })
     }
 
@@ -561,7 +637,10 @@ impl ChamfSpine {
     pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_Value(self as *mut Self, AbsC),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Value(
+                    self as *mut Self,
+                    AbsC,
+                ),
             ))
         }
     }
@@ -569,14 +648,19 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_D0(self as *mut Self, AbsC, P)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_D0(self as *mut Self, AbsC, P)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_D1(self as *mut Self, AbsC, P, V1)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_D1(
+                self as *mut Self,
+                AbsC,
+                P,
+                V1,
+            )
         })
     }
 
@@ -589,31 +673,42 @@ impl ChamfSpine {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_D2(self as *mut Self, AbsC, P, V1, V2)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_D2(
+                self as *mut Self,
+                AbsC,
+                P,
+                V1,
+                V2,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetCurrent(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetCurrent(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
     pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::b_rep_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ChamfSpine_inherited_CurrentElementarySpine(
-                self as *mut Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_CurrentElementarySpine(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn current_index_of_elementary_spine(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_CurrentIndexOfElementarySpine(
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_CurrentIndexOfElementarySpine(
                 self as *const Self,
             )
         })
@@ -622,7 +717,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_GetType(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_GetType(self as *const Self)
         }))
         .unwrap()
     }
@@ -631,7 +726,7 @@ impl ChamfSpine {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_Line(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Line(self as *const Self),
             ))
         }
     }
@@ -640,7 +735,7 @@ impl ChamfSpine {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_Circle(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Circle(self as *const Self),
             ))
         }
     }
@@ -648,7 +743,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
     pub fn first_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_FirstStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_FirstStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -656,7 +751,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
     pub fn last_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_LastStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_LastStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -664,7 +759,10 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
     pub fn status(&self, IsFirst: bool) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Status(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Status(
+                self as *const Self,
+                IsFirst,
+            )
         }))
         .unwrap()
     }
@@ -672,7 +770,9 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
     pub fn get_type_of_concavity(&self) -> crate::ch_fi_ds::TypeOfConcavity {
         crate::ch_fi_ds::TypeOfConcavity::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_GetTypeOfConcavity(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_GetTypeOfConcavity(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -680,14 +780,18 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetStatus(self as *mut Self, S.into(), IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetStatus(
+                self as *mut Self,
+                S.into(),
+                IsFirst,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetTypeOfConcavity(
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetTypeOfConcavity(
                 self as *mut Self,
                 theType.into(),
             )
@@ -697,7 +801,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
     pub fn is_tangency_extremity(&self, IsFirst: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IsTangencyExtremity(
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IsTangencyExtremity(
                 self as *const Self,
                 IsFirst,
             )
@@ -707,7 +811,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetTangencyExtremity(
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetTangencyExtremity(
                 self as *mut Self,
                 IsTangency,
                 IsFirst,
@@ -719,7 +823,9 @@ impl ChamfSpine {
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_FirstVertex(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_FirstVertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -728,7 +834,9 @@ impl ChamfSpine {
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ChamfSpine_inherited_LastVertex(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_LastVertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -736,63 +844,78 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetFirstTgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetFirstTgt(
+                self as *mut Self,
+                W,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetLastTgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetLastTgt(self as *mut Self, W)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn has_first_tgt(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_HasFirstTgt(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_HasFirstTgt(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
     pub fn has_last_tgt(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_HasLastTgt(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_HasLastTgt(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
     pub fn set_reference(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetReference(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetReference(
+                self as *mut Self,
+                W,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
     pub fn index(&self, W: f64, Forward: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Index(self as *const Self, W, Forward)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Index(
+                self as *const Self,
+                W,
+                Forward,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_UnsetReference(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_UnsetReference(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_SetErrorStatus(self as *mut Self, state.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_SetErrorStatus(
+                self as *mut Self,
+                state.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
     pub fn error_status(&self) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_ErrorStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -800,7 +923,7 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         crate::ch_fi_ds::ChamfMode::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Mode(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Mode(self as *const Self)
         }))
         .unwrap()
     }
@@ -808,21 +931,27 @@ impl ChamfSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
     pub fn get_tolesp(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_GetTolesp(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_GetTolesp(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -830,7 +959,7 @@ impl ChamfSpine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_ChamfSpine_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -843,69 +972,83 @@ impl ChamfSpine {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ChamfSpine_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ChamfSpine_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSChamfSpine;
+pub use crate::ffi_types::HandleChFiDSChamfSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSChamfSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSChamfSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_destructor(ptr);
     }
 }
 
 impl HandleChFiDSChamfSpine {
     /// Dereference this Handle to access the underlying ChFiDS_ChamfSpine
-    pub fn get(&self) -> &crate::ffi::ChFiDS_ChamfSpine {
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_ChamfSpine {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleChFiDSChamfSpine_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_ChamfSpine
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_ChamfSpine {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_ChamfSpine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSChamfSpine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<ChFiDS_Spine>
-    pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+    pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSChamfSpine_to_HandleChFiDSSpine(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_to_HandleChFiDSSpine(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ChFiDS_ChamfSpine> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSChamfSpine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSChamfSpine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -917,11 +1060,11 @@ impl HandleChFiDSChamfSpine {
 
 /// **Source:** `ChFiDS_CircSection.hxx`:28 - `ChFiDS_CircSection`
 /// A Section of fillet.
-pub use crate::ffi::ChFiDS_CircSection as CircSection;
+pub use crate::ffi_types::ChFiDS_CircSection as CircSection;
 
 unsafe impl crate::CppDeletable for CircSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_CircSection_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_CircSection_destructor(ptr);
     }
 }
 
@@ -929,35 +1072,52 @@ impl CircSection {
     /// **Source:** `ChFiDS_CircSection.hxx`:33 - `ChFiDS_CircSection::ChFiDS_CircSection()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_CircSection_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_CircSection_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:35 - `ChFiDS_CircSection::Set()`
     pub fn set_circ_real2(&mut self, C: &crate::gp::Circ, F: f64, L: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CircSection_set_circ_real2(self as *mut Self, C, F, L)
+            crate::ffi_extern_TKFillet::ChFiDS_CircSection_set_circ_real2(
+                self as *mut Self,
+                C,
+                F,
+                L,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:37 - `ChFiDS_CircSection::Set()`
     pub fn set_lin_real2(&mut self, C: &crate::gp::Lin, F: f64, L: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L)
+            crate::ffi_extern_TKFillet::ChFiDS_CircSection_set_lin_real2(self as *mut Self, C, F, L)
         })
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:39 - `ChFiDS_CircSection::Get()`
     pub fn get_circ_real2(&self, C: &mut crate::gp::Circ, F: &mut f64, L: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CircSection_get_circ_real2(self as *const Self, C, F, L)
+            crate::ffi_extern_TKFillet::ChFiDS_CircSection_get_circ_real2(
+                self as *const Self,
+                C,
+                F,
+                L,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_CircSection.hxx`:41 - `ChFiDS_CircSection::Get()`
     pub fn get_lin_real2(&self, C: &mut crate::gp::Lin, F: &mut f64, L: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CircSection_get_lin_real2(self as *const Self, C, F, L)
+            crate::ffi_extern_TKFillet::ChFiDS_CircSection_get_lin_real2(
+                self as *const Self,
+                C,
+                F,
+                L,
+            )
         })
     }
 }
@@ -970,11 +1130,11 @@ impl CircSection {
 /// point    start/end of  fillet common  to  2 adjacent  filets
 /// and  to an edge on  one of 2 faces participating
 /// in  the construction of  the  fillet
-pub use crate::ffi::ChFiDS_CommonPoint as CommonPoint;
+pub use crate::ffi_types::ChFiDS_CommonPoint as CommonPoint;
 
 unsafe impl crate::CppDeletable for CommonPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_CommonPoint_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_destructor(ptr);
     }
 }
 
@@ -983,14 +1143,18 @@ impl CommonPoint {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_CommonPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:43 - `ChFiDS_CommonPoint::Reset()`
     /// default value for all fields
     pub fn reset(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::ChFiDS_CommonPoint_reset(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_reset(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:48 - `ChFiDS_CommonPoint::SetVertex()`
@@ -999,7 +1163,7 @@ impl CommonPoint {
     /// of the surface.
     pub fn set_vertex(&mut self, theVertex: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_vertex(self as *mut Self, theVertex)
         })
     }
 
@@ -1014,7 +1178,13 @@ impl CommonPoint {
         TArc: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_arc(self as *mut Self, Tol, A, Param, TArc.into())
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_arc(
+                self as *mut Self,
+                Tol,
+                A,
+                Param,
+                TArc.into(),
+            )
         })
     }
 
@@ -1022,7 +1192,7 @@ impl CommonPoint {
     /// Sets the value of the parameter on the spine
     pub fn set_parameter(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_parameter(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_parameter(self as *mut Self, Param)
         })
     }
 
@@ -1031,7 +1201,7 @@ impl CommonPoint {
     /// a vertex or on an arc.
     pub fn set_point(&mut self, thePoint: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_point(self as *mut Self, thePoint)
         })
     }
 
@@ -1039,7 +1209,7 @@ impl CommonPoint {
     /// Set the output 3d  vector
     pub fn set_vector(&mut self, theVector: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_vector(self as *mut Self, theVector)
         })
     }
 
@@ -1047,7 +1217,7 @@ impl CommonPoint {
     /// This method set the fuzziness on the point.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_set_tolerance(self as *mut Self, Tol)
         })
     }
 
@@ -1055,7 +1225,7 @@ impl CommonPoint {
     /// This method returns the fuzziness on the point.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_tolerance(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_tolerance(self as *const Self)
         })
     }
 
@@ -1064,7 +1234,7 @@ impl CommonPoint {
     /// restriction facet of the surface.
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_is_vertex(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_is_vertex(self as *const Self)
         })
     }
 
@@ -1075,7 +1245,9 @@ impl CommonPoint {
     /// Otherwise, an exception is raised.
     pub fn vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_CommonPoint_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_vertex(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1084,7 +1256,7 @@ impl CommonPoint {
     /// restriction facet of the surface.
     pub fn is_on_arc(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_is_on_arc(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_is_on_arc(self as *const Self)
         })
     }
 
@@ -1092,7 +1264,11 @@ impl CommonPoint {
     /// Returns the arc of restriction containing the
     /// vertex.
     pub fn arc(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_CommonPoint_arc(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_arc(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_CommonPoint.hxx`:114 - `ChFiDS_CommonPoint::TransitionOnArc()`
@@ -1100,7 +1276,7 @@ impl CommonPoint {
     /// returned by Arc().
     pub fn transition_on_arc(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_transition_on_arc(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_transition_on_arc(self as *const Self)
         }))
         .unwrap()
     }
@@ -1110,7 +1286,7 @@ impl CommonPoint {
     /// arc returned by the method Arc().
     pub fn parameter_on_arc(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_parameter_on_arc(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_parameter_on_arc(self as *const Self)
         })
     }
 
@@ -1118,7 +1294,7 @@ impl CommonPoint {
     /// Returns the parameter on the spine
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_parameter(self as *const Self)
         })
     }
 
@@ -1126,7 +1302,9 @@ impl CommonPoint {
     /// Returns the 3d point
     pub fn point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_CommonPoint_point(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_point(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1134,7 +1312,7 @@ impl CommonPoint {
     /// Returns TRUE if the output vector is  stored.
     pub fn has_vector(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_CommonPoint_has_vector(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_has_vector(self as *const Self)
         })
     }
 
@@ -1142,7 +1320,9 @@ impl CommonPoint {
     /// Returns the output  3d vector
     pub fn vector(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_CommonPoint_vector(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_CommonPoint_vector(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1153,69 +1333,77 @@ impl CommonPoint {
 
 /// **Source:** `ChFiDS_ElSpine.hxx`:47 - `ChFiDS_ElSpine`
 /// Elementary  Spine for cheminements and approximations.
-pub use crate::ffi::ChFiDS_ElSpine as ElSpine;
+pub use crate::ffi_types::ChFiDS_ElSpine as ElSpine;
 
 unsafe impl crate::CppDeletable for ElSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_ElSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_ElSpine_destructor(ptr);
     }
 }
 
 impl ElSpine {
     /// **Source:** `ChFiDS_ElSpine.hxx`:51 - `ChFiDS_ElSpine::ChFiDS_ElSpine()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ElSpine_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:54 - `ChFiDS_ElSpine::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_shallow_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_shallow_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:56 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_first_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:58 - `ChFiDS_ElSpine::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_last_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:60 - `ChFiDS_ElSpine::GetSavedFirstParameter()`
     pub fn get_saved_first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_get_saved_first_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_get_saved_first_parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:62 - `ChFiDS_ElSpine::GetSavedLastParameter()`
     pub fn get_saved_last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_get_saved_last_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_get_saved_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:64 - `ChFiDS_ElSpine::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_continuity(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -1223,14 +1411,18 @@ impl ElSpine {
     /// **Source:** `ChFiDS_ElSpine.hxx`:66 - `ChFiDS_ElSpine::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_nb_intervals(self as *const Self, S.into())
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:68 - `ChFiDS_ElSpine::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_intervals(self as *const Self, T, S.into())
         })
     }
 
@@ -1243,70 +1435,75 @@ impl ElSpine {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_trim(
-                self as *const Self,
-                First,
-                Last,
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_trim(
+                    self as *const Self,
+                    First,
+                    Last,
+                    Tol,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:79 - `ChFiDS_ElSpine::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_resolution(self as *const Self, R3d)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:81 - `ChFiDS_ElSpine::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_get_type(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_get_type(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:83 - `ChFiDS_ElSpine::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_ElSpine_is_periodic(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:85 - `ChFiDS_ElSpine::SetPeriodic()`
     pub fn set_periodic(&mut self, I: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_set_periodic(self as *mut Self, I)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_set_periodic(self as *mut Self, I)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:87 - `ChFiDS_ElSpine::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_ElSpine_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_period(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:89 - `ChFiDS_ElSpine::Value()`
     pub fn value(&self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_value(
-                self as *const Self,
-                AbsC,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_value(self as *const Self, AbsC),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:91 - `ChFiDS_ElSpine::D0()`
     pub fn d0(&self, AbsC: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_d0(self as *const Self, AbsC, P)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:93 - `ChFiDS_ElSpine::D1()`
     pub fn d1(&self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_d1(self as *const Self, AbsC, P, V1)
         })
     }
 
@@ -1319,7 +1516,7 @@ impl ElSpine {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_d2(self as *const Self, AbsC, P, V1, V2)
         })
     }
 
@@ -1333,68 +1530,74 @@ impl ElSpine {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_d3(self as *const Self, AbsC, P, V1, V2, V3)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:108 - `ChFiDS_ElSpine::FirstParameter()`
     pub fn first_parameter_real(&mut self, P: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_first_parameter_real(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_first_parameter_real(self as *mut Self, P)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:110 - `ChFiDS_ElSpine::LastParameter()`
     pub fn last_parameter_real(&mut self, P: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_last_parameter_real(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_last_parameter_real(self as *mut Self, P)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:112 - `ChFiDS_ElSpine::SaveFirstParameter()`
     pub fn save_first_parameter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_save_first_parameter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_save_first_parameter(self as *mut Self)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:114 - `ChFiDS_ElSpine::SaveLastParameter()`
     pub fn save_last_parameter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_save_last_parameter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_save_last_parameter(self as *mut Self)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:116 - `ChFiDS_ElSpine::SetOrigin()`
     pub fn set_origin(&mut self, O: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_set_origin(self as *mut Self, O)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_set_origin(self as *mut Self, O)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:118 - `ChFiDS_ElSpine::FirstPointAndTgt()`
     pub fn first_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_first_point_and_tgt(self as *const Self, P, T)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_first_point_and_tgt(
+                self as *const Self,
+                P,
+                T,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:120 - `ChFiDS_ElSpine::LastPointAndTgt()`
     pub fn last_point_and_tgt(&self, P: &mut crate::gp::Pnt, T: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_last_point_and_tgt(self as *const Self, P, T)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:122 - `ChFiDS_ElSpine::NbVertices()`
     pub fn nb_vertices(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_ElSpine_nb_vertices(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_nb_vertices(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:124 - `ChFiDS_ElSpine::VertexWithTangent()`
     pub fn vertex_with_tangent(&self, Index: i32) -> &crate::gp::Ax1 {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_ElSpine_vertex_with_tangent(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_vertex_with_tangent(
                 self as *const Self,
                 Index,
             )))
@@ -1404,140 +1607,163 @@ impl ElSpine {
     /// **Source:** `ChFiDS_ElSpine.hxx`:126 - `ChFiDS_ElSpine::SetFirstPointAndTgt()`
     pub fn set_first_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_set_first_point_and_tgt(self as *mut Self, P, T)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_set_first_point_and_tgt(
+                self as *mut Self,
+                P,
+                T,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:128 - `ChFiDS_ElSpine::SetLastPointAndTgt()`
     pub fn set_last_point_and_tgt(&mut self, P: &crate::gp::Pnt, T: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_set_last_point_and_tgt(self as *mut Self, P, T)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_set_last_point_and_tgt(
+                self as *mut Self,
+                P,
+                T,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:130 - `ChFiDS_ElSpine::AddVertexWithTangent()`
     pub fn add_vertex_with_tangent(&mut self, anAx1: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_add_vertex_with_tangent(self as *mut Self, anAx1)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_add_vertex_with_tangent(
+                self as *mut Self,
+                anAx1,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:132 - `ChFiDS_ElSpine::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:134 - `ChFiDS_ElSpine::Previous()`
-    pub fn previous(&self) -> &crate::ffi::HandleChFiDSSurfData {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_ElSpine_previous(self as *const Self))) }
+    pub fn previous(&self) -> &crate::ffi_types::HandleChFiDSSurfData {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_previous(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:136 - `ChFiDS_ElSpine::ChangePrevious()`
-    pub fn change_previous(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
+    pub fn change_previous(&mut self) -> &mut crate::ffi_types::HandleChFiDSSurfData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_ElSpine_change_previous(
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_change_previous(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:138 - `ChFiDS_ElSpine::Next()`
-    pub fn next(&self) -> &crate::ffi::HandleChFiDSSurfData {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_ElSpine_next(self as *const Self))) }
+    pub fn next(&self) -> &crate::ffi_types::HandleChFiDSSurfData {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_next(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:140 - `ChFiDS_ElSpine::ChangeNext()`
-    pub fn change_next(&mut self) -> &mut crate::ffi::HandleChFiDSSurfData {
+    pub fn change_next(&mut self) -> &mut crate::ffi_types::HandleChFiDSSurfData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_ElSpine_change_next(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_change_next(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:142 - `ChFiDS_ElSpine::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_line(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_line(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:144 - `ChFiDS_ElSpine::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_circle(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_circle(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:146 - `ChFiDS_ElSpine::Ellipse()`
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_ellipse(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_ellipse(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:148 - `ChFiDS_ElSpine::Hyperbola()`
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_hyperbola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_hyperbola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:150 - `ChFiDS_ElSpine::Parabola()`
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_parabola(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_parabola(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:152 - `ChFiDS_ElSpine::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_bezier(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_bezier(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:154 - `ChFiDS_ElSpine::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_b_spline(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_b_spline(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::ChFiDS_ElSpine_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ChFiDS_ElSpine.hxx`:49 - `ChFiDS_ElSpine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_ElSpine_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_as_Adaptor3d_Curve(
                 self as *const Self,
             ))
         }
@@ -1546,16 +1772,18 @@ impl ElSpine {
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_as_Adaptor3d_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_ElSpine_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_ElSpine_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1564,89 +1792,97 @@ impl ElSpine {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_ElSpine_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_IsClosed(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_IsClosed(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:123 - `Adaptor3d_Curve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_ElSpine_inherited_DN(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_DN(self as *const Self, U, N),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_Degree(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_IsRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_NbPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_NbKnots(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_ElSpine_inherited_OffsetCurve(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_OffsetCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1654,7 +1890,7 @@ impl ElSpine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_ElSpine_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1667,67 +1903,83 @@ impl ElSpine {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_ElSpine_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_ElSpine_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSElSpine;
+pub use crate::ffi_types::HandleChFiDSElSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSElSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSElSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSElSpine_destructor(ptr);
     }
 }
 
 impl HandleChFiDSElSpine {
     /// Dereference this Handle to access the underlying ChFiDS_ElSpine
-    pub fn get(&self) -> &crate::ffi::ChFiDS_ElSpine {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSElSpine_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_ElSpine {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSElSpine_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_ElSpine
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_ElSpine {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_ElSpine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSElSpine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSElSpine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSElSpine_to_HandleAdaptor3dCurve(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSElSpine_to_HandleAdaptor3dCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ChFiDS_ElSpine> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSElSpine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSElSpine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1739,11 +1991,11 @@ impl HandleChFiDSElSpine {
 
 /// **Source:** `ChFiDS_FaceInterference.hxx`:31 - `ChFiDS_FaceInterference`
 /// interference face/fillet
-pub use crate::ffi::ChFiDS_FaceInterference as FaceInterference;
+pub use crate::ffi_types::ChFiDS_FaceInterference as FaceInterference;
 
 unsafe impl crate::CppDeletable for FaceInterference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_FaceInterference_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_destructor(ptr);
     }
 }
 
@@ -1752,7 +2004,7 @@ impl FaceInterference {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FaceInterference_ctor(),
+                crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_ctor(),
             ))
         }
     }
@@ -1762,11 +2014,11 @@ impl FaceInterference {
         &mut self,
         LineIndex: i32,
         Trans: crate::top_abs::Orientation,
-        PCurv1: &crate::ffi::HandleGeom2dCurve,
-        PCurv2: &crate::ffi::HandleGeom2dCurve,
+        PCurv1: &crate::ffi_types::HandleGeom2dCurve,
+        PCurv2: &crate::ffi_types::HandleGeom2dCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_interference(
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_interference(
                 self as *mut Self,
                 LineIndex,
                 Trans.into(),
@@ -1779,107 +2031,131 @@ impl FaceInterference {
     /// **Source:** `ChFiDS_FaceInterference.hxx`:43 - `ChFiDS_FaceInterference::SetTransition()`
     pub fn set_transition(&mut self, Trans: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_transition(self as *mut Self, Trans.into())
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_transition(
+                self as *mut Self,
+                Trans.into(),
+            )
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:45 - `ChFiDS_FaceInterference::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, U1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_first_parameter(self as *mut Self, U1)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_first_parameter(
+                self as *mut Self,
+                U1,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:47 - `ChFiDS_FaceInterference::SetLastParameter()`
     pub fn set_last_parameter(&mut self, U1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_last_parameter(self as *mut Self, U1)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_last_parameter(
+                self as *mut Self,
+                U1,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:49 - `ChFiDS_FaceInterference::SetParameter()`
     pub fn set_parameter(&mut self, U1: f64, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_parameter(self as *mut Self, U1, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_parameter(
+                self as *mut Self,
+                U1,
+                IsFirst,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:51 - `ChFiDS_FaceInterference::LineIndex()`
     pub fn line_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_line_index(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_line_index(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:53 - `ChFiDS_FaceInterference::SetLineIndex()`
     pub fn set_line_index(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_set_line_index(self as *mut Self, I)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_set_line_index(self as *mut Self, I)
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:55 - `ChFiDS_FaceInterference::Transition()`
     pub fn transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_transition(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_transition(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:57 - `ChFiDS_FaceInterference::PCurveOnFace()`
-    pub fn p_curve_on_face(&self) -> &crate::ffi::HandleGeom2dCurve {
+    pub fn p_curve_on_face(&self) -> &crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FaceInterference_p_curve_on_face(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_p_curve_on_face(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:59 - `ChFiDS_FaceInterference::PCurveOnSurf()`
-    pub fn p_curve_on_surf(&self) -> &crate::ffi::HandleGeom2dCurve {
+    pub fn p_curve_on_surf(&self) -> &crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FaceInterference_p_curve_on_surf(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_p_curve_on_surf(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:61 - `ChFiDS_FaceInterference::ChangePCurveOnFace()`
-    pub fn change_p_curve_on_face(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
+    pub fn change_p_curve_on_face(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_face(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_change_p_curve_on_face(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:63 - `ChFiDS_FaceInterference::ChangePCurveOnSurf()`
-    pub fn change_p_curve_on_surf(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
+    pub fn change_p_curve_on_surf(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_FaceInterference_change_p_curve_on_surf(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_change_p_curve_on_surf(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:65 - `ChFiDS_FaceInterference::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_first_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:67 - `ChFiDS_FaceInterference::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_last_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_last_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_FaceInterference.hxx`:69 - `ChFiDS_FaceInterference::Parameter()`
     pub fn parameter(&self, IsFirst: bool) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FaceInterference_parameter(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_FaceInterference_parameter(
+                self as *const Self,
+                IsFirst,
+            )
         })
     }
 }
@@ -1891,11 +2167,11 @@ impl FaceInterference {
 /// **Source:** `ChFiDS_FilSpine.hxx`:36 - `ChFiDS_FilSpine`
 /// Provides  data specific to  the fillets -
 /// vector or rule  of evolution (C2).
-pub use crate::ffi::ChFiDS_FilSpine as FilSpine;
+pub use crate::ffi_types::ChFiDS_FilSpine as FilSpine;
 
 unsafe impl crate::CppDeletable for FilSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_FilSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_FilSpine_destructor(ptr);
     }
 }
 
@@ -1903,23 +2179,25 @@ impl FilSpine {
     /// **Source:** `ChFiDS_FilSpine.hxx`:40 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_FilSpine_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:42 - `ChFiDS_FilSpine::ChFiDS_FilSpine()`
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_FilSpine_ctor_real(
-                Tol,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_ctor_real(Tol),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:44 - `ChFiDS_FilSpine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_reset(self as *mut Self, AllData)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_reset(self as *mut Self, AllData)
         })
     }
 
@@ -1927,7 +2205,11 @@ impl FilSpine {
     /// initializes the constant vector on edge E.
     pub fn set_radius_real_edge(&mut self, Radius: f64, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_set_radius_real_edge(self as *mut Self, Radius, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_set_radius_real_edge(
+                self as *mut Self,
+                Radius,
+                E,
+            )
         })
     }
 
@@ -1935,7 +2217,7 @@ impl FilSpine {
     /// resets the constant vector  on   edge E.
     pub fn un_set_radius_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_un_set_radius_edge(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_un_set_radius_edge(self as *mut Self, E)
         })
     }
 
@@ -1943,7 +2225,11 @@ impl FilSpine {
     /// initializes the  vector on Vertex V.
     pub fn set_radius_real_vertex(&mut self, Radius: f64, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_set_radius_real_vertex(self as *mut Self, Radius, V)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_set_radius_real_vertex(
+                self as *mut Self,
+                Radius,
+                V,
+            )
         })
     }
 
@@ -1951,7 +2237,7 @@ impl FilSpine {
     /// resets the vector on Vertex V.
     pub fn un_set_radius_vertex(&mut self, V: &crate::topo_ds::Vertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_un_set_radius_vertex(self as *mut Self, V)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_un_set_radius_vertex(self as *mut Self, V)
         })
     }
 
@@ -1959,7 +2245,11 @@ impl FilSpine {
     /// initializes the vector on the point of parameter W.
     pub fn set_radius_xy_int(&mut self, UandR: &crate::gp::XY, IinC: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_set_radius_xy_int(self as *mut Self, UandR, IinC)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_set_radius_xy_int(
+                self as *mut Self,
+                UandR,
+                IinC,
+            )
         })
     }
 
@@ -1967,7 +2257,7 @@ impl FilSpine {
     /// initializes the constant vector on all spine.
     pub fn set_radius_real(&mut self, Radius: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_set_radius_real(self as *mut Self, Radius)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_set_radius_real(self as *mut Self, Radius)
         })
     }
 
@@ -1975,11 +2265,15 @@ impl FilSpine {
     /// initializes the rule of evolution on all spine.
     pub fn set_radius_handlelawfunction_int(
         &mut self,
-        C: &crate::ffi::HandleLawFunction,
+        C: &crate::ffi_types::HandleLawFunction,
         IinC: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_set_radius_handlelawfunction_int(self as *mut Self, C, IinC)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_set_radius_handlelawfunction_int(
+                self as *mut Self,
+                C,
+                IinC,
+            )
         })
     }
 
@@ -1987,7 +2281,9 @@ impl FilSpine {
     /// returns true if the radius is constant
     /// all along the spine.
     pub fn is_constant(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_FilSpine_is_constant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:74 - `ChFiDS_FilSpine::IsConstant()`
@@ -1995,7 +2291,7 @@ impl FilSpine {
     /// all along the edge E.
     pub fn is_constant_int(&self, IE: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_is_constant_int(self as *const Self, IE)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_is_constant_int(self as *const Self, IE)
         })
     }
 
@@ -2003,7 +2299,9 @@ impl FilSpine {
     /// returns the radius if the fillet is constant
     /// all along the spine.
     pub fn radius(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_FilSpine_radius(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_radius(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:82 - `ChFiDS_FilSpine::Radius()`
@@ -2011,7 +2309,7 @@ impl FilSpine {
     /// all along the edge E.
     pub fn radius_int(&self, IE: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_radius_int(self as *const Self, IE)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_radius_int(self as *const Self, IE)
         })
     }
 
@@ -2020,27 +2318,26 @@ impl FilSpine {
     /// all along the edge E.
     pub fn radius_edge(&self, E: &crate::topo_ds::Edge) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_radius_edge(self as *const Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_radius_edge(self as *const Self, E)
         })
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:88 - `ChFiDS_FilSpine::AppendElSpine()`
-    pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_append_el_spine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_append_el_spine(self as *mut Self, Els)
         })
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:90 - `ChFiDS_FilSpine::Law()`
     pub fn law(
         &self,
-        Els: &crate::ffi::HandleChFiDSElSpine,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLawComposite> {
+        Els: &crate::ffi_types::HandleChFiDSElSpine,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleLawComposite> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_FilSpine_law(
-                self as *const Self,
-                Els,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_law(self as *const Self, Els),
+            ))
         }
     }
 
@@ -2055,9 +2352,9 @@ impl FilSpine {
     pub unsafe fn change_law(
         &mut self,
         E: &crate::topo_ds::Edge,
-    ) -> &mut crate::ffi::HandleLawFunction {
+    ) -> &mut crate::ffi_types::HandleLawFunction {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_FilSpine_change_law(
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_FilSpine_change_law(
                 self as *mut Self,
                 E,
             )))
@@ -2068,14 +2365,18 @@ impl FilSpine {
     /// returns the maximum radius if the fillet is non-constant
     pub fn max_rad_from_seq_and_laws(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_max_rad_from_seq_and_laws(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_max_rad_from_seq_and_laws(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FilSpine_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_FilSpine_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2083,7 +2384,7 @@ impl FilSpine {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_get_type_name(),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2091,94 +2392,110 @@ impl FilSpine {
     }
 
     /// **Source:** `ChFiDS_FilSpine.hxx`:98 - `ChFiDS_FilSpine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_FilSpine_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to ChFiDS_Spine
     pub fn as_spine(&self) -> &Spine {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_FilSpine_as_ChFiDS_Spine(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to ChFiDS_Spine (mutable)
     pub fn as_spine_mut(&mut self) -> &mut Spine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_FilSpine_as_ChFiDS_Spine_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_as_ChFiDS_Spine_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_FilSpine_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_FilSpine_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSFilSpine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSFilSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_FilSpine_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:78 - `ChFiDS_Spine::SetEdges()`
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetEdges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetEdges(self as *mut Self, E)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:81 - `ChFiDS_Spine::SetOffsetEdges()`
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetOffsetEdges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetOffsetEdges(
+                self as *mut Self,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:84 - `ChFiDS_Spine::PutInFirst()`
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_PutInFirst(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_PutInFirst(self as *mut Self, E)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:87 - `ChFiDS_Spine::PutInFirstOffset()`
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_PutInFirstOffset(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_PutInFirstOffset(
+                self as *mut Self,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_NbEdges(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_NbEdges(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
     pub fn edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FilSpine_inherited_Edges(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Edges(
                 self as *const Self,
                 I,
             )))
@@ -2188,149 +2505,186 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
     pub fn offset_edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FilSpine_inherited_OffsetEdges(
-                self as *const Self,
-                I,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_OffsetEdges(
+                    self as *const Self,
+                    I,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:97 - `ChFiDS_Spine::SetFirstStatus()`
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetFirstStatus(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetFirstStatus(
+                self as *mut Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:101 - `ChFiDS_Spine::SetLastStatus()`
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetLastStatus(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetLastStatus(
+                self as *mut Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
-    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_AppendOffsetElSpine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_AppendOffsetElSpine(
+                self as *mut Self,
+                Els,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
-    pub fn el_spine(&self, IE: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    pub fn el_spine(&self, IE: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_ElSpine(self as *const Self, IE),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ElSpine(
+                    self as *const Self,
+                    IE,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_FilSpine_inherited_ChangeElSpines(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ChangeElSpines(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ChangeOffsetElSpines(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SplitDone(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SplitDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:129 - `ChFiDS_Spine::Load()`
     pub fn load(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Load(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Load(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Resolution(
+                self as *const Self,
+                R3d,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IsClosed(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IsClosed(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_FirstParameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_FirstParameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_LastParameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_LastParameter(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetFirstParameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetFirstParameter(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetLastParameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetLastParameter(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:152 - `ChFiDS_Spine::Length()`
     pub fn length(&self, IndexSpine: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Length(self as *const Self, IndexSpine)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Length(
+                self as *const Self,
+                IndexSpine,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IsPeriodic(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Period(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Period(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
     pub fn absc(&mut self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Absc(self as *mut Self, U)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Absc(self as *mut Self, U)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Parameter(self as *mut Self, AbsC, U, Oriented)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Parameter(
+                self as *mut Self,
+                AbsC,
+                U,
+                Oriented,
+            )
         })
     }
 
@@ -2338,7 +2692,10 @@ impl FilSpine {
     pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_Value(self as *mut Self, AbsC),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Value(
+                    self as *mut Self,
+                    AbsC,
+                ),
             ))
         }
     }
@@ -2346,14 +2703,14 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_D0(self as *mut Self, AbsC, P)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_D0(self as *mut Self, AbsC, P)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_D1(self as *mut Self, AbsC, P, V1)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_D1(self as *mut Self, AbsC, P, V1)
         })
     }
 
@@ -2366,38 +2723,51 @@ impl FilSpine {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_D2(self as *mut Self, AbsC, P, V1, V2)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_D2(
+                self as *mut Self,
+                AbsC,
+                P,
+                V1,
+                V2,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetCurrent(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetCurrent(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:182 - `ChFiDS_Spine::CurrentElementarySpine()`
     pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::b_rep_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_FilSpine_inherited_CurrentElementarySpine(
-                self as *mut Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_CurrentElementarySpine(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn current_index_of_elementary_spine(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_CurrentIndexOfElementarySpine(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_CurrentIndexOfElementarySpine(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_GetType(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_GetType(self as *const Self)
         }))
         .unwrap()
     }
@@ -2406,7 +2776,7 @@ impl FilSpine {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_Line(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Line(self as *const Self),
             ))
         }
     }
@@ -2415,7 +2785,7 @@ impl FilSpine {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_Circle(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Circle(self as *const Self),
             ))
         }
     }
@@ -2423,7 +2793,7 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:195 - `ChFiDS_Spine::FirstStatus()`
     pub fn first_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_FirstStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_FirstStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -2431,7 +2801,7 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:198 - `ChFiDS_Spine::LastStatus()`
     pub fn last_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_LastStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_LastStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -2439,7 +2809,10 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
     pub fn status(&self, IsFirst: bool) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Status(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Status(
+                self as *const Self,
+                IsFirst,
+            )
         }))
         .unwrap()
     }
@@ -2447,7 +2820,9 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:203 - `ChFiDS_Spine::GetTypeOfConcavity()`
     pub fn get_type_of_concavity(&self) -> crate::ch_fi_ds::TypeOfConcavity {
         crate::ch_fi_ds::TypeOfConcavity::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_GetTypeOfConcavity(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_GetTypeOfConcavity(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2455,14 +2830,18 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetStatus(self as *mut Self, S.into(), IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetStatus(
+                self as *mut Self,
+                S.into(),
+                IsFirst,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:208 - `ChFiDS_Spine::SetTypeOfConcavity()`
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetTypeOfConcavity(
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetTypeOfConcavity(
                 self as *mut Self,
                 theType.into(),
             )
@@ -2472,14 +2851,17 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:212 - `ChFiDS_Spine::IsTangencyExtremity()`
     pub fn is_tangency_extremity(&self, IsFirst: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IsTangencyExtremity(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IsTangencyExtremity(
+                self as *const Self,
+                IsFirst,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetTangencyExtremity(
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetTangencyExtremity(
                 self as *mut Self,
                 IsTangency,
                 IsFirst,
@@ -2491,7 +2873,9 @@ impl FilSpine {
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_FirstVertex(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_FirstVertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2500,7 +2884,9 @@ impl FilSpine {
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_FilSpine_inherited_LastVertex(self as *const Self),
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_LastVertex(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2508,63 +2894,70 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetFirstTgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetFirstTgt(self as *mut Self, W)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetLastTgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetLastTgt(self as *mut Self, W)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn has_first_tgt(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_HasFirstTgt(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_HasFirstTgt(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
     pub fn has_last_tgt(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_HasLastTgt(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_HasLastTgt(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
     pub fn set_reference(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetReference(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetReference(self as *mut Self, W)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
     pub fn index(&self, W: f64, Forward: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Index(self as *const Self, W, Forward)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Index(
+                self as *const Self,
+                W,
+                Forward,
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_UnsetReference(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_UnsetReference(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_SetErrorStatus(self as *mut Self, state.into())
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_SetErrorStatus(
+                self as *mut Self,
+                state.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
     pub fn error_status(&self) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_ErrorStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -2572,7 +2965,7 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:249 - `ChFiDS_Spine::Mode()`
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         crate::ch_fi_ds::ChamfMode::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Mode(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Mode(self as *const Self)
         }))
         .unwrap()
     }
@@ -2580,21 +2973,27 @@ impl FilSpine {
     /// Inherited: **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
     pub fn get_tolesp(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_GetTolesp(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_GetTolesp(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2602,7 +3001,7 @@ impl FilSpine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_FilSpine_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2615,67 +3014,83 @@ impl FilSpine {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_FilSpine_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_FilSpine_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSFilSpine;
+pub use crate::ffi_types::HandleChFiDSFilSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSFilSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSFilSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_destructor(ptr);
     }
 }
 
 impl HandleChFiDSFilSpine {
     /// Dereference this Handle to access the underlying ChFiDS_FilSpine
-    pub fn get(&self) -> &crate::ffi::ChFiDS_FilSpine {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSFilSpine_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_FilSpine {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_FilSpine
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_FilSpine {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_FilSpine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSFilSpine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<ChFiDS_Spine>
-    pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+    pub fn to_handle_spine(&self) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSFilSpine_to_HandleChFiDSSpine(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_to_HandleChFiDSSpine(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ChFiDS_FilSpine> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSFilSpine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSFilSpine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2686,85 +3101,110 @@ impl HandleChFiDSFilSpine {
 // ========================
 
 /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData`
-pub use crate::ffi::ChFiDS_HData as HData;
+pub use crate::ffi_types::ChFiDS_HData as HData;
 
 unsafe impl crate::CppDeletable for HData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_HData_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_HData_destructor(ptr);
     }
 }
 
 impl HData {
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_HData_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_HData_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChFiDS_HData()`
     pub fn new_sequenceofsurfdata(
-        theOther: &crate::ffi::ChFiDS_SequenceOfSurfData,
+        theOther: &crate::ffi_types::ChFiDS_SequenceOfSurfData,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_HData_ctor_sequenceofsurfdata(theOther),
+                crate::ffi_extern_TKFillet::ChFiDS_HData_ctor_sequenceofsurfdata(theOther),
             ))
         }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::ChFiDS_SequenceOfSurfData {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_HData_sequence(self as *const Self))) }
+    pub fn sequence(&self) -> &crate::ffi_types::ChFiDS_SequenceOfSurfData {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_HData_sequence(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
-    pub fn append_handlechfidssurfdata(&mut self, theItem: &crate::ffi::HandleChFiDSSurfData) {
+    pub fn append_handlechfidssurfdata(
+        &mut self,
+        theItem: &crate::ffi_types::HandleChFiDSSurfData,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_HData_append_handlechfidssurfdata(self as *mut Self, theItem)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_append_handlechfidssurfdata(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::Append()`
     pub fn append_sequenceofsurfdata(
         &mut self,
-        theSequence: &mut crate::ffi::ChFiDS_SequenceOfSurfData,
+        theSequence: &mut crate::ffi_types::ChFiDS_SequenceOfSurfData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_HData_append_sequenceofsurfdata(self as *mut Self, theSequence)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_append_sequenceofsurfdata(
+                self as *mut Self,
+                theSequence,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::ChFiDS_SequenceOfSurfData {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::ChFiDS_SequenceOfSurfData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_HData_change_sequence(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_HData_change_sequence(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_HData_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_HData_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ChFiDS_HData_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_HData_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ChFiDS_HData.hxx`:23 - `ChFiDS_HData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_HData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_HData_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_HData_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_HData_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2773,32 +3213,39 @@ impl HData {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_HData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_HData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSHData> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSHData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_HData_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_HData_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2806,7 +3253,7 @@ impl HData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_HData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2819,58 +3266,72 @@ impl HData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_HData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_HData_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSHData;
+pub use crate::ffi_types::HandleChFiDSHData;
 
 unsafe impl crate::CppDeletable for HandleChFiDSHData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSHData_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSHData_destructor(ptr);
     }
 }
 
 impl HandleChFiDSHData {
     /// Dereference this Handle to access the underlying ChFiDS_HData
-    pub fn get(&self) -> &crate::ffi::ChFiDS_HData {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSHData_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_HData {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSHData_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_HData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_HData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_HData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSHData_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSHData_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_HData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSHData_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSHData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2882,11 +3343,11 @@ impl HandleChFiDSHData {
 
 /// **Source:** `ChFiDS_Map.hxx`:31 - `ChFiDS_Map`
 /// Encapsulation of IndexedDataMapOfShapeListOfShape.
-pub use crate::ffi::ChFiDS_Map as Map;
+pub use crate::ffi_types::ChFiDS_Map as Map;
 
 unsafe impl crate::CppDeletable for Map {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_Map_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_Map_destructor(ptr);
     }
 }
 
@@ -2894,7 +3355,11 @@ impl Map {
     /// **Source:** `ChFiDS_Map.hxx`:37 - `ChFiDS_Map::ChFiDS_Map()`
     /// Create an empty Map
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Map_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Map_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:41 - `ChFiDS_Map::Fill()`
@@ -2907,13 +3372,15 @@ impl Map {
         T2: crate::top_abs::ShapeEnum,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Map_fill(self as *mut Self, S, T1.into(), T2.into())
+            crate::ffi_extern_TKFillet::ChFiDS_Map_fill(self as *mut Self, S, T1.into(), T2.into())
         })
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:45 - `ChFiDS_Map::Contains()`
     pub fn contains(&self, S: &crate::topo_ds::Shape) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Map_contains(self as *const Self, S) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Map_contains(self as *const Self, S)
+        })
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:47 - `ChFiDS_Map::FindFromKey()`
@@ -2926,16 +3393,22 @@ impl Map {
     pub unsafe fn find_from_key(
         &self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Map_find_from_key(self as *const Self, S)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Map_find_from_key(
+                self as *const Self,
+                S,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Map.hxx`:51 - `ChFiDS_Map::FindFromIndex()`
-    pub fn find_from_index(&self, I: i32) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn find_from_index(&self, I: i32) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Map_find_from_index(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Map_find_from_index(
+                self as *const Self,
+                I,
+            )))
         }
     }
 }
@@ -2946,64 +3419,78 @@ impl Map {
 
 /// **Source:** `ChFiDS_Regul.hxx`:27 - `ChFiDS_Regul`
 /// Storage of  a curve  and its 2 faces or surfaces of  support.
-pub use crate::ffi::ChFiDS_Regul as Regul;
+pub use crate::ffi_types::ChFiDS_Regul as Regul;
 
 unsafe impl crate::CppDeletable for Regul {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_Regul_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_Regul_destructor(ptr);
     }
 }
 
 impl Regul {
     /// **Source:** `ChFiDS_Regul.hxx`:32 - `ChFiDS_Regul::ChFiDS_Regul()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Regul_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Regul_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:34 - `ChFiDS_Regul::SetCurve()`
     pub fn set_curve(&mut self, IC: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Regul_set_curve(self as *mut Self, IC)
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_set_curve(self as *mut Self, IC)
         })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:36 - `ChFiDS_Regul::SetS1()`
     pub fn set_s1(&mut self, IS1: i32, IsFace: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Regul_set_s1(self as *mut Self, IS1, IsFace)
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_set_s1(self as *mut Self, IS1, IsFace)
         })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:39 - `ChFiDS_Regul::SetS2()`
     pub fn set_s2(&mut self, IS2: i32, IsFace: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Regul_set_s2(self as *mut Self, IS2, IsFace)
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_set_s2(self as *mut Self, IS2, IsFace)
         })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:42 - `ChFiDS_Regul::IsSurface1()`
     pub fn is_surface1(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Regul_is_surface1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_is_surface1(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:44 - `ChFiDS_Regul::IsSurface2()`
     pub fn is_surface2(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Regul_is_surface2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_is_surface2(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:46 - `ChFiDS_Regul::Curve()`
     pub fn curve(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Regul_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:48 - `ChFiDS_Regul::S1()`
     pub fn s1(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Regul_s1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_s1(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Regul.hxx`:50 - `ChFiDS_Regul::S2()`
     pub fn s2(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Regul_s2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Regul_s2(self as *const Self)
+        })
     }
 }
 
@@ -3012,11 +3499,11 @@ impl Regul {
 // ========================
 
 /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1`
-pub use crate::ffi::ChFiDS_SecHArray1 as SecHArray1;
+pub use crate::ffi_types::ChFiDS_SecHArray1 as SecHArray1;
 
 unsafe impl crate::CppDeletable for SecHArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_SecHArray1_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_destructor(ptr);
     }
 }
 
@@ -3024,16 +3511,18 @@ impl SecHArray1 {
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SecHArray1_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SecHArray1_ctor_int2(
-                theLower, theUpper,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_ctor_int2(theLower, theUpper),
+            ))
         }
     }
 
@@ -3045,7 +3534,9 @@ impl SecHArray1 {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_SecHArray1_ctor_int2_circsection(theLower, theUpper, theValue),
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_ctor_int2_circsection(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
@@ -3059,7 +3550,7 @@ impl SecHArray1 {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_SecHArray1_ctor_circsection_int2_bool(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_ctor_circsection_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -3067,34 +3558,38 @@ impl SecHArray1 {
     }
 
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChFiDS_SecHArray1()`
-    pub fn new_secarray1(theOther: &crate::ffi::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
+    pub fn new_secarray1(theOther: &crate::ffi_types::ChFiDS_SecArray1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_SecHArray1_ctor_secarray1(theOther),
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_ctor_secarray1(theOther),
             ))
         }
     }
 
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::Array1()`
-    pub fn array1(&self) -> &crate::ffi::ChFiDS_SecArray1 {
+    pub fn array1(&self) -> &crate::ffi_types::ChFiDS_SecArray1 {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SecHArray1_array1(self as *const Self)))
-        }
-    }
-
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::ChFiDS_SecArray1 {
-        unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SecHArray1_change_array1(
-                self as *mut Self,
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_array1(
+                self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::ChangeArray1()`
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::ChFiDS_SecArray1 {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SecHArray1_dynamic_type(self as *const Self)))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_change_array1(self as *mut Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3102,7 +3597,7 @@ impl SecHArray1 {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ChFiDS_SecHArray1_get_type_name(),
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3110,50 +3605,64 @@ impl SecHArray1 {
     }
 
     /// **Source:** `ChFiDS_SecHArray1.hxx`:23 - `ChFiDS_SecHArray1::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_SecHArray1_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_SecHArray1_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSecHArray1> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSecHArray1> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SecHArray1_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3161,7 +3670,7 @@ impl SecHArray1 {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_SecHArray1_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3174,60 +3683,72 @@ impl SecHArray1 {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SecHArray1_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SecHArray1_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSSecHArray1;
+pub use crate::ffi_types::HandleChFiDSSecHArray1;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSecHArray1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSSecHArray1_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_destructor(ptr);
     }
 }
 
 impl HandleChFiDSSecHArray1 {
     /// Dereference this Handle to access the underlying ChFiDS_SecHArray1
-    pub fn get(&self) -> &crate::ffi::ChFiDS_SecHArray1 {
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_SecHArray1 {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleChFiDSSecHArray1_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_SecHArray1
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SecHArray1 {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_SecHArray1 {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSSecHArray1_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_SecHArray1> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSSecHArray1_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSSecHArray1_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3261,24 +3782,30 @@ impl HandleChFiDSSecHArray1 {
 /// the approach and double the Spine of line C2 with
 /// the known consequences for management of
 /// interactions between KPart Blend in Fil3d.
-pub use crate::ffi::ChFiDS_Spine as Spine;
+pub use crate::ffi_types::ChFiDS_Spine as Spine;
 
 unsafe impl crate::CppDeletable for Spine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_Spine_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_Spine_destructor(ptr);
     }
 }
 
 impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:73 - `ChFiDS_Spine::ChFiDS_Spine()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:75 - `ChFiDS_Spine::ChFiDS_Spine()`
     pub fn new_real(Tol: f64) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_ctor_real(Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_ctor_real(Tol),
+            ))
         }
     }
 
@@ -3286,7 +3813,7 @@ impl Spine {
     /// store edges composing the guideline
     pub fn set_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_edges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_edges(self as *mut Self, E)
         })
     }
 
@@ -3294,7 +3821,7 @@ impl Spine {
     /// store offset edges composing the offset guideline
     pub fn set_offset_edges(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_offset_edges(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_offset_edges(self as *mut Self, E)
         })
     }
 
@@ -3302,7 +3829,7 @@ impl Spine {
     /// store the edge at the first position before all others
     pub fn put_in_first(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_put_in_first(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_put_in_first(self as *mut Self, E)
         })
     }
 
@@ -3310,24 +3837,34 @@ impl Spine {
     /// store the offset edge at the first position before all others
     pub fn put_in_first_offset(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_put_in_first_offset(self as *mut Self, E)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:89 - `ChFiDS_Spine::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_nb_edges(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_nb_edges(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:91 - `ChFiDS_Spine::Edges()`
     pub fn edges(&self, I: i32) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_Spine_edges(self as *const Self, I))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_edges(
+                self as *const Self,
+                I,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:93 - `ChFiDS_Spine::OffsetEdges()`
     pub fn offset_edges(&self, I: i32) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Spine_offset_edges(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_offset_edges(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
@@ -3336,7 +3873,7 @@ impl Spine {
     /// section of free border or forms  a closed contour
     pub fn set_first_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_first_status(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_first_status(self as *mut Self, S.into())
         })
     }
 
@@ -3345,31 +3882,30 @@ impl Spine {
     /// section of free border or forms  a closed contour
     pub fn set_last_status(&mut self, S: crate::ch_fi_ds::State) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_last_status(self as *mut Self, S.into())
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_last_status(self as *mut Self, S.into())
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:103 - `ChFiDS_Spine::AppendElSpine()`
-    pub fn append_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_append_el_spine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_append_el_spine(self as *mut Self, Els)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:105 - `ChFiDS_Spine::AppendOffsetElSpine()`
-    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi::HandleChFiDSElSpine) {
+    pub fn append_offset_el_spine(&mut self, Els: &crate::ffi_types::HandleChFiDSElSpine) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_append_offset_el_spine(self as *mut Self, Els)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_append_offset_el_spine(self as *mut Self, Els)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:107 - `ChFiDS_Spine::ElSpine()`
-    pub fn el_spine_int(&self, IE: i32) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    pub fn el_spine_int(&self, IE: i32) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_el_spine_int(
-                self as *const Self,
-                IE,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_el_spine_int(self as *const Self, IE),
+            ))
         }
     }
 
@@ -3377,59 +3913,59 @@ impl Spine {
     pub fn el_spine_edge(
         &self,
         E: &crate::topo_ds::Edge,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_el_spine_edge(
-                self as *const Self,
-                E,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_el_spine_edge(self as *const Self, E),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:111 - `ChFiDS_Spine::ElSpine()`
-    pub fn el_spine_real(&self, W: f64) -> crate::OwnedPtr<crate::ffi::HandleChFiDSElSpine> {
+    pub fn el_spine_real(&self, W: f64) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSElSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_el_spine_real(
-                self as *const Self,
-                W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_el_spine_real(self as *const Self, W),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:113 - `ChFiDS_Spine::ChangeElSpines()`
-    pub fn change_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Spine_change_el_spines(
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_change_el_spines(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:115 - `ChFiDS_Spine::ChangeOffsetElSpines()`
-    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi::ChFiDS_ListOfHElSpine {
+    pub fn change_offset_el_spines(&mut self) -> &mut crate::ffi_types::ChFiDS_ListOfHElSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Spine_change_offset_el_spines(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_change_offset_el_spines(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:117 - `ChFiDS_Spine::Reset()`
     pub fn reset(&mut self, AllData: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_reset(self as *mut Self, AllData)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_reset(self as *mut Self, AllData)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:119 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_split_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_split_done(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:121 - `ChFiDS_Spine::SplitDone()`
     pub fn split_done_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_split_done_bool(self as *mut Self, B)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_split_done_bool(self as *mut Self, B)
         })
     }
 
@@ -3441,44 +3977,50 @@ impl Spine {
     /// it is necessary to start with preparation otherwise an
     /// exception will be raised
     pub fn load(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::ChFiDS_Spine_load(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_load(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:131 - `ChFiDS_Spine::Resolution()`
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_resolution(self as *const Self, R3d)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:133 - `ChFiDS_Spine::IsClosed()`
     pub fn is_closed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_is_closed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_is_closed(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:135 - `ChFiDS_Spine::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_first_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:137 - `ChFiDS_Spine::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_last_parameter(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_last_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:139 - `ChFiDS_Spine::SetFirstParameter()`
     pub fn set_first_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_first_parameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_first_parameter(self as *mut Self, Par)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:141 - `ChFiDS_Spine::SetLastParameter()`
     pub fn set_last_parameter(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_last_parameter(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_last_parameter(self as *mut Self, Par)
         })
     }
 
@@ -3487,7 +4029,10 @@ impl Spine {
     /// number IndexSp
     pub fn first_parameter_int(&self, IndexSpine: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_first_parameter_int(self as *const Self, IndexSpine)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_first_parameter_int(
+                self as *const Self,
+                IndexSpine,
+            )
         })
     }
 
@@ -3496,7 +4041,10 @@ impl Spine {
     /// IndexSpine (inclus)
     pub fn last_parameter_int(&self, IndexSpine: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_last_parameter_int(self as *const Self, IndexSpine)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_last_parameter_int(
+                self as *const Self,
+                IndexSpine,
+            )
         })
     }
 
@@ -3504,43 +4052,54 @@ impl Spine {
     /// gives the length of ark with number IndexSp
     pub fn length(&self, IndexSpine: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_length(self as *const Self, IndexSpine)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_length(self as *const Self, IndexSpine)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:154 - `ChFiDS_Spine::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_is_periodic(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_is_periodic(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:156 - `ChFiDS_Spine::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_period(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:158 - `ChFiDS_Spine::Absc()`
     pub fn absc_real(&mut self, U: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_absc_real(self as *mut Self, U) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_absc_real(self as *mut Self, U)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:160 - `ChFiDS_Spine::Absc()`
     pub fn absc_real_int(&mut self, U: f64, I: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_absc_real_int(self as *mut Self, U, I)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_absc_real_int(self as *mut Self, U, I)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:162 - `ChFiDS_Spine::Parameter()`
     pub fn parameter_real2_bool(&mut self, AbsC: f64, U: &mut f64, Oriented: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_parameter_real2_bool(self as *mut Self, AbsC, U, Oriented)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_parameter_real2_bool(
+                self as *mut Self,
+                AbsC,
+                U,
+                Oriented,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:166 - `ChFiDS_Spine::Parameter()`
     pub fn parameter_int_real2_bool(&mut self, Index: i32, AbsC: f64, U: &mut f64, Oriented: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_parameter_int_real2_bool(
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_parameter_int_real2_bool(
                 self as *mut Self,
                 Index,
                 AbsC,
@@ -3553,22 +4112,23 @@ impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:171 - `ChFiDS_Spine::Value()`
     pub fn value(&mut self, AbsC: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_value(
-                self as *mut Self,
-                AbsC,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_value(self as *mut Self, AbsC),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:173 - `ChFiDS_Spine::D0()`
     pub fn d0(&mut self, AbsC: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::ChFiDS_Spine_d0(self as *mut Self, AbsC, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_d0(self as *mut Self, AbsC, P)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:175 - `ChFiDS_Spine::D1()`
     pub fn d1(&mut self, AbsC: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_d1(self as *mut Self, AbsC, P, V1)
         })
     }
 
@@ -3581,14 +4141,14 @@ impl Spine {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_d2(self as *mut Self, AbsC, P, V1, V2)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:179 - `ChFiDS_Spine::SetCurrent()`
     pub fn set_current(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_current(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_current(self as *mut Self, Index)
         })
     }
 
@@ -3596,24 +4156,28 @@ impl Spine {
     /// sets the current curve and returns it
     pub fn current_elementary_spine(&mut self, Index: i32) -> &crate::b_rep_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Spine_current_elementary_spine(
-                self as *mut Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_current_elementary_spine(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:184 - `ChFiDS_Spine::CurrentIndexOfElementarySpine()`
     pub fn current_index_of_elementary_spine(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_current_index_of_elementary_spine(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_current_index_of_elementary_spine(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:186 - `ChFiDS_Spine::GetType()`
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_get_type(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -3621,18 +4185,18 @@ impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:188 - `ChFiDS_Spine::Line()`
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_line(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_line(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:190 - `ChFiDS_Spine::Circle()`
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_circle(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_circle(self as *const Self),
+            ))
         }
     }
 
@@ -3642,7 +4206,7 @@ impl Spine {
     /// closed
     pub fn first_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_first_status(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_first_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -3651,7 +4215,7 @@ impl Spine {
     /// returns the state at the end of the set
     pub fn last_status(&self) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_last_status(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_last_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -3659,7 +4223,7 @@ impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:200 - `ChFiDS_Spine::Status()`
     pub fn status(&self, IsFirst: bool) -> crate::ch_fi_ds::State {
         crate::ch_fi_ds::State::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_status(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_status(self as *const Self, IsFirst)
         }))
         .unwrap()
     }
@@ -3668,7 +4232,7 @@ impl Spine {
     /// returns the type of concavity in the connection
     pub fn get_type_of_concavity(&self) -> crate::ch_fi_ds::TypeOfConcavity {
         crate::ch_fi_ds::TypeOfConcavity::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_get_type_of_concavity(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_get_type_of_concavity(self as *const Self)
         }))
         .unwrap()
     }
@@ -3676,7 +4240,11 @@ impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:205 - `ChFiDS_Spine::SetStatus()`
     pub fn set_status(&mut self, S: crate::ch_fi_ds::State, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_status(self as *mut Self, S.into(), IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_status(
+                self as *mut Self,
+                S.into(),
+                IsFirst,
+            )
         })
     }
 
@@ -3684,7 +4252,10 @@ impl Spine {
     /// sets the type of concavity in the connection
     pub fn set_type_of_concavity(&mut self, theType: crate::ch_fi_ds::TypeOfConcavity) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_type_of_concavity(self as *mut Self, theType.into())
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_type_of_concavity(
+                self as *mut Self,
+                theType.into(),
+            )
         })
     }
 
@@ -3693,69 +4264,82 @@ impl Spine {
     /// Tangency point.
     pub fn is_tangency_extremity(&self, IsFirst: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_is_tangency_extremity(self as *const Self, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_is_tangency_extremity(
+                self as *const Self,
+                IsFirst,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:214 - `ChFiDS_Spine::SetTangencyExtremity()`
     pub fn set_tangency_extremity(&mut self, IsTangency: bool, IsFirst: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_tangency_extremity(self as *mut Self, IsTangency, IsFirst)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_tangency_extremity(
+                self as *mut Self,
+                IsTangency,
+                IsFirst,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:216 - `ChFiDS_Spine::Absc()`
     pub fn absc_vertex(&self, V: &crate::topo_ds::Vertex) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_absc_vertex(self as *const Self, V) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_absc_vertex(self as *const Self, V)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:218 - `ChFiDS_Spine::FirstVertex()`
     pub fn first_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_first_vertex(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_first_vertex(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:220 - `ChFiDS_Spine::LastVertex()`
     pub fn last_vertex(&self) -> crate::OwnedPtr<crate::topo_ds::Vertex> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_last_vertex(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_last_vertex(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:222 - `ChFiDS_Spine::SetFirstTgt()`
     pub fn set_first_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_first_tgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_first_tgt(self as *mut Self, W)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:224 - `ChFiDS_Spine::SetLastTgt()`
     pub fn set_last_tgt(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_last_tgt(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_last_tgt(self as *mut Self, W)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:226 - `ChFiDS_Spine::HasFirstTgt()`
     pub fn has_first_tgt(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_has_first_tgt(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_has_first_tgt(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:228 - `ChFiDS_Spine::HasLastTgt()`
     pub fn has_last_tgt(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_has_last_tgt(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_has_last_tgt(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:231 - `ChFiDS_Spine::SetReference()`
     /// set a parameter reference for the approx.
     pub fn set_reference_real(&mut self, W: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_reference_real(self as *mut Self, W)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_reference_real(self as *mut Self, W)
         })
     }
 
@@ -3764,40 +4348,49 @@ impl Spine {
     /// middle  of edge I.
     pub fn set_reference_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_reference_int(self as *mut Self, I)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_reference_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:237 - `ChFiDS_Spine::Index()`
     pub fn index_real_bool(&self, W: f64, Forward: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_index_real_bool(self as *const Self, W, Forward)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_index_real_bool(
+                self as *const Self,
+                W,
+                Forward,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:240 - `ChFiDS_Spine::Index()`
     pub fn index_edge(&self, E: &crate::topo_ds::Edge) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_index_edge(self as *const Self, E) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_index_edge(self as *const Self, E)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:242 - `ChFiDS_Spine::UnsetReference()`
     pub fn unset_reference(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_unset_reference(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_unset_reference(self as *mut Self)
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:244 - `ChFiDS_Spine::SetErrorStatus()`
     pub fn set_error_status(&mut self, state: crate::ch_fi_ds::ErrorStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_set_error_status(self as *mut Self, state.into())
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_set_error_status(
+                self as *mut Self,
+                state.into(),
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:246 - `ChFiDS_Spine::ErrorStatus()`
     pub fn error_status(&self) -> crate::ch_fi_ds::ErrorStatus {
         crate::ch_fi_ds::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_error_status(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -3806,7 +4399,7 @@ impl Spine {
     /// Return the mode of chamfers used
     pub fn mode(&self) -> crate::ch_fi_ds::ChamfMode {
         crate::ch_fi_ds::ChamfMode::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_mode(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_mode(self as *const Self)
         }))
         .unwrap()
     }
@@ -3814,34 +4407,42 @@ impl Spine {
     /// **Source:** `ChFiDS_Spine.hxx`:252 - `ChFiDS_Spine::GetTolesp()`
     /// Return tolesp parameter
     pub fn get_tolesp(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Spine_get_tolesp(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_get_tolesp(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Spine_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ChFiDS_Spine_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ChFiDS_Spine.hxx`:254 - `ChFiDS_Spine::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_Spine_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_Spine_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Spine_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3850,32 +4451,39 @@ impl Spine {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_Spine_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSpine> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSpine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Spine_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -3883,7 +4491,7 @@ impl Spine {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_Spine_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3896,58 +4504,72 @@ impl Spine {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Spine_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Spine_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSSpine;
+pub use crate::ffi_types::HandleChFiDSSpine;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSpine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSSpine_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSSpine_destructor(ptr);
     }
 }
 
 impl HandleChFiDSSpine {
     /// Dereference this Handle to access the underlying ChFiDS_Spine
-    pub fn get(&self) -> &crate::ffi::ChFiDS_Spine {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSSpine_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_Spine {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSpine_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_Spine
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_Spine {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_Spine {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSSpine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSpine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_Spine> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSSpine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSSpine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3957,9 +4579,11 @@ impl HandleChFiDSSpine {
     /// Returns `None` if the handle does not point to a `ChFiDS_ChamfSpine` (or subclass).
     pub fn downcast_to_chamf_spine(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSChamfSpine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleChFiDSChamfSpine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleChFiDSSpine_downcast_to_HandleChFiDSChamfSpine(self as *const Self)
+            crate::ffi_extern_TKFillet::HandleChFiDSSpine_downcast_to_HandleChFiDSChamfSpine(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3973,9 +4597,11 @@ impl HandleChFiDSSpine {
     /// Returns `None` if the handle does not point to a `ChFiDS_FilSpine` (or subclass).
     pub fn downcast_to_fil_spine(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleChFiDSFilSpine>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleChFiDSFilSpine>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleChFiDSSpine_downcast_to_HandleChFiDSFilSpine(self as *const Self)
+            crate::ffi_extern_TKFillet::HandleChFiDSSpine_downcast_to_HandleChFiDSFilSpine(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3991,42 +4617,54 @@ impl HandleChFiDSSpine {
 
 /// **Source:** `ChFiDS_Stripe.hxx`:34 - `ChFiDS_Stripe`
 /// Data characterising a band of fillet.
-pub use crate::ffi::ChFiDS_Stripe as Stripe;
+pub use crate::ffi_types::ChFiDS_Stripe as Stripe;
 
 unsafe impl crate::CppDeletable for Stripe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_Stripe_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_Stripe_destructor(ptr);
     }
 }
 
 impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:38 - `ChFiDS_Stripe::ChFiDS_Stripe()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Stripe_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:41 - `ChFiDS_Stripe::Reset()`
     /// Reset everything except Spine.
     pub fn reset(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::ChFiDS_Stripe_reset(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_reset(self as *mut Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:43 - `ChFiDS_Stripe::SetOfSurfData()`
-    pub fn set_of_surf_data(&self) -> &crate::ffi::HandleChFiDSHData {
+    pub fn set_of_surf_data(&self) -> &crate::ffi_types::HandleChFiDSHData {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Stripe_set_of_surf_data(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_of_surf_data(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:45 - `ChFiDS_Stripe::Spine()`
-    pub fn spine(&self) -> &crate::ffi::HandleChFiDSSpine {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_Stripe_spine(self as *const Self))) }
+    pub fn spine(&self) -> &crate::ffi_types::HandleChFiDSSpine {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_spine(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:47 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn orientation_on_face1(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_on_face1(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_on_face1(self as *const Self)
         }))
         .unwrap()
     }
@@ -4034,36 +4672,42 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:49 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn orientation_on_face2(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_on_face2(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_on_face2(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:51 - `ChFiDS_Stripe::Choix()`
     pub fn choix(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Stripe_choix(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_choix(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:53 - `ChFiDS_Stripe::ChangeSetOfSurfData()`
-    pub fn change_set_of_surf_data(&mut self) -> &mut crate::ffi::HandleChFiDSHData {
+    pub fn change_set_of_surf_data(&mut self) -> &mut crate::ffi_types::HandleChFiDSHData {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Stripe_change_set_of_surf_data(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_set_of_surf_data(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:55 - `ChFiDS_Stripe::ChangeSpine()`
-    pub fn change_spine(&mut self) -> &mut crate::ffi::HandleChFiDSSpine {
+    pub fn change_spine(&mut self) -> &mut crate::ffi_types::HandleChFiDSSpine {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Stripe_change_spine(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_spine(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:57 - `ChFiDS_Stripe::OrientationOnFace1()`
     pub fn orientation_on_face1_orientation(&mut self, Or1: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_on_face1_orientation(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_on_face1_orientation(
                 self as *mut Self,
                 Or1.into(),
             )
@@ -4073,7 +4717,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:59 - `ChFiDS_Stripe::OrientationOnFace2()`
     pub fn orientation_on_face2_orientation(&mut self, Or2: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_on_face2_orientation(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_on_face2_orientation(
                 self as *mut Self,
                 Or2.into(),
             )
@@ -4083,98 +4727,122 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:61 - `ChFiDS_Stripe::Choix()`
     pub fn choix_int(&mut self, C: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_choix_int(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_choix_int(self as *mut Self, C)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:63 - `ChFiDS_Stripe::FirstParameters()`
     pub fn first_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_first_parameters(self as *const Self, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_first_parameters(
+                self as *const Self,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:65 - `ChFiDS_Stripe::LastParameters()`
     pub fn last_parameters(&self, Pdeb: &mut f64, Pfin: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_last_parameters(self as *const Self, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_last_parameters(
+                self as *const Self,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:67 - `ChFiDS_Stripe::ChangeFirstParameters()`
     pub fn change_first_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_first_parameters(self as *mut Self, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_first_parameters(
+                self as *mut Self,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:69 - `ChFiDS_Stripe::ChangeLastParameters()`
     pub fn change_last_parameters(&mut self, Pdeb: f64, Pfin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_last_parameters(self as *mut Self, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_last_parameters(
+                self as *mut Self,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:71 - `ChFiDS_Stripe::FirstCurve()`
     pub fn first_curve(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Stripe_first_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_first_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:73 - `ChFiDS_Stripe::LastCurve()`
     pub fn last_curve(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Stripe_last_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_last_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:75 - `ChFiDS_Stripe::ChangeFirstCurve()`
     pub fn change_first_curve(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_first_curve(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_first_curve(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:77 - `ChFiDS_Stripe::ChangeLastCurve()`
     pub fn change_last_curve(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_last_curve(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_last_curve(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:79 - `ChFiDS_Stripe::FirstPCurve()`
-    pub fn first_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+    pub fn first_p_curve(&self) -> &crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Stripe_first_p_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_first_p_curve(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:81 - `ChFiDS_Stripe::LastPCurve()`
-    pub fn last_p_curve(&self) -> &crate::ffi::HandleGeom2dCurve {
+    pub fn last_p_curve(&self) -> &crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Stripe_last_p_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_last_p_curve(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:83 - `ChFiDS_Stripe::ChangeFirstPCurve()`
-    pub fn change_first_p_curve(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
+    pub fn change_first_p_curve(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Stripe_change_first_p_curve(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_first_p_curve(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:85 - `ChFiDS_Stripe::ChangeLastPCurve()`
-    pub fn change_last_p_curve(&mut self) -> &mut crate::ffi::HandleGeom2dCurve {
+    pub fn change_last_p_curve(&mut self) -> &mut crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Stripe_change_last_p_curve(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_last_p_curve(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:87 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn first_p_curve_orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_first_p_curve_orientation(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_first_p_curve_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -4182,7 +4850,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:89 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn last_p_curve_orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_last_p_curve_orientation(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_last_p_curve_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -4190,7 +4858,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:91 - `ChFiDS_Stripe::FirstPCurveOrientation()`
     pub fn first_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_first_p_curve_orientation_orientation(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_first_p_curve_orientation_orientation(
                 self as *mut Self,
                 O.into(),
             )
@@ -4200,7 +4868,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:93 - `ChFiDS_Stripe::LastPCurveOrientation()`
     pub fn last_p_curve_orientation_orientation(&mut self, O: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_last_p_curve_orientation_orientation(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_last_p_curve_orientation_orientation(
                 self as *mut Self,
                 O.into(),
             )
@@ -4210,96 +4878,123 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:95 - `ChFiDS_Stripe::IndexFirstPointOnS1()`
     pub fn index_first_point_on_s1(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_index_first_point_on_s1(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_index_first_point_on_s1(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:97 - `ChFiDS_Stripe::IndexFirstPointOnS2()`
     pub fn index_first_point_on_s2(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_index_first_point_on_s2(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_index_first_point_on_s2(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:99 - `ChFiDS_Stripe::IndexLastPointOnS1()`
     pub fn index_last_point_on_s1(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_index_last_point_on_s1(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_index_last_point_on_s1(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:101 - `ChFiDS_Stripe::IndexLastPointOnS2()`
     pub fn index_last_point_on_s2(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_index_last_point_on_s2(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_index_last_point_on_s2(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:103 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS1()`
     pub fn change_index_first_point_on_s1(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s1(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_index_first_point_on_s1(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:105 - `ChFiDS_Stripe::ChangeIndexFirstPointOnS2()`
     pub fn change_index_first_point_on_s2(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_index_first_point_on_s2(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_index_first_point_on_s2(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:107 - `ChFiDS_Stripe::ChangeIndexLastPointOnS1()`
     pub fn change_index_last_point_on_s1(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s1(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_index_last_point_on_s1(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:109 - `ChFiDS_Stripe::ChangeIndexLastPointOnS2()`
     pub fn change_index_last_point_on_s2(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_change_index_last_point_on_s2(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_index_last_point_on_s2(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:111 - `ChFiDS_Stripe::Parameters()`
     pub fn parameters(&self, First: bool, Pdeb: &mut f64, Pfin: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_parameters(self as *const Self, First, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_parameters(
+                self as *const Self,
+                First,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:115 - `ChFiDS_Stripe::SetParameters()`
     pub fn set_parameters(&mut self, First: bool, Pdeb: f64, Pfin: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_parameters(self as *mut Self, First, Pdeb, Pfin)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_parameters(
+                self as *mut Self,
+                First,
+                Pdeb,
+                Pfin,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:119 - `ChFiDS_Stripe::Curve()`
     pub fn curve(&self, First: bool) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Stripe_curve(self as *const Self, First) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_curve(self as *const Self, First)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:121 - `ChFiDS_Stripe::SetCurve()`
     pub fn set_curve(&mut self, Index: i32, First: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_curve(self as *mut Self, Index, First)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_curve(self as *mut Self, Index, First)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:123 - `ChFiDS_Stripe::PCurve()`
-    pub fn p_curve(&self, First: bool) -> &crate::ffi::HandleGeom2dCurve {
+    pub fn p_curve(&self, First: bool) -> &crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Stripe_p_curve(self as *const Self, First)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_p_curve(
+                self as *const Self,
+                First,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:125 - `ChFiDS_Stripe::ChangePCurve()`
-    pub fn change_p_curve(&mut self, First: bool) -> &mut crate::ffi::HandleGeom2dCurve {
+    pub fn change_p_curve(&mut self, First: bool) -> &mut crate::ffi_types::HandleGeom2dCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_Stripe_change_p_curve(
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_change_p_curve(
                 self as *mut Self,
                 First,
             )))
@@ -4309,7 +5004,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:127 - `ChFiDS_Stripe::Orientation()`
     pub fn orientation_int(&self, OnS: i32) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_int(self as *const Self, OnS)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_int(self as *const Self, OnS)
         }))
         .unwrap()
     }
@@ -4317,7 +5012,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:129 - `ChFiDS_Stripe::SetOrientation()`
     pub fn set_orientation_orientation_int(&mut self, Or: crate::top_abs::Orientation, OnS: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_orientation_orientation_int(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_orientation_orientation_int(
                 self as *mut Self,
                 Or.into(),
                 OnS,
@@ -4328,7 +5023,7 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:131 - `ChFiDS_Stripe::Orientation()`
     pub fn orientation_bool(&self, First: bool) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_orientation_bool(self as *const Self, First)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_orientation_bool(self as *const Self, First)
         }))
         .unwrap()
     }
@@ -4340,7 +5035,7 @@ impl Stripe {
         First: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_orientation_orientation_bool(
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_orientation_orientation_bool(
                 self as *mut Self,
                 Or.into(),
                 First,
@@ -4351,26 +5046,33 @@ impl Stripe {
     /// **Source:** `ChFiDS_Stripe.hxx`:135 - `ChFiDS_Stripe::IndexPoint()`
     pub fn index_point(&self, First: bool, OnS: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_index_point(self as *const Self, First, OnS)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_index_point(self as *const Self, First, OnS)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:138 - `ChFiDS_Stripe::SetIndexPoint()`
     pub fn set_index_point(&mut self, Index: i32, First: bool, OnS: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_index_point(self as *mut Self, Index, First, OnS)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_index_point(
+                self as *mut Self,
+                Index,
+                First,
+                OnS,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:142 - `ChFiDS_Stripe::SolidIndex()`
     pub fn solid_index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_Stripe_solid_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_solid_index(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:144 - `ChFiDS_Stripe::SetSolidIndex()`
     pub fn set_solid_index(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_set_solid_index(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_set_solid_index(self as *mut Self, Index)
         })
     }
 
@@ -4378,7 +5080,7 @@ impl Stripe {
     /// Set nb of SurfData's at end put in DS
     pub fn in_ds(&mut self, First: bool, Nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_in_ds(self as *mut Self, First, Nb)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_in_ds(self as *mut Self, First, Nb)
         })
     }
 
@@ -4386,35 +5088,41 @@ impl Stripe {
     /// Returns nb of SurfData's at end being in DS
     pub fn is_in_ds(&self, First: bool) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_is_in_ds(self as *const Self, First)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_is_in_ds(self as *const Self, First)
         })
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_Stripe_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::ChFiDS_Stripe_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `ChFiDS_Stripe.hxx`:152 - `ChFiDS_Stripe::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_Stripe_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_Stripe_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_Stripe_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4423,34 +5131,39 @@ impl Stripe {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_Stripe_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSStripe> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSStripe> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_Stripe_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -4458,7 +5171,7 @@ impl Stripe {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_Stripe_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4471,58 +5184,72 @@ impl Stripe {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_Stripe_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_Stripe_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSStripe;
+pub use crate::ffi_types::HandleChFiDSStripe;
 
 unsafe impl crate::CppDeletable for HandleChFiDSStripe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSStripe_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSStripe_destructor(ptr);
     }
 }
 
 impl HandleChFiDSStripe {
     /// Dereference this Handle to access the underlying ChFiDS_Stripe
-    pub fn get(&self) -> &crate::ffi::ChFiDS_Stripe {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSStripe_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_Stripe {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSStripe_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_Stripe
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_Stripe {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_Stripe {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSStripe_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSStripe_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_Stripe> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSStripe_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSStripe_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4534,11 +5261,11 @@ impl HandleChFiDSStripe {
 
 /// **Source:** `ChFiDS_StripeMap.hxx`:31 - `ChFiDS_StripeMap`
 /// encapsulation of IndexedDataMapOfVertexListOfStripe
-pub use crate::ffi::ChFiDS_StripeMap as StripeMap;
+pub use crate::ffi_types::ChFiDS_StripeMap as StripeMap;
 
 unsafe impl crate::CppDeletable for StripeMap {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_StripeMap_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_StripeMap_destructor(ptr);
     }
 }
 
@@ -4546,20 +5273,24 @@ impl StripeMap {
     /// **Source:** `ChFiDS_StripeMap.hxx`:36 - `ChFiDS_StripeMap::ChFiDS_StripeMap()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_StripeMap_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_StripeMap_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:38 - `ChFiDS_StripeMap::Add()`
-    pub fn add(&mut self, V: &crate::topo_ds::Vertex, F: &crate::ffi::HandleChFiDSStripe) {
+    pub fn add(&mut self, V: &crate::topo_ds::Vertex, F: &crate::ffi_types::HandleChFiDSStripe) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_StripeMap_add(self as *mut Self, V, F)
+            crate::ffi_extern_TKFillet::ChFiDS_StripeMap_add(self as *mut Self, V, F)
         })
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:40 - `ChFiDS_StripeMap::Extent()`
     pub fn extent(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_StripeMap_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_StripeMap_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:42 - `ChFiDS_StripeMap::FindFromKey()`
@@ -4572,9 +5303,9 @@ impl StripeMap {
     pub unsafe fn find_from_key(
         &self,
         V: &crate::topo_ds::Vertex,
-    ) -> &crate::ffi::ChFiDS_ListOfStripe {
+    ) -> &crate::ffi_types::ChFiDS_ListOfStripe {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_StripeMap_find_from_key(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_StripeMap_find_from_key(
                 self as *const Self,
                 V,
             )))
@@ -4582,9 +5313,9 @@ impl StripeMap {
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:46 - `ChFiDS_StripeMap::FindFromIndex()`
-    pub fn find_from_index(&self, I: i32) -> &crate::ffi::ChFiDS_ListOfStripe {
+    pub fn find_from_index(&self, I: i32) -> &crate::ffi_types::ChFiDS_ListOfStripe {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_StripeMap_find_from_index(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_StripeMap_find_from_index(
                 self as *const Self,
                 I,
             )))
@@ -4594,13 +5325,18 @@ impl StripeMap {
     /// **Source:** `ChFiDS_StripeMap.hxx`:50 - `ChFiDS_StripeMap::FindKey()`
     pub fn find_key(&self, I: i32) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_StripeMap_find_key(self as *const Self, I)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_StripeMap_find_key(
+                self as *const Self,
+                I,
+            )))
         }
     }
 
     /// **Source:** `ChFiDS_StripeMap.hxx`:52 - `ChFiDS_StripeMap::Clear()`
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::ChFiDS_StripeMap_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_StripeMap_clear(self as *mut Self)
+        })
     }
 }
 
@@ -4611,11 +5347,11 @@ impl StripeMap {
 /// **Source:** `ChFiDS_SurfData.hxx`:35 - `ChFiDS_SurfData`
 /// data structure for all information related to  the
 /// fillet and to 2 faces vis a vis
-pub use crate::ffi::ChFiDS_SurfData as SurfData;
+pub use crate::ffi_types::ChFiDS_SurfData as SurfData;
 
 unsafe impl crate::CppDeletable for SurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ChFiDS_SurfData_destructor(ptr);
+        crate::ffi_extern_TKFillet::ChFiDS_SurfData_destructor(ptr);
     }
 }
 
@@ -4623,60 +5359,72 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:39 - `ChFiDS_SurfData::ChFiDS_SurfData()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SurfData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:41 - `ChFiDS_SurfData::Copy()`
-    pub fn copy(&mut self, Other: &crate::ffi::HandleChFiDSSurfData) {
+    pub fn copy(&mut self, Other: &crate::ffi_types::HandleChFiDSSurfData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_copy(self as *mut Self, Other)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_copy(self as *mut Self, Other)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:43 - `ChFiDS_SurfData::IndexOfS1()`
     pub fn index_of_s1(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_index_of_s1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index_of_s1(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:45 - `ChFiDS_SurfData::IndexOfS2()`
     pub fn index_of_s2(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_index_of_s2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index_of_s2(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:47 - `ChFiDS_SurfData::IsOnCurve1()`
     pub fn is_on_curve1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_is_on_curve1(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_is_on_curve1(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:49 - `ChFiDS_SurfData::IsOnCurve2()`
     pub fn is_on_curve2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_is_on_curve2(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_is_on_curve2(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:51 - `ChFiDS_SurfData::IndexOfC1()`
     pub fn index_of_c1(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_index_of_c1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index_of_c1(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:53 - `ChFiDS_SurfData::IndexOfC2()`
     pub fn index_of_c2(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_index_of_c2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index_of_c2(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:55 - `ChFiDS_SurfData::Surf()`
     pub fn surf(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_surf(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_surf(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:57 - `ChFiDS_SurfData::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_orientation(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -4684,7 +5432,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:59 - `ChFiDS_SurfData::InterferenceOnS1()`
     pub fn interference_on_s1(&self) -> &FaceInterference {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_interference_on_s1(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_interference_on_s1(
                 self as *const Self,
             )))
         }
@@ -4693,7 +5441,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:61 - `ChFiDS_SurfData::InterferenceOnS2()`
     pub fn interference_on_s2(&self) -> &FaceInterference {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_interference_on_s2(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_interference_on_s2(
                 self as *const Self,
             )))
         }
@@ -4702,7 +5450,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:63 - `ChFiDS_SurfData::VertexFirstOnS1()`
     pub fn vertex_first_on_s1(&self) -> &CommonPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_vertex_first_on_s1(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_vertex_first_on_s1(
                 self as *const Self,
             )))
         }
@@ -4711,7 +5459,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:65 - `ChFiDS_SurfData::VertexFirstOnS2()`
     pub fn vertex_first_on_s2(&self) -> &CommonPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_vertex_first_on_s2(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_vertex_first_on_s2(
                 self as *const Self,
             )))
         }
@@ -4720,7 +5468,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:67 - `ChFiDS_SurfData::VertexLastOnS1()`
     pub fn vertex_last_on_s1(&self) -> &CommonPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_vertex_last_on_s1(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_vertex_last_on_s1(
                 self as *const Self,
             )))
         }
@@ -4729,7 +5477,7 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:69 - `ChFiDS_SurfData::VertexLastOnS2()`
     pub fn vertex_last_on_s2(&self) -> &CommonPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_vertex_last_on_s2(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_vertex_last_on_s2(
                 self as *const Self,
             )))
         }
@@ -4738,35 +5486,35 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:71 - `ChFiDS_SurfData::ChangeIndexOfS1()`
     pub fn change_index_of_s1(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_change_index_of_s1(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_index_of_s1(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:73 - `ChFiDS_SurfData::ChangeIndexOfS2()`
     pub fn change_index_of_s2(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_change_index_of_s2(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_index_of_s2(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:75 - `ChFiDS_SurfData::ChangeSurf()`
     pub fn change_surf(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_change_surf(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_surf(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:77 - `ChFiDS_SurfData::SetIndexOfC1()`
     pub fn set_index_of_c1(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_set_index_of_c1(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_set_index_of_c1(self as *mut Self, Index)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:79 - `ChFiDS_SurfData::SetIndexOfC2()`
     pub fn set_index_of_c2(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_set_index_of_c2(self as *mut Self, Index)
         })
     }
 
@@ -4774,7 +5522,7 @@ impl SurfData {
     pub fn change_orientation(&mut self) -> &mut crate::top_abs::Orientation {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_SurfData_change_orientation(self as *mut Self)
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_orientation(self as *mut Self)
             });
             unsafe { &mut *(__val as *mut crate::top_abs::Orientation) }
         }
@@ -4783,61 +5531,73 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:83 - `ChFiDS_SurfData::ChangeInterferenceOnS1()`
     pub fn change_interference_on_s1(&mut self) -> &mut FaceInterference {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_interference_on_s1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_interference_on_s1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:85 - `ChFiDS_SurfData::ChangeInterferenceOnS2()`
     pub fn change_interference_on_s2(&mut self) -> &mut FaceInterference {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_interference_on_s2(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_interference_on_s2(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:87 - `ChFiDS_SurfData::ChangeVertexFirstOnS1()`
     pub fn change_vertex_first_on_s1(&mut self) -> &mut CommonPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_vertex_first_on_s1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:89 - `ChFiDS_SurfData::ChangeVertexFirstOnS2()`
     pub fn change_vertex_first_on_s2(&mut self) -> &mut CommonPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_vertex_first_on_s2(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_vertex_first_on_s2(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:91 - `ChFiDS_SurfData::ChangeVertexLastOnS1()`
     pub fn change_vertex_last_on_s1(&mut self) -> &mut CommonPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_vertex_last_on_s1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:93 - `ChFiDS_SurfData::ChangeVertexLastOnS2()`
     pub fn change_vertex_last_on_s2(&mut self) -> &mut CommonPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_vertex_last_on_s2(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_vertex_last_on_s2(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:95 - `ChFiDS_SurfData::Interference()`
     pub fn interference(&self, OnS: i32) -> &FaceInterference {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_interference(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_interference(
                 self as *const Self,
                 OnS,
             )))
@@ -4847,16 +5607,20 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:97 - `ChFiDS_SurfData::ChangeInterference()`
     pub fn change_interference(&mut self, OnS: i32) -> &mut FaceInterference {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_interference(
-                self as *mut Self,
-                OnS,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_interference(
+                    self as *mut Self,
+                    OnS,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:99 - `ChFiDS_SurfData::Index()`
     pub fn index(&self, OfS: i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_index(self as *const Self, OfS) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index(self as *const Self, OfS)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:103 - `ChFiDS_SurfData::Vertex()`
@@ -4864,7 +5628,7 @@ impl SurfData {
     /// or wrong and OnS equals 1 or 2.
     pub fn vertex(&self, First: bool, OnS: i32) -> &CommonPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_vertex(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_vertex(
                 self as *const Self,
                 First,
                 OnS,
@@ -4877,7 +5641,7 @@ impl SurfData {
     /// or wrong and OnS equals 1 or 2.
     pub fn change_vertex(&mut self, First: bool, OnS: i32) -> &mut CommonPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ChFiDS_SurfData_change_vertex(
+            &mut *(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_change_vertex(
                 self as *mut Self,
                 First,
                 OnS,
@@ -4888,93 +5652,105 @@ impl SurfData {
     /// **Source:** `ChFiDS_SurfData.hxx`:111 - `ChFiDS_SurfData::IsOnCurve()`
     pub fn is_on_curve(&self, OnS: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_is_on_curve(self as *const Self, OnS)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_is_on_curve(self as *const Self, OnS)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:113 - `ChFiDS_SurfData::IndexOfC()`
     pub fn index_of_c(&self, OnS: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_index_of_c(self as *const Self, OnS)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_index_of_c(self as *const Self, OnS)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:115 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn first_spine_param(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_first_spine_param(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_first_spine_param(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:117 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn last_spine_param(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_last_spine_param(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_last_spine_param(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:119 - `ChFiDS_SurfData::FirstSpineParam()`
     pub fn first_spine_param_real(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_first_spine_param_real(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_first_spine_param_real(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:121 - `ChFiDS_SurfData::LastSpineParam()`
     pub fn last_spine_param_real(&mut self, Par: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_last_spine_param_real(self as *mut Self, Par)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_last_spine_param_real(
+                self as *mut Self,
+                Par,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:123 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn first_extension_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_first_extension_value(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_first_extension_value(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:125 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn last_extension_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_last_extension_value(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_last_extension_value(self as *const Self)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:127 - `ChFiDS_SurfData::FirstExtensionValue()`
     pub fn first_extension_value_real(&mut self, Extend: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_first_extension_value_real(self as *mut Self, Extend)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_first_extension_value_real(
+                self as *mut Self,
+                Extend,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:129 - `ChFiDS_SurfData::LastExtensionValue()`
     pub fn last_extension_value_real(&mut self, Extend: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_last_extension_value_real(self as *mut Self, Extend)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_last_extension_value_real(
+                self as *mut Self,
+                Extend,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:131 - `ChFiDS_SurfData::Simul()`
-    pub fn simul(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn simul(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SurfData_simul(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_simul(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:133 - `ChFiDS_SurfData::SetSimul()`
-    pub fn set_simul(&mut self, S: &crate::ffi::HandleStandardTransient) {
+    pub fn set_simul(&mut self, S: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_set_simul(self as *mut Self, S)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_set_simul(self as *mut Self, S)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:135 - `ChFiDS_SurfData::ResetSimul()`
     pub fn reset_simul(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_reset_simul(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_reset_simul(self as *mut Self)
         })
     }
 
@@ -4986,7 +5762,11 @@ impl SurfData {
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ChFiDS_SurfData_get2d_points_bool_int(self as *const Self, First, OnS),
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_get2d_points_bool_int(
+                    self as *const Self,
+                    First,
+                    OnS,
+                ),
             ))
         }
     }
@@ -5000,7 +5780,7 @@ impl SurfData {
         P2dl2: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_get2d_points_pnt2d4(
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_get2d_points_pnt2d4(
                 self as *const Self,
                 P2df1,
                 P2dl1,
@@ -5019,38 +5799,50 @@ impl SurfData {
         P2dl2: &crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_set2d_points(self as *mut Self, P2df1, P2dl1, P2df2, P2dl2)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_set2d_points(
+                self as *mut Self,
+                P2df1,
+                P2dl1,
+                P2df2,
+                P2dl2,
+            )
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:150 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn twist_on_s1(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_twist_on_s1(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:152 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn twist_on_s2(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::ChFiDS_SurfData_twist_on_s2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_twist_on_s2(self as *const Self)
+        })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:154 - `ChFiDS_SurfData::TwistOnS1()`
     pub fn twist_on_s1_bool(&mut self, T: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_twist_on_s1_bool(self as *mut Self, T)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_twist_on_s1_bool(self as *mut Self, T)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:156 - `ChFiDS_SurfData::TwistOnS2()`
     pub fn twist_on_s2_bool(&mut self, T: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_twist_on_s2_bool(self as *mut Self, T)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_twist_on_s2_bool(self as *mut Self, T)
         })
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ChFiDS_SurfData_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::ChFiDS_SurfData_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -5058,7 +5850,7 @@ impl SurfData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ChFiDS_SurfData_get_type_name(),
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5066,50 +5858,64 @@ impl SurfData {
     }
 
     /// **Source:** `ChFiDS_SurfData.hxx`:158 - `ChFiDS_SurfData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ChFiDS_SurfData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ChFiDS_SurfData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ChFiDS_SurfData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleChFiDSSurfData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleChFiDSSurfData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ChFiDS_SurfData_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5117,7 +5923,7 @@ impl SurfData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ChFiDS_SurfData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -5130,58 +5936,72 @@ impl SurfData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ChFiDS_SurfData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::ChFiDS_SurfData_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleChFiDSSurfData;
+pub use crate::ffi_types::HandleChFiDSSurfData;
 
 unsafe impl crate::CppDeletable for HandleChFiDSSurfData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleChFiDSSurfData_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleChFiDSSurfData_destructor(ptr);
     }
 }
 
 impl HandleChFiDSSurfData {
     /// Dereference this Handle to access the underlying ChFiDS_SurfData
-    pub fn get(&self) -> &crate::ffi::ChFiDS_SurfData {
-        unsafe { &*crate::check_result(crate::ffi::HandleChFiDSSurfData_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::ChFiDS_SurfData {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSurfData_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying ChFiDS_SurfData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ChFiDS_SurfData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ChFiDS_SurfData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleChFiDSSurfData_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleChFiDSSurfData_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<ChFiDS_SurfData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleChFiDSSurfData_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleChFiDSSurfData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5191,7 +6011,7 @@ impl HandleChFiDSSurfData {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     ChFiDS_ListOfHElSpine as ListOfHElSpine, ChFiDS_ListOfStripe as ListOfStripe,
     ChFiDS_SecArray1 as SecArray1, ChFiDS_SequenceOfSurfData as SequenceOfSurfData,
 };

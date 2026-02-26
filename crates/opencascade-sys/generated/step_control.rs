@@ -57,7 +57,7 @@ impl TryFrom<i32> for StepModelType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleSTEPCAFControlActorWrite, HandleSTEPCAFControlController, HandleStandardTransient,
     HandleTransferActorOfFinderProcess, HandleTransferActorOfProcessForFinder,
     HandleTransferActorOfProcessForTransient, HandleTransferActorOfTransientProcess,
@@ -74,43 +74,41 @@ pub use crate::ffi::{
 ///
 /// I.E. for each type of Entity, it invokes the appropriate Tool
 /// then returns the Binder which contains the Result
-pub use crate::ffi::STEPControl_ActorRead as ActorRead;
+pub use crate::ffi_types::STEPControl_ActorRead as ActorRead;
 
 unsafe impl crate::CppDeletable for ActorRead {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::STEPControl_ActorRead_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_destructor(ptr);
     }
 }
 
 impl ActorRead {
     /// **Source:** `STEPControl_ActorRead.hxx`:66 - `STEPControl_ActorRead::STEPControl_ActorRead()`
     pub fn new_handleinterfaceinterfacemodel(
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_ctor_handleinterfaceinterfacemodel(theModel)))
         }
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:68 - `STEPControl_ActorRead::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_recognize(self as *mut Self, start)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_recognize(self as *mut Self, start)
         })
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:71 - `STEPControl_ActorRead::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_transfer(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_transfer(
                     self as *mut Self,
                     start,
                     TP,
@@ -125,16 +123,16 @@ impl ActorRead {
     /// shape
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theLocalFactors: &crate::step_data::Factors,
         isManifold: bool,
         theUseTrsf: bool,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_transfer_shape(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_transfer_shape(
                     self as *mut Self,
                     start,
                     TP,
@@ -151,12 +149,12 @@ impl ActorRead {
     /// set units and tolerances context by given ShapeRepresentation
     pub fn prepare_units(
         &mut self,
-        rep: &crate::ffi::HandleStepReprRepresentation,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        rep: &crate::ffi_types::HandleStepReprRepresentation,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theLocalFactors: &mut crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_prepare_units(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_prepare_units(
                 self as *mut Self,
                 rep,
                 TP,
@@ -170,11 +168,11 @@ impl ActorRead {
     /// (mm, radians, read.precision.val, etc.)
     pub fn reset_units(
         &mut self,
-        theModel: &mut crate::ffi::HandleStepDataStepModel,
+        theModel: &mut crate::ffi_types::HandleStepDataStepModel,
         theLocalFactors: &mut crate::step_data::Factors,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_reset_units(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_reset_units(
                 self as *mut Self,
                 theModel,
                 theLocalFactors,
@@ -184,9 +182,9 @@ impl ActorRead {
 
     /// **Source:** `STEPControl_ActorRead.hxx`:97 - `STEPControl_ActorRead::SetModel()`
     /// Set model
-    pub fn set_model(&mut self, theModel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, theModel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_set_model(self as *mut Self, theModel)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_set_model(self as *mut Self, theModel)
         })
     }
 
@@ -197,16 +195,16 @@ impl ActorRead {
     /// Returns True if transformation is computed and is not an identity.
     pub fn compute_transformation(
         &mut self,
-        Origin: &crate::ffi::HandleStepGeomAxis2Placement3d,
-        Target: &crate::ffi::HandleStepGeomAxis2Placement3d,
-        OrigContext: &crate::ffi::HandleStepReprRepresentation,
-        TargContext: &crate::ffi::HandleStepReprRepresentation,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        Origin: &crate::ffi_types::HandleStepGeomAxis2Placement3d,
+        Target: &crate::ffi_types::HandleStepGeomAxis2Placement3d,
+        OrigContext: &crate::ffi_types::HandleStepReprRepresentation,
+        TargContext: &crate::ffi_types::HandleStepReprRepresentation,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         Trsf: &mut crate::gp::Trsf,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_compute_transformation(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_compute_transformation(
                 self as *mut Self,
                 Origin,
                 Target,
@@ -224,13 +222,13 @@ impl ActorRead {
     /// REPRESENTATION_RELATIONSHIP_WITH_TRANSFORMATION
     pub fn compute_srrwt(
         &mut self,
-        SRR: &crate::ffi::HandleStepReprRepresentationRelationship,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        SRR: &crate::ffi_types::HandleStepReprRepresentationRelationship,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         Trsf: &mut crate::gp::Trsf,
         theLocalFactors: &crate::step_data::Factors,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_compute_srrwt(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_compute_srrwt(
                 self as *mut Self,
                 SRR,
                 TP,
@@ -241,9 +239,9 @@ impl ActorRead {
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_ActorRead_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -253,7 +251,7 @@ impl ActorRead {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_get_type_name(),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -261,8 +259,12 @@ impl ActorRead {
     }
 
     /// **Source:** `STEPControl_ActorRead.hxx`:120 - `STEPControl_ActorRead::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::STEPControl_ActorRead_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess
@@ -270,11 +272,7 @@ impl ActorRead {
         &self,
     ) -> &crate::transfer::ActorOfTransientProcess {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess(self as *const Self))
         }
     }
 
@@ -283,11 +281,7 @@ impl ActorRead {
         &mut self,
     ) -> &mut crate::transfer::ActorOfTransientProcess {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Transfer_ActorOfTransientProcess_mut(self as *mut Self))
         }
     }
 
@@ -296,11 +290,7 @@ impl ActorRead {
         &self,
     ) -> &crate::transfer::ActorOfProcessForTransient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient(self as *const Self))
         }
     }
 
@@ -309,39 +299,39 @@ impl ActorRead {
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForTransient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::STEPControl_ActorRead_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::STEPControl_ActorRead_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorRead> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -349,13 +339,13 @@ impl ActorRead {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferProcessForTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_Transferring(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_Transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -368,13 +358,13 @@ impl ActorRead {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_TransferTransient(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
@@ -387,10 +377,10 @@ impl ActorRead {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -398,10 +388,12 @@ impl ActorRead {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_GetShapeFixParameters(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_GetShapeFixParameters(
                     self as *const Self,
                 ),
             ))
@@ -409,9 +401,12 @@ impl ActorRead {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
-    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_processing_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_SetProcessingFlags(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_SetProcessingFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -419,22 +414,24 @@ impl ActorRead {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
-    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_processing_flags(&self) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_ActorRead_inherited_GetProcessingFlags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_GetProcessingFlags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_TransientResult(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_TransientResult(
                     self as *const Self,
                     res,
                 ),
@@ -443,10 +440,12 @@ impl ActorRead {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_NullResult(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_NullResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -454,44 +453,60 @@ impl ActorRead {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_SetLast(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_IsLast(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_SetNext(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn next(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorRead_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_Next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -499,7 +514,9 @@ impl ActorRead {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::STEPControl_ActorRead_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -512,88 +529,90 @@ impl ActorRead {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorRead_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorRead_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSTEPControlActorRead;
+pub use crate::ffi_types::HandleSTEPControlActorRead;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlActorRead {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSTEPControlActorRead_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_destructor(ptr);
     }
 }
 
 impl HandleSTEPControlActorRead {
     /// Dereference this Handle to access the underlying STEPControl_ActorRead
-    pub fn get(&self) -> &crate::ffi::STEPControl_ActorRead {
+    pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorRead {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSTEPControlActorRead_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_ActorRead
-    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorRead {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::STEPControl_ActorRead {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSTEPControlActorRead_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfTransientProcess>
     pub fn to_handle_actor_of_transient_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfTransientProcess(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_to_HandleTransferActorOfTransientProcess(self as *const Self)))
         }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_to_HandleTransferActorOfProcessForTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<STEPControl_ActorRead> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorRead_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlActorRead_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -608,11 +627,11 @@ impl HandleSTEPControlActorRead {
 /// **Source:** `STEPControl_ActorWrite.hxx`:41 - `STEPControl_ActorWrite`
 /// This class performs the transfer of a Shape from TopoDS
 /// to AP203 or AP214 (CD2 or DIS)
-pub use crate::ffi::STEPControl_ActorWrite as ActorWrite;
+pub use crate::ffi_types::STEPControl_ActorWrite as ActorWrite;
 
 unsafe impl crate::CppDeletable for ActorWrite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::STEPControl_ActorWrite_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_destructor(ptr);
     }
 }
 
@@ -620,29 +639,29 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:45 - `STEPControl_ActorWrite::STEPControl_ActorWrite()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::STEPControl_ActorWrite_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_ctor(),
+            ))
         }
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:47 - `STEPControl_ActorWrite::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_recognize(self as *mut Self, start)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_recognize(self as *mut Self, start)
         })
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:50 - `STEPControl_ActorWrite::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        FP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleTransferFinder,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_transfer(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_transfer(
                     self as *mut Self,
                     start,
                     FP,
@@ -655,18 +674,18 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:55 - `STEPControl_ActorWrite::TransferSubShape()`
     pub fn transfer_sub_shape(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
-        AX1: &mut crate::ffi::HandleStepGeomAxis2Placement3d,
-        FP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleTransferFinder,
+        SDR: &crate::ffi_types::HandleStepShapeShapeDefinitionRepresentation,
+        AX1: &mut crate::ffi_types::HandleStepGeomAxis2Placement3d,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
-        shapeGroup: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        shapeGroup: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
         isManifold: bool,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_transfer_sub_shape(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_transfer_sub_shape(
                     self as *mut Self,
                     start,
                     SDR,
@@ -684,17 +703,17 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:65 - `STEPControl_ActorWrite::TransferShape()`
     pub fn transfer_shape(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
-        FP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleTransferFinder,
+        SDR: &crate::ffi_types::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
-        shapeGroup: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        shapeGroup: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
         isManifold: bool,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_transfer_shape(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_transfer_shape(
                     self as *mut Self,
                     start,
                     SDR,
@@ -711,15 +730,15 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:74 - `STEPControl_ActorWrite::TransferCompound()`
     pub fn transfer_compound(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        SDR: &crate::ffi::HandleStepShapeShapeDefinitionRepresentation,
-        FP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleTransferFinder,
+        SDR: &crate::ffi_types::HandleStepShapeShapeDefinitionRepresentation,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
         theLocalFactors: &crate::step_data::Factors,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_transfer_compound(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_transfer_compound(
                     self as *mut Self,
                     start,
                     SDR,
@@ -734,14 +753,14 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:81 - `STEPControl_ActorWrite::SetMode()`
     pub fn set_mode(&mut self, M: crate::step_control::StepModelType) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into())
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_set_mode(self as *mut Self, M.into())
         })
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:83 - `STEPControl_ActorWrite::Mode()`
     pub fn mode(&self) -> crate::step_control::StepModelType {
         crate::step_control::StepModelType::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_mode(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_mode(self as *const Self)
         }))
         .unwrap()
     }
@@ -749,21 +768,24 @@ impl ActorWrite {
     /// **Source:** `STEPControl_ActorWrite.hxx`:85 - `STEPControl_ActorWrite::SetGroupMode()`
     pub fn set_group_mode(&mut self, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_set_group_mode(self as *mut Self, mode)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_set_group_mode(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:87 - `STEPControl_ActorWrite::GroupMode()`
     pub fn group_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_group_mode(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_group_mode(self as *const Self)
         })
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:89 - `STEPControl_ActorWrite::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_set_tolerance(self as *mut Self, Tol)
         })
     }
 
@@ -775,20 +797,26 @@ impl ActorWrite {
     /// NOTE: this method can modify shape
     pub fn is_assembly(
         &self,
-        theModel: &crate::ffi::HandleStepDataStepModel,
+        theModel: &crate::ffi_types::HandleStepDataStepModel,
         S: &mut crate::topo_ds::Shape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_is_assembly(self as *const Self, theModel, S)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_is_assembly(
+                self as *const Self,
+                theModel,
+                S,
+            )
         })
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_ActorWrite_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -796,7 +824,7 @@ impl ActorWrite {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_get_type_name(),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -804,15 +832,19 @@ impl ActorWrite {
     }
 
     /// **Source:** `STEPControl_ActorWrite.hxx`:99 - `STEPControl_ActorWrite::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::STEPControl_ActorWrite_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfFinderProcess
     pub fn as_transfer_actor_of_finder_process(&self) -> &crate::transfer::ActorOfFinderProcess {
         unsafe {
             &*crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess(
                     self as *const Self,
                 ),
             )
@@ -824,11 +856,7 @@ impl ActorWrite {
         &mut self,
     ) -> &mut crate::transfer::ActorOfFinderProcess {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Transfer_ActorOfFinderProcess_mut(self as *mut Self))
         }
     }
 
@@ -837,11 +865,7 @@ impl ActorWrite {
         &self,
     ) -> &crate::transfer::ActorOfProcessForFinder {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder(self as *const Self))
         }
     }
 
@@ -850,39 +874,39 @@ impl ActorWrite {
         &mut self,
     ) -> &mut crate::transfer::ActorOfProcessForFinder {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Transfer_ActorOfProcessForFinder_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::STEPControl_ActorWrite_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::STEPControl_ActorWrite_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorWrite> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -890,22 +914,24 @@ impl ActorWrite {
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:45 - `Transfer_ActorOfFinderProcess::ModeTrans()`
     pub fn mode_trans(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::STEPControl_ActorWrite_inherited_ModeTrans(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_ModeTrans(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        TP: &crate::ffi::HandleTransferProcessForFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        TP: &crate::ffi_types::HandleTransferProcessForFinder,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_Transferring(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_Transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -918,13 +944,13 @@ impl ActorWrite {
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_TransferTransient(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
@@ -937,10 +963,10 @@ impl ActorWrite {
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:64 - `Transfer_ActorOfFinderProcess::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -948,10 +974,12 @@ impl ActorWrite {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_GetShapeFixParameters(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_GetShapeFixParameters(
                     self as *const Self,
                 ),
             ))
@@ -959,9 +987,12 @@ impl ActorWrite {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_SetShapeProcessFlags(
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_SetShapeProcessFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -969,10 +1000,12 @@ impl ActorWrite {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfFinderProcess.hxx`:96 - `Transfer_ActorOfFinderProcess::GetShapeProcessFlags()`
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_GetShapeProcessFlags(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_GetShapeProcessFlags(
                     self as *const Self,
                 ),
             ))
@@ -982,11 +1015,11 @@ impl ActorWrite {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_TransientResult(
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_TransientResult(
                     self as *const Self,
                     res,
                 ),
@@ -995,10 +1028,12 @@ impl ActorWrite {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_NullResult(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_NullResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1006,44 +1041,58 @@ impl ActorWrite {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_SetLast(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_IsLast(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_SetNext(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_ActorWrite_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_Next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1051,7 +1100,9 @@ impl ActorWrite {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::STEPControl_ActorWrite_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1064,88 +1115,90 @@ impl ActorWrite {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_ActorWrite_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_ActorWrite_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSTEPControlActorWrite;
+pub use crate::ffi_types::HandleSTEPControlActorWrite;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlActorWrite {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSTEPControlActorWrite_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_destructor(ptr);
     }
 }
 
 impl HandleSTEPControlActorWrite {
     /// Dereference this Handle to access the underlying STEPControl_ActorWrite
-    pub fn get(&self) -> &crate::ffi::STEPControl_ActorWrite {
+    pub fn get(&self) -> &crate::ffi_types::STEPControl_ActorWrite {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSTEPControlActorWrite_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_ActorWrite
-    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_ActorWrite {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::STEPControl_ActorWrite {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSTEPControlActorWrite_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfFinderProcess>
     pub fn to_handle_actor_of_finder_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfFinderProcess> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfFinderProcess(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_to_HandleTransferActorOfFinderProcess(self as *const Self)))
         }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Transfer_ActorOfProcessForFinder>
     pub fn to_handle_actor_of_process_for_finder(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_to_HandleTransferActorOfProcessForFinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<STEPControl_ActorWrite> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlActorWrite_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1157,11 +1210,9 @@ impl HandleSTEPControlActorWrite {
     /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
     pub fn downcast_to_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPCAFControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSTEPControlActorWrite_downcast_to_HandleSTEPCAFControlActorWrite(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlActorWrite_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1177,11 +1228,11 @@ impl HandleSTEPControlActorWrite {
 
 /// **Source:** `STEPControl_Controller.hxx`:35 - `STEPControl_Controller`
 /// defines basic controller for STEP processor
-pub use crate::ffi::STEPControl_Controller as Controller;
+pub use crate::ffi_types::STEPControl_Controller as Controller;
 
 unsafe impl crate::CppDeletable for Controller {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::STEPControl_Controller_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::STEPControl_Controller_destructor(ptr);
     }
 }
 
@@ -1191,19 +1242,19 @@ impl Controller {
     /// returns a Controller
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::STEPControl_Controller_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_ctor(),
+            ))
         }
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:45 - `STEPControl_Controller::NewModel()`
     /// Creates a new empty Model ready to receive data of the Norm.
     /// It is taken from STEP Template Model
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Controller_new_model(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_new_model(self as *const Self),
             ))
         }
     }
@@ -1212,19 +1263,22 @@ impl Controller {
     /// Returns the Actor for Read attached to the pair (norm,appli)
     pub fn actor_read(
         &self,
-        theModel: &crate::ffi::HandleInterfaceInterfaceModel,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+        theModel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Controller_actor_read(self as *const Self, theModel),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_actor_read(
+                    self as *const Self,
+                    theModel,
+                ),
             ))
         }
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:51 - `STEPControl_Controller::Customise()`
-    pub fn customise(&mut self, WS: &mut crate::ffi::HandleXSControlWorkSession) {
+    pub fn customise(&mut self, WS: &mut crate::ffi_types::HandleXSControlWorkSession) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Controller_customise(self as *mut Self, WS)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_customise(self as *mut Self, WS)
         })
     }
 
@@ -1238,13 +1292,13 @@ impl Controller {
     pub fn transfer_write_shape(
         &self,
         shape: &crate::topo_ds::Shape,
-        FP: &crate::ffi::HandleTransferFinderProcess,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_transfer_write_shape(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_transfer_write_shape(
                 self as *const Self,
                 shape,
                 FP,
@@ -1257,11 +1311,13 @@ impl Controller {
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Controller_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1270,14 +1326,14 @@ impl Controller {
     /// and records it to various names, available to select it later
     /// Returns True when done, False if could not be done
     pub fn init() -> bool {
-        crate::check_result(unsafe { crate::ffi::STEPControl_Controller_init() })
+        crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::STEPControl_Controller_init() })
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::STEPControl_Controller_get_type_name(),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1285,16 +1341,22 @@ impl Controller {
     }
 
     /// **Source:** `STEPControl_Controller.hxx`:71 - `STEPControl_Controller::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::STEPControl_Controller_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to XSControl_Controller
     pub fn as_xs_control_controller(&self) -> &crate::xs_control::Controller {
         unsafe {
-            &*crate::check_result(crate::ffi::STEPControl_Controller_as_XSControl_Controller(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_as_XSControl_Controller(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1302,7 +1364,9 @@ impl Controller {
     pub fn as_xs_control_controller_mut(&mut self) -> &mut crate::xs_control::Controller {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::STEPControl_Controller_as_XSControl_Controller_mut(self as *mut Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_as_XSControl_Controller_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1310,28 +1374,32 @@ impl Controller {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::STEPControl_Controller_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::STEPControl_Controller_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSTEPControlController> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSTEPControlController> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Controller_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1339,33 +1407,43 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:71 - `XSControl_Controller::AutoRecord()`
     pub fn auto_record(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_AutoRecord(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_AutoRecord(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:94 - `XSControl_Controller::Protocol()`
-    pub fn protocol(&self) -> &crate::ffi::HandleInterfaceProtocol {
+    pub fn protocol(&self) -> &crate::ffi_types::HandleInterfaceProtocol {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Controller_inherited_Protocol(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_Protocol(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:102 - `XSControl_Controller::WorkLibrary()`
-    pub fn work_library(&self) -> &crate::ffi::HandleIFSelectWorkLibrary {
+    pub fn work_library(&self) -> &crate::ffi_types::HandleIFSelectWorkLibrary {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Controller_inherited_WorkLibrary(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_WorkLibrary(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:116 - `XSControl_Controller::ActorWrite()`
-    pub fn actor_write(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+    pub fn actor_write(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Controller_inherited_ActorWrite(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_ActorWrite(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1373,7 +1451,7 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:122 - `XSControl_Controller::SetModeWrite()`
     pub fn set_mode_write(&mut self, modemin: i32, modemax: i32, shape: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_SetModeWrite(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_SetModeWrite(
                 self as *mut Self,
                 modemin,
                 modemax,
@@ -1385,7 +1463,7 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:135 - `XSControl_Controller::ModeWriteBounds()`
     pub fn mode_write_bounds(&self, modemin: &mut i32, modemax: &mut i32, shape: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_ModeWriteBounds(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_ModeWriteBounds(
                 self as *const Self,
                 modemin,
                 modemax,
@@ -1397,7 +1475,7 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:141 - `XSControl_Controller::IsModeWrite()`
     pub fn is_mode_write(&self, modetrans: i32, shape: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_IsModeWrite(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_IsModeWrite(
                 self as *const Self,
                 modetrans,
                 shape,
@@ -1408,11 +1486,11 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:154 - `XSControl_Controller::RecognizeWriteTransient()`
     pub fn recognize_write_transient(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         modetrans: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_RecognizeWriteTransient(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_RecognizeWriteTransient(
                 self as *const Self,
                 obj,
                 modetrans,
@@ -1423,14 +1501,14 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:168 - `XSControl_Controller::TransferWriteTransient()`
     pub fn transfer_write_transient(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
-        FP: &crate::ffi::HandleTransferFinderProcess,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        obj: &crate::ffi_types::HandleStandardTransient,
+        FP: &crate::ffi_types::HandleTransferFinderProcess,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         modetrans: i32,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_TransferWriteTransient(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_TransferWriteTransient(
                 self as *const Self,
                 obj,
                 FP,
@@ -1445,7 +1523,7 @@ impl Controller {
     /// Inherited: **Source:** `XSControl_Controller.hxx`:177 - `XSControl_Controller::RecognizeWriteShape()`
     pub fn recognize_write_shape(&self, shape: &crate::topo_ds::Shape, modetrans: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_RecognizeWriteShape(
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_RecognizeWriteShape(
                 self as *const Self,
                 shape,
                 modetrans,
@@ -1454,25 +1532,33 @@ impl Controller {
     }
 
     /// Inherited: **Source:** `XSControl_Controller.hxx`:213 - `XSControl_Controller::AdaptorSession()`
-    pub fn adaptor_session(&self) -> &crate::ffi::XSControl_WorkSessionMap {
+    pub fn adaptor_session(&self) -> &crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Controller_inherited_AdaptorSession(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_AdaptorSession(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1480,7 +1566,9 @@ impl Controller {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::STEPControl_Controller_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1493,73 +1581,81 @@ impl Controller {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Controller_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Controller_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleSTEPControlController;
+pub use crate::ffi_types::HandleSTEPControlController;
 
 unsafe impl crate::CppDeletable for HandleSTEPControlController {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleSTEPControlController_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::HandleSTEPControlController_destructor(ptr);
     }
 }
 
 impl HandleSTEPControlController {
     /// Dereference this Handle to access the underlying STEPControl_Controller
-    pub fn get(&self) -> &crate::ffi::STEPControl_Controller {
+    pub fn get(&self) -> &crate::ffi_types::STEPControl_Controller {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleSTEPControlController_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlController_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying STEPControl_Controller
-    pub fn get_mut(&mut self) -> &mut crate::ffi::STEPControl_Controller {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::STEPControl_Controller {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleSTEPControlController_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlController_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<STEPControl_Controller> to Handle<XSControl_Controller>
-    pub fn to_handle_controller(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlController> {
+    pub fn to_handle_controller(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlController> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlController_to_HandleXSControlController(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDESTEP::HandleSTEPControlController_to_HandleXSControlController(self as *const Self)))
         }
     }
 
     /// Upcast Handle<STEPControl_Controller> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleSTEPControlController_to_HandleStandardTransient(
+                crate::ffi_extern_TKDESTEP::HandleSTEPControlController_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1571,11 +1667,9 @@ impl HandleSTEPControlController {
     /// Returns `None` if the handle does not point to a `STEPCAFControl_Controller` (or subclass).
     pub fn downcast_to_controller(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlController>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPCAFControlController>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleSTEPControlController_downcast_to_HandleSTEPCAFControlController(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDESTEP::HandleSTEPControlController_downcast_to_HandleSTEPCAFControlController(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1625,11 +1719,11 @@ impl HandleSTEPControlController {
 /// WS = reader.WS();
 /// if ( WS->TransferReader()->HasResult(ent) )
 /// TopoDS_Shape shape = WS->TransferReader()->ShapeResult(ent);
-pub use crate::ffi::STEPControl_Reader as Reader;
+pub use crate::ffi_types::STEPControl_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::STEPControl_Reader_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::STEPControl_Reader_destructor(ptr);
     }
 }
 
@@ -1638,7 +1732,9 @@ impl Reader {
     /// Creates a reader object with an empty STEP model.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPControl_Reader_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_ctor(),
+            ))
         }
     }
 
@@ -1646,12 +1742,14 @@ impl Reader {
     /// Creates a Reader for STEP from an already existing Session
     /// Clears the session if it was not yet set for STEP
     pub fn new_handlexscontrolworksession_bool(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_ctor_handlexscontrolworksession_bool(WS, scratch),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_ctor_handlexscontrolworksession_bool(
+                    WS, scratch,
+                ),
             ))
         }
     }
@@ -1660,7 +1758,7 @@ impl Reader {
     /// Creates a Reader for STEP from an already existing Session
     /// Clears the session if it was not yet set for STEP
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
     }
@@ -1668,10 +1766,10 @@ impl Reader {
     /// **Source:** `STEPControl_Reader.hxx`:84 - `STEPControl_Reader::StepModel()`
     /// Returns the model as a StepModel.
     /// It can then be consulted (header, product)
-    pub fn step_model(&self) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+    pub fn step_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_step_model(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_step_model(self as *const Self),
             ))
         }
     }
@@ -1682,7 +1780,10 @@ impl Reader {
     pub fn read_file_charptr(&mut self, filename: &str) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_read_file_charptr(self as *mut Self, c_filename.as_ptr())
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_read_file_charptr(
+                self as *mut Self,
+                c_filename.as_ptr(),
+            )
         }))
         .unwrap()
     }
@@ -1692,11 +1793,11 @@ impl Reader {
     pub fn read_stream_charptr_istream(
         &mut self,
         theName: &str,
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
     ) -> crate::if_select::ReturnStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_read_stream_charptr_istream(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_read_stream_charptr_istream(
                 self as *mut Self,
                 c_theName.as_ptr(),
                 theIStream,
@@ -1715,7 +1816,7 @@ impl Reader {
     ) -> crate::if_select::ReturnStatus {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_read_file_charptr_parameters(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_read_file_charptr_parameters(
                 self as *mut Self,
                 c_filename.as_ptr(),
                 theParams,
@@ -1730,11 +1831,11 @@ impl Reader {
         &mut self,
         theName: &str,
         theParams: &crate::destep::Parameters,
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
     ) -> crate::if_select::ReturnStatus {
         let c_theName = std::ffi::CString::new(theName).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_read_stream_charptr_parameters_istream(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_read_stream_charptr_parameters_istream(
                 self as *mut Self,
                 c_theName.as_ptr(),
                 theParams,
@@ -1751,7 +1852,11 @@ impl Reader {
     /// Same as inherited TransferOneRoot, kept for compatibility
     pub fn transfer_root(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_transfer_root(self as *mut Self, num, theProgress)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_transfer_root(
+                self as *mut Self,
+                num,
+                theProgress,
+            )
         })
     }
 
@@ -1760,7 +1865,7 @@ impl Reader {
     /// a transfer to a Shape (type of entities is PRODUCT)
     pub fn nb_roots_for_transfer(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_nb_roots_for_transfer(self as *mut Self)
         })
     }
 
@@ -1769,12 +1874,12 @@ impl Reader {
     /// found in file
     pub fn file_units(
         &mut self,
-        theUnitLengthNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
-        theUnitAngleNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
-        theUnitSolidAngleNames: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        theUnitLengthNames: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+        theUnitAngleNames: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
+        theUnitSolidAngleNames: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_file_units(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_file_units(
                 self as *mut Self,
                 theUnitLengthNames,
                 theUnitAngleNames,
@@ -1788,7 +1893,10 @@ impl Reader {
     /// Performs only if a model is not NULL
     pub fn set_system_length_unit(&mut self, theLengthUnit: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_set_system_length_unit(self as *mut Self, theLengthUnit)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_set_system_length_unit(
+                self as *mut Self,
+                theLengthUnit,
+            )
         })
     }
 
@@ -1797,49 +1905,57 @@ impl Reader {
     /// Performs only if a model is not NULL
     pub fn system_length_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_system_length_unit(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_system_length_unit(self as *const Self)
         })
     }
 
     /// Upcast to XSControl_Reader
     pub fn as_xs_control_reader(&self) -> &crate::xs_control::Reader {
         unsafe {
-            &*crate::check_result(crate::ffi::STEPControl_Reader_as_XSControl_Reader(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_as_XSControl_Reader(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to XSControl_Reader (mutable)
     pub fn as_xs_control_reader_mut(&mut self) -> &mut crate::xs_control::Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::STEPControl_Reader_as_XSControl_Reader_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_as_XSControl_Reader_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:99 - `XSControl_Reader::SetWS()`
-    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+    pub fn set_ws(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession, scratch: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_SetWS(self as *mut Self, WS, scratch)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_SetWS(
+                self as *mut Self,
+                WS,
+                scratch,
+            )
         })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:103 - `XSControl_Reader::WS()`
-    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_inherited_WS(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_WS(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:114 - `XSControl_Reader::Model()`
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_inherited_Model(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_Model(self as *const Self),
             ))
         }
     }
@@ -1848,10 +1964,13 @@ impl Reader {
     pub fn root_for_transfer(
         &mut self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_inherited_RootForTransfer(self as *mut Self, num),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_RootForTransfer(
+                    self as *mut Self,
+                    num,
+                ),
             ))
         }
     }
@@ -1863,7 +1982,7 @@ impl Reader {
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_TransferOneRoot(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_TransferOneRoot(
                 self as *mut Self,
                 num,
                 theProgress,
@@ -1874,7 +1993,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:175 - `XSControl_Reader::TransferOne()`
     pub fn transfer_one(&mut self, num: i32, theProgress: &crate::message::ProgressRange) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_TransferOne(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_TransferOne(
                 self as *mut Self,
                 num,
                 theProgress,
@@ -1885,11 +2004,11 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:182 - `XSControl_Reader::TransferEntity()`
     pub fn transfer_entity(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_TransferEntity(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_TransferEntity(
                 self as *mut Self,
                 start,
                 theProgress,
@@ -1900,11 +2019,11 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:190 - `XSControl_Reader::TransferList()`
     pub fn transfer_list(
         &mut self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_TransferList(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_TransferList(
                 self as *mut Self,
                 list,
                 theProgress,
@@ -1915,21 +2034,24 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:197 - `XSControl_Reader::TransferRoots()`
     pub fn transfer_roots(&mut self, theProgress: &crate::message::ProgressRange) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_TransferRoots(self as *mut Self, theProgress)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_TransferRoots(
+                self as *mut Self,
+                theProgress,
+            )
         })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:201 - `XSControl_Reader::ClearShapes()`
     pub fn clear_shapes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_ClearShapes(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_ClearShapes(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:204 - `XSControl_Reader::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_NbShapes(self as *const Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_NbShapes(self as *const Self)
         })
     }
 
@@ -1937,7 +2059,10 @@ impl Reader {
     pub fn shape(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_inherited_Shape(self as *const Self, num),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_Shape(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -1946,7 +2071,9 @@ impl Reader {
     pub fn one_shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Reader_inherited_OneShape(self as *const Self),
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_OneShape(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1954,7 +2081,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:225 - `XSControl_Reader::PrintCheckLoad()`
     pub fn print_check_load(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_PrintCheckLoad(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_PrintCheckLoad(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -1965,7 +2092,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:239 - `XSControl_Reader::PrintCheckTransfer()`
     pub fn print_check_transfer(&self, failsonly: bool, mode: crate::if_select::PrintCount) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_PrintCheckTransfer(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_PrintCheckTransfer(
                 self as *const Self,
                 failsonly,
                 mode.into(),
@@ -1976,7 +2103,7 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:275 - `XSControl_Reader::PrintStatsTransfer()`
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_PrintStatsTransfer(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_PrintStatsTransfer(
                 self as *const Self,
                 what,
                 mode,
@@ -1987,13 +2114,13 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:284 - `XSControl_Reader::GetStatsTransfer()`
     pub fn get_stats_transfer(
         &self,
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
         nbMapped: &mut i32,
         nbWithResult: &mut i32,
         nbWithFail: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_GetStatsTransfer(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_GetStatsTransfer(
                 self as *const Self,
                 list,
                 nbMapped,
@@ -2006,10 +2133,10 @@ impl Reader {
     /// Inherited: **Source:** `XSControl_Reader.hxx`:291 - `XSControl_Reader::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -2017,18 +2144,25 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:311 - `XSControl_Reader::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Reader_inherited_GetShapeFixParameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_GetShapeFixParameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:315 - `XSControl_Reader::SetShapeProcessFlags()`
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Reader_inherited_SetShapeProcessFlags(
+            crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_SetShapeProcessFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -2036,11 +2170,15 @@ impl Reader {
     }
 
     /// Inherited: **Source:** `XSControl_Reader.hxx`:320 - `XSControl_Reader::GetShapeProcessFlags()`
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Reader_inherited_GetShapeProcessFlags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Reader_inherited_GetShapeProcessFlags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -2055,11 +2193,11 @@ impl Reader {
 /// written to an existing STEP file or to a new one.
 /// Translation can be performed in one or several operations. Each
 /// translation operation outputs a distinct root entity in the STEP file.
-pub use crate::ffi::STEPControl_Writer as Writer;
+pub use crate::ffi_types::STEPControl_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::STEPControl_Writer_destructor(ptr);
+        crate::ffi_extern_TKDESTEP::STEPControl_Writer_destructor(ptr);
     }
 }
 
@@ -2068,7 +2206,9 @@ impl Writer {
     /// Creates a Writer from scratch
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPControl_Writer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_ctor(),
+            ))
         }
     }
 
@@ -2076,12 +2216,14 @@ impl Writer {
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
     pub fn new_handlexscontrolworksession_bool(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
         scratch: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::STEPControl_Writer_ctor_handlexscontrolworksession_bool(WS, scratch),
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_ctor_handlexscontrolworksession_bool(
+                    WS, scratch,
+                ),
             ))
         }
     }
@@ -2090,7 +2232,7 @@ impl Writer {
     /// Creates a Writer from an already existing Session
     /// If <scratch> is True (D), clears already recorded data
     pub fn new_handlexscontrolworksession(
-        WS: &crate::ffi::HandleXSControlWorkSession,
+        WS: &crate::ffi_types::HandleXSControlWorkSession,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlexscontrolworksession_bool(WS, true)
     }
@@ -2101,7 +2243,7 @@ impl Writer {
     /// when the next shape is translated.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_set_tolerance(self as *mut Self, Tol)
         })
     }
 
@@ -2109,25 +2251,25 @@ impl Writer {
     /// Unsets the tolerance formerly forced by SetTolerance
     pub fn unset_tolerance(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_unset_tolerance(self as *mut Self)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_unset_tolerance(self as *mut Self)
         })
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:67 - `STEPControl_Writer::SetWS()`
     /// Sets a specific session to <me>
-    pub fn set_ws(&mut self, WS: &crate::ffi::HandleXSControlWorkSession, scratch: bool) {
+    pub fn set_ws(&mut self, WS: &crate::ffi_types::HandleXSControlWorkSession, scratch: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_set_ws(self as *mut Self, WS, scratch)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_set_ws(self as *mut Self, WS, scratch)
         })
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:71 - `STEPControl_Writer::WS()`
     /// Returns the session used in <me>
-    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi::HandleXSControlWorkSession> {
+    pub fn ws(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXSControlWorkSession> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPControl_Writer_ws(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_ws(self as *const Self),
+            ))
         }
     }
 
@@ -2136,12 +2278,14 @@ impl Writer {
     /// or if <newone> is True
     /// This method allows for instance to edit product or header
     /// data before writing.
-    pub fn model(&mut self, newone: bool) -> crate::OwnedPtr<crate::ffi::HandleStepDataStepModel> {
+    pub fn model(
+        &mut self,
+        newone: bool,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStepDataStepModel> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::STEPControl_Writer_model(
-                self as *mut Self,
-                newone,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_model(self as *mut Self, newone),
+            ))
         }
     }
 
@@ -2165,16 +2309,7 @@ impl Writer {
         compgraph: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(
-                self as *mut Self,
-                sh,
-                mode.into(),
-                compgraph,
-                theProgress,
-            )
-        }))
-        .unwrap()
+        crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::STEPControl_Writer_transfer_shape_stepmodeltype_bool_progressrange(self as *mut Self, sh, mode.into(), compgraph, theProgress) })).unwrap()
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:99 - `STEPControl_Writer::Transfer()`
@@ -2187,7 +2322,7 @@ impl Writer {
         compgraph: bool,
         theProgress: &crate::message::ProgressRange,
     ) -> crate::if_select::ReturnStatus {
-        crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe { crate::ffi::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self as *mut Self, sh, mode.into(), theParams, compgraph, theProgress) })).unwrap()
+        crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe { crate::ffi_extern_TKDESTEP::STEPControl_Writer_transfer_shape_stepmodeltype_parameters_bool_progressrange(self as *mut Self, sh, mode.into(), theParams, compgraph, theProgress) })).unwrap()
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:106 - `STEPControl_Writer::Write()`
@@ -2195,7 +2330,10 @@ impl Writer {
     pub fn write(&mut self, theFileName: &str) -> crate::if_select::ReturnStatus {
         let c_theFileName = std::ffi::CString::new(theFileName).unwrap();
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Writer_write(self as *mut Self, c_theFileName.as_ptr())
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_write(
+                self as *mut Self,
+                c_theFileName.as_ptr(),
+            )
         }))
         .unwrap()
     }
@@ -2204,10 +2342,13 @@ impl Writer {
     /// Writes a STEP model in the std::ostream.
     pub fn write_stream(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
     ) -> crate::if_select::ReturnStatus {
         crate::if_select::ReturnStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::STEPControl_Writer_write_stream(self as *mut Self, theOStream)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_write_stream(
+                self as *mut Self,
+                theOStream,
+            )
         }))
         .unwrap()
     }
@@ -2235,7 +2376,11 @@ impl Writer {
     /// AND the list of entity numbers in the STEP model.
     pub fn print_stats_transfer(&self, what: i32, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_print_stats_transfer(self as *const Self, what, mode)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_print_stats_transfer(
+                self as *const Self,
+                what,
+                mode,
+            )
         })
     }
 
@@ -2244,10 +2389,10 @@ impl Writer {
     /// @param theParameters the parameters for shape processing.
     pub fn set_shape_fix_parameters_parametermap(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_set_shape_fix_parameters_parametermap(
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_set_shape_fix_parameters_parametermap(
                 self as *mut Self,
                 theParameters,
             )
@@ -2264,34 +2409,40 @@ impl Writer {
     pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
         &mut self,
         theParameters: &crate::de::ShapeFixParameters,
-        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theAdditionalParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(
-                self as *mut Self,
-                theParameters,
-                theAdditionalParameters,
-            )
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
         })
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:156 - `STEPControl_Writer::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Writer_get_shape_fix_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_get_shape_fix_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `STEPControl_Writer.hxx`:160 - `STEPControl_Writer::SetShapeProcessFlags()`
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::STEPControl_Writer_set_shape_process_flags(self as *mut Self, theFlags)
+            crate::ffi_extern_TKDESTEP::STEPControl_Writer_set_shape_process_flags(
+                self as *mut Self,
+                theFlags,
+            )
         })
     }
 
@@ -2299,11 +2450,15 @@ impl Writer {
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
     /// that indicates whether the flags were set.
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
-            &*(crate::check_result(crate::ffi::STEPControl_Writer_get_shape_process_flags(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDESTEP::STEPControl_Writer_get_shape_process_flags(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }

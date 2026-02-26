@@ -25,7 +25,9 @@
 /// myQCurve = Geom2dGcc::Unqualified(Obj);
 pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_unqualified_curve(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_unqualified_curve(Obj),
+        ))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:78 - `Geom2dGcc::Enclosing`
@@ -46,7 +48,9 @@ pub fn unqualified_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<
 /// myQCurve = Geom2dGcc::Enclosing(Obj);
 pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_enclosing_curve(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_enclosing_curve(Obj),
+        ))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:95 - `Geom2dGcc::Enclosed`
@@ -67,7 +71,9 @@ pub fn enclosing_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qu
 /// myQCurve = Geom2dGcc::Enclosed(Obj);
 pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_enclosed_curve(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_enclosed_curve(Obj),
+        ))
     }
 }
 /// **Source:** `Geom2dGcc.hxx`:112 - `Geom2dGcc::Outside`
@@ -88,7 +94,9 @@ pub fn enclosed_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Qua
 /// myQCurve = Geom2dGcc::Outside(Obj);
 pub fn outside_curve(Obj: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<QualifiedCurve> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_outside_curve(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_outside_curve(Obj),
+        ))
     }
 }
 
@@ -199,7 +207,9 @@ impl TryFrom<i32> for Type3 {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi_types::{
+    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
+};
 
 // ========================
 // From Geom2dGcc_Circ2d2TanOn.hxx
@@ -217,11 +227,11 @@ pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleSta
 /// - The parameter for each tangency argument which
 /// is a curve.
 /// - The tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2d2TanOn as Circ2d2TanOn;
+pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOn as Circ2d2TanOn;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOn {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d2TanOn_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_destructor(ptr);
     }
 }
 
@@ -244,11 +254,7 @@ impl Circ2d2TanOn {
         ParamOn: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve2_curve_real4(
-                    Qualified1, Qualified2, OnCurve, Tolerance, Param1, Param2, ParamOn,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve2_curve_real4(Qualified1, Qualified2, OnCurve, Tolerance, Param1, Param2, ParamOn)))
         }
     }
 
@@ -261,14 +267,14 @@ impl Circ2d2TanOn {
     /// Tolerance is used for the limit cases.
     pub fn new_qualifiedcurve_handlegeom2dpoint_curve_real3(
         Qualified1: &QualifiedCurve,
-        Point: &crate::ffi::HandleGeom2dPoint,
+        Point: &crate::ffi_types::HandleGeom2dPoint,
         OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
         Param1: f64,
         ParamOn: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve_handlegeom2dpoint_curve_real3(Qualified1, Point, OnCurve, Tolerance, Param1, ParamOn)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_ctor_qualifiedcurve_handlegeom2dpoint_curve_real3(Qualified1, Point, OnCurve, Tolerance, Param1, ParamOn)))
         }
     }
 
@@ -278,31 +284,33 @@ impl Circ2d2TanOn {
     /// having the center ON a 2d curve.
     /// Tolerance is used for the limit cases.
     pub fn new_handlegeom2dpoint2_curve_real(
-        Point1: &crate::ffi::HandleGeom2dPoint,
-        Point2: &crate::ffi::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::HandleGeom2dPoint,
+        Point2: &crate::ffi_types::HandleGeom2dPoint,
         OnCurve: &crate::geom2d_adaptor::Curve,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_ctor_handlegeom2dpoint2_curve_real(
-                    Point1, Point2, OnCurve, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_ctor_handlegeom2dpoint2_curve_real(Point1, Point2, OnCurve, Tolerance)))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:92 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanon(&mut self, Circ: &crate::gcc_ana::Circ2d2TanOn) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanon(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanOn.hxx`:94 - `Geom2dGcc_Circ2d2TanOn::Results()`
     pub fn results_circ2d2tanongeo(&mut self, Circ: &Circ2d2TanOnGeo) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_results_circ2d2tanongeo(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
@@ -314,7 +322,7 @@ impl Circ2d2TanOn {
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_is_done(self as *const Self)
         })
     }
 
@@ -323,7 +331,7 @@ impl Circ2d2TanOn {
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_nb_solutions(self as *const Self)
         })
     }
 
@@ -341,7 +349,10 @@ impl Circ2d2TanOn {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOn_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -366,7 +377,7 @@ impl Circ2d2TanOn {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -390,7 +401,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -413,7 +424,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -433,7 +444,7 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_center_on3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_center_on3(
                 self as *const Self,
                 Index,
                 ParArg,
@@ -458,7 +469,10 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -478,7 +492,10 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOn_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOn_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -499,11 +516,11 @@ impl Circ2d2TanOn {
 /// - The parameter for each tangency argument which
 /// is a curve.
 /// - The tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2d2TanOnGeo as Circ2d2TanOnGeo;
+pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOnGeo as Circ2d2TanOnGeo;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOnGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_destructor(ptr);
     }
 }
 
@@ -519,11 +536,7 @@ impl Circ2d2TanOnGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc2_curve_real(
-                    Qualified1, Qualified2, OnCurv, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc2_curve_real(Qualified1, Qualified2, OnCurv, Tolerance)))
         }
     }
 
@@ -538,11 +551,7 @@ impl Circ2d2TanOnGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_qualifiedlin_curve_real(
-                    Qualified1, Qualified2, OnCurv, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_qualifiedlin_curve_real(Qualified1, Qualified2, OnCurv, Tolerance)))
         }
     }
 
@@ -557,11 +566,7 @@ impl Circ2d2TanOnGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_pnt2d_curve_real(
-                    Qualified1, Point2, OnCurv, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedcirc_pnt2d_curve_real(Qualified1, Point2, OnCurv, Tolerance)))
         }
     }
 
@@ -576,11 +581,7 @@ impl Circ2d2TanOnGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin2_curve_real(
-                    Qualified1, Qualified2, OnCurv, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin2_curve_real(Qualified1, Qualified2, OnCurv, Tolerance)))
         }
     }
 
@@ -595,11 +596,7 @@ impl Circ2d2TanOnGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin_pnt2d_curve_real(
-                    Qualified1, Qualified2, OnCurv, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_qualifiedlin_pnt2d_curve_real(Qualified1, Qualified2, OnCurv, Tolerance)))
         }
     }
 
@@ -615,7 +612,7 @@ impl Circ2d2TanOnGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_ctor_pnt2d2_curve_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_ctor_pnt2d2_curve_real(
                     Point1, Point2, OnCurv, Tolerance,
                 ),
             ))
@@ -627,7 +624,7 @@ impl Circ2d2TanOnGeo {
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_is_done(self as *const Self)
         })
     }
 
@@ -637,7 +634,9 @@ impl Circ2d2TanOnGeo {
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_nb_solutions(
+                self as *const Self,
+            )
         })
     }
 
@@ -654,7 +653,10 @@ impl Circ2d2TanOnGeo {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -675,7 +677,7 @@ impl Circ2d2TanOnGeo {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -707,7 +709,7 @@ impl Circ2d2TanOnGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -738,7 +740,7 @@ impl Circ2d2TanOnGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -760,7 +762,7 @@ impl Circ2d2TanOnGeo {
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_center_on3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_center_on3(
                 self as *const Self,
                 Index,
                 ParArg,
@@ -778,7 +780,10 @@ impl Circ2d2TanOnGeo {
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -791,7 +796,10 @@ impl Circ2d2TanOnGeo {
     /// number of solutions.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnGeo_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnGeo_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -812,11 +820,11 @@ impl Circ2d2TanOnGeo {
 /// - The parameter for each tangency argument which
 /// is a curve.
 /// - The tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2d2TanOnIter as Circ2d2TanOnIter;
+pub use crate::ffi_types::Geom2dGcc_Circ2d2TanOnIter as Circ2d2TanOnIter;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOnIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d2TanOnIter_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_destructor(ptr);
     }
 }
 
@@ -837,11 +845,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_lin2d_real4(
-                    Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_lin2d_real4(Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -861,11 +865,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_lin2d_real4(
-                    Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_lin2d_real4(Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -887,7 +887,7 @@ impl Circ2d2TanOnIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_lin2d_real4(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_lin2d_real4(
                     Qualified1, Qualified2, OnLine, Param1, Param2, Param3, Tolerance,
                 ),
             ))
@@ -909,11 +909,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_lin2d_real3(
-                    Qualified1, Point2, OnLine, Param1, Param2, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_lin2d_real3(Qualified1, Point2, OnLine, Param1, Param2, Tolerance)))
         }
     }
 
@@ -933,11 +929,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_circ2d_real4(
-                    Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_circ2d_real4(Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -957,11 +949,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_circ2d_real4(
-                    Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_circ2d_real4(Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -983,7 +971,7 @@ impl Circ2d2TanOnIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_circ2d_real4(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_circ2d_real4(
                     Qualified1, Qualified2, OnCirc, Param1, Param2, Param3, Tolerance,
                 ),
             ))
@@ -1005,11 +993,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_circ2d_real3(
-                    Qualified1, Point2, OnCirc, Param1, Param2, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_circ2d_real3(Qualified1, Point2, OnCirc, Param1, Param2, Tolerance)))
         }
     }
 
@@ -1030,11 +1014,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_curve_real4(
-                    Qualified1, Qualified2, OnCurv, Param1, Param2, ParamOn, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedcirc_qcurve_curve_real4(Qualified1, Qualified2, OnCurv, Param1, Param2, ParamOn, Tolerance)))
         }
     }
 
@@ -1055,11 +1035,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_curve_real4(
-                    Qualified1, Qualified2, OnCurve, Param1, Param2, ParamOn, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qualifiedlin_qcurve_curve_real4(Qualified1, Qualified2, OnCurve, Param1, Param2, ParamOn, Tolerance)))
         }
     }
 
@@ -1079,11 +1055,7 @@ impl Circ2d2TanOnIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_curve_real3(
-                    Qualified1, Point2, OnCurve, Param1, ParamOn, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve_pnt2d_curve_real3(Qualified1, Point2, OnCurve, Param1, ParamOn, Tolerance)))
         }
     }
 
@@ -1106,7 +1078,7 @@ impl Circ2d2TanOnIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_curve_real4(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_ctor_qcurve2_curve_real4(
                     Qualified1, Qualified2, OnCurve, Param1, Param2, ParamOn, Tolerance,
                 ),
             ))
@@ -1118,7 +1090,7 @@ impl Circ2d2TanOnIter {
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_is_done(self as *const Self)
         })
     }
 
@@ -1129,7 +1101,9 @@ impl Circ2d2TanOnIter {
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanOnIter_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_this_solution(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1143,7 +1117,7 @@ impl Circ2d2TanOnIter {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_which_qualifier(
                 self as *const Self,
                 &mut Qualif1_i32_,
                 &mut Qualif2_i32_,
@@ -1164,7 +1138,7 @@ impl Circ2d2TanOnIter {
     /// didn't succeed.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_tangency1(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -1184,7 +1158,7 @@ impl Circ2d2TanOnIter {
     /// didn't succeed.
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_tangency2(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -1200,7 +1174,11 @@ impl Circ2d2TanOnIter {
     /// didn't succeed.
     pub fn center_on3(&self, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_center_on3(self as *const Self, ParArg, PntSol)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_center_on3(
+                self as *const Self,
+                ParArg,
+                PntSol,
+            )
         })
     }
 
@@ -1209,7 +1187,9 @@ impl Circ2d2TanOnIter {
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_is_the_same1(
+                self as *const Self,
+            )
         })
     }
 
@@ -1218,7 +1198,9 @@ impl Circ2d2TanOnIter {
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanOnIter_is_the_same2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanOnIter_is_the_same2(
+                self as *const Self,
+            )
         })
     }
 }
@@ -1249,11 +1231,11 @@ impl Circ2d2TanOnIter {
 /// with Tolerance we will give a solution if the
 /// lowest distance between C1 and Cu2 is lower than or
 /// equal Tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2d2TanRad as Circ2d2TanRad;
+pub use crate::ffi_types::Geom2dGcc_Circ2d2TanRad as Circ2d2TanRad;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d2TanRad_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_destructor(ptr);
     }
 }
 
@@ -1267,7 +1249,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve2_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
                 ),
             ))
@@ -1277,16 +1259,12 @@ impl Circ2d2TanRad {
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:69 - `Geom2dGcc_Circ2d2TanRad::Geom2dGcc_Circ2d2TanRad()`
     pub fn new_qualifiedcurve_handlegeom2dpoint_real2(
         Qualified1: &QualifiedCurve,
-        Point: &crate::ffi::HandleGeom2dPoint,
+        Point: &crate::ffi_types::HandleGeom2dPoint,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve_handlegeom2dpoint_real2(
-                    Qualified1, Point, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_ctor_qualifiedcurve_handlegeom2dpoint_real2(Qualified1, Point, Radius, Tolerance)))
         }
     }
 
@@ -1315,14 +1293,14 @@ impl Circ2d2TanRad {
     /// the argument it qualifies (for example, enclosing for a line).
     /// Standard_NegativeValue if Radius is negative.
     pub fn new_handlegeom2dpoint2_real2(
-        Point1: &crate::ffi::HandleGeom2dPoint,
-        Point2: &crate::ffi::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::HandleGeom2dPoint,
+        Point2: &crate::ffi_types::HandleGeom2dPoint,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_ctor_handlegeom2dpoint2_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_ctor_handlegeom2dpoint2_real2(
                     Point1, Point2, Radius, Tolerance,
                 ),
             ))
@@ -1332,14 +1310,20 @@ impl Circ2d2TanRad {
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:102 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanrad(&mut self, Circ: &crate::gcc_ana::Circ2d2TanRad) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanrad(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
     /// **Source:** `Geom2dGcc_Circ2d2TanRad.hxx`:104 - `Geom2dGcc_Circ2d2TanRad::Results()`
     pub fn results_circ2d2tanradgeo(&mut self, Circ: &Circ2d2TanRadGeo) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_results_circ2d2tanradgeo(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
@@ -1349,7 +1333,7 @@ impl Circ2d2TanRad {
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_is_done(self as *const Self)
         })
     }
 
@@ -1360,7 +1344,7 @@ impl Circ2d2TanRad {
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_nb_solutions(self as *const Self)
         })
     }
 
@@ -1380,7 +1364,10 @@ impl Circ2d2TanRad {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRad_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1412,7 +1399,7 @@ impl Circ2d2TanRad {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -1438,7 +1425,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1463,7 +1450,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1487,7 +1474,10 @@ impl Circ2d2TanRad {
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -1505,7 +1495,10 @@ impl Circ2d2TanRad {
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRad_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRad_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -1536,11 +1529,11 @@ impl Circ2d2TanRad {
 /// With Tolerance we will get a solution if the
 /// lowest distance between C1 and Cu2 is lower than or
 /// equal Tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2d2TanRadGeo as Circ2d2TanRadGeo;
+pub use crate::ffi_types::Geom2dGcc_Circ2d2TanRadGeo as Circ2d2TanRadGeo;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_destructor(ptr);
     }
 }
 
@@ -1557,11 +1550,7 @@ impl Circ2d2TanRadGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedcirc_qcurve_real2(
-                    Qualified1, Qualified2, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedcirc_qcurve_real2(Qualified1, Qualified2, Radius, Tolerance)))
         }
     }
 
@@ -1577,11 +1566,7 @@ impl Circ2d2TanRadGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedlin_qcurve_real2(
-                    Qualified1, Qualified2, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_ctor_qualifiedlin_qcurve_real2(Qualified1, Qualified2, Radius, Tolerance)))
         }
     }
 
@@ -1598,7 +1583,7 @@ impl Circ2d2TanRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve2_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
                 ),
             ))
@@ -1618,7 +1603,7 @@ impl Circ2d2TanRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_ctor_qcurve_pnt2d_real2(
                     Qualified1, Point2, Radius, Tolerance,
                 ),
             ))
@@ -1629,7 +1614,7 @@ impl Circ2d2TanRadGeo {
     /// This method returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_is_done(self as *const Self)
         })
     }
 
@@ -1638,7 +1623,9 @@ impl Circ2d2TanRadGeo {
     /// It raises NotDone if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_nb_solutions(
+                self as *const Self,
+            )
         })
     }
 
@@ -1654,7 +1641,10 @@ impl Circ2d2TanRadGeo {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1674,7 +1664,7 @@ impl Circ2d2TanRadGeo {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -1703,7 +1693,7 @@ impl Circ2d2TanRadGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1732,7 +1722,7 @@ impl Circ2d2TanRadGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1751,7 +1741,10 @@ impl Circ2d2TanRadGeo {
     /// succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -1764,7 +1757,10 @@ impl Circ2d2TanRadGeo {
     /// succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d2TanRadGeo_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d2TanRadGeo_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -1791,11 +1787,11 @@ impl Circ2d2TanRadGeo {
 /// -   defining the construction of 2D circles(s),
 /// -   implementing the construction algorithm, and
 /// -   consulting the result(s).
-pub use crate::ffi::Geom2dGcc_Circ2d3Tan as Circ2d3Tan;
+pub use crate::ffi_types::Geom2dGcc_Circ2d3Tan as Circ2d3Tan;
 
 unsafe impl crate::CppDeletable for Circ2d3Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d3Tan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_destructor(ptr);
     }
 }
 
@@ -1822,7 +1818,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve3_real4(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve3_real4(
                     Qualified1, Qualified2, Qualified3, Tolerance, Param1, Param2, Param3,
                 ),
             ))
@@ -1843,17 +1839,13 @@ impl Circ2d3Tan {
     pub fn new_qualifiedcurve2_handlegeom2dpoint_real3(
         Qualified1: &QualifiedCurve,
         Qualified2: &QualifiedCurve,
-        Point: &crate::ffi::HandleGeom2dPoint,
+        Point: &crate::ffi_types::HandleGeom2dPoint,
         Tolerance: f64,
         Param1: f64,
         Param2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve2_handlegeom2dpoint_real3(
-                    Qualified1, Qualified2, Point, Tolerance, Param1, Param2,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve2_handlegeom2dpoint_real3(Qualified1, Qualified2, Point, Tolerance, Param1, Param2)))
         }
     }
 
@@ -1867,17 +1859,13 @@ impl Circ2d3Tan {
     /// Qualified1 is more complex than a line or a circle)
     pub fn new_qualifiedcurve_handlegeom2dpoint2_real2(
         Qualified1: &QualifiedCurve,
-        Point1: &crate::ffi::HandleGeom2dPoint,
-        Point2: &crate::ffi::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::HandleGeom2dPoint,
+        Point2: &crate::ffi_types::HandleGeom2dPoint,
         Tolerance: f64,
         Param1: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve_handlegeom2dpoint2_real2(
-                    Qualified1, Point1, Point2, Tolerance, Param1,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_ctor_qualifiedcurve_handlegeom2dpoint2_real2(Qualified1, Point1, Point2, Tolerance, Param1)))
         }
     }
 
@@ -1906,14 +1894,14 @@ impl Circ2d3Tan {
     /// GccEnt_BadQualifier if a qualifier is inconsistent with
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_handlegeom2dpoint3_real(
-        Point1: &crate::ffi::HandleGeom2dPoint,
-        Point2: &crate::ffi::HandleGeom2dPoint,
-        Point3: &crate::ffi::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::HandleGeom2dPoint,
+        Point2: &crate::ffi_types::HandleGeom2dPoint,
+        Point3: &crate::ffi_types::HandleGeom2dPoint,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3Tan_ctor_handlegeom2dpoint3_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_ctor_handlegeom2dpoint3_real(
                     Point1, Point2, Point3, Tolerance,
                 ),
             ))
@@ -1929,7 +1917,13 @@ impl Circ2d3Tan {
         Rank3: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_results(self as *mut Self, Circ, Rank1, Rank2, Rank3)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_results(
+                self as *mut Self,
+                Circ,
+                Rank1,
+                Rank2,
+                Rank3,
+            )
         })
     }
 
@@ -1939,7 +1933,7 @@ impl Circ2d3Tan {
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_is_done(self as *const Self)
         })
     }
 
@@ -1948,7 +1942,7 @@ impl Circ2d3Tan {
     /// NotDone is raised if the algorithm failed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_nb_solutions(self as *const Self)
         })
     }
 
@@ -1961,7 +1955,10 @@ impl Circ2d3Tan {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3Tan_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1983,7 +1980,7 @@ impl Circ2d3Tan {
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2009,7 +2006,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2032,7 +2029,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2055,7 +2052,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_tangency3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_tangency3(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2069,7 +2066,10 @@ impl Circ2d3Tan {
     /// Returns True if the solution is equal to the first argument.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2077,7 +2077,10 @@ impl Circ2d3Tan {
     /// Returns True if the solution is equal to the second argument.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2095,7 +2098,10 @@ impl Circ2d3Tan {
     /// StdFail_NotDone if the construction fails.
     pub fn is_the_same3(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3Tan_is_the_same3(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3Tan_is_the_same3(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -2113,11 +2119,11 @@ impl Circ2d3Tan {
 /// tangency constrains (QualifiedCirc, QualifiedLine,
 /// Qualifiedcurv, Points).
 /// - A parameter for each QualifiedCurv.
-pub use crate::ffi::Geom2dGcc_Circ2d3TanIter as Circ2d3TanIter;
+pub use crate::ffi_types::Geom2dGcc_Circ2d3TanIter as Circ2d3TanIter;
 
 unsafe impl crate::CppDeletable for Circ2d3TanIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2d3TanIter_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_destructor(ptr);
     }
 }
 
@@ -2135,11 +2141,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc2_qcurve_real4(
-                    Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc2_qcurve_real4(Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -2156,11 +2158,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve2_real4(
-                    Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve2_real4(Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -2178,11 +2176,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qualifiedlin_qcurve_real4(
-                    Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qualifiedlin_qcurve_real4(Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -2199,11 +2193,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve_pnt2d_real3(
-                    Qualified1, Qualified2, Point3, Param1, Param2, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedcirc_qcurve_pnt2d_real3(Qualified1, Qualified2, Point3, Param1, Param2, Tolerance)))
         }
     }
 
@@ -2220,11 +2210,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin2_qcurve_real4(
-                    Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin2_qcurve_real4(Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -2241,11 +2227,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve2_real4(
-                    Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve2_real4(Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance)))
         }
     }
 
@@ -2262,11 +2244,7 @@ impl Circ2d3TanIter {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve_pnt2d_real3(
-                    Qualified1, Qualified2, Point3, Param1, Param2, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qualifiedlin_qcurve_pnt2d_real3(Qualified1, Qualified2, Point3, Param1, Param2, Tolerance)))
         }
     }
 
@@ -2282,7 +2260,7 @@ impl Circ2d3TanIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve_pnt2d2_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qcurve_pnt2d2_real2(
                     Qualified1, Point1, Point2, Param1, Tolerance,
                 ),
             ))
@@ -2302,7 +2280,7 @@ impl Circ2d3TanIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve2_pnt2d_real3(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qcurve2_pnt2d_real3(
                     Qualified1, Qualified2, Point2, Param1, Param2, Tolerance,
                 ),
             ))
@@ -2323,7 +2301,7 @@ impl Circ2d3TanIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_ctor_qcurve3_real4(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_ctor_qcurve3_real4(
                     Qualified1, Qualified2, Qualified3, Param1, Param2, Param3, Tolerance,
                 ),
             ))
@@ -2335,7 +2313,7 @@ impl Circ2d3TanIter {
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_is_done(self as *const Self)
         })
     }
 
@@ -2346,7 +2324,9 @@ impl Circ2d3TanIter {
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2d3TanIter_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_this_solution(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2362,7 +2342,7 @@ impl Circ2d3TanIter {
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_which_qualifier(
                 self as *const Self,
                 &mut Qualif1_i32_,
                 &mut Qualif2_i32_,
@@ -2385,7 +2365,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_tangency1(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -2405,7 +2385,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_tangency2(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -2425,7 +2405,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn tangency3(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_tangency3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_tangency3(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -2439,7 +2419,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn is_the_same1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_is_the_same1(self as *const Self)
         })
     }
 
@@ -2448,7 +2428,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn is_the_same2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_is_the_same2(self as *const Self)
         })
     }
 
@@ -2457,7 +2437,7 @@ impl Circ2d3TanIter {
     /// didn't succeed.
     pub fn is_the_same3(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2d3TanIter_is_the_same3(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2d3TanIter_is_the_same3(self as *const Self)
         })
     }
 }
@@ -2484,11 +2464,11 @@ impl Circ2d3TanIter {
 /// outside C1.
 /// With Tolerance we will give a solution if the distance
 /// between C1 and Pcenter is lower than or equal Tolerance/2.
-pub use crate::ffi::Geom2dGcc_Circ2dTanCen as Circ2dTanCen;
+pub use crate::ffi_types::Geom2dGcc_Circ2dTanCen as Circ2dTanCen;
 
 unsafe impl crate::CppDeletable for Circ2dTanCen {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2dTanCen_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_destructor(ptr);
     }
 }
 
@@ -2509,15 +2489,11 @@ impl Circ2dTanCen {
     /// the argument it qualifies (for example, enclosing for a line).
     pub fn new_qualifiedcurve_handlegeom2dpoint_real(
         Qualified1: &QualifiedCurve,
-        Pcenter: &crate::ffi::HandleGeom2dPoint,
+        Pcenter: &crate::ffi_types::HandleGeom2dPoint,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanCen_ctor_qualifiedcurve_handlegeom2dpoint_real(
-                    Qualified1, Pcenter, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_ctor_qualifiedcurve_handlegeom2dpoint_real(Qualified1, Pcenter, Tolerance)))
         }
     }
 
@@ -2529,7 +2505,7 @@ impl Circ2dTanCen {
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_is_done(self as *const Self)
         })
     }
 
@@ -2540,7 +2516,7 @@ impl Circ2dTanCen {
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_nb_solutions(self as *const Self)
         })
     }
 
@@ -2558,7 +2534,10 @@ impl Circ2dTanCen {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanCen_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2580,7 +2559,7 @@ impl Circ2dTanCen {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2606,7 +2585,7 @@ impl Circ2dTanCen {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2631,7 +2610,10 @@ impl Circ2dTanCen {
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCen_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCen_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -2658,11 +2640,11 @@ impl Circ2dTanCen {
 /// outside C1.
 /// With Tolerance we will give a solution if the distance
 /// between C1 and Pcenter is lower than or equal Tolerance/2.
-pub use crate::ffi::Geom2dGcc_Circ2dTanCenGeo as Circ2dTanCenGeo;
+pub use crate::ffi_types::Geom2dGcc_Circ2dTanCenGeo as Circ2dTanCenGeo;
 
 unsafe impl crate::CppDeletable for Circ2dTanCenGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2dTanCenGeo_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_destructor(ptr);
     }
 }
 
@@ -2678,7 +2660,7 @@ impl Circ2dTanCenGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_ctor_qcurve_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_ctor_qcurve_pnt2d_real(
                     Qualified1, Pcenter, Tolerance,
                 ),
             ))
@@ -2690,7 +2672,7 @@ impl Circ2dTanCenGeo {
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_is_done(self as *const Self)
         })
     }
 
@@ -2701,7 +2683,9 @@ impl Circ2dTanCenGeo {
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_nb_solutions(
+                self as *const Self,
+            )
         })
     }
 
@@ -2718,7 +2702,10 @@ impl Circ2dTanCenGeo {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanCenGeo_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2727,7 +2714,7 @@ impl Circ2dTanCenGeo {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2755,7 +2742,7 @@ impl Circ2dTanCenGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanCenGeo_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanCenGeo_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2793,11 +2780,11 @@ impl Circ2dTanCenGeo {
 /// With Tolerance we will give a solution if the
 /// distance between Cu1 and OnLine is lower than or
 /// equal Tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2dTanOnRad as Circ2dTanOnRad;
+pub use crate::ffi_types::Geom2dGcc_Circ2dTanOnRad as Circ2dTanOnRad;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2dTanOnRad_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_destructor(ptr);
     }
 }
 
@@ -2813,11 +2800,7 @@ impl Circ2dTanOnRad {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_ctor_qualifiedcurve_curve_real2(
-                    Qualified1, OnCurv, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_ctor_qualifiedcurve_curve_real2(Qualified1, OnCurv, Radius, Tolerance)))
         }
     }
 
@@ -2853,31 +2836,33 @@ impl Circ2dTanOnRad {
     /// }
     /// }
     pub fn new_handlegeom2dpoint_curve_real2(
-        Point1: &crate::ffi::HandleGeom2dPoint,
+        Point1: &crate::ffi_types::HandleGeom2dPoint,
         OnCurv: &crate::geom2d_adaptor::Curve,
         Radius: f64,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_ctor_handlegeom2dpoint_curve_real2(
-                    Point1, OnCurv, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_ctor_handlegeom2dpoint_curve_real2(Point1, OnCurv, Radius, Tolerance)))
         }
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:109 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonrad(&mut self, Circ: &crate::gcc_ana::Circ2dTanOnRad) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonrad(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
     /// **Source:** `Geom2dGcc_Circ2dTanOnRad.hxx`:111 - `Geom2dGcc_Circ2dTanOnRad::Results()`
     pub fn results_circ2dtanonradgeo(&mut self, Circ: &Circ2dTanOnRadGeo) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(self as *mut Self, Circ)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_results_circ2dtanonradgeo(
+                self as *mut Self,
+                Circ,
+            )
         })
     }
 
@@ -2889,7 +2874,7 @@ impl Circ2dTanOnRad {
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_is_done(self as *const Self)
         })
     }
 
@@ -2899,7 +2884,7 @@ impl Circ2dTanOnRad {
     /// Exceptions: StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_nb_solutions(self as *const Self)
         })
     }
 
@@ -2916,7 +2901,10 @@ impl Circ2dTanOnRad {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRad_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2939,7 +2927,7 @@ impl Circ2dTanOnRad {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2967,7 +2955,7 @@ impl Circ2dTanOnRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2990,7 +2978,7 @@ impl Circ2dTanOnRad {
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_center_on3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_center_on3(
                 self as *const Self,
                 Index,
                 ParArg,
@@ -3013,7 +3001,10 @@ impl Circ2dTanOnRad {
     /// notDone is raised if the construction algorithm did not succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRad_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRad_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -3045,11 +3036,11 @@ impl Circ2dTanOnRad {
 /// With Tolerance we will give a solution if the
 /// distance between Cu1 and OnLine is lower than or
 /// equal Tolerance.
-pub use crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo as Circ2dTanOnRadGeo;
+pub use crate::ffi_types::Geom2dGcc_Circ2dTanOnRadGeo as Circ2dTanOnRadGeo;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRadGeo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_destructor(ptr);
     }
 }
 
@@ -3068,7 +3059,7 @@ impl Circ2dTanOnRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_lin2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_lin2d_real2(
                     Qualified1, OnLine, Radius, Tolerance,
                 ),
             ))
@@ -3089,7 +3080,7 @@ impl Circ2dTanOnRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_circ2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_circ2d_real2(
                     Qualified1, OnCirc, Radius, Tolerance,
                 ),
             ))
@@ -3109,11 +3100,7 @@ impl Circ2dTanOnRadGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedcirc_curve_real2(
-                    Qualified1, OnCurv, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedcirc_curve_real2(Qualified1, OnCurv, Radius, Tolerance)))
         }
     }
 
@@ -3130,11 +3117,7 @@ impl Circ2dTanOnRadGeo {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedlin_curve_real2(
-                    Qualified1, OnCurv, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qualifiedlin_curve_real2(Qualified1, OnCurv, Radius, Tolerance)))
         }
     }
 
@@ -3152,7 +3135,7 @@ impl Circ2dTanOnRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_curve_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_qcurve_curve_real2(
                     Qualified1, OnCurv, Radius, Tolerance,
                 ),
             ))
@@ -3173,7 +3156,7 @@ impl Circ2dTanOnRadGeo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_ctor_pnt2d_curve_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_ctor_pnt2d_curve_real2(
                     Point1, OnCurv, Radius, Tolerance,
                 ),
             ))
@@ -3185,7 +3168,7 @@ impl Circ2dTanOnRadGeo {
     /// algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_is_done(self as *const Self)
         })
     }
 
@@ -3195,7 +3178,9 @@ impl Circ2dTanOnRadGeo {
     /// didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_nb_solutions(
+                self as *const Self,
+            )
         })
     }
 
@@ -3212,7 +3197,10 @@ impl Circ2dTanOnRadGeo {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -3221,7 +3209,7 @@ impl Circ2dTanOnRadGeo {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -3251,7 +3239,7 @@ impl Circ2dTanOnRadGeo {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -3273,7 +3261,7 @@ impl Circ2dTanOnRadGeo {
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_center_on3(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_center_on3(
                 self as *const Self,
                 Index,
                 ParArg,
@@ -3291,7 +3279,10 @@ impl Circ2dTanOnRadGeo {
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Circ2dTanOnRadGeo_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Circ2dTanOnRadGeo_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -3301,11 +3292,11 @@ impl Circ2dTanOnRadGeo {
 // ========================
 
 /// **Source:** `Geom2dGcc_CurveTool.hxx`:28 - `Geom2dGcc_CurveTool`
-pub use crate::ffi::Geom2dGcc_CurveTool as CurveTool;
+pub use crate::ffi_types::Geom2dGcc_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_CurveTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_destructor(ptr);
     }
 }
 
@@ -3314,36 +3305,46 @@ impl CurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_CurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:33 - `Geom2dGcc_CurveTool::FirstParameter()`
     pub fn first_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_first_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:35 - `Geom2dGcc_CurveTool::LastParameter()`
     pub fn last_parameter(C: &crate::geom2d_adaptor::Curve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_last_parameter(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_last_parameter(C)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:37 - `Geom2dGcc_CurveTool::EpsX()`
     pub fn eps_x(C: &crate::geom2d_adaptor::Curve, Tol: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_eps_x(C, Tol) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_eps_x(C, Tol)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:39 - `Geom2dGcc_CurveTool::NbSamples()`
     pub fn nb_samples(C: &crate::geom2d_adaptor::Curve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_nb_samples(C) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_nb_samples(C)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:41 - `Geom2dGcc_CurveTool::Value()`
     pub fn value(C: &crate::geom2d_adaptor::Curve, X: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_CurveTool_value(
-                C, X,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_value(C, X),
+            ))
         }
     }
 
@@ -3354,7 +3355,9 @@ impl CurveTool {
         P: &mut crate::gp::Pnt2d,
         T: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d1(C, U, P, T) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_d1(C, U, P, T)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:48 - `Geom2dGcc_CurveTool::D2()`
@@ -3365,7 +3368,9 @@ impl CurveTool {
         T: &mut crate::gp::Vec2d,
         N: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d2(C, U, P, T, N) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_d2(C, U, P, T, N)
+        })
     }
 
     /// **Source:** `Geom2dGcc_CurveTool.hxx`:54 - `Geom2dGcc_CurveTool::D3()`
@@ -3377,7 +3382,9 @@ impl CurveTool {
         N: &mut crate::gp::Vec2d,
         dN: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::Geom2dGcc_CurveTool_d3(C, U, P, T, N, dN) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_CurveTool_d3(C, U, P, T, N, dN)
+        })
     }
 }
 
@@ -3388,11 +3395,11 @@ impl CurveTool {
 /// **Source:** `Geom2dGcc_FunctionTanCirCu.hxx`:30 - `Geom2dGcc_FunctionTanCirCu`
 /// This abstract class describes a Function of 1 Variable
 /// used to find a line tangent to a curve and a circle.
-pub use crate::ffi::Geom2dGcc_FunctionTanCirCu as FunctionTanCirCu;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanCirCu as FunctionTanCirCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCirCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanCirCu_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_destructor(ptr);
     }
 }
 
@@ -3404,7 +3411,9 @@ impl FunctionTanCirCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_ctor_circ2d_curve(Circ, Curv),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_ctor_circ2d_curve(
+                    Circ, Curv,
+                ),
             ))
         }
     }
@@ -3415,7 +3424,7 @@ impl FunctionTanCirCu {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_value(self as *mut Self, X, F)
         })
     }
 
@@ -3425,7 +3434,11 @@ impl FunctionTanCirCu {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_derivative(self as *mut Self, X, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_derivative(
+                self as *mut Self,
+                X,
+                Deriv,
+            )
         })
     }
 
@@ -3436,18 +3449,19 @@ impl FunctionTanCirCu {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_values(self as *mut Self, X, F, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_values(
+                self as *mut Self,
+                X,
+                F,
+                Deriv,
+            )
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -3456,36 +3470,38 @@ impl FunctionTanCirCu {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCirCu_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCirCu_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3497,11 +3513,11 @@ impl FunctionTanCirCu {
 /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:34 - `Geom2dGcc_FunctionTanCuCu`
 /// This abstract class describes a Function of 1 Variable
 /// used to find a line tangent to two curves.
-pub use crate::ffi::Geom2dGcc_FunctionTanCuCu as FunctionTanCuCu;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCu as FunctionTanCuCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanCuCu_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_destructor(ptr);
     }
 }
 
@@ -3513,7 +3529,7 @@ impl FunctionTanCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_curve2(Curv1, Curv2),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_ctor_curve2(Curv1, Curv2),
             ))
         }
     }
@@ -3525,7 +3541,9 @@ impl FunctionTanCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_ctor_circ2d_curve(Circ1, Curv2),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_ctor_circ2d_curve(
+                    Circ1, Curv2,
+                ),
             ))
         }
     }
@@ -3533,7 +3551,7 @@ impl FunctionTanCuCu {
     /// **Source:** `Geom2dGcc_FunctionTanCuCu.hxx`:45 - `Geom2dGcc_FunctionTanCuCu::InitDerivative()`
     pub fn init_derivative(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         Point1: &mut crate::gp::Pnt2d,
         Point2: &mut crate::gp::Pnt2d,
         Tan1: &mut crate::gp::Vec2d,
@@ -3542,7 +3560,7 @@ impl FunctionTanCuCu {
         D22: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_init_derivative(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_init_derivative(
                 self as *mut Self,
                 X,
                 Point1,
@@ -3559,7 +3577,9 @@ impl FunctionTanCuCu {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -3567,7 +3587,9 @@ impl FunctionTanCuCu {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -3575,9 +3597,13 @@ impl FunctionTanCuCu {
     /// Computes the value of the function F for the variable X.
     /// It returns True if the computation is successfully done,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_value(self as *mut Self, X, F)
         })
     }
 
@@ -3587,11 +3613,15 @@ impl FunctionTanCuCu {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         Deriv: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_derivatives(self as *mut Self, X, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_derivatives(
+                self as *mut Self,
+                X,
+                Deriv,
+            )
         })
     }
 
@@ -3602,12 +3632,17 @@ impl FunctionTanCuCu {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         Deriv: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_values(self as *mut Self, X, F, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_values(
+                self as *mut Self,
+                X,
+                F,
+                Deriv,
+            )
         })
     }
 
@@ -3616,11 +3651,7 @@ impl FunctionTanCuCu {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3629,20 +3660,18 @@ impl FunctionTanCuCu {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3650,7 +3679,9 @@ impl FunctionTanCuCu {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3658,7 +3689,9 @@ impl FunctionTanCuCu {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCu_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCu_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3670,11 +3703,11 @@ impl FunctionTanCuCu {
 /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:35 - `Geom2dGcc_FunctionTanCuCuCu`
 /// This abstract class describes a set on N Functions of
 /// M independent variables.
-pub use crate::ffi::Geom2dGcc_FunctionTanCuCuCu as FunctionTanCuCuCu;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCuCu as FunctionTanCuCuCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCuCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanCuCuCu_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_destructor(ptr);
     }
 }
 
@@ -3687,7 +3720,7 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve3(C1, C2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_curve3(C1, C2, C3),
             ))
         }
     }
@@ -3700,7 +3733,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve2(C1, C2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve2(
+                    C1, C2, C3,
+                ),
             ))
         }
     }
@@ -3713,7 +3748,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d2_curve(C1, C2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d2_curve(
+                    C1, C2, C3,
+                ),
             ))
         }
     }
@@ -3726,7 +3763,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_lin2d_curve(C1, L2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_lin2d_curve(
+                    C1, L2, C3,
+                ),
             ))
         }
     }
@@ -3739,7 +3778,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d2_curve(L1, L2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d2_curve(
+                    L1, L2, C3,
+                ),
             ))
         }
     }
@@ -3752,7 +3793,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve2(L1, C2, C3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve2(
+                    L1, C2, C3,
+                ),
             ))
         }
     }
@@ -3765,7 +3808,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve_pnt2d(C1, C2, P3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_circ2d_curve_pnt2d(
+                    C1, C2, P3,
+                ),
             ))
         }
     }
@@ -3778,7 +3823,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve_pnt2d(L1, C2, P3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_lin2d_curve_pnt2d(
+                    L1, C2, P3,
+                ),
             ))
         }
     }
@@ -3791,7 +3838,9 @@ impl FunctionTanCuCuCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_ctor_curve_pnt2d2(C1, P2, P3),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_ctor_curve_pnt2d2(
+                    C1, P2, P3,
+                ),
             ))
         }
     }
@@ -3799,7 +3848,7 @@ impl FunctionTanCuCuCu {
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:76 - `Geom2dGcc_FunctionTanCuCuCu::InitDerivative()`
     pub fn init_derivative(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         Point1: &mut crate::gp::Pnt2d,
         Point2: &mut crate::gp::Pnt2d,
         Point3: &mut crate::gp::Pnt2d,
@@ -3811,7 +3860,7 @@ impl FunctionTanCuCuCu {
         D23: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_init_derivative(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_init_derivative(
                 self as *mut Self,
                 X,
                 Point1,
@@ -3831,7 +3880,9 @@ impl FunctionTanCuCuCu {
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -3839,15 +3890,21 @@ impl FunctionTanCuCuCu {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuCu.hxx`:94 - `Geom2dGcc_FunctionTanCuCuCu::Value()`
     /// Computes the values of the Functions for the variable <X>.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_value(self as *mut Self, X, F)
         })
     }
 
@@ -3855,11 +3912,15 @@ impl FunctionTanCuCuCu {
     /// Returns the values of the derivatives for the variable <X>.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -3868,12 +3929,17 @@ impl FunctionTanCuCuCu {
     /// for the variable <X>.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
@@ -3882,11 +3948,7 @@ impl FunctionTanCuCuCu {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3895,20 +3957,18 @@ impl FunctionTanCuCuCu {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3916,7 +3976,9 @@ impl FunctionTanCuCuCu {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3924,7 +3986,9 @@ impl FunctionTanCuCuCu {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuCu_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuCu_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3936,11 +4000,11 @@ impl FunctionTanCuCuCu {
 /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:35 - `Geom2dGcc_FunctionTanCuCuOnCu`
 /// This abstract class describes a set on N Functions of
 /// M independent variables.
-pub use crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu as FunctionTanCuCuOnCu;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanCuCuOnCu as FunctionTanCuCuOnCu;
 
 unsafe impl crate::CppDeletable for FunctionTanCuCuOnCu {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_destructor(ptr);
     }
 }
 
@@ -3954,7 +4018,7 @@ impl FunctionTanCuCuOnCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_circ2d_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_circ2d_real(
                     C1, C2, OnCi, Rad,
                 ),
             ))
@@ -3969,11 +4033,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_circ2d_real(
-                    C1, C2, OnCi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_circ2d_real(C1, C2, OnCi, Rad)))
         }
     }
 
@@ -3985,11 +4045,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_circ2d_real(
-                    L1, C2, OnCi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_circ2d_real(L1, C2, OnCi, Rad)))
         }
     }
 
@@ -4001,11 +4057,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_circ2d_real(
-                    C1, P2, OnCi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_circ2d_real(C1, P2, OnCi, Rad)))
         }
     }
 
@@ -4018,7 +4070,9 @@ impl FunctionTanCuCuOnCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_lin2d_real(C1, C2, OnLi, Rad),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve2_lin2d_real(
+                    C1, C2, OnLi, Rad,
+                ),
             ))
         }
     }
@@ -4031,11 +4085,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_lin2d_real(
-                    C1, C2, OnLi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve_lin2d_real(C1, C2, OnLi, Rad)))
         }
     }
 
@@ -4047,11 +4097,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_lin2d_real(
-                    L1, C2, OnLi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve_lin2d_real(L1, C2, OnLi, Rad)))
         }
     }
 
@@ -4063,11 +4109,7 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_lin2d_real(
-                    C1, P2, OnLi, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_lin2d_real(C1, P2, OnLi, Rad)))
         }
     }
 
@@ -4080,7 +4122,9 @@ impl FunctionTanCuCuOnCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve3_real(C1, C2, OnCu, Rad),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve3_real(
+                    C1, C2, OnCu, Rad,
+                ),
             ))
         }
     }
@@ -4094,7 +4138,7 @@ impl FunctionTanCuCuOnCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve2_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_circ2d_curve2_real(
                     C1, C2, OnCu, Rad,
                 ),
             ))
@@ -4110,7 +4154,9 @@ impl FunctionTanCuCuOnCu {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve2_real(L1, C2, OnCu, Rad),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_lin2d_curve2_real(
+                    L1, C2, OnCu, Rad,
+                ),
             ))
         }
     }
@@ -4123,18 +4169,14 @@ impl FunctionTanCuCuOnCu {
         Rad: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_curve_real(
-                    C1, P1, OnCu, Rad,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_ctor_curve_pnt2d_curve_real(C1, P1, OnCu, Rad)))
         }
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:100 - `Geom2dGcc_FunctionTanCuCuOnCu::InitDerivative()`
     pub fn init_derivative(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         Point1: &mut crate::gp::Pnt2d,
         Point2: &mut crate::gp::Pnt2d,
         Point3: &mut crate::gp::Pnt2d,
@@ -4146,7 +4188,7 @@ impl FunctionTanCuCuOnCu {
         D23: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_init_derivative(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_init_derivative(
                 self as *mut Self,
                 X,
                 Point1,
@@ -4166,7 +4208,9 @@ impl FunctionTanCuCuOnCu {
     /// Returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -4174,15 +4218,25 @@ impl FunctionTanCuCuOnCu {
     /// Returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Geom2dGcc_FunctionTanCuCuOnCu.hxx`:118 - `Geom2dGcc_FunctionTanCuCuOnCu::Value()`
     /// Computes the values of the Functions for the variable <X>.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -4190,11 +4244,15 @@ impl FunctionTanCuCuOnCu {
     /// Returns the values of the derivatives for the variable <X>.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -4203,12 +4261,17 @@ impl FunctionTanCuCuOnCu {
     /// for the variable <X>.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
@@ -4217,11 +4280,7 @@ impl FunctionTanCuCuOnCu {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -4230,20 +4289,18 @@ impl FunctionTanCuCuOnCu {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4251,7 +4308,7 @@ impl FunctionTanCuCuOnCu {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -4261,7 +4318,9 @@ impl FunctionTanCuCuOnCu {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuCuOnCu_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuCuOnCu_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -4274,11 +4333,11 @@ impl FunctionTanCuCuOnCu {
 /// This abstract class describes a Function of 1 Variable
 /// used to find a line tangent to a curve and passing
 /// through a point.
-pub use crate::ffi::Geom2dGcc_FunctionTanCuPnt as FunctionTanCuPnt;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanCuPnt as FunctionTanCuPnt;
 
 unsafe impl crate::CppDeletable for FunctionTanCuPnt {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanCuPnt_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_destructor(ptr);
     }
 }
 
@@ -4290,7 +4349,7 @@ impl FunctionTanCuPnt {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_ctor_curve_pnt2d(C, Point),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_ctor_curve_pnt2d(C, Point),
             ))
         }
     }
@@ -4301,7 +4360,7 @@ impl FunctionTanCuPnt {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_value(self as *mut Self, X, F)
         })
     }
 
@@ -4311,7 +4370,11 @@ impl FunctionTanCuPnt {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_derivative(self as *mut Self, X, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_derivative(
+                self as *mut Self,
+                X,
+                Deriv,
+            )
         })
     }
 
@@ -4322,18 +4385,19 @@ impl FunctionTanCuPnt {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_values(self as *mut Self, X, F, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_values(
+                self as *mut Self,
+                X,
+                F,
+                Deriv,
+            )
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -4342,36 +4406,38 @@ impl FunctionTanCuPnt {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanCuPnt_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanCuPnt_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -4382,11 +4448,11 @@ impl FunctionTanCuPnt {
 
 /// **Source:** `Geom2dGcc_FunctionTanObl.hxx`:29 - `Geom2dGcc_FunctionTanObl`
 /// This class describe a function of a single variable.
-pub use crate::ffi::Geom2dGcc_FunctionTanObl as FunctionTanObl;
+pub use crate::ffi_types::Geom2dGcc_FunctionTanObl as FunctionTanObl;
 
 unsafe impl crate::CppDeletable for FunctionTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_FunctionTanObl_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_destructor(ptr);
     }
 }
 
@@ -4398,7 +4464,7 @@ impl FunctionTanObl {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanObl_ctor_curve_dir2d(Curve, Dir),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_ctor_curve_dir2d(Curve, Dir),
             ))
         }
     }
@@ -4409,7 +4475,7 @@ impl FunctionTanObl {
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_value(self as *mut Self, X, F)
         })
     }
 
@@ -4419,7 +4485,11 @@ impl FunctionTanObl {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_derivative(self as *mut Self, X, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_derivative(
+                self as *mut Self,
+                X,
+                Deriv,
+            )
         })
     }
 
@@ -4430,18 +4500,19 @@ impl FunctionTanObl {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, Deriv: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_values(self as *mut Self, X, F, Deriv)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_values(
+                self as *mut Self,
+                X,
+                F,
+                Deriv,
+            )
         })
     }
 
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative(self as *const Self))
         }
     }
 
@@ -4450,36 +4521,38 @@ impl FunctionTanObl {
         &mut self,
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_as_math_FunctionWithDerivative_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_FunctionTanObl_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_FunctionTanObl_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_FunctionTanObl_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -4489,11 +4562,11 @@ impl FunctionTanObl {
 // ========================
 
 /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel`
-pub use crate::ffi::Geom2dGcc_IsParallel as IsParallel;
+pub use crate::ffi_types::Geom2dGcc_IsParallel as IsParallel;
 
 unsafe impl crate::CppDeletable for IsParallel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_IsParallel_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_destructor(ptr);
     }
 }
 
@@ -4501,7 +4574,9 @@ impl IsParallel {
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Geom2dGcc_IsParallel()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_ctor(),
+            ))
         }
     }
 
@@ -4510,7 +4585,9 @@ impl IsParallel {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -4521,7 +4598,7 @@ impl IsParallel {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_ctor_charptr2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -4530,11 +4607,13 @@ impl IsParallel {
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4542,25 +4621,27 @@ impl IsParallel {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_raise_sstream(theMessage)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -4569,12 +4650,12 @@ impl IsParallel {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_new_instance_charptr2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -4586,7 +4667,7 @@ impl IsParallel {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4594,107 +4675,132 @@ impl IsParallel {
     }
 
     /// **Source:** `Geom2dGcc_IsParallel.hxx`:35 - `Geom2dGcc_IsParallel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Geom2dGcc_IsParallel_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_DomainError(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dGcc_IsParallel_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGccIsParallel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGccIsParallel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_IsParallel_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4702,7 +4808,9 @@ impl IsParallel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Geom2dGcc_IsParallel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4715,82 +4823,92 @@ impl IsParallel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_IsParallel_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeom2dGccIsParallel;
+pub use crate::ffi_types::HandleGeom2dGccIsParallel;
 
 unsafe impl crate::CppDeletable for HandleGeom2dGccIsParallel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeom2dGccIsParallel_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_destructor(ptr);
     }
 }
 
 impl HandleGeom2dGccIsParallel {
     /// Dereference this Handle to access the underlying Geom2dGcc_IsParallel
-    pub fn get(&self) -> &crate::ffi::Geom2dGcc_IsParallel {
+    pub fn get(&self) -> &crate::ffi_types::Geom2dGcc_IsParallel {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeom2dGccIsParallel_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Geom2dGcc_IsParallel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Geom2dGcc_IsParallel {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeom2dGccIsParallel_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Geom2dGcc_IsParallel
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Geom2dGcc_IsParallel {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+    pub fn to_handle_domain_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Failure>
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardDomainError(
+                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardFailure(
                     self as *const Self,
                 ),
             ))
         }
     }
 
-    /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardFailure(self as *const Self),
-            ))
-        }
-    }
-
     /// Upcast Handle<Geom2dGcc_IsParallel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeom2dGccIsParallel_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeom2dGccIsParallel_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4817,11 +4935,11 @@ impl HandleGeom2dGccIsParallel {
 ///
 /// Note: Some constructors may check the type of the qualified argument
 /// and raise BadQualifier Error in case of incorrect couple (qualifier, curv).
-pub use crate::ffi::Geom2dGcc_Lin2d2Tan as Lin2d2Tan;
+pub use crate::ffi_types::Geom2dGcc_Lin2d2Tan as Lin2d2Tan;
 
 unsafe impl crate::CppDeletable for Lin2d2Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Lin2d2Tan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_destructor(ptr);
     }
 }
 
@@ -4837,7 +4955,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real(
                     Qualified1, Qualified2, Tolang,
                 ),
             ))
@@ -4855,7 +4973,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real(
                     Qualified1, ThePoint, Tolang,
                 ),
             ))
@@ -4877,7 +4995,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real3(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve2_real3(
                     Qualified1, Qualified2, Tolang, Param1, Param2,
                 ),
             ))
@@ -4897,7 +5015,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_ctor_qualifiedcurve_pnt2d_real2(
                     Qualified1, ThePoint, Tolang, Param1,
                 ),
             ))
@@ -4911,7 +5029,9 @@ impl Lin2d2Tan {
     /// more internal intersection algorithm, which has
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_Lin2d2Tan_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dGcc_Lin2d2Tan.hxx`:97 - `Geom2dGcc_Lin2d2Tan::NbSolutions()`
@@ -4919,7 +5039,7 @@ impl Lin2d2Tan {
     /// Exceptions StdFail_NotDone if the construction fails.R
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2Tan_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_nb_solutions(self as *const Self)
         })
     }
 
@@ -4936,7 +5056,10 @@ impl Lin2d2Tan {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2Tan_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -4966,7 +5089,7 @@ impl Lin2d2Tan {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2Tan_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -4995,7 +5118,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2Tan_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -5022,7 +5145,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2Tan_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2Tan_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -5047,11 +5170,11 @@ impl Lin2d2Tan {
 /// and raise BadQualifier Error in case of incorrect couple (qualifier,
 /// curv).
 /// For example: "EnclosedCirc".
-pub use crate::ffi::Geom2dGcc_Lin2d2TanIter as Lin2d2TanIter;
+pub use crate::ffi_types::Geom2dGcc_Lin2d2TanIter as Lin2d2TanIter;
 
 unsafe impl crate::CppDeletable for Lin2d2TanIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Lin2d2TanIter_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_destructor(ptr);
     }
 }
 
@@ -5070,7 +5193,7 @@ impl Lin2d2TanIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qcurve_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_ctor_qcurve_pnt2d_real2(
                     Qualified1, ThePoint, Param1, Tolang,
                 ),
             ))
@@ -5092,11 +5215,7 @@ impl Lin2d2TanIter {
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qualifiedcirc_qcurve_real2(
-                    Qualified1, Qualified2, Param2, Tolang,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_ctor_qualifiedcirc_qcurve_real2(Qualified1, Qualified2, Param2, Tolang)))
         }
     }
 
@@ -5116,7 +5235,7 @@ impl Lin2d2TanIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_ctor_qcurve2_real3(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_ctor_qcurve2_real3(
                     Qualified1, Qualified2, Param1, Param2, Tolang,
                 ),
             ))
@@ -5128,7 +5247,7 @@ impl Lin2d2TanIter {
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2TanIter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_is_done(self as *const Self)
         })
     }
 
@@ -5137,7 +5256,9 @@ impl Lin2d2TanIter {
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2d2TanIter_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_this_solution(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5151,7 +5272,7 @@ impl Lin2d2TanIter {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2TanIter_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_which_qualifier(
                 self as *const Self,
                 &mut Qualif1_i32_,
                 &mut Qualif2_i32_,
@@ -5170,7 +5291,7 @@ impl Lin2d2TanIter {
     /// the argument curv.
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_tangency1(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -5182,7 +5303,7 @@ impl Lin2d2TanIter {
     /// **Source:** `Geom2dGcc_Lin2d2TanIter.hxx`:96 - `Geom2dGcc_Lin2d2TanIter::Tangency2()`
     pub fn tangency2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2d2TanIter_tangency2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2d2TanIter_tangency2(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -5207,11 +5328,11 @@ impl Lin2d2TanIter {
 /// -   defining the construction of 2D line(s),
 /// -   implementing the construction algorithm, and
 /// -   consulting the result(s).
-pub use crate::ffi::Geom2dGcc_Lin2dTanObl as Lin2dTanObl;
+pub use crate::ffi_types::Geom2dGcc_Lin2dTanObl as Lin2dTanObl;
 
 unsafe impl crate::CppDeletable for Lin2dTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Lin2dTanObl_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_destructor(ptr);
     }
 }
 
@@ -5230,7 +5351,7 @@ impl Lin2dTanObl {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real2(
                     Qualified1, TheLin, TolAng, Angle,
                 ),
             ))
@@ -5260,7 +5381,7 @@ impl Lin2dTanObl {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real3(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_ctor_qualifiedcurve_lin2d_real3(
                     Qualified1, TheLin, TolAng, Param1, Angle,
                 ),
             ))
@@ -5274,7 +5395,7 @@ impl Lin2dTanObl {
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_is_done(self as *const Self)
         })
     }
 
@@ -5284,7 +5405,7 @@ impl Lin2dTanObl {
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_nb_solutions(self as *const Self)
         })
     }
 
@@ -5298,7 +5419,10 @@ impl Lin2dTanObl {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2dTanObl_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -5321,7 +5445,7 @@ impl Lin2dTanObl {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -5345,7 +5469,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -5374,7 +5498,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_intersection2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_intersection2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -5391,7 +5515,7 @@ impl Lin2dTanObl {
     /// Exceptions StdFail_NotDone if the construction fails.
     pub fn is_parallel2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanObl_is_parallel2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanObl_is_parallel2(self as *const Self)
         })
     }
 }
@@ -5405,11 +5529,11 @@ impl Lin2dTanObl {
 /// create 2d line tangent to a curve QualifiedCurv and
 /// doing an angle Angle with a line TheLin.
 /// The angle must be in Radian.
-pub use crate::ffi::Geom2dGcc_Lin2dTanOblIter as Lin2dTanOblIter;
+pub use crate::ffi_types::Geom2dGcc_Lin2dTanOblIter as Lin2dTanOblIter;
 
 unsafe impl crate::CppDeletable for Lin2dTanOblIter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_Lin2dTanOblIter_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_destructor(ptr);
     }
 }
 
@@ -5430,7 +5554,7 @@ impl Lin2dTanOblIter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2dTanOblIter_ctor_qcurve_lin2d_real3(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_ctor_qcurve_lin2d_real3(
                     Qualified1, TheLin, Param1, TolAng, Angle,
                 ),
             ))
@@ -5458,7 +5582,7 @@ impl Lin2dTanOblIter {
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_is_done(self as *const Self)
         })
     }
 
@@ -5466,7 +5590,9 @@ impl Lin2dTanOblIter {
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_Lin2dTanOblIter_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_this_solution(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5475,7 +5601,7 @@ impl Lin2dTanOblIter {
     pub fn which_qualifier(&self, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_which_qualifier(
                 self as *const Self,
                 &mut Qualif1_i32_,
             )
@@ -5486,7 +5612,7 @@ impl Lin2dTanOblIter {
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:57 - `Geom2dGcc_Lin2dTanOblIter::Tangency1()`
     pub fn tangency1(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_tangency1(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_tangency1(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -5498,7 +5624,7 @@ impl Lin2dTanOblIter {
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:61 - `Geom2dGcc_Lin2dTanOblIter::Intersection2()`
     pub fn intersection2(&self, ParSol: &mut f64, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_intersection2(
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_intersection2(
                 self as *const Self,
                 ParSol,
                 ParArg,
@@ -5510,7 +5636,9 @@ impl Lin2dTanOblIter {
     /// **Source:** `Geom2dGcc_Lin2dTanOblIter.hxx`:65 - `Geom2dGcc_Lin2dTanOblIter::IsParallel2()`
     pub fn is_parallel2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_Lin2dTanOblIter_is_parallel2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_Lin2dTanOblIter_is_parallel2(
+                self as *const Self,
+            )
         })
     }
 }
@@ -5521,11 +5649,11 @@ impl Lin2dTanOblIter {
 
 /// **Source:** `Geom2dGcc_QCurve.hxx`:29 - `Geom2dGcc_QCurve`
 /// Creates a qualified 2d line.
-pub use crate::ffi::Geom2dGcc_QCurve as QCurve;
+pub use crate::ffi_types::Geom2dGcc_QCurve as QCurve;
 
 unsafe impl crate::CppDeletable for QCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_QCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_destructor(ptr);
     }
 }
 
@@ -5537,7 +5665,10 @@ impl QCurve {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_QCurve_ctor_curve_position(Curve, Qualifier.into()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_ctor_curve_position(
+                    Curve,
+                    Qualifier.into(),
+                ),
             ))
         }
     }
@@ -5545,16 +5676,16 @@ impl QCurve {
     /// **Source:** `Geom2dGcc_QCurve.hxx`:37 - `Geom2dGcc_QCurve::Qualified()`
     pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dGcc_QCurve_qualified(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_qualified(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Geom2dGcc_QCurve.hxx`:39 - `Geom2dGcc_QCurve::Qualifier()`
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
         crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QCurve_qualifier(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_qualifier(self as *const Self)
         }))
         .unwrap()
     }
@@ -5564,7 +5695,7 @@ impl QCurve {
     /// other cases.
     pub fn is_unqualified(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QCurve_is_unqualified(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_is_unqualified(self as *const Self)
         })
     }
 
@@ -5573,7 +5704,7 @@ impl QCurve {
     /// the other cases.
     pub fn is_enclosing(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QCurve_is_enclosing(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_is_enclosing(self as *const Self)
         })
     }
 
@@ -5582,7 +5713,7 @@ impl QCurve {
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QCurve_is_enclosed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_is_enclosed(self as *const Self)
         })
     }
 
@@ -5590,7 +5721,9 @@ impl QCurve {
     /// Returns true if the solution is Outside the Curv and false in
     /// the other cases.
     pub fn is_outside(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Geom2dGcc_QCurve_is_outside(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QCurve_is_outside(self as *const Self)
+        })
     }
 }
 
@@ -5607,11 +5740,11 @@ impl QCurve {
 /// -   is enclosed by the curve, or
 /// -   is built so that both the curve and it are external to one another, or
 /// -   is undefined (all solutions apply).
-pub use crate::ffi::Geom2dGcc_QualifiedCurve as QualifiedCurve;
+pub use crate::ffi_types::Geom2dGcc_QualifiedCurve as QualifiedCurve;
 
 unsafe impl crate::CppDeletable for QualifiedCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dGcc_QualifiedCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_destructor(ptr);
     }
 }
 
@@ -5644,7 +5777,10 @@ impl QualifiedCurve {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_QualifiedCurve_ctor_curve_position(Curve, Qualifier.into()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_ctor_curve_position(
+                    Curve,
+                    Qualifier.into(),
+                ),
             ))
         }
     }
@@ -5664,7 +5800,9 @@ impl QualifiedCurve {
     pub fn qualified(&self) -> crate::OwnedPtr<crate::geom2d_adaptor::Curve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dGcc_QualifiedCurve_qualified(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_qualified(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5676,7 +5814,7 @@ impl QualifiedCurve {
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
         crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QualifiedCurve_qualifier(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_qualifier(self as *const Self)
         }))
         .unwrap()
     }
@@ -5685,7 +5823,9 @@ impl QualifiedCurve {
     /// Returns true if the solution is unqualified and false in the other cases.
     pub fn is_unqualified(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QualifiedCurve_is_unqualified(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_is_unqualified(
+                self as *const Self,
+            )
         })
     }
 
@@ -5694,7 +5834,7 @@ impl QualifiedCurve {
     /// the other cases.
     pub fn is_enclosing(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosing(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_is_enclosing(self as *const Self)
         })
     }
 
@@ -5703,7 +5843,7 @@ impl QualifiedCurve {
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QualifiedCurve_is_enclosed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_is_enclosed(self as *const Self)
         })
     }
 
@@ -5712,7 +5852,7 @@ impl QualifiedCurve {
     /// the other cases.
     pub fn is_outside(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dGcc_QualifiedCurve_is_outside(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dGcc_QualifiedCurve_is_outside(self as *const Self)
         })
     }
 }

@@ -100,7 +100,7 @@ impl TryFrom<i32> for UndefMode {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleIGESControlActorWrite, HandleIGESToBRepActor, HandleInterfaceCopyControl,
     HandleInterfaceInterfaceError, HandleSTEPCAFControlActorWrite, HandleSTEPControlActorRead,
     HandleSTEPControlActorWrite, HandleStandardFailure, HandleStandardTransient,
@@ -122,11 +122,11 @@ pub use crate::ffi::{
 /// which may include data modifications, conversions ...
 /// - and other features from TransferDispatch (such as mapping
 /// other than one-one)
-pub use crate::ffi::Transfer_ActorDispatch as ActorDispatch;
+pub use crate::ffi_types::Transfer_ActorDispatch as ActorDispatch;
 
 unsafe impl crate::CppDeletable for ActorDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorDispatch_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_destructor(ptr);
     }
 }
 
@@ -137,47 +137,41 @@ impl ActorDispatch {
     /// This causes TransferDispatch and its TransientProcess to be
     /// created, with default actor <me>
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
         lib: &crate::interface::GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel_generallib(
-                    amodel, lib,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel_generallib(amodel, lib)))
         }
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:56 - `Transfer_ActorDispatch::Transfer_ActorDispatch()`
     /// Same as above, but Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi_types::HandleInterfaceProtocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
         }
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:60 - `Transfer_ActorDispatch::Transfer_ActorDispatch()`
     /// Same as above, but works with the Active Protocol
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel(amodel),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_ctor_handleinterfaceinterfacemodel(amodel)))
         }
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:64 - `Transfer_ActorDispatch::AddActor()`
     /// Utility which adds an actor to the default <me> (it calls
     /// SetActor from the TransientProcess)
-    pub fn add_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfTransientProcess) {
+    pub fn add_actor(&mut self, actor: &crate::ffi_types::HandleTransferActorOfTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_add_actor(self as *mut Self, actor)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_add_actor(self as *mut Self, actor)
         })
     }
 
@@ -187,9 +181,11 @@ impl ActorDispatch {
     /// See TransferDispatch & CopyTool, to see the available methods
     pub fn transfer_dispatch(&mut self) -> &mut TransferDispatch {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_ActorDispatch_transfer_dispatch(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_transfer_dispatch(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -199,13 +195,13 @@ impl ActorDispatch {
     /// produced by the TransientProcess
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_transfer(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_transfer(
                     self as *mut Self,
                     start,
                     TP,
@@ -216,11 +212,13 @@ impl ActorDispatch {
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:79 - `Transfer_ActorDispatch::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorDispatch_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -228,7 +226,7 @@ impl ActorDispatch {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -236,79 +234,71 @@ impl ActorDispatch {
     }
 
     /// **Source:** `Transfer_ActorDispatch.hxx`:79 - `Transfer_ActorDispatch::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_ActorDispatch_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess
     pub fn as_actor_of_transient_process(&self) -> &ActorOfTransientProcess {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_as_Transfer_ActorOfTransientProcess(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Transfer_ActorOfTransientProcess(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_ActorOfTransientProcess (mutable)
     pub fn as_actor_of_transient_process_mut(&mut self) -> &mut ActorOfTransientProcess {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_as_Transfer_ActorOfTransientProcess_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Transfer_ActorOfTransientProcess_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_actor_of_process_for_transient(&self) -> &ActorOfProcessForTransient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_as_Transfer_ActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Transfer_ActorOfProcessForTransient(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
     pub fn as_actor_of_process_for_transient_mut(&mut self) -> &mut ActorOfProcessForTransient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_as_Transfer_ActorOfProcessForTransient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ActorDispatch_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_ActorDispatch_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorDispatch> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorDispatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -316,13 +306,13 @@ impl ActorDispatch {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferProcessForTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_Transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_Transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -335,13 +325,13 @@ impl ActorDispatch {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_TransferTransient(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_TransferTransient(
                     self as *mut Self,
                     start,
                     TP,
@@ -354,10 +344,10 @@ impl ActorDispatch {
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:57 - `Transfer_ActorOfTransientProcess::SetShapeFixParameters()`
     pub fn set_shape_fix_parameters(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_SetShapeFixParameters(
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_SetShapeFixParameters(
                 self as *mut Self,
                 theParameters,
             )
@@ -365,10 +355,12 @@ impl ActorDispatch {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_GetShapeFixParameters(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_GetShapeFixParameters(
                     self as *const Self,
                 ),
             ))
@@ -376,9 +368,12 @@ impl ActorDispatch {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
-    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_processing_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_SetProcessingFlags(
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_SetProcessingFlags(
                 self as *mut Self,
                 theFlags,
             )
@@ -386,10 +381,10 @@ impl ActorDispatch {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfTransientProcess.hxx`:90 - `Transfer_ActorOfTransientProcess::GetProcessingFlags()`
-    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_processing_flags(&self) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_GetProcessingFlags(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_GetProcessingFlags(
                     self as *const Self,
                 ),
             ))
@@ -397,20 +392,23 @@ impl ActorDispatch {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_Recognize(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_Recognize(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_TransientResult(
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_TransientResult(
                     self as *const Self,
                     res,
                 ),
@@ -419,10 +417,12 @@ impl ActorDispatch {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_NullResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_NullResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -430,44 +430,60 @@ impl ActorDispatch {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_SetLast(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_IsLast(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_SetNext(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn next(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorDispatch_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_Next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -475,7 +491,9 @@ impl ActorDispatch {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ActorDispatch_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -488,88 +506,90 @@ impl ActorDispatch {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorDispatch_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorDispatch_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferActorDispatch;
+pub use crate::ffi_types::HandleTransferActorDispatch;
 
 unsafe impl crate::CppDeletable for HandleTransferActorDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorDispatch_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_destructor(ptr);
     }
 }
 
 impl HandleTransferActorDispatch {
     /// Dereference this Handle to access the underlying Transfer_ActorDispatch
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorDispatch {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ActorDispatch {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferActorDispatch_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorDispatch
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorDispatch {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ActorDispatch {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferActorDispatch_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ActorDispatch> to Handle<Transfer_ActorOfTransientProcess>
     pub fn to_handle_actor_of_transient_process(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorDispatch_to_HandleTransferActorOfTransientProcess(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_to_HandleTransferActorOfTransientProcess(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_ActorDispatch> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorDispatch_to_HandleTransferActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_to_HandleTransferActorOfProcessForTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_ActorDispatch> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorDispatch_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleTransferActorDispatch_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -586,11 +606,11 @@ impl HandleTransferActorDispatch {
 ///
 /// ModeTrans : a simple way of transmitting a transfer mode from
 /// a user. To be interpreted for each norm
-pub use crate::ffi::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
+pub use crate::ffi_types::Transfer_ActorOfFinderProcess as ActorOfFinderProcess;
 
 unsafe impl crate::CppDeletable for ActorOfFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfFinderProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_destructor(ptr);
     }
 }
 
@@ -599,7 +619,7 @@ impl ActorOfFinderProcess {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_ctor(),
             ))
         }
     }
@@ -608,22 +628,24 @@ impl ActorOfFinderProcess {
     /// Returns the Transfer Mode, modifiable
     pub fn mode_trans(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_ActorOfFinderProcess_mode_trans(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_mode_trans(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:47 - `Transfer_ActorOfFinderProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        TP: &crate::ffi::HandleTransferProcessForFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        TP: &crate::ffi_types::HandleTransferProcessForFinder,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -636,13 +658,13 @@ impl ActorOfFinderProcess {
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:52 - `Transfer_ActorOfFinderProcess::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        TP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleTransferFinder,
+        TP: &crate::ffi_types::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_transfer(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_transfer(
                     self as *mut Self,
                     start,
                     TP,
@@ -655,13 +677,13 @@ impl ActorOfFinderProcess {
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:57 - `Transfer_ActorOfFinderProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferFinderProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferFinderProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_transfer_transient(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_transfer_transient(
                     self as *mut Self,
                     start,
                     TP,
@@ -676,13 +698,10 @@ impl ActorOfFinderProcess {
     /// @param theParameters the parameters for shape processing.
     pub fn set_shape_fix_parameters_parametermap(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_parametermap(
-                self as *mut Self,
-                theParameters,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_parametermap(self as *mut Self, theParameters)
         })
     }
 
@@ -696,20 +715,22 @@ impl ActorOfFinderProcess {
     pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
         &mut self,
         theParameters: &crate::de::ShapeFixParameters,
-        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theAdditionalParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
         })
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:84 - `Transfer_ActorOfFinderProcess::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_get_shape_fix_parameters(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_get_shape_fix_parameters(
                     self as *const Self,
                 ),
             ))
@@ -719,9 +740,12 @@ impl ActorOfFinderProcess {
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:91 - `Transfer_ActorOfFinderProcess::SetShapeProcessFlags()`
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
-    pub fn set_shape_process_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_shape_process_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_set_shape_process_flags(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_set_shape_process_flags(
                 self as *mut Self,
                 theFlags,
             )
@@ -732,10 +756,12 @@ impl ActorOfFinderProcess {
     /// Returns flags defining operations to be performed on shapes.
     /// @return Pair of values defining operations to be performed on shapes and a boolean value
     /// that indicates whether the flags were set.
-    pub fn get_shape_process_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_shape_process_flags(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_get_shape_process_flags(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_get_shape_process_flags(
                     self as *const Self,
                 ),
             ))
@@ -743,11 +769,13 @@ impl ActorOfFinderProcess {
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorOfFinderProcess_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -755,7 +783,7 @@ impl ActorOfFinderProcess {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -763,40 +791,36 @@ impl ActorOfFinderProcess {
     }
 
     /// **Source:** `Transfer_ActorOfFinderProcess.hxx`:101 - `Transfer_ActorOfFinderProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorOfFinderProcess_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder
     pub fn as_actor_of_process_for_finder(&self) -> &ActorOfProcessForFinder {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_ActorOfProcessForFinder (mutable)
     pub fn as_actor_of_process_for_finder_mut(&mut self) -> &mut ActorOfProcessForFinder {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_as_Transfer_ActorOfProcessForFinder_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ActorOfFinderProcess_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -804,7 +828,7 @@ impl ActorOfFinderProcess {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -814,29 +838,32 @@ impl ActorOfFinderProcess {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:55 - `Transfer_ActorOfProcessForFinder::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_Recognize(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_Recognize(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:69 - `Transfer_ActorOfProcessForFinder::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_inherited_TransientResult(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_TransientResult(
                     self as *const Self,
                     res,
                 ),
@@ -845,10 +872,12 @@ impl ActorOfFinderProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_inherited_NullResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_NullResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -856,37 +885,47 @@ impl ActorOfFinderProcess {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:80 - `Transfer_ActorOfProcessForFinder::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_SetLast(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:83 - `Transfer_ActorOfProcessForFinder::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_IsLast(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:90 - `Transfer_ActorOfProcessForFinder::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_SetNext(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfFinderProcess_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_Next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -894,9 +933,12 @@ impl ActorOfFinderProcess {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -904,7 +946,9 @@ impl ActorOfFinderProcess {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ActorOfFinderProcess_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -917,14 +961,16 @@ impl ActorOfFinderProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -933,7 +979,7 @@ impl ActorOfFinderProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -942,55 +988,59 @@ impl ActorOfFinderProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfFinderProcess_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfFinderProcess_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferActorOfFinderProcess;
+pub use crate::ffi_types::HandleTransferActorOfFinderProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfFinderProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_destructor(ptr);
     }
 }
 
 impl HandleTransferActorOfFinderProcess {
     /// Dereference this Handle to access the underlying Transfer_ActorOfFinderProcess
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfFinderProcess {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfFinderProcess {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferActorOfFinderProcess_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfFinderProcess
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfFinderProcess {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ActorOfFinderProcess {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferActorOfFinderProcess_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfFinderProcess> to Handle<Transfer_ActorOfProcessForFinder>
     pub fn to_handle_actor_of_process_for_finder(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleTransferActorOfFinderProcess_to_HandleTransferActorOfProcessForFinder(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_to_HandleTransferActorOfProcessForFinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfFinderProcess> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorOfFinderProcess_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -999,11 +1049,9 @@ impl HandleTransferActorOfFinderProcess {
     /// Returns `None` if the handle does not point to a `IGESControl_ActorWrite` (or subclass).
     pub fn downcast_to_iges_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleIGESControlActorWrite(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_downcast_to_HandleIGESControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1017,9 +1065,9 @@ impl HandleTransferActorOfFinderProcess {
     /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
     pub fn downcast_to_stepcaf_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPCAFControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1033,11 +1081,9 @@ impl HandleTransferActorOfFinderProcess {
     /// Returns `None` if the handle does not point to a `STEPControl_ActorWrite` (or subclass).
     pub fn downcast_to_step_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPControlActorWrite(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfFinderProcess_downcast_to_HandleSTEPControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1061,11 +1107,11 @@ impl HandleTransferActorOfFinderProcess {
 // ========================
 
 /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:38 - `Transfer_ActorOfProcessForFinder`
-pub use crate::ffi::Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder;
+pub use crate::ffi_types::Transfer_ActorOfProcessForFinder as ActorOfProcessForFinder;
 
 unsafe impl crate::CppDeletable for ActorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfProcessForFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_destructor(ptr);
     }
 }
 
@@ -1074,7 +1120,7 @@ impl ActorOfProcessForFinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_ctor(),
             ))
         }
     }
@@ -1091,9 +1137,12 @@ impl ActorOfProcessForFinder {
     /// (afterwards rejection), the next actor is then invoked
     ///
     /// The provided default returns True, can be redefined
-    pub fn recognize(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_recognize(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_recognize(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -1105,13 +1154,13 @@ impl ActorOfProcessForFinder {
     /// information, in addition to those of TransferProcess
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        TP: &crate::ffi::HandleTransferProcessForFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        TP: &crate::ffi_types::HandleTransferProcessForFinder,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -1126,11 +1175,11 @@ impl ActorOfProcessForFinder {
     /// Returns a Null Handle if <res> is itself Null
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_transient_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_transient_result(
                     self as *const Self,
                     res,
                 ),
@@ -1140,10 +1189,12 @@ impl ActorOfProcessForFinder {
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:73 - `Transfer_ActorOfProcessForFinder::NullResult()`
     /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_null_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_null_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1156,7 +1207,10 @@ impl ActorOfProcessForFinder {
     /// This allows to define default Actors (which are Last)
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_set_last(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_set_last(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -1164,7 +1218,9 @@ impl ActorOfProcessForFinder {
     /// Returns the Last status (see SetLast).
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_is_last(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_is_last(
+                self as *const Self,
+            )
         })
     }
 
@@ -1174,28 +1230,35 @@ impl ActorOfProcessForFinder {
     /// If Next is already set and is not "Last", calls
     /// SetNext on it. If Next defined and "Last", the new
     /// actor is added before it in the list
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_set_next(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_set_next(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:93 - `Transfer_ActorOfProcessForFinder::Next()`
     /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    pub fn next(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_next(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorOfProcessForFinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1203,7 +1266,7 @@ impl ActorOfProcessForFinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1211,10 +1274,10 @@ impl ActorOfProcessForFinder {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForFinder.hxx`:95 - `Transfer_ActorOfProcessForFinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_get_type_descriptor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_get_type_descriptor(),
             ))
         }
     }
@@ -1223,7 +1286,7 @@ impl ActorOfProcessForFinder {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_as_Standard_Transient(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -1233,29 +1296,27 @@ impl ActorOfProcessForFinder {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForFinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1263,9 +1324,9 @@ impl ActorOfProcessForFinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_IsKind(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1276,7 +1337,9 @@ impl ActorOfProcessForFinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ActorOfProcessForFinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1289,71 +1352,73 @@ impl ActorOfProcessForFinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForFinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForFinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferActorOfProcessForFinder;
+pub use crate::ffi_types::HandleTransferActorOfProcessForFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfProcessForFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_destructor(ptr);
     }
 }
 
 impl HandleTransferActorOfProcessForFinder {
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForFinder
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForFinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfProcessForFinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferActorOfProcessForFinder_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForFinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForFinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ActorOfProcessForFinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferActorOfProcessForFinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfProcessForFinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorOfProcessForFinder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -1362,9 +1427,9 @@ impl HandleTransferActorOfProcessForFinder {
     /// Returns `None` if the handle does not point to a `IGESControl_ActorWrite` (or subclass).
     pub fn downcast_to_iges_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleIGESControlActorWrite(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_downcast_to_HandleIGESControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1378,9 +1443,9 @@ impl HandleTransferActorOfProcessForFinder {
     /// Returns `None` if the handle does not point to a `STEPCAFControl_ActorWrite` (or subclass).
     pub fn downcast_to_stepcaf_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPCAFControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPCAFControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPCAFControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1394,9 +1459,9 @@ impl HandleTransferActorOfProcessForFinder {
     /// Returns `None` if the handle does not point to a `STEPControl_ActorWrite` (or subclass).
     pub fn downcast_to_step_control_actor_write(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorWrite>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorWrite>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPControlActorWrite(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_downcast_to_HandleSTEPControlActorWrite(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1410,9 +1475,9 @@ impl HandleTransferActorOfProcessForFinder {
     /// Returns `None` if the handle does not point to a `Transfer_ActorOfFinderProcess` (or subclass).
     pub fn downcast_to_actor_of_finder_process(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorOfFinderProcess>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfFinderProcess>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForFinder_downcast_to_HandleTransferActorOfFinderProcess(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForFinder_downcast_to_HandleTransferActorOfFinderProcess(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1427,11 +1492,11 @@ impl HandleTransferActorOfProcessForFinder {
 // ========================
 
 /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:37 - `Transfer_ActorOfProcessForTransient`
-pub use crate::ffi::Transfer_ActorOfProcessForTransient as ActorOfProcessForTransient;
+pub use crate::ffi_types::Transfer_ActorOfProcessForTransient as ActorOfProcessForTransient;
 
 unsafe impl crate::CppDeletable for ActorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfProcessForTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_destructor(ptr);
     }
 }
 
@@ -1440,7 +1505,7 @@ impl ActorOfProcessForTransient {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_ctor(),
             ))
         }
     }
@@ -1457,9 +1522,12 @@ impl ActorOfProcessForTransient {
     /// (afterwards rejection), the next actor is then invoked
     ///
     /// The provided default returns True, can be redefined
-    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_recognize(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_recognize(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -1471,13 +1539,13 @@ impl ActorOfProcessForTransient {
     /// information, in addition to those of TransferProcess
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferProcessForTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -1492,11 +1560,11 @@ impl ActorOfProcessForTransient {
     /// Returns a Null Handle if <res> is itself Null
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_transient_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_transient_result(
                     self as *const Self,
                     res,
                 ),
@@ -1506,10 +1574,12 @@ impl ActorOfProcessForTransient {
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
     /// Returns a Binder for No Result, i.e. a Null Handle
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_null_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_null_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1522,7 +1592,10 @@ impl ActorOfProcessForTransient {
     /// This allows to define default Actors (which are Last)
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_set_last(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_set_last(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -1530,7 +1603,9 @@ impl ActorOfProcessForTransient {
     /// Returns the Last status (see SetLast).
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_is_last(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_is_last(
+                self as *const Self,
+            )
         })
     }
 
@@ -1540,28 +1615,37 @@ impl ActorOfProcessForTransient {
     /// If Next is already set and is not "Last", calls
     /// SetNext on it. If Next defined and "Last", the new
     /// actor is added before it in the list
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_set_next(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_set_next(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
     /// Returns the Actor defined as Next, or a Null Handle
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn next(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_next(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorOfProcessForTransient_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1569,7 +1653,7 @@ impl ActorOfProcessForTransient {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1577,10 +1661,11 @@ impl ActorOfProcessForTransient {
     }
 
     /// **Source:** `Transfer_ActorOfProcessForTransient.hxx`:94 - `Transfer_ActorOfProcessForTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_get_type_descriptor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -1588,40 +1673,34 @@ impl ActorOfProcessForTransient {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfProcessForTransient_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1629,9 +1708,9 @@ impl ActorOfProcessForTransient {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_IsKind(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1642,7 +1721,9 @@ impl ActorOfProcessForTransient {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ActorOfProcessForTransient_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1655,7 +1736,7 @@ impl ActorOfProcessForTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_GetRefCount(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -1664,75 +1745,75 @@ impl ActorOfProcessForTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfProcessForTransient_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfProcessForTransient_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferActorOfProcessForTransient;
+pub use crate::ffi_types::HandleTransferActorOfProcessForTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfProcessForTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_destructor(ptr);
     }
 }
 
 impl HandleTransferActorOfProcessForTransient {
     /// Dereference this Handle to access the underlying Transfer_ActorOfProcessForTransient
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfProcessForTransient {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfProcessForTransient {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferActorOfProcessForTransient_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfProcessForTransient
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfProcessForTransient {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ActorOfProcessForTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferActorOfProcessForTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfProcessForTransient> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorOfProcessForTransient_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
     /// Downcast Handle<Transfer_ActorOfProcessForTransient> to Handle<IGESToBRep_Actor>
     ///
     /// Returns `None` if the handle does not point to a `IGESToBRep_Actor` (or subclass).
-    pub fn downcast_to_actor(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor>> {
+    pub fn downcast_to_actor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepActor>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleIGESToBRepActor(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_downcast_to_HandleIGESToBRepActor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1746,9 +1827,9 @@ impl HandleTransferActorOfProcessForTransient {
     /// Returns `None` if the handle does not point to a `STEPControl_ActorRead` (or subclass).
     pub fn downcast_to_actor_read(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorRead>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleSTEPControlActorRead(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_downcast_to_HandleSTEPControlActorRead(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1762,9 +1843,9 @@ impl HandleTransferActorOfProcessForTransient {
     /// Returns `None` if the handle does not point to a `Transfer_ActorDispatch` (or subclass).
     pub fn downcast_to_actor_dispatch(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorDispatch>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferActorDispatch>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorDispatch(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorDispatch(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1778,9 +1859,9 @@ impl HandleTransferActorOfProcessForTransient {
     /// Returns `None` if the handle does not point to a `Transfer_ActorOfTransientProcess` (or subclass).
     pub fn downcast_to_actor_of_transient_process(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorOfTransientProcess(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfProcessForTransient_downcast_to_HandleTransferActorOfTransientProcess(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1796,11 +1877,11 @@ impl HandleTransferActorOfProcessForTransient {
 
 /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:35 - `Transfer_ActorOfTransientProcess`
 /// The original class was renamed. Compatibility only
-pub use crate::ffi::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
+pub use crate::ffi_types::Transfer_ActorOfTransientProcess as ActorOfTransientProcess;
 
 unsafe impl crate::CppDeletable for ActorOfTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ActorOfTransientProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_destructor(ptr);
     }
 }
 
@@ -1809,7 +1890,7 @@ impl ActorOfTransientProcess {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_ctor(),
             ))
         }
     }
@@ -1817,13 +1898,13 @@ impl ActorOfTransientProcess {
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:40 - `Transfer_ActorOfTransientProcess::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferProcessForTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferProcessForTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_transferring(
                     self as *mut Self,
                     start,
                     TP,
@@ -1836,13 +1917,13 @@ impl ActorOfTransientProcess {
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:45 - `Transfer_ActorOfTransientProcess::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_transfer(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_transfer(
                     self as *mut Self,
                     start,
                     TP,
@@ -1855,13 +1936,13 @@ impl ActorOfTransientProcess {
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:50 - `Transfer_ActorOfTransientProcess::TransferTransient()`
     pub fn transfer_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        start: &crate::ffi_types::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_transfer_transient(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_transfer_transient(
                     self as *mut Self,
                     start,
                     TP,
@@ -1876,13 +1957,10 @@ impl ActorOfTransientProcess {
     /// @param theParameters the parameters for shape processing.
     pub fn set_shape_fix_parameters_parametermap(
         &mut self,
-        theParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_parametermap(
-                self as *mut Self,
-                theParameters,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_parametermap(self as *mut Self, theParameters)
         })
     }
 
@@ -1896,32 +1974,33 @@ impl ActorOfTransientProcess {
     pub fn set_shape_fix_parameters_shapefixparameters_parametermap(
         &mut self,
         theParameters: &crate::de::ShapeFixParameters,
-        theAdditionalParameters: &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap,
+        theAdditionalParameters: &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_set_shape_fix_parameters_shapefixparameters_parametermap(self as *mut Self, theParameters, theAdditionalParameters)
         })
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:77 - `Transfer_ActorOfTransientProcess::GetShapeFixParameters()`
     /// Returns parameters for shape processing that was set by SetParameters() method.
     /// @return the parameters for shape processing. Empty map if no parameters were set.
-    pub fn get_shape_fix_parameters(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ParameterMap {
+    pub fn get_shape_fix_parameters(
+        &self,
+    ) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ParameterMap {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_get_shape_fix_parameters(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_get_shape_fix_parameters(self as *const Self)))
         }
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:84 - `Transfer_ActorOfTransientProcess::SetProcessingFlags()`
     /// Sets flags defining operations to be performed on shapes.
     /// @param theFlags The flags defining operations to be performed on shapes.
-    pub fn set_processing_flags(&mut self, theFlags: &crate::ffi::ShapeProcess_OperationsFlags) {
+    pub fn set_processing_flags(
+        &mut self,
+        theFlags: &crate::ffi_types::ShapeProcess_OperationsFlags,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_set_processing_flags(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_set_processing_flags(
                 self as *mut Self,
                 theFlags,
             )
@@ -1933,10 +2012,10 @@ impl ActorOfTransientProcess {
     /// @return Pair: the flags defining operations to be performed on shapes and a boolean value that
     /// indicates
     /// whether the flags were set.
-    pub fn get_processing_flags(&self) -> &crate::ffi::XSAlgo_ShapeProcessor_ProcessingFlags {
+    pub fn get_processing_flags(&self) -> &crate::ffi_types::XSAlgo_ShapeProcessor_ProcessingFlags {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_get_processing_flags(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_get_processing_flags(
                     self as *const Self,
                 ),
             ))
@@ -1944,11 +2023,13 @@ impl ActorOfTransientProcess {
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ActorOfTransientProcess_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1956,7 +2037,7 @@ impl ActorOfTransientProcess {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1964,10 +2045,10 @@ impl ActorOfTransientProcess {
     }
 
     /// **Source:** `Transfer_ActorOfTransientProcess.hxx`:95 - `Transfer_ActorOfTransientProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_get_type_descriptor(),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_get_type_descriptor(),
             ))
         }
     }
@@ -1975,18 +2056,14 @@ impl ActorOfTransientProcess {
     /// Upcast to Transfer_ActorOfProcessForTransient
     pub fn as_actor_of_process_for_transient(&self) -> &ActorOfProcessForTransient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_ActorOfProcessForTransient (mutable)
     pub fn as_actor_of_process_for_transient_mut(&mut self) -> &mut ActorOfProcessForTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_as_Transfer_ActorOfProcessForTransient_mut(self as *mut Self))
         }
     }
 
@@ -1994,7 +2071,7 @@ impl ActorOfTransientProcess {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_as_Standard_Transient(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -2004,29 +2081,27 @@ impl ActorOfTransientProcess {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:54 - `Transfer_ActorOfProcessForTransient::Recognize()`
-    pub fn recognize(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_Recognize(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_Recognize(
                 self as *mut Self,
                 start,
             )
@@ -2036,23 +2111,18 @@ impl ActorOfTransientProcess {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:68 - `Transfer_ActorOfProcessForTransient::TransientResult()`
     pub fn transient_result(
         &self,
-        res: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+        res: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_inherited_TransientResult(
-                    self as *const Self,
-                    res,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_TransientResult(self as *const Self, res)))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:72 - `Transfer_ActorOfProcessForTransient::NullResult()`
-    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn null_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_inherited_NullResult(
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_NullResult(
                     self as *const Self,
                 ),
             ))
@@ -2062,37 +2132,49 @@ impl ActorOfTransientProcess {
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:79 - `Transfer_ActorOfProcessForTransient::SetLast()`
     pub fn set_last(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetLast(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_SetLast(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:82 - `Transfer_ActorOfProcessForTransient::IsLast()`
     pub fn is_last(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsLast(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_IsLast(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:89 - `Transfer_ActorOfProcessForTransient::SetNext()`
-    pub fn set_next(&mut self, next: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_next(&mut self, next: &crate::ffi_types::HandleTransferActorOfProcessForTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_SetNext(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_SetNext(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ActorOfProcessForTransient.hxx`:92 - `Transfer_ActorOfProcessForTransient::Next()`
-    pub fn next(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn next(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ActorOfTransientProcess_inherited_Next(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_Next(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2100,9 +2182,9 @@ impl ActorOfTransientProcess {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IsKind(
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -2113,7 +2195,9 @@ impl ActorOfTransientProcess {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ActorOfTransientProcess_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2126,91 +2210,93 @@ impl ActorOfTransientProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ActorOfTransientProcess_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ActorOfTransientProcess_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferActorOfTransientProcess;
+pub use crate::ffi_types::HandleTransferActorOfTransientProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferActorOfTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferActorOfTransientProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_destructor(ptr);
     }
 }
 
 impl HandleTransferActorOfTransientProcess {
     /// Dereference this Handle to access the underlying Transfer_ActorOfTransientProcess
-    pub fn get(&self) -> &crate::ffi::Transfer_ActorOfTransientProcess {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ActorOfTransientProcess {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferActorOfTransientProcess_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ActorOfTransientProcess
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ActorOfTransientProcess {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ActorOfTransientProcess {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferActorOfTransientProcess_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfTransientProcess> to Handle<Transfer_ActorOfProcessForTransient>
     pub fn to_handle_actor_of_process_for_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleTransferActorOfTransientProcess_to_HandleTransferActorOfProcessForTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_to_HandleTransferActorOfProcessForTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_ActorOfTransientProcess> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferActorOfTransientProcess_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
     /// Downcast Handle<Transfer_ActorOfTransientProcess> to Handle<IGESToBRep_Actor>
     ///
     /// Returns `None` if the handle does not point to a `IGESToBRep_Actor` (or subclass).
-    pub fn downcast_to_actor(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleIGESToBRepActor>> {
+    pub fn downcast_to_actor(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleIGESToBRepActor>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfTransientProcess_downcast_to_HandleIGESToBRepActor(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_downcast_to_HandleIGESToBRepActor(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2224,11 +2310,9 @@ impl HandleTransferActorOfTransientProcess {
     /// Returns `None` if the handle does not point to a `STEPControl_ActorRead` (or subclass).
     pub fn downcast_to_actor_read(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSTEPControlActorRead>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSTEPControlActorRead>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfTransientProcess_downcast_to_HandleSTEPControlActorRead(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_downcast_to_HandleSTEPControlActorRead(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2242,9 +2326,9 @@ impl HandleTransferActorOfTransientProcess {
     /// Returns `None` if the handle does not point to a `Transfer_ActorDispatch` (or subclass).
     pub fn downcast_to_actor_dispatch(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferActorDispatch>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferActorDispatch>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferActorOfTransientProcess_downcast_to_HandleTransferActorDispatch(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferActorOfTransientProcess_downcast_to_HandleTransferActorDispatch(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2290,11 +2374,11 @@ impl HandleTransferActorOfTransientProcess {
 ///
 /// In addition to the Result, a Binder can bring a list of
 /// Attributes, which are additional data, each of them has a name
-pub use crate::ffi::Transfer_Binder as Binder;
+pub use crate::ffi_types::Transfer_Binder as Binder;
 
 unsafe impl crate::CppDeletable for Binder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_Binder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_Binder_destructor(ptr);
     }
 }
 
@@ -2303,9 +2387,9 @@ impl Binder {
     /// Merges basic data (Check, ExecStatus) from another Binder but
     /// keeps its result. Used when a binder is replaced by another
     /// one, this allows to keep messages
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_merge(self as *mut Self, other)
         })
     }
 
@@ -2314,16 +2398,18 @@ impl Binder {
     /// or because it has next results
     /// Can be defined by sub-classes.
     pub fn is_multiple(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Transfer_Binder_is_multiple(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_Binder_is_multiple(self as *const Self)
+        })
     }
 
     /// **Source:** `Transfer_Binder.hxx`:73 - `Transfer_Binder::ResultType()`
     /// Returns the Type which characterizes the Result (if known)
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Binder_result_type(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_result_type(self as *const Self),
+            ))
         }
     }
 
@@ -2333,7 +2419,7 @@ impl Binder {
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_Binder_result_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_Binder_result_type_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -2343,19 +2429,19 @@ impl Binder {
     /// **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
     /// Adds a next result (at the end of the list)
     /// Remark : this information is not processed by Merge
-    pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
+    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_add_result(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_add_result(self as *mut Self, next)
         })
     }
 
     /// **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
     /// Returns the next result, Null if none
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Binder_next_result(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_next_result(self as *const Self),
+            ))
         }
     }
 
@@ -2366,7 +2452,9 @@ impl Binder {
     /// For a Multiple Result, see class MultipleBinder
     /// For other case, specific access has to be forecast
     pub fn has_result(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Transfer_Binder_has_result(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKXSBase::Transfer_Binder_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
@@ -2374,7 +2462,7 @@ impl Binder {
     /// it cannot be modified (by Rebind)
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_set_already_used(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_set_already_used(self as *mut Self)
         })
     }
 
@@ -2384,7 +2472,7 @@ impl Binder {
     /// cannot be modified)
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -2393,7 +2481,7 @@ impl Binder {
     /// Returns execution status
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_status_exec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_status_exec(self as *const Self)
         }))
         .unwrap()
     }
@@ -2403,7 +2491,10 @@ impl Binder {
     /// (for StatusError, rather use SetError, below)
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_set_status_exec(self as *mut Self, stat.into())
+            crate::ffi_extern_TKXSBase::Transfer_Binder_set_status_exec(
+                self as *mut Self,
+                stat.into(),
+            )
         })
     }
 
@@ -2420,7 +2511,7 @@ impl Binder {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_add_fail(
+            crate::ffi_extern_TKXSBase::Transfer_Binder_add_fail(
                 self as *mut Self,
                 c_mess.as_ptr(),
                 c_orig.as_ptr(),
@@ -2435,7 +2526,7 @@ impl Binder {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_add_warning(
+            crate::ffi_extern_TKXSBase::Transfer_Binder_add_warning(
                 self as *mut Self,
                 c_mess.as_ptr(),
                 c_orig.as_ptr(),
@@ -2446,29 +2537,31 @@ impl Binder {
     /// **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
     /// Returns Check which stores Fail messages
     /// Note that no Entity is associated in this Check
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Binder_check(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_check(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
     /// Returns Check which stores Fail messages, in order to modify
     /// it (adding messages, or replacing it)
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Binder_c_check(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_c_check(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `Transfer_Binder.hxx`:134 - `Transfer_Binder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_Binder_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_Binder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2476,7 +2569,7 @@ impl Binder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_Binder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_Binder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2484,39 +2577,53 @@ impl Binder {
     }
 
     /// **Source:** `Transfer_Binder.hxx`:134 - `Transfer_Binder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_Binder_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_Binder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_Binder_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Binder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2524,7 +2631,7 @@ impl Binder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_Binder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2537,58 +2644,72 @@ impl Binder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Binder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Binder_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferBinder;
+pub use crate::ffi_types::HandleTransferBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferBinder_destructor(ptr);
     }
 }
 
 impl HandleTransferBinder {
     /// Dereference this Handle to access the underlying Transfer_Binder
-    pub fn get(&self) -> &crate::ffi::Transfer_Binder {
-        unsafe { &*crate::check_result(crate::ffi::HandleTransferBinder_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Transfer_Binder {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinder_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_Binder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_Binder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_Binder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferBinder_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinder_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Transfer_Binder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferBinder_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKXSBase::HandleTransferBinder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2598,11 +2719,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `TransferBRep_BinderOfShape` (or subclass).
     pub fn downcast_to_binder_of_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepBinderOfShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBRepBinderOfShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepBinderOfShape(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferBRepBinderOfShape(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2616,11 +2735,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `TransferBRep_ShapeBinder` (or subclass).
     pub fn downcast_to_shape_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepShapeBinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferBRepShapeBinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2634,11 +2751,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `TransferBRep_ShapeListBinder` (or subclass).
     pub fn downcast_to_shape_list_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeListBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeListBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBRepShapeListBinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferBRepShapeListBinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2652,11 +2767,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `Transfer_BinderOfTransientInteger` (or subclass).
     pub fn downcast_to_binder_of_transient_integer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBinderOfTransientInteger>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBinderOfTransientInteger>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferBinderOfTransientInteger(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferBinderOfTransientInteger(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2670,11 +2783,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `Transfer_MultipleBinder` (or subclass).
     pub fn downcast_to_multiple_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferMultipleBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferMultipleBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferMultipleBinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferMultipleBinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2688,11 +2799,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `Transfer_SimpleBinderOfTransient` (or subclass).
     pub fn downcast_to_simple_binder_of_transient(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferSimpleBinderOfTransient(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferSimpleBinderOfTransient(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2706,11 +2815,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `Transfer_TransientListBinder` (or subclass).
     pub fn downcast_to_transient_list_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientListBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransientListBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferTransientListBinder(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferTransientListBinder(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2724,9 +2831,9 @@ impl HandleTransferBinder {
     /// Returns `None` if the handle does not point to a `Transfer_VoidBinder` (or subclass).
     pub fn downcast_to_void_binder(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferVoidBinder>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferVoidBinder>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferBinder_downcast_to_HandleTransferVoidBinder(
+            crate::ffi_extern_TKXSBase::HandleTransferBinder_downcast_to_HandleTransferVoidBinder(
                 self as *const Self,
             )
         });
@@ -2749,11 +2856,11 @@ impl HandleTransferBinder {
 ///
 /// This Binder is otherwise a kind of SimpleBinderOfTransient,
 /// i.e. its basic result (for iterators, etc) is the Transient
-pub use crate::ffi::Transfer_BinderOfTransientInteger as BinderOfTransientInteger;
+pub use crate::ffi_types::Transfer_BinderOfTransientInteger as BinderOfTransientInteger;
 
 unsafe impl crate::CppDeletable for BinderOfTransientInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_BinderOfTransientInteger_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_destructor(ptr);
     }
 }
 
@@ -2764,7 +2871,7 @@ impl BinderOfTransientInteger {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_ctor(),
             ))
         }
     }
@@ -2773,7 +2880,10 @@ impl BinderOfTransientInteger {
     /// Sets a value for the integer part
     pub fn set_integer(&mut self, value: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_set_integer(self as *mut Self, value)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_set_integer(
+                self as *mut Self,
+                value,
+            )
         })
     }
 
@@ -2781,16 +2891,20 @@ impl BinderOfTransientInteger {
     /// Returns the value set for the integer part
     pub fn integer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_integer(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_integer(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_BinderOfTransientInteger.hxx`:49 - `Transfer_BinderOfTransientInteger::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_BinderOfTransientInteger_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2798,7 +2912,7 @@ impl BinderOfTransientInteger {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2806,10 +2920,10 @@ impl BinderOfTransientInteger {
     }
 
     /// **Source:** `Transfer_BinderOfTransientInteger.hxx`:49 - `Transfer_BinderOfTransientInteger::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_get_type_descriptor(),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_get_type_descriptor(),
             ))
         }
     }
@@ -2817,38 +2931,32 @@ impl BinderOfTransientInteger {
     /// Upcast to Transfer_SimpleBinderOfTransient
     pub fn as_simple_binder_of_transient(&self) -> &SimpleBinderOfTransient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_as_Transfer_SimpleBinderOfTransient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Transfer_SimpleBinderOfTransient(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_SimpleBinderOfTransient (mutable)
     pub fn as_simple_binder_of_transient_mut(&mut self) -> &mut SimpleBinderOfTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_BinderOfTransientInteger_as_Transfer_SimpleBinderOfTransient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Transfer_SimpleBinderOfTransient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_binder(&self) -> &Binder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_BinderOfTransientInteger_as_Transfer_Binder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Transfer_Binder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_binder_mut(&mut self) -> &mut Binder {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_as_Transfer_Binder_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Transfer_Binder_mut(self as *mut Self))
         }
     }
 
@@ -2856,7 +2964,7 @@ impl BinderOfTransientInteger {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_as_Standard_Transient(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -2866,30 +2974,28 @@ impl BinderOfTransientInteger {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinderOfTransientInteger> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinderOfTransientInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_SimpleBinderOfTransient.hxx`:43 - `Transfer_SimpleBinderOfTransient::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_inherited_ResultType(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_ResultType(
                     self as *const Self,
                 ),
             ))
@@ -2897,9 +3003,9 @@ impl BinderOfTransientInteger {
     }
 
     /// Inherited: **Source:** `Transfer_SimpleBinderOfTransient.hxx`:50 - `Transfer_SimpleBinderOfTransient::SetResult()`
-    pub fn set_result(&mut self, res: &crate::ffi::HandleStandardTransient) {
+    pub fn set_result(&mut self, res: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_SetResult(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_SetResult(
                 self as *mut Self,
                 res,
             )
@@ -2907,32 +3013,39 @@ impl BinderOfTransientInteger {
     }
 
     /// Inherited: **Source:** `Transfer_SimpleBinderOfTransient.hxx`:53 - `Transfer_SimpleBinderOfTransient::Result()`
-    pub fn result(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn result(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_BinderOfTransientInteger_inherited_Result(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_Result(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_Merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_Merge(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:70 - `Transfer_Binder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_IsMultiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_IsMultiple(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
-    pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
+    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_AddResult(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_AddResult(
                 self as *mut Self,
                 next,
             )
@@ -2940,10 +3053,10 @@ impl BinderOfTransientInteger {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_inherited_NextResult(
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_NextResult(
                     self as *const Self,
                 ),
             ))
@@ -2953,14 +3066,16 @@ impl BinderOfTransientInteger {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_HasResult(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_SetAlreadyUsed(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_SetAlreadyUsed(
                 self as *mut Self,
             )
         })
@@ -2969,7 +3084,9 @@ impl BinderOfTransientInteger {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2977,7 +3094,9 @@ impl BinderOfTransientInteger {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_StatusExec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_StatusExec(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2985,7 +3104,7 @@ impl BinderOfTransientInteger {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_SetStatusExec(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_SetStatusExec(
                 self as *mut Self,
                 stat.into(),
             )
@@ -2993,27 +3112,31 @@ impl BinderOfTransientInteger {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_inherited_Check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_Check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_BinderOfTransientInteger_inherited_CCheck(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_CCheck(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3021,9 +3144,9 @@ impl BinderOfTransientInteger {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_IsKind(
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -3034,7 +3157,9 @@ impl BinderOfTransientInteger {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_BinderOfTransientInteger_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3047,91 +3172,89 @@ impl BinderOfTransientInteger {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_BinderOfTransientInteger_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_BinderOfTransientInteger_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferBinderOfTransientInteger;
+pub use crate::ffi_types::HandleTransferBinderOfTransientInteger;
 
 unsafe impl crate::CppDeletable for HandleTransferBinderOfTransientInteger {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferBinderOfTransientInteger_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_destructor(ptr);
     }
 }
 
 impl HandleTransferBinderOfTransientInteger {
     /// Dereference this Handle to access the underlying Transfer_BinderOfTransientInteger
-    pub fn get(&self) -> &crate::ffi::Transfer_BinderOfTransientInteger {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_BinderOfTransientInteger {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferBinderOfTransientInteger_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_BinderOfTransientInteger
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_BinderOfTransientInteger {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_BinderOfTransientInteger {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferBinderOfTransientInteger_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_BinderOfTransientInteger> to Handle<Transfer_SimpleBinderOfTransient>
     pub fn to_handle_simple_binder_of_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleTransferBinderOfTransientInteger_to_HandleTransferSimpleBinderOfTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_to_HandleTransferSimpleBinderOfTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_BinderOfTransientInteger> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferBinderOfTransientInteger_to_HandleTransferBinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_to_HandleTransferBinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_BinderOfTransientInteger> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferBinderOfTransientInteger_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferBinderOfTransientInteger_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3144,11 +3267,11 @@ impl HandleTransferBinderOfTransientInteger {
 /// Gives information on an object
 /// Used as template to instantiate Mapper and SimpleBinder
 /// This class is for Transient
-pub use crate::ffi::Transfer_DataInfo as DataInfo;
+pub use crate::ffi_types::Transfer_DataInfo as DataInfo;
 
 unsafe impl crate::CppDeletable for DataInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_DataInfo_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_DataInfo_destructor(ptr);
     }
 }
 
@@ -3157,7 +3280,9 @@ impl DataInfo {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_DataInfo_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DataInfo_ctor(),
+            ))
         }
     }
 
@@ -3165,21 +3290,23 @@ impl DataInfo {
     /// Returns the Type attached to an object
     /// Here, the Dynamic Type of a Transient. Null Type if unknown
     pub fn type_(
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_DataInfo_type_(ent)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DataInfo_type_(ent),
+            ))
         }
     }
 
     /// **Source:** `Transfer_DataInfo.hxx`:41 - `Transfer_DataInfo::TypeName()`
     /// Returns Type Name (string)
     /// Allows to name type of non-handled objects
-    pub fn type_name(ent: &crate::ffi::HandleStandardTransient) -> std::string::String {
+    pub fn type_name(ent: &crate::ffi_types::HandleStandardTransient) -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::Transfer_DataInfo_type_name(
-                ent,
-            )))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DataInfo_type_name(ent),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -3195,11 +3322,11 @@ impl DataInfo {
 /// to record simple copies, as CopyControl from Interface, but
 /// based on a TransientProcess. Hence, it allows in addition
 /// more actions (such as recording results of adaptations)
-pub use crate::ffi::Transfer_DispatchControl as DispatchControl;
+pub use crate::ffi_types::Transfer_DispatchControl as DispatchControl;
 
 unsafe impl crate::CppDeletable for DispatchControl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_DispatchControl_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_DispatchControl_destructor(ptr);
     }
 }
 
@@ -3207,32 +3334,36 @@ impl DispatchControl {
     /// **Source:** `Transfer_DispatchControl.hxx`:40 - `Transfer_DispatchControl::Transfer_DispatchControl()`
     /// Creates the DispatchControl, ready for use
     pub fn new_handleinterfaceinterfacemodel_handletransfertransientprocess(
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
-        TP: &crate::ffi::HandleTransferTransientProcess,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_DispatchControl_ctor_handleinterfaceinterfacemodel_handletransfertransientprocess(model, TP)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_DispatchControl_ctor_handleinterfaceinterfacemodel_handletransfertransientprocess(model, TP)))
         }
     }
 
     /// **Source:** `Transfer_DispatchControl.hxx`:45 - `Transfer_DispatchControl::TransientProcess()`
     /// Returns the content of the DispatchControl : it can be used
     /// for a direct call, if the basic methods do not suffice
-    pub fn transient_process(&self) -> &crate::ffi::HandleTransferTransientProcess {
+    pub fn transient_process(&self) -> &crate::ffi_types::HandleTransferTransientProcess {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_DispatchControl_transient_process(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_transient_process(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_DispatchControl.hxx`:48 - `Transfer_DispatchControl::StartingModel()`
     /// Returns the Model from which the transfer is to be done
-    pub fn starting_model(&self) -> &crate::ffi::HandleInterfaceInterfaceModel {
+    pub fn starting_model(&self) -> &crate::ffi_types::HandleInterfaceInterfaceModel {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_DispatchControl_starting_model(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_starting_model(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3240,7 +3371,7 @@ impl DispatchControl {
     /// Clears the List of Copied Results
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_clear(self as *mut Self)
         })
     }
 
@@ -3248,11 +3379,11 @@ impl DispatchControl {
     /// Binds a (Transient) Result to a (Transient) Starting Entity
     pub fn bind(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_bind(self as *mut Self, ent, res)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_bind(self as *mut Self, ent, res)
         })
     }
 
@@ -3262,20 +3393,26 @@ impl DispatchControl {
     /// Else, returns False and nullifies <res>
     pub fn search(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        res: &mut crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        res: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_search(self as *const Self, ent, res)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_search(
+                self as *const Self,
+                ent,
+                res,
+            )
         })
     }
 
     /// **Source:** `Transfer_DispatchControl.hxx`:63 - `Transfer_DispatchControl::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_DispatchControl_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3283,7 +3420,7 @@ impl DispatchControl {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_DispatchControl_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3291,18 +3428,22 @@ impl DispatchControl {
     }
 
     /// **Source:** `Transfer_DispatchControl.hxx`:63 - `Transfer_DispatchControl::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_DispatchControl_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Interface_CopyControl
     pub fn as_interface_copy_control(&self) -> &crate::interface::CopyControl {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_DispatchControl_as_Interface_CopyControl(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_as_Interface_CopyControl(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3310,7 +3451,7 @@ impl DispatchControl {
     pub fn as_interface_copy_control_mut(&mut self) -> &mut crate::interface::CopyControl {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_DispatchControl_as_Interface_CopyControl_mut(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_as_Interface_CopyControl_mut(
                     self as *mut Self,
                 ),
             )
@@ -3320,9 +3461,11 @@ impl DispatchControl {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_DispatchControl_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3330,7 +3473,9 @@ impl DispatchControl {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_DispatchControl_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3338,25 +3483,31 @@ impl DispatchControl {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferDispatchControl> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferDispatchControl> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_DispatchControl_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3364,7 +3515,9 @@ impl DispatchControl {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_DispatchControl_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3377,80 +3530,84 @@ impl DispatchControl {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_DispatchControl_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_DispatchControl_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferDispatchControl;
+pub use crate::ffi_types::HandleTransferDispatchControl;
 
 unsafe impl crate::CppDeletable for HandleTransferDispatchControl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferDispatchControl_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_destructor(ptr);
     }
 }
 
 impl HandleTransferDispatchControl {
     /// Dereference this Handle to access the underlying Transfer_DispatchControl
-    pub fn get(&self) -> &crate::ffi::Transfer_DispatchControl {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_DispatchControl {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferDispatchControl_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_DispatchControl
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_DispatchControl {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_DispatchControl {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferDispatchControl_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_DispatchControl> to Handle<Interface_CopyControl>
     pub fn to_handle_copy_control(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCopyControl> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyControl> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferDispatchControl_to_HandleInterfaceCopyControl(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_to_HandleInterfaceCopyControl(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_DispatchControl> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferDispatchControl_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferDispatchControl_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3465,11 +3622,11 @@ impl HandleTransferDispatchControl {
 /// not of the Finder which acts only as an intermediate.
 /// When a Map asks for the HashCode of a Finder, this one returns
 /// the code it has determined at creation time
-pub use crate::ffi::Transfer_Finder as Finder;
+pub use crate::ffi_types::Transfer_Finder as Finder;
 
 unsafe impl crate::CppDeletable for Finder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_Finder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_Finder_destructor(ptr);
     }
 }
 
@@ -3480,7 +3637,7 @@ impl Finder {
     /// sub-classes, the result is the same)
     pub fn get_hash_code(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_get_hash_code(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_hash_code(self as *const Self)
         })
     }
 
@@ -3488,20 +3645,20 @@ impl Finder {
     /// Specific testof equality : to be defined by each sub-class,
     /// must be False if Finders have not the same true Type, else
     /// their contents must be compared
-    pub fn equates(&self, other: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn equates(&self, other: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_equates(self as *const Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_equates(self as *const Self, other)
         })
     }
 
     /// **Source:** `Transfer_Finder.hxx`:53 - `Transfer_Finder::ValueType()`
     /// Returns the Type of the Value. By default, returns the
     /// DynamicType of <me>, but can be redefined
-    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Finder_value_type(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Finder_value_type(self as *const Self),
+            ))
         }
     }
 
@@ -3511,7 +3668,7 @@ impl Finder {
     pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_Finder_value_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_Finder_value_type_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -3521,10 +3678,14 @@ impl Finder {
     /// **Source:** `Transfer_Finder.hxx`:61 - `Transfer_Finder::SetAttribute()`
     /// Adds an attribute with a given name (replaces the former one
     /// with the same name if already exists)
-    pub fn set_attribute(&mut self, name: &str, val: &crate::ffi::HandleStandardTransient) {
+    pub fn set_attribute(&mut self, name: &str, val: &crate::ffi_types::HandleStandardTransient) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_set_attribute(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_set_attribute(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -3534,7 +3695,10 @@ impl Finder {
     pub fn remove_attribute(&mut self, name: &str) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_remove_attribute(self as *mut Self, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_Finder_remove_attribute(
+                self as *mut Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -3546,12 +3710,12 @@ impl Finder {
     pub fn get_attribute(
         &self,
         name: &str,
-        type_: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        type_: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_get_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_attribute(
                 self as *const Self,
                 c_name.as_ptr(),
                 type_,
@@ -3563,13 +3727,18 @@ impl Finder {
     /// **Source:** `Transfer_Finder.hxx`:78 - `Transfer_Finder::Attribute()`
     /// Returns an attribute from its name. Null Handle if not recorded
     /// (whatever Transient, Integer, Real ...)
-    pub fn attribute(&self, name: &str) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn attribute(
+        &self,
+        name: &str,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_Finder_attribute(
-                self as *const Self,
-                c_name.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Finder_attribute(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                ),
+            ))
         }
     }
 
@@ -3580,7 +3749,10 @@ impl Finder {
     pub fn attribute_type(&self, name: &str) -> crate::interface::ParamType {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::interface::ParamType::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_attribute_type(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_Finder_attribute_type(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         }))
         .unwrap()
     }
@@ -3590,7 +3762,7 @@ impl Finder {
     pub fn set_integer_attribute(&mut self, name: &str, val: i32) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_set_integer_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_set_integer_attribute(
                 self as *mut Self,
                 c_name.as_ptr(),
                 val,
@@ -3606,7 +3778,7 @@ impl Finder {
     pub fn get_integer_attribute(&self, name: &str, val: &mut i32) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_get_integer_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_integer_attribute(
                 self as *const Self,
                 c_name.as_ptr(),
                 val,
@@ -3619,7 +3791,10 @@ impl Finder {
     pub fn integer_attribute(&self, name: &str) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_integer_attribute(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_Finder_integer_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -3628,7 +3803,11 @@ impl Finder {
     pub fn set_real_attribute(&mut self, name: &str, val: f64) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_set_real_attribute(self as *mut Self, c_name.as_ptr(), val)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_set_real_attribute(
+                self as *mut Self,
+                c_name.as_ptr(),
+                val,
+            )
         })
     }
 
@@ -3640,7 +3819,7 @@ impl Finder {
     pub fn get_real_attribute(&self, name: &str, val: &mut f64) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_get_real_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_real_attribute(
                 self as *const Self,
                 c_name.as_ptr(),
                 val,
@@ -3653,7 +3832,10 @@ impl Finder {
     pub fn real_attribute(&self, name: &str) -> f64 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_real_attribute(self as *const Self, c_name.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_Finder_real_attribute(
+                self as *const Self,
+                c_name.as_ptr(),
+            )
         })
     }
 
@@ -3663,7 +3845,7 @@ impl Finder {
         let c_name = std::ffi::CString::new(name).unwrap();
         let c_val = std::ffi::CString::new(val).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_set_string_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_set_string_attribute(
                 self as *mut Self,
                 c_name.as_ptr(),
                 c_val.as_ptr(),
@@ -3679,7 +3861,7 @@ impl Finder {
     pub fn get_string_attribute(&self, name: &str, val: &mut *const std::ffi::c_char) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_get_string_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_string_attribute(
                 self as *const Self,
                 c_name.as_ptr(),
                 val,
@@ -3693,7 +3875,10 @@ impl Finder {
         let c_name = std::ffi::CString::new(name).unwrap();
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_Finder_string_attribute(self as *const Self, c_name.as_ptr()),
+                crate::ffi_extern_TKXSBase::Transfer_Finder_string_attribute(
+                    self as *const Self,
+                    c_name.as_ptr(),
+                ),
             ))
         }
         .to_string_lossy()
@@ -3702,9 +3887,11 @@ impl Finder {
 
     /// **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
     /// Returns the exhaustive list of attributes
-    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn attr_list(&mut self) -> &mut crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_Finder_attr_list(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_Finder_attr_list(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3713,9 +3900,9 @@ impl Finder {
     /// not copied : attributes are shared, any attribute edited,
     /// added, or removed in <other> is also in <me> and vice versa
     /// The former list of attributes of <me> is dropped
-    pub fn same_attributes(&mut self, other: &crate::ffi::HandleTransferFinder) {
+    pub fn same_attributes(&mut self, other: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_same_attributes(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_same_attributes(self as *mut Self, other)
         })
     }
 
@@ -3733,13 +3920,13 @@ impl Finder {
     /// in case of same name, they replace the existing ones
     pub fn get_attributes(
         &mut self,
-        other: &crate::ffi::HandleTransferFinder,
+        other: &crate::ffi_types::HandleTransferFinder,
         fromname: &str,
         copied: bool,
     ) {
         let c_fromname = std::ffi::CString::new(fromname).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_get_attributes(
+            crate::ffi_extern_TKXSBase::Transfer_Finder_get_attributes(
                 self as *mut Self,
                 other,
                 c_fromname.as_ptr(),
@@ -3749,9 +3936,11 @@ impl Finder {
     }
 
     /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_Finder_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_Finder_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3759,7 +3948,7 @@ impl Finder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_Finder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_Finder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3767,39 +3956,53 @@ impl Finder {
     }
 
     /// **Source:** `Transfer_Finder.hxx`:149 - `Transfer_Finder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_Finder_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Finder_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_Finder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Finder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_Finder_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_Finder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3807,7 +4010,7 @@ impl Finder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_Finder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3820,58 +4023,72 @@ impl Finder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_Finder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_Finder_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferFinder;
+pub use crate::ffi_types::HandleTransferFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferFinder_destructor(ptr);
     }
 }
 
 impl HandleTransferFinder {
     /// Dereference this Handle to access the underlying Transfer_Finder
-    pub fn get(&self) -> &crate::ffi::Transfer_Finder {
-        unsafe { &*crate::check_result(crate::ffi::HandleTransferFinder_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::Transfer_Finder {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinder_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_Finder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_Finder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_Finder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferFinder_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinder_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<Transfer_Finder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferFinder_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKXSBase::HandleTransferFinder_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3881,11 +4098,9 @@ impl HandleTransferFinder {
     /// Returns `None` if the handle does not point to a `TransferBRep_ShapeMapper` (or subclass).
     pub fn downcast_to_shape_mapper(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBRepShapeMapper>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBRepShapeMapper>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferFinder_downcast_to_HandleTransferBRepShapeMapper(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferFinder_downcast_to_HandleTransferBRepShapeMapper(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3899,11 +4114,9 @@ impl HandleTransferFinder {
     /// Returns `None` if the handle does not point to a `Transfer_TransientMapper` (or subclass).
     pub fn downcast_to_transient_mapper(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientMapper>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransientMapper>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferFinder_downcast_to_HandleTransferTransientMapper(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferFinder_downcast_to_HandleTransferTransientMapper(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3920,11 +4133,11 @@ impl HandleTransferFinder {
 /// **Source:** `Transfer_FinderProcess.hxx`:32 - `Transfer_FinderProcess`
 /// Adds specific features to the generic definition :
 /// PrintTrace is adapted
-pub use crate::ffi::Transfer_FinderProcess as FinderProcess;
+pub use crate::ffi_types::Transfer_FinderProcess as FinderProcess;
 
 unsafe impl crate::CppDeletable for FinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_FinderProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_FinderProcess_destructor(ptr);
     }
 }
 
@@ -3934,7 +4147,7 @@ impl FinderProcess {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_ctor_int(nb),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_ctor_int(nb),
             ))
         }
     }
@@ -3948,18 +4161,18 @@ impl FinderProcess {
     /// **Source:** `Transfer_FinderProcess.hxx`:41 - `Transfer_FinderProcess::SetModel()`
     /// Sets an InterfaceModel, which can be used during transfer
     /// for instance if a context must be managed, it is in the Model
-    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_set_model(self as *mut Self, model)
         })
     }
 
     /// **Source:** `Transfer_FinderProcess.hxx`:44 - `Transfer_FinderProcess::Model()`
     /// Returns the Model which can be used for context
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_model(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_model(self as *const Self),
             ))
         }
     }
@@ -3982,7 +4195,7 @@ impl FinderProcess {
     pub fn next_mapped_with_attribute(&self, name: &str, num0: i32) -> i32 {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_next_mapped_with_attribute(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_next_mapped_with_attribute(
                 self as *const Self,
                 c_name.as_ptr(),
                 num0,
@@ -3997,11 +4210,14 @@ impl FinderProcess {
     /// it is not mapped here (use Bind or FindElseBind to do this)
     pub fn transient_mapper(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientMapper> {
+        obj: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientMapper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_transient_mapper(self as *const Self, obj),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_transient_mapper(
+                    self as *const Self,
+                    obj,
+                ),
             ))
         }
     }
@@ -4010,28 +4226,38 @@ impl FinderProcess {
     /// Specific printing to trace a Finder (by its method ValueType)
     pub fn print_trace(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-        S: &mut crate::ffi::Standard_OStream,
+        start: &crate::ffi_types::HandleTransferFinder,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_print_trace(self as *const Self, start, S)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_print_trace(
+                self as *const Self,
+                start,
+                S,
+            )
         })
     }
 
     /// **Source:** `Transfer_FinderProcess.hxx`:75 - `Transfer_FinderProcess::PrintStats()`
     /// Prints statistics on a given output, according mode
-    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi::Standard_OStream) {
+    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_print_stats(self as *const Self, mode, S)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_print_stats(
+                self as *const Self,
+                mode,
+                S,
+            )
         })
     }
 
     /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_FinderProcess_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4039,7 +4265,7 @@ impl FinderProcess {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4047,16 +4273,22 @@ impl FinderProcess {
     }
 
     /// **Source:** `Transfer_FinderProcess.hxx`:77 - `Transfer_FinderProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_FinderProcess_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_ProcessForFinder
     pub fn as_process_for_finder(&self) -> &ProcessForFinder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_FinderProcess_as_Transfer_ProcessForFinder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_as_Transfer_ProcessForFinder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4064,7 +4296,7 @@ impl FinderProcess {
     pub fn as_process_for_finder_mut(&mut self) -> &mut ProcessForFinder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_FinderProcess_as_Transfer_ProcessForFinder_mut(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_as_Transfer_ProcessForFinder_mut(
                     self as *mut Self,
                 ),
             )
@@ -4074,28 +4306,32 @@ impl FinderProcess {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_FinderProcess_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_FinderProcess_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4103,36 +4339,46 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:59 - `Transfer_ProcessForFinder::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:65 - `Transfer_ProcessForFinder::Clean()`
     pub fn clean(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Clean(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Clean(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:69 - `Transfer_ProcessForFinder::Resize()`
     pub fn resize(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Resize(self as *mut Self, nb)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Resize(
+                self as *mut Self,
+                nb,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:74 - `Transfer_ProcessForFinder::SetActor()`
-    pub fn set_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+    pub fn set_actor(&mut self, actor: &crate::ffi_types::HandleTransferActorOfProcessForFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetActor(self as *mut Self, actor)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetActor(
+                self as *mut Self,
+                actor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:78 - `Transfer_ProcessForFinder::Actor()`
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    pub fn actor(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_Actor(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Actor(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4140,82 +4386,110 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:85 - `Transfer_ProcessForFinder::Find()`
     pub fn find(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_Find(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Find(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:91 - `Transfer_ProcessForFinder::IsBound()`
-    pub fn is_bound(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn is_bound(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsBound(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsBound(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:96 - `Transfer_ProcessForFinder::IsAlreadyUsed()`
-    pub fn is_already_used(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn is_already_used(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsAlreadyUsed(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsAlreadyUsed(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:102 - `Transfer_ProcessForFinder::Bind()`
     pub fn bind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Bind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Bind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:110 - `Transfer_ProcessForFinder::Rebind()`
     pub fn rebind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Rebind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Rebind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:118 - `Transfer_ProcessForFinder::Unbind()`
-    pub fn unbind(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn unbind(&mut self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Unbind(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Unbind(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:123 - `Transfer_ProcessForFinder::FindElseBind()`
     pub fn find_else_bind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_FindElseBind(self as *mut Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_FindElseBind(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetMessenger(self as *mut Self, messenger)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetMessenger(
+                self as *mut Self,
+                messenger,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:131 - `Transfer_ProcessForFinder::Messenger()`
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_Messenger(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4223,58 +4497,78 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:140 - `Transfer_ProcessForFinder::SetTraceLevel()`
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetTraceLevel(self as *mut Self, tracelev)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetTraceLevel(
+                self as *mut Self,
+                tracelev,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:143 - `Transfer_ProcessForFinder::TraceLevel()`
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_TraceLevel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_TraceLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:146 - `Transfer_ProcessForFinder::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:149 - `Transfer_ProcessForFinder::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SendWarning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SendWarning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:153 - `Transfer_ProcessForFinder::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:209 - `Transfer_ProcessForFinder::Check()`
     pub fn check(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_Check(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Check(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -4282,11 +4576,11 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:215 - `Transfer_ProcessForFinder::BindTransient()`
     pub fn bind_transient(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_BindTransient(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_BindTransient(
                 self as *mut Self,
                 start,
                 res,
@@ -4295,32 +4589,39 @@ impl FinderProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:231 - `Transfer_ProcessForFinder::BindMultiple()`
-    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
+    pub fn bind_multiple(&mut self, start: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_BindMultiple(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_BindMultiple(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:235 - `Transfer_ProcessForFinder::AddMultiple()`
     pub fn add_multiple(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_AddMultiple(self as *mut Self, start, res)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_AddMultiple(
+                self as *mut Self,
+                start,
+                res,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:249 - `Transfer_ProcessForFinder::FindTypedTransient()`
     pub fn find_typed_transient(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_FindTypedTransient(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_FindTypedTransient(
                 self as *const Self,
                 start,
                 atype,
@@ -4332,12 +4633,12 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:270 - `Transfer_ProcessForFinder::GetTypedTransient()`
     pub fn get_typed_transient(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_GetTypedTransient(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_GetTypedTransient(
                 self as *const Self,
                 binder,
                 atype,
@@ -4349,113 +4650,146 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:286 - `Transfer_ProcessForFinder::NbMapped()`
     pub fn nb_mapped(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_NbMapped(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_NbMapped(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:289 - `Transfer_ProcessForFinder::Mapped()`
-    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+    pub fn mapped(&self, num: i32) -> &crate::ffi_types::HandleTransferFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_FinderProcess_inherited_Mapped(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Mapped(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:292 - `Transfer_ProcessForFinder::MapIndex()`
-    pub fn map_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn map_index(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_MapIndex(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_MapIndex(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
-    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_MapItem(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_MapItem(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:301 - `Transfer_ProcessForFinder::SetRoot()`
-    pub fn set_root(&mut self, start: &crate::ffi::HandleTransferFinder) {
+    pub fn set_root(&mut self, start: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetRoot(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetRoot(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:310 - `Transfer_ProcessForFinder::SetRootManagement()`
     pub fn set_root_management(&mut self, stat: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetRootManagement(self as *mut Self, stat)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetRootManagement(
+                self as *mut Self,
+                stat,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:313 - `Transfer_ProcessForFinder::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_NbRoots(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_NbRoots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:316 - `Transfer_ProcessForFinder::Root()`
-    pub fn root(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+    pub fn root(&self, num: i32) -> &crate::ffi_types::HandleTransferFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_FinderProcess_inherited_Root(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Root(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
-    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_RootItem(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_RootItem(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:324 - `Transfer_ProcessForFinder::RootIndex()`
-    pub fn root_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn root_index(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_RootIndex(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_RootIndex(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:329 - `Transfer_ProcessForFinder::NestingLevel()`
     pub fn nesting_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_NestingLevel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_NestingLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:333 - `Transfer_ProcessForFinder::ResetNestingLevel()`
     pub fn reset_nesting_level(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_ResetNestingLevel(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_ResetNestingLevel(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:337 - `Transfer_ProcessForFinder::Recognize()`
-    pub fn recognize(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn recognize(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Recognize(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Recognize(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:343 - `Transfer_ProcessForFinder::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_Transferring(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Transferring(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -4467,11 +4801,11 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:350 - `Transfer_ProcessForFinder::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Transfer(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Transfer(
                 self as *mut Self,
                 start,
                 theProgress,
@@ -4482,27 +4816,32 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:358 - `Transfer_ProcessForFinder::SetErrorHandle()`
     pub fn set_error_handle(&mut self, err: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_SetErrorHandle(self as *mut Self, err)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_SetErrorHandle(
+                self as *mut Self,
+                err,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:361 - `Transfer_ProcessForFinder::ErrorHandle()`
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_ErrorHandle(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_ErrorHandle(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:369 - `Transfer_ProcessForFinder::StartTrace()`
     pub fn start_trace(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_StartTrace(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_StartTrace(
                 self as *const Self,
                 binder,
                 start,
@@ -4515,7 +4854,10 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:382 - `Transfer_ProcessForFinder::IsLooping()`
     pub fn is_looping(&self, alevel: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsLooping(self as *const Self, alevel)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsLooping(
+                self as *const Self,
+                alevel,
+            )
         })
     }
 
@@ -4523,7 +4865,7 @@ impl FinderProcess {
     pub fn root_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_RootResult(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_RootResult(
                     self as *const Self,
                     withstart,
                 ),
@@ -4535,7 +4877,7 @@ impl FinderProcess {
     pub fn complete_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_CompleteResult(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_CompleteResult(
                     self as *const Self,
                     withstart,
                 ),
@@ -4547,7 +4889,9 @@ impl FinderProcess {
     pub fn abnormal_result(&self) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_AbnormalResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_AbnormalResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4556,7 +4900,7 @@ impl FinderProcess {
     pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_CheckList(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_CheckList(
                     self as *const Self,
                     erronly,
                 ),
@@ -4567,13 +4911,13 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:414 - `Transfer_ProcessForFinder::ResultOne()`
     pub fn result_one(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         withstart: bool,
     ) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_ResultOne(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_ResultOne(
                     self as *const Self,
                     start,
                     level,
@@ -4586,13 +4930,13 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:421 - `Transfer_ProcessForFinder::CheckListOne()`
     pub fn check_list_one(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         erronly: bool,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_FinderProcess_inherited_CheckListOne(
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_CheckListOne(
                     self as *const Self,
                     start,
                     level,
@@ -4605,12 +4949,12 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:428 - `Transfer_ProcessForFinder::IsCheckListEmpty()`
     pub fn is_check_list_empty(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         erronly: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsCheckListEmpty(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsCheckListEmpty(
                 self as *const Self,
                 start,
                 level,
@@ -4622,12 +4966,12 @@ impl FinderProcess {
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:437 - `Transfer_ProcessForFinder::RemoveResult()`
     pub fn remove_result(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         compute: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_RemoveResult(
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_RemoveResult(
                 self as *mut Self,
                 start,
                 level,
@@ -4637,23 +4981,32 @@ impl FinderProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForFinder.hxx`:444 - `Transfer_ProcessForFinder::CheckNum()`
-    pub fn check_num(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn check_num(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_CheckNum(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_CheckNum(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4661,7 +5014,9 @@ impl FinderProcess {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_FinderProcess_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4674,75 +5029,81 @@ impl FinderProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_FinderProcess_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_FinderProcess_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferFinderProcess;
+pub use crate::ffi_types::HandleTransferFinderProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferFinderProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferFinderProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_destructor(ptr);
     }
 }
 
 impl HandleTransferFinderProcess {
     /// Dereference this Handle to access the underlying Transfer_FinderProcess
-    pub fn get(&self) -> &crate::ffi::Transfer_FinderProcess {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_FinderProcess {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferFinderProcess_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_FinderProcess
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_FinderProcess {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_FinderProcess {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferFinderProcess_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_FinderProcess> to Handle<Transfer_ProcessForFinder>
     pub fn to_handle_process_for_finder(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferProcessForFinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferFinderProcess_to_HandleTransferProcessForFinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_to_HandleTransferProcessForFinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_FinderProcess> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferFinderProcess_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleTransferFinderProcess_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4755,11 +5116,11 @@ impl HandleTransferFinderProcess {
 // ========================
 
 /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder`
-pub use crate::ffi::Transfer_HSequenceOfBinder as HSequenceOfBinder;
+pub use crate::ffi_types::Transfer_HSequenceOfBinder as HSequenceOfBinder;
 
 unsafe impl crate::CppDeletable for HSequenceOfBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_HSequenceOfBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_destructor(ptr);
     }
 }
 
@@ -4768,35 +5129,42 @@ impl HSequenceOfBinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfBinder_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Transfer_HSequenceOfBinder()`
     pub fn new_sequenceofbinder(
-        theOther: &crate::ffi::Transfer_SequenceOfBinder,
+        theOther: &crate::ffi_types::Transfer_SequenceOfBinder,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfBinder_ctor_sequenceofbinder(theOther),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_ctor_sequenceofbinder(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::Transfer_SequenceOfBinder {
+    pub fn sequence(&self) -> &crate::ffi_types::Transfer_SequenceOfBinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfBinder_sequence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_sequence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
-    pub fn append_handletransferbinder(&mut self, theItem: &crate::ffi::HandleTransferBinder) {
+    pub fn append_handletransferbinder(
+        &mut self,
+        theItem: &crate::ffi_types::HandleTransferBinder,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_append_handletransferbinder(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_append_handletransferbinder(
                 self as *mut Self,
                 theItem,
             )
@@ -4806,10 +5174,10 @@ impl HSequenceOfBinder {
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::Append()`
     pub fn append_sequenceofbinder(
         &mut self,
-        theSequence: &mut crate::ffi::Transfer_SequenceOfBinder,
+        theSequence: &mut crate::ffi_types::Transfer_SequenceOfBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_append_sequenceofbinder(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_append_sequenceofbinder(
                 self as *mut Self,
                 theSequence,
             )
@@ -4817,20 +5185,24 @@ impl HSequenceOfBinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::Transfer_SequenceOfBinder {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Transfer_SequenceOfBinder {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_HSequenceOfBinder_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfBinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4838,7 +5210,7 @@ impl HSequenceOfBinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfBinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4846,18 +5218,22 @@ impl HSequenceOfBinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfBinder.hxx`:23 - `Transfer_HSequenceOfBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfBinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_HSequenceOfBinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4865,7 +5241,9 @@ impl HSequenceOfBinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_HSequenceOfBinder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4873,18 +5251,18 @@ impl HSequenceOfBinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferHSequenceOfBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferHSequenceOfBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfBinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4892,9 +5270,12 @@ impl HSequenceOfBinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4902,7 +5283,9 @@ impl HSequenceOfBinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_HSequenceOfBinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4915,67 +5298,75 @@ impl HSequenceOfBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfBinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfBinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferHSequenceOfBinder;
+pub use crate::ffi_types::HandleTransferHSequenceOfBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferHSequenceOfBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferHSequenceOfBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_destructor(ptr);
     }
 }
 
 impl HandleTransferHSequenceOfBinder {
     /// Dereference this Handle to access the underlying Transfer_HSequenceOfBinder
-    pub fn get(&self) -> &crate::ffi::Transfer_HSequenceOfBinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_HSequenceOfBinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferHSequenceOfBinder_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_HSequenceOfBinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_HSequenceOfBinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_HSequenceOfBinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferHSequenceOfBinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_HSequenceOfBinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferHSequenceOfBinder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfBinder_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4985,11 +5376,11 @@ impl HandleTransferHSequenceOfBinder {
 // ========================
 
 /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder`
-pub use crate::ffi::Transfer_HSequenceOfFinder as HSequenceOfFinder;
+pub use crate::ffi_types::Transfer_HSequenceOfFinder as HSequenceOfFinder;
 
 unsafe impl crate::CppDeletable for HSequenceOfFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_HSequenceOfFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_destructor(ptr);
     }
 }
 
@@ -4998,35 +5389,42 @@ impl HSequenceOfFinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfFinder_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Transfer_HSequenceOfFinder()`
     pub fn new_sequenceoffinder(
-        theOther: &crate::ffi::Transfer_SequenceOfFinder,
+        theOther: &crate::ffi_types::Transfer_SequenceOfFinder,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfFinder_ctor_sequenceoffinder(theOther),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_ctor_sequenceoffinder(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::Transfer_SequenceOfFinder {
+    pub fn sequence(&self) -> &crate::ffi_types::Transfer_SequenceOfFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfFinder_sequence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_sequence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
-    pub fn append_handletransferfinder(&mut self, theItem: &crate::ffi::HandleTransferFinder) {
+    pub fn append_handletransferfinder(
+        &mut self,
+        theItem: &crate::ffi_types::HandleTransferFinder,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_append_handletransferfinder(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_append_handletransferfinder(
                 self as *mut Self,
                 theItem,
             )
@@ -5036,10 +5434,10 @@ impl HSequenceOfFinder {
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::Append()`
     pub fn append_sequenceoffinder(
         &mut self,
-        theSequence: &mut crate::ffi::Transfer_SequenceOfFinder,
+        theSequence: &mut crate::ffi_types::Transfer_SequenceOfFinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_append_sequenceoffinder(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_append_sequenceoffinder(
                 self as *mut Self,
                 theSequence,
             )
@@ -5047,20 +5445,24 @@ impl HSequenceOfFinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::Transfer_SequenceOfFinder {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::Transfer_SequenceOfFinder {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_HSequenceOfFinder_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfFinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5068,7 +5470,7 @@ impl HSequenceOfFinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfFinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5076,18 +5478,22 @@ impl HSequenceOfFinder {
     }
 
     /// **Source:** `Transfer_HSequenceOfFinder.hxx`:23 - `Transfer_HSequenceOfFinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_HSequenceOfFinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_HSequenceOfFinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5095,7 +5501,9 @@ impl HSequenceOfFinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_HSequenceOfFinder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5103,18 +5511,18 @@ impl HSequenceOfFinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferHSequenceOfFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferHSequenceOfFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_HSequenceOfFinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -5122,9 +5530,12 @@ impl HSequenceOfFinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5132,7 +5543,9 @@ impl HSequenceOfFinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_HSequenceOfFinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5145,67 +5558,75 @@ impl HSequenceOfFinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_HSequenceOfFinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_HSequenceOfFinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferHSequenceOfFinder;
+pub use crate::ffi_types::HandleTransferHSequenceOfFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferHSequenceOfFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferHSequenceOfFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_destructor(ptr);
     }
 }
 
 impl HandleTransferHSequenceOfFinder {
     /// Dereference this Handle to access the underlying Transfer_HSequenceOfFinder
-    pub fn get(&self) -> &crate::ffi::Transfer_HSequenceOfFinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_HSequenceOfFinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferHSequenceOfFinder_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_HSequenceOfFinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_HSequenceOfFinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_HSequenceOfFinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferHSequenceOfFinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_HSequenceOfFinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferHSequenceOfFinder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferHSequenceOfFinder_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -5215,11 +5636,11 @@ impl HandleTransferHSequenceOfFinder {
 // ========================
 
 /// **Source:** `Transfer_IteratorOfProcessForFinder.hxx`:34 - `Transfer_IteratorOfProcessForFinder`
-pub use crate::ffi::Transfer_IteratorOfProcessForFinder as IteratorOfProcessForFinder;
+pub use crate::ffi_types::Transfer_IteratorOfProcessForFinder as IteratorOfProcessForFinder;
 
 unsafe impl crate::CppDeletable for IteratorOfProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_IteratorOfProcessForFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_destructor(ptr);
     }
 }
 
@@ -5231,7 +5652,9 @@ impl IteratorOfProcessForFinder {
     pub fn new_bool(withstarts: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_ctor_bool(withstarts),
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_ctor_bool(
+                    withstarts,
+                ),
             ))
         }
     }
@@ -5240,9 +5663,9 @@ impl IteratorOfProcessForFinder {
     /// Adds a Binder to the iteration list (construction)
     /// with no corresponding Starting Object
     /// (note that Result is brought by Binder)
-    pub fn add_handletransferbinder(&mut self, binder: &crate::ffi::HandleTransferBinder) {
+    pub fn add_handletransferbinder(&mut self, binder: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_add_handletransferbinder(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_add_handletransferbinder(
                 self as *mut Self,
                 binder,
             )
@@ -5256,11 +5679,11 @@ impl IteratorOfProcessForFinder {
     /// Creation time
     pub fn add_handletransferbinder_handletransferfinder(
         &mut self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_add_handletransferbinder_handletransferfinder(self as *mut Self, binder, start)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_add_handletransferbinder_handletransferfinder(self as *mut Self, binder, start)
         })
     }
 
@@ -5269,9 +5692,13 @@ impl IteratorOfProcessForFinder {
     /// which are attached to starting data given by <only>
     /// <keep> = True (D) : keeps. <keep> = False : rejects
     /// Does nothing if <withstarts> was False
-    pub fn filter(&mut self, list: &crate::ffi::HandleTransferHSequenceOfFinder, keep: bool) {
+    pub fn filter(&mut self, list: &crate::ffi_types::HandleTransferHSequenceOfFinder, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_filter(self as *mut Self, list, keep)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_filter(
+                self as *mut Self,
+                list,
+                keep,
+            )
         })
     }
 
@@ -5280,46 +5707,42 @@ impl IteratorOfProcessForFinder {
     /// (defined at Creation Time)
     pub fn has_starting(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_has_starting(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_has_starting(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_IteratorOfProcessForFinder.hxx`:68 - `Transfer_IteratorOfProcessForFinder::Starting()`
     /// Returns corresponding Starting Object
-    pub fn starting(&self) -> &crate::ffi::HandleTransferFinder {
+    pub fn starting(&self) -> &crate::ffi_types::HandleTransferFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_IteratorOfProcessForFinder_starting(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_starting(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Upcast to Transfer_TransferIterator
     pub fn as_transfer_iterator(&self) -> &TransferIterator {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_as_Transfer_TransferIterator(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_as_Transfer_TransferIterator(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_TransferIterator (mutable)
     pub fn as_transfer_iterator_mut(&mut self) -> &mut TransferIterator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_as_Transfer_TransferIterator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_as_Transfer_TransferIterator_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:51 - `Transfer_TransferIterator::AddItem()`
-    pub fn add_item(&mut self, atr: &crate::ffi::HandleTransferBinder) {
+    pub fn add_item(&mut self, atr: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_AddItem(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_AddItem(
                 self as *mut Self,
                 atr,
             )
@@ -5327,9 +5750,9 @@ impl IteratorOfProcessForFinder {
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:56 - `Transfer_TransferIterator::SelectBinder()`
-    pub fn select_binder(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_binder(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_SelectBinder(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_SelectBinder(
                 self as *mut Self,
                 atype,
                 keep,
@@ -5338,9 +5761,9 @@ impl IteratorOfProcessForFinder {
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:65 - `Transfer_TransferIterator::SelectResult()`
-    pub fn select_result(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_result(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_SelectResult(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_SelectResult(
                 self as *mut Self,
                 atype,
                 keep,
@@ -5351,7 +5774,7 @@ impl IteratorOfProcessForFinder {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:70 - `Transfer_TransferIterator::SelectUnique()`
     pub fn select_unique(&mut self, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_SelectUnique(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_SelectUnique(
                 self as *mut Self,
                 keep,
             )
@@ -5361,7 +5784,7 @@ impl IteratorOfProcessForFinder {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:75 - `Transfer_TransferIterator::SelectItem()`
     pub fn select_item(&mut self, num: i32, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_SelectItem(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_SelectItem(
                 self as *mut Self,
                 num,
                 keep,
@@ -5372,36 +5795,44 @@ impl IteratorOfProcessForFinder {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:78 - `Transfer_TransferIterator::Number()`
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Number(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Number(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:81 - `Transfer_TransferIterator::Start()`
     pub fn start(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Start(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Start(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:84 - `Transfer_TransferIterator::More()`
     pub fn more(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_More(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_More(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:87 - `Transfer_TransferIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Next(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Next(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:90 - `Transfer_TransferIterator::Value()`
-    pub fn value(&self) -> &crate::ffi::HandleTransferBinder {
+    pub fn value(&self) -> &crate::ffi_types::HandleTransferBinder {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Value(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Value(
                     self as *const Self,
                 ),
             ))
@@ -5411,54 +5842,46 @@ impl IteratorOfProcessForFinder {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:97 - `Transfer_TransferIterator::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_HasResult(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:100 - `Transfer_TransferIterator::HasUniqueResult()`
     pub fn has_unique_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_HasUniqueResult(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_HasUniqueResult(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:107 - `Transfer_TransferIterator::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_ResultType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_ResultType(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:111 - `Transfer_TransferIterator::HasTransientResult()`
     pub fn has_transient_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_HasTransientResult(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_HasTransientResult(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:116 - `Transfer_TransferIterator::TransientResult()`
-    pub fn transient_result(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn transient_result(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_TransientResult(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_TransientResult(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:120 - `Transfer_TransferIterator::Status()`
     pub fn status(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5466,24 +5889,26 @@ impl IteratorOfProcessForFinder {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:124 - `Transfer_TransferIterator::HasFails()`
     pub fn has_fails(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_HasFails(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_HasFails(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:128 - `Transfer_TransferIterator::HasWarnings()`
     pub fn has_warnings(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_HasWarnings(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_HasWarnings(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:133 - `Transfer_TransferIterator::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForFinder_inherited_Check(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForFinder_inherited_Check(
                     self as *const Self,
                 ),
             ))
@@ -5496,11 +5921,11 @@ impl IteratorOfProcessForFinder {
 // ========================
 
 /// **Source:** `Transfer_IteratorOfProcessForTransient.hxx`:34 - `Transfer_IteratorOfProcessForTransient`
-pub use crate::ffi::Transfer_IteratorOfProcessForTransient as IteratorOfProcessForTransient;
+pub use crate::ffi_types::Transfer_IteratorOfProcessForTransient as IteratorOfProcessForTransient;
 
 unsafe impl crate::CppDeletable for IteratorOfProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_IteratorOfProcessForTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_destructor(ptr);
     }
 }
 
@@ -5512,7 +5937,9 @@ impl IteratorOfProcessForTransient {
     pub fn new_bool(withstarts: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_ctor_bool(withstarts),
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_ctor_bool(
+                    withstarts,
+                ),
             ))
         }
     }
@@ -5521,12 +5948,9 @@ impl IteratorOfProcessForTransient {
     /// Adds a Binder to the iteration list (construction)
     /// with no corresponding Starting Object
     /// (note that Result is brought by Binder)
-    pub fn add_handletransferbinder(&mut self, binder: &crate::ffi::HandleTransferBinder) {
+    pub fn add_handletransferbinder(&mut self, binder: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_add_handletransferbinder(
-                self as *mut Self,
-                binder,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_add_handletransferbinder(self as *mut Self, binder)
         })
     }
 
@@ -5537,11 +5961,11 @@ impl IteratorOfProcessForTransient {
     /// Creation time
     pub fn add_handletransferbinder_handlestandardtransient(
         &mut self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_add_handletransferbinder_handlestandardtransient(self as *mut Self, binder, start)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_add_handletransferbinder_handlestandardtransient(self as *mut Self, binder, start)
         })
     }
 
@@ -5550,9 +5974,17 @@ impl IteratorOfProcessForTransient {
     /// which are attached to starting data given by <only>
     /// <keep> = True (D) : keeps. <keep> = False : rejects
     /// Does nothing if <withstarts> was False
-    pub fn filter(&mut self, list: &crate::ffi::HandleTColStdHSequenceOfTransient, keep: bool) {
+    pub fn filter(
+        &mut self,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+        keep: bool,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_filter(self as *mut Self, list, keep)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_filter(
+                self as *mut Self,
+                list,
+                keep,
+            )
         })
     }
 
@@ -5561,46 +5993,42 @@ impl IteratorOfProcessForTransient {
     /// (defined at Creation Time)
     pub fn has_starting(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_has_starting(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_has_starting(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_IteratorOfProcessForTransient.hxx`:68 - `Transfer_IteratorOfProcessForTransient::Starting()`
     /// Returns corresponding Starting Object
-    pub fn starting(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn starting(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_IteratorOfProcessForTransient_starting(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_starting(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Upcast to Transfer_TransferIterator
     pub fn as_transfer_iterator(&self) -> &TransferIterator {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_as_Transfer_TransferIterator(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_as_Transfer_TransferIterator(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_TransferIterator (mutable)
     pub fn as_transfer_iterator_mut(&mut self) -> &mut TransferIterator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_as_Transfer_TransferIterator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_as_Transfer_TransferIterator_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:51 - `Transfer_TransferIterator::AddItem()`
-    pub fn add_item(&mut self, atr: &crate::ffi::HandleTransferBinder) {
+    pub fn add_item(&mut self, atr: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_AddItem(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_AddItem(
                 self as *mut Self,
                 atr,
             )
@@ -5608,41 +6036,30 @@ impl IteratorOfProcessForTransient {
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:56 - `Transfer_TransferIterator::SelectBinder()`
-    pub fn select_binder(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_binder(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_SelectBinder(
-                self as *mut Self,
-                atype,
-                keep,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_SelectBinder(self as *mut Self, atype, keep)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:65 - `Transfer_TransferIterator::SelectResult()`
-    pub fn select_result(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_result(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_SelectResult(
-                self as *mut Self,
-                atype,
-                keep,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_SelectResult(self as *mut Self, atype, keep)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:70 - `Transfer_TransferIterator::SelectUnique()`
     pub fn select_unique(&mut self, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_SelectUnique(
-                self as *mut Self,
-                keep,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_SelectUnique(self as *mut Self, keep)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:75 - `Transfer_TransferIterator::SelectItem()`
     pub fn select_item(&mut self, num: i32, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_SelectItem(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_SelectItem(
                 self as *mut Self,
                 num,
                 keep,
@@ -5653,36 +6070,44 @@ impl IteratorOfProcessForTransient {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:78 - `Transfer_TransferIterator::Number()`
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Number(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Number(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:81 - `Transfer_TransferIterator::Start()`
     pub fn start(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Start(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Start(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:84 - `Transfer_TransferIterator::More()`
     pub fn more(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_More(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_More(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:87 - `Transfer_TransferIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Next(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Next(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:90 - `Transfer_TransferIterator::Value()`
-    pub fn value(&self) -> &crate::ffi::HandleTransferBinder {
+    pub fn value(&self) -> &crate::ffi_types::HandleTransferBinder {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Value(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Value(
                     self as *const Self,
                 ),
             ))
@@ -5692,7 +6117,7 @@ impl IteratorOfProcessForTransient {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:97 - `Transfer_TransferIterator::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_HasResult(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_HasResult(
                 self as *const Self,
             )
         })
@@ -5701,47 +6126,37 @@ impl IteratorOfProcessForTransient {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:100 - `Transfer_TransferIterator::HasUniqueResult()`
     pub fn has_unique_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_HasUniqueResult(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_HasUniqueResult(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:107 - `Transfer_TransferIterator::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_ResultType(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_ResultType(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:111 - `Transfer_TransferIterator::HasTransientResult()`
     pub fn has_transient_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_HasTransientResult(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_HasTransientResult(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:116 - `Transfer_TransferIterator::TransientResult()`
-    pub fn transient_result(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn transient_result(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_TransientResult(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_TransientResult(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:120 - `Transfer_TransferIterator::Status()`
     pub fn status(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5749,7 +6164,7 @@ impl IteratorOfProcessForTransient {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:124 - `Transfer_TransferIterator::HasFails()`
     pub fn has_fails(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_HasFails(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_HasFails(
                 self as *const Self,
             )
         })
@@ -5758,17 +6173,17 @@ impl IteratorOfProcessForTransient {
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:128 - `Transfer_TransferIterator::HasWarnings()`
     pub fn has_warnings(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_HasWarnings(
+            crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_HasWarnings(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Transfer_TransferIterator.hxx`:133 - `Transfer_TransferIterator::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_IteratorOfProcessForTransient_inherited_Check(
+                crate::ffi_extern_TKXSBase::Transfer_IteratorOfProcessForTransient_inherited_Check(
                     self as *const Self,
                 ),
             ))
@@ -5781,11 +6196,11 @@ impl IteratorOfProcessForTransient {
 // ========================
 
 /// **Source:** `Transfer_MapContainer.hxx`:28 - `Transfer_MapContainer`
-pub use crate::ffi::Transfer_MapContainer as MapContainer;
+pub use crate::ffi_types::Transfer_MapContainer as MapContainer;
 
 unsafe impl crate::CppDeletable for MapContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_MapContainer_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_MapContainer_destructor(ptr);
     }
 }
 
@@ -5793,7 +6208,9 @@ impl MapContainer {
     /// **Source:** `Transfer_MapContainer.hxx`:32 - `Transfer_MapContainer::Transfer_MapContainer()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_MapContainer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_ctor(),
+            ))
         }
     }
 
@@ -5801,27 +6218,34 @@ impl MapContainer {
     /// Set map already translated geometry objects.
     pub fn set_map_objects(
         &mut self,
-        theMapObjects: &mut crate::ffi::TColStd_DataMapOfTransientTransient,
+        theMapObjects: &mut crate::ffi_types::TColStd_DataMapOfTransientTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MapContainer_set_map_objects(self as *mut Self, theMapObjects)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_set_map_objects(
+                self as *mut Self,
+                theMapObjects,
+            )
         })
     }
 
     /// **Source:** `Transfer_MapContainer.hxx`:38 - `Transfer_MapContainer::GetMapObjects()`
     /// Get map already translated geometry objects.
-    pub fn get_map_objects(&mut self) -> &mut crate::ffi::TColStd_DataMapOfTransientTransient {
+    pub fn get_map_objects(
+        &mut self,
+    ) -> &mut crate::ffi_types::TColStd_DataMapOfTransientTransient {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_MapContainer_get_map_objects(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_get_map_objects(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_MapContainer.hxx`:40 - `Transfer_MapContainer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_MapContainer_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_MapContainer_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5831,7 +6255,7 @@ impl MapContainer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_MapContainer_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5839,50 +6263,64 @@ impl MapContainer {
     }
 
     /// **Source:** `Transfer_MapContainer.hxx`:40 - `Transfer_MapContainer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_MapContainer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_MapContainer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_MapContainer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferMapContainer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferMapContainer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MapContainer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5890,7 +6328,9 @@ impl MapContainer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_MapContainer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5903,62 +6343,72 @@ impl MapContainer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MapContainer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MapContainer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferMapContainer;
+pub use crate::ffi_types::HandleTransferMapContainer;
 
 unsafe impl crate::CppDeletable for HandleTransferMapContainer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferMapContainer_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferMapContainer_destructor(ptr);
     }
 }
 
 impl HandleTransferMapContainer {
     /// Dereference this Handle to access the underlying Transfer_MapContainer
-    pub fn get(&self) -> &crate::ffi::Transfer_MapContainer {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_MapContainer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferMapContainer_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Transfer_MapContainer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_MapContainer {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferMapContainer_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMapContainer_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Transfer_MapContainer
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_MapContainer {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferMapContainer_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Transfer_MapContainer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferMapContainer_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleTransferMapContainer_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5989,11 +6439,11 @@ impl HandleTransferMapContainer {
 /// Also, a Transcriptor (with an effective Transfer Method) which
 /// can produce a Multiple Result, may be defined as a sub-class
 /// of MultipleBinder by redefining method Transfer.
-pub use crate::ffi::Transfer_MultipleBinder as MultipleBinder;
+pub use crate::ffi_types::Transfer_MultipleBinder as MultipleBinder;
 
 unsafe impl crate::CppDeletable for MultipleBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_MultipleBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_destructor(ptr);
     }
 }
 
@@ -6003,7 +6453,7 @@ impl MultipleBinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_ctor(),
             ))
         }
     }
@@ -6013,16 +6463,18 @@ impl MultipleBinder {
     /// results : Here, returns always True
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_is_multiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_is_multiple(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:61 - `Transfer_MultipleBinder::ResultType()`
     /// Returns the Type permitted for Results, i.e. here Transient
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_result_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_result_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6033,7 +6485,9 @@ impl MultipleBinder {
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_result_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_result_type_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -6042,9 +6496,9 @@ impl MultipleBinder {
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:68 - `Transfer_MultipleBinder::AddResult()`
     /// Adds a new Item to the Multiple Result
-    pub fn add_result(&mut self, res: &crate::ffi::HandleStandardTransient) {
+    pub fn add_result(&mut self, res: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_add_result(self as *mut Self, res)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_add_result(self as *mut Self, res)
         })
     }
 
@@ -6052,16 +6506,22 @@ impl MultipleBinder {
     /// Returns the actual count of recorded (Transient) results
     pub fn nb_results(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_nb_results(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_nb_results(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:74 - `Transfer_MultipleBinder::ResultValue()`
     /// Returns the value of the recorded result n0 <num>
-    pub fn result_value(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn result_value(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_result_value(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_result_value(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -6071,10 +6531,12 @@ impl MultipleBinder {
     /// Item). Else, returns a Null Handle
     pub fn multiple_result(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_multiple_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_multiple_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6082,18 +6544,26 @@ impl MultipleBinder {
     /// **Source:** `Transfer_MultipleBinder.hxx`:82 - `Transfer_MultipleBinder::SetMultipleResult()`
     /// Defines a Binding with a Multiple Result, given as a Sequence
     /// Error if a Unique Result has yet been defined
-    pub fn set_multiple_result(&mut self, mulres: &crate::ffi::HandleTColStdHSequenceOfTransient) {
+    pub fn set_multiple_result(
+        &mut self,
+        mulres: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_set_multiple_result(self as *mut Self, mulres)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_set_multiple_result(
+                self as *mut Self,
+                mulres,
+            )
         })
     }
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:84 - `Transfer_MultipleBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_MultipleBinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6101,7 +6571,7 @@ impl MultipleBinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6109,36 +6579,44 @@ impl MultipleBinder {
     }
 
     /// **Source:** `Transfer_MultipleBinder.hxx`:84 - `Transfer_MultipleBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_MultipleBinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_binder(&self) -> &Binder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_MultipleBinder_as_Transfer_Binder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_as_Transfer_Binder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_binder_mut(&mut self) -> &mut Binder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_MultipleBinder_as_Transfer_Binder_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_as_Transfer_Binder_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_MultipleBinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6146,7 +6624,9 @@ impl MultipleBinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6154,26 +6634,31 @@ impl MultipleBinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferMultipleBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferMultipleBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_Merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_Merge(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_inherited_NextResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_NextResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6181,21 +6666,27 @@ impl MultipleBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_HasResult(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_SetAlreadyUsed(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_SetAlreadyUsed(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6203,7 +6694,9 @@ impl MultipleBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_StatusExec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_StatusExec(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6211,7 +6704,7 @@ impl MultipleBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_SetStatusExec(
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_SetStatusExec(
                 self as *mut Self,
                 stat.into(),
             )
@@ -6219,34 +6712,44 @@ impl MultipleBinder {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_inherited_Check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_Check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_MultipleBinder_inherited_CCheck(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_CCheck(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6254,7 +6757,9 @@ impl MultipleBinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_MultipleBinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6267,62 +6772,72 @@ impl MultipleBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_MultipleBinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_MultipleBinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferMultipleBinder;
+pub use crate::ffi_types::HandleTransferMultipleBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferMultipleBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferMultipleBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_destructor(ptr);
     }
 }
 
 impl HandleTransferMultipleBinder {
     /// Dereference this Handle to access the underlying Transfer_MultipleBinder
-    pub fn get(&self) -> &crate::ffi::Transfer_MultipleBinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_MultipleBinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferMultipleBinder_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Transfer_MultipleBinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_MultipleBinder {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferMultipleBinder_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Transfer_MultipleBinder
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_MultipleBinder {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Transfer_MultipleBinder> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferMultipleBinder_to_HandleTransferBinder(
+                crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_to_HandleTransferBinder(
                     self as *const Self,
                 ),
             ))
@@ -6330,10 +6845,12 @@ impl HandleTransferMultipleBinder {
     }
 
     /// Upcast Handle<Transfer_MultipleBinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferMultipleBinder_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleTransferMultipleBinder_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -6346,11 +6863,11 @@ impl HandleTransferMultipleBinder {
 // ========================
 
 /// **Source:** `Transfer_ProcessForFinder.hxx`:41 - `Transfer_ProcessForFinder`
-pub use crate::ffi::Transfer_ProcessForFinder as ProcessForFinder;
+pub use crate::ffi_types::Transfer_ProcessForFinder as ProcessForFinder;
 
 unsafe impl crate::CppDeletable for ProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ProcessForFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_destructor(ptr);
     }
 }
 
@@ -6363,7 +6880,7 @@ impl ProcessForFinder {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_ctor_int(nb),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_ctor_int(nb),
             ))
         }
     }
@@ -6373,13 +6890,11 @@ impl ProcessForFinder {
     /// (indicative) for the Map when known (default is 10000).
     /// Sets a specified printer.
     pub fn new_handlemessagemessenger_int(
-        printer: &crate::ffi::HandleMessageMessenger,
+        printer: &crate::ffi_types::HandleMessageMessenger,
         nb: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_ctor_handlemessagemessenger_int(printer, nb),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_ctor_handlemessagemessenger_int(printer, nb)))
         }
     }
 
@@ -6397,7 +6912,7 @@ impl ProcessForFinder {
     /// (indicative) for the Map when known (default is 10000).
     /// Sets a specified printer.
     pub fn new_handlemessagemessenger(
-        printer: &crate::ffi::HandleMessageMessenger,
+        printer: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlemessagemessenger_int(printer, 10000)
     }
@@ -6407,7 +6922,7 @@ impl ProcessForFinder {
     /// Clears general data (roots) and the Map
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_clear(self as *mut Self)
         })
     }
 
@@ -6418,7 +6933,7 @@ impl ProcessForFinder {
     /// formerly unbound item is rebound
     pub fn clean(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_clean(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_clean(self as *mut Self)
         })
     }
 
@@ -6427,7 +6942,7 @@ impl ProcessForFinder {
     /// determined). Acts only if <nb> is greater than actual NbMapped
     pub fn resize(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_resize(self as *mut Self, nb)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_resize(self as *mut Self, nb)
         })
     }
 
@@ -6435,19 +6950,24 @@ impl ProcessForFinder {
     /// Defines an Actor, which is used for automatic Transfer
     /// If already defined, the new Actor is cumulated
     /// (see SetNext from Actor)
-    pub fn set_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfProcessForFinder) {
+    pub fn set_actor(&mut self, actor: &crate::ffi_types::HandleTransferActorOfProcessForFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_actor(self as *mut Self, actor)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_actor(
+                self as *mut Self,
+                actor,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:78 - `Transfer_ProcessForFinder::Actor()`
     /// Returns the defined Actor. Returns a Null Handle if
     /// not set.
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForFinder> {
+    pub fn actor(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_actor(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_actor(self as *const Self),
             ))
         }
     }
@@ -6460,11 +6980,14 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0
     pub fn find(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_find(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_find(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -6474,9 +6997,12 @@ impl ProcessForFinder {
     /// a starting Object. I.e., if a Binder with a Result set,
     /// is linked with it
     /// Considers a category number, by default 0
-    pub fn is_bound(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn is_bound(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_is_bound(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_is_bound(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -6484,9 +7010,12 @@ impl ProcessForFinder {
     /// Returns True if the result of the transfer of an object is
     /// already used in other ones. If it is, Rebind cannot change it.
     /// Considers a category number, by default 0
-    pub fn is_already_used(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn is_already_used(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_is_already_used(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_is_already_used(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -6497,11 +7026,15 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0
     pub fn bind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_bind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_bind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
@@ -6513,11 +7046,15 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0
     pub fn rebind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_rebind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_rebind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
@@ -6527,9 +7064,9 @@ impl ProcessForFinder {
     /// a VoidBinder. Also removes from the list of Roots as required.
     /// Returns True if done, False if <start> was not bound
     /// Considers a category number, by default 0
-    pub fn unbind(&mut self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn unbind(&mut self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_unbind(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_unbind(self as *mut Self, start)
         })
     }
 
@@ -6539,20 +7076,26 @@ impl ProcessForFinder {
     /// If none found, creates a VoidBinder and Binds it
     pub fn find_else_bind(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_find_else_bind(self as *mut Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_find_else_bind(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:126 - `Transfer_ProcessForFinder::SetMessenger()`
     /// Sets Messenger used for outputting messages.
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_messenger(self as *mut Self, messenger)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_messenger(
+                self as *mut Self,
+                messenger,
+            )
         })
     }
 
@@ -6560,10 +7103,12 @@ impl ProcessForFinder {
     /// Returns Messenger used for outputting messages.
     /// The returned object is guaranteed to be non-null;
     /// default is Message::Messenger().
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_messenger(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6578,7 +7123,10 @@ impl ProcessForFinder {
     /// Default is 1 : Errors traced
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_trace_level(self as *mut Self, tracelev)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_trace_level(
+                self as *mut Self,
+                tracelev,
+            )
         })
     }
 
@@ -6586,7 +7134,7 @@ impl ProcessForFinder {
     /// Returns trace level used for outputting messages.
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_trace_level(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_trace_level(self as *const Self)
         })
     }
 
@@ -6594,11 +7142,15 @@ impl ProcessForFinder {
     /// New name for AddFail (Msg)
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_send_fail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_send_fail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -6606,11 +7158,15 @@ impl ProcessForFinder {
     /// New name for AddWarning (Msg)
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_send_warning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_send_warning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -6619,11 +7175,15 @@ impl ProcessForFinder {
     /// Trace is filled if trace level is at least 3
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_send_msg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_send_msg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -6632,29 +7192,29 @@ impl ProcessForFinder {
     /// its Binder of category 0, as a Fail)
     pub fn add_fail_handletransferfinder_charptr2(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         mess: &str,
         orig: &str,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_fail_handletransferfinder_charptr2(
-                self as *mut Self,
-                start,
-                c_mess.as_ptr(),
-                c_orig.as_ptr(),
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_fail_handletransferfinder_charptr2(self as *mut Self, start, c_mess.as_ptr(), c_orig.as_ptr())
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:162 - `Transfer_ProcessForFinder::AddError()`
     /// (other name of AddFail, maintained for compatibility)
-    pub fn add_error(&mut self, start: &crate::ffi::HandleTransferFinder, mess: &str, orig: &str) {
+    pub fn add_error(
+        &mut self,
+        start: &crate::ffi_types::HandleTransferFinder,
+        mess: &str,
+        orig: &str,
+    ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_error(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_error(
                 self as *mut Self,
                 start,
                 c_mess.as_ptr(),
@@ -6668,11 +7228,11 @@ impl ProcessForFinder {
     /// of a Msg (Original+Value)
     pub fn add_fail_handletransferfinder_msg(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_fail_handletransferfinder_msg(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_fail_handletransferfinder_msg(
                 self as *mut Self,
                 start,
                 amsg,
@@ -6685,19 +7245,14 @@ impl ProcessForFinder {
     /// its Binder of category 0)
     pub fn add_warning_handletransferfinder_charptr2(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         mess: &str,
         orig: &str,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_warning_handletransferfinder_charptr2(
-                self as *mut Self,
-                start,
-                c_mess.as_ptr(),
-                c_orig.as_ptr(),
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_warning_handletransferfinder_charptr2(self as *mut Self, start, c_mess.as_ptr(), c_orig.as_ptr())
         })
     }
 
@@ -6706,23 +7261,23 @@ impl ProcessForFinder {
     /// of a Msg (Original+Value)
     pub fn add_warning_handletransferfinder_msg(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_warning_handletransferfinder_msg(
-                self as *mut Self,
-                start,
-                amsg,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_warning_handletransferfinder_msg(self as *mut Self, start, amsg)
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:180 - `Transfer_ProcessForFinder::Mend()`
-    pub fn mend(&mut self, start: &crate::ffi::HandleTransferFinder, pref: &str) {
+    pub fn mend(&mut self, start: &crate::ffi_types::HandleTransferFinder, pref: &str) {
         let c_pref = std::ffi::CString::new(pref).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_mend(self as *mut Self, start, c_pref.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_mend(
+                self as *mut Self,
+                start,
+                c_pref.as_ptr(),
+            )
         })
     }
 
@@ -6756,11 +7311,14 @@ impl ProcessForFinder {
     /// which begin by <rootname>
     pub fn check(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_check(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_check(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -6772,11 +7330,15 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0
     pub fn bind_transient(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_bind_transient(self as *mut Self, start, res)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_bind_transient(
+                self as *mut Self,
+                start,
+                res,
+            )
         })
     }
 
@@ -6794,13 +7356,15 @@ impl ProcessForFinder {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn find_transient(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-    ) -> &crate::ffi::HandleStandardTransient {
+        start: &crate::ffi_types::HandleTransferFinder,
+    ) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForFinder_find_transient(
-                self as *const Self,
-                start,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_find_transient(
+                    self as *const Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -6810,9 +7374,12 @@ impl ProcessForFinder {
     /// is created, empty. If a Binder is already set, it must
     /// accept Multiple Binding.
     /// Considers a category number, by default 0
-    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleTransferFinder) {
+    pub fn bind_multiple(&mut self, start: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_bind_multiple(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_bind_multiple(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -6821,11 +7388,15 @@ impl ProcessForFinder {
     /// Considers a category number, by default 0, for all results
     pub fn add_multiple(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_add_multiple(self as *mut Self, start, res)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_add_multiple(
+                self as *mut Self,
+                start,
+                res,
+            )
         })
     }
 
@@ -6843,12 +7414,12 @@ impl ProcessForFinder {
     /// immediately used, well initialised
     pub fn find_typed_transient(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleTransferFinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_find_typed_transient(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_find_typed_transient(
                 self as *const Self,
                 start,
                 atype,
@@ -6867,12 +7438,12 @@ impl ProcessForFinder {
     /// Apart from this, works as FindTypedTransient
     pub fn get_typed_transient(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_get_typed_transient(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_get_typed_transient(
                 self as *const Self,
                 binder,
                 atype,
@@ -6886,15 +7457,15 @@ impl ProcessForFinder {
     /// (no result can be bound with a value greater than it)
     pub fn nb_mapped(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_nb_mapped(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_nb_mapped(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:289 - `Transfer_ProcessForFinder::Mapped()`
     /// Returns the Starting Object bound to an Index,
-    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+    pub fn mapped(&self, num: i32) -> &crate::ffi_types::HandleTransferFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForFinder_mapped(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_mapped(
                 self as *const Self,
                 num,
             )))
@@ -6903,19 +7474,25 @@ impl ProcessForFinder {
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:292 - `Transfer_ProcessForFinder::MapIndex()`
     /// Returns the Index value bound to a Starting Object, 0 if none
-    pub fn map_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn map_index(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_map_index(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_map_index(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:296 - `Transfer_ProcessForFinder::MapItem()`
     /// Returns the Binder bound to an Index
     /// Considers a category number, by default 0
-    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_map_item(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_map_item(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -6924,9 +7501,9 @@ impl ProcessForFinder {
     /// Declares <obj> (and its Result) as Root. This status will be
     /// later exploited by RootResult, see below (Result can be
     /// produced at any time)
-    pub fn set_root(&mut self, start: &crate::ffi::HandleTransferFinder) {
+    pub fn set_root(&mut self, start: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_root(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_root(self as *mut Self, start)
         })
     }
 
@@ -6940,7 +7517,10 @@ impl ProcessForFinder {
     /// Default is set to True.
     pub fn set_root_management(&mut self, stat: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_root_management(self as *mut Self, stat)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_root_management(
+                self as *mut Self,
+                stat,
+            )
         })
     }
 
@@ -6948,15 +7528,15 @@ impl ProcessForFinder {
     /// Returns the count of recorded Roots
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_nb_roots(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_nb_roots(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:316 - `Transfer_ProcessForFinder::Root()`
     /// Returns a Root Entity given its number in the list (1-NbRoots)
-    pub fn root(&self, num: i32) -> &crate::ffi::HandleTransferFinder {
+    pub fn root(&self, num: i32) -> &crate::ffi_types::HandleTransferFinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForFinder_root(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_root(
                 self as *const Self,
                 num,
             )))
@@ -6966,10 +7546,13 @@ impl ProcessForFinder {
     /// **Source:** `Transfer_ProcessForFinder.hxx`:320 - `Transfer_ProcessForFinder::RootItem()`
     /// Returns the Binder bound with a Root Entity given its number
     /// Considers a category number, by default 0
-    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_root_item(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_root_item(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -6977,9 +7560,12 @@ impl ProcessForFinder {
     /// **Source:** `Transfer_ProcessForFinder.hxx`:324 - `Transfer_ProcessForFinder::RootIndex()`
     /// Returns the index in the list of roots for a starting item,
     /// or 0 if it is not recorded as a root
-    pub fn root_index(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn root_index(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_root_index(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_root_index(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -6989,7 +7575,7 @@ impl ProcessForFinder {
     /// is used, it remains to zero. Zero means Root Level.
     pub fn nesting_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_nesting_level(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_nesting_level(self as *const Self)
         })
     }
 
@@ -6998,16 +7584,21 @@ impl ProcessForFinder {
     /// whatever its current value.
     pub fn reset_nesting_level(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_reset_nesting_level(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_reset_nesting_level(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:337 - `Transfer_ProcessForFinder::Recognize()`
     /// Tells if <start> has been recognized as good candidate for
     /// Transfer. i.e. queries the Actor and its Nexts
-    pub fn recognize(&self, start: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn recognize(&self, start: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_recognize(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_recognize(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -7018,12 +7609,12 @@ impl ProcessForFinder {
     /// already Bound, an exception is raised in case of error.
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_transferring(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -7037,11 +7628,15 @@ impl ProcessForFinder {
     /// Simply returns True in case of success (for user call)
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_transfer(self as *mut Self, start, theProgress)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_transfer(
+                self as *mut Self,
+                start,
+                theProgress,
+            )
         })
     }
 
@@ -7053,7 +7648,10 @@ impl ProcessForFinder {
     /// Default is False: no handling performed
     pub fn set_error_handle(&mut self, err: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_set_error_handle(self as *mut Self, err)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_set_error_handle(
+                self as *mut Self,
+                err,
+            )
         })
     }
 
@@ -7061,7 +7659,7 @@ impl ProcessForFinder {
     /// Returns error handling flag
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_error_handle(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_error_handle(self as *const Self)
         })
     }
 
@@ -7074,13 +7672,13 @@ impl ProcessForFinder {
     /// 0 neutral, 1 for Error, 2 for Warning message, 3 for new Root
     pub fn start_trace(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleTransferFinder,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_start_trace(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_start_trace(
                 self as *const Self,
                 binder,
                 start,
@@ -7095,11 +7693,15 @@ impl ProcessForFinder {
     /// prints its Dynamic Type. Can be redefined
     pub fn print_trace(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
-        S: &mut crate::ffi::Standard_OStream,
+        start: &crate::ffi_types::HandleTransferFinder,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_print_trace(self as *const Self, start, S)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_print_trace(
+                self as *const Self,
+                start,
+                S,
+            )
         })
     }
 
@@ -7109,7 +7711,10 @@ impl ProcessForFinder {
     /// This "majorant" is : <alevel> greater than NbMapped.
     pub fn is_looping(&self, alevel: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_is_looping(self as *const Self, alevel)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_is_looping(
+                self as *const Self,
+                alevel,
+            )
         })
     }
 
@@ -7120,7 +7725,10 @@ impl ProcessForFinder {
     pub fn root_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_root_result(self as *const Self, withstart),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_root_result(
+                    self as *const Self,
+                    withstart,
+                ),
             ))
         }
     }
@@ -7132,7 +7740,7 @@ impl ProcessForFinder {
     pub fn complete_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_complete_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_complete_result(
                     self as *const Self,
                     withstart,
                 ),
@@ -7147,7 +7755,9 @@ impl ProcessForFinder {
     pub fn abnormal_result(&self) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_abnormal_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_abnormal_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7161,7 +7771,10 @@ impl ProcessForFinder {
     pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_check_list(self as *const Self, erronly),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_check_list(
+                    self as *const Self,
+                    erronly,
+                ),
             ))
         }
     }
@@ -7174,13 +7787,13 @@ impl ProcessForFinder {
     /// <level> = 2 : object plus all its scoped ones
     pub fn result_one(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         withstart: bool,
     ) -> crate::OwnedPtr<IteratorOfProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_result_one(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_result_one(
                     self as *const Self,
                     start,
                     level,
@@ -7196,13 +7809,13 @@ impl ProcessForFinder {
     /// If <erronly> is True, checks with Warnings only are ignored
     pub fn check_list_one(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         erronly: bool,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_check_list_one(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_check_list_one(
                     self as *const Self,
                     start,
                     level,
@@ -7218,12 +7831,12 @@ impl ProcessForFinder {
     /// If <erronly> is True, checks with Warnings only are ignored
     pub fn is_check_list_empty(
         &self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         erronly: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_is_check_list_empty(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_is_check_list_empty(
                 self as *const Self,
                 start,
                 level,
@@ -7240,12 +7853,12 @@ impl ProcessForFinder {
     /// <level> = 2 : it plus all its owned sub-results(scope)
     pub fn remove_result(
         &mut self,
-        start: &crate::ffi::HandleTransferFinder,
+        start: &crate::ffi_types::HandleTransferFinder,
         level: i32,
         compute: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_remove_result(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_remove_result(
                 self as *mut Self,
                 start,
                 level,
@@ -7258,18 +7871,23 @@ impl ProcessForFinder {
     /// Computes a number to be associated to a starting object in
     /// a check or a check-list
     /// By default, returns 0; can be redefined
-    pub fn check_num(&self, start: &crate::ffi::HandleTransferFinder) -> i32 {
+    pub fn check_num(&self, start: &crate::ffi_types::HandleTransferFinder) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_check_num(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_check_num(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForFinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7277,7 +7895,7 @@ impl ProcessForFinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7285,18 +7903,22 @@ impl ProcessForFinder {
     }
 
     /// **Source:** `Transfer_ProcessForFinder.hxx`:446 - `Transfer_ProcessForFinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForFinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ProcessForFinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7304,7 +7926,9 @@ impl ProcessForFinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7312,25 +7936,31 @@ impl ProcessForFinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForFinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferProcessForFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForFinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7338,7 +7968,9 @@ impl ProcessForFinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ProcessForFinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7351,67 +7983,75 @@ impl ProcessForFinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForFinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForFinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferProcessForFinder;
+pub use crate::ffi_types::HandleTransferProcessForFinder;
 
 unsafe impl crate::CppDeletable for HandleTransferProcessForFinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferProcessForFinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_destructor(ptr);
     }
 }
 
 impl HandleTransferProcessForFinder {
     /// Dereference this Handle to access the underlying Transfer_ProcessForFinder
-    pub fn get(&self) -> &crate::ffi::Transfer_ProcessForFinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ProcessForFinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferProcessForFinder_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ProcessForFinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ProcessForFinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ProcessForFinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferProcessForFinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ProcessForFinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferProcessForFinder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -7420,11 +8060,9 @@ impl HandleTransferProcessForFinder {
     /// Returns `None` if the handle does not point to a `Transfer_FinderProcess` (or subclass).
     pub fn downcast_to_finder_process(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferProcessForFinder_downcast_to_HandleTransferFinderProcess(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForFinder_downcast_to_HandleTransferFinderProcess(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7444,11 +8082,11 @@ impl HandleTransferProcessForFinder {
 /// IteratorOfTransientProcess    (for Results),
 /// TransferMapOfTransientProcess (internally used)
 /// Normally uses as TransientProcess, which adds some specifics
-pub use crate::ffi::Transfer_ProcessForTransient as ProcessForTransient;
+pub use crate::ffi_types::Transfer_ProcessForTransient as ProcessForTransient;
 
 unsafe impl crate::CppDeletable for ProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ProcessForTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_destructor(ptr);
     }
 }
 
@@ -7461,7 +8099,7 @@ impl ProcessForTransient {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_ctor_int(nb),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_ctor_int(nb),
             ))
         }
     }
@@ -7471,15 +8109,11 @@ impl ProcessForTransient {
     /// (indicative) for the Map when known (default is 10000).
     /// Sets a specified printer.
     pub fn new_handlemessagemessenger_int(
-        printer: &crate::ffi::HandleMessageMessenger,
+        printer: &crate::ffi_types::HandleMessageMessenger,
         nb: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_ctor_handlemessagemessenger_int(
-                    printer, nb,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_ctor_handlemessagemessenger_int(printer, nb)))
         }
     }
 
@@ -7497,7 +8131,7 @@ impl ProcessForTransient {
     /// (indicative) for the Map when known (default is 10000).
     /// Sets a specified printer.
     pub fn new_handlemessagemessenger(
-        printer: &crate::ffi::HandleMessageMessenger,
+        printer: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlemessagemessenger_int(printer, 10000)
     }
@@ -7507,7 +8141,7 @@ impl ProcessForTransient {
     /// Clears general data (roots) and the Map
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_clear(self as *mut Self)
         })
     }
 
@@ -7518,7 +8152,7 @@ impl ProcessForTransient {
     /// formerly unbound item is rebound
     pub fn clean(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_clean(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_clean(self as *mut Self)
         })
     }
 
@@ -7527,7 +8161,7 @@ impl ProcessForTransient {
     /// determined). Acts only if <nb> is greater than actual NbMapped
     pub fn resize(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_resize(self as *mut Self, nb)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_resize(self as *mut Self, nb)
         })
     }
 
@@ -7535,19 +8169,27 @@ impl ProcessForTransient {
     /// Defines an Actor, which is used for automatic Transfer
     /// If already defined, the new Actor is cumulated
     /// (see SetNext from Actor)
-    pub fn set_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_actor(
+        &mut self,
+        actor: &crate::ffi_types::HandleTransferActorOfProcessForTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_actor(self as *mut Self, actor)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_actor(
+                self as *mut Self,
+                actor,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:80 - `Transfer_ProcessForTransient::Actor()`
     /// Returns the defined Actor. Returns a Null Handle if
     /// not set.
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn actor(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_actor(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_actor(self as *const Self),
             ))
         }
     }
@@ -7560,11 +8202,14 @@ impl ProcessForTransient {
     /// Considers a category number, by default 0
     pub fn find(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_find(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_find(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -7574,9 +8219,12 @@ impl ProcessForTransient {
     /// a starting Object. I.e., if a Binder with a Result set,
     /// is linked with it
     /// Considers a category number, by default 0
-    pub fn is_bound(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_bound(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_is_bound(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_is_bound(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -7584,9 +8232,12 @@ impl ProcessForTransient {
     /// Returns True if the result of the transfer of an object is
     /// already used in other ones. If it is, Rebind cannot change it.
     /// Considers a category number, by default 0
-    pub fn is_already_used(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_already_used(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_is_already_used(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_is_already_used(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -7597,11 +8248,15 @@ impl ProcessForTransient {
     /// Considers a category number, by default 0
     pub fn bind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_bind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_bind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
@@ -7613,11 +8268,15 @@ impl ProcessForTransient {
     /// Considers a category number, by default 0
     pub fn rebind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_rebind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_rebind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
@@ -7627,9 +8286,12 @@ impl ProcessForTransient {
     /// a VoidBinder. Also removes from the list of Roots as required.
     /// Returns True if done, False if <start> was not bound
     /// Considers a category number, by default 0
-    pub fn unbind(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn unbind(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_unbind(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_unbind(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -7639,20 +8301,26 @@ impl ProcessForTransient {
     /// If none found, creates a VoidBinder and Binds it
     pub fn find_else_bind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_find_else_bind(self as *mut Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_find_else_bind(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:128 - `Transfer_ProcessForTransient::SetMessenger()`
     /// Sets Messenger used for outputting messages.
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_messenger(self as *mut Self, messenger)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_messenger(
+                self as *mut Self,
+                messenger,
+            )
         })
     }
 
@@ -7660,10 +8328,12 @@ impl ProcessForTransient {
     /// Returns Messenger used for outputting messages.
     /// The returned object is guaranteed to be non-null;
     /// default is Message::Messenger().
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_messenger(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7678,7 +8348,10 @@ impl ProcessForTransient {
     /// Default is 1 : Errors traced
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_trace_level(self as *mut Self, tracelev)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_trace_level(
+                self as *mut Self,
+                tracelev,
+            )
         })
     }
 
@@ -7686,7 +8359,9 @@ impl ProcessForTransient {
     /// Returns trace level used for outputting messages.
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_trace_level(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_trace_level(
+                self as *const Self,
+            )
         })
     }
 
@@ -7694,11 +8369,15 @@ impl ProcessForTransient {
     /// New name for AddFail (Msg)
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_send_fail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_send_fail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -7706,11 +8385,15 @@ impl ProcessForTransient {
     /// New name for AddWarning (Msg)
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_send_warning(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_send_warning(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -7719,11 +8402,15 @@ impl ProcessForTransient {
     /// Trace is filled if trace level is at least 3
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_send_msg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_send_msg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
@@ -7732,19 +8419,14 @@ impl ProcessForTransient {
     /// its Binder of category 0, as a Fail)
     pub fn add_fail_handlestandardtransient_charptr2(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         mess: &str,
         orig: &str,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_fail_handlestandardtransient_charptr2(
-                self as *mut Self,
-                start,
-                c_mess.as_ptr(),
-                c_orig.as_ptr(),
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_fail_handlestandardtransient_charptr2(self as *mut Self, start, c_mess.as_ptr(), c_orig.as_ptr())
         })
     }
 
@@ -7752,14 +8434,14 @@ impl ProcessForTransient {
     /// (other name of AddFail, maintained for compatibility)
     pub fn add_error(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         mess: &str,
         orig: &str,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_error(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_error(
                 self as *mut Self,
                 start,
                 c_mess.as_ptr(),
@@ -7773,15 +8455,11 @@ impl ProcessForTransient {
     /// of a Msg (Original+Value)
     pub fn add_fail_handlestandardtransient_msg(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_fail_handlestandardtransient_msg(
-                self as *mut Self,
-                start,
-                amsg,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_fail_handlestandardtransient_msg(self as *mut Self, start, amsg)
         })
     }
 
@@ -7790,19 +8468,14 @@ impl ProcessForTransient {
     /// its Binder of category 0)
     pub fn add_warning_handlestandardtransient_charptr2(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         mess: &str,
         orig: &str,
     ) {
         let c_mess = std::ffi::CString::new(mess).unwrap();
         let c_orig = std::ffi::CString::new(orig).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_warning_handlestandardtransient_charptr2(
-                self as *mut Self,
-                start,
-                c_mess.as_ptr(),
-                c_orig.as_ptr(),
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_warning_handlestandardtransient_charptr2(self as *mut Self, start, c_mess.as_ptr(), c_orig.as_ptr())
         })
     }
 
@@ -7811,23 +8484,23 @@ impl ProcessForTransient {
     /// of a Msg (Original+Value)
     pub fn add_warning_handlestandardtransient_msg(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_warning_handlestandardtransient_msg(
-                self as *mut Self,
-                start,
-                amsg,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_warning_handlestandardtransient_msg(self as *mut Self, start, amsg)
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:183 - `Transfer_ProcessForTransient::Mend()`
-    pub fn mend(&mut self, start: &crate::ffi::HandleStandardTransient, pref: &str) {
+    pub fn mend(&mut self, start: &crate::ffi_types::HandleStandardTransient, pref: &str) {
         let c_pref = std::ffi::CString::new(pref).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_mend(self as *mut Self, start, c_pref.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_mend(
+                self as *mut Self,
+                start,
+                c_pref.as_ptr(),
+            )
         })
     }
 
@@ -7861,11 +8534,14 @@ impl ProcessForTransient {
     /// which begin by <rootname>
     pub fn check(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_check(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_check(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -7877,11 +8553,15 @@ impl ProcessForTransient {
     /// Considers a category number, by default 0
     pub fn bind_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_bind_transient(self as *mut Self, start, res)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_bind_transient(
+                self as *mut Self,
+                start,
+                res,
+            )
         })
     }
 
@@ -7899,13 +8579,15 @@ impl ProcessForTransient {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn find_transient(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> &crate::ffi::HandleStandardTransient {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForTransient_find_transient(
-                self as *const Self,
-                start,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_find_transient(
+                    self as *const Self,
+                    start,
+                ),
+            ))
         }
     }
 
@@ -7915,9 +8597,12 @@ impl ProcessForTransient {
     /// is created, empty. If a Binder is already set, it must
     /// accept Multiple Binding.
     /// Considers a category number, by default 0
-    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleStandardTransient) {
+    pub fn bind_multiple(&mut self, start: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_bind_multiple(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_bind_multiple(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -7926,11 +8611,15 @@ impl ProcessForTransient {
     /// Considers a category number, by default 0, for all results
     pub fn add_multiple(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_add_multiple(self as *mut Self, start, res)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_add_multiple(
+                self as *mut Self,
+                start,
+                res,
+            )
         })
     }
 
@@ -7948,12 +8637,12 @@ impl ProcessForTransient {
     /// immediately used, well initialised
     pub fn find_typed_transient(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_find_typed_transient(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_find_typed_transient(
                 self as *const Self,
                 start,
                 atype,
@@ -7972,12 +8661,12 @@ impl ProcessForTransient {
     /// Apart from this, works as FindTypedTransient
     pub fn get_typed_transient(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_get_typed_transient(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_get_typed_transient(
                 self as *const Self,
                 binder,
                 atype,
@@ -7991,36 +8680,44 @@ impl ProcessForTransient {
     /// (no result can be bound with a value greater than it)
     pub fn nb_mapped(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_nb_mapped(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_nb_mapped(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:273 - `Transfer_ProcessForTransient::Mapped()`
     /// Returns the Starting Object bound to an Index,
-    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn mapped(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForTransient_mapped(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_mapped(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:276 - `Transfer_ProcessForTransient::MapIndex()`
     /// Returns the Index value bound to a Starting Object, 0 if none
-    pub fn map_index(&self, start: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn map_index(&self, start: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_map_index(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_map_index(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:280 - `Transfer_ProcessForTransient::MapItem()`
     /// Returns the Binder bound to an Index
     /// Considers a category number, by default 0
-    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_map_item(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_map_item(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -8029,9 +8726,12 @@ impl ProcessForTransient {
     /// Declares <obj> (and its Result) as Root. This status will be
     /// later exploited by RootResult, see below (Result can be
     /// produced at any time)
-    pub fn set_root(&mut self, start: &crate::ffi::HandleStandardTransient) {
+    pub fn set_root(&mut self, start: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_root(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_root(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
@@ -8045,7 +8745,10 @@ impl ProcessForTransient {
     /// Default is set to True.
     pub fn set_root_management(&mut self, stat: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_root_management(self as *mut Self, stat)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_root_management(
+                self as *mut Self,
+                stat,
+            )
         })
     }
 
@@ -8053,15 +8756,15 @@ impl ProcessForTransient {
     /// Returns the count of recorded Roots
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_nb_roots(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_nb_roots(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:300 - `Transfer_ProcessForTransient::Root()`
     /// Returns a Root Entity given its number in the list (1-NbRoots)
-    pub fn root(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn root(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForTransient_root(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_root(
                 self as *const Self,
                 num,
             )))
@@ -8071,10 +8774,13 @@ impl ProcessForTransient {
     /// **Source:** `Transfer_ProcessForTransient.hxx`:304 - `Transfer_ProcessForTransient::RootItem()`
     /// Returns the Binder bound with a Root Entity given its number
     /// Considers a category number, by default 0
-    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_root_item(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_root_item(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -8082,9 +8788,12 @@ impl ProcessForTransient {
     /// **Source:** `Transfer_ProcessForTransient.hxx`:308 - `Transfer_ProcessForTransient::RootIndex()`
     /// Returns the index in the list of roots for a starting item,
     /// or 0 if it is not recorded as a root
-    pub fn root_index(&self, start: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn root_index(&self, start: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_root_index(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_root_index(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -8094,7 +8803,9 @@ impl ProcessForTransient {
     /// is used, it remains to zero. Zero means Root Level.
     pub fn nesting_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_nesting_level(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_nesting_level(
+                self as *const Self,
+            )
         })
     }
 
@@ -8103,16 +8814,21 @@ impl ProcessForTransient {
     /// whatever its current value.
     pub fn reset_nesting_level(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_reset_nesting_level(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_reset_nesting_level(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:321 - `Transfer_ProcessForTransient::Recognize()`
     /// Tells if <start> has been recognized as good candidate for
     /// Transfer. i.e. queries the Actor and its Nexts
-    pub fn recognize(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_recognize(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_recognize(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -8123,12 +8839,12 @@ impl ProcessForTransient {
     /// already Bound, an exception is raised in case of error.
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_transferring(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_transferring(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -8142,11 +8858,15 @@ impl ProcessForTransient {
     /// Simply returns True in case of success (for user call)
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_transfer(self as *mut Self, start, theProgress)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_transfer(
+                self as *mut Self,
+                start,
+                theProgress,
+            )
         })
     }
 
@@ -8158,7 +8878,10 @@ impl ProcessForTransient {
     /// Default is False: no handling performed
     pub fn set_error_handle(&mut self, err: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_set_error_handle(self as *mut Self, err)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_set_error_handle(
+                self as *mut Self,
+                err,
+            )
         })
     }
 
@@ -8166,7 +8889,9 @@ impl ProcessForTransient {
     /// Returns error handling flag
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_error_handle(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_error_handle(
+                self as *const Self,
+            )
         })
     }
 
@@ -8179,13 +8904,13 @@ impl ProcessForTransient {
     /// 0 neutral, 1 for Error, 2 for Warning message, 3 for new Root
     pub fn start_trace(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_start_trace(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_start_trace(
                 self as *const Self,
                 binder,
                 start,
@@ -8200,11 +8925,15 @@ impl ProcessForTransient {
     /// prints its Dynamic Type. Can be redefined
     pub fn print_trace(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-        S: &mut crate::ffi::Standard_OStream,
+        start: &crate::ffi_types::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_print_trace(self as *const Self, start, S)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_print_trace(
+                self as *const Self,
+                start,
+                S,
+            )
         })
     }
 
@@ -8214,7 +8943,10 @@ impl ProcessForTransient {
     /// This "majorant" is : <alevel> greater than NbMapped.
     pub fn is_looping(&self, alevel: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_is_looping(self as *const Self, alevel)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_is_looping(
+                self as *const Self,
+                alevel,
+            )
         })
     }
 
@@ -8225,7 +8957,7 @@ impl ProcessForTransient {
     pub fn root_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_root_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_root_result(
                     self as *const Self,
                     withstart,
                 ),
@@ -8243,7 +8975,7 @@ impl ProcessForTransient {
     ) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_complete_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_complete_result(
                     self as *const Self,
                     withstart,
                 ),
@@ -8258,7 +8990,9 @@ impl ProcessForTransient {
     pub fn abnormal_result(&self) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_abnormal_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_abnormal_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8272,7 +9006,10 @@ impl ProcessForTransient {
     pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_check_list(self as *const Self, erronly),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_check_list(
+                    self as *const Self,
+                    erronly,
+                ),
             ))
         }
     }
@@ -8285,13 +9022,13 @@ impl ProcessForTransient {
     /// <level> = 2 : object plus all its scoped ones
     pub fn result_one(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         withstart: bool,
     ) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_result_one(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_result_one(
                     self as *const Self,
                     start,
                     level,
@@ -8307,13 +9044,13 @@ impl ProcessForTransient {
     /// If <erronly> is True, checks with Warnings only are ignored
     pub fn check_list_one(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         erronly: bool,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_check_list_one(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_check_list_one(
                     self as *const Self,
                     start,
                     level,
@@ -8329,12 +9066,12 @@ impl ProcessForTransient {
     /// If <erronly> is True, checks with Warnings only are ignored
     pub fn is_check_list_empty(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         erronly: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_is_check_list_empty(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_is_check_list_empty(
                 self as *const Self,
                 start,
                 level,
@@ -8351,12 +9088,12 @@ impl ProcessForTransient {
     /// <level> = 2 : it plus all its owned sub-results(scope)
     pub fn remove_result(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         compute: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_remove_result(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_remove_result(
                 self as *mut Self,
                 start,
                 level,
@@ -8369,18 +9106,23 @@ impl ProcessForTransient {
     /// Computes a number to be associated to a starting object in
     /// a check or a check-list
     /// By default, returns 0; can be redefined
-    pub fn check_num(&self, start: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn check_num(&self, start: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_check_num(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_check_num(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:430 - `Transfer_ProcessForTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForTransient_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8388,7 +9130,7 @@ impl ProcessForTransient {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8396,18 +9138,22 @@ impl ProcessForTransient {
     }
 
     /// **Source:** `Transfer_ProcessForTransient.hxx`:430 - `Transfer_ProcessForTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ProcessForTransient_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ProcessForTransient_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8415,7 +9161,7 @@ impl ProcessForTransient {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -8425,18 +9171,18 @@ impl ProcessForTransient {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ProcessForTransient_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -8444,9 +9190,12 @@ impl ProcessForTransient {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8454,7 +9203,9 @@ impl ProcessForTransient {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ProcessForTransient_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8467,14 +9218,16 @@ impl ProcessForTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -8483,7 +9236,7 @@ impl ProcessForTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -8492,46 +9245,50 @@ impl ProcessForTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ProcessForTransient_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ProcessForTransient_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferProcessForTransient;
+pub use crate::ffi_types::HandleTransferProcessForTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferProcessForTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferProcessForTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_destructor(ptr);
     }
 }
 
 impl HandleTransferProcessForTransient {
     /// Dereference this Handle to access the underlying Transfer_ProcessForTransient
-    pub fn get(&self) -> &crate::ffi::Transfer_ProcessForTransient {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ProcessForTransient {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferProcessForTransient_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ProcessForTransient
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ProcessForTransient {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ProcessForTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferProcessForTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ProcessForTransient> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferProcessForTransient_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -8540,11 +9297,9 @@ impl HandleTransferProcessForTransient {
     /// Returns `None` if the handle does not point to a `Transfer_TransientProcess` (or subclass).
     pub fn downcast_to_transient_process(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferProcessForTransient_downcast_to_HandleTransferTransientProcess(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferProcessForTransient_downcast_to_HandleTransferTransientProcess(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8574,11 +9329,11 @@ impl HandleTransferProcessForTransient {
 /// by designating a starting entity
 /// - Fill back the TransientProcess from a ResultFromModel, as it
 /// were filled by the operation which filled it the first time
-pub use crate::ffi::Transfer_ResultFromModel as ResultFromModel;
+pub use crate::ffi_types::Transfer_ResultFromModel as ResultFromModel;
 
 unsafe impl crate::CppDeletable for ResultFromModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ResultFromModel_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_destructor(ptr);
     }
 }
 
@@ -8588,16 +9343,16 @@ impl ResultFromModel {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:59 - `Transfer_ResultFromModel::SetModel()`
     /// Sets starting Model
-    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_set_model(self as *mut Self, model)
         })
     }
 
@@ -8606,7 +9361,7 @@ impl ResultFromModel {
     pub fn set_file_name(&mut self, filename: &str) {
         let c_filename = std::ffi::CString::new(filename).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_set_file_name(
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_set_file_name(
                 self as *mut Self,
                 c_filename.as_ptr(),
             )
@@ -8615,10 +9370,10 @@ impl ResultFromModel {
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:65 - `Transfer_ResultFromModel::Model()`
     /// Returns starting Model (null if not set)
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_model(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_model(self as *const Self),
             ))
         }
     }
@@ -8628,7 +9383,7 @@ impl ResultFromModel {
     pub fn file_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_file_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_file_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -8644,11 +9399,11 @@ impl ResultFromModel {
     /// Returns True if a result is recorded, False else
     pub fn fill(
         &mut self,
-        TP: &crate::ffi::HandleTransferTransientProcess,
-        ent: &crate::ffi::HandleStandardTransient,
+        TP: &crate::ffi_types::HandleTransferTransientProcess,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_fill(self as *mut Self, TP, ent)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_fill(self as *mut Self, TP, ent)
         })
     }
 
@@ -8663,16 +9418,16 @@ impl ResultFromModel {
     /// mode = 11 : also clears MainResult (status and names remain)
     pub fn strip(&mut self, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_strip(self as *mut Self, mode)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_strip(self as *mut Self, mode)
         })
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:91 - `Transfer_ResultFromModel::FillBack()`
     /// Fills back a TransientProcess from the structured set of
     /// binders. Also sets the Model.
-    pub fn fill_back(&self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn fill_back(&self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_fill_back(self as *const Self, TP)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_fill_back(self as *const Self, TP)
         })
     }
 
@@ -8680,25 +9435,32 @@ impl ResultFromModel {
     /// Returns True if a Result is recorded
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_has_result(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_has_result(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:97 - `Transfer_ResultFromModel::MainResult()`
     /// Returns the main recorded ResultFromTransient, or a null
-    pub fn main_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient> {
+    pub fn main_result(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_main_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_main_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:100 - `Transfer_ResultFromModel::SetMainResult()`
     /// Sets a new value for the main recorded ResultFromTransient
-    pub fn set_main_result(&mut self, amain: &crate::ffi::HandleTransferResultFromTransient) {
+    pub fn set_main_result(&mut self, amain: &crate::ffi_types::HandleTransferResultFromTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_set_main_result(self as *mut Self, amain)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_set_main_result(
+                self as *mut Self,
+                amain,
+            )
         })
     }
 
@@ -8708,7 +9470,9 @@ impl ResultFromModel {
     pub fn main_label(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_main_label(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_main_label(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -8719,7 +9483,7 @@ impl ResultFromModel {
     /// Returns the label in starting model attached to main entity
     pub fn main_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_main_number(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_main_number(self as *const Self)
         })
     }
 
@@ -8728,11 +9492,14 @@ impl ResultFromModel {
     /// Returns a null handle if not found
     pub fn result_from_key(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_result_from_key(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_result_from_key(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -8743,10 +9510,13 @@ impl ResultFromModel {
     pub fn results(
         &self,
         level: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_results(self as *const Self, level),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_results(
+                    self as *const Self,
+                    level,
+                ),
             ))
         }
     }
@@ -8760,10 +9530,13 @@ impl ResultFromModel {
     pub fn transferred_list(
         &self,
         level: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_transferred_list(self as *const Self, level),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_transferred_list(
+                    self as *const Self,
+                    level,
+                ),
             ))
         }
     }
@@ -8782,10 +9555,10 @@ impl ResultFromModel {
         &self,
         check: crate::interface::CheckStatus,
         result: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_checked_list(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_checked_list(
                     self as *const Self,
                     check.into(),
                     result,
@@ -8807,7 +9580,7 @@ impl ResultFromModel {
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_check_list(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_check_list(
                     self as *const Self,
                     erronly,
                     level,
@@ -8824,7 +9597,7 @@ impl ResultFromModel {
     /// recomputes one
     pub fn check_status(&self) -> crate::interface::CheckStatus {
         crate::interface::CheckStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_check_status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_check_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -8834,17 +9607,22 @@ impl ResultFromModel {
     /// Does not computes it if already done and <enforce> False
     pub fn compute_check_status(&mut self, enforce: bool) -> crate::interface::CheckStatus {
         crate::interface::CheckStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_compute_check_status(self as *mut Self, enforce)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_compute_check_status(
+                self as *mut Self,
+                enforce,
+            )
         }))
         .unwrap()
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:158 - `Transfer_ResultFromModel::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ResultFromModel_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8852,7 +9630,7 @@ impl ResultFromModel {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8860,18 +9638,22 @@ impl ResultFromModel {
     }
 
     /// **Source:** `Transfer_ResultFromModel.hxx`:158 - `Transfer_ResultFromModel::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ResultFromModel_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ResultFromModel_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8879,7 +9661,9 @@ impl ResultFromModel {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8887,25 +9671,31 @@ impl ResultFromModel {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromModel_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8913,7 +9703,9 @@ impl ResultFromModel {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ResultFromModel_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8926,67 +9718,75 @@ impl ResultFromModel {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromModel_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromModel_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferResultFromModel;
+pub use crate::ffi_types::HandleTransferResultFromModel;
 
 unsafe impl crate::CppDeletable for HandleTransferResultFromModel {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferResultFromModel_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_destructor(ptr);
     }
 }
 
 impl HandleTransferResultFromModel {
     /// Dereference this Handle to access the underlying Transfer_ResultFromModel
-    pub fn get(&self) -> &crate::ffi::Transfer_ResultFromModel {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ResultFromModel {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferResultFromModel_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ResultFromModel
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ResultFromModel {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ResultFromModel {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferResultFromModel_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ResultFromModel> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferResultFromModel_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromModel_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9004,11 +9804,11 @@ impl HandleTransferResultFromModel {
 /// the result and checks) plus a list of "sub-results", which
 /// have been recorded in the TrabsientProcess, under scope
 /// attached to the starting transient.
-pub use crate::ffi::Transfer_ResultFromTransient as ResultFromTransient;
+pub use crate::ffi_types::Transfer_ResultFromTransient as ResultFromTransient;
 
 unsafe impl crate::CppDeletable for ResultFromTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_ResultFromTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_destructor(ptr);
     }
 }
 
@@ -9018,43 +9818,51 @@ impl ResultFromTransient {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:51 - `Transfer_ResultFromTransient::SetStart()`
     /// Sets starting entity
-    pub fn set_start(&mut self, start: &crate::ffi::HandleStandardTransient) {
+    pub fn set_start(&mut self, start: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_set_start(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_set_start(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:54 - `Transfer_ResultFromTransient::SetBinder()`
     /// Sets Binder (for result plus individual check)
-    pub fn set_binder(&mut self, binder: &crate::ffi::HandleTransferBinder) {
+    pub fn set_binder(&mut self, binder: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_set_binder(self as *mut Self, binder)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_set_binder(
+                self as *mut Self,
+                binder,
+            )
         })
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:57 - `Transfer_ResultFromTransient::Start()`
     /// Returns the starting entity
-    pub fn start(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn start(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_start(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_start(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:60 - `Transfer_ResultFromTransient::Binder()`
     /// Returns the binder
-    pub fn binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_binder(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_binder(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9063,16 +9871,16 @@ impl ResultFromTransient {
     /// Returns True if a result is recorded
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_has_result(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_has_result(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:66 - `Transfer_ResultFromTransient::Check()`
     /// Returns the check (or an empty one if no binder)
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_check(self as *const Self),
             ))
         }
     }
@@ -9081,7 +9889,9 @@ impl ResultFromTransient {
     /// Returns the check status
     pub fn check_status(&self) -> crate::interface::CheckStatus {
         crate::interface::CheckStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_check_status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_check_status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -9090,15 +9900,18 @@ impl ResultFromTransient {
     /// Clears the list of (immediate) sub-results
     pub fn clear_subs(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_clear_subs(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_clear_subs(self as *mut Self)
         })
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:75 - `Transfer_ResultFromTransient::AddSubResult()`
     /// Adds a sub-result
-    pub fn add_sub_result(&mut self, sub: &crate::ffi::HandleTransferResultFromTransient) {
+    pub fn add_sub_result(&mut self, sub: &crate::ffi_types::HandleTransferResultFromTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_add_sub_result(self as *mut Self, sub)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_add_sub_result(
+                self as *mut Self,
+                sub,
+            )
         })
     }
 
@@ -9106,7 +9919,9 @@ impl ResultFromTransient {
     /// Returns the count of recorded sub-results
     pub fn nb_sub_results(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_nb_sub_results(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_nb_sub_results(
+                self as *const Self,
+            )
         })
     }
 
@@ -9115,10 +9930,13 @@ impl ResultFromTransient {
     pub fn sub_result(
         &self,
         num: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_sub_result(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_sub_result(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -9128,11 +9946,14 @@ impl ResultFromTransient {
     /// entity (the key). Returns a null handle if not found
     pub fn result_from_key(
         &self,
-        key: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient> {
+        key: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_result_from_key(self as *const Self, key),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_result_from_key(
+                    self as *const Self,
+                    key,
+                ),
             ))
         }
     }
@@ -9141,9 +9962,12 @@ impl ResultFromTransient {
     /// This method is used by ResultFromModel to collate the list of
     /// ResultFromTransient, avoiding duplications with a map
     /// Remark : <me> is already in the map and has not to be bound
-    pub fn fill_map(&self, map: &mut crate::ffi::TColStd_IndexedMapOfTransient) {
+    pub fn fill_map(&self, map: &mut crate::ffi_types::TColStd_IndexedMapOfTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_fill_map(self as *const Self, map)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_fill_map(
+                self as *const Self,
+                map,
+            )
         })
     }
 
@@ -9151,9 +9975,9 @@ impl ResultFromTransient {
     /// Fills from a TransientProcess, with the starting entity which
     /// must have been set before. It works with scopes, calls Fill
     /// on each of its sub-results
-    pub fn fill(&mut self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn fill(&mut self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_fill(self as *mut Self, TP)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_fill(self as *mut Self, TP)
         })
     }
 
@@ -9164,7 +9988,7 @@ impl ResultFromTransient {
     /// sub-results
     pub fn strip(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_strip(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_strip(self as *mut Self)
         })
     }
 
@@ -9172,18 +9996,23 @@ impl ResultFromTransient {
     /// Fills back a TransientProcess with definition of a
     /// ResultFromTransient, respectfully to its structuration in
     /// scopes
-    pub fn fill_back(&self, TP: &crate::ffi::HandleTransferTransientProcess) {
+    pub fn fill_back(&self, TP: &crate::ffi_types::HandleTransferTransientProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_fill_back(self as *const Self, TP)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_fill_back(
+                self as *const Self,
+                TP,
+            )
         })
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:109 - `Transfer_ResultFromTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ResultFromTransient_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9191,7 +10020,7 @@ impl ResultFromTransient {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9199,18 +10028,22 @@ impl ResultFromTransient {
     }
 
     /// **Source:** `Transfer_ResultFromTransient.hxx`:109 - `Transfer_ResultFromTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_ResultFromTransient_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_ResultFromTransient_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9218,7 +10051,7 @@ impl ResultFromTransient {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -9228,18 +10061,18 @@ impl ResultFromTransient {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferResultFromTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferResultFromTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_ResultFromTransient_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9247,9 +10080,12 @@ impl ResultFromTransient {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9257,7 +10093,9 @@ impl ResultFromTransient {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_ResultFromTransient_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9270,14 +10108,16 @@ impl ResultFromTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9286,7 +10126,7 @@ impl ResultFromTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9295,46 +10135,50 @@ impl ResultFromTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_ResultFromTransient_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_ResultFromTransient_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferResultFromTransient;
+pub use crate::ffi_types::HandleTransferResultFromTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferResultFromTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferResultFromTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_destructor(ptr);
     }
 }
 
 impl HandleTransferResultFromTransient {
     /// Dereference this Handle to access the underlying Transfer_ResultFromTransient
-    pub fn get(&self) -> &crate::ffi::Transfer_ResultFromTransient {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_ResultFromTransient {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferResultFromTransient_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_ResultFromTransient
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_ResultFromTransient {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_ResultFromTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferResultFromTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_ResultFromTransient> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferResultFromTransient_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferResultFromTransient_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9347,11 +10191,11 @@ impl HandleTransferResultFromTransient {
 /// An adapted instantiation of SimpleBinder for Transient Result,
 /// i.e. ResultType can be computed from the Result itself,
 /// instead of being static
-pub use crate::ffi::Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient;
+pub use crate::ffi_types::Transfer_SimpleBinderOfTransient as SimpleBinderOfTransient;
 
 unsafe impl crate::CppDeletable for SimpleBinderOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_SimpleBinderOfTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_destructor(ptr);
     }
 }
 
@@ -9364,7 +10208,7 @@ impl SimpleBinderOfTransient {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_ctor(),
             ))
         }
     }
@@ -9372,10 +10216,12 @@ impl SimpleBinderOfTransient {
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:43 - `Transfer_SimpleBinderOfTransient::ResultType()`
     /// Returns the Effective (Dynamic) Type of the Result
     /// (Standard_Transient if no Result is defined)
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_result_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_result_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9386,7 +10232,9 @@ impl SimpleBinderOfTransient {
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_result_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_result_type_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -9395,28 +10243,35 @@ impl SimpleBinderOfTransient {
 
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:50 - `Transfer_SimpleBinderOfTransient::SetResult()`
     /// Defines the Result
-    pub fn set_result(&mut self, res: &crate::ffi::HandleStandardTransient) {
+    pub fn set_result(&mut self, res: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_set_result(self as *mut Self, res)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_set_result(
+                self as *mut Self,
+                res,
+            )
         })
     }
 
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:53 - `Transfer_SimpleBinderOfTransient::Result()`
     /// Returns the defined Result, if there is one
-    pub fn result(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn result(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_SimpleBinderOfTransient_result(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_result(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:67 - `Transfer_SimpleBinderOfTransient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_SimpleBinderOfTransient_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9430,12 +10285,14 @@ impl SimpleBinderOfTransient {
     /// found with the good type, it is loaded in <res> and can be
     /// immediately used, well initialised
     pub fn get_typed_result(
-        bnd: &crate::ffi::HandleTransferBinder,
-        atype: &crate::ffi::HandleStandardType,
-        res: &mut crate::ffi::HandleStandardTransient,
+        bnd: &crate::ffi_types::HandleTransferBinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        res: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_get_typed_result(bnd, atype, res)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_get_typed_result(
+                bnd, atype, res,
+            )
         })
     }
 
@@ -9443,7 +10300,7 @@ impl SimpleBinderOfTransient {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9451,10 +10308,10 @@ impl SimpleBinderOfTransient {
     }
 
     /// **Source:** `Transfer_SimpleBinderOfTransient.hxx`:67 - `Transfer_SimpleBinderOfTransient::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_get_type_descriptor(),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_get_type_descriptor(),
             ))
         }
     }
@@ -9462,9 +10319,11 @@ impl SimpleBinderOfTransient {
     /// Upcast to Transfer_Binder
     pub fn as_binder(&self) -> &Binder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_SimpleBinderOfTransient_as_Transfer_Binder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_as_Transfer_Binder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9472,7 +10331,7 @@ impl SimpleBinderOfTransient {
     pub fn as_binder_mut(&mut self) -> &mut Binder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_as_Transfer_Binder_mut(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_as_Transfer_Binder_mut(
                     self as *mut Self,
                 ),
             )
@@ -9483,7 +10342,7 @@ impl SimpleBinderOfTransient {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_as_Standard_Transient(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -9493,43 +10352,46 @@ impl SimpleBinderOfTransient {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferSimpleBinderOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferSimpleBinderOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_Merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_Merge(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:70 - `Transfer_Binder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_IsMultiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_IsMultiple(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
-    pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
+    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_AddResult(
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_AddResult(
                 self as *mut Self,
                 next,
             )
@@ -9537,10 +10399,10 @@ impl SimpleBinderOfTransient {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_inherited_NextResult(
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_NextResult(
                     self as *const Self,
                 ),
             ))
@@ -9550,21 +10412,27 @@ impl SimpleBinderOfTransient {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_HasResult(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_SetAlreadyUsed(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_SetAlreadyUsed(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -9572,7 +10440,9 @@ impl SimpleBinderOfTransient {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_StatusExec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_StatusExec(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -9580,7 +10450,7 @@ impl SimpleBinderOfTransient {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_SetStatusExec(
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_SetStatusExec(
                 self as *mut Self,
                 stat.into(),
             )
@@ -9588,27 +10458,31 @@ impl SimpleBinderOfTransient {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_inherited_Check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_Check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_SimpleBinderOfTransient_inherited_CCheck(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_CCheck(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9616,9 +10490,9 @@ impl SimpleBinderOfTransient {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_IsKind(
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -9629,7 +10503,9 @@ impl SimpleBinderOfTransient {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_SimpleBinderOfTransient_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9642,82 +10518,80 @@ impl SimpleBinderOfTransient {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_SimpleBinderOfTransient_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_SimpleBinderOfTransient_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferSimpleBinderOfTransient;
+pub use crate::ffi_types::HandleTransferSimpleBinderOfTransient;
 
 unsafe impl crate::CppDeletable for HandleTransferSimpleBinderOfTransient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferSimpleBinderOfTransient_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_destructor(ptr);
     }
 }
 
 impl HandleTransferSimpleBinderOfTransient {
     /// Dereference this Handle to access the underlying Transfer_SimpleBinderOfTransient
-    pub fn get(&self) -> &crate::ffi::Transfer_SimpleBinderOfTransient {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_SimpleBinderOfTransient {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferSimpleBinderOfTransient_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_SimpleBinderOfTransient
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_SimpleBinderOfTransient {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_SimpleBinderOfTransient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferSimpleBinderOfTransient_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_SimpleBinderOfTransient> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferSimpleBinderOfTransient_to_HandleTransferBinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_to_HandleTransferBinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_SimpleBinderOfTransient> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferSimpleBinderOfTransient_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -9726,9 +10600,9 @@ impl HandleTransferSimpleBinderOfTransient {
     /// Returns `None` if the handle does not point to a `Transfer_BinderOfTransientInteger` (or subclass).
     pub fn downcast_to_binder_of_transient_integer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferBinderOfTransientInteger>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferBinderOfTransientInteger>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferSimpleBinderOfTransient_downcast_to_HandleTransferBinderOfTransientInteger(self as *const Self)
+            crate::ffi_extern_TKXSBase::HandleTransferSimpleBinderOfTransient_downcast_to_HandleTransferBinderOfTransientInteger(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -9743,11 +10617,11 @@ impl HandleTransferSimpleBinderOfTransient {
 // ========================
 
 /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop`
-pub use crate::ffi::Transfer_TransferDeadLoop as TransferDeadLoop;
+pub use crate::ffi_types::Transfer_TransferDeadLoop as TransferDeadLoop;
 
 unsafe impl crate::CppDeletable for TransferDeadLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferDeadLoop_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_destructor(ptr);
     }
 }
 
@@ -9756,7 +10630,7 @@ impl TransferDeadLoop {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_ctor(),
             ))
         }
     }
@@ -9766,7 +10640,9 @@ impl TransferDeadLoop {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -9777,7 +10653,7 @@ impl TransferDeadLoop {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_ctor_charptr2(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -9786,11 +10662,13 @@ impl TransferDeadLoop {
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferDeadLoop_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9798,25 +10676,29 @@ impl TransferDeadLoop {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_raise_charptr(
+                c_theMessage.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_raise_sstream(theMessage)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferDeadLoop> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -9825,12 +10707,12 @@ impl TransferDeadLoop {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferDeadLoop> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_new_instance_charptr2(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -9842,7 +10724,7 @@ impl TransferDeadLoop {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9850,9 +10732,11 @@ impl TransferDeadLoop {
     }
 
     /// **Source:** `Transfer_TransferDeadLoop.hxx`:35 - `Transfer_TransferDeadLoop::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferDeadLoop_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_get_type_descriptor(),
+            ))
         }
     }
 
@@ -9860,7 +10744,7 @@ impl TransferDeadLoop {
     pub fn as_transfer_failure(&self) -> &TransferFailure {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Transfer_TransferFailure(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Transfer_TransferFailure(
                     self as *const Self,
                 ),
             )
@@ -9870,11 +10754,7 @@ impl TransferDeadLoop {
     /// Upcast to Transfer_TransferFailure (mutable)
     pub fn as_transfer_failure_mut(&mut self) -> &mut TransferFailure {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Transfer_TransferFailure_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Transfer_TransferFailure_mut(self as *mut Self))
         }
     }
 
@@ -9882,7 +10762,7 @@ impl TransferDeadLoop {
     pub fn as_interface_interface_error(&self) -> &crate::interface::InterfaceError {
         unsafe {
             &*crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Interface_InterfaceError(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Interface_InterfaceError(
                     self as *const Self,
                 ),
             )
@@ -9892,20 +10772,18 @@ impl TransferDeadLoop {
     /// Upcast to Interface_InterfaceError (mutable)
     pub fn as_interface_interface_error_mut(&mut self) -> &mut crate::interface::InterfaceError {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Interface_InterfaceError_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Interface_InterfaceError_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferDeadLoop_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9913,7 +10791,9 @@ impl TransferDeadLoop {
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Standard_Failure_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9921,9 +10801,11 @@ impl TransferDeadLoop {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferDeadLoop_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9931,7 +10813,9 @@ impl TransferDeadLoop {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9939,46 +10823,57 @@ impl TransferDeadLoop {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferDeadLoop> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDeadLoop_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_Reraise(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9986,7 +10881,9 @@ impl TransferDeadLoop {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_TransferDeadLoop_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9999,90 +10896,92 @@ impl TransferDeadLoop {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDeadLoop_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDeadLoop_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferTransferDeadLoop;
+pub use crate::ffi_types::HandleTransferTransferDeadLoop;
 
 unsafe impl crate::CppDeletable for HandleTransferTransferDeadLoop {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferTransferDeadLoop_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_destructor(ptr);
     }
 }
 
 impl HandleTransferTransferDeadLoop {
     /// Dereference this Handle to access the underlying Transfer_TransferDeadLoop
-    pub fn get(&self) -> &crate::ffi::Transfer_TransferDeadLoop {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_TransferDeadLoop {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferTransferDeadLoop_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_TransferDeadLoop
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_TransferDeadLoop {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_TransferDeadLoop {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferTransferDeadLoop_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_TransferDeadLoop> to Handle<Transfer_TransferFailure>
     pub fn to_handle_transfer_failure(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferFailure> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferDeadLoop_to_HandleTransferTransferFailure(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_to_HandleTransferTransferFailure(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_TransferDeadLoop> to Handle<Interface_InterfaceError>
     pub fn to_handle_interface_error(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferDeadLoop_to_HandleInterfaceInterfaceError(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_to_HandleInterfaceInterfaceError(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_TransferDeadLoop> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferDeadLoop_to_HandleStandardFailure(
+                crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_to_HandleStandardFailure(
                     self as *const Self,
                 ),
             ))
@@ -10090,13 +10989,11 @@ impl HandleTransferTransferDeadLoop {
     }
 
     /// Upcast Handle<Transfer_TransferDeadLoop> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferDeadLoop_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferDeadLoop_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -10119,11 +11016,11 @@ impl HandleTransferTransferDeadLoop {
 /// For these reasons, TransferDispatch is basically a CopyTool,
 /// but uses a more sophiscated control, which is TransferProcess,
 /// and its method Copy is redefined
-pub use crate::ffi::Transfer_TransferDispatch as TransferDispatch;
+pub use crate::ffi_types::Transfer_TransferDispatch as TransferDispatch;
 
 unsafe impl crate::CppDeletable for TransferDispatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferDispatch_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_destructor(ptr);
     }
 }
 
@@ -10134,47 +11031,45 @@ impl TransferDispatch {
     /// A TransferDispatch is created as a CopyTool in which the
     /// Control is set to TransientProcess
     pub fn new_handleinterfaceinterfacemodel_generallib(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
         lib: &crate::interface::GeneralLib,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel_generallib(
-                    amodel, lib,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel_generallib(amodel, lib)))
         }
     }
 
     /// **Source:** `Transfer_TransferDispatch.hxx`:57 - `Transfer_TransferDispatch::Transfer_TransferDispatch()`
     /// Same as above, but Library is defined through a Protocol
     pub fn new_handleinterfaceinterfacemodel_handleinterfaceprotocol(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        protocol: &crate::ffi::HandleInterfaceProtocol,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        protocol: &crate::ffi_types::HandleInterfaceProtocol,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel_handleinterfaceprotocol(amodel, protocol)))
         }
     }
 
     /// **Source:** `Transfer_TransferDispatch.hxx`:61 - `Transfer_TransferDispatch::Transfer_TransferDispatch()`
     /// Same as above, but works with the Active Protocol
     pub fn new_handleinterfaceinterfacemodel(
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel(amodel),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_ctor_handleinterfaceinterfacemodel(amodel)))
         }
     }
 
     /// **Source:** `Transfer_TransferDispatch.hxx`:64 - `Transfer_TransferDispatch::TransientProcess()`
     /// Returns the content of Control Object, as a TransientProcess
-    pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    pub fn transient_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_transient_process(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_transient_process(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10185,13 +11080,13 @@ impl TransferDispatch {
     /// the standard, inherited Copy is called
     pub fn copy(
         &mut self,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         mapped: bool,
         errstat: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_copy(
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_copy(
                 self as *mut Self,
                 entfrom,
                 entto,
@@ -10204,9 +11099,11 @@ impl TransferDispatch {
     /// Upcast to Interface_CopyTool
     pub fn as_interface_copy_tool(&self) -> &crate::interface::CopyTool {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferDispatch_as_Interface_CopyTool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_as_Interface_CopyTool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10214,32 +11111,41 @@ impl TransferDispatch {
     pub fn as_interface_copy_tool_mut(&mut self) -> &mut crate::interface::CopyTool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_as_Interface_CopyTool_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_as_Interface_CopyTool_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:78 - `Interface_CopyTool::Model()`
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_inherited_Model(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Model(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:83 - `Interface_CopyTool::SetControl()`
-    pub fn set_control(&mut self, othermap: &crate::ffi::HandleInterfaceCopyControl) {
+    pub fn set_control(&mut self, othermap: &crate::ffi_types::HandleInterfaceCopyControl) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_SetControl(self as *mut Self, othermap)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_SetControl(
+                self as *mut Self,
+                othermap,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:86 - `Interface_CopyTool::Control()`
-    pub fn control(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCopyControl> {
+    pub fn control(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCopyControl> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_inherited_Control(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Control(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10247,18 +11153,21 @@ impl TransferDispatch {
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:89 - `Interface_CopyTool::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:120 - `Interface_CopyTool::Transferred()`
     pub fn transferred(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        ent: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_inherited_Transferred(self as *mut Self, ent),
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Transferred(
+                    self as *mut Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -10266,29 +11175,39 @@ impl TransferDispatch {
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:127 - `Interface_CopyTool::Bind()`
     pub fn bind(
         &mut self,
-        ent: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_Bind(self as *mut Self, ent, res)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Bind(
+                self as *mut Self,
+                ent,
+                res,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:133 - `Interface_CopyTool::Search()`
     pub fn search(
         &self,
-        ent: &crate::ffi::HandleStandardTransient,
-        res: &mut crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
+        res: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_Search(self as *const Self, ent, res)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_Search(
+                self as *const Self,
+                ent,
+                res,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:140 - `Interface_CopyTool::ClearLastFlags()`
     pub fn clear_last_flags(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_ClearLastFlags(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_ClearLastFlags(
+                self as *mut Self,
+            )
         })
     }
 
@@ -10296,11 +11215,11 @@ impl TransferDispatch {
     pub fn last_copied_after(
         &self,
         numfrom: i32,
-        ent: &mut crate::ffi::HandleStandardTransient,
-        res: &mut crate::ffi::HandleStandardTransient,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
+        res: &mut crate::ffi_types::HandleStandardTransient,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_LastCopiedAfter(
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_LastCopiedAfter(
                 self as *const Self,
                 numfrom,
                 ent,
@@ -10310,23 +11229,31 @@ impl TransferDispatch {
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:156 - `Interface_CopyTool::TransferEntity()`
-    pub fn transfer_entity(&mut self, ent: &crate::ffi::HandleStandardTransient) {
+    pub fn transfer_entity(&mut self, ent: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_TransferEntity(self as *mut Self, ent)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_TransferEntity(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:165 - `Interface_CopyTool::RenewImpliedRefs()`
     pub fn renew_implied_refs(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_RenewImpliedRefs(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_RenewImpliedRefs(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_CopyTool.hxx`:169 - `Interface_CopyTool::FillModel()`
-    pub fn fill_model(&mut self, bmodel: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn fill_model(&mut self, bmodel: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferDispatch_inherited_FillModel(self as *mut Self, bmodel)
+            crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_FillModel(
+                self as *mut Self,
+                bmodel,
+            )
         })
     }
 
@@ -10337,7 +11264,7 @@ impl TransferDispatch {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_inherited_CompleteResult(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_CompleteResult(
                     self as *const Self,
                     withreports,
                 ),
@@ -10352,7 +11279,7 @@ impl TransferDispatch {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferDispatch_inherited_RootResult(
+                crate::ffi_extern_TKXSBase::Transfer_TransferDispatch_inherited_RootResult(
                     self as *const Self,
                     withreports,
                 ),
@@ -10366,11 +11293,11 @@ impl TransferDispatch {
 // ========================
 
 /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure`
-pub use crate::ffi::Transfer_TransferFailure as TransferFailure;
+pub use crate::ffi_types::Transfer_TransferFailure as TransferFailure;
 
 unsafe impl crate::CppDeletable for TransferFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferFailure_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferFailure_destructor(ptr);
     }
 }
 
@@ -10379,7 +11306,7 @@ impl TransferFailure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_ctor(),
             ))
         }
     }
@@ -10389,7 +11316,9 @@ impl TransferFailure {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -10400,7 +11329,7 @@ impl TransferFailure {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_ctor_charptr2(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -10409,11 +11338,13 @@ impl TransferFailure {
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferFailure_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10421,25 +11352,29 @@ impl TransferFailure {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_raise_charptr(
+                c_theMessage.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_raise_sstream(theMessage)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferFailure> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -10448,12 +11383,12 @@ impl TransferFailure {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferFailure> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_new_instance_charptr2(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -10465,7 +11400,7 @@ impl TransferFailure {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10473,56 +11408,62 @@ impl TransferFailure {
     }
 
     /// **Source:** `Transfer_TransferFailure.hxx`:36 - `Transfer_TransferFailure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferFailure_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Interface_InterfaceError
     pub fn as_interface_interface_error(&self) -> &crate::interface::InterfaceError {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferFailure_as_Interface_InterfaceError(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Interface_InterfaceError(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_InterfaceError (mutable)
     pub fn as_interface_interface_error_mut(&mut self) -> &mut crate::interface::InterfaceError {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_TransferFailure_as_Interface_InterfaceError_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Interface_InterfaceError_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferFailure_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_TransferFailure_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransferFailure_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10530,7 +11471,9 @@ impl TransferFailure {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransferFailure_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10538,46 +11481,57 @@ impl TransferFailure {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransferFailure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransferFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferFailure_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_Reraise(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10585,7 +11539,9 @@ impl TransferFailure {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_TransferFailure_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10598,77 +11554,83 @@ impl TransferFailure {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferFailure_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferFailure_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferTransferFailure;
+pub use crate::ffi_types::HandleTransferTransferFailure;
 
 unsafe impl crate::CppDeletable for HandleTransferTransferFailure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferTransferFailure_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_destructor(ptr);
     }
 }
 
 impl HandleTransferTransferFailure {
     /// Dereference this Handle to access the underlying Transfer_TransferFailure
-    pub fn get(&self) -> &crate::ffi::Transfer_TransferFailure {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_TransferFailure {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferTransferFailure_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_TransferFailure
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_TransferFailure {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_TransferFailure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferTransferFailure_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_TransferFailure> to Handle<Interface_InterfaceError>
     pub fn to_handle_interface_error(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceError> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferFailure_to_HandleInterfaceInterfaceError(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_to_HandleInterfaceInterfaceError(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_TransferFailure> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferFailure_to_HandleStandardFailure(
+                crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_to_HandleStandardFailure(
                     self as *const Self,
                 ),
             ))
@@ -10676,13 +11638,11 @@ impl HandleTransferTransferFailure {
     }
 
     /// Upcast Handle<Transfer_TransferFailure> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransferFailure_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -10691,11 +11651,9 @@ impl HandleTransferTransferFailure {
     /// Returns `None` if the handle does not point to a `Transfer_TransferDeadLoop` (or subclass).
     pub fn downcast_to_transfer_dead_loop(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTransferTransferDeadLoop>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTransferTransferDeadLoop>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleTransferTransferFailure_downcast_to_HandleTransferTransferDeadLoop(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKXSBase::HandleTransferTransferFailure_downcast_to_HandleTransferTransferDeadLoop(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10715,11 +11673,11 @@ impl HandleTransferTransferFailure {
 /// The Result comes from a TransferProcess, either from
 /// Transient (the Complete Result is considered, it must contain
 /// only Transient Objects)
-pub use crate::ffi::Transfer_TransferInput as TransferInput;
+pub use crate::ffi_types::Transfer_TransferInput as TransferInput;
 
 unsafe impl crate::CppDeletable for TransferInput {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferInput_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferInput_destructor(ptr);
     }
 }
 
@@ -10728,9 +11686,9 @@ impl TransferInput {
     /// Creates a TransferInput ready to use
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::Transfer_TransferInput_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferInput_ctor(),
+            ))
         }
     }
 
@@ -10742,7 +11700,10 @@ impl TransferInput {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferInput_entities(self as *const Self, list),
+                crate::ffi_extern_TKXSBase::Transfer_TransferInput_entities(
+                    self as *const Self,
+                    list,
+                ),
             ))
         }
     }
@@ -10753,11 +11714,11 @@ impl TransferInput {
     /// The complete result is exactly added to the model
     pub fn fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel(
         &self,
-        proc: &crate::ffi::HandleTransferTransientProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        proc: &crate::ffi_types::HandleTransferTransientProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferInput_fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel(self as *const Self, proc, amodel)
+            crate::ffi_extern_TKXSBase::Transfer_TransferInput_fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel(self as *const Self, proc, amodel)
         })
     }
 
@@ -10769,13 +11730,13 @@ impl TransferInput {
     /// by by adding the referenced entities
     pub fn fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(
         &self,
-        proc: &crate::ffi::HandleTransferTransientProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        proto: &crate::ffi::HandleInterfaceProtocol,
+        proc: &crate::ffi_types::HandleTransferTransientProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        proto: &crate::ffi_types::HandleInterfaceProtocol,
         roots: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferInput_fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(self as *const Self, proc, amodel, proto, roots)
+            crate::ffi_extern_TKXSBase::Transfer_TransferInput_fill_model_handletransfertransientprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(self as *const Self, proc, amodel, proto, roots)
         })
     }
 
@@ -10785,11 +11746,11 @@ impl TransferInput {
     /// The complete result is exactly added to the model
     pub fn fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel(
         &self,
-        proc: &crate::ffi::HandleTransferFinderProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        proc: &crate::ffi_types::HandleTransferFinderProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferInput_fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel(self as *const Self, proc, amodel)
+            crate::ffi_extern_TKXSBase::Transfer_TransferInput_fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel(self as *const Self, proc, amodel)
         })
     }
 
@@ -10801,13 +11762,13 @@ impl TransferInput {
     /// by by adding the referenced entities
     pub fn fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(
         &self,
-        proc: &crate::ffi::HandleTransferFinderProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
-        proto: &crate::ffi::HandleInterfaceProtocol,
+        proc: &crate::ffi_types::HandleTransferFinderProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
+        proto: &crate::ffi_types::HandleInterfaceProtocol,
         roots: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferInput_fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(self as *const Self, proc, amodel, proto, roots)
+            crate::ffi_extern_TKXSBase::Transfer_TransferInput_fill_model_handletransferfinderprocess_handleinterfaceinterfacemodel_handleinterfaceprotocol_bool(self as *const Self, proc, amodel, proto, roots)
         })
     }
 }
@@ -10821,11 +11782,11 @@ impl TransferInput {
 /// Available for Normal Results or not (Erroneous Transfer)
 /// It gives several kinds of Information, and allows to consider
 /// various criteria (criteria are cumulative)
-pub use crate::ffi::Transfer_TransferIterator as TransferIterator;
+pub use crate::ffi_types::Transfer_TransferIterator as TransferIterator;
 
 unsafe impl crate::CppDeletable for TransferIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferIterator_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferIterator_destructor(ptr);
     }
 }
 
@@ -10835,16 +11796,16 @@ impl TransferIterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferIterator_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_TransferIterator_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransferIterator.hxx`:51 - `Transfer_TransferIterator::AddItem()`
     /// Adds a Binder to the iteration list (construction)
-    pub fn add_item(&mut self, atr: &crate::ffi::HandleTransferBinder) {
+    pub fn add_item(&mut self, atr: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_add_item(self as *mut Self, atr)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_add_item(self as *mut Self, atr)
         })
     }
 
@@ -10852,9 +11813,13 @@ impl TransferIterator {
     /// Selects Items on the Type of Binder : keep only
     /// Binders which are of a given Type (if keep is True) or
     /// reject only them (if keep is False)
-    pub fn select_binder(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_binder(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_select_binder(self as *mut Self, atype, keep)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_select_binder(
+                self as *mut Self,
+                atype,
+                keep,
+            )
         })
     }
 
@@ -10865,9 +11830,13 @@ impl TransferIterator {
     ///
     /// Results which are of a given Type (if keep is True) or reject
     /// only them (if keep is False)
-    pub fn select_result(&mut self, atype: &crate::ffi::HandleStandardType, keep: bool) {
+    pub fn select_result(&mut self, atype: &crate::ffi_types::HandleStandardType, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_select_result(self as *mut Self, atype, keep)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_select_result(
+                self as *mut Self,
+                atype,
+                keep,
+            )
         })
     }
 
@@ -10876,7 +11845,10 @@ impl TransferIterator {
     /// keep is True) or keep only Multiple Results (if keep is False)
     pub fn select_unique(&mut self, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_select_unique(self as *mut Self, keep)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_select_unique(
+                self as *mut Self,
+                keep,
+            )
         })
     }
 
@@ -10886,7 +11858,11 @@ impl TransferIterator {
     /// Used by sub-classes which have specific criteria
     pub fn select_item(&mut self, num: i32, keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_select_item(self as *mut Self, num, keep)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_select_item(
+                self as *mut Self,
+                num,
+                keep,
+            )
         })
     }
 
@@ -10894,7 +11870,7 @@ impl TransferIterator {
     /// Returns count of Binders to be iterated
     pub fn number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_number(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_number(self as *const Self)
         })
     }
 
@@ -10902,7 +11878,7 @@ impl TransferIterator {
     /// Clears Iteration in progress, to allow it to be restarted
     pub fn start(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_start(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_start(self as *mut Self)
         })
     }
 
@@ -10910,7 +11886,7 @@ impl TransferIterator {
     /// Returns True if there are other Items to iterate
     pub fn more(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_more(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_more(self as *mut Self)
         })
     }
 
@@ -10918,15 +11894,15 @@ impl TransferIterator {
     /// Sets Iteration to the next Item
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_next(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_next(self as *mut Self)
         })
     }
 
     /// **Source:** `Transfer_TransferIterator.hxx`:90 - `Transfer_TransferIterator::Value()`
     /// Returns the current Binder
-    pub fn value(&self) -> &crate::ffi::HandleTransferBinder {
+    pub fn value(&self) -> &crate::ffi_types::HandleTransferBinder {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferIterator_value(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferIterator_value(
                 self as *const Self,
             )))
         }
@@ -10940,7 +11916,7 @@ impl TransferIterator {
     /// Other kind of Result must be read specifically from its Binder
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_has_result(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_has_result(self as *const Self)
         })
     }
 
@@ -10948,7 +11924,9 @@ impl TransferIterator {
     /// Returns True if Current Item has a Unique Result
     pub fn has_unique_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_has_unique_result(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_has_unique_result(
+                self as *const Self,
+            )
         })
     }
 
@@ -10958,10 +11936,12 @@ impl TransferIterator {
     /// returns a Null Handle
     /// The Type is : the Dynamic Type for a Transient Result,
     /// the Type defined by the Binder Class else
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferIterator_result_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferIterator_result_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10971,7 +11951,9 @@ impl TransferIterator {
     /// Result (if yes, use TransientResult to get it)
     pub fn has_transient_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_has_transient_result(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_has_transient_result(
+                self as *const Self,
+            )
         })
     }
 
@@ -10979,11 +11961,13 @@ impl TransferIterator {
     /// Returns the Transient Result of the current Item if there is
     /// (else, returns a null Handle)
     /// Supposes that Binding is done by a SimpleBinderOfTransient
-    pub fn transient_result(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn transient_result(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransferIterator_transient_result(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransferIterator_transient_result(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10992,7 +11976,7 @@ impl TransferIterator {
     /// Normal transfer corresponds to StatusDone
     pub fn status(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -11002,7 +11986,7 @@ impl TransferIterator {
     /// Binder. They can then be read through Check (see below)
     pub fn has_fails(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_has_fails(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_has_fails(self as *const Self)
         })
     }
 
@@ -11011,7 +11995,7 @@ impl TransferIterator {
     /// Binder. They can then be read through Check (see below)
     pub fn has_warnings(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransferIterator_has_warnings(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransferIterator_has_warnings(self as *const Self)
         })
     }
 
@@ -11019,10 +12003,10 @@ impl TransferIterator {
     /// Returns Check associated to current Binder
     /// (in case of error, it brings Fail messages)
     /// (in case of warnings, it brings Warning messages)
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferIterator_check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferIterator_check(self as *const Self),
             ))
         }
     }
@@ -11041,11 +12025,11 @@ impl TransferIterator {
 /// A default action is available to get all roots of the Model
 /// Result is given as a TransferIterator (see TransferProcess)
 /// Also, it is possible to pilot directly the TransientProcess
-pub use crate::ffi::Transfer_TransferOutput as TransferOutput;
+pub use crate::ffi_types::Transfer_TransferOutput as TransferOutput;
 
 unsafe impl crate::CppDeletable for TransferOutput {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransferOutput_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransferOutput_destructor(ptr);
     }
 }
 
@@ -11053,11 +12037,11 @@ impl TransferOutput {
     /// **Source:** `Transfer_TransferOutput.hxx`:47 - `Transfer_TransferOutput::Transfer_TransferOutput()`
     /// Creates a TransferOutput ready to use, with a TransientProcess
     pub fn new_handletransferactoroftransientprocess_handleinterfaceinterfacemodel(
-        actor: &crate::ffi::HandleTransferActorOfTransientProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        actor: &crate::ffi_types::HandleTransferActorOfTransientProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_TransferOutput_ctor_handletransferactoroftransientprocess_handleinterfaceinterfacemodel(actor, amodel)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferOutput_ctor_handletransferactoroftransientprocess_handleinterfaceinterfacemodel(actor, amodel)))
         }
     }
 
@@ -11069,30 +12053,34 @@ impl TransferOutput {
     /// True means that each individual Transfer (direct or through
     /// TransferRoots) is regarded as one Scope
     pub fn new_handletransfertransientprocess_handleinterfaceinterfacemodel(
-        proc: &crate::ffi::HandleTransferTransientProcess,
-        amodel: &crate::ffi::HandleInterfaceInterfaceModel,
+        proc: &crate::ffi_types::HandleTransferTransientProcess,
+        amodel: &crate::ffi_types::HandleInterfaceInterfaceModel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_TransferOutput_ctor_handletransfertransientprocess_handleinterfaceinterfacemodel(proc, amodel)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransferOutput_ctor_handletransfertransientprocess_handleinterfaceinterfacemodel(proc, amodel)))
         }
     }
 
     /// **Source:** `Transfer_TransferOutput.hxx`:60 - `Transfer_TransferOutput::Model()`
     /// Returns the Starting Model
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferOutput_model(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferOutput_model(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransferOutput.hxx`:63 - `Transfer_TransferOutput::TransientProcess()`
     /// Returns the TransientProcess used to work
-    pub fn transient_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    pub fn transient_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferOutput_transient_process(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransferOutput_transient_process(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11102,11 +12090,15 @@ impl TransferOutput {
     /// Model, then calls Transfer from TransientProcess
     pub fn transfer(
         &mut self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferOutput_transfer(self as *mut Self, obj, theProgress)
+            crate::ffi_extern_TKXSBase::Transfer_TransferOutput_transfer(
+                self as *mut Self,
+                obj,
+                theProgress,
+            )
         })
     }
 
@@ -11116,15 +12108,11 @@ impl TransferOutput {
     /// Protocol given as Argument
     pub fn transfer_roots_handleinterfaceprotocol_progressrange(
         &mut self,
-        protocol: &crate::ffi::HandleInterfaceProtocol,
+        protocol: &crate::ffi_types::HandleInterfaceProtocol,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferOutput_transfer_roots_handleinterfaceprotocol_progressrange(
-                self as *mut Self,
-                protocol,
-                theProgress,
-            )
+            crate::ffi_extern_TKXSBase::Transfer_TransferOutput_transfer_roots_handleinterfaceprotocol_progressrange(self as *mut Self, protocol, theProgress)
         })
     }
 
@@ -11138,7 +12126,7 @@ impl TransferOutput {
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferOutput_transfer_roots_graph_progressrange(
+            crate::ffi_extern_TKXSBase::Transfer_TransferOutput_transfer_roots_graph_progressrange(
                 self as *mut Self,
                 G,
                 theProgress,
@@ -11152,7 +12140,7 @@ impl TransferOutput {
     /// from the Active Protocol
     pub fn transfer_roots_progressrange(&mut self, theProgress: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransferOutput_transfer_roots_progressrange(
+            crate::ffi_extern_TKXSBase::Transfer_TransferOutput_transfer_roots_progressrange(
                 self as *mut Self,
                 theProgress,
             )
@@ -11177,7 +12165,7 @@ impl TransferOutput {
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferOutput_list_for_status(
+                crate::ffi_extern_TKXSBase::Transfer_TransferOutput_list_for_status(
                     self as *const Self,
                     normal,
                     roots,
@@ -11197,13 +12185,13 @@ impl TransferOutput {
     /// "which works well" (with normal = True)
     pub fn model_for_status(
         &self,
-        protocol: &crate::ffi::HandleInterfaceProtocol,
+        protocol: &crate::ffi_types::HandleInterfaceProtocol,
         normal: bool,
         roots: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransferOutput_model_for_status(
+                crate::ffi_extern_TKXSBase::Transfer_TransferOutput_model_for_status(
                     self as *const Self,
                     protocol,
                     normal,
@@ -11223,11 +12211,11 @@ impl TransferOutput {
 /// entity, when this entity itself corresponds to a simple list
 /// of Transients. Each part is not seen as a sub-result of an
 /// independent component, but as an item of a built-in list
-pub use crate::ffi::Transfer_TransientListBinder as TransientListBinder;
+pub use crate::ffi_types::Transfer_TransientListBinder as TransientListBinder;
 
 unsafe impl crate::CppDeletable for TransientListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransientListBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_destructor(ptr);
     }
 }
 
@@ -11236,36 +12224,36 @@ impl TransientListBinder {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_ctor(),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_ctor(),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:41 - `Transfer_TransientListBinder::Transfer_TransientListBinder()`
     pub fn new_handletcolstdhsequenceoftransient(
-        list: &crate::ffi::HandleTColStdHSequenceOfTransient,
+        list: &crate::ffi_types::HandleTColStdHSequenceOfTransient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_ctor_handletcolstdhsequenceoftransient(
-                    list,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_ctor_handletcolstdhsequenceoftransient(list)))
         }
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:43 - `Transfer_TransientListBinder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_is_multiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_is_multiple(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:45 - `Transfer_TransientListBinder::ResultType()`
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_result_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_result_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11274,7 +12262,9 @@ impl TransientListBinder {
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_result_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_result_type_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -11283,52 +12273,67 @@ impl TransientListBinder {
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:50 - `Transfer_TransientListBinder::AddResult()`
     /// Adds an item to the result list
-    pub fn add_result(&mut self, res: &crate::ffi::HandleStandardTransient) {
+    pub fn add_result(&mut self, res: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_add_result(self as *mut Self, res)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_add_result(
+                self as *mut Self,
+                res,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:52 - `Transfer_TransientListBinder::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    pub fn result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_result(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:55 - `Transfer_TransientListBinder::SetResult()`
     /// Changes an already defined sub-result
-    pub fn set_result(&mut self, num: i32, res: &crate::ffi::HandleStandardTransient) {
+    pub fn set_result(&mut self, num: i32, res: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_set_result(self as *mut Self, num, res)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_set_result(
+                self as *mut Self,
+                num,
+                res,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:57 - `Transfer_TransientListBinder::NbTransients()`
     pub fn nb_transients(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_nb_transients(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_nb_transients(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:59 - `Transfer_TransientListBinder::Transient()`
-    pub fn transient(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn transient(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientListBinder_transient(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_transient(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:61 - `Transfer_TransientListBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientListBinder_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11336,7 +12341,7 @@ impl TransientListBinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11344,18 +12349,22 @@ impl TransientListBinder {
     }
 
     /// **Source:** `Transfer_TransientListBinder.hxx`:61 - `Transfer_TransientListBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientListBinder_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_binder(&self) -> &Binder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransientListBinder_as_Transfer_Binder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_as_Transfer_Binder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11363,7 +12372,9 @@ impl TransientListBinder {
     pub fn as_binder_mut(&mut self) -> &mut Binder {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_as_Transfer_Binder_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_as_Transfer_Binder_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -11371,9 +12382,11 @@ impl TransientListBinder {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransientListBinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11381,7 +12394,7 @@ impl TransientListBinder {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_as_Standard_Transient_mut(
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -11391,26 +12404,31 @@ impl TransientListBinder {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientListBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientListBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_Merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_Merge(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_inherited_NextResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_NextResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11418,21 +12436,27 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_HasResult(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_SetAlreadyUsed(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_SetAlreadyUsed(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_Status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -11440,7 +12464,9 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_StatusExec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_StatusExec(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -11448,7 +12474,7 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_SetStatusExec(
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_SetStatusExec(
                 self as *mut Self,
                 stat.into(),
             )
@@ -11456,27 +12482,31 @@ impl TransientListBinder {
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_inherited_Check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_Check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientListBinder_inherited_CCheck(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_CCheck(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_IsInstance(
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -11484,9 +12514,12 @@ impl TransientListBinder {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11494,7 +12527,9 @@ impl TransientListBinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_TransientListBinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11507,14 +12542,16 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -11523,7 +12560,7 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -11532,57 +12569,57 @@ impl TransientListBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientListBinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientListBinder_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferTransientListBinder;
+pub use crate::ffi_types::HandleTransferTransientListBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientListBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferTransientListBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_destructor(ptr);
     }
 }
 
 impl HandleTransferTransientListBinder {
     /// Dereference this Handle to access the underlying Transfer_TransientListBinder
-    pub fn get(&self) -> &crate::ffi::Transfer_TransientListBinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_TransientListBinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferTransientListBinder_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_TransientListBinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_TransientListBinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_TransientListBinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferTransientListBinder_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_TransientListBinder> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientListBinder_to_HandleTransferBinder(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_to_HandleTransferBinder(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_TransientListBinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientListBinder_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientListBinder_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -11592,11 +12629,11 @@ impl HandleTransferTransientListBinder {
 // ========================
 
 /// **Source:** `Transfer_TransientMapper.hxx`:31 - `Transfer_TransientMapper`
-pub use crate::ffi::Transfer_TransientMapper as TransientMapper;
+pub use crate::ffi_types::Transfer_TransientMapper as TransientMapper;
 
 unsafe impl crate::CppDeletable for TransientMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransientMapper_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransientMapper_destructor(ptr);
     }
 }
 
@@ -11606,20 +12643,24 @@ impl TransientMapper {
     /// changed. It is used by the Hasher to compute the HashCode,
     /// which will then be stored for an immediate reading.
     pub fn new_handlestandardtransient(
-        akey: &crate::ffi::HandleStandardTransient,
+        akey: &crate::ffi_types::HandleStandardTransient,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientMapper_ctor_handlestandardtransient(akey),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_ctor_handlestandardtransient(
+                    akey,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransientMapper.hxx`:41 - `Transfer_TransientMapper::Value()`
     /// Returns the contained value
-    pub fn value(&self) -> &crate::ffi::HandleStandardTransient {
+    pub fn value(&self) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientMapper_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientMapper_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -11627,19 +12668,21 @@ impl TransientMapper {
     /// Specific testof equality : defined as False if <other> has
     /// not the same true Type, else contents are compared (by
     /// C++ operator ==)
-    pub fn equates(&self, other: &crate::ffi::HandleTransferFinder) -> bool {
+    pub fn equates(&self, other: &crate::ffi_types::HandleTransferFinder) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_equates(self as *const Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_equates(self as *const Self, other)
         })
     }
 
     /// **Source:** `Transfer_TransientMapper.hxx`:51 - `Transfer_TransientMapper::ValueType()`
     /// Returns the Type of the Value. By default, returns the
     /// DynamicType of <me>, but can be redefined
-    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn value_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientMapper_value_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_value_type(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11650,7 +12693,9 @@ impl TransientMapper {
     pub fn value_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransientMapper_value_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_value_type_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -11658,11 +12703,13 @@ impl TransientMapper {
     }
 
     /// **Source:** `Transfer_TransientMapper.hxx`:57 - `Transfer_TransientMapper::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientMapper_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11670,7 +12717,7 @@ impl TransientMapper {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransientMapper_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11678,36 +12725,44 @@ impl TransientMapper {
     }
 
     /// **Source:** `Transfer_TransientMapper.hxx`:57 - `Transfer_TransientMapper::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientMapper_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Transfer_Finder
     pub fn as_finder(&self) -> &Finder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransientMapper_as_Transfer_Finder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_as_Transfer_Finder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Transfer_Finder (mutable)
     pub fn as_finder_mut(&mut self) -> &mut Finder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_TransientMapper_as_Transfer_Finder_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_as_Transfer_Finder_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransientMapper_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11715,7 +12770,9 @@ impl TransientMapper {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransientMapper_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -11723,10 +12780,10 @@ impl TransientMapper {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientMapper> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientMapper> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientMapper_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -11734,37 +12791,50 @@ impl TransientMapper {
     /// Inherited: **Source:** `Transfer_Finder.hxx`:44 - `Transfer_Finder::GetHashCode()`
     pub fn get_hash_code(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_GetHashCode(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_GetHashCode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:126 - `Transfer_Finder::AttrList()`
-    pub fn attr_list(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn attr_list(&mut self) -> &mut crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_TransientMapper_inherited_AttrList(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_AttrList(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Finder.hxx`:132 - `Transfer_Finder::SameAttributes()`
-    pub fn same_attributes(&mut self, other: &crate::ffi::HandleTransferFinder) {
+    pub fn same_attributes(&mut self, other: &crate::ffi_types::HandleTransferFinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_SameAttributes(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_SameAttributes(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11772,7 +12842,9 @@ impl TransientMapper {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_TransientMapper_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11785,64 +12857,74 @@ impl TransientMapper {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientMapper_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientMapper_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferTransientMapper;
+pub use crate::ffi_types::HandleTransferTransientMapper;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientMapper {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferTransientMapper_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_destructor(ptr);
     }
 }
 
 impl HandleTransferTransientMapper {
     /// Dereference this Handle to access the underlying Transfer_TransientMapper
-    pub fn get(&self) -> &crate::ffi::Transfer_TransientMapper {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_TransientMapper {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferTransientMapper_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_TransientMapper
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_TransientMapper {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_TransientMapper {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferTransientMapper_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_TransientMapper> to Handle<Transfer_Finder>
-    pub fn to_handle_finder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinder> {
+    pub fn to_handle_finder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientMapper_to_HandleTransferFinder(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_to_HandleTransferFinder(
                     self as *const Self,
                 ),
             ))
@@ -11850,13 +12932,11 @@ impl HandleTransferTransientMapper {
     }
 
     /// Upcast Handle<Transfer_TransientMapper> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientMapper_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientMapper_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -11872,11 +12952,11 @@ impl HandleTransferTransientMapper {
 ///
 /// Hence, some information about starting entities can be gotten
 /// from the model : for Trace, CheckList, Integrity Status
-pub use crate::ffi::Transfer_TransientProcess as TransientProcess;
+pub use crate::ffi_types::Transfer_TransientProcess as TransientProcess;
 
 unsafe impl crate::CppDeletable for TransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_TransientProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_TransientProcess_destructor(ptr);
     }
 }
 
@@ -11886,7 +12966,7 @@ impl TransientProcess {
     pub fn new_int(nb: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_ctor_int(nb),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_ctor_int(nb),
             ))
         }
     }
@@ -11900,42 +12980,45 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:53 - `Transfer_TransientProcess::SetModel()`
     /// Sets an InterfaceModel, used by StartTrace, CheckList, queries
     /// on Integrity, to give information significant for each norm.
-    pub fn set_model(&mut self, model: &crate::ffi::HandleInterfaceInterfaceModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleInterfaceInterfaceModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_set_model(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:56 - `Transfer_TransientProcess::Model()`
     /// Returns the Model used for StartTrace
-    pub fn model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_model(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_model(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:59 - `Transfer_TransientProcess::SetGraph()`
     /// Sets a Graph : supersedes SetModel if already done
-    pub fn set_graph(&mut self, HG: &crate::ffi::HandleInterfaceHGraph) {
+    pub fn set_graph(&mut self, HG: &crate::ffi_types::HandleInterfaceHGraph) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_set_graph(self as *mut Self, HG)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_set_graph(self as *mut Self, HG)
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:61 - `Transfer_TransientProcess::HasGraph()`
     pub fn has_graph(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_has_graph(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_has_graph(self as *const Self)
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:63 - `Transfer_TransientProcess::HGraph()`
-    pub fn h_graph(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceHGraph> {
+    pub fn h_graph(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceHGraph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_h_graph(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_h_graph(self as *const Self),
             ))
         }
     }
@@ -11943,7 +13026,7 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:65 - `Transfer_TransientProcess::Graph()`
     pub fn graph(&self) -> &crate::interface::Graph {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientProcess_graph(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientProcess_graph(
                 self as *const Self,
             )))
         }
@@ -11952,10 +13035,10 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:69 - `Transfer_TransientProcess::SetContext()`
     /// Sets a Context : according to receiving appli, to be
     /// interpreted by the Actor
-    pub fn set_context(&mut self, name: &str, ctx: &crate::ffi::HandleStandardTransient) {
+    pub fn set_context(&mut self, name: &str, ctx: &crate::ffi_types::HandleStandardTransient) {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_set_context(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_set_context(
                 self as *mut Self,
                 c_name.as_ptr(),
                 ctx,
@@ -11970,12 +13053,12 @@ impl TransientProcess {
     pub fn get_context(
         &self,
         name: &str,
-        type_: &crate::ffi::HandleStandardType,
-        ctx: &mut crate::ffi::HandleStandardTransient,
+        type_: &crate::ffi_types::HandleStandardType,
+        ctx: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         let c_name = std::ffi::CString::new(name).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_get_context(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_get_context(
                 self as *const Self,
                 c_name.as_ptr(),
                 type_,
@@ -11987,11 +13070,11 @@ impl TransientProcess {
     /// **Source:** `Transfer_TransientProcess.hxx`:82 - `Transfer_TransientProcess::Context()`
     /// Returns (modifiable) the whole definition of Context
     /// Rather for internal use (ex.: preparing and setting in once)
-    pub fn context(&mut self) -> &mut crate::ffi::XSControl_WorkSessionMap {
+    pub fn context(&mut self) -> &mut crate::ffi_types::XSControl_WorkSessionMap {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Transfer_TransientProcess_context(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_context(self as *mut Self),
+            ))
         }
     }
 
@@ -12000,20 +13083,27 @@ impl TransientProcess {
     /// (if model is set)
     pub fn print_trace(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-        S: &mut crate::ffi::Standard_OStream,
+        start: &crate::ffi_types::HandleStandardTransient,
+        S: &mut crate::ffi_types::Standard_OStream,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_print_trace(self as *const Self, start, S)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_print_trace(
+                self as *const Self,
+                start,
+                S,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:91 - `Transfer_TransientProcess::CheckNum()`
     /// Specific number of a starting object for check-list : Number
     /// in model
-    pub fn check_num(&self, ent: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn check_num(&self, ent: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_check_num(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_check_num(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -12023,12 +13113,12 @@ impl TransientProcess {
     /// Returns an empty list if the Graph has not been acknowledged
     pub fn typed_sharings(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-        type_: &crate::ffi::HandleStandardType,
+        start: &crate::ffi_types::HandleStandardTransient,
+        type_: &crate::ffi_types::HandleStandardType,
     ) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_typed_sharings(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_typed_sharings(
                     self as *const Self,
                     start,
                     type_,
@@ -12043,9 +13133,12 @@ impl TransientProcess {
     /// True. Else, there was a syntactic error in the file.
     /// A non-loaded entity MAY NOT BE transferred, unless its Report
     /// (in the model) is interpreted
-    pub fn is_data_loaded(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_data_loaded(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_is_data_loaded(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_is_data_loaded(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -12054,37 +13147,48 @@ impl TransientProcess {
     /// syntactic, or semantic check). Normally, should answer False.
     /// It is not prudent to try transferring an entity which fails on
     /// data checking
-    pub fn is_data_fail(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_data_fail(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_is_data_fail(self as *const Self, ent)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_is_data_fail(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:114 - `Transfer_TransientProcess::PrintStats()`
     /// Prints statistics on a given output, according mode
-    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi::Standard_OStream) {
+    pub fn print_stats(&self, mode: i32, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_print_stats(self as *const Self, mode, S)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_print_stats(
+                self as *const Self,
+                mode,
+                S,
+            )
         })
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:116 - `Transfer_TransientProcess::RootsForTransfer()`
     pub fn roots_for_transfer(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_roots_for_transfer(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_roots_for_transfer(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:118 - `Transfer_TransientProcess::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientProcess_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -12092,7 +13196,7 @@ impl TransientProcess {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -12100,40 +13204,36 @@ impl TransientProcess {
     }
 
     /// **Source:** `Transfer_TransientProcess.hxx`:118 - `Transfer_TransientProcess::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientProcess_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Transfer_ProcessForTransient
     pub fn as_process_for_transient(&self) -> &ProcessForTransient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Transfer_TransientProcess_as_Transfer_ProcessForTransient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientProcess_as_Transfer_ProcessForTransient(self as *const Self))
         }
     }
 
     /// Upcast to Transfer_ProcessForTransient (mutable)
     pub fn as_process_for_transient_mut(&mut self) -> &mut ProcessForTransient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Transfer_TransientProcess_as_Transfer_ProcessForTransient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::Transfer_TransientProcess_as_Transfer_ProcessForTransient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_TransientProcess_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12141,7 +13241,9 @@ impl TransientProcess {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Transfer_TransientProcess_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12149,10 +13251,10 @@ impl TransientProcess {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferTransientProcess> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferTransientProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -12160,36 +13262,49 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:61 - `Transfer_ProcessForTransient::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Clear(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:67 - `Transfer_ProcessForTransient::Clean()`
     pub fn clean(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Clean(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Clean(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:71 - `Transfer_ProcessForTransient::Resize()`
     pub fn resize(&mut self, nb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Resize(self as *mut Self, nb)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Resize(
+                self as *mut Self,
+                nb,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:76 - `Transfer_ProcessForTransient::SetActor()`
-    pub fn set_actor(&mut self, actor: &crate::ffi::HandleTransferActorOfProcessForTransient) {
+    pub fn set_actor(
+        &mut self,
+        actor: &crate::ffi_types::HandleTransferActorOfProcessForTransient,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetActor(self as *mut Self, actor)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetActor(
+                self as *mut Self,
+                actor,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:80 - `Transfer_ProcessForTransient::Actor()`
-    pub fn actor(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferActorOfProcessForTransient> {
+    pub fn actor(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferActorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_Actor(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Actor(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12197,26 +13312,32 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:87 - `Transfer_ProcessForTransient::Find()`
     pub fn find(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_Find(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Find(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:93 - `Transfer_ProcessForTransient::IsBound()`
-    pub fn is_bound(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_bound(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsBound(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsBound(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:98 - `Transfer_ProcessForTransient::IsAlreadyUsed()`
-    pub fn is_already_used(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_already_used(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsAlreadyUsed(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsAlreadyUsed(
                 self as *const Self,
                 start,
             )
@@ -12226,40 +13347,51 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:104 - `Transfer_ProcessForTransient::Bind()`
     pub fn bind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Bind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Bind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:112 - `Transfer_ProcessForTransient::Rebind()`
     pub fn rebind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        binder: &crate::ffi::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Rebind(self as *mut Self, start, binder)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Rebind(
+                self as *mut Self,
+                start,
+                binder,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:120 - `Transfer_ProcessForTransient::Unbind()`
-    pub fn unbind(&mut self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn unbind(&mut self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Unbind(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Unbind(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:125 - `Transfer_ProcessForTransient::FindElseBind()`
     pub fn find_else_bind(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_FindElseBind(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_FindElseBind(
                     self as *mut Self,
                     start,
                 ),
@@ -12268,9 +13400,9 @@ impl TransientProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:128 - `Transfer_ProcessForTransient::SetMessenger()`
-    pub fn set_messenger(&mut self, messenger: &crate::ffi::HandleMessageMessenger) {
+    pub fn set_messenger(&mut self, messenger: &crate::ffi_types::HandleMessageMessenger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetMessenger(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetMessenger(
                 self as *mut Self,
                 messenger,
             )
@@ -12278,10 +13410,12 @@ impl TransientProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:133 - `Transfer_ProcessForTransient::Messenger()`
-    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn messenger(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_Messenger(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Messenger(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12289,7 +13423,7 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:142 - `Transfer_ProcessForTransient::SetTraceLevel()`
     pub fn set_trace_level(&mut self, tracelev: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetTraceLevel(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetTraceLevel(
                 self as *mut Self,
                 tracelev,
             )
@@ -12299,29 +13433,35 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:145 - `Transfer_ProcessForTransient::TraceLevel()`
     pub fn trace_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_TraceLevel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_TraceLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:148 - `Transfer_ProcessForTransient::SendFail()`
     pub fn send_fail(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SendFail(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SendFail(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:151 - `Transfer_ProcessForTransient::SendWarning()`
     pub fn send_warning(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SendWarning(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SendWarning(
                 self as *mut Self,
                 start,
                 amsg,
@@ -12332,22 +13472,29 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:156 - `Transfer_ProcessForTransient::SendMsg()`
     pub fn send_msg(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amsg: &crate::message::Msg,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SendMsg(self as *mut Self, start, amsg)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SendMsg(
+                self as *mut Self,
+                start,
+                amsg,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:213 - `Transfer_ProcessForTransient::Check()`
     pub fn check(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_Check(self as *const Self, start),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Check(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -12355,11 +13502,11 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:219 - `Transfer_ProcessForTransient::BindTransient()`
     pub fn bind_transient(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_BindTransient(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_BindTransient(
                 self as *mut Self,
                 start,
                 res,
@@ -12368,20 +13515,23 @@ impl TransientProcess {
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:235 - `Transfer_ProcessForTransient::BindMultiple()`
-    pub fn bind_multiple(&mut self, start: &crate::ffi::HandleStandardTransient) {
+    pub fn bind_multiple(&mut self, start: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_BindMultiple(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_BindMultiple(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:239 - `Transfer_ProcessForTransient::AddMultiple()`
     pub fn add_multiple(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        res: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        res: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_AddMultiple(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_AddMultiple(
                 self as *mut Self,
                 start,
                 res,
@@ -12392,12 +13542,12 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:253 - `Transfer_ProcessForTransient::FindTypedTransient()`
     pub fn find_typed_transient(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_FindTypedTransient(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_FindTypedTransient(
                 self as *const Self,
                 start,
                 atype,
@@ -12409,12 +13559,12 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:264 - `Transfer_ProcessForTransient::GetTypedTransient()`
     pub fn get_typed_transient(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        atype: &crate::ffi::HandleStandardType,
-        val: &mut crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        atype: &crate::ffi_types::HandleStandardType,
+        val: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_GetTypedTransient(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_GetTypedTransient(
                 self as *const Self,
                 binder,
                 atype,
@@ -12426,47 +13576,60 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:270 - `Transfer_ProcessForTransient::NbMapped()`
     pub fn nb_mapped(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_NbMapped(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_NbMapped(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:273 - `Transfer_ProcessForTransient::Mapped()`
-    pub fn mapped(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn mapped(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientProcess_inherited_Mapped(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Mapped(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:276 - `Transfer_ProcessForTransient::MapIndex()`
-    pub fn map_index(&self, start: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn map_index(&self, start: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_MapIndex(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_MapIndex(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:280 - `Transfer_ProcessForTransient::MapItem()`
-    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn map_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_MapItem(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_MapItem(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:285 - `Transfer_ProcessForTransient::SetRoot()`
-    pub fn set_root(&mut self, start: &crate::ffi::HandleStandardTransient) {
+    pub fn set_root(&mut self, start: &crate::ffi_types::HandleStandardTransient) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetRoot(self as *mut Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetRoot(
+                self as *mut Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:294 - `Transfer_ProcessForTransient::SetRootManagement()`
     pub fn set_root_management(&mut self, stat: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetRootManagement(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetRootManagement(
                 self as *mut Self,
                 stat,
             )
@@ -12476,66 +13639,83 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:297 - `Transfer_ProcessForTransient::NbRoots()`
     pub fn nb_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_NbRoots(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_NbRoots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:300 - `Transfer_ProcessForTransient::Root()`
-    pub fn root(&self, num: i32) -> &crate::ffi::HandleStandardTransient {
+    pub fn root(&self, num: i32) -> &crate::ffi_types::HandleStandardTransient {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_TransientProcess_inherited_Root(
-                self as *const Self,
-                num,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Root(
+                    self as *const Self,
+                    num,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:304 - `Transfer_ProcessForTransient::RootItem()`
-    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn root_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_RootItem(self as *const Self, num),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_RootItem(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:308 - `Transfer_ProcessForTransient::RootIndex()`
-    pub fn root_index(&self, start: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn root_index(&self, start: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_RootIndex(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_RootIndex(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:313 - `Transfer_ProcessForTransient::NestingLevel()`
     pub fn nesting_level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_NestingLevel(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_NestingLevel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:317 - `Transfer_ProcessForTransient::ResetNestingLevel()`
     pub fn reset_nesting_level(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_ResetNestingLevel(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_ResetNestingLevel(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:321 - `Transfer_ProcessForTransient::Recognize()`
-    pub fn recognize(&self, start: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn recognize(&self, start: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Recognize(self as *const Self, start)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Recognize(
+                self as *const Self,
+                start,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:327 - `Transfer_ProcessForTransient::Transferring()`
     pub fn transferring(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_Transferring(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Transferring(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -12547,11 +13727,11 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:334 - `Transfer_ProcessForTransient::Transfer()`
     pub fn transfer(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         theProgress: &crate::message::ProgressRange,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Transfer(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Transfer(
                 self as *mut Self,
                 start,
                 theProgress,
@@ -12562,27 +13742,32 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:342 - `Transfer_ProcessForTransient::SetErrorHandle()`
     pub fn set_error_handle(&mut self, err: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_SetErrorHandle(self as *mut Self, err)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_SetErrorHandle(
+                self as *mut Self,
+                err,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:345 - `Transfer_ProcessForTransient::ErrorHandle()`
     pub fn error_handle(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_ErrorHandle(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_ErrorHandle(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:353 - `Transfer_ProcessForTransient::StartTrace()`
     pub fn start_trace(
         &self,
-        binder: &crate::ffi::HandleTransferBinder,
-        start: &crate::ffi::HandleStandardTransient,
+        binder: &crate::ffi_types::HandleTransferBinder,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         mode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_StartTrace(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_StartTrace(
                 self as *const Self,
                 binder,
                 start,
@@ -12595,7 +13780,10 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:366 - `Transfer_ProcessForTransient::IsLooping()`
     pub fn is_looping(&self, alevel: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsLooping(self as *const Self, alevel)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsLooping(
+                self as *const Self,
+                alevel,
+            )
         })
     }
 
@@ -12603,7 +13791,7 @@ impl TransientProcess {
     pub fn root_result(&self, withstart: bool) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_RootResult(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_RootResult(
                     self as *const Self,
                     withstart,
                 ),
@@ -12618,7 +13806,7 @@ impl TransientProcess {
     ) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_CompleteResult(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_CompleteResult(
                     self as *const Self,
                     withstart,
                 ),
@@ -12630,7 +13818,9 @@ impl TransientProcess {
     pub fn abnormal_result(&self) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_AbnormalResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_AbnormalResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12639,7 +13829,7 @@ impl TransientProcess {
     pub fn check_list(&self, erronly: bool) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_CheckList(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_CheckList(
                     self as *const Self,
                     erronly,
                 ),
@@ -12650,13 +13840,13 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:398 - `Transfer_ProcessForTransient::ResultOne()`
     pub fn result_one(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         withstart: bool,
     ) -> crate::OwnedPtr<IteratorOfProcessForTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_ResultOne(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_ResultOne(
                     self as *const Self,
                     start,
                     level,
@@ -12669,13 +13859,13 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:405 - `Transfer_ProcessForTransient::CheckListOne()`
     pub fn check_list_one(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         erronly: bool,
     ) -> crate::OwnedPtr<crate::interface::CheckIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_TransientProcess_inherited_CheckListOne(
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_CheckListOne(
                     self as *const Self,
                     start,
                     level,
@@ -12688,12 +13878,12 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:412 - `Transfer_ProcessForTransient::IsCheckListEmpty()`
     pub fn is_check_list_empty(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         erronly: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsCheckListEmpty(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsCheckListEmpty(
                 self as *const Self,
                 start,
                 level,
@@ -12705,12 +13895,12 @@ impl TransientProcess {
     /// Inherited: **Source:** `Transfer_ProcessForTransient.hxx`:421 - `Transfer_ProcessForTransient::RemoveResult()`
     pub fn remove_result(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         level: i32,
         compute: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_RemoveResult(
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_RemoveResult(
                 self as *mut Self,
                 start,
                 level,
@@ -12720,16 +13910,22 @@ impl TransientProcess {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -12737,7 +13933,9 @@ impl TransientProcess {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_TransientProcess_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -12750,80 +13948,84 @@ impl TransientProcess {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_TransientProcess_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_TransientProcess_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTransferTransientProcess;
+pub use crate::ffi_types::HandleTransferTransientProcess;
 
 unsafe impl crate::CppDeletable for HandleTransferTransientProcess {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferTransientProcess_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_destructor(ptr);
     }
 }
 
 impl HandleTransferTransientProcess {
     /// Dereference this Handle to access the underlying Transfer_TransientProcess
-    pub fn get(&self) -> &crate::ffi::Transfer_TransientProcess {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_TransientProcess {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferTransientProcess_get(
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_TransientProcess
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_TransientProcess {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_TransientProcess {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferTransientProcess_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Transfer_TransientProcess> to Handle<Transfer_ProcessForTransient>
     pub fn to_handle_process_for_transient(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferProcessForTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferProcessForTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientProcess_to_HandleTransferProcessForTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_to_HandleTransferProcessForTransient(self as *const Self)))
         }
     }
 
     /// Upcast Handle<Transfer_TransientProcess> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferTransientProcess_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferTransientProcess_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -12838,11 +14040,11 @@ impl HandleTransferTransientProcess {
 /// It is interpreted by TransferProcess, which admits a
 /// VoidBinder to be over-written, and copies its check to the
 /// new Binder
-pub use crate::ffi::Transfer_VoidBinder as VoidBinder;
+pub use crate::ffi_types::Transfer_VoidBinder as VoidBinder;
 
 unsafe impl crate::CppDeletable for VoidBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Transfer_VoidBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::Transfer_VoidBinder_destructor(ptr);
     }
 }
 
@@ -12852,17 +14054,19 @@ impl VoidBinder {
     /// But it can bring next results ...
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Transfer_VoidBinder_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Transfer_VoidBinder.hxx`:43 - `Transfer_VoidBinder::ResultType()`
     /// while a VoidBinder admits no Result, its ResultType returns
     /// the type of <me>
-    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn result_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_result_type(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_result_type(self as *const Self),
             ))
         }
     }
@@ -12872,7 +14076,9 @@ impl VoidBinder {
     pub fn result_type_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_result_type_name(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_result_type_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -12880,9 +14086,9 @@ impl VoidBinder {
     }
 
     /// **Source:** `Transfer_VoidBinder.hxx`:48 - `Transfer_VoidBinder::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Transfer_VoidBinder_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKXSBase::Transfer_VoidBinder_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -12892,7 +14098,7 @@ impl VoidBinder {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_get_type_name(),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -12900,83 +14106,105 @@ impl VoidBinder {
     }
 
     /// **Source:** `Transfer_VoidBinder.hxx`:48 - `Transfer_VoidBinder::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Transfer_VoidBinder_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Transfer_Binder
     pub fn as_binder(&self) -> &Binder {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_VoidBinder_as_Transfer_Binder(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_as_Transfer_Binder(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Transfer_Binder (mutable)
     pub fn as_binder_mut(&mut self) -> &mut Binder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_VoidBinder_as_Transfer_Binder_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_as_Transfer_Binder_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Transfer_VoidBinder_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Transfer_VoidBinder_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTransferVoidBinder> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferVoidBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:65 - `Transfer_Binder::Merge()`
-    pub fn merge(&mut self, other: &crate::ffi::HandleTransferBinder) {
+    pub fn merge(&mut self, other: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_Merge(self as *mut Self, other)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_Merge(
+                self as *mut Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:70 - `Transfer_Binder::IsMultiple()`
     pub fn is_multiple(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_IsMultiple(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_IsMultiple(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:81 - `Transfer_Binder::AddResult()`
-    pub fn add_result(&mut self, next: &crate::ffi::HandleTransferBinder) {
+    pub fn add_result(&mut self, next: &crate::ffi_types::HandleTransferBinder) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_AddResult(self as *mut Self, next)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_AddResult(
+                self as *mut Self,
+                next,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:84 - `Transfer_Binder::NextResult()`
-    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn next_result(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_inherited_NextResult(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_NextResult(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12984,21 +14212,23 @@ impl VoidBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:91 - `Transfer_Binder::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_HasResult(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_HasResult(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:95 - `Transfer_Binder::SetAlreadyUsed()`
     pub fn set_already_used(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_SetAlreadyUsed(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_SetAlreadyUsed(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:100 - `Transfer_Binder::Status()`
     pub fn status(&self) -> crate::transfer::StatusResult {
         crate::transfer::StatusResult::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_Status(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_Status(self as *const Self)
         }))
         .unwrap()
     }
@@ -13006,7 +14236,9 @@ impl VoidBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:103 - `Transfer_Binder::StatusExec()`
     pub fn status_exec(&self) -> crate::transfer::StatusExec {
         crate::transfer::StatusExec::try_from(crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_StatusExec(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_StatusExec(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -13014,39 +14246,50 @@ impl VoidBinder {
     /// Inherited: **Source:** `Transfer_Binder.hxx`:107 - `Transfer_Binder::SetStatusExec()`
     pub fn set_status_exec(&mut self, stat: crate::transfer::StatusExec) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_SetStatusExec(self as *mut Self, stat.into())
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_SetStatusExec(
+                self as *mut Self,
+                stat.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:125 - `Transfer_Binder::Check()`
-    pub fn check(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn check(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_inherited_Check(self as *const Self),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_Check(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Transfer_Binder.hxx`:129 - `Transfer_Binder::CCheck()`
-    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceCheck> {
+    pub fn c_check(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceCheck> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Transfer_VoidBinder_inherited_CCheck(self as *mut Self),
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_CCheck(self as *mut Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -13054,7 +14297,7 @@ impl VoidBinder {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Transfer_VoidBinder_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -13067,71 +14310,83 @@ impl VoidBinder {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Transfer_VoidBinder_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXSBase::Transfer_VoidBinder_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTransferVoidBinder;
+pub use crate::ffi_types::HandleTransferVoidBinder;
 
 unsafe impl crate::CppDeletable for HandleTransferVoidBinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTransferVoidBinder_destructor(ptr);
+        crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_destructor(ptr);
     }
 }
 
 impl HandleTransferVoidBinder {
     /// Dereference this Handle to access the underlying Transfer_VoidBinder
-    pub fn get(&self) -> &crate::ffi::Transfer_VoidBinder {
+    pub fn get(&self) -> &crate::ffi_types::Transfer_VoidBinder {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTransferVoidBinder_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Transfer_VoidBinder
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Transfer_VoidBinder {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Transfer_VoidBinder {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTransferVoidBinder_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<Transfer_VoidBinder> to Handle<Transfer_Binder>
-    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferBinder> {
+    pub fn to_handle_binder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTransferBinder> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferVoidBinder_to_HandleTransferBinder(self as *const Self),
+                crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_to_HandleTransferBinder(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<Transfer_VoidBinder> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTransferVoidBinder_to_HandleStandardTransient(
+                crate::ffi_extern_TKXSBase::HandleTransferVoidBinder_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -13143,6 +14398,6 @@ impl HandleTransferVoidBinder {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     Transfer_SequenceOfBinder as SequenceOfBinder, Transfer_SequenceOfFinder as SequenceOfFinder,
 };

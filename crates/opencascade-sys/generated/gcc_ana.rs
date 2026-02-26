@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi_types::{HandleStandardFailure, HandleStandardTransient};
 
 // ========================
 // From GccAna_Circ2d2TanOn.hxx
@@ -24,11 +24,11 @@ pub use crate::ffi::{HandleStandardFailure, HandleStandardTransient};
 /// -   defining the construction of 2D circles(s),
 /// -   implementing the construction algorithm, and
 /// -   consulting the result(s).
-pub use crate::ffi::GccAna_Circ2d2TanOn as Circ2d2TanOn;
+pub use crate::ffi_types::GccAna_Circ2d2TanOn as Circ2d2TanOn;
 
 unsafe impl crate::CppDeletable for Circ2d2TanOn {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2d2TanOn_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_destructor(ptr);
     }
 }
 
@@ -45,7 +45,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc2_lin2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc2_lin2d_real(
                     Qualified1, Qualified2, OnLine, Tolerance,
                 ),
             ))
@@ -63,11 +63,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_qualifiedlin_lin2d_real(
-                    Qualified1, Qualified2, OnLine, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_qualifiedlin_lin2d_real(Qualified1, Qualified2, OnLine, Tolerance)))
         }
     }
 
@@ -83,7 +79,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedlin2_lin2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedlin2_lin2d_real(
                     Qualified1, Qualified2, OnLine, Tolerance,
                 ),
             ))
@@ -101,11 +97,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_pnt2d_lin2d_real(
-                    Qualified1, Point2, OnLine, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_pnt2d_lin2d_real(Qualified1, Point2, OnLine, Tolerance)))
         }
     }
 
@@ -120,11 +112,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedlin_pnt2d_lin2d_real(
-                    Qualified1, Point2, OnLine, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedlin_pnt2d_lin2d_real(Qualified1, Point2, OnLine, Tolerance)))
         }
     }
 
@@ -140,7 +128,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_pnt2d2_lin2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_pnt2d2_lin2d_real(
                     Point1, Point2, OnLine, Tolerance,
                 ),
             ))
@@ -159,7 +147,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc2_circ2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc2_circ2d_real(
                     Qualified1, Qualified2, OnCirc, Tolerance,
                 ),
             ))
@@ -177,11 +165,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_qualifiedlin_circ2d_real(
-                    Qualified1, Qualified2, OnCirc, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_qualifiedlin_circ2d_real(Qualified1, Qualified2, OnCirc, Tolerance)))
         }
     }
 
@@ -196,11 +180,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_pnt2d_circ2d_real(
-                    Qualified1, Point2, OnCirc, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedcirc_pnt2d_circ2d_real(Qualified1, Point2, OnCirc, Tolerance)))
         }
     }
 
@@ -216,7 +196,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedlin2_circ2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedlin2_circ2d_real(
                     Qualified1, Qualified2, OnCirc, Tolerance,
                 ),
             ))
@@ -234,11 +214,7 @@ impl Circ2d2TanOn {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_qualifiedlin_pnt2d_circ2d_real(
-                    Qualified1, Point2, OnCirc, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_qualifiedlin_pnt2d_circ2d_real(Qualified1, Point2, OnCirc, Tolerance)))
         }
     }
 
@@ -254,7 +230,7 @@ impl Circ2d2TanOn {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_ctor_pnt2d2_circ2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_ctor_pnt2d2_circ2d_real(
                     Point1, Point2, OnCirc, Tolerance,
                 ),
             ))
@@ -267,7 +243,9 @@ impl Circ2d2TanOn {
     /// Note: IsDone protects against a failure arising from a
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Circ2d2TanOn_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Circ2d2TanOn.hxx`:157 - `GccAna_Circ2d2TanOn::NbSolutions()`
@@ -277,7 +255,7 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_nb_solutions(self as *const Self)
         })
     }
 
@@ -294,7 +272,10 @@ impl Circ2d2TanOn {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanOn_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -324,7 +305,7 @@ impl Circ2d2TanOn {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -351,7 +332,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -377,7 +358,7 @@ impl Circ2d2TanOn {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_tangency2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -398,7 +379,12 @@ impl Circ2d2TanOn {
     /// StdFail_NotDone if the construction fails.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntArg: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_center_on3(self as *const Self, Index, ParArg, PntArg)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntArg,
+            )
         })
     }
 
@@ -414,7 +400,10 @@ impl Circ2d2TanOn {
     /// of solutions and NotDone if IsDone returns false.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -430,7 +419,10 @@ impl Circ2d2TanOn {
     /// of solutions and NotDone if IsDone returns false.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanOn_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanOn_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -461,11 +453,11 @@ impl Circ2d2TanOn {
 /// With Tolerance it gives a solution if the lowest
 /// distance between C1 and C2 is lower than or equal
 /// Tolerance.
-pub use crate::ffi::GccAna_Circ2d2TanRad as Circ2d2TanRad;
+pub use crate::ffi_types::GccAna_Circ2d2TanRad as Circ2d2TanRad;
 
 unsafe impl crate::CppDeletable for Circ2d2TanRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2d2TanRad_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_destructor(ptr);
     }
 }
 
@@ -483,7 +475,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_qualifiedcirc2_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_qualifiedcirc2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
                 ),
             ))
@@ -502,11 +494,7 @@ impl Circ2d2TanRad {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_qualifiedcirc_qualifiedlin_real2(
-                    Qualified1, Qualified2, Radius, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_qualifiedcirc_qualifiedlin_real2(Qualified1, Qualified2, Radius, Tolerance)))
         }
     }
 
@@ -523,7 +511,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_qualifiedcirc_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_qualifiedcirc_pnt2d_real2(
                     Qualified1, Point2, Radius, Tolerance,
                 ),
             ))
@@ -543,7 +531,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_qualifiedlin_pnt2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_qualifiedlin_pnt2d_real2(
                     Qualified1, Point2, Radius, Tolerance,
                 ),
             ))
@@ -563,7 +551,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_qualifiedlin2_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_qualifiedlin2_real2(
                     Qualified1, Qualified2, Radius, Tolerance,
                 ),
             ))
@@ -583,7 +571,7 @@ impl Circ2d2TanRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_ctor_pnt2d2_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_ctor_pnt2d2_real2(
                     Point1, Point2, Radius, Tolerance,
                 ),
             ))
@@ -596,7 +584,7 @@ impl Circ2d2TanRad {
     /// more internal intersection algorithm, which has reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_is_done(self as *const Self)
         })
     }
 
@@ -606,7 +594,7 @@ impl Circ2d2TanRad {
     /// StdFail_NotDone if the construction fails. of solutions.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_nb_solutions(self as *const Self)
         })
     }
 
@@ -621,7 +609,10 @@ impl Circ2d2TanRad {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d2TanRad_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -641,7 +632,7 @@ impl Circ2d2TanRad {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -668,7 +659,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -695,7 +686,7 @@ impl Circ2d2TanRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_tangency2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -713,7 +704,10 @@ impl Circ2d2TanRad {
     /// succeed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -724,7 +718,10 @@ impl Circ2d2TanRad {
     /// It raises NotDone if the construction algorithm did not  succeed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d2TanRad_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d2TanRad_is_the_same2(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -753,11 +750,11 @@ impl Circ2d2TanRad {
 /// With Tolerance we will find a solution if the
 /// lowest distance between C1 and C2 is lower than or
 /// equal Tolerance.
-pub use crate::ffi::GccAna_Circ2d3Tan as Circ2d3Tan;
+pub use crate::ffi_types::GccAna_Circ2d3Tan as Circ2d3Tan;
 
 unsafe impl crate::CppDeletable for Circ2d3Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2d3Tan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_destructor(ptr);
     }
 }
 
@@ -775,7 +772,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc3_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc3_real(
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 ),
             ))
@@ -794,11 +791,7 @@ impl Circ2d3Tan {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc2_qualifiedlin_real(
-                    Qualified1, Qualified2, Qualified3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc2_qualifiedlin_real(Qualified1, Qualified2, Qualified3, Tolerance)))
         }
     }
 
@@ -814,11 +807,7 @@ impl Circ2d3Tan {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc_qualifiedlin2_real(
-                    Qualified1, Qualified2, Qualified3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc_qualifiedlin2_real(Qualified1, Qualified2, Qualified3, Tolerance)))
         }
     }
 
@@ -835,7 +824,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedlin3_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedlin3_real(
                     Qualified1, Qualified2, Qualified3, Tolerance,
                 ),
             ))
@@ -855,7 +844,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc2_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc2_pnt2d_real(
                     Qualified1, Qualified2, Point3, Tolerance,
                 ),
             ))
@@ -875,11 +864,7 @@ impl Circ2d3Tan {
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc_qualifiedlin_pnt2d_real(
-                    Qualified1, Qualified2, Point3, Tolerance,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc_qualifiedlin_pnt2d_real(Qualified1, Qualified2, Point3, Tolerance)))
         }
     }
 
@@ -896,7 +881,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedlin2_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedlin2_pnt2d_real(
                     Qualified1, Qualified2, Point3, Tolerance,
                 ),
             ))
@@ -917,7 +902,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedcirc_pnt2d2_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedcirc_pnt2d2_real(
                     Qualified1, Point2, Point3, Tolerance,
                 ),
             ))
@@ -938,7 +923,7 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_qualifiedlin_pnt2d2_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_qualifiedlin_pnt2d2_real(
                     Qualified1, Point2, Point3, Tolerance,
                 ),
             ))
@@ -958,7 +943,9 @@ impl Circ2d3Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_ctor_pnt2d3_real(Point1, Point2, Point3, Tolerance),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_ctor_pnt2d3_real(
+                    Point1, Point2, Point3, Tolerance,
+                ),
             ))
         }
     }
@@ -970,7 +957,9 @@ impl Circ2d3Tan {
     /// more internal intersection algorithm, which has
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Circ2d3Tan_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Circ2d3Tan.hxx`:161 - `GccAna_Circ2d3Tan::NbSolutions()`
@@ -978,7 +967,7 @@ impl Circ2d3Tan {
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_nb_solutions(self as *const Self)
         })
     }
 
@@ -995,7 +984,10 @@ impl Circ2d3Tan {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2d3Tan_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1018,7 +1010,7 @@ impl Circ2d3Tan {
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         let mut Qualif3_i32_: i32 = (*Qualif3).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -1048,7 +1040,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1075,7 +1067,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_tangency2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1102,7 +1094,7 @@ impl Circ2d3Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_tangency3(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_tangency3(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1119,7 +1111,7 @@ impl Circ2d3Tan {
     /// It raises NotDone if the algorithm failed.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_is_the_same1(self as *const Self, Index)
         })
     }
 
@@ -1130,7 +1122,7 @@ impl Circ2d3Tan {
     /// It raises NotDone if the algorithm failed.
     pub fn is_the_same2(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_is_the_same2(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_is_the_same2(self as *const Self, Index)
         })
     }
 
@@ -1141,7 +1133,7 @@ impl Circ2d3Tan {
     /// It raises NotDone if the algorithm failed.
     pub fn is_the_same3(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2d3Tan_is_the_same3(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2d3Tan_is_the_same3(self as *const Self, Index)
         })
     }
 }
@@ -1161,11 +1153,11 @@ impl Circ2d3Tan {
 /// A Circ2dBisec object provides a framework for:
 /// -   defining the construction of the bisecting curves,
 /// -   implementing the construction algorithm, and consulting the result.
-pub use crate::ffi::GccAna_Circ2dBisec as Circ2dBisec;
+pub use crate::ffi_types::GccAna_Circ2dBisec as Circ2dBisec;
 
 unsafe impl crate::CppDeletable for Circ2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_destructor(ptr);
     }
 }
 
@@ -1178,7 +1170,7 @@ impl Circ2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dBisec_ctor_circ2d2(Circ1, Circ2),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_ctor_circ2d2(Circ1, Circ2),
             ))
         }
     }
@@ -1186,7 +1178,9 @@ impl Circ2dBisec {
     /// **Source:** `GccAna_Circ2dBisec.hxx`:48 - `GccAna_Circ2dBisec::IsDone()`
     /// This method returns True if the construction algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Circ2dBisec_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Circ2dBisec.hxx`:52 - `GccAna_Circ2dBisec::NbSolutions()`
@@ -1194,7 +1188,7 @@ impl Circ2dBisec {
     /// Raises NotDone if the construction algorithm  didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dBisec_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_nb_solutions(self as *const Self)
         })
     }
 
@@ -1204,10 +1198,16 @@ impl Circ2dBisec {
     /// the number of solutions.
     /// It raises NotDone if the construction algorithm
     /// didn't succeed.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+    pub fn this_solution(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dBisec_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dBisec_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1235,11 +1235,11 @@ impl Circ2dBisec {
 /// outside C1.
 /// With Tolerance we will give a solution if the distance
 /// between C1 and Pcenter is lower than or equal Tolerance.
-pub use crate::ffi::GccAna_Circ2dTanCen as Circ2dTanCen;
+pub use crate::ffi_types::GccAna_Circ2dTanCen as Circ2dTanCen;
 
 unsafe impl crate::CppDeletable for Circ2dTanCen {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2dTanCen_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_destructor(ptr);
     }
 }
 
@@ -1255,7 +1255,7 @@ impl Circ2dTanCen {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanCen_ctor_qualifiedcirc_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_ctor_qualifiedcirc_pnt2d_real(
                     Qualified1, Pcenter, Tolerance,
                 ),
             ))
@@ -1272,7 +1272,9 @@ impl Circ2dTanCen {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanCen_ctor_lin2d_pnt2d(Linetan, Pcenter),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_ctor_lin2d_pnt2d(
+                    Linetan, Pcenter,
+                ),
             ))
         }
     }
@@ -1298,7 +1300,7 @@ impl Circ2dTanCen {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanCen_ctor_pnt2d2(Point1, Pcenter),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_ctor_pnt2d2(Point1, Pcenter),
             ))
         }
     }
@@ -1310,7 +1312,9 @@ impl Circ2dTanCen {
     /// more internal intersection algorithm, which has reached
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Circ2dTanCen_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Circ2dTanCen.hxx`:95 - `GccAna_Circ2dTanCen::NbSolutions()`
@@ -1319,7 +1323,7 @@ impl Circ2dTanCen {
     /// exception if the algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanCen_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_nb_solutions(self as *const Self)
         })
     }
 
@@ -1335,7 +1339,10 @@ impl Circ2dTanCen {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanCen_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1352,7 +1359,7 @@ impl Circ2dTanCen {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanCen_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -1380,7 +1387,7 @@ impl Circ2dTanCen {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanCen_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1399,7 +1406,10 @@ impl Circ2dTanCen {
     /// number of solutions or less than zero.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanCen_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanCen_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -1430,11 +1440,11 @@ impl Circ2dTanCen {
 /// With Tolerance we will give a solution if the
 /// distance between C1 and OnLine is lower than or
 /// equal Tolerance.
-pub use crate::ffi::GccAna_Circ2dTanOnRad as Circ2dTanOnRad;
+pub use crate::ffi_types::GccAna_Circ2dTanOnRad as Circ2dTanOnRad;
 
 unsafe impl crate::CppDeletable for Circ2dTanOnRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Circ2dTanOnRad_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_destructor(ptr);
     }
 }
 
@@ -1457,7 +1467,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_qualifiedcirc_lin2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_qualifiedcirc_lin2d_real2(
                     Qualified1, OnLine, Radius, Tolerance,
                 ),
             ))
@@ -1478,7 +1488,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_qualifiedlin_lin2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_qualifiedlin_lin2d_real2(
                     Qualified1, OnLine, Radius, Tolerance,
                 ),
             ))
@@ -1498,7 +1508,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_pnt2d_lin2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_pnt2d_lin2d_real2(
                     Point1, OnLine, Radius, Tolerance,
                 ),
             ))
@@ -1519,7 +1529,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_qualifiedcirc_circ2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_qualifiedcirc_circ2d_real2(
                     Qualified1, OnCirc, Radius, Tolerance,
                 ),
             ))
@@ -1540,7 +1550,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_qualifiedlin_circ2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_qualifiedlin_circ2d_real2(
                     Qualified1, OnCirc, Radius, Tolerance,
                 ),
             ))
@@ -1561,7 +1571,7 @@ impl Circ2dTanOnRad {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_ctor_pnt2d_circ2d_real2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_ctor_pnt2d_circ2d_real2(
                     Point1, OnCirc, Radius, Tolerance,
                 ),
             ))
@@ -1576,7 +1586,7 @@ impl Circ2dTanOnRad {
     /// reached its numeric limits.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_is_done(self as *const Self)
         })
     }
 
@@ -1585,7 +1595,7 @@ impl Circ2dTanOnRad {
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_nb_solutions(self as *const Self)
         })
     }
 
@@ -1601,7 +1611,10 @@ impl Circ2dTanOnRad {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Circ2dTanOnRad_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1624,7 +1637,7 @@ impl Circ2dTanOnRad {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -1653,7 +1666,7 @@ impl Circ2dTanOnRad {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -1674,7 +1687,12 @@ impl Circ2dTanOnRad {
     /// number of solutions.
     pub fn center_on3(&self, Index: i32, ParArg: &mut f64, PntSol: &mut crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_center_on3(self as *const Self, Index, ParArg, PntSol)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_center_on3(
+                self as *const Self,
+                Index,
+                ParArg,
+                PntSol,
+            )
         })
     }
 
@@ -1686,7 +1704,10 @@ impl Circ2dTanOnRad {
     /// number of solutions.
     pub fn is_the_same1(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Circ2dTanOnRad_is_the_same1(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Circ2dTanOnRad_is_the_same1(
+                self as *const Self,
+                Index,
+            )
         })
     }
 }
@@ -1706,11 +1727,11 @@ impl Circ2dTanOnRad {
 /// -   defining the construction of the bisecting curves,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GccAna_CircLin2dBisec as CircLin2dBisec;
+pub use crate::ffi_types::GccAna_CircLin2dBisec as CircLin2dBisec;
 
 unsafe impl crate::CppDeletable for CircLin2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_CircLin2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_destructor(ptr);
     }
 }
 
@@ -1723,7 +1744,7 @@ impl CircLin2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_CircLin2dBisec_ctor_circ2d_lin2d(Circle, Line),
+                crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_ctor_circ2d_lin2d(Circle, Line),
             ))
         }
     }
@@ -1732,7 +1753,7 @@ impl CircLin2dBisec {
     /// Returns true (this construction algorithm never fails).
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_CircLin2dBisec_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_is_done(self as *const Self)
         })
     }
 
@@ -1740,7 +1761,7 @@ impl CircLin2dBisec {
     /// Returns the number of curves, representing solutions computed by this algorithm.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_CircLin2dBisec_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_nb_solutions(self as *const Self)
         })
     }
 
@@ -1750,10 +1771,16 @@ impl CircLin2dBisec {
     /// Exceptions
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+    pub fn this_solution(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_CircLin2dBisec_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_CircLin2dBisec_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1776,11 +1803,11 @@ impl CircLin2dBisec {
 /// -   defining the construction of the bisecting curves,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GccAna_CircPnt2dBisec as CircPnt2dBisec;
+pub use crate::ffi_types::GccAna_CircPnt2dBisec as CircPnt2dBisec;
 
 unsafe impl crate::CppDeletable for CircPnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_CircPnt2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_destructor(ptr);
     }
 }
 
@@ -1793,7 +1820,9 @@ impl CircPnt2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d(Circle1, Point2),
+                crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d(
+                    Circle1, Point2,
+                ),
             ))
         }
     }
@@ -1808,7 +1837,7 @@ impl CircPnt2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_ctor_circ2d_pnt2d_real(
                     Circle1, Point2, Tolerance,
                 ),
             ))
@@ -1819,7 +1848,7 @@ impl CircPnt2dBisec {
     /// Returns true (this construction algorithm never fails).
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_CircPnt2dBisec_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_is_done(self as *const Self)
         })
     }
 
@@ -1827,7 +1856,7 @@ impl CircPnt2dBisec {
     /// Returns the number of curves, representing solutions computed by this algorithm.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_CircPnt2dBisec_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_nb_solutions(self as *const Self)
         })
     }
 
@@ -1837,10 +1866,16 @@ impl CircPnt2dBisec {
     /// Exceptions
     /// Standard_OutOfRange if Index is less than zero or
     /// greater than the number of solutions computed by this algorithm.
-    pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+    pub fn this_solution(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_CircPnt2dBisec_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_CircPnt2dBisec_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1866,11 +1901,11 @@ impl CircPnt2dBisec {
 /// and raise BadQualifier Error in case of incorrect couple (qualifier,
 /// curv).
 /// For example: "EnclosedCirc".
-pub use crate::ffi::GccAna_Lin2d2Tan as Lin2d2Tan;
+pub use crate::ffi_types::GccAna_Lin2d2Tan as Lin2d2Tan;
 
 unsafe impl crate::CppDeletable for Lin2d2Tan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Lin2d2Tan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_destructor(ptr);
     }
 }
 
@@ -1887,7 +1922,9 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2d2Tan_ctor_pnt2d2_real(ThePoint1, ThePoint2, Tolerance),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_ctor_pnt2d2_real(
+                    ThePoint1, ThePoint2, Tolerance,
+                ),
             ))
         }
     }
@@ -1908,7 +1945,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2d2Tan_ctor_qualifiedcirc_pnt2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_ctor_qualifiedcirc_pnt2d_real(
                     Qualified1, ThePoint, Tolerance,
                 ),
             ))
@@ -1927,7 +1964,7 @@ impl Lin2d2Tan {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2d2Tan_ctor_qualifiedcirc2_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_ctor_qualifiedcirc2_real(
                     Qualified1, Qualified2, Tolerance,
                 ),
             ))
@@ -1938,7 +1975,9 @@ impl Lin2d2Tan {
     /// This method returns true when there is a solution
     /// and false in the other cases.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Lin2d2Tan_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Lin2d2Tan.hxx`:87 - `GccAna_Lin2d2Tan::NbSolutions()`
@@ -1946,7 +1985,7 @@ impl Lin2d2Tan {
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Lin2d2Tan_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_nb_solutions(self as *const Self)
         })
     }
 
@@ -1961,7 +2000,10 @@ impl Lin2d2Tan {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2d2Tan_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1991,7 +2033,7 @@ impl Lin2d2Tan {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         let mut Qualif2_i32_: i32 = (*Qualif2).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2d2Tan_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2019,7 +2061,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2d2Tan_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2046,7 +2088,7 @@ impl Lin2d2Tan {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2d2Tan_tangency2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2d2Tan_tangency2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2080,11 +2122,11 @@ impl Lin2d2Tan {
 /// -   defining the construction of the bisecting lines,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::GccAna_Lin2dBisec as Lin2dBisec;
+pub use crate::ffi_types::GccAna_Lin2dBisec as Lin2dBisec;
 
 unsafe impl crate::CppDeletable for Lin2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Lin2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_destructor(ptr);
     }
 }
 
@@ -2094,7 +2136,7 @@ impl Lin2dBisec {
     pub fn new_lin2d2(Lin1: &crate::gp::Lin2d, Lin2: &crate::gp::Lin2d) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dBisec_ctor_lin2d2(Lin1, Lin2),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_ctor_lin2d2(Lin1, Lin2),
             ))
         }
     }
@@ -2102,7 +2144,9 @@ impl Lin2dBisec {
     /// **Source:** `GccAna_Lin2dBisec.hxx`:57 - `GccAna_Lin2dBisec::IsDone()`
     /// Returns True when the algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Lin2dBisec_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Lin2dBisec.hxx`:61 - `GccAna_Lin2dBisec::NbSolutions()`
@@ -2110,7 +2154,7 @@ impl Lin2dBisec {
     /// the constructor wasn't called before.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Lin2dBisec_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_nb_solutions(self as *const Self)
         })
     }
 
@@ -2129,7 +2173,10 @@ impl Lin2dBisec {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dBisec_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2148,7 +2195,7 @@ impl Lin2dBisec {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dBisec_intersection1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_intersection1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2173,7 +2220,7 @@ impl Lin2dBisec {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dBisec_intersection2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dBisec_intersection2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2197,11 +2244,11 @@ impl Lin2dBisec {
 /// with the first argument.
 /// Its direction is making an angle Angle with the
 /// second argument.
-pub use crate::ffi::GccAna_Lin2dTanObl as Lin2dTanObl;
+pub use crate::ffi_types::GccAna_Lin2dTanObl as Lin2dTanObl;
 
 unsafe impl crate::CppDeletable for Lin2dTanObl {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Lin2dTanObl_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_destructor(ptr);
     }
 }
 
@@ -2217,7 +2264,9 @@ impl Lin2dTanObl {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanObl_ctor_pnt2d_lin2d_real(ThePoint, TheLine, TheAngle),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_ctor_pnt2d_lin2d_real(
+                    ThePoint, TheLine, TheAngle,
+                ),
             ))
         }
     }
@@ -2236,7 +2285,7 @@ impl Lin2dTanObl {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanObl_ctor_qualifiedcirc_lin2d_real(
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_ctor_qualifiedcirc_lin2d_real(
                     Qualified1, TheLine, TheAngle,
                 ),
             ))
@@ -2249,7 +2298,9 @@ impl Lin2dTanObl {
     /// more internal intersection algorithm, which has reached
     /// its numeric limits.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Lin2dTanObl_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Lin2dTanObl.hxx`:71 - `GccAna_Lin2dTanObl::NbSolutions()`
@@ -2257,7 +2308,7 @@ impl Lin2dTanObl {
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanObl_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_nb_solutions(self as *const Self)
         })
     }
 
@@ -2271,7 +2322,10 @@ impl Lin2dTanObl {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanObl_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2294,7 +2348,7 @@ impl Lin2dTanObl {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanObl_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2320,7 +2374,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanObl_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2343,7 +2397,7 @@ impl Lin2dTanObl {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanObl_intersection2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanObl_intersection2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2370,11 +2424,11 @@ impl Lin2dTanObl {
 /// A Lin2dTanPar object provides a framework for:
 /// -   defining the construction of 2D line(s),
 /// -   implementing the construction algorithm, and consulting the result(s).
-pub use crate::ffi::GccAna_Lin2dTanPar as Lin2dTanPar;
+pub use crate::ffi_types::GccAna_Lin2dTanPar as Lin2dTanPar;
 
 unsafe impl crate::CppDeletable for Lin2dTanPar {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Lin2dTanPar_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_destructor(ptr);
     }
 }
 
@@ -2389,7 +2443,7 @@ impl Lin2dTanPar {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPar_ctor_pnt2d_lin2d(ThePoint, Lin1),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_ctor_pnt2d_lin2d(ThePoint, Lin1),
             ))
         }
     }
@@ -2407,7 +2461,9 @@ impl Lin2dTanPar {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPar_ctor_qualifiedcirc_lin2d(Qualified1, Lin1),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_ctor_qualifiedcirc_lin2d(
+                    Qualified1, Lin1,
+                ),
             ))
         }
     }
@@ -2415,7 +2471,9 @@ impl Lin2dTanPar {
     /// **Source:** `GccAna_Lin2dTanPar.hxx`:63 - `GccAna_Lin2dTanPar::IsDone()`
     /// Returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Lin2dTanPar_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Lin2dTanPar.hxx`:67 - `GccAna_Lin2dTanPar::NbSolutions()`
@@ -2423,7 +2481,7 @@ impl Lin2dTanPar {
     /// Raises NotDone if the construction algorithm  didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPar_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_nb_solutions(self as *const Self)
         })
     }
 
@@ -2440,7 +2498,10 @@ impl Lin2dTanPar {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPar_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2458,7 +2519,7 @@ impl Lin2dTanPar {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPar_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2487,7 +2548,7 @@ impl Lin2dTanPar {
         Pnt: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPar_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPar_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2514,11 +2575,11 @@ impl Lin2dTanPar {
 /// -   defining the construction of 2D line(s),
 /// -   implementing the construction algorithm, and
 /// -   consulting the result(s).
-pub use crate::ffi::GccAna_Lin2dTanPer as Lin2dTanPer;
+pub use crate::ffi_types::GccAna_Lin2dTanPer as Lin2dTanPer;
 
 unsafe impl crate::CppDeletable for Lin2dTanPer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Lin2dTanPer_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_destructor(ptr);
     }
 }
 
@@ -2533,7 +2594,7 @@ impl Lin2dTanPer {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_lin2d(ThePnt, TheLin),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_ctor_pnt2d_lin2d(ThePnt, TheLin),
             ))
         }
     }
@@ -2548,7 +2609,9 @@ impl Lin2dTanPer {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPer_ctor_pnt2d_circ2d(ThePnt, TheCircle),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_ctor_pnt2d_circ2d(
+                    ThePnt, TheCircle,
+                ),
             ))
         }
     }
@@ -2563,7 +2626,9 @@ impl Lin2dTanPer {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_lin2d(Qualified1, TheLin),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_ctor_qualifiedcirc_lin2d(
+                    Qualified1, TheLin,
+                ),
             ))
         }
     }
@@ -2578,7 +2643,9 @@ impl Lin2dTanPer {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPer_ctor_qualifiedcirc_circ2d(Qualified1, TheCircle),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_ctor_qualifiedcirc_circ2d(
+                    Qualified1, TheCircle,
+                ),
             ))
         }
     }
@@ -2586,7 +2653,9 @@ impl Lin2dTanPer {
     /// **Source:** `GccAna_Lin2dTanPer.hxx`:73 - `GccAna_Lin2dTanPer::IsDone()`
     /// Returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Lin2dTanPer_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Lin2dTanPer.hxx`:77 - `GccAna_Lin2dTanPer::NbSolutions()`
@@ -2594,7 +2663,7 @@ impl Lin2dTanPer {
     /// Raises NotDone if the construction algorithm didn't succeed.
     pub fn nb_solutions(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPer_nb_solutions(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_nb_solutions(self as *const Self)
         })
     }
 
@@ -2616,7 +2685,7 @@ impl Lin2dTanPer {
     pub fn which_qualifier(&self, Index: i32, Qualif1: &mut crate::gcc_ent::Position) {
         let mut Qualif1_i32_: i32 = (*Qualif1).into();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPer_which_qualifier(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_which_qualifier(
                 self as *const Self,
                 Index,
                 &mut Qualif1_i32_,
@@ -2638,7 +2707,10 @@ impl Lin2dTanPer {
     pub fn this_solution(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Lin2dTanPer_this_solution(self as *const Self, Index),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_this_solution(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2662,7 +2734,7 @@ impl Lin2dTanPer {
         Pnt: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPer_tangency1(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_tangency1(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2692,7 +2764,7 @@ impl Lin2dTanPer {
         PntSol: &mut crate::gp::Pnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_Lin2dTanPer_intersection2(
+            crate::ffi_extern_TKGeomAlgo::GccAna_Lin2dTanPer_intersection2(
                 self as *const Self,
                 Index,
                 ParSol,
@@ -2718,11 +2790,11 @@ impl Lin2dTanPer {
 /// - defining the construction of the bisecting curve,
 /// - implementing the construction algorithm, and
 /// - consulting the result.
-pub use crate::ffi::GccAna_LinPnt2dBisec as LinPnt2dBisec;
+pub use crate::ffi_types::GccAna_LinPnt2dBisec as LinPnt2dBisec;
 
 unsafe impl crate::CppDeletable for LinPnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_LinPnt2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_destructor(ptr);
     }
 }
 
@@ -2735,7 +2807,7 @@ impl LinPnt2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_LinPnt2dBisec_ctor_lin2d_pnt2d(Line1, Point2),
+                crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_ctor_lin2d_pnt2d(Line1, Point2),
             ))
         }
     }
@@ -2744,17 +2816,19 @@ impl LinPnt2dBisec {
     /// Returns True if the algorithm succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_LinPnt2dBisec_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `GccAna_LinPnt2dBisec.hxx`:52 - `GccAna_LinPnt2dBisec::ThisSolution()`
     /// Returns the number of solutions.
     /// It raises NotDone if the construction algorithm didn't succeed.
-    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi::HandleGccIntBisec> {
+    pub fn this_solution(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGccIntBisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_LinPnt2dBisec_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GccAna_LinPnt2dBisec_this_solution(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2765,11 +2839,11 @@ impl LinPnt2dBisec {
 // ========================
 
 /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution`
-pub use crate::ffi::GccAna_NoSolution as NoSolution;
+pub use crate::ffi_types::GccAna_NoSolution as NoSolution;
 
 unsafe impl crate::CppDeletable for NoSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_NoSolution_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_destructor(ptr);
     }
 }
 
@@ -2777,7 +2851,9 @@ impl NoSolution {
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::GccAna_NoSolution()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccAna_NoSolution_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_ctor(),
+            ))
         }
     }
 
@@ -2786,7 +2862,7 @@ impl NoSolution {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_NoSolution_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_ctor_charptr(c_theMessage.as_ptr()),
             ))
         }
     }
@@ -2797,7 +2873,7 @@ impl NoSolution {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_NoSolution_ctor_charptr2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -2806,9 +2882,11 @@ impl NoSolution {
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GccAna_NoSolution_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2816,23 +2894,27 @@ impl NoSolution {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        crate::check_void_result(unsafe { crate::ffi::GccAna_NoSolution_raise_sstream(theMessage) })
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_NoSolution_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -2841,12 +2923,12 @@ impl NoSolution {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_NoSolution_new_instance_charptr2(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -2858,7 +2940,7 @@ impl NoSolution {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GccAna_NoSolution_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2866,89 +2948,110 @@ impl NoSolution {
     }
 
     /// **Source:** `GccAna_NoSolution.hxx`:36 - `GccAna_NoSolution::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GccAna_NoSolution_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::GccAna_NoSolution_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GccAna_NoSolution_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GccAna_NoSolution_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GccAna_NoSolution_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccAnaNoSolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccAnaNoSolution> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccAna_NoSolution_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2956,7 +3059,7 @@ impl NoSolution {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GccAna_NoSolution_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2969,69 +3072,85 @@ impl NoSolution {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccAna_NoSolution_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_NoSolution_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGccAnaNoSolution;
+pub use crate::ffi_types::HandleGccAnaNoSolution;
 
 unsafe impl crate::CppDeletable for HandleGccAnaNoSolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGccAnaNoSolution_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_destructor(ptr);
     }
 }
 
 impl HandleGccAnaNoSolution {
     /// Dereference this Handle to access the underlying GccAna_NoSolution
-    pub fn get(&self) -> &crate::ffi::GccAna_NoSolution {
+    pub fn get(&self) -> &crate::ffi_types::GccAna_NoSolution {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGccAnaNoSolution_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GccAna_NoSolution
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GccAna_NoSolution {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccAna_NoSolution {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGccAnaNoSolution_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGccAnaNoSolution_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GccAna_NoSolution> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGccAnaNoSolution_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGccAnaNoSolution_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3051,11 +3170,11 @@ impl HandleGccAnaNoSolution {
 /// A Pnt2dBisec object provides a framework for:
 /// -   defining the construction of the bisecting line,
 /// -   implementing the construction algorithm, and consulting the result.
-pub use crate::ffi::GccAna_Pnt2dBisec as Pnt2dBisec;
+pub use crate::ffi_types::GccAna_Pnt2dBisec as Pnt2dBisec;
 
 unsafe impl crate::CppDeletable for Pnt2dBisec {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccAna_Pnt2dBisec_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_destructor(ptr);
     }
 }
 
@@ -3068,7 +3187,7 @@ impl Pnt2dBisec {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Pnt2dBisec_ctor_pnt2d2(Point1, Point2),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_ctor_pnt2d2(Point1, Point2),
             ))
         }
     }
@@ -3076,7 +3195,9 @@ impl Pnt2dBisec {
     /// **Source:** `GccAna_Pnt2dBisec.hxx`:44 - `GccAna_Pnt2dBisec::IsDone()`
     /// Returns true (this construction algorithm never fails).
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GccAna_Pnt2dBisec_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GccAna_Pnt2dBisec.hxx`:48 - `GccAna_Pnt2dBisec::HasSolution()`
@@ -3084,7 +3205,7 @@ impl Pnt2dBisec {
     /// two points are not coincident.
     pub fn has_solution(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccAna_Pnt2dBisec_has_solution(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_has_solution(self as *const Self)
         })
     }
 
@@ -3093,7 +3214,7 @@ impl Pnt2dBisec {
     pub fn this_solution(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccAna_Pnt2dBisec_this_solution(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GccAna_Pnt2dBisec_this_solution(self as *const Self),
             ))
         }
     }

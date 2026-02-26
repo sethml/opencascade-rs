@@ -940,7 +940,7 @@ fn collection_kind_description(kind: CollectionKind) -> &'static str {
 // =============================================================================
 
 /// Generate Rust FFI code for a collection type
-pub fn generate_rust_ffi_collections(collections: &[CollectionInfo]) -> (String, String) {
+pub fn generate_rust_ffi_collections<T: std::borrow::Borrow<CollectionInfo>>(collections: &[T]) -> (String, String) {
     if collections.is_empty() {
         return (String::new(), String::new());
     }
@@ -950,7 +950,8 @@ pub fn generate_rust_ffi_collections(collections: &[CollectionInfo]) -> (String,
     type_decls.push_str("// ========================\n");
     type_decls.push_str("// Collection types (opaque)\n");
     type_decls.push_str("// ========================\n\n");
-    for info in collections {
+    for item in collections {
+        let info = item.borrow();
         writeln!(type_decls, "#[repr(C)]").unwrap();
         writeln!(type_decls, "pub struct {} {{ _opaque: [u8; 0] }}", info.typedef_name).unwrap();
         // Iterator type
@@ -966,7 +967,8 @@ pub fn generate_rust_ffi_collections(collections: &[CollectionInfo]) -> (String,
     ffi_decls.push_str("    // Collection type wrappers\n");
     ffi_decls.push_str("    // ========================\n\n");
     
-    for info in collections {
+    for item in collections {
+        let info = item.borrow();
         ffi_decls.push_str(&generate_rust_ffi_collection(info));
     }
     

@@ -120,11 +120,11 @@ impl TryFrom<i32> for ParameterisationType {
 ///
 /// KeyWords :
 /// Convert, Circle, BSplineCurve, 2D .
-pub use crate::ffi::Convert_CircleToBSplineCurve as CircleToBSplineCurve;
+pub use crate::ffi_types::Convert_CircleToBSplineCurve as CircleToBSplineCurve;
 
 unsafe impl crate::CppDeletable for CircleToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_CircleToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -137,12 +137,7 @@ impl CircleToBSplineCurve {
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CircleToBSplineCurve_ctor_circ2d_parameterisationtype(
-                    C,
-                    Parameterisation.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_ctor_circ2d_parameterisationtype(C, Parameterisation.into())))
         }
     }
 
@@ -160,64 +155,57 @@ impl CircleToBSplineCurve {
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CircleToBSplineCurve_ctor_circ2d_real2_parameterisationtype(
-                    C,
-                    U1,
-                    U2,
-                    Parameterisation.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_ctor_circ2d_real2_parameterisationtype(C, U1, U2, Parameterisation.into())))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve(self as *const Self))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_Degree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:65 - `Convert_ConicToBSplineCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:69 - `Convert_ConicToBSplineCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_NbKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:73 - `Convert_ConicToBSplineCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -225,7 +213,10 @@ impl CircleToBSplineCurve {
     pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CircleToBSplineCurve_inherited_Pole(self as *const Self, Index),
+                crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_Pole(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -233,21 +224,27 @@ impl CircleToBSplineCurve {
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:87 - `Convert_ConicToBSplineCurve::Weight()`
     pub fn weight(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_Weight(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_Weight(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:94 - `Convert_ConicToBSplineCurve::Knot()`
     pub fn knot(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_Knot(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_Knot(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:101 - `Convert_ConicToBSplineCurve::Multiplicity()`
     pub fn multiplicity(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_Multiplicity(
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_Multiplicity(
                 self as *const Self,
                 Index,
             )
@@ -258,15 +255,15 @@ impl CircleToBSplineCurve {
     pub fn build_cos_and_sin(
         &self,
         Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CircleToBSplineCurve_inherited_BuildCosAndSin(
+            crate::ffi_extern_TKMath::Convert_CircleToBSplineCurve_inherited_BuildCosAndSin(
                 self as *const Self,
                 Parametrisation.into(),
                 CosNumerator,
@@ -289,11 +286,11 @@ impl CircleToBSplineCurve {
 /// BSplineCurve 2d.
 /// if possible, the continuity of the BSpline will be
 /// increased to more than C0.
-pub use crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d as CompBezierCurves2dToBSplineCurve2d;
+pub use crate::ffi_types::Convert_CompBezierCurves2dToBSplineCurve2d as CompBezierCurves2dToBSplineCurve2d;
 
 unsafe impl crate::CppDeletable for CompBezierCurves2dToBSplineCurve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_destructor(ptr);
     }
 }
 
@@ -317,7 +314,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     pub fn new_real(AngularTolerance: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_ctor_real(AngularTolerance),
+                crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_ctor_real(
+                    AngularTolerance,
+                ),
             ))
         }
     }
@@ -379,9 +378,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// must be taken with respect to the above, as this condition is
     /// not checked either when defining the sequence of Bezier
     /// curves or at the time of computation.
-    pub fn add_curve(&mut self, Poles: &crate::ffi::TColgp_Array1OfPnt2d) {
+    pub fn add_curve(&mut self, Poles: &crate::ffi_types::TColgp_Array1OfPnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_add_curve(
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_add_curve(
                 self as *mut Self,
                 Poles,
             )
@@ -412,7 +411,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// defining the Bezier curve sequence or at the time of computation.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_perform(self as *mut Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_perform(
+                self as *mut Self,
+            )
         })
     }
 
@@ -425,7 +426,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// condition is not checked and an error may therefore occur.
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_degree(
+                self as *const Self,
+            )
         })
     }
 
@@ -438,7 +441,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// condition is not checked and an error may therefore occur.
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_nb_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_nb_poles(
+                self as *const Self,
+            )
         })
     }
 
@@ -453,9 +458,12 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// computed in this framework.
     /// Particular care must be taken with respect to the above, as
     /// these conditions are not checked, and an error may occur.
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array1OfPnt2d) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array1OfPnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_poles(self as *const Self, Poles)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_poles(
+                self as *const Self,
+                Poles,
+            )
         })
     }
 
@@ -468,7 +476,9 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// condition is not checked and an error may therefore occur.
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_nb_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_nb_knots(
+                self as *const Self,
+            )
         })
     }
 
@@ -486,11 +496,11 @@ impl CompBezierCurves2dToBSplineCurve2d {
     /// these conditions are not checked, and an error may occur.
     pub fn knots_and_mults(
         &self,
-        Knots: &mut crate::ffi::TColStd_Array1OfReal,
-        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+        Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurves2dToBSplineCurve2d_knots_and_mults(
+            crate::ffi_extern_TKMath::Convert_CompBezierCurves2dToBSplineCurve2d_knots_and_mults(
                 self as *const Self,
                 Knots,
                 Mults,
@@ -513,11 +523,11 @@ impl CompBezierCurves2dToBSplineCurve2d {
 /// -   consulting the results.
 /// Warning
 /// Do not attempt to convert rational Bezier curves using this type of algorithm.
-pub use crate::ffi::Convert_CompBezierCurvesToBSplineCurve as CompBezierCurvesToBSplineCurve;
+pub use crate::ffi_types::Convert_CompBezierCurvesToBSplineCurve as CompBezierCurvesToBSplineCurve;
 
 unsafe impl crate::CppDeletable for CompBezierCurvesToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_CompBezierCurvesToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -541,7 +551,9 @@ impl CompBezierCurvesToBSplineCurve {
     pub fn new_real(AngularTolerance: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CompBezierCurvesToBSplineCurve_ctor_real(AngularTolerance),
+                crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_ctor_real(
+                    AngularTolerance,
+                ),
             ))
         }
     }
@@ -603,9 +615,12 @@ impl CompBezierCurvesToBSplineCurve {
     /// must be taken with respect to the above, as this condition is
     /// not checked either when defining the Bezier curve
     /// sequence or at the time of computation.
-    pub fn add_curve(&mut self, Poles: &crate::ffi::TColgp_Array1OfPnt) {
+    pub fn add_curve(&mut self, Poles: &crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_add_curve(self as *mut Self, Poles)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_add_curve(
+                self as *mut Self,
+                Poles,
+            )
         })
     }
 
@@ -633,7 +648,9 @@ impl CompBezierCurvesToBSplineCurve {
     /// defining the Bezier curve sequence or at the time of computation.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_perform(self as *mut Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_perform(
+                self as *mut Self,
+            )
         })
     }
 
@@ -646,7 +663,9 @@ impl CompBezierCurvesToBSplineCurve {
     /// condition is not checked and an error may  therefore occur.
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_degree(
+                self as *const Self,
+            )
         })
     }
 
@@ -659,7 +678,9 @@ impl CompBezierCurvesToBSplineCurve {
     /// condition is not checked and an error may therefore occur.
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_nb_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_nb_poles(
+                self as *const Self,
+            )
         })
     }
 
@@ -674,9 +695,12 @@ impl CompBezierCurvesToBSplineCurve {
     /// computed in this framework.
     /// Particular care must be taken with respect to the above, as
     /// these conditions are not checked, and an error may occur.
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_poles(self as *const Self, Poles)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_poles(
+                self as *const Self,
+                Poles,
+            )
         })
     }
 
@@ -689,7 +713,9 @@ impl CompBezierCurvesToBSplineCurve {
     /// condition is not checked and an error may therefore occur.
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_nb_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_nb_knots(
+                self as *const Self,
+            )
         })
     }
 
@@ -707,11 +733,11 @@ impl CompBezierCurvesToBSplineCurve {
     /// these conditions are not checked, and an error may occur.
     pub fn knots_and_mults(
         &self,
-        Knots: &mut crate::ffi::TColStd_Array1OfReal,
-        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+        Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompBezierCurvesToBSplineCurve_knots_and_mults(
+            crate::ffi_extern_TKMath::Convert_CompBezierCurvesToBSplineCurve_knots_and_mults(
                 self as *const Self,
                 Knots,
                 Mults,
@@ -748,11 +774,11 @@ impl CompBezierCurvesToBSplineCurve {
 /// myTrueIntervals->Value(n) and myTrueIntervals->Value(n+1)
 /// so that it adequately represents the function with the
 /// required continuity
-pub use crate::ffi::Convert_CompPolynomialToPoles as CompPolynomialToPoles;
+pub use crate::ffi_types::Convert_CompPolynomialToPoles as CompPolynomialToPoles;
 
 unsafe impl crate::CppDeletable for CompPolynomialToPoles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_CompPolynomialToPoles_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_destructor(ptr);
     }
 }
 
@@ -786,13 +812,13 @@ impl CompPolynomialToPoles {
         Continuity: i32,
         Dimension: i32,
         MaxDegree: i32,
-        NumCoeffPerCurve: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Coefficients: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialIntervals: &crate::ffi::HandleTColStdHArray2OfReal,
-        TrueIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
+        NumCoeffPerCurve: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        Coefficients: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialIntervals: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        TrueIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Convert_CompPolynomialToPoles_ctor_int4_handletcolstdharray1ofinteger_handletcolstdharray1ofreal_handletcolstdharray2ofreal_handletcolstdharray1ofreal(NumCurves, Continuity, Dimension, MaxDegree, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_ctor_int4_handletcolstdharray1ofinteger_handletcolstdharray1ofreal_handletcolstdharray2ofreal_handletcolstdharray1ofreal(NumCurves, Continuity, Dimension, MaxDegree, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)))
         }
     }
 
@@ -803,14 +829,14 @@ impl CompPolynomialToPoles {
         NumCurves: i32,
         Dimension: i32,
         MaxDegree: i32,
-        Continuity: &crate::ffi::TColStd_Array1OfInteger,
-        NumCoeffPerCurve: &crate::ffi::TColStd_Array1OfInteger,
-        Coefficients: &crate::ffi::TColStd_Array1OfReal,
-        PolynomialIntervals: &crate::ffi::TColStd_Array2OfReal,
-        TrueIntervals: &crate::ffi::TColStd_Array1OfReal,
+        Continuity: &crate::ffi_types::TColStd_Array1OfInteger,
+        NumCoeffPerCurve: &crate::ffi_types::TColStd_Array1OfInteger,
+        Coefficients: &crate::ffi_types::TColStd_Array1OfReal,
+        PolynomialIntervals: &crate::ffi_types::TColStd_Array2OfReal,
+        TrueIntervals: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Convert_CompPolynomialToPoles_ctor_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(NumCurves, Dimension, MaxDegree, Continuity, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_ctor_int3_array1ofinteger2_array1ofreal_array2ofreal_array1ofreal(NumCurves, Dimension, MaxDegree, Continuity, NumCoeffPerCurve, Coefficients, PolynomialIntervals, TrueIntervals)))
         }
     }
 
@@ -820,13 +846,13 @@ impl CompPolynomialToPoles {
         Dimension: i32,
         MaxDegree: i32,
         Degree: i32,
-        Coefficients: &crate::ffi::TColStd_Array1OfReal,
-        PolynomialIntervals: &crate::ffi::TColStd_Array1OfReal,
-        TrueIntervals: &crate::ffi::TColStd_Array1OfReal,
+        Coefficients: &crate::ffi_types::TColStd_Array1OfReal,
+        PolynomialIntervals: &crate::ffi_types::TColStd_Array1OfReal,
+        TrueIntervals: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CompPolynomialToPoles_ctor_int3_array1ofreal3(
+                crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_ctor_int3_array1ofreal3(
                     Dimension,
                     MaxDegree,
                     Degree,
@@ -842,7 +868,7 @@ impl CompPolynomialToPoles {
     /// number of poles of the n-dimensional BSpline
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_nb_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_nb_poles(self as *const Self)
         })
     }
 
@@ -850,16 +876,19 @@ impl CompPolynomialToPoles {
     /// returns the poles of the n-dimensional BSpline
     /// in the following format :
     /// [1..NumPoles][1..Dimension]
-    pub fn poles(&self, Poles: &mut crate::ffi::HandleTColStdHArray2OfReal) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::HandleTColStdHArray2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_poles(self as *const Self, Poles)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_poles(
+                self as *const Self,
+                Poles,
+            )
         })
     }
 
     /// **Source:** `Convert_CompPolynomialToPoles.hxx`:120 - `Convert_CompPolynomialToPoles::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_degree(self as *const Self)
         })
     }
 
@@ -867,30 +896,33 @@ impl CompPolynomialToPoles {
     /// Degree of the n-dimensional Bspline
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_nb_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_nb_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_CompPolynomialToPoles.hxx`:126 - `Convert_CompPolynomialToPoles::Knots()`
     /// Knots of the n-dimensional Bspline
-    pub fn knots(&self, K: &mut crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn knots(&self, K: &mut crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_knots(self as *const Self, K)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_knots(self as *const Self, K)
         })
     }
 
     /// **Source:** `Convert_CompPolynomialToPoles.hxx`:129 - `Convert_CompPolynomialToPoles::Multiplicities()`
     /// Multiplicities of the knots in the BSpline
-    pub fn multiplicities(&self, M: &mut crate::ffi::HandleTColStdHArray1OfInteger) {
+    pub fn multiplicities(&self, M: &mut crate::ffi_types::HandleTColStdHArray1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_multiplicities(self as *const Self, M)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_multiplicities(
+                self as *const Self,
+                M,
+            )
         })
     }
 
     /// **Source:** `Convert_CompPolynomialToPoles.hxx`:131 - `Convert_CompPolynomialToPoles::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CompPolynomialToPoles_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CompPolynomialToPoles_is_done(self as *const Self)
         })
     }
 }
@@ -912,11 +944,11 @@ impl CompPolynomialToPoles {
 /// [0, 2PI].
 /// KeyWords :
 /// Convert, Cone, BSplineSurface.
-pub use crate::ffi::Convert_ConeToBSplineSurface as ConeToBSplineSurface;
+pub use crate::ffi_types::Convert_ConeToBSplineSurface as ConeToBSplineSurface;
 
 unsafe impl crate::CppDeletable for ConeToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_ConeToBSplineSurface_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_destructor(ptr);
     }
 }
 
@@ -936,7 +968,9 @@ impl ConeToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ConeToBSplineSurface_ctor_cone_real4(C, U1, U2, V1, V2),
+                crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_ctor_cone_real4(
+                    C, U1, U2, V1, V2,
+                ),
             ))
         }
     }
@@ -949,7 +983,7 @@ impl ConeToBSplineSurface {
     pub fn new_cone_real2(C: &crate::gp::Cone, V1: f64, V2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ConeToBSplineSurface_ctor_cone_real2(C, V1, V2),
+                crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_ctor_cone_real2(C, V1, V2),
             ))
         }
     }
@@ -957,7 +991,7 @@ impl ConeToBSplineSurface {
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
         }
     }
 
@@ -966,63 +1000,79 @@ impl ConeToBSplineSurface {
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_UDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_UDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:69 - `Convert_ElementarySurfaceToBSplineSurface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_VDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_VDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:71 - `Convert_ElementarySurfaceToBSplineSurface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_NbUPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:75 - `Convert_ElementarySurfaceToBSplineSurface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_NbVPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:77 - `Convert_ElementarySurfaceToBSplineSurface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_NbUKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_NbUKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:81 - `Convert_ElementarySurfaceToBSplineSurface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_NbVKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_NbVKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:83 - `Convert_ElementarySurfaceToBSplineSurface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_IsUPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:87 - `Convert_ElementarySurfaceToBSplineSurface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_IsVPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1030,7 +1080,7 @@ impl ConeToBSplineSurface {
     pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ConeToBSplineSurface_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_Pole(
                     self as *const Self,
                     UIndex,
                     VIndex,
@@ -1042,7 +1092,7 @@ impl ConeToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:109 - `Convert_ElementarySurfaceToBSplineSurface::Weight()`
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_Weight(
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_Weight(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -1053,21 +1103,27 @@ impl ConeToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:114 - `Convert_ElementarySurfaceToBSplineSurface::UKnot()`
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_UKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_UKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:118 - `Convert_ElementarySurfaceToBSplineSurface::VKnot()`
     pub fn v_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_VKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_VKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:122 - `Convert_ElementarySurfaceToBSplineSurface::UMultiplicity()`
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_UMultiplicity(
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_UMultiplicity(
                 self as *const Self,
                 UIndex,
             )
@@ -1077,7 +1133,7 @@ impl ConeToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:126 - `Convert_ElementarySurfaceToBSplineSurface::VMultiplicity()`
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConeToBSplineSurface_inherited_VMultiplicity(
+            crate::ffi_extern_TKMath::Convert_ConeToBSplineSurface_inherited_VMultiplicity(
                 self as *const Self,
                 VIndex,
             )
@@ -1113,11 +1169,11 @@ impl ConeToBSplineSurface {
 /// space.
 /// KeyWords :
 /// Convert, Conic, BSplineCurve, 2D.
-pub use crate::ffi::Convert_ConicToBSplineCurve as ConicToBSplineCurve;
+pub use crate::ffi_types::Convert_ConicToBSplineCurve as ConicToBSplineCurve;
 
 unsafe impl crate::CppDeletable for ConicToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_ConicToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -1127,7 +1183,7 @@ impl ConicToBSplineCurve {
     /// computed in this framework.
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_degree(self as *const Self)
         })
     }
 
@@ -1136,7 +1192,7 @@ impl ConicToBSplineCurve {
     /// data is computed in this framework.
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_nb_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_nb_poles(self as *const Self)
         })
     }
 
@@ -1145,7 +1201,7 @@ impl ConicToBSplineCurve {
     /// data is computed in this framework.
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_nb_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_nb_knots(self as *const Self)
         })
     }
 
@@ -1154,7 +1210,7 @@ impl ConicToBSplineCurve {
     /// this framework is periodic.
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_is_periodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_is_periodic(self as *const Self)
         })
     }
 
@@ -1167,7 +1223,10 @@ impl ConicToBSplineCurve {
     pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ConicToBSplineCurve_pole(self as *const Self, Index),
+                crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_pole(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -1180,7 +1239,7 @@ impl ConicToBSplineCurve {
     /// the poles table of the BSpline curve whose data is computed in this framework.
     pub fn weight(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_weight(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_weight(self as *const Self, Index)
         })
     }
 
@@ -1192,7 +1251,7 @@ impl ConicToBSplineCurve {
     /// the knots table of the BSpline curve whose data is computed in this framework.
     pub fn knot(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_knot(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_knot(self as *const Self, Index)
         })
     }
 
@@ -1204,7 +1263,10 @@ impl ConicToBSplineCurve {
     /// the knots table of the BSpline curve whose data is computed in this framework.
     pub fn multiplicity(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_multiplicity(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_multiplicity(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -1212,15 +1274,15 @@ impl ConicToBSplineCurve {
     pub fn build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(
         &self,
         Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
         })
     }
 
@@ -1230,15 +1292,15 @@ impl ConicToBSplineCurve {
         Parametrisation: crate::convert::ParameterisationType,
         UFirst: f64,
         ULast: f64,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), UFirst, ULast, CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
+            crate::ffi_extern_TKMath::Convert_ConicToBSplineCurve_build_cos_and_sin_parameterisationtype_real2_handletcolstdharray1ofreal3_int_handletcolstdharray1ofreal_handletcolstdharray1ofinteger(self as *const Self, Parametrisation.into(), UFirst, ULast, CosNumerator, SinNumerator, Denominator, Degree, Knots, Mults)
         })
     }
 }
@@ -1258,11 +1320,11 @@ impl ConicToBSplineCurve {
 /// cylinder's axis). The U parametrization range is U [0, 2PI].
 /// KeyWords :
 /// Convert, Cylinder, BSplineSurface.
-pub use crate::ffi::Convert_CylinderToBSplineSurface as CylinderToBSplineSurface;
+pub use crate::ffi_types::Convert_CylinderToBSplineSurface as CylinderToBSplineSurface;
 
 unsafe impl crate::CppDeletable for CylinderToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_CylinderToBSplineSurface_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_destructor(ptr);
     }
 }
 
@@ -1282,7 +1344,7 @@ impl CylinderToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CylinderToBSplineSurface_ctor_cylinder_real4(
+                crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_ctor_cylinder_real4(
                     Cyl, U1, U2, V1, V2,
                 ),
             ))
@@ -1301,7 +1363,9 @@ impl CylinderToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CylinderToBSplineSurface_ctor_cylinder_real2(Cyl, V1, V2),
+                crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_ctor_cylinder_real2(
+                    Cyl, V1, V2,
+                ),
             ))
         }
     }
@@ -1309,7 +1373,7 @@ impl CylinderToBSplineSurface {
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
         }
     }
 
@@ -1318,63 +1382,79 @@ impl CylinderToBSplineSurface {
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_UDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_UDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:69 - `Convert_ElementarySurfaceToBSplineSurface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_VDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_VDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:71 - `Convert_ElementarySurfaceToBSplineSurface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_NbUPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:75 - `Convert_ElementarySurfaceToBSplineSurface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_NbVPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:77 - `Convert_ElementarySurfaceToBSplineSurface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbUKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_NbUKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:81 - `Convert_ElementarySurfaceToBSplineSurface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_NbVKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_NbVKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:83 - `Convert_ElementarySurfaceToBSplineSurface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_IsUPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:87 - `Convert_ElementarySurfaceToBSplineSurface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_IsVPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1382,7 +1462,7 @@ impl CylinderToBSplineSurface {
     pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_CylinderToBSplineSurface_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_Pole(
                     self as *const Self,
                     UIndex,
                     VIndex,
@@ -1394,7 +1474,7 @@ impl CylinderToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:109 - `Convert_ElementarySurfaceToBSplineSurface::Weight()`
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_Weight(
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_Weight(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -1405,7 +1485,7 @@ impl CylinderToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:114 - `Convert_ElementarySurfaceToBSplineSurface::UKnot()`
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_UKnot(
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_UKnot(
                 self as *const Self,
                 UIndex,
             )
@@ -1415,7 +1495,7 @@ impl CylinderToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:118 - `Convert_ElementarySurfaceToBSplineSurface::VKnot()`
     pub fn v_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_VKnot(
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_VKnot(
                 self as *const Self,
                 UIndex,
             )
@@ -1425,7 +1505,7 @@ impl CylinderToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:122 - `Convert_ElementarySurfaceToBSplineSurface::UMultiplicity()`
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_UMultiplicity(
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_UMultiplicity(
                 self as *const Self,
                 UIndex,
             )
@@ -1435,7 +1515,7 @@ impl CylinderToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:126 - `Convert_ElementarySurfaceToBSplineSurface::VMultiplicity()`
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_CylinderToBSplineSurface_inherited_VMultiplicity(
+            crate::ffi_extern_TKMath::Convert_CylinderToBSplineSurface_inherited_VMultiplicity(
                 self as *const Self,
                 VIndex,
             )
@@ -1477,11 +1557,11 @@ impl CylinderToBSplineSurface {
 /// its weights, its knots and their multiplicity.
 /// KeyWords :
 /// Convert, ElementarySurface, BSplineSurface.
-pub use crate::ffi::Convert_ElementarySurfaceToBSplineSurface as ElementarySurfaceToBSplineSurface;
+pub use crate::ffi_types::Convert_ElementarySurfaceToBSplineSurface as ElementarySurfaceToBSplineSurface;
 
 unsafe impl crate::CppDeletable for ElementarySurfaceToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_ElementarySurfaceToBSplineSurface_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_destructor(ptr);
     }
 }
 
@@ -1489,7 +1569,9 @@ impl ElementarySurfaceToBSplineSurface {
     /// **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_u_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_u_degree(
+                self as *const Self,
+            )
         })
     }
 
@@ -1498,14 +1580,18 @@ impl ElementarySurfaceToBSplineSurface {
     /// the BSpline surface whose data is computed in this framework.
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_v_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_v_degree(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:71 - `Convert_ElementarySurfaceToBSplineSurface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_nb_u_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_nb_u_poles(
+                self as *const Self,
+            )
         })
     }
 
@@ -1514,14 +1600,18 @@ impl ElementarySurfaceToBSplineSurface {
     /// direction of the BSpline surface whose data is computed in this framework.
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_nb_v_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_nb_v_poles(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:77 - `Convert_ElementarySurfaceToBSplineSurface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_nb_u_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_nb_u_knots(
+                self as *const Self,
+            )
         })
     }
 
@@ -1530,14 +1620,18 @@ impl ElementarySurfaceToBSplineSurface {
     /// direction of the BSpline surface whose data is computed in this framework .
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_nb_v_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_nb_v_knots(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:83 - `Convert_ElementarySurfaceToBSplineSurface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_is_u_periodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1546,7 +1640,9 @@ impl ElementarySurfaceToBSplineSurface {
     /// in this framework is periodic in the u or v parametric direction.
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_is_v_periodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1563,7 +1659,7 @@ impl ElementarySurfaceToBSplineSurface {
     pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ElementarySurfaceToBSplineSurface_pole(
+                crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_pole(
                     self as *const Self,
                     UIndex,
                     VIndex,
@@ -1584,7 +1680,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// parametric direction.
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_weight(
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_weight(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -1597,7 +1693,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// Raised if UIndex < 1 or UIndex > NbUKnots.
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_u_knot(
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_u_knot(
                 self as *const Self,
                 UIndex,
             )
@@ -1609,7 +1705,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// Raised if VIndex < 1 or VIndex > NbVKnots.
     pub fn v_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_v_knot(
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_v_knot(
                 self as *const Self,
                 UIndex,
             )
@@ -1621,7 +1717,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// Raised if UIndex < 1 or UIndex > NbUKnots.
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_u_multiplicity(
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_u_multiplicity(
                 self as *const Self,
                 UIndex,
             )
@@ -1633,7 +1729,7 @@ impl ElementarySurfaceToBSplineSurface {
     /// Raised if VIndex < 1 or VIndex > NbVKnots.
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ElementarySurfaceToBSplineSurface_v_multiplicity(
+            crate::ffi_extern_TKMath::Convert_ElementarySurfaceToBSplineSurface_v_multiplicity(
                 self as *const Self,
                 VIndex,
             )
@@ -1656,11 +1752,11 @@ impl ElementarySurfaceToBSplineSurface {
 /// the ellipse. The parametrization range is U [0, 2PI].
 /// KeyWords :
 /// Convert, Ellipse, BSplineCurve, 2D .
-pub use crate::ffi::Convert_EllipseToBSplineCurve as EllipseToBSplineCurve;
+pub use crate::ffi_types::Convert_EllipseToBSplineCurve as EllipseToBSplineCurve;
 
 unsafe impl crate::CppDeletable for EllipseToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_EllipseToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -1673,12 +1769,7 @@ impl EllipseToBSplineCurve {
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_EllipseToBSplineCurve_ctor_elips2d_parameterisationtype(
-                    E,
-                    Parameterisation.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_ctor_elips2d_parameterisationtype(E, Parameterisation.into())))
         }
     }
 
@@ -1695,64 +1786,57 @@ impl EllipseToBSplineCurve {
         Parameterisation: crate::convert::ParameterisationType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_EllipseToBSplineCurve_ctor_elips2d_real2_parameterisationtype(
-                    E,
-                    U1,
-                    U2,
-                    Parameterisation.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_ctor_elips2d_real2_parameterisationtype(E, U1, U2, Parameterisation.into())))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve(self as *const Self))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_Degree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:65 - `Convert_ConicToBSplineCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:69 - `Convert_ConicToBSplineCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_NbKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:73 - `Convert_ConicToBSplineCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1760,7 +1844,7 @@ impl EllipseToBSplineCurve {
     pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_EllipseToBSplineCurve_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_Pole(
                     self as *const Self,
                     Index,
                 ),
@@ -1771,21 +1855,27 @@ impl EllipseToBSplineCurve {
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:87 - `Convert_ConicToBSplineCurve::Weight()`
     pub fn weight(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_Weight(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_Weight(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:94 - `Convert_ConicToBSplineCurve::Knot()`
     pub fn knot(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_Knot(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_Knot(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:101 - `Convert_ConicToBSplineCurve::Multiplicity()`
     pub fn multiplicity(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_Multiplicity(
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_Multiplicity(
                 self as *const Self,
                 Index,
             )
@@ -1796,15 +1886,15 @@ impl EllipseToBSplineCurve {
     pub fn build_cos_and_sin(
         &self,
         Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_EllipseToBSplineCurve_inherited_BuildCosAndSin(
+            crate::ffi_extern_TKMath::Convert_EllipseToBSplineCurve_inherited_BuildCosAndSin(
                 self as *const Self,
                 Parametrisation.into(),
                 CosNumerator,
@@ -1827,11 +1917,11 @@ impl EllipseToBSplineCurve {
 /// that are have continuity CM to an
 /// Bspline Surface that has continuity
 /// CM
-pub use crate::ffi::Convert_GridPolynomialToPoles as GridPolynomialToPoles;
+pub use crate::ffi_types::Convert_GridPolynomialToPoles as GridPolynomialToPoles;
 
 unsafe impl crate::CppDeletable for GridPolynomialToPoles {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_GridPolynomialToPoles_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_destructor(ptr);
     }
 }
 
@@ -1848,13 +1938,13 @@ impl GridPolynomialToPoles {
     pub fn new_int2_handletcolstdharray1ofinteger_handletcolstdharray1ofreal3(
         MaxUDegree: i32,
         MaxVDegree: i32,
-        NumCoeff: &crate::ffi::HandleTColStdHArray1OfInteger,
-        Coefficients: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialUIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
+        NumCoeff: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        Coefficients: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialUIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialVIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_ctor_int2_handletcolstdharray1ofinteger_handletcolstdharray1ofreal3(MaxUDegree, MaxVDegree, NumCoeff, Coefficients, PolynomialUIntervals, PolynomialVIntervals)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_ctor_int2_handletcolstdharray1ofinteger_handletcolstdharray1ofreal3(MaxUDegree, MaxVDegree, NumCoeff, Coefficients, PolynomialUIntervals, PolynomialVIntervals)))
         }
     }
 
@@ -1880,15 +1970,15 @@ impl GridPolynomialToPoles {
         VContinuity: i32,
         MaxUDegree: i32,
         MaxVDegree: i32,
-        NumCoeffPerSurface: &crate::ffi::HandleTColStdHArray2OfInteger,
-        Coefficients: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialUIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        TrueUIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        TrueVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
+        NumCoeffPerSurface: &crate::ffi_types::HandleTColStdHArray2OfInteger,
+        Coefficients: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialUIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialVIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TrueUIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TrueVIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_ctor_int6_handletcolstdharray2ofinteger_handletcolstdharray1ofreal5(NbUSurfaces, NBVSurfaces, UContinuity, VContinuity, MaxUDegree, MaxVDegree, NumCoeffPerSurface, Coefficients, PolynomialUIntervals, PolynomialVIntervals, TrueUIntervals, TrueVIntervals)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_ctor_int6_handletcolstdharray2ofinteger_handletcolstdharray1ofreal5(NbUSurfaces, NBVSurfaces, UContinuity, VContinuity, MaxUDegree, MaxVDegree, NumCoeffPerSurface, Coefficients, PolynomialUIntervals, PolynomialVIntervals, TrueUIntervals, TrueVIntervals)))
         }
     }
 
@@ -1899,15 +1989,15 @@ impl GridPolynomialToPoles {
         VContinuity: i32,
         MaxUDegree: i32,
         MaxVDegree: i32,
-        NumCoeffPerSurface: &crate::ffi::HandleTColStdHArray2OfInteger,
-        Coefficients: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialUIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        PolynomialVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        TrueUIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
-        TrueVIntervals: &crate::ffi::HandleTColStdHArray1OfReal,
+        NumCoeffPerSurface: &crate::ffi_types::HandleTColStdHArray2OfInteger,
+        Coefficients: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialUIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        PolynomialVIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TrueUIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TrueVIntervals: &crate::ffi_types::HandleTColStdHArray1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_perform(
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_perform(
                 self as *mut Self,
                 UContinuity,
                 VContinuity,
@@ -1926,22 +2016,22 @@ impl GridPolynomialToPoles {
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:94 - `Convert_GridPolynomialToPoles::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_nb_u_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_nb_u_poles(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:96 - `Convert_GridPolynomialToPoles::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_nb_v_poles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_nb_v_poles(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:99 - `Convert_GridPolynomialToPoles::Poles()`
     /// returns the poles of the BSpline Surface
-    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray2OfPnt {
+    pub fn poles(&self) -> &crate::ffi_types::HandleTColgpHArray2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_poles(
+            &*(crate::check_result(crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_poles(
                 self as *const Self,
             )))
         }
@@ -1950,75 +2040,83 @@ impl GridPolynomialToPoles {
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:101 - `Convert_GridPolynomialToPoles::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_u_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_u_degree(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:103 - `Convert_GridPolynomialToPoles::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_v_degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_v_degree(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:105 - `Convert_GridPolynomialToPoles::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_nb_u_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_nb_u_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:107 - `Convert_GridPolynomialToPoles::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_nb_v_knots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_nb_v_knots(self as *const Self)
         })
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:110 - `Convert_GridPolynomialToPoles::UKnots()`
     /// Knots in the U direction
-    pub fn u_knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    pub fn u_knots(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_u_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_u_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:113 - `Convert_GridPolynomialToPoles::VKnots()`
     /// Knots in the V direction
-    pub fn v_knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    pub fn v_knots(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_v_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_v_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:116 - `Convert_GridPolynomialToPoles::UMultiplicities()`
     /// Multiplicities of the knots in the U direction
-    pub fn u_multiplicities(&self) -> &crate::ffi::HandleTColStdHArray1OfInteger {
+    pub fn u_multiplicities(&self) -> &crate::ffi_types::HandleTColStdHArray1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_u_multiplicities(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_u_multiplicities(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:119 - `Convert_GridPolynomialToPoles::VMultiplicities()`
     /// Multiplicities of the knots in the V direction
-    pub fn v_multiplicities(&self) -> &crate::ffi::HandleTColStdHArray1OfInteger {
+    pub fn v_multiplicities(&self) -> &crate::ffi_types::HandleTColStdHArray1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Convert_GridPolynomialToPoles_v_multiplicities(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_v_multiplicities(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Convert_GridPolynomialToPoles.hxx`:121 - `Convert_GridPolynomialToPoles::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_GridPolynomialToPoles_is_done(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_GridPolynomialToPoles_is_done(self as *const Self)
         })
     }
 }
@@ -2038,11 +2136,11 @@ impl GridPolynomialToPoles {
 /// of the hyperbola.
 /// KeyWords :
 /// Convert, Hyperbola, BSplineCurve, 2D .
-pub use crate::ffi::Convert_HyperbolaToBSplineCurve as HyperbolaToBSplineCurve;
+pub use crate::ffi_types::Convert_HyperbolaToBSplineCurve as HyperbolaToBSplineCurve;
 
 unsafe impl crate::CppDeletable for HyperbolaToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_HyperbolaToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -2054,7 +2152,9 @@ impl HyperbolaToBSplineCurve {
     pub fn new_hypr2d_real2(H: &crate::gp::Hypr2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_HyperbolaToBSplineCurve_ctor_hypr2d_real2(H, U1, U2),
+                crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_ctor_hypr2d_real2(
+                    H, U1, U2,
+                ),
             ))
         }
     }
@@ -2062,50 +2162,50 @@ impl HyperbolaToBSplineCurve {
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve(self as *const Self))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_Degree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:65 - `Convert_ConicToBSplineCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:69 - `Convert_ConicToBSplineCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_NbKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:73 - `Convert_ConicToBSplineCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -2113,7 +2213,7 @@ impl HyperbolaToBSplineCurve {
     pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_Pole(
                     self as *const Self,
                     Index,
                 ),
@@ -2124,21 +2224,27 @@ impl HyperbolaToBSplineCurve {
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:87 - `Convert_ConicToBSplineCurve::Weight()`
     pub fn weight(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Weight(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_Weight(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:94 - `Convert_ConicToBSplineCurve::Knot()`
     pub fn knot(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Knot(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_Knot(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:101 - `Convert_ConicToBSplineCurve::Multiplicity()`
     pub fn multiplicity(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_Multiplicity(
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_Multiplicity(
                 self as *const Self,
                 Index,
             )
@@ -2149,15 +2255,15 @@ impl HyperbolaToBSplineCurve {
     pub fn build_cos_and_sin(
         &self,
         Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_HyperbolaToBSplineCurve_inherited_BuildCosAndSin(
+            crate::ffi_extern_TKMath::Convert_HyperbolaToBSplineCurve_inherited_BuildCosAndSin(
                 self as *const Self,
                 Parametrisation.into(),
                 CosNumerator,
@@ -2185,11 +2291,11 @@ impl HyperbolaToBSplineCurve {
 /// the directrix and F is the focal length.
 /// KeyWords :
 /// Convert, Parabola, BSplineCurve, 2D .
-pub use crate::ffi::Convert_ParabolaToBSplineCurve as ParabolaToBSplineCurve;
+pub use crate::ffi_types::Convert_ParabolaToBSplineCurve as ParabolaToBSplineCurve;
 
 unsafe impl crate::CppDeletable for ParabolaToBSplineCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_ParabolaToBSplineCurve_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_destructor(ptr);
     }
 }
 
@@ -2201,7 +2307,9 @@ impl ParabolaToBSplineCurve {
     pub fn new_parab2d_real2(Prb: &crate::gp::Parab2d, U1: f64, U2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ParabolaToBSplineCurve_ctor_parab2d_real2(Prb, U1, U2),
+                crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_ctor_parab2d_real2(
+                    Prb, U1, U2,
+                ),
             ))
         }
     }
@@ -2209,50 +2317,50 @@ impl ParabolaToBSplineCurve {
     /// Upcast to Convert_ConicToBSplineCurve
     pub fn as_conic_to_b_spline_curve(&self) -> &ConicToBSplineCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve(self as *const Self))
         }
     }
 
     /// Upcast to Convert_ConicToBSplineCurve (mutable)
     pub fn as_conic_to_b_spline_curve_mut(&mut self) -> &mut ConicToBSplineCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_as_Convert_ConicToBSplineCurve_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:61 - `Convert_ConicToBSplineCurve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_Degree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:65 - `Convert_ConicToBSplineCurve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:69 - `Convert_ConicToBSplineCurve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_NbKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:73 - `Convert_ConicToBSplineCurve::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -2260,7 +2368,7 @@ impl ParabolaToBSplineCurve {
     pub fn pole(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_Pole(
                     self as *const Self,
                     Index,
                 ),
@@ -2271,21 +2379,27 @@ impl ParabolaToBSplineCurve {
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:87 - `Convert_ConicToBSplineCurve::Weight()`
     pub fn weight(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Weight(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_Weight(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:94 - `Convert_ConicToBSplineCurve::Knot()`
     pub fn knot(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Knot(self as *const Self, Index)
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_Knot(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ConicToBSplineCurve.hxx`:101 - `Convert_ConicToBSplineCurve::Multiplicity()`
     pub fn multiplicity(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_Multiplicity(
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_Multiplicity(
                 self as *const Self,
                 Index,
             )
@@ -2296,15 +2410,15 @@ impl ParabolaToBSplineCurve {
     pub fn build_cos_and_sin(
         &self,
         Parametrisation: crate::convert::ParameterisationType,
-        CosNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        SinNumerator: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Denominator: &mut crate::ffi::HandleTColStdHArray1OfReal,
+        CosNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        SinNumerator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Denominator: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
         Degree: &mut i32,
-        Knots: &mut crate::ffi::HandleTColStdHArray1OfReal,
-        Mults: &mut crate::ffi::HandleTColStdHArray1OfInteger,
+        Knots: &mut crate::ffi_types::HandleTColStdHArray1OfReal,
+        Mults: &mut crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Convert_ParabolaToBSplineCurve_inherited_BuildCosAndSin(
+            crate::ffi_extern_TKMath::Convert_ParabolaToBSplineCurve_inherited_BuildCosAndSin(
                 self as *const Self,
                 Parametrisation.into(),
                 CosNumerator,
@@ -2334,11 +2448,11 @@ impl ParabolaToBSplineCurve {
 /// V [-PI/2, PI/2].
 /// KeyWords :
 /// Convert, Sphere, BSplineSurface.
-pub use crate::ffi::Convert_SphereToBSplineSurface as SphereToBSplineSurface;
+pub use crate::ffi_types::Convert_SphereToBSplineSurface as SphereToBSplineSurface;
 
 unsafe impl crate::CppDeletable for SphereToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_SphereToBSplineSurface_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_destructor(ptr);
     }
 }
 
@@ -2358,7 +2472,9 @@ impl SphereToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere_real4(Sph, U1, U2, V1, V2),
+                crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_ctor_sphere_real4(
+                    Sph, U1, U2, V1, V2,
+                ),
             ))
         }
     }
@@ -2378,7 +2494,7 @@ impl SphereToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere_real2_bool(
+                crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_ctor_sphere_real2_bool(
                     Sph, Param1, Param2, UTrim,
                 ),
             ))
@@ -2391,7 +2507,7 @@ impl SphereToBSplineSurface {
     pub fn new_sphere(Sph: &crate::gp::Sphere) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_SphereToBSplineSurface_ctor_sphere(Sph),
+                crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_ctor_sphere(Sph),
             ))
         }
     }
@@ -2414,7 +2530,7 @@ impl SphereToBSplineSurface {
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
         }
     }
 
@@ -2423,63 +2539,79 @@ impl SphereToBSplineSurface {
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_UDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_UDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:69 - `Convert_ElementarySurfaceToBSplineSurface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_VDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_VDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:71 - `Convert_ElementarySurfaceToBSplineSurface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_NbUPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:75 - `Convert_ElementarySurfaceToBSplineSurface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_NbVPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:77 - `Convert_ElementarySurfaceToBSplineSurface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_NbUKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_NbUKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:81 - `Convert_ElementarySurfaceToBSplineSurface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_NbVKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_NbVKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:83 - `Convert_ElementarySurfaceToBSplineSurface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_IsUPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:87 - `Convert_ElementarySurfaceToBSplineSurface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_IsVPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -2487,7 +2619,7 @@ impl SphereToBSplineSurface {
     pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_SphereToBSplineSurface_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_Pole(
                     self as *const Self,
                     UIndex,
                     VIndex,
@@ -2499,7 +2631,7 @@ impl SphereToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:109 - `Convert_ElementarySurfaceToBSplineSurface::Weight()`
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_Weight(
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_Weight(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -2510,21 +2642,27 @@ impl SphereToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:114 - `Convert_ElementarySurfaceToBSplineSurface::UKnot()`
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_UKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_UKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:118 - `Convert_ElementarySurfaceToBSplineSurface::VKnot()`
     pub fn v_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_VKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_VKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:122 - `Convert_ElementarySurfaceToBSplineSurface::UMultiplicity()`
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_UMultiplicity(
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_UMultiplicity(
                 self as *const Self,
                 UIndex,
             )
@@ -2534,7 +2672,7 @@ impl SphereToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:126 - `Convert_ElementarySurfaceToBSplineSurface::VMultiplicity()`
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_SphereToBSplineSurface_inherited_VMultiplicity(
+            crate::ffi_extern_TKMath::Convert_SphereToBSplineSurface_inherited_VMultiplicity(
                 self as *const Self,
                 VIndex,
             )
@@ -2558,11 +2696,11 @@ impl SphereToBSplineSurface {
 /// the Torus. The parametrization range is U [0, 2PI], V [0, 2PI].
 /// KeyWords :
 /// Convert, Torus, BSplineSurface.
-pub use crate::ffi::Convert_TorusToBSplineSurface as TorusToBSplineSurface;
+pub use crate::ffi_types::Convert_TorusToBSplineSurface as TorusToBSplineSurface;
 
 unsafe impl crate::CppDeletable for TorusToBSplineSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Convert_TorusToBSplineSurface_destructor(ptr);
+        crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_destructor(ptr);
     }
 }
 
@@ -2582,7 +2720,9 @@ impl TorusToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_TorusToBSplineSurface_ctor_torus_real4(T, U1, U2, V1, V2),
+                crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_ctor_torus_real4(
+                    T, U1, U2, V1, V2,
+                ),
             ))
         }
     }
@@ -2600,7 +2740,7 @@ impl TorusToBSplineSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_TorusToBSplineSurface_ctor_torus_real2_bool(
+                crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_ctor_torus_real2_bool(
                     T, Param1, Param2, UTrim,
                 ),
             ))
@@ -2613,7 +2753,7 @@ impl TorusToBSplineSurface {
     pub fn new_torus(T: &crate::gp::Torus) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_TorusToBSplineSurface_ctor_torus(T),
+                crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_ctor_torus(T),
             ))
         }
     }
@@ -2634,7 +2774,7 @@ impl TorusToBSplineSurface {
     /// Upcast to Convert_ElementarySurfaceToBSplineSurface
     pub fn as_elementary_surface_to_b_spline_surface(&self) -> &ElementarySurfaceToBSplineSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface(self as *const Self))
         }
     }
 
@@ -2643,63 +2783,79 @@ impl TorusToBSplineSurface {
         &mut self,
     ) -> &mut ElementarySurfaceToBSplineSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_as_Convert_ElementarySurfaceToBSplineSurface_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:65 - `Convert_ElementarySurfaceToBSplineSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_UDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_UDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:69 - `Convert_ElementarySurfaceToBSplineSurface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_VDegree(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_VDegree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:71 - `Convert_ElementarySurfaceToBSplineSurface::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_NbUPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:75 - `Convert_ElementarySurfaceToBSplineSurface::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_NbVPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:77 - `Convert_ElementarySurfaceToBSplineSurface::NbUKnots()`
     pub fn nb_u_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_NbUKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_NbUKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:81 - `Convert_ElementarySurfaceToBSplineSurface::NbVKnots()`
     pub fn nb_v_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_NbVKnots(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_NbVKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:83 - `Convert_ElementarySurfaceToBSplineSurface::IsUPeriodic()`
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_IsUPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_IsUPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:87 - `Convert_ElementarySurfaceToBSplineSurface::IsVPeriodic()`
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_IsVPeriodic(self as *const Self)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_IsVPeriodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -2707,7 +2863,7 @@ impl TorusToBSplineSurface {
     pub fn pole(&self, UIndex: i32, VIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Convert_TorusToBSplineSurface_inherited_Pole(
+                crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_Pole(
                     self as *const Self,
                     UIndex,
                     VIndex,
@@ -2719,7 +2875,7 @@ impl TorusToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:109 - `Convert_ElementarySurfaceToBSplineSurface::Weight()`
     pub fn weight(&self, UIndex: i32, VIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_Weight(
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_Weight(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -2730,21 +2886,27 @@ impl TorusToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:114 - `Convert_ElementarySurfaceToBSplineSurface::UKnot()`
     pub fn u_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_UKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_UKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:118 - `Convert_ElementarySurfaceToBSplineSurface::VKnot()`
     pub fn v_knot(&self, UIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_VKnot(self as *const Self, UIndex)
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_VKnot(
+                self as *const Self,
+                UIndex,
+            )
         })
     }
 
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:122 - `Convert_ElementarySurfaceToBSplineSurface::UMultiplicity()`
     pub fn u_multiplicity(&self, UIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_UMultiplicity(
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_UMultiplicity(
                 self as *const Self,
                 UIndex,
             )
@@ -2754,7 +2916,7 @@ impl TorusToBSplineSurface {
     /// Inherited: **Source:** `Convert_ElementarySurfaceToBSplineSurface.hxx`:126 - `Convert_ElementarySurfaceToBSplineSurface::VMultiplicity()`
     pub fn v_multiplicity(&self, VIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Convert_TorusToBSplineSurface_inherited_VMultiplicity(
+            crate::ffi_extern_TKMath::Convert_TorusToBSplineSurface_inherited_VMultiplicity(
                 self as *const Self,
                 VIndex,
             )

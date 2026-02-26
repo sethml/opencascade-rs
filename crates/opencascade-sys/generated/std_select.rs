@@ -10,11 +10,11 @@
 /// puts The same drawer in every BRepOwner Of SensitivePrimitive
 /// Used Only for hilight Of BRepOwner...
 pub fn set_drawer_for_b_rep_owner(
-    aSelection: &crate::ffi::HandleSelectMgrSelection,
-    aDrawer: &crate::ffi::HandlePrs3dDrawer,
+    aSelection: &crate::ffi_types::HandleSelectMgrSelection,
+    aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::StdSelect_set_drawer_for_b_rep_owner(aSelection, aDrawer)
+        crate::ffi_extern_TKV3d::StdSelect_set_drawer_for_b_rep_owner(aSelection, aDrawer)
     })
 }
 
@@ -139,7 +139,7 @@ impl TryFrom<i32> for TypeOfSelectionImage {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandlePrsMgrPresentableObject, HandleSelectMgrEntityOwner, HandleSelectMgrFilter,
     HandleStandardTransient,
 };
@@ -156,11 +156,11 @@ pub use crate::ffi::{
 /// and Users (One or More Transient entities).
 /// The highlight-unhighlight methods are empty and
 /// must be redefined by each User.
-pub use crate::ffi::StdSelect_BRepOwner as BRepOwner;
+pub use crate::ffi_types::StdSelect_BRepOwner as BRepOwner;
 
 unsafe impl crate::CppDeletable for BRepOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_BRepOwner_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_BRepOwner_destructor(ptr);
     }
 }
 
@@ -171,7 +171,7 @@ impl BRepOwner {
     pub fn new_int(aPriority: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_ctor_int(aPriority),
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_ctor_int(aPriority),
             ))
         }
     }
@@ -189,7 +189,7 @@ impl BRepOwner {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_ctor_shape_int_bool(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_ctor_shape_int_bool(
                     aShape,
                     aPriority,
                     ComesFromDecomposition,
@@ -208,19 +208,12 @@ impl BRepOwner {
     /// priority is the one stored.
     pub fn new_shape_handleselectmgrselectableobject_int_bool(
         aShape: &crate::topo_ds::Shape,
-        theOrigin: &crate::ffi::HandleSelectMgrSelectableObject,
+        theOrigin: &crate::ffi_types::HandleSelectMgrSelectableObject,
         aPriority: i32,
         FromDecomposition: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_ctor_shape_handleselectmgrselectableobject_int_bool(
-                    aShape,
-                    theOrigin,
-                    aPriority,
-                    FromDecomposition,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_BRepOwner_ctor_shape_handleselectmgrselectableobject_int_bool(aShape, theOrigin, aPriority, FromDecomposition)))
         }
     }
 
@@ -254,7 +247,7 @@ impl BRepOwner {
     /// priority is the one stored.
     pub fn new_shape_handleselectmgrselectableobject_int(
         aShape: &crate::topo_ds::Shape,
-        theOrigin: &crate::ffi::HandleSelectMgrSelectableObject,
+        theOrigin: &crate::ffi_types::HandleSelectMgrSelectableObject,
         aPriority: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_handleselectmgrselectableobject_int_bool(
@@ -272,15 +265,15 @@ impl BRepOwner {
     /// priority is the one stored.
     pub fn new_shape_handleselectmgrselectableobject(
         aShape: &crate::topo_ds::Shape,
-        theOrigin: &crate::ffi::HandleSelectMgrSelectableObject,
+        theOrigin: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> crate::OwnedPtr<Self> {
         Self::new_shape_handleselectmgrselectableobject_int_bool(aShape, theOrigin, 0, false)
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:43 - `StdSelect_BRepOwner::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_BRepOwner_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_BRepOwner_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -290,7 +283,7 @@ impl BRepOwner {
     /// returns False if no shape was set
     pub fn has_shape(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_has_shape(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_has_shape(self as *const Self)
         })
     }
 
@@ -298,7 +291,9 @@ impl BRepOwner {
     /// Returns the shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_BRepOwner_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_BRepOwner_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -306,7 +301,7 @@ impl BRepOwner {
     /// Returns true if this framework has a highlight mode defined for it.
     pub fn has_hilight_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_has_hilight_mode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_has_hilight_mode(self as *const Self)
         })
     }
 
@@ -317,7 +312,10 @@ impl BRepOwner {
     /// The default type of display is wireframe, defined by the index 0.
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_set_hilight_mode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_set_hilight_mode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
@@ -328,7 +326,7 @@ impl BRepOwner {
     /// The default type of display is wireframe, defined by the index 0.
     pub fn reset_hilight_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_reset_hilight_mode(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_reset_hilight_mode(self as *mut Self)
         })
     }
 
@@ -339,7 +337,7 @@ impl BRepOwner {
     /// The default type of display is wireframe, defined by the index 0.
     pub fn hilight_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_hilight_mode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_hilight_mode(self as *const Self)
         })
     }
 
@@ -348,23 +346,27 @@ impl BRepOwner {
     /// aMode is highlighted in the presentation manager aPM.
     pub fn is_hilighted(
         &self,
-        aPM: &crate::ffi::HandlePrsMgrPresentationManager,
+        aPM: &crate::ffi_types::HandlePrsMgrPresentationManager,
         aMode: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_is_hilighted(self as *const Self, aPM, aMode)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_is_hilighted(
+                self as *const Self,
+                aPM,
+                aMode,
+            )
         })
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:104 - `StdSelect_BRepOwner::HilightWithColor()`
     pub fn hilight_with_color(
         &mut self,
-        thePM: &crate::ffi::HandlePrsMgrPresentationManager,
-        theStyle: &crate::ffi::HandlePrs3dDrawer,
+        thePM: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        theStyle: &crate::ffi_types::HandlePrs3dDrawer,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_hilight_with_color(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_hilight_with_color(
                 self as *mut Self,
                 thePM,
                 theStyle,
@@ -376,25 +378,29 @@ impl BRepOwner {
     /// **Source:** `StdSelect_BRepOwner.hxx`:110 - `StdSelect_BRepOwner::Unhilight()`
     /// Removes highlighting from the type of shape
     /// identified the selection mode aMode in the presentation manager aPM.
-    pub fn unhilight(&mut self, aPM: &crate::ffi::HandlePrsMgrPresentationManager, aMode: i32) {
+    pub fn unhilight(
+        &mut self,
+        aPM: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        aMode: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_unhilight(self as *mut Self, aPM, aMode)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_unhilight(self as *mut Self, aPM, aMode)
         })
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:115 - `StdSelect_BRepOwner::Clear()`
     /// Clears the presentation manager object aPM of all
     /// shapes with the selection mode aMode.
-    pub fn clear(&mut self, aPM: &crate::ffi::HandlePrsMgrPresentationManager, aMode: i32) {
+    pub fn clear(&mut self, aPM: &crate::ffi_types::HandlePrsMgrPresentationManager, aMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_clear(self as *mut Self, aPM, aMode)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_clear(self as *mut Self, aPM, aMode)
         })
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:118 - `StdSelect_BRepOwner::SetLocation()`
     pub fn set_location(&mut self, aLoc: &crate::top_loc::Location) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_set_location(self as *mut Self, aLoc)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_set_location(self as *mut Self, aLoc)
         })
     }
 
@@ -403,12 +409,12 @@ impl BRepOwner {
     /// highlight structure
     pub fn update_highlight_trsf(
         &mut self,
-        theViewer: &crate::ffi::HandleV3dViewer,
-        theManager: &crate::ffi::HandlePrsMgrPresentationManager,
+        theViewer: &crate::ffi_types::HandleV3dViewer,
+        theManager: &crate::ffi_types::HandlePrsMgrPresentationManager,
         theDispMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_update_highlight_trsf(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_update_highlight_trsf(
                 self as *mut Self,
                 theViewer,
                 theManager,
@@ -421,7 +427,7 @@ impl BRepOwner {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_get_type_name(),
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -429,53 +435,65 @@ impl BRepOwner {
     }
 
     /// **Source:** `StdSelect_BRepOwner.hxx`:43 - `StdSelect_BRepOwner::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdSelect_BRepOwner_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_EntityOwner
     pub fn as_select_mgr_entity_owner(&self) -> &crate::select_mgr::EntityOwner {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_as_SelectMgr_EntityOwner(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to SelectMgr_EntityOwner (mutable)
     pub fn as_select_mgr_entity_owner_mut(&mut self) -> &mut crate::select_mgr::EntityOwner {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_BRepOwner_as_SelectMgr_EntityOwner_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_as_SelectMgr_EntityOwner_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_BRepOwner_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_BRepOwner_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectBRepOwner> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdSelectBRepOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -483,50 +501,63 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:54 - `SelectMgr_EntityOwner::Priority()`
     pub fn priority(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_Priority(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_Priority(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:57 - `SelectMgr_EntityOwner::SetPriority()`
     pub fn set_priority(&mut self, thePriority: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_SetPriority(self as *mut Self, thePriority)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_SetPriority(
+                self as *mut Self,
+                thePriority,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:60 - `SelectMgr_EntityOwner::HasSelectable()`
     pub fn has_selectable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_HasSelectable(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_HasSelectable(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:63 - `SelectMgr_EntityOwner::Selectable()`
-    pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrSelectableObject> {
+    pub fn selectable(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrSelectableObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_inherited_Selectable(self as *const Self),
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_Selectable(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:66 - `SelectMgr_EntityOwner::SetSelectable()`
-    pub fn set_selectable(&mut self, theSelObj: &crate::ffi::HandleSelectMgrSelectableObject) {
+    pub fn set_selectable(
+        &mut self,
+        theSelObj: &crate::ffi_types::HandleSelectMgrSelectableObject,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_SetSelectable(self as *mut Self, theSelObj)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_SetSelectable(
+                self as *mut Self,
+                theSelObj,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:78 - `SelectMgr_EntityOwner::HandleMouseClick()`
     pub fn handle_mouse_click(
         &mut self,
-        thePoint: &crate::ffi::Graphic3d_Vec2i,
+        thePoint: &crate::ffi_types::Graphic3d_Vec2i,
         theButton: u32,
         theModifiers: u32,
         theIsDoubleClick: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_HandleMouseClick(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_HandleMouseClick(
                 self as *mut Self,
                 thePoint,
                 theButton,
@@ -539,7 +570,7 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:130 - `SelectMgr_EntityOwner::HasLocation()`
     pub fn has_location(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_HasLocation(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_HasLocation(self as *const Self)
         })
     }
 
@@ -547,7 +578,9 @@ impl BRepOwner {
     pub fn location(&self) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepOwner_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -555,21 +588,24 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:147 - `SelectMgr_EntityOwner::IsSelected()`
     pub fn is_selected(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsSelected(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsSelected(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:151 - `SelectMgr_EntityOwner::SetSelected()`
     pub fn set_selected(&mut self, theIsSelected: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_SetSelected(self as *mut Self, theIsSelected)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_SetSelected(
+                self as *mut Self,
+                theIsSelected,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:156 - `SelectMgr_EntityOwner::Select()`
     pub fn select(&self, theSelScheme: crate::ais::SelectionScheme, theIsDetected: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_Select(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_Select(
                 self as *const Self,
                 theSelScheme.into(),
                 theIsDetected,
@@ -580,38 +616,48 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:166 - `SelectMgr_EntityOwner::State()`
     pub fn state(&mut self, theStatus: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_State(self as *mut Self, theStatus)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_State(
+                self as *mut Self,
+                theStatus,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:170 - `SelectMgr_EntityOwner::IsAutoHilight()`
     pub fn is_auto_hilight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsAutoHilight(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsAutoHilight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:177 - `SelectMgr_EntityOwner::IsForcedHilight()`
     pub fn is_forced_hilight(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsForcedHilight(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsForcedHilight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:180 - `SelectMgr_EntityOwner::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_SetZLayer(self as *mut Self, theLayerId)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:195 - `SelectMgr_EntityOwner::IsSameSelectable()`
     pub fn is_same_selectable(
         &self,
-        theOther: &crate::ffi::HandleSelectMgrSelectableObject,
+        theOther: &crate::ffi_types::HandleSelectMgrSelectableObject,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsSameSelectable(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsSameSelectable(
                 self as *const Self,
                 theOther,
             )
@@ -621,14 +667,16 @@ impl BRepOwner {
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:201 - `SelectMgr_EntityOwner::ComesFromDecomposition()`
     pub fn comes_from_decomposition(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_ComesFromDecomposition(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_ComesFromDecomposition(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `SelectMgr_EntityOwner.hxx`:204 - `SelectMgr_EntityOwner::SetComesFromDecomposition()`
     pub fn set_comes_from_decomposition(&mut self, theIsFromDecomposition: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_SetComesFromDecomposition(
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_SetComesFromDecomposition(
                 self as *mut Self,
                 theIsFromDecomposition,
             )
@@ -636,16 +684,22 @@ impl BRepOwner {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -653,7 +707,7 @@ impl BRepOwner {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_BRepOwner_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -666,52 +720,58 @@ impl BRepOwner {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepOwner_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_BRepOwner_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdSelectBRepOwner;
+pub use crate::ffi_types::HandleStdSelectBRepOwner;
 
 unsafe impl crate::CppDeletable for HandleStdSelectBRepOwner {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdSelectBRepOwner_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_destructor(ptr);
     }
 }
 
 impl HandleStdSelectBRepOwner {
     /// Dereference this Handle to access the underlying StdSelect_BRepOwner
-    pub fn get(&self) -> &crate::ffi::StdSelect_BRepOwner {
+    pub fn get(&self) -> &crate::ffi_types::StdSelect_BRepOwner {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdSelectBRepOwner_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_BRepOwner
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_BRepOwner {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdSelect_BRepOwner {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdSelectBRepOwner_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_get_mut(
                 self as *mut Self,
             ))
         }
@@ -720,10 +780,10 @@ impl HandleStdSelectBRepOwner {
     /// Upcast Handle<StdSelect_BRepOwner> to Handle<SelectMgr_EntityOwner>
     pub fn to_handle_entity_owner(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrEntityOwner> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrEntityOwner> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectBRepOwner_to_HandleSelectMgrEntityOwner(
+                crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_to_HandleSelectMgrEntityOwner(
                     self as *const Self,
                 ),
             ))
@@ -731,10 +791,12 @@ impl HandleStdSelectBRepOwner {
     }
 
     /// Upcast Handle<StdSelect_BRepOwner> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectBRepOwner_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleStdSelectBRepOwner_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -775,11 +837,11 @@ impl HandleStdSelectBRepOwner {
 /// was decomposed into pickable elements.
 /// Handle(StdSelect_BRepOwner)::DownCast(ENTITY_OWNER) -> Shape()
 /// gives the real picked shape (edge,vertex,shape...)
-pub use crate::ffi::StdSelect_BRepSelectionTool as BRepSelectionTool;
+pub use crate::ffi_types::StdSelect_BRepSelectionTool as BRepSelectionTool;
 
 unsafe impl crate::CppDeletable for BRepSelectionTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_BRepSelectionTool_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_destructor(ptr);
     }
 }
 
@@ -789,7 +851,7 @@ impl BRepSelectionTool {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_BRepSelectionTool_ctor(),
+                crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_ctor(),
             ))
         }
     }
@@ -808,7 +870,7 @@ impl BRepSelectionTool {
     /// if AutoTriangulation = False the old algorithm will be
     /// called to compute sensitive entities on faces.
     pub fn load_handleselectmgrselection_shape_shapeenum_real2_bool_int2_real(
-        aSelection: &crate::ffi::HandleSelectMgrSelection,
+        aSelection: &crate::ffi_types::HandleSelectMgrSelection,
         aShape: &crate::topo_ds::Shape,
         aType: crate::top_abs::ShapeEnum,
         theDeflection: f64,
@@ -819,7 +881,7 @@ impl BRepSelectionTool {
         MaximalParameter: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_load_handleselectmgrselection_shape_shapeenum_real2_bool_int2_real(aSelection, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_load_handleselectmgrselection_shape_shapeenum_real2_bool_int2_real(aSelection, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
         })
     }
 
@@ -833,8 +895,8 @@ impl BRepSelectionTool {
     /// BRepOwners. the original shape is the last user...
     /// (see EntityOwner from SelectBasics and BrepOwner)...
     pub fn load_handleselectmgrselection_handleselectmgrselectableobject_shape_shapeenum_real2_bool_int2_real(
-        aSelection: &crate::ffi::HandleSelectMgrSelection,
-        Origin: &crate::ffi::HandleSelectMgrSelectableObject,
+        aSelection: &crate::ffi_types::HandleSelectMgrSelection,
+        Origin: &crate::ffi_types::HandleSelectMgrSelectableObject,
         aShape: &crate::topo_ds::Shape,
         aType: crate::top_abs::ShapeEnum,
         theDeflection: f64,
@@ -845,7 +907,7 @@ impl BRepSelectionTool {
         MaximalParameter: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_load_handleselectmgrselection_handleselectmgrselectableobject_shape_shapeenum_real2_bool_int2_real(aSelection, Origin, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_load_handleselectmgrselection_handleselectmgrselectableobject_shape_shapeenum_real2_bool_int2_real(aSelection, Origin, aShape, aType.into(), theDeflection, theDeviationAngle, AutoTriangulation, aPriority, NbPOnEdge, MaximalParameter)
         })
     }
 
@@ -860,7 +922,10 @@ impl BRepSelectionTool {
         theType: crate::top_abs::ShapeEnum,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_get_standard_priority(theShape, theType.into())
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_get_standard_priority(
+                theShape,
+                theType.into(),
+            )
         })
     }
 
@@ -878,8 +943,8 @@ impl BRepSelectionTool {
     /// @param[in] theAutoTriang   flag to compute triangulation for the faces which have none
     pub fn compute_sensitive(
         theShape: &crate::topo_ds::Shape,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
         theDeflection: f64,
         theDeflAngle: f64,
         theNbPOnEdge: i32,
@@ -887,7 +952,7 @@ impl BRepSelectionTool {
         theAutoTriang: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_compute_sensitive(
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_compute_sensitive(
                 theShape,
                 theOwner,
                 theSelection,
@@ -912,15 +977,15 @@ impl BRepSelectionTool {
     /// should be selectable
     pub fn get_sensitive_for_face(
         theFace: &crate::topo_ds::Face,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
-        theOutList: &mut crate::ffi::Select3D_EntitySequence,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theOutList: &mut crate::ffi_types::Select3D_EntitySequence,
         theAutoTriang: bool,
         theNbPOnEdge: i32,
         theMaxiParam: f64,
         theInteriorFlag: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_get_sensitive_for_face(
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_get_sensitive_for_face(
                 theFace,
                 theOwner,
                 theOutList,
@@ -938,12 +1003,12 @@ impl BRepSelectionTool {
     /// @param[in] theOwner       selectable owner object
     /// @param[in] theSelection   selection to append new sensitive entities
     pub fn get_sensitive_for_cylinder(
-        theSubfacesMap: &crate::ffi::TopTools_IndexedMapOfShape,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theSubfacesMap: &crate::ffi_types::TopTools_IndexedMapOfShape,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_get_sensitive_for_cylinder(
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_get_sensitive_for_cylinder(
                 theSubfacesMap,
                 theOwner,
                 theSelection,
@@ -962,16 +1027,16 @@ impl BRepSelectionTool {
     /// @param[out] theMaxiParam      sensitivity parameters
     pub fn get_edge_sensitive(
         theShape: &crate::topo_ds::Shape,
-        theOwner: &crate::ffi::HandleSelectMgrEntityOwner,
-        theSelection: &crate::ffi::HandleSelectMgrSelection,
+        theOwner: &crate::ffi_types::HandleSelectMgrEntityOwner,
+        theSelection: &crate::ffi_types::HandleSelectMgrSelection,
         theDeflection: f64,
         theDeviationAngle: f64,
         theNbPOnEdge: i32,
         theMaxiParam: f64,
-        theSensitive: &mut crate::ffi::HandleSelect3DSensitiveEntity,
+        theSensitive: &mut crate::ffi_types::HandleSelect3DSensitiveEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_get_edge_sensitive(
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_get_edge_sensitive(
                 theShape,
                 theOwner,
                 theSelection,
@@ -988,9 +1053,9 @@ impl BRepSelectionTool {
     /// Traverses the selection given and pre-builds BVH trees for heavyweight
     /// sensitive entities containing more than BVH_PRIMITIVE_LIMIT (defined in .cxx file)
     /// sub-elements.
-    pub fn pre_build_bvh(theSelection: &crate::ffi::HandleSelectMgrSelection) {
+    pub fn pre_build_bvh(theSelection: &crate::ffi_types::HandleSelectMgrSelection) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_BRepSelectionTool_pre_build_bvh(theSelection)
+            crate::ffi_extern_TKV3d::StdSelect_BRepSelectionTool_pre_build_bvh(theSelection)
         })
     }
 }
@@ -1005,11 +1070,11 @@ impl BRepSelectionTool {
 /// -   any edge
 /// -   a linear edge
 /// -   a circular edge.
-pub use crate::ffi::StdSelect_EdgeFilter as EdgeFilter;
+pub use crate::ffi_types::StdSelect_EdgeFilter as EdgeFilter;
 
 unsafe impl crate::CppDeletable for EdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_EdgeFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_destructor(ptr);
     }
 }
 
@@ -1019,7 +1084,7 @@ impl EdgeFilter {
     pub fn new_typeofedge(Edge: crate::std_select::TypeOfEdge) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_EdgeFilter_ctor_typeofedge(Edge.into()),
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_ctor_typeofedge(Edge.into()),
             ))
         }
     }
@@ -1028,7 +1093,10 @@ impl EdgeFilter {
     /// Sets the type of edge aNewType. aNewType is to be highlighted in selection.
     pub fn set_type(&mut self, aNewType: crate::std_select::TypeOfEdge) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_set_type(self as *mut Self, aNewType.into())
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_set_type(
+                self as *mut Self,
+                aNewType.into(),
+            )
         })
     }
 
@@ -1036,29 +1104,32 @@ impl EdgeFilter {
     /// Returns the type of edge to be highlighted in selection.
     pub fn type_(&self) -> crate::std_select::TypeOfEdge {
         crate::std_select::TypeOfEdge::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_type_(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `StdSelect_EdgeFilter.hxx`:49 - `StdSelect_EdgeFilter::IsOk()`
-    pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anobj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_is_ok(self as *const Self, anobj)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_is_ok(self as *const Self, anobj)
         })
     }
 
     /// **Source:** `StdSelect_EdgeFilter.hxx`:52 - `StdSelect_EdgeFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_acts_on(self as *const Self, aStandardMode.into())
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_acts_on(
+                self as *const Self,
+                aStandardMode.into(),
+            )
         })
     }
 
     /// **Source:** `StdSelect_EdgeFilter.hxx`:55 - `StdSelect_EdgeFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_EdgeFilter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1068,7 +1139,7 @@ impl EdgeFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdSelect_EdgeFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1076,68 +1147,86 @@ impl EdgeFilter {
     }
 
     /// **Source:** `StdSelect_EdgeFilter.hxx`:55 - `StdSelect_EdgeFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdSelect_EdgeFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_as_SelectMgr_Filter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_EdgeFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_EdgeFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectEdgeFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdSelectEdgeFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_EdgeFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1145,7 +1234,7 @@ impl EdgeFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_EdgeFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1158,71 +1247,81 @@ impl EdgeFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_EdgeFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_EdgeFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdSelectEdgeFilter;
+pub use crate::ffi_types::HandleStdSelectEdgeFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectEdgeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdSelectEdgeFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_destructor(ptr);
     }
 }
 
 impl HandleStdSelectEdgeFilter {
     /// Dereference this Handle to access the underlying StdSelect_EdgeFilter
-    pub fn get(&self) -> &crate::ffi::StdSelect_EdgeFilter {
+    pub fn get(&self) -> &crate::ffi_types::StdSelect_EdgeFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdSelectEdgeFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_EdgeFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_EdgeFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdSelect_EdgeFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdSelectEdgeFilter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdSelect_EdgeFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectEdgeFilter_to_HandleSelectMgrFilter(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_to_HandleSelectMgrFilter(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StdSelect_EdgeFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectEdgeFilter_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleStdSelectEdgeFilter_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1243,11 +1342,11 @@ impl HandleStdSelectEdgeFilter {
 /// -   a spherical face
 /// -   a toroidal face
 /// -   a revol face.
-pub use crate::ffi::StdSelect_FaceFilter as FaceFilter;
+pub use crate::ffi_types::StdSelect_FaceFilter as FaceFilter;
 
 unsafe impl crate::CppDeletable for FaceFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_FaceFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_FaceFilter_destructor(ptr);
     }
 }
 
@@ -1257,7 +1356,7 @@ impl FaceFilter {
     pub fn new_typeofface(aTypeOfFace: crate::std_select::TypeOfFace) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_FaceFilter_ctor_typeofface(aTypeOfFace.into()),
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_ctor_typeofface(aTypeOfFace.into()),
             ))
         }
     }
@@ -1266,7 +1365,10 @@ impl FaceFilter {
     /// Sets the type of face aNewType. aNewType is to be highlighted in selection.
     pub fn set_type(&mut self, aNewType: crate::std_select::TypeOfFace) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_set_type(self as *mut Self, aNewType.into())
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_set_type(
+                self as *mut Self,
+                aNewType.into(),
+            )
         })
     }
 
@@ -1274,29 +1376,32 @@ impl FaceFilter {
     /// Returns the type of face to be highlighted in selection.
     pub fn type_(&self) -> crate::std_select::TypeOfFace {
         crate::std_select::TypeOfFace::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_type_(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `StdSelect_FaceFilter.hxx`:52 - `StdSelect_FaceFilter::IsOk()`
-    pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anobj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_is_ok(self as *const Self, anobj)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_is_ok(self as *const Self, anobj)
         })
     }
 
     /// **Source:** `StdSelect_FaceFilter.hxx`:55 - `StdSelect_FaceFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_acts_on(self as *const Self, aStandardMode.into())
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_acts_on(
+                self as *const Self,
+                aStandardMode.into(),
+            )
         })
     }
 
     /// **Source:** `StdSelect_FaceFilter.hxx`:58 - `StdSelect_FaceFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_FaceFilter_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_FaceFilter_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1306,7 +1411,7 @@ impl FaceFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdSelect_FaceFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1314,68 +1419,86 @@ impl FaceFilter {
     }
 
     /// **Source:** `StdSelect_FaceFilter.hxx`:58 - `StdSelect_FaceFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdSelect_FaceFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_as_SelectMgr_Filter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to SelectMgr_Filter (mutable)
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_FaceFilter_as_SelectMgr_Filter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_FaceFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_FaceFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectFaceFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdSelectFaceFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_FaceFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1383,7 +1506,7 @@ impl FaceFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_FaceFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1396,71 +1519,81 @@ impl FaceFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_FaceFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_FaceFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdSelectFaceFilter;
+pub use crate::ffi_types::HandleStdSelectFaceFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectFaceFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdSelectFaceFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_destructor(ptr);
     }
 }
 
 impl HandleStdSelectFaceFilter {
     /// Dereference this Handle to access the underlying StdSelect_FaceFilter
-    pub fn get(&self) -> &crate::ffi::StdSelect_FaceFilter {
+    pub fn get(&self) -> &crate::ffi_types::StdSelect_FaceFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdSelectFaceFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_FaceFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_FaceFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdSelect_FaceFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdSelectFaceFilter_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdSelect_FaceFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectFaceFilter_to_HandleSelectMgrFilter(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_to_HandleSelectMgrFilter(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StdSelect_FaceFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectFaceFilter_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleStdSelectFaceFilter_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1474,11 +1607,11 @@ impl HandleStdSelectFaceFilter {
 
 /// **Source:** `StdSelect_Shape.hxx`:24 - `StdSelect_Shape`
 /// Presentable shape only for purpose of display for BRepOwner...
-pub use crate::ffi::StdSelect_Shape as Shape;
+pub use crate::ffi_types::StdSelect_Shape as Shape;
 
 unsafe impl crate::CppDeletable for Shape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_Shape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_Shape_destructor(ptr);
     }
 }
 
@@ -1486,43 +1619,56 @@ impl Shape {
     /// **Source:** `StdSelect_Shape.hxx`:28 - `StdSelect_Shape::StdSelect_Shape()`
     pub fn new_shape_handleprs3ddrawer(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_Shape_ctor_shape_handleprs3ddrawer(theShape, theDrawer),
+                crate::ffi_extern_TKV3d::StdSelect_Shape_ctor_shape_handleprs3ddrawer(
+                    theShape, theDrawer,
+                ),
             ))
         }
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:26 - `StdSelect_Shape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:31 - `StdSelect_Shape::Compute()`
     pub fn compute(
         &mut self,
-        thePrsMgr: &crate::ffi::HandlePrsMgrPresentationManager,
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrsMgr: &crate::ffi_types::HandlePrsMgrPresentationManager,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theMode: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_compute(self as *mut Self, thePrsMgr, thePrs, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_compute(
+                self as *mut Self,
+                thePrsMgr,
+                thePrs,
+                theMode,
+            )
         })
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:35 - `StdSelect_Shape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::StdSelect_Shape_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:37 - `StdSelect_Shape::Shape()`
     pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_shape_shape(self as *mut Self, theShape)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_shape_shape(self as *mut Self, theShape)
         })
     }
 
@@ -1530,7 +1676,7 @@ impl Shape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdSelect_Shape_get_type_name(),
+                crate::ffi_extern_TKV3d::StdSelect_Shape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1538,32 +1684,38 @@ impl Shape {
     }
 
     /// **Source:** `StdSelect_Shape.hxx`:26 - `StdSelect_Shape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdSelect_Shape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_get_type_descriptor()))
+        }
     }
 
     /// Upcast to PrsMgr_PresentableObject
     pub fn as_prs_mgr_presentable_object(&self) -> &crate::prs_mgr::PresentableObject {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_as_PrsMgr_PresentableObject(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to PrsMgr_PresentableObject (mutable)
     pub fn as_prs_mgr_presentable_object_mut(&mut self) -> &mut crate::prs_mgr::PresentableObject {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_Shape_as_PrsMgr_PresentableObject_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_as_PrsMgr_PresentableObject_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_Shape_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1572,143 +1724,164 @@ impl Shape {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdSelect_Shape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdSelectShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdSelect_Shape_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:59 - `PrsMgr_PresentableObject::Presentations()`
-    pub fn presentations(&mut self) -> &mut crate::ffi::PrsMgr_Presentations {
+    pub fn presentations(&mut self) -> &mut crate::ffi_types::PrsMgr_Presentations {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StdSelect_Shape_inherited_Presentations(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Presentations(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:62 - `PrsMgr_PresentableObject::ZLayer()`
     pub fn z_layer(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_ZLayer(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ZLayer(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:67 - `PrsMgr_PresentableObject::SetZLayer()`
     pub fn set_z_layer(&mut self, theLayerId: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetZLayer(self as *mut Self, theLayerId)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetZLayer(
+                self as *mut Self,
+                theLayerId,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:71 - `PrsMgr_PresentableObject::IsMutable()`
     pub fn is_mutable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IsMutable(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IsMutable(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:75 - `PrsMgr_PresentableObject::SetMutable()`
     pub fn set_mutable(&mut self, theIsMutable: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetMutable(self as *mut Self, theIsMutable)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetMutable(
+                self as *mut Self,
+                theIsMutable,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:78 - `PrsMgr_PresentableObject::ViewAffinity()`
-    pub fn view_affinity(&self) -> &crate::ffi::HandleGraphic3dViewAffinity {
+    pub fn view_affinity(&self) -> &crate::ffi_types::HandleGraphic3dViewAffinity {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_ViewAffinity(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ViewAffinity(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:82 - `PrsMgr_PresentableObject::HasDisplayMode()`
     pub fn has_display_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasDisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasDisplayMode(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:88 - `PrsMgr_PresentableObject::DisplayMode()`
     pub fn display_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_DisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_DisplayMode(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:94 - `PrsMgr_PresentableObject::SetDisplayMode()`
     pub fn set_display_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetDisplayMode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetDisplayMode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:103 - `PrsMgr_PresentableObject::UnsetDisplayMode()`
     pub fn unset_display_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetDisplayMode(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetDisplayMode(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:107 - `PrsMgr_PresentableObject::HasHilightMode()`
     pub fn has_hilight_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasHilightMode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasHilightMode(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:116 - `PrsMgr_PresentableObject::HilightMode()`
     pub fn hilight_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HilightMode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HilightMode(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:125 - `PrsMgr_PresentableObject::SetHilightMode()`
     pub fn set_hilight_mode(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetHilightMode(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetHilightMode(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:129 - `PrsMgr_PresentableObject::UnsetHilightMode()`
     pub fn unset_hilight_mode(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetHilightMode(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetHilightMode(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:149 - `PrsMgr_PresentableObject::AcceptDisplayMode()`
     pub fn accept_display_mode(&self, theMode: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_AcceptDisplayMode(self as *const Self, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_AcceptDisplayMode(
+                self as *const Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:156 - `PrsMgr_PresentableObject::DefaultDisplayMode()`
     pub fn default_display_mode(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_DefaultDisplayMode(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_DefaultDisplayMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:161 - `PrsMgr_PresentableObject::ToBeUpdated()`
     pub fn to_be_updated(&self, theToIncludeHidden: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_ToBeUpdated(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ToBeUpdated(
                 self as *const Self,
                 theToIncludeHidden,
             )
@@ -1718,28 +1891,36 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:165 - `PrsMgr_PresentableObject::SetToUpdate()`
     pub fn set_to_update(&mut self, theMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetToUpdate(self as *mut Self, theMode)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetToUpdate(
+                self as *mut Self,
+                theMode,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:175 - `PrsMgr_PresentableObject::IsInfinite()`
     pub fn is_infinite(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IsInfinite(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IsInfinite(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:178 - `PrsMgr_PresentableObject::SetInfiniteState()`
     pub fn set_infinite_state(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetInfiniteState(self as *mut Self, theFlag)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetInfiniteState(
+                self as *mut Self,
+                theFlag,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:181 - `PrsMgr_PresentableObject::TypeOfPresentation3d()`
     pub fn type_of_presentation3d(&self) -> crate::prs_mgr::TypeOfPresentation3d {
         crate::prs_mgr::TypeOfPresentation3d::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_TypeOfPresentation3d(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_TypeOfPresentation3d(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1747,7 +1928,7 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:184 - `PrsMgr_PresentableObject::SetTypeOfPresentation()`
     pub fn set_type_of_presentation(&mut self, theType: crate::prs_mgr::TypeOfPresentation3d) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetTypeOfPresentation(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetTypeOfPresentation(
                 self as *mut Self,
                 theType.into(),
             )
@@ -1757,56 +1938,69 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:187 - `PrsMgr_PresentableObject::DisplayStatus()`
     pub fn display_status(&self) -> crate::prs_mgr::DisplayStatus {
         crate::prs_mgr::DisplayStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_DisplayStatus(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_DisplayStatus(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:191 - `PrsMgr_PresentableObject::Attributes()`
-    pub fn attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_Attributes(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Attributes(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:194 - `PrsMgr_PresentableObject::SetAttributes()`
-    pub fn set_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_attributes(&mut self, theDrawer: &crate::ffi_types::HandlePrs3dDrawer) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetAttributes(self as *mut Self, theDrawer)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetAttributes(
+                self as *mut Self,
+                theDrawer,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:200 - `PrsMgr_PresentableObject::HilightAttributes()`
-    pub fn hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn hilight_attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_HilightAttributes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HilightAttributes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:203 - `PrsMgr_PresentableObject::SetHilightAttributes()`
-    pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_hilight_attributes(&mut self, theDrawer: &crate::ffi_types::HandlePrs3dDrawer) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetHilightAttributes(self as *mut Self, theDrawer)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetHilightAttributes(
+                self as *mut Self,
+                theDrawer,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:212 - `PrsMgr_PresentableObject::DynamicHilightAttributes()`
-    pub fn dynamic_hilight_attributes(&self) -> &crate::ffi::HandlePrs3dDrawer {
+    pub fn dynamic_hilight_attributes(&self) -> &crate::ffi_types::HandlePrs3dDrawer {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_DynamicHilightAttributes(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_DynamicHilightAttributes(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:215 - `PrsMgr_PresentableObject::SetDynamicHilightAttributes()`
-    pub fn set_dynamic_hilight_attributes(&mut self, theDrawer: &crate::ffi::HandlePrs3dDrawer) {
+    pub fn set_dynamic_hilight_attributes(
+        &mut self,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetDynamicHilightAttributes(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetDynamicHilightAttributes(
                 self as *mut Self,
                 theDrawer,
             )
@@ -1816,33 +2010,37 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:221 - `PrsMgr_PresentableObject::UnsetHilightAttributes()`
     pub fn unset_hilight_attributes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetHilightAttributes(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetHilightAttributes(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:228 - `PrsMgr_PresentableObject::SynchronizeAspects()`
     pub fn synchronize_aspects(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SynchronizeAspects(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SynchronizeAspects(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:236 - `PrsMgr_PresentableObject::TransformPersistence()`
-    pub fn transform_persistence(&self) -> &crate::ffi::HandleGraphic3dTransformPers {
+    pub fn transform_persistence(&self) -> &crate::ffi_types::HandleGraphic3dTransformPers {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_TransformPersistence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_TransformPersistence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:246 - `PrsMgr_PresentableObject::SetTransformPersistence()`
     pub fn set_transform_persistence(
         &mut self,
-        theTrsfPers: &crate::ffi::HandleGraphic3dTransformPers,
+        theTrsfPers: &crate::ffi_types::HandleGraphic3dTransformPers,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetTransformPersistence(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetTransformPersistence(
                 self as *mut Self,
                 theTrsfPers,
             )
@@ -1850,69 +2048,84 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:252 - `PrsMgr_PresentableObject::LocalTransformationGeom()`
-    pub fn local_transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn local_transformation_geom(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_LocalTransformationGeom(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_LocalTransformationGeom(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:257 - `PrsMgr_PresentableObject::SetLocalTransformation()`
     pub fn set_local_transformation(&mut self, theTrsf: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetLocalTransformation(self as *mut Self, theTrsf)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetLocalTransformation(
+                self as *mut Self,
+                theTrsf,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:271 - `PrsMgr_PresentableObject::HasTransformation()`
     pub fn has_transformation(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasTransformation(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasTransformation(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:279 - `PrsMgr_PresentableObject::TransformationGeom()`
-    pub fn transformation_geom(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn transformation_geom(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_TransformationGeom(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_TransformationGeom(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:284 - `PrsMgr_PresentableObject::LocalTransformation()`
     pub fn local_transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_LocalTransformation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_LocalTransformation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:292 - `PrsMgr_PresentableObject::Transformation()`
     pub fn transformation(&self) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_Transformation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Transformation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:298 - `PrsMgr_PresentableObject::InversedTransformation()`
     pub fn inversed_transformation(&self) -> &crate::gp::GTrsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_InversedTransformation(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_InversedTransformation(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:301 - `PrsMgr_PresentableObject::CombinedParentTransformation()`
-    pub fn combined_parent_transformation(&self) -> &crate::ffi::HandleTopLocDatum3D {
+    pub fn combined_parent_transformation(&self) -> &crate::ffi_types::HandleTopLocDatum3D {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::StdSelect_Shape_inherited_CombinedParentTransformation(
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_CombinedParentTransformation(
                     self as *const Self,
                 ),
             ))
@@ -1922,21 +2135,28 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:307 - `PrsMgr_PresentableObject::ResetTransformation()`
     pub fn reset_transformation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_ResetTransformation(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ResetTransformation(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:310 - `PrsMgr_PresentableObject::UpdateTransformation()`
     pub fn update_transformation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UpdateTransformation(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UpdateTransformation(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:316 - `PrsMgr_PresentableObject::RecomputeTransformation()`
-    pub fn recompute_transformation(&mut self, theProjector: &crate::ffi::HandleGraphic3dCamera) {
+    pub fn recompute_transformation(
+        &mut self,
+        theProjector: &crate::ffi_types::HandleGraphic3dCamera,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_RecomputeTransformation(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_RecomputeTransformation(
                 self as *mut Self,
                 theProjector,
             )
@@ -1944,32 +2164,44 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:324 - `PrsMgr_PresentableObject::ClipPlanes()`
-    pub fn clip_planes(&self) -> &crate::ffi::HandleGraphic3dSequenceOfHClipPlane {
+    pub fn clip_planes(&self) -> &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_ClipPlanes(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ClipPlanes(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:333 - `PrsMgr_PresentableObject::SetClipPlanes()`
-    pub fn set_clip_planes(&mut self, thePlanes: &crate::ffi::HandleGraphic3dSequenceOfHClipPlane) {
+    pub fn set_clip_planes(
+        &mut self,
+        thePlanes: &crate::ffi_types::HandleGraphic3dSequenceOfHClipPlane,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetClipPlanes(self as *mut Self, thePlanes)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetClipPlanes(
+                self as *mut Self,
+                thePlanes,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:344 - `PrsMgr_PresentableObject::AddClipPlane()`
-    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn add_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_AddClipPlane(self as *mut Self, thePlane)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_AddClipPlane(
+                self as *mut Self,
+                thePlane,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:348 - `PrsMgr_PresentableObject::RemoveClipPlane()`
-    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi::HandleGraphic3dClipPlane) {
+    pub fn remove_clip_plane(&mut self, thePlane: &crate::ffi_types::HandleGraphic3dClipPlane) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_RemoveClipPlane(self as *mut Self, thePlane)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_RemoveClipPlane(
+                self as *mut Self,
+                thePlane,
+            )
         })
     }
 
@@ -1977,7 +2209,7 @@ impl Shape {
     pub fn parent(&self) -> Option<&crate::prs_mgr::PresentableObject> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_Shape_inherited_Parent(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Parent(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1988,28 +2220,31 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:355 - `PrsMgr_PresentableObject::Children()`
-    pub fn children(&self) -> &crate::ffi::PrsMgr_ListOfPresentableObjects {
+    pub fn children(&self) -> &crate::ffi_types::PrsMgr_ListOfPresentableObjects {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_Shape_inherited_Children(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Children(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:358 - `PrsMgr_PresentableObject::AddChild()`
-    pub fn add_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+    pub fn add_child(&mut self, theObject: &crate::ffi_types::HandlePrsMgrPresentableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_AddChild(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_AddChild(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:362 - `PrsMgr_PresentableObject::AddChildWithCurrentTransformation()`
     pub fn add_child_with_current_transformation(
         &mut self,
-        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
+        theObject: &crate::ffi_types::HandlePrsMgrPresentableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_AddChildWithCurrentTransformation(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_AddChildWithCurrentTransformation(
                 self as *mut Self,
                 theObject,
             )
@@ -2017,19 +2252,22 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:366 - `PrsMgr_PresentableObject::RemoveChild()`
-    pub fn remove_child(&mut self, theObject: &crate::ffi::HandlePrsMgrPresentableObject) {
+    pub fn remove_child(&mut self, theObject: &crate::ffi_types::HandlePrsMgrPresentableObject) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_RemoveChild(self as *mut Self, theObject)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_RemoveChild(
+                self as *mut Self,
+                theObject,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:370 - `PrsMgr_PresentableObject::RemoveChildWithRestoreTransformation()`
     pub fn remove_child_with_restore_transformation(
         &mut self,
-        theObject: &crate::ffi::HandlePrsMgrPresentableObject,
+        theObject: &crate::ffi_types::HandlePrsMgrPresentableObject,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_RemoveChildWithRestoreTransformation(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_RemoveChildWithRestoreTransformation(
                 self as *mut Self,
                 theObject,
             )
@@ -2039,21 +2277,26 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:374 - `PrsMgr_PresentableObject::HasOwnPresentations()`
     pub fn has_own_presentations(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasOwnPresentations(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasOwnPresentations(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:380 - `PrsMgr_PresentableObject::BoundingBox()`
     pub fn bounding_box(&mut self, theBndBox: &mut crate::bnd::Box) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_BoundingBox(self as *mut Self, theBndBox)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_BoundingBox(
+                self as *mut Self,
+                theBndBox,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:457 - `PrsMgr_PresentableObject::SetIsoOnTriangulation()`
     pub fn set_iso_on_triangulation(&mut self, theIsEnabled: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetIsoOnTriangulation(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetIsoOnTriangulation(
                 self as *mut Self,
                 theIsEnabled,
             )
@@ -2063,7 +2306,9 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:463 - `PrsMgr_PresentableObject::CurrentFacingModel()`
     pub fn current_facing_model(&self) -> crate::aspect::TypeOfFacingModel {
         crate::aspect::TypeOfFacingModel::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_CurrentFacingModel(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_CurrentFacingModel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2071,7 +2316,7 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:468 - `PrsMgr_PresentableObject::SetCurrentFacingModel()`
     pub fn set_current_facing_model(&mut self, theModel: crate::aspect::TypeOfFacingModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetCurrentFacingModel(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetCurrentFacingModel(
                 self as *mut Self,
                 theModel.into(),
             )
@@ -2081,70 +2326,70 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:474 - `PrsMgr_PresentableObject::HasColor()`
     pub fn has_color(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasColor(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasColor(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:477 - `PrsMgr_PresentableObject::Color()`
     pub fn color(&self, theColor: &mut crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_Color(self as *const Self, theColor)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Color(self as *const Self, theColor)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:483 - `PrsMgr_PresentableObject::SetColor()`
     pub fn set_color(&mut self, theColor: &crate::quantity::Color) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetColor(self as *mut Self, theColor)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetColor(self as *mut Self, theColor)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:494 - `PrsMgr_PresentableObject::UnsetColor()`
     pub fn unset_color(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetColor(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetColor(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:497 - `PrsMgr_PresentableObject::HasWidth()`
     pub fn has_width(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasWidth(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasWidth(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:500 - `PrsMgr_PresentableObject::Width()`
     pub fn width(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_Width(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Width(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:504 - `PrsMgr_PresentableObject::SetWidth()`
     pub fn set_width(&mut self, theWidth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetWidth(self as *mut Self, theWidth)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetWidth(self as *mut Self, theWidth)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:507 - `PrsMgr_PresentableObject::UnsetWidth()`
     pub fn unset_width(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetWidth(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetWidth(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:510 - `PrsMgr_PresentableObject::HasMaterial()`
     pub fn has_material(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasMaterial(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasMaterial(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:513 - `PrsMgr_PresentableObject::Material()`
     pub fn material(&self) -> crate::graphic3d::NameOfMaterial {
         crate::graphic3d::NameOfMaterial::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_Material(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Material(self as *const Self)
         }))
         .unwrap()
     }
@@ -2152,56 +2397,61 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:519 - `PrsMgr_PresentableObject::SetMaterial()`
     pub fn set_material(&mut self, aName: &crate::graphic3d::MaterialAspect) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetMaterial(self as *mut Self, aName)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetMaterial(self as *mut Self, aName)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:522 - `PrsMgr_PresentableObject::UnsetMaterial()`
     pub fn unset_material(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetMaterial(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetMaterial(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:525 - `PrsMgr_PresentableObject::IsTransparent()`
     pub fn is_transparent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IsTransparent(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IsTransparent(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:530 - `PrsMgr_PresentableObject::Transparency()`
     pub fn transparency(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_Transparency(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Transparency(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:539 - `PrsMgr_PresentableObject::SetTransparency()`
     pub fn set_transparency(&mut self, aValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetTransparency(self as *mut Self, aValue)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetTransparency(
+                self as *mut Self,
+                aValue,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:542 - `PrsMgr_PresentableObject::UnsetTransparency()`
     pub fn unset_transparency(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetTransparency(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetTransparency(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:545 - `PrsMgr_PresentableObject::HasPolygonOffsets()`
     pub fn has_polygon_offsets(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_HasPolygonOffsets(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_HasPolygonOffsets(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:548 - `PrsMgr_PresentableObject::PolygonOffsets()`
     pub fn polygon_offsets(&self, aMode: &mut i32, aFactor: &mut f32, aUnits: &mut f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_PolygonOffsets(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_PolygonOffsets(
                 self as *const Self,
                 aMode,
                 aFactor,
@@ -2213,7 +2463,7 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:554 - `PrsMgr_PresentableObject::SetPolygonOffsets()`
     pub fn set_polygon_offsets(&mut self, aMode: i32, aFactor: f32, aUnits: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetPolygonOffsets(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetPolygonOffsets(
                 self as *mut Self,
                 aMode,
                 aFactor,
@@ -2225,21 +2475,23 @@ impl Shape {
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:559 - `PrsMgr_PresentableObject::UnsetAttributes()`
     pub fn unset_attributes(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_UnsetAttributes(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_UnsetAttributes(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:573 - `PrsMgr_PresentableObject::ToPropagateVisualState()`
     pub fn to_propagate_visual_state(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_ToPropagateVisualState(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_ToPropagateVisualState(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `PrsMgr_PresentableObject.hxx`:576 - `PrsMgr_PresentableObject::SetPropagateVisualState()`
     pub fn set_propagate_visual_state(&mut self, theFlag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_SetPropagateVisualState(
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_SetPropagateVisualState(
                 self as *mut Self,
                 theFlag,
             )
@@ -2247,16 +2499,19 @@ impl Shape {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2264,7 +2519,7 @@ impl Shape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_Shape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2277,60 +2532,70 @@ impl Shape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_Shape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_Shape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdSelectShape;
+pub use crate::ffi_types::HandleStdSelectShape;
 
 unsafe impl crate::CppDeletable for HandleStdSelectShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdSelectShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdSelectShape_destructor(ptr);
     }
 }
 
 impl HandleStdSelectShape {
     /// Dereference this Handle to access the underlying StdSelect_Shape
-    pub fn get(&self) -> &crate::ffi::StdSelect_Shape {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdSelectShape_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdSelect_Shape {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShape_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_Shape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_Shape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdSelect_Shape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdSelectShape_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShape_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdSelect_Shape> to Handle<PrsMgr_PresentableObject>
     pub fn to_handle_presentable_object(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePrsMgrPresentableObject> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePrsMgrPresentableObject> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectShape_to_HandlePrsMgrPresentableObject(
+                crate::ffi_extern_TKV3d::HandleStdSelectShape_to_HandlePrsMgrPresentableObject(
                     self as *const Self,
                 ),
             ))
@@ -2338,10 +2603,14 @@ impl HandleStdSelectShape {
     }
 
     /// Upcast Handle<StdSelect_Shape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectShape_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdSelectShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2353,11 +2622,11 @@ impl HandleStdSelectShape {
 
 /// **Source:** `StdSelect_ShapeTypeFilter.hxx`:28 - `StdSelect_ShapeTypeFilter`
 /// A filter framework which allows you to define a filter for a specific shape type.
-pub use crate::ffi::StdSelect_ShapeTypeFilter as ShapeTypeFilter;
+pub use crate::ffi_types::StdSelect_ShapeTypeFilter as ShapeTypeFilter;
 
 unsafe impl crate::CppDeletable for ShapeTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdSelect_ShapeTypeFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_destructor(ptr);
     }
 }
 
@@ -2367,17 +2636,19 @@ impl ShapeTypeFilter {
     pub fn new_shapeenum(aType: crate::top_abs::ShapeEnum) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_ShapeTypeFilter_ctor_shapeenum(aType.into()),
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_ctor_shapeenum(aType.into()),
             ))
         }
     }
 
     /// **Source:** `StdSelect_ShapeTypeFilter.hxx`:30 - `StdSelect_ShapeTypeFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_ShapeTypeFilter_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2385,22 +2656,25 @@ impl ShapeTypeFilter {
     /// Returns the type of shape selected by the filter.
     pub fn type_(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_type_(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `StdSelect_ShapeTypeFilter.hxx`:38 - `StdSelect_ShapeTypeFilter::IsOk()`
-    pub fn is_ok(&self, anobj: &crate::ffi::HandleSelectMgrEntityOwner) -> bool {
+    pub fn is_ok(&self, anobj: &crate::ffi_types::HandleSelectMgrEntityOwner) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_is_ok(self as *const Self, anobj)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_is_ok(self as *const Self, anobj)
         })
     }
 
     /// **Source:** `StdSelect_ShapeTypeFilter.hxx`:41 - `StdSelect_ShapeTypeFilter::ActsOn()`
     pub fn acts_on(&self, aStandardMode: crate::top_abs::ShapeEnum) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_acts_on(self as *const Self, aStandardMode.into())
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_acts_on(
+                self as *const Self,
+                aStandardMode.into(),
+            )
         })
     }
 
@@ -2408,7 +2682,7 @@ impl ShapeTypeFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdSelect_ShapeTypeFilter_get_type_name(),
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2416,18 +2690,22 @@ impl ShapeTypeFilter {
     }
 
     /// **Source:** `StdSelect_ShapeTypeFilter.hxx`:30 - `StdSelect_ShapeTypeFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdSelect_ShapeTypeFilter_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to SelectMgr_Filter
     pub fn as_select_mgr_filter(&self) -> &crate::select_mgr::Filter {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2435,7 +2713,9 @@ impl ShapeTypeFilter {
     pub fn as_select_mgr_filter_mut(&mut self) -> &mut crate::select_mgr::Filter {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_as_SelectMgr_Filter_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2443,9 +2723,11 @@ impl ShapeTypeFilter {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2453,7 +2735,9 @@ impl ShapeTypeFilter {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StdSelect_ShapeTypeFilter_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2461,25 +2745,31 @@ impl ShapeTypeFilter {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdSelectShapeTypeFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdSelectShapeTypeFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdSelect_ShapeTypeFilter_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2487,7 +2777,9 @@ impl ShapeTypeFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdSelect_ShapeTypeFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2500,64 +2792,70 @@ impl ShapeTypeFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdSelect_ShapeTypeFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdSelect_ShapeTypeFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdSelectShapeTypeFilter;
+pub use crate::ffi_types::HandleStdSelectShapeTypeFilter;
 
 unsafe impl crate::CppDeletable for HandleStdSelectShapeTypeFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdSelectShapeTypeFilter_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_destructor(ptr);
     }
 }
 
 impl HandleStdSelectShapeTypeFilter {
     /// Dereference this Handle to access the underlying StdSelect_ShapeTypeFilter
-    pub fn get(&self) -> &crate::ffi::StdSelect_ShapeTypeFilter {
+    pub fn get(&self) -> &crate::ffi_types::StdSelect_ShapeTypeFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdSelectShapeTypeFilter_get(
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdSelect_ShapeTypeFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdSelect_ShapeTypeFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdSelect_ShapeTypeFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdSelectShapeTypeFilter_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<StdSelect_ShapeTypeFilter> to Handle<SelectMgr_Filter>
-    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi::HandleSelectMgrFilter> {
+    pub fn to_handle_filter(&self) -> crate::OwnedPtr<crate::ffi_types::HandleSelectMgrFilter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleSelectMgrFilter(
+                crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_to_HandleSelectMgrFilter(
                     self as *const Self,
                 ),
             ))
@@ -2565,10 +2863,12 @@ impl HandleStdSelectShapeTypeFilter {
     }
 
     /// Upcast Handle<StdSelect_ShapeTypeFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdSelectShapeTypeFilter_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleStdSelectShapeTypeFilter_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))

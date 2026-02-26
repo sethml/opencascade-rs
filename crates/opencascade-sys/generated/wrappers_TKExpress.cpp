@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Expr.hxx>
 #include <ExprIntrp_Analysis.hxx>
 #include <ExprIntrp_GenExp.hxx>
@@ -13,6 +13,7 @@
 #include <ExprIntrp_SequenceOfNamedExpression.hxx>
 #include <ExprIntrp_SequenceOfNamedFunction.hxx>
 #include <ExprIntrp_StackOfGeneralFunction.hxx>
+#include <ExprIntrp_StackOfGeneralRelation.hxx>
 #include <ExprIntrp_SyntaxError.hxx>
 #include <Expr_Absolute.hxx>
 #include <Expr_ArcCosine.hxx>
@@ -48,7 +49,6 @@
 #include <Expr_LessThanOrEqual.hxx>
 #include <Expr_LogOf10.hxx>
 #include <Expr_LogOfe.hxx>
-#include <Expr_MapOfNamedUnknown.hxx>
 #include <Expr_NamedConstant.hxx>
 #include <Expr_NamedExpression.hxx>
 #include <Expr_NamedFunction.hxx>
@@ -62,7 +62,6 @@
 #include <Expr_RUIterator.hxx>
 #include <Expr_RelationIterator.hxx>
 #include <Expr_SequenceOfGeneralExpression.hxx>
-#include <Expr_SequenceOfGeneralRelation.hxx>
 #include <Expr_Sign.hxx>
 #include <Expr_Sine.hxx>
 #include <Expr_SingleRelation.hxx>

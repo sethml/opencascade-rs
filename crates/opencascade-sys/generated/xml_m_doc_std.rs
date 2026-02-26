@@ -9,19 +9,16 @@
 /// **Source:** `XmlMDocStd.hxx`:33 - `XmlMDocStd::AddDrivers`
 /// Adds the attribute drivers to <aDriverTable>.
 pub fn add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_3(
-    aDriverTable: &crate::ffi::HandleXmlMDFADriverTable,
-    theMessageDriver: &crate::ffi::HandleMessageMessenger,
+    aDriverTable: &crate::ffi_types::HandleXmlMDFADriverTable,
+    theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::XmlMDocStd_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_3(
-            aDriverTable,
-            theMessageDriver,
-        )
+        crate::ffi_extern_TKXmlL::XmlMDocStd_add_drivers_handlexmlmdfadrivertable_handlemessagemessenger_3(aDriverTable, theMessageDriver)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardTransient, HandleXmlMDFADriver};
+pub use crate::ffi_types::{HandleStandardTransient, HandleXmlMDFADriver};
 
 // ========================
 // From XmlMDocStd_XLinkDriver.hxx
@@ -29,31 +26,33 @@ pub use crate::ffi::{HandleStandardTransient, HandleXmlMDFADriver};
 
 /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:33 - `XmlMDocStd_XLinkDriver`
 /// Attribute Driver.
-pub use crate::ffi::XmlMDocStd_XLinkDriver as XLinkDriver;
+pub use crate::ffi_types::XmlMDocStd_XLinkDriver as XLinkDriver;
 
 unsafe impl crate::CppDeletable for XLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::XmlMDocStd_XLinkDriver_destructor(ptr);
+        crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_destructor(ptr);
     }
 }
 
 impl XLinkDriver {
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:37 - `XmlMDocStd_XLinkDriver::XmlMDocStd_XLinkDriver()`
     pub fn new_handlemessagemessenger(
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlMDocStd_XLinkDriver_ctor_handlemessagemessenger(theMessageDriver),
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_ctor_handlemessagemessenger(
+                    theMessageDriver,
+                ),
             ))
         }
     }
 
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:39 - `XmlMDocStd_XLinkDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlMDocStd_XLinkDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_new_empty(self as *const Self),
             ))
         }
     }
@@ -62,40 +61,30 @@ impl XLinkDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         Source: &crate::xml_obj_mgt::Persistent,
-        Target: &crate::ffi::HandleTDFAttribute,
+        Target: &crate::ffi_types::HandleTDFAttribute,
         RelocTable: &mut crate::xml_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, Source, Target, RelocTable)
         })
     }
 
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:46 - `XmlMDocStd_XLinkDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_srelocationtable(
         &self,
-        Source: &crate::ffi::HandleTDFAttribute,
+        Source: &crate::ffi_types::HandleTDFAttribute,
         Target: &mut crate::xml_obj_mgt::Persistent,
         RelocTable: &mut crate::xml_obj_mgt::SRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_paste_handletdfattribute_persistent_srelocationtable(
-                self as *const Self,
-                Source,
-                Target,
-                RelocTable,
-            )
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_paste_handletdfattribute_persistent_srelocationtable(self as *const Self, Source, Target, RelocTable)
         })
     }
 
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:50 - `XmlMDocStd_XLinkDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -105,7 +94,7 @@ impl XLinkDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::XmlMDocStd_XLinkDriver_get_type_name(),
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -113,53 +102,65 @@ impl XLinkDriver {
     }
 
     /// **Source:** `XmlMDocStd_XLinkDriver.hxx`:50 - `XmlMDocStd_XLinkDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to XmlMDF_ADriver
     pub fn as_xml_mdf_a_driver(&self) -> &crate::xml_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_as_XmlMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_as_XmlMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to XmlMDF_ADriver (mutable)
     pub fn as_xml_mdf_a_driver_mut(&mut self) -> &mut crate::xml_mdf::ADriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_as_XmlMDF_ADriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_as_XmlMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleXmlMDocStdXLinkDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDocStdXLinkDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlMDocStd_XLinkDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -167,15 +168,19 @@ impl XLinkDriver {
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:42 - `XmlMDF_ADriver::VersionNumber()`
     pub fn version_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_VersionNumber(self as *const Self)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_VersionNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:49 - `XmlMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    pub fn source_type(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::XmlMDocStd_XLinkDriver_inherited_SourceType(self as *const Self),
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -183,41 +188,53 @@ impl XLinkDriver {
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:52 - `XmlMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:55 - `XmlMDF_ADriver::Namespace()`
     pub fn namespace(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_inherited_Namespace(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_Namespace(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `XmlMDF_ADriver.hxx`:72 - `XmlMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &*(crate::check_result(crate::ffi::XmlMDocStd_XLinkDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -225,7 +242,7 @@ impl XLinkDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::XmlMDocStd_XLinkDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -238,71 +255,83 @@ impl XLinkDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::XmlMDocStd_XLinkDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKXmlL::XmlMDocStd_XLinkDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleXmlMDocStdXLinkDriver;
+pub use crate::ffi_types::HandleXmlMDocStdXLinkDriver;
 
 unsafe impl crate::CppDeletable for HandleXmlMDocStdXLinkDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleXmlMDocStdXLinkDriver_destructor(ptr);
+        crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_destructor(ptr);
     }
 }
 
 impl HandleXmlMDocStdXLinkDriver {
     /// Dereference this Handle to access the underlying XmlMDocStd_XLinkDriver
-    pub fn get(&self) -> &crate::ffi::XmlMDocStd_XLinkDriver {
+    pub fn get(&self) -> &crate::ffi_types::XmlMDocStd_XLinkDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleXmlMDocStdXLinkDriver_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying XmlMDocStd_XLinkDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::XmlMDocStd_XLinkDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleXmlMDocStdXLinkDriver_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying XmlMDocStd_XLinkDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::XmlMDocStd_XLinkDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<XmlMDocStd_XLinkDriver> to Handle<XmlMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleXmlMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleXmlMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXmlMDocStdXLinkDriver_to_HandleXmlMDFADriver(self as *const Self),
+                crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_to_HandleXmlMDFADriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<XmlMDocStd_XLinkDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleXmlMDocStdXLinkDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKXmlL::HandleXmlMDocStdXLinkDriver_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))

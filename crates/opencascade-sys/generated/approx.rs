@@ -68,7 +68,7 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleBRepBlendAppFunc, HandleBRepBlendAppFuncRst, HandleBRepBlendAppFuncRstRst,
     HandleGeomFillCircularBlendFunc, HandleGeomFillSweepFunction, HandleStandardTransient,
 };
@@ -79,18 +79,18 @@ pub use crate::ffi::{
 
 /// **Source:** `Approx_Curve2d.hxx`:25 - `Approx_Curve2d`
 /// Makes  an  approximation  for  HCurve2d  from  Adaptor3d
-pub use crate::ffi::Approx_Curve2d as Curve2d;
+pub use crate::ffi_types::Approx_Curve2d as Curve2d;
 
 unsafe impl crate::CppDeletable for Curve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_Curve2d_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_Curve2d_destructor(ptr);
     }
 }
 
 impl Curve2d {
     /// **Source:** `Approx_Curve2d.hxx`:30 - `Approx_Curve2d::Approx_Curve2d()`
     pub fn new_handleadaptor2dcurve2d_real4_shape_int2(
-        C2D: &crate::ffi::HandleAdaptor2dCurve2d,
+        C2D: &crate::ffi_types::HandleAdaptor2dCurve2d,
         First: f64,
         Last: f64,
         TolU: f64,
@@ -100,51 +100,44 @@ impl Curve2d {
         MaxSegments: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_Curve2d_ctor_handleadaptor2dcurve2d_real4_shape_int2(
-                    C2D,
-                    First,
-                    Last,
-                    TolU,
-                    TolV,
-                    Continuity.into(),
-                    MaxDegree,
-                    MaxSegments,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_Curve2d_ctor_handleadaptor2dcurve2d_real4_shape_int2(C2D, First, Last, TolU, TolV, Continuity.into(), MaxDegree, MaxSegments)))
         }
     }
 
     /// **Source:** `Approx_Curve2d.hxx`:39 - `Approx_Curve2d::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Approx_Curve2d_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve2d_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Approx_Curve2d.hxx`:41 - `Approx_Curve2d::HasResult()`
     pub fn has_result(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Approx_Curve2d_has_result(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve2d_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `Approx_Curve2d.hxx`:43 - `Approx_Curve2d::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_Curve2d_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_Curve2d_curve(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `Approx_Curve2d.hxx`:45 - `Approx_Curve2d::MaxError2dU()`
     pub fn max_error2d_u(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_Curve2d_max_error2d_u(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_Curve2d_max_error2d_u(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_Curve2d.hxx`:47 - `Approx_Curve2d::MaxError2dV()`
     pub fn max_error2d_v(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_Curve2d_max_error2d_v(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_Curve2d_max_error2d_v(self as *const Self)
         })
     }
 }
@@ -154,11 +147,11 @@ impl Curve2d {
 // ========================
 
 /// **Source:** `Approx_Curve3d.hxx`:24 - `Approx_Curve3d`
-pub use crate::ffi::Approx_Curve3d as Curve3d;
+pub use crate::ffi_types::Approx_Curve3d as Curve3d;
 
 unsafe impl crate::CppDeletable for Curve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_Curve3d_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_Curve3d_destructor(ptr);
     }
 }
 
@@ -167,31 +160,23 @@ impl Curve3d {
     /// Approximation  of  a  curve  with respect of the
     /// required tolerance Tol3D.
     pub fn new_handleadaptor3dcurve_real_shape_int2(
-        Curve: &crate::ffi::HandleAdaptor3dCurve,
+        Curve: &crate::ffi_types::HandleAdaptor3dCurve,
         Tol3d: f64,
         Order: crate::geom_abs::Shape,
         MaxSegments: i32,
         MaxDegree: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_Curve3d_ctor_handleadaptor3dcurve_real_shape_int2(
-                    Curve,
-                    Tol3d,
-                    Order.into(),
-                    MaxSegments,
-                    MaxDegree,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_Curve3d_ctor_handleadaptor3dcurve_real_shape_int2(Curve, Tol3d, Order.into(), MaxSegments, MaxDegree)))
         }
     }
 
     /// **Source:** `Approx_Curve3d.hxx`:37 - `Approx_Curve3d::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_Curve3d_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_Curve3d_curve(self as *const Self),
+            ))
         }
     }
 
@@ -199,7 +184,9 @@ impl Curve3d {
     /// returns  Standard_True  if  the  approximation  has
     /// been  done  within  required tolerance
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Approx_Curve3d_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve3d_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Approx_Curve3d.hxx`:46 - `Approx_Curve3d::HasResult()`
@@ -207,20 +194,26 @@ impl Curve3d {
     /// with a result that  is not NECESSARELY within the required
     /// tolerance
     pub fn has_result(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Approx_Curve3d_has_result(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve3d_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `Approx_Curve3d.hxx`:50 - `Approx_Curve3d::MaxError()`
     /// returns  the  Maximum  Error  (>0 when an approximation
     /// has  been  done, 0  if  no  approximation)
     pub fn max_error(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::Approx_Curve3d_max_error(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve3d_max_error(self as *const Self)
+        })
     }
 
     /// **Source:** `Approx_Curve3d.hxx`:53 - `Approx_Curve3d::Dump()`
     /// Print on the stream  o  information about the object
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
-        crate::check_void_result(unsafe { crate::ffi::Approx_Curve3d_dump(self as *const Self, o) })
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::Approx_Curve3d_dump(self as *const Self, o)
+        })
     }
 }
 
@@ -230,11 +223,11 @@ impl Curve3d {
 
 /// **Source:** `Approx_CurveOnSurface.hxx`:28 - `Approx_CurveOnSurface`
 /// Approximation of   curve on surface
-pub use crate::ffi::Approx_CurveOnSurface as CurveOnSurface;
+pub use crate::ffi_types::Approx_CurveOnSurface as CurveOnSurface;
 
 unsafe impl crate::CppDeletable for CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_CurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_destructor(ptr);
     }
 }
 
@@ -247,36 +240,36 @@ impl CurveOnSurface {
     /// @param theFirst Last parameter of resulting curve.
     /// @param theTol   Computation tolerance.
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface_real3(
-        theC2D: &crate::ffi::HandleAdaptor2dCurve2d,
-        theSurf: &crate::ffi::HandleAdaptor3dSurface,
+        theC2D: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        theSurf: &crate::ffi_types::HandleAdaptor3dSurface,
         theFirst: f64,
         theLast: f64,
         theTol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_CurveOnSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real3(theC2D, theSurf, theFirst, theLast, theTol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real3(theC2D, theSurf, theFirst, theLast, theTol)))
         }
     }
 
     /// **Source:** `Approx_CurveOnSurface.hxx`:59 - `Approx_CurveOnSurface::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_CurveOnSurface.hxx`:61 - `Approx_CurveOnSurface::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_has_result(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_has_result(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_CurveOnSurface.hxx`:63 - `Approx_CurveOnSurface::Curve3d()`
-    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurveOnSurface_curve3d(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_curve3d(self as *const Self),
             ))
         }
     }
@@ -284,15 +277,15 @@ impl CurveOnSurface {
     /// **Source:** `Approx_CurveOnSurface.hxx`:65 - `Approx_CurveOnSurface::MaxError3d()`
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_max_error3d(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_CurveOnSurface.hxx`:67 - `Approx_CurveOnSurface::Curve2d()`
-    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurveOnSurface_curve2d(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_curve2d(self as *const Self),
             ))
         }
     }
@@ -300,7 +293,7 @@ impl CurveOnSurface {
     /// **Source:** `Approx_CurveOnSurface.hxx`:69 - `Approx_CurveOnSurface::MaxError2dU()`
     pub fn max_error2d_u(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_max_error2d_u(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_max_error2d_u(self as *const Self)
         })
     }
 
@@ -309,7 +302,7 @@ impl CurveOnSurface {
     /// 2d Curve
     pub fn max_error2d_v(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_max_error2d_v(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_max_error2d_v(self as *const Self)
         })
     }
 
@@ -330,7 +323,7 @@ impl CurveOnSurface {
         theOnly2d: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurveOnSurface_perform(
+            crate::ffi_extern_TKGeomBase::Approx_CurveOnSurface_perform(
                 self as *mut Self,
                 theMaxSegments,
                 theMaxDegree,
@@ -358,11 +351,11 @@ impl CurveOnSurface {
 /// @code
 /// 1/2(S1(C2D1(u) + S2(C2D2(u)))
 /// @endcode
-pub use crate::ffi::Approx_CurvilinearParameter as CurvilinearParameter;
+pub use crate::ffi_types::Approx_CurvilinearParameter as CurvilinearParameter;
 
 unsafe impl crate::CppDeletable for CurvilinearParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_CurvilinearParameter_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_destructor(ptr);
     }
 }
 
@@ -370,77 +363,73 @@ impl CurvilinearParameter {
     /// **Source:** `Approx_CurvilinearParameter.hxx`:42 - `Approx_CurvilinearParameter::Approx_CurvilinearParameter()`
     /// case of a free 3D curve
     pub fn new_handleadaptor3dcurve_real_shape_int2(
-        C3D: &crate::ffi::HandleAdaptor3dCurve,
+        C3D: &crate::ffi_types::HandleAdaptor3dCurve,
         Tol: f64,
         Order: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSegments: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvilinearParameter_ctor_handleadaptor3dcurve_real_shape_int2(
-                    C3D,
-                    Tol,
-                    Order.into(),
-                    MaxDegree,
-                    MaxSegments,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_ctor_handleadaptor3dcurve_real_shape_int2(C3D, Tol, Order.into(), MaxDegree, MaxSegments)))
         }
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:49 - `Approx_CurvilinearParameter::Approx_CurvilinearParameter()`
     /// case of a curve on one surface
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(
-        C2D: &crate::ffi::HandleAdaptor2dCurve2d,
-        Surf: &crate::ffi::HandleAdaptor3dSurface,
+        C2D: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
         Order: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSegments: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_CurvilinearParameter_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(C2D, Surf, Tol, Order.into(), MaxDegree, MaxSegments)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(C2D, Surf, Tol, Order.into(), MaxDegree, MaxSegments)))
         }
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:57 - `Approx_CurvilinearParameter::Approx_CurvilinearParameter()`
     /// case of a curve on two surfaces
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(
-        C2D1: &crate::ffi::HandleAdaptor2dCurve2d,
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        C2D2: &crate::ffi::HandleAdaptor2dCurve2d,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
+        C2D1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        C2D2: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
         Order: crate::geom_abs::Shape,
         MaxDegree: i32,
         MaxSegments: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_CurvilinearParameter_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(C2D1, Surf1, C2D2, Surf2, Tol, Order.into(), MaxDegree, MaxSegments)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_real_shape_int2(C2D1, Surf1, C2D2, Surf2, Tol, Order.into(), MaxDegree, MaxSegments)))
         }
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:66 - `Approx_CurvilinearParameter::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:68 - `Approx_CurvilinearParameter::HasResult()`
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_has_result(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_has_result(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:71 - `Approx_CurvilinearParameter::Curve3d()`
     /// returns the Bspline curve corresponding to the reparametrized 3D curve
-    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvilinearParameter_curve3d(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_curve3d(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -449,17 +438,21 @@ impl CurvilinearParameter {
     /// returns the maximum error on the reparametrized 3D curve
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:78 - `Approx_CurvilinearParameter::Curve2d1()`
     /// returns the BsplineCurve representing the reparametrized 2D curve on the
     /// first surface (case of a curve on one or two surfaces)
-    pub fn curve2d1(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve2d1(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvilinearParameter_curve2d1(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_curve2d1(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -468,17 +461,21 @@ impl CurvilinearParameter {
     /// returns the maximum error on the first reparametrized 2D curve
     pub fn max_error2d1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_max_error2d1(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_max_error2d1(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:85 - `Approx_CurvilinearParameter::Curve2d2()`
     /// returns the BsplineCurve representing the reparametrized 2D curve on the
     /// second surface (case of a curve on two surfaces)
-    pub fn curve2d2(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve2d2(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvilinearParameter_curve2d2(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_curve2d2(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -487,15 +484,17 @@ impl CurvilinearParameter {
     /// returns the maximum error on the second reparametrized 2D curve
     pub fn max_error2d2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_max_error2d2(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_max_error2d2(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvilinearParameter.hxx`:91 - `Approx_CurvilinearParameter::Dump()`
     /// print the maximum errors(s)
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvilinearParameter_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::Approx_CurvilinearParameter_dump(self as *const Self, o)
         })
     }
 }
@@ -507,48 +506,50 @@ impl CurvilinearParameter {
 /// **Source:** `Approx_CurvlinFunc.hxx`:30 - `Approx_CurvlinFunc`
 /// defines an abstract curve with
 /// curvilinear parametrization
-pub use crate::ffi::Approx_CurvlinFunc as CurvlinFunc;
+pub use crate::ffi_types::Approx_CurvlinFunc as CurvlinFunc;
 
 unsafe impl crate::CppDeletable for CurvlinFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_CurvlinFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_destructor(ptr);
     }
 }
 
 impl CurvlinFunc {
     /// **Source:** `Approx_CurvlinFunc.hxx`:34 - `Approx_CurvlinFunc::Approx_CurvlinFunc()`
     pub fn new_handleadaptor3dcurve_real(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvlinFunc_ctor_handleadaptor3dcurve_real(C, Tol),
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_ctor_handleadaptor3dcurve_real(
+                    C, Tol,
+                ),
             ))
         }
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:36 - `Approx_CurvlinFunc::Approx_CurvlinFunc()`
     pub fn new_handleadaptor2dcurve2d_handleadaptor3dsurface_real(
-        C2D: &crate::ffi::HandleAdaptor2dCurve2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        C2D: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_CurvlinFunc_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real(C2D, S, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_ctor_handleadaptor2dcurve2d_handleadaptor3dsurface_real(C2D, S, Tol)))
         }
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:40 - `Approx_CurvlinFunc::Approx_CurvlinFunc()`
     pub fn new_handleadaptor2dcurve2d2_handleadaptor3dsurface2_real(
-        C2D1: &crate::ffi::HandleAdaptor2dCurve2d,
-        C2D2: &crate::ffi::HandleAdaptor2dCurve2d,
-        S1: &crate::ffi::HandleAdaptor3dSurface,
-        S2: &crate::ffi::HandleAdaptor3dSurface,
+        C2D1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        C2D2: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S1: &crate::ffi_types::HandleAdaptor3dSurface,
+        S2: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_CurvlinFunc_ctor_handleadaptor2dcurve2d2_handleadaptor3dsurface2_real(C2D1, C2D2, S1, S2, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_ctor_handleadaptor2dcurve2d2_handleadaptor3dsurface2_real(C2D1, C2D2, S1, S2, Tol)))
         }
     }
 
@@ -556,21 +557,21 @@ impl CurvlinFunc {
     /// ---Purpose Update the tolerance to used
     pub fn set_tol(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_set_tol(self as *mut Self, Tol)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_set_tol(self as *mut Self, Tol)
         })
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:49 - `Approx_CurvlinFunc::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_first_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:51 - `Approx_CurvlinFunc::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_last_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_last_parameter(self as *const Self)
         })
     }
 
@@ -579,7 +580,10 @@ impl CurvlinFunc {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -589,9 +593,17 @@ impl CurvlinFunc {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -599,7 +611,12 @@ impl CurvlinFunc {
     /// if First < 0 or Last > 1
     pub fn trim(&mut self, First: f64, Last: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_trim(self as *mut Self, First, Last, Tol)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_trim(
+                self as *mut Self,
+                First,
+                Last,
+                Tol,
+            )
         })
     }
 
@@ -607,7 +624,7 @@ impl CurvlinFunc {
     /// Computes length of the curve.
     pub fn length(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_length(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_length(self as *mut Self)
         })
     }
 
@@ -620,14 +637,19 @@ impl CurvlinFunc {
         LasrU: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_length_curve_real2(self as *const Self, C, FirstU, LasrU)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_length_curve_real2(
+                self as *const Self,
+                C,
+                FirstU,
+                LasrU,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:77 - `Approx_CurvlinFunc::GetLength()`
     pub fn get_length(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_get_length(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_get_length(self as *const Self)
         })
     }
 
@@ -642,7 +664,12 @@ impl CurvlinFunc {
         NumberOfCurve: i32,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_get_u_parameter(self as *const Self, C, S, NumberOfCurve)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_get_u_parameter(
+                self as *const Self,
+                C,
+                S,
+                NumberOfCurve,
+            )
         })
     }
 
@@ -650,7 +677,7 @@ impl CurvlinFunc {
     /// returns original parameter corresponding S.
     pub fn get_s_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_get_s_parameter(self as *const Self, U)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_get_s_parameter(self as *const Self, U)
         })
     }
 
@@ -660,10 +687,15 @@ impl CurvlinFunc {
         &self,
         S: f64,
         Order: i32,
-        Result: &mut crate::ffi::TColStd_Array1OfReal,
+        Result: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_eval_case1(self as *const Self, S, Order, Result)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_eval_case1(
+                self as *const Self,
+                S,
+                Order,
+                Result,
+            )
         })
     }
 
@@ -673,10 +705,15 @@ impl CurvlinFunc {
         &self,
         S: f64,
         Order: i32,
-        Result: &mut crate::ffi::TColStd_Array1OfReal,
+        Result: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_eval_case2(self as *const Self, S, Order, Result)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_eval_case2(
+                self as *const Self,
+                S,
+                Order,
+                Result,
+            )
         })
     }
 
@@ -686,17 +723,22 @@ impl CurvlinFunc {
         &mut self,
         S: f64,
         Order: i32,
-        Result: &mut crate::ffi::TColStd_Array1OfReal,
+        Result: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_eval_case3(self as *mut Self, S, Order, Result)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_eval_case3(
+                self as *mut Self,
+                S,
+                Order,
+                Result,
+            )
         })
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:104 - `Approx_CurvlinFunc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_CurvlinFunc_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -706,7 +748,7 @@ impl CurvlinFunc {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Approx_CurvlinFunc_get_type_name(),
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -714,50 +756,64 @@ impl CurvlinFunc {
     }
 
     /// **Source:** `Approx_CurvlinFunc.hxx`:104 - `Approx_CurvlinFunc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Approx_CurvlinFunc_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Approx_CurvlinFunc_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Approx_CurvlinFunc_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxCurvlinFunc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxCurvlinFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_CurvlinFunc_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -765,7 +821,7 @@ impl CurvlinFunc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Approx_CurvlinFunc_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -778,62 +834,74 @@ impl CurvlinFunc {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_CurvlinFunc_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_CurvlinFunc_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleApproxCurvlinFunc;
+pub use crate::ffi_types::HandleApproxCurvlinFunc;
 
 unsafe impl crate::CppDeletable for HandleApproxCurvlinFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleApproxCurvlinFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_destructor(ptr);
     }
 }
 
 impl HandleApproxCurvlinFunc {
     /// Dereference this Handle to access the underlying Approx_CurvlinFunc
-    pub fn get(&self) -> &crate::ffi::Approx_CurvlinFunc {
+    pub fn get(&self) -> &crate::ffi_types::Approx_CurvlinFunc {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleApproxCurvlinFunc_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Approx_CurvlinFunc
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_CurvlinFunc {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleApproxCurvlinFunc_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Approx_CurvlinFunc
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Approx_CurvlinFunc {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Approx_CurvlinFunc> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleApproxCurvlinFunc_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleApproxCurvlinFunc_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -844,11 +912,11 @@ impl HandleApproxCurvlinFunc {
 // ========================
 
 /// **Source:** `Approx_FitAndDivide.hxx`:31 - `Approx_FitAndDivide`
-pub use crate::ffi::Approx_FitAndDivide as FitAndDivide;
+pub use crate::ffi_types::Approx_FitAndDivide as FitAndDivide;
 
 unsafe impl crate::CppDeletable for FitAndDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_FitAndDivide_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_destructor(ptr);
     }
 }
 
@@ -869,18 +937,7 @@ impl FitAndDivide {
         LastC: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_FitAndDivide_ctor_function_int2_real2_bool_constraint2(
-                    Line,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    cutting,
-                    FirstC.into(),
-                    LastC.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_ctor_function_int2_real2_bool_constraint2(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, cutting, FirstC.into(), LastC.into())))
         }
     }
 
@@ -897,7 +954,7 @@ impl FitAndDivide {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_FitAndDivide_ctor_int2_real2_bool_constraint2(
+                crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_ctor_int2_real2_bool_constraint2(
                     degreemin,
                     degreemax,
                     Tolerance3d,
@@ -914,7 +971,7 @@ impl FitAndDivide {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &crate::app_cont::Function) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_perform(self as *mut Self, Line)
         })
     }
 
@@ -922,7 +979,11 @@ impl FitAndDivide {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_degrees(self as *mut Self, degreemin, degreemax)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
         })
     }
 
@@ -930,7 +991,7 @@ impl FitAndDivide {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_tolerances(
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_tolerances(
                 self as *mut Self,
                 Tolerance3d,
                 Tolerance2d,
@@ -946,7 +1007,7 @@ impl FitAndDivide {
         LastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_constraints(
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_constraints(
                 self as *mut Self,
                 FirstC.into(),
                 LastC.into(),
@@ -958,7 +1019,10 @@ impl FitAndDivide {
     /// Changes the max number of segments, which is allowed for cutting.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_max_segments(self as *mut Self, theMaxSegments)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_max_segments(
+                self as *mut Self,
+                theMaxSegments,
+            )
         })
     }
 
@@ -969,7 +1033,10 @@ impl FitAndDivide {
     /// By default inverse order is used.
     pub fn set_inv_order(&mut self, theInvOrder: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_inv_order(self as *mut Self, theInvOrder)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_inv_order(
+                self as *mut Self,
+                theInvOrder,
+            )
         })
     }
 
@@ -980,7 +1047,10 @@ impl FitAndDivide {
     /// By default hang checking is used.
     pub fn set_hang_checking(&mut self, theHangChecking: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_set_hang_checking(self as *mut Self, theHangChecking)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_set_hang_checking(
+                self as *mut Self,
+                theHangChecking,
+            )
         })
     }
 
@@ -990,7 +1060,9 @@ impl FitAndDivide {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_is_all_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_is_all_approximated(
+                self as *const Self,
+            )
         })
     }
 
@@ -998,7 +1070,9 @@ impl FitAndDivide {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_is_tolerance_reached(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_is_tolerance_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -1006,7 +1080,12 @@ impl FitAndDivide {
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_error(self as *const Self, Index, tol3d, tol2d)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_error(
+                self as *const Self,
+                Index,
+                tol3d,
+                tol2d,
+            )
         })
     }
 
@@ -1015,7 +1094,7 @@ impl FitAndDivide {
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_nb_multi_curves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_nb_multi_curves(self as *const Self)
         })
     }
 
@@ -1023,17 +1102,21 @@ impl FitAndDivide {
     /// returns the approximation MultiCurve of range <Index>.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_FitAndDivide_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_value(self as *const Self, Index),
+            ))
         }
     }
 
     /// **Source:** `Approx_FitAndDivide.hxx`:110 - `Approx_FitAndDivide::Parameters()`
     pub fn parameters(&self, Index: i32, firstp: &mut f64, lastp: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide_parameters(self as *const Self, Index, firstp, lastp)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide_parameters(
+                self as *const Self,
+                Index,
+                firstp,
+                lastp,
+            )
         })
     }
 }
@@ -1043,11 +1126,11 @@ impl FitAndDivide {
 // ========================
 
 /// **Source:** `Approx_FitAndDivide2d.hxx`:31 - `Approx_FitAndDivide2d`
-pub use crate::ffi::Approx_FitAndDivide2d as FitAndDivide2d;
+pub use crate::ffi_types::Approx_FitAndDivide2d as FitAndDivide2d;
 
 unsafe impl crate::CppDeletable for FitAndDivide2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_FitAndDivide2d_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_destructor(ptr);
     }
 }
 
@@ -1068,18 +1151,7 @@ impl FitAndDivide2d {
         LastC: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_FitAndDivide2d_ctor_function_int2_real2_bool_constraint2(
-                    Line,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    cutting,
-                    FirstC.into(),
-                    LastC.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_ctor_function_int2_real2_bool_constraint2(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, cutting, FirstC.into(), LastC.into())))
         }
     }
 
@@ -1095,17 +1167,7 @@ impl FitAndDivide2d {
         LastC: crate::app_par_curves::Constraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_FitAndDivide2d_ctor_int2_real2_bool_constraint2(
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    cutting,
-                    FirstC.into(),
-                    LastC.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_ctor_int2_real2_bool_constraint2(degreemin, degreemax, Tolerance3d, Tolerance2d, cutting, FirstC.into(), LastC.into())))
         }
     }
 
@@ -1113,7 +1175,7 @@ impl FitAndDivide2d {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &crate::app_cont::Function) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_perform(self as *mut Self, Line)
         })
     }
 
@@ -1121,7 +1183,11 @@ impl FitAndDivide2d {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_degrees(self as *mut Self, degreemin, degreemax)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
         })
     }
 
@@ -1129,7 +1195,7 @@ impl FitAndDivide2d {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_tolerances(
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_tolerances(
                 self as *mut Self,
                 Tolerance3d,
                 Tolerance2d,
@@ -1145,7 +1211,7 @@ impl FitAndDivide2d {
         LastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_constraints(
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_constraints(
                 self as *mut Self,
                 FirstC.into(),
                 LastC.into(),
@@ -1157,7 +1223,10 @@ impl FitAndDivide2d {
     /// Changes the max number of segments, which is allowed for cutting.
     pub fn set_max_segments(&mut self, theMaxSegments: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_max_segments(self as *mut Self, theMaxSegments)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_max_segments(
+                self as *mut Self,
+                theMaxSegments,
+            )
         })
     }
 
@@ -1168,7 +1237,10 @@ impl FitAndDivide2d {
     /// By default inverse order is used.
     pub fn set_inv_order(&mut self, theInvOrder: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_inv_order(self as *mut Self, theInvOrder)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_inv_order(
+                self as *mut Self,
+                theInvOrder,
+            )
         })
     }
 
@@ -1179,7 +1251,10 @@ impl FitAndDivide2d {
     /// By default hang checking is used.
     pub fn set_hang_checking(&mut self, theHangChecking: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_set_hang_checking(self as *mut Self, theHangChecking)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_set_hang_checking(
+                self as *mut Self,
+                theHangChecking,
+            )
         })
     }
 
@@ -1189,7 +1264,9 @@ impl FitAndDivide2d {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_is_all_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_is_all_approximated(
+                self as *const Self,
+            )
         })
     }
 
@@ -1197,7 +1274,9 @@ impl FitAndDivide2d {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_is_tolerance_reached(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_is_tolerance_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -1205,7 +1284,12 @@ impl FitAndDivide2d {
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_error(self as *const Self, Index, tol3d, tol2d)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_error(
+                self as *const Self,
+                Index,
+                tol3d,
+                tol2d,
+            )
         })
     }
 
@@ -1214,7 +1298,7 @@ impl FitAndDivide2d {
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_nb_multi_curves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_nb_multi_curves(self as *const Self)
         })
     }
 
@@ -1222,17 +1306,24 @@ impl FitAndDivide2d {
     /// returns the approximation MultiCurve of range <Index>.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_FitAndDivide2d_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_value(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_FitAndDivide2d.hxx`:110 - `Approx_FitAndDivide2d::Parameters()`
     pub fn parameters(&self, Index: i32, firstp: &mut f64, lastp: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_FitAndDivide2d_parameters(self as *const Self, Index, firstp, lastp)
+            crate::ffi_extern_TKGeomBase::Approx_FitAndDivide2d_parameters(
+                self as *const Self,
+                Index,
+                firstp,
+                lastp,
+            )
         })
     }
 }
@@ -1242,11 +1333,11 @@ impl FitAndDivide2d {
 // ========================
 
 /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface`
-pub use crate::ffi::Approx_HArray1OfAdHSurface as HArray1OfAdHSurface;
+pub use crate::ffi_types::Approx_HArray1OfAdHSurface as HArray1OfAdHSurface;
 
 unsafe impl crate::CppDeletable for HArray1OfAdHSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_HArray1OfAdHSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_destructor(ptr);
     }
 }
 
@@ -1255,7 +1346,7 @@ impl HArray1OfAdHSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_ctor(),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_ctor(),
             ))
         }
     }
@@ -1264,7 +1355,9 @@ impl HArray1OfAdHSurface {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -1273,68 +1366,68 @@ impl HArray1OfAdHSurface {
     pub fn new_int2_handleadaptor3dsurface(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleAdaptor3dSurface,
+        theValue: &crate::ffi_types::HandleAdaptor3dSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_ctor_int2_handleadaptor3dsurface(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_ctor_int2_handleadaptor3dsurface(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Approx_HArray1OfAdHSurface()`
     pub fn new_handleadaptor3dsurface_int2_bool(
-        theBegin: &crate::ffi::HandleAdaptor3dSurface,
+        theBegin: &crate::ffi_types::HandleAdaptor3dSurface,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_ctor_handleadaptor3dsurface_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_ctor_handleadaptor3dsurface_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Approx_HArray1OfAdHSurface()`
     pub fn new_array1ofadhsurface(
-        theOther: &crate::ffi::Approx_Array1OfAdHSurface,
+        theOther: &crate::ffi_types::Approx_Array1OfAdHSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_ctor_array1ofadhsurface(theOther),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_ctor_array1ofadhsurface(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Approx_Array1OfAdHSurface {
+    pub fn array1(&self) -> &crate::ffi_types::Approx_Array1OfAdHSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfAdHSurface_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Approx_Array1OfAdHSurface {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Approx_Array1OfAdHSurface {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Approx_HArray1OfAdHSurface_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfAdHSurface_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1342,7 +1435,7 @@ impl HArray1OfAdHSurface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_get_type_name(),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1350,18 +1443,22 @@ impl HArray1OfAdHSurface {
     }
 
     /// **Source:** `Approx_HArray1OfAdHSurface.hxx`:24 - `Approx_HArray1OfAdHSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfAdHSurface_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Approx_HArray1OfAdHSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1369,7 +1466,9 @@ impl HArray1OfAdHSurface {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1377,18 +1476,18 @@ impl HArray1OfAdHSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxHArray1OfAdHSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxHArray1OfAdHSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfAdHSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1396,9 +1495,12 @@ impl HArray1OfAdHSurface {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1406,7 +1508,9 @@ impl HArray1OfAdHSurface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Approx_HArray1OfAdHSurface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1419,67 +1523,77 @@ impl HArray1OfAdHSurface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_HArray1OfAdHSurface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfAdHSurface_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleApproxHArray1OfAdHSurface;
+pub use crate::ffi_types::HandleApproxHArray1OfAdHSurface;
 
 unsafe impl crate::CppDeletable for HandleApproxHArray1OfAdHSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleApproxHArray1OfAdHSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_destructor(ptr);
     }
 }
 
 impl HandleApproxHArray1OfAdHSurface {
     /// Dereference this Handle to access the underlying Approx_HArray1OfAdHSurface
-    pub fn get(&self) -> &crate::ffi::Approx_HArray1OfAdHSurface {
+    pub fn get(&self) -> &crate::ffi_types::Approx_HArray1OfAdHSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleApproxHArray1OfAdHSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Approx_HArray1OfAdHSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_HArray1OfAdHSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Approx_HArray1OfAdHSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleApproxHArray1OfAdHSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Approx_HArray1OfAdHSurface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleApproxHArray1OfAdHSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfAdHSurface_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1489,11 +1603,11 @@ impl HandleApproxHArray1OfAdHSurface {
 // ========================
 
 /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d`
-pub use crate::ffi::Approx_HArray1OfGTrsf2d as HArray1OfGTrsf2d;
+pub use crate::ffi_types::Approx_HArray1OfGTrsf2d as HArray1OfGTrsf2d;
 
 unsafe impl crate::CppDeletable for HArray1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_HArray1OfGTrsf2d_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_destructor(ptr);
     }
 }
 
@@ -1502,7 +1616,7 @@ impl HArray1OfGTrsf2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_ctor(),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_ctor(),
             ))
         }
     }
@@ -1511,7 +1625,7 @@ impl HArray1OfGTrsf2d {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_ctor_int2(theLower, theUpper),
             ))
         }
     }
@@ -1520,25 +1634,27 @@ impl HArray1OfGTrsf2d {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::Approx_Array1OfGTrsf2d_value_type,
+        theValue: &crate::ffi_types::Approx_Array1OfGTrsf2d_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_ctor_int2_type(theLower, theUpper, theValue),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_ctor_int2_type(
+                    theLower, theUpper, theValue,
+                ),
             ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Approx_HArray1OfGTrsf2d()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::Approx_Array1OfGTrsf2d_value_type,
+        theBegin: &crate::ffi_types::Approx_Array1OfGTrsf2d_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_ctor_type_int2_bool(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -1547,37 +1663,45 @@ impl HArray1OfGTrsf2d {
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Approx_HArray1OfGTrsf2d()`
     pub fn new_array1ofgtrsf2d(
-        theOther: &crate::ffi::Approx_Array1OfGTrsf2d,
+        theOther: &crate::ffi_types::Approx_Array1OfGTrsf2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_ctor_array1ofgtrsf2d(theOther),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_ctor_array1ofgtrsf2d(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Approx_Array1OfGTrsf2d {
+    pub fn array1(&self) -> &crate::ffi_types::Approx_Array1OfGTrsf2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfGTrsf2d_array1(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_array1(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Approx_Array1OfGTrsf2d {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Approx_Array1OfGTrsf2d {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Approx_HArray1OfGTrsf2d_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfGTrsf2d_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1585,7 +1709,7 @@ impl HArray1OfGTrsf2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_get_type_name(),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1593,18 +1717,22 @@ impl HArray1OfGTrsf2d {
     }
 
     /// **Source:** `Approx_HArray1OfGTrsf2d.hxx`:23 - `Approx_HArray1OfGTrsf2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_HArray1OfGTrsf2d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Approx_HArray1OfGTrsf2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1612,7 +1740,9 @@ impl HArray1OfGTrsf2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1620,25 +1750,31 @@ impl HArray1OfGTrsf2d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxHArray1OfGTrsf2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxHArray1OfGTrsf2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_HArray1OfGTrsf2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1646,7 +1782,9 @@ impl HArray1OfGTrsf2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Approx_HArray1OfGTrsf2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1659,65 +1797,75 @@ impl HArray1OfGTrsf2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_HArray1OfGTrsf2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_HArray1OfGTrsf2d_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleApproxHArray1OfGTrsf2d;
+pub use crate::ffi_types::HandleApproxHArray1OfGTrsf2d;
 
 unsafe impl crate::CppDeletable for HandleApproxHArray1OfGTrsf2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_destructor(ptr);
     }
 }
 
 impl HandleApproxHArray1OfGTrsf2d {
     /// Dereference this Handle to access the underlying Approx_HArray1OfGTrsf2d
-    pub fn get(&self) -> &crate::ffi::Approx_HArray1OfGTrsf2d {
+    pub fn get(&self) -> &crate::ffi_types::Approx_HArray1OfGTrsf2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleApproxHArray1OfGTrsf2d_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Approx_HArray1OfGTrsf2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_HArray1OfGTrsf2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Approx_HArray1OfGTrsf2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleApproxHArray1OfGTrsf2d_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Approx_HArray1OfGTrsf2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleApproxHArray1OfGTrsf2d_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxHArray1OfGTrsf2d_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1727,11 +1875,11 @@ impl HandleApproxHArray1OfGTrsf2d {
 // ========================
 
 /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:27 - `Approx_MCurvesToBSpCurve`
-pub use crate::ffi::Approx_MCurvesToBSpCurve as MCurvesToBSpCurve;
+pub use crate::ffi_types::Approx_MCurvesToBSpCurve as MCurvesToBSpCurve;
 
 unsafe impl crate::CppDeletable for MCurvesToBSpCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_MCurvesToBSpCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_destructor(ptr);
     }
 }
 
@@ -1740,7 +1888,7 @@ impl MCurvesToBSpCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_MCurvesToBSpCurve_ctor(),
+                crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_ctor(),
             ))
         }
     }
@@ -1748,31 +1896,31 @@ impl MCurvesToBSpCurve {
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:34 - `Approx_MCurvesToBSpCurve::Reset()`
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_MCurvesToBSpCurve_reset(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_reset(self as *mut Self)
         })
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:36 - `Approx_MCurvesToBSpCurve::Append()`
     pub fn append(&mut self, MC: &crate::app_par_curves::MultiCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_MCurvesToBSpCurve_append(self as *mut Self, MC)
+            crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_append(self as *mut Self, MC)
         })
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:38 - `Approx_MCurvesToBSpCurve::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_MCurvesToBSpCurve_perform(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_perform(self as *mut Self)
         })
     }
 
     /// **Source:** `Approx_MCurvesToBSpCurve.hxx`:40 - `Approx_MCurvesToBSpCurve::Perform()`
     pub fn perform_sequenceofmulticurve(
         &mut self,
-        TheSeq: &crate::ffi::AppParCurves_SequenceOfMultiCurve,
+        TheSeq: &crate::ffi_types::AppParCurves_SequenceOfMultiCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_MCurvesToBSpCurve_perform_sequenceofmulticurve(
+            crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_perform_sequenceofmulticurve(
                 self as *mut Self,
                 TheSeq,
             )
@@ -1783,7 +1931,9 @@ impl MCurvesToBSpCurve {
     /// return the composite MultiCurves as a MultiBSpCurve.
     pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_MCurvesToBSpCurve_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1791,9 +1941,11 @@ impl MCurvesToBSpCurve {
     /// return the composite MultiCurves as a MultiBSpCurve.
     pub fn change_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_MCurvesToBSpCurve_change_value(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_MCurvesToBSpCurve_change_value(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 }
@@ -1806,11 +1958,11 @@ impl MCurvesToBSpCurve {
 /// Approximation of a  PCurve  on a surface to  make its
 /// parameter be the same that the parameter of a given 3d
 /// reference curve.
-pub use crate::ffi::Approx_SameParameter as SameParameter;
+pub use crate::ffi_types::Approx_SameParameter as SameParameter;
 
 unsafe impl crate::CppDeletable for SameParameter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_SameParameter_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_SameParameter_destructor(ptr);
     }
 }
 
@@ -1818,39 +1970,39 @@ impl SameParameter {
     /// **Source:** `Approx_SameParameter.hxx`:36 - `Approx_SameParameter::Approx_SameParameter()`
     /// Warning: the C3D and C2D must have the same parametric domain.
     pub fn new_handlegeomcurve_handlegeom2dcurve_handlegeomsurface_real(
-        C3D: &crate::ffi::HandleGeomCurve,
-        C2D: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleGeomSurface,
+        C3D: &crate::ffi_types::HandleGeomCurve,
+        C2D: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleGeomSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_SameParameter_ctor_handlegeomcurve_handlegeom2dcurve_handlegeomsurface_real(C3D, C2D, S, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_SameParameter_ctor_handlegeomcurve_handlegeom2dcurve_handlegeomsurface_real(C3D, C2D, S, Tol)))
         }
     }
 
     /// **Source:** `Approx_SameParameter.hxx`:42 - `Approx_SameParameter::Approx_SameParameter()`
     /// Warning: the C3D and C2D must have the same parametric domain.
     pub fn new_handleadaptor3dcurve_handlegeom2dcurve_handleadaptor3dsurface_real(
-        C3D: &crate::ffi::HandleAdaptor3dCurve,
-        C2D: &crate::ffi::HandleGeom2dCurve,
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        C3D: &crate::ffi_types::HandleAdaptor3dCurve,
+        C2D: &crate::ffi_types::HandleGeom2dCurve,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_SameParameter_ctor_handleadaptor3dcurve_handlegeom2dcurve_handleadaptor3dsurface_real(C3D, C2D, S, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_SameParameter_ctor_handleadaptor3dcurve_handlegeom2dcurve_handleadaptor3dsurface_real(C3D, C2D, S, Tol)))
         }
     }
 
     /// **Source:** `Approx_SameParameter.hxx`:48 - `Approx_SameParameter::Approx_SameParameter()`
     /// Warning: the C3D and C2D must have the same parametric domain.
     pub fn new_handleadaptor3dcurve_handleadaptor2dcurve2d_handleadaptor3dsurface_real(
-        C3D: &crate::ffi::HandleAdaptor3dCurve,
-        C2D: &crate::ffi::HandleAdaptor2dCurve2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
+        C3D: &crate::ffi_types::HandleAdaptor3dCurve,
+        C2D: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
         Tol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Approx_SameParameter_ctor_handleadaptor3dcurve_handleadaptor2dcurve2d_handleadaptor3dsurface_real(C3D, C2D, S, Tol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_SameParameter_ctor_handleadaptor3dcurve_handleadaptor2dcurve2d_handleadaptor3dsurface_real(C3D, C2D, S, Tol)))
         }
     }
 
@@ -1859,7 +2011,7 @@ impl SameParameter {
     /// .true. if calculations succeed
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SameParameter_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SameParameter_is_done(self as *const Self)
         })
     }
 
@@ -1868,7 +2020,7 @@ impl SameParameter {
     /// and curve on surface, generated by 2d curve and surface.
     pub fn tol_reached(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SameParameter_tol_reached(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SameParameter_tol_reached(self as *const Self)
         })
     }
 
@@ -1878,7 +2030,9 @@ impl SameParameter {
     /// is done.
     pub fn is_same_parameter(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SameParameter_is_same_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SameParameter_is_same_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -1886,10 +2040,10 @@ impl SameParameter {
     /// Returns the 2D curve that has the same parameter as
     /// the 3D curve once evaluated on the surface up to the
     /// specified tolerance.
-    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn curve2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_SameParameter_curve2d(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_SameParameter_curve2d(self as *const Self),
             ))
         }
     }
@@ -1898,10 +2052,10 @@ impl SameParameter {
     /// Returns the 3D curve that has the same parameter as
     /// the 3D curve once evaluated on the surface up to the
     /// specified tolerance.
-    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_SameParameter_curve3d(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_SameParameter_curve3d(self as *const Self),
             ))
         }
     }
@@ -1909,10 +2063,14 @@ impl SameParameter {
     /// **Source:** `Approx_SameParameter.hxx`:78 - `Approx_SameParameter::CurveOnSurface()`
     /// Returns the 3D curve on surface that has the same parameter as
     /// the 3D curve up to the specified tolerance.
-    pub fn curve_on_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurveOnSurface> {
+    pub fn curve_on_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurveOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_SameParameter_curve_on_surface(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_SameParameter_curve_on_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1932,23 +2090,21 @@ impl SameParameter {
 /// To use this algorithme, you  have to implement Ft(u)
 /// as a derivative class  of Approx_SweepFunction.
 /// This algorithm can be used by blending, sweeping...
-pub use crate::ffi::Approx_SweepApproximation as SweepApproximation;
+pub use crate::ffi_types::Approx_SweepApproximation as SweepApproximation;
 
 unsafe impl crate::CppDeletable for SweepApproximation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_SweepApproximation_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_destructor(ptr);
     }
 }
 
 impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:61 - `Approx_SweepApproximation::Approx_SweepApproximation()`
     pub fn new_handleapproxsweepfunction(
-        Func: &crate::ffi::HandleApproxSweepFunction,
+        Func: &crate::ffi_types::HandleApproxSweepFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_SweepApproximation_ctor_handleapproxsweepfunction(Func),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_ctor_handleapproxsweepfunction(Func)))
         }
     }
 
@@ -1981,7 +2137,7 @@ impl SweepApproximation {
         Segmax: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_perform(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_perform(
                 self as *mut Self,
                 First,
                 Last,
@@ -2007,7 +2163,7 @@ impl SweepApproximation {
         Result: &mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_eval(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_eval(
                 self as *mut Self,
                 Parameter,
                 DerivativeRequest,
@@ -2022,7 +2178,7 @@ impl SweepApproximation {
     /// returns if we have an result
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_is_done(self as *const Self)
         })
     }
 
@@ -2037,7 +2193,7 @@ impl SweepApproximation {
         NbVKnots: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_surf_shape(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_shape(
                 self as *const Self,
                 UDegree,
                 VDegree,
@@ -2052,15 +2208,15 @@ impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:105 - `Approx_SweepApproximation::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_surface(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surface(
                 self as *const Self,
                 TPoles,
                 TWeights,
@@ -2075,68 +2231,80 @@ impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:112 - `Approx_SweepApproximation::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_u_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_u_degree(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:114 - `Approx_SweepApproximation::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_v_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_v_degree(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:116 - `Approx_SweepApproximation::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_poles(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_poles(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:118 - `Approx_SweepApproximation::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_weights(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_weights(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:120 - `Approx_SweepApproximation::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_u_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_u_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:122 - `Approx_SweepApproximation::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_v_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_v_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:124 - `Approx_SweepApproximation::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_u_mults(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_u_mults(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:126 - `Approx_SweepApproximation::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_surf_v_mults(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_surf_v_mults(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2144,7 +2312,9 @@ impl SweepApproximation {
     /// returns the maximum error in the surface approximation.
     pub fn max_error_on_surf(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_max_error_on_surf(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_max_error_on_surf(
+                self as *const Self,
+            )
         })
     }
 
@@ -2152,21 +2322,23 @@ impl SweepApproximation {
     /// returns the average error in the surface approximation.
     pub fn average_error_on_surf(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_average_error_on_surf(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_average_error_on_surf(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:134 - `Approx_SweepApproximation::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:136 - `Approx_SweepApproximation::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_curves2d_shape(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curves2d_shape(
                 self as *const Self,
                 Degree,
                 NbPoles,
@@ -2179,12 +2351,12 @@ impl SweepApproximation {
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_curve2d(
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curve2d(
                 self as *const Self,
                 Index,
                 TPoles,
@@ -2197,35 +2369,43 @@ impl SweepApproximation {
     /// **Source:** `Approx_SweepApproximation.hxx`:145 - `Approx_SweepApproximation::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_curves2d_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curves2d_degree(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:147 - `Approx_SweepApproximation::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_curve2d_poles(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curve2d_poles(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:149 - `Approx_SweepApproximation::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_curves2d_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curves2d_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:151 - `Approx_SweepApproximation::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepApproximation_curves2d_mults(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_curves2d_mults(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2234,7 +2414,10 @@ impl SweepApproximation {
     /// 2d curve approximation.
     pub fn max2d_error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_max2d_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_max2d_error(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2243,7 +2426,10 @@ impl SweepApproximation {
     /// 2d curve approximation.
     pub fn average2d_error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_average2d_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_average2d_error(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2252,15 +2438,18 @@ impl SweepApproximation {
     /// 2d curve approximation on the Surface.
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_tol_curve_on_surf(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_tol_curve_on_surf(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `Approx_SweepApproximation.hxx`:166 - `Approx_SweepApproximation::Dump()`
     /// display information on approximation.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepApproximation_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::Approx_SweepApproximation_dump(self as *const Self, o)
         })
     }
 }
@@ -2272,11 +2461,11 @@ impl SweepApproximation {
 /// **Source:** `Approx_SweepFunction.hxx`:39 - `Approx_SweepFunction`
 /// defined the function used by SweepApproximation to
 /// perform sweeping application.
-pub use crate::ffi::Approx_SweepFunction as SweepFunction;
+pub use crate::ffi_types::Approx_SweepFunction as SweepFunction;
 
 unsafe impl crate::CppDeletable for SweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Approx_SweepFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Approx_SweepFunction_destructor(ptr);
     }
 }
 
@@ -2288,12 +2477,12 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_d0(
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_d0(
                 self as *mut Self,
                 Param,
                 First,
@@ -2314,15 +2503,15 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_d1(
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_d1(
                 self as *mut Self,
                 Param,
                 First,
@@ -2346,18 +2535,18 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_d2(
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_d2(
                 self as *mut Self,
                 Param,
                 First,
@@ -2379,7 +2568,7 @@ impl SweepFunction {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_nb2d_curves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_nb2d_curves(self as *const Self)
         })
     }
 
@@ -2387,7 +2576,7 @@ impl SweepFunction {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_section_shape(
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -2398,17 +2587,17 @@ impl SweepFunction {
 
     /// **Source:** `Approx_SweepFunction.hxx`:89 - `Approx_SweepFunction::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:92 - `Approx_SweepFunction::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_mults(self as *const Self, TMults)
         })
     }
 
@@ -2416,7 +2605,7 @@ impl SweepFunction {
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_is_rational(self as *const Self)
         })
     }
 
@@ -2426,7 +2615,10 @@ impl SweepFunction {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -2436,9 +2628,17 @@ impl SweepFunction {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -2449,7 +2649,11 @@ impl SweepFunction {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -2459,7 +2663,13 @@ impl SweepFunction {
     /// 2d approximation.
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_resolution(self as *const Self, Index, Tol, TolU, TolV)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
         })
     }
 
@@ -2474,10 +2684,10 @@ impl SweepFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_get_tolerance(
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -2491,7 +2701,11 @@ impl SweepFunction {
     /// Is useful, if (me) have to run numerical algorithm to perform D0, D1 or D2
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -2503,7 +2717,9 @@ impl SweepFunction {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Approx_SweepFunction_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2514,7 +2730,7 @@ impl SweepFunction {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_maximal_section(self as *const Self)
         })
     }
 
@@ -2522,18 +2738,23 @@ impl SweepFunction {
     /// Compute the minimal value of weight for each poles in all  sections.
     /// This information is useful to control error in rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:153 - `Approx_SweepFunction::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Approx_SweepFunction_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2541,7 +2762,7 @@ impl SweepFunction {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Approx_SweepFunction_get_type_name(),
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2549,39 +2770,53 @@ impl SweepFunction {
     }
 
     /// **Source:** `Approx_SweepFunction.hxx`:153 - `Approx_SweepFunction::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::Approx_SweepFunction_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::Approx_SweepFunction_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Approx_SweepFunction_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2589,7 +2824,9 @@ impl SweepFunction {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Approx_SweepFunction_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2602,62 +2839,72 @@ impl SweepFunction {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Approx_SweepFunction_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::Approx_SweepFunction_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleApproxSweepFunction;
+pub use crate::ffi_types::HandleApproxSweepFunction;
 
 unsafe impl crate::CppDeletable for HandleApproxSweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleApproxSweepFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_destructor(ptr);
     }
 }
 
 impl HandleApproxSweepFunction {
     /// Dereference this Handle to access the underlying Approx_SweepFunction
-    pub fn get(&self) -> &crate::ffi::Approx_SweepFunction {
+    pub fn get(&self) -> &crate::ffi_types::Approx_SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleApproxSweepFunction_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying Approx_SweepFunction
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Approx_SweepFunction {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleApproxSweepFunction_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying Approx_SweepFunction
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Approx_SweepFunction {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<Approx_SweepFunction> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleApproxSweepFunction_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2669,11 +2916,9 @@ impl HandleApproxSweepFunction {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFunc` (or subclass).
     pub fn downcast_to_app_func(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFunc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFunc(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFunc(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2687,11 +2932,9 @@ impl HandleApproxSweepFunction {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRst` (or subclass).
     pub fn downcast_to_app_func_rst(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRst>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRst(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRst(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2705,11 +2948,9 @@ impl HandleApproxSweepFunction {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRstRst` (or subclass).
     pub fn downcast_to_app_func_rst_rst(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRstRst>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRstRst(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_downcast_to_HandleBRepBlendAppFuncRstRst(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2723,11 +2964,9 @@ impl HandleApproxSweepFunction {
     /// Returns `None` if the handle does not point to a `GeomFill_CircularBlendFunc` (or subclass).
     pub fn downcast_to_circular_blend_func(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCircularBlendFunc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillCircularBlendFunc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleGeomFillCircularBlendFunc(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_downcast_to_HandleGeomFillCircularBlendFunc(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2741,11 +2980,9 @@ impl HandleApproxSweepFunction {
     /// Returns `None` if the handle does not point to a `GeomFill_SweepFunction` (or subclass).
     pub fn downcast_to_sweep_function(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSweepFunction>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillSweepFunction>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleApproxSweepFunction_downcast_to_HandleGeomFillSweepFunction(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleApproxSweepFunction_downcast_to_HandleGeomFillSweepFunction(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2759,6 +2996,6 @@ impl HandleApproxSweepFunction {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     Approx_Array1OfAdHSurface as Array1OfAdHSurface, Approx_Array1OfGTrsf2d as Array1OfGTrsf2d,
 };

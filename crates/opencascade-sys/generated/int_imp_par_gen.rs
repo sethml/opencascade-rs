@@ -22,7 +22,7 @@ pub fn determine_transition_position_vec2d2_transition_position_vec2d2_transitio
     Tol: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::IntImpParGen_determine_transition_position_vec2d2_transition_position_vec2d2_transition_real(Pos1.into(), Tan1, Norm1, Trans1, Pos2.into(), Tan2, Norm2, Trans2, Tol)
+        crate::ffi_extern_TKGeomAlgo::IntImpParGen_determine_transition_position_vec2d2_transition_position_vec2d2_transition_real(Pos1.into(), Tan1, Norm1, Trans1, Pos2.into(), Tan2, Norm2, Trans2, Tol)
     })
 }
 /// **Source:** `IntImpParGen.hxx`:56 - `IntImpParGen::DetermineTransition`
@@ -36,12 +36,14 @@ pub fn determine_transition_position_vec2d_transition_position_vec2d_transition_
     Tol: f64,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::IntImpParGen_determine_transition_position_vec2d_transition_position_vec2d_transition_real(Pos1.into(), Tan1, Trans1, Pos2.into(), Tan2, Trans2, Tol)
+        crate::ffi_extern_TKGeomAlgo::IntImpParGen_determine_transition_position_vec2d_transition_position_vec2d_transition_real(Pos1.into(), Tan1, Trans1, Pos2.into(), Tan2, Trans2, Tol)
     })
 }
 /// **Source:** `IntImpParGen.hxx`:69 - `IntImpParGen::NormalizeOnDomain`
 pub fn normalize_on_domain(Par1: &mut f64, Dom1: &crate::int_res2d::Domain) -> f64 {
-    crate::check_result(unsafe { crate::ffi::IntImpParGen_normalize_on_domain(Par1, Dom1) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKGeomAlgo::IntImpParGen_normalize_on_domain(Par1, Dom1)
+    })
 }
 
 // ========================
@@ -50,11 +52,11 @@ pub fn normalize_on_domain(Par1: &mut f64, Dom1: &crate::int_res2d::Domain) -> f
 
 /// **Source:** `IntImpParGen_ImpTool.hxx`:29 - `IntImpParGen_ImpTool`
 /// Template class for an implicit curve.
-pub use crate::ffi::IntImpParGen_ImpTool as ImpTool;
+pub use crate::ffi_types::IntImpParGen_ImpTool as ImpTool;
 
 unsafe impl crate::CppDeletable for ImpTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntImpParGen_ImpTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_destructor(ptr);
     }
 }
 
@@ -63,24 +65,25 @@ impl ImpTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntImpParGen_ImpTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `IntImpParGen_ImpTool.hxx`:34 - `IntImpParGen_ImpTool::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IntImpParGen_ImpTool_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_value(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `IntImpParGen_ImpTool.hxx`:36 - `IntImpParGen_ImpTool::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt2d, T: &mut crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntImpParGen_ImpTool_d1(self as *const Self, U, P, T)
+            crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_d1(self as *const Self, U, P, T)
         })
     }
 
@@ -93,7 +96,7 @@ impl ImpTool {
         N: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntImpParGen_ImpTool_d2(self as *const Self, U, P, T, N)
+            crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_d2(self as *const Self, U, P, T, N)
         })
     }
 
@@ -102,7 +105,7 @@ impl ImpTool {
     /// the point P and the implicit curve.
     pub fn distance(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntImpParGen_ImpTool_distance(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_distance(self as *const Self, P)
         })
     }
 
@@ -113,7 +116,10 @@ impl ImpTool {
     pub fn grad_distance(&self, P: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IntImpParGen_ImpTool_grad_distance(self as *const Self, P),
+                crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_grad_distance(
+                    self as *const Self,
+                    P,
+                ),
             ))
         }
     }
@@ -126,7 +132,10 @@ impl ImpTool {
     /// of determination of the signed distance.
     pub fn find_parameter(&self, P: &crate::gp::Pnt2d) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IntImpParGen_ImpTool_find_parameter(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::IntImpParGen_ImpTool_find_parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 }

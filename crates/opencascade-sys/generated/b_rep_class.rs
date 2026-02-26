@@ -14,18 +14,22 @@
 /// This class  is used to send  the  description of an
 /// Edge to the classifier. It  contains  an Edge and a
 /// Face. So the PCurve of the Edge can be found.
-pub use crate::ffi::BRepClass_Edge as Edge;
+pub use crate::ffi_types::BRepClass_Edge as Edge;
 
 unsafe impl crate::CppDeletable for Edge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_Edge_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_Edge_destructor(ptr);
     }
 }
 
 impl Edge {
     /// **Source:** `BRepClass_Edge.hxx`:36 - `BRepClass_Edge::BRepClass_Edge()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_Edge_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_Edge_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:38 - `BRepClass_Edge::BRepClass_Edge()`
@@ -35,7 +39,7 @@ impl Edge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_Edge_ctor_edge_face(E, F),
+                crate::ffi_extern_TKTopAlgo::BRepClass_Edge_ctor_edge_face(E, F),
             ))
         }
     }
@@ -44,33 +48,47 @@ impl Edge {
     /// Returns the current Edge
     pub fn edge_mut(&mut self) -> &mut crate::topo_ds::Edge {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepClass_Edge_edge_mut(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Edge_edge_mut(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:42 - `BRepClass_Edge::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::check_result(crate::ffi::BRepClass_Edge_edge(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Edge_edge(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:45 - `BRepClass_Edge::Face()`
     /// Returns the Face for the current Edge
     pub fn face_mut(&mut self) -> &mut crate::topo_ds::Face {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepClass_Edge_face_mut(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Edge_face_mut(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:46 - `BRepClass_Edge::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::check_result(crate::ffi::BRepClass_Edge_face(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Edge_face(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:49 - `BRepClass_Edge::NextEdge()`
     /// Returns the next Edge
     pub fn next_edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepClass_Edge_next_edge(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Edge_next_edge(
+                self as *const Self,
+            )))
         }
     }
 
@@ -78,10 +96,10 @@ impl Edge {
     /// Finds and sets the next Edge for the current
     pub fn set_next_edge(
         &mut self,
-        theMapVE: &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape,
+        theMapVE: &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_set_next_edge(self as *mut Self, theMapVE)
         })
     }
 
@@ -89,7 +107,7 @@ impl Edge {
     /// Returns the maximum tolerance
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_Edge_max_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_max_tolerance(self as *const Self)
         })
     }
 
@@ -98,7 +116,10 @@ impl Edge {
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Edge_set_max_tolerance(self as *mut Self, theValue)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_set_max_tolerance(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
@@ -106,7 +127,9 @@ impl Edge {
     /// Returns true if we are using boxes
     /// in the intersector
     pub fn use_bnd_box(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepClass_Edge_use_bnd_box(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_use_bnd_box(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepClass_Edge.hxx`:67 - `BRepClass_Edge::SetUseBndBox()`
@@ -114,7 +137,7 @@ impl Edge {
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Edge_set_use_bnd_box(self as *mut Self, theValue)
         })
     }
 }
@@ -124,11 +147,11 @@ impl Edge {
 // ========================
 
 /// **Source:** `BRepClass_FClass2dOfFClassifier.hxx`:33 - `BRepClass_FClass2dOfFClassifier`
-pub use crate::ffi::BRepClass_FClass2dOfFClassifier as FClass2dOfFClassifier;
+pub use crate::ffi_types::BRepClass_FClass2dOfFClassifier as FClass2dOfFClassifier;
 
 unsafe impl crate::CppDeletable for FClass2dOfFClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_FClass2dOfFClassifier_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_destructor(ptr);
     }
 }
 
@@ -138,7 +161,7 @@ impl FClass2dOfFClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FClass2dOfFClassifier_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_ctor(),
             ))
         }
     }
@@ -151,7 +174,12 @@ impl FClass2dOfFClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_reset(self as *mut Self, L, P, Tol)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_reset(
+                self as *mut Self,
+                L,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -160,7 +188,11 @@ impl FClass2dOfFClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_compare(self as *mut Self, E, Or.into())
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_compare(
+                self as *mut Self,
+                E,
+                Or.into(),
+            )
         })
     }
 
@@ -168,7 +200,9 @@ impl FClass2dOfFClassifier {
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_parameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -176,9 +210,11 @@ impl FClass2dOfFClassifier {
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepClass_FClass2dOfFClassifier_intersector(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_intersector(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -189,7 +225,9 @@ impl FClass2dOfFClassifier {
     /// algorithm.
     pub fn closest_intersection(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_closest_intersection(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_closest_intersection(
+                self as *const Self,
+            )
         })
     }
 
@@ -197,7 +235,7 @@ impl FClass2dOfFClassifier {
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_state(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -208,7 +246,9 @@ impl FClass2dOfFClassifier {
     /// otherwise.
     pub fn is_head_or_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClass2dOfFClassifier_is_head_or_end(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClass2dOfFClassifier_is_head_or_end(
+                self as *const Self,
+            )
         })
     }
 }
@@ -218,11 +258,11 @@ impl FClass2dOfFClassifier {
 // ========================
 
 /// **Source:** `BRepClass_FClassifier.hxx`:34 - `BRepClass_FClassifier`
-pub use crate::ffi::BRepClass_FClassifier as FClassifier;
+pub use crate::ffi_types::BRepClass_FClassifier as FClassifier;
 
 unsafe impl crate::CppDeletable for FClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_FClassifier_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_destructor(ptr);
     }
 }
 
@@ -231,7 +271,9 @@ impl FClassifier {
     /// Empty constructor, undefined algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_FClassifier_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_ctor(),
+            ))
         }
     }
 
@@ -245,7 +287,9 @@ impl FClassifier {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_ctor_faceexplorer_pnt2d_real(
+                    F, P, Tol,
+                ),
             ))
         }
     }
@@ -255,7 +299,7 @@ impl FClassifier {
     /// face described by <F>.
     pub fn perform(&mut self, F: &mut FaceExplorer, P: &crate::gp::Pnt2d, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_perform(self as *mut Self, F, P, Tol)
         })
     }
 
@@ -263,7 +307,7 @@ impl FClassifier {
     /// Returns the result of the classification.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_state(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -273,7 +317,7 @@ impl FClassifier {
     /// rejection. The state is OUT.
     pub fn rejected(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_rejected(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_rejected(self as *const Self)
         })
     }
 
@@ -282,7 +326,7 @@ impl FClassifier {
     /// state is IN.
     pub fn no_wires(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_no_wires(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_no_wires(self as *const Self)
         })
     }
 
@@ -292,7 +336,9 @@ impl FClassifier {
     /// Edge containing the point.
     pub fn edge(&self) -> &Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepClass_FClassifier_edge(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_edge(
+                self as *const Self,
+            )))
         }
     }
 
@@ -301,7 +347,7 @@ impl FClassifier {
     /// classification.
     pub fn edge_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_edge_parameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_edge_parameter(self as *const Self)
         })
     }
 
@@ -310,7 +356,7 @@ impl FClassifier {
     /// returned by Edge.
     pub fn position(&self) -> crate::int_res2d::Position {
         crate::int_res2d::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FClassifier_position(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FClassifier_position(self as *const Self)
         }))
         .unwrap()
     }
@@ -322,11 +368,11 @@ impl FClassifier {
 
 /// **Source:** `BRepClass_FaceClassifier.hxx`:31 - `BRepClass_FaceClassifier`
 /// Provides Constructors with a Face.
-pub use crate::ffi::BRepClass_FaceClassifier as FaceClassifier;
+pub use crate::ffi_types::BRepClass_FaceClassifier as FaceClassifier;
 
 unsafe impl crate::CppDeletable for FaceClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_FaceClassifier_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_destructor(ptr);
     }
 }
 
@@ -336,7 +382,7 @@ impl FaceClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FaceClassifier_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_ctor(),
             ))
         }
     }
@@ -351,7 +397,9 @@ impl FaceClassifier {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FaceClassifier_ctor_faceexplorer_pnt2d_real(F, P, Tol),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_ctor_faceexplorer_pnt2d_real(
+                    F, P, Tol,
+                ),
             ))
         }
     }
@@ -369,15 +417,7 @@ impl FaceClassifier {
         theGapCheckTol: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FaceClassifier_ctor_face_pnt2d_real_bool_real(
-                    theF,
-                    theP,
-                    theTol,
-                    theUseBndBox,
-                    theGapCheckTol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_ctor_face_pnt2d_real_bool_real(theF, theP, theTol, theUseBndBox, theGapCheckTol)))
         }
     }
 
@@ -395,7 +435,7 @@ impl FaceClassifier {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FaceClassifier_ctor_face_pnt_real_bool_real(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_ctor_face_pnt_real_bool_real(
                     theF,
                     theP,
                     theTol,
@@ -474,7 +514,7 @@ impl FaceClassifier {
         theGapCheckTol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_perform_face_pnt2d_real_bool_real(
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_perform_face_pnt2d_real_bool_real(
                 self as *mut Self,
                 theF,
                 theP,
@@ -499,7 +539,7 @@ impl FaceClassifier {
         theGapCheckTol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_perform_face_pnt_real_bool_real(
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_perform_face_pnt_real_bool_real(
                 self as *mut Self,
                 theF,
                 theP,
@@ -513,9 +553,11 @@ impl FaceClassifier {
     /// Upcast to BRepClass_FClassifier
     pub fn as_f_classifier(&self) -> &FClassifier {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_as_BRepClass_FClassifier(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -523,7 +565,7 @@ impl FaceClassifier {
     pub fn as_f_classifier_mut(&mut self) -> &mut FClassifier {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_as_BRepClass_FClassifier_mut(
                     self as *mut Self,
                 ),
             )
@@ -533,7 +575,9 @@ impl FaceClassifier {
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:55 - `BRepClass_FClassifier::State()`
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_inherited_State(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_State(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -541,37 +585,47 @@ impl FaceClassifier {
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:59 - `BRepClass_FClassifier::Rejected()`
     pub fn rejected(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_inherited_Rejected(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_Rejected(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:63 - `BRepClass_FClassifier::NoWires()`
     pub fn no_wires(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_inherited_NoWires(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_NoWires(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:68 - `BRepClass_FClassifier::Edge()`
     pub fn edge(&self) -> &Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepClass_FaceClassifier_inherited_Edge(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_Edge(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:72 - `BRepClass_FClassifier::EdgeParameter()`
     pub fn edge_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_inherited_EdgeParameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_EdgeParameter(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepClass_FClassifier.hxx`:76 - `BRepClass_FClassifier::Position()`
     pub fn position(&self) -> crate::int_res2d::Position {
         crate::int_res2d::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceClassifier_inherited_Position(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceClassifier_inherited_Position(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -584,11 +638,11 @@ impl FaceClassifier {
 /// **Source:** `BRepClass_FaceExplorer.hxx`:34 - `BRepClass_FaceExplorer`
 /// Provide an   exploration of a  BRep Face   for the
 /// classification. Return UV edges.
-pub use crate::ffi::BRepClass_FaceExplorer as FaceExplorer;
+pub use crate::ffi_types::BRepClass_FaceExplorer as FaceExplorer;
 
 unsafe impl crate::CppDeletable for FaceExplorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_FaceExplorer_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_destructor(ptr);
     }
 }
 
@@ -597,7 +651,7 @@ impl FaceExplorer {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FaceExplorer_ctor_face(F),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_ctor_face(F),
             ))
         }
     }
@@ -609,7 +663,10 @@ impl FaceExplorer {
     /// bounding box. Returns True if point was not changed.
     pub fn check_point(&mut self, thePoint: &mut crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_check_point(self as *mut Self, thePoint)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_check_point(
+                self as *mut Self,
+                thePoint,
+            )
         })
     }
 
@@ -618,7 +675,7 @@ impl FaceExplorer {
     /// bounding volume of the face.
     pub fn reject(&self, P: &crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_reject(self as *const Self, P)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_reject(self as *const Self, P)
         })
     }
 
@@ -633,7 +690,12 @@ impl FaceExplorer {
         Par: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_segment(self as *mut Self, P, L, Par)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_segment(
+                self as *mut Self,
+                P,
+                L,
+                Par,
+            )
         })
     }
 
@@ -648,7 +710,12 @@ impl FaceExplorer {
         Par: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_other_segment(self as *mut Self, P, L, Par)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_other_segment(
+                self as *mut Self,
+                P,
+                L,
+                Par,
+            )
         })
     }
 
@@ -656,7 +723,7 @@ impl FaceExplorer {
     /// Starts an exploration of the wires.
     pub fn init_wires(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_init_wires(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_init_wires(self as *mut Self)
         })
     }
 
@@ -664,7 +731,7 @@ impl FaceExplorer {
     /// Returns True if there is  a current wire.
     pub fn more_wires(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_more_wires(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_more_wires(self as *const Self)
         })
     }
 
@@ -672,7 +739,7 @@ impl FaceExplorer {
     /// Sets the explorer  to the  next  wire.
     pub fn next_wire(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_next_wire(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_next_wire(self as *mut Self)
         })
     }
 
@@ -681,7 +748,11 @@ impl FaceExplorer {
     /// intersect the segment.
     pub fn reject_wire(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_reject_wire(self as *const Self, L, Par)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_reject_wire(
+                self as *const Self,
+                L,
+                Par,
+            )
         })
     }
 
@@ -690,7 +761,7 @@ impl FaceExplorer {
     /// wire.
     pub fn init_edges(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_init_edges(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_init_edges(self as *mut Self)
         })
     }
 
@@ -698,7 +769,7 @@ impl FaceExplorer {
     /// Returns True if there is a current edge.
     pub fn more_edges(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_more_edges(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_more_edges(self as *const Self)
         })
     }
 
@@ -706,7 +777,7 @@ impl FaceExplorer {
     /// Sets the explorer  to the  next  edge.
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_next_edge(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_next_edge(self as *mut Self)
         })
     }
 
@@ -715,7 +786,11 @@ impl FaceExplorer {
     /// intersect the segment.
     pub fn reject_edge(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_reject_edge(self as *const Self, L, Par)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_reject_edge(
+                self as *const Self,
+                L,
+                Par,
+            )
         })
     }
 
@@ -724,7 +799,11 @@ impl FaceExplorer {
     pub fn current_edge(&self, E: &mut Edge, Or: &mut crate::top_abs::Orientation) {
         let mut Or_i32_: i32 = (*Or).into();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_current_edge(self as *const Self, E, &mut Or_i32_)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_current_edge(
+                self as *const Self,
+                E,
+                &mut Or_i32_,
+            )
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
@@ -733,7 +812,7 @@ impl FaceExplorer {
     /// Returns the maximum tolerance
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_max_tolerance(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_max_tolerance(self as *const Self)
         })
     }
 
@@ -742,7 +821,10 @@ impl FaceExplorer {
     /// which to start checking in the intersector
     pub fn set_max_tolerance(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_set_max_tolerance(self as *mut Self, theValue)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_set_max_tolerance(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 
@@ -751,7 +833,7 @@ impl FaceExplorer {
     /// in the intersector
     pub fn use_bnd_box(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_use_bnd_box(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_use_bnd_box(self as *const Self)
         })
     }
 
@@ -760,7 +842,10 @@ impl FaceExplorer {
     /// using boxes or not
     pub fn set_use_bnd_box(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FaceExplorer_set_use_bnd_box(self as *mut Self, theValue)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FaceExplorer_set_use_bnd_box(
+                self as *mut Self,
+                theValue,
+            )
         })
     }
 }
@@ -770,11 +855,11 @@ impl FaceExplorer {
 // ========================
 
 /// **Source:** `BRepClass_FacePassiveClassifier.hxx`:34 - `BRepClass_FacePassiveClassifier`
-pub use crate::ffi::BRepClass_FacePassiveClassifier as FacePassiveClassifier;
+pub use crate::ffi_types::BRepClass_FacePassiveClassifier as FacePassiveClassifier;
 
 unsafe impl crate::CppDeletable for FacePassiveClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_FacePassiveClassifier_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_destructor(ptr);
     }
 }
 
@@ -784,7 +869,7 @@ impl FacePassiveClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepClass_FacePassiveClassifier_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_ctor(),
             ))
         }
     }
@@ -797,7 +882,12 @@ impl FacePassiveClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_reset(self as *mut Self, L, P, Tol)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_reset(
+                self as *mut Self,
+                L,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -806,7 +896,11 @@ impl FacePassiveClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &Edge, Or: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_compare(self as *mut Self, E, Or.into())
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_compare(
+                self as *mut Self,
+                E,
+                Or.into(),
+            )
         })
     }
 
@@ -814,7 +908,9 @@ impl FacePassiveClassifier {
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_parameter(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -822,9 +918,11 @@ impl FacePassiveClassifier {
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepClass_FacePassiveClassifier_intersector(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_intersector(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -835,7 +933,9 @@ impl FacePassiveClassifier {
     /// algorithm.
     pub fn closest_intersection(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_closest_intersection(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_closest_intersection(
+                self as *const Self,
+            )
         })
     }
 
@@ -843,7 +943,7 @@ impl FacePassiveClassifier {
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_state(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -854,7 +954,9 @@ impl FacePassiveClassifier {
     /// otherwise.
     pub fn is_head_or_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_FacePassiveClassifier_is_head_or_end(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_FacePassiveClassifier_is_head_or_end(
+                self as *const Self,
+            )
         })
     }
 }
@@ -866,11 +968,11 @@ impl FacePassiveClassifier {
 /// **Source:** `BRepClass_Intersector.hxx`:30 - `BRepClass_Intersector`
 /// Intersect an Edge  with a segment.
 /// Implement the Intersector2d required by the classifier.
-pub use crate::ffi::BRepClass_Intersector as Intersector;
+pub use crate::ffi_types::BRepClass_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepClass_Intersector_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_destructor(ptr);
     }
 }
 
@@ -878,7 +980,9 @@ impl Intersector {
     /// **Source:** `BRepClass_Intersector.hxx`:35 - `BRepClass_Intersector::BRepClass_Intersector()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepClass_Intersector_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_ctor(),
+            ))
         }
     }
 
@@ -886,7 +990,13 @@ impl Intersector {
     /// Intersect the line segment and the edge.
     pub fn perform(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64, E: &Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Intersector_perform(self as *mut Self, L, P, Tol, E)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_perform(
+                self as *mut Self,
+                L,
+                P,
+                Tol,
+                E,
+            )
         })
     }
 
@@ -903,7 +1013,14 @@ impl Intersector {
         C: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Intersector_local_geometry(self as *const Self, E, U, T, N, C)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_local_geometry(
+                self as *const Self,
+                E,
+                U,
+                T,
+                N,
+                C,
+            )
         })
     }
 
@@ -912,11 +1029,7 @@ impl Intersector {
         &self,
     ) -> &crate::geom2d_int::IntConicCurveOfGInter {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter(self as *const Self))
         }
     }
 
@@ -925,20 +1038,18 @@ impl Intersector {
         &mut self,
     ) -> &mut crate::geom2d_int::IntConicCurveOfGInter {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_as_Geom2dInt_IntConicCurveOfGInter_mut(self as *mut Self))
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -946,7 +1057,9 @@ impl Intersector {
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepClass_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self),
+                crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -954,55 +1067,65 @@ impl Intersector {
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_Intersector_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_Intersector_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_Intersector_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepClass_Intersector_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepClass_Intersector_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepClass_Intersector_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepClass_Intersector_inherited_SetReversedParameters(
+            crate::ffi_extern_TKTopAlgo::BRepClass_Intersector_inherited_SetReversedParameters(
                 self as *mut Self,
                 Reverseflag,
             )

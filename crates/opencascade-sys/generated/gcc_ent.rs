@@ -10,10 +10,10 @@
 /// Prints the name of Position type as a String on the Stream.
 pub fn print_position_ostream(
     thePosition: crate::gcc_ent::Position,
-    theStream: &mut crate::ffi::Standard_OStream,
-) -> &mut crate::ffi::Standard_OStream {
+    theStream: &mut crate::ffi_types::Standard_OStream,
+) -> &mut crate::ffi_types::Standard_OStream {
     unsafe {
-        &mut *(crate::check_result(crate::ffi::GccEnt_print_position_ostream(
+        &mut *(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccEnt_print_position_ostream(
             thePosition.into(),
             theStream,
         )))
@@ -25,9 +25,9 @@ pub fn print_position_ostream(
 /// @return string identifier from the list UNQUALIFIED ENCLOSING ENCLOSED OUTSIDE NOQUALIFIER
 pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> std::string::String {
     unsafe {
-        std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::GccEnt_position_to_string(
-            thePosition.into(),
-        )))
+        std::ffi::CStr::from_ptr(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_position_to_string(thePosition.into()),
+        ))
     }
     .to_string_lossy()
     .into_owned()
@@ -39,7 +39,7 @@ pub fn position_to_string(thePosition: crate::gcc_ent::Position) -> std::string:
 pub fn position_from_string(thePositionString: &str) -> crate::gcc_ent::Position {
     let c_thePositionString = std::ffi::CString::new(thePositionString).unwrap();
     crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
-        crate::ffi::GccEnt_position_from_string(c_thePositionString.as_ptr())
+        crate::ffi_extern_TKGeomAlgo::GccEnt_position_from_string(c_thePositionString.as_ptr())
     }))
     .unwrap()
 }
@@ -50,7 +50,9 @@ pub fn position_from_string(thePositionString: &str) -> crate::gcc_ent::Position
 /// qualified circle or line is not qualified, i.e. all solutions apply.
 pub fn unqualified_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_unqualified_lin2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_unqualified_lin2d(Obj),
+        ))
     }
 }
 /// **Source:** `GccEnt.hxx`:92 - `GccEnt::Unqualified`
@@ -60,7 +62,9 @@ pub fn unqualified_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin
 /// qualified circle or line is not qualified, i.e. all solutions apply.
 pub fn unqualified_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_unqualified_circ2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_unqualified_circ2d(Obj),
+        ))
     }
 }
 /// **Source:** `GccEnt.hxx`:97 - `GccEnt::Enclosing`
@@ -69,7 +73,9 @@ pub fn unqualified_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedC
 /// circle encloses the circle.
 pub fn enclosing_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosing_circ2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_enclosing_circ2d(Obj),
+        ))
     }
 }
 /// **Source:** `GccEnt.hxx`:103 - `GccEnt::Enclosed`
@@ -79,7 +85,9 @@ pub fn enclosing_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCir
 /// the circle or line.
 pub fn enclosed_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosed_lin2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_enclosed_lin2d(Obj),
+        ))
     }
 }
 /// **Source:** `GccEnt.hxx`:109 - `GccEnt::Enclosed`
@@ -89,7 +97,9 @@ pub fn enclosed_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
 /// the circle or line.
 pub fn enclosed_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_enclosed_circ2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_enclosed_circ2d(Obj),
+        ))
     }
 }
 /// **Source:** `GccEnt.hxx`:115 - `GccEnt::Outside`
@@ -98,7 +108,11 @@ pub fn enclosed_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc
 /// algorithm using the qualified circle or line and the circle
 /// or line are external to one another.
 pub fn outside_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_outside_lin2d(Obj))) }
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_outside_lin2d(Obj),
+        ))
+    }
 }
 /// **Source:** `GccEnt.hxx`:121 - `GccEnt::Outside`
 /// Constructs a qualified circle
@@ -107,7 +121,9 @@ pub fn outside_lin2d(Obj: &crate::gp::Lin2d) -> crate::OwnedPtr<QualifiedLin> {
 /// or line are external to one another.
 pub fn outside_circ2d(Obj: &crate::gp::Circ2d) -> crate::OwnedPtr<QualifiedCirc> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_outside_circ2d(Obj)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GccEnt_outside_circ2d(Obj),
+        ))
     }
 }
 
@@ -158,18 +174,20 @@ impl TryFrom<i32> for Position {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient};
+pub use crate::ffi_types::{
+    HandleStandardDomainError, HandleStandardFailure, HandleStandardTransient,
+};
 
 // ========================
 // From GccEnt_BadQualifier.hxx
 // ========================
 
 /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier`
-pub use crate::ffi::GccEnt_BadQualifier as BadQualifier;
+pub use crate::ffi_types::GccEnt_BadQualifier as BadQualifier;
 
 unsafe impl crate::CppDeletable for BadQualifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccEnt_BadQualifier_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_destructor(ptr);
     }
 }
 
@@ -177,7 +195,9 @@ impl BadQualifier {
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::GccEnt_BadQualifier()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GccEnt_BadQualifier_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_ctor(),
+            ))
         }
     }
 
@@ -186,7 +206,9 @@ impl BadQualifier {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_ctor_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -197,7 +219,7 @@ impl BadQualifier {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_ctor_charptr2(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -206,9 +228,9 @@ impl BadQualifier {
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GccEnt_BadQualifier_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -218,25 +240,27 @@ impl BadQualifier {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_raise_sstream(theMessage)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_raise_sstream(theMessage)
         })
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccEntBadQualifier> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -245,12 +269,12 @@ impl BadQualifier {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccEntBadQualifier> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_new_instance_charptr2(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -262,7 +286,7 @@ impl BadQualifier {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -270,107 +294,132 @@ impl BadQualifier {
     }
 
     /// **Source:** `GccEnt_BadQualifier.hxx`:36 - `GccEnt_BadQualifier::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GccEnt_BadQualifier_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_DomainError
     pub fn as_standard_domain_error(&self) -> &crate::standard::DomainError {
         unsafe {
-            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_DomainError(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_DomainError (mutable)
     pub fn as_standard_domain_error_mut(&mut self) -> &mut crate::standard::DomainError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_DomainError_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_DomainError_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Failure(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_Failure(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GccEnt_BadQualifier_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGccEntBadQualifier> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGccEntBadQualifier> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_BadQualifier_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -378,7 +427,9 @@ impl BadQualifier {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GccEnt_BadQualifier_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -391,62 +442,72 @@ impl BadQualifier {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GccEnt_BadQualifier_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_BadQualifier_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGccEntBadQualifier;
+pub use crate::ffi_types::HandleGccEntBadQualifier;
 
 unsafe impl crate::CppDeletable for HandleGccEntBadQualifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGccEntBadQualifier_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_destructor(ptr);
     }
 }
 
 impl HandleGccEntBadQualifier {
     /// Dereference this Handle to access the underlying GccEnt_BadQualifier
-    pub fn get(&self) -> &crate::ffi::GccEnt_BadQualifier {
+    pub fn get(&self) -> &crate::ffi_types::GccEnt_BadQualifier {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGccEntBadQualifier_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GccEnt_BadQualifier
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GccEnt_BadQualifier {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGccEntBadQualifier_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GccEnt_BadQualifier
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GccEnt_BadQualifier {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_DomainError>
-    pub fn to_handle_domain_error(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardDomainError> {
+    pub fn to_handle_domain_error(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardDomainError> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardDomainError(
+                crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_to_HandleStandardDomainError(
                     self as *const Self,
                 ),
             ))
@@ -454,19 +515,23 @@ impl HandleGccEntBadQualifier {
     }
 
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GccEnt_BadQualifier> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGccEntBadQualifier_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGccEntBadQualifier_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -487,11 +552,11 @@ impl HandleGccEntBadQualifier {
 /// -   is enclosed by the circle, or
 /// -   is built so that both the circle and it are external to   one another, or
 /// -   is undefined (all solutions apply).
-pub use crate::ffi::GccEnt_QualifiedCirc as QualifiedCirc;
+pub use crate::ffi_types::GccEnt_QualifiedCirc as QualifiedCirc;
 
 unsafe impl crate::CppDeletable for QualifiedCirc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccEnt_QualifiedCirc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_destructor(ptr);
     }
 }
 
@@ -512,7 +577,10 @@ impl QualifiedCirc {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_QualifiedCirc_ctor_circ2d_position(Qualified, Qualifier.into()),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_ctor_circ2d_position(
+                    Qualified,
+                    Qualifier.into(),
+                ),
             ))
         }
     }
@@ -522,7 +590,7 @@ impl QualifiedCirc {
     pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_QualifiedCirc_qualified(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_qualified(self as *const Self),
             ))
         }
     }
@@ -534,7 +602,7 @@ impl QualifiedCirc {
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
         crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedCirc_qualifier(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_qualifier(self as *const Self)
         }))
         .unwrap()
     }
@@ -544,7 +612,7 @@ impl QualifiedCirc {
     /// the other cases.
     pub fn is_unqualified(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedCirc_is_unqualified(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_is_unqualified(self as *const Self)
         })
     }
 
@@ -553,7 +621,7 @@ impl QualifiedCirc {
     /// algorithm using this qualified circle encloses the circle.
     pub fn is_enclosing(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedCirc_is_enclosing(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_is_enclosing(self as *const Self)
         })
     }
 
@@ -562,7 +630,7 @@ impl QualifiedCirc {
     /// algorithm using this qualified circle is enclosed by the circle.
     pub fn is_enclosed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedCirc_is_enclosed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_is_enclosed(self as *const Self)
         })
     }
 
@@ -572,7 +640,7 @@ impl QualifiedCirc {
     /// circle are external to one another.
     pub fn is_outside(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedCirc_is_outside(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedCirc_is_outside(self as *const Self)
         })
     }
 }
@@ -592,11 +660,11 @@ impl QualifiedCirc {
 /// Note: the interior of a line is defined as the left-hand
 /// side of the line in relation to its orientation (i.e. when
 /// moving from the start to the end of the curve).
-pub use crate::ffi::GccEnt_QualifiedLin as QualifiedLin;
+pub use crate::ffi_types::GccEnt_QualifiedLin as QualifiedLin;
 
 unsafe impl crate::CppDeletable for QualifiedLin {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GccEnt_QualifiedLin_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_destructor(ptr);
     }
 }
 
@@ -616,7 +684,10 @@ impl QualifiedLin {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_QualifiedLin_ctor_lin2d_position(Qualified, Qualifier.into()),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_ctor_lin2d_position(
+                    Qualified,
+                    Qualifier.into(),
+                ),
             ))
         }
     }
@@ -626,7 +697,7 @@ impl QualifiedLin {
     pub fn qualified(&self) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GccEnt_QualifiedLin_qualified(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_qualified(self as *const Self),
             ))
         }
     }
@@ -637,7 +708,7 @@ impl QualifiedLin {
     /// -   GccEnt_noqualifier if it is unqualified.
     pub fn qualifier(&self) -> crate::gcc_ent::Position {
         crate::gcc_ent::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedLin_qualifier(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_qualifier(self as *const Self)
         }))
         .unwrap()
     }
@@ -647,7 +718,7 @@ impl QualifiedLin {
     /// the other cases.
     pub fn is_unqualified(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedLin_is_unqualified(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_is_unqualified(self as *const Self)
         })
     }
 
@@ -656,7 +727,7 @@ impl QualifiedLin {
     /// the other cases.
     pub fn is_enclosed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedLin_is_enclosed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_is_enclosed(self as *const Self)
         })
     }
 
@@ -665,7 +736,7 @@ impl QualifiedLin {
     /// the other cases.
     pub fn is_outside(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GccEnt_QualifiedLin_is_outside(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GccEnt_QualifiedLin_is_outside(self as *const Self)
         })
     }
 }

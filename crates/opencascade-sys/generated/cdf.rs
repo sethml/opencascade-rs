@@ -123,7 +123,7 @@ impl TryFrom<i32> for TypeOfActivation {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleAppStdApplication, HandleAppStdLApplication, HandleCDMApplication,
     HandleStandardTransient, HandleTDocStdApplication, HandleTObjApplication,
     HandleXCAFAppApplication,
@@ -134,11 +134,11 @@ pub use crate::ffi::{
 // ========================
 
 /// **Source:** `CDF_Application.hxx`:39 - `CDF_Application`
-pub use crate::ffi::CDF_Application as Application;
+pub use crate::ffi_types::CDF_Application as Application;
 
 unsafe impl crate::CppDeletable for Application {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_Application_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_Application_destructor(ptr);
     }
 }
 
@@ -152,10 +152,14 @@ impl Application {
     pub fn new_document(
         &mut self,
         theFormat: &crate::t_collection::ExtendedString,
-        theDoc: &mut crate::ffi::HandleCDMDocument,
+        theDoc: &mut crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_new_document(self as *mut Self, theFormat, theDoc)
+            crate::ffi_extern_TKCDF::CDF_Application_new_document(
+                self as *mut Self,
+                theFormat,
+                theDoc,
+            )
         })
     }
 
@@ -163,28 +167,28 @@ impl Application {
     /// Initialize a document for the applicative session.
     /// This virtual function is called by NewDocument
     /// and should be redefined for each specific application.
-    pub fn init_document(&self, theDoc: &crate::ffi::HandleCDMDocument) {
+    pub fn init_document(&self, theDoc: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_init_document(self as *const Self, theDoc)
+            crate::ffi_extern_TKCDF::CDF_Application_init_document(self as *const Self, theDoc)
         })
     }
 
     /// **Source:** `CDF_Application.hxx`:71 - `CDF_Application::Open()`
     /// puts the document in the current session directory
     /// and calls the virtual method Activate on it.
-    pub fn open(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn open(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_open(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Application_open(self as *mut Self, aDocument)
         })
     }
 
     /// **Source:** `CDF_Application.hxx`:73 - `CDF_Application::CanClose()`
     pub fn can_close(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::cdm::CanCloseStatus {
         crate::cdm::CanCloseStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Application_can_close(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Application_can_close(self as *mut Self, aDocument)
         }))
         .unwrap()
     }
@@ -192,9 +196,9 @@ impl Application {
     /// **Source:** `CDF_Application.hxx`:77 - `CDF_Application::Close()`
     /// removes the document of the current session directory
     /// and closes the document;
-    pub fn close(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn close(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_close(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Application_close(self as *mut Self, aDocument)
         })
     }
 
@@ -222,11 +226,11 @@ impl Application {
         aFolder: &crate::t_collection::ExtendedString,
         aName: &crate::t_collection::ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Application_retrieve_extendedstring2_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, UseStorageConfiguration, theFilter, theRange)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_retrieve_extendedstring2_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, UseStorageConfiguration, theFilter, theRange)))
         }
     }
 
@@ -251,11 +255,11 @@ impl Application {
         aName: &crate::t_collection::ExtendedString,
         aVersion: &crate::t_collection::ExtendedString,
         UseStorageConfiguration: bool,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Application_retrieve_extendedstring3_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, aVersion, UseStorageConfiguration, theFilter, theRange)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_retrieve_extendedstring3_bool_handlepcdmreaderfilter_progressrange(self as *mut Self, aFolder, aName, aVersion, UseStorageConfiguration, theFilter, theRange)))
         }
     }
 
@@ -267,7 +271,7 @@ impl Application {
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Application_can_retrieve_extendedstring2_bool(
+            crate::ffi_extern_TKCDF::CDF_Application_can_retrieve_extendedstring2_bool(
                 self as *mut Self,
                 theFolder,
                 theName,
@@ -286,7 +290,7 @@ impl Application {
         theAppendMode: bool,
     ) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Application_can_retrieve_extendedstring3_bool(
+            crate::ffi_extern_TKCDF::CDF_Application_can_retrieve_extendedstring3_bool(
                 self as *mut Self,
                 theFolder,
                 theName,
@@ -301,7 +305,7 @@ impl Application {
     /// Checks  status  after  Retrieve
     pub fn get_retrieve_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Application_get_retrieve_status(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Application_get_retrieve_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -311,13 +315,13 @@ impl Application {
     /// the stream should support SEEK functionality
     pub fn read(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theDocument: &mut crate::ffi::HandleCDMDocument,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theDocument: &mut crate::ffi_types::HandleCDMDocument,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_read(
+            crate::ffi_extern_TKCDF::CDF_Application_read(
                 self as *mut Self,
                 theIStream,
                 theDocument,
@@ -343,10 +347,13 @@ impl Application {
     pub fn reader_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_reader_from_format(self as *mut Self, aFormat),
+                crate::ffi_extern_TKCDF::CDF_Application_reader_from_format(
+                    self as *mut Self,
+                    aFormat,
+                ),
             ))
         }
     }
@@ -367,10 +374,13 @@ impl Application {
     pub fn writer_from_format(
         &mut self,
         aFormat: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_writer_from_format(self as *mut Self, aFormat),
+                crate::ffi_extern_TKCDF::CDF_Application_writer_from_format(
+                    self as *mut Self,
+                    aFormat,
+                ),
             ))
         }
     }
@@ -385,38 +395,40 @@ impl Application {
         theFormat: &mut crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_format(self as *mut Self, aFileName, theFormat)
+            crate::ffi_extern_TKCDF::CDF_Application_format(self as *mut Self, aFileName, theFormat)
         })
     }
 
     /// **Source:** `CDF_Application.hxx`:182 - `CDF_Application::DefaultFolder()`
     pub unsafe fn default_folder(&mut self) -> *const u16 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_default_folder(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Application_default_folder(self as *mut Self)
         })
     }
 
     /// **Source:** `CDF_Application.hxx`:184 - `CDF_Application::SetDefaultFolder()`
     pub unsafe fn set_default_folder(&mut self, aFolder: *const u16) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_set_default_folder(self as *mut Self, aFolder)
+            crate::ffi_extern_TKCDF::CDF_Application_set_default_folder(self as *mut Self, aFolder)
         })
     }
 
     /// **Source:** `CDF_Application.hxx`:187 - `CDF_Application::MetaDataDriver()`
     /// returns MetaDatdDriver of this application
-    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+    pub fn meta_data_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDFMetaDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_meta_data_driver(self as *const Self),
+                crate::ffi_extern_TKCDF::CDF_Application_meta_data_driver(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_Application_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -434,9 +446,11 @@ impl Application {
     /// needed to store it.
     pub fn load(
         aGUID: &crate::standard::GUID,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDFApplication> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFApplication> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Application_load(aGUID)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Application_load(aGUID),
+            ))
         }
     }
 
@@ -444,7 +458,7 @@ impl Application {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::CDF_Application_get_type_name(),
+                crate::ffi_extern_TKCDF::CDF_Application_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -452,14 +466,16 @@ impl Application {
     }
 
     /// **Source:** `CDF_Application.hxx`:189 - `CDF_Application::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::CDF_Application_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_get_type_descriptor()))
+        }
     }
 
     /// Upcast to CDM_Application
     pub fn as_cdm_application(&self) -> &crate::cdm::Application {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_Application_as_CDM_Application(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_as_CDM_Application(
                 self as *const Self,
             ))
         }
@@ -468,16 +484,16 @@ impl Application {
     /// Upcast to CDM_Application (mutable)
     pub fn as_cdm_application_mut(&mut self) -> &mut crate::cdm::Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_Application_as_CDM_Application_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Application_as_CDM_Application_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_Application_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_Application_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -486,46 +502,51 @@ impl Application {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_Application_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Application_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:42 - `CDM_Application::Resources()`
-    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi::HandleResourceManager> {
+    pub fn resources(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleResourceManager> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_inherited_Resources(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_Resources(self as *mut Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:45 - `CDM_Application::MessageDriver()`
-    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi::HandleMessageMessenger> {
+    pub fn message_driver(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleMessageMessenger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_inherited_MessageDriver(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_MessageDriver(self as *mut Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:49 - `CDM_Application::BeginOfUpdate()`
-    pub fn begin_of_update(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn begin_of_update(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_inherited_BeginOfUpdate(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_BeginOfUpdate(
+                self as *mut Self,
+                aDocument,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:53 - `CDM_Application::EndOfUpdate()`
     pub fn end_of_update(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         theStatus: bool,
         ErrorString: &crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_inherited_EndOfUpdate(
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_EndOfUpdate(
                 self as *mut Self,
                 aDocument,
                 theStatus,
@@ -538,7 +559,7 @@ impl Application {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_inherited_Name(self as *const Self),
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_Name(self as *const Self),
             ))
         }
     }
@@ -547,31 +568,36 @@ impl Application {
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Application_inherited_Version(self as *const Self),
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_Version(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `CDM_Application.hxx`:67 - `CDM_Application::MetaDataLookUpTable()`
-    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi::CDM_MetaDataLookUpTable {
+    pub fn meta_data_look_up_table(&mut self) -> &mut crate::ffi_types::CDM_MetaDataLookUpTable {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::CDF_Application_inherited_MetaDataLookUpTable(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_MetaDataLookUpTable(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -579,7 +605,7 @@ impl Application {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_Application_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_Application_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -592,67 +618,83 @@ impl Application {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Application_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Application_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Application_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFApplication;
+pub use crate::ffi_types::HandleCDFApplication;
 
 unsafe impl crate::CppDeletable for HandleCDFApplication {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFApplication_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFApplication_destructor(ptr);
     }
 }
 
 impl HandleCDFApplication {
     /// Dereference this Handle to access the underlying CDF_Application
-    pub fn get(&self) -> &crate::ffi::CDF_Application {
-        unsafe { &*crate::check_result(crate::ffi::HandleCDFApplication_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::CDF_Application {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFApplication_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_Application
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_Application {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_Application {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFApplication_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleCDFApplication_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<CDF_Application> to Handle<CDM_Application>
-    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMApplication> {
+    pub fn to_handle_application(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDMApplication> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFApplication_to_HandleCDMApplication(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFApplication_to_HandleCDMApplication(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<CDF_Application> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFApplication_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFApplication_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -662,9 +704,9 @@ impl HandleCDFApplication {
     /// Returns `None` if the handle does not point to a `AppStdL_Application` (or subclass).
     pub fn downcast_to_app_std_l_application(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdLApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAppStdLApplication>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFApplication_downcast_to_HandleAppStdLApplication(
+            crate::ffi_extern_TKCDF::HandleCDFApplication_downcast_to_HandleAppStdLApplication(
                 self as *const Self,
             )
         });
@@ -680,9 +722,9 @@ impl HandleCDFApplication {
     /// Returns `None` if the handle does not point to a `AppStd_Application` (or subclass).
     pub fn downcast_to_app_std_application(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppStdApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAppStdApplication>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFApplication_downcast_to_HandleAppStdApplication(
+            crate::ffi_extern_TKCDF::HandleCDFApplication_downcast_to_HandleAppStdApplication(
                 self as *const Self,
             )
         });
@@ -698,9 +740,9 @@ impl HandleCDFApplication {
     /// Returns `None` if the handle does not point to a `TDocStd_Application` (or subclass).
     pub fn downcast_to_t_doc_std_application(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTDocStdApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTDocStdApplication>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFApplication_downcast_to_HandleTDocStdApplication(
+            crate::ffi_extern_TKCDF::HandleCDFApplication_downcast_to_HandleTDocStdApplication(
                 self as *const Self,
             )
         });
@@ -716,9 +758,11 @@ impl HandleCDFApplication {
     /// Returns `None` if the handle does not point to a `TObj_Application` (or subclass).
     pub fn downcast_to_t_obj_application(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleTObjApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleTObjApplication>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFApplication_downcast_to_HandleTObjApplication(self as *const Self)
+            crate::ffi_extern_TKCDF::HandleCDFApplication_downcast_to_HandleTObjApplication(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -732,9 +776,9 @@ impl HandleCDFApplication {
     /// Returns `None` if the handle does not point to a `XCAFApp_Application` (or subclass).
     pub fn downcast_to_xcaf_app_application(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXCAFAppApplication>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXCAFAppApplication>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFApplication_downcast_to_HandleXCAFAppApplication(
+            crate::ffi_extern_TKCDF::HandleCDFApplication_downcast_to_HandleXCAFAppApplication(
                 self as *const Self,
             )
         });
@@ -754,11 +798,11 @@ impl HandleCDFApplication {
 /// A directory is a collection of documents. There is only one instance
 /// of a given document in a directory.
 /// put.
-pub use crate::ffi::CDF_Directory as Directory;
+pub use crate::ffi_types::CDF_Directory as Directory;
 
 unsafe impl crate::CppDeletable for Directory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_Directory_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_Directory_destructor(ptr);
     }
 }
 
@@ -766,81 +810,95 @@ impl Directory {
     /// **Source:** `CDF_Directory.hxx`:38 - `CDF_Directory::CDF_Directory()`
     /// Creates an empty directory.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Directory_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Directory_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `CDF_Directory.hxx`:41 - `CDF_Directory::Add()`
     /// adds a document into the directory.
-    pub fn add(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn add(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Directory_add(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Directory_add(self as *mut Self, aDocument)
         })
     }
 
     /// **Source:** `CDF_Directory.hxx`:44 - `CDF_Directory::Remove()`
     /// removes the document.
-    pub fn remove(&mut self, aDocument: &crate::ffi::HandleCDMDocument) {
+    pub fn remove(&mut self, aDocument: &crate::ffi_types::HandleCDMDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Directory_remove(self as *mut Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Directory_remove(self as *mut Self, aDocument)
         })
     }
 
     /// **Source:** `CDF_Directory.hxx`:47 - `CDF_Directory::Contains()`
     /// Returns true if the document aDocument is in the directory
-    pub fn contains(&self, aDocument: &crate::ffi::HandleCDMDocument) -> bool {
+    pub fn contains(&self, aDocument: &crate::ffi_types::HandleCDMDocument) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Directory_contains(self as *const Self, aDocument)
+            crate::ffi_extern_TKCDF::CDF_Directory_contains(self as *const Self, aDocument)
         })
     }
 
     /// **Source:** `CDF_Directory.hxx`:51 - `CDF_Directory::Last()`
     /// returns the last document (if any) which has been added
     /// in the directory.
-    pub fn last(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    pub fn last(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Directory_last(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Directory_last(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `CDF_Directory.hxx`:54 - `CDF_Directory::Length()`
     /// returns the number of documents of the directory.
     pub fn length(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::CDF_Directory_length(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Directory_length(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Directory.hxx`:57 - `CDF_Directory::IsEmpty()`
     /// returns true if the directory is empty.
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_Directory_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Directory_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_Directory_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_Directory_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::CDF_Directory_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Directory_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `CDF_Directory.hxx`:61 - `CDF_Directory::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::CDF_Directory_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_Directory_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_Directory_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_Directory_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -849,34 +907,37 @@ impl Directory {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_Directory_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Directory_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDFDirectory> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFDirectory> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Directory_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Directory_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -884,7 +945,7 @@ impl Directory {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_Directory_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_Directory_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -897,58 +958,68 @@ impl Directory {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Directory_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Directory_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFDirectory;
+pub use crate::ffi_types::HandleCDFDirectory;
 
 unsafe impl crate::CppDeletable for HandleCDFDirectory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFDirectory_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFDirectory_destructor(ptr);
     }
 }
 
 impl HandleCDFDirectory {
     /// Dereference this Handle to access the underlying CDF_Directory
-    pub fn get(&self) -> &crate::ffi::CDF_Directory {
-        unsafe { &*crate::check_result(crate::ffi::HandleCDFDirectory_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::CDF_Directory {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFDirectory_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_Directory
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_Directory {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_Directory {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFDirectory_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleCDFDirectory_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<CDF_Directory> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFDirectory_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFDirectory_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -959,11 +1030,11 @@ impl HandleCDFDirectory {
 // ========================
 
 /// **Source:** `CDF_DirectoryIterator.hxx`:28 - `CDF_DirectoryIterator`
-pub use crate::ffi::CDF_DirectoryIterator as DirectoryIterator;
+pub use crate::ffi_types::CDF_DirectoryIterator as DirectoryIterator;
 
 unsafe impl crate::CppDeletable for DirectoryIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_DirectoryIterator_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_DirectoryIterator_destructor(ptr);
     }
 }
 
@@ -973,17 +1044,19 @@ impl DirectoryIterator {
     /// of the current CDF.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_DirectoryIterator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_DirectoryIterator_ctor(),
+            ))
         }
     }
 
     /// **Source:** `CDF_DirectoryIterator.hxx`:37 - `CDF_DirectoryIterator::CDF_DirectoryIterator()`
     pub fn new_handlecdfdirectory(
-        aDirectory: &crate::ffi::HandleCDFDirectory,
+        aDirectory: &crate::ffi_types::HandleCDFDirectory,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_DirectoryIterator_ctor_handlecdfdirectory(aDirectory),
+                crate::ffi_extern_TKCDF::CDF_DirectoryIterator_ctor_handlecdfdirectory(aDirectory),
             ))
         }
     }
@@ -992,7 +1065,7 @@ impl DirectoryIterator {
     /// Returns True if there are more entries to return
     pub fn more_document(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_DirectoryIterator_more_document(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_DirectoryIterator_more_document(self as *mut Self)
         })
     }
 
@@ -1001,16 +1074,16 @@ impl DirectoryIterator {
     /// (if there is not, Value will raise an exception)
     pub fn next_document(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_DirectoryIterator_next_document(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_DirectoryIterator_next_document(self as *mut Self)
         })
     }
 
     /// **Source:** `CDF_DirectoryIterator.hxx`:47 - `CDF_DirectoryIterator::Document()`
     /// Returns item value of current entry
-    pub fn document(&mut self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    pub fn document(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_DirectoryIterator_document(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_DirectoryIterator_document(self as *mut Self),
             ))
         }
     }
@@ -1021,11 +1094,11 @@ impl DirectoryIterator {
 // ========================
 
 /// **Source:** `CDF_FWOSDriver.hxx`:32 - `CDF_FWOSDriver`
-pub use crate::ffi::CDF_FWOSDriver as FWOSDriver;
+pub use crate::ffi_types::CDF_FWOSDriver as FWOSDriver;
 
 unsafe impl crate::CppDeletable for FWOSDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_FWOSDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_FWOSDriver_destructor(ptr);
     }
 }
 
@@ -1035,11 +1108,11 @@ impl FWOSDriver {
     /// Note that the created driver will keep reference to the table,
     /// thus it must have life time longer than this object.
     pub fn new_metadatalookuptable(
-        theLookUpTable: &mut crate::ffi::CDM_MetaDataLookUpTable,
+        theLookUpTable: &mut crate::ffi_types::CDM_MetaDataLookUpTable,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_FWOSDriver_ctor_metadatalookuptable(theLookUpTable),
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_ctor_metadatalookuptable(theLookUpTable),
             ))
         }
     }
@@ -1053,7 +1126,12 @@ impl FWOSDriver {
         aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_find(self as *mut Self, aFolder, aName, aVersion)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_find(
+                self as *mut Self,
+                aFolder,
+                aName,
+                aVersion,
+            )
         })
     }
 
@@ -1065,7 +1143,7 @@ impl FWOSDriver {
         aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_has_read_permission(
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_has_read_permission(
                 self as *mut Self,
                 aFolder,
                 aName,
@@ -1077,7 +1155,7 @@ impl FWOSDriver {
     /// **Source:** `CDF_FWOSDriver.hxx`:52 - `CDF_FWOSDriver::FindFolder()`
     pub fn find_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_find_folder(self as *mut Self, aFolder)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_find_folder(self as *mut Self, aFolder)
         })
     }
 
@@ -1085,7 +1163,7 @@ impl FWOSDriver {
     pub fn default_folder(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_FWOSDriver_default_folder(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_default_folder(self as *mut Self),
             ))
         }
     }
@@ -1093,11 +1171,14 @@ impl FWOSDriver {
     /// **Source:** `CDF_FWOSDriver.hxx`:57 - `CDF_FWOSDriver::BuildFileName()`
     pub fn build_file_name(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_FWOSDriver_build_file_name(self as *mut Self, aDocument),
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_build_file_name(
+                    self as *mut Self,
+                    aDocument,
+                ),
             ))
         }
     }
@@ -1105,45 +1186,51 @@ impl FWOSDriver {
     /// **Source:** `CDF_FWOSDriver.hxx`:60 - `CDF_FWOSDriver::SetName()`
     pub fn set_name(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         aName: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_FWOSDriver_set_name(
-                self as *mut Self,
-                aDocument,
-                aName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_set_name(
+                    self as *mut Self,
+                    aDocument,
+                    aName,
+                ),
+            ))
         }
     }
 
     /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_FWOSDriver_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_FWOSDriver_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::CDF_FWOSDriver_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `CDF_FWOSDriver.hxx`:64 - `CDF_FWOSDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::CDF_FWOSDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_FWOSDriver_get_type_descriptor()))
+        }
     }
 
     /// Upcast to CDF_MetaDataDriver
     pub fn as_meta_data_driver(&self) -> &MetaDataDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_FWOSDriver_as_CDF_MetaDataDriver(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_FWOSDriver_as_CDF_MetaDataDriver(
                 self as *const Self,
             ))
         }
@@ -1152,16 +1239,18 @@ impl FWOSDriver {
     /// Upcast to CDF_MetaDataDriver (mutable)
     pub fn as_meta_data_driver_mut(&mut self) -> &mut MetaDataDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_FWOSDriver_as_CDF_MetaDataDriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_as_CDF_MetaDataDriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_FWOSDriver_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_FWOSDriver_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1170,38 +1259,42 @@ impl FWOSDriver {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_FWOSDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDFFWOSDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFFWOSDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_FWOSDriver_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:40 - `CDF_MetaDataDriver::HasVersionCapability()`
     pub fn has_version_capability(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_HasVersionCapability(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_HasVersionCapability(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:44 - `CDF_MetaDataDriver::CreateDependsOn()`
     pub fn create_depends_on(
         &mut self,
-        aFirstData: &crate::ffi::HandleCDMMetaData,
-        aSecondData: &crate::ffi::HandleCDMMetaData,
+        aFirstData: &crate::ffi_types::HandleCDMMetaData,
+        aSecondData: &crate::ffi_types::HandleCDMMetaData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_CreateDependsOn(
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_CreateDependsOn(
                 self as *mut Self,
                 aFirstData,
                 aSecondData,
@@ -1212,13 +1305,13 @@ impl FWOSDriver {
     /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:47 - `CDF_MetaDataDriver::CreateReference()`
     pub fn create_reference(
         &mut self,
-        aFrom: &crate::ffi::HandleCDMMetaData,
-        aTo: &crate::ffi::HandleCDMMetaData,
+        aFrom: &crate::ffi_types::HandleCDMMetaData,
+        aTo: &crate::ffi_types::HandleCDMMetaData,
         aReferenceIdentifier: i32,
         aToDocumentVersion: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_CreateReference(
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_CreateReference(
                 self as *mut Self,
                 aFrom,
                 aTo,
@@ -1235,18 +1328,25 @@ impl FWOSDriver {
         aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_HasVersion(self as *mut Self, aFolder, aName)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_HasVersion(
+                self as *mut Self,
+                aFolder,
+                aName,
+            )
         })
     }
 
     /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:99 - `CDF_MetaDataDriver::LastVersion()`
     pub fn last_version(
         &mut self,
-        aMetaData: &crate::ffi::HandleCDMMetaData,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+        aMetaData: &crate::ffi_types::HandleCDMMetaData,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMMetaData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_FWOSDriver_inherited_LastVersion(self as *mut Self, aMetaData),
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_LastVersion(
+                    self as *mut Self,
+                    aMetaData,
+                ),
             ))
         }
     }
@@ -1254,11 +1354,11 @@ impl FWOSDriver {
     /// Inherited: **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::ReferenceIterator()`
     pub fn reference_iterator(
         &mut self,
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReferenceIterator> {
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReferenceIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_FWOSDriver_inherited_ReferenceIterator(
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_ReferenceIterator(
                     self as *mut Self,
                     theMessageDriver,
                 ),
@@ -1267,16 +1367,19 @@ impl FWOSDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1284,7 +1387,7 @@ impl FWOSDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_FWOSDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1297,69 +1400,81 @@ impl FWOSDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_FWOSDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_FWOSDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFFWOSDriver;
+pub use crate::ffi_types::HandleCDFFWOSDriver;
 
 unsafe impl crate::CppDeletable for HandleCDFFWOSDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFFWOSDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_destructor(ptr);
     }
 }
 
 impl HandleCDFFWOSDriver {
     /// Dereference this Handle to access the underlying CDF_FWOSDriver
-    pub fn get(&self) -> &crate::ffi::CDF_FWOSDriver {
-        unsafe { &*crate::check_result(crate::ffi::HandleCDFFWOSDriver_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::CDF_FWOSDriver {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_FWOSDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_FWOSDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_FWOSDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFFWOSDriver_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<CDF_FWOSDriver> to Handle<CDF_MetaDataDriver>
     pub fn to_handle_meta_data_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFMetaDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFFWOSDriver_to_HandleCDFMetaDataDriver(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_to_HandleCDFMetaDataDriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<CDF_FWOSDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFFWOSDriver_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFFWOSDriver_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1372,11 +1487,11 @@ impl HandleCDFFWOSDriver {
 /// **Source:** `CDF_MetaDataDriver.hxx`:33 - `CDF_MetaDataDriver`
 /// this class list the method that must be available for
 /// a specific DBMS
-pub use crate::ffi::CDF_MetaDataDriver as MetaDataDriver;
+pub use crate::ffi_types::CDF_MetaDataDriver as MetaDataDriver;
 
 unsafe impl crate::CppDeletable for MetaDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_MetaDataDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_MetaDataDriver_destructor(ptr);
     }
 }
 
@@ -1387,7 +1502,7 @@ impl MetaDataDriver {
     /// By default, returns Standard_False.
     pub fn has_version_capability(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_has_version_capability(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_has_version_capability(self as *mut Self)
         })
     }
 
@@ -1396,11 +1511,11 @@ impl MetaDataDriver {
     /// By default does nothing
     pub fn create_depends_on(
         &mut self,
-        aFirstData: &crate::ffi::HandleCDMMetaData,
-        aSecondData: &crate::ffi::HandleCDMMetaData,
+        aFirstData: &crate::ffi_types::HandleCDMMetaData,
+        aSecondData: &crate::ffi_types::HandleCDMMetaData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_create_depends_on(
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_create_depends_on(
                 self as *mut Self,
                 aFirstData,
                 aSecondData,
@@ -1411,13 +1526,13 @@ impl MetaDataDriver {
     /// **Source:** `CDF_MetaDataDriver.hxx`:47 - `CDF_MetaDataDriver::CreateReference()`
     pub fn create_reference(
         &mut self,
-        aFrom: &crate::ffi::HandleCDMMetaData,
-        aTo: &crate::ffi::HandleCDMMetaData,
+        aFrom: &crate::ffi_types::HandleCDMMetaData,
+        aTo: &crate::ffi_types::HandleCDMMetaData,
         aReferenceIdentifier: i32,
         aToDocumentVersion: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_create_reference(
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_create_reference(
                 self as *mut Self,
                 aFrom,
                 aTo,
@@ -1435,18 +1550,25 @@ impl MetaDataDriver {
         aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_has_version(self as *mut Self, aFolder, aName)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_has_version(
+                self as *mut Self,
+                aFolder,
+                aName,
+            )
         })
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:56 - `CDF_MetaDataDriver::BuildFileName()`
     pub fn build_file_name(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_build_file_name(self as *mut Self, aDocument),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_build_file_name(
+                    self as *mut Self,
+                    aDocument,
+                ),
             ))
         }
     }
@@ -1458,15 +1580,17 @@ impl MetaDataDriver {
     /// the extension of file to create to the object.
     pub fn set_name(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         aName: &crate::t_collection::ExtendedString,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_MetaDataDriver_set_name(
-                self as *mut Self,
-                aDocument,
-                aName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_set_name(
+                    self as *mut Self,
+                    aDocument,
+                    aName,
+                ),
+            ))
         }
     }
 
@@ -1481,7 +1605,7 @@ impl MetaDataDriver {
         aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_find_extendedstring3(
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_find_extendedstring3(
                 self as *mut Self,
                 aFolder,
                 aName,
@@ -1498,7 +1622,7 @@ impl MetaDataDriver {
         aVersion: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_has_read_permission(
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_has_read_permission(
                 self as *mut Self,
                 aFolder,
                 aName,
@@ -1520,10 +1644,10 @@ impl MetaDataDriver {
         aFolder: &crate::t_collection::ExtendedString,
         aName: &crate::t_collection::ExtendedString,
         aVersion: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMMetaData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_meta_data_extendedstring3(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_meta_data_extendedstring3(
                     self as *mut Self,
                     aFolder,
                     aName,
@@ -1544,11 +1668,14 @@ impl MetaDataDriver {
     /// is deferred;
     pub fn last_version(
         &mut self,
-        aMetaData: &crate::ffi::HandleCDMMetaData,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+        aMetaData: &crate::ffi_types::HandleCDMMetaData,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMMetaData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_last_version(self as *mut Self, aMetaData),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_last_version(
+                    self as *mut Self,
+                    aMetaData,
+                ),
             ))
         }
     }
@@ -1561,12 +1688,12 @@ impl MetaDataDriver {
     /// has version capabilities, version must be set in the returned Data.
     pub fn create_meta_data(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         aFileName: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMMetaData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_create_meta_data(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_create_meta_data(
                     self as *mut Self,
                     aDocument,
                     aFileName,
@@ -1578,7 +1705,7 @@ impl MetaDataDriver {
     /// **Source:** `CDF_MetaDataDriver.hxx`:110 - `CDF_MetaDataDriver::FindFolder()`
     pub fn find_folder(&mut self, aFolder: &crate::t_collection::ExtendedString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_find_folder(self as *mut Self, aFolder)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_find_folder(self as *mut Self, aFolder)
         })
     }
 
@@ -1586,7 +1713,7 @@ impl MetaDataDriver {
     pub fn default_folder(&mut self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_default_folder(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_default_folder(self as *mut Self),
             ))
         }
     }
@@ -1594,11 +1721,11 @@ impl MetaDataDriver {
     /// **Source:** `CDF_MetaDataDriver.hxx`:115 - `CDF_MetaDataDriver::ReferenceIterator()`
     pub fn reference_iterator(
         &mut self,
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReferenceIterator> {
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReferenceIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_reference_iterator(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_reference_iterator(
                     self as *mut Self,
                     theMessageDriver,
                 ),
@@ -1614,7 +1741,11 @@ impl MetaDataDriver {
         aName: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_find_extendedstring2(self as *mut Self, aFolder, aName)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_find_extendedstring2(
+                self as *mut Self,
+                aFolder,
+                aName,
+            )
         })
     }
 
@@ -1624,10 +1755,10 @@ impl MetaDataDriver {
         &mut self,
         aFolder: &crate::t_collection::ExtendedString,
         aName: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDMMetaData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDMMetaData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_meta_data_extendedstring2(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_meta_data_extendedstring2(
                     self as *mut Self,
                     aFolder,
                     aName,
@@ -1637,9 +1768,9 @@ impl MetaDataDriver {
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_MetaDataDriver_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_MetaDataDriver_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1649,7 +1780,7 @@ impl MetaDataDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::CDF_MetaDataDriver_get_type_name(),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1657,39 +1788,53 @@ impl MetaDataDriver {
     }
 
     /// **Source:** `CDF_MetaDataDriver.hxx`:126 - `CDF_MetaDataDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::CDF_MetaDataDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_MetaDataDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_MetaDataDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1697,7 +1842,7 @@ impl MetaDataDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_MetaDataDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1710,62 +1855,72 @@ impl MetaDataDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFMetaDataDriver;
+pub use crate::ffi_types::HandleCDFMetaDataDriver;
 
 unsafe impl crate::CppDeletable for HandleCDFMetaDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFMetaDataDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_destructor(ptr);
     }
 }
 
 impl HandleCDFMetaDataDriver {
     /// Dereference this Handle to access the underlying CDF_MetaDataDriver
-    pub fn get(&self) -> &crate::ffi::CDF_MetaDataDriver {
+    pub fn get(&self) -> &crate::ffi_types::CDF_MetaDataDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleCDFMetaDataDriver_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_MetaDataDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_MetaDataDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_MetaDataDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFMetaDataDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<CDF_MetaDataDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFMetaDataDriver_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1775,9 +1930,11 @@ impl HandleCDFMetaDataDriver {
     /// Returns `None` if the handle does not point to a `CDF_FWOSDriver` (or subclass).
     pub fn downcast_to_fwos_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleCDFFWOSDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleCDFFWOSDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleCDFMetaDataDriver_downcast_to_HandleCDFFWOSDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandleCDFMetaDataDriver_downcast_to_HandleCDFFWOSDriver(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1792,30 +1949,32 @@ impl HandleCDFMetaDataDriver {
 // ========================
 
 /// **Source:** `CDF_MetaDataDriverFactory.hxx`:29 - `CDF_MetaDataDriverFactory`
-pub use crate::ffi::CDF_MetaDataDriverFactory as MetaDataDriverFactory;
+pub use crate::ffi_types::CDF_MetaDataDriverFactory as MetaDataDriverFactory;
 
 unsafe impl crate::CppDeletable for MetaDataDriverFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_MetaDataDriverFactory_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_destructor(ptr);
     }
 }
 
 impl MetaDataDriverFactory {
     /// **Source:** `CDF_MetaDataDriverFactory.hxx`:33 - `CDF_MetaDataDriverFactory::Build()`
-    pub fn build(&self) -> crate::OwnedPtr<crate::ffi::HandleCDFMetaDataDriver> {
+    pub fn build(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDFMetaDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_MetaDataDriverFactory_build(self as *const Self),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_build(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_MetaDataDriverFactory_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1823,7 +1982,7 @@ impl MetaDataDriverFactory {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::CDF_MetaDataDriverFactory_get_type_name(),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1831,18 +1990,22 @@ impl MetaDataDriverFactory {
     }
 
     /// **Source:** `CDF_MetaDataDriverFactory.hxx`:35 - `CDF_MetaDataDriverFactory::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_MetaDataDriverFactory_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_MetaDataDriverFactory_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1850,22 +2013,30 @@ impl MetaDataDriverFactory {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::CDF_MetaDataDriverFactory_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1873,7 +2044,9 @@ impl MetaDataDriverFactory {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_MetaDataDriverFactory_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1886,64 +2059,72 @@ impl MetaDataDriverFactory {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_MetaDataDriverFactory_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_MetaDataDriverFactory_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFMetaDataDriverFactory;
+pub use crate::ffi_types::HandleCDFMetaDataDriverFactory;
 
 unsafe impl crate::CppDeletable for HandleCDFMetaDataDriverFactory {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFMetaDataDriverFactory_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_destructor(ptr);
     }
 }
 
 impl HandleCDFMetaDataDriverFactory {
     /// Dereference this Handle to access the underlying CDF_MetaDataDriverFactory
-    pub fn get(&self) -> &crate::ffi::CDF_MetaDataDriverFactory {
+    pub fn get(&self) -> &crate::ffi_types::CDF_MetaDataDriverFactory {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleCDFMetaDataDriverFactory_get(
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_MetaDataDriverFactory
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_MetaDataDriverFactory {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_MetaDataDriverFactory {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFMetaDataDriverFactory_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<CDF_MetaDataDriverFactory> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFMetaDataDriverFactory_to_HandleStandardTransient(
+                crate::ffi_extern_TKCDF::HandleCDFMetaDataDriverFactory_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1956,11 +2137,11 @@ impl HandleCDFMetaDataDriverFactory {
 // ========================
 
 /// **Source:** `CDF_Store.hxx`:34 - `CDF_Store`
-pub use crate::ffi::CDF_Store as Store;
+pub use crate::ffi_types::CDF_Store as Store;
 
 unsafe impl crate::CppDeletable for Store {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_Store_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_Store_destructor(ptr);
     }
 }
 
@@ -1968,30 +2149,30 @@ impl Store {
     /// **Source:** `CDF_Store.hxx`:40 - `CDF_Store::CDF_Store()`
     /// creates a store list  from the document of the current selection.
     pub fn new_handlecdmdocument(
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_Store_ctor_handlecdmdocument(aDocument),
+                crate::ffi_extern_TKCDF::CDF_Store_ctor_handlecdmdocument(aDocument),
             ))
         }
     }
 
     /// **Source:** `CDF_Store.hxx`:43 - `CDF_Store::Folder()`
     /// returns the folder in which the current document will be stored.
-    pub fn folder(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn folder(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_folder(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Store_folder(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `CDF_Store.hxx`:46 - `CDF_Store::Name()`
     /// returns the name under which the current document will be stored
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_name(
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCDF::CDF_Store_name(
                 self as *const Self,
             )))
         }
@@ -2000,41 +2181,47 @@ impl Store {
     /// **Source:** `CDF_Store.hxx`:49 - `CDF_Store::IsStored()`
     /// returns true if the current document is already stored
     pub fn is_stored(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_Store_is_stored(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_is_stored(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Store.hxx`:51 - `CDF_Store::IsModified()`
     pub fn is_modified(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_Store_is_modified(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_is_modified(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Store.hxx`:53 - `CDF_Store::CurrentIsConsistent()`
     pub fn current_is_consistent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_current_is_consistent(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Store_current_is_consistent(self as *const Self)
         })
     }
 
     /// **Source:** `CDF_Store.hxx`:55 - `CDF_Store::IsConsistent()`
     pub fn is_consistent(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_Store_is_consistent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_is_consistent(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Store.hxx`:57 - `CDF_Store::HasAPreviousVersion()`
     pub fn has_a_previous_version(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_has_a_previous_version(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Store_has_a_previous_version(self as *const Self)
         })
     }
 
     /// **Source:** `CDF_Store.hxx`:59 - `CDF_Store::PreviousVersion()`
     pub fn previous_version(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_previous_version(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Store_previous_version(self as *const Self),
+            ))
         }
     }
 
@@ -2042,7 +2229,9 @@ impl Store {
     /// returns true if the currentdocument is the main one, ie the document
     /// of the current selection.
     pub fn is_main_document(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_Store_is_main_document(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_is_main_document(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_Store.hxx`:68 - `CDF_Store::SetFolder()`
@@ -2054,7 +2243,7 @@ impl Store {
         aFolder: &crate::t_collection::ExtendedString,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_set_folder_extendedstring(self as *mut Self, aFolder)
+            crate::ffi_extern_TKCDF::CDF_Store_set_folder_extendedstring(self as *mut Self, aFolder)
         })
     }
 
@@ -2065,7 +2254,7 @@ impl Store {
         aName: *const u16,
     ) -> crate::cdf::StoreSetNameStatus {
         crate::cdf::StoreSetNameStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Store_set_name_char16ptr(self as *mut Self, aName)
+            crate::ffi_extern_TKCDF::CDF_Store_set_name_char16ptr(self as *mut Self, aName)
         }))
         .unwrap()
     }
@@ -2073,16 +2262,16 @@ impl Store {
     /// **Source:** `CDF_Store.hxx`:73 - `CDF_Store::SetComment()`
     pub unsafe fn set_comment(&mut self, aComment: *const u16) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Store_set_comment(self as *mut Self, aComment)
+            crate::ffi_extern_TKCDF::CDF_Store_set_comment(self as *mut Self, aComment)
         })
     }
 
     /// **Source:** `CDF_Store.hxx`:75 - `CDF_Store::Comment()`
-    pub fn comment(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn comment(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_comment(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Store_comment(self as *const Self),
+            ))
         }
     }
 
@@ -2091,7 +2280,7 @@ impl Store {
     /// uses for example after modification of the folder.
     pub fn recheck_name(&mut self) -> crate::cdf::StoreSetNameStatus {
         crate::cdf::StoreSetNameStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Store_recheck_name(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_Store_recheck_name(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2099,48 +2288,55 @@ impl Store {
     /// **Source:** `CDF_Store.hxx`:81 - `CDF_Store::SetPreviousVersion()`
     pub unsafe fn set_previous_version(&mut self, aPreviousVersion: *const u16) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_set_previous_version(self as *mut Self, aPreviousVersion)
+            crate::ffi_extern_TKCDF::CDF_Store_set_previous_version(
+                self as *mut Self,
+                aPreviousVersion,
+            )
         })
     }
 
     /// **Source:** `CDF_Store.hxx`:83 - `CDF_Store::Realize()`
     pub fn realize(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Store_realize(self as *mut Self, theRange)
+            crate::ffi_extern_TKCDF::CDF_Store_realize(self as *mut Self, theRange)
         })
     }
 
     /// **Source:** `CDF_Store.hxx`:86 - `CDF_Store::Path()`
     /// returns the complete path of the created meta-data.
     pub unsafe fn path(&self) -> *const u16 {
-        crate::check_result(unsafe { crate::ffi::CDF_Store_path(self as *const Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKCDF::CDF_Store_path(self as *const Self) })
     }
 
     /// **Source:** `CDF_Store.hxx`:90 - `CDF_Store::MetaDataPath()`
     /// returns the path of  the previous store is the object
     /// is already stored, otherwise an empty string;
-    pub fn meta_data_path(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn meta_data_path(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_meta_data_path(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Store_meta_data_path(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `CDF_Store.hxx`:93 - `CDF_Store::Description()`
     /// returns the description of the format of the main object.
-    pub fn description(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn description(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_Store_description(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_Store_description(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `CDF_Store.hxx`:95 - `CDF_Store::SetCurrent()`
     pub unsafe fn set_current(&mut self, aPresentation: *const u16) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_Store_set_current(self as *mut Self, aPresentation)
+            crate::ffi_extern_TKCDF::CDF_Store_set_current(self as *mut Self, aPresentation)
         })
     }
 
@@ -2149,13 +2345,15 @@ impl Store {
     /// be used just after Realize  or Import --  method to know if
     /// thes methods worked correctly, and if not why.
     pub fn set_main(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::CDF_Store_set_main(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_Store_set_main(self as *mut Self)
+        })
     }
 
     /// **Source:** `CDF_Store.hxx`:102 - `CDF_Store::StoreStatus()`
     pub fn store_status(&self) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Store_store_status(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Store_store_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -2163,7 +2361,7 @@ impl Store {
     /// **Source:** `CDF_Store.hxx`:104 - `CDF_Store::AssociatedStatusText()`
     pub unsafe fn associated_status_text(&self) -> *const u16 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_associated_status_text(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_Store_associated_status_text(self as *const Self)
         })
     }
 
@@ -2174,7 +2372,7 @@ impl Store {
         aName: &crate::t_collection::ExtendedString,
     ) -> crate::cdf::StoreSetNameStatus {
         crate::cdf::StoreSetNameStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_Store_set_name_extendedstring(self as *mut Self, aName)
+            crate::ffi_extern_TKCDF::CDF_Store_set_name_extendedstring(self as *mut Self, aName)
         }))
         .unwrap()
     }
@@ -2185,7 +2383,7 @@ impl Store {
     /// Standard_False otherwise.
     pub unsafe fn set_folder_char16ptr(&mut self, aFolder: *const u16) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_Store_set_folder_char16ptr(self as *mut Self, aFolder)
+            crate::ffi_extern_TKCDF::CDF_Store_set_folder_char16ptr(self as *mut Self, aFolder)
         })
     }
 }
@@ -2195,29 +2393,31 @@ impl Store {
 // ========================
 
 /// **Source:** `CDF_StoreList.hxx`:35 - `CDF_StoreList`
-pub use crate::ffi::CDF_StoreList as StoreList;
+pub use crate::ffi_types::CDF_StoreList as StoreList;
 
 unsafe impl crate::CppDeletable for StoreList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::CDF_StoreList_destructor(ptr);
+        crate::ffi_extern_TKCDF::CDF_StoreList_destructor(ptr);
     }
 }
 
 impl StoreList {
     /// **Source:** `CDF_StoreList.hxx`:39 - `CDF_StoreList::CDF_StoreList()`
     pub fn new_handlecdmdocument(
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::CDF_StoreList_ctor_handlecdmdocument(aDocument),
+                crate::ffi_extern_TKCDF::CDF_StoreList_ctor_handlecdmdocument(aDocument),
             ))
         }
     }
 
     /// **Source:** `CDF_StoreList.hxx`:41 - `CDF_StoreList::IsConsistent()`
     pub fn is_consistent(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_StoreList_is_consistent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_StoreList_is_consistent(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_StoreList.hxx`:46 - `CDF_StoreList::Store()`
@@ -2225,12 +2425,12 @@ impl StoreList {
     /// order of which they had been added.
     pub fn store(
         &mut self,
-        aMetaData: &mut crate::ffi::HandleCDMMetaData,
+        aMetaData: &mut crate::ffi_types::HandleCDMMetaData,
         aStatusAssociatedText: &mut crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::CDF_StoreList_store(
+            crate::ffi_extern_TKCDF::CDF_StoreList_store(
                 self as *mut Self,
                 aMetaData,
                 aStatusAssociatedText,
@@ -2242,53 +2442,65 @@ impl StoreList {
 
     /// **Source:** `CDF_StoreList.hxx`:50 - `CDF_StoreList::Init()`
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::CDF_StoreList_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_StoreList_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `CDF_StoreList.hxx`:52 - `CDF_StoreList::More()`
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::CDF_StoreList_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_StoreList_more(self as *const Self)
+        })
     }
 
     /// **Source:** `CDF_StoreList.hxx`:54 - `CDF_StoreList::Next()`
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::CDF_StoreList_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::CDF_StoreList_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `CDF_StoreList.hxx`:56 - `CDF_StoreList::Value()`
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleCDMDocument> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleCDMDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_StoreList_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_StoreList_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::CDF_StoreList_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_StoreList_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::CDF_StoreList_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_StoreList_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `CDF_StoreList.hxx`:58 - `CDF_StoreList::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::CDF_StoreList_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::CDF_StoreList_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::CDF_StoreList_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::CDF_StoreList_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2297,34 +2509,37 @@ impl StoreList {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::CDF_StoreList_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_StoreList_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleCDFStoreList> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleCDFStoreList> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::CDF_StoreList_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::CDF_StoreList_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2332,7 +2547,7 @@ impl StoreList {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::CDF_StoreList_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::CDF_StoreList_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2345,58 +2560,68 @@ impl StoreList {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::CDF_StoreList_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::CDF_StoreList_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleCDFStoreList;
+pub use crate::ffi_types::HandleCDFStoreList;
 
 unsafe impl crate::CppDeletable for HandleCDFStoreList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleCDFStoreList_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandleCDFStoreList_destructor(ptr);
     }
 }
 
 impl HandleCDFStoreList {
     /// Dereference this Handle to access the underlying CDF_StoreList
-    pub fn get(&self) -> &crate::ffi::CDF_StoreList {
-        unsafe { &*crate::check_result(crate::ffi::HandleCDFStoreList_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::CDF_StoreList {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandleCDFStoreList_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying CDF_StoreList
-    pub fn get_mut(&mut self) -> &mut crate::ffi::CDF_StoreList {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::CDF_StoreList {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleCDFStoreList_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandleCDFStoreList_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<CDF_StoreList> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleCDFStoreList_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandleCDFStoreList_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }

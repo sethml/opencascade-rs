@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardTransient, HandleStorageBaseDriver};
+pub use crate::ffi_types::{HandleStandardTransient, HandleStorageBaseDriver};
 
 // ========================
 // From FSD_Base64.hxx
@@ -15,11 +15,11 @@ pub use crate::ffi::{HandleStandardTransient, HandleStorageBaseDriver};
 
 /// **Source:** `FSD_Base64.hxx`:21 - `FSD_Base64`
 /// Tool for encoding/decoding base64 stream.
-pub use crate::ffi::FSD_Base64 as Base64;
+pub use crate::ffi_types::FSD_Base64 as Base64;
 
 unsafe impl crate::CppDeletable for Base64 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FSD_Base64_destructor(ptr);
+        crate::ffi_extern_TKernel::FSD_Base64_destructor(ptr);
     }
 }
 
@@ -27,7 +27,11 @@ impl Base64 {
     /// **Source:** `FSD_Base64.hxx` - `FSD_Base64::FSD_Base64()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_Base64_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_Base64_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `FSD_Base64.hxx`:34 - `FSD_Base64::Encode()`
@@ -48,7 +52,7 @@ impl Base64 {
         theDataLen: usize,
     ) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::FSD_Base64_encode_charptr_size_u8ptr_size(
+            crate::ffi_extern_TKernel::FSD_Base64_encode_charptr_size_u8ptr_size(
                 theEncodedStr,
                 theStrLen,
                 theData,
@@ -68,7 +72,7 @@ impl Base64 {
     ) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FSD_Base64_encode_u8ptr_size(theData, theDataLen),
+                crate::ffi_extern_TKernel::FSD_Base64_encode_u8ptr_size(theData, theDataLen),
             ))
         }
     }
@@ -92,7 +96,7 @@ impl Base64 {
     ) -> usize {
         let c_theEncodedStr = std::ffi::CString::new(theEncodedStr).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::FSD_Base64_decode_u8ptr_size_charptr_size(
+            crate::ffi_extern_TKernel::FSD_Base64_decode_u8ptr_size_charptr_size(
                 theDecodedData,
                 theDataLen,
                 c_theEncodedStr.as_ptr(),
@@ -109,11 +113,14 @@ impl Base64 {
     pub fn decode_charptr_size(
         theStr: &str,
         theLen: usize,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBuffer> {
         let c_theStr = std::ffi::CString::new(theStr).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FSD_Base64_decode_charptr_size(c_theStr.as_ptr(), theLen),
+                crate::ffi_extern_TKernel::FSD_Base64_decode_charptr_size(
+                    c_theStr.as_ptr(),
+                    theLen,
+                ),
             ))
         }
     }
@@ -124,24 +131,30 @@ impl Base64 {
 // ========================
 
 /// **Source:** `FSD_BinaryFile.hxx`:49 - `FSD_BinaryFile`
-pub use crate::ffi::FSD_BinaryFile as BinaryFile;
+pub use crate::ffi_types::FSD_BinaryFile as BinaryFile;
 
 unsafe impl crate::CppDeletable for BinaryFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FSD_BinaryFile_destructor(ptr);
+        crate::ffi_extern_TKernel::FSD_BinaryFile_destructor(ptr);
     }
 }
 
 impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:55 - `FSD_BinaryFile::FSD_BinaryFile()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_BinaryFile_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:52 - `FSD_BinaryFile::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FSD_BinaryFile_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -152,26 +165,30 @@ impl BinaryFile {
         aMode: crate::storage::OpenMode,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_open(self as *mut Self, aName, aMode.into())
+            crate::ffi_extern_TKernel::FSD_BinaryFile_open(self as *mut Self, aName, aMode.into())
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:60 - `FSD_BinaryFile::IsEnd()`
     pub fn is_end(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_is_end(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_is_end(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:63 - `FSD_BinaryFile::Tell()`
     /// return position in the file. Return -1 upon error.
     pub fn tell(&mut self) -> std::ffi::c_long {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_tell(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_tell(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:67 - `FSD_BinaryFile::BeginWriteInfoSection()`
     pub fn begin_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -187,10 +204,10 @@ impl BinaryFile {
         appName: &crate::t_collection::ExtendedString,
         appVersion: &crate::t_collection::AsciiString,
         objectType: &crate::t_collection::ExtendedString,
-        userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_info(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_info(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -208,7 +225,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:92 - `FSD_BinaryFile::EndWriteInfoSection()`
     pub fn end_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -216,10 +233,13 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:94 - `FSD_BinaryFile::EndWriteInfoSection()`
     pub fn end_write_info_section_ostream(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_info_section_ostream(self as *mut Self, theOStream)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_info_section_ostream(
+                self as *mut Self,
+                theOStream,
+            )
         }))
         .unwrap()
     }
@@ -227,7 +247,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:96 - `FSD_BinaryFile::BeginReadInfoSection()`
     pub fn begin_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -243,10 +263,10 @@ impl BinaryFile {
         appName: &mut crate::t_collection::ExtendedString,
         appVersion: &mut crate::t_collection::AsciiString,
         objectType: &mut crate::t_collection::ExtendedString,
-        userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_info(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_info(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -264,18 +284,22 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:108 - `FSD_BinaryFile::ReadCompleteInfo()`
     pub fn read_complete_info(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theData: &mut crate::ffi::HandleStorageData,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theData: &mut crate::ffi_types::HandleStorageData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_complete_info(self as *mut Self, theIStream, theData)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_complete_info(
+                self as *mut Self,
+                theIStream,
+                theData,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:111 - `FSD_BinaryFile::EndReadInfoSection()`
     pub fn end_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -283,7 +307,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:113 - `FSD_BinaryFile::BeginWriteCommentSection()`
     pub fn begin_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -291,10 +315,10 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:115 - `FSD_BinaryFile::BeginWriteCommentSection()`
     pub fn begin_write_comment_section_ostream(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_comment_section_ostream(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_comment_section_ostream(
                 self as *mut Self,
                 theOStream,
             )
@@ -303,16 +327,19 @@ impl BinaryFile {
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:117 - `FSD_BinaryFile::WriteComment()`
-    pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+    pub fn write_comment(
+        &mut self,
+        userComments: &crate::ffi_types::TColStd_SequenceOfExtendedString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_comment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_comment(self as *mut Self, userComments)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:125 - `FSD_BinaryFile::EndWriteCommentSection()`
     pub fn end_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -320,10 +347,10 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:127 - `FSD_BinaryFile::EndWriteCommentSection()`
     pub fn end_write_comment_section_ostream(
         &mut self,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_comment_section_ostream(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_comment_section_ostream(
                 self as *mut Self,
                 theOStream,
             )
@@ -334,7 +361,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:129 - `FSD_BinaryFile::BeginReadCommentSection()`
     pub fn begin_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -342,17 +369,17 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:131 - `FSD_BinaryFile::ReadComment()`
     pub fn read_comment(
         &mut self,
-        userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
+        userComments: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_comment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_comment(self as *mut Self, userComments)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:137 - `FSD_BinaryFile::EndReadCommentSection()`
     pub fn end_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -360,7 +387,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:139 - `FSD_BinaryFile::BeginWriteTypeSection()`
     pub fn begin_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -368,7 +395,10 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:141 - `FSD_BinaryFile::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_set_type_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_set_type_section_size(
+                self as *mut Self,
+                aSize,
+            )
         })
     }
 
@@ -379,14 +409,18 @@ impl BinaryFile {
         typeName: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_type_informations(self as *mut Self, typeNum, typeName)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_type_informations(
+                self as *mut Self,
+                typeNum,
+                typeName,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:147 - `FSD_BinaryFile::EndWriteTypeSection()`
     pub fn end_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -394,7 +428,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:149 - `FSD_BinaryFile::BeginReadTypeSection()`
     pub fn begin_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -402,7 +436,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:151 - `FSD_BinaryFile::TypeSectionSize()`
     pub fn type_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_type_section_size(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_type_section_size(self as *mut Self)
         })
     }
 
@@ -413,14 +447,18 @@ impl BinaryFile {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_type_informations(self as *mut Self, typeNum, typeName)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_type_informations(
+                self as *mut Self,
+                typeNum,
+                typeName,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:162 - `FSD_BinaryFile::EndReadTypeSection()`
     pub fn end_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -428,7 +466,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:164 - `FSD_BinaryFile::BeginWriteRootSection()`
     pub fn begin_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -436,7 +474,10 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:166 - `FSD_BinaryFile::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_set_root_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_set_root_section_size(
+                self as *mut Self,
+                aSize,
+            )
         })
     }
 
@@ -448,14 +489,19 @@ impl BinaryFile {
         aType: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_root(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_root(
+                self as *mut Self,
+                rootName,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:172 - `FSD_BinaryFile::EndWriteRootSection()`
     pub fn end_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -463,7 +509,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:174 - `FSD_BinaryFile::BeginReadRootSection()`
     pub fn begin_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -471,7 +517,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:176 - `FSD_BinaryFile::RootSectionSize()`
     pub fn root_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_root_section_size(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_root_section_size(self as *mut Self)
         })
     }
 
@@ -483,14 +529,19 @@ impl BinaryFile {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_root(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_root(
+                self as *mut Self,
+                rootName,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:189 - `FSD_BinaryFile::EndReadRootSection()`
     pub fn end_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -498,7 +549,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:191 - `FSD_BinaryFile::BeginWriteRefSection()`
     pub fn begin_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -506,21 +557,25 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:193 - `FSD_BinaryFile::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_set_ref_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_set_ref_section_size(self as *mut Self, aSize)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:195 - `FSD_BinaryFile::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_reference_type(self as *mut Self, reference, typeNum)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_reference_type(
+                self as *mut Self,
+                reference,
+                typeNum,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:198 - `FSD_BinaryFile::EndWriteRefSection()`
     pub fn end_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -528,7 +583,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:200 - `FSD_BinaryFile::BeginReadRefSection()`
     pub fn begin_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -536,21 +591,25 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:202 - `FSD_BinaryFile::RefSectionSize()`
     pub fn ref_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_ref_section_size(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_ref_section_size(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:206 - `FSD_BinaryFile::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_reference_type(self as *mut Self, reference, typeNum)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_reference_type(
+                self as *mut Self,
+                reference,
+                typeNum,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:213 - `FSD_BinaryFile::EndReadRefSection()`
     pub fn end_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -558,7 +617,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:215 - `FSD_BinaryFile::BeginWriteDataSection()`
     pub fn begin_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -566,7 +625,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:217 - `FSD_BinaryFile::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_persistent_object_header(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_persistent_object_header(
                 self as *mut Self,
                 aRef,
                 aType,
@@ -577,35 +636,39 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:220 - `FSD_BinaryFile::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:222 - `FSD_BinaryFile::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:224 - `FSD_BinaryFile::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:226 - `FSD_BinaryFile::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:228 - `FSD_BinaryFile::EndWriteDataSection()`
     pub fn end_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_write_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_write_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -613,7 +676,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:230 - `FSD_BinaryFile::BeginReadDataSection()`
     pub fn begin_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -621,42 +684,50 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:232 - `FSD_BinaryFile::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_persistent_object_header(self as *mut Self, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_persistent_object_header(
+                self as *mut Self,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:235 - `FSD_BinaryFile::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:237 - `FSD_BinaryFile::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_begin_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_begin_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:239 - `FSD_BinaryFile::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:241 - `FSD_BinaryFile::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:243 - `FSD_BinaryFile::EndReadDataSection()`
     pub fn end_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_end_read_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_end_read_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -664,14 +735,14 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:245 - `FSD_BinaryFile::SkipObject()`
     pub fn skip_object(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_skip_object(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_skip_object(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:247 - `FSD_BinaryFile::PutReference()`
     pub fn put_reference(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_reference(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_reference(
                 self as *mut Self,
                 aValue,
             )))
@@ -681,7 +752,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:249 - `FSD_BinaryFile::PutCharacter()`
     pub fn put_character(&mut self, aValue: std::ffi::c_char) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -691,17 +762,19 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:252 - `FSD_BinaryFile::PutExtCharacter()`
     pub fn put_ext_character(&mut self, aValue: u16) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_ext_character(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_put_ext_character(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:260 - `FSD_BinaryFile::PutInteger()`
     pub fn put_integer(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_integer(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_integer(
                 self as *mut Self,
                 aValue,
             )))
@@ -711,7 +784,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:262 - `FSD_BinaryFile::PutBoolean()`
     pub fn put_boolean(&mut self, aValue: bool) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_boolean(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_boolean(
                 self as *mut Self,
                 aValue,
             )))
@@ -721,7 +794,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:264 - `FSD_BinaryFile::PutReal()`
     pub fn put_real(&mut self, aValue: f64) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -731,7 +804,7 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:266 - `FSD_BinaryFile::PutShortReal()`
     pub fn put_short_real(&mut self, aValue: f32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_put_short_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_put_short_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -747,7 +820,7 @@ impl BinaryFile {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_reference(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_reference(
                 self as *mut Self,
                 aValue,
             )))
@@ -766,7 +839,7 @@ impl BinaryFile {
         aValue: &mut std::ffi::c_char,
     ) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -785,10 +858,12 @@ impl BinaryFile {
         aValue: &mut u16,
     ) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_ext_character(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_get_ext_character(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
@@ -801,7 +876,7 @@ impl BinaryFile {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_integer(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_integer(
                 self as *mut Self,
                 aValue,
             )))
@@ -817,7 +892,7 @@ impl BinaryFile {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_boolean(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_boolean(
                 self as *mut Self,
                 aValue,
             )))
@@ -833,7 +908,7 @@ impl BinaryFile {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -849,7 +924,7 @@ impl BinaryFile {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_BinaryFile_get_short_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_short_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -859,43 +934,47 @@ impl BinaryFile {
     /// **Source:** `FSD_BinaryFile.hxx`:288 - `FSD_BinaryFile::Close()`
     pub fn close(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_close(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_close(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:290 - `FSD_BinaryFile::Destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::FSD_BinaryFile_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:52 - `FSD_BinaryFile::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::FSD_BinaryFile_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:52 - `FSD_BinaryFile::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FSD_BinaryFile_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:65 - `FSD_BinaryFile::IsGoodFileType()`
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_is_good_file_type(aName)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_is_good_file_type(aName)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:69 - `FSD_BinaryFile::WriteInfo()`
     pub fn write_info_ostream_int_asciistring4_extendedstring_asciistring_extendedstring_sequenceofasciistring_bool(
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         nbObj: i32,
         dbVersion: &crate::t_collection::AsciiString,
         date: &crate::t_collection::AsciiString,
@@ -904,36 +983,32 @@ impl BinaryFile {
         appName: &crate::t_collection::ExtendedString,
         appVersion: &crate::t_collection::AsciiString,
         objectType: &crate::t_collection::ExtendedString,
-        userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &crate::ffi_types::TColStd_SequenceOfAsciiString,
         theOnlyCount: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_info_ostream_int_asciistring4_extendedstring_asciistring_extendedstring_sequenceofasciistring_bool(theOStream, nbObj, dbVersion, date, schemaName, schemaVersion, appName, appVersion, objectType, userInfo, theOnlyCount)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_info_ostream_int_asciistring4_extendedstring_asciistring_extendedstring_sequenceofasciistring_bool(theOStream, nbObj, dbVersion, date, schemaName, schemaVersion, appName, appVersion, objectType, userInfo, theOnlyCount)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:120 - `FSD_BinaryFile::WriteComment()`
     pub fn write_comment_ostream_sequenceofextendedstring_bool(
-        theOStream: &mut crate::ffi::Standard_OStream,
-        theComments: &crate::ffi::TColStd_SequenceOfExtendedString,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
+        theComments: &crate::ffi_types::TColStd_SequenceOfExtendedString,
         theOnlyCount: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_comment_ostream_sequenceofextendedstring_bool(
-                theOStream,
-                theComments,
-                theOnlyCount,
-            )
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_comment_ostream_sequenceofextendedstring_bool(theOStream, theComments, theOnlyCount)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:134 - `FSD_BinaryFile::ReadComment()`
     pub fn read_comment_istream_sequenceofextendedstring(
-        theIStream: &mut crate::ffi::Standard_IStream,
-        userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        userComments: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_comment_istream_sequenceofextendedstring(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_comment_istream_sequenceofextendedstring(
                 theIStream,
                 userComments,
             )
@@ -941,61 +1016,61 @@ impl BinaryFile {
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:153 - `FSD_BinaryFile::TypeSectionSize()`
-    pub fn type_section_size_istream(theIStream: &mut crate::ffi::Standard_IStream) -> i32 {
+    pub fn type_section_size_istream(theIStream: &mut crate::ffi_types::Standard_IStream) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_type_section_size_istream(theIStream)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_type_section_size_istream(theIStream)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:158 - `FSD_BinaryFile::ReadTypeInformations()`
     pub fn read_type_informations_istream_int_asciistring(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         typeNum: &mut i32,
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_type_informations_istream_int_asciistring(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_type_informations_istream_int_asciistring(
                 theIStream, typeNum, typeName,
             )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:178 - `FSD_BinaryFile::RootSectionSize()`
-    pub fn root_section_size_istream(theIStream: &mut crate::ffi::Standard_IStream) -> i32 {
+    pub fn root_section_size_istream(theIStream: &mut crate::ffi_types::Standard_IStream) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_root_section_size_istream(theIStream)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_root_section_size_istream(theIStream)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:184 - `FSD_BinaryFile::ReadRoot()`
     pub fn read_root_istream_asciistring_int_asciistring(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         rootName: &mut crate::t_collection::AsciiString,
         aRef: &mut i32,
         aType: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_root_istream_asciistring_int_asciistring(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_root_istream_asciistring_int_asciistring(
                 theIStream, rootName, aRef, aType,
             )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:204 - `FSD_BinaryFile::RefSectionSize()`
-    pub fn ref_section_size_istream(theIStream: &mut crate::ffi::Standard_IStream) -> i32 {
+    pub fn ref_section_size_istream(theIStream: &mut crate::ffi_types::Standard_IStream) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_ref_section_size_istream(theIStream)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_ref_section_size_istream(theIStream)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:209 - `FSD_BinaryFile::ReadReferenceType()`
     pub fn read_reference_type_istream_int2(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         reference: &mut i32,
         typeNum: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_reference_type_istream_int2(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_reference_type_istream_int2(
                 theIStream, reference, typeNum,
             )
         })
@@ -1003,12 +1078,12 @@ impl BinaryFile {
 
     /// **Source:** `FSD_BinaryFile.hxx`:255 - `FSD_BinaryFile::PutInteger()`
     pub fn put_integer_ostream_int_bool(
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         aValue: i32,
         theOnlyCount: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_put_integer_ostream_int_bool(
+            crate::ffi_extern_TKernel::FSD_BinaryFile_put_integer_ostream_int_bool(
                 theOStream,
                 aValue,
                 theOnlyCount,
@@ -1018,115 +1093,133 @@ impl BinaryFile {
 
     /// **Source:** `FSD_BinaryFile.hxx`:273 - `FSD_BinaryFile::GetReference()`
     pub fn get_reference_istream_int(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         aValue: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_get_reference_istream_int(theIStream, aValue)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_get_reference_istream_int(theIStream, aValue)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:280 - `FSD_BinaryFile::GetInteger()`
     pub fn get_integer_istream_int(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         aValue: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_get_integer_istream_int(theIStream, aValue)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_get_integer_istream_int(theIStream, aValue)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:298 - `FSD_BinaryFile::InverseInt()`
     /// Inverse bytes in integer value
     pub fn inverse_int(theValue: i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_int(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_int(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:305 - `FSD_BinaryFile::InverseExtChar()`
     /// Inverse bytes in extended character value
     pub fn inverse_ext_char(theValue: u16) -> u16 {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_ext_char(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_ext_char(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:311 - `FSD_BinaryFile::InverseReal()`
     /// Inverse bytes in real value
     pub fn inverse_real(theValue: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_real(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_real(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:314 - `FSD_BinaryFile::InverseShortReal()`
     /// Inverse bytes in short real value
     pub fn inverse_short_real(theValue: f32) -> f32 {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_short_real(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_short_real(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:317 - `FSD_BinaryFile::InverseSize()`
     /// Inverse bytes in size value
     pub fn inverse_size(theValue: usize) -> usize {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_size(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_size(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:319 - `FSD_BinaryFile::InverseUint64()`
     /// Inverse bytes in 64bit unsigned int value
     pub fn inverse_uint64(theValue: u64) -> u64 {
-        crate::check_result(unsafe { crate::ffi::FSD_BinaryFile_inverse_uint64(theValue) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inverse_uint64(theValue)
+        })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:321 - `FSD_BinaryFile::ReadHeader()`
     pub fn read_header(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         theFileHeader: &mut FileHeader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_header(theIStream, theFileHeader)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_header(theIStream, theFileHeader)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:324 - `FSD_BinaryFile::ReadHeaderData()`
     pub fn read_header_data(
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theHeaderData: &crate::ffi::HandleStorageHeaderData,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theHeaderData: &crate::ffi_types::HandleStorageHeaderData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_header_data(theIStream, theHeaderData)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_header_data(theIStream, theHeaderData)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:327 - `FSD_BinaryFile::ReadString()`
     pub fn read_string(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         buffer: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_string(theIStream, buffer)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_string(theIStream, buffer)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:330 - `FSD_BinaryFile::ReadExtendedString()`
     pub fn read_extended_string(
-        theIStream: &mut crate::ffi::Standard_IStream,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
         buffer: &mut crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_read_extended_string(theIStream, buffer)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_read_extended_string(theIStream, buffer)
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:333 - `FSD_BinaryFile::WriteHeader()`
     pub fn write_header(
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         theHeader: &FileHeader,
         theOnlyCount: bool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_write_header(theOStream, theHeader, theOnlyCount)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_write_header(
+                theOStream,
+                theHeader,
+                theOnlyCount,
+            )
         })
     }
 
     /// **Source:** `FSD_BinaryFile.hxx`:338 - `FSD_BinaryFile::MagicNumber()`
     pub fn magic_number() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FSD_BinaryFile_magic_number()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_magic_number(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -1135,7 +1228,7 @@ impl BinaryFile {
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver(
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_as_Storage_BaseDriver(
                 self as *const Self,
             ))
         }
@@ -1144,16 +1237,18 @@ impl BinaryFile {
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_BinaryFile_as_Storage_BaseDriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_as_Storage_BaseDriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_BinaryFile_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_BinaryFile_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1162,20 +1257,22 @@ impl BinaryFile {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_BinaryFile_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFSDBinaryFile> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFSDBinaryFile> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_BinaryFile_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_BinaryFile_to_handle(obj.into_raw()),
+            ))
         }
     }
 
@@ -1183,7 +1280,7 @@ impl BinaryFile {
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FSD_BinaryFile_inherited_Name(self as *const Self),
+                crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_Name(self as *const Self),
             ))
         }
     }
@@ -1191,22 +1288,25 @@ impl BinaryFile {
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:46 - `Storage_BaseDriver::OpenMode()`
     pub fn open_mode(&self) -> crate::storage::OpenMode {
         crate::storage::OpenMode::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_OpenMode(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_OpenMode(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1214,7 +1314,7 @@ impl BinaryFile {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FSD_BinaryFile_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1227,67 +1327,85 @@ impl BinaryFile {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_BinaryFile_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_BinaryFile_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFSDBinaryFile;
+pub use crate::ffi_types::HandleFSDBinaryFile;
 
 unsafe impl crate::CppDeletable for HandleFSDBinaryFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFSDBinaryFile_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleFSDBinaryFile_destructor(ptr);
     }
 }
 
 impl HandleFSDBinaryFile {
     /// Dereference this Handle to access the underlying FSD_BinaryFile
-    pub fn get(&self) -> &crate::ffi::FSD_BinaryFile {
-        unsafe { &*crate::check_result(crate::ffi::HandleFSDBinaryFile_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::FSD_BinaryFile {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleFSDBinaryFile_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_BinaryFile
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_BinaryFile {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FSD_BinaryFile {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFSDBinaryFile_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleFSDBinaryFile_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<FSD_BinaryFile> to Handle<Storage_BaseDriver>
-    pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
+    pub fn to_handle_base_driver(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStorageBaseDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDBinaryFile_to_HandleStorageBaseDriver(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDBinaryFile_to_HandleStorageBaseDriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<FSD_BinaryFile> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDBinaryFile_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDBinaryFile_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1298,24 +1416,30 @@ impl HandleFSDBinaryFile {
 // ========================
 
 /// **Source:** `FSD_CmpFile.hxx`:30 - `FSD_CmpFile`
-pub use crate::ffi::FSD_CmpFile as CmpFile;
+pub use crate::ffi_types::FSD_CmpFile as CmpFile;
 
 unsafe impl crate::CppDeletable for CmpFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FSD_CmpFile_destructor(ptr);
+        crate::ffi_extern_TKernel::FSD_CmpFile_destructor(ptr);
     }
 }
 
 impl CmpFile {
     /// **Source:** `FSD_CmpFile.hxx`:36 - `FSD_CmpFile::FSD_CmpFile()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_CmpFile_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:33 - `FSD_CmpFile::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FSD_CmpFile_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1326,7 +1450,7 @@ impl CmpFile {
         aMode: crate::storage::OpenMode,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_open(self as *mut Self, aName, aMode.into())
+            crate::ffi_extern_TKernel::FSD_CmpFile_open(self as *mut Self, aName, aMode.into())
         }))
         .unwrap()
     }
@@ -1334,7 +1458,7 @@ impl CmpFile {
     /// **Source:** `FSD_CmpFile.hxx`:43 - `FSD_CmpFile::BeginWriteInfoSection()`
     pub fn begin_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_write_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_write_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1342,7 +1466,7 @@ impl CmpFile {
     /// **Source:** `FSD_CmpFile.hxx`:45 - `FSD_CmpFile::BeginReadInfoSection()`
     pub fn begin_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_read_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_read_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1350,96 +1474,118 @@ impl CmpFile {
     /// **Source:** `FSD_CmpFile.hxx`:47 - `FSD_CmpFile::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_write_persistent_object_header(self as *mut Self, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_write_persistent_object_header(
+                self as *mut Self,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:50 - `FSD_CmpFile::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_write_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:52 - `FSD_CmpFile::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:54 - `FSD_CmpFile::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_end_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_end_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:56 - `FSD_CmpFile::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_end_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_end_write_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:58 - `FSD_CmpFile::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_read_persistent_object_header(self as *mut Self, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_read_persistent_object_header(
+                self as *mut Self,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:61 - `FSD_CmpFile::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_read_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:63 - `FSD_CmpFile::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_begin_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_begin_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:65 - `FSD_CmpFile::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_end_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_end_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:67 - `FSD_CmpFile::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_end_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_end_read_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:69 - `FSD_CmpFile::Destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::FSD_CmpFile_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_CmpFile_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:33 - `FSD_CmpFile::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FSD_CmpFile_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:33 - `FSD_CmpFile::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FSD_CmpFile_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `FSD_CmpFile.hxx`:41 - `FSD_CmpFile::IsGoodFileType()`
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_is_good_file_type(aName)
+            crate::ffi_extern_TKernel::FSD_CmpFile_is_good_file_type(aName)
         }))
         .unwrap()
     }
@@ -1447,7 +1593,9 @@ impl CmpFile {
     /// **Source:** `FSD_CmpFile.hxx`:73 - `FSD_CmpFile::MagicNumber()`
     pub fn magic_number() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FSD_CmpFile_magic_number()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_magic_number(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -1455,20 +1603,26 @@ impl CmpFile {
 
     /// Upcast to FSD_File
     pub fn as_file(&self) -> &File {
-        unsafe { &*crate::check_result(crate::ffi::FSD_CmpFile_as_FSD_File(self as *const Self)) }
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_as_FSD_File(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Upcast to FSD_File (mutable)
     pub fn as_file_mut(&mut self) -> &mut File {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_CmpFile_as_FSD_File_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_as_FSD_File_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_CmpFile_as_Storage_BaseDriver(
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_as_Storage_BaseDriver(
                 self as *const Self,
             ))
         }
@@ -1477,16 +1631,16 @@ impl CmpFile {
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_CmpFile_as_Storage_BaseDriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_as_Storage_BaseDriver_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_CmpFile_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1495,29 +1649,35 @@ impl CmpFile {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_CmpFile_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFSDCmpFile> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFSDCmpFile> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_CmpFile_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:50 - `FSD_File::IsEnd()`
     pub fn is_end(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FSD_CmpFile_inherited_IsEnd(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_IsEnd(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:53 - `FSD_File::Tell()`
     pub fn tell(&mut self) -> std::ffi::c_long {
-        crate::check_result(unsafe { crate::ffi::FSD_CmpFile_inherited_Tell(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_Tell(self as *mut Self)
+        })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:59 - `FSD_File::WriteInfo()`
@@ -1531,10 +1691,10 @@ impl CmpFile {
         appName: &crate::t_collection::ExtendedString,
         appVersion: &crate::t_collection::AsciiString,
         objectType: &crate::t_collection::ExtendedString,
-        userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_WriteInfo(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_WriteInfo(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -1552,7 +1712,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:70 - `FSD_File::EndWriteInfoSection()`
     pub fn end_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteInfoSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteInfoSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1568,10 +1728,10 @@ impl CmpFile {
         appName: &mut crate::t_collection::ExtendedString,
         appVersion: &mut crate::t_collection::AsciiString,
         objectType: &mut crate::t_collection::ExtendedString,
-        userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadInfo(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadInfo(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -1589,11 +1749,11 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:84 - `FSD_File::ReadCompleteInfo()`
     pub fn read_complete_info(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theData: &mut crate::ffi::HandleStorageData,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theData: &mut crate::ffi_types::HandleStorageData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadCompleteInfo(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadCompleteInfo(
                 self as *mut Self,
                 theIStream,
                 theData,
@@ -1604,7 +1764,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:87 - `FSD_File::EndReadInfoSection()`
     pub fn end_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadInfoSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadInfoSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1612,22 +1772,32 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:89 - `FSD_File::BeginWriteCommentSection()`
     pub fn begin_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginWriteCommentSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginWriteCommentSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:91 - `FSD_File::WriteComment()`
-    pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+    pub fn write_comment(
+        &mut self,
+        userComments: &crate::ffi_types::TColStd_SequenceOfExtendedString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_WriteComment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_WriteComment(
+                self as *mut Self,
+                userComments,
+            )
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:94 - `FSD_File::EndWriteCommentSection()`
     pub fn end_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteCommentSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteCommentSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1635,7 +1805,9 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:96 - `FSD_File::BeginReadCommentSection()`
     pub fn begin_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginReadCommentSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginReadCommentSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1643,17 +1815,22 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:98 - `FSD_File::ReadComment()`
     pub fn read_comment(
         &mut self,
-        userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
+        userComments: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadComment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadComment(
+                self as *mut Self,
+                userComments,
+            )
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:101 - `FSD_File::EndReadCommentSection()`
     pub fn end_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadCommentSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadCommentSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1661,7 +1838,9 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:103 - `FSD_File::BeginWriteTypeSection()`
     pub fn begin_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginWriteTypeSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginWriteTypeSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1669,7 +1848,10 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:105 - `FSD_File::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_SetTypeSectionSize(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_SetTypeSectionSize(
+                self as *mut Self,
+                aSize,
+            )
         })
     }
 
@@ -1680,7 +1862,7 @@ impl CmpFile {
         typeName: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_WriteTypeInformations(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_WriteTypeInformations(
                 self as *mut Self,
                 typeNum,
                 typeName,
@@ -1691,7 +1873,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:111 - `FSD_File::EndWriteTypeSection()`
     pub fn end_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteTypeSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteTypeSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1699,7 +1881,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:113 - `FSD_File::BeginReadTypeSection()`
     pub fn begin_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginReadTypeSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginReadTypeSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1707,7 +1889,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:115 - `FSD_File::TypeSectionSize()`
     pub fn type_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_TypeSectionSize(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_TypeSectionSize(self as *mut Self)
         })
     }
 
@@ -1718,7 +1900,7 @@ impl CmpFile {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadTypeInformations(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadTypeInformations(
                 self as *mut Self,
                 typeNum,
                 typeName,
@@ -1729,7 +1911,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:121 - `FSD_File::EndReadTypeSection()`
     pub fn end_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadTypeSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadTypeSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1737,7 +1919,9 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:123 - `FSD_File::BeginWriteRootSection()`
     pub fn begin_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginWriteRootSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginWriteRootSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1745,7 +1929,10 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:125 - `FSD_File::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_SetRootSectionSize(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_SetRootSectionSize(
+                self as *mut Self,
+                aSize,
+            )
         })
     }
 
@@ -1757,14 +1944,19 @@ impl CmpFile {
         aType: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_WriteRoot(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_WriteRoot(
+                self as *mut Self,
+                rootName,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:131 - `FSD_File::EndWriteRootSection()`
     pub fn end_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteRootSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteRootSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1772,7 +1964,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:133 - `FSD_File::BeginReadRootSection()`
     pub fn begin_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginReadRootSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginReadRootSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1780,7 +1972,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:135 - `FSD_File::RootSectionSize()`
     pub fn root_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_RootSectionSize(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_RootSectionSize(self as *mut Self)
         })
     }
 
@@ -1792,14 +1984,19 @@ impl CmpFile {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadRoot(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadRoot(
+                self as *mut Self,
+                rootName,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:141 - `FSD_File::EndReadRootSection()`
     pub fn end_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadRootSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadRootSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1807,7 +2004,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:143 - `FSD_File::BeginWriteRefSection()`
     pub fn begin_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginWriteRefSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginWriteRefSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1815,14 +2012,17 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:145 - `FSD_File::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_SetRefSectionSize(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_SetRefSectionSize(
+                self as *mut Self,
+                aSize,
+            )
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:147 - `FSD_File::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_WriteReferenceType(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_WriteReferenceType(
                 self as *mut Self,
                 reference,
                 typeNum,
@@ -1833,7 +2033,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:150 - `FSD_File::EndWriteRefSection()`
     pub fn end_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteRefSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteRefSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1841,7 +2041,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:152 - `FSD_File::BeginReadRefSection()`
     pub fn begin_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginReadRefSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginReadRefSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1849,14 +2049,14 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:154 - `FSD_File::RefSectionSize()`
     pub fn ref_section_size(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_RefSectionSize(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_RefSectionSize(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:156 - `FSD_File::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_ReadReferenceType(
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_ReadReferenceType(
                 self as *mut Self,
                 reference,
                 typeNum,
@@ -1867,7 +2067,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:159 - `FSD_File::EndReadRefSection()`
     pub fn end_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadRefSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadRefSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1875,7 +2075,9 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:161 - `FSD_File::BeginWriteDataSection()`
     pub fn begin_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginWriteDataSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginWriteDataSection(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -1883,7 +2085,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:175 - `FSD_File::EndWriteDataSection()`
     pub fn end_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndWriteDataSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndWriteDataSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1891,7 +2093,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:177 - `FSD_File::BeginReadDataSection()`
     pub fn begin_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_BeginReadDataSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_BeginReadDataSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1899,7 +2101,7 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:191 - `FSD_File::EndReadDataSection()`
     pub fn end_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_EndReadDataSection(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_EndReadDataSection(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1907,64 +2109,74 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:193 - `FSD_File::SkipObject()`
     pub fn skip_object(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_SkipObject(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_SkipObject(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:195 - `FSD_File::PutReference()`
     pub fn put_reference(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutReference(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutReference(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:198 - `FSD_File::PutCharacter()`
     pub fn put_character(&mut self, aValue: std::ffi::c_char) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutCharacter(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutCharacter(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:201 - `FSD_File::PutExtCharacter()`
     pub fn put_ext_character(&mut self, aValue: u16) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutExtCharacter(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutExtCharacter(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:204 - `FSD_File::PutInteger()`
     pub fn put_integer(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutInteger(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutInteger(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:207 - `FSD_File::PutBoolean()`
     pub fn put_boolean(&mut self, aValue: bool) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutBoolean(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutBoolean(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:210 - `FSD_File::PutReal()`
     pub fn put_real(&mut self, aValue: f64) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutReal(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutReal(
                 self as *mut Self,
                 aValue,
             )))
@@ -1974,17 +2186,19 @@ impl CmpFile {
     /// Inherited: **Source:** `FSD_File.hxx`:212 - `FSD_File::PutShortReal()`
     pub fn put_short_real(&mut self, aValue: f32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_CmpFile_inherited_PutShortReal(
-                self as *mut Self,
-                aValue,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_PutShortReal(
+                    self as *mut Self,
+                    aValue,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FSD_File.hxx`:240 - `FSD_File::Close()`
     pub fn close(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_Close(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_Close(self as *mut Self)
         }))
         .unwrap()
     }
@@ -1992,31 +2206,34 @@ impl CmpFile {
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:44 - `Storage_BaseDriver::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_CmpFile_inherited_Name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_Name(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:46 - `Storage_BaseDriver::OpenMode()`
     pub fn open_mode(&self) -> crate::storage::OpenMode {
         crate::storage::OpenMode::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_OpenMode(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_OpenMode(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2024,7 +2241,7 @@ impl CmpFile {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FSD_CmpFile_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::FSD_CmpFile_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2037,76 +2254,90 @@ impl CmpFile {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_CmpFile_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_CmpFile_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFSDCmpFile;
+pub use crate::ffi_types::HandleFSDCmpFile;
 
 unsafe impl crate::CppDeletable for HandleFSDCmpFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFSDCmpFile_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleFSDCmpFile_destructor(ptr);
     }
 }
 
 impl HandleFSDCmpFile {
     /// Dereference this Handle to access the underlying FSD_CmpFile
-    pub fn get(&self) -> &crate::ffi::FSD_CmpFile {
-        unsafe { &*crate::check_result(crate::ffi::HandleFSDCmpFile_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::FSD_CmpFile {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleFSDCmpFile_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_CmpFile
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_CmpFile {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FSD_CmpFile {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFSDCmpFile_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleFSDCmpFile_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<FSD_File>
-    pub fn to_handle_file(&self) -> crate::OwnedPtr<crate::ffi::HandleFSDFile> {
+    pub fn to_handle_file(&self) -> crate::OwnedPtr<crate::ffi_types::HandleFSDFile> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDCmpFile_to_HandleFSDFile(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDCmpFile_to_HandleFSDFile(self as *const Self),
             ))
         }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<Storage_BaseDriver>
-    pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
+    pub fn to_handle_base_driver(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStorageBaseDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDCmpFile_to_HandleStorageBaseDriver(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDCmpFile_to_HandleStorageBaseDriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<FSD_CmpFile> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDCmpFile_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDCmpFile_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2119,11 +2350,11 @@ impl HandleFSDCmpFile {
 /// **Source:** `FSD_File.hxx`:30 - `FSD_File`
 /// A general driver which defines as a file, the
 /// physical container for data to be stored or retrieved.
-pub use crate::ffi::FSD_File as File;
+pub use crate::ffi_types::FSD_File as File;
 
 unsafe impl crate::CppDeletable for File {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FSD_File_destructor(ptr);
+        crate::ffi_extern_TKernel::FSD_File_destructor(ptr);
     }
 }
 
@@ -2133,12 +2364,20 @@ impl File {
     /// container for data to be stored or retrieved.
     /// Use the function Open to give the name of the driven file.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_File_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `FSD_File.hxx`:33 - `FSD_File::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FSD_File_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_File_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `FSD_File.hxx`:47 - `FSD_File::Open()`
@@ -2154,26 +2393,28 @@ impl File {
         aMode: crate::storage::OpenMode,
     ) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_open(self as *mut Self, aName, aMode.into())
+            crate::ffi_extern_TKernel::FSD_File_open(self as *mut Self, aName, aMode.into())
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:50 - `FSD_File::IsEnd()`
     pub fn is_end(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FSD_File_is_end(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_is_end(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:53 - `FSD_File::Tell()`
     /// return position in the file. Return -1 upon error.
     pub fn tell(&mut self) -> std::ffi::c_long {
-        crate::check_result(unsafe { crate::ffi::FSD_File_tell(self as *mut Self) })
+        crate::check_result(unsafe { crate::ffi_extern_TKernel::FSD_File_tell(self as *mut Self) })
     }
 
     /// **Source:** `FSD_File.hxx`:57 - `FSD_File::BeginWriteInfoSection()`
     pub fn begin_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2189,10 +2430,10 @@ impl File {
         appName: &crate::t_collection::ExtendedString,
         appVersion: &crate::t_collection::AsciiString,
         objectType: &crate::t_collection::ExtendedString,
-        userInfo: &crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_info(
+            crate::ffi_extern_TKernel::FSD_File_write_info(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -2210,7 +2451,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:70 - `FSD_File::EndWriteInfoSection()`
     pub fn end_write_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2218,7 +2459,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:72 - `FSD_File::BeginReadInfoSection()`
     pub fn begin_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2234,10 +2475,10 @@ impl File {
         appName: &mut crate::t_collection::ExtendedString,
         appVersion: &mut crate::t_collection::AsciiString,
         objectType: &mut crate::t_collection::ExtendedString,
-        userInfo: &mut crate::ffi::TColStd_SequenceOfAsciiString,
+        userInfo: &mut crate::ffi_types::TColStd_SequenceOfAsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_info(
+            crate::ffi_extern_TKernel::FSD_File_read_info(
                 self as *mut Self,
                 nbObj,
                 dbVersion,
@@ -2255,18 +2496,22 @@ impl File {
     /// **Source:** `FSD_File.hxx`:84 - `FSD_File::ReadCompleteInfo()`
     pub fn read_complete_info(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theData: &mut crate::ffi::HandleStorageData,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theData: &mut crate::ffi_types::HandleStorageData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_complete_info(self as *mut Self, theIStream, theData)
+            crate::ffi_extern_TKernel::FSD_File_read_complete_info(
+                self as *mut Self,
+                theIStream,
+                theData,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:87 - `FSD_File::EndReadInfoSection()`
     pub fn end_read_info_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_info_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_info_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2274,22 +2519,25 @@ impl File {
     /// **Source:** `FSD_File.hxx`:89 - `FSD_File::BeginWriteCommentSection()`
     pub fn begin_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:91 - `FSD_File::WriteComment()`
-    pub fn write_comment(&mut self, userComments: &crate::ffi::TColStd_SequenceOfExtendedString) {
+    pub fn write_comment(
+        &mut self,
+        userComments: &crate::ffi_types::TColStd_SequenceOfExtendedString,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_comment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_File_write_comment(self as *mut Self, userComments)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:94 - `FSD_File::EndWriteCommentSection()`
     pub fn end_write_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2297,7 +2545,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:96 - `FSD_File::BeginReadCommentSection()`
     pub fn begin_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2305,17 +2553,17 @@ impl File {
     /// **Source:** `FSD_File.hxx`:98 - `FSD_File::ReadComment()`
     pub fn read_comment(
         &mut self,
-        userComments: &mut crate::ffi::TColStd_SequenceOfExtendedString,
+        userComments: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_comment(self as *mut Self, userComments)
+            crate::ffi_extern_TKernel::FSD_File_read_comment(self as *mut Self, userComments)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:101 - `FSD_File::EndReadCommentSection()`
     pub fn end_read_comment_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_comment_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_comment_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2323,7 +2571,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:103 - `FSD_File::BeginWriteTypeSection()`
     pub fn begin_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2331,7 +2579,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:105 - `FSD_File::SetTypeSectionSize()`
     pub fn set_type_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_set_type_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_File_set_type_section_size(self as *mut Self, aSize)
         })
     }
 
@@ -2342,14 +2590,18 @@ impl File {
         typeName: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_type_informations(self as *mut Self, typeNum, typeName)
+            crate::ffi_extern_TKernel::FSD_File_write_type_informations(
+                self as *mut Self,
+                typeNum,
+                typeName,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:111 - `FSD_File::EndWriteTypeSection()`
     pub fn end_write_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2357,14 +2609,16 @@ impl File {
     /// **Source:** `FSD_File.hxx`:113 - `FSD_File::BeginReadTypeSection()`
     pub fn begin_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_type_section(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:115 - `FSD_File::TypeSectionSize()`
     pub fn type_section_size(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FSD_File_type_section_size(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_type_section_size(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:117 - `FSD_File::ReadTypeInformations()`
@@ -2374,14 +2628,18 @@ impl File {
         typeName: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_type_informations(self as *mut Self, typeNum, typeName)
+            crate::ffi_extern_TKernel::FSD_File_read_type_informations(
+                self as *mut Self,
+                typeNum,
+                typeName,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:121 - `FSD_File::EndReadTypeSection()`
     pub fn end_read_type_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_type_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_type_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2389,7 +2647,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:123 - `FSD_File::BeginWriteRootSection()`
     pub fn begin_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2397,7 +2655,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:125 - `FSD_File::SetRootSectionSize()`
     pub fn set_root_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_set_root_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_File_set_root_section_size(self as *mut Self, aSize)
         })
     }
 
@@ -2409,14 +2667,14 @@ impl File {
         aType: &crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_root(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_File_write_root(self as *mut Self, rootName, aRef, aType)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:131 - `FSD_File::EndWriteRootSection()`
     pub fn end_write_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2424,14 +2682,16 @@ impl File {
     /// **Source:** `FSD_File.hxx`:133 - `FSD_File::BeginReadRootSection()`
     pub fn begin_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_root_section(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:135 - `FSD_File::RootSectionSize()`
     pub fn root_section_size(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FSD_File_root_section_size(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_root_section_size(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:137 - `FSD_File::ReadRoot()`
@@ -2442,14 +2702,14 @@ impl File {
         aType: &mut crate::t_collection::AsciiString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_root(self as *mut Self, rootName, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_File_read_root(self as *mut Self, rootName, aRef, aType)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:141 - `FSD_File::EndReadRootSection()`
     pub fn end_read_root_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_root_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_root_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2457,7 +2717,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:143 - `FSD_File::BeginWriteRefSection()`
     pub fn begin_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2465,21 +2725,25 @@ impl File {
     /// **Source:** `FSD_File.hxx`:145 - `FSD_File::SetRefSectionSize()`
     pub fn set_ref_section_size(&mut self, aSize: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_set_ref_section_size(self as *mut Self, aSize)
+            crate::ffi_extern_TKernel::FSD_File_set_ref_section_size(self as *mut Self, aSize)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:147 - `FSD_File::WriteReferenceType()`
     pub fn write_reference_type(&mut self, reference: i32, typeNum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_reference_type(self as *mut Self, reference, typeNum)
+            crate::ffi_extern_TKernel::FSD_File_write_reference_type(
+                self as *mut Self,
+                reference,
+                typeNum,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:150 - `FSD_File::EndWriteRefSection()`
     pub fn end_write_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2487,27 +2751,33 @@ impl File {
     /// **Source:** `FSD_File.hxx`:152 - `FSD_File::BeginReadRefSection()`
     pub fn begin_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:154 - `FSD_File::RefSectionSize()`
     pub fn ref_section_size(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FSD_File_ref_section_size(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_ref_section_size(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:156 - `FSD_File::ReadReferenceType()`
     pub fn read_reference_type(&mut self, reference: &mut i32, typeNum: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_reference_type(self as *mut Self, reference, typeNum)
+            crate::ffi_extern_TKernel::FSD_File_read_reference_type(
+                self as *mut Self,
+                reference,
+                typeNum,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:159 - `FSD_File::EndReadRefSection()`
     pub fn end_read_ref_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_ref_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_ref_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2515,7 +2785,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:161 - `FSD_File::BeginWriteDataSection()`
     pub fn begin_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_write_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2523,42 +2793,48 @@ impl File {
     /// **Source:** `FSD_File.hxx`:163 - `FSD_File::WritePersistentObjectHeader()`
     pub fn write_persistent_object_header(&mut self, aRef: i32, aType: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_write_persistent_object_header(self as *mut Self, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_File_write_persistent_object_header(
+                self as *mut Self,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:167 - `FSD_File::BeginWritePersistentObjectData()`
     pub fn begin_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_begin_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_persistent_object_data(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:169 - `FSD_File::BeginWriteObjectData()`
     pub fn begin_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_begin_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:171 - `FSD_File::EndWriteObjectData()`
     pub fn end_write_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_end_write_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:173 - `FSD_File::EndWritePersistentObjectData()`
     pub fn end_write_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_end_write_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_persistent_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:175 - `FSD_File::EndWriteDataSection()`
     pub fn end_write_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_write_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_write_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2566,7 +2842,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:177 - `FSD_File::BeginReadDataSection()`
     pub fn begin_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_begin_read_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_data_section(self as *mut Self)
         }))
         .unwrap()
     }
@@ -2574,55 +2850,61 @@ impl File {
     /// **Source:** `FSD_File.hxx`:179 - `FSD_File::ReadPersistentObjectHeader()`
     pub fn read_persistent_object_header(&mut self, aRef: &mut i32, aType: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_read_persistent_object_header(self as *mut Self, aRef, aType)
+            crate::ffi_extern_TKernel::FSD_File_read_persistent_object_header(
+                self as *mut Self,
+                aRef,
+                aType,
+            )
         })
     }
 
     /// **Source:** `FSD_File.hxx`:183 - `FSD_File::BeginReadPersistentObjectData()`
     pub fn begin_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_begin_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_persistent_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:185 - `FSD_File::BeginReadObjectData()`
     pub fn begin_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_begin_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_begin_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:187 - `FSD_File::EndReadObjectData()`
     pub fn end_read_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_end_read_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:189 - `FSD_File::EndReadPersistentObjectData()`
     pub fn end_read_persistent_object_data(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_end_read_persistent_object_data(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_persistent_object_data(self as *mut Self)
         })
     }
 
     /// **Source:** `FSD_File.hxx`:191 - `FSD_File::EndReadDataSection()`
     pub fn end_read_data_section(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_end_read_data_section(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_end_read_data_section(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:193 - `FSD_File::SkipObject()`
     pub fn skip_object(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::FSD_File_skip_object(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_skip_object(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:195 - `FSD_File::PutReference()`
     pub fn put_reference(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_reference(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_reference(
                 self as *mut Self,
                 aValue,
             )))
@@ -2632,7 +2914,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:198 - `FSD_File::PutCharacter()`
     pub fn put_character(&mut self, aValue: std::ffi::c_char) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -2642,7 +2924,7 @@ impl File {
     /// **Source:** `FSD_File.hxx`:201 - `FSD_File::PutExtCharacter()`
     pub fn put_ext_character(&mut self, aValue: u16) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_ext_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_ext_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -2652,28 +2934,37 @@ impl File {
     /// **Source:** `FSD_File.hxx`:204 - `FSD_File::PutInteger()`
     pub fn put_integer(&mut self, aValue: i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_integer(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_integer(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
     /// **Source:** `FSD_File.hxx`:207 - `FSD_File::PutBoolean()`
     pub fn put_boolean(&mut self, aValue: bool) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_boolean(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_boolean(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
     /// **Source:** `FSD_File.hxx`:210 - `FSD_File::PutReal()`
     pub fn put_real(&mut self, aValue: f64) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_real(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_real(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
     /// **Source:** `FSD_File.hxx`:212 - `FSD_File::PutShortReal()`
     pub fn put_short_real(&mut self, aValue: f32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_put_short_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_put_short_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -2689,7 +2980,7 @@ impl File {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_reference(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_reference(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_reference(
                 self as *mut Self,
                 aValue,
             )))
@@ -2708,7 +2999,7 @@ impl File {
         aValue: &mut std::ffi::c_char,
     ) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -2727,7 +3018,7 @@ impl File {
         aValue: &mut u16,
     ) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_ext_character(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_ext_character(
                 self as *mut Self,
                 aValue,
             )))
@@ -2743,7 +3034,10 @@ impl File {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_integer(&mut self, aValue: &mut i32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_integer(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_integer(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
@@ -2756,7 +3050,10 @@ impl File {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_boolean(&mut self, aValue: &mut bool) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_boolean(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_boolean(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
@@ -2769,7 +3066,10 @@ impl File {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_real(&mut self, aValue: &mut f64) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_real(self as *mut Self, aValue)))
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_real(
+                self as *mut Self,
+                aValue,
+            )))
         }
     }
 
@@ -2782,7 +3082,7 @@ impl File {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn get_short_real(&mut self, aValue: &mut f32) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FSD_File_get_short_real(
+            &mut *(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_short_real(
                 self as *mut Self,
                 aValue,
             )))
@@ -2797,34 +3097,40 @@ impl File {
     /// the Storage_Error enumeration which specifies the problem encountered.
     pub fn close(&mut self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_close(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_close(self as *mut Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FSD_File.hxx`:242 - `FSD_File::Destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::FSD_File_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::FSD_File_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `FSD_File.hxx`:33 - `FSD_File::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FSD_File_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `FSD_File.hxx`:33 - `FSD_File::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FSD_File_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKernel::FSD_File_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `FSD_File.hxx`:55 - `FSD_File::IsGoodFileType()`
     pub fn is_good_file_type(aName: &crate::t_collection::AsciiString) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_is_good_file_type(aName)
+            crate::ffi_extern_TKernel::FSD_File_is_good_file_type(aName)
         }))
         .unwrap()
     }
@@ -2832,7 +3138,9 @@ impl File {
     /// **Source:** `FSD_File.hxx`:246 - `FSD_File::MagicNumber()`
     pub fn magic_number() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FSD_File_magic_number()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_magic_number(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
@@ -2841,72 +3149,78 @@ impl File {
     /// Upcast to Storage_BaseDriver
     pub fn as_storage_base_driver(&self) -> &crate::storage::BaseDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_File_as_Storage_BaseDriver(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_File_as_Storage_BaseDriver(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Storage_BaseDriver (mutable)
     pub fn as_storage_base_driver_mut(&mut self) -> &mut crate::storage::BaseDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_File_as_Storage_BaseDriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_as_Storage_BaseDriver_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FSD_File_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKernel::FSD_File_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FSD_File_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(obj: crate::OwnedPtr<Self>) -> crate::OwnedPtr<crate::ffi::HandleFSDFile> {
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFSDFile> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_File_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:44 - `Storage_BaseDriver::Name()`
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FSD_File_inherited_Name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKernel::FSD_File_inherited_Name(self as *const Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Storage_BaseDriver.hxx`:46 - `Storage_BaseDriver::OpenMode()`
     pub fn open_mode(&self) -> crate::storage::OpenMode {
         crate::storage::OpenMode::try_from(crate::check_result(unsafe {
-            crate::ffi::FSD_File_inherited_OpenMode(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_File_inherited_OpenMode(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_File_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_File_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FSD_File_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::FSD_File_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2914,7 +3228,7 @@ impl File {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FSD_File_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::FSD_File_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2927,65 +3241,79 @@ impl File {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_File_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_File_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FSD_File_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::FSD_File_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FSD_File_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::FSD_File_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFSDFile;
+pub use crate::ffi_types::HandleFSDFile;
 
 unsafe impl crate::CppDeletable for HandleFSDFile {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFSDFile_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleFSDFile_destructor(ptr);
     }
 }
 
 impl HandleFSDFile {
     /// Dereference this Handle to access the underlying FSD_File
-    pub fn get(&self) -> &crate::ffi::FSD_File {
-        unsafe { &*crate::check_result(crate::ffi::HandleFSDFile_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::FSD_File {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleFSDFile_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FSD_File
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FSD_File {
-        unsafe { &mut *crate::check_result(crate::ffi::HandleFSDFile_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FSD_File {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleFSDFile_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<FSD_File> to Handle<Storage_BaseDriver>
-    pub fn to_handle_base_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleStorageBaseDriver> {
+    pub fn to_handle_base_driver(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStorageBaseDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDFile_to_HandleStorageBaseDriver(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDFile_to_HandleStorageBaseDriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<FSD_File> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFSDFile_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKernel::HandleFSDFile_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2993,9 +3321,13 @@ impl HandleFSDFile {
     /// Downcast Handle<FSD_File> to Handle<FSD_CmpFile>
     ///
     /// Returns `None` if the handle does not point to a `FSD_CmpFile` (or subclass).
-    pub fn downcast_to_cmp_file(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleFSDCmpFile>> {
+    pub fn downcast_to_cmp_file(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleFSDCmpFile>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleFSDFile_downcast_to_HandleFSDCmpFile(self as *const Self)
+            crate::ffi_extern_TKernel::HandleFSDFile_downcast_to_HandleFSDCmpFile(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3010,10 +3342,10 @@ impl HandleFSDFile {
 // ========================
 
 /// **Source:** `FSD_FileHeader.hxx`:21 - `FSD_FileHeader`
-pub use crate::ffi::FSD_FileHeader as FileHeader;
+pub use crate::ffi_types::FSD_FileHeader as FileHeader;
 
 unsafe impl crate::CppDeletable for FileHeader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FSD_FileHeader_destructor(ptr);
+        crate::ffi_extern_TKernel::FSD_FileHeader_destructor(ptr);
     }
 }

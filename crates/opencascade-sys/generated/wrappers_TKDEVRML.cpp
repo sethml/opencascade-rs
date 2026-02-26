@@ -4,9 +4,10 @@
 #include "occt_preamble.hxx"
 
 #include <Adaptor3d_Curve.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Aspect_TypeOfDeflection.hxx>
 #include <BRepAdaptor_Surface.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_B3f.hxx>
 #include <DEVRML_ConfigurationNode.hxx>
 #include <DEVRML_Provider.hxx>
@@ -38,7 +39,6 @@
 #include <TColgp_HArray1OfVec2d.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TDataStd_ListIteratorOfListOfExtendedString.hxx>
 #include <TDocStd_Document.hxx>
 #include <TDocStd_SequenceOfDocument.hxx>

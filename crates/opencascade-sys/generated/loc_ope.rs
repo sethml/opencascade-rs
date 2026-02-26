@@ -10,13 +10,13 @@
 /// Returns Standard_True  when the wire <W> is closed
 /// on the face <OnF>.
 pub fn closed_wire_face(W: &crate::topo_ds::Wire, OnF: &crate::topo_ds::Face) -> bool {
-    crate::check_result(unsafe { crate::ffi::LocOpe_closed_wire_face(W, OnF) })
+    crate::check_result(unsafe { crate::ffi_extern_TKFeat::LocOpe_closed_wire_face(W, OnF) })
 }
 /// **Source:** `LocOpe.hxx`:44 - `LocOpe::Closed`
 /// Returns Standard_True  when the edge <E> is closed
 /// on the face <OnF>.
 pub fn closed_edge_face(E: &crate::topo_ds::Edge, OnF: &crate::topo_ds::Face) -> bool {
-    crate::check_result(unsafe { crate::ffi::LocOpe_closed_edge_face(E, OnF) })
+    crate::check_result(unsafe { crate::ffi_extern_TKFeat::LocOpe_closed_edge_face(E, OnF) })
 }
 /// **Source:** `LocOpe.hxx`:47 - `LocOpe::TgtFaces`
 /// Returns Standard_True  when the faces are tangent
@@ -25,7 +25,7 @@ pub fn tgt_faces(
     F1: &crate::topo_ds::Face,
     F2: &crate::topo_ds::Face,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::LocOpe_tgt_faces(E, F1, F2) })
+    crate::check_result(unsafe { crate::ffi_extern_TKFeat::LocOpe_tgt_faces(E, F1, F2) })
 }
 
 /// C++ enum: `LocOpe_Operation`
@@ -57,18 +57,18 @@ impl TryFrom<i32> for Operation {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From LocOpe_BuildShape.hxx
 // ========================
 
 /// **Source:** `LocOpe_BuildShape.hxx`:26 - `LocOpe_BuildShape`
-pub use crate::ffi::LocOpe_BuildShape as BuildShape;
+pub use crate::ffi_types::LocOpe_BuildShape as BuildShape;
 
 unsafe impl crate::CppDeletable for BuildShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_BuildShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_BuildShape_destructor(ptr);
     }
 }
 
@@ -76,17 +76,19 @@ impl BuildShape {
     /// **Source:** `LocOpe_BuildShape.hxx`:31 - `LocOpe_BuildShape::LocOpe_BuildShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_BuildShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_BuildShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_BuildShape.hxx`:35 - `LocOpe_BuildShape::LocOpe_BuildShape()`
     /// Builds shape(s) from  the list <L>.  Uses only the
     /// faces of <L>.
-    pub fn new_listofshape(L: &crate::ffi::TopTools_ListOfShape) -> crate::OwnedPtr<Self> {
+    pub fn new_listofshape(L: &crate::ffi_types::TopTools_ListOfShape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_BuildShape_ctor_listofshape(L),
+                crate::ffi_extern_TKFeat::LocOpe_BuildShape_ctor_listofshape(L),
             ))
         }
     }
@@ -94,15 +96,19 @@ impl BuildShape {
     /// **Source:** `LocOpe_BuildShape.hxx`:39 - `LocOpe_BuildShape::Perform()`
     /// Builds shape(s) from  the list <L>.  Uses only the
     /// faces of <L>.
-    pub fn perform(&mut self, L: &crate::ffi::TopTools_ListOfShape) {
+    pub fn perform(&mut self, L: &crate::ffi_types::TopTools_ListOfShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_BuildShape_perform(self as *mut Self, L)
+            crate::ffi_extern_TKFeat::LocOpe_BuildShape_perform(self as *mut Self, L)
         })
     }
 
     /// **Source:** `LocOpe_BuildShape.hxx`:41 - `LocOpe_BuildShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_BuildShape_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_BuildShape_shape(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -111,11 +117,11 @@ impl BuildShape {
 // ========================
 
 /// **Source:** `LocOpe_BuildWires.hxx`:27 - `LocOpe_BuildWires`
-pub use crate::ffi::LocOpe_BuildWires as BuildWires;
+pub use crate::ffi_types::LocOpe_BuildWires as BuildWires;
 
 unsafe impl crate::CppDeletable for BuildWires {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_BuildWires_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_BuildWires_destructor(ptr);
     }
 }
 
@@ -123,42 +129,46 @@ impl BuildWires {
     /// **Source:** `LocOpe_BuildWires.hxx`:32 - `LocOpe_BuildWires::LocOpe_BuildWires()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_BuildWires_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_BuildWires_ctor(),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_BuildWires.hxx`:34 - `LocOpe_BuildWires::LocOpe_BuildWires()`
     pub fn new_listofshape_handlelocopewiresonshape(
-        Ledges: &crate::ffi::TopTools_ListOfShape,
-        PW: &crate::ffi::HandleLocOpeWiresOnShape,
+        Ledges: &crate::ffi_types::TopTools_ListOfShape,
+        PW: &crate::ffi_types::HandleLocOpeWiresOnShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_BuildWires_ctor_listofshape_handlelocopewiresonshape(Ledges, PW),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_BuildWires_ctor_listofshape_handlelocopewiresonshape(Ledges, PW)))
         }
     }
 
     /// **Source:** `LocOpe_BuildWires.hxx`:37 - `LocOpe_BuildWires::Perform()`
     pub fn perform(
         &mut self,
-        Ledges: &crate::ffi::TopTools_ListOfShape,
-        PW: &crate::ffi::HandleLocOpeWiresOnShape,
+        Ledges: &crate::ffi_types::TopTools_ListOfShape,
+        PW: &crate::ffi_types::HandleLocOpeWiresOnShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_BuildWires_perform(self as *mut Self, Ledges, PW)
+            crate::ffi_extern_TKFeat::LocOpe_BuildWires_perform(self as *mut Self, Ledges, PW)
         })
     }
 
     /// **Source:** `LocOpe_BuildWires.hxx`:40 - `LocOpe_BuildWires::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_BuildWires_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_BuildWires_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_BuildWires.hxx`:42 - `LocOpe_BuildWires::Result()`
-    pub fn result(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn result(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_BuildWires_result(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_BuildWires_result(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -172,11 +182,11 @@ impl BuildWires {
 /// of axis or a circle and the faces of a shape.  The
 /// intersection  points  are   sorted  in  increasing
 /// parameter along each axis or circle.
-pub use crate::ffi::LocOpe_CSIntersector as CSIntersector;
+pub use crate::ffi_types::LocOpe_CSIntersector as CSIntersector;
 
 unsafe impl crate::CppDeletable for CSIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_CSIntersector_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_CSIntersector_destructor(ptr);
     }
 }
 
@@ -185,7 +195,9 @@ impl CSIntersector {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_CSIntersector_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_CSIntersector_ctor(),
+            ))
         }
     }
 
@@ -195,7 +207,7 @@ impl CSIntersector {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_CSIntersector_ctor_shape(S),
+                crate::ffi_extern_TKFeat::LocOpe_CSIntersector_ctor_shape(S),
             ))
         }
     }
@@ -204,28 +216,37 @@ impl CSIntersector {
     /// Performs the intersection between <Ax1 and <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_init(self as *mut Self, S)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_init(self as *mut Self, S)
         })
     }
 
     /// **Source:** `LocOpe_CSIntersector.hxx`:50 - `LocOpe_CSIntersector::Perform()`
-    pub fn perform_sequenceoflin(&mut self, Slin: &crate::ffi::LocOpe_SequenceOfLin) {
+    pub fn perform_sequenceoflin(&mut self, Slin: &crate::ffi_types::LocOpe_SequenceOfLin) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_perform_sequenceoflin(self as *mut Self, Slin)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_perform_sequenceoflin(
+                self as *mut Self,
+                Slin,
+            )
         })
     }
 
     /// **Source:** `LocOpe_CSIntersector.hxx`:52 - `LocOpe_CSIntersector::Perform()`
-    pub fn perform_sequenceofcirc(&mut self, Scir: &crate::ffi::LocOpe_SequenceOfCirc) {
+    pub fn perform_sequenceofcirc(&mut self, Scir: &crate::ffi_types::LocOpe_SequenceOfCirc) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_perform_sequenceofcirc(self as *mut Self, Scir)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_perform_sequenceofcirc(
+                self as *mut Self,
+                Scir,
+            )
         })
     }
 
     /// **Source:** `LocOpe_CSIntersector.hxx`:54 - `LocOpe_CSIntersector::Perform()`
-    pub fn perform_sequenceofcurve(&mut self, Scur: &crate::ffi::TColGeom_SequenceOfCurve) {
+    pub fn perform_sequenceofcurve(&mut self, Scur: &crate::ffi_types::TColGeom_SequenceOfCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_perform_sequenceofcurve(self as *mut Self, Scur)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_perform_sequenceofcurve(
+                self as *mut Self,
+                Scur,
+            )
         })
     }
 
@@ -234,7 +255,7 @@ impl CSIntersector {
     /// been done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_is_done(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_is_done(self as *const Self)
         })
     }
 
@@ -243,7 +264,7 @@ impl CSIntersector {
     /// element of range <I>.
     pub fn nb_points(&self, I: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_nb_points(self as *const Self, I)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_nb_points(self as *const Self, I)
         })
     }
 
@@ -253,7 +274,7 @@ impl CSIntersector {
     /// increasing order of parameter along the axis.
     pub fn point(&self, I: i32, Index: i32) -> &PntFace {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_CSIntersector_point(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_CSIntersector_point(
                 self as *const Self,
                 I,
                 Index,
@@ -284,7 +305,7 @@ impl CSIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_localize_after_int_real2_orientation_int2(
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_localize_after_int_real2_orientation_int2(
                 self as *const Self,
                 I,
                 From,
@@ -321,15 +342,7 @@ impl CSIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_localize_before_int_real2_orientation_int2(
-                self as *const Self,
-                I,
-                From,
-                Tol,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_localize_before_int_real2_orientation_int2(self as *const Self, I, From, Tol, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -359,7 +372,7 @@ impl CSIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_localize_after_int2_real_orientation_int2(
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_localize_after_int2_real_orientation_int2(
                 self as *const Self,
                 I,
                 FromInd,
@@ -397,15 +410,7 @@ impl CSIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_localize_before_int2_real_orientation_int2(
-                self as *const Self,
-                I,
-                FromInd,
-                Tol,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_localize_before_int2_real_orientation_int2(self as *const Self, I, FromInd, Tol, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -414,7 +419,7 @@ impl CSIntersector {
     /// **Source:** `LocOpe_CSIntersector.hxx`:144 - `LocOpe_CSIntersector::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CSIntersector_destroy(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_CSIntersector_destroy(self as *mut Self)
         })
     }
 }
@@ -428,11 +433,11 @@ impl CSIntersector {
 /// axis  or  a circle and  the  faces of a shape. The
 /// intersection   points  are   sorted in  increasing
 /// parameter along the axis.
-pub use crate::ffi::LocOpe_CurveShapeIntersector as CurveShapeIntersector;
+pub use crate::ffi_types::LocOpe_CurveShapeIntersector as CurveShapeIntersector;
 
 unsafe impl crate::CppDeletable for CurveShapeIntersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_CurveShapeIntersector_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_destructor(ptr);
     }
 }
 
@@ -442,7 +447,7 @@ impl CurveShapeIntersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_CurveShapeIntersector_ctor(),
+                crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_ctor(),
             ))
         }
     }
@@ -456,7 +461,7 @@ impl CurveShapeIntersector {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_CurveShapeIntersector_ctor_ax1_shape(Axis, S),
+                crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_ctor_ax1_shape(Axis, S),
             ))
         }
     }
@@ -467,7 +472,7 @@ impl CurveShapeIntersector {
     pub fn new_circ_shape(C: &crate::gp::Circ, S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_CurveShapeIntersector_ctor_circ_shape(C, S),
+                crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_ctor_circ_shape(C, S),
             ))
         }
     }
@@ -476,7 +481,11 @@ impl CurveShapeIntersector {
     /// Performs the intersection between <Ax1 and <S>.
     pub fn init_ax1_shape(&mut self, Axis: &crate::gp::Ax1, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_init_ax1_shape(self as *mut Self, Axis, S)
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_init_ax1_shape(
+                self as *mut Self,
+                Axis,
+                S,
+            )
         })
     }
 
@@ -484,7 +493,11 @@ impl CurveShapeIntersector {
     /// Performs the intersection between <Ax1 and <S>.
     pub fn init_circ_shape(&mut self, C: &crate::gp::Circ, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_init_circ_shape(self as *mut Self, C, S)
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_init_circ_shape(
+                self as *mut Self,
+                C,
+                S,
+            )
         })
     }
 
@@ -493,7 +506,7 @@ impl CurveShapeIntersector {
     /// been done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_is_done(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_is_done(self as *const Self)
         })
     }
 
@@ -501,7 +514,7 @@ impl CurveShapeIntersector {
     /// Returns the number of intersection point.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_nb_points(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_nb_points(self as *const Self)
         })
     }
 
@@ -511,7 +524,7 @@ impl CurveShapeIntersector {
     /// parameter along the axis.
     pub fn point(&self, Index: i32) -> &PntFace {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_CurveShapeIntersector_point(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_point(
                 self as *const Self,
                 Index,
             )))
@@ -538,13 +551,7 @@ impl CurveShapeIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_localize_after_real_orientation_int2(
-                self as *const Self,
-                From,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_localize_after_real_orientation_int2(self as *const Self, From, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -570,13 +577,7 @@ impl CurveShapeIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_localize_before_real_orientation_int2(
-                self as *const Self,
-                From,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_localize_before_real_orientation_int2(self as *const Self, From, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -602,13 +603,7 @@ impl CurveShapeIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_localize_after_int_orientation_int2(
-                self as *const Self,
-                FromInd,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_localize_after_int_orientation_int2(self as *const Self, FromInd, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -634,13 +629,7 @@ impl CurveShapeIntersector {
     ) -> bool {
         let mut Or_i32_: i32 = (*Or).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::LocOpe_CurveShapeIntersector_localize_before_int_orientation_int2(
-                self as *const Self,
-                FromInd,
-                &mut Or_i32_,
-                IndFrom,
-                IndTo,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_CurveShapeIntersector_localize_before_int_orientation_int2(self as *const Self, FromInd, &mut Or_i32_, IndFrom, IndTo)
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
         result_
@@ -654,11 +643,11 @@ impl CurveShapeIntersector {
 /// **Source:** `LocOpe_DPrism.hxx`:36 - `LocOpe_DPrism`
 /// Defines a  pipe  (near from   Pipe from BRepFill),
 /// with modifications provided for the Pipe feature.
-pub use crate::ffi::LocOpe_DPrism as DPrism;
+pub use crate::ffi_types::LocOpe_DPrism as DPrism;
 
 unsafe impl crate::CppDeletable for DPrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_DPrism_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_DPrism_destructor(ptr);
     }
 }
 
@@ -672,7 +661,9 @@ impl DPrism {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_DPrism_ctor_face_real3(Spine, Height1, Height2, Angle),
+                crate::ffi_extern_TKFeat::LocOpe_DPrism_ctor_face_real3(
+                    Spine, Height1, Height2, Angle,
+                ),
             ))
         }
     }
@@ -685,43 +676,61 @@ impl DPrism {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_DPrism_ctor_face_real2(Spine, Height, Angle),
+                crate::ffi_extern_TKFeat::LocOpe_DPrism_ctor_face_real2(Spine, Height, Angle),
             ))
         }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:50 - `LocOpe_DPrism::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_DPrism_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_DPrism_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:52 - `LocOpe_DPrism::Spine()`
     pub fn spine(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_DPrism_spine(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_spine(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:54 - `LocOpe_DPrism::Profile()`
     pub fn profile(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_DPrism_profile(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_profile(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:56 - `LocOpe_DPrism::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_DPrism_first_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_first_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:58 - `LocOpe_DPrism::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_DPrism_last_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_last_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:60 - `LocOpe_DPrism::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_DPrism_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:62 - `LocOpe_DPrism::Shapes()`
@@ -731,23 +740,31 @@ impl DPrism {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_DPrism_shapes(self as *const Self, S))) }
+    pub unsafe fn shapes(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_DPrism_shapes(
+                self as *const Self,
+                S,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:64 - `LocOpe_DPrism::Curves()`
-    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::TColGeom_SequenceOfCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_DPrism_curves(self as *const Self, SCurves)
+            crate::ffi_extern_TKFeat::LocOpe_DPrism_curves(self as *const Self, SCurves)
         })
     }
 
     /// **Source:** `LocOpe_DPrism.hxx`:66 - `LocOpe_DPrism::BarycCurve()`
-    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_DPrism_baryc_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_DPrism_baryc_curve(self as *const Self),
+            ))
         }
     }
 }
@@ -757,11 +774,11 @@ impl DPrism {
 // ========================
 
 /// **Source:** `LocOpe_FindEdges.hxx`:26 - `LocOpe_FindEdges`
-pub use crate::ffi::LocOpe_FindEdges as FindEdges;
+pub use crate::ffi_types::LocOpe_FindEdges as FindEdges;
 
 unsafe impl crate::CppDeletable for FindEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_FindEdges_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_FindEdges_destructor(ptr);
     }
 }
 
@@ -769,7 +786,9 @@ impl FindEdges {
     /// **Source:** `LocOpe_FindEdges.hxx`:31 - `LocOpe_FindEdges::LocOpe_FindEdges()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_FindEdges_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_FindEdges_ctor(),
+            ))
         }
     }
 
@@ -780,7 +799,7 @@ impl FindEdges {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_FindEdges_ctor_shape2(FFrom, FTo),
+                crate::ffi_extern_TKFeat::LocOpe_FindEdges_ctor_shape2(FFrom, FTo),
             ))
         }
     }
@@ -788,39 +807,47 @@ impl FindEdges {
     /// **Source:** `LocOpe_FindEdges.hxx`:35 - `LocOpe_FindEdges::Set()`
     pub fn set(&mut self, FFrom: &crate::topo_ds::Shape, FTo: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_FindEdges_set(self as *mut Self, FFrom, FTo)
+            crate::ffi_extern_TKFeat::LocOpe_FindEdges_set(self as *mut Self, FFrom, FTo)
         })
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:37 - `LocOpe_FindEdges::InitIterator()`
     pub fn init_iterator(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_FindEdges_init_iterator(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_FindEdges_init_iterator(self as *mut Self)
         })
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:39 - `LocOpe_FindEdges::More()`
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_FindEdges_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_FindEdges_more(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:41 - `LocOpe_FindEdges::EdgeFrom()`
     pub fn edge_from(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_FindEdges_edge_from(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_FindEdges_edge_from(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:43 - `LocOpe_FindEdges::EdgeTo()`
     pub fn edge_to(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_FindEdges_edge_to(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_FindEdges_edge_to(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_FindEdges.hxx`:45 - `LocOpe_FindEdges::Next()`
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::LocOpe_FindEdges_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_FindEdges_next(self as *mut Self)
+        })
     }
 }
 
@@ -829,11 +856,11 @@ impl FindEdges {
 // ========================
 
 /// **Source:** `LocOpe_FindEdgesInFace.hxx`:29 - `LocOpe_FindEdgesInFace`
-pub use crate::ffi::LocOpe_FindEdgesInFace as FindEdgesInFace;
+pub use crate::ffi_types::LocOpe_FindEdgesInFace as FindEdgesInFace;
 
 unsafe impl crate::CppDeletable for FindEdgesInFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_FindEdgesInFace_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_destructor(ptr);
     }
 }
 
@@ -841,9 +868,9 @@ impl FindEdgesInFace {
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:34 - `LocOpe_FindEdgesInFace::LocOpe_FindEdgesInFace()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::LocOpe_FindEdgesInFace_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_ctor(),
+            ))
         }
     }
 
@@ -854,7 +881,7 @@ impl FindEdgesInFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_FindEdgesInFace_ctor_shape_face(S, F),
+                crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_ctor_shape_face(S, F),
             ))
         }
     }
@@ -862,33 +889,37 @@ impl FindEdgesInFace {
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:38 - `LocOpe_FindEdgesInFace::Set()`
     pub fn set(&mut self, S: &crate::topo_ds::Shape, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_FindEdgesInFace_set(self as *mut Self, S, F)
+            crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_set(self as *mut Self, S, F)
         })
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:40 - `LocOpe_FindEdgesInFace::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_FindEdgesInFace_init(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_init(self as *mut Self)
         })
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:42 - `LocOpe_FindEdgesInFace::More()`
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_FindEdgesInFace_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_more(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:44 - `LocOpe_FindEdgesInFace::Edge()`
     pub fn edge(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_FindEdgesInFace_edge(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_edge(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_FindEdgesInFace.hxx`:46 - `LocOpe_FindEdgesInFace::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_FindEdgesInFace_next(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_FindEdgesInFace_next(self as *mut Self)
         })
     }
 }
@@ -898,21 +929,21 @@ impl FindEdgesInFace {
 // ========================
 
 /// **Source:** `LocOpe_GeneratedShape.hxx`:31 - `LocOpe_GeneratedShape`
-pub use crate::ffi::LocOpe_GeneratedShape as GeneratedShape;
+pub use crate::ffi_types::LocOpe_GeneratedShape as GeneratedShape;
 
 unsafe impl crate::CppDeletable for GeneratedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_GeneratedShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_destructor(ptr);
     }
 }
 
 impl GeneratedShape {
     /// **Source:** `LocOpe_GeneratedShape.hxx`:35 - `LocOpe_GeneratedShape::GeneratingEdges()`
-    pub fn generating_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generating_edges(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GeneratedShape_generating_edges(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_generating_edges(self as *mut Self),
+            ))
         }
     }
 
@@ -925,7 +956,10 @@ impl GeneratedShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_GeneratedShape_generated_vertex(self as *mut Self, V),
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_generated_vertex(
+                    self as *mut Self,
+                    V,
+                ),
             ))
         }
     }
@@ -939,7 +973,10 @@ impl GeneratedShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_GeneratedShape_generated_edge(self as *mut Self, E),
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_generated_edge(
+                    self as *mut Self,
+                    E,
+                ),
             ))
         }
     }
@@ -947,18 +984,18 @@ impl GeneratedShape {
     /// **Source:** `LocOpe_GeneratedShape.hxx`:47 - `LocOpe_GeneratedShape::OrientedFaces()`
     /// Returns  the  list of correctly oriented generated
     /// faces.
-    pub fn oriented_faces(&mut self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn oriented_faces(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GeneratedShape_oriented_faces(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_oriented_faces(
                 self as *mut Self,
             )))
         }
     }
 
     /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GeneratedShape_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -968,7 +1005,7 @@ impl GeneratedShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LocOpe_GeneratedShape_get_type_name(),
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -976,39 +1013,53 @@ impl GeneratedShape {
     }
 
     /// **Source:** `LocOpe_GeneratedShape.hxx`:49 - `LocOpe_GeneratedShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_GeneratedShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::LocOpe_GeneratedShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LocOpe_GeneratedShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1016,7 +1067,7 @@ impl GeneratedShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LocOpe_GeneratedShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1029,62 +1080,72 @@ impl GeneratedShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GeneratedShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_GeneratedShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleLocOpeGeneratedShape;
+pub use crate::ffi_types::HandleLocOpeGeneratedShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeGeneratedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleLocOpeGeneratedShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_destructor(ptr);
     }
 }
 
 impl HandleLocOpeGeneratedShape {
     /// Dereference this Handle to access the underlying LocOpe_GeneratedShape
-    pub fn get(&self) -> &crate::ffi::LocOpe_GeneratedShape {
+    pub fn get(&self) -> &crate::ffi_types::LocOpe_GeneratedShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleLocOpeGeneratedShape_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying LocOpe_GeneratedShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_GeneratedShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::LocOpe_GeneratedShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleLocOpeGeneratedShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<LocOpe_GeneratedShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleLocOpeGeneratedShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1096,9 +1157,9 @@ impl HandleLocOpeGeneratedShape {
     /// Returns `None` if the handle does not point to a `LocOpe_GluedShape` (or subclass).
     pub fn downcast_to_glued_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleLocOpeGluedShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleLocOpeGluedShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleLocOpeGeneratedShape_downcast_to_HandleLocOpeGluedShape(
+            crate::ffi_extern_TKFeat::HandleLocOpeGeneratedShape_downcast_to_HandleLocOpeGluedShape(
                 self as *const Self,
             )
         });
@@ -1115,11 +1176,11 @@ impl HandleLocOpeGeneratedShape {
 // ========================
 
 /// **Source:** `LocOpe_Generator.hxx`:30 - `LocOpe_Generator`
-pub use crate::ffi::LocOpe_Generator as Generator;
+pub use crate::ffi_types::LocOpe_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Generator_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Generator_destructor(ptr);
     }
 }
 
@@ -1128,7 +1189,9 @@ impl Generator {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Generator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Generator_ctor(),
+            ))
         }
     }
 
@@ -1136,35 +1199,39 @@ impl Generator {
     /// Creates the algorithm on the shape <S>.
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Generator_ctor_shape(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Generator_ctor_shape(S),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:42 - `LocOpe_Generator::Init()`
     /// Initializes the algorithm on the shape <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
-        crate::check_void_result(unsafe { crate::ffi::LocOpe_Generator_init(self as *mut Self, S) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Generator_init(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:44 - `LocOpe_Generator::Perform()`
-    pub fn perform(&mut self, G: &crate::ffi::HandleLocOpeGeneratedShape) {
+    pub fn perform(&mut self, G: &crate::ffi_types::HandleLocOpeGeneratedShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Generator_perform(self as *mut Self, G)
+            crate::ffi_extern_TKFeat::LocOpe_Generator_perform(self as *mut Self, G)
         })
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:46 - `LocOpe_Generator::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_Generator_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Generator_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:49 - `LocOpe_Generator::ResultingShape()`
     /// Returns the new shape
     pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Generator_resulting_shape(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Generator_resulting_shape(
                 self as *const Self,
             )))
         }
@@ -1173,7 +1240,11 @@ impl Generator {
     /// **Source:** `LocOpe_Generator.hxx`:52 - `LocOpe_Generator::Shape()`
     /// Returns the initial shape
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Generator_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Generator_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Generator.hxx`:58 - `LocOpe_Generator::DescendantFace()`
@@ -1190,9 +1261,9 @@ impl Generator {
     pub unsafe fn descendant_face(
         &mut self,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Generator_descendant_face(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Generator_descendant_face(
                 self as *mut Self,
                 F,
             )))
@@ -1205,11 +1276,11 @@ impl Generator {
 // ========================
 
 /// **Source:** `LocOpe_GluedShape.hxx`:33 - `LocOpe_GluedShape`
-pub use crate::ffi::LocOpe_GluedShape as GluedShape;
+pub use crate::ffi_types::LocOpe_GluedShape as GluedShape;
 
 unsafe impl crate::CppDeletable for GluedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_GluedShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_GluedShape_destructor(ptr);
     }
 }
 
@@ -1217,7 +1288,9 @@ impl GluedShape {
     /// **Source:** `LocOpe_GluedShape.hxx`:37 - `LocOpe_GluedShape::LocOpe_GluedShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_GluedShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_ctor(),
+            ))
         }
     }
 
@@ -1225,7 +1298,7 @@ impl GluedShape {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_GluedShape_ctor_shape(S),
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_ctor_shape(S),
             ))
         }
     }
@@ -1233,21 +1306,21 @@ impl GluedShape {
     /// **Source:** `LocOpe_GluedShape.hxx`:41 - `LocOpe_GluedShape::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_init(self as *mut Self, S)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_init(self as *mut Self, S)
         })
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:43 - `LocOpe_GluedShape::GlueOnFace()`
     pub fn glue_on_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_glue_on_face(self as *mut Self, F)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_glue_on_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:45 - `LocOpe_GluedShape::GeneratingEdges()`
-    pub fn generating_edges(&mut self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn generating_edges(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GluedShape_generating_edges(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_GluedShape_generating_edges(
                 self as *mut Self,
             )))
         }
@@ -1262,7 +1335,7 @@ impl GluedShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_GluedShape_generated_vertex(self as *mut Self, V),
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_generated_vertex(self as *mut Self, V),
             ))
         }
     }
@@ -1276,7 +1349,7 @@ impl GluedShape {
     ) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_GluedShape_generated_edge(self as *mut Self, E),
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_generated_edge(self as *mut Self, E),
             ))
         }
     }
@@ -1284,16 +1357,20 @@ impl GluedShape {
     /// **Source:** `LocOpe_GluedShape.hxx`:57 - `LocOpe_GluedShape::OrientedFaces()`
     /// Returns  the  list of correctly oriented generated
     /// faces.
-    pub fn oriented_faces(&mut self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn oriented_faces(&mut self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GluedShape_oriented_faces(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_GluedShape_oriented_faces(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_GluedShape_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_GluedShape_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1301,7 +1378,7 @@ impl GluedShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LocOpe_GluedShape_get_type_name(),
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1309,68 +1386,86 @@ impl GluedShape {
     }
 
     /// **Source:** `LocOpe_GluedShape.hxx`:59 - `LocOpe_GluedShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_GluedShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to LocOpe_GeneratedShape
     pub fn as_generated_shape(&self) -> &GeneratedShape {
         unsafe {
-            &*crate::check_result(crate::ffi::LocOpe_GluedShape_as_LocOpe_GeneratedShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_as_LocOpe_GeneratedShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to LocOpe_GeneratedShape (mutable)
     pub fn as_generated_shape_mut(&mut self) -> &mut GeneratedShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LocOpe_GluedShape_as_LocOpe_GeneratedShape_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_as_LocOpe_GeneratedShape_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::LocOpe_GluedShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LocOpe_GluedShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLocOpeGluedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleLocOpeGluedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_GluedShape_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1378,7 +1473,7 @@ impl GluedShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LocOpe_GluedShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1391,62 +1486,70 @@ impl GluedShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_GluedShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_GluedShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleLocOpeGluedShape;
+pub use crate::ffi_types::HandleLocOpeGluedShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeGluedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleLocOpeGluedShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_destructor(ptr);
     }
 }
 
 impl HandleLocOpeGluedShape {
     /// Dereference this Handle to access the underlying LocOpe_GluedShape
-    pub fn get(&self) -> &crate::ffi::LocOpe_GluedShape {
+    pub fn get(&self) -> &crate::ffi_types::LocOpe_GluedShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleLocOpeGluedShape_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying LocOpe_GluedShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_GluedShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::LocOpe_GluedShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleLocOpeGluedShape_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<LocOpe_GluedShape> to Handle<LocOpe_GeneratedShape>
     pub fn to_handle_generated_shape(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLocOpeGeneratedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleLocOpeGeneratedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(
+                crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_to_HandleLocOpeGeneratedShape(
                     self as *const Self,
                 ),
             ))
@@ -1454,10 +1557,14 @@ impl HandleLocOpeGluedShape {
     }
 
     /// Upcast Handle<LocOpe_GluedShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleLocOpeGluedShape_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFeat::HandleLocOpeGluedShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1468,18 +1575,22 @@ impl HandleLocOpeGluedShape {
 // ========================
 
 /// **Source:** `LocOpe_Gluer.hxx`:33 - `LocOpe_Gluer`
-pub use crate::ffi::LocOpe_Gluer as Gluer;
+pub use crate::ffi_types::LocOpe_Gluer as Gluer;
 
 unsafe impl crate::CppDeletable for Gluer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Gluer_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Gluer_destructor(ptr);
     }
 }
 
 impl Gluer {
     /// **Source:** `LocOpe_Gluer.hxx`:38 - `LocOpe_Gluer::LocOpe_Gluer()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Gluer_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Gluer_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:40 - `LocOpe_Gluer::LocOpe_Gluer()`
@@ -1488,55 +1599,61 @@ impl Gluer {
         Snew: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Gluer_ctor_shape2(
-                Sbase, Snew,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Gluer_ctor_shape2(Sbase, Snew),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:42 - `LocOpe_Gluer::Init()`
     pub fn init(&mut self, Sbase: &crate::topo_ds::Shape, Snew: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Gluer_init(self as *mut Self, Sbase, Snew)
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_init(self as *mut Self, Sbase, Snew)
         })
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:44 - `LocOpe_Gluer::Bind()`
     pub fn bind_face2(&mut self, Fnew: &crate::topo_ds::Face, Fbase: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Gluer_bind_face2(self as *mut Self, Fnew, Fbase)
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_bind_face2(self as *mut Self, Fnew, Fbase)
         })
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:46 - `LocOpe_Gluer::Bind()`
     pub fn bind_edge2(&mut self, Enew: &crate::topo_ds::Edge, Ebase: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Gluer_bind_edge2(self as *mut Self, Enew, Ebase)
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_bind_edge2(self as *mut Self, Enew, Ebase)
         })
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:48 - `LocOpe_Gluer::OpeType()`
     pub fn ope_type(&self) -> crate::loc_ope::Operation {
         crate::loc_ope::Operation::try_from(crate::check_result(unsafe {
-            crate::ffi::LocOpe_Gluer_ope_type(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_ope_type(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:50 - `LocOpe_Gluer::Perform()`
     pub fn perform(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::LocOpe_Gluer_perform(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_perform(self as *mut Self)
+        })
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:52 - `LocOpe_Gluer::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_Gluer_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Gluer_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:54 - `LocOpe_Gluer::ResultingShape()`
     pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Gluer_resulting_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_resulting_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1550,9 +1667,9 @@ impl Gluer {
     pub unsafe fn descendant_faces(
         &self,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Gluer_descendant_faces(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_descendant_faces(
                 self as *const Self,
                 F,
             )))
@@ -1562,25 +1679,37 @@ impl Gluer {
     /// **Source:** `LocOpe_Gluer.hxx`:58 - `LocOpe_Gluer::BasisShape()`
     pub fn basis_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Gluer_basis_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_basis_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:60 - `LocOpe_Gluer::GluedShape()`
     pub fn glued_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Gluer_glued_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_glued_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:62 - `LocOpe_Gluer::Edges()`
-    pub fn edges(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Gluer_edges(self as *const Self))) }
+    pub fn edges(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_edges(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Gluer.hxx`:64 - `LocOpe_Gluer::TgtEdges()`
-    pub fn tgt_edges(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Gluer_tgt_edges(self as *const Self))) }
+    pub fn tgt_edges(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Gluer_tgt_edges(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -1591,11 +1720,11 @@ impl Gluer {
 /// **Source:** `LocOpe_LinearForm.hxx`:31 - `LocOpe_LinearForm`
 /// Defines a linear form (using Prism from BRepSweep)
 /// with modifications provided for the LinearForm feature.
-pub use crate::ffi::LocOpe_LinearForm as LinearForm;
+pub use crate::ffi_types::LocOpe_LinearForm as LinearForm;
 
 unsafe impl crate::CppDeletable for LinearForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_LinearForm_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_LinearForm_destructor(ptr);
     }
 }
 
@@ -1603,7 +1732,9 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:36 - `LocOpe_LinearForm::LocOpe_LinearForm()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_LinearForm_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_LinearForm_ctor(),
+            ))
         }
     }
 
@@ -1616,7 +1747,9 @@ impl LinearForm {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_LinearForm_ctor_shape_vec_pnt2(Base, V, Pnt1, Pnt2),
+                crate::ffi_extern_TKFeat::LocOpe_LinearForm_ctor_shape_vec_pnt2(
+                    Base, V, Pnt1, Pnt2,
+                ),
             ))
         }
     }
@@ -1631,7 +1764,9 @@ impl LinearForm {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_LinearForm_ctor_shape_vec2_pnt2(Base, V, Vectra, Pnt1, Pnt2),
+                crate::ffi_extern_TKFeat::LocOpe_LinearForm_ctor_shape_vec2_pnt2(
+                    Base, V, Vectra, Pnt1, Pnt2,
+                ),
             ))
         }
     }
@@ -1645,7 +1780,7 @@ impl LinearForm {
         Pnt2: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_LinearForm_perform_shape_vec_pnt2(
+            crate::ffi_extern_TKFeat::LocOpe_LinearForm_perform_shape_vec_pnt2(
                 self as *mut Self,
                 Base,
                 V,
@@ -1665,7 +1800,7 @@ impl LinearForm {
         Pnt2: &crate::gp::Pnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_LinearForm_perform_shape_vec2_pnt2(
+            crate::ffi_extern_TKFeat::LocOpe_LinearForm_perform_shape_vec2_pnt2(
                 self as *mut Self,
                 Base,
                 V,
@@ -1679,20 +1814,28 @@ impl LinearForm {
     /// **Source:** `LocOpe_LinearForm.hxx`:60 - `LocOpe_LinearForm::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_LinearForm_first_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_LinearForm_first_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:62 - `LocOpe_LinearForm::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_LinearForm_last_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_LinearForm_last_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:64 - `LocOpe_LinearForm::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_LinearForm_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_LinearForm_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_LinearForm.hxx`:66 - `LocOpe_LinearForm::Shapes()`
@@ -1702,9 +1845,15 @@ impl LinearForm {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub unsafe fn shapes(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_LinearForm_shapes(self as *const Self, S)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_LinearForm_shapes(
+                self as *const Self,
+                S,
+            )))
         }
     }
 }
@@ -1716,11 +1865,11 @@ impl LinearForm {
 /// **Source:** `LocOpe_Pipe.hxx`:35 - `LocOpe_Pipe`
 /// Defines a  pipe  (near from   Pipe from BRepFill),
 /// with modifications provided for the Pipe feature.
-pub use crate::ffi::LocOpe_Pipe as Pipe;
+pub use crate::ffi_types::LocOpe_Pipe as Pipe;
 
 unsafe impl crate::CppDeletable for Pipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Pipe_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Pipe_destructor(ptr);
     }
 }
 
@@ -1731,35 +1880,55 @@ impl Pipe {
         Profile: &crate::topo_ds::Shape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Pipe_ctor_wire_shape(
-                Spine, Profile,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Pipe_ctor_wire_shape(Spine, Profile),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:42 - `LocOpe_Pipe::Spine()`
     pub fn spine(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_spine(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_spine(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:44 - `LocOpe_Pipe::Profile()`
     pub fn profile(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_profile(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_profile(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:46 - `LocOpe_Pipe::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_first_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_first_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:48 - `LocOpe_Pipe::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_last_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_last_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:50 - `LocOpe_Pipe::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:52 - `LocOpe_Pipe::Shapes()`
@@ -1772,8 +1941,13 @@ impl Pipe {
     pub unsafe fn shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_shapes(self as *mut Self, S))) }
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_shapes(
+                self as *mut Self,
+                S,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:54 - `LocOpe_Pipe::Curves()`
@@ -1785,17 +1959,22 @@ impl Pipe {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn curves(
         &mut self,
-        Spt: &crate::ffi::TColgp_SequenceOfPnt,
-    ) -> &crate::ffi::TColGeom_SequenceOfCurve {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Pipe_curves(self as *mut Self, Spt))) }
+        Spt: &crate::ffi_types::TColgp_SequenceOfPnt,
+    ) -> &crate::ffi_types::TColGeom_SequenceOfCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Pipe_curves(
+                self as *mut Self,
+                Spt,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Pipe.hxx`:56 - `LocOpe_Pipe::BarycCurve()`
-    pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn baryc_curve(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Pipe_baryc_curve(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Pipe_baryc_curve(self as *mut Self),
+            ))
         }
     }
 }
@@ -1805,11 +1984,11 @@ impl Pipe {
 // ========================
 
 /// **Source:** `LocOpe_PntFace.hxx`:29 - `LocOpe_PntFace`
-pub use crate::ffi::LocOpe_PntFace as PntFace;
+pub use crate::ffi_types::LocOpe_PntFace as PntFace;
 
 unsafe impl crate::CppDeletable for PntFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_PntFace_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_PntFace_destructor(ptr);
     }
 }
 
@@ -1817,7 +1996,11 @@ impl PntFace {
     /// **Source:** `LocOpe_PntFace.hxx`:35 - `LocOpe_PntFace::LocOpe_PntFace()`
     /// Empty constructor. Useful only for the list.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_PntFace_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_PntFace_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:42 - `LocOpe_PntFace::LocOpe_PntFace()`
@@ -1831,7 +2014,7 @@ impl PntFace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_PntFace_ctor_pnt_face_orientation_real3(
+                crate::ffi_extern_TKFeat::LocOpe_PntFace_ctor_pnt_face_orientation_real3(
                     P,
                     F,
                     Or.into(),
@@ -1845,18 +2028,26 @@ impl PntFace {
 
     /// **Source:** `LocOpe_PntFace.hxx`:57 - `LocOpe_PntFace::Pnt()`
     pub fn pnt(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_PntFace_pnt(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_PntFace_pnt(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:59 - `LocOpe_PntFace::Face()`
     pub fn face(&self) -> &crate::topo_ds::Face {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_PntFace_face(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_PntFace_face(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:61 - `LocOpe_PntFace::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::LocOpe_PntFace_orientation(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_PntFace_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -1865,7 +2056,7 @@ impl PntFace {
     pub fn change_orientation(&mut self) -> &mut crate::top_abs::Orientation {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LocOpe_PntFace_change_orientation(self as *mut Self)
+                crate::ffi_extern_TKFeat::LocOpe_PntFace_change_orientation(self as *mut Self)
             });
             unsafe { &mut *(__val as *mut crate::top_abs::Orientation) }
         }
@@ -1873,17 +2064,23 @@ impl PntFace {
 
     /// **Source:** `LocOpe_PntFace.hxx`:65 - `LocOpe_PntFace::Parameter()`
     pub fn parameter(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LocOpe_PntFace_parameter(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_PntFace_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:67 - `LocOpe_PntFace::UParameter()`
     pub fn u_parameter(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LocOpe_PntFace_u_parameter(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_PntFace_u_parameter(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_PntFace.hxx`:69 - `LocOpe_PntFace::VParameter()`
     pub fn v_parameter(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::LocOpe_PntFace_v_parameter(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_PntFace_v_parameter(self as *const Self)
+        })
     }
 }
 
@@ -1894,18 +2091,22 @@ impl PntFace {
 /// **Source:** `LocOpe_Prism.hxx`:33 - `LocOpe_Prism`
 /// Defines a prism (using Prism from BRepSweep)
 /// with modifications provided for the Prism feature.
-pub use crate::ffi::LocOpe_Prism as Prism;
+pub use crate::ffi_types::LocOpe_Prism as Prism;
 
 unsafe impl crate::CppDeletable for Prism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Prism_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Prism_destructor(ptr);
     }
 }
 
 impl Prism {
     /// **Source:** `LocOpe_Prism.hxx`:38 - `LocOpe_Prism::LocOpe_Prism()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Prism_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Prism_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:40 - `LocOpe_Prism::LocOpe_Prism()`
@@ -1914,9 +2115,9 @@ impl Prism {
         V: &crate::gp::Vec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Prism_ctor_shape_vec(
-                Base, V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Prism_ctor_shape_vec(Base, V),
+            ))
         }
     }
 
@@ -1928,7 +2129,7 @@ impl Prism {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_Prism_ctor_shape_vec2(Base, V, Vectra),
+                crate::ffi_extern_TKFeat::LocOpe_Prism_ctor_shape_vec2(Base, V, Vectra),
             ))
         }
     }
@@ -1936,7 +2137,7 @@ impl Prism {
     /// **Source:** `LocOpe_Prism.hxx`:44 - `LocOpe_Prism::Perform()`
     pub fn perform_shape_vec(&mut self, Base: &crate::topo_ds::Shape, V: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Prism_perform_shape_vec(self as *mut Self, Base, V)
+            crate::ffi_extern_TKFeat::LocOpe_Prism_perform_shape_vec(self as *mut Self, Base, V)
         })
     }
 
@@ -1948,25 +2149,40 @@ impl Prism {
         Vtra: &crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Prism_perform_shape_vec2(self as *mut Self, Base, V, Vtra)
+            crate::ffi_extern_TKFeat::LocOpe_Prism_perform_shape_vec2(
+                self as *mut Self,
+                Base,
+                V,
+                Vtra,
+            )
         })
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:48 - `LocOpe_Prism::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Prism_first_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Prism_first_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:50 - `LocOpe_Prism::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Prism_last_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Prism_last_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:52 - `LocOpe_Prism::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Prism_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Prism_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:54 - `LocOpe_Prism::Shapes()`
@@ -1976,23 +2192,31 @@ impl Prism {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Prism_shapes(self as *const Self, S))) }
+    pub unsafe fn shapes(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Prism_shapes(
+                self as *const Self,
+                S,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:56 - `LocOpe_Prism::Curves()`
-    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::TColGeom_SequenceOfCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Prism_curves(self as *const Self, SCurves)
+            crate::ffi_extern_TKFeat::LocOpe_Prism_curves(self as *const Self, SCurves)
         })
     }
 
     /// **Source:** `LocOpe_Prism.hxx`:58 - `LocOpe_Prism::BarycCurve()`
-    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Prism_baryc_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Prism_baryc_curve(self as *const Self),
+            ))
         }
     }
 }
@@ -2004,18 +2228,22 @@ impl Prism {
 /// **Source:** `LocOpe_Revol.hxx`:33 - `LocOpe_Revol`
 /// Defines a prism (using Prism from BRepSweep)
 /// with modifications provided for the Prism feature.
-pub use crate::ffi::LocOpe_Revol as Revol;
+pub use crate::ffi_types::LocOpe_Revol as Revol;
 
 unsafe impl crate::CppDeletable for Revol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Revol_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Revol_destructor(ptr);
     }
 }
 
 impl Revol {
     /// **Source:** `LocOpe_Revol.hxx`:38 - `LocOpe_Revol::LocOpe_Revol()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Revol_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Revol_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:40 - `LocOpe_Revol::LocOpe_Revol()`
@@ -2027,7 +2255,9 @@ impl Revol {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_Revol_ctor_shape_ax1_real2(Base, Axis, Angle, angledec),
+                crate::ffi_extern_TKFeat::LocOpe_Revol_ctor_shape_ax1_real2(
+                    Base, Axis, Angle, angledec,
+                ),
             ))
         }
     }
@@ -2040,7 +2270,7 @@ impl Revol {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_Revol_ctor_shape_ax1_real(Base, Axis, Angle),
+                crate::ffi_extern_TKFeat::LocOpe_Revol_ctor_shape_ax1_real(Base, Axis, Angle),
             ))
         }
     }
@@ -2054,7 +2284,7 @@ impl Revol {
         angledec: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Revol_perform_shape_ax1_real2(
+            crate::ffi_extern_TKFeat::LocOpe_Revol_perform_shape_ax1_real2(
                 self as *mut Self,
                 Base,
                 Axis,
@@ -2072,25 +2302,40 @@ impl Revol {
         Angle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Revol_perform_shape_ax1_real(self as *mut Self, Base, Axis, Angle)
+            crate::ffi_extern_TKFeat::LocOpe_Revol_perform_shape_ax1_real(
+                self as *mut Self,
+                Base,
+                Axis,
+                Angle,
+            )
         })
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:58 - `LocOpe_Revol::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Revol_first_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Revol_first_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:60 - `LocOpe_Revol::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Revol_last_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Revol_last_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:62 - `LocOpe_Revol::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Revol_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Revol_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:64 - `LocOpe_Revol::Shapes()`
@@ -2100,23 +2345,31 @@ impl Revol {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Revol_shapes(self as *const Self, S))) }
+    pub unsafe fn shapes(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Revol_shapes(
+                self as *const Self,
+                S,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:66 - `LocOpe_Revol::Curves()`
-    pub fn curves(&self, SCurves: &mut crate::ffi::TColGeom_SequenceOfCurve) {
+    pub fn curves(&self, SCurves: &mut crate::ffi_types::TColGeom_SequenceOfCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Revol_curves(self as *const Self, SCurves)
+            crate::ffi_extern_TKFeat::LocOpe_Revol_curves(self as *const Self, SCurves)
         })
     }
 
     /// **Source:** `LocOpe_Revol.hxx`:68 - `LocOpe_Revol::BarycCurve()`
-    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn baryc_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Revol_baryc_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Revol_baryc_curve(self as *const Self),
+            ))
         }
     }
 }
@@ -2128,11 +2381,11 @@ impl Revol {
 /// **Source:** `LocOpe_RevolutionForm.hxx`:32 - `LocOpe_RevolutionForm`
 /// Defines a revolution form (using Revol from BRepSweep)
 /// with modifications provided for the RevolutionForm feature.
-pub use crate::ffi::LocOpe_RevolutionForm as RevolutionForm;
+pub use crate::ffi_types::LocOpe_RevolutionForm as RevolutionForm;
 
 unsafe impl crate::CppDeletable for RevolutionForm {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_RevolutionForm_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_destructor(ptr);
     }
 }
 
@@ -2140,7 +2393,9 @@ impl RevolutionForm {
     /// **Source:** `LocOpe_RevolutionForm.hxx`:37 - `LocOpe_RevolutionForm::LocOpe_RevolutionForm()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_RevolutionForm_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_ctor(),
+            ))
         }
     }
 
@@ -2152,7 +2407,9 @@ impl RevolutionForm {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_RevolutionForm_ctor_shape_ax1_real(Base, Axe, Angle),
+                crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_ctor_shape_ax1_real(
+                    Base, Axe, Angle,
+                ),
             ))
         }
     }
@@ -2160,14 +2417,19 @@ impl RevolutionForm {
     /// **Source:** `LocOpe_RevolutionForm.hxx`:43 - `LocOpe_RevolutionForm::Perform()`
     pub fn perform(&mut self, Base: &crate::topo_ds::Shape, Axe: &crate::gp::Ax1, Angle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_RevolutionForm_perform(self as *mut Self, Base, Axe, Angle)
+            crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_perform(
+                self as *mut Self,
+                Base,
+                Axe,
+                Angle,
+            )
         })
     }
 
     /// **Source:** `LocOpe_RevolutionForm.hxx`:47 - `LocOpe_RevolutionForm::FirstShape()`
     pub fn first_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_RevolutionForm_first_shape(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_first_shape(
                 self as *const Self,
             )))
         }
@@ -2176,7 +2438,7 @@ impl RevolutionForm {
     /// **Source:** `LocOpe_RevolutionForm.hxx`:49 - `LocOpe_RevolutionForm::LastShape()`
     pub fn last_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_RevolutionForm_last_shape(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_last_shape(
                 self as *const Self,
             )))
         }
@@ -2185,7 +2447,9 @@ impl RevolutionForm {
     /// **Source:** `LocOpe_RevolutionForm.hxx`:51 - `LocOpe_RevolutionForm::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_RevolutionForm_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2196,9 +2460,12 @@ impl RevolutionForm {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn shapes(&self, S: &crate::topo_ds::Shape) -> &crate::ffi::TopTools_ListOfShape {
+    pub unsafe fn shapes(
+        &self,
+        S: &crate::topo_ds::Shape,
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_RevolutionForm_shapes(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_RevolutionForm_shapes(
                 self as *const Self,
                 S,
             )))
@@ -2216,11 +2483,11 @@ impl RevolutionForm {
 /// - split a face of the shape with a wire,
 /// - put draft angle on both side of the wire.
 /// For each side, the draft angle may be different.
-pub use crate::ffi::LocOpe_SplitDrafts as SplitDrafts;
+pub use crate::ffi_types::LocOpe_SplitDrafts as SplitDrafts;
 
 unsafe impl crate::CppDeletable for SplitDrafts {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_SplitDrafts_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_destructor(ptr);
     }
 }
 
@@ -2229,7 +2496,9 @@ impl SplitDrafts {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_SplitDrafts_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_ctor(),
+            ))
         }
     }
 
@@ -2238,7 +2507,7 @@ impl SplitDrafts {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_SplitDrafts_ctor_shape(S),
+                crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_ctor_shape(S),
             ))
         }
     }
@@ -2247,7 +2516,7 @@ impl SplitDrafts {
     /// Initializes the algorithm with the shape <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_SplitDrafts_init(self as *mut Self, S)
+            crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_init(self as *mut Self, S)
         })
     }
 
@@ -2281,19 +2550,7 @@ impl SplitDrafts {
         ModifyRight: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_SplitDrafts_perform_face_wire_dir_pln_real_dir_pln_real_bool2(
-                self as *mut Self,
-                F,
-                W,
-                Extractg,
-                NPlg,
-                Angleg,
-                Extractd,
-                NPld,
-                Angled,
-                ModifyLeft,
-                ModifyRight,
-            )
+            crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_perform_face_wire_dir_pln_real_dir_pln_real_bool2(self as *mut Self, F, W, Extractg, NPlg, Angleg, Extractd, NPld, Angled, ModifyLeft, ModifyRight)
         })
     }
 
@@ -2315,7 +2572,7 @@ impl SplitDrafts {
         Angle: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_SplitDrafts_perform_face_wire_dir_pln_real(
+            crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_perform_face_wire_dir_pln_real(
                 self as *mut Self,
                 F,
                 W,
@@ -2329,13 +2586,15 @@ impl SplitDrafts {
     /// **Source:** `LocOpe_SplitDrafts.hxx`:95 - `LocOpe_SplitDrafts::IsDone()`
     /// Returns <Standard_True> if the modification has been successfully performed.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_SplitDrafts_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_SplitDrafts.hxx`:97 - `LocOpe_SplitDrafts::OriginalShape()`
     pub fn original_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_SplitDrafts_original_shape(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_original_shape(
                 self as *const Self,
             )))
         }
@@ -2345,7 +2604,9 @@ impl SplitDrafts {
     /// Returns the modified shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_SplitDrafts_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2360,9 +2621,9 @@ impl SplitDrafts {
     pub unsafe fn shapes_from_shape(
         &self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_SplitDrafts_shapes_from_shape(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitDrafts_shapes_from_shape(
                 self as *const Self,
                 S,
             )))
@@ -2380,11 +2641,11 @@ impl SplitDrafts {
 /// - faces with wires,
 /// and  rebuilds  the shape containing the edges and
 /// the faces.
-pub use crate::ffi::LocOpe_SplitShape as SplitShape;
+pub use crate::ffi_types::LocOpe_SplitShape as SplitShape;
 
 unsafe impl crate::CppDeletable for SplitShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_SplitShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_SplitShape_destructor(ptr);
     }
 }
 
@@ -2393,7 +2654,9 @@ impl SplitShape {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_SplitShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_SplitShape_ctor(),
+            ))
         }
     }
 
@@ -2402,7 +2665,7 @@ impl SplitShape {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_SplitShape_ctor_shape(S),
+                crate::ffi_extern_TKFeat::LocOpe_SplitShape_ctor_shape(S),
             ))
         }
     }
@@ -2411,7 +2674,7 @@ impl SplitShape {
     /// Initializes the process on the shape <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_SplitShape_init(self as *mut Self, S)
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_init(self as *mut Self, S)
         })
     }
 
@@ -2419,7 +2682,7 @@ impl SplitShape {
     /// Tests if it is possible to split the edge <E>.
     pub fn can_split(&self, E: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_SplitShape_can_split(self as *const Self, E)
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_can_split(self as *const Self, E)
         })
     }
 
@@ -2432,7 +2695,12 @@ impl SplitShape {
         E: &crate::topo_ds::Edge,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_SplitShape_add_vertex_real_edge(self as *mut Self, V, P, E)
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_add_vertex_real_edge(
+                self as *mut Self,
+                V,
+                P,
+                E,
+            )
         })
     }
 
@@ -2440,7 +2708,7 @@ impl SplitShape {
     /// Adds the wire <W> on the face <F>.
     pub fn add_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_SplitShape_add_wire_face(self as *mut Self, W, F)
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_add_wire_face(self as *mut Self, W, F)
         })
     }
 
@@ -2448,18 +2716,26 @@ impl SplitShape {
     /// Adds the list of wires <Lwires> on the face <F>.
     pub fn add_listofshape_face(
         &mut self,
-        Lwires: &crate::ffi::TopTools_ListOfShape,
+        Lwires: &crate::ffi_types::TopTools_ListOfShape,
         F: &crate::topo_ds::Face,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_SplitShape_add_listofshape_face(self as *mut Self, Lwires, F)
+            crate::ffi_extern_TKFeat::LocOpe_SplitShape_add_listofshape_face(
+                self as *mut Self,
+                Lwires,
+                F,
+            )
         })
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:64 - `LocOpe_SplitShape::Shape()`
     /// Returns the "original" shape.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_SplitShape_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitShape_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_SplitShape.hxx`:67 - `LocOpe_SplitShape::DescendantShapes()`
@@ -2473,9 +2749,9 @@ impl SplitShape {
     pub unsafe fn descendant_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_SplitShape_descendant_shapes(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitShape_descendant_shapes(
                 self as *mut Self,
                 S,
             )))
@@ -2498,9 +2774,13 @@ impl SplitShape {
         &mut self,
         W: &crate::topo_ds::Wire,
         F: &crate::topo_ds::Face,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_SplitShape_left_of(self as *mut Self, W, F)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_SplitShape_left_of(
+                self as *mut Self,
+                W,
+                F,
+            )))
         }
     }
 }
@@ -2510,11 +2790,11 @@ impl SplitShape {
 // ========================
 
 /// **Source:** `LocOpe_Spliter.hxx`:29 - `LocOpe_Spliter`
-pub use crate::ffi::LocOpe_Spliter as Spliter;
+pub use crate::ffi_types::LocOpe_Spliter as Spliter;
 
 unsafe impl crate::CppDeletable for Spliter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_Spliter_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_Spliter_destructor(ptr);
     }
 }
 
@@ -2522,55 +2802,73 @@ impl Spliter {
     /// **Source:** `LocOpe_Spliter.hxx`:35 - `LocOpe_Spliter::LocOpe_Spliter()`
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Spliter_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Spliter_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:38 - `LocOpe_Spliter::LocOpe_Spliter()`
     /// Creates the algorithm on the shape <S>.
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_Spliter_ctor_shape(S)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_Spliter_ctor_shape(S),
+            ))
         }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:41 - `LocOpe_Spliter::Init()`
     /// Initializes the algorithm on the shape <S>.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
-        crate::check_void_result(unsafe { crate::ffi::LocOpe_Spliter_init(self as *mut Self, S) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Spliter_init(self as *mut Self, S)
+        })
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:43 - `LocOpe_Spliter::Perform()`
-    pub fn perform(&mut self, PW: &crate::ffi::HandleLocOpeWiresOnShape) {
+    pub fn perform(&mut self, PW: &crate::ffi_types::HandleLocOpeWiresOnShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_Spliter_perform(self as *mut Self, PW)
+            crate::ffi_extern_TKFeat::LocOpe_Spliter_perform(self as *mut Self, PW)
         })
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:45 - `LocOpe_Spliter::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_Spliter_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_Spliter_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:48 - `LocOpe_Spliter::ResultingShape()`
     /// Returns the new shape
     pub fn resulting_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Spliter_resulting_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Spliter_resulting_shape(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:51 - `LocOpe_Spliter::Shape()`
     /// Returns the initial shape
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Spliter_shape(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Spliter_shape(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:55 - `LocOpe_Spliter::DirectLeft()`
     /// Returns  the faces   which  are the  left of   the
     /// projected wires and which are
-    pub fn direct_left(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn direct_left(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Spliter_direct_left(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Spliter_direct_left(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2578,8 +2876,12 @@ impl Spliter {
     /// Returns the faces of the "left" part on the shape.
     /// (It  is build   from  DirectLeft,  with  the faces
     /// connected to this set, and so on...).
-    pub fn left(&self) -> &crate::ffi::TopTools_ListOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_Spliter_left(self as *const Self))) }
+    pub fn left(&self) -> &crate::ffi_types::TopTools_ListOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Spliter_left(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `LocOpe_Spliter.hxx`:63 - `LocOpe_Spliter::DescendantShapes()`
@@ -2593,9 +2895,9 @@ impl Spliter {
     pub unsafe fn descendant_shapes(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_Spliter_descendant_shapes(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_Spliter_descendant_shapes(
                 self as *mut Self,
                 S,
             )))
@@ -2608,11 +2910,11 @@ impl Spliter {
 // ========================
 
 /// **Source:** `LocOpe_WiresOnShape.hxx`:40 - `LocOpe_WiresOnShape`
-pub use crate::ffi::LocOpe_WiresOnShape as WiresOnShape;
+pub use crate::ffi_types::LocOpe_WiresOnShape as WiresOnShape;
 
 unsafe impl crate::CppDeletable for WiresOnShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocOpe_WiresOnShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_destructor(ptr);
     }
 }
 
@@ -2621,7 +2923,7 @@ impl WiresOnShape {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_WiresOnShape_ctor_shape(S),
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_ctor_shape(S),
             ))
         }
     }
@@ -2629,7 +2931,7 @@ impl WiresOnShape {
     /// **Source:** `LocOpe_WiresOnShape.hxx`:46 - `LocOpe_WiresOnShape::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_init(self as *mut Self, S)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_init(self as *mut Self, S)
         })
     }
 
@@ -2637,9 +2939,9 @@ impl WiresOnShape {
     /// Add splitting edges or wires for whole initial shape
     /// without additional specification edge->face, edge->edge
     /// This method puts edge on the corresponding faces from initial shape
-    pub fn add(&mut self, theEdges: &crate::ffi::TopTools_SequenceOfShape) -> bool {
+    pub fn add(&mut self, theEdges: &crate::ffi_types::TopTools_SequenceOfShape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_add(self as *mut Self, theEdges)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_add(self as *mut Self, theEdges)
         })
     }
 
@@ -2648,14 +2950,17 @@ impl WiresOnShape {
     /// default value is True (to check)
     pub fn set_check_interior(&mut self, ToCheckInterior: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_set_check_interior(self as *mut Self, ToCheckInterior)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_set_check_interior(
+                self as *mut Self,
+                ToCheckInterior,
+            )
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:57 - `LocOpe_WiresOnShape::Bind()`
     pub fn bind_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_bind_wire_face(self as *mut Self, W, F)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_bind_wire_face(self as *mut Self, W, F)
         })
     }
 
@@ -2666,54 +2971,66 @@ impl WiresOnShape {
         F: &crate::topo_ds::Face,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_bind_compound_face(self as *mut Self, Comp, F)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_bind_compound_face(
+                self as *mut Self,
+                Comp,
+                F,
+            )
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:61 - `LocOpe_WiresOnShape::Bind()`
     pub fn bind_edge_face(&mut self, E: &crate::topo_ds::Edge, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_bind_edge_face(self as *mut Self, E, F)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_bind_edge_face(self as *mut Self, E, F)
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:63 - `LocOpe_WiresOnShape::Bind()`
     pub fn bind_edge2(&mut self, EfromW: &crate::topo_ds::Edge, EonFace: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_bind_edge2(self as *mut Self, EfromW, EonFace)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_bind_edge2(
+                self as *mut Self,
+                EfromW,
+                EonFace,
+            )
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:65 - `LocOpe_WiresOnShape::BindAll()`
     pub fn bind_all(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_bind_all(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_bind_all(self as *mut Self)
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:67 - `LocOpe_WiresOnShape::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_WiresOnShape_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:69 - `LocOpe_WiresOnShape::InitEdgeIterator()`
     pub fn init_edge_iterator(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_init_edge_iterator(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_init_edge_iterator(self as *mut Self)
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:71 - `LocOpe_WiresOnShape::MoreEdge()`
     pub fn more_edge(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::LocOpe_WiresOnShape_more_edge(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_more_edge(self as *mut Self)
+        })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:73 - `LocOpe_WiresOnShape::Edge()`
     pub fn edge(&mut self) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_WiresOnShape_edge(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_edge(self as *mut Self),
+            ))
         }
     }
 
@@ -2722,9 +3039,9 @@ impl WiresOnShape {
     /// edge is projected.
     pub fn on_face(&mut self) -> crate::OwnedPtr<crate::topo_ds::Face> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocOpe_WiresOnShape_on_face(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_on_face(self as *mut Self),
+            ))
         }
     }
 
@@ -2734,14 +3051,14 @@ impl WiresOnShape {
     /// Otherwise, returns <Standard_False>.
     pub fn on_edge_edge(&mut self, E: &mut crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_on_edge_edge(self as *mut Self, E)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_on_edge_edge(self as *mut Self, E)
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:84 - `LocOpe_WiresOnShape::NextEdge()`
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_next_edge(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_next_edge(self as *mut Self)
         })
     }
 
@@ -2752,7 +3069,11 @@ impl WiresOnShape {
         Vshape: &mut crate::topo_ds::Vertex,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_on_vertex(self as *mut Self, Vwire, Vshape)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_on_vertex(
+                self as *mut Self,
+                Vwire,
+                Vshape,
+            )
         })
     }
 
@@ -2769,7 +3090,12 @@ impl WiresOnShape {
         P: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_on_edge_vertex_edge_real(self as *mut Self, V, E, P)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_on_edge_vertex_edge_real(
+                self as *mut Self,
+                V,
+                E,
+                P,
+            )
         })
     }
 
@@ -2787,7 +3113,7 @@ impl WiresOnShape {
         P: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_on_edge_vertex_edge2_real(
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_on_edge_vertex_edge2_real(
                 self as *mut Self,
                 V,
                 EdgeFrom,
@@ -2801,14 +3127,17 @@ impl WiresOnShape {
     /// tells is the face to be split by section or not
     pub fn is_face_with_section(&self, aFace: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_is_face_with_section(self as *const Self, aFace)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_is_face_with_section(
+                self as *const Self,
+                aFace,
+            )
         })
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::LocOpe_WiresOnShape_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2818,7 +3147,7 @@ impl WiresOnShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::LocOpe_WiresOnShape_get_type_name(),
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2826,50 +3155,64 @@ impl WiresOnShape {
     }
 
     /// **Source:** `LocOpe_WiresOnShape.hxx`:108 - `LocOpe_WiresOnShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::LocOpe_WiresOnShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::LocOpe_WiresOnShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::LocOpe_WiresOnShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleLocOpeWiresOnShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleLocOpeWiresOnShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocOpe_WiresOnShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2877,7 +3220,7 @@ impl WiresOnShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::LocOpe_WiresOnShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2890,62 +3233,70 @@ impl WiresOnShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocOpe_WiresOnShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFeat::LocOpe_WiresOnShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleLocOpeWiresOnShape;
+pub use crate::ffi_types::HandleLocOpeWiresOnShape;
 
 unsafe impl crate::CppDeletable for HandleLocOpeWiresOnShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleLocOpeWiresOnShape_destructor(ptr);
+        crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_destructor(ptr);
     }
 }
 
 impl HandleLocOpeWiresOnShape {
     /// Dereference this Handle to access the underlying LocOpe_WiresOnShape
-    pub fn get(&self) -> &crate::ffi::LocOpe_WiresOnShape {
+    pub fn get(&self) -> &crate::ffi_types::LocOpe_WiresOnShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleLocOpeWiresOnShape_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying LocOpe_WiresOnShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::LocOpe_WiresOnShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::LocOpe_WiresOnShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleLocOpeWiresOnShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<LocOpe_WiresOnShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleLocOpeWiresOnShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKFeat::HandleLocOpeWiresOnShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2957,6 +3308,6 @@ impl HandleLocOpeWiresOnShape {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     LocOpe_SequenceOfCirc as SequenceOfCirc, LocOpe_SequenceOfLin as SequenceOfLin,
 };

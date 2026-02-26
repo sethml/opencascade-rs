@@ -9,11 +9,13 @@
 /// **Source:** `GeomFill.hxx`:44 - `GeomFill::Surface`
 /// Builds a ruled surface between the two curves, Curve1 and Curve2.
 pub fn surface(
-    Curve1: &crate::ffi::HandleGeomCurve,
-    Curve2: &crate::ffi::HandleGeomCurve,
-) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    Curve1: &crate::ffi_types::HandleGeomCurve,
+    Curve2: &crate::ffi_types::HandleGeomCurve,
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_surface(Curve1, Curve2)))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_surface(Curve1, Curve2),
+        ))
     }
 }
 /// **Source:** `GeomFill.hxx`:126 - `GeomFill::GetTolerance`
@@ -27,7 +29,13 @@ pub fn get_tolerance(
     SpatialTol: f64,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::GeomFill_get_tolerance(TConv.into(), AngleMin, Radius, AngularTol, SpatialTol)
+        crate::ffi_extern_TKGeomAlgo::GeomFill_get_tolerance(
+            TConv.into(),
+            AngleMin,
+            Radius,
+            AngularTol,
+            SpatialTol,
+        )
     })
 }
 
@@ -163,7 +171,9 @@ impl TryFrom<i32> for Trihedron {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleAdaptor3dCurve, HandleApproxSweepFunction, HandleStandardTransient};
+pub use crate::ffi_types::{
+    HandleAdaptor3dCurve, HandleApproxSweepFunction, HandleStandardTransient,
+};
 
 // ========================
 // From GeomFill_AppSurf.hxx
@@ -172,11 +182,11 @@ pub use crate::ffi::{HandleAdaptor3dCurve, HandleApproxSweepFunction, HandleStan
 /// **Source:** `GeomFill_AppSurf.hxx`:47 - `GeomFill_AppSurf`
 /// Approximate a  BSplineSurface passing by all the
 /// curves described in the SectionGenerator
-pub use crate::ffi::GeomFill_AppSurf as AppSurf;
+pub use crate::ffi_types::GeomFill_AppSurf as AppSurf;
 
 unsafe impl crate::CppDeletable for AppSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_AppSurf_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_destructor(ptr);
     }
 }
 
@@ -184,7 +194,9 @@ impl AppSurf {
     /// **Source:** `GeomFill_AppSurf.hxx`:52 - `GeomFill_AppSurf::GeomFill_AppSurf()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_AppSurf_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_ctor(),
+            ))
         }
     }
 
@@ -199,7 +211,7 @@ impl AppSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_AppSurf_ctor_int2_real2_int_bool(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_ctor_int2_real2_int_bool(
                     Degmin,
                     Degmax,
                     Tol3d,
@@ -233,7 +245,7 @@ impl AppSurf {
         KnownParameters: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_init(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_init(
                 self as *mut Self,
                 Degmin,
                 Degmax,
@@ -249,7 +261,10 @@ impl AppSurf {
     /// Define the type of parametrization used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_set_par_type(self as *mut Self, ParType.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_set_par_type(
+                self as *mut Self,
+                ParType.into(),
+            )
         })
     }
 
@@ -257,7 +272,10 @@ impl AppSurf {
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_set_continuity(self as *mut Self, C.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_set_continuity(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
@@ -268,7 +286,12 @@ impl AppSurf {
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_set_criterium_weight(self as *mut Self, W1, W2, W3)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_set_criterium_weight(
+                self as *mut Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
@@ -276,7 +299,7 @@ impl AppSurf {
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_par_type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_par_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -285,7 +308,7 @@ impl AppSurf {
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_continuity(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -295,58 +318,59 @@ impl AppSurf {
     /// the  optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_criterium_weight(self as *const Self, W1, W2, W3)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_criterium_weight(
+                self as *const Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:94 - `GeomFill_AppSurf::Perform()`
     pub fn perform_handlegeomfillline_sectiongenerator_bool(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SectionGenerator,
         SpApprox: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_perform_handlegeomfillline_sectiongenerator_bool(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                SpApprox,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_perform_handlegeomfillline_sectiongenerator_bool(self as *mut Self, Lin, SecGen, SpApprox)
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:98 - `GeomFill_AppSurf::PerformSmoothing()`
     pub fn perform_smoothing(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SectionGenerator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_perform_smoothing(self as *mut Self, Lin, SecGen)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_perform_smoothing(
+                self as *mut Self,
+                Lin,
+                SecGen,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:101 - `GeomFill_AppSurf::Perform()`
     pub fn perform_handlegeomfillline_sectiongenerator_int(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SectionGenerator,
         NbMaxP: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_perform_handlegeomfillline_sectiongenerator_int(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                NbMaxP,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_perform_handlegeomfillline_sectiongenerator_int(self as *mut Self, Lin, SecGen, NbMaxP)
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:105 - `GeomFill_AppSurf::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSurf_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:107 - `GeomFill_AppSurf::SurfShape()`
@@ -360,7 +384,7 @@ impl AppSurf {
         NbVKnots: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_surf_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_shape(
                 self as *const Self,
                 UDegree,
                 VDegree,
@@ -375,15 +399,15 @@ impl AppSurf {
     /// **Source:** `GeomFill_AppSurf.hxx`:114 - `GeomFill_AppSurf::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_surface(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surface(
                 self as *const Self,
                 TPoles,
                 TWeights,
@@ -397,67 +421,83 @@ impl AppSurf {
 
     /// **Source:** `GeomFill_AppSurf.hxx`:121 - `GeomFill_AppSurf::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSurf_u_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:123 - `GeomFill_AppSurf::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSurf_v_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:125 - `GeomFill_AppSurf::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_poles(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:127 - `GeomFill_AppSurf::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_weights(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_weights(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:129 - `GeomFill_AppSurf::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_u_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_u_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:131 - `GeomFill_AppSurf::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_v_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_v_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:133 - `GeomFill_AppSurf::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_u_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_u_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:135 - `GeomFill_AppSurf::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_surf_v_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_surf_v_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:137 - `GeomFill_AppSurf::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:139 - `GeomFill_AppSurf::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_curves2d_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curves2d_shape(
                 self as *const Self,
                 Degree,
                 NbPoles,
@@ -470,26 +510,32 @@ impl AppSurf {
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_curve2d(self as *const Self, Index, TPoles, TKnots, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curve2d(
+                self as *const Self,
+                Index,
+                TPoles,
+                TKnots,
+                TMults,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:148 - `GeomFill_AppSurf::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_curves2d_degree(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curves2d_degree(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:150 - `GeomFill_AppSurf::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_curve2d_poles(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curve2d_poles(
                 self as *const Self,
                 Index,
             )))
@@ -497,18 +543,18 @@ impl AppSurf {
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:152 - `GeomFill_AppSurf::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_curves2d_knots(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curves2d_knots(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:154 - `GeomFill_AppSurf::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSurf_curves2d_mults(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_curves2d_mults(
                 self as *const Self,
             )))
         }
@@ -517,32 +563,43 @@ impl AppSurf {
     /// **Source:** `GeomFill_AppSurf.hxx`:156 - `GeomFill_AppSurf::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_tol_reached(self as *const Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_tol_reached(
+                self as *const Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSurf.hxx`:158 - `GeomFill_AppSurf::TolCurveOnSurf()`
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSurf_tol_curve_on_surf(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_tol_curve_on_surf(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_AppSurf_as_AppBlend_Approx(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_as_AppBlend_Approx(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_AppSurf_as_AppBlend_Approx_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSurf_as_AppBlend_Approx_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -554,11 +611,11 @@ impl AppSurf {
 /// **Source:** `GeomFill_AppSweep.hxx`:47 - `GeomFill_AppSweep`
 /// Approximate a sweep surface passing  by  all the
 /// curves described in the SweepSectionGenerator.
-pub use crate::ffi::GeomFill_AppSweep as AppSweep;
+pub use crate::ffi_types::GeomFill_AppSweep as AppSweep;
 
 unsafe impl crate::CppDeletable for AppSweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_AppSweep_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_destructor(ptr);
     }
 }
 
@@ -566,7 +623,9 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:52 - `GeomFill_AppSweep::GeomFill_AppSweep()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_AppSweep_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_ctor(),
+            ))
         }
     }
 
@@ -581,7 +640,7 @@ impl AppSweep {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_AppSweep_ctor_int2_real2_int_bool(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_ctor_int2_real2_int_bool(
                     Degmin,
                     Degmax,
                     Tol3d,
@@ -615,7 +674,7 @@ impl AppSweep {
         KnownParameters: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_init(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_init(
                 self as *mut Self,
                 Degmin,
                 Degmax,
@@ -631,7 +690,10 @@ impl AppSweep {
     /// Define the type of parametrization used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_set_par_type(self as *mut Self, ParType.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_set_par_type(
+                self as *mut Self,
+                ParType.into(),
+            )
         })
     }
 
@@ -639,7 +701,10 @@ impl AppSweep {
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_set_continuity(self as *mut Self, C.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_set_continuity(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
@@ -650,7 +715,12 @@ impl AppSweep {
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_set_criterium_weight(self as *mut Self, W1, W2, W3)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_set_criterium_weight(
+                self as *mut Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
@@ -658,7 +728,7 @@ impl AppSweep {
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_par_type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_par_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -667,7 +737,7 @@ impl AppSweep {
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_continuity(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -677,58 +747,59 @@ impl AppSweep {
     /// the  optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_criterium_weight(self as *const Self, W1, W2, W3)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_criterium_weight(
+                self as *const Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:94 - `GeomFill_AppSweep::Perform()`
     pub fn perform_handlegeomfillline_sweepsectiongenerator_bool(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SweepSectionGenerator,
         SpApprox: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_perform_handlegeomfillline_sweepsectiongenerator_bool(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                SpApprox,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_perform_handlegeomfillline_sweepsectiongenerator_bool(self as *mut Self, Lin, SecGen, SpApprox)
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:98 - `GeomFill_AppSweep::PerformSmoothing()`
     pub fn perform_smoothing(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SweepSectionGenerator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_perform_smoothing(self as *mut Self, Lin, SecGen)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_perform_smoothing(
+                self as *mut Self,
+                Lin,
+                SecGen,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:101 - `GeomFill_AppSweep::Perform()`
     pub fn perform_handlegeomfillline_sweepsectiongenerator_int(
         &mut self,
-        Lin: &crate::ffi::HandleGeomFillLine,
+        Lin: &crate::ffi_types::HandleGeomFillLine,
         SecGen: &mut SweepSectionGenerator,
         NbMaxP: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_perform_handlegeomfillline_sweepsectiongenerator_int(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                NbMaxP,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_perform_handlegeomfillline_sweepsectiongenerator_int(self as *mut Self, Lin, SecGen, NbMaxP)
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:105 - `GeomFill_AppSweep::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSweep_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:107 - `GeomFill_AppSweep::SurfShape()`
@@ -742,7 +813,7 @@ impl AppSweep {
         NbVKnots: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_surf_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_shape(
                 self as *const Self,
                 UDegree,
                 VDegree,
@@ -757,15 +828,15 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:114 - `GeomFill_AppSweep::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_surface(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surface(
                 self as *const Self,
                 TPoles,
                 TWeights,
@@ -779,67 +850,83 @@ impl AppSweep {
 
     /// **Source:** `GeomFill_AppSweep.hxx`:121 - `GeomFill_AppSweep::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSweep_u_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:123 - `GeomFill_AppSweep::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_AppSweep_v_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:125 - `GeomFill_AppSweep::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_poles(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:127 - `GeomFill_AppSweep::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_weights(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_weights(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:129 - `GeomFill_AppSweep::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_u_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_u_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:131 - `GeomFill_AppSweep::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_v_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_v_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:133 - `GeomFill_AppSweep::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_u_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_u_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:135 - `GeomFill_AppSweep::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_surf_v_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_surf_v_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:137 - `GeomFill_AppSweep::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:139 - `GeomFill_AppSweep::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_curves2d_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curves2d_shape(
                 self as *const Self,
                 Degree,
                 NbPoles,
@@ -852,12 +939,12 @@ impl AppSweep {
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_curve2d(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curve2d(
                 self as *const Self,
                 Index,
                 TPoles,
@@ -870,14 +957,14 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:148 - `GeomFill_AppSweep::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_curves2d_degree(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curves2d_degree(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:150 - `GeomFill_AppSweep::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_curve2d_poles(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curve2d_poles(
                 self as *const Self,
                 Index,
             )))
@@ -885,18 +972,18 @@ impl AppSweep {
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:152 - `GeomFill_AppSweep::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_curves2d_knots(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curves2d_knots(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:154 - `GeomFill_AppSweep::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_AppSweep_curves2d_mults(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_curves2d_mults(
                 self as *const Self,
             )))
         }
@@ -905,32 +992,43 @@ impl AppSweep {
     /// **Source:** `GeomFill_AppSweep.hxx`:156 - `GeomFill_AppSweep::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_tol_reached(self as *const Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_tol_reached(
+                self as *const Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
     /// **Source:** `GeomFill_AppSweep.hxx`:158 - `GeomFill_AppSweep::TolCurveOnSurf()`
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_AppSweep_tol_curve_on_surf(self as *const Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_tol_curve_on_surf(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_AppSweep_as_AppBlend_Approx(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_as_AppBlend_Approx(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_AppSweep_as_AppBlend_Approx_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_AppSweep_as_AppBlend_Approx_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -952,11 +1050,11 @@ impl AppSweep {
 /// -   consulting the result.
 /// Warning
 /// Some problems may show up with rational curves.
-pub use crate::ffi::GeomFill_BSplineCurves as BSplineCurves;
+pub use crate::ffi_types::GeomFill_BSplineCurves as BSplineCurves;
 
 unsafe impl crate::CppDeletable for BSplineCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_BSplineCurves_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_destructor(ptr);
     }
 }
 
@@ -965,49 +1063,34 @@ impl BSplineCurves {
     /// Constructs a default BSpline surface framework.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::GeomFill_BSplineCurves_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_BSplineCurves.hxx`:48 - `GeomFill_BSplineCurves::GeomFill_BSplineCurves()`
     pub fn new_handlegeombsplinecurve4_fillingstyle(
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
-        C3: &crate::ffi::HandleGeomBSplineCurve,
-        C4: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
+        C3: &crate::ffi_types::HandleGeomBSplineCurve,
+        C4: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve4_fillingstyle(
-                    C1,
-                    C2,
-                    C3,
-                    C4,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve4_fillingstyle(C1, C2, C3, C4, Type.into())))
         }
     }
 
     /// **Source:** `GeomFill_BSplineCurves.hxx`:54 - `GeomFill_BSplineCurves::GeomFill_BSplineCurves()`
     pub fn new_handlegeombsplinecurve3_fillingstyle(
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
-        C3: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
+        C3: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve3_fillingstyle(
-                    C1,
-                    C2,
-                    C3,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve3_fillingstyle(C1, C2, C3, Type.into())))
         }
     }
 
@@ -1026,18 +1109,12 @@ impl BSplineCurves {
     /// Exceptions
     /// Standard_ConstructionError if the curves are not contiguous.
     pub fn new_handlegeombsplinecurve2_fillingstyle(
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve2_fillingstyle(
-                    C1,
-                    C2,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_ctor_handlegeombsplinecurve2_fillingstyle(C1, C2, Type.into())))
         }
     }
 
@@ -1045,21 +1122,14 @@ impl BSplineCurves {
     /// if the curves cannot be joined
     pub fn init_handlegeombsplinecurve4_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
-        C3: &crate::ffi::HandleGeomBSplineCurve,
-        C4: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
+        C3: &crate::ffi_types::HandleGeomBSplineCurve,
+        C4: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BSplineCurves_init_handlegeombsplinecurve4_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                C3,
-                C4,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_init_handlegeombsplinecurve4_fillingstyle(self as *mut Self, C1, C2, C3, C4, Type.into())
         })
     }
 
@@ -1067,19 +1137,13 @@ impl BSplineCurves {
     /// if the curves cannot be joined
     pub fn init_handlegeombsplinecurve3_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
-        C3: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
+        C3: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BSplineCurves_init_handlegeombsplinecurve3_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                C3,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_init_handlegeombsplinecurve3_fillingstyle(self as *mut Self, C1, C2, C3, Type.into())
         })
     }
 
@@ -1095,26 +1159,23 @@ impl BSplineCurves {
     /// Standard_ConstructionError if the curves are not contiguous.
     pub fn init_handlegeombsplinecurve2_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBSplineCurve,
-        C2: &crate::ffi::HandleGeomBSplineCurve,
+        C1: &crate::ffi_types::HandleGeomBSplineCurve,
+        C2: &crate::ffi_types::HandleGeomBSplineCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BSplineCurves_init_handlegeombsplinecurve2_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_init_handlegeombsplinecurve2_fillingstyle(self as *mut Self, C1, C2, Type.into())
         })
     }
 
     /// **Source:** `GeomFill_BSplineCurves.hxx`:104 - `GeomFill_BSplineCurves::Surface()`
     /// Returns the BSpline surface Surface resulting from
     /// the computation performed by this algorithm.
-    pub fn surface(&self) -> &crate::ffi::HandleGeomBSplineSurface {
+    pub fn surface(&self) -> &crate::ffi_types::HandleGeomBSplineSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_BSplineCurves_surface(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BSplineCurves_surface(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1135,11 +1196,11 @@ impl BSplineCurves {
 /// -   consulting the result.
 /// Warning
 /// Some problems may show up with rational curves.
-pub use crate::ffi::GeomFill_BezierCurves as BezierCurves;
+pub use crate::ffi_types::GeomFill_BezierCurves as BezierCurves;
 
 unsafe impl crate::CppDeletable for BezierCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_BezierCurves_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_destructor(ptr);
     }
 }
 
@@ -1150,7 +1211,9 @@ impl BezierCurves {
     /// You use the Init function to define the boundaries of the surface.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_BezierCurves_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_ctor(),
+            ))
         }
     }
 
@@ -1159,22 +1222,14 @@ impl BezierCurves {
     /// from the four contiguous Bezier curves, C1, C2, C3 and C4
     /// Raises Standard_ConstructionError if the curves are not contiguous.
     pub fn new_handlegeombeziercurve4_fillingstyle(
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
-        C3: &crate::ffi::HandleGeomBezierCurve,
-        C4: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
+        C3: &crate::ffi_types::HandleGeomBezierCurve,
+        C4: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BezierCurves_ctor_handlegeombeziercurve4_fillingstyle(
-                    C1,
-                    C2,
-                    C3,
-                    C4,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_ctor_handlegeombeziercurve4_fillingstyle(C1, C2, C3, C4, Type.into())))
         }
     }
 
@@ -1183,20 +1238,13 @@ impl BezierCurves {
     /// from the three contiguous Bezier curves, C1, C2 and C3
     /// Raises Standard_ConstructionError if the curves are not contiguous.
     pub fn new_handlegeombeziercurve3_fillingstyle(
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
-        C3: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
+        C3: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BezierCurves_ctor_handlegeombeziercurve3_fillingstyle(
-                    C1,
-                    C2,
-                    C3,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_ctor_handlegeombeziercurve3_fillingstyle(C1, C2, C3, Type.into())))
         }
     }
 
@@ -1205,18 +1253,12 @@ impl BezierCurves {
     /// from the two contiguous Bezier curves, C1 and C2
     /// Raises Standard_ConstructionError if the curves are not contiguous.
     pub fn new_handlegeombeziercurve2_fillingstyle(
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BezierCurves_ctor_handlegeombeziercurve2_fillingstyle(
-                    C1,
-                    C2,
-                    Type.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_ctor_handlegeombeziercurve2_fillingstyle(C1, C2, Type.into())))
         }
     }
 
@@ -1224,21 +1266,14 @@ impl BezierCurves {
     /// if the curves cannot be joined
     pub fn init_handlegeombeziercurve4_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
-        C3: &crate::ffi::HandleGeomBezierCurve,
-        C4: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
+        C3: &crate::ffi_types::HandleGeomBezierCurve,
+        C4: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BezierCurves_init_handlegeombeziercurve4_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                C3,
-                C4,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_init_handlegeombeziercurve4_fillingstyle(self as *mut Self, C1, C2, C3, C4, Type.into())
         })
     }
 
@@ -1246,19 +1281,13 @@ impl BezierCurves {
     /// if the curves cannot be joined
     pub fn init_handlegeombeziercurve3_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
-        C3: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
+        C3: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BezierCurves_init_handlegeombeziercurve3_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                C3,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_init_handlegeombeziercurve3_fillingstyle(self as *mut Self, C1, C2, C3, Type.into())
         })
     }
 
@@ -1274,26 +1303,23 @@ impl BezierCurves {
     /// Standard_ConstructionError if the curves are not contiguous.
     pub fn init_handlegeombeziercurve2_fillingstyle(
         &mut self,
-        C1: &crate::ffi::HandleGeomBezierCurve,
-        C2: &crate::ffi::HandleGeomBezierCurve,
+        C1: &crate::ffi_types::HandleGeomBezierCurve,
+        C2: &crate::ffi_types::HandleGeomBezierCurve,
         Type: crate::geom_fill::FillingStyle,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BezierCurves_init_handlegeombeziercurve2_fillingstyle(
-                self as *mut Self,
-                C1,
-                C2,
-                Type.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_init_handlegeombeziercurve2_fillingstyle(self as *mut Self, C1, C2, Type.into())
         })
     }
 
     /// **Source:** `GeomFill_BezierCurves.hxx`:101 - `GeomFill_BezierCurves::Surface()`
     /// Returns the Bezier surface resulting from the
     /// computation performed by this algorithm.
-    pub fn surface(&self) -> &crate::ffi::HandleGeomBezierSurface {
+    pub fn surface(&self) -> &crate::ffi_types::HandleGeomBezierSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_BezierCurves_surface(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_BezierCurves_surface(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1312,11 +1338,11 @@ impl BezierCurves {
 /// the surface along the PCurve.
 /// Contains fields  to allow a reparametrization of curve
 /// and normals field.
-pub use crate::ffi::GeomFill_BoundWithSurf as BoundWithSurf;
+pub use crate::ffi_types::GeomFill_BoundWithSurf as BoundWithSurf;
 
 unsafe impl crate::CppDeletable for BoundWithSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_BoundWithSurf_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_destructor(ptr);
     }
 }
 
@@ -1359,7 +1385,7 @@ impl BoundWithSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BoundWithSurf_ctor_curveonsurface_real2(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_ctor_curveonsurface_real2(
                     CurveOnSurf,
                     Tol3d,
                     Tolang,
@@ -1372,7 +1398,7 @@ impl BoundWithSurf {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BoundWithSurf_value(self as *const Self, U),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_value(self as *const Self, U),
             ))
         }
     }
@@ -1380,31 +1406,35 @@ impl BoundWithSurf {
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:81 - `GeomFill_BoundWithSurf::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_d1(self as *const Self, U, P, V)
         })
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:83 - `GeomFill_BoundWithSurf::HasNormals()`
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_has_normals(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_has_normals(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:85 - `GeomFill_BoundWithSurf::Norm()`
     pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_BoundWithSurf_norm(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_norm(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:87 - `GeomFill_BoundWithSurf::D1Norm()`
     pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_d1_norm(self as *const Self, U, N, DN)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_d1_norm(
+                self as *const Self,
+                U,
+                N,
+                DN,
+            )
         })
     }
 
@@ -1420,7 +1450,7 @@ impl BoundWithSurf {
         Rev: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_reparametrize(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_reparametrize(
                 self as *mut Self,
                 First,
                 Last,
@@ -1436,23 +1466,29 @@ impl BoundWithSurf {
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:99 - `GeomFill_BoundWithSurf::Bounds()`
     pub fn bounds(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_bounds(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_bounds(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:101 - `GeomFill_BoundWithSurf::IsDegenerated()`
     pub fn is_degenerated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_is_degenerated(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_is_degenerated(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:103 - `GeomFill_BoundWithSurf::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_BoundWithSurf_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1460,7 +1496,7 @@ impl BoundWithSurf {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_BoundWithSurf_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1468,53 +1504,65 @@ impl BoundWithSurf {
     }
 
     /// **Source:** `GeomFill_BoundWithSurf.hxx`:103 - `GeomFill_BoundWithSurf::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_BoundWithSurf_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_Boundary
     pub fn as_boundary(&self) -> &Boundary {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_BoundWithSurf_as_GeomFill_Boundary(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_as_GeomFill_Boundary(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_Boundary (mutable)
     pub fn as_boundary_mut(&mut self) -> &mut Boundary {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_BoundWithSurf_as_GeomFill_Boundary_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_as_GeomFill_Boundary_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_BoundWithSurf_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_BoundWithSurf_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundWithSurf> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundWithSurf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_BoundWithSurf_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1522,35 +1570,49 @@ impl BoundWithSurf {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
     pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_Points(self as *const Self, PFirst, PLast)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_Points(
+                self as *const Self,
+                PFirst,
+                PLast,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:67 - `GeomFill_Boundary::Tol3d()`
     pub fn tol3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_Tol3d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_Tol3d(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_Tolang(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_Tolang(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1558,7 +1620,9 @@ impl BoundWithSurf {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_BoundWithSurf_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1571,62 +1635,74 @@ impl BoundWithSurf {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_BoundWithSurf_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_BoundWithSurf_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillBoundWithSurf;
+pub use crate::ffi_types::HandleGeomFillBoundWithSurf;
 
 unsafe impl crate::CppDeletable for HandleGeomFillBoundWithSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillBoundWithSurf_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_destructor(ptr);
     }
 }
 
 impl HandleGeomFillBoundWithSurf {
     /// Dereference this Handle to access the underlying GeomFill_BoundWithSurf
-    pub fn get(&self) -> &crate::ffi::GeomFill_BoundWithSurf {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_BoundWithSurf {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillBoundWithSurf_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_BoundWithSurf
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_BoundWithSurf {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillBoundWithSurf_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_BoundWithSurf
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_BoundWithSurf {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_BoundWithSurf> to Handle<GeomFill_Boundary>
-    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillBoundWithSurf_to_HandleGeomFillBoundary(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_to_HandleGeomFillBoundary(
                     self as *const Self,
                 ),
             ))
@@ -1634,13 +1710,11 @@ impl HandleGeomFillBoundWithSurf {
     }
 
     /// Upcast Handle<GeomFill_BoundWithSurf> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillBoundWithSurf_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundWithSurf_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1658,11 +1732,11 @@ impl HandleGeomFillBoundWithSurf {
 /// -   GeomFill_BoundWithSurf to define a boundary attached to a surface.
 /// These objects are used to define the boundaries for a
 /// GeomFill_ConstrainedFilling framework.
-pub use crate::ffi::GeomFill_Boundary as Boundary;
+pub use crate::ffi_types::GeomFill_Boundary as Boundary;
 
 unsafe impl crate::CppDeletable for Boundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Boundary_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_destructor(ptr);
     }
 }
 
@@ -1670,41 +1744,39 @@ impl Boundary {
     /// **Source:** `GeomFill_Boundary.hxx`:43 - `GeomFill_Boundary::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Boundary_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_value(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:45 - `GeomFill_Boundary::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_d1(self as *const Self, U, P, V)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:47 - `GeomFill_Boundary::HasNormals()`
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_has_normals(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_has_normals(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:49 - `GeomFill_Boundary::Norm()`
     pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Boundary_norm(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_norm(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
     pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_d1_norm(self as *const Self, U, N, DN)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_d1_norm(self as *const Self, U, N, DN)
         })
     }
 
@@ -1720,7 +1792,7 @@ impl Boundary {
         Rev: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_reparametrize(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_reparametrize(
                 self as *mut Self,
                 First,
                 Last,
@@ -1736,52 +1808,62 @@ impl Boundary {
     /// **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
     pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_points(self as *const Self, PFirst, PLast)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_points(
+                self as *const Self,
+                PFirst,
+                PLast,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:63 - `GeomFill_Boundary::Bounds()`
     pub fn bounds(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_bounds(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_bounds(self as *const Self, First, Last)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:65 - `GeomFill_Boundary::IsDegenerated()`
     pub fn is_degenerated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_is_degenerated(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_is_degenerated(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:67 - `GeomFill_Boundary::Tol3d()`
     pub fn tol3d(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Boundary_tol3d(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_tol3d(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:69 - `GeomFill_Boundary::Tol3d()`
     pub fn tol3d_real(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_tol3d_real(self as *mut Self, Tol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_tol3d_real(self as *mut Self, Tol)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Boundary_tolang(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_tolang(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:73 - `GeomFill_Boundary::Tolang()`
     pub fn tolang_real(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_tolang_real(self as *mut Self, Tol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_tolang_real(self as *mut Self, Tol)
         })
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:75 - `GeomFill_Boundary::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Boundary_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1789,7 +1871,7 @@ impl Boundary {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_Boundary_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1797,39 +1879,53 @@ impl Boundary {
     }
 
     /// **Source:** `GeomFill_Boundary.hxx`:75 - `GeomFill_Boundary::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Boundary_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Boundary_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Boundary_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1837,7 +1933,7 @@ impl Boundary {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_Boundary_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1850,60 +1946,74 @@ impl Boundary {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Boundary_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Boundary_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillBoundary;
+pub use crate::ffi_types::HandleGeomFillBoundary;
 
 unsafe impl crate::CppDeletable for HandleGeomFillBoundary {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillBoundary_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_destructor(ptr);
     }
 }
 
 impl HandleGeomFillBoundary {
     /// Dereference this Handle to access the underlying GeomFill_Boundary
-    pub fn get(&self) -> &crate::ffi::GeomFill_Boundary {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_Boundary {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillBoundary_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_Boundary
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Boundary {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_Boundary {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillBoundary_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_Boundary> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillBoundary_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1913,11 +2023,9 @@ impl HandleGeomFillBoundary {
     /// Returns `None` if the handle does not point to a `GeomFill_BoundWithSurf` (or subclass).
     pub fn downcast_to_bound_with_surf(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillBoundWithSurf>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundWithSurf>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillBoundWithSurf(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_downcast_to_HandleGeomFillBoundWithSurf(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1931,11 +2039,9 @@ impl HandleGeomFillBoundary {
     /// Returns `None` if the handle does not point to a `GeomFill_DegeneratedBound` (or subclass).
     pub fn downcast_to_degenerated_bound(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDegeneratedBound>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillDegeneratedBound>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillDegeneratedBound(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_downcast_to_HandleGeomFillDegeneratedBound(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1949,11 +2055,9 @@ impl HandleGeomFillBoundary {
     /// Returns `None` if the handle does not point to a `GeomFill_SimpleBound` (or subclass).
     pub fn downcast_to_simple_bound(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillSimpleBound>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillSimpleBound>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillBoundary_downcast_to_HandleGeomFillSimpleBound(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillBoundary_downcast_to_HandleGeomFillSimpleBound(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1970,11 +2074,11 @@ impl HandleGeomFillBoundary {
 /// **Source:** `GeomFill_CircularBlendFunc.hxx`:40 - `GeomFill_CircularBlendFunc`
 /// Circular     Blend Function  to    approximate by
 /// SweepApproximation from Approx
-pub use crate::ffi::GeomFill_CircularBlendFunc as CircularBlendFunc;
+pub use crate::ffi_types::GeomFill_CircularBlendFunc as CircularBlendFunc;
 
 unsafe impl crate::CppDeletable for CircularBlendFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_CircularBlendFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_destructor(ptr);
     }
 }
 
@@ -1990,18 +2094,14 @@ impl CircularBlendFunc {
     /// ChFi3d_Polynomial corresponds to a polynomial --
     /// representation of circles.
     pub fn new_handleadaptor3dcurve3_real_bool(
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
         Polynomial: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_ctor_handleadaptor3dcurve3_real_bool(
-                    Path, Curve1, Curve2, Radius, Polynomial,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_ctor_handleadaptor3dcurve3_real_bool(Path, Curve1, Curve2, Radius, Polynomial)))
         }
     }
 
@@ -2016,9 +2116,9 @@ impl CircularBlendFunc {
     /// ChFi3d_Polynomial corresponds to a polynomial --
     /// representation of circles.
     pub fn new_handleadaptor3dcurve3_real(
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurve3_real_bool(Path, Curve1, Curve2, Radius, false)
@@ -2031,12 +2131,12 @@ impl CircularBlendFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_d0(
                 self as *mut Self,
                 Param,
                 First,
@@ -2056,15 +2156,15 @@ impl CircularBlendFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_d1(
                 self as *mut Self,
                 Param,
                 First,
@@ -2087,18 +2187,18 @@ impl CircularBlendFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_d2(
                 self as *mut Self,
                 Param,
                 First,
@@ -2120,7 +2220,9 @@ impl CircularBlendFunc {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_nb2d_curves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_nb2d_curves(
+                self as *const Self,
+            )
         })
     }
 
@@ -2128,7 +2230,7 @@ impl CircularBlendFunc {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -2139,17 +2241,23 @@ impl CircularBlendFunc {
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:103 - `GeomFill_CircularBlendFunc::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:106 - `GeomFill_CircularBlendFunc::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
@@ -2157,7 +2265,9 @@ impl CircularBlendFunc {
     /// Returns if the section is rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_is_rational(
+                self as *const Self,
+            )
         })
     }
 
@@ -2166,7 +2276,10 @@ impl CircularBlendFunc {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -2176,9 +2289,17 @@ impl CircularBlendFunc {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -2189,7 +2310,11 @@ impl CircularBlendFunc {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -2204,10 +2329,10 @@ impl CircularBlendFunc {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -2222,7 +2347,11 @@ impl CircularBlendFunc {
     /// algorithme to perform D0, D1 or D2
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -2233,7 +2362,9 @@ impl CircularBlendFunc {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2244,7 +2375,9 @@ impl CircularBlendFunc {
     /// approximation.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_maximal_section(
+                self as *const Self,
+            )
         })
     }
 
@@ -2252,18 +2385,23 @@ impl CircularBlendFunc {
     /// Compute the minimal value of weight for each poles
     /// of all  sections.  This information is  useful to
     /// perform well conditioned rational approximation.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:162 - `GeomFill_CircularBlendFunc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CircularBlendFunc_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2271,7 +2409,7 @@ impl CircularBlendFunc {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2279,38 +2417,40 @@ impl CircularBlendFunc {
     }
 
     /// **Source:** `GeomFill_CircularBlendFunc.hxx`:162 - `GeomFill_CircularBlendFunc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CircularBlendFunc_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CircularBlendFunc_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_as_Approx_SweepFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_as_Approx_SweepFunction_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CircularBlendFunc_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2318,7 +2458,9 @@ impl CircularBlendFunc {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2326,10 +2468,10 @@ impl CircularBlendFunc {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCircularBlendFunc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillCircularBlendFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CircularBlendFunc_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2337,7 +2479,7 @@ impl CircularBlendFunc {
     /// Inherited: **Source:** `Approx_SweepFunction.hxx`:118 - `Approx_SweepFunction::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_Resolution(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_Resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -2348,9 +2490,9 @@ impl CircularBlendFunc {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2358,9 +2500,12 @@ impl CircularBlendFunc {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2368,7 +2513,9 @@ impl CircularBlendFunc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_CircularBlendFunc_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2381,80 +2528,86 @@ impl CircularBlendFunc {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CircularBlendFunc_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CircularBlendFunc_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillCircularBlendFunc;
+pub use crate::ffi_types::HandleGeomFillCircularBlendFunc;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCircularBlendFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillCircularBlendFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_destructor(ptr);
     }
 }
 
 impl HandleGeomFillCircularBlendFunc {
     /// Dereference this Handle to access the underlying GeomFill_CircularBlendFunc
-    pub fn get(&self) -> &crate::ffi::GeomFill_CircularBlendFunc {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_CircularBlendFunc {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillCircularBlendFunc_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_CircularBlendFunc
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CircularBlendFunc {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_CircularBlendFunc {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillCircularBlendFunc_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_CircularBlendFunc> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCircularBlendFunc_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_to_HandleApproxSweepFunction(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_CircularBlendFunc> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCircularBlendFunc_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCircularBlendFunc_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2465,11 +2618,11 @@ impl HandleGeomFillCircularBlendFunc {
 
 /// **Source:** `GeomFill_ConstantBiNormal.hxx`:35 - `GeomFill_ConstantBiNormal`
 /// Defined an Trihedron Law  where the BiNormal, is fixed
-pub use crate::ffi::GeomFill_ConstantBiNormal as ConstantBiNormal;
+pub use crate::ffi_types::GeomFill_ConstantBiNormal as ConstantBiNormal;
 
 unsafe impl crate::CppDeletable for ConstantBiNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_ConstantBiNormal_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_destructor(ptr);
     }
 }
 
@@ -2478,16 +2631,16 @@ impl ConstantBiNormal {
     pub fn new_dir(BiNormal: &crate::gp::Dir) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_ctor_dir(BiNormal),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_ctor_dir(BiNormal),
             ))
         }
     }
 
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:41 - `GeomFill_ConstantBiNormal::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_copy(self as *const Self),
             ))
         }
     }
@@ -2495,9 +2648,9 @@ impl ConstantBiNormal {
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:45 - `GeomFill_ConstantBiNormal::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_set_curve(self as *mut Self, C)
         })
     }
 
@@ -2511,7 +2664,7 @@ impl ConstantBiNormal {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -2536,7 +2689,7 @@ impl ConstantBiNormal {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -2567,7 +2720,7 @@ impl ConstantBiNormal {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -2589,7 +2742,10 @@ impl ConstantBiNormal {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -2599,9 +2755,17 @@ impl ConstantBiNormal {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -2615,7 +2779,7 @@ impl ConstantBiNormal {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -2628,7 +2792,7 @@ impl ConstantBiNormal {
     /// Says if the law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_is_constant(self as *const Self)
         })
     }
 
@@ -2636,16 +2800,20 @@ impl ConstantBiNormal {
     /// Return True.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:105 - `GeomFill_ConstantBiNormal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_ConstantBiNormal_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2653,7 +2821,7 @@ impl ConstantBiNormal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2661,38 +2829,40 @@ impl ConstantBiNormal {
     }
 
     /// **Source:** `GeomFill_ConstantBiNormal.hxx`:105 - `GeomFill_ConstantBiNormal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_ConstantBiNormal_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_ConstantBiNormal_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_as_GeomFill_TrihedronLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_as_GeomFill_TrihedronLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_ConstantBiNormal_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2700,7 +2870,9 @@ impl ConstantBiNormal {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2708,10 +2880,10 @@ impl ConstantBiNormal {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillConstantBiNormal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillConstantBiNormal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstantBiNormal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2719,7 +2891,9 @@ impl ConstantBiNormal {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2727,7 +2901,7 @@ impl ConstantBiNormal {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_SetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_SetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -2738,7 +2912,7 @@ impl ConstantBiNormal {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -2747,16 +2921,22 @@ impl ConstantBiNormal {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2764,7 +2944,9 @@ impl ConstantBiNormal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_ConstantBiNormal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2777,80 +2959,84 @@ impl ConstantBiNormal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstantBiNormal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstantBiNormal_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillConstantBiNormal;
+pub use crate::ffi_types::HandleGeomFillConstantBiNormal;
 
 unsafe impl crate::CppDeletable for HandleGeomFillConstantBiNormal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillConstantBiNormal_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_destructor(ptr);
     }
 }
 
 impl HandleGeomFillConstantBiNormal {
     /// Dereference this Handle to access the underlying GeomFill_ConstantBiNormal
-    pub fn get(&self) -> &crate::ffi::GeomFill_ConstantBiNormal {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_ConstantBiNormal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillConstantBiNormal_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_ConstantBiNormal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_ConstantBiNormal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_ConstantBiNormal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillConstantBiNormal_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_ConstantBiNormal> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillConstantBiNormal_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_ConstantBiNormal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillConstantBiNormal_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillConstantBiNormal_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2874,11 +3060,11 @@ impl HandleGeomFillConstantBiNormal {
 /// This surface filling algorithm is specifically designed to
 /// be used in connection with fillets. Satisfactory results
 /// cannot be guaranteed for other uses.
-pub use crate::ffi::GeomFill_ConstrainedFilling as ConstrainedFilling;
+pub use crate::ffi_types::GeomFill_ConstrainedFilling as ConstrainedFilling;
 
 unsafe impl crate::CppDeletable for ConstrainedFilling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_ConstrainedFilling_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_destructor(ptr);
     }
 }
 
@@ -2894,7 +3080,7 @@ impl ConstrainedFilling {
     pub fn new_int2(MaxDeg: i32, MaxSeg: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstrainedFilling_ctor_int2(MaxDeg, MaxSeg),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_ctor_int2(MaxDeg, MaxSeg),
             ))
         }
     }
@@ -2902,19 +3088,13 @@ impl ConstrainedFilling {
     /// **Source:** `GeomFill_ConstrainedFilling.hxx`:66 - `GeomFill_ConstrainedFilling::Init()`
     pub fn init_handlegeomfillboundary3_bool(
         &mut self,
-        B1: &crate::ffi::HandleGeomFillBoundary,
-        B2: &crate::ffi::HandleGeomFillBoundary,
-        B3: &crate::ffi::HandleGeomFillBoundary,
+        B1: &crate::ffi_types::HandleGeomFillBoundary,
+        B2: &crate::ffi_types::HandleGeomFillBoundary,
+        B3: &crate::ffi_types::HandleGeomFillBoundary,
         NoCheck: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_init_handlegeomfillboundary3_bool(
-                self as *mut Self,
-                B1,
-                B2,
-                B3,
-                NoCheck,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_init_handlegeomfillboundary3_bool(self as *mut Self, B1, B2, B3, NoCheck)
         })
     }
 
@@ -2932,21 +3112,14 @@ impl ConstrainedFilling {
     /// -   the maximum number of segments MaxSeg which BSpline surfaces can have
     pub fn init_handlegeomfillboundary4_bool(
         &mut self,
-        B1: &crate::ffi::HandleGeomFillBoundary,
-        B2: &crate::ffi::HandleGeomFillBoundary,
-        B3: &crate::ffi::HandleGeomFillBoundary,
-        B4: &crate::ffi::HandleGeomFillBoundary,
+        B1: &crate::ffi_types::HandleGeomFillBoundary,
+        B2: &crate::ffi_types::HandleGeomFillBoundary,
+        B3: &crate::ffi_types::HandleGeomFillBoundary,
+        B4: &crate::ffi_types::HandleGeomFillBoundary,
         NoCheck: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_init_handlegeomfillboundary4_bool(
-                self as *mut Self,
-                B1,
-                B2,
-                B3,
-                B4,
-                NoCheck,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_init_handlegeomfillboundary4_bool(self as *mut Self, B1, B2, B3, B4, NoCheck)
         })
     }
 
@@ -2960,9 +3133,13 @@ impl ConstrainedFilling {
     /// Default value for l is 1 (used in Init).
     /// Warning: Must be called after  Init with a constrained boundary
     /// used in the call to Init.
-    pub fn set_domain(&mut self, l: f64, B: &crate::ffi::HandleGeomFillBoundWithSurf) {
+    pub fn set_domain(&mut self, l: f64, B: &crate::ffi_types::HandleGeomFillBoundWithSurf) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_set_domain(self as *mut Self, l, B)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_set_domain(
+                self as *mut Self,
+                l,
+                B,
+            )
         })
     }
 
@@ -2971,26 +3148,31 @@ impl ConstrainedFilling {
     /// blending  functions set by several calls to SetDomain.
     pub fn re_build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_re_build(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_re_build(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomFill_ConstrainedFilling.hxx`:104 - `GeomFill_ConstrainedFilling::Boundary()`
     /// Returns the bound of index i after sort.
-    pub fn boundary(&self, I: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+    pub fn boundary(&self, I: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstrainedFilling_boundary(self as *const Self, I),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_boundary(
+                    self as *const Self,
+                    I,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_ConstrainedFilling.hxx`:107 - `GeomFill_ConstrainedFilling::Surface()`
     /// Returns the BSpline surface after computation of the fill by this framework.
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_ConstrainedFilling_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2999,7 +3181,12 @@ impl ConstrainedFilling {
     /// Internal use for Advmath approximation call.
     pub fn eval(&self, W: f64, Ord: i32, Result: &mut f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_eval(self as *const Self, W, Ord, Result)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_eval(
+                self as *const Self,
+                W,
+                Ord,
+                Result,
+            )
         })
     }
 
@@ -3009,7 +3196,10 @@ impl ConstrainedFilling {
     /// gives an idea of the coonsAlgPatch regularity.
     pub fn check_coons_alg_patch(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_check_coons_alg_patch(self as *mut Self, I)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_check_coons_alg_patch(
+                self as *mut Self,
+                I,
+            )
         })
     }
 
@@ -3019,7 +3209,10 @@ impl ConstrainedFilling {
     /// max dot product that must be near than 0.
     pub fn check_tgte_field(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_check_tgte_field(self as *mut Self, I)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_check_tgte_field(
+                self as *mut Self,
+                I,
+            )
         })
     }
 
@@ -3029,7 +3222,10 @@ impl ConstrainedFilling {
     /// tgte field) , draw  the normals and tangents.
     pub fn check_approx(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_check_approx(self as *mut Self, I)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_check_approx(
+                self as *mut Self,
+                I,
+            )
         })
     }
 
@@ -3040,7 +3236,10 @@ impl ConstrainedFilling {
     /// and the max angle  between normals.
     pub fn check_result(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_ConstrainedFilling_check_result(self as *mut Self, I)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_ConstrainedFilling_check_result(
+                self as *mut Self,
+                I,
+            )
         })
     }
 }
@@ -3050,48 +3249,52 @@ impl ConstrainedFilling {
 // ========================
 
 /// **Source:** `GeomFill_Coons.hxx`:27 - `GeomFill_Coons`
-pub use crate::ffi::GeomFill_Coons as Coons;
+pub use crate::ffi_types::GeomFill_Coons as Coons;
 
 unsafe impl crate::CppDeletable for Coons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Coons_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_destructor(ptr);
     }
 }
 
 impl Coons {
     /// **Source:** `GeomFill_Coons.hxx`:32 - `GeomFill_Coons::GeomFill_Coons()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Coons_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `GeomFill_Coons.hxx`:34 - `GeomFill_Coons::GeomFill_Coons()`
     pub fn new_array1ofpnt4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Coons_ctor_array1ofpnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_ctor_array1ofpnt4(P1, P2, P3, P4),
             ))
         }
     }
 
     /// **Source:** `GeomFill_Coons.hxx`:39 - `GeomFill_Coons::GeomFill_Coons()`
     pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Coons_ctor_array1ofpnt4_array1ofreal4(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_ctor_array1ofpnt4_array1ofreal4(
                     P1, P2, P3, P4, W1, W2, W3, W4,
                 ),
             ))
@@ -3101,30 +3304,36 @@ impl Coons {
     /// **Source:** `GeomFill_Coons.hxx`:48 - `GeomFill_Coons::Init()`
     pub fn init_array1ofpnt4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Coons_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_init_array1ofpnt4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Coons.hxx`:53 - `GeomFill_Coons::Init()`
     pub fn init_array1ofpnt4_array1ofreal4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Coons_init_array1ofpnt4_array1ofreal4(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_init_array1ofpnt4_array1ofreal4(
                 self as *mut Self,
                 P1,
                 P2,
@@ -3141,7 +3350,7 @@ impl Coons {
     /// Upcast to GeomFill_Filling
     pub fn as_filling(&self) -> &Filling {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Coons_as_GeomFill_Filling(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_as_GeomFill_Filling(
                 self as *const Self,
             ))
         }
@@ -3150,44 +3359,49 @@ impl Coons {
     /// Upcast to GeomFill_Filling (mutable)
     pub fn as_filling_mut(&mut self) -> &mut Filling {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Coons_as_GeomFill_Filling_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_as_GeomFill_Filling_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:39 - `GeomFill_Filling::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Coons_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_inherited_NbUPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:41 - `GeomFill_Filling::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Coons_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_inherited_NbVPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:43 - `GeomFill_Filling::Poles()`
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array2OfPnt) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array2OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Coons_inherited_Poles(self as *const Self, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_inherited_Poles(self as *const Self, Poles)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Coons_inherited_isRational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_inherited_isRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
-    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+    pub fn weights(&self, Weights: &mut crate::ffi_types::TColStd_Array2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Coons_inherited_Weights(self as *const Self, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Coons_inherited_Weights(
+                self as *const Self,
+                Weights,
+            )
         })
     }
 }
@@ -3200,11 +3414,11 @@ impl Coons {
 /// Provides  evaluation   methods on an   algorithmic
 /// patch (based on 4 Curves) defined by  its   boundaries and  blending
 /// functions.
-pub use crate::ffi::GeomFill_CoonsAlgPatch as CoonsAlgPatch;
+pub use crate::ffi_types::GeomFill_CoonsAlgPatch as CoonsAlgPatch;
 
 unsafe impl crate::CppDeletable for CoonsAlgPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_CoonsAlgPatch_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_destructor(ptr);
     }
 }
 
@@ -3215,14 +3429,16 @@ impl CoonsAlgPatch {
     /// Warning: No control is done on the bounds.
     /// B1/B3 and B2/B4 must be same range and well oriented.
     pub fn new_handlegeomfillboundary4(
-        B1: &crate::ffi::HandleGeomFillBoundary,
-        B2: &crate::ffi::HandleGeomFillBoundary,
-        B3: &crate::ffi::HandleGeomFillBoundary,
-        B4: &crate::ffi::HandleGeomFillBoundary,
+        B1: &crate::ffi_types::HandleGeomFillBoundary,
+        B2: &crate::ffi_types::HandleGeomFillBoundary,
+        B3: &crate::ffi_types::HandleGeomFillBoundary,
+        B4: &crate::ffi_types::HandleGeomFillBoundary,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CoonsAlgPatch_ctor_handlegeomfillboundary4(B1, B2, B3, B4),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_ctor_handlegeomfillboundary4(
+                    B1, B2, B3, B4,
+                ),
             ))
         }
     }
@@ -3231,11 +3447,15 @@ impl CoonsAlgPatch {
     /// Give the blending functions.
     pub fn func_handlelawfunction2(
         &self,
-        f1: &mut crate::ffi::HandleLawFunction,
-        f2: &mut crate::ffi::HandleLawFunction,
+        f1: &mut crate::ffi_types::HandleLawFunction,
+        f2: &mut crate::ffi_types::HandleLawFunction,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_func_handlelawfunction2(self as *const Self, f1, f2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_func_handlelawfunction2(
+                self as *const Self,
+                f1,
+                f2,
+            )
         })
     }
 
@@ -3243,11 +3463,11 @@ impl CoonsAlgPatch {
     /// Set the blending functions.
     pub fn set_func(
         &mut self,
-        f1: &crate::ffi::HandleLawFunction,
-        f2: &crate::ffi::HandleLawFunction,
+        f1: &crate::ffi_types::HandleLawFunction,
+        f2: &crate::ffi_types::HandleLawFunction,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_set_func(self as *mut Self, f1, f2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_set_func(self as *mut Self, f1, f2)
         })
     }
 
@@ -3257,7 +3477,11 @@ impl CoonsAlgPatch {
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CoonsAlgPatch_value(self as *const Self, U, V),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_value(
+                    self as *const Self,
+                    U,
+                    V,
+                ),
             ))
         }
     }
@@ -3267,11 +3491,9 @@ impl CoonsAlgPatch {
     /// algorithmic patch at parameters U and V.
     pub fn d1u(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_d1u(
-                self as *const Self,
-                U,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_d1u(self as *const Self, U, V),
+            ))
         }
     }
 
@@ -3280,11 +3502,9 @@ impl CoonsAlgPatch {
     /// algorithmic patch at parameters U and V.
     pub fn d1v(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_d1v(
-                self as *const Self,
-                U,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_d1v(self as *const Self, U, V),
+            ))
         }
     }
 
@@ -3294,18 +3514,16 @@ impl CoonsAlgPatch {
     /// at parameter U and V.
     pub fn duv(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_duv(
-                self as *const Self,
-                U,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_duv(self as *const Self, U, V),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:72 - `GeomFill_CoonsAlgPatch::Corner()`
     pub fn corner(&self, I: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_corner(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_corner(
                 self as *const Self,
                 I,
             )))
@@ -3313,9 +3531,9 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:74 - `GeomFill_CoonsAlgPatch::Bound()`
-    pub fn bound(&self, I: i32) -> &crate::ffi::HandleGeomFillBoundary {
+    pub fn bound(&self, I: i32) -> &crate::ffi_types::HandleGeomFillBoundary {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_bound(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_bound(
                 self as *const Self,
                 I,
             )))
@@ -3323,9 +3541,9 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:76 - `GeomFill_CoonsAlgPatch::Func()`
-    pub fn func_int(&self, I: i32) -> &crate::ffi::HandleLawFunction {
+    pub fn func_int(&self, I: i32) -> &crate::ffi_types::HandleLawFunction {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_func_int(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_func_int(
                 self as *const Self,
                 I,
             )))
@@ -3333,11 +3551,13 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:78 - `GeomFill_CoonsAlgPatch::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3345,7 +3565,7 @@ impl CoonsAlgPatch {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_CoonsAlgPatch_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3353,50 +3573,64 @@ impl CoonsAlgPatch {
     }
 
     /// **Source:** `GeomFill_CoonsAlgPatch.hxx`:78 - `GeomFill_CoonsAlgPatch::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_CoonsAlgPatch_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCoonsAlgPatch> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillCoonsAlgPatch> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CoonsAlgPatch_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3404,7 +3638,9 @@ impl CoonsAlgPatch {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_CoonsAlgPatch_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3417,65 +3653,75 @@ impl CoonsAlgPatch {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CoonsAlgPatch_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CoonsAlgPatch_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillCoonsAlgPatch;
+pub use crate::ffi_types::HandleGeomFillCoonsAlgPatch;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCoonsAlgPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillCoonsAlgPatch_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_destructor(ptr);
     }
 }
 
 impl HandleGeomFillCoonsAlgPatch {
     /// Dereference this Handle to access the underlying GeomFill_CoonsAlgPatch
-    pub fn get(&self) -> &crate::ffi::GeomFill_CoonsAlgPatch {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_CoonsAlgPatch {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillCoonsAlgPatch_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_CoonsAlgPatch
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CoonsAlgPatch {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_CoonsAlgPatch {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillCoonsAlgPatch_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_CoonsAlgPatch> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCoonsAlgPatch_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCoonsAlgPatch_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3489,11 +3735,11 @@ impl HandleGeomFillCoonsAlgPatch {
 /// information         about     continuity, normals
 /// parallelism,  coons conditions and bounds tangents
 /// angle on the corner of contour to be filled.
-pub use crate::ffi::GeomFill_CornerState as CornerState;
+pub use crate::ffi_types::GeomFill_CornerState as CornerState;
 
 unsafe impl crate::CppDeletable for CornerState {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_CornerState_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_destructor(ptr);
     }
 }
 
@@ -3501,75 +3747,79 @@ impl CornerState {
     /// **Source:** `GeomFill_CornerState.hxx`:36 - `GeomFill_CornerState::GeomFill_CornerState()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_CornerState_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:38 - `GeomFill_CornerState::Gap()`
     pub fn gap(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_CornerState_gap(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_gap(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:40 - `GeomFill_CornerState::Gap()`
     pub fn gap_real(&mut self, G: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CornerState_gap_real(self as *mut Self, G)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_gap_real(self as *mut Self, G)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:42 - `GeomFill_CornerState::TgtAng()`
     pub fn tgt_ang(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CornerState_tgt_ang(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_tgt_ang(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:44 - `GeomFill_CornerState::TgtAng()`
     pub fn tgt_ang_real(&mut self, Ang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CornerState_tgt_ang_real(self as *mut Self, Ang)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_tgt_ang_real(self as *mut Self, Ang)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:46 - `GeomFill_CornerState::HasConstraint()`
     pub fn has_constraint(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CornerState_has_constraint(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_has_constraint(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:48 - `GeomFill_CornerState::Constraint()`
     pub fn constraint(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CornerState_constraint(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_constraint(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:50 - `GeomFill_CornerState::NorAng()`
     pub fn nor_ang(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CornerState_nor_ang(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_nor_ang(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:52 - `GeomFill_CornerState::NorAng()`
     pub fn nor_ang_real(&mut self, Ang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CornerState_nor_ang_real(self as *mut Self, Ang)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_nor_ang_real(self as *mut Self, Ang)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:54 - `GeomFill_CornerState::IsToKill()`
     pub fn is_to_kill(&self, Scal: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CornerState_is_to_kill(self as *const Self, Scal)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_is_to_kill(self as *const Self, Scal)
         })
     }
 
     /// **Source:** `GeomFill_CornerState.hxx`:56 - `GeomFill_CornerState::DoKill()`
     pub fn do_kill(&mut self, Scal: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CornerState_do_kill(self as *mut Self, Scal)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CornerState_do_kill(self as *mut Self, Scal)
         })
     }
 }
@@ -3581,11 +3831,11 @@ impl CornerState {
 /// **Source:** `GeomFill_CorrectedFrenet.hxx`:40 - `GeomFill_CorrectedFrenet`
 /// Defined an Corrected Frenet  Trihedron  Law It is
 /// like Frenet with an Torsion's minimization
-pub use crate::ffi::GeomFill_CorrectedFrenet as CorrectedFrenet;
+pub use crate::ffi_types::GeomFill_CorrectedFrenet as CorrectedFrenet;
 
 unsafe impl crate::CppDeletable for CorrectedFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_CorrectedFrenet_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_destructor(ptr);
     }
 }
 
@@ -3594,7 +3844,7 @@ impl CorrectedFrenet {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_ctor(),
             ))
         }
     }
@@ -3603,16 +3853,16 @@ impl CorrectedFrenet {
     pub fn new_bool(ForEvaluation: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_ctor_bool(ForEvaluation),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_ctor_bool(ForEvaluation),
             ))
         }
     }
 
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:48 - `GeomFill_CorrectedFrenet::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_copy(self as *const Self),
             ))
         }
     }
@@ -3620,16 +3870,20 @@ impl CorrectedFrenet {
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:52 - `GeomFill_CorrectedFrenet::SetCurve()`
     /// initialize curve of frenet law
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:55 - `GeomFill_CorrectedFrenet::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -3643,7 +3897,7 @@ impl CorrectedFrenet {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -3668,7 +3922,7 @@ impl CorrectedFrenet {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -3699,7 +3953,7 @@ impl CorrectedFrenet {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -3721,7 +3975,10 @@ impl CorrectedFrenet {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -3731,9 +3988,17 @@ impl CorrectedFrenet {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -3748,7 +4013,9 @@ impl CorrectedFrenet {
     /// the curve must be set by method SetCurve.
     pub fn evaluate_best_mode(&mut self) -> crate::geom_fill::Trihedron {
         crate::geom_fill::Trihedron::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_evaluate_best_mode(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_evaluate_best_mode(
+                self as *mut Self,
+            )
         }))
         .unwrap()
     }
@@ -3763,7 +4030,7 @@ impl CorrectedFrenet {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -3776,7 +4043,7 @@ impl CorrectedFrenet {
     /// Say if the law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_is_constant(self as *const Self)
         })
     }
 
@@ -3784,16 +4051,20 @@ impl CorrectedFrenet {
     /// Return True.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:125 - `GeomFill_CorrectedFrenet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CorrectedFrenet_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3801,7 +4072,7 @@ impl CorrectedFrenet {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3809,18 +4080,22 @@ impl CorrectedFrenet {
     }
 
     /// **Source:** `GeomFill_CorrectedFrenet.hxx`:125 - `GeomFill_CorrectedFrenet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CorrectedFrenet_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CorrectedFrenet_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3828,7 +4103,7 @@ impl CorrectedFrenet {
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_as_GeomFill_TrihedronLaw_mut(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_as_GeomFill_TrihedronLaw_mut(
                     self as *mut Self,
                 ),
             )
@@ -3838,9 +4113,11 @@ impl CorrectedFrenet {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CorrectedFrenet_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3848,7 +4125,9 @@ impl CorrectedFrenet {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3856,10 +4135,10 @@ impl CorrectedFrenet {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCorrectedFrenet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillCorrectedFrenet> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CorrectedFrenet_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -3867,7 +4146,9 @@ impl CorrectedFrenet {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3875,7 +4156,7 @@ impl CorrectedFrenet {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -3884,16 +4165,22 @@ impl CorrectedFrenet {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3901,7 +4188,9 @@ impl CorrectedFrenet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_CorrectedFrenet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3914,80 +4203,84 @@ impl CorrectedFrenet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CorrectedFrenet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CorrectedFrenet_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillCorrectedFrenet;
+pub use crate::ffi_types::HandleGeomFillCorrectedFrenet;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCorrectedFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillCorrectedFrenet_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_destructor(ptr);
     }
 }
 
 impl HandleGeomFillCorrectedFrenet {
     /// Dereference this Handle to access the underlying GeomFill_CorrectedFrenet
-    pub fn get(&self) -> &crate::ffi::GeomFill_CorrectedFrenet {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_CorrectedFrenet {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillCorrectedFrenet_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_CorrectedFrenet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CorrectedFrenet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_CorrectedFrenet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillCorrectedFrenet_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_CorrectedFrenet> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCorrectedFrenet_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_CorrectedFrenet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCorrectedFrenet_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCorrectedFrenet_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4004,41 +4297,41 @@ impl HandleGeomFillCorrectedFrenet {
 /// (Normal(v),   BiNormal(v), Tangente(v))) systeme are
 /// the  same like section  shape coordinates in
 /// (O,(OX, OY, OZ)) systeme.
-pub use crate::ffi::GeomFill_CurveAndTrihedron as CurveAndTrihedron;
+pub use crate::ffi_types::GeomFill_CurveAndTrihedron as CurveAndTrihedron;
 
 unsafe impl crate::CppDeletable for CurveAndTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_CurveAndTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_destructor(ptr);
     }
 }
 
 impl CurveAndTrihedron {
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:46 - `GeomFill_CurveAndTrihedron::GeomFill_CurveAndTrihedron()`
     pub fn new_handlegeomfilltrihedronlaw(
-        Trihedron: &crate::ffi::HandleGeomFillTrihedronLaw,
+        Trihedron: &crate::ffi_types::HandleGeomFillTrihedronLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_ctor_handlegeomfilltrihedronlaw(Trihedron),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_ctor_handlegeomfilltrihedronlaw(Trihedron)))
         }
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:50 - `GeomFill_CurveAndTrihedron::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:53 - `GeomFill_CurveAndTrihedron::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleAdaptor3dCurve {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CurveAndTrihedron_get_curve(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_curve(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4047,15 +4340,18 @@ impl CurveAndTrihedron {
     /// Mat * M(t)
     pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_set_trsf(self as *mut Self, Transfo)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_set_trsf(
+                self as *mut Self,
+                Transfo,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:59 - `GeomFill_CurveAndTrihedron::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_copy(self as *const Self),
             ))
         }
     }
@@ -4069,7 +4365,12 @@ impl CurveAndTrihedron {
         V: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_d0_real_mat_vec(self as *mut Self, Param, M, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_d0_real_mat_vec(
+                self as *mut Self,
+                Param,
+                M,
+                V,
+            )
         })
     }
 
@@ -4080,10 +4381,10 @@ impl CurveAndTrihedron {
         Param: f64,
         M: &mut crate::gp::Mat,
         V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_d0_real_mat_vec_array1ofpnt2d(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_d0_real_mat_vec_array1ofpnt2d(
                 self as *mut Self,
                 Param,
                 M,
@@ -4104,11 +4405,11 @@ impl CurveAndTrihedron {
         V: &mut crate::gp::Vec,
         DM: &mut crate::gp::Mat,
         DV: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_d1(
                 self as *mut Self,
                 Param,
                 M,
@@ -4134,12 +4435,12 @@ impl CurveAndTrihedron {
         DV: &mut crate::gp::Vec,
         D2M: &mut crate::gp::Mat,
         D2V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_d2(
                 self as *mut Self,
                 Param,
                 M,
@@ -4161,7 +4462,10 @@ impl CurveAndTrihedron {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -4171,9 +4475,17 @@ impl CurveAndTrihedron {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -4184,7 +4496,11 @@ impl CurveAndTrihedron {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -4193,7 +4509,11 @@ impl CurveAndTrihedron {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -4203,7 +4523,11 @@ impl CurveAndTrihedron {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -4212,7 +4536,9 @@ impl CurveAndTrihedron {
     /// is usful to find an good Tolerance to approx M(t).
     pub fn get_maximal_norm(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_get_maximal_norm(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_maximal_norm(
+                self as *mut Self,
+            )
         })
     }
 
@@ -4221,7 +4547,11 @@ impl CurveAndTrihedron {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_get_average_law(self as *mut Self, AM, AV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_average_law(
+                self as *mut Self,
+                AM,
+                AV,
+            )
         })
     }
 
@@ -4230,7 +4560,10 @@ impl CurveAndTrihedron {
     /// The default implementation is " returns False ".
     pub fn is_translation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_is_translation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_is_translation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
@@ -4239,23 +4572,31 @@ impl CurveAndTrihedron {
     /// The default implementation is " returns False ".
     pub fn is_rotation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_is_rotation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_is_rotation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:146 - `GeomFill_CurveAndTrihedron::Rotation()`
     pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_rotation(self as *const Self, Center)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_rotation(
+                self as *const Self,
+                Center,
+            )
         })
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:148 - `GeomFill_CurveAndTrihedron::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CurveAndTrihedron_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4263,7 +4604,7 @@ impl CurveAndTrihedron {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4271,38 +4612,40 @@ impl CurveAndTrihedron {
     }
 
     /// **Source:** `GeomFill_CurveAndTrihedron.hxx`:148 - `GeomFill_CurveAndTrihedron::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_CurveAndTrihedron_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CurveAndTrihedron_as_GeomFill_LocationLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_as_GeomFill_LocationLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_LocationLaw (mutable)
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_as_GeomFill_LocationLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_as_GeomFill_LocationLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_CurveAndTrihedron_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4310,7 +4653,9 @@ impl CurveAndTrihedron {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4318,10 +4663,10 @@ impl CurveAndTrihedron {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillCurveAndTrihedron> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillCurveAndTrihedron> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_CurveAndTrihedron_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4329,14 +4674,16 @@ impl CurveAndTrihedron {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_Nb2dCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:94 - `GeomFill_LocationLaw::HasFirstRestriction()`
     pub fn has_first_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_HasFirstRestriction(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_HasFirstRestriction(
                 self as *const Self,
             )
         })
@@ -4345,21 +4692,27 @@ impl CurveAndTrihedron {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:100 - `GeomFill_LocationLaw::HasLastRestriction()`
     pub fn has_last_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_HasLastRestriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_HasLastRestriction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:104 - `GeomFill_LocationLaw::TraceNumber()`
     pub fn trace_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_TraceNumber(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_TraceNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:108 - `GeomFill_LocationLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -4367,7 +4720,7 @@ impl CurveAndTrihedron {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:140 - `GeomFill_LocationLaw::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_Resolution(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_Resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -4380,7 +4733,7 @@ impl CurveAndTrihedron {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:148 - `GeomFill_LocationLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_SetTolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_SetTolerance(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -4389,9 +4742,9 @@ impl CurveAndTrihedron {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4399,9 +4752,12 @@ impl CurveAndTrihedron {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4409,7 +4765,9 @@ impl CurveAndTrihedron {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_CurveAndTrihedron_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4422,78 +4780,86 @@ impl CurveAndTrihedron {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_CurveAndTrihedron_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_CurveAndTrihedron_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillCurveAndTrihedron;
+pub use crate::ffi_types::HandleGeomFillCurveAndTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillCurveAndTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillCurveAndTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_destructor(ptr);
     }
 }
 
 impl HandleGeomFillCurveAndTrihedron {
     /// Dereference this Handle to access the underlying GeomFill_CurveAndTrihedron
-    pub fn get(&self) -> &crate::ffi::GeomFill_CurveAndTrihedron {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_CurveAndTrihedron {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillCurveAndTrihedron_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_CurveAndTrihedron
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_CurveAndTrihedron {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_CurveAndTrihedron {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillCurveAndTrihedron_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_CurveAndTrihedron> to Handle<GeomFill_LocationLaw>
-    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn to_handle_location_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCurveAndTrihedron_to_HandleGeomFillLocationLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_to_HandleGeomFillLocationLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_CurveAndTrihedron> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillCurveAndTrihedron_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillCurveAndTrihedron_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4503,11 +4869,11 @@ impl HandleGeomFillCurveAndTrihedron {
 // ========================
 
 /// **Source:** `GeomFill_Curved.hxx`:28 - `GeomFill_Curved`
-pub use crate::ffi::GeomFill_Curved as Curved;
+pub use crate::ffi_types::GeomFill_Curved as Curved;
 
 unsafe impl crate::CppDeletable for Curved {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Curved_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_destructor(ptr);
     }
 }
 
@@ -4515,38 +4881,40 @@ impl Curved {
     /// **Source:** `GeomFill_Curved.hxx`:33 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Curved_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:35 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Curved_ctor_array1ofpnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_ctor_array1ofpnt4(P1, P2, P3, P4),
             ))
         }
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:40 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Curved_ctor_array1ofpnt4_array1ofreal4(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_ctor_array1ofpnt4_array1ofreal4(
                     P1, P2, P3, P4, W1, W2, W3, W4,
                 ),
             ))
@@ -4555,26 +4923,28 @@ impl Curved {
 
     /// **Source:** `GeomFill_Curved.hxx`:49 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt2(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Curved_ctor_array1ofpnt2(P1, P2),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_ctor_array1ofpnt2(P1, P2),
             ))
         }
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:51 - `GeomFill_Curved::GeomFill_Curved()`
     pub fn new_array1ofpnt2_array1ofreal2(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Curved_ctor_array1ofpnt2_array1ofreal2(P1, P2, W1, W2),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_ctor_array1ofpnt2_array1ofreal2(
+                    P1, P2, W1, W2,
+                ),
             ))
         }
     }
@@ -4582,30 +4952,36 @@ impl Curved {
     /// **Source:** `GeomFill_Curved.hxx`:56 - `GeomFill_Curved::Init()`
     pub fn init_array1ofpnt4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_init_array1ofpnt4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:61 - `GeomFill_Curved::Init()`
     pub fn init_array1ofpnt4_array1ofreal4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_init_array1ofpnt4_array1ofreal4(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_init_array1ofpnt4_array1ofreal4(
                 self as *mut Self,
                 P1,
                 P2,
@@ -4622,24 +4998,28 @@ impl Curved {
     /// **Source:** `GeomFill_Curved.hxx`:70 - `GeomFill_Curved::Init()`
     pub fn init_array1ofpnt2(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_init_array1ofpnt2(self as *mut Self, P1, P2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_init_array1ofpnt2(
+                self as *mut Self,
+                P1,
+                P2,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Curved.hxx`:72 - `GeomFill_Curved::Init()`
     pub fn init_array1ofpnt2_array1ofreal2(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_init_array1ofpnt2_array1ofreal2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_init_array1ofpnt2_array1ofreal2(
                 self as *mut Self,
                 P1,
                 P2,
@@ -4652,53 +5032,63 @@ impl Curved {
     /// Upcast to GeomFill_Filling
     pub fn as_filling(&self) -> &Filling {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Curved_as_GeomFill_Filling(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_as_GeomFill_Filling(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_Filling (mutable)
     pub fn as_filling_mut(&mut self) -> &mut Filling {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Curved_as_GeomFill_Filling_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_as_GeomFill_Filling_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:39 - `GeomFill_Filling::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Curved_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_inherited_NbUPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:41 - `GeomFill_Filling::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Curved_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_inherited_NbVPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:43 - `GeomFill_Filling::Poles()`
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array2OfPnt) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array2OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_inherited_Poles(self as *const Self, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_inherited_Poles(
+                self as *const Self,
+                Poles,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Curved_inherited_isRational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_inherited_isRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
-    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+    pub fn weights(&self, Weights: &mut crate::ffi_types::TColStd_Array2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Curved_inherited_Weights(self as *const Self, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Curved_inherited_Weights(
+                self as *const Self,
+                Weights,
+            )
         })
     }
 }
@@ -4709,11 +5099,11 @@ impl Curved {
 
 /// **Source:** `GeomFill_Darboux.hxx`:33 - `GeomFill_Darboux`
 /// Defines Darboux case of Frenet Trihedron Law
-pub use crate::ffi::GeomFill_Darboux as Darboux;
+pub use crate::ffi_types::GeomFill_Darboux as Darboux;
 
 unsafe impl crate::CppDeletable for Darboux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Darboux_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_destructor(ptr);
     }
 }
 
@@ -4721,16 +5111,18 @@ impl Darboux {
     /// **Source:** `GeomFill_Darboux.hxx`:37 - `GeomFill_Darboux::GeomFill_Darboux()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Darboux_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Darboux.hxx`:39 - `GeomFill_Darboux::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Darboux_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_copy(self as *const Self),
+            ))
         }
     }
 
@@ -4744,7 +5136,13 @@ impl Darboux {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_d0(
+                self as *mut Self,
+                Param,
+                Tangent,
+                Normal,
+                BiNormal,
+            )
         })
     }
 
@@ -4763,7 +5161,7 @@ impl Darboux {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -4794,7 +5192,7 @@ impl Darboux {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -4816,7 +5214,10 @@ impl Darboux {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -4826,9 +5227,17 @@ impl Darboux {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -4842,7 +5251,7 @@ impl Darboux {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -4855,7 +5264,7 @@ impl Darboux {
     /// Say if the law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_is_constant(self as *const Self)
         })
     }
 
@@ -4863,14 +5272,16 @@ impl Darboux {
     /// Return False.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_is_only_by3d_curve(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Darboux.hxx`:98 - `GeomFill_Darboux::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Darboux_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4878,7 +5289,7 @@ impl Darboux {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_Darboux_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4886,68 +5297,82 @@ impl Darboux {
     }
 
     /// **Source:** `GeomFill_Darboux.hxx`:98 - `GeomFill_Darboux::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Darboux_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Darboux_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Darboux_as_GeomFill_TrihedronLaw_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_as_GeomFill_TrihedronLaw_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Darboux_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Darboux_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDarboux> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillDarboux> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Darboux_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_SetCurve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_SetCurve(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -4955,28 +5380,42 @@ impl Darboux {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_SetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_GetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_GetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4984,7 +5423,7 @@ impl Darboux {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_Darboux_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4997,60 +5436,72 @@ impl Darboux {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Darboux_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Darboux_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillDarboux;
+pub use crate::ffi_types::HandleGeomFillDarboux;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDarboux {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillDarboux_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_destructor(ptr);
     }
 }
 
 impl HandleGeomFillDarboux {
     /// Dereference this Handle to access the underlying GeomFill_Darboux
-    pub fn get(&self) -> &crate::ffi::GeomFill_Darboux {
-        unsafe { &*crate::check_result(crate::ffi::HandleGeomFillDarboux_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_Darboux {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_Darboux
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Darboux {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_Darboux {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillDarboux_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_Darboux> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDarboux_to_HandleGeomFillTrihedronLaw(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_to_HandleGeomFillTrihedronLaw(
                     self as *const Self,
                 ),
             ))
@@ -5058,10 +5509,14 @@ impl HandleGeomFillDarboux {
     }
 
     /// Upcast Handle<GeomFill_Darboux> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDarboux_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDarboux_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5077,11 +5532,11 @@ impl HandleGeomFillDarboux {
 /// constrained filling   with  a   point  and  no   other
 /// constraint. Only used to  simulate an  ordinary bound,
 /// may not be useful and desapear soon.
-pub use crate::ffi::GeomFill_DegeneratedBound as DegeneratedBound;
+pub use crate::ffi_types::GeomFill_DegeneratedBound as DegeneratedBound;
 
 unsafe impl crate::CppDeletable for DegeneratedBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_DegeneratedBound_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_destructor(ptr);
     }
 }
 
@@ -5096,7 +5551,7 @@ impl DegeneratedBound {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_ctor_pnt_real4(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_ctor_pnt_real4(
                     Point, First, Last, Tol3d, Tolang,
                 ),
             ))
@@ -5107,7 +5562,10 @@ impl DegeneratedBound {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_value(self as *const Self, U),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_value(
+                    self as *const Self,
+                    U,
+                ),
             ))
         }
     }
@@ -5115,7 +5573,7 @@ impl DegeneratedBound {
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:47 - `GeomFill_DegeneratedBound::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -5131,7 +5589,7 @@ impl DegeneratedBound {
         Rev: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_reparametrize(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_reparametrize(
                 self as *mut Self,
                 First,
                 Last,
@@ -5147,23 +5605,31 @@ impl DegeneratedBound {
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:57 - `GeomFill_DegeneratedBound::Bounds()`
     pub fn bounds(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_bounds(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_bounds(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:59 - `GeomFill_DegeneratedBound::IsDegenerated()`
     pub fn is_degenerated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_is_degenerated(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_is_degenerated(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:61 - `GeomFill_DegeneratedBound::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DegeneratedBound_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5171,7 +5637,7 @@ impl DegeneratedBound {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5179,18 +5645,22 @@ impl DegeneratedBound {
     }
 
     /// **Source:** `GeomFill_DegeneratedBound.hxx`:61 - `GeomFill_DegeneratedBound::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DegeneratedBound_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_Boundary
     pub fn as_boundary(&self) -> &Boundary {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DegeneratedBound_as_GeomFill_Boundary(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_as_GeomFill_Boundary(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5198,7 +5668,9 @@ impl DegeneratedBound {
     pub fn as_boundary_mut(&mut self) -> &mut Boundary {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_as_GeomFill_Boundary_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_as_GeomFill_Boundary_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5206,9 +5678,11 @@ impl DegeneratedBound {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DegeneratedBound_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5216,7 +5690,9 @@ impl DegeneratedBound {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5224,10 +5700,10 @@ impl DegeneratedBound {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDegeneratedBound> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillDegeneratedBound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5235,7 +5711,9 @@ impl DegeneratedBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:47 - `GeomFill_Boundary::HasNormals()`
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_HasNormals(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_HasNormals(
+                self as *const Self,
+            )
         })
     }
 
@@ -5243,7 +5721,10 @@ impl DegeneratedBound {
     pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DegeneratedBound_inherited_Norm(self as *const Self, U),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_Norm(
+                    self as *const Self,
+                    U,
+                ),
             ))
         }
     }
@@ -5251,14 +5732,19 @@ impl DegeneratedBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
     pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_D1Norm(self as *const Self, U, N, DN)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_D1Norm(
+                self as *const Self,
+                U,
+                N,
+                DN,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
     pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_Points(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_Points(
                 self as *const Self,
                 PFirst,
                 PLast,
@@ -5269,28 +5755,38 @@ impl DegeneratedBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:67 - `GeomFill_Boundary::Tol3d()`
     pub fn tol3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_Tol3d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_Tol3d(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_Tolang(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_Tolang(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5298,7 +5794,9 @@ impl DegeneratedBound {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_DegeneratedBound_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5311,78 +5809,82 @@ impl DegeneratedBound {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DegeneratedBound_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DegeneratedBound_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillDegeneratedBound;
+pub use crate::ffi_types::HandleGeomFillDegeneratedBound;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDegeneratedBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillDegeneratedBound_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_destructor(ptr);
     }
 }
 
 impl HandleGeomFillDegeneratedBound {
     /// Dereference this Handle to access the underlying GeomFill_DegeneratedBound
-    pub fn get(&self) -> &crate::ffi::GeomFill_DegeneratedBound {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_DegeneratedBound {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillDegeneratedBound_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_DegeneratedBound
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DegeneratedBound {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_DegeneratedBound {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillDegeneratedBound_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_DegeneratedBound> to Handle<GeomFill_Boundary>
-    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundary> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDegeneratedBound_to_HandleGeomFillBoundary(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_to_HandleGeomFillBoundary(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_DegeneratedBound> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDegeneratedBound_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDegeneratedBound_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -5396,11 +5898,11 @@ impl HandleGeomFillDegeneratedBound {
 /// The requirement for path curve is only G1.
 /// The result is C0-continuous surface
 /// that can be later approximated to C1.
-pub use crate::ffi::GeomFill_DiscreteTrihedron as DiscreteTrihedron;
+pub use crate::ffi_types::GeomFill_DiscreteTrihedron as DiscreteTrihedron;
 
 unsafe impl crate::CppDeletable for DiscreteTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_DiscreteTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_destructor(ptr);
     }
 }
 
@@ -5409,16 +5911,16 @@ impl DiscreteTrihedron {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_ctor(),
             ))
         }
     }
 
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:44 - `GeomFill_DiscreteTrihedron::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_copy(self as *const Self),
             ))
         }
     }
@@ -5426,16 +5928,16 @@ impl DiscreteTrihedron {
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:46 - `GeomFill_DiscreteTrihedron::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_init(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_init(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:50 - `GeomFill_DiscreteTrihedron::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_set_curve(self as *mut Self, C)
         })
     }
 
@@ -5449,7 +5951,7 @@ impl DiscreteTrihedron {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5476,7 +5978,7 @@ impl DiscreteTrihedron {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5509,7 +6011,7 @@ impl DiscreteTrihedron {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5531,7 +6033,10 @@ impl DiscreteTrihedron {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -5541,9 +6046,17 @@ impl DiscreteTrihedron {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -5557,7 +6070,7 @@ impl DiscreteTrihedron {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -5570,7 +6083,9 @@ impl DiscreteTrihedron {
     /// Say if the law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_is_constant(
+                self as *const Self,
+            )
         })
     }
 
@@ -5578,16 +6093,20 @@ impl DiscreteTrihedron {
     /// Return True.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:114 - `GeomFill_DiscreteTrihedron::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DiscreteTrihedron_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5595,7 +6114,7 @@ impl DiscreteTrihedron {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5603,38 +6122,40 @@ impl DiscreteTrihedron {
     }
 
     /// **Source:** `GeomFill_DiscreteTrihedron.hxx`:114 - `GeomFill_DiscreteTrihedron::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DiscreteTrihedron_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DiscreteTrihedron_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_as_GeomFill_TrihedronLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_as_GeomFill_TrihedronLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DiscreteTrihedron_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5642,7 +6163,9 @@ impl DiscreteTrihedron {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5650,10 +6173,10 @@ impl DiscreteTrihedron {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDiscreteTrihedron> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillDiscreteTrihedron> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DiscreteTrihedron_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5661,7 +6184,9 @@ impl DiscreteTrihedron {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5669,7 +6194,7 @@ impl DiscreteTrihedron {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_SetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_SetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -5680,7 +6205,7 @@ impl DiscreteTrihedron {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -5689,9 +6214,9 @@ impl DiscreteTrihedron {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -5699,9 +6224,12 @@ impl DiscreteTrihedron {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5709,7 +6237,9 @@ impl DiscreteTrihedron {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_DiscreteTrihedron_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5722,80 +6252,86 @@ impl DiscreteTrihedron {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DiscreteTrihedron_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DiscreteTrihedron_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillDiscreteTrihedron;
+pub use crate::ffi_types::HandleGeomFillDiscreteTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDiscreteTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillDiscreteTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_destructor(ptr);
     }
 }
 
 impl HandleGeomFillDiscreteTrihedron {
     /// Dereference this Handle to access the underlying GeomFill_DiscreteTrihedron
-    pub fn get(&self) -> &crate::ffi::GeomFill_DiscreteTrihedron {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_DiscreteTrihedron {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillDiscreteTrihedron_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_DiscreteTrihedron
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DiscreteTrihedron {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_DiscreteTrihedron {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillDiscreteTrihedron_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_DiscreteTrihedron> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDiscreteTrihedron_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_DiscreteTrihedron> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDiscreteTrihedron_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDiscreteTrihedron_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -5805,11 +6341,11 @@ impl HandleGeomFillDiscreteTrihedron {
 // ========================
 
 /// **Source:** `GeomFill_DraftTrihedron.hxx`:31 - `GeomFill_DraftTrihedron`
-pub use crate::ffi::GeomFill_DraftTrihedron as DraftTrihedron;
+pub use crate::ffi_types::GeomFill_DraftTrihedron as DraftTrihedron;
 
 unsafe impl crate::CppDeletable for DraftTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_DraftTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_destructor(ptr);
     }
 }
 
@@ -5818,7 +6354,9 @@ impl DraftTrihedron {
     pub fn new_vec_real(BiNormal: &crate::gp::Vec, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_ctor_vec_real(BiNormal, Angle),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_ctor_vec_real(
+                    BiNormal, Angle,
+                ),
             ))
         }
     }
@@ -5826,15 +6364,18 @@ impl DraftTrihedron {
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:37 - `GeomFill_DraftTrihedron::SetAngle()`
     pub fn set_angle(&mut self, Angle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_set_angle(self as *mut Self, Angle)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_set_angle(
+                self as *mut Self,
+                Angle,
+            )
         })
     }
 
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:39 - `GeomFill_DraftTrihedron::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_copy(self as *const Self),
             ))
         }
     }
@@ -5851,7 +6392,7 @@ impl DraftTrihedron {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5876,7 +6417,7 @@ impl DraftTrihedron {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5904,7 +6445,7 @@ impl DraftTrihedron {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -5926,7 +6467,10 @@ impl DraftTrihedron {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -5936,9 +6480,17 @@ impl DraftTrihedron {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -5952,7 +6504,7 @@ impl DraftTrihedron {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -5965,7 +6517,7 @@ impl DraftTrihedron {
     /// Say if the law is Constant.
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_is_constant(self as *const Self)
         })
     }
 
@@ -5973,16 +6525,20 @@ impl DraftTrihedron {
     /// Return True.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:97 - `GeomFill_DraftTrihedron::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DraftTrihedron_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5990,7 +6546,7 @@ impl DraftTrihedron {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5998,18 +6554,22 @@ impl DraftTrihedron {
     }
 
     /// **Source:** `GeomFill_DraftTrihedron.hxx`:97 - `GeomFill_DraftTrihedron::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_DraftTrihedron_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DraftTrihedron_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6017,7 +6577,9 @@ impl DraftTrihedron {
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_as_GeomFill_TrihedronLaw_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_as_GeomFill_TrihedronLaw_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6025,9 +6587,11 @@ impl DraftTrihedron {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_DraftTrihedron_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6035,7 +6599,9 @@ impl DraftTrihedron {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6043,25 +6609,30 @@ impl DraftTrihedron {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillDraftTrihedron> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillDraftTrihedron> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_DraftTrihedron_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_SetCurve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_SetCurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6069,7 +6640,7 @@ impl DraftTrihedron {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_SetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_SetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -6080,7 +6651,7 @@ impl DraftTrihedron {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -6089,16 +6660,22 @@ impl DraftTrihedron {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6106,7 +6683,9 @@ impl DraftTrihedron {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_DraftTrihedron_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6119,78 +6698,84 @@ impl DraftTrihedron {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_DraftTrihedron_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_DraftTrihedron_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillDraftTrihedron;
+pub use crate::ffi_types::HandleGeomFillDraftTrihedron;
 
 unsafe impl crate::CppDeletable for HandleGeomFillDraftTrihedron {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillDraftTrihedron_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_destructor(ptr);
     }
 }
 
 impl HandleGeomFillDraftTrihedron {
     /// Dereference this Handle to access the underlying GeomFill_DraftTrihedron
-    pub fn get(&self) -> &crate::ffi::GeomFill_DraftTrihedron {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_DraftTrihedron {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillDraftTrihedron_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_DraftTrihedron
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_DraftTrihedron {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_DraftTrihedron {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillDraftTrihedron_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_DraftTrihedron> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDraftTrihedron_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_DraftTrihedron> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillDraftTrihedron_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillDraftTrihedron_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -6201,11 +6786,11 @@ impl HandleGeomFillDraftTrihedron {
 
 /// **Source:** `GeomFill_EvolvedSection.hxx`:40 - `GeomFill_EvolvedSection`
 /// Define an Constant Section Law
-pub use crate::ffi::GeomFill_EvolvedSection as EvolvedSection;
+pub use crate::ffi_types::GeomFill_EvolvedSection as EvolvedSection;
 
 unsafe impl crate::CppDeletable for EvolvedSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_EvolvedSection_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_destructor(ptr);
     }
 }
 
@@ -6213,13 +6798,11 @@ impl EvolvedSection {
     /// **Source:** `GeomFill_EvolvedSection.hxx`:45 - `GeomFill_EvolvedSection::GeomFill_EvolvedSection()`
     /// Make an SectionLaw with a Curve and a real  Law.
     pub fn new_handlegeomcurve_handlelawfunction(
-        C: &crate::ffi::HandleGeomCurve,
-        L: &crate::ffi::HandleLawFunction,
+        C: &crate::ffi_types::HandleGeomCurve,
+        L: &crate::ffi_types::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_ctor_handlegeomcurve_handlelawfunction(C, L),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_ctor_handlegeomcurve_handlelawfunction(C, L)))
         }
     }
 
@@ -6228,11 +6811,16 @@ impl EvolvedSection {
     pub fn d0(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_d0(self as *mut Self, Param, Poles, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_d0(
+                self as *mut Self,
+                Param,
+                Poles,
+                Weigths,
+            )
         })
     }
 
@@ -6243,13 +6831,13 @@ impl EvolvedSection {
     pub fn d1(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_d1(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -6267,15 +6855,15 @@ impl EvolvedSection {
     pub fn d2(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_d2(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -6292,10 +6880,12 @@ impl EvolvedSection {
     /// give if possible an bspline Surface, like iso-v are the
     /// section.  If it is  not possible  this methode have  to
     /// get an Null Surface.  Is it the default implementation.
-    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_b_spline_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_b_spline_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6304,7 +6894,7 @@ impl EvolvedSection {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -6315,17 +6905,17 @@ impl EvolvedSection {
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:84 - `GeomFill_EvolvedSection::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:87 - `GeomFill_EvolvedSection::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_mults(self as *const Self, TMults)
         })
     }
 
@@ -6333,7 +6923,7 @@ impl EvolvedSection {
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_is_rational(self as *const Self)
         })
     }
 
@@ -6341,7 +6931,7 @@ impl EvolvedSection {
     /// Returns if the sections are periodic or not
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_is_u_periodic(self as *const Self)
         })
     }
 
@@ -6349,7 +6939,7 @@ impl EvolvedSection {
     /// Returns if the law  isperiodic or not
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_is_v_periodic(self as *const Self)
         })
     }
 
@@ -6359,7 +6949,10 @@ impl EvolvedSection {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -6369,9 +6962,17 @@ impl EvolvedSection {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -6382,7 +6983,11 @@ impl EvolvedSection {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -6391,7 +6996,11 @@ impl EvolvedSection {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -6401,7 +7010,11 @@ impl EvolvedSection {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -6416,10 +7029,10 @@ impl EvolvedSection {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -6438,7 +7051,9 @@ impl EvolvedSection {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6449,7 +7064,9 @@ impl EvolvedSection {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_maximal_section(
+                self as *const Self,
+            )
         })
     }
 
@@ -6459,9 +7076,12 @@ impl EvolvedSection {
     /// This information is  useful to control error
     /// in rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -6469,26 +7089,33 @@ impl EvolvedSection {
     /// return True If the Law isConstant
     pub fn is_constant(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_is_constant(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_is_constant(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:164 - `GeomFill_EvolvedSection::ConstantSection()`
     /// Return the constant Section if <me>  IsConstant.
-    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_constant_section(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_constant_section(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:166 - `GeomFill_EvolvedSection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_EvolvedSection_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6496,7 +7123,7 @@ impl EvolvedSection {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6504,18 +7131,22 @@ impl EvolvedSection {
     }
 
     /// **Source:** `GeomFill_EvolvedSection.hxx`:166 - `GeomFill_EvolvedSection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_EvolvedSection_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_SectionLaw
     pub fn as_section_law(&self) -> &SectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_EvolvedSection_as_GeomFill_SectionLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_as_GeomFill_SectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6523,7 +7154,9 @@ impl EvolvedSection {
     pub fn as_section_law_mut(&mut self) -> &mut SectionLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_as_GeomFill_SectionLaw_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_as_GeomFill_SectionLaw_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6531,9 +7164,11 @@ impl EvolvedSection {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_EvolvedSection_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6541,7 +7176,9 @@ impl EvolvedSection {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6549,10 +7186,10 @@ impl EvolvedSection {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillEvolvedSection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillEvolvedSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -6560,7 +7197,7 @@ impl EvolvedSection {
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_SetTolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_SetTolerance(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -6571,15 +7208,18 @@ impl EvolvedSection {
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:163 - `GeomFill_SectionLaw::IsConicalLaw()`
     pub fn is_conical_law(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_IsConicalLaw(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_IsConicalLaw(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:167 - `GeomFill_SectionLaw::CirclSection()`
-    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_EvolvedSection_inherited_CirclSection(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_CirclSection(
                     self as *const Self,
                     Param,
                 ),
@@ -6588,16 +7228,22 @@ impl EvolvedSection {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6605,7 +7251,9 @@ impl EvolvedSection {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_EvolvedSection_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6618,76 +7266,84 @@ impl EvolvedSection {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_EvolvedSection_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_EvolvedSection_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillEvolvedSection;
+pub use crate::ffi_types::HandleGeomFillEvolvedSection;
 
 unsafe impl crate::CppDeletable for HandleGeomFillEvolvedSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillEvolvedSection_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_destructor(ptr);
     }
 }
 
 impl HandleGeomFillEvolvedSection {
     /// Dereference this Handle to access the underlying GeomFill_EvolvedSection
-    pub fn get(&self) -> &crate::ffi::GeomFill_EvolvedSection {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_EvolvedSection {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillEvolvedSection_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_EvolvedSection
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_EvolvedSection {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_EvolvedSection {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillEvolvedSection_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_EvolvedSection> to Handle<GeomFill_SectionLaw>
-    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+    pub fn to_handle_section_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillEvolvedSection_to_HandleGeomFillSectionLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_to_HandleGeomFillSectionLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_EvolvedSection> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillEvolvedSection_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillEvolvedSection_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -6698,11 +7354,11 @@ impl HandleGeomFillEvolvedSection {
 
 /// **Source:** `GeomFill_Filling.hxx`:32 - `GeomFill_Filling`
 /// Root class for Filling;
-pub use crate::ffi::GeomFill_Filling as Filling;
+pub use crate::ffi_types::GeomFill_Filling as Filling;
 
 unsafe impl crate::CppDeletable for Filling {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Filling_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_destructor(ptr);
     }
 }
 
@@ -6710,38 +7366,44 @@ impl Filling {
     /// **Source:** `GeomFill_Filling.hxx`:37 - `GeomFill_Filling::GeomFill_Filling()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Filling_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Filling.hxx`:39 - `GeomFill_Filling::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Filling_nb_u_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_nb_u_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Filling.hxx`:41 - `GeomFill_Filling::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Filling_nb_v_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_nb_v_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Filling.hxx`:43 - `GeomFill_Filling::Poles()`
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array2OfPnt) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array2OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Filling_poles(self as *const Self, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_poles(self as *const Self, Poles)
         })
     }
 
     /// **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Filling_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_is_rational(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
-    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+    pub fn weights(&self, Weights: &mut crate::ffi_types::TColStd_Array2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Filling_weights(self as *const Self, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Filling_weights(self as *const Self, Weights)
         })
     }
 }
@@ -6752,11 +7414,11 @@ impl Filling {
 
 /// **Source:** `GeomFill_Fixed.hxx`:32 - `GeomFill_Fixed`
 /// Defined an constant TrihedronLaw
-pub use crate::ffi::GeomFill_Fixed as Fixed;
+pub use crate::ffi_types::GeomFill_Fixed as Fixed;
 
 unsafe impl crate::CppDeletable for Fixed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Fixed_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_destructor(ptr);
     }
 }
 
@@ -6764,18 +7426,18 @@ impl Fixed {
     /// **Source:** `GeomFill_Fixed.hxx`:36 - `GeomFill_Fixed::GeomFill_Fixed()`
     pub fn new_vec2(Tangent: &crate::gp::Vec, Normal: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Fixed_ctor_vec2(
-                Tangent, Normal,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_ctor_vec2(Tangent, Normal),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:38 - `GeomFill_Fixed::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Fixed_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_copy(self as *const Self),
+            ))
         }
     }
 
@@ -6789,7 +7451,13 @@ impl Fixed {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_d0(
+                self as *mut Self,
+                Param,
+                Tangent,
+                Normal,
+                BiNormal,
+            )
         })
     }
 
@@ -6808,7 +7476,7 @@ impl Fixed {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -6839,7 +7507,7 @@ impl Fixed {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -6861,7 +7529,7 @@ impl Fixed {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_nb_intervals(self as *const Self, S.into())
         })
     }
 
@@ -6871,9 +7539,13 @@ impl Fixed {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_intervals(self as *const Self, T, S.into())
         })
     }
 
@@ -6887,7 +7559,7 @@ impl Fixed {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -6899,90 +7571,106 @@ impl Fixed {
     /// **Source:** `GeomFill_Fixed.hxx`:92 - `GeomFill_Fixed::IsConstant()`
     /// Return True.
     pub fn is_constant(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Fixed_is_constant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:94 - `GeomFill_Fixed::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Fixed_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:94 - `GeomFill_Fixed::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::GeomFill_Fixed_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `GeomFill_Fixed.hxx`:94 - `GeomFill_Fixed::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Fixed_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Fixed_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Fixed_as_GeomFill_TrihedronLaw_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_as_GeomFill_TrihedronLaw_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Fixed_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Fixed_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillFixed> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillFixed> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Fixed_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_SetCurve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_SetCurve(self as *mut Self, C)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_ErrorStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -6990,35 +7678,51 @@ impl Fixed {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_SetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_GetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_GetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:110 - `GeomFill_TrihedronLaw::IsOnlyBy3dCurve()`
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_IsOnlyBy3dCurve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_IsOnlyBy3dCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7026,7 +7730,7 @@ impl Fixed {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_Fixed_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7039,69 +7743,85 @@ impl Fixed {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Fixed_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Fixed_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillFixed;
+pub use crate::ffi_types::HandleGeomFillFixed;
 
 unsafe impl crate::CppDeletable for HandleGeomFillFixed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillFixed_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_destructor(ptr);
     }
 }
 
 impl HandleGeomFillFixed {
     /// Dereference this Handle to access the underlying GeomFill_Fixed
-    pub fn get(&self) -> &crate::ffi::GeomFill_Fixed {
-        unsafe { &*crate::check_result(crate::ffi::HandleGeomFillFixed_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_Fixed {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_Fixed
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Fixed {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_Fixed {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillFixed_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_Fixed> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillFixed_to_HandleGeomFillTrihedronLaw(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomFill_Fixed> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillFixed_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillFixed_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7113,11 +7833,11 @@ impl HandleGeomFillFixed {
 
 /// **Source:** `GeomFill_Frenet.hxx`:34 - `GeomFill_Frenet`
 /// Defined Frenet Trihedron  Law
-pub use crate::ffi::GeomFill_Frenet as Frenet;
+pub use crate::ffi_types::GeomFill_Frenet as Frenet;
 
 unsafe impl crate::CppDeletable for Frenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Frenet_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_destructor(ptr);
     }
 }
 
@@ -7125,29 +7845,35 @@ impl Frenet {
     /// **Source:** `GeomFill_Frenet.hxx`:38 - `GeomFill_Frenet::GeomFill_Frenet()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Frenet_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:40 - `GeomFill_Frenet::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Frenet_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_copy(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:42 - `GeomFill_Frenet::Init()`
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::GeomFill_Frenet_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:46 - `GeomFill_Frenet::SetCurve()`
     /// initialize curve of frenet law
     /// @return Standard_True
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Frenet_set_curve(self as *mut Self, C) })
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_set_curve(self as *mut Self, C)
+        })
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:50 - `GeomFill_Frenet::D0()`
@@ -7160,7 +7886,13 @@ impl Frenet {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_d0(self as *mut Self, Param, Tangent, Normal, BiNormal)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_d0(
+                self as *mut Self,
+                Param,
+                Tangent,
+                Normal,
+                BiNormal,
+            )
         })
     }
 
@@ -7179,7 +7911,7 @@ impl Frenet {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -7210,7 +7942,7 @@ impl Frenet {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -7232,7 +7964,10 @@ impl Frenet {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -7242,9 +7977,17 @@ impl Frenet {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -7258,7 +8001,7 @@ impl Frenet {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -7270,21 +8013,25 @@ impl Frenet {
     /// **Source:** `GeomFill_Frenet.hxx`:101 - `GeomFill_Frenet::IsConstant()`
     /// Say if the law is Constant.
     pub fn is_constant(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Frenet_is_constant(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_is_constant(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:104 - `GeomFill_Frenet::IsOnlyBy3dCurve()`
     /// Return True.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_is_only_by3d_curve(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:106 - `GeomFill_Frenet::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Frenet_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7292,7 +8039,7 @@ impl Frenet {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_Frenet_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7300,61 +8047,73 @@ impl Frenet {
     }
 
     /// **Source:** `GeomFill_Frenet.hxx`:106 - `GeomFill_Frenet::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Frenet_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Frenet_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Frenet_as_GeomFill_TrihedronLaw_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_as_GeomFill_TrihedronLaw_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Frenet_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Frenet_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillFrenet> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillFrenet> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Frenet_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_ErrorStatus(self as *const Self)
         }))
         .unwrap()
     }
@@ -7362,28 +8121,42 @@ impl Frenet {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_SetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_GetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_GetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7391,7 +8164,7 @@ impl Frenet {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_Frenet_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -7404,69 +8177,85 @@ impl Frenet {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Frenet_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Frenet_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillFrenet;
+pub use crate::ffi_types::HandleGeomFillFrenet;
 
 unsafe impl crate::CppDeletable for HandleGeomFillFrenet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillFrenet_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_destructor(ptr);
     }
 }
 
 impl HandleGeomFillFrenet {
     /// Dereference this Handle to access the underlying GeomFill_Frenet
-    pub fn get(&self) -> &crate::ffi::GeomFill_Frenet {
-        unsafe { &*crate::check_result(crate::ffi::HandleGeomFillFrenet_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_Frenet {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_Frenet
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Frenet {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_Frenet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillFrenet_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_Frenet> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillFrenet_to_HandleGeomFillTrihedronLaw(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_to_HandleGeomFillTrihedronLaw(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomFill_Frenet> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillFrenet_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillFrenet_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7477,26 +8266,22 @@ impl HandleGeomFillFrenet {
 // ========================
 
 /// **Source:** `GeomFill_FunctionDraft.hxx`:28 - `GeomFill_FunctionDraft`
-pub use crate::ffi::GeomFill_FunctionDraft as FunctionDraft;
+pub use crate::ffi_types::GeomFill_FunctionDraft as FunctionDraft;
 
 unsafe impl crate::CppDeletable for FunctionDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_FunctionDraft_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_destructor(ptr);
     }
 }
 
 impl FunctionDraft {
     /// **Source:** `GeomFill_FunctionDraft.hxx`:33 - `GeomFill_FunctionDraft::GeomFill_FunctionDraft()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve(
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_FunctionDraft_ctor_handleadaptor3dsurface_handleadaptor3dcurve(
-                    S, C,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
         }
     }
 
@@ -7504,7 +8289,7 @@ impl FunctionDraft {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_nb_variables(self as *const Self)
         })
     }
 
@@ -7512,7 +8297,7 @@ impl FunctionDraft {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_nb_equations(self as *const Self)
         })
     }
 
@@ -7521,9 +8306,13 @@ impl FunctionDraft {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_value(self as *mut Self, X, F)
         })
     }
 
@@ -7534,11 +8323,15 @@ impl FunctionDraft {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -7549,12 +8342,12 @@ impl FunctionDraft {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -7563,15 +8356,23 @@ impl FunctionDraft {
     /// the parameter Param .
     pub fn deriv_t(
         &mut self,
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         Param: f64,
         W: f64,
         dN: &crate::gp::Vec,
         teta: f64,
-        F: &mut crate::ffi::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_deriv_t(self as *mut Self, C, Param, W, dN, teta, F)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_deriv_t(
+                self as *mut Self,
+                C,
+                Param,
+                W,
+                dN,
+                teta,
+                F,
+            )
         })
     }
 
@@ -7580,15 +8381,15 @@ impl FunctionDraft {
     /// the parameter Param .
     pub fn deriv2_t(
         &mut self,
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         Param: f64,
         W: f64,
         d2N: &crate::gp::Vec,
         teta: f64,
-        F: &mut crate::ffi::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_deriv2_t(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_deriv2_t(
                 self as *mut Self,
                 C,
                 Param,
@@ -7610,16 +8411,21 @@ impl FunctionDraft {
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_deriv_tx(self as *mut Self, dN, teta, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_deriv_tx(
+                self as *mut Self,
+                dN,
+                teta,
+                D,
+            )
         })
     }
 
     /// **Source:** `GeomFill_FunctionDraft.hxx`:90 - `GeomFill_FunctionDraft::Deriv2X()`
     /// returns the values <T> of  the X2 derivatives for
     /// the parameter Param .
-    pub fn deriv2_x(&mut self, X: &crate::ffi::math_Vector, T: &mut Tensor) -> bool {
+    pub fn deriv2_x(&mut self, X: &crate::ffi_types::math_Vector, T: &mut Tensor) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_deriv2_x(self as *mut Self, X, T)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_deriv2_x(self as *mut Self, X, T)
         })
     }
 
@@ -7628,11 +8434,7 @@ impl FunctionDraft {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -7641,36 +8443,38 @@ impl FunctionDraft {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_FunctionDraft_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionDraft_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionDraft_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -7680,30 +8484,30 @@ impl FunctionDraft {
 // ========================
 
 /// **Source:** `GeomFill_FunctionGuide.hxx`:38 - `GeomFill_FunctionGuide`
-pub use crate::ffi::GeomFill_FunctionGuide as FunctionGuide;
+pub use crate::ffi_types::GeomFill_FunctionGuide as FunctionGuide;
 
 unsafe impl crate::CppDeletable for FunctionGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_FunctionGuide_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_destructor(ptr);
     }
 }
 
 impl FunctionGuide {
     /// **Source:** `GeomFill_FunctionGuide.hxx`:43 - `GeomFill_FunctionGuide::GeomFill_FunctionGuide()`
     pub fn new_handlegeomfillsectionlaw_handleadaptor3dcurve_real(
-        S: &crate::ffi::HandleGeomFillSectionLaw,
-        Guide: &crate::ffi::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::HandleGeomFillSectionLaw,
+        Guide: &crate::ffi_types::HandleAdaptor3dCurve,
         ParamOnLaw: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_FunctionGuide_ctor_handlegeomfillsectionlaw_handleadaptor3dcurve_real(S, Guide, ParamOnLaw)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_ctor_handlegeomfillsectionlaw_handleadaptor3dcurve_real(S, Guide, ParamOnLaw)))
         }
     }
 
     /// **Source:** `GeomFill_FunctionGuide.hxx`:43 - `GeomFill_FunctionGuide::GeomFill_FunctionGuide()`
     pub fn new_handlegeomfillsectionlaw_handleadaptor3dcurve(
-        S: &crate::ffi::HandleGeomFillSectionLaw,
-        Guide: &crate::ffi::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::HandleGeomFillSectionLaw,
+        Guide: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomfillsectionlaw_handleadaptor3dcurve_real(S, Guide, 0.0)
     }
@@ -7717,7 +8521,7 @@ impl FunctionGuide {
         XDir: &crate::gp::XYZ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_set_param(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_set_param(
                 self as *mut Self,
                 Param,
                 Centre,
@@ -7731,7 +8535,7 @@ impl FunctionGuide {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_nb_variables(self as *const Self)
         })
     }
 
@@ -7739,7 +8543,7 @@ impl FunctionGuide {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_nb_equations(self as *const Self)
         })
     }
 
@@ -7748,9 +8552,13 @@ impl FunctionGuide {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_value(self as *mut Self, X, F)
         })
     }
 
@@ -7761,11 +8569,15 @@ impl FunctionGuide {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -7776,12 +8588,12 @@ impl FunctionGuide {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -7790,13 +8602,19 @@ impl FunctionGuide {
     /// the parameter Param .
     pub fn deriv_t(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         DCentre: &crate::gp::XYZ,
         DDir: &crate::gp::XYZ,
-        DFDT: &mut crate::ffi::math_Vector,
+        DFDT: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_deriv_t(self as *mut Self, X, DCentre, DDir, DFDT)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_deriv_t(
+                self as *mut Self,
+                X,
+                DCentre,
+                DDir,
+                DFDT,
+            )
         })
     }
 
@@ -7813,11 +8631,11 @@ impl FunctionGuide {
         &mut self,
         DCentre: &crate::gp::XYZ,
         DDir: &crate::gp::XYZ,
-        DFDT: &mut crate::ffi::math_Vector,
-        D2FT: &mut crate::ffi::math_Vector,
+        DFDT: &mut crate::ffi_types::math_Vector,
+        D2FT: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_deriv2_t(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_deriv2_t(
                 self as *mut Self,
                 DCentre,
                 DDir,
@@ -7832,11 +8650,7 @@ impl FunctionGuide {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -7845,36 +8659,38 @@ impl FunctionGuide {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_FunctionGuide_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_FunctionGuide_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_FunctionGuide_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -7889,11 +8705,11 @@ impl FunctionGuide {
 /// passing  by   all  the  curves  described  in  the
 /// generator. The VDegree of the resulting surface is
 /// 1.
-pub use crate::ffi::GeomFill_Generator as Generator;
+pub use crate::ffi_types::GeomFill_Generator as Generator;
 
 unsafe impl crate::CppDeletable for Generator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Generator_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_destructor(ptr);
     }
 }
 
@@ -7901,7 +8717,9 @@ impl Generator {
     /// **Source:** `GeomFill_Generator.hxx`:37 - `GeomFill_Generator::GeomFill_Generator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Generator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_ctor(),
+            ))
         }
     }
 
@@ -7912,92 +8730,111 @@ impl Generator {
     /// <PTol> is used to compare 2 knots.
     pub fn perform(&mut self, PTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Generator_perform(self as *mut Self, PTol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_perform(self as *mut Self, PTol)
         })
     }
 
     /// **Source:** `GeomFill_Generator.hxx`:45 - `GeomFill_Generator::Surface()`
-    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
+    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Generator_surface(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_surface(
+                self as *const Self,
+            )))
         }
     }
 
     /// Upcast to GeomFill_Profiler
     pub fn as_profiler(&self) -> &Profiler {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Generator_as_GeomFill_Profiler(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_as_GeomFill_Profiler(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_Profiler (mutable)
     pub fn as_profiler_mut(&mut self) -> &mut Profiler {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Generator_as_GeomFill_Profiler_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_as_GeomFill_Profiler_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:43 - `GeomFill_Profiler::AddCurve()`
-    pub fn add_curve(&mut self, Curve: &crate::ffi::HandleGeomCurve) {
+    pub fn add_curve(&mut self, Curve: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_AddCurve(self as *mut Self, Curve)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_AddCurve(
+                self as *mut Self,
+                Curve,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:51 - `GeomFill_Profiler::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_Degree(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:53 - `GeomFill_Profiler::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:56 - `GeomFill_Profiler::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_NbPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:64 - `GeomFill_Profiler::Poles()`
-    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_Poles(self as *const Self, Index, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_Poles(
+                self as *const Self,
+                Index,
+                Poles,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:72 - `GeomFill_Profiler::Weights()`
-    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_Weights(self as *const Self, Index, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_Weights(
+                self as *const Self,
+                Index,
+                Weights,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_NbKnots(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
     pub fn knots_and_mults(
         &self,
-        Knots: &mut crate::ffi::TColStd_Array1OfReal,
-        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+        Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Generator_inherited_KnotsAndMults(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_KnotsAndMults(
                 self as *const Self,
                 Knots,
                 Mults,
@@ -8006,12 +8843,14 @@ impl Generator {
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
-    pub fn curve(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
+    pub fn curve(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Generator_inherited_Curve(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Generator_inherited_Curve(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 }
@@ -8023,22 +8862,24 @@ impl Generator {
 /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:36 - `GeomFill_GuideTrihedronAC`
 /// Trihedron in  the  case of a sweeping along a guide  curve.
 /// defined by curviline  absciss
-pub use crate::ffi::GeomFill_GuideTrihedronAC as GuideTrihedronAC;
+pub use crate::ffi_types::GeomFill_GuideTrihedronAC as GuideTrihedronAC;
 
 unsafe impl crate::CppDeletable for GuideTrihedronAC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_GuideTrihedronAC_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_destructor(ptr);
     }
 }
 
 impl GuideTrihedronAC {
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:40 - `GeomFill_GuideTrihedronAC::GeomFill_GuideTrihedronAC()`
     pub fn new_handleadaptor3dcurve(
-        guide: &crate::ffi::HandleAdaptor3dCurve,
+        guide: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_ctor_handleadaptor3dcurve(guide),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_ctor_handleadaptor3dcurve(
+                    guide,
+                ),
             ))
         }
     }
@@ -8046,26 +8887,26 @@ impl GuideTrihedronAC {
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:44 - `GeomFill_GuideTrihedronAC::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:47 - `GeomFill_GuideTrihedronAC::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:49 - `GeomFill_GuideTrihedronAC::Guide()`
-    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_guide(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_guide(self as *const Self),
             ))
         }
     }
@@ -8079,7 +8920,7 @@ impl GuideTrihedronAC {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8101,7 +8942,7 @@ impl GuideTrihedronAC {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8129,7 +8970,7 @@ impl GuideTrihedronAC {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8151,7 +8992,10 @@ impl GuideTrihedronAC {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -8161,9 +9005,17 @@ impl GuideTrihedronAC {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -8174,7 +9026,11 @@ impl GuideTrihedronAC {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -8188,7 +9044,7 @@ impl GuideTrihedronAC {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -8201,7 +9057,7 @@ impl GuideTrihedronAC {
     /// Say if the law is Constant
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_is_constant(self as *const Self)
         })
     }
 
@@ -8211,23 +9067,31 @@ impl GuideTrihedronAC {
     /// Return False by Default.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:110 - `GeomFill_GuideTrihedronAC::Origine()`
     pub fn origine(&mut self, OrACR1: f64, OrACR2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_origine(self as *mut Self, OrACR1, OrACR2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_origine(
+                self as *mut Self,
+                OrACR1,
+                OrACR2,
+            )
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:113 - `GeomFill_GuideTrihedronAC::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_GuideTrihedronAC_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8235,7 +9099,7 @@ impl GuideTrihedronAC {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8243,60 +9107,54 @@ impl GuideTrihedronAC {
     }
 
     /// **Source:** `GeomFill_GuideTrihedronAC.hxx`:113 - `GeomFill_GuideTrihedronAC::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_GuideTrihedronAC_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronWithGuide
     pub fn as_trihedron_with_guide(&self) -> &TrihedronWithGuide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide(self as *const Self))
         }
     }
 
     /// Upcast to GeomFill_TrihedronWithGuide (mutable)
     pub fn as_trihedron_with_guide_mut(&mut self) -> &mut TrihedronWithGuide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronWithGuide_mut(self as *mut Self))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_GeomFill_TrihedronLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_GuideTrihedronAC_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8304,7 +9162,9 @@ impl GuideTrihedronAC {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8312,10 +9172,10 @@ impl GuideTrihedronAC {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronAC> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -8323,18 +9183,16 @@ impl GuideTrihedronAC {
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
     pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_CurrentPointOnGuide(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -8342,7 +9200,7 @@ impl GuideTrihedronAC {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -8351,16 +9209,22 @@ impl GuideTrihedronAC {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8368,7 +9232,9 @@ impl GuideTrihedronAC {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_GuideTrihedronAC_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8381,93 +9247,93 @@ impl GuideTrihedronAC {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronAC_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronAC_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillGuideTrihedronAC;
+pub use crate::ffi_types::HandleGeomFillGuideTrihedronAC;
 
 unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronAC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillGuideTrihedronAC_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_destructor(ptr);
     }
 }
 
 impl HandleGeomFillGuideTrihedronAC {
     /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronAC
-    pub fn get(&self) -> &crate::ffi::GeomFill_GuideTrihedronAC {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_GuideTrihedronAC {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillGuideTrihedronAC_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_GuideTrihedronAC
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_GuideTrihedronAC {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_GuideTrihedronAC {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillGuideTrihedronAC_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronAC> to Handle<GeomFill_TrihedronWithGuide>
     pub fn to_handle_trihedron_with_guide(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronWithGuide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronWithGuide> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronWithGuide(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronWithGuide(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronAC> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronAC> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronAC_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronAC_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8479,22 +9345,24 @@ impl HandleGeomFillGuideTrihedronAC {
 /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:39 - `GeomFill_GuideTrihedronPlan`
 /// Trihedron in  the case of sweeping along a guide curve defined
 /// by the orthogonal  plan on  the trajectory
-pub use crate::ffi::GeomFill_GuideTrihedronPlan as GuideTrihedronPlan;
+pub use crate::ffi_types::GeomFill_GuideTrihedronPlan as GuideTrihedronPlan;
 
 unsafe impl crate::CppDeletable for GuideTrihedronPlan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_GuideTrihedronPlan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_destructor(ptr);
     }
 }
 
 impl GuideTrihedronPlan {
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:43 - `GeomFill_GuideTrihedronPlan::GeomFill_GuideTrihedronPlan()`
     pub fn new_handleadaptor3dcurve(
-        theGuide: &crate::ffi::HandleAdaptor3dCurve,
+        theGuide: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_ctor_handleadaptor3dcurve(theGuide),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_ctor_handleadaptor3dcurve(
+                    theGuide,
+                ),
             ))
         }
     }
@@ -8502,17 +9370,20 @@ impl GuideTrihedronPlan {
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:47 - `GeomFill_GuideTrihedronPlan::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, thePath: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, thePath: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_set_curve(self as *mut Self, thePath)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_set_curve(
+                self as *mut Self,
+                thePath,
+            )
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:50 - `GeomFill_GuideTrihedronPlan::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_copy(self as *const Self),
             ))
         }
     }
@@ -8522,16 +9393,20 @@ impl GuideTrihedronPlan {
     /// Returns PipeOk (default implementation)
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_error_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_error_status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:56 - `GeomFill_GuideTrihedronPlan::Guide()`
-    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_guide(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_guide(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8545,7 +9420,7 @@ impl GuideTrihedronPlan {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8567,7 +9442,7 @@ impl GuideTrihedronPlan {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8595,7 +9470,7 @@ impl GuideTrihedronPlan {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -8618,7 +9493,11 @@ impl GuideTrihedronPlan {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -8628,7 +9507,10 @@ impl GuideTrihedronPlan {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -8638,9 +9520,17 @@ impl GuideTrihedronPlan {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -8654,7 +9544,7 @@ impl GuideTrihedronPlan {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -8667,7 +9557,9 @@ impl GuideTrihedronPlan {
     /// Say if the law is Constant
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_is_constant(
+                self as *const Self,
+            )
         })
     }
 
@@ -8677,23 +9569,31 @@ impl GuideTrihedronPlan {
     /// Return False by Default.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:117 - `GeomFill_GuideTrihedronPlan::Origine()`
     pub fn origine(&mut self, OrACR1: f64, OrACR2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_origine(self as *mut Self, OrACR1, OrACR2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_origine(
+                self as *mut Self,
+                OrACR1,
+                OrACR2,
+            )
         })
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:120 - `GeomFill_GuideTrihedronPlan::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_GuideTrihedronPlan_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8701,7 +9601,7 @@ impl GuideTrihedronPlan {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8709,60 +9609,54 @@ impl GuideTrihedronPlan {
     }
 
     /// **Source:** `GeomFill_GuideTrihedronPlan.hxx`:120 - `GeomFill_GuideTrihedronPlan::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_GuideTrihedronPlan_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronWithGuide
     pub fn as_trihedron_with_guide(&self) -> &TrihedronWithGuide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronWithGuide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronWithGuide(self as *const Self))
         }
     }
 
     /// Upcast to GeomFill_TrihedronWithGuide (mutable)
     pub fn as_trihedron_with_guide_mut(&mut self) -> &mut TrihedronWithGuide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronWithGuide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronWithGuide_mut(self as *mut Self))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_GeomFill_TrihedronLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_GuideTrihedronPlan_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8770,7 +9664,7 @@ impl GuideTrihedronPlan {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_as_Standard_Transient_mut(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -8780,10 +9674,10 @@ impl GuideTrihedronPlan {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronPlan> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -8791,18 +9685,14 @@ impl GuideTrihedronPlan {
     /// Inherited: **Source:** `GeomFill_TrihedronWithGuide.hxx`:39 - `GeomFill_TrihedronWithGuide::CurrentPointOnGuide()`
     pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_GuideTrihedronPlan_inherited_CurrentPointOnGuide(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_CurrentPointOnGuide(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -8811,9 +9701,9 @@ impl GuideTrihedronPlan {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -8821,9 +9711,12 @@ impl GuideTrihedronPlan {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8831,7 +9724,9 @@ impl GuideTrihedronPlan {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_GuideTrihedronPlan_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8844,93 +9739,95 @@ impl GuideTrihedronPlan {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_GuideTrihedronPlan_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_GuideTrihedronPlan_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillGuideTrihedronPlan;
+pub use crate::ffi_types::HandleGeomFillGuideTrihedronPlan;
 
 unsafe impl crate::CppDeletable for HandleGeomFillGuideTrihedronPlan {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillGuideTrihedronPlan_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_destructor(ptr);
     }
 }
 
 impl HandleGeomFillGuideTrihedronPlan {
     /// Dereference this Handle to access the underlying GeomFill_GuideTrihedronPlan
-    pub fn get(&self) -> &crate::ffi::GeomFill_GuideTrihedronPlan {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_GuideTrihedronPlan {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillGuideTrihedronPlan_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_GuideTrihedronPlan
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_GuideTrihedronPlan {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_GuideTrihedronPlan {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillGuideTrihedronPlan_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronPlan> to Handle<GeomFill_TrihedronWithGuide>
     pub fn to_handle_trihedron_with_guide(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronWithGuide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronWithGuide> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronWithGuide(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronWithGuide(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronPlan> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_GuideTrihedronPlan> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillGuideTrihedronPlan_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillGuideTrihedronPlan_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8940,11 +9837,11 @@ impl HandleGeomFillGuideTrihedronPlan {
 // ========================
 
 /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw`
-pub use crate::ffi::GeomFill_HArray1OfLocationLaw as HArray1OfLocationLaw;
+pub use crate::ffi_types::GeomFill_HArray1OfLocationLaw as HArray1OfLocationLaw;
 
 unsafe impl crate::CppDeletable for HArray1OfLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_HArray1OfLocationLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_destructor(ptr);
     }
 }
 
@@ -8953,7 +9850,7 @@ impl HArray1OfLocationLaw {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_ctor(),
             ))
         }
     }
@@ -8962,7 +9859,9 @@ impl HArray1OfLocationLaw {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -8971,68 +9870,64 @@ impl HArray1OfLocationLaw {
     pub fn new_int2_handlegeomfilllocationlaw(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleGeomFillLocationLaw,
+        theValue: &crate::ffi_types::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_int2_handlegeomfilllocationlaw(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_ctor_int2_handlegeomfilllocationlaw(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
     pub fn new_handlegeomfilllocationlaw_int2_bool(
-        theBegin: &crate::ffi::HandleGeomFillLocationLaw,
+        theBegin: &crate::ffi_types::HandleGeomFillLocationLaw,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_handlegeomfilllocationlaw_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_ctor_handlegeomfilllocationlaw_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::GeomFill_HArray1OfLocationLaw()`
     pub fn new_array1oflocationlaw(
-        theOther: &crate::ffi::GeomFill_Array1OfLocationLaw,
+        theOther: &crate::ffi_types::GeomFill_Array1OfLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_ctor_array1oflocationlaw(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_ctor_array1oflocationlaw(theOther)))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::Array1()`
-    pub fn array1(&self) -> &crate::ffi::GeomFill_Array1OfLocationLaw {
+    pub fn array1(&self) -> &crate::ffi_types::GeomFill_Array1OfLocationLaw {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfLocationLaw_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomFill_Array1OfLocationLaw {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::GeomFill_Array1OfLocationLaw {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomFill_HArray1OfLocationLaw_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfLocationLaw_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9040,7 +9935,7 @@ impl HArray1OfLocationLaw {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9048,47 +9943,49 @@ impl HArray1OfLocationLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfLocationLaw.hxx`:23 - `GeomFill_HArray1OfLocationLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfLocationLaw_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_HArray1OfLocationLaw_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHArray1OfLocationLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillHArray1OfLocationLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfLocationLaw_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9096,9 +9993,12 @@ impl HArray1OfLocationLaw {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9106,7 +10006,9 @@ impl HArray1OfLocationLaw {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9119,71 +10021,73 @@ impl HArray1OfLocationLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfLocationLaw_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfLocationLaw_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillHArray1OfLocationLaw;
+pub use crate::ffi_types::HandleGeomFillHArray1OfLocationLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillHArray1OfLocationLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_destructor(ptr);
     }
 }
 
 impl HandleGeomFillHArray1OfLocationLaw {
     /// Dereference this Handle to access the underlying GeomFill_HArray1OfLocationLaw
-    pub fn get(&self) -> &crate::ffi::GeomFill_HArray1OfLocationLaw {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_HArray1OfLocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillHArray1OfLocationLaw_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_HArray1OfLocationLaw
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HArray1OfLocationLaw {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_HArray1OfLocationLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillHArray1OfLocationLaw_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_HArray1OfLocationLaw> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillHArray1OfLocationLaw_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfLocationLaw_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9193,11 +10097,11 @@ impl HandleGeomFillHArray1OfLocationLaw {
 // ========================
 
 /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw`
-pub use crate::ffi::GeomFill_HArray1OfSectionLaw as HArray1OfSectionLaw;
+pub use crate::ffi_types::GeomFill_HArray1OfSectionLaw as HArray1OfSectionLaw;
 
 unsafe impl crate::CppDeletable for HArray1OfSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_HArray1OfSectionLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_destructor(ptr);
     }
 }
 
@@ -9206,7 +10110,7 @@ impl HArray1OfSectionLaw {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_ctor(),
             ))
         }
     }
@@ -9215,7 +10119,9 @@ impl HArray1OfSectionLaw {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -9224,68 +10130,68 @@ impl HArray1OfSectionLaw {
     pub fn new_int2_handlegeomfillsectionlaw(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleGeomFillSectionLaw,
+        theValue: &crate::ffi_types::HandleGeomFillSectionLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_int2_handlegeomfillsectionlaw(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_ctor_int2_handlegeomfillsectionlaw(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
     pub fn new_handlegeomfillsectionlaw_int2_bool(
-        theBegin: &crate::ffi::HandleGeomFillSectionLaw,
+        theBegin: &crate::ffi_types::HandleGeomFillSectionLaw,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_handlegeomfillsectionlaw_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_ctor_handlegeomfillsectionlaw_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::GeomFill_HArray1OfSectionLaw()`
     pub fn new_array1ofsectionlaw(
-        theOther: &crate::ffi::GeomFill_Array1OfSectionLaw,
+        theOther: &crate::ffi_types::GeomFill_Array1OfSectionLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_ctor_array1ofsectionlaw(theOther),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_ctor_array1ofsectionlaw(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::Array1()`
-    pub fn array1(&self) -> &crate::ffi::GeomFill_Array1OfSectionLaw {
+    pub fn array1(&self) -> &crate::ffi_types::GeomFill_Array1OfSectionLaw {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfSectionLaw_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomFill_Array1OfSectionLaw {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::GeomFill_Array1OfSectionLaw {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomFill_HArray1OfSectionLaw_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfSectionLaw_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9293,7 +10199,7 @@ impl HArray1OfSectionLaw {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9301,47 +10207,49 @@ impl HArray1OfSectionLaw {
     }
 
     /// **Source:** `GeomFill_HArray1OfSectionLaw.hxx`:23 - `GeomFill_HArray1OfSectionLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HArray1OfSectionLaw_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_HArray1OfSectionLaw_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHArray1OfSectionLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillHArray1OfSectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HArray1OfSectionLaw_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9349,9 +10257,12 @@ impl HArray1OfSectionLaw {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9359,7 +10270,9 @@ impl HArray1OfSectionLaw {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9372,14 +10285,16 @@ impl HArray1OfSectionLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9388,7 +10303,7 @@ impl HArray1OfSectionLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -9397,46 +10312,50 @@ impl HArray1OfSectionLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HArray1OfSectionLaw_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HArray1OfSectionLaw_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillHArray1OfSectionLaw;
+pub use crate::ffi_types::HandleGeomFillHArray1OfSectionLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHArray1OfSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillHArray1OfSectionLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_destructor(ptr);
     }
 }
 
 impl HandleGeomFillHArray1OfSectionLaw {
     /// Dereference this Handle to access the underlying GeomFill_HArray1OfSectionLaw
-    pub fn get(&self) -> &crate::ffi::GeomFill_HArray1OfSectionLaw {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_HArray1OfSectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillHArray1OfSectionLaw_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_HArray1OfSectionLaw
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HArray1OfSectionLaw {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_HArray1OfSectionLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillHArray1OfSectionLaw_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_HArray1OfSectionLaw> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillHArray1OfSectionLaw_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHArray1OfSectionLaw_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9446,11 +10365,11 @@ impl HandleGeomFillHArray1OfSectionLaw {
 // ========================
 
 /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2`
-pub use crate::ffi::GeomFill_HSequenceOfAx2 as HSequenceOfAx2;
+pub use crate::ffi_types::GeomFill_HSequenceOfAx2 as HSequenceOfAx2;
 
 unsafe impl crate::CppDeletable for HSequenceOfAx2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_HSequenceOfAx2_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_destructor(ptr);
     }
 }
 
@@ -9459,60 +10378,73 @@ impl HSequenceOfAx2 {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HSequenceOfAx2_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_ctor(),
             ))
         }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::GeomFill_HSequenceOfAx2()`
     pub fn new_sequenceofax2(
-        theOther: &crate::ffi::GeomFill_SequenceOfAx2,
+        theOther: &crate::ffi_types::GeomFill_SequenceOfAx2,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HSequenceOfAx2_ctor_sequenceofax2(theOther),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_ctor_sequenceofax2(theOther),
             ))
         }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::GeomFill_SequenceOfAx2 {
+    pub fn sequence(&self) -> &crate::ffi_types::GeomFill_SequenceOfAx2 {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HSequenceOfAx2_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append()`
-    pub fn append_type(&mut self, theItem: &crate::ffi::GeomFill_SequenceOfAx2_value_type) {
+    pub fn append_type(&mut self, theItem: &crate::ffi_types::GeomFill_SequenceOfAx2_value_type) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_append_type(self as *mut Self, theItem)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_append_type(
+                self as *mut Self,
+                theItem,
+            )
         })
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::Append()`
-    pub fn append_sequenceofax2(&mut self, theSequence: &mut crate::ffi::GeomFill_SequenceOfAx2) {
+    pub fn append_sequenceofax2(
+        &mut self,
+        theSequence: &mut crate::ffi_types::GeomFill_SequenceOfAx2,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_append_sequenceofax2(self as *mut Self, theSequence)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_append_sequenceofax2(
+                self as *mut Self,
+                theSequence,
+            )
         })
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomFill_SequenceOfAx2 {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::GeomFill_SequenceOfAx2 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomFill_HSequenceOfAx2_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HSequenceOfAx2_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9520,7 +10452,7 @@ impl HSequenceOfAx2 {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_HSequenceOfAx2_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9528,18 +10460,22 @@ impl HSequenceOfAx2 {
     }
 
     /// **Source:** `GeomFill_HSequenceOfAx2.hxx`:24 - `GeomFill_HSequenceOfAx2::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_HSequenceOfAx2_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_HSequenceOfAx2_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9547,7 +10483,9 @@ impl HSequenceOfAx2 {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_HSequenceOfAx2_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9555,25 +10493,31 @@ impl HSequenceOfAx2 {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillHSequenceOfAx2> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillHSequenceOfAx2> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_HSequenceOfAx2_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9581,7 +10525,9 @@ impl HSequenceOfAx2 {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_HSequenceOfAx2_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9594,65 +10540,75 @@ impl HSequenceOfAx2 {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_HSequenceOfAx2_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_HSequenceOfAx2_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillHSequenceOfAx2;
+pub use crate::ffi_types::HandleGeomFillHSequenceOfAx2;
 
 unsafe impl crate::CppDeletable for HandleGeomFillHSequenceOfAx2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillHSequenceOfAx2_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_destructor(ptr);
     }
 }
 
 impl HandleGeomFillHSequenceOfAx2 {
     /// Dereference this Handle to access the underlying GeomFill_HSequenceOfAx2
-    pub fn get(&self) -> &crate::ffi::GeomFill_HSequenceOfAx2 {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_HSequenceOfAx2 {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillHSequenceOfAx2_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_HSequenceOfAx2
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_HSequenceOfAx2 {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_HSequenceOfAx2 {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillHSequenceOfAx2_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_HSequenceOfAx2> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillHSequenceOfAx2_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillHSequenceOfAx2_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9663,100 +10619,126 @@ impl HandleGeomFillHSequenceOfAx2 {
 
 /// **Source:** `GeomFill_Line.hxx`:30 - `GeomFill_Line`
 /// class for instantiation of AppBlend
-pub use crate::ffi::GeomFill_Line as Line;
+pub use crate::ffi_types::GeomFill_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Line_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Line_destructor(ptr);
     }
 }
 
 impl Line {
     /// **Source:** `GeomFill_Line.hxx`:34 - `GeomFill_Line::GeomFill_Line()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Line_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `GeomFill_Line.hxx`:36 - `GeomFill_Line::GeomFill_Line()`
     pub fn new_int(NbPoints: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Line_ctor_int(
-                NbPoints,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_ctor_int(NbPoints),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Line.hxx`:38 - `GeomFill_Line::NbPoints()`
     pub fn nb_points(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Line_nb_points(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Line.hxx`:40 - `GeomFill_Line::Point()`
     pub fn point(&self, Index: i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Line_point(self as *const Self, Index) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_point(self as *const Self, Index)
+        })
     }
 
     /// **Source:** `GeomFill_Line.hxx`:42 - `GeomFill_Line::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Line_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Line_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `GeomFill_Line.hxx`:42 - `GeomFill_Line::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::GeomFill_Line_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `GeomFill_Line.hxx`:42 - `GeomFill_Line::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Line_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Line_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Line_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Line_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9764,7 +10746,7 @@ impl Line {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_Line_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9777,58 +10759,72 @@ impl Line {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Line_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Line_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillLine;
+pub use crate::ffi_types::HandleGeomFillLine;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillLine_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_destructor(ptr);
     }
 }
 
 impl HandleGeomFillLine {
     /// Dereference this Handle to access the underlying GeomFill_Line
-    pub fn get(&self) -> &crate::ffi::GeomFill_Line {
-        unsafe { &*crate::check_result(crate::ffi::HandleGeomFillLine_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_Line {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_Line
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_Line {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_Line {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillLine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_Line> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillLine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9839,22 +10835,24 @@ impl HandleGeomFillLine {
 // ========================
 
 /// **Source:** `GeomFill_LocFunction.hxx`:29 - `GeomFill_LocFunction`
-pub use crate::ffi::GeomFill_LocFunction as LocFunction;
+pub use crate::ffi_types::GeomFill_LocFunction as LocFunction;
 
 unsafe impl crate::CppDeletable for LocFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_LocFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_destructor(ptr);
     }
 }
 
 impl LocFunction {
     /// **Source:** `GeomFill_LocFunction.hxx`:34 - `GeomFill_LocFunction::GeomFill_LocFunction()`
     pub fn new_handlegeomfilllocationlaw(
-        Law: &crate::ffi::HandleGeomFillLocationLaw,
+        Law: &crate::ffi_types::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocFunction_ctor_handlegeomfilllocationlaw(Law),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_ctor_handlegeomfilllocationlaw(
+                    Law,
+                ),
             ))
         }
     }
@@ -9863,7 +10861,12 @@ impl LocFunction {
     /// compute the section for v = param
     pub fn d0(&mut self, Param: f64, First: f64, Last: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocFunction_d0(self as *mut Self, Param, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_d0(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+            )
         })
     }
 
@@ -9872,7 +10875,12 @@ impl LocFunction {
     /// section for v =  param
     pub fn d1(&mut self, Param: f64, First: f64, Last: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocFunction_d1(self as *mut Self, Param, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_d1(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+            )
         })
     }
 
@@ -9881,7 +10889,12 @@ impl LocFunction {
     /// section  for v = param
     pub fn d2(&mut self, Param: f64, First: f64, Last: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocFunction_d2(self as *mut Self, Param, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_d2(
+                self as *mut Self,
+                Param,
+                First,
+                Last,
+            )
         })
     }
 
@@ -9896,7 +10909,7 @@ impl LocFunction {
         Ier: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocFunction_dn(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocFunction_dn(
                 self as *mut Self,
                 Param,
                 First,
@@ -9914,11 +10927,11 @@ impl LocFunction {
 // ========================
 
 /// **Source:** `GeomFill_LocationDraft.hxx`:37 - `GeomFill_LocationDraft`
-pub use crate::ffi::GeomFill_LocationDraft as LocationDraft;
+pub use crate::ffi_types::GeomFill_LocationDraft as LocationDraft;
 
 unsafe impl crate::CppDeletable for LocationDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_LocationDraft_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_destructor(ptr);
     }
 }
 
@@ -9927,22 +10940,27 @@ impl LocationDraft {
     pub fn new_dir_real(Direction: &crate::gp::Dir, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationDraft_ctor_dir_real(Direction, Angle),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_ctor_dir_real(
+                    Direction, Angle,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:43 - `GeomFill_LocationDraft::SetStopSurf()`
-    pub fn set_stop_surf(&mut self, Surf: &crate::ffi::HandleAdaptor3dSurface) {
+    pub fn set_stop_surf(&mut self, Surf: &crate::ffi_types::HandleAdaptor3dSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_set_stop_surf(self as *mut Self, Surf)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_set_stop_surf(
+                self as *mut Self,
+                Surf,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:45 - `GeomFill_LocationDraft::SetAngle()`
     pub fn set_angle(&mut self, Angle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_set_angle(self as *mut Self, Angle)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_set_angle(self as *mut Self, Angle)
         })
     }
 
@@ -9950,16 +10968,16 @@ impl LocationDraft {
     /// calculation of poles on locking surfaces (the intersection between the generatrixand the
     /// surface at the cross - section points myNbPts)
     /// @return Standard_True in case if execution end correctly
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:53 - `GeomFill_LocationDraft::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleAdaptor3dCurve {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationDraft_get_curve(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_curve(
                 self as *const Self,
             )))
         }
@@ -9968,16 +10986,19 @@ impl LocationDraft {
     /// **Source:** `GeomFill_LocationDraft.hxx`:55 - `GeomFill_LocationDraft::SetTrsf()`
     pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_set_trsf(self as *mut Self, Transfo)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_set_trsf(
+                self as *mut Self,
+                Transfo,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:57 - `GeomFill_LocationDraft::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_LocationDraft_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_copy(self as *const Self),
+            ))
         }
     }
 
@@ -9990,7 +11011,12 @@ impl LocationDraft {
         V: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_d0_real_mat_vec(self as *mut Self, Param, M, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_d0_real_mat_vec(
+                self as *mut Self,
+                Param,
+                M,
+                V,
+            )
         })
     }
 
@@ -10001,10 +11027,10 @@ impl LocationDraft {
         Param: f64,
         M: &mut crate::gp::Mat,
         V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_d0_real_mat_vec_array1ofpnt2d(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_d0_real_mat_vec_array1ofpnt2d(
                 self as *mut Self,
                 Param,
                 M,
@@ -10025,11 +11051,11 @@ impl LocationDraft {
         V: &mut crate::gp::Vec,
         DM: &mut crate::gp::Mat,
         DV: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_d1(
                 self as *mut Self,
                 Param,
                 M,
@@ -10055,12 +11081,12 @@ impl LocationDraft {
         DV: &mut crate::gp::Vec,
         D2M: &mut crate::gp::Mat,
         D2V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_d2(
                 self as *mut Self,
                 Param,
                 M,
@@ -10083,7 +11109,9 @@ impl LocationDraft {
     /// Returns Standard_False (default implementation)
     pub fn has_first_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_has_first_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_has_first_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -10094,7 +11122,9 @@ impl LocationDraft {
     /// Returns Standard_False (default implementation)
     pub fn has_last_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_has_last_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_has_last_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -10103,7 +11133,7 @@ impl LocationDraft {
     /// Returns 1 (default implementation)
     pub fn trace_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_trace_number(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_trace_number(self as *const Self)
         })
     }
 
@@ -10113,7 +11143,10 @@ impl LocationDraft {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -10123,9 +11156,17 @@ impl LocationDraft {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -10136,7 +11177,11 @@ impl LocationDraft {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10145,7 +11190,11 @@ impl LocationDraft {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10155,7 +11204,11 @@ impl LocationDraft {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10166,7 +11219,7 @@ impl LocationDraft {
     /// Warning: Used only if Nb2dCurve > 0
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_resolution(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -10181,7 +11234,7 @@ impl LocationDraft {
     /// is usful to find an good Tolerance to approx M(t).
     pub fn get_maximal_norm(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_get_maximal_norm(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_maximal_norm(self as *mut Self)
         })
     }
 
@@ -10190,7 +11243,11 @@ impl LocationDraft {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_get_average_law(self as *mut Self, AM, AV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_average_law(
+                self as *mut Self,
+                AM,
+                AV,
+            )
         })
     }
 
@@ -10199,7 +11256,10 @@ impl LocationDraft {
     /// The default implementation is " returns False ".
     pub fn is_translation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_is_translation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_is_translation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
@@ -10208,14 +11268,20 @@ impl LocationDraft {
     /// The default implementation is " returns False ".
     pub fn is_rotation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_is_rotation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_is_rotation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:169 - `GeomFill_LocationDraft::Rotation()`
     pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_rotation(self as *const Self, Center)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_rotation(
+                self as *const Self,
+                Center,
+            )
         })
     }
 
@@ -10223,7 +11289,7 @@ impl LocationDraft {
     /// Say if the generatrice interset the surface
     pub fn is_intersec(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_is_intersec(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_is_intersec(self as *const Self)
         })
     }
 
@@ -10231,17 +11297,19 @@ impl LocationDraft {
     pub fn direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationDraft_direction(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_direction(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:176 - `GeomFill_LocationDraft::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationDraft_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10249,7 +11317,7 @@ impl LocationDraft {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_LocationDraft_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10257,16 +11325,22 @@ impl LocationDraft {
     }
 
     /// **Source:** `GeomFill_LocationDraft.hxx`:176 - `GeomFill_LocationDraft::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_LocationDraft_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_LocationDraft_as_GeomFill_LocationLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_as_GeomFill_LocationLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10274,7 +11348,9 @@ impl LocationDraft {
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_LocationDraft_as_GeomFill_LocationLaw_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_as_GeomFill_LocationLaw_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10282,28 +11358,32 @@ impl LocationDraft {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_LocationDraft_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_LocationDraft_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationDraft> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationDraft> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationDraft_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -10311,14 +11391,18 @@ impl LocationDraft {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_Nb2dCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:108 - `GeomFill_LocationLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -10326,7 +11410,7 @@ impl LocationDraft {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:148 - `GeomFill_LocationLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_SetTolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_SetTolerance(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -10335,16 +11419,22 @@ impl LocationDraft {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10352,7 +11442,9 @@ impl LocationDraft {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_LocationDraft_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10365,76 +11457,84 @@ impl LocationDraft {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationDraft_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationDraft_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillLocationDraft;
+pub use crate::ffi_types::HandleGeomFillLocationDraft;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationDraft {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillLocationDraft_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_destructor(ptr);
     }
 }
 
 impl HandleGeomFillLocationDraft {
     /// Dereference this Handle to access the underlying GeomFill_LocationDraft
-    pub fn get(&self) -> &crate::ffi::GeomFill_LocationDraft {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationDraft {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillLocationDraft_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_LocationDraft
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationDraft {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_LocationDraft {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillLocationDraft_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_LocationDraft> to Handle<GeomFill_LocationLaw>
-    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn to_handle_location_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLocationDraft_to_HandleGeomFillLocationLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_to_HandleGeomFillLocationLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_LocationDraft> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLocationDraft_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationDraft_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -10444,30 +11544,28 @@ impl HandleGeomFillLocationDraft {
 // ========================
 
 /// **Source:** `GeomFill_LocationGuide.hxx`:42 - `GeomFill_LocationGuide`
-pub use crate::ffi::GeomFill_LocationGuide as LocationGuide;
+pub use crate::ffi_types::GeomFill_LocationGuide as LocationGuide;
 
 unsafe impl crate::CppDeletable for LocationGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_LocationGuide_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_destructor(ptr);
     }
 }
 
 impl LocationGuide {
     /// **Source:** `GeomFill_LocationGuide.hxx`:46 - `GeomFill_LocationGuide::GeomFill_LocationGuide()`
     pub fn new_handlegeomfilltrihedronwithguide(
-        Triedre: &crate::ffi::HandleGeomFillTrihedronWithGuide,
+        Triedre: &crate::ffi_types::HandleGeomFillTrihedronWithGuide,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_ctor_handlegeomfilltrihedronwithguide(Triedre),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_ctor_handlegeomfilltrihedronwithguide(Triedre)))
         }
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:48 - `GeomFill_LocationGuide::Set()`
     pub fn set(
         &mut self,
-        Section: &crate::ffi::HandleGeomFillSectionLaw,
+        Section: &crate::ffi_types::HandleGeomFillSectionLaw,
         rotat: bool,
         SFirst: f64,
         SLast: f64,
@@ -10475,7 +11573,7 @@ impl LocationGuide {
         LastAngle: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set(
                 self as *mut Self,
                 Section,
                 rotat,
@@ -10490,23 +11588,23 @@ impl LocationGuide {
     /// **Source:** `GeomFill_LocationGuide.hxx`:55 - `GeomFill_LocationGuide::EraseRotation()`
     pub fn erase_rotation(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_erase_rotation(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_erase_rotation(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:59 - `GeomFill_LocationGuide::SetCurve()`
     /// calculating poles on a surface (courbe guide / the surface of rotation in points myNbPts)
     /// @return Standard_True
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:62 - `GeomFill_LocationGuide::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleAdaptor3dCurve {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationGuide_get_curve(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_curve(
                 self as *const Self,
             )))
         }
@@ -10515,16 +11613,19 @@ impl LocationGuide {
     /// **Source:** `GeomFill_LocationGuide.hxx`:64 - `GeomFill_LocationGuide::SetTrsf()`
     pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set_trsf(self as *mut Self, Transfo)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set_trsf(
+                self as *mut Self,
+                Transfo,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:66 - `GeomFill_LocationGuide::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_LocationGuide_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_copy(self as *const Self),
+            ))
         }
     }
 
@@ -10537,7 +11638,12 @@ impl LocationGuide {
         V: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_d0_real_mat_vec(self as *mut Self, Param, M, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_d0_real_mat_vec(
+                self as *mut Self,
+                Param,
+                M,
+                V,
+            )
         })
     }
 
@@ -10548,10 +11654,10 @@ impl LocationGuide {
         Param: f64,
         M: &mut crate::gp::Mat,
         V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_d0_real_mat_vec_array1ofpnt2d(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_d0_real_mat_vec_array1ofpnt2d(
                 self as *mut Self,
                 Param,
                 M,
@@ -10572,11 +11678,11 @@ impl LocationGuide {
         V: &mut crate::gp::Vec,
         DM: &mut crate::gp::Mat,
         DV: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_d1(
                 self as *mut Self,
                 Param,
                 M,
@@ -10602,12 +11708,12 @@ impl LocationGuide {
         DV: &mut crate::gp::Vec,
         D2M: &mut crate::gp::Mat,
         D2V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_d2(
                 self as *mut Self,
                 Param,
                 M,
@@ -10630,7 +11736,9 @@ impl LocationGuide {
     /// Returns Standard_False (default implementation)
     pub fn has_first_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_has_first_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_has_first_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -10641,7 +11749,9 @@ impl LocationGuide {
     /// Returns Standard_False (default implementation)
     pub fn has_last_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_has_last_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_has_last_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -10650,7 +11760,7 @@ impl LocationGuide {
     /// Returns 1 (default implementation)
     pub fn trace_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_trace_number(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_trace_number(self as *const Self)
         })
     }
 
@@ -10659,7 +11769,7 @@ impl LocationGuide {
     /// Returns PipeOk (default implementation)
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_error_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -10670,7 +11780,10 @@ impl LocationGuide {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -10680,9 +11793,17 @@ impl LocationGuide {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -10693,7 +11814,11 @@ impl LocationGuide {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10702,7 +11827,11 @@ impl LocationGuide {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10712,7 +11841,11 @@ impl LocationGuide {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -10722,7 +11855,11 @@ impl LocationGuide {
     /// The default implementation make nothing.
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -10733,7 +11870,7 @@ impl LocationGuide {
     /// Warning: Used only if Nb2dCurve > 0
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_resolution(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -10748,7 +11885,7 @@ impl LocationGuide {
     /// is usful to find an good Tolerance to approx M(t).
     pub fn get_maximal_norm(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_get_maximal_norm(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_maximal_norm(self as *mut Self)
         })
     }
 
@@ -10757,7 +11894,11 @@ impl LocationGuide {
     /// make fast approximation of rational  surfaces.
     pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_get_average_law(self as *mut Self, AM, AV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_average_law(
+                self as *mut Self,
+                AM,
+                AV,
+            )
         })
     }
 
@@ -10766,7 +11907,10 @@ impl LocationGuide {
     /// The default implementation is " returns False ".
     pub fn is_translation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_is_translation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_is_translation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
@@ -10775,31 +11919,37 @@ impl LocationGuide {
     /// The default implementation is " returns False ".
     pub fn is_rotation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_is_rotation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_is_rotation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:188 - `GeomFill_LocationGuide::Rotation()`
     pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_rotation(self as *const Self, Center)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_rotation(
+                self as *const Self,
+                Center,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:190 - `GeomFill_LocationGuide::Section()`
-    pub fn section(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn section(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_section(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_section(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:192 - `GeomFill_LocationGuide::Guide()`
-    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_guide(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_guide(self as *const Self),
             ))
         }
     }
@@ -10807,27 +11957,36 @@ impl LocationGuide {
     /// **Source:** `GeomFill_LocationGuide.hxx`:194 - `GeomFill_LocationGuide::SetOrigine()`
     pub fn set_origine(&mut self, Param1: f64, Param2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_set_origine(self as *mut Self, Param1, Param2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_set_origine(
+                self as *mut Self,
+                Param1,
+                Param2,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:197 - `GeomFill_LocationGuide::ComputeAutomaticLaw()`
     pub fn compute_automatic_law(
         &self,
-        ParAndRad: &mut crate::ffi::HandleTColgpHArray1OfPnt2d,
+        ParAndRad: &mut crate::ffi_types::HandleTColgpHArray1OfPnt2d,
     ) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_compute_automatic_law(self as *const Self, ParAndRad)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_compute_automatic_law(
+                self as *const Self,
+                ParAndRad,
+            )
         }))
         .unwrap()
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:199 - `GeomFill_LocationGuide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationGuide_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10835,7 +11994,7 @@ impl LocationGuide {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10843,16 +12002,22 @@ impl LocationGuide {
     }
 
     /// **Source:** `GeomFill_LocationGuide.hxx`:199 - `GeomFill_LocationGuide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_LocationGuide_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_LocationLaw
     pub fn as_location_law(&self) -> &LocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_LocationGuide_as_GeomFill_LocationLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_as_GeomFill_LocationLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10860,7 +12025,9 @@ impl LocationGuide {
     pub fn as_location_law_mut(&mut self) -> &mut LocationLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_as_GeomFill_LocationLaw_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_as_GeomFill_LocationLaw_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -10868,28 +12035,32 @@ impl LocationGuide {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_LocationGuide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_LocationGuide_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationGuide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationGuide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_LocationGuide_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -10897,21 +12068,29 @@ impl LocationGuide {
     /// Inherited: **Source:** `GeomFill_LocationLaw.hxx`:88 - `GeomFill_LocationLaw::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_Nb2dCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10919,7 +12098,9 @@ impl LocationGuide {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_LocationGuide_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10932,76 +12113,84 @@ impl LocationGuide {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationGuide_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationGuide_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillLocationGuide;
+pub use crate::ffi_types::HandleGeomFillLocationGuide;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillLocationGuide_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_destructor(ptr);
     }
 }
 
 impl HandleGeomFillLocationGuide {
     /// Dereference this Handle to access the underlying GeomFill_LocationGuide
-    pub fn get(&self) -> &crate::ffi::GeomFill_LocationGuide {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationGuide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillLocationGuide_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_LocationGuide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationGuide {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_LocationGuide {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillLocationGuide_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_LocationGuide> to Handle<GeomFill_LocationLaw>
-    pub fn to_handle_location_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn to_handle_location_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLocationGuide_to_HandleGeomFillLocationLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_to_HandleGeomFillLocationLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_LocationGuide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLocationGuide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationGuide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -11014,27 +12203,29 @@ impl HandleGeomFillLocationGuide {
 /// To define location  law in Sweeping location is --
 /// defined   by an  Matrix  M and  an Vector  V,  and
 /// transform an point P in MP+V.
-pub use crate::ffi::GeomFill_LocationLaw as LocationLaw;
+pub use crate::ffi_types::GeomFill_LocationLaw as LocationLaw;
 
 unsafe impl crate::CppDeletable for LocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_LocationLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_destructor(ptr);
     }
 }
 
 impl LocationLaw {
     /// **Source:** `GeomFill_LocationLaw.hxx`:42 - `GeomFill_LocationLaw::SetCurve()`
     /// initialize curve of location law
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:44 - `GeomFill_LocationLaw::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleAdaptor3dCurve {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleAdaptor3dCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationLaw_get_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -11043,16 +12234,16 @@ impl LocationLaw {
     /// Mat * M(t)
     pub fn set_trsf(&mut self, Transfo: &crate::gp::Mat) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_set_trsf(self as *mut Self, Transfo)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_set_trsf(self as *mut Self, Transfo)
         })
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:50 - `GeomFill_LocationLaw::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillLocationLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_LocationLaw_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_copy(self as *const Self),
+            ))
         }
     }
 
@@ -11065,7 +12256,12 @@ impl LocationLaw {
         V: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_d0_real_mat_vec(self as *mut Self, Param, M, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_d0_real_mat_vec(
+                self as *mut Self,
+                Param,
+                M,
+                V,
+            )
         })
     }
 
@@ -11076,10 +12272,10 @@ impl LocationLaw {
         Param: f64,
         M: &mut crate::gp::Mat,
         V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_d0_real_mat_vec_array1ofpnt2d(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_d0_real_mat_vec_array1ofpnt2d(
                 self as *mut Self,
                 Param,
                 M,
@@ -11100,11 +12296,11 @@ impl LocationLaw {
         V: &mut crate::gp::Vec,
         DM: &mut crate::gp::Mat,
         DV: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_d1(
                 self as *mut Self,
                 Param,
                 M,
@@ -11130,12 +12326,12 @@ impl LocationLaw {
         DV: &mut crate::gp::Vec,
         D2M: &mut crate::gp::Mat,
         D2V: &mut crate::gp::Vec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_d2(
                 self as *mut Self,
                 Param,
                 M,
@@ -11156,7 +12352,7 @@ impl LocationLaw {
     /// to approximate.
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_nb2d_curves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_nb2d_curves(self as *const Self)
         })
     }
 
@@ -11167,7 +12363,9 @@ impl LocationLaw {
     /// Returns Standard_False (default implementation)
     pub fn has_first_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_has_first_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_has_first_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -11178,7 +12376,9 @@ impl LocationLaw {
     /// Returns Standard_False (default implementation)
     pub fn has_last_restriction(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_has_last_restriction(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_has_last_restriction(
+                self as *const Self,
+            )
         })
     }
 
@@ -11187,7 +12387,7 @@ impl LocationLaw {
     /// Returns 0 (default implementation)
     pub fn trace_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_trace_number(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_trace_number(self as *const Self)
         })
     }
 
@@ -11196,7 +12396,7 @@ impl LocationLaw {
     /// Returns PipeOk (default implementation)
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_error_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -11207,7 +12407,10 @@ impl LocationLaw {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -11217,9 +12420,17 @@ impl LocationLaw {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -11230,7 +12441,11 @@ impl LocationLaw {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11239,7 +12454,11 @@ impl LocationLaw {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11249,7 +12468,11 @@ impl LocationLaw {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11259,7 +12482,13 @@ impl LocationLaw {
     /// 2d approximation.
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_resolution(self as *const Self, Index, Tol, TolU, TolV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_resolution(
+                self as *const Self,
+                Index,
+                Tol,
+                TolU,
+                TolV,
+            )
         })
     }
 
@@ -11269,7 +12498,11 @@ impl LocationLaw {
     /// The default implementation make nothing.
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -11278,7 +12511,7 @@ impl LocationLaw {
     /// is usful to find an good Tolerance to approx M(t).
     pub fn get_maximal_norm(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_get_maximal_norm(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_maximal_norm(self as *mut Self)
         })
     }
 
@@ -11287,7 +12520,11 @@ impl LocationLaw {
     /// make fast approximation of rational surfaces.
     pub fn get_average_law(&mut self, AM: &mut crate::gp::Mat, AV: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_get_average_law(self as *mut Self, AM, AV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_average_law(
+                self as *mut Self,
+                AM,
+                AV,
+            )
         })
     }
 
@@ -11296,7 +12533,10 @@ impl LocationLaw {
     /// The default implementation is " returns False ".
     pub fn is_translation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_is_translation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_is_translation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
@@ -11305,23 +12545,28 @@ impl LocationLaw {
     /// The default implementation is " returns False ".
     pub fn is_rotation(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_is_rotation(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_is_rotation(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:166 - `GeomFill_LocationLaw::Rotation()`
     pub fn rotation(&self, Center: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_rotation(self as *const Self, Center)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_rotation(self as *const Self, Center)
         })
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:168 - `GeomFill_LocationLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_LocationLaw_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11329,7 +12574,7 @@ impl LocationLaw {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_LocationLaw_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11337,39 +12582,53 @@ impl LocationLaw {
     }
 
     /// **Source:** `GeomFill_LocationLaw.hxx`:168 - `GeomFill_LocationLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_LocationLaw_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_LocationLaw_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_LocationLaw_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11377,7 +12636,9 @@ impl LocationLaw {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_LocationLaw_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11390,62 +12651,72 @@ impl LocationLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_LocationLaw_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_LocationLaw_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillLocationLaw;
+pub use crate::ffi_types::HandleGeomFillLocationLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillLocationLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillLocationLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_destructor(ptr);
     }
 }
 
 impl HandleGeomFillLocationLaw {
     /// Dereference this Handle to access the underlying GeomFill_LocationLaw
-    pub fn get(&self) -> &crate::ffi::GeomFill_LocationLaw {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_LocationLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillLocationLaw_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_LocationLaw
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_LocationLaw {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillLocationLaw_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_LocationLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_LocationLaw {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_LocationLaw> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillLocationLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -11457,11 +12728,9 @@ impl HandleGeomFillLocationLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_CurveAndTrihedron` (or subclass).
     pub fn downcast_to_curve_and_trihedron(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCurveAndTrihedron>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillCurveAndTrihedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillCurveAndTrihedron(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillCurveAndTrihedron(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11475,11 +12744,9 @@ impl HandleGeomFillLocationLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_LocationDraft` (or subclass).
     pub fn downcast_to_location_draft(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillLocationDraft>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationDraft>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationDraft(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationDraft(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11493,11 +12760,9 @@ impl HandleGeomFillLocationLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_LocationGuide` (or subclass).
     pub fn downcast_to_location_guide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillLocationGuide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillLocationGuide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationGuide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillLocationLaw_downcast_to_HandleGeomFillLocationGuide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -11513,21 +12778,23 @@ impl HandleGeomFillLocationLaw {
 
 /// **Source:** `GeomFill_NSections.hxx`:41 - `GeomFill_NSections`
 /// Define a Section Law by N Sections
-pub use crate::ffi::GeomFill_NSections as NSections;
+pub use crate::ffi_types::GeomFill_NSections as NSections;
 
 unsafe impl crate::CppDeletable for NSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_NSections_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_destructor(ptr);
     }
 }
 
 impl NSections {
     /// **Source:** `GeomFill_NSections.hxx`:46 - `GeomFill_NSections::GeomFill_NSections()`
     /// Make a SectionLaw with N Curves.
-    pub fn new_sequenceofcurve(NC: &crate::ffi::TColGeom_SequenceOfCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofcurve(
+        NC: &crate::ffi_types::TColGeom_SequenceOfCurve,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve(NC),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_sequenceofcurve(NC),
             ))
         }
     }
@@ -11535,13 +12802,11 @@ impl NSections {
     /// **Source:** `GeomFill_NSections.hxx`:49 - `GeomFill_NSections::GeomFill_NSections()`
     /// Make a SectionLaw with N Curves and N associated parameters.
     pub fn new_sequenceofcurve_sequenceofreal(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
+        NC: &crate::ffi_types::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi_types::TColStd_SequenceOfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal(NC, NP),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal(NC, NP)))
         }
     }
 
@@ -11549,17 +12814,13 @@ impl NSections {
     /// Make a SectionLaw with N Curves and N associated parameters.
     /// UF and UL are the parametric bounds of the NSections
     pub fn new_sequenceofcurve_sequenceofreal_real2(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
+        NC: &crate::ffi_types::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi_types::TColStd_SequenceOfReal,
         UF: f64,
         UL: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real2(
-                    NC, NP, UF, UL,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real2(NC, NP, UF, UL)))
         }
     }
 
@@ -11568,19 +12829,15 @@ impl NSections {
     /// UF and UL are the parametric bounds of the NSections
     /// VF and VL are the parametric bounds of the path
     pub fn new_sequenceofcurve_sequenceofreal_real4(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
+        NC: &crate::ffi_types::TColGeom_SequenceOfCurve,
+        NP: &crate::ffi_types::TColStd_SequenceOfReal,
         UF: f64,
         UL: f64,
         VF: f64,
         VL: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real4(
-                    NC, NP, UF, UL, VF, VL,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_sequenceofcurve_sequenceofreal_real4(NC, NP, UF, UL, VF, VL)))
         }
     }
 
@@ -11591,17 +12848,17 @@ impl NSections {
     /// UF and UL are the parametric bounds of the NSections
     /// Surf is a reference surface used by BRepFill_NSections
     pub fn new_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(
-        NC: &crate::ffi::TColGeom_SequenceOfCurve,
-        Trsfs: &crate::ffi::GeomFill_SequenceOfTrsf,
-        NP: &crate::ffi::TColStd_SequenceOfReal,
+        NC: &crate::ffi_types::TColGeom_SequenceOfCurve,
+        Trsfs: &crate::ffi_types::GeomFill_SequenceOfTrsf,
+        NP: &crate::ffi_types::TColStd_SequenceOfReal,
         UF: f64,
         UL: f64,
         VF: f64,
         VL: f64,
-        Surf: &crate::ffi::HandleGeomBSplineSurface,
+        Surf: &crate::ffi_types::HandleGeomBSplineSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_NSections_ctor_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(NC, Trsfs, NP, UF, UL, VF, VL, Surf)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_ctor_sequenceofcurve_sequenceoftrsf_sequenceofreal_real4_handlegeombsplinesurface(NC, Trsfs, NP, UF, UL, VF, VL, Surf)))
         }
     }
 
@@ -11610,11 +12867,16 @@ impl NSections {
     pub fn d0(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_d0(self as *mut Self, Param, Poles, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_d0(
+                self as *mut Self,
+                Param,
+                Poles,
+                Weigths,
+            )
         })
     }
 
@@ -11625,13 +12887,13 @@ impl NSections {
     pub fn d1(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_d1(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -11649,15 +12911,15 @@ impl NSections {
     pub fn d2(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_d2(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -11672,9 +12934,9 @@ impl NSections {
 
     /// **Source:** `GeomFill_NSections.hxx`:109 - `GeomFill_NSections::SetSurface()`
     /// Sets the reference surface
-    pub fn set_surface(&mut self, RefSurf: &crate::ffi::HandleGeomBSplineSurface) {
+    pub fn set_surface(&mut self, RefSurf: &crate::ffi_types::HandleGeomBSplineSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_set_surface(self as *mut Self, RefSurf)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_set_surface(self as *mut Self, RefSurf)
         })
     }
 
@@ -11682,7 +12944,7 @@ impl NSections {
     /// Computes the surface
     pub fn compute_surface(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_compute_surface(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_compute_surface(self as *mut Self)
         })
     }
 
@@ -11690,10 +12952,12 @@ impl NSections {
     /// give if possible an bspline Surface, like iso-v are the
     /// section.  If it is  not possible  this methode have  to
     /// get an Null Surface.  Is it the default implementation.
-    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_b_spline_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_b_spline_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11702,7 +12966,7 @@ impl NSections {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -11713,17 +12977,17 @@ impl NSections {
 
     /// **Source:** `GeomFill_NSections.hxx`:125 - `GeomFill_NSections::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:128 - `GeomFill_NSections::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_mults(self as *const Self, TMults)
         })
     }
 
@@ -11731,7 +12995,7 @@ impl NSections {
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_is_rational(self as *const Self)
         })
     }
 
@@ -11739,7 +13003,7 @@ impl NSections {
     /// Returns if the sections are periodic or not
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_is_u_periodic(self as *const Self)
         })
     }
 
@@ -11747,7 +13011,7 @@ impl NSections {
     /// Returns if the law  isperiodic or not
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_is_v_periodic(self as *const Self)
         })
     }
 
@@ -11757,7 +13021,10 @@ impl NSections {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -11767,9 +13034,17 @@ impl NSections {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -11780,7 +13055,11 @@ impl NSections {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11789,7 +13068,11 @@ impl NSections {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11799,7 +13082,11 @@ impl NSections {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -11814,10 +13101,10 @@ impl NSections {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -11836,7 +13123,9 @@ impl NSections {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11847,7 +13136,7 @@ impl NSections {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_maximal_section(self as *const Self)
         })
     }
 
@@ -11857,9 +13146,12 @@ impl NSections {
     /// This information is  useful to control error
     /// in rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -11867,16 +13159,18 @@ impl NSections {
     /// return True If the Law isConstant
     pub fn is_constant(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_is_constant(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_is_constant(self as *const Self, Error)
         })
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:205 - `GeomFill_NSections::ConstantSection()`
     /// Return the constant Section if <me>  IsConstant.
-    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_constant_section(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_constant_section(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11887,25 +13181,31 @@ impl NSections {
     /// Return False by Default.
     pub fn is_conical_law(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_is_conical_law(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_is_conical_law(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:215 - `GeomFill_NSections::CirclSection()`
     /// Return the circle section  at parameter <Param>, if
     /// <me> a  IsConicalLaw
-    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_circl_section(self as *const Self, Param),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_circl_section(
+                    self as *const Self,
+                    Param,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:218 - `GeomFill_NSections::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_NSections_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -11915,7 +13215,7 @@ impl NSections {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_NSections_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11923,53 +13223,65 @@ impl NSections {
     }
 
     /// **Source:** `GeomFill_NSections.hxx`:218 - `GeomFill_NSections::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_NSections_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_SectionLaw
     pub fn as_section_law(&self) -> &SectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_NSections_as_GeomFill_SectionLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_as_GeomFill_SectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_SectionLaw (mutable)
     pub fn as_section_law_mut(&mut self) -> &mut SectionLaw {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_NSections_as_GeomFill_SectionLaw_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_as_GeomFill_SectionLaw_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_NSections_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_NSections_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillNSections> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillNSections> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_NSections_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -11977,21 +13289,31 @@ impl NSections {
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_SetTolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11999,7 +13321,7 @@ impl NSections {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_NSections_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -12012,62 +13334,72 @@ impl NSections {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_NSections_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_NSections_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillNSections;
+pub use crate::ffi_types::HandleGeomFillNSections;
 
 unsafe impl crate::CppDeletable for HandleGeomFillNSections {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillNSections_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_destructor(ptr);
     }
 }
 
 impl HandleGeomFillNSections {
     /// Dereference this Handle to access the underlying GeomFill_NSections
-    pub fn get(&self) -> &crate::ffi::GeomFill_NSections {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_NSections {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillNSections_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_NSections
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_NSections {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillNSections_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_NSections
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_NSections {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_NSections> to Handle<GeomFill_SectionLaw>
-    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+    pub fn to_handle_section_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillNSections_to_HandleGeomFillSectionLaw(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_to_HandleGeomFillSectionLaw(
                     self as *const Self,
                 ),
             ))
@@ -12075,10 +13407,14 @@ impl HandleGeomFillNSections {
     }
 
     /// Upcast Handle<GeomFill_NSections> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillNSections_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillNSections_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -12142,11 +13478,11 @@ impl HandleGeomFillNSections {
 /// But, in some particular case, the surface must
 /// be construct otherwise.
 /// The method "EchangeUV" return false in such cases.
-pub use crate::ffi::GeomFill_Pipe as Pipe;
+pub use crate::ffi_types::GeomFill_Pipe as Pipe;
 
 unsafe impl crate::CppDeletable for Pipe {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Pipe_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_destructor(ptr);
     }
 }
 
@@ -12155,17 +13491,21 @@ impl Pipe {
     /// Constructs an empty algorithm for building pipes. Use
     /// the function Init to initialize it.
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Pipe_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:95 - `GeomFill_Pipe::GeomFill_Pipe()`
     pub fn new_handlegeomcurve_real(
-        Path: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve_real(Path, Radius),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve_real(Path, Radius),
             ))
         }
     }
@@ -12177,13 +13517,13 @@ impl Pipe {
     /// - GeomFill_IsFrenet
     /// - GeomFill_IsConstant
     pub fn new_handlegeomcurve2_trihedron(
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         Option: crate::geom_fill::Trihedron,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve2_trihedron(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve2_trihedron(
                     Path,
                     FirstSect,
                     Option.into(),
@@ -12196,16 +13536,12 @@ impl Pipe {
     /// Create  a  pipe  with  a  constant  section
     /// (<FirstSection>)  and a path defined by <Path> and <Support>
     pub fn new_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(
-        Path: &crate::ffi::HandleGeom2dCurve,
-        Support: &crate::ffi::HandleGeomSurface,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeom2dCurve,
+        Support: &crate::ffi_types::HandleGeomSurface,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(
-                    Path, Support, FirstSect,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(Path, Support, FirstSect)))
         }
     }
 
@@ -12214,13 +13550,15 @@ impl Pipe {
     /// (<FirstSection>) and a   path <Path>  and a fixed
     /// binormal direction <Dir>
     pub fn new_handlegeomcurve2_dir(
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         Dir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve2_dir(Path, FirstSect, Dir),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve2_dir(
+                    Path, FirstSect, Dir,
+                ),
             ))
         }
     }
@@ -12229,13 +13567,15 @@ impl Pipe {
     /// Create a pipe with an evolving section
     /// The section evaluate from First to Last Section
     pub fn new_handlegeomcurve3(
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
-        LastSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
+        LastSect: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve3(Path, FirstSect, LastSect),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve3(
+                    Path, FirstSect, LastSect,
+                ),
             ))
         }
     }
@@ -12244,12 +13584,14 @@ impl Pipe {
     /// Create a pipe with N  sections
     /// The section evaluate from First to Last Section
     pub fn new_handlegeomcurve_sequenceofcurve(
-        Path: &crate::ffi::HandleGeomCurve,
-        NSections: &crate::ffi::TColGeom_SequenceOfCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        NSections: &crate::ffi_types::TColGeom_SequenceOfCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve_sequenceofcurve(Path, NSections),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve_sequenceofcurve(
+                    Path, NSections,
+                ),
             ))
         }
     }
@@ -12258,14 +13600,16 @@ impl Pipe {
     /// Create  a pipe  with  a constant  radius with  2
     /// guide-line.
     pub fn new_handlegeomcurve3_real(
-        Path: &crate::ffi::HandleGeomCurve,
-        Curve1: &crate::ffi::HandleGeomCurve,
-        Curve2: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Curve1: &crate::ffi_types::HandleGeomCurve,
+        Curve2: &crate::ffi_types::HandleGeomCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve3_real(Path, Curve1, Curve2, Radius),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve3_real(
+                    Path, Curve1, Curve2, Radius,
+                ),
             ))
         }
     }
@@ -12274,14 +13618,14 @@ impl Pipe {
     /// Create  a pipe  with  a constant  radius with  2
     /// guide-line.
     pub fn new_handleadaptor3dcurve3_real(
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Pipe_ctor_handleadaptor3dcurve3_real(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handleadaptor3dcurve3_real(
                     Path, Curve1, Curve2, Radius,
                 ),
             ))
@@ -12328,33 +13672,41 @@ impl Pipe {
     /// transformation which transforms coordinate system
     /// T1 into coordinate system Ti.
     pub fn new_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(
-        Path: &crate::ffi::HandleGeomCurve,
-        Guide: &crate::ffi::HandleAdaptor3dCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Guide: &crate::ffi_types::HandleAdaptor3dCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         ByACR: bool,
         rotat: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Pipe_ctor_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(Path, Guide, FirstSect, ByACR, rotat)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_ctor_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(Path, Guide, FirstSect, ByACR, rotat)))
         }
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:188 - `GeomFill_Pipe::Init()`
-    pub fn init_handlegeomcurve_real(&mut self, Path: &crate::ffi::HandleGeomCurve, Radius: f64) {
+    pub fn init_handlegeomcurve_real(
+        &mut self,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Radius: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve_real(self as *mut Self, Path, Radius)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve_real(
+                self as *mut Self,
+                Path,
+                Radius,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:190 - `GeomFill_Pipe::Init()`
     pub fn init_handlegeomcurve2_trihedron(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         Option: crate::geom_fill::Trihedron,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve2_trihedron(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve2_trihedron(
                 self as *mut Self,
                 Path,
                 FirstSect,
@@ -12366,29 +13718,24 @@ impl Pipe {
     /// **Source:** `GeomFill_Pipe.hxx`:194 - `GeomFill_Pipe::Init()`
     pub fn init_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(
         &mut self,
-        Path: &crate::ffi::HandleGeom2dCurve,
-        Support: &crate::ffi::HandleGeomSurface,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeom2dCurve,
+        Support: &crate::ffi_types::HandleGeomSurface,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(
-                self as *mut Self,
-                Path,
-                Support,
-                FirstSect,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeom2dcurve_handlegeomsurface_handlegeomcurve(self as *mut Self, Path, Support, FirstSect)
         })
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:198 - `GeomFill_Pipe::Init()`
     pub fn init_handlegeomcurve2_dir(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         Dir: &crate::gp::Dir,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve2_dir(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve2_dir(
                 self as *mut Self,
                 Path,
                 FirstSect,
@@ -12400,12 +13747,12 @@ impl Pipe {
     /// **Source:** `GeomFill_Pipe.hxx`:202 - `GeomFill_Pipe::Init()`
     pub fn init_handlegeomcurve3(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
-        LastSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
+        LastSect: &crate::ffi_types::HandleGeomCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve3(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve3(
                 self as *mut Self,
                 Path,
                 FirstSect,
@@ -12417,11 +13764,11 @@ impl Pipe {
     /// **Source:** `GeomFill_Pipe.hxx`:206 - `GeomFill_Pipe::Init()`
     pub fn init_handlegeomcurve_sequenceofcurve(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        NSections: &crate::ffi::TColGeom_SequenceOfCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        NSections: &crate::ffi_types::TColGeom_SequenceOfCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve_sequenceofcurve(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve_sequenceofcurve(
                 self as *mut Self,
                 Path,
                 NSections,
@@ -12434,13 +13781,13 @@ impl Pipe {
     /// guide-line.
     pub fn init_handleadaptor3dcurve3_real(
         &mut self,
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handleadaptor3dcurve3_real(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handleadaptor3dcurve3_real(
                 self as *mut Self,
                 Path,
                 Curve1,
@@ -12461,14 +13808,14 @@ impl Pipe {
     /// Note: a description of the resulting surface is given under Constructors.
     pub fn init_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        Guide: &crate::ffi::HandleAdaptor3dCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Guide: &crate::ffi_types::HandleAdaptor3dCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
         ByACR: bool,
         rotat: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_init_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(self as *mut Self, Path, Guide, FirstSect, ByACR, rotat)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_init_handlegeomcurve_handleadaptor3dcurve_handlegeomcurve_bool2(self as *mut Self, Path, Guide, FirstSect, ByACR, rotat)
         })
     }
 
@@ -12484,7 +13831,11 @@ impl Pipe {
     /// Warning: It is the old Perform method, the next methode is recommended.
     pub fn perform_bool2(&mut self, WithParameters: bool, myPolynomial: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_perform_bool2(self as *mut Self, WithParameters, myPolynomial)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_perform_bool2(
+                self as *mut Self,
+                WithParameters,
+                myPolynomial,
+            )
         })
     }
 
@@ -12504,7 +13855,7 @@ impl Pipe {
         NbMaxSegment: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_perform_real_bool_shape_int2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_perform_real_bool_shape_int2(
                 self as *mut Self,
                 Tol,
                 Polynomial,
@@ -12520,8 +13871,12 @@ impl Pipe {
     /// Warning
     /// Do not use this function before the surface is built (in this
     /// case the function will return a null handle).
-    pub fn surface(&self) -> &crate::ffi::HandleGeomSurface {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_Pipe_surface(self as *const Self))) }
+    pub fn surface(&self) -> &crate::ffi_types::HandleGeomSurface {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_surface(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:272 - `GeomFill_Pipe::ExchangeUV()`
@@ -12538,7 +13893,9 @@ impl Pipe {
     /// Warning
     /// Do not use this function before the surface is built.
     pub fn exchange_uv(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Pipe_exchange_uv(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_exchange_uv(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:277 - `GeomFill_Pipe::GenerateParticularCase()`
@@ -12547,7 +13904,10 @@ impl Pipe {
     /// <Standard_False>.
     pub fn generate_particular_case_bool(&mut self, B: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Pipe_generate_particular_case_bool(self as *mut Self, B)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_generate_particular_case_bool(
+                self as *mut Self,
+                B,
+            )
         })
     }
 
@@ -12555,7 +13915,9 @@ impl Pipe {
     /// Returns the flag.
     pub fn generate_particular_case(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Pipe_generate_particular_case(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_generate_particular_case(
+                self as *const Self,
+            )
         })
     }
 
@@ -12563,20 +13925,24 @@ impl Pipe {
     /// Returns the approximation's error.  if the Surface
     /// is plane, cylinder ... this error can be 0.
     pub fn error_on_surf(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Pipe_error_on_surf(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_error_on_surf(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:287 - `GeomFill_Pipe::IsDone()`
     /// Returns whether approximation was done.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Pipe_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Pipe.hxx`:290 - `GeomFill_Pipe::GetStatus()`
     /// Returns execution status
     pub fn get_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_Pipe_get_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Pipe_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -12587,11 +13953,11 @@ impl Pipe {
 // ========================
 
 /// **Source:** `GeomFill_PlanFunc.hxx`:30 - `GeomFill_PlanFunc`
-pub use crate::ffi::GeomFill_PlanFunc as PlanFunc;
+pub use crate::ffi_types::GeomFill_PlanFunc as PlanFunc;
 
 unsafe impl crate::CppDeletable for PlanFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_PlanFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_destructor(ptr);
     }
 }
 
@@ -12600,11 +13966,13 @@ impl PlanFunc {
     pub fn new_pnt_vec_handleadaptor3dcurve(
         P: &crate::gp::Pnt,
         V: &crate::gp::Vec,
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_PlanFunc_ctor_pnt_vec_handleadaptor3dcurve(P, V, C),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_ctor_pnt_vec_handleadaptor3dcurve(
+                    P, V, C,
+                ),
             ))
         }
     }
@@ -12614,7 +13982,9 @@ impl PlanFunc {
     /// Returns True if the calculation were successfully done,
     /// False otherwise.
     pub fn value(&mut self, X: f64, F: &mut f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_PlanFunc_value(self as *mut Self, X, F) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_value(self as *mut Self, X, F)
+        })
     }
 
     /// **Source:** `GeomFill_PlanFunc.hxx`:49 - `GeomFill_PlanFunc::Derivative()`
@@ -12624,7 +13994,7 @@ impl PlanFunc {
     /// False otherwise.
     pub fn derivative(&mut self, X: f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_derivative(self as *mut Self, X, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_derivative(self as *mut Self, X, D)
         })
     }
 
@@ -12635,21 +14005,21 @@ impl PlanFunc {
     /// False otherwise.
     pub fn values(&mut self, X: f64, F: &mut f64, D: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `GeomFill_PlanFunc.hxx`:60 - `GeomFill_PlanFunc::D2()`
     pub fn d2(&mut self, X: f64, F: &mut f64, D1: &mut f64, D2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_d2(self as *mut Self, X, F, D1, D2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_d2(self as *mut Self, X, F, D1, D2)
         })
     }
 
     /// **Source:** `GeomFill_PlanFunc.hxx`:65 - `GeomFill_PlanFunc::DEDT()`
     pub fn dedt(&mut self, X: f64, DP: &crate::gp::Vec, DV: &crate::gp::Vec, DF: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_dedt(self as *mut Self, X, DP, DV, DF)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_dedt(self as *mut Self, X, DP, DV, DF)
         })
     }
 
@@ -12666,7 +14036,7 @@ impl PlanFunc {
         D2FDTDX: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_d2e(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_d2e(
                 self as *mut Self,
                 X,
                 DP,
@@ -12683,9 +14053,11 @@ impl PlanFunc {
     /// Upcast to math_FunctionWithDerivative
     pub fn as_math_function_with_derivative(&self) -> &crate::math::FunctionWithDerivative {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_PlanFunc_as_math_FunctionWithDerivative(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_as_math_FunctionWithDerivative(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12695,7 +14067,9 @@ impl PlanFunc {
     ) -> &mut crate::math::FunctionWithDerivative {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_PlanFunc_as_math_FunctionWithDerivative_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_as_math_FunctionWithDerivative_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12703,7 +14077,7 @@ impl PlanFunc {
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_PlanFunc_as_math_Function(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_as_math_Function(
                 self as *const Self,
             ))
         }
@@ -12712,16 +14086,20 @@ impl PlanFunc {
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_PlanFunc_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_PlanFunc_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PlanFunc_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -12732,11 +14110,11 @@ impl PlanFunc {
 
 /// **Source:** `GeomFill_PolynomialConvertor.hxx`:30 - `GeomFill_PolynomialConvertor`
 /// To convert circular section in polynome
-pub use crate::ffi::GeomFill_PolynomialConvertor as PolynomialConvertor;
+pub use crate::ffi_types::GeomFill_PolynomialConvertor as PolynomialConvertor;
 
 unsafe impl crate::CppDeletable for PolynomialConvertor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_PolynomialConvertor_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_destructor(ptr);
     }
 }
 
@@ -12745,7 +14123,7 @@ impl PolynomialConvertor {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_PolynomialConvertor_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_ctor(),
             ))
         }
     }
@@ -12754,14 +14132,16 @@ impl PolynomialConvertor {
     /// say if <me> is Initialized
     pub fn initialized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_PolynomialConvertor_initialized(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_initialized(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_PolynomialConvertor.hxx`:40 - `GeomFill_PolynomialConvertor::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PolynomialConvertor_init(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_init(self as *mut Self)
         })
     }
 
@@ -12772,17 +14152,10 @@ impl PolynomialConvertor {
         Center: &crate::gp::Pnt,
         Dir: &crate::gp::Vec,
         Angle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PolynomialConvertor_section_pnt2_vec_real_array1ofpnt(
-                self as *const Self,
-                FirstPnt,
-                Center,
-                Dir,
-                Angle,
-                Poles,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_section_pnt2_vec_real_array1ofpnt(self as *const Self, FirstPnt, Center, Dir, Angle, Poles)
         })
     }
 
@@ -12797,11 +14170,11 @@ impl PolynomialConvertor {
         DDir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PolynomialConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec(self as *const Self, FirstPnt, DFirstPnt, Center, DCenter, Dir, DDir, Angle, DAngle, Poles, DPoles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec(self as *const Self, FirstPnt, DFirstPnt, Center, DCenter, Dir, DDir, Angle, DAngle, Poles, DPoles)
         })
     }
 
@@ -12820,12 +14193,12 @@ impl PolynomialConvertor {
         Angle: f64,
         DAngle: f64,
         D2Angle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_PolynomialConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2(self as *const Self, FirstPnt, DFirstPnt, D2FirstPnt, Center, DCenter, D2Center, Dir, DDir, D2Dir, Angle, DAngle, D2Angle, Poles, DPoles, D2Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_PolynomialConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2(self as *const Self, FirstPnt, DFirstPnt, D2FirstPnt, Center, DCenter, D2Center, Dir, DDir, D2Dir, Angle, DAngle, D2Angle, Poles, DPoles, D2Poles)
         })
     }
 }
@@ -12839,11 +14212,11 @@ impl PolynomialConvertor {
 /// of curves  from Geom. All the curves will have the
 /// same  degree,  the same knot-vector, so  the  same
 /// number of poles.
-pub use crate::ffi::GeomFill_Profiler as Profiler;
+pub use crate::ffi_types::GeomFill_Profiler as Profiler;
 
 unsafe impl crate::CppDeletable for Profiler {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Profiler_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_destructor(ptr);
     }
 }
 
@@ -12851,14 +14224,16 @@ impl Profiler {
     /// **Source:** `GeomFill_Profiler.hxx`:40 - `GeomFill_Profiler::GeomFill_Profiler()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Profiler_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:43 - `GeomFill_Profiler::AddCurve()`
-    pub fn add_curve(&mut self, Curve: &crate::ffi::HandleGeomCurve) {
+    pub fn add_curve(&mut self, Curve: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Profiler_add_curve(self as *mut Self, Curve)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_add_curve(self as *mut Self, Curve)
         })
     }
 
@@ -12868,27 +14243,31 @@ impl Profiler {
     /// <PTol> is used to compare 2 knots.
     pub fn perform(&mut self, PTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Profiler_perform(self as *mut Self, PTol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_perform(self as *mut Self, PTol)
         })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:51 - `GeomFill_Profiler::Degree()`
     /// Raises if not yet perform
     pub fn degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Profiler_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:53 - `GeomFill_Profiler::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Profiler_is_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:56 - `GeomFill_Profiler::NbPoles()`
     /// Raises if not yet perform
     pub fn nb_poles(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Profiler_nb_poles(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_nb_poles(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:64 - `GeomFill_Profiler::Poles()`
@@ -12898,9 +14277,9 @@ impl Profiler {
     /// Raises if <Index> not in the range [1,NbCurves]
     /// if  the  length  of  <Poles>  is  not  equal  to
     /// NbPoles().
-    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Profiler_poles(self as *const Self, Index, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_poles(self as *const Self, Index, Poles)
         })
     }
 
@@ -12911,16 +14290,22 @@ impl Profiler {
     /// Raises if <Index> not in the range [1,NbCurves] or
     /// if  the  length  of  <Weights>  is  not  equal  to
     /// NbPoles().
-    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Profiler_weights(self as *const Self, Index, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_weights(
+                self as *const Self,
+                Index,
+                Weights,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     /// Raises if not yet perform
     pub fn nb_knots(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Profiler_nb_knots(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_nb_knots(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
@@ -12929,18 +14314,25 @@ impl Profiler {
     /// not equal to NbKnots().
     pub fn knots_and_mults(
         &self,
-        Knots: &mut crate::ffi::TColStd_Array1OfReal,
-        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+        Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Profiler_knots_and_mults(self as *const Self, Knots, Mults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_knots_and_mults(
+                self as *const Self,
+                Knots,
+                Mults,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
-    pub fn curve(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
+    pub fn curve(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Profiler_curve(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Profiler_curve(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 }
@@ -12952,11 +14344,11 @@ impl Profiler {
 /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:33 - `GeomFill_QuasiAngularConvertor`
 /// To convert circular section in QuasiAngular Bezier
 /// form
-pub use crate::ffi::GeomFill_QuasiAngularConvertor as QuasiAngularConvertor;
+pub use crate::ffi_types::GeomFill_QuasiAngularConvertor as QuasiAngularConvertor;
 
 unsafe impl crate::CppDeletable for QuasiAngularConvertor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_QuasiAngularConvertor_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_destructor(ptr);
     }
 }
 
@@ -12965,7 +14357,7 @@ impl QuasiAngularConvertor {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_QuasiAngularConvertor_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_ctor(),
             ))
         }
     }
@@ -12974,14 +14366,16 @@ impl QuasiAngularConvertor {
     /// say if <me> is Initialized
     pub fn initialized(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_QuasiAngularConvertor_initialized(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_initialized(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_QuasiAngularConvertor.hxx`:43 - `GeomFill_QuasiAngularConvertor::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_QuasiAngularConvertor_init(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_init(self as *mut Self)
         })
     }
 
@@ -12992,11 +14386,11 @@ impl QuasiAngularConvertor {
         Center: &crate::gp::Pnt,
         Dir: &crate::gp::Vec,
         Angle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Weights: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt2_vec_real_array1ofpnt_array1ofreal(self as *mut Self, FirstPnt, Center, Dir, Angle, Poles, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_section_pnt2_vec_real_array1ofpnt_array1ofreal(self as *mut Self, FirstPnt, Center, Dir, Angle, Poles, Weights)
         })
     }
 
@@ -13011,13 +14405,13 @@ impl QuasiAngularConvertor {
         DDir: &crate::gp::Vec,
         Angle: f64,
         DAngle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weights: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeights: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(self as *mut Self, FirstPnt, DFirstPnt, Center, DCenter, Dir, DDir, Angle, DAngle, Poles, DPoles, Weights, DWeights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_section_pnt_vec_pnt_vec3_real2_array1ofpnt_array1ofvec_array1ofreal2(self as *mut Self, FirstPnt, DFirstPnt, Center, DCenter, Dir, DDir, Angle, DAngle, Poles, DPoles, Weights, DWeights)
         })
     }
 
@@ -13036,15 +14430,15 @@ impl QuasiAngularConvertor {
         Angle: f64,
         DAngle: f64,
         D2Angle: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weights: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeights: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weights: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeights: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weights: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_QuasiAngularConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(self as *mut Self, FirstPnt, DFirstPnt, D2FirstPnt, Center, DCenter, D2Center, Dir, DDir, D2Dir, Angle, DAngle, D2Angle, Poles, DPoles, D2Poles, Weights, DWeights, D2Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_QuasiAngularConvertor_section_pnt_vec2_pnt_vec5_real3_array1ofpnt_array1ofvec2_array1ofreal3(self as *mut Self, FirstPnt, DFirstPnt, D2FirstPnt, Center, DCenter, D2Center, Dir, DDir, D2Dir, Angle, DAngle, D2Angle, Poles, DPoles, D2Poles, Weights, DWeights, D2Weights)
         })
     }
 }
@@ -13057,11 +14451,11 @@ impl QuasiAngularConvertor {
 /// gives  the  functions  needed  for  instantiation from
 /// AppSurf in AppBlend.   Allow  to  evaluate  a  surface
 /// passing by all the curves if the Profiler.
-pub use crate::ffi::GeomFill_SectionGenerator as SectionGenerator;
+pub use crate::ffi_types::GeomFill_SectionGenerator as SectionGenerator;
 
 unsafe impl crate::CppDeletable for SectionGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SectionGenerator_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_destructor(ptr);
     }
 }
 
@@ -13070,15 +14464,18 @@ impl SectionGenerator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionGenerator_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_ctor(),
             ))
         }
     }
 
     /// **Source:** `GeomFill_SectionGenerator.hxx`:44 - `GeomFill_SectionGenerator::SetParam()`
-    pub fn set_param(&mut self, Params: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn set_param(&mut self, Params: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_set_param(self as *mut Self, Params)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_set_param(
+                self as *mut Self,
+                Params,
+            )
         })
     }
 
@@ -13091,7 +14488,7 @@ impl SectionGenerator {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_get_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_get_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -13102,16 +14499,22 @@ impl SectionGenerator {
     }
 
     /// **Source:** `GeomFill_SectionGenerator.hxx`:51 - `GeomFill_SectionGenerator::Knots()`
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionGenerator.hxx`:53 - `GeomFill_SectionGenerator::Mults()`
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
@@ -13122,15 +14525,15 @@ impl SectionGenerator {
     pub fn section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &self,
         P: i32,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -13138,18 +14541,12 @@ impl SectionGenerator {
     pub fn section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
         &self,
         P: i32,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *const Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(self as *const Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -13158,16 +14555,21 @@ impl SectionGenerator {
     /// approximation.
     pub fn parameter(&self, P: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_parameter(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Upcast to GeomFill_Profiler
     pub fn as_profiler(&self) -> &Profiler {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SectionGenerator_as_GeomFill_Profiler(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_as_GeomFill_Profiler(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -13175,57 +14577,75 @@ impl SectionGenerator {
     pub fn as_profiler_mut(&mut self) -> &mut Profiler {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_SectionGenerator_as_GeomFill_Profiler_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_as_GeomFill_Profiler_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:43 - `GeomFill_Profiler::AddCurve()`
-    pub fn add_curve(&mut self, Curve: &crate::ffi::HandleGeomCurve) {
+    pub fn add_curve(&mut self, Curve: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_AddCurve(self as *mut Self, Curve)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_AddCurve(
+                self as *mut Self,
+                Curve,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:48 - `GeomFill_Profiler::Perform()`
     pub fn perform(&mut self, PTol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_Perform(self as *mut Self, PTol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_Perform(
+                self as *mut Self,
+                PTol,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:51 - `GeomFill_Profiler::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_Degree(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:53 - `GeomFill_Profiler::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_IsPeriodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_IsPeriodic(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:56 - `GeomFill_Profiler::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_NbPoles(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:64 - `GeomFill_Profiler::Poles()`
-    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi::TColgp_Array1OfPnt) {
+    pub fn poles(&self, Index: i32, Poles: &mut crate::ffi_types::TColgp_Array1OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_Poles(self as *const Self, Index, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_Poles(
+                self as *const Self,
+                Index,
+                Poles,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:72 - `GeomFill_Profiler::Weights()`
-    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn weights(&self, Index: i32, Weights: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_Weights(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_Weights(
                 self as *const Self,
                 Index,
                 Weights,
@@ -13236,18 +14656,20 @@ impl SectionGenerator {
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:75 - `GeomFill_Profiler::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_NbKnots(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:80 - `GeomFill_Profiler::KnotsAndMults()`
     pub fn knots_and_mults(
         &self,
-        Knots: &mut crate::ffi::TColStd_Array1OfReal,
-        Mults: &mut crate::ffi::TColStd_Array1OfInteger,
+        Knots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionGenerator_inherited_KnotsAndMults(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_KnotsAndMults(
                 self as *const Self,
                 Knots,
                 Mults,
@@ -13256,12 +14678,14 @@ impl SectionGenerator {
     }
 
     /// Inherited: **Source:** `GeomFill_Profiler.hxx`:83 - `GeomFill_Profiler::Curve()`
-    pub fn curve(&self, Index: i32) -> &crate::ffi::HandleGeomCurve {
+    pub fn curve(&self, Index: i32) -> &crate::ffi_types::HandleGeomCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SectionGenerator_inherited_Curve(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionGenerator_inherited_Curve(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 }
@@ -13272,11 +14696,11 @@ impl SectionGenerator {
 
 /// **Source:** `GeomFill_SectionLaw.hxx`:38 - `GeomFill_SectionLaw`
 /// To define section law in  sweeping
-pub use crate::ffi::GeomFill_SectionLaw as SectionLaw;
+pub use crate::ffi_types::GeomFill_SectionLaw as SectionLaw;
 
 unsafe impl crate::CppDeletable for SectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SectionLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_destructor(ptr);
     }
 }
 
@@ -13286,11 +14710,16 @@ impl SectionLaw {
     pub fn d0(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_d0(self as *mut Self, Param, Poles, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_d0(
+                self as *mut Self,
+                Param,
+                Poles,
+                Weigths,
+            )
         })
     }
 
@@ -13301,13 +14730,13 @@ impl SectionLaw {
     pub fn d1(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_d1(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -13325,15 +14754,15 @@ impl SectionLaw {
     pub fn d2(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_d2(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -13350,10 +14779,12 @@ impl SectionLaw {
     /// give if possible an bspline Surface, like iso-v are the
     /// section.   If it is  not possible this  methode have to
     /// get an Null Surface. It is the default  implementation.
-    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionLaw_b_spline_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_b_spline_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -13362,7 +14793,7 @@ impl SectionLaw {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -13373,17 +14804,17 @@ impl SectionLaw {
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:78 - `GeomFill_SectionLaw::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:81 - `GeomFill_SectionLaw::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_mults(self as *const Self, TMults)
         })
     }
 
@@ -13391,7 +14822,7 @@ impl SectionLaw {
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_is_rational(self as *const Self)
         })
     }
 
@@ -13399,7 +14830,7 @@ impl SectionLaw {
     /// Returns if the sections are periodic or not
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_is_u_periodic(self as *const Self)
         })
     }
 
@@ -13407,7 +14838,7 @@ impl SectionLaw {
     /// Returns if law is periodic or not
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_is_v_periodic(self as *const Self)
         })
     }
 
@@ -13417,7 +14848,10 @@ impl SectionLaw {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -13427,9 +14861,17 @@ impl SectionLaw {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -13440,7 +14882,11 @@ impl SectionLaw {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -13449,7 +14895,11 @@ impl SectionLaw {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -13459,7 +14909,11 @@ impl SectionLaw {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -13474,10 +14928,10 @@ impl SectionLaw {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -13493,7 +14947,11 @@ impl SectionLaw {
     /// The default implementation make nothing.
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -13506,7 +14964,9 @@ impl SectionLaw {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionLaw_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -13517,7 +14977,7 @@ impl SectionLaw {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_maximal_section(self as *const Self)
         })
     }
 
@@ -13527,9 +14987,12 @@ impl SectionLaw {
     /// This information is  useful to control error
     /// in rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -13537,17 +15000,22 @@ impl SectionLaw {
     /// Say if all sections are equals
     pub fn is_constant(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_is_constant(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_is_constant(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:158 - `GeomFill_SectionLaw::ConstantSection()`
     /// Return a  copy of the  constant Section,  if me
     /// IsConstant
-    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionLaw_constant_section(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_constant_section(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -13558,25 +15026,31 @@ impl SectionLaw {
     /// Return False by Default.
     pub fn is_conical_law(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_is_conical_law(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_is_conical_law(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:167 - `GeomFill_SectionLaw::CirclSection()`
     /// Return the circle section  at parameter <Param>, if
     /// <me> a  IsConicalLaw
-    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionLaw_circl_section(self as *const Self, Param),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_circl_section(
+                    self as *const Self,
+                    Param,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:169 - `GeomFill_SectionLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SectionLaw_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -13586,7 +15060,7 @@ impl SectionLaw {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_SectionLaw_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -13594,39 +15068,53 @@ impl SectionLaw {
     }
 
     /// **Source:** `GeomFill_SectionLaw.hxx`:169 - `GeomFill_SectionLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_SectionLaw_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SectionLaw_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SectionLaw_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -13634,7 +15122,9 @@ impl SectionLaw {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_SectionLaw_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -13647,62 +15137,72 @@ impl SectionLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionLaw_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionLaw_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillSectionLaw;
+pub use crate::ffi_types::HandleGeomFillSectionLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSectionLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillSectionLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_destructor(ptr);
     }
 }
 
 impl HandleGeomFillSectionLaw {
     /// Dereference this Handle to access the underlying GeomFill_SectionLaw
-    pub fn get(&self) -> &crate::ffi::GeomFill_SectionLaw {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_SectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillSectionLaw_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_SectionLaw
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SectionLaw {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillSectionLaw_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_SectionLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_SectionLaw {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_SectionLaw> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSectionLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -13714,11 +15214,9 @@ impl HandleGeomFillSectionLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_EvolvedSection` (or subclass).
     pub fn downcast_to_evolved_section(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillEvolvedSection>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillEvolvedSection>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillEvolvedSection(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillEvolvedSection(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13732,11 +15230,9 @@ impl HandleGeomFillSectionLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_NSections` (or subclass).
     pub fn downcast_to_n_sections(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillNSections>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillNSections>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillNSections(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillNSections(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13750,11 +15246,9 @@ impl HandleGeomFillSectionLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_UniformSection` (or subclass).
     pub fn downcast_to_uniform_section(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillUniformSection>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillUniformSection>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillUniformSection(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillSectionLaw_downcast_to_HandleGeomFillUniformSection(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -13770,94 +15264,104 @@ impl HandleGeomFillSectionLaw {
 
 /// **Source:** `GeomFill_SectionPlacement.hxx`:36 - `GeomFill_SectionPlacement`
 /// To place section in sweep Function
-pub use crate::ffi::GeomFill_SectionPlacement as SectionPlacement;
+pub use crate::ffi_types::GeomFill_SectionPlacement as SectionPlacement;
 
 unsafe impl crate::CppDeletable for SectionPlacement {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SectionPlacement_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_destructor(ptr);
     }
 }
 
 impl SectionPlacement {
     /// **Source:** `GeomFill_SectionPlacement.hxx`:41 - `GeomFill_SectionPlacement::GeomFill_SectionPlacement()`
     pub fn new_handlegeomfilllocationlaw_handlegeomgeometry(
-        L: &crate::ffi::HandleGeomFillLocationLaw,
-        Section: &crate::ffi::HandleGeomGeometry,
+        L: &crate::ffi_types::HandleGeomFillLocationLaw,
+        Section: &crate::ffi_types::HandleGeomGeometry,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_SectionPlacement_ctor_handlegeomfilllocationlaw_handlegeomgeometry(L, Section)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_ctor_handlegeomfilllocationlaw_handlegeomgeometry(L, Section)))
         }
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:45 - `GeomFill_SectionPlacement::SetLocation()`
     /// To change the section Law
-    pub fn set_location(&mut self, L: &crate::ffi::HandleGeomFillLocationLaw) {
+    pub fn set_location(&mut self, L: &crate::ffi_types::HandleGeomFillLocationLaw) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_set_location(self as *mut Self, L)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_set_location(
+                self as *mut Self,
+                L,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:47 - `GeomFill_SectionPlacement::Perform()`
     pub fn perform_real(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_perform_real(self as *mut Self, Tol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_perform_real(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:49 - `GeomFill_SectionPlacement::Perform()`
     pub fn perform_handleadaptor3dcurve_real(
         &mut self,
-        Path: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_perform_handleadaptor3dcurve_real(
-                self as *mut Self,
-                Path,
-                Tol,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_perform_handleadaptor3dcurve_real(self as *mut Self, Path, Tol)
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:51 - `GeomFill_SectionPlacement::Perform()`
     pub fn perform_real2(&mut self, ParamOnPath: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_perform_real2(self as *mut Self, ParamOnPath, Tol)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_perform_real2(
+                self as *mut Self,
+                ParamOnPath,
+                Tol,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:53 - `GeomFill_SectionPlacement::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:55 - `GeomFill_SectionPlacement::ParameterOnPath()`
     pub fn parameter_on_path(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_parameter_on_path(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_parameter_on_path(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:57 - `GeomFill_SectionPlacement::ParameterOnSection()`
     pub fn parameter_on_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_parameter_on_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_parameter_on_section(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:59 - `GeomFill_SectionPlacement::Distance()`
     pub fn distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_distance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_distance(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_SectionPlacement.hxx`:61 - `GeomFill_SectionPlacement::Angle()`
     pub fn angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SectionPlacement_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_angle(self as *const Self)
         })
     }
 
@@ -13869,7 +15373,7 @@ impl SectionPlacement {
     ) -> crate::OwnedPtr<crate::gp::Trsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionPlacement_transformation(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_transformation(
                     self as *const Self,
                     WithTranslation,
                     WithCorrection,
@@ -13883,10 +15387,16 @@ impl SectionPlacement {
     /// the Location Law.
     /// If <WithTranslation> contact between
     /// <Section> and <Path> is forced.
-    pub fn section(&self, WithTranslation: bool) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn section(
+        &self,
+        WithTranslation: bool,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionPlacement_section(self as *const Self, WithTranslation),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_section(
+                    self as *const Self,
+                    WithTranslation,
+                ),
             ))
         }
     }
@@ -13900,10 +15410,10 @@ impl SectionPlacement {
     pub fn modified_section(
         &self,
         WithTranslation: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SectionPlacement_modified_section(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SectionPlacement_modified_section(
                     self as *const Self,
                     WithTranslation,
                 ),
@@ -13921,11 +15431,11 @@ impl SectionPlacement {
 /// GeomFill_ConstrainedFilling algorithm.
 /// This curve is unattached to an existing surface.D
 /// Contains fields to allow a reparametrization of curve.
-pub use crate::ffi::GeomFill_SimpleBound as SimpleBound;
+pub use crate::ffi_types::GeomFill_SimpleBound as SimpleBound;
 
 unsafe impl crate::CppDeletable for SimpleBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SimpleBound_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_destructor(ptr);
     }
 }
 
@@ -13964,13 +15474,13 @@ impl SimpleBound {
     /// myBoundary = GeomFill_SimpleBound
     /// (Curve,Tol,dummy);
     pub fn new_handleadaptor3dcurve_real2(
-        Curve: &crate::ffi::HandleAdaptor3dCurve,
+        Curve: &crate::ffi_types::HandleAdaptor3dCurve,
         Tol3d: f64,
         Tolang: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SimpleBound_ctor_handleadaptor3dcurve_real2(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_ctor_handleadaptor3dcurve_real2(
                     Curve, Tol3d, Tolang,
                 ),
             ))
@@ -13980,17 +15490,16 @@ impl SimpleBound {
     /// **Source:** `GeomFill_SimpleBound.hxx`:76 - `GeomFill_SimpleBound::Value()`
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_SimpleBound_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_value(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:78 - `GeomFill_SimpleBound::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -14006,7 +15515,7 @@ impl SimpleBound {
         Rev: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_reparametrize(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_reparametrize(
                 self as *mut Self,
                 First,
                 Last,
@@ -14022,23 +15531,29 @@ impl SimpleBound {
     /// **Source:** `GeomFill_SimpleBound.hxx`:88 - `GeomFill_SimpleBound::Bounds()`
     pub fn bounds(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_bounds(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_bounds(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:90 - `GeomFill_SimpleBound::IsDegenerated()`
     pub fn is_degenerated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_is_degenerated(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_is_degenerated(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:92 - `GeomFill_SimpleBound::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SimpleBound_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -14046,7 +15561,7 @@ impl SimpleBound {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_SimpleBound_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -14054,53 +15569,65 @@ impl SimpleBound {
     }
 
     /// **Source:** `GeomFill_SimpleBound.hxx`:92 - `GeomFill_SimpleBound::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_SimpleBound_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_Boundary
     pub fn as_boundary(&self) -> &Boundary {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SimpleBound_as_GeomFill_Boundary(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_as_GeomFill_Boundary(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_Boundary (mutable)
     pub fn as_boundary_mut(&mut self) -> &mut Boundary {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SimpleBound_as_GeomFill_Boundary_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_as_GeomFill_Boundary_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SimpleBound_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SimpleBound_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSimpleBound> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSimpleBound> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SimpleBound_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -14108,7 +15635,9 @@ impl SimpleBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:47 - `GeomFill_Boundary::HasNormals()`
     pub fn has_normals(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_HasNormals(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_HasNormals(
+                self as *const Self,
+            )
         })
     }
 
@@ -14116,7 +15645,10 @@ impl SimpleBound {
     pub fn norm(&self, U: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SimpleBound_inherited_Norm(self as *const Self, U),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_Norm(
+                    self as *const Self,
+                    U,
+                ),
             ))
         }
     }
@@ -14124,42 +15656,57 @@ impl SimpleBound {
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:51 - `GeomFill_Boundary::D1Norm()`
     pub fn d1_norm(&self, U: f64, N: &mut crate::gp::Vec, DN: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_D1Norm(self as *const Self, U, N, DN)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_D1Norm(
+                self as *const Self,
+                U,
+                N,
+                DN,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:61 - `GeomFill_Boundary::Points()`
     pub fn points(&self, PFirst: &mut crate::gp::Pnt, PLast: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_Points(self as *const Self, PFirst, PLast)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_Points(
+                self as *const Self,
+                PFirst,
+                PLast,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:67 - `GeomFill_Boundary::Tol3d()`
     pub fn tol3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_Tol3d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_Tol3d(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Boundary.hxx`:71 - `GeomFill_Boundary::Tolang()`
     pub fn tolang(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_Tolang(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_Tolang(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -14167,7 +15714,9 @@ impl SimpleBound {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_SimpleBound_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -14180,62 +15729,70 @@ impl SimpleBound {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SimpleBound_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SimpleBound_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillSimpleBound;
+pub use crate::ffi_types::HandleGeomFillSimpleBound;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSimpleBound {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillSimpleBound_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_destructor(ptr);
     }
 }
 
 impl HandleGeomFillSimpleBound {
     /// Dereference this Handle to access the underlying GeomFill_SimpleBound
-    pub fn get(&self) -> &crate::ffi::GeomFill_SimpleBound {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_SimpleBound {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillSimpleBound_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_SimpleBound
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SimpleBound {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillSimpleBound_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_SimpleBound
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_SimpleBound {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_SimpleBound> to Handle<GeomFill_Boundary>
-    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillBoundary> {
+    pub fn to_handle_boundary(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillBoundary> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSimpleBound_to_HandleGeomFillBoundary(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_to_HandleGeomFillBoundary(
                     self as *const Self,
                 ),
             ))
@@ -14243,10 +15800,12 @@ impl HandleGeomFillSimpleBound {
     }
 
     /// Upcast Handle<GeomFill_SimpleBound> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSimpleBound_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSimpleBound_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -14260,32 +15819,32 @@ impl HandleGeomFillSimpleBound {
 
 /// **Source:** `GeomFill_SnglrFunc.hxx`:34 - `GeomFill_SnglrFunc`
 /// to  represent  function  C'(t)^C''(t)
-pub use crate::ffi::GeomFill_SnglrFunc as SnglrFunc;
+pub use crate::ffi_types::GeomFill_SnglrFunc as SnglrFunc;
 
 unsafe impl crate::CppDeletable for SnglrFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SnglrFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_destructor(ptr);
     }
 }
 
 impl SnglrFunc {
     /// **Source:** `GeomFill_SnglrFunc.hxx`:39 - `GeomFill_SnglrFunc::GeomFill_SnglrFunc()`
     pub fn new_handleadaptor3dcurve(
-        HC: &crate::ffi::HandleAdaptor3dCurve,
+        HC: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_ctor_handleadaptor3dcurve(HC),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_ctor_handleadaptor3dcurve(HC),
             ))
         }
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:42 - `GeomFill_SnglrFunc::ShallowCopy()`
     /// Shallow copy of adaptor
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_shallow_copy(self as *const Self),
             ))
         }
     }
@@ -14293,21 +15852,21 @@ impl SnglrFunc {
     /// **Source:** `GeomFill_SnglrFunc.hxx`:44 - `GeomFill_SnglrFunc::SetRatio()`
     pub fn set_ratio(&mut self, Ratio: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_set_ratio(self as *mut Self, Ratio)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_set_ratio(self as *mut Self, Ratio)
         })
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:46 - `GeomFill_SnglrFunc::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_first_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_first_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:48 - `GeomFill_SnglrFunc::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_last_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_last_parameter(self as *const Self)
         })
     }
 
@@ -14316,7 +15875,10 @@ impl SnglrFunc {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -14326,9 +15888,17 @@ impl SnglrFunc {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -14336,30 +15906,31 @@ impl SnglrFunc {
     /// Computes the point of parameter U on the curve.
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_SnglrFunc_value(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_value(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:65 - `GeomFill_SnglrFunc::IsPeriodic()`
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_is_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_is_periodic(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:67 - `GeomFill_SnglrFunc::Period()`
     pub fn period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomFill_SnglrFunc_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_period(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_SnglrFunc.hxx`:70 - `GeomFill_SnglrFunc::D0()`
     /// Computes the point of parameter U on the curve.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_d0(self as *const Self, U, P)
         })
     }
 
@@ -14370,7 +15941,7 @@ impl SnglrFunc {
     /// is not C1.
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_d1(self as *const Self, U, P, V)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_d1(self as *const Self, U, P, V)
         })
     }
 
@@ -14387,7 +15958,7 @@ impl SnglrFunc {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_d2(self as *const Self, U, P, V1, V2)
         })
     }
 
@@ -14405,7 +15976,14 @@ impl SnglrFunc {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_d3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
         })
     }
 
@@ -14415,11 +15993,9 @@ impl SnglrFunc {
     /// Raised if N < 1.
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_SnglrFunc_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_dn(self as *const Self, U, N),
+            ))
         }
     }
 
@@ -14428,7 +16004,7 @@ impl SnglrFunc {
     /// to the real space resolution <R3d>.
     pub fn resolution(&self, R3d: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_resolution(self as *const Self, R3d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_resolution(self as *const Self, R3d)
         })
     }
 
@@ -14438,7 +16014,7 @@ impl SnglrFunc {
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
     pub fn get_type(&self) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_get_type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_get_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -14446,63 +16022,75 @@ impl SnglrFunc {
     /// Upcast to Adaptor3d_Curve
     pub fn as_adaptor3d_curve(&self) -> &crate::adaptor3d::Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SnglrFunc_as_Adaptor3d_Curve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_as_Adaptor3d_Curve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Adaptor3d_Curve (mutable)
     pub fn as_adaptor3d_curve_mut(&mut self) -> &mut crate::adaptor3d::Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SnglrFunc_as_Adaptor3d_Curve_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_as_Adaptor3d_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SnglrFunc_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SnglrFunc_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSnglrFunc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSnglrFunc> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:54 - `Adaptor3d_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SnglrFunc_inherited_DynamicType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_DynamicType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:63 - `Adaptor3d_Curve::Continuity()`
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_Continuity(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Continuity(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -14513,10 +16101,10 @@ impl SnglrFunc {
         First: f64,
         Last: f64,
         Tol: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Trim(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Trim(
                     self as *const Self,
                     First,
                     Last,
@@ -14529,7 +16117,7 @@ impl SnglrFunc {
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:84 - `Adaptor3d_Curve::IsClosed()`
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_IsClosed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_IsClosed(self as *const Self)
         })
     }
 
@@ -14537,7 +16125,9 @@ impl SnglrFunc {
     pub fn line(&self) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Line(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Line(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14546,7 +16136,9 @@ impl SnglrFunc {
     pub fn circle(&self) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Circle(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Circle(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14555,7 +16147,9 @@ impl SnglrFunc {
     pub fn ellipse(&self) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Ellipse(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Ellipse(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14564,7 +16158,9 @@ impl SnglrFunc {
     pub fn hyperbola(&self) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Hyperbola(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Hyperbola(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14573,7 +16169,9 @@ impl SnglrFunc {
     pub fn parabola(&self) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Parabola(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Parabola(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14581,69 +16179,83 @@ impl SnglrFunc {
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:144 - `Adaptor3d_Curve::Degree()`
     pub fn degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_Degree(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Degree(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:146 - `Adaptor3d_Curve::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_IsRational(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:148 - `Adaptor3d_Curve::NbPoles()`
     pub fn nb_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_NbPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_NbPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:150 - `Adaptor3d_Curve::NbKnots()`
     pub fn nb_knots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_NbKnots(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_NbKnots(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:152 - `Adaptor3d_Curve::Bezier()`
-    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+    pub fn bezier(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_Bezier(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Bezier(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:154 - `Adaptor3d_Curve::BSpline()`
-    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+    pub fn b_spline(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_BSpline(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_BSpline(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Adaptor3d_Curve.hxx`:156 - `Adaptor3d_Curve::OffsetCurve()`
-    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomOffsetCurve> {
+    pub fn offset_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SnglrFunc_inherited_OffsetCurve(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_OffsetCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -14651,7 +16263,7 @@ impl SnglrFunc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_SnglrFunc_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -14664,71 +16276,85 @@ impl SnglrFunc {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SnglrFunc_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SnglrFunc_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillSnglrFunc;
+pub use crate::ffi_types::HandleGeomFillSnglrFunc;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSnglrFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillSnglrFunc_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_destructor(ptr);
     }
 }
 
 impl HandleGeomFillSnglrFunc {
     /// Dereference this Handle to access the underlying GeomFill_SnglrFunc
-    pub fn get(&self) -> &crate::ffi::GeomFill_SnglrFunc {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_SnglrFunc {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillSnglrFunc_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_SnglrFunc
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SnglrFunc {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillSnglrFunc_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_SnglrFunc
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_SnglrFunc {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_SnglrFunc> to Handle<Adaptor3d_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSnglrFunc_to_HandleAdaptor3dCurve(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_to_HandleAdaptor3dCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomFill_SnglrFunc> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSnglrFunc_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSnglrFunc_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14739,11 +16365,11 @@ impl HandleGeomFillSnglrFunc {
 // ========================
 
 /// **Source:** `GeomFill_Stretch.hxx`:28 - `GeomFill_Stretch`
-pub use crate::ffi::GeomFill_Stretch as Stretch;
+pub use crate::ffi_types::GeomFill_Stretch as Stretch;
 
 unsafe impl crate::CppDeletable for Stretch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Stretch_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_destructor(ptr);
     }
 }
 
@@ -14751,38 +16377,40 @@ impl Stretch {
     /// **Source:** `GeomFill_Stretch.hxx`:33 - `GeomFill_Stretch::GeomFill_Stretch()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Stretch_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Stretch.hxx`:35 - `GeomFill_Stretch::GeomFill_Stretch()`
     pub fn new_array1ofpnt4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Stretch_ctor_array1ofpnt4(P1, P2, P3, P4),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_ctor_array1ofpnt4(P1, P2, P3, P4),
             ))
         }
     }
 
     /// **Source:** `GeomFill_Stretch.hxx`:40 - `GeomFill_Stretch::GeomFill_Stretch()`
     pub fn new_array1ofpnt4_array1ofreal4(
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Stretch_ctor_array1ofpnt4_array1ofreal4(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_ctor_array1ofpnt4_array1ofreal4(
                     P1, P2, P3, P4, W1, W2, W3, W4,
                 ),
             ))
@@ -14792,30 +16420,36 @@ impl Stretch {
     /// **Source:** `GeomFill_Stretch.hxx`:49 - `GeomFill_Stretch::Init()`
     pub fn init_array1ofpnt4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Stretch_init_array1ofpnt4(self as *mut Self, P1, P2, P3, P4)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_init_array1ofpnt4(
+                self as *mut Self,
+                P1,
+                P2,
+                P3,
+                P4,
+            )
         })
     }
 
     /// **Source:** `GeomFill_Stretch.hxx`:54 - `GeomFill_Stretch::Init()`
     pub fn init_array1ofpnt4_array1ofreal4(
         &mut self,
-        P1: &crate::ffi::TColgp_Array1OfPnt,
-        P2: &crate::ffi::TColgp_Array1OfPnt,
-        P3: &crate::ffi::TColgp_Array1OfPnt,
-        P4: &crate::ffi::TColgp_Array1OfPnt,
-        W1: &crate::ffi::TColStd_Array1OfReal,
-        W2: &crate::ffi::TColStd_Array1OfReal,
-        W3: &crate::ffi::TColStd_Array1OfReal,
-        W4: &crate::ffi::TColStd_Array1OfReal,
+        P1: &crate::ffi_types::TColgp_Array1OfPnt,
+        P2: &crate::ffi_types::TColgp_Array1OfPnt,
+        P3: &crate::ffi_types::TColgp_Array1OfPnt,
+        P4: &crate::ffi_types::TColgp_Array1OfPnt,
+        W1: &crate::ffi_types::TColStd_Array1OfReal,
+        W2: &crate::ffi_types::TColStd_Array1OfReal,
+        W3: &crate::ffi_types::TColStd_Array1OfReal,
+        W4: &crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Stretch_init_array1ofpnt4_array1ofreal4(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_init_array1ofpnt4_array1ofreal4(
                 self as *mut Self,
                 P1,
                 P2,
@@ -14832,53 +16466,63 @@ impl Stretch {
     /// Upcast to GeomFill_Filling
     pub fn as_filling(&self) -> &Filling {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_Stretch_as_GeomFill_Filling(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_as_GeomFill_Filling(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_Filling (mutable)
     pub fn as_filling_mut(&mut self) -> &mut Filling {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_Stretch_as_GeomFill_Filling_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_as_GeomFill_Filling_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:39 - `GeomFill_Filling::NbUPoles()`
     pub fn nb_u_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Stretch_inherited_NbUPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_inherited_NbUPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:41 - `GeomFill_Filling::NbVPoles()`
     pub fn nb_v_poles(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Stretch_inherited_NbVPoles(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_inherited_NbVPoles(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:43 - `GeomFill_Filling::Poles()`
-    pub fn poles(&self, Poles: &mut crate::ffi::TColgp_Array2OfPnt) {
+    pub fn poles(&self, Poles: &mut crate::ffi_types::TColgp_Array2OfPnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Stretch_inherited_Poles(self as *const Self, Poles)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_inherited_Poles(
+                self as *const Self,
+                Poles,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:45 - `GeomFill_Filling::isRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Stretch_inherited_isRational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_inherited_isRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `GeomFill_Filling.hxx`:47 - `GeomFill_Filling::Weights()`
-    pub fn weights(&self, Weights: &mut crate::ffi::TColStd_Array2OfReal) {
+    pub fn weights(&self, Weights: &mut crate::ffi_types::TColStd_Array2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Stretch_inherited_Weights(self as *const Self, Weights)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Stretch_inherited_Weights(
+                self as *const Self,
+                Weights,
+            )
         })
     }
 }
@@ -14889,30 +16533,32 @@ impl Stretch {
 
 /// **Source:** `GeomFill_Sweep.hxx`:35 - `GeomFill_Sweep`
 /// Geometrical Sweep Algorithm
-pub use crate::ffi::GeomFill_Sweep as Sweep;
+pub use crate::ffi_types::GeomFill_Sweep as Sweep;
 
 unsafe impl crate::CppDeletable for Sweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Sweep_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_destructor(ptr);
     }
 }
 
 impl Sweep {
     /// **Source:** `GeomFill_Sweep.hxx`:40 - `GeomFill_Sweep::GeomFill_Sweep()`
     pub fn new_handlegeomfilllocationlaw_bool(
-        Location: &crate::ffi::HandleGeomFillLocationLaw,
+        Location: &crate::ffi_types::HandleGeomFillLocationLaw,
         WithKpart: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_Sweep_ctor_handlegeomfilllocationlaw_bool(Location, WithKpart),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_ctor_handlegeomfilllocationlaw_bool(
+                    Location, WithKpart,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:40 - `GeomFill_Sweep::GeomFill_Sweep()`
     pub fn new_handlegeomfilllocationlaw(
-        Location: &crate::ffi::HandleGeomFillLocationLaw,
+        Location: &crate::ffi_types::HandleGeomFillLocationLaw,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomfilllocationlaw_bool(Location, true)
     }
@@ -14933,7 +16579,7 @@ impl Sweep {
     /// First and Last parameter stored in LocationLaw.
     pub fn set_domain(&mut self, First: f64, Last: f64, SectionFirst: f64, SectionLast: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_set_domain(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_set_domain(
                 self as *mut Self,
                 First,
                 Last,
@@ -14956,7 +16602,7 @@ impl Sweep {
     /// tangent of iso-v on approximated surface
     pub fn set_tolerance(&mut self, Tol3d: f64, BoundTol: f64, Tol2d: f64, TolAngular: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_set_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_set_tolerance(
                 self as *mut Self,
                 Tol3d,
                 BoundTol,
@@ -14972,7 +16618,10 @@ impl Sweep {
     /// to be C0.
     pub fn set_force_approx_c1(&mut self, ForceApproxC1: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_set_force_approx_c1(self as *mut Self, ForceApproxC1)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_set_force_approx_c1(
+                self as *mut Self,
+                ForceApproxC1,
+            )
         })
     }
 
@@ -14980,21 +16629,27 @@ impl Sweep {
     /// returns true if sections are U-Iso
     /// This can be produce in some cases when <WithKpart> is True.
     pub fn exchange_uv(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Sweep_exchange_uv(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_exchange_uv(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:87 - `GeomFill_Sweep::UReversed()`
     /// returns true if Parametrisation sens in U is inverse of
     /// parametrisation sens of section (or of path if ExchangeUV)
     pub fn u_reversed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Sweep_u_reversed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_u_reversed(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:91 - `GeomFill_Sweep::VReversed()`
     /// returns true if Parametrisation sens in V is inverse of
     /// parametrisation sens of path (or of section if ExchangeUV)
     pub fn v_reversed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Sweep_v_reversed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_v_reversed(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:108 - `GeomFill_Sweep::Build()`
@@ -15015,14 +16670,14 @@ impl Sweep {
     /// raise If Domain are infinite or Profile not set.
     pub fn build(
         &mut self,
-        Section: &crate::ffi::HandleGeomFillSectionLaw,
+        Section: &crate::ffi_types::HandleGeomFillSectionLaw,
         Methode: crate::geom_fill::ApproxStyle,
         Continuity: crate::geom_abs::Shape,
         Degmax: i32,
         Segmax: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_build(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_build(
                 self as *mut Self,
                 Section,
                 Methode.into(),
@@ -15036,14 +16691,16 @@ impl Sweep {
     /// **Source:** `GeomFill_Sweep.hxx`:115 - `GeomFill_Sweep::IsDone()`
     /// Tells if the Surface is Buildt.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomFill_Sweep_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:118 - `GeomFill_Sweep::ErrorOnSurface()`
     /// Gets the Approximation  error.
     pub fn error_on_surface(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Sweep_error_on_surface(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_error_on_surface(self as *const Self)
         })
     }
 
@@ -15051,7 +16708,7 @@ impl Sweep {
     /// Gets the Approximation  error.
     pub fn error_on_restriction(&self, IsFirst: bool, UError: &mut f64, VError: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_error_on_restriction(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_error_on_restriction(
                 self as *const Self,
                 IsFirst,
                 UError,
@@ -15064,7 +16721,7 @@ impl Sweep {
     /// Gets the Approximation error.
     pub fn error_on_trace(&self, IndexOfTrace: i32, UError: &mut f64, VError: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Sweep_error_on_trace(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_error_on_trace(
                 self as *const Self,
                 IndexOfTrace,
                 UError,
@@ -15074,38 +16731,45 @@ impl Sweep {
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:130 - `GeomFill_Sweep::Surface()`
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Sweep_surface(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_surface(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:132 - `GeomFill_Sweep::Restriction()`
-    pub fn restriction(&self, IsFirst: bool) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn restriction(
+        &self,
+        IsFirst: bool,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Sweep_restriction(
-                self as *const Self,
-                IsFirst,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_restriction(
+                    self as *const Self,
+                    IsFirst,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:134 - `GeomFill_Sweep::NumberOfTrace()`
     pub fn number_of_trace(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_Sweep_number_of_trace(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_number_of_trace(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_Sweep.hxx`:136 - `GeomFill_Sweep::Trace()`
-    pub fn trace(&self, IndexOfTrace: i32) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn trace(&self, IndexOfTrace: i32) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Sweep_trace(
-                self as *const Self,
-                IndexOfTrace,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Sweep_trace(
+                    self as *const Self,
+                    IndexOfTrace,
+                ),
+            ))
         }
     }
 }
@@ -15117,25 +16781,25 @@ impl Sweep {
 /// **Source:** `GeomFill_SweepFunction.hxx`:43 - `GeomFill_SweepFunction`
 /// Function to approximate by SweepApproximation from
 /// Approx. To build general sweep Surface.
-pub use crate::ffi::GeomFill_SweepFunction as SweepFunction;
+pub use crate::ffi_types::GeomFill_SweepFunction as SweepFunction;
 
 unsafe impl crate::CppDeletable for SweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SweepFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_destructor(ptr);
     }
 }
 
 impl SweepFunction {
     /// **Source:** `GeomFill_SweepFunction.hxx`:47 - `GeomFill_SweepFunction::GeomFill_SweepFunction()`
     pub fn new_handlegeomfillsectionlaw_handlegeomfilllocationlaw_real3(
-        Section: &crate::ffi::HandleGeomFillSectionLaw,
-        Location: &crate::ffi::HandleGeomFillLocationLaw,
+        Section: &crate::ffi_types::HandleGeomFillSectionLaw,
+        Location: &crate::ffi_types::HandleGeomFillLocationLaw,
         FirstParameter: f64,
         FirstParameterOnS: f64,
         RatioParameterOnS: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_SweepFunction_ctor_handlegeomfillsectionlaw_handlegeomfilllocationlaw_real3(Section, Location, FirstParameter, FirstParameterOnS, RatioParameterOnS)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_ctor_handlegeomfillsectionlaw_handlegeomfilllocationlaw_real3(Section, Location, FirstParameter, FirstParameterOnS, RatioParameterOnS)))
         }
     }
 
@@ -15146,12 +16810,12 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_d0(
                 self as *mut Self,
                 Param,
                 First,
@@ -15171,15 +16835,15 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_d1(
                 self as *mut Self,
                 Param,
                 First,
@@ -15202,18 +16866,18 @@ impl SweepFunction {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_d2(
                 self as *mut Self,
                 Param,
                 First,
@@ -15235,7 +16899,7 @@ impl SweepFunction {
     /// get the number of 2d curves to approximate.
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_nb2d_curves(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_nb2d_curves(self as *const Self)
         })
     }
 
@@ -15243,7 +16907,7 @@ impl SweepFunction {
     /// get the format of a section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -15254,17 +16918,17 @@ impl SweepFunction {
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:97 - `GeomFill_SweepFunction::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:100 - `GeomFill_SweepFunction::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_mults(self as *const Self, TMults)
         })
     }
 
@@ -15272,7 +16936,7 @@ impl SweepFunction {
     /// Returns if the section is rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_is_rational(self as *const Self)
         })
     }
 
@@ -15281,7 +16945,10 @@ impl SweepFunction {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -15291,9 +16958,17 @@ impl SweepFunction {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -15304,7 +16979,11 @@ impl SweepFunction {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -15315,7 +16994,7 @@ impl SweepFunction {
     /// Warning: Used only if Nb2dCurve > 0
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_resolution(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -15336,10 +17015,10 @@ impl SweepFunction {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -15354,7 +17033,11 @@ impl SweepFunction {
     /// algorithme to perform D0, D1 or D2
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -15366,7 +17049,9 @@ impl SweepFunction {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepFunction_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15377,7 +17062,9 @@ impl SweepFunction {
     /// approximation.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_maximal_section(
+                self as *const Self,
+            )
         })
     }
 
@@ -15386,18 +17073,23 @@ impl SweepFunction {
     /// of all  sections.  This information is  useful to
     /// perform well conditioned rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:167 - `GeomFill_SweepFunction::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SweepFunction_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -15405,7 +17097,7 @@ impl SweepFunction {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_SweepFunction_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -15413,16 +17105,22 @@ impl SweepFunction {
     }
 
     /// **Source:** `GeomFill_SweepFunction.hxx`:167 - `GeomFill_SweepFunction::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_SweepFunction_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SweepFunction_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -15430,7 +17128,9 @@ impl SweepFunction {
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_SweepFunction_as_Approx_SweepFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_as_Approx_SweepFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -15438,43 +17138,53 @@ impl SweepFunction {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_SweepFunction_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_SweepFunction_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSweepFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepFunction_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -15482,7 +17192,9 @@ impl SweepFunction {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_SweepFunction_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -15495,78 +17207,84 @@ impl SweepFunction {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepFunction_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepFunction_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillSweepFunction;
+pub use crate::ffi_types::HandleGeomFillSweepFunction;
 
 unsafe impl crate::CppDeletable for HandleGeomFillSweepFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillSweepFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_destructor(ptr);
     }
 }
 
 impl HandleGeomFillSweepFunction {
     /// Dereference this Handle to access the underlying GeomFill_SweepFunction
-    pub fn get(&self) -> &crate::ffi::GeomFill_SweepFunction {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillSweepFunction_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_SweepFunction
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_SweepFunction {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_SweepFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillSweepFunction_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_SweepFunction> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSweepFunction_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_to_HandleApproxSweepFunction(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_SweepFunction> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillSweepFunction_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillSweepFunction_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -15578,11 +17296,11 @@ impl HandleGeomFillSweepFunction {
 /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:36 - `GeomFill_SweepSectionGenerator`
 /// class for instantiation of AppBlend.
 /// evaluate the sections of a sweep surface.
-pub use crate::ffi::GeomFill_SweepSectionGenerator as SweepSectionGenerator;
+pub use crate::ffi_types::GeomFill_SweepSectionGenerator as SweepSectionGenerator;
 
 unsafe impl crate::CppDeletable for SweepSectionGenerator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_SweepSectionGenerator_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_destructor(ptr);
     }
 }
 
@@ -15591,7 +17309,7 @@ impl SweepSectionGenerator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor(),
             ))
         }
     }
@@ -15599,25 +17317,25 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:44 - `GeomFill_SweepSectionGenerator::GeomFill_SweepSectionGenerator()`
     /// Create a sweept surface with a constant radius.
     pub fn new_handlegeomcurve_real(
-        Path: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve_real(Path, Radius),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve_real(Path, Radius)))
         }
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:48 - `GeomFill_SweepSectionGenerator::GeomFill_SweepSectionGenerator()`
     /// Create a sweept surface with a constant section
     pub fn new_handlegeomcurve2(
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve2(Path, FirstSect),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve2(
+                    Path, FirstSect,
+                ),
             ))
         }
     }
@@ -15626,13 +17344,13 @@ impl SweepSectionGenerator {
     /// Create a sweept surface with an evolving section
     /// The section evaluate from First to Last Section
     pub fn new_handlegeomcurve3(
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
-        LastSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
+        LastSect: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve3(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve3(
                     Path, FirstSect, LastSect,
                 ),
             ))
@@ -15643,17 +17361,13 @@ impl SweepSectionGenerator {
     /// Create  a pipe  with  a constant  radius with  2
     /// guide-line.
     pub fn new_handlegeomcurve3_real(
-        Path: &crate::ffi::HandleGeomCurve,
-        Curve1: &crate::ffi::HandleGeomCurve,
-        Curve2: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Curve1: &crate::ffi_types::HandleGeomCurve,
+        Curve2: &crate::ffi_types::HandleGeomCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve3_real(
-                    Path, Curve1, Curve2, Radius,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor_handlegeomcurve3_real(Path, Curve1, Curve2, Radius)))
         }
     }
 
@@ -15661,24 +17375,24 @@ impl SweepSectionGenerator {
     /// Create  a pipe  with  a constant  radius with  2
     /// guide-line.
     pub fn new_handleadaptor3dcurve3_real(
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_SweepSectionGenerator_ctor_handleadaptor3dcurve3_real(
-                    Path, Curve1, Curve2, Radius,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_ctor_handleadaptor3dcurve3_real(Path, Curve1, Curve2, Radius)))
         }
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:71 - `GeomFill_SweepSectionGenerator::Init()`
-    pub fn init_handlegeomcurve_real(&mut self, Path: &crate::ffi::HandleGeomCurve, Radius: f64) {
+    pub fn init_handlegeomcurve_real(
+        &mut self,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Radius: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_init_handlegeomcurve_real(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_init_handlegeomcurve_real(
                 self as *mut Self,
                 Path,
                 Radius,
@@ -15689,11 +17403,11 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:73 - `GeomFill_SweepSectionGenerator::Init()`
     pub fn init_handlegeomcurve2(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_init_handlegeomcurve2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_init_handlegeomcurve2(
                 self as *mut Self,
                 Path,
                 FirstSect,
@@ -15704,12 +17418,12 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:75 - `GeomFill_SweepSectionGenerator::Init()`
     pub fn init_handlegeomcurve3(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        FirstSect: &crate::ffi::HandleGeomCurve,
-        LastSect: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        FirstSect: &crate::ffi_types::HandleGeomCurve,
+        LastSect: &crate::ffi_types::HandleGeomCurve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_init_handlegeomcurve3(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_init_handlegeomcurve3(
                 self as *mut Self,
                 Path,
                 FirstSect,
@@ -15721,13 +17435,13 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:79 - `GeomFill_SweepSectionGenerator::Init()`
     pub fn init_handlegeomcurve3_real(
         &mut self,
-        Path: &crate::ffi::HandleGeomCurve,
-        Curve1: &crate::ffi::HandleGeomCurve,
-        Curve2: &crate::ffi::HandleGeomCurve,
+        Path: &crate::ffi_types::HandleGeomCurve,
+        Curve1: &crate::ffi_types::HandleGeomCurve,
+        Curve2: &crate::ffi_types::HandleGeomCurve,
         Radius: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_init_handlegeomcurve3_real(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_init_handlegeomcurve3_real(
                 self as *mut Self,
                 Path,
                 Curve1,
@@ -15740,26 +17454,23 @@ impl SweepSectionGenerator {
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:84 - `GeomFill_SweepSectionGenerator::Init()`
     pub fn init_handleadaptor3dcurve3_real(
         &mut self,
-        Path: &crate::ffi::HandleAdaptor3dCurve,
-        Curve1: &crate::ffi::HandleAdaptor3dCurve,
-        Curve2: &crate::ffi::HandleAdaptor3dCurve,
+        Path: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve1: &crate::ffi_types::HandleAdaptor3dCurve,
+        Curve2: &crate::ffi_types::HandleAdaptor3dCurve,
         Radius: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_init_handleadaptor3dcurve3_real(
-                self as *mut Self,
-                Path,
-                Curve1,
-                Curve2,
-                Radius,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_init_handleadaptor3dcurve3_real(self as *mut Self, Path, Curve1, Curve2, Radius)
         })
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:89 - `GeomFill_SweepSectionGenerator::Perform()`
     pub fn perform(&mut self, Polynomial: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_perform(self as *mut Self, Polynomial)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_perform(
+                self as *mut Self,
+                Polynomial,
+            )
         })
     }
 
@@ -15772,7 +17483,7 @@ impl SweepSectionGenerator {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_get_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_get_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -15783,23 +17494,31 @@ impl SweepSectionGenerator {
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:96 - `GeomFill_SweepSectionGenerator::Knots()`
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:98 - `GeomFill_SweepSectionGenerator::Mults()`
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
     /// **Source:** `GeomFill_SweepSectionGenerator.hxx`:100 - `GeomFill_SweepSectionGenerator::NbSections()`
     pub fn nb_sections(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_nb_sections(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_nb_sections(
+                self as *const Self,
+            )
         })
     }
 
@@ -15810,15 +17529,15 @@ impl SweepSectionGenerator {
     pub fn section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &self,
         P: i32,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *const Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -15826,12 +17545,12 @@ impl SweepSectionGenerator {
     pub fn section_int_array1ofpnt_array1ofpnt2d_array1ofreal(
         &self,
         P: i32,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(self as *const Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_section_int_array1ofpnt_array1ofpnt2d_array1ofreal(self as *const Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -15839,10 +17558,12 @@ impl SweepSectionGenerator {
     /// raised if <Index> not in the range [1,NbSections()]
     pub fn transformation(&self, Index: i32) -> &crate::gp::Trsf {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_SweepSectionGenerator_transformation(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_transformation(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -15851,7 +17572,10 @@ impl SweepSectionGenerator {
     /// approximation.
     pub fn parameter(&self, P: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_SweepSectionGenerator_parameter(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_SweepSectionGenerator_parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 }
@@ -15862,11 +17586,11 @@ impl SweepSectionGenerator {
 
 /// **Source:** `GeomFill_Tensor.hxx`:29 - `GeomFill_Tensor`
 /// used to store the "gradient of gradient"
-pub use crate::ffi::GeomFill_Tensor as Tensor;
+pub use crate::ffi_types::GeomFill_Tensor as Tensor;
 
 unsafe impl crate::CppDeletable for Tensor {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_Tensor_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_destructor(ptr);
     }
 }
 
@@ -15874,9 +17598,9 @@ impl Tensor {
     /// **Source:** `GeomFill_Tensor.hxx`:34 - `GeomFill_Tensor::GeomFill_Tensor()`
     pub fn new_int3(NbRow: i32, NbCol: i32, NbMat: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_Tensor_ctor_int3(
-                NbRow, NbCol, NbMat,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_ctor_int3(NbRow, NbCol, NbMat),
+            ))
         }
     }
 
@@ -15884,7 +17608,7 @@ impl Tensor {
     /// Initialize all the elements of a Tensor to InitialValue.
     pub fn init(&mut self, InitialValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Tensor_init(self as *mut Self, InitialValue)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_init(self as *mut Self, InitialValue)
         })
     }
 
@@ -15895,7 +17619,7 @@ impl Tensor {
     /// in the correct range.
     pub fn value(&self, Row: i32, Col: i32, Mat: i32) -> &f64 {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_Tensor_value(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_value(
                 self as *const Self,
                 Row,
                 Col,
@@ -15911,7 +17635,7 @@ impl Tensor {
     /// in the correct range.
     pub fn change_value(&mut self, Row: i32, Col: i32, Mat: i32) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomFill_Tensor_change_value(
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_change_value(
                 self as *mut Self,
                 Row,
                 Col,
@@ -15921,9 +17645,17 @@ impl Tensor {
     }
 
     /// **Source:** `GeomFill_Tensor.hxx`:71 - `GeomFill_Tensor::Multiply()`
-    pub fn multiply(&self, Right: &crate::ffi::math_Vector, Product: &mut crate::math::Matrix) {
+    pub fn multiply(
+        &self,
+        Right: &crate::ffi_types::math_Vector,
+        Product: &mut crate::math::Matrix,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_Tensor_multiply(self as *const Self, Right, Product)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_Tensor_multiply(
+                self as *const Self,
+                Right,
+                Product,
+            )
         })
     }
 }
@@ -15935,11 +17667,11 @@ impl Tensor {
 /// **Source:** `GeomFill_TgtField.hxx`:33 - `GeomFill_TgtField`
 /// Root class defining the methods we need to make an
 /// algorithmic tangents field.
-pub use crate::ffi::GeomFill_TgtField as TgtField;
+pub use crate::ffi_types::GeomFill_TgtField as TgtField;
 
 unsafe impl crate::CppDeletable for TgtField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_TgtField_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_destructor(ptr);
     }
 }
 
@@ -15947,14 +17679,14 @@ impl TgtField {
     /// **Source:** `GeomFill_TgtField.hxx`:37 - `GeomFill_TgtField::IsScalable()`
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtField_is_scalable(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_is_scalable(self as *const Self)
         })
     }
 
     /// **Source:** `GeomFill_TgtField.hxx`:39 - `GeomFill_TgtField::Scale()`
-    pub fn scale(&mut self, Func: &crate::ffi::HandleLawBSpline) {
+    pub fn scale(&mut self, Func: &crate::ffi_types::HandleLawBSpline) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtField_scale(self as *mut Self, Func)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_scale(self as *mut Self, Func)
         })
     }
 
@@ -15963,10 +17695,9 @@ impl TgtField {
     /// parameter W.
     pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_TgtField_value(
-                self as *const Self,
-                W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_value(self as *const Self, W),
+            ))
         }
     }
 
@@ -15975,10 +17706,9 @@ impl TgtField {
     /// parameter W.
     pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_TgtField_d1_real(
-                self as *const Self,
-                W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_d1_real(self as *const Self, W),
+            ))
         }
     }
 
@@ -15987,14 +17717,21 @@ impl TgtField {
     /// tangency at parameter W.
     pub fn d1_real_vec2(&self, W: f64, V: &mut crate::gp::Vec, DV: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtField_d1_real_vec2(self as *const Self, W, V, DV)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_d1_real_vec2(
+                self as *const Self,
+                W,
+                V,
+                DV,
+            )
         })
     }
 
     /// **Source:** `GeomFill_TgtField.hxx`:53 - `GeomFill_TgtField::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_TgtField_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -16002,7 +17739,7 @@ impl TgtField {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_TgtField_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -16010,39 +17747,53 @@ impl TgtField {
     }
 
     /// **Source:** `GeomFill_TgtField.hxx`:53 - `GeomFill_TgtField::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_TgtField_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TgtField_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_TgtField_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -16050,7 +17801,7 @@ impl TgtField {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_TgtField_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -16063,60 +17814,74 @@ impl TgtField {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtField_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtField_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillTgtField;
+pub use crate::ffi_types::HandleGeomFillTgtField;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTgtField {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillTgtField_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_destructor(ptr);
     }
 }
 
 impl HandleGeomFillTgtField {
     /// Dereference this Handle to access the underlying GeomFill_TgtField
-    pub fn get(&self) -> &crate::ffi::GeomFill_TgtField {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_TgtField {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillTgtField_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_TgtField
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TgtField {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_TgtField {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillTgtField_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomFill_TgtField> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTgtField_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16126,11 +17891,9 @@ impl HandleGeomFillTgtField {
     /// Returns `None` if the handle does not point to a `GeomFill_TgtOnCoons` (or subclass).
     pub fn downcast_to_tgt_on_coons(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillTgtOnCoons>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillTgtOnCoons>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTgtField_downcast_to_HandleGeomFillTgtOnCoons(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtField_downcast_to_HandleGeomFillTgtOnCoons(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16147,24 +17910,22 @@ impl HandleGeomFillTgtField {
 /// **Source:** `GeomFill_TgtOnCoons.hxx`:33 - `GeomFill_TgtOnCoons`
 /// Defines   an   algorithmic  tangents  field   on a
 /// boundary of a CoonsAlgPatch.
-pub use crate::ffi::GeomFill_TgtOnCoons as TgtOnCoons;
+pub use crate::ffi_types::GeomFill_TgtOnCoons as TgtOnCoons;
 
 unsafe impl crate::CppDeletable for TgtOnCoons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_TgtOnCoons_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_destructor(ptr);
     }
 }
 
 impl TgtOnCoons {
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:37 - `GeomFill_TgtOnCoons::GeomFill_TgtOnCoons()`
     pub fn new_handlegeomfillcoonsalgpatch_int(
-        K: &crate::ffi::HandleGeomFillCoonsAlgPatch,
+        K: &crate::ffi_types::HandleGeomFillCoonsAlgPatch,
         I: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_TgtOnCoons_ctor_handlegeomfillcoonsalgpatch_int(K, I),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_ctor_handlegeomfillcoonsalgpatch_int(K, I)))
         }
     }
 
@@ -16173,10 +17934,9 @@ impl TgtOnCoons {
     /// parameter W.
     pub fn value(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_TgtOnCoons_value(
-                self as *const Self,
-                W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_value(self as *const Self, W),
+            ))
         }
     }
 
@@ -16185,10 +17945,9 @@ impl TgtOnCoons {
     /// parameter W.
     pub fn d1_real(&self, W: f64) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_TgtOnCoons_d1_real(
-                self as *const Self,
-                W,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_d1_real(self as *const Self, W),
+            ))
         }
     }
 
@@ -16197,14 +17956,19 @@ impl TgtOnCoons {
     /// tangency at parameter W.
     pub fn d1_real_vec2(&self, W: f64, T: &mut crate::gp::Vec, DT: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_d1_real_vec2(self as *const Self, W, T, DT)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_d1_real_vec2(
+                self as *const Self,
+                W,
+                T,
+                DT,
+            )
         })
     }
 
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:52 - `GeomFill_TgtOnCoons::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_TgtOnCoons_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -16214,7 +17978,7 @@ impl TgtOnCoons {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_TgtOnCoons_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -16222,53 +17986,65 @@ impl TgtOnCoons {
     }
 
     /// **Source:** `GeomFill_TgtOnCoons.hxx`:52 - `GeomFill_TgtOnCoons::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_TgtOnCoons_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to GeomFill_TgtField
     pub fn as_tgt_field(&self) -> &TgtField {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TgtOnCoons_as_GeomFill_TgtField(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_as_GeomFill_TgtField(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TgtField (mutable)
     pub fn as_tgt_field_mut(&mut self) -> &mut TgtField {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_TgtOnCoons_as_GeomFill_TgtField_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_as_GeomFill_TgtField_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TgtOnCoons_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_TgtOnCoons_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTgtOnCoons> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTgtOnCoons> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_TgtOnCoons_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -16276,28 +18052,39 @@ impl TgtOnCoons {
     /// Inherited: **Source:** `GeomFill_TgtField.hxx`:37 - `GeomFill_TgtField::IsScalable()`
     pub fn is_scalable(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_IsScalable(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_IsScalable(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TgtField.hxx`:39 - `GeomFill_TgtField::Scale()`
-    pub fn scale(&mut self, Func: &crate::ffi::HandleLawBSpline) {
+    pub fn scale(&mut self, Func: &crate::ffi_types::HandleLawBSpline) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_Scale(self as *mut Self, Func)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_Scale(
+                self as *mut Self,
+                Func,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -16305,7 +18092,9 @@ impl TgtOnCoons {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_TgtOnCoons_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -16318,71 +18107,83 @@ impl TgtOnCoons {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TgtOnCoons_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TgtOnCoons_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillTgtOnCoons;
+pub use crate::ffi_types::HandleGeomFillTgtOnCoons;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTgtOnCoons {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillTgtOnCoons_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_destructor(ptr);
     }
 }
 
 impl HandleGeomFillTgtOnCoons {
     /// Dereference this Handle to access the underlying GeomFill_TgtOnCoons
-    pub fn get(&self) -> &crate::ffi::GeomFill_TgtOnCoons {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_TgtOnCoons {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillTgtOnCoons_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_TgtOnCoons
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TgtOnCoons {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillTgtOnCoons_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_TgtOnCoons
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_TgtOnCoons {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_TgtOnCoons> to Handle<GeomFill_TgtField>
-    pub fn to_handle_tgt_field(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTgtField> {
+    pub fn to_handle_tgt_field(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTgtField> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTgtOnCoons_to_HandleGeomFillTgtField(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_to_HandleGeomFillTgtField(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomFill_TgtOnCoons> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTgtOnCoons_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTgtOnCoons_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -16396,11 +18197,11 @@ impl HandleGeomFillTgtOnCoons {
 
 /// **Source:** `GeomFill_TrihedronLaw.hxx`:31 - `GeomFill_TrihedronLaw`
 /// To define Trihedron along one Curve
-pub use crate::ffi::GeomFill_TrihedronLaw as TrihedronLaw;
+pub use crate::ffi_types::GeomFill_TrihedronLaw as TrihedronLaw;
 
 unsafe impl crate::CppDeletable for TrihedronLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_TrihedronLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_destructor(ptr);
     }
 }
 
@@ -16408,18 +18209,18 @@ impl TrihedronLaw {
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
     /// initialize curve of trihedron law
     /// @return Standard_True
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:39 - `GeomFill_TrihedronLaw::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomFill_TrihedronLaw_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_copy(self as *const Self),
+            ))
         }
     }
 
@@ -16428,7 +18229,7 @@ impl TrihedronLaw {
     /// Returns PipeOk (default implementation)
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_error_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -16443,7 +18244,7 @@ impl TrihedronLaw {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_d0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_d0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -16468,7 +18269,7 @@ impl TrihedronLaw {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_d1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -16499,7 +18300,7 @@ impl TrihedronLaw {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_d2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -16521,7 +18322,10 @@ impl TrihedronLaw {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -16531,9 +18335,17 @@ impl TrihedronLaw {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -16544,7 +18356,11 @@ impl TrihedronLaw {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -16553,7 +18369,11 @@ impl TrihedronLaw {
     /// the function
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_get_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_get_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -16567,7 +18387,7 @@ impl TrihedronLaw {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_get_average_law(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_get_average_law(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -16580,7 +18400,7 @@ impl TrihedronLaw {
     /// Say if the law is Constant
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_is_constant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_is_constant(self as *const Self)
         })
     }
 
@@ -16590,16 +18410,20 @@ impl TrihedronLaw {
     /// Return False by Default.
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_is_only_by3d_curve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_is_only_by3d_curve(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:112 - `GeomFill_TrihedronLaw::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_TrihedronLaw_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -16607,7 +18431,7 @@ impl TrihedronLaw {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_TrihedronLaw_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -16615,39 +18439,53 @@ impl TrihedronLaw {
     }
 
     /// **Source:** `GeomFill_TrihedronLaw.hxx`:112 - `GeomFill_TrihedronLaw::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomFill_TrihedronLaw_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TrihedronLaw_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomFill_TrihedronLaw_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -16655,7 +18493,9 @@ impl TrihedronLaw {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_TrihedronLaw_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -16668,62 +18508,74 @@ impl TrihedronLaw {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronLaw_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronLaw_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillTrihedronLaw;
+pub use crate::ffi_types::HandleGeomFillTrihedronLaw;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTrihedronLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillTrihedronLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_destructor(ptr);
     }
 }
 
 impl HandleGeomFillTrihedronLaw {
     /// Dereference this Handle to access the underlying GeomFill_TrihedronLaw
-    pub fn get(&self) -> &crate::ffi::GeomFill_TrihedronLaw {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillTrihedronLaw_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying GeomFill_TrihedronLaw
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TrihedronLaw {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillTrihedronLaw_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying GeomFill_TrihedronLaw
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_TrihedronLaw {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<GeomFill_TrihedronLaw> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTrihedronLaw_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -16735,11 +18587,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_ConstantBiNormal` (or subclass).
     pub fn downcast_to_constant_bi_normal(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillConstantBiNormal>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillConstantBiNormal>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillConstantBiNormal(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillConstantBiNormal(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16753,11 +18603,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_CorrectedFrenet` (or subclass).
     pub fn downcast_to_corrected_frenet(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillCorrectedFrenet>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillCorrectedFrenet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillCorrectedFrenet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillCorrectedFrenet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16771,11 +18619,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_Darboux` (or subclass).
     pub fn downcast_to_darboux(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDarboux>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillDarboux>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDarboux(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDarboux(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16789,11 +18635,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_DiscreteTrihedron` (or subclass).
     pub fn downcast_to_discrete_trihedron(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDiscreteTrihedron>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillDiscreteTrihedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDiscreteTrihedron(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDiscreteTrihedron(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16807,11 +18651,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_DraftTrihedron` (or subclass).
     pub fn downcast_to_draft_trihedron(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillDraftTrihedron>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillDraftTrihedron>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDraftTrihedron(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillDraftTrihedron(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16823,9 +18665,11 @@ impl HandleGeomFillTrihedronLaw {
     /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_Fixed>
     ///
     /// Returns `None` if the handle does not point to a `GeomFill_Fixed` (or subclass).
-    pub fn downcast_to_fixed(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillFixed>> {
+    pub fn downcast_to_fixed(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillFixed>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFixed(
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFixed(
                 self as *const Self,
             )
         });
@@ -16839,11 +18683,11 @@ impl HandleGeomFillTrihedronLaw {
     /// Downcast Handle<GeomFill_TrihedronLaw> to Handle<GeomFill_Frenet>
     ///
     /// Returns `None` if the handle does not point to a `GeomFill_Frenet` (or subclass).
-    pub fn downcast_to_frenet(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillFrenet>> {
+    pub fn downcast_to_frenet(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillFrenet>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFrenet(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillFrenet(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16857,11 +18701,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronAC` (or subclass).
     pub fn downcast_to_guide_trihedron_ac(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronAC>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronAC(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronAC(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16875,11 +18717,9 @@ impl HandleGeomFillTrihedronLaw {
     /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronPlan` (or subclass).
     pub fn downcast_to_guide_trihedron_plan(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronPlan>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronPlan(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronLaw_downcast_to_HandleGeomFillGuideTrihedronPlan(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -16895,20 +18735,22 @@ impl HandleGeomFillTrihedronLaw {
 
 /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:29 - `GeomFill_TrihedronWithGuide`
 /// To define Trihedron along one Curve with a guide
-pub use crate::ffi::GeomFill_TrihedronWithGuide as TrihedronWithGuide;
+pub use crate::ffi_types::GeomFill_TrihedronWithGuide as TrihedronWithGuide;
 
 unsafe impl crate::CppDeletable for TrihedronWithGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_TrihedronWithGuide_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_destructor(ptr);
     }
 }
 
 impl TrihedronWithGuide {
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:33 - `GeomFill_TrihedronWithGuide::Guide()`
-    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn guide(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_guide(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_guide(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16916,7 +18758,11 @@ impl TrihedronWithGuide {
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:35 - `GeomFill_TrihedronWithGuide::Origine()`
     pub fn origine(&mut self, Param1: f64, Param2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_origine(self as *mut Self, Param1, Param2)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_origine(
+                self as *mut Self,
+                Param1,
+                Param2,
+            )
         })
     }
 
@@ -16926,17 +18772,21 @@ impl TrihedronWithGuide {
     pub fn current_point_on_guide(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_current_point_on_guide(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_current_point_on_guide(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:41 - `GeomFill_TrihedronWithGuide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_TrihedronWithGuide_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -16944,7 +18794,7 @@ impl TrihedronWithGuide {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -16952,38 +18802,40 @@ impl TrihedronWithGuide {
     }
 
     /// **Source:** `GeomFill_TrihedronWithGuide.hxx`:41 - `GeomFill_TrihedronWithGuide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_TrihedronWithGuide_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw
     pub fn as_trihedron_law(&self) -> &TrihedronLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TrihedronWithGuide_as_GeomFill_TrihedronLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_as_GeomFill_TrihedronLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to GeomFill_TrihedronLaw (mutable)
     pub fn as_trihedron_law_mut(&mut self) -> &mut TrihedronLaw {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_as_GeomFill_TrihedronLaw_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_as_GeomFill_TrihedronLaw_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_TrihedronWithGuide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -16991,7 +18843,7 @@ impl TrihedronWithGuide {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_as_Standard_Transient_mut(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -16999,17 +18851,22 @@ impl TrihedronWithGuide {
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:37 - `GeomFill_TrihedronLaw::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_SetCurve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_SetCurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:39 - `GeomFill_TrihedronLaw::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_TrihedronWithGuide_inherited_Copy(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_Copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -17017,7 +18874,9 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:43 - `GeomFill_TrihedronLaw::ErrorStatus()`
     pub fn error_status(&self) -> crate::geom_fill::PipeError {
         crate::geom_fill::PipeError::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_ErrorStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_ErrorStatus(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -17031,7 +18890,7 @@ impl TrihedronWithGuide {
         BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_D0(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_D0(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -17053,7 +18912,7 @@ impl TrihedronWithGuide {
         DBiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_D1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_D1(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -17081,7 +18940,7 @@ impl TrihedronWithGuide {
         D2BiNormal: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_D2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_D2(
                 self as *mut Self,
                 Param,
                 Tangent,
@@ -17100,7 +18959,7 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:79 - `GeomFill_TrihedronLaw::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_NbIntervals(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_NbIntervals(
                 self as *const Self,
                 S.into(),
             )
@@ -17108,9 +18967,13 @@ impl TrihedronWithGuide {
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:86 - `GeomFill_TrihedronLaw::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_Intervals(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_Intervals(
                 self as *const Self,
                 T,
                 S.into(),
@@ -17121,7 +18984,7 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:92 - `GeomFill_TrihedronLaw::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_SetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_SetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -17132,7 +18995,7 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:96 - `GeomFill_TrihedronLaw::GetInterval()`
     pub fn get_interval(&mut self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_GetInterval(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_GetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -17148,7 +19011,7 @@ impl TrihedronWithGuide {
         ABiNormal: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_GetAverageLaw(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_GetAverageLaw(
                 self as *mut Self,
                 ATangent,
                 ANormal,
@@ -17160,21 +19023,25 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:105 - `GeomFill_TrihedronLaw::IsConstant()`
     pub fn is_constant(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_IsConstant(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_IsConstant(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_TrihedronLaw.hxx`:110 - `GeomFill_TrihedronLaw::IsOnlyBy3dCurve()`
     pub fn is_only_by3d_curve(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_IsOnlyBy3dCurve(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_IsOnlyBy3dCurve(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -17182,9 +19049,12 @@ impl TrihedronWithGuide {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -17192,7 +19062,9 @@ impl TrihedronWithGuide {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_TrihedronWithGuide_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -17205,80 +19077,86 @@ impl TrihedronWithGuide {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_TrihedronWithGuide_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_TrihedronWithGuide_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillTrihedronWithGuide;
+pub use crate::ffi_types::HandleGeomFillTrihedronWithGuide;
 
 unsafe impl crate::CppDeletable for HandleGeomFillTrihedronWithGuide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillTrihedronWithGuide_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_destructor(ptr);
     }
 }
 
 impl HandleGeomFillTrihedronWithGuide {
     /// Dereference this Handle to access the underlying GeomFill_TrihedronWithGuide
-    pub fn get(&self) -> &crate::ffi::GeomFill_TrihedronWithGuide {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_TrihedronWithGuide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillTrihedronWithGuide_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_TrihedronWithGuide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_TrihedronWithGuide {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_TrihedronWithGuide {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillTrihedronWithGuide_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_TrihedronWithGuide> to Handle<GeomFill_TrihedronLaw>
     pub fn to_handle_trihedron_law(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillTrihedronLaw> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillTrihedronLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTrihedronWithGuide_to_HandleGeomFillTrihedronLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_to_HandleGeomFillTrihedronLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_TrihedronWithGuide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillTrihedronWithGuide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -17287,11 +19165,9 @@ impl HandleGeomFillTrihedronWithGuide {
     /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronAC` (or subclass).
     pub fn downcast_to_guide_trihedron_ac(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronAC>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronAC>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronAC(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronAC(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -17305,9 +19181,9 @@ impl HandleGeomFillTrihedronWithGuide {
     /// Returns `None` if the handle does not point to a `GeomFill_GuideTrihedronPlan` (or subclass).
     pub fn downcast_to_guide_trihedron_plan(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomFillGuideTrihedronPlan>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomFillGuideTrihedronPlan>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronPlan(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::HandleGeomFillTrihedronWithGuide_downcast_to_HandleGeomFillGuideTrihedronPlan(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -17323,11 +19199,11 @@ impl HandleGeomFillTrihedronWithGuide {
 
 /// **Source:** `GeomFill_UniformSection.hxx`:39 - `GeomFill_UniformSection`
 /// Define an Constant Section Law
-pub use crate::ffi::GeomFill_UniformSection as UniformSection;
+pub use crate::ffi_types::GeomFill_UniformSection as UniformSection;
 
 unsafe impl crate::CppDeletable for UniformSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomFill_UniformSection_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_destructor(ptr);
     }
 }
 
@@ -17336,13 +19212,13 @@ impl UniformSection {
     /// Make an constant Law with C.
     /// [First, Last] define law definition domain
     pub fn new_handlegeomcurve_real2(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         FirstParameter: f64,
         LastParameter: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_ctor_handlegeomcurve_real2(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_ctor_handlegeomcurve_real2(
                     C,
                     FirstParameter,
                     LastParameter,
@@ -17355,7 +19231,7 @@ impl UniformSection {
     /// Make an constant Law with C.
     /// [First, Last] define law definition domain
     pub fn new_handlegeomcurve_real(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         FirstParameter: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomcurve_real2(C, FirstParameter, 1.0)
@@ -17364,7 +19240,7 @@ impl UniformSection {
     /// **Source:** `GeomFill_UniformSection.hxx`:45 - `GeomFill_UniformSection::GeomFill_UniformSection()`
     /// Make an constant Law with C.
     /// [First, Last] define law definition domain
-    pub fn new_handlegeomcurve(C: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomcurve(C: &crate::ffi_types::HandleGeomCurve) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomcurve_real2(C, 0.0, 1.0)
     }
 
@@ -17373,11 +19249,16 @@ impl UniformSection {
     pub fn d0(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_d0(self as *mut Self, Param, Poles, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_d0(
+                self as *mut Self,
+                Param,
+                Poles,
+                Weigths,
+            )
         })
     }
 
@@ -17388,13 +19269,13 @@ impl UniformSection {
     pub fn d1(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_d1(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_d1(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -17412,15 +19293,15 @@ impl UniformSection {
     pub fn d2(
         &mut self,
         Param: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_d2(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_d2(
                 self as *mut Self,
                 Param,
                 Poles,
@@ -17437,10 +19318,12 @@ impl UniformSection {
     /// give if possible an bspline Surface, like iso-v are the
     /// section.  If it is  not possible  this methode have  to
     /// get an Null Surface.  Is it the default implementation.
-    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn b_spline_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_b_spline_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_b_spline_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -17449,7 +19332,7 @@ impl UniformSection {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_section_shape(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -17460,17 +19343,17 @@ impl UniformSection {
 
     /// **Source:** `GeomFill_UniformSection.hxx`:85 - `GeomFill_UniformSection::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:88 - `GeomFill_UniformSection::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_mults(self as *const Self, TMults)
         })
     }
 
@@ -17478,7 +19361,7 @@ impl UniformSection {
     /// Returns if the sections are rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_is_rational(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_is_rational(self as *const Self)
         })
     }
 
@@ -17486,7 +19369,7 @@ impl UniformSection {
     /// Returns if the sections are periodic or not
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_is_u_periodic(self as *const Self)
         })
     }
 
@@ -17494,7 +19377,7 @@ impl UniformSection {
     /// Returns if the law  isperiodic or not
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_is_v_periodic(self as *const Self)
         })
     }
 
@@ -17504,7 +19387,10 @@ impl UniformSection {
     /// May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -17514,9 +19400,17 @@ impl UniformSection {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -17527,7 +19421,11 @@ impl UniformSection {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -17536,7 +19434,11 @@ impl UniformSection {
     /// the function
     pub fn get_interval(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_get_interval(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_interval(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -17546,7 +19448,11 @@ impl UniformSection {
     /// SetValue method
     pub fn get_domain(&self, First: &mut f64, Last: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_get_domain(self as *const Self, First, Last)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_domain(
+                self as *const Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -17561,10 +19467,10 @@ impl UniformSection {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_get_tolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -17583,7 +19489,9 @@ impl UniformSection {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -17594,7 +19502,9 @@ impl UniformSection {
     /// Warning: With an little value, approximation can be slower.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_maximal_section(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_maximal_section(
+                self as *const Self,
+            )
         })
     }
 
@@ -17604,9 +19514,12 @@ impl UniformSection {
     /// This information is  useful to control error
     /// in rational approximation.
     /// Warning: Used only if <me> IsRational
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -17614,26 +19527,33 @@ impl UniformSection {
     /// return True
     pub fn is_constant(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_is_constant(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_is_constant(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:165 - `GeomFill_UniformSection::ConstantSection()`
     /// Return the constant Section if <me>  IsConstant.
-    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn constant_section(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_constant_section(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_constant_section(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:167 - `GeomFill_UniformSection::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_UniformSection_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -17641,7 +19561,7 @@ impl UniformSection {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -17649,18 +19569,22 @@ impl UniformSection {
     }
 
     /// **Source:** `GeomFill_UniformSection.hxx`:167 - `GeomFill_UniformSection::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomFill_UniformSection_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomFill_SectionLaw
     pub fn as_section_law(&self) -> &SectionLaw {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_UniformSection_as_GeomFill_SectionLaw(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_as_GeomFill_SectionLaw(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -17668,7 +19592,9 @@ impl UniformSection {
     pub fn as_section_law_mut(&mut self) -> &mut SectionLaw {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_UniformSection_as_GeomFill_SectionLaw_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_as_GeomFill_SectionLaw_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -17676,9 +19602,11 @@ impl UniformSection {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomFill_UniformSection_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -17686,7 +19614,9 @@ impl UniformSection {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomFill_UniformSection_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -17694,10 +19624,10 @@ impl UniformSection {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomFillUniformSection> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillUniformSection> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -17705,7 +19635,7 @@ impl UniformSection {
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:132 - `GeomFill_SectionLaw::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_SetTolerance(
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_SetTolerance(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -17716,15 +19646,18 @@ impl UniformSection {
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:163 - `GeomFill_SectionLaw::IsConicalLaw()`
     pub fn is_conical_law(&self, Error: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_IsConicalLaw(self as *const Self, Error)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_IsConicalLaw(
+                self as *const Self,
+                Error,
+            )
         })
     }
 
     /// Inherited: **Source:** `GeomFill_SectionLaw.hxx`:167 - `GeomFill_SectionLaw::CirclSection()`
-    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn circl_section(&self, Param: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomFill_UniformSection_inherited_CirclSection(
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_CirclSection(
                     self as *const Self,
                     Param,
                 ),
@@ -17733,16 +19666,22 @@ impl UniformSection {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -17750,7 +19689,9 @@ impl UniformSection {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomFill_UniformSection_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -17763,76 +19704,84 @@ impl UniformSection {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomFill_UniformSection_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomFill_UniformSection_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomFillUniformSection;
+pub use crate::ffi_types::HandleGeomFillUniformSection;
 
 unsafe impl crate::CppDeletable for HandleGeomFillUniformSection {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomFillUniformSection_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_destructor(ptr);
     }
 }
 
 impl HandleGeomFillUniformSection {
     /// Dereference this Handle to access the underlying GeomFill_UniformSection
-    pub fn get(&self) -> &crate::ffi::GeomFill_UniformSection {
+    pub fn get(&self) -> &crate::ffi_types::GeomFill_UniformSection {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomFillUniformSection_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomFill_UniformSection
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomFill_UniformSection {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomFill_UniformSection {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomFillUniformSection_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomFill_UniformSection> to Handle<GeomFill_SectionLaw>
-    pub fn to_handle_section_law(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomFillSectionLaw> {
+    pub fn to_handle_section_law(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomFillSectionLaw> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillUniformSection_to_HandleGeomFillSectionLaw(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_to_HandleGeomFillSectionLaw(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomFill_UniformSection> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomFillUniformSection_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomFillUniformSection_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -17841,7 +19790,7 @@ impl HandleGeomFillUniformSection {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     GeomFill_Array1OfLocationLaw as Array1OfLocationLaw,
     GeomFill_Array1OfSectionLaw as Array1OfSectionLaw, GeomFill_SequenceOfAx2 as SequenceOfAx2,
     GeomFill_SequenceOfTrsf as SequenceOfTrsf,

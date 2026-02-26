@@ -58,11 +58,11 @@ impl TryFrom<i32> for AnalysisCode {
 /// section to be used in the design of wooden or plastic
 /// battens. These curves are two-dimensional, and
 /// simulate physical splines or battens.
-pub use crate::ffi::FairCurve_Batten as Batten;
+pub use crate::ffi_types::FairCurve_Batten as Batten;
 
 unsafe impl crate::CppDeletable for Batten {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_Batten_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_destructor(ptr);
     }
 }
 
@@ -95,7 +95,9 @@ impl Batten {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FairCurve_Batten_ctor_pnt2d2_real2(P1, P2, Height, Slope),
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_ctor_pnt2d2_real2(
+                    P1, P2, Height, Slope,
+                ),
             ))
         }
     }
@@ -135,7 +137,10 @@ impl Batten {
     /// satisfy the equilibrium of the batten.
     pub fn set_free_sliding(&mut self, FreeSliding: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_free_sliding(self as *mut Self, FreeSliding)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_free_sliding(
+                self as *mut Self,
+                FreeSliding,
+            )
         })
     }
 
@@ -153,7 +158,10 @@ impl Batten {
     /// resistance of the material the actual physical batten is made of.
     pub fn set_constraint_order1(&mut self, ConstraintOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_constraint_order1(self as *mut Self, ConstraintOrder)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_constraint_order1(
+                self as *mut Self,
+                ConstraintOrder,
+            )
         })
     }
 
@@ -172,7 +180,10 @@ impl Batten {
     /// resistance of the material the actual physical batten is made of.
     pub fn set_constraint_order2(&mut self, ConstraintOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_constraint_order2(self as *mut Self, ConstraintOrder)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_constraint_order2(
+                self as *mut Self,
+                ConstraintOrder,
+            )
         })
     }
 
@@ -189,7 +200,7 @@ impl Batten {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_p1(self as *mut Self, P1)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_p1(self as *mut Self, P1)
         })
     }
 
@@ -206,7 +217,7 @@ impl Batten {
     /// gp_Pnt2d::IsEqual tests to see if this is the case.
     pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_p2(self as *mut Self, P2)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_p2(self as *mut Self, P2)
         })
     }
 
@@ -215,7 +226,7 @@ impl Batten {
     /// P1. The default setting is 0.
     pub fn set_angle1(&mut self, Angle1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_angle1(self as *mut Self, Angle1)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_angle1(self as *mut Self, Angle1)
         })
     }
 
@@ -224,7 +235,7 @@ impl Batten {
     /// point, P2. The default setting is 0.
     pub fn set_angle2(&mut self, Angle2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_angle2(self as *mut Self, Angle2)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_angle2(self as *mut Self, Angle2)
         })
     }
 
@@ -234,7 +245,7 @@ impl Batten {
     /// if  Height <= 0
     pub fn set_height(&mut self, Height: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_height(self as *mut Self, Height)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_height(self as *mut Self, Height)
         })
     }
 
@@ -242,7 +253,7 @@ impl Batten {
     /// Allows you to set the slope value, Slope.
     pub fn set_slope(&mut self, Slope: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_slope(self as *mut Self, Slope)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_slope(self as *mut Self, Slope)
         })
     }
 
@@ -259,7 +270,10 @@ impl Batten {
     /// SlidingFactor is initialized with the default setting of 1.
     pub fn set_sliding_factor(&mut self, SlidingFactor: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_set_sliding_factor(self as *mut Self, SlidingFactor)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_set_sliding_factor(
+                self as *mut Self,
+                SlidingFactor,
+            )
         })
     }
 
@@ -282,7 +296,7 @@ impl Batten {
     ) -> bool {
         let mut Code_i32_: i32 = (*Code).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_compute(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_compute(
                 self as *mut Self,
                 &mut Code_i32_,
                 NbIterations,
@@ -302,7 +316,7 @@ impl Batten {
     /// name of the batten curve object.
     pub fn sliding_of_reference(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_sliding_of_reference(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_sliding_of_reference(self as *const Self)
         })
     }
 
@@ -314,7 +328,7 @@ impl Batten {
     /// because the resulting batten length is theoretically infinite.
     pub fn get_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_get_free_sliding(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_free_sliding(self as *const Self)
         })
     }
 
@@ -322,7 +336,9 @@ impl Batten {
     /// Returns the established first constraint order.
     pub fn get_constraint_order1(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_get_constraint_order1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_constraint_order1(
+                self as *const Self,
+            )
         })
     }
 
@@ -330,61 +346,79 @@ impl Batten {
     /// Returns the established second constraint order.
     pub fn get_constraint_order2(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_get_constraint_order2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_constraint_order2(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:190 - `FairCurve_Batten::GetP1()`
     /// Returns the established location of the point P1.
     pub fn get_p1(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::FairCurve_Batten_get_p1(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_p1(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:193 - `FairCurve_Batten::GetP2()`
     /// Returns the established location of the point P2.
     pub fn get_p2(&self) -> &crate::gp::Pnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::FairCurve_Batten_get_p2(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_p2(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:196 - `FairCurve_Batten::GetAngle1()`
     /// Returns the established first angle.
     pub fn get_angle1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FairCurve_Batten_get_angle1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_angle1(self as *const Self)
+        })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:199 - `FairCurve_Batten::GetAngle2()`
     /// Returns the established second angle.
     pub fn get_angle2(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FairCurve_Batten_get_angle2(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_angle2(self as *const Self)
+        })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:202 - `FairCurve_Batten::GetHeight()`
     /// Returns the thickness of the lathe.
     pub fn get_height(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FairCurve_Batten_get_height(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_height(self as *const Self)
+        })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:205 - `FairCurve_Batten::GetSlope()`
     /// Returns the established slope value.
     pub fn get_slope(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FairCurve_Batten_get_slope(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_slope(self as *const Self)
+        })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:208 - `FairCurve_Batten::GetSlidingFactor()`
     /// Returns the initial sliding factor.
     pub fn get_sliding_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Batten_get_sliding_factor(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_get_sliding_factor(self as *const Self)
         })
     }
 
     /// **Source:** `FairCurve_Batten.hxx`:211 - `FairCurve_Batten::Curve()`
     /// Returns the computed curve a 2d BSpline.
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_Batten_curve(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_curve(self as *const Self),
+            ))
         }
     }
 
@@ -393,9 +427,9 @@ impl Batten {
     /// of the object.
     ///
     /// Private methodes  --------------------------------------
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Batten_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Batten_dump(self as *const Self, o)
         })
     }
 }
@@ -406,11 +440,11 @@ impl Batten {
 
 /// **Source:** `FairCurve_BattenLaw.hxx`:29 - `FairCurve_BattenLaw`
 /// This class compute the Heigth of an batten
-pub use crate::ffi::FairCurve_BattenLaw as BattenLaw;
+pub use crate::ffi_types::FairCurve_BattenLaw as BattenLaw;
 
 unsafe impl crate::CppDeletable for BattenLaw {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_BattenLaw_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_destructor(ptr);
     }
 }
 
@@ -423,7 +457,9 @@ impl BattenLaw {
     pub fn new_real3(Heigth: f64, Slope: f64, Sliding: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FairCurve_BattenLaw_ctor_real3(Heigth, Slope, Sliding),
+                crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_ctor_real3(
+                    Heigth, Slope, Sliding,
+                ),
             ))
         }
     }
@@ -432,7 +468,10 @@ impl BattenLaw {
     /// Change the value of sliding
     pub fn set_sliding(&mut self, Sliding: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_BattenLaw_set_sliding(self as *mut Self, Sliding)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_set_sliding(
+                self as *mut Self,
+                Sliding,
+            )
         })
     }
 
@@ -440,7 +479,7 @@ impl BattenLaw {
     /// Change the value of Heigth at the middle point.
     pub fn set_heigth(&mut self, Heigth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_BattenLaw_set_heigth(self as *mut Self, Heigth)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_set_heigth(self as *mut Self, Heigth)
         })
     }
 
@@ -448,7 +487,7 @@ impl BattenLaw {
     /// Change the value of the geometric slope.
     pub fn set_slope(&mut self, Slope: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_BattenLaw_set_slope(self as *mut Self, Slope)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_set_slope(self as *mut Self, Slope)
         })
     }
 
@@ -457,32 +496,38 @@ impl BattenLaw {
     /// on  the neutral fibber
     pub fn value(&mut self, T: f64, THeigth: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_BattenLaw_value(self as *mut Self, T, THeigth)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_value(self as *mut Self, T, THeigth)
         })
     }
 
     /// Upcast to math_Function
     pub fn as_math_function(&self) -> &crate::math::Function {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_BattenLaw_as_math_Function(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_as_math_Function(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_Function (mutable)
     pub fn as_math_function_mut(&mut self) -> &mut crate::math::Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FairCurve_BattenLaw_as_math_Function_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_as_math_Function_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_Function.hxx`:57 - `math_Function::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_BattenLaw_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_BattenLaw_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -493,11 +538,11 @@ impl BattenLaw {
 
 /// **Source:** `FairCurve_DistributionOfEnergy.hxx`:30 - `FairCurve_DistributionOfEnergy`
 /// Abstract class to use the Energy of an FairCurve
-pub use crate::ffi::FairCurve_DistributionOfEnergy as DistributionOfEnergy;
+pub use crate::ffi_types::FairCurve_DistributionOfEnergy as DistributionOfEnergy;
 
 unsafe impl crate::CppDeletable for DistributionOfEnergy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_DistributionOfEnergy_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_destructor(ptr);
     }
 }
 
@@ -506,7 +551,9 @@ impl DistributionOfEnergy {
     /// returns the number of variables of the function.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfEnergy_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -514,14 +561,16 @@ impl DistributionOfEnergy {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfEnergy_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfEnergy_set_derivative_order(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_set_derivative_order(
                 self as *mut Self,
                 DerivativeOrder,
             )
@@ -531,34 +580,42 @@ impl DistributionOfEnergy {
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfEnergy_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:43 - `math_FunctionSet::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfEnergy_inherited_Value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_inherited_Value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfEnergy_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfEnergy_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -569,11 +626,11 @@ impl DistributionOfEnergy {
 
 /// **Source:** `FairCurve_DistributionOfJerk.hxx`:32 - `FairCurve_DistributionOfJerk`
 /// Compute the "Jerk" distribution.
-pub use crate::ffi::FairCurve_DistributionOfJerk as DistributionOfJerk;
+pub use crate::ffi_types::FairCurve_DistributionOfJerk as DistributionOfJerk;
 
 unsafe impl crate::CppDeletable for DistributionOfJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_DistributionOfJerk_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_destructor(ptr);
     }
 }
 
@@ -581,22 +638,22 @@ impl DistributionOfJerk {
     /// **Source:** `FairCurve_DistributionOfJerk.hxx`:37 - `FairCurve_DistributionOfJerk::FairCurve_DistributionOfJerk()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         Law: &BattenLaw,
         NbValAux: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_DistributionOfJerk_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)))
         }
     }
 
     /// **Source:** `FairCurve_DistributionOfJerk.hxx`:37 - `FairCurve_DistributionOfJerk::FairCurve_DistributionOfJerk()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         Law: &BattenLaw,
     ) -> crate::OwnedPtr<Self> {
@@ -615,40 +672,42 @@ impl DistributionOfJerk {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfJerk_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy(self as *const Self))
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_as_FairCurve_DistributionOfEnergy_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -656,7 +715,9 @@ impl DistributionOfJerk {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfJerk_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -664,21 +725,25 @@ impl DistributionOfJerk {
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfJerk_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:39 - `FairCurve_DistributionOfEnergy::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfJerk_inherited_NbEquations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_inherited_NbEquations(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfJerk_inherited_SetDerivativeOrder(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_inherited_SetDerivativeOrder(
                 self as *mut Self,
                 DerivativeOrder,
             )
@@ -688,7 +753,9 @@ impl DistributionOfJerk {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfJerk_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfJerk_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -699,11 +766,11 @@ impl DistributionOfJerk {
 
 /// **Source:** `FairCurve_DistributionOfSagging.hxx`:32 - `FairCurve_DistributionOfSagging`
 /// Compute the Sagging Distribution
-pub use crate::ffi::FairCurve_DistributionOfSagging as DistributionOfSagging;
+pub use crate::ffi_types::FairCurve_DistributionOfSagging as DistributionOfSagging;
 
 unsafe impl crate::CppDeletable for DistributionOfSagging {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_DistributionOfSagging_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_destructor(ptr);
     }
 }
 
@@ -711,22 +778,22 @@ impl DistributionOfSagging {
     /// **Source:** `FairCurve_DistributionOfSagging.hxx`:37 - `FairCurve_DistributionOfSagging::FairCurve_DistributionOfSagging()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         Law: &BattenLaw,
         NbValAux: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_DistributionOfSagging_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw_int(BSplOrder, FlatKnots, Poles, DerivativeOrder, Law, NbValAux)))
         }
     }
 
     /// **Source:** `FairCurve_DistributionOfSagging.hxx`:37 - `FairCurve_DistributionOfSagging::FairCurve_DistributionOfSagging()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_battenlaw(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         Law: &BattenLaw,
     ) -> crate::OwnedPtr<Self> {
@@ -745,82 +812,83 @@ impl DistributionOfSagging {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfSagging_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy(self as *const Self))
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_as_FairCurve_DistributionOfEnergy_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfSagging_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfSagging_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:39 - `FairCurve_DistributionOfEnergy::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfSagging_inherited_NbEquations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_inherited_NbEquations(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfSagging_inherited_SetDerivativeOrder(
-                self as *mut Self,
-                DerivativeOrder,
-            )
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_inherited_SetDerivativeOrder(self as *mut Self, DerivativeOrder)
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfSagging_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfSagging_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -831,11 +899,11 @@ impl DistributionOfSagging {
 
 /// **Source:** `FairCurve_DistributionOfTension.hxx`:32 - `FairCurve_DistributionOfTension`
 /// Compute the Tension Distribution
-pub use crate::ffi::FairCurve_DistributionOfTension as DistributionOfTension;
+pub use crate::ffi_types::FairCurve_DistributionOfTension as DistributionOfTension;
 
 unsafe impl crate::CppDeletable for DistributionOfTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_DistributionOfTension_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_destructor(ptr);
     }
 }
 
@@ -843,8 +911,8 @@ impl DistributionOfTension {
     /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
         Law: &BattenLaw,
@@ -852,15 +920,15 @@ impl DistributionOfTension {
         Uniform: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_DistributionOfTension_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, Uniform)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int_bool(BSplOrder, FlatKnots, Poles, DerivativeOrder, LengthSliding, Law, NbValAux, Uniform)))
         }
     }
 
     /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw_int(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
         Law: &BattenLaw,
@@ -872,8 +940,8 @@ impl DistributionOfTension {
     /// **Source:** `FairCurve_DistributionOfTension.hxx`:37 - `FairCurve_DistributionOfTension::FairCurve_DistributionOfTension()`
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int_real_battenlaw(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         DerivativeOrder: i32,
         LengthSliding: f64,
         Law: &BattenLaw,
@@ -885,7 +953,7 @@ impl DistributionOfTension {
     /// change the length sliding
     pub fn set_length_sliding(&mut self, LengthSliding: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_set_length_sliding(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_set_length_sliding(
                 self as *mut Self,
                 LengthSliding,
             )
@@ -897,82 +965,83 @@ impl DistributionOfTension {
     /// variable <X>.
     /// returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy
     pub fn as_distribution_of_energy(&self) -> &DistributionOfEnergy {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy(self as *const Self))
         }
     }
 
     /// Upcast to FairCurve_DistributionOfEnergy (mutable)
     pub fn as_distribution_of_energy_mut(&mut self) -> &mut DistributionOfEnergy {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_as_FairCurve_DistributionOfEnergy_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_DistributionOfTension_as_math_FunctionSet_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_as_math_FunctionSet_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:36 - `FairCurve_DistributionOfEnergy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:39 - `FairCurve_DistributionOfEnergy::NbEquations()`
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_inherited_NbEquations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_inherited_NbEquations(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_DistributionOfEnergy.hxx`:41 - `FairCurve_DistributionOfEnergy::SetDerivativeOrder()`
     pub fn set_derivative_order(&mut self, DerivativeOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_inherited_SetDerivativeOrder(
-                self as *mut Self,
-                DerivativeOrder,
-            )
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_inherited_SetDerivativeOrder(self as *mut Self, DerivativeOrder)
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_DistributionOfTension_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_DistributionOfTension_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -983,11 +1052,11 @@ impl DistributionOfTension {
 
 /// **Source:** `FairCurve_Energy.hxx`:33 - `FairCurve_Energy`
 /// necessary methodes to compute the energy of an FairCurve.
-pub use crate::ffi::FairCurve_Energy as Energy;
+pub use crate::ffi_types::FairCurve_Energy as Energy;
 
 unsafe impl crate::CppDeletable for Energy {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_Energy_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_destructor(ptr);
     }
 }
 
@@ -996,7 +1065,7 @@ impl Energy {
     /// returns the number of variables of the energy.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_nb_variables(self as *const Self)
         })
     }
 
@@ -1005,8 +1074,10 @@ impl Energy {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
-        crate::check_result(unsafe { crate::ffi::FairCurve_Energy_value(self as *mut Self, X, E) })
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, E: &mut f64) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_value(self as *mut Self, X, E)
+        })
     }
 
     /// **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
@@ -1016,11 +1087,11 @@ impl Energy {
     /// False otherwise.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -1031,12 +1102,17 @@ impl Energy {
     /// False otherwise.
     pub fn values_vector_real_vector(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         E: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_values_vector_real_vector(self as *mut Self, X, E, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_values_vector_real_vector(
+                self as *mut Self,
+                X,
+                E,
+                G,
+            )
         })
     }
 
@@ -1047,13 +1123,13 @@ impl Energy {
     /// successfully, False otherwise.
     pub fn values_vector_real_vector_matrix(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         E: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
         H: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_values_vector_real_vector_matrix(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_values_vector_real_vector_matrix(
                 self as *mut Self,
                 X,
                 E,
@@ -1065,16 +1141,20 @@ impl Energy {
 
     /// **Source:** `FairCurve_Energy.hxx`:73 - `FairCurve_Energy::Variable()`
     /// compute the variables <X> which correspond with the field <MyPoles>
-    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+    pub fn variable(&self, X: &mut crate::ffi_types::math_Vector) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_variable(self as *const Self, X)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_variable(self as *const Self, X)
         })
     }
 
     /// **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
     /// return  the  poles
-    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
-        unsafe { &*(crate::check_result(crate::ffi::FairCurve_Energy_poles(self as *const Self))) }
+    pub fn poles(&self) -> &crate::ffi_types::HandleTColgpHArray1OfPnt2d {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_poles(
+                self as *const Self,
+            )))
+        }
     }
 
     /// Upcast to math_MultipleVarFunctionWithHessian
@@ -1082,11 +1162,7 @@ impl Energy {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian(self as *const Self))
         }
     }
 
@@ -1095,11 +1171,7 @@ impl Energy {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunctionWithHessian_mut(self as *mut Self))
         }
     }
 
@@ -1108,11 +1180,7 @@ impl Energy {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -1121,36 +1189,38 @@ impl Energy {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FairCurve_Energy_as_math_MultipleVarFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Energy_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Energy_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1161,11 +1231,11 @@ impl Energy {
 
 /// **Source:** `FairCurve_EnergyOfBatten.hxx`:41 - `FairCurve_EnergyOfBatten`
 /// Energy Criterium to minimize in Batten.
-pub use crate::ffi::FairCurve_EnergyOfBatten as EnergyOfBatten;
+pub use crate::ffi_types::FairCurve_EnergyOfBatten as EnergyOfBatten;
 
 unsafe impl crate::CppDeletable for EnergyOfBatten {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_EnergyOfBatten_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_destructor(ptr);
     }
 }
 
@@ -1174,8 +1244,8 @@ impl EnergyOfBatten {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1185,7 +1255,7 @@ impl EnergyOfBatten {
         Angle2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_EnergyOfBatten_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, Angle1, Angle2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real2(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, LengthSliding, FreeSliding, Angle1, Angle2)))
         }
     }
 
@@ -1193,8 +1263,8 @@ impl EnergyOfBatten {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool_real(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1209,8 +1279,8 @@ impl EnergyOfBatten {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real_bool(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1224,8 +1294,8 @@ impl EnergyOfBatten {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1238,7 +1308,9 @@ impl EnergyOfBatten {
     /// return  the  lengthSliding = P1P2 + Sliding
     pub fn length_sliding(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_length_sliding(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_length_sliding(
+                self as *const Self,
+            )
         })
     }
 
@@ -1246,34 +1318,38 @@ impl EnergyOfBatten {
     /// return  the status
     pub fn status(&self) -> crate::fair_curve::AnalysisCode {
         crate::fair_curve::AnalysisCode::try_from(crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_status(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FairCurve_EnergyOfBatten.hxx`:65 - `FairCurve_EnergyOfBatten::Variable()`
     /// compute the variables <X> which correspond with the field <MyPoles>
-    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+    pub fn variable(&self, X: &mut crate::ffi_types::math_Vector) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_variable(self as *const Self, X)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_variable(self as *const Self, X)
         })
     }
 
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_FairCurve_Energy(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to FairCurve_Energy (mutable)
     pub fn as_energy_mut(&mut self) -> &mut Energy {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FairCurve_EnergyOfBatten_as_FairCurve_Energy_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_FairCurve_Energy_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -1282,11 +1358,7 @@ impl EnergyOfBatten {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian(self as *const Self))
         }
     }
 
@@ -1295,11 +1367,7 @@ impl EnergyOfBatten {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithHessian_mut(self as *mut Self))
         }
     }
 
@@ -1308,11 +1376,7 @@ impl EnergyOfBatten {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -1321,84 +1385,97 @@ impl EnergyOfBatten {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:39 - `FairCurve_Energy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, E: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_inherited_Value(self as *mut Self, X, E)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_Value(
+                self as *mut Self,
+                X,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_inherited_Gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_Gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         E: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_inherited_Values(self as *mut Self, X, E, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_Values(
+                self as *mut Self,
+                X,
+                E,
+                G,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
-    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
+    pub fn poles(&self) -> &crate::ffi_types::HandleTColgpHArray1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_EnergyOfBatten_inherited_Poles(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_Poles(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfBatten_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfBatten_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1409,11 +1486,11 @@ impl EnergyOfBatten {
 
 /// **Source:** `FairCurve_EnergyOfMVC.hxx`:41 - `FairCurve_EnergyOfMVC`
 /// Energy Criterium to minimize in MinimalVariationCurve.
-pub use crate::ffi::FairCurve_EnergyOfMVC as EnergyOfMVC;
+pub use crate::ffi_types::FairCurve_EnergyOfMVC as EnergyOfMVC;
 
 unsafe impl crate::CppDeletable for EnergyOfMVC {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_EnergyOfMVC_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_destructor(ptr);
     }
 }
 
@@ -1422,8 +1499,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1436,7 +1513,7 @@ impl EnergyOfMVC {
         Curvature2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_EnergyOfMVC_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, Curvature2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_ctor_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real4(BSplOrder, FlatKnots, Poles, ContrOrder1, ContrOrder2, Law, PhysicalRatio, LengthSliding, FreeSliding, Angle1, Angle2, Curvature1, Curvature2)))
         }
     }
 
@@ -1444,8 +1521,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real3(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1463,8 +1540,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real2(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1481,8 +1558,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool_real(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1498,8 +1575,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2_bool(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1514,8 +1591,8 @@ impl EnergyOfMVC {
     /// Angles correspond to the Ox axis
     pub fn new_int_handletcolstdharray1ofreal_handletcolgpharray1ofpnt2d_int2_battenlaw_real2(
         BSplOrder: i32,
-        FlatKnots: &crate::ffi::HandleTColStdHArray1OfReal,
-        Poles: &crate::ffi::HandleTColgpHArray1OfPnt2d,
+        FlatKnots: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        Poles: &crate::ffi_types::HandleTColgpHArray1OfPnt2d,
         ContrOrder1: i32,
         ContrOrder2: i32,
         Law: &BattenLaw,
@@ -1529,7 +1606,7 @@ impl EnergyOfMVC {
     /// return  the  lengthSliding = P1P2 + Sliding
     pub fn length_sliding(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_length_sliding(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_length_sliding(self as *const Self)
         })
     }
 
@@ -1537,34 +1614,38 @@ impl EnergyOfMVC {
     /// return  the status
     pub fn status(&self) -> crate::fair_curve::AnalysisCode {
         crate::fair_curve::AnalysisCode::try_from(crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_status(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `FairCurve_EnergyOfMVC.hxx`:68 - `FairCurve_EnergyOfMVC::Variable()`
     /// compute the variables <X> which correspond with the field <MyPoles>
-    pub fn variable(&self, X: &mut crate::ffi::math_Vector) -> bool {
+    pub fn variable(&self, X: &mut crate::ffi_types::math_Vector) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_variable(self as *const Self, X)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_variable(self as *const Self, X)
         })
     }
 
     /// Upcast to FairCurve_Energy
     pub fn as_energy(&self) -> &Energy {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_FairCurve_Energy(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to FairCurve_Energy (mutable)
     pub fn as_energy_mut(&mut self) -> &mut Energy {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FairCurve_EnergyOfMVC_as_FairCurve_Energy_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_FairCurve_Energy_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -1573,11 +1654,7 @@ impl EnergyOfMVC {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian(self as *const Self))
         }
     }
 
@@ -1586,11 +1663,7 @@ impl EnergyOfMVC {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithHessian {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithHessian_mut(self as *mut Self))
         }
     }
 
@@ -1599,11 +1672,7 @@ impl EnergyOfMVC {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -1612,20 +1681,18 @@ impl EnergyOfMVC {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1633,7 +1700,7 @@ impl EnergyOfMVC {
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_as_math_MultipleVarFunction_mut(
                     self as *mut Self,
                 ),
             )
@@ -1643,53 +1710,72 @@ impl EnergyOfMVC {
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:39 - `FairCurve_Energy::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:45 - `FairCurve_Energy::Value()`
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, E: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, E: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_inherited_Value(self as *mut Self, X, E)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_Value(
+                self as *mut Self,
+                X,
+                E,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:52 - `FairCurve_Energy::Gradient()`
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_inherited_Gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_Gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:59 - `FairCurve_Energy::Values()`
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         E: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_inherited_Values(self as *mut Self, X, E, G)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_Values(
+                self as *mut Self,
+                X,
+                E,
+                G,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Energy.hxx`:76 - `FairCurve_Energy::Poles()`
-    pub fn poles(&self) -> &crate::ffi::HandleTColgpHArray1OfPnt2d {
+    pub fn poles(&self) -> &crate::ffi_types::HandleTColgpHArray1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_EnergyOfMVC_inherited_Poles(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_Poles(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_EnergyOfMVC_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_EnergyOfMVC_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -1706,11 +1792,11 @@ impl EnergyOfMVC {
 /// requires curvature settings at the first and second
 /// reference points. These are defined by the rays of
 /// curvature desired at each point.
-pub use crate::ffi::FairCurve_MinimalVariation as MinimalVariation;
+pub use crate::ffi_types::FairCurve_MinimalVariation as MinimalVariation;
 
 unsafe impl crate::CppDeletable for MinimalVariation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_MinimalVariation_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_destructor(ptr);
     }
 }
 
@@ -1752,7 +1838,7 @@ impl MinimalVariation {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FairCurve_MinimalVariation_ctor_pnt2d2_real3(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_ctor_pnt2d2_real3(
                     P1,
                     P2,
                     Heigth,
@@ -1840,7 +1926,10 @@ impl MinimalVariation {
     /// Allows you to set a new constraint on curvature at the first point.
     pub fn set_curvature1(&mut self, Curvature: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_set_curvature1(self as *mut Self, Curvature)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_set_curvature1(
+                self as *mut Self,
+                Curvature,
+            )
         })
     }
 
@@ -1848,7 +1937,10 @@ impl MinimalVariation {
     /// Allows you to set a new constraint on curvature at the second point.
     pub fn set_curvature2(&mut self, Curvature: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_set_curvature2(self as *mut Self, Curvature)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_set_curvature2(
+                self as *mut Self,
+                Curvature,
+            )
         })
     }
 
@@ -1861,7 +1953,10 @@ impl MinimalVariation {
     /// Raises  DomainError if Ratio < 0 or Ratio > 1
     pub fn set_physical_ratio(&mut self, Ratio: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_set_physical_ratio(self as *mut Self, Ratio)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_set_physical_ratio(
+                self as *mut Self,
+                Ratio,
+            )
         })
     }
 
@@ -1878,7 +1973,7 @@ impl MinimalVariation {
     ) -> bool {
         let mut ACode_i32_: i32 = (*ACode).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_compute(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_compute(
                 self as *mut Self,
                 &mut ACode_i32_,
                 NbIterations,
@@ -1893,7 +1988,9 @@ impl MinimalVariation {
     /// Returns the first established curvature.
     pub fn get_curvature1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_get_curvature1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_get_curvature1(
+                self as *const Self,
+            )
         })
     }
 
@@ -1901,7 +1998,9 @@ impl MinimalVariation {
     /// Returns the second established curvature.
     pub fn get_curvature2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_get_curvature2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_get_curvature2(
+                self as *const Self,
+            )
         })
     }
 
@@ -1909,7 +2008,9 @@ impl MinimalVariation {
     /// Returns the physical ratio, or kind of energy.
     pub fn get_physical_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_get_physical_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_get_physical_ratio(
+                self as *const Self,
+            )
         })
     }
 
@@ -1917,18 +2018,20 @@ impl MinimalVariation {
     /// Prints on the stream o information on the current state
     /// of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_dump(self as *const Self, o)
         })
     }
 
     /// Upcast to FairCurve_Batten
     pub fn as_batten(&self) -> &Batten {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_as_FairCurve_Batten(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1936,7 +2039,9 @@ impl MinimalVariation {
     pub fn as_batten_mut(&mut self) -> &mut Batten {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FairCurve_MinimalVariation_as_FairCurve_Batten_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_as_FairCurve_Batten_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1944,7 +2049,7 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:73 - `FairCurve_Batten::SetFreeSliding()`
     pub fn set_free_sliding(&mut self, FreeSliding: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetFreeSliding(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetFreeSliding(
                 self as *mut Self,
                 FreeSliding,
             )
@@ -1954,7 +2059,7 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:86 - `FairCurve_Batten::SetConstraintOrder1()`
     pub fn set_constraint_order1(&mut self, ConstraintOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetConstraintOrder1(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetConstraintOrder1(
                 self as *mut Self,
                 ConstraintOrder,
             )
@@ -1964,7 +2069,7 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:100 - `FairCurve_Batten::SetConstraintOrder2()`
     pub fn set_constraint_order2(&mut self, ConstraintOrder: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetConstraintOrder2(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetConstraintOrder2(
                 self as *mut Self,
                 ConstraintOrder,
             )
@@ -1974,49 +2079,67 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:112 - `FairCurve_Batten::SetP1()`
     pub fn set_p1(&mut self, P1: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetP1(self as *mut Self, P1)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetP1(
+                self as *mut Self,
+                P1,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:124 - `FairCurve_Batten::SetP2()`
     pub fn set_p2(&mut self, P2: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetP2(self as *mut Self, P2)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetP2(
+                self as *mut Self,
+                P2,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:128 - `FairCurve_Batten::SetAngle1()`
     pub fn set_angle1(&mut self, Angle1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetAngle1(self as *mut Self, Angle1)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetAngle1(
+                self as *mut Self,
+                Angle1,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:132 - `FairCurve_Batten::SetAngle2()`
     pub fn set_angle2(&mut self, Angle2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetAngle2(self as *mut Self, Angle2)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetAngle2(
+                self as *mut Self,
+                Angle2,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:137 - `FairCurve_Batten::SetHeight()`
     pub fn set_height(&mut self, Height: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetHeight(self as *mut Self, Height)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetHeight(
+                self as *mut Self,
+                Height,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:140 - `FairCurve_Batten::SetSlope()`
     pub fn set_slope(&mut self, Slope: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetSlope(self as *mut Self, Slope)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetSlope(
+                self as *mut Self,
+                Slope,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:152 - `FairCurve_Batten::SetSlidingFactor()`
     pub fn set_sliding_factor(&mut self, SlidingFactor: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SetSlidingFactor(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SetSlidingFactor(
                 self as *mut Self,
                 SlidingFactor,
             )
@@ -2026,21 +2149,25 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:174 - `FairCurve_Batten::SlidingOfReference()`
     pub fn sliding_of_reference(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_SlidingOfReference(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_SlidingOfReference(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:181 - `FairCurve_Batten::GetFreeSliding()`
     pub fn get_free_sliding(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetFreeSliding(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetFreeSliding(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:184 - `FairCurve_Batten::GetConstraintOrder1()`
     pub fn get_constraint_order1(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetConstraintOrder1(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetConstraintOrder1(
                 self as *const Self,
             )
         })
@@ -2049,7 +2176,7 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:187 - `FairCurve_Batten::GetConstraintOrder2()`
     pub fn get_constraint_order2(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetConstraintOrder2(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetConstraintOrder2(
                 self as *const Self,
             )
         })
@@ -2058,61 +2185,77 @@ impl MinimalVariation {
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:190 - `FairCurve_Batten::GetP1()`
     pub fn get_p1(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_MinimalVariation_inherited_GetP1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetP1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:193 - `FairCurve_Batten::GetP2()`
     pub fn get_p2(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_MinimalVariation_inherited_GetP2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetP2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:196 - `FairCurve_Batten::GetAngle1()`
     pub fn get_angle1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetAngle1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetAngle1(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:199 - `FairCurve_Batten::GetAngle2()`
     pub fn get_angle2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetAngle2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetAngle2(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:202 - `FairCurve_Batten::GetHeight()`
     pub fn get_height(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetHeight(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetHeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:205 - `FairCurve_Batten::GetSlope()`
     pub fn get_slope(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetSlope(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetSlope(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:208 - `FairCurve_Batten::GetSlidingFactor()`
     pub fn get_sliding_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_MinimalVariation_inherited_GetSlidingFactor(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_GetSlidingFactor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `FairCurve_Batten.hxx`:211 - `FairCurve_Batten::Curve()`
-    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+    pub fn curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FairCurve_MinimalVariation_inherited_Curve(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::FairCurve_MinimalVariation_inherited_Curve(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2124,11 +2267,11 @@ impl MinimalVariation {
 
 /// **Source:** `FairCurve_Newton.hxx`:28 - `FairCurve_Newton`
 /// Algorithme of Optimization used to make "FairCurve"
-pub use crate::ffi::FairCurve_Newton as Newton;
+pub use crate::ffi_types::FairCurve_Newton as Newton;
 
 unsafe impl crate::CppDeletable for Newton {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FairCurve_Newton_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_destructor(ptr);
     }
 }
 
@@ -2148,7 +2291,7 @@ impl Newton {
         theWithSingularity: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FairCurve_Newton_ctor_multiplevarfunctionwithhessian_real2_int_real_bool(theFunction, theSpatialTolerance, theCriteriumTolerance, theNbIterations, theConvexity, theWithSingularity)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_ctor_multiplevarfunctionwithhessian_real2_int_real_bool(theFunction, theSpatialTolerance, theCriteriumTolerance, theNbIterations, theConvexity, theWithSingularity)))
         }
     }
 
@@ -2266,25 +2409,29 @@ impl Newton {
     /// It can be redefined in a sub-class to implement a specific test.
     pub fn is_converged(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_is_converged(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_is_converged(self as *const Self)
         })
     }
 
     /// Upcast to math_NewtonMinimum
     pub fn as_math_newton_minimum(&self) -> &crate::math::NewtonMinimum {
         unsafe {
-            &*crate::check_result(crate::ffi::FairCurve_Newton_as_math_NewtonMinimum(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_as_math_NewtonMinimum(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_NewtonMinimum (mutable)
     pub fn as_math_newton_minimum_mut(&mut self) -> &mut crate::math::NewtonMinimum {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FairCurve_Newton_as_math_NewtonMinimum_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_as_math_NewtonMinimum_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -2292,10 +2439,10 @@ impl Newton {
     pub fn perform(
         &mut self,
         theFunction: &mut crate::math::MultipleVarFunctionWithHessian,
-        theStartingPoint: &crate::ffi::math_Vector,
+        theStartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_Perform(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_Perform(
                 self as *mut Self,
                 theFunction,
                 theStartingPoint,
@@ -2306,34 +2453,36 @@ impl Newton {
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:60 - `math_NewtonMinimum::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:63 - `math_NewtonMinimum::IsConvex()`
     pub fn is_convex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_IsConvex(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_IsConvex(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:67 - `math_NewtonMinimum::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_Newton_inherited_Location(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_Location(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:76 - `math_NewtonMinimum::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_SetBoundary(
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_SetBoundary(
                 self as *mut Self,
                 theLeftBorder,
                 theRightBorder,
@@ -2344,38 +2493,42 @@ impl Newton {
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:81 - `math_NewtonMinimum::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_Minimum(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:86 - `math_NewtonMinimum::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::FairCurve_Newton_inherited_Gradient(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_Gradient(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:97 - `math_NewtonMinimum::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_NbIterations(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_NbIterations(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:101 - `math_NewtonMinimum::GetStatus()`
     pub fn get_status(&self) -> crate::math::Status {
         crate::math::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_GetStatus(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_GetStatus(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `math_NewtonMinimum.hxx`:106 - `math_NewtonMinimum::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::FairCurve_Newton_inherited_Dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomAlgo::FairCurve_Newton_inherited_Dump(self as *const Self, o)
         })
     }
 }

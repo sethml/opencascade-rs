@@ -10,11 +10,11 @@
 /// Structure to provide all-in-one result of selection of sensitive for "Matches" method of
 /// Select3D_SensitiveEntity.
 pub fn max_owner_priority() -> i32 {
-    crate::check_result(unsafe { crate::ffi::SelectBasics_max_owner_priority() })
+    crate::check_result(unsafe { crate::ffi_extern_TKV3d::SelectBasics_max_owner_priority() })
 }
 /// **Source:** `SelectBasics.hxx`:30 - `SelectBasics::MinOwnerPriority`
 pub fn min_owner_priority() -> i32 {
-    crate::check_result(unsafe { crate::ffi::SelectBasics_min_owner_priority() })
+    crate::check_result(unsafe { crate::ffi_extern_TKV3d::SelectBasics_min_owner_priority() })
 }
 
 // ========================
@@ -25,11 +25,11 @@ pub fn min_owner_priority() -> i32 {
 /// This structure provides unified access to the results of Matches() method in all sensitive
 /// entities, so that it defines a Depth (distance to the entity along picking ray) and a closest
 /// Point on entity.
-pub use crate::ffi::SelectBasics_PickResult as PickResult;
+pub use crate::ffi_types::SelectBasics_PickResult as PickResult;
 
 unsafe impl crate::CppDeletable for PickResult {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectBasics_PickResult_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectBasics_PickResult_destructor(ptr);
     }
 }
 
@@ -39,7 +39,7 @@ impl PickResult {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_PickResult_ctor(),
+                crate::ffi_extern_TKV3d::SelectBasics_PickResult_ctor(),
             ))
         }
     }
@@ -53,7 +53,7 @@ impl PickResult {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_PickResult_ctor_real2_pnt(
+                crate::ffi_extern_TKV3d::SelectBasics_PickResult_ctor_real2_pnt(
                     theDepth,
                     theDistToCenter,
                     theObjPickedPnt,
@@ -66,7 +66,7 @@ impl PickResult {
     /// Return TRUE if result was been defined.
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_is_valid(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_is_valid(self as *const Self)
         })
     }
 
@@ -74,7 +74,7 @@ impl PickResult {
     /// Reset depth value.
     pub fn invalidate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_invalidate(self as *mut Self)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_invalidate(self as *mut Self)
         })
     }
 
@@ -82,7 +82,7 @@ impl PickResult {
     /// Return depth along picking ray.
     pub fn depth(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_depth(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_depth(self as *const Self)
         })
     }
 
@@ -90,7 +90,7 @@ impl PickResult {
     /// Set depth along picking ray.
     pub fn set_depth(&mut self, theDepth: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_set_depth(self as *mut Self, theDepth)
         })
     }
 
@@ -98,7 +98,7 @@ impl PickResult {
     /// Return TRUE if Picked Point lying on detected entity was set.
     pub fn has_picked_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_has_picked_point(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_has_picked_point(self as *const Self)
         })
     }
 
@@ -108,7 +108,7 @@ impl PickResult {
     /// System before usage!
     pub fn picked_point(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_picked_point(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectBasics_PickResult_picked_point(
                 self as *const Self,
             )))
         }
@@ -118,7 +118,10 @@ impl PickResult {
     /// Set picked point.
     pub fn set_picked_point(&mut self, theObjPickedPnt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_set_picked_point(self as *mut Self, theObjPickedPnt)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_set_picked_point(
+                self as *mut Self,
+                theObjPickedPnt,
+            )
         })
     }
 
@@ -126,7 +129,9 @@ impl PickResult {
     /// Return distance to geometry center (auxiliary value for comparing results).
     pub fn dist_to_geom_center(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_dist_to_geom_center(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_dist_to_geom_center(
+                self as *const Self,
+            )
         })
     }
 
@@ -134,7 +139,7 @@ impl PickResult {
     /// Set distance to geometry center.
     pub fn set_dist_to_geom_center(&mut self, theDistToCenter: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_set_dist_to_geom_center(
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_set_dist_to_geom_center(
                 self as *mut Self,
                 theDistToCenter,
             )
@@ -145,19 +150,21 @@ impl PickResult {
     /// Return (unnormalized) surface normal at picked point or zero vector if undefined.
     /// WARNING! Normal is defined in local coordinate system and should be translated into World
     /// System before usage!
-    pub fn surface_normal(&self) -> &crate::ffi::gp_Vec3f {
+    pub fn surface_normal(&self) -> &crate::ffi_types::gp_Vec3f {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_surface_normal(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::SelectBasics_PickResult_surface_normal(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `SelectBasics_PickResult.hxx`:94 - `SelectBasics_PickResult::SetSurfaceNormal()`
     /// Set surface normal at picked point.
-    pub fn set_surface_normal_vec3f(&mut self, theNormal: &crate::ffi::gp_Vec3f) {
+    pub fn set_surface_normal_vec3f(&mut self, theNormal: &crate::ffi_types::gp_Vec3f) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_set_surface_normal_vec3f(
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_set_surface_normal_vec3f(
                 self as *mut Self,
                 theNormal,
             )
@@ -168,7 +175,10 @@ impl PickResult {
     /// Set surface normal at picked point.
     pub fn set_surface_normal_vec(&mut self, theNormal: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_PickResult_set_surface_normal_vec(self as *mut Self, theNormal)
+            crate::ffi_extern_TKV3d::SelectBasics_PickResult_set_surface_normal_vec(
+                self as *mut Self,
+                theNormal,
+            )
         })
     }
 
@@ -176,7 +186,7 @@ impl PickResult {
     /// Return closest result between two Pick Results according to Depth value.
     pub fn min(thePickResult1: &PickResult, thePickResult2: &PickResult) -> &'static PickResult {
         unsafe {
-            &*(crate::check_result(crate::ffi::SelectBasics_PickResult_min(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::SelectBasics_PickResult_min(
                 thePickResult1,
                 thePickResult2,
             )))
@@ -193,11 +203,11 @@ impl PickResult {
 /// which is responsible for all overlap detection methods and
 /// calculation of minimum depth, distance to center of geometry
 /// and detected closest point on entity.
-pub use crate::ffi::SelectBasics_SelectingVolumeManager as SelectingVolumeManager;
+pub use crate::ffi_types::SelectBasics_SelectingVolumeManager as SelectingVolumeManager;
 
 unsafe impl crate::CppDeletable for SelectingVolumeManager {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::SelectBasics_SelectingVolumeManager_destructor(ptr);
+        crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_destructor(ptr);
     }
 }
 
@@ -206,7 +216,7 @@ impl SelectingVolumeManager {
     /// Return selection type.
     pub fn get_active_selection_type(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_get_active_selection_type(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_active_selection_type(
                 self as *const Self,
             )
         })
@@ -216,17 +226,12 @@ impl SelectingVolumeManager {
     /// Returns true if selecting volume is overlapped by box theBox
     pub fn overlaps_box_vec32_pickresult(
         &self,
-        theBoxMin: &crate::ffi::Select3D_Vec3,
-        theBoxMax: &crate::ffi::Select3D_Vec3,
+        theBoxMin: &crate::ffi_types::Select3D_Vec3,
+        theBoxMax: &crate::ffi_types::Select3D_Vec3,
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_pickresult(
-                self as *const Self,
-                theBoxMin,
-                theBoxMax,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_pickresult(self as *const Self, theBoxMin, theBoxMax, thePickResult)
         })
     }
 
@@ -235,12 +240,12 @@ impl SelectingVolumeManager {
     /// corner at point theMinPt and maximum at point theMaxPt
     pub fn overlaps_box_vec32_boolptr(
         &self,
-        theBoxMin: &crate::ffi::Select3D_Vec3,
-        theBoxMax: &crate::ffi::Select3D_Vec3,
+        theBoxMin: &crate::ffi_types::Select3D_Vec3,
+        theBoxMax: &crate::ffi_types::Select3D_Vec3,
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_boolptr(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_box_vec32_boolptr(
                 self as *const Self,
                 theBoxMin,
                 theBoxMax,
@@ -257,11 +262,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt_pickresult(
-                self as *const Self,
-                thePnt,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_point_pnt_pickresult(self as *const Self, thePnt, thePickResult)
         })
     }
 
@@ -271,7 +272,7 @@ impl SelectingVolumeManager {
     /// helper function for inclusion test.
     pub fn overlaps_point_pnt(&self, thePnt: &crate::gp::Pnt) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_point_pnt(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_point_pnt(
                 self as *const Self,
                 thePnt,
             )
@@ -283,12 +284,12 @@ impl SelectingVolumeManager {
     /// are stored in theArrayOfPts, taking into account sensitivity type theSensType
     pub fn overlaps_polygon(
         &self,
-        theArrayOfPts: &crate::ffi::TColgp_Array1OfPnt,
+        theArrayOfPts: &crate::ffi_types::TColgp_Array1OfPnt,
         theSensType: i32,
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_polygon(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_polygon(
                 self as *const Self,
                 theArrayOfPts,
                 theSensType,
@@ -307,7 +308,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_segment(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_segment(
                 self as *const Self,
                 thePt1,
                 thePt2,
@@ -328,7 +329,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_triangle(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_triangle(
                 self as *const Self,
                 thePt1,
                 thePt2,
@@ -349,12 +350,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                thePickResult,
-            )
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_pickresult(self as *const Self, theCenter, theRadius, thePickResult)
         })
     }
 
@@ -368,12 +364,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(
-                self as *const Self,
-                theCenter,
-                theRadius,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_sphere_pnt_real_boolptr(self as *const Self, theCenter, theRadius, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -391,7 +382,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_pickresult(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, thePickResult)
         })
     }
 
@@ -409,7 +400,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_cylinder_real3_trsf_bool_boolptr(self as *const Self, theBottomRad, theTopRad, theHeight, theTrsf, theIsHollow, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -426,7 +417,7 @@ impl SelectingVolumeManager {
         thePickResult: &mut PickResult,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, thePickResult)
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_pickresult(self as *const Self, theRadius, theTrsf, theIsFilled, thePickResult)
         })
     }
 
@@ -443,13 +434,7 @@ impl SelectingVolumeManager {
         theInside: Option<&mut bool>,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(
-                self as *const Self,
-                theRadius,
-                theTrsf,
-                theIsFilled,
-                theInside.map_or(std::ptr::null_mut(), |r| r as *mut _),
-            )
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_overlaps_circle_real_trsf_bool_boolptr(self as *const Self, theRadius, theTrsf, theIsFilled, theInside.map_or(std::ptr::null_mut(), |r| r as *mut _))
         })
     }
 
@@ -458,7 +443,7 @@ impl SelectingVolumeManager {
     /// to the given point theCOG
     pub fn dist_to_geometry_center(&self, theCOG: &crate::gp::Pnt) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_dist_to_geometry_center(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_dist_to_geometry_center(
                 self as *const Self,
                 theCOG,
             )
@@ -470,7 +455,7 @@ impl SelectingVolumeManager {
     pub fn detected_point(&self, theDepth: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_SelectingVolumeManager_detected_point(
+                crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_detected_point(
                     self as *const Self,
                     theDepth,
                 ),
@@ -482,7 +467,9 @@ impl SelectingVolumeManager {
     /// Returns flag indicating if partial overlapping of entities is allowed or should be rejected.
     pub fn is_overlap_allowed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_is_overlap_allowed(self as *const Self)
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_is_overlap_allowed(
+                self as *const Self,
+            )
         })
     }
 
@@ -494,7 +481,7 @@ impl SelectingVolumeManager {
     pub fn get_near_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_near_picked_pnt(
+                crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_near_picked_pnt(
                     self as *const Self,
                 ),
             ))
@@ -509,7 +496,7 @@ impl SelectingVolumeManager {
     pub fn get_far_picked_pnt(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_far_picked_pnt(
+                crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_far_picked_pnt(
                     self as *const Self,
                 ),
             ))
@@ -522,7 +509,7 @@ impl SelectingVolumeManager {
     pub fn get_view_ray_direction(&self) -> crate::OwnedPtr<crate::gp::Dir> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_view_ray_direction(
+                crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_view_ray_direction(
                     self as *const Self,
                 ),
             ))
@@ -533,7 +520,7 @@ impl SelectingVolumeManager {
     /// Checks if it is possible to scale current active selecting volume
     pub fn is_scalable_active_volume(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_is_scalable_active_volume(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_is_scalable_active_volume(
                 self as *const Self,
             )
         })
@@ -546,7 +533,7 @@ impl SelectingVolumeManager {
     pub fn get_mouse_position(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::SelectBasics_SelectingVolumeManager_get_mouse_position(
+                crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_mouse_position(
                     self as *const Self,
                 ),
             ))
@@ -558,10 +545,10 @@ impl SelectingVolumeManager {
     /// Ax + By + Cz + D = 0) to the given vector
     pub fn get_planes(
         &self,
-        thePlaneEquations: &mut crate::ffi::NCollection_Vector_NCollection_Vec4_Standard_Real,
+        thePlaneEquations: &mut crate::ffi_types::NCollection_Vector_NCollection_Vec4_Standard_Real,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::SelectBasics_SelectingVolumeManager_get_planes(
+            crate::ffi_extern_TKV3d::SelectBasics_SelectingVolumeManager_get_planes(
                 self as *const Self,
                 thePlaneEquations,
             )

@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleApproxSweepFunction, HandleStandardTransient};
+pub use crate::ffi_types::{HandleApproxSweepFunction, HandleStandardTransient};
 
 // ========================
 // From BRepBlend_AppFunc.hxx
@@ -16,28 +16,24 @@ pub use crate::ffi::{HandleApproxSweepFunction, HandleStandardTransient};
 /// **Source:** `BRepBlend_AppFunc.hxx`:35 - `BRepBlend_AppFunc`
 /// Function to approximate by AppSurface
 /// for Surface/Surface contact.
-pub use crate::ffi::BRepBlend_AppFunc as AppFunc;
+pub use crate::ffi_types::BRepBlend_AppFunc as AppFunc;
 
 unsafe impl crate::CppDeletable for AppFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppFunc_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppFunc_destructor(ptr);
     }
 }
 
 impl AppFunc {
     /// **Source:** `BRepBlend_AppFunc.hxx`:39 - `BRepBlend_AppFunc::BRepBlend_AppFunc()`
     pub fn new_handlebrepblendline_function_real2(
-        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Line: &mut crate::ffi_types::HandleBRepBlendLine,
         Func: &mut crate::blend::Function,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFunc_ctor_handlebrepblendline_function_real2(
-                    Line, Func, Tol3d, Tol2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFunc_ctor_handlebrepblendline_function_real2(Line, Func, Tol3d, Tol2d)))
         }
     }
 
@@ -46,25 +42,33 @@ impl AppFunc {
         &self,
         Func: &crate::blend::AppFunction,
         Param: f64,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         Pnt: &mut crate::blend::Point,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_point(self as *const Self, Func, Param, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_point(
+                self as *const Self,
+                Func,
+                Param,
+                Sol,
+                Pnt,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppFunc.hxx`:49 - `BRepBlend_AppFunc::Vec()`
-    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+    pub fn vec(&self, Sol: &mut crate::ffi_types::math_Vector, Pnt: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_vec(self as *const Self, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_vec(self as *const Self, Sol, Pnt)
         })
     }
 
     /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppFunc_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFunc_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -72,7 +76,7 @@ impl AppFunc {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBlend_AppFunc_get_type_name(),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -80,72 +84,88 @@ impl AppFunc {
     }
 
     /// **Source:** `BRepBlend_AppFunc.hxx`:51 - `BRepBlend_AppFunc::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBlend_AppFunc_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot (mutable)
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_BRepBlend_AppFuncRoot_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFunc_as_Approx_SweepFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_Approx_SweepFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFunc_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFunc_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFunc> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_AppFunc_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_to_handle(obj.into_raw()),
+            ))
         }
     }
 
@@ -155,12 +175,12 @@ impl AppFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_D0(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_D0(
                 self as *mut Self,
                 Param,
                 First,
@@ -178,15 +198,15 @@ impl AppFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_D1(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_D1(
                 self as *mut Self,
                 Param,
                 First,
@@ -207,18 +227,18 @@ impl AppFunc {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_D2(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_D2(
                 self as *mut Self,
                 Param,
                 First,
@@ -239,14 +259,14 @@ impl AppFunc {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Nb2dCurves(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_SectionShape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_SectionShape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -256,51 +276,72 @@ impl AppFunc {
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Mults(self as *const Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_IsRational(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_NbIntervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_NbIntervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_SetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -316,10 +357,10 @@ impl AppFunc {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_GetTolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_GetTolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -332,7 +373,11 @@ impl AppFunc {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_SetTolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -340,7 +385,9 @@ impl AppFunc {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFunc_inherited_BarycentreOfSurf(self as *const Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_BarycentreOfSurf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -348,28 +395,39 @@ impl AppFunc {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_MaximalSection(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_MaximalSection(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_GetMinimalWeight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_GetMinimalWeight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -377,7 +435,7 @@ impl AppFunc {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBlend_AppFunc_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -390,62 +448,70 @@ impl AppFunc {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFunc_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFunc_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBlendAppFunc;
+pub use crate::ffi_types::HandleBRepBlendAppFunc;
 
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFunc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBlendAppFunc_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_destructor(ptr);
     }
 }
 
 impl HandleBRepBlendAppFunc {
     /// Dereference this Handle to access the underlying BRepBlend_AppFunc
-    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFunc {
+    pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFunc {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBlendAppFunc_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFunc
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFunc {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBlend_AppFunc {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBlendAppFunc_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_to_HandleBRepBlendAppFuncRoot(
                     self as *const Self,
                 ),
             ))
@@ -455,10 +521,10 @@ impl HandleBRepBlendAppFunc {
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_to_HandleApproxSweepFunction(
                     self as *const Self,
                 ),
             ))
@@ -466,10 +532,14 @@ impl HandleBRepBlendAppFunc {
     }
 
     /// Upcast Handle<BRepBlend_AppFunc> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFunc_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFunc_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -481,11 +551,11 @@ impl HandleBRepBlendAppFunc {
 
 /// **Source:** `BRepBlend_AppFuncRoot.hxx`:42 - `BRepBlend_AppFuncRoot`
 /// Function to approximate by AppSurface
-pub use crate::ffi::BRepBlend_AppFuncRoot as AppFuncRoot;
+pub use crate::ffi_types::BRepBlend_AppFuncRoot as AppFuncRoot;
 
 unsafe impl crate::CppDeletable for AppFuncRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppFuncRoot_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_destructor(ptr);
     }
 }
 
@@ -497,12 +567,12 @@ impl AppFuncRoot {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_d0(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_d0(
                 self as *mut Self,
                 Param,
                 First,
@@ -522,15 +592,15 @@ impl AppFuncRoot {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_d1(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_d1(
                 self as *mut Self,
                 Param,
                 First,
@@ -553,18 +623,18 @@ impl AppFuncRoot {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_d2(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_d2(
                 self as *mut Self,
                 Param,
                 First,
@@ -586,7 +656,7 @@ impl AppFuncRoot {
     /// get the number of 2d curves to  approximate.
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_nb2d_curves(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_nb2d_curves(self as *const Self)
         })
     }
 
@@ -594,7 +664,7 @@ impl AppFuncRoot {
     /// get the format of an  section
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_section_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_section_shape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -605,17 +675,17 @@ impl AppFuncRoot {
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
     /// get the Knots of the section
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_knots(self as *const Self, TKnots)
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
     /// get the Multplicities of the section
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_mults(self as *const Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_mults(self as *const Self, TMults)
         })
     }
 
@@ -623,7 +693,7 @@ impl AppFuncRoot {
     /// Returns if the section is rational or not
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_is_rational(self as *const Self)
         })
     }
 
@@ -632,7 +702,10 @@ impl AppFuncRoot {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -642,9 +715,17 @@ impl AppFuncRoot {
     ///
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -655,7 +736,11 @@ impl AppFuncRoot {
     /// function is not Cn.
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_set_interval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_set_interval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
@@ -665,7 +750,7 @@ impl AppFuncRoot {
     /// 2d approximation
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -686,10 +771,10 @@ impl AppFuncRoot {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_get_tolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_get_tolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -704,7 +789,11 @@ impl AppFuncRoot {
     /// algorithme to perform D0, D1 or D2
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_set_tolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_set_tolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -715,7 +804,9 @@ impl AppFuncRoot {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRoot_barycentre_of_surf(self as *const Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_barycentre_of_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -726,7 +817,7 @@ impl AppFuncRoot {
     /// approximation.
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_maximal_section(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_maximal_section(self as *const Self)
         })
     }
 
@@ -734,9 +825,12 @@ impl AppFuncRoot {
     /// Compute the minimal value of weight for each poles
     /// of all  sections.  This information is  useful to
     /// perform well conditioned rational approximation.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -745,25 +839,31 @@ impl AppFuncRoot {
         &self,
         Func: &crate::blend::AppFunction,
         Param: f64,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         Pnt: &mut crate::blend::Point,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_point(self as *const Self, Func, Param, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_point(
+                self as *const Self,
+                Func,
+                Param,
+                Sol,
+                Pnt,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:162 - `BRepBlend_AppFuncRoot::Vec()`
-    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+    pub fn vec(&self, Sol: &mut crate::ffi_types::math_Vector, Pnt: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_vec(self as *const Self, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_vec(self as *const Self, Sol, Pnt)
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRoot_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -773,7 +873,7 @@ impl AppFuncRoot {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRoot_get_type_name(),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -781,16 +881,22 @@ impl AppFuncRoot {
     }
 
     /// **Source:** `BRepBlend_AppFuncRoot.hxx`:164 - `BRepBlend_AppFuncRoot::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRoot_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -798,7 +904,9 @@ impl AppFuncRoot {
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_as_Approx_SweepFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -806,32 +914,42 @@ impl AppFuncRoot {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFuncRoot_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -839,7 +957,9 @@ impl AppFuncRoot {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBlend_AppFuncRoot_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -852,64 +972,72 @@ impl AppFuncRoot {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRoot_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRoot_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBlendAppFuncRoot;
+pub use crate::ffi_types::HandleBRepBlendAppFuncRoot;
 
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBlendAppFuncRoot_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_destructor(ptr);
     }
 }
 
 impl HandleBRepBlendAppFuncRoot {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRoot
-    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRoot {
+    pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRoot {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBlendAppFuncRoot_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRoot
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRoot {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBlend_AppFuncRoot {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBlendAppFuncRoot_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_to_HandleApproxSweepFunction(
                     self as *const Self,
                 ),
             ))
@@ -917,10 +1045,12 @@ impl HandleBRepBlendAppFuncRoot {
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRoot> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -932,11 +1062,9 @@ impl HandleBRepBlendAppFuncRoot {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFunc` (or subclass).
     pub fn downcast_to_app_func(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFunc>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFunc>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFunc(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -950,11 +1078,9 @@ impl HandleBRepBlendAppFuncRoot {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRst` (or subclass).
     pub fn downcast_to_app_func_rst(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRst>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRst(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -968,11 +1094,9 @@ impl HandleBRepBlendAppFuncRoot {
     /// Returns `None` if the handle does not point to a `BRepBlend_AppFuncRstRst` (or subclass).
     pub fn downcast_to_app_func_rst_rst(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRstRst>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRoot_downcast_to_HandleBRepBlendAppFuncRstRst(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -988,28 +1112,24 @@ impl HandleBRepBlendAppFuncRoot {
 
 /// **Source:** `BRepBlend_AppFuncRst.hxx`:34 - `BRepBlend_AppFuncRst`
 /// Function  to approximate by AppSurface  for Curve/Surface contact.
-pub use crate::ffi::BRepBlend_AppFuncRst as AppFuncRst;
+pub use crate::ffi_types::BRepBlend_AppFuncRst as AppFuncRst;
 
 unsafe impl crate::CppDeletable for AppFuncRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppFuncRst_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_destructor(ptr);
     }
 }
 
 impl AppFuncRst {
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:38 - `BRepBlend_AppFuncRst::BRepBlend_AppFuncRst()`
     pub fn new_handlebrepblendline_surfrstfunction_real2(
-        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Line: &mut crate::ffi_types::HandleBRepBlendLine,
         Func: &mut crate::blend::SurfRstFunction,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRst_ctor_handlebrepblendline_surfrstfunction_real2(
-                    Line, Func, Tol3d, Tol2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_ctor_handlebrepblendline_surfrstfunction_real2(Line, Func, Tol3d, Tol2d)))
         }
     }
 
@@ -1018,25 +1138,31 @@ impl AppFuncRst {
         &self,
         Func: &crate::blend::AppFunction,
         Param: f64,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         Pnt: &mut crate::blend::Point,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_point(self as *const Self, Func, Param, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_point(
+                self as *const Self,
+                Func,
+                Param,
+                Sol,
+                Pnt,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:48 - `BRepBlend_AppFuncRst::Vec()`
-    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+    pub fn vec(&self, Sol: &mut crate::ffi_types::math_Vector, Pnt: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_vec(self as *const Self, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_vec(self as *const Self, Sol, Pnt)
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRst_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1046,7 +1172,7 @@ impl AppFuncRst {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRst_get_type_name(),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1054,16 +1180,22 @@ impl AppFuncRst {
     }
 
     /// **Source:** `BRepBlend_AppFuncRst.hxx`:50 - `BRepBlend_AppFuncRst::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRst_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1071,7 +1203,9 @@ impl AppFuncRst {
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_BRepBlend_AppFuncRoot_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1079,46 +1213,54 @@ impl AppFuncRst {
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Approx_SweepFunction (mutable)
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_Approx_SweepFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppFuncRst_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRst> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRst> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRst_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1129,12 +1271,12 @@ impl AppFuncRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_D0(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_D0(
                 self as *mut Self,
                 Param,
                 First,
@@ -1152,15 +1294,15 @@ impl AppFuncRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_D1(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_D1(
                 self as *mut Self,
                 Param,
                 First,
@@ -1181,18 +1323,18 @@ impl AppFuncRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_D2(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_D2(
                 self as *mut Self,
                 Param,
                 First,
@@ -1213,14 +1355,16 @@ impl AppFuncRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Nb2dCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_SectionShape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_SectionShape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -1230,51 +1374,74 @@ impl AppFuncRst {
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Mults(self as *const Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_IsRational(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_NbIntervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_NbIntervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_SetInterval(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_SetInterval(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -1290,10 +1457,10 @@ impl AppFuncRst {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_GetTolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_GetTolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -1306,7 +1473,11 @@ impl AppFuncRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_SetTolerance(self as *mut Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_SetTolerance(
+                self as *mut Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -1314,7 +1485,9 @@ impl AppFuncRst {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRst_inherited_BarycentreOfSurf(self as *const Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_BarycentreOfSurf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1322,14 +1495,16 @@ impl AppFuncRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_MaximalSection(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_MaximalSection(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_GetMinimalWeight(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_GetMinimalWeight(
                 self as *const Self,
                 Weigths,
             )
@@ -1337,16 +1512,22 @@ impl AppFuncRst {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1354,7 +1535,7 @@ impl AppFuncRst {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBlend_AppFuncRst_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1367,64 +1548,72 @@ impl AppFuncRst {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRst_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRst_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBlendAppFuncRst;
+pub use crate::ffi_types::HandleBRepBlendAppFuncRst;
 
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBlendAppFuncRst_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_destructor(ptr);
     }
 }
 
 impl HandleBRepBlendAppFuncRst {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRst
-    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRst {
+    pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRst {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBlendAppFuncRst_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRst
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRst {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBlend_AppFuncRst {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBlendAppFuncRst_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRoot> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_to_HandleBRepBlendAppFuncRoot(
                     self as *const Self,
                 ),
             ))
@@ -1434,10 +1623,10 @@ impl HandleBRepBlendAppFuncRst {
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_to_HandleApproxSweepFunction(
                     self as *const Self,
                 ),
             ))
@@ -1445,10 +1634,12 @@ impl HandleBRepBlendAppFuncRst {
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRst> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRst_to_HandleStandardTransient(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRst_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1462,28 +1653,24 @@ impl HandleBRepBlendAppFuncRst {
 
 /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:34 - `BRepBlend_AppFuncRstRst`
 /// Function to approximate by AppSurface for Edge/Face (Curve/Curve contact).
-pub use crate::ffi::BRepBlend_AppFuncRstRst as AppFuncRstRst;
+pub use crate::ffi_types::BRepBlend_AppFuncRstRst as AppFuncRstRst;
 
 unsafe impl crate::CppDeletable for AppFuncRstRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppFuncRstRst_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_destructor(ptr);
     }
 }
 
 impl AppFuncRstRst {
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:38 - `BRepBlend_AppFuncRstRst::BRepBlend_AppFuncRstRst()`
     pub fn new_handlebrepblendline_rstrstfunction_real2(
-        Line: &mut crate::ffi::HandleBRepBlendLine,
+        Line: &mut crate::ffi_types::HandleBRepBlendLine,
         Func: &mut crate::blend::RstRstFunction,
         Tol3d: f64,
         Tol2d: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_ctor_handlebrepblendline_rstrstfunction_real2(
-                    Line, Func, Tol3d, Tol2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_ctor_handlebrepblendline_rstrstfunction_real2(Line, Func, Tol3d, Tol2d)))
         }
     }
 
@@ -1492,27 +1679,35 @@ impl AppFuncRstRst {
         &self,
         Func: &crate::blend::AppFunction,
         Param: f64,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         Pnt: &mut crate::blend::Point,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_point(self as *const Self, Func, Param, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_point(
+                self as *const Self,
+                Func,
+                Param,
+                Sol,
+                Pnt,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:48 - `BRepBlend_AppFuncRstRst::Vec()`
-    pub fn vec(&self, Sol: &mut crate::ffi::math_Vector, Pnt: &crate::blend::Point) {
+    pub fn vec(&self, Sol: &mut crate::ffi_types::math_Vector, Pnt: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_vec(self as *const Self, Sol, Pnt)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_vec(self as *const Self, Sol, Pnt)
         })
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRstRst_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1520,7 +1715,7 @@ impl AppFuncRstRst {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_get_type_name(),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1528,18 +1723,22 @@ impl AppFuncRstRst {
     }
 
     /// **Source:** `BRepBlend_AppFuncRstRst.hxx`:50 - `BRepBlend_AppFuncRstRst::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppFuncRstRst_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BRepBlend_AppFuncRoot
     pub fn as_app_func_root(&self) -> &AppFuncRoot {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1547,7 +1746,9 @@ impl AppFuncRstRst {
     pub fn as_app_func_root_mut(&mut self) -> &mut AppFuncRoot {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_BRepBlend_AppFuncRoot_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1555,9 +1756,11 @@ impl AppFuncRstRst {
     /// Upcast to Approx_SweepFunction
     pub fn as_approx_sweep_function(&self) -> &crate::approx::SweepFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1565,7 +1768,9 @@ impl AppFuncRstRst {
     pub fn as_approx_sweep_function_mut(&mut self) -> &mut crate::approx::SweepFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_Approx_SweepFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1573,9 +1778,11 @@ impl AppFuncRstRst {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1583,7 +1790,9 @@ impl AppFuncRstRst {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1591,10 +1800,10 @@ impl AppFuncRstRst {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRstRst> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRstRst> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1605,12 +1814,12 @@ impl AppFuncRstRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D0(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_D0(
                 self as *mut Self,
                 Param,
                 First,
@@ -1628,15 +1837,15 @@ impl AppFuncRstRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D1(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_D1(
                 self as *mut Self,
                 Param,
                 First,
@@ -1657,18 +1866,18 @@ impl AppFuncRstRst {
         Param: f64,
         First: f64,
         Last: f64,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_D2(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_D2(
                 self as *mut Self,
                 Param,
                 First,
@@ -1689,14 +1898,16 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:82 - `BRepBlend_AppFuncRoot::Nb2dCurves()`
     pub fn nb2d_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Nb2dCurves(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Nb2dCurves(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:85 - `BRepBlend_AppFuncRoot::SectionShape()`
     pub fn section_shape(&self, NbPoles: &mut i32, NbKnots: &mut i32, Degree: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SectionShape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_SectionShape(
                 self as *const Self,
                 NbPoles,
                 NbKnots,
@@ -1706,37 +1917,52 @@ impl AppFuncRstRst {
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:90 - `BRepBlend_AppFuncRoot::Knots()`
-    pub fn knots(&self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Knots(self as *const Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Knots(
+                self as *const Self,
+                TKnots,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:93 - `BRepBlend_AppFuncRoot::Mults()`
-    pub fn mults(&self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Mults(self as *const Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Mults(
+                self as *const Self,
+                TMults,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:96 - `BRepBlend_AppFuncRoot::IsRational()`
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsRational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_IsRational(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:100 - `BRepBlend_AppFuncRoot::NbIntervals()`
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_NbIntervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_NbIntervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:108 - `BRepBlend_AppFuncRoot::Intervals()`
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Intervals(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Intervals(
                 self as *const Self,
                 T,
                 S.into(),
@@ -1747,7 +1973,7 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:115 - `BRepBlend_AppFuncRoot::SetInterval()`
     pub fn set_interval(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetInterval(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_SetInterval(
                 self as *mut Self,
                 First,
                 Last,
@@ -1758,7 +1984,7 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:121 - `BRepBlend_AppFuncRoot::Resolution()`
     pub fn resolution(&self, Index: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Resolution(
                 self as *const Self,
                 Index,
                 Tol,
@@ -1774,10 +2000,10 @@ impl AppFuncRstRst {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::TColStd_Array1OfReal,
+        Tol3d: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetTolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_GetTolerance(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -1790,7 +2016,7 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:138 - `BRepBlend_AppFuncRoot::SetTolerance()`
     pub fn set_tolerance(&mut self, Tol3d: f64, Tol2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_SetTolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_SetTolerance(
                 self as *mut Self,
                 Tol3d,
                 Tol2d,
@@ -1802,7 +2028,9 @@ impl AppFuncRstRst {
     pub fn barycentre_of_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppFuncRstRst_inherited_BarycentreOfSurf(self as *const Self),
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_BarycentreOfSurf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1810,14 +2038,16 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:149 - `BRepBlend_AppFuncRoot::MaximalSection()`
     pub fn maximal_section(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_MaximalSection(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_MaximalSection(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBlend_AppFuncRoot.hxx`:154 - `BRepBlend_AppFuncRoot::GetMinimalWeight()`
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_GetMinimalWeight(
                 self as *const Self,
                 Weigths,
             )
@@ -1825,16 +2055,22 @@ impl AppFuncRstRst {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1842,7 +2078,9 @@ impl AppFuncRstRst {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBlend_AppFuncRstRst_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1855,88 +2093,92 @@ impl AppFuncRstRst {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppFuncRstRst_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppFuncRstRst_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBlendAppFuncRstRst;
+pub use crate::ffi_types::HandleBRepBlendAppFuncRstRst;
 
 unsafe impl crate::CppDeletable for HandleBRepBlendAppFuncRstRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBlendAppFuncRstRst_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_destructor(ptr);
     }
 }
 
 impl HandleBRepBlendAppFuncRstRst {
     /// Dereference this Handle to access the underlying BRepBlend_AppFuncRstRst
-    pub fn get(&self) -> &crate::ffi::BRepBlend_AppFuncRstRst {
+    pub fn get(&self) -> &crate::ffi_types::BRepBlend_AppFuncRstRst {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBRepBlendAppFuncRstRst_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_AppFuncRstRst
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_AppFuncRstRst {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBlend_AppFuncRstRst {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBlendAppFuncRstRst_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<BRepBlend_AppFuncRoot>
     pub fn to_handle_app_func_root(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendAppFuncRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendAppFuncRoot> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_to_HandleBRepBlendAppFuncRoot(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Approx_SweepFunction>
     pub fn to_handle_sweep_function(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleApproxSweepFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleApproxSweepFunction> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_to_HandleApproxSweepFunction(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BRepBlend_AppFuncRstRst> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(
+                crate::ffi_extern_TKFillet::HandleBRepBlendAppFuncRstRst_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1949,11 +2191,11 @@ impl HandleBRepBlendAppFuncRstRst {
 // ========================
 
 /// **Source:** `BRepBlend_AppSurf.hxx`:46 - `BRepBlend_AppSurf`
-pub use crate::ffi::BRepBlend_AppSurf as AppSurf;
+pub use crate::ffi_types::BRepBlend_AppSurf as AppSurf;
 
 unsafe impl crate::CppDeletable for AppSurf {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppSurf_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppSurf_destructor(ptr);
     }
 }
 
@@ -1961,7 +2203,9 @@ impl AppSurf {
     /// **Source:** `BRepBlend_AppSurf.hxx`:51 - `BRepBlend_AppSurf::BRepBlend_AppSurf()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_AppSurf_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurf_ctor(),
+            ))
         }
     }
 
@@ -1976,7 +2220,7 @@ impl AppSurf {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppSurf_ctor_int2_real2_int_bool(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurf_ctor_int2_real2_int_bool(
                     Degmin,
                     Degmax,
                     Tol3d,
@@ -2010,7 +2254,7 @@ impl AppSurf {
         KnownParameters: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_init(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_init(
                 self as *mut Self,
                 Degmin,
                 Degmax,
@@ -2026,7 +2270,10 @@ impl AppSurf {
     /// Define the type of parametrization used in the approximation
     pub fn set_par_type(&mut self, ParType: crate::approx::ParametrizationType) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_set_par_type(self as *mut Self, ParType.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_set_par_type(
+                self as *mut Self,
+                ParType.into(),
+            )
         })
     }
 
@@ -2034,7 +2281,10 @@ impl AppSurf {
     /// Define the Continuity used in the approximation
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_set_continuity(self as *mut Self, C.into())
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_set_continuity(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
@@ -2045,7 +2295,12 @@ impl AppSurf {
     /// if Wi <= 0
     pub fn set_criterium_weight(&mut self, W1: f64, W2: f64, W3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_set_criterium_weight(self as *mut Self, W1, W2, W3)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_set_criterium_weight(
+                self as *mut Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
@@ -2053,7 +2308,7 @@ impl AppSurf {
     /// returns the type of parametrization used in the approximation
     pub fn par_type(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_par_type(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_par_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -2062,7 +2317,7 @@ impl AppSurf {
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_continuity(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -2072,58 +2327,59 @@ impl AppSurf {
     /// the  optimization.
     pub fn criterium_weight(&self, W1: &mut f64, W2: &mut f64, W3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_criterium_weight(self as *const Self, W1, W2, W3)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_criterium_weight(
+                self as *const Self,
+                W1,
+                W2,
+                W3,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:93 - `BRepBlend_AppSurf::Perform()`
     pub fn perform_handlebrepblendline_appfunction_bool(
         &mut self,
-        Lin: &crate::ffi::HandleBRepBlendLine,
+        Lin: &crate::ffi_types::HandleBRepBlendLine,
         SecGen: &mut crate::blend::AppFunction,
         SpApprox: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_bool(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                SpApprox,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_bool(self as *mut Self, Lin, SecGen, SpApprox)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:97 - `BRepBlend_AppSurf::PerformSmoothing()`
     pub fn perform_smoothing(
         &mut self,
-        Lin: &crate::ffi::HandleBRepBlendLine,
+        Lin: &crate::ffi_types::HandleBRepBlendLine,
         SecGen: &mut crate::blend::AppFunction,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_perform_smoothing(self as *mut Self, Lin, SecGen)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_perform_smoothing(
+                self as *mut Self,
+                Lin,
+                SecGen,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:100 - `BRepBlend_AppSurf::Perform()`
     pub fn perform_handlebrepblendline_appfunction_int(
         &mut self,
-        Lin: &crate::ffi::HandleBRepBlendLine,
+        Lin: &crate::ffi_types::HandleBRepBlendLine,
         SecGen: &mut crate::blend::AppFunction,
         NbMaxP: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_int(
-                self as *mut Self,
-                Lin,
-                SecGen,
-                NbMaxP,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_perform_handlebrepblendline_appfunction_int(self as *mut Self, Lin, SecGen, NbMaxP)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:104 - `BRepBlend_AppSurf::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_AppSurf_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:106 - `BRepBlend_AppSurf::SurfShape()`
@@ -2137,7 +2393,7 @@ impl AppSurf {
         NbVKnots: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_surf_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_shape(
                 self as *const Self,
                 UDegree,
                 VDegree,
@@ -2152,15 +2408,15 @@ impl AppSurf {
     /// **Source:** `BRepBlend_AppSurf.hxx`:113 - `BRepBlend_AppSurf::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_surface(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surface(
                 self as *const Self,
                 TPoles,
                 TWeights,
@@ -2174,67 +2430,83 @@ impl AppSurf {
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:120 - `BRepBlend_AppSurf::UDegree()`
     pub fn u_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_AppSurf_u_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_u_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:122 - `BRepBlend_AppSurf::VDegree()`
     pub fn v_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_AppSurf_v_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_v_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:124 - `BRepBlend_AppSurf::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_poles(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:126 - `BRepBlend_AppSurf::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_weights(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_weights(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:128 - `BRepBlend_AppSurf::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_u_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_u_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:130 - `BRepBlend_AppSurf::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_v_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_v_knots(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:132 - `BRepBlend_AppSurf::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_u_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_u_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:134 - `BRepBlend_AppSurf::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_surf_v_mults(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_surf_v_mults(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:136 - `BRepBlend_AppSurf::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:138 - `BRepBlend_AppSurf::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_curves2d_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curves2d_shape(
                 self as *const Self,
                 Degree,
                 NbPoles,
@@ -2247,12 +2519,12 @@ impl AppSurf {
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_curve2d(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curve2d(
                 self as *const Self,
                 Index,
                 TPoles,
@@ -2265,14 +2537,14 @@ impl AppSurf {
     /// **Source:** `BRepBlend_AppSurf.hxx`:147 - `BRepBlend_AppSurf::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_curves2d_degree(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curves2d_degree(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:149 - `BRepBlend_AppSurf::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_curve2d_poles(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curve2d_poles(
                 self as *const Self,
                 Index,
             )))
@@ -2280,18 +2552,18 @@ impl AppSurf {
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:151 - `BRepBlend_AppSurf::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_curves2d_knots(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curves2d_knots(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:153 - `BRepBlend_AppSurf::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurf_curves2d_mults(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_curves2d_mults(
                 self as *const Self,
             )))
         }
@@ -2300,21 +2572,28 @@ impl AppSurf {
     /// **Source:** `BRepBlend_AppSurf.hxx`:155 - `BRepBlend_AppSurf::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_tol_reached(self as *const Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_tol_reached(
+                self as *const Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppSurf.hxx`:157 - `BRepBlend_AppSurf::TolCurveOnSurf()`
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurf_tol_curve_on_surf(self as *const Self, Index)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurf_tol_curve_on_surf(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx(
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurf_as_AppBlend_Approx(
                 self as *const Self,
             ))
         }
@@ -2323,9 +2602,11 @@ impl AppSurf {
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppSurf_as_AppBlend_Approx_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurf_as_AppBlend_Approx_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -2336,11 +2617,11 @@ impl AppSurf {
 
 /// **Source:** `BRepBlend_AppSurface.hxx`:37 - `BRepBlend_AppSurface`
 /// Used to Approximate the blending surfaces.
-pub use crate::ffi::BRepBlend_AppSurface as AppSurface;
+pub use crate::ffi_types::BRepBlend_AppSurface as AppSurface;
 
 unsafe impl crate::CppDeletable for AppSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_AppSurface_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_AppSurface_destructor(ptr);
     }
 }
 
@@ -2354,7 +2635,7 @@ impl AppSurface {
     /// resolution on   support surfaces,  but  if this
     /// tolerance is too large Tol2d  is used.
     pub fn new_handleapproxsweepfunction_real5_shape_int2(
-        Funct: &crate::ffi::HandleApproxSweepFunction,
+        Funct: &crate::ffi_types::HandleApproxSweepFunction,
         First: f64,
         Last: f64,
         Tol3d: f64,
@@ -2365,19 +2646,7 @@ impl AppSurface {
         Segmax: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_AppSurface_ctor_handleapproxsweepfunction_real5_shape_int2(
-                    Funct,
-                    First,
-                    Last,
-                    Tol3d,
-                    Tol2d,
-                    TolAngular,
-                    Continuity.into(),
-                    Degmax,
-                    Segmax,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_ctor_handleapproxsweepfunction_real5_shape_int2(Funct, First, Last, Tol3d, Tol2d, TolAngular, Continuity.into(), Degmax, Segmax)))
         }
     }
 
@@ -2390,7 +2659,7 @@ impl AppSurface {
     /// resolution on   support surfaces,  but  if this
     /// tolerance is too large Tol2d  is used.
     pub fn new_handleapproxsweepfunction_real5_shape_int(
-        Funct: &crate::ffi::HandleApproxSweepFunction,
+        Funct: &crate::ffi_types::HandleApproxSweepFunction,
         First: f64,
         Last: f64,
         Tol3d: f64,
@@ -2413,7 +2682,7 @@ impl AppSurface {
     /// resolution on   support surfaces,  but  if this
     /// tolerance is too large Tol2d  is used.
     pub fn new_handleapproxsweepfunction_real5_shape(
-        Funct: &crate::ffi::HandleApproxSweepFunction,
+        Funct: &crate::ffi_types::HandleApproxSweepFunction,
         First: f64,
         Last: f64,
         Tol3d: f64,
@@ -2429,7 +2698,7 @@ impl AppSurface {
     /// **Source:** `BRepBlend_AppSurface.hxx`:59 - `BRepBlend_AppSurface::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_is_done(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_is_done(self as *const Self)
         })
     }
 
@@ -2444,7 +2713,7 @@ impl AppSurface {
         NbVKnots: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_surf_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_shape(
                 self as *const Self,
                 UDegree,
                 VDegree,
@@ -2459,15 +2728,15 @@ impl AppSurface {
     /// **Source:** `BRepBlend_AppSurface.hxx`:68 - `BRepBlend_AppSurface::Surface()`
     pub fn surface(
         &self,
-        TPoles: &mut crate::ffi::TColgp_Array2OfPnt,
-        TWeights: &mut crate::ffi::TColStd_Array2OfReal,
-        TUKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TVKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TUMults: &mut crate::ffi::TColStd_Array1OfInteger,
-        TVMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array2OfPnt,
+        TWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+        TUKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TVKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TUMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
+        TVMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_surface(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surface(
                 self as *const Self,
                 TPoles,
                 TWeights,
@@ -2482,66 +2751,66 @@ impl AppSurface {
     /// **Source:** `BRepBlend_AppSurface.hxx`:75 - `BRepBlend_AppSurface::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_u_degree(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_u_degree(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:77 - `BRepBlend_AppSurface::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_v_degree(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_v_degree(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:79 - `BRepBlend_AppSurface::SurfPoles()`
-    pub fn surf_poles(&self) -> &crate::ffi::TColgp_Array2OfPnt {
+    pub fn surf_poles(&self) -> &crate::ffi_types::TColgp_Array2OfPnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_poles(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_poles(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:81 - `BRepBlend_AppSurface::SurfWeights()`
-    pub fn surf_weights(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn surf_weights(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_weights(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_weights(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:83 - `BRepBlend_AppSurface::SurfUKnots()`
-    pub fn surf_u_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_u_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_u_knots(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_u_knots(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:85 - `BRepBlend_AppSurface::SurfVKnots()`
-    pub fn surf_v_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn surf_v_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_v_knots(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_v_knots(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:87 - `BRepBlend_AppSurface::SurfUMults()`
-    pub fn surf_u_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_u_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_u_mults(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_u_mults(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:89 - `BRepBlend_AppSurface::SurfVMults()`
-    pub fn surf_v_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn surf_v_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_surf_v_mults(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_surf_v_mults(
                 self as *const Self,
             )))
         }
@@ -2551,21 +2820,21 @@ impl AppSurface {
     /// returns the maximum error in the surface approximation.
     pub fn max_error_on_surf(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_max_error_on_surf(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_max_error_on_surf(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:94 - `BRepBlend_AppSurface::NbCurves2d()`
     pub fn nb_curves2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_nb_curves2d(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_nb_curves2d(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:96 - `BRepBlend_AppSurface::Curves2dShape()`
     pub fn curves2d_shape(&self, Degree: &mut i32, NbPoles: &mut i32, NbKnots: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_curves2d_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curves2d_shape(
                 self as *const Self,
                 Degree,
                 NbPoles,
@@ -2578,12 +2847,12 @@ impl AppSurface {
     pub fn curve2d(
         &self,
         Index: i32,
-        TPoles: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        TKnots: &mut crate::ffi::TColStd_Array1OfReal,
-        TMults: &mut crate::ffi::TColStd_Array1OfInteger,
+        TPoles: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        TKnots: &mut crate::ffi_types::TColStd_Array1OfReal,
+        TMults: &mut crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_curve2d(
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curve2d(
                 self as *const Self,
                 Index,
                 TPoles,
@@ -2596,14 +2865,14 @@ impl AppSurface {
     /// **Source:** `BRepBlend_AppSurface.hxx`:105 - `BRepBlend_AppSurface::Curves2dDegree()`
     pub fn curves2d_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_curves2d_degree(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curves2d_degree(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:107 - `BRepBlend_AppSurface::Curve2dPoles()`
-    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi::TColgp_Array1OfPnt2d {
+    pub fn curve2d_poles(&self, Index: i32) -> &crate::ffi_types::TColgp_Array1OfPnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_curve2d_poles(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curve2d_poles(
                 self as *const Self,
                 Index,
             )))
@@ -2611,27 +2880,35 @@ impl AppSurface {
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:109 - `BRepBlend_AppSurface::Curves2dKnots()`
-    pub fn curves2d_knots(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn curves2d_knots(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_curves2d_knots(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curves2d_knots(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:111 - `BRepBlend_AppSurface::Curves2dMults()`
-    pub fn curves2d_mults(&self) -> &crate::ffi::TColStd_Array1OfInteger {
+    pub fn curves2d_mults(&self) -> &crate::ffi_types::TColStd_Array1OfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_AppSurface_curves2d_mults(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurface_curves2d_mults(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:113 - `BRepBlend_AppSurface::TolReached()`
     pub fn tol_reached(&self, Tol3d: &mut f64, Tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_tol_reached(self as *const Self, Tol3d, Tol2d)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_tol_reached(
+                self as *const Self,
+                Tol3d,
+                Tol2d,
+            )
         })
     }
 
@@ -2639,40 +2916,47 @@ impl AppSurface {
     /// returns the maximum error in the <Index> 2d curve approximation.
     pub fn max2d_error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_max2d_error(self as *const Self, Index)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_max2d_error(self as *const Self, Index)
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:118 - `BRepBlend_AppSurface::TolCurveOnSurf()`
     pub fn tol_curve_on_surf(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_tol_curve_on_surf(self as *const Self, Index)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_tol_curve_on_surf(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_AppSurface.hxx`:121 - `BRepBlend_AppSurface::Dump()`
     /// display information on approximation.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_AppSurface_dump(self as *const Self, o)
+            crate::ffi_extern_TKFillet::BRepBlend_AppSurface_dump(self as *const Self, o)
         })
     }
 
     /// Upcast to AppBlend_Approx
     pub fn as_app_blend_approx(&self) -> &crate::app_blend::Approx {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurface_as_AppBlend_Approx(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to AppBlend_Approx (mutable)
     pub fn as_app_blend_approx_mut(&mut self) -> &mut crate::app_blend::Approx {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_AppSurface_as_AppBlend_Approx_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_AppSurface_as_AppBlend_Approx_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
@@ -2682,11 +2966,11 @@ impl AppSurface {
 // ========================
 
 /// **Source:** `BRepBlend_BlendTool.hxx`:26 - `BRepBlend_BlendTool`
-pub use crate::ffi::BRepBlend_BlendTool as BlendTool;
+pub use crate::ffi_types::BRepBlend_BlendTool as BlendTool;
 
 unsafe impl crate::CppDeletable for BlendTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_BlendTool_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_BlendTool_destructor(ptr);
     }
 }
 
@@ -2695,7 +2979,9 @@ impl BlendTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_BlendTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_BlendTool_ctor(),
+            ))
         }
     }
 
@@ -2709,13 +2995,13 @@ impl BlendTool {
     /// are not significant.
     pub fn project(
         P: &crate::gp::Pnt2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         Paramproj: &mut f64,
         Dist: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_BlendTool_project(P, S, C, Paramproj, Dist)
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_project(P, S, C, Paramproj, Dist)
         })
     }
 
@@ -2723,23 +3009,25 @@ impl BlendTool {
     pub fn inters(
         P1: &crate::gp::Pnt2d,
         P2: &crate::gp::Pnt2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         Param: &mut f64,
         Dist: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_BlendTool_inters(P1, P2, S, C, Param, Dist)
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_inters(P1, P2, S, C, Param, Dist)
         })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:52 - `BRepBlend_BlendTool::Parameter()`
     /// Returns the parameter of the vertex V on the edge A.
     pub fn parameter(
-        V: &crate::ffi::HandleAdaptor3dHVertex,
-        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_parameter(V, A) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_parameter(V, A)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:59 - `BRepBlend_BlendTool::Tolerance()`
@@ -2748,40 +3036,54 @@ impl BlendTool {
     /// i-e if Abs(Parameter(Vertex)-Parameter(OtherPnt))<=
     /// Tolerance, the points are "merged".
     pub fn tolerance(
-        V: &crate::ffi::HandleAdaptor3dHVertex,
-        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        V: &crate::ffi_types::HandleAdaptor3dHVertex,
+        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_tolerance(V, A) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_tolerance(V, A)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:62 - `BRepBlend_BlendTool::SingularOnUMin()`
-    pub fn singular_on_u_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_min(S) })
+    pub fn singular_on_u_min(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_singular_on_u_min(S)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:64 - `BRepBlend_BlendTool::SingularOnUMax()`
-    pub fn singular_on_u_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_u_max(S) })
+    pub fn singular_on_u_max(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_singular_on_u_max(S)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:66 - `BRepBlend_BlendTool::SingularOnVMin()`
-    pub fn singular_on_v_min(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_min(S) })
+    pub fn singular_on_v_min(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_singular_on_v_min(S)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:68 - `BRepBlend_BlendTool::SingularOnVMax()`
-    pub fn singular_on_v_max(S: &crate::ffi::HandleAdaptor3dSurface) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_singular_on_v_max(S) })
+    pub fn singular_on_v_max(S: &crate::ffi_types::HandleAdaptor3dSurface) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_singular_on_v_max(S)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:70 - `BRepBlend_BlendTool::NbSamplesU()`
-    pub fn nb_samples_u(S: &crate::ffi::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_u(S, u1, u2) })
+    pub fn nb_samples_u(S: &crate::ffi_types::HandleAdaptor3dSurface, u1: f64, u2: f64) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_nb_samples_u(S, u1, u2)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:74 - `BRepBlend_BlendTool::NbSamplesV()`
-    pub fn nb_samples_v(S: &crate::ffi::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_BlendTool_nb_samples_v(S, v1, v2) })
+    pub fn nb_samples_v(S: &crate::ffi_types::HandleAdaptor3dSurface, v1: f64, v2: f64) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_nb_samples_v(S, v1, v2)
+        })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:82 - `BRepBlend_BlendTool::Bounds()`
@@ -2789,20 +3091,20 @@ impl BlendTool {
     /// These limits must be finite : they are either
     /// the real limits of the arc, for a finite arc,
     /// or a bounding box for an infinite arc.
-    pub fn bounds(C: &crate::ffi::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
+    pub fn bounds(C: &crate::ffi_types::HandleAdaptor2dCurve2d, Ufirst: &mut f64, Ulast: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_BlendTool_bounds(C, Ufirst, Ulast)
+            crate::ffi_extern_TKFillet::BRepBlend_BlendTool_bounds(C, Ufirst, Ulast)
         })
     }
 
     /// **Source:** `BRepBlend_BlendTool.hxx`:86 - `BRepBlend_BlendTool::CurveOnSurf()`
     pub fn curve_on_surf(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-        S: &crate::ffi::HandleAdaptor3dSurface,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_BlendTool_curve_on_surf(C, S),
+                crate::ffi_extern_TKFillet::BRepBlend_BlendTool_curve_on_surf(C, S),
             ))
         }
     }
@@ -2813,23 +3115,23 @@ impl BlendTool {
 // ========================
 
 /// **Source:** `BRepBlend_CSWalking.hxx`:43 - `BRepBlend_CSWalking`
-pub use crate::ffi::BRepBlend_CSWalking as CSWalking;
+pub use crate::ffi_types::BRepBlend_CSWalking as CSWalking;
 
 unsafe impl crate::CppDeletable for CSWalking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_CSWalking_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_CSWalking_destructor(ptr);
     }
 }
 
 impl CSWalking {
     /// **Source:** `BRepBlend_CSWalking.hxx`:48 - `BRepBlend_CSWalking::BRepBlend_CSWalking()`
     pub fn new_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(
-        Curv: &crate::ffi::HandleAdaptor3dCurve,
-        Surf: &crate::ffi::HandleAdaptor3dSurface,
-        Domain: &crate::ffi::HandleAdaptor3dTopolTool,
+        Curv: &crate::ffi_types::HandleAdaptor3dCurve,
+        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        Domain: &crate::ffi_types::HandleAdaptor3dTopolTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_CSWalking_ctor_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(Curv, Surf, Domain)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_CSWalking_ctor_handleadaptor3dcurve_handleadaptor3dsurface_handleadaptor3dtopoltool(Curv, Surf, Domain)))
         }
     }
 
@@ -2842,12 +3144,12 @@ impl CSWalking {
         MaxStep: f64,
         Tol3d: f64,
         TolGuide: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Fleche: f64,
         Appro: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_CSWalking_perform(
+            crate::ffi_extern_TKFillet::BRepBlend_CSWalking_perform(
                 self as *mut Self,
                 F,
                 Pdep,
@@ -2865,19 +3167,23 @@ impl CSWalking {
     /// **Source:** `BRepBlend_CSWalking.hxx`:62 - `BRepBlend_CSWalking::Complete()`
     pub fn complete(&mut self, F: &mut crate::blend::CSFunction, Pmin: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CSWalking_complete(self as *mut Self, F, Pmin)
+            crate::ffi_extern_TKFillet::BRepBlend_CSWalking_complete(self as *mut Self, F, Pmin)
         })
     }
 
     /// **Source:** `BRepBlend_CSWalking.hxx`:64 - `BRepBlend_CSWalking::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_CSWalking_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_CSWalking_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_CSWalking.hxx`:66 - `BRepBlend_CSWalking::Line()`
-    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+    pub fn line(&self) -> &crate::ffi_types::HandleBRepBlendLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_CSWalking_line(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_CSWalking_line(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -2897,23 +3203,25 @@ impl CSWalking {
 /// coordinates w, U where w is  the parameter  on the
 /// guide line, U   are the parametric coordinates of  a
 /// point on the partner curve 2.
-pub use crate::ffi::BRepBlend_CurvPointRadInv as CurvPointRadInv;
+pub use crate::ffi_types::BRepBlend_CurvPointRadInv as CurvPointRadInv;
 
 unsafe impl crate::CppDeletable for CurvPointRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_CurvPointRadInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_destructor(ptr);
     }
 }
 
 impl CurvPointRadInv {
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:46 - `BRepBlend_CurvPointRadInv::BRepBlend_CurvPointRadInv()`
     pub fn new_handleadaptor3dcurve2(
-        C1: &crate::ffi::HandleAdaptor3dCurve,
-        C2: &crate::ffi::HandleAdaptor3dCurve,
+        C1: &crate::ffi_types::HandleAdaptor3dCurve,
+        C2: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_CurvPointRadInv_ctor_handleadaptor3dcurve2(C1, C2),
+                crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_ctor_handleadaptor3dcurve2(
+                    C1, C2,
+                ),
             ))
         }
     }
@@ -2921,7 +3229,7 @@ impl CurvPointRadInv {
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:49 - `BRepBlend_CurvPointRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_set_int(self as *mut Self, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_set_int(self as *mut Self, Choix)
         })
     }
 
@@ -2929,7 +3237,7 @@ impl CurvPointRadInv {
     /// returns 2.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_nb_equations(self as *const Self)
         })
     }
 
@@ -2938,9 +3246,13 @@ impl CurvPointRadInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -2951,11 +3263,15 @@ impl CurvPointRadInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -2966,12 +3282,12 @@ impl CurvPointRadInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_values(self as *mut Self, X, F, D)
         })
     }
 
@@ -2979,7 +3295,7 @@ impl CurvPointRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_set_pnt(self as *mut Self, P)
         })
     }
 
@@ -2987,9 +3303,13 @@ impl CurvPointRadInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_get_tolerance(self as *const Self, Tolerance, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_get_tolerance(
+                self as *const Self,
+                Tolerance,
+                Tol,
+            )
         })
     }
 
@@ -3000,11 +3320,11 @@ impl CurvPointRadInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -3015,18 +3335,24 @@ impl CurvPointRadInv {
     /// **Source:** `BRepBlend_CurvPointRadInv.hxx`:88 - `BRepBlend_CurvPointRadInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
     /// Upcast to Blend_CurvPointFuncInv
     pub fn as_blend_curv_point_func_inv(&self) -> &crate::blend::CurvPointFuncInv {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3034,7 +3360,7 @@ impl CurvPointRadInv {
     pub fn as_blend_curv_point_func_inv_mut(&mut self) -> &mut crate::blend::CurvPointFuncInv {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_Blend_CurvPointFuncInv_mut(
                     self as *mut Self,
                 ),
             )
@@ -3046,11 +3372,7 @@ impl CurvPointRadInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -3059,20 +3381,18 @@ impl CurvPointRadInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3080,7 +3400,9 @@ impl CurvPointRadInv {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_CurvPointRadInv_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3088,14 +3410,18 @@ impl CurvPointRadInv {
     /// Inherited: **Source:** `Blend_CurvPointFuncInv.hxx`:45 - `Blend_CurvPointFuncInv::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_CurvPointRadInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_CurvPointRadInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -3105,11 +3431,11 @@ impl CurvPointRadInv {
 // ========================
 
 /// **Source:** `BRepBlend_Extremity.hxx`:34 - `BRepBlend_Extremity`
-pub use crate::ffi::BRepBlend_Extremity as Extremity;
+pub use crate::ffi_types::BRepBlend_Extremity as Extremity;
 
 unsafe impl crate::CppDeletable for Extremity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_Extremity_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_Extremity_destructor(ptr);
     }
 }
 
@@ -3117,7 +3443,9 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:39 - `BRepBlend_Extremity::BRepBlend_Extremity()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_Extremity_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Extremity_ctor(),
+            ))
         }
     }
 
@@ -3132,7 +3460,7 @@ impl Extremity {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_Extremity_ctor_pnt_real4(P, U, V, Param, Tol),
+                crate::ffi_extern_TKFillet::BRepBlend_Extremity_ctor_pnt_real4(P, U, V, Param, Tol),
             ))
         }
     }
@@ -3146,14 +3474,10 @@ impl Extremity {
         V: f64,
         Param: f64,
         Tol: f64,
-        Vtx: &crate::ffi::HandleAdaptor3dHVertex,
+        Vtx: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_Extremity_ctor_pnt_real4_handleadaptor3dhvertex(
-                    P, U, V, Param, Tol, Vtx,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Extremity_ctor_pnt_real4_handleadaptor3dhvertex(P, U, V, Param, Tol, Vtx)))
         }
     }
 
@@ -3167,7 +3491,7 @@ impl Extremity {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_Extremity_ctor_pnt_real3(P, W, Param, Tol),
+                crate::ffi_extern_TKFillet::BRepBlend_Extremity_ctor_pnt_real3(P, W, Param, Tol),
             ))
         }
     }
@@ -3183,7 +3507,7 @@ impl Extremity {
         Tol: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_set_value_pnt_real4(
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_set_value_pnt_real4(
                 self as *mut Self,
                 P,
                 U,
@@ -3204,18 +3528,10 @@ impl Extremity {
         V: f64,
         Param: f64,
         Tol: f64,
-        Vtx: &crate::ffi::HandleAdaptor3dHVertex,
+        Vtx: &crate::ffi_types::HandleAdaptor3dHVertex,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_set_value_pnt_real4_handleadaptor3dhvertex(
-                self as *mut Self,
-                P,
-                U,
-                V,
-                Param,
-                Tol,
-                Vtx,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_set_value_pnt_real4_handleadaptor3dhvertex(self as *mut Self, P, U, V, Param, Tol, Vtx)
         })
     }
 
@@ -3223,7 +3539,13 @@ impl Extremity {
     /// Set the values for an extremity on curve.
     pub fn set_value_pnt_real3(&mut self, P: &crate::gp::Pnt, W: f64, Param: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_set_value_pnt_real3(self as *mut Self, P, W, Param, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_set_value_pnt_real3(
+                self as *mut Self,
+                P,
+                W,
+                Param,
+                Tol,
+            )
         })
     }
 
@@ -3231,7 +3553,9 @@ impl Extremity {
     /// This method returns the value of the point in 3d space.
     pub fn value(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Extremity_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Extremity_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3240,7 +3564,7 @@ impl Extremity {
     /// surface.
     pub fn set_tangent(&mut self, Tangent: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_set_tangent(self as *mut Self, Tangent)
         })
     }
 
@@ -3248,7 +3572,7 @@ impl Extremity {
     /// Returns TRUE if the Tangent is  stored.
     pub fn has_tangent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_has_tangent(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_has_tangent(self as *const Self)
         })
     }
 
@@ -3257,7 +3581,9 @@ impl Extremity {
     /// space.
     pub fn tangent(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Extremity_tangent(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Extremity_tangent(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3266,15 +3592,15 @@ impl Extremity {
     /// in 3d space.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_tolerance(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_tolerance(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:104 - `BRepBlend_Extremity::SetVertex()`
     /// Set the values for an extremity on a curve.
-    pub fn set_vertex(&mut self, V: &crate::ffi::HandleAdaptor3dHVertex) {
+    pub fn set_vertex(&mut self, V: &crate::ffi_types::HandleAdaptor3dHVertex) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_set_vertex(self as *mut Self, V)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_set_vertex(self as *mut Self, V)
         })
     }
 
@@ -3283,13 +3609,19 @@ impl Extremity {
     /// A, at parameter Param.
     pub fn add_arc(
         &mut self,
-        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
         Param: f64,
         TLine: &crate::int_surf::Transition,
         TArc: &crate::int_surf::Transition,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_add_arc(self as *mut Self, A, Param, TLine, TArc)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_add_arc(
+                self as *mut Self,
+                A,
+                Param,
+                TLine,
+                TArc,
+            )
         })
     }
 
@@ -3298,7 +3630,7 @@ impl Extremity {
     /// on the concerned surface.
     pub fn parameters(&self, U: &mut f64, V: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_parameters(self as *const Self, U, V)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_parameters(self as *const Self, U, V)
         })
     }
 
@@ -3307,15 +3639,17 @@ impl Extremity {
     /// an existing vertex.
     pub fn is_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_is_vertex(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_is_vertex(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:122 - `BRepBlend_Extremity::Vertex()`
     /// Returns the vertex when IsVertex returns Standard_True.
-    pub fn vertex(&self) -> &crate::ffi::HandleAdaptor3dHVertex {
+    pub fn vertex(&self) -> &crate::ffi_types::HandleAdaptor3dHVertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Extremity_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Extremity_vertex(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3329,14 +3663,14 @@ impl Extremity {
     /// returned by the next method.
     pub fn nb_point_on_rst(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_nb_point_on_rst(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_nb_point_on_rst(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:133 - `BRepBlend_Extremity::PointOnRst()`
     pub fn point_on_rst(&self, Index: i32) -> &PointOnRst {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Extremity_point_on_rst(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Extremity_point_on_rst(
                 self as *const Self,
                 Index,
             )))
@@ -3346,14 +3680,14 @@ impl Extremity {
     /// **Source:** `BRepBlend_Extremity.hxx`:135 - `BRepBlend_Extremity::Parameter()`
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_parameter(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_parameter(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Extremity.hxx`:137 - `BRepBlend_Extremity::ParameterOnGuide()`
     pub fn parameter_on_guide(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Extremity_parameter_on_guide(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Extremity_parameter_on_guide(self as *const Self)
         })
     }
 }
@@ -3363,11 +3697,11 @@ impl Extremity {
 // ========================
 
 /// **Source:** `BRepBlend_HCurve2dTool.hxx`:32 - `BRepBlend_HCurve2dTool`
-pub use crate::ffi::BRepBlend_HCurve2dTool as HCurve2dTool;
+pub use crate::ffi_types::BRepBlend_HCurve2dTool as HCurve2dTool;
 
 unsafe impl crate::CppDeletable for HCurve2dTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_HCurve2dTool_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_destructor(ptr);
     }
 }
 
@@ -3376,26 +3710,30 @@ impl HCurve2dTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BRepBlend_HCurve2dTool_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:37 - `BRepBlend_HCurve2dTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_first_parameter(C) })
+    pub fn first_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:39 - `BRepBlend_HCurve2dTool::LastParameter()`
-    pub fn last_parameter(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_last_parameter(C) })
+    pub fn last_parameter(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_last_parameter(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:41 - `BRepBlend_HCurve2dTool::Continuity()`
-    pub fn continuity(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
+    pub fn continuity(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_HCurve2dTool_continuity(C)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_continuity(C)
         }))
         .unwrap()
     }
@@ -3403,8 +3741,13 @@ impl HCurve2dTool {
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:45 - `BRepBlend_HCurve2dTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
-    pub fn nb_intervals(C: &crate::ffi::HandleAdaptor2dCurve2d, S: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_intervals(C, S.into()) })
+    pub fn nb_intervals(
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        S: crate::geom_abs::Shape,
+    ) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:52 - `BRepBlend_HCurve2dTool::Intervals()`
@@ -3414,47 +3757,53 @@ impl HCurve2dTool {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_HCurve2dTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_intervals(C, T, S.into())
         })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:56 - `BRepBlend_HCurve2dTool::IsClosed()`
-    pub fn is_closed(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_closed(C) })
+    pub fn is_closed(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_is_closed(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:58 - `BRepBlend_HCurve2dTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::ffi::HandleAdaptor2dCurve2d) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_is_periodic(C) })
+    pub fn is_periodic(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_is_periodic(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:60 - `BRepBlend_HCurve2dTool::Period()`
-    pub fn period(C: &crate::ffi::HandleAdaptor2dCurve2d) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_period(C) })
+    pub fn period(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> f64 {
+        crate::check_result(unsafe { crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_period(C) })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:63 - `BRepBlend_HCurve2dTool::Value()`
     /// Computes the point of parameter U on the curve.
     pub fn value(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         U: f64,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_value(C, U),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_value(C, U),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:66 - `BRepBlend_HCurve2dTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::ffi::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_d0(C, U, P) })
+    pub fn d0(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U: f64, P: &mut crate::gp::Pnt2d) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_d0(C, U, P)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:72 - `BRepBlend_HCurve2dTool::D1()`
@@ -3463,12 +3812,14 @@ impl HCurve2dTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_d1(C, U, P, V) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:81 - `BRepBlend_HCurve2dTool::D2()`
@@ -3477,13 +3828,15 @@ impl HCurve2dTool {
     /// Raised if the continuity of the current interval
     /// is not C2.
     pub fn d2(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
         V2: &mut crate::gp::Vec2d,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:91 - `BRepBlend_HCurve2dTool::D3()`
@@ -3492,7 +3845,7 @@ impl HCurve2dTool {
     /// Raised if the continuity of the current interval
     /// is not C3.
     pub fn d3(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         U: f64,
         P: &mut crate::gp::Pnt2d,
         V1: &mut crate::gp::Vec2d,
@@ -3500,7 +3853,7 @@ impl HCurve2dTool {
         V3: &mut crate::gp::Vec2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_HCurve2dTool_d3(C, U, P, V1, V2, V3)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_d3(C, U, P, V1, V2, V3)
         })
     }
 
@@ -3511,105 +3864,117 @@ impl HCurve2dTool {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurve2dTool_dn(
-                C, U, N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_dn(C, U, N),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:109 - `BRepBlend_HCurve2dTool::Resolution()`
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
-    pub fn resolution(C: &crate::ffi::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_resolution(C, R3d) })
+    pub fn resolution(C: &crate::ffi_types::HandleAdaptor2dCurve2d, R3d: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_resolution(C, R3d)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:114 - `BRepBlend_HCurve2dTool::GetType()`
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
+    pub fn get_type(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_HCurve2dTool_get_type(C)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_get_type(C)
         }))
         .unwrap()
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:116 - `BRepBlend_HCurve2dTool::Line()`
-    pub fn line(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
+    pub fn line(C: &crate::ffi_types::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Lin2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurve2dTool_line(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:118 - `BRepBlend_HCurve2dTool::Circle()`
-    pub fn circle(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Circ2d> {
+    pub fn circle(
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::gp::Circ2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_circle(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_circle(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:120 - `BRepBlend_HCurve2dTool::Ellipse()`
-    pub fn ellipse(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Elips2d> {
+    pub fn ellipse(
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::gp::Elips2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_ellipse(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_ellipse(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:122 - `BRepBlend_HCurve2dTool::Hyperbola()`
-    pub fn hyperbola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Hypr2d> {
+    pub fn hyperbola(
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::gp::Hypr2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_hyperbola(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_hyperbola(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:124 - `BRepBlend_HCurve2dTool::Parabola()`
-    pub fn parabola(C: &crate::ffi::HandleAdaptor2dCurve2d) -> crate::OwnedPtr<crate::gp::Parab2d> {
+    pub fn parabola(
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::gp::Parab2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_parabola(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_parabola(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:126 - `BRepBlend_HCurve2dTool::Bezier()`
     pub fn bezier(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBezierCurve> {
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBezierCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_bezier(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_bezier(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:128 - `BRepBlend_HCurve2dTool::BSpline()`
     pub fn b_spline(
-        C: &crate::ffi::HandleAdaptor2dCurve2d,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+        C: &crate::ffi_types::HandleAdaptor2dCurve2d,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurve2dTool_b_spline(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_b_spline(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurve2dTool.hxx`:130 - `BRepBlend_HCurve2dTool::NbSamples()`
-    pub fn nb_samples(C: &crate::ffi::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurve2dTool_nb_samples(C, U0, U1) })
+    pub fn nb_samples(C: &crate::ffi_types::HandleAdaptor2dCurve2d, U0: f64, U1: f64) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurve2dTool_nb_samples(C, U0, U1)
+        })
     }
 }
 
@@ -3618,11 +3983,11 @@ impl HCurve2dTool {
 // ========================
 
 /// **Source:** `BRepBlend_HCurveTool.hxx`:32 - `BRepBlend_HCurveTool`
-pub use crate::ffi::BRepBlend_HCurveTool as HCurveTool;
+pub use crate::ffi_types::BRepBlend_HCurveTool as HCurveTool;
 
 unsafe impl crate::CppDeletable for HCurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_HCurveTool_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_destructor(ptr);
     }
 }
 
@@ -3631,24 +3996,30 @@ impl HCurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:37 - `BRepBlend_HCurveTool::FirstParameter()`
-    pub fn first_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_first_parameter(C) })
+    pub fn first_parameter(C: &crate::ffi_types::HandleAdaptor3dCurve) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:39 - `BRepBlend_HCurveTool::LastParameter()`
-    pub fn last_parameter(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_last_parameter(C) })
+    pub fn last_parameter(C: &crate::ffi_types::HandleAdaptor3dCurve) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_last_parameter(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:41 - `BRepBlend_HCurveTool::Continuity()`
-    pub fn continuity(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::Shape {
+    pub fn continuity(C: &crate::ffi_types::HandleAdaptor3dCurve) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_HCurveTool_continuity(C)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_continuity(C)
         }))
         .unwrap()
     }
@@ -3656,8 +4027,13 @@ impl HCurveTool {
     /// **Source:** `BRepBlend_HCurveTool.hxx`:45 - `BRepBlend_HCurveTool::NbIntervals()`
     /// Returns  the number  of  intervals for  continuity
     /// <S>. May be one if Continuity(myclass) >= <S>
-    pub fn nb_intervals(C: &crate::ffi::HandleAdaptor3dCurve, S: crate::geom_abs::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_nb_intervals(C, S.into()) })
+    pub fn nb_intervals(
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        S: crate::geom_abs::Shape,
+    ) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_nb_intervals(C, S.into())
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:52 - `BRepBlend_HCurveTool::Intervals()`
@@ -3667,44 +4043,53 @@ impl HCurveTool {
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
     pub fn intervals(
-        C: &crate::ffi::HandleAdaptor3dCurve,
-        T: &mut crate::ffi::TColStd_Array1OfReal,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
         S: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_HCurveTool_intervals(C, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_intervals(C, T, S.into())
         })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:56 - `BRepBlend_HCurveTool::IsClosed()`
-    pub fn is_closed(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_is_closed(C) })
+    pub fn is_closed(C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_is_closed(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:58 - `BRepBlend_HCurveTool::IsPeriodic()`
-    pub fn is_periodic(C: &crate::ffi::HandleAdaptor3dCurve) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_is_periodic(C) })
+    pub fn is_periodic(C: &crate::ffi_types::HandleAdaptor3dCurve) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_is_periodic(C)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:60 - `BRepBlend_HCurveTool::Period()`
-    pub fn period(C: &crate::ffi::HandleAdaptor3dCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_period(C) })
+    pub fn period(C: &crate::ffi_types::HandleAdaptor3dCurve) -> f64 {
+        crate::check_result(unsafe { crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_period(C) })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:63 - `BRepBlend_HCurveTool::Value()`
     /// Computes the point of parameter U on the curve.
-    pub fn value(C: &crate::ffi::HandleAdaptor3dCurve, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
+    pub fn value(
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        U: f64,
+    ) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_value(
-                C, U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_value(C, U),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:66 - `BRepBlend_HCurveTool::D0()`
     /// Computes the point of parameter U on the curve.
-    pub fn d0(C: &crate::ffi::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurveTool_d0(C, U, P) })
+    pub fn d0(C: &crate::ffi_types::HandleAdaptor3dCurve, U: f64, P: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_d0(C, U, P)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:72 - `BRepBlend_HCurveTool::D1()`
@@ -3713,12 +4098,14 @@ impl HCurveTool {
     /// Raised if the continuity of the current interval
     /// is not C1.
     pub fn d1(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurveTool_d1(C, U, P, V) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_d1(C, U, P, V)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:78 - `BRepBlend_HCurveTool::D2()`
@@ -3727,13 +4114,15 @@ impl HCurveTool {
     /// Raised if the continuity of the current interval
     /// is not C2.
     pub fn d2(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_HCurveTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:88 - `BRepBlend_HCurveTool::D3()`
@@ -3742,7 +4131,7 @@ impl HCurveTool {
     /// Raised if the continuity of the current interval
     /// is not C3.
     pub fn d3(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
@@ -3750,7 +4139,7 @@ impl HCurveTool {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_HCurveTool_d3(C, U, P, V1, V2, V3)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_d3(C, U, P, V1, V2, V3)
         })
     }
 
@@ -3761,103 +4150,115 @@ impl HCurveTool {
     /// is not CN.
     /// Raised if N < 1.
     pub fn dn(
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
         U: f64,
         N: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_dn(
-                C, U, N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_dn(C, U, N),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:106 - `BRepBlend_HCurveTool::Resolution()`
     /// Returns the parametric  resolution corresponding
     /// to the real space resolution <R3d>.
-    pub fn resolution(C: &crate::ffi::HandleAdaptor3dCurve, R3d: f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_resolution(C, R3d) })
+    pub fn resolution(C: &crate::ffi_types::HandleAdaptor3dCurve, R3d: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_resolution(C, R3d)
+        })
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:111 - `BRepBlend_HCurveTool::GetType()`
     /// Returns  the  type of the   curve  in the  current
     /// interval :   Line,   Circle,   Ellipse, Hyperbola,
     /// Parabola, BezierCurve, BSplineCurve, OtherCurve.
-    pub fn get_type(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::geom_abs::CurveType {
+    pub fn get_type(C: &crate::ffi_types::HandleAdaptor3dCurve) -> crate::geom_abs::CurveType {
         crate::geom_abs::CurveType::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_HCurveTool_get_type(C)
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_get_type(C)
         }))
         .unwrap()
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:113 - `BRepBlend_HCurveTool::Line()`
-    pub fn line(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
+    pub fn line(C: &crate::ffi_types::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Lin> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_line(C)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_line(C),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:115 - `BRepBlend_HCurveTool::Circle()`
-    pub fn circle(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
+    pub fn circle(C: &crate::ffi_types::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Circ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_circle(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_circle(C),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:117 - `BRepBlend_HCurveTool::Ellipse()`
-    pub fn ellipse(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Elips> {
+    pub fn ellipse(
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::gp::Elips> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurveTool_ellipse(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_ellipse(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:119 - `BRepBlend_HCurveTool::Hyperbola()`
-    pub fn hyperbola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Hypr> {
+    pub fn hyperbola(
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::gp::Hypr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurveTool_hyperbola(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_hyperbola(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:121 - `BRepBlend_HCurveTool::Parabola()`
-    pub fn parabola(C: &crate::ffi::HandleAdaptor3dCurve) -> crate::OwnedPtr<crate::gp::Parab> {
+    pub fn parabola(
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::gp::Parab> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurveTool_parabola(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_parabola(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:123 - `BRepBlend_HCurveTool::Bezier()`
     pub fn bezier(
-        C: &crate::ffi::HandleAdaptor3dCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBezierCurve> {
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBezierCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_HCurveTool_bezier(
-                C,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_bezier(C),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:125 - `BRepBlend_HCurveTool::BSpline()`
     pub fn b_spline(
-        C: &crate::ffi::HandleAdaptor3dCurve,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineCurve> {
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_HCurveTool_b_spline(C),
+                crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_b_spline(C),
             ))
         }
     }
 
     /// **Source:** `BRepBlend_HCurveTool.hxx`:127 - `BRepBlend_HCurveTool::NbSamples()`
-    pub fn nb_samples(C: &crate::ffi::HandleAdaptor3dCurve, U0: f64, U1: f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_HCurveTool_nb_samples(C, U0, U1) })
+    pub fn nb_samples(C: &crate::ffi_types::HandleAdaptor3dCurve, U0: f64, U1: f64) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_HCurveTool_nb_samples(C, U0, U1)
+        })
     }
 }
 
@@ -3866,37 +4267,45 @@ impl HCurveTool {
 // ========================
 
 /// **Source:** `BRepBlend_Line.hxx`:30 - `BRepBlend_Line`
-pub use crate::ffi::BRepBlend_Line as Line;
+pub use crate::ffi_types::BRepBlend_Line as Line;
 
 unsafe impl crate::CppDeletable for Line {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_Line_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_Line_destructor(ptr);
     }
 }
 
 impl Line {
     /// **Source:** `BRepBlend_Line.hxx`:34 - `BRepBlend_Line::BRepBlend_Line()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_Line_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:37 - `BRepBlend_Line::Clear()`
     /// Clears the content of the line.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_Line_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_Line_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:40 - `BRepBlend_Line::Append()`
     /// Adds a point in the line.
     pub fn append(&mut self, P: &crate::blend::Point) {
-        crate::check_void_result(unsafe { crate::ffi::BRepBlend_Line_append(self as *mut Self, P) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_Line_append(self as *mut Self, P)
+        })
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:43 - `BRepBlend_Line::Prepend()`
     /// Adds a point in the line at the first place.
     pub fn prepend(&mut self, P: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_prepend(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_prepend(self as *mut Self, P)
         })
     }
 
@@ -3904,7 +4313,7 @@ impl Line {
     /// Adds a point in the line at the first place.
     pub fn insert_before(&mut self, Index: i32, P: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_insert_before(self as *mut Self, Index, P)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_insert_before(self as *mut Self, Index, P)
         })
     }
 
@@ -3914,7 +4323,7 @@ impl Line {
     /// Raises an exception if the indices are out of bounds.
     pub fn remove(&mut self, FromIndex: i32, ToIndex: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_remove(self as *mut Self, FromIndex, ToIndex)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_remove(self as *mut Self, FromIndex, ToIndex)
         })
     }
 
@@ -3927,7 +4336,7 @@ impl Line {
         TranS2: crate::int_surf::TypeTrans,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_set_typetrans2(
+            crate::ffi_extern_TKFillet::BRepBlend_Line_set_typetrans2(
                 self as *mut Self,
                 TranS1.into(),
                 TranS2.into(),
@@ -3939,7 +4348,10 @@ impl Line {
     /// Sets the value of the transition of the line on a surface
     pub fn set_typetrans(&mut self, Trans: crate::int_surf::TypeTrans) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_set_typetrans(self as *mut Self, Trans.into())
+            crate::ffi_extern_TKFillet::BRepBlend_Line_set_typetrans(
+                self as *mut Self,
+                Trans.into(),
+            )
         })
     }
 
@@ -3947,7 +4359,11 @@ impl Line {
     /// Sets the values of the start points for the line.
     pub fn set_start_points(&mut self, StartPt1: &Extremity, StartPt2: &Extremity) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_set_start_points(self as *mut Self, StartPt1, StartPt2)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_set_start_points(
+                self as *mut Self,
+                StartPt1,
+                StartPt2,
+            )
         })
     }
 
@@ -3955,21 +4371,30 @@ impl Line {
     /// Sets tne values of the end points for the line.
     pub fn set_end_points(&mut self, EndPt1: &Extremity, EndPt2: &Extremity) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_set_end_points(self as *mut Self, EndPt1, EndPt2)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_set_end_points(
+                self as *mut Self,
+                EndPt1,
+                EndPt2,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:67 - `BRepBlend_Line::NbPoints()`
     /// Returns the number of points in the line.
     pub fn nb_points(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_Line_nb_points(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_Line_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:70 - `BRepBlend_Line::Point()`
     /// Returns the point of range Index.
     pub fn point(&self, Index: i32) -> &crate::blend::Point {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_point(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_point(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -3988,7 +4413,7 @@ impl Line {
     /// left-handed.
     pub fn transition_on_s1(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_transition_on_s1(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_transition_on_s1(self as *const Self)
         }))
         .unwrap()
     }
@@ -3999,7 +4424,7 @@ impl Line {
     /// along the line.
     pub fn transition_on_s2(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_transition_on_s2(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_transition_on_s2(self as *const Self)
         }))
         .unwrap()
     }
@@ -4008,9 +4433,11 @@ impl Line {
     /// Returns the start point on S1.
     pub fn start_point_on_first(&self) -> &Extremity {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_start_point_on_first(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_start_point_on_first(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4018,9 +4445,11 @@ impl Line {
     /// Returns the start point on S2
     pub fn start_point_on_second(&self) -> &Extremity {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_start_point_on_second(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_start_point_on_second(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4028,7 +4457,7 @@ impl Line {
     /// Returns the end point on S1.
     pub fn end_point_on_first(&self) -> &Extremity {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_end_point_on_first(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_end_point_on_first(
                 self as *const Self,
             )))
         }
@@ -4038,7 +4467,7 @@ impl Line {
     /// Returns the point on S2.
     pub fn end_point_on_second(&self) -> &Extremity {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_end_point_on_second(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_end_point_on_second(
                 self as *const Self,
             )))
         }
@@ -4049,38 +4478,42 @@ impl Line {
     /// on the surface.
     pub fn transition_on_s(&self) -> crate::int_surf::TypeTrans {
         crate::int_surf::TypeTrans::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_transition_on_s(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_transition_on_s(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_Line_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::BRepBlend_Line_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `BRepBlend_Line.hxx`:107 - `BRepBlend_Line::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBlend_Line_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_Line_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Line_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -4089,34 +4522,42 @@ impl Line {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_Line_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBRepBlendLine> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBRepBlendLine> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_Line_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_Line_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4124,7 +4565,7 @@ impl Line {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BRepBlend_Line_inherited_This(self as *const Self)
+                crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4137,58 +4578,72 @@ impl Line {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Line_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Line_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleBRepBlendLine;
+pub use crate::ffi_types::HandleBRepBlendLine;
 
 unsafe impl crate::CppDeletable for HandleBRepBlendLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBRepBlendLine_destructor(ptr);
+        crate::ffi_extern_TKFillet::HandleBRepBlendLine_destructor(ptr);
     }
 }
 
 impl HandleBRepBlendLine {
     /// Dereference this Handle to access the underlying BRepBlend_Line
-    pub fn get(&self) -> &crate::ffi::BRepBlend_Line {
-        unsafe { &*crate::check_result(crate::ffi::HandleBRepBlendLine_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::BRepBlend_Line {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendLine_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying BRepBlend_Line
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BRepBlend_Line {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BRepBlend_Line {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBRepBlendLine_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::HandleBRepBlendLine_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<BRepBlend_Line> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBRepBlendLine_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKFillet::HandleBRepBlendLine_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4203,11 +4658,11 @@ impl HandleBRepBlendLine {
 /// and a restriction on a surface.
 /// Such a point is contains geometrical information (see
 /// the Value method) and logical information.
-pub use crate::ffi::BRepBlend_PointOnRst as PointOnRst;
+pub use crate::ffi_types::BRepBlend_PointOnRst as PointOnRst;
 
 unsafe impl crate::CppDeletable for PointOnRst {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_PointOnRst_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_destructor(ptr);
     }
 }
 
@@ -4216,7 +4671,9 @@ impl PointOnRst {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_PointOnRst_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_ctor(),
+            ))
         }
     }
 
@@ -4225,17 +4682,13 @@ impl PointOnRst {
     /// with the transition TLine on the walking line, and
     /// TArc on the arc A.
     pub fn new_handleadaptor2dcurve2d_real_transition2(
-        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
         Param: f64,
         TLine: &crate::int_surf::Transition,
         TArc: &crate::int_surf::Transition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepBlend_PointOnRst_ctor_handleadaptor2dcurve2d_real_transition2(
-                    A, Param, TLine, TArc,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_ctor_handleadaptor2dcurve2d_real_transition2(A, Param, TLine, TArc)))
         }
     }
 
@@ -4244,22 +4697,30 @@ impl PointOnRst {
     /// A, at parameter Param.
     pub fn set_arc(
         &mut self,
-        A: &crate::ffi::HandleAdaptor2dCurve2d,
+        A: &crate::ffi_types::HandleAdaptor2dCurve2d,
         Param: f64,
         TLine: &crate::int_surf::Transition,
         TArc: &crate::int_surf::Transition,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_PointOnRst_set_arc(self as *mut Self, A, Param, TLine, TArc)
+            crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_set_arc(
+                self as *mut Self,
+                A,
+                Param,
+                TLine,
+                TArc,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_PointOnRst.hxx`:52 - `BRepBlend_PointOnRst::Arc()`
     /// Returns the arc of restriction containing the
     /// vertex.
-    pub fn arc(&self) -> &crate::ffi::HandleAdaptor2dCurve2d {
+    pub fn arc(&self) -> &crate::ffi_types::HandleAdaptor2dCurve2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_PointOnRst_arc(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_arc(
+                self as *const Self,
+            )))
         }
     }
 
@@ -4268,9 +4729,11 @@ impl PointOnRst {
     /// line on surface.
     pub fn transition_on_line(&self) -> &crate::int_surf::Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_PointOnRst_transition_on_line(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_transition_on_line(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4279,9 +4742,11 @@ impl PointOnRst {
     /// returned by Arc().
     pub fn transition_on_arc(&self) -> &crate::int_surf::Transition {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_PointOnRst_transition_on_arc(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_transition_on_arc(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4290,7 +4755,7 @@ impl PointOnRst {
     /// arc returned by the method Arc().
     pub fn parameter_on_arc(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_PointOnRst_parameter_on_arc(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_PointOnRst_parameter_on_arc(self as *const Self)
         })
     }
 }
@@ -4302,25 +4767,25 @@ impl PointOnRst {
 /// **Source:** `BRepBlend_RstRstConstRad.hxx`:45 - `BRepBlend_RstRstConstRad`
 /// Copy of CSConstRad with a pcurve on surface
 /// as support.
-pub use crate::ffi::BRepBlend_RstRstConstRad as RstRstConstRad;
+pub use crate::ffi_types::BRepBlend_RstRstConstRad as RstRstConstRad;
 
 unsafe impl crate::CppDeletable for RstRstConstRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_RstRstConstRad_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_destructor(ptr);
     }
 }
 
 impl RstRstConstRad {
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:50 - `BRepBlend_RstRstConstRad::BRepBlend_RstRstConstRad()`
     pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
-        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
-        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf1, Rst1, Surf2, Rst2, CGuide)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf1, Rst1, Surf2, Rst2, CGuide)))
         }
     }
 
@@ -4328,7 +4793,7 @@ impl RstRstConstRad {
     /// Returns 2.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_nb_variables(self as *const Self)
         })
     }
 
@@ -4336,7 +4801,7 @@ impl RstRstConstRad {
     /// Returns 2.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_nb_equations(self as *const Self)
         })
     }
 
@@ -4345,9 +4810,13 @@ impl RstRstConstRad {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_value(self as *mut Self, X, F)
         })
     }
 
@@ -4358,11 +4827,15 @@ impl RstRstConstRad {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -4373,32 +4846,32 @@ impl RstRstConstRad {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:83 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
-        SurfRef1: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef1: &crate::ffi::HandleAdaptor2dCurve2d,
-        SurfRef2: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef1: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        SurfRef2: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef2: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:88 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_set_real(self as *mut Self, Param)
         })
     }
 
@@ -4409,14 +4882,22 @@ impl RstRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:96 - `BRepBlend_RstRstConstRad::GetTolerance()`
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -4427,18 +4908,26 @@ impl RstRstConstRad {
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:99 - `BRepBlend_RstRstConstRad::GetBounds()`
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:102 - `BRepBlend_RstRstConstRad::IsSolution()`
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -4447,25 +4936,31 @@ impl RstRstConstRad {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:109 - `BRepBlend_RstRstConstRad::PointOnRst1()`
     pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_point_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_point_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:111 - `BRepBlend_RstRstConstRad::PointOnRst2()`
     pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_point_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_point_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4473,9 +4968,11 @@ impl RstRstConstRad {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_pnt2d_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4484,9 +4981,11 @@ impl RstRstConstRad {
     /// surface.
     pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_pnt2d_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_pnt2d_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4494,7 +4993,9 @@ impl RstRstConstRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst1(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_parameter_on_rst1(
+                self as *const Self,
+            )
         })
     }
 
@@ -4502,50 +5003,62 @@ impl RstRstConstRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_parameter_on_rst2(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_parameter_on_rst2(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:126 - `BRepBlend_RstRstConstRad::IsTangencyPoint()`
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_is_tangency_point(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:128 - `BRepBlend_RstRstConstRad::TangentOnRst1()`
     pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_tangent_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:130 - `BRepBlend_RstRstConstRad::Tangent2dOnRst1()`
     pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_tangent2d_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:132 - `BRepBlend_RstRstConstRad::TangentOnRst2()`
     pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_tangent_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_tangent_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:134 - `BRepBlend_RstRstConstRad::Tangent2dOnRst2()`
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_tangent2d_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_tangent2d_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4554,14 +5067,14 @@ impl RstRstConstRad {
     /// specifique a la fonction.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NRst1: &mut crate::gp::Vec,
         TgRst1: &mut crate::gp::Vec,
         NRst2: &mut crate::gp::Vec,
         TgRst2: &mut crate::gp::Vec,
     ) -> crate::blend::DecrochStatus {
         crate::blend::DecrochStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_decroch(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_decroch(
                 self as *const Self,
                 Sol,
                 NRst1,
@@ -4576,7 +5089,11 @@ impl RstRstConstRad {
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:144 - `BRepBlend_RstRstConstRad::Set()`
     pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_set_real_int(
+                self as *mut Self,
+                Radius,
+                Choix,
+            )
         })
     }
 
@@ -4585,7 +5102,7 @@ impl RstRstConstRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_set_sectionshape(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_set_sectionshape(
                 self as *mut Self,
                 TypeSection.into(),
             )
@@ -4604,7 +5121,7 @@ impl RstRstConstRad {
         VdMed: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_center_circle_rst1_rst2(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_center_circle_rst1_rst2(
                 self as *const Self,
                 PtRst1,
                 PtRst2,
@@ -4626,7 +5143,7 @@ impl RstRstConstRad {
         C: &mut crate::gp::Circ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_section_real5_circ(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_section_real5_circ(
                 self as *mut Self,
                 Param,
                 U,
@@ -4642,7 +5159,7 @@ impl RstRstConstRad {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_is_rational(self as *const Self)
         })
     }
 
@@ -4650,16 +5167,21 @@ impl RstRstConstRad {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_section_size(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:173 - `BRepBlend_RstRstConstRad::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -4668,7 +5190,10 @@ impl RstRstConstRad {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -4677,9 +5202,17 @@ impl RstRstConstRad {
     /// of continuity <S>.
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -4692,7 +5225,7 @@ impl RstRstConstRad {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -4713,11 +5246,11 @@ impl RstRstConstRad {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -4729,16 +5262,16 @@ impl RstRstConstRad {
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:202 - `BRepBlend_RstRstConstRad::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:204 - `BRepBlend_RstRstConstRad::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_mults(self as *mut Self, TMults)
         })
     }
 
@@ -4747,15 +5280,15 @@ impl RstRstConstRad {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -4763,12 +5296,12 @@ impl RstRstConstRad {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -4779,25 +5312,25 @@ impl RstRstConstRad {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstConstRad.hxx`:234 - `BRepBlend_RstRstConstRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -4810,9 +5343,11 @@ impl RstRstConstRad {
     /// Upcast to Blend_RstRstFunction
     pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4820,7 +5355,9 @@ impl RstRstConstRad {
     pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_Blend_RstRstFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4828,9 +5365,11 @@ impl RstRstConstRad {
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4838,7 +5377,9 @@ impl RstRstConstRad {
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_RstRstConstRad_as_Blend_AppFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4848,11 +5389,7 @@ impl RstRstConstRad {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -4861,61 +5398,70 @@ impl RstRstConstRad {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_inherited_Pnt1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstConstRad_inherited_Pnt2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_inherited_Pnt2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstConstRad_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstConstRad_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -4927,26 +5473,26 @@ impl RstRstConstRad {
 /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:46 - `BRepBlend_RstRstEvolRad`
 /// Function  to approximate by AppSurface  for
 /// Edge/Edge  and  evolutif  radius
-pub use crate::ffi::BRepBlend_RstRstEvolRad as RstRstEvolRad;
+pub use crate::ffi_types::BRepBlend_RstRstEvolRad as RstRstEvolRad;
 
 unsafe impl crate::CppDeletable for RstRstEvolRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_RstRstEvolRad_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_destructor(ptr);
     }
 }
 
 impl RstRstEvolRad {
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:51 - `BRepBlend_RstRstEvolRad::BRepBlend_RstRstEvolRad()`
     pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
-        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
-        CGuide: &crate::ffi::HandleAdaptor3dCurve,
-        Evol: &crate::ffi::HandleLawFunction,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi_types::HandleAdaptor3dCurve,
+        Evol: &crate::ffi_types::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf1, Rst1, Surf2, Rst2, CGuide, Evol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf1, Rst1, Surf2, Rst2, CGuide, Evol)))
         }
     }
 
@@ -4954,7 +5500,7 @@ impl RstRstEvolRad {
     /// Returns 2.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_nb_variables(self as *const Self)
         })
     }
 
@@ -4962,7 +5508,7 @@ impl RstRstEvolRad {
     /// Returns 2.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_nb_equations(self as *const Self)
         })
     }
 
@@ -4971,9 +5517,13 @@ impl RstRstEvolRad {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_value(self as *mut Self, X, F)
         })
     }
 
@@ -4984,11 +5534,11 @@ impl RstRstEvolRad {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_derivatives(self as *mut Self, X, D)
         })
     }
 
@@ -4999,32 +5549,32 @@ impl RstRstEvolRad {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:85 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
-        SurfRef1: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef1: &crate::ffi::HandleAdaptor2dCurve2d,
-        SurfRef2: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef2: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef1: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        SurfRef2: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef2: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef1, RstRef1, SurfRef2, RstRef2)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:90 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_set_real(self as *mut Self, Param)
         })
     }
 
@@ -5035,14 +5585,22 @@ impl RstRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:98 - `BRepBlend_RstRstEvolRad::GetTolerance()`
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -5053,18 +5611,26 @@ impl RstRstEvolRad {
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:101 - `BRepBlend_RstRstEvolRad::GetBounds()`
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:104 - `BRepBlend_RstRstEvolRad::IsSolution()`
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -5073,25 +5639,31 @@ impl RstRstEvolRad {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:111 - `BRepBlend_RstRstEvolRad::PointOnRst1()`
     pub fn point_on_rst1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_point_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:113 - `BRepBlend_RstRstEvolRad::PointOnRst2()`
     pub fn point_on_rst2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_point_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_point_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5099,9 +5671,11 @@ impl RstRstEvolRad {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_rst1(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_pnt2d_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5110,9 +5684,11 @@ impl RstRstEvolRad {
     /// surface.
     pub fn pnt2d_on_rst2(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_pnt2d_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_pnt2d_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5120,7 +5696,9 @@ impl RstRstEvolRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst1(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst1(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_parameter_on_rst1(
+                self as *const Self,
+            )
         })
     }
 
@@ -5128,50 +5706,62 @@ impl RstRstEvolRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst2(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_parameter_on_rst2(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_parameter_on_rst2(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:128 - `BRepBlend_RstRstEvolRad::IsTangencyPoint()`
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_is_tangency_point(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:130 - `BRepBlend_RstRstEvolRad::TangentOnRst1()`
     pub fn tangent_on_rst1(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_tangent_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:132 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst1()`
     pub fn tangent2d_on_rst1(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_tangent2d_on_rst1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:134 - `BRepBlend_RstRstEvolRad::TangentOnRst2()`
     pub fn tangent_on_rst2(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_tangent_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_tangent_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:136 - `BRepBlend_RstRstEvolRad::Tangent2dOnRst2()`
     pub fn tangent2d_on_rst2(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_tangent2d_on_rst2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_tangent2d_on_rst2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5180,14 +5770,14 @@ impl RstRstEvolRad {
     /// specific to the function.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NRst1: &mut crate::gp::Vec,
         TgRst1: &mut crate::gp::Vec,
         NRst2: &mut crate::gp::Vec,
         TgRst2: &mut crate::gp::Vec,
     ) -> crate::blend::DecrochStatus {
         crate::blend::DecrochStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_decroch(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_decroch(
                 self as *const Self,
                 Sol,
                 NRst1,
@@ -5202,7 +5792,7 @@ impl RstRstEvolRad {
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:146 - `BRepBlend_RstRstEvolRad::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_set_int(self as *mut Self, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_set_int(self as *mut Self, Choix)
         })
     }
 
@@ -5211,7 +5801,7 @@ impl RstRstEvolRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_set_sectionshape(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_set_sectionshape(
                 self as *mut Self,
                 TypeSection.into(),
             )
@@ -5230,7 +5820,7 @@ impl RstRstEvolRad {
         VdMed: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_center_circle_rst1_rst2(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_center_circle_rst1_rst2(
                 self as *const Self,
                 PtRst1,
                 PtRst2,
@@ -5252,7 +5842,7 @@ impl RstRstEvolRad {
         C: &mut crate::gp::Circ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_section_real5_circ(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_section_real5_circ(
                 self as *mut Self,
                 Param,
                 U,
@@ -5268,7 +5858,7 @@ impl RstRstEvolRad {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_is_rational(self as *const Self)
         })
     }
 
@@ -5276,16 +5866,21 @@ impl RstRstEvolRad {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_section_size(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:175 - `BRepBlend_RstRstEvolRad::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -5294,7 +5889,10 @@ impl RstRstEvolRad {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -5303,9 +5901,17 @@ impl RstRstEvolRad {
     /// of continuity <S>.
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -5318,7 +5924,7 @@ impl RstRstEvolRad {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -5339,11 +5945,11 @@ impl RstRstEvolRad {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -5355,16 +5961,16 @@ impl RstRstEvolRad {
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:204 - `BRepBlend_RstRstEvolRad::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:206 - `BRepBlend_RstRstEvolRad::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_mults(self as *mut Self, TMults)
         })
     }
 
@@ -5373,15 +5979,15 @@ impl RstRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -5389,18 +5995,12 @@ impl RstRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
-                self as *mut Self,
-                P,
-                Poles,
-                Poles2d,
-                Weigths,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
@@ -5411,25 +6011,25 @@ impl RstRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstEvolRad.hxx`:236 - `BRepBlend_RstRstEvolRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -5442,9 +6042,11 @@ impl RstRstEvolRad {
     /// Upcast to Blend_RstRstFunction
     pub fn as_blend_rst_rst_function(&self) -> &crate::blend::RstRstFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5452,7 +6054,9 @@ impl RstRstEvolRad {
     pub fn as_blend_rst_rst_function_mut(&mut self) -> &mut crate::blend::RstRstFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_Blend_RstRstFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5460,18 +6064,22 @@ impl RstRstEvolRad {
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Blend_AppFunction (mutable)
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_as_Blend_AppFunction_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -5480,11 +6088,7 @@ impl RstRstEvolRad {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -5493,61 +6097,70 @@ impl RstRstEvolRad {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:112 - `Blend_RstRstFunction::Pnt1()`
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_inherited_Pnt1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_RstRstFunction.hxx`:115 - `Blend_RstRstFunction::Pnt2()`
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstEvolRad_inherited_Pnt2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_inherited_Pnt2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstEvolRad_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstEvolRad_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -5586,26 +6199,26 @@ impl RstRstEvolRad {
 /// guaranteed, the criteria of correct repartition of sections
 /// before smoothing are not respected. The resulting Line
 /// is f(t) oriented.
-pub use crate::ffi::BRepBlend_RstRstLineBuilder as RstRstLineBuilder;
+pub use crate::ffi_types::BRepBlend_RstRstLineBuilder as RstRstLineBuilder;
 
 unsafe impl crate::CppDeletable for RstRstLineBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_RstRstLineBuilder_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_destructor(ptr);
     }
 }
 
 impl RstRstLineBuilder {
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:70 - `BRepBlend_RstRstLineBuilder::BRepBlend_RstRstLineBuilder()`
     pub fn new_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        Rst1: &crate::ffi::HandleAdaptor2dCurve2d,
-        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
-        Rst2: &crate::ffi::HandleAdaptor2dCurve2d,
-        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst1: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst2: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_RstRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Rst1, Domain1, Surf2, Rst2, Domain2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Rst1, Domain1, Surf2, Rst2, Domain2)))
         }
     }
 
@@ -5622,12 +6235,12 @@ impl RstRstLineBuilder {
         MaxStep: f64,
         Tol3d: f64,
         TolGuide: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Fleche: f64,
         Appro: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_perform(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_perform(
                 self as *mut Self,
                 Func,
                 Finv1,
@@ -5656,7 +6269,7 @@ impl RstRstLineBuilder {
         FinvP2: &mut crate::blend::CurvPointFuncInv,
         Pdep: f64,
         Pmax: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Tol3d: f64,
         TolGuide: f64,
         RecRst1: bool,
@@ -5664,10 +6277,10 @@ impl RstRstLineBuilder {
         RecRst2: bool,
         RecP2: bool,
         Psol: &mut f64,
-        ParSol: &mut crate::ffi::math_Vector,
+        ParSol: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_perform_first_section(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_perform_first_section(
                 self as *mut Self,
                 Func,
                 Finv1,
@@ -5700,7 +6313,7 @@ impl RstRstLineBuilder {
         Pmin: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_complete(
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_complete(
                 self as *mut Self,
                 Func,
                 Finv1,
@@ -5715,14 +6328,14 @@ impl RstRstLineBuilder {
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:115 - `BRepBlend_RstRstLineBuilder::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_is_done(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:117 - `BRepBlend_RstRstLineBuilder::Line()`
-    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+    pub fn line(&self) -> &crate::ffi_types::HandleBRepBlendLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_RstRstLineBuilder_line(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_line(
                 self as *const Self,
             )))
         }
@@ -5731,28 +6344,36 @@ impl RstRstLineBuilder {
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:119 - `BRepBlend_RstRstLineBuilder::Decroch1Start()`
     pub fn decroch1_start(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_start(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_decroch1_start(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:121 - `BRepBlend_RstRstLineBuilder::Decroch1End()`
     pub fn decroch1_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_decroch1_end(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_decroch1_end(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:123 - `BRepBlend_RstRstLineBuilder::Decroch2Start()`
     pub fn decroch2_start(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_start(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_decroch2_start(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_RstRstLineBuilder.hxx`:125 - `BRepBlend_RstRstLineBuilder::Decroch2End()`
     pub fn decroch2_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_RstRstLineBuilder_decroch2_end(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_RstRstLineBuilder_decroch2_end(
+                self as *const Self,
+            )
         })
     }
 }
@@ -5773,30 +6394,34 @@ impl RstRstLineBuilder {
 /// parameter on the guide line, wcurv is the parameter on
 /// the curve, wrst is the parameter on the restriction on
 /// the surface.
-pub use crate::ffi::BRepBlend_SurfCurvConstRadInv as SurfCurvConstRadInv;
+pub use crate::ffi_types::BRepBlend_SurfCurvConstRadInv as SurfCurvConstRadInv;
 
 unsafe impl crate::CppDeletable for SurfCurvConstRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfCurvConstRadInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_destructor(ptr);
     }
 }
 
 impl SurfCurvConstRadInv {
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:42 - `BRepBlend_SurfCurvConstRadInv::BRepBlend_SurfCurvConstRadInv()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve2(
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor3dCurve,
-        Cg: &crate::ffi::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        Cg: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfCurvConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(S, C, Cg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2(S, C, Cg)))
         }
     }
 
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:46 - `BRepBlend_SurfCurvConstRadInv::Set()`
     pub fn set_real_int(&mut self, R: f64, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_set_real_int(self as *mut Self, R, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_set_real_int(
+                self as *mut Self,
+                R,
+                Choix,
+            )
         })
     }
 
@@ -5804,7 +6429,9 @@ impl SurfCurvConstRadInv {
     /// returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -5813,9 +6440,13 @@ impl SurfCurvConstRadInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -5826,11 +6457,15 @@ impl SurfCurvConstRadInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -5841,20 +6476,25 @@ impl SurfCurvConstRadInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:70 - `BRepBlend_SurfCurvConstRadInv::Set()`
     /// Set the restriction on which a solution has to be found.
-    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
+    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi_types::HandleAdaptor2dCurve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_set_handleadaptor2dcurve2d(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_set_handleadaptor2dcurve2d(
                 self as *mut Self,
                 Rst,
             )
@@ -5865,9 +6505,9 @@ impl SurfCurvConstRadInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_get_tolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_get_tolerance(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -5882,11 +6522,11 @@ impl SurfCurvConstRadInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -5897,9 +6537,13 @@ impl SurfCurvConstRadInv {
     /// **Source:** `BRepBlend_SurfCurvConstRadInv.hxx`:85 - `BRepBlend_SurfCurvConstRadInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -5907,7 +6551,7 @@ impl SurfCurvConstRadInv {
     pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv(
                     self as *const Self,
                 ),
             )
@@ -5917,11 +6561,7 @@ impl SurfCurvConstRadInv {
     /// Upcast to Blend_SurfCurvFuncInv (mutable)
     pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_Blend_SurfCurvFuncInv_mut(self as *mut Self))
         }
     }
 
@@ -5930,11 +6570,7 @@ impl SurfCurvConstRadInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -5943,20 +6579,18 @@ impl SurfCurvConstRadInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5964,7 +6598,7 @@ impl SurfCurvConstRadInv {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -5974,14 +6608,18 @@ impl SurfCurvConstRadInv {
     /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvConstRadInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvConstRadInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -6002,31 +6640,34 @@ impl SurfCurvConstRadInv {
 /// parameter on the guide line, wcurv is the parameter on
 /// the curve, wrst is the parameter on the restriction on
 /// the surface.
-pub use crate::ffi::BRepBlend_SurfCurvEvolRadInv as SurfCurvEvolRadInv;
+pub use crate::ffi_types::BRepBlend_SurfCurvEvolRadInv as SurfCurvEvolRadInv;
 
 unsafe impl crate::CppDeletable for SurfCurvEvolRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfCurvEvolRadInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_destructor(ptr);
     }
 }
 
 impl SurfCurvEvolRadInv {
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:43 - `BRepBlend_SurfCurvEvolRadInv::BRepBlend_SurfCurvEvolRadInv()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor3dCurve,
-        Cg: &crate::ffi::HandleAdaptor3dCurve,
-        Evol: &crate::ffi::HandleLawFunction,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        Cg: &crate::ffi_types::HandleAdaptor3dCurve,
+        Evol: &crate::ffi_types::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfCurvEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(S, C, Cg, Evol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve2_handlelawfunction(S, C, Cg, Evol)))
         }
     }
 
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:48 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_int(self as *mut Self, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_set_int(
+                self as *mut Self,
+                Choix,
+            )
         })
     }
 
@@ -6034,7 +6675,9 @@ impl SurfCurvEvolRadInv {
     /// returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -6043,9 +6686,13 @@ impl SurfCurvEvolRadInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -6056,11 +6703,15 @@ impl SurfCurvEvolRadInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -6071,20 +6722,25 @@ impl SurfCurvEvolRadInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:72 - `BRepBlend_SurfCurvEvolRadInv::Set()`
     /// Set the restriction on which a solution has to be found.
-    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi::HandleAdaptor2dCurve2d) {
+    pub fn set_handleadaptor2dcurve2d(&mut self, Rst: &crate::ffi_types::HandleAdaptor2dCurve2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_set_handleadaptor2dcurve2d(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_set_handleadaptor2dcurve2d(
                 self as *mut Self,
                 Rst,
             )
@@ -6095,9 +6751,9 @@ impl SurfCurvEvolRadInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_tolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_get_tolerance(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -6112,11 +6768,11 @@ impl SurfCurvEvolRadInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -6127,9 +6783,13 @@ impl SurfCurvEvolRadInv {
     /// **Source:** `BRepBlend_SurfCurvEvolRadInv.hxx`:87 - `BRepBlend_SurfCurvEvolRadInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -6137,7 +6797,7 @@ impl SurfCurvEvolRadInv {
     pub fn as_blend_surf_curv_func_inv(&self) -> &crate::blend::SurfCurvFuncInv {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv(
                     self as *const Self,
                 ),
             )
@@ -6147,11 +6807,7 @@ impl SurfCurvEvolRadInv {
     /// Upcast to Blend_SurfCurvFuncInv (mutable)
     pub fn as_blend_surf_curv_func_inv_mut(&mut self) -> &mut crate::blend::SurfCurvFuncInv {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_Blend_SurfCurvFuncInv_mut(self as *mut Self))
         }
     }
 
@@ -6160,11 +6816,7 @@ impl SurfCurvEvolRadInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -6173,20 +6825,18 @@ impl SurfCurvEvolRadInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6194,7 +6844,9 @@ impl SurfCurvEvolRadInv {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6202,14 +6854,18 @@ impl SurfCurvEvolRadInv {
     /// Inherited: **Source:** `Blend_SurfCurvFuncInv.hxx`:46 - `Blend_SurfCurvFuncInv::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfCurvEvolRadInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfCurvEvolRadInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -6228,29 +6884,33 @@ impl SurfCurvEvolRadInv {
 /// coordinates w, U,  V where w is  the parameter  on the
 /// guide line, U,V   are the parametric coordinates of  a
 /// point on the partner surface.
-pub use crate::ffi::BRepBlend_SurfPointConstRadInv as SurfPointConstRadInv;
+pub use crate::ffi_types::BRepBlend_SurfPointConstRadInv as SurfPointConstRadInv;
 
 unsafe impl crate::CppDeletable for SurfPointConstRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfPointConstRadInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_destructor(ptr);
     }
 }
 
 impl SurfPointConstRadInv {
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:41 - `BRepBlend_SurfPointConstRadInv::BRepBlend_SurfPointConstRadInv()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve(
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor3dCurve,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfPointConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve(S, C)))
         }
     }
 
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:44 - `BRepBlend_SurfPointConstRadInv::Set()`
     pub fn set_real_int(&mut self, R: f64, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_set_real_int(self as *mut Self, R, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_set_real_int(
+                self as *mut Self,
+                R,
+                Choix,
+            )
         })
     }
 
@@ -6258,7 +6918,9 @@ impl SurfPointConstRadInv {
     /// returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -6267,9 +6929,17 @@ impl SurfPointConstRadInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -6280,11 +6950,15 @@ impl SurfPointConstRadInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -6295,12 +6969,17 @@ impl SurfPointConstRadInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
@@ -6308,7 +6987,7 @@ impl SurfPointConstRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_set_pnt(self as *mut Self, P)
         })
     }
 
@@ -6316,9 +6995,9 @@ impl SurfPointConstRadInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_get_tolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_get_tolerance(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -6333,11 +7012,11 @@ impl SurfPointConstRadInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -6348,31 +7027,27 @@ impl SurfPointConstRadInv {
     /// **Source:** `BRepBlend_SurfPointConstRadInv.hxx`:83 - `BRepBlend_SurfPointConstRadInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
     /// Upcast to Blend_SurfPointFuncInv
     pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv(self as *const Self))
         }
     }
 
     /// Upcast to Blend_SurfPointFuncInv (mutable)
     pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_Blend_SurfPointFuncInv_mut(self as *mut Self))
         }
     }
 
@@ -6381,11 +7056,7 @@ impl SurfPointConstRadInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -6394,20 +7065,18 @@ impl SurfPointConstRadInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6415,7 +7084,7 @@ impl SurfPointConstRadInv {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -6425,14 +7094,18 @@ impl SurfPointConstRadInv {
     /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointConstRadInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointConstRadInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -6451,30 +7124,33 @@ impl SurfPointConstRadInv {
 /// coordinates w, U,  V where w is  the parameter  on the
 /// guide line, U,V   are the parametric coordinates of  a
 /// point on the partner surface.
-pub use crate::ffi::BRepBlend_SurfPointEvolRadInv as SurfPointEvolRadInv;
+pub use crate::ffi_types::BRepBlend_SurfPointEvolRadInv as SurfPointEvolRadInv;
 
 unsafe impl crate::CppDeletable for SurfPointEvolRadInv {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfPointEvolRadInv_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_destructor(ptr);
     }
 }
 
 impl SurfPointEvolRadInv {
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:42 - `BRepBlend_SurfPointEvolRadInv::BRepBlend_SurfPointEvolRadInv()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(
-        S: &crate::ffi::HandleAdaptor3dSurface,
-        C: &crate::ffi::HandleAdaptor3dCurve,
-        Evol: &crate::ffi::HandleLawFunction,
+        S: &crate::ffi_types::HandleAdaptor3dSurface,
+        C: &crate::ffi_types::HandleAdaptor3dCurve,
+        Evol: &crate::ffi_types::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfPointEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(S, C, Evol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_ctor_handleadaptor3dsurface_handleadaptor3dcurve_handlelawfunction(S, C, Evol)))
         }
     }
 
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:46 - `BRepBlend_SurfPointEvolRadInv::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_set_int(self as *mut Self, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_set_int(
+                self as *mut Self,
+                Choix,
+            )
         })
     }
 
@@ -6482,7 +7158,9 @@ impl SurfPointEvolRadInv {
     /// returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -6491,9 +7169,13 @@ impl SurfPointEvolRadInv {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_value(self as *mut Self, X, F)
         })
     }
 
@@ -6504,11 +7186,15 @@ impl SurfPointEvolRadInv {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -6519,12 +7205,17 @@ impl SurfPointEvolRadInv {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_values(
+                self as *mut Self,
+                X,
+                F,
+                D,
+            )
         })
     }
 
@@ -6532,7 +7223,7 @@ impl SurfPointEvolRadInv {
     /// Set the Point on which a solution has to be found.
     pub fn set_pnt(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_set_pnt(self as *mut Self, P)
         })
     }
 
@@ -6540,9 +7231,9 @@ impl SurfPointEvolRadInv {
     /// Returns in the vector Tolerance the parametric tolerance
     /// for each of the 3 variables;
     /// Tol is the tolerance used in 3d space.
-    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance(&self, Tolerance: &mut crate::ffi_types::math_Vector, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_get_tolerance(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_get_tolerance(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -6557,11 +7248,11 @@ impl SurfPointEvolRadInv {
     /// for each of the 3 variables.
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -6572,9 +7263,13 @@ impl SurfPointEvolRadInv {
     /// **Source:** `BRepBlend_SurfPointEvolRadInv.hxx`:85 - `BRepBlend_SurfPointEvolRadInv::IsSolution()`
     /// Returns Standard_True if Sol is a zero of the function.
     /// Tol is the tolerance used in 3d space.
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -6582,7 +7277,7 @@ impl SurfPointEvolRadInv {
     pub fn as_blend_surf_point_func_inv(&self) -> &crate::blend::SurfPointFuncInv {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv(
                     self as *const Self,
                 ),
             )
@@ -6592,11 +7287,7 @@ impl SurfPointEvolRadInv {
     /// Upcast to Blend_SurfPointFuncInv (mutable)
     pub fn as_blend_surf_point_func_inv_mut(&mut self) -> &mut crate::blend::SurfPointFuncInv {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_Blend_SurfPointFuncInv_mut(self as *mut Self))
         }
     }
 
@@ -6605,11 +7296,7 @@ impl SurfPointEvolRadInv {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -6618,20 +7305,18 @@ impl SurfPointEvolRadInv {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6639,7 +7324,7 @@ impl SurfPointEvolRadInv {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_as_math_FunctionSet_mut(
                     self as *mut Self,
                 ),
             )
@@ -6649,14 +7334,18 @@ impl SurfPointEvolRadInv {
     /// Inherited: **Source:** `Blend_SurfPointFuncInv.hxx`:46 - `Blend_SurfPointFuncInv::NbVariables()`
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_inherited_NbVariables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_inherited_NbVariables(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfPointEvolRadInv_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfPointEvolRadInv_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -6668,24 +7357,24 @@ impl SurfPointEvolRadInv {
 /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:44 - `BRepBlend_SurfRstConstRad`
 /// Copy of CSConstRad with pcurve on surface
 /// as support.
-pub use crate::ffi::BRepBlend_SurfRstConstRad as SurfRstConstRad;
+pub use crate::ffi_types::BRepBlend_SurfRstConstRad as SurfRstConstRad;
 
 unsafe impl crate::CppDeletable for SurfRstConstRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfRstConstRad_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_destructor(ptr);
     }
 }
 
 impl SurfRstConstRad {
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:49 - `BRepBlend_SurfRstConstRad::BRepBlend_SurfRstConstRad()`
     pub fn new_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(
-        Surf: &crate::ffi::HandleAdaptor3dSurface,
-        SurfRst: &crate::ffi::HandleAdaptor3dSurface,
-        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
-        CGuide: &crate::ffi::HandleAdaptor3dCurve,
+        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        SurfRst: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf, SurfRst, Rst, CGuide)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve(Surf, SurfRst, Rst, CGuide)))
         }
     }
 
@@ -6693,7 +7382,7 @@ impl SurfRstConstRad {
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_nb_variables(self as *const Self)
         })
     }
 
@@ -6701,7 +7390,7 @@ impl SurfRstConstRad {
     /// Returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_nb_equations(self as *const Self)
         })
     }
 
@@ -6710,9 +7399,13 @@ impl SurfRstConstRad {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_value(self as *mut Self, X, F)
         })
     }
 
@@ -6723,11 +7416,15 @@ impl SurfRstConstRad {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -6738,34 +7435,30 @@ impl SurfRstConstRad {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:81 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
-        SurfRef: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
-                self as *mut Self,
-                SurfRef,
-                RstRef,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef, RstRef)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:84 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_set_real(self as *mut Self, Param)
         })
     }
 
@@ -6776,14 +7469,22 @@ impl SurfRstConstRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:92 - `BRepBlend_SurfRstConstRad::GetTolerance()`
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -6794,11 +7495,11 @@ impl SurfRstConstRad {
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:95 - `BRepBlend_SurfRstConstRad::GetBounds()`
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_bounds(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_bounds(
                 self as *const Self,
                 InfBound,
                 SupBound,
@@ -6807,9 +7508,13 @@ impl SurfRstConstRad {
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:98 - `BRepBlend_SurfRstConstRad::IsSolution()`
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -6818,25 +7523,31 @@ impl SurfRstConstRad {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:105 - `BRepBlend_SurfRstConstRad::PointOnS()`
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_point_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_point_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:107 - `BRepBlend_SurfRstConstRad::PointOnRst()`
     pub fn point_on_rst(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_point_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_point_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6844,9 +7555,11 @@ impl SurfRstConstRad {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_pnt2d_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6855,9 +7568,11 @@ impl SurfRstConstRad {
     /// surface.
     pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_pnt2d_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_pnt2d_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6865,50 +7580,62 @@ impl SurfRstConstRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_parameter_on_rst(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_parameter_on_rst(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:119 - `BRepBlend_SurfRstConstRad::IsTangencyPoint()`
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_is_tangency_point(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:121 - `BRepBlend_SurfRstConstRad::TangentOnS()`
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_tangent_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:123 - `BRepBlend_SurfRstConstRad::Tangent2dOnS()`
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_tangent2d_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:125 - `BRepBlend_SurfRstConstRad::TangentOnRst()`
     pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_tangent_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_tangent_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:127 - `BRepBlend_SurfRstConstRad::Tangent2dOnRst()`
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_tangent2d_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_tangent2d_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6919,19 +7646,28 @@ impl SurfRstConstRad {
     /// but the values  calculated can  be  senseless.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NS: &mut crate::gp::Vec,
         TgS: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_decroch(self as *const Self, Sol, NS, TgS)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_decroch(
+                self as *const Self,
+                Sol,
+                NS,
+                TgS,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:137 - `BRepBlend_SurfRstConstRad::Set()`
     pub fn set_real_int(&mut self, Radius: f64, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_set_real_int(self as *mut Self, Radius, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_set_real_int(
+                self as *mut Self,
+                Radius,
+                Choix,
+            )
         })
     }
 
@@ -6940,7 +7676,7 @@ impl SurfRstConstRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_set_sectionshape(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_set_sectionshape(
                 self as *mut Self,
                 TypeSection.into(),
             )
@@ -6959,7 +7695,7 @@ impl SurfRstConstRad {
         C: &mut crate::gp::Circ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_section_real6_circ(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_section_real6_circ(
                 self as *mut Self,
                 Param,
                 U,
@@ -6976,7 +7712,7 @@ impl SurfRstConstRad {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_is_rational(self as *const Self)
         })
     }
 
@@ -6984,16 +7720,21 @@ impl SurfRstConstRad {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_section_size(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:159 - `BRepBlend_SurfRstConstRad::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -7002,7 +7743,10 @@ impl SurfRstConstRad {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -7011,9 +7755,17 @@ impl SurfRstConstRad {
     /// of continuity <S>.
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -7026,7 +7778,7 @@ impl SurfRstConstRad {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -7047,11 +7799,11 @@ impl SurfRstConstRad {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -7063,16 +7815,16 @@ impl SurfRstConstRad {
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:188 - `BRepBlend_SurfRstConstRad::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:190 - `BRepBlend_SurfRstConstRad::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_mults(self as *mut Self, TMults)
         })
     }
 
@@ -7081,15 +7833,15 @@ impl SurfRstConstRad {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -7100,18 +7852,18 @@ impl SurfRstConstRad {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -7119,19 +7871,19 @@ impl SurfRstConstRad {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstConstRad.hxx`:220 - `BRepBlend_SurfRstConstRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -7144,9 +7896,11 @@ impl SurfRstConstRad {
     /// Upcast to Blend_SurfRstFunction
     pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7154,7 +7908,7 @@ impl SurfRstConstRad {
     pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_Blend_SurfRstFunction_mut(
                     self as *mut Self,
                 ),
             )
@@ -7164,9 +7918,11 @@ impl SurfRstConstRad {
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7174,7 +7930,9 @@ impl SurfRstConstRad {
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstConstRad_as_Blend_AppFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7184,11 +7942,7 @@ impl SurfRstConstRad {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -7197,20 +7951,18 @@ impl SurfRstConstRad {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7218,7 +7970,9 @@ impl SurfRstConstRad {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7226,32 +7980,41 @@ impl SurfRstConstRad {
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_inherited_Pnt1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstConstRad_inherited_Pnt2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_inherited_Pnt2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstConstRad_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstConstRad_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -7263,25 +8026,25 @@ impl SurfRstConstRad {
 /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:45 - `BRepBlend_SurfRstEvolRad`
 /// Function  to approximate by AppSurface  for
 /// Edge/Face  and  evolutif  radius
-pub use crate::ffi::BRepBlend_SurfRstEvolRad as SurfRstEvolRad;
+pub use crate::ffi_types::BRepBlend_SurfRstEvolRad as SurfRstEvolRad;
 
 unsafe impl crate::CppDeletable for SurfRstEvolRad {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfRstEvolRad_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_destructor(ptr);
     }
 }
 
 impl SurfRstEvolRad {
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:50 - `BRepBlend_SurfRstEvolRad::BRepBlend_SurfRstEvolRad()`
     pub fn new_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(
-        Surf: &crate::ffi::HandleAdaptor3dSurface,
-        SurfRst: &crate::ffi::HandleAdaptor3dSurface,
-        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
-        CGuide: &crate::ffi::HandleAdaptor3dCurve,
-        Evol: &crate::ffi::HandleLawFunction,
+        Surf: &crate::ffi_types::HandleAdaptor3dSurface,
+        SurfRst: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        CGuide: &crate::ffi_types::HandleAdaptor3dCurve,
+        Evol: &crate::ffi_types::HandleLawFunction,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf, SurfRst, Rst, CGuide, Evol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_ctor_handleadaptor3dsurface2_handleadaptor2dcurve2d_handleadaptor3dcurve_handlelawfunction(Surf, SurfRst, Rst, CGuide, Evol)))
         }
     }
 
@@ -7289,7 +8052,7 @@ impl SurfRstEvolRad {
     /// Returns 3.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_nb_variables(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_nb_variables(self as *const Self)
         })
     }
 
@@ -7297,7 +8060,7 @@ impl SurfRstEvolRad {
     /// Returns 3.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_nb_equations(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_nb_equations(self as *const Self)
         })
     }
 
@@ -7306,9 +8069,13 @@ impl SurfRstEvolRad {
     /// variable <X>.
     /// Returns True if the computation was done successfully,
     /// False otherwise.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_value(self as *mut Self, X, F)
         })
     }
 
@@ -7319,11 +8086,15 @@ impl SurfRstEvolRad {
     /// False otherwise.
     pub fn derivatives(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_derivatives(self as *mut Self, X, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_derivatives(
+                self as *mut Self,
+                X,
+                D,
+            )
         })
     }
 
@@ -7334,34 +8105,30 @@ impl SurfRstEvolRad {
     /// False otherwise.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        F: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
         D: &mut crate::math::Matrix,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_values(self as *mut Self, X, F, D)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_values(self as *mut Self, X, F, D)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:83 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_handleadaptor3dsurface_handleadaptor2dcurve2d(
         &mut self,
-        SurfRef: &crate::ffi::HandleAdaptor3dSurface,
-        RstRef: &crate::ffi::HandleAdaptor2dCurve2d,
+        SurfRef: &crate::ffi_types::HandleAdaptor3dSurface,
+        RstRef: &crate::ffi_types::HandleAdaptor2dCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(
-                self as *mut Self,
-                SurfRef,
-                RstRef,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_set_handleadaptor3dsurface_handleadaptor2dcurve2d(self as *mut Self, SurfRef, RstRef)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:86 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_real(&mut self, Param: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_set_real(self as *mut Self, Param)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_set_real(self as *mut Self, Param)
         })
     }
 
@@ -7372,14 +8139,22 @@ impl SurfRstEvolRad {
     /// function is not Cn.
     pub fn set_real2(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_set_real2(self as *mut Self, First, Last)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_set_real2(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:94 - `BRepBlend_SurfRstEvolRad::GetTolerance()`
-    pub fn get_tolerance_vector_real(&self, Tolerance: &mut crate::ffi::math_Vector, Tol: f64) {
+    pub fn get_tolerance_vector_real(
+        &self,
+        Tolerance: &mut crate::ffi_types::math_Vector,
+        Tol: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_vector_real(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_tolerance_vector_real(
                 self as *const Self,
                 Tolerance,
                 Tol,
@@ -7390,18 +8165,26 @@ impl SurfRstEvolRad {
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:97 - `BRepBlend_SurfRstEvolRad::GetBounds()`
     pub fn get_bounds(
         &self,
-        InfBound: &mut crate::ffi::math_Vector,
-        SupBound: &mut crate::ffi::math_Vector,
+        InfBound: &mut crate::ffi_types::math_Vector,
+        SupBound: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_bounds(self as *const Self, InfBound, SupBound)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_bounds(
+                self as *const Self,
+                InfBound,
+                SupBound,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:100 - `BRepBlend_SurfRstEvolRad::IsSolution()`
-    pub fn is_solution(&mut self, Sol: &crate::ffi::math_Vector, Tol: f64) -> bool {
+    pub fn is_solution(&mut self, Sol: &crate::ffi_types::math_Vector, Tol: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_is_solution(self as *mut Self, Sol, Tol)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_is_solution(
+                self as *mut Self,
+                Sol,
+                Tol,
+            )
         })
     }
 
@@ -7410,25 +8193,31 @@ impl SurfRstEvolRad {
     /// extremities of calculated sections.
     pub fn get_minimal_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_distance(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_minimal_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:107 - `BRepBlend_SurfRstEvolRad::PointOnS()`
     pub fn point_on_s(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_point_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_point_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:109 - `BRepBlend_SurfRstEvolRad::PointOnRst()`
     pub fn point_on_rst(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_point_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_point_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7436,9 +8225,11 @@ impl SurfRstEvolRad {
     /// Returns U,V coordinates of the point on the surface.
     pub fn pnt2d_on_s(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_pnt2d_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7447,9 +8238,11 @@ impl SurfRstEvolRad {
     /// surface.
     pub fn pnt2d_on_rst(&self) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_pnt2d_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_pnt2d_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7457,50 +8250,62 @@ impl SurfRstEvolRad {
     /// Returns parameter of the point on the curve.
     pub fn parameter_on_rst(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_parameter_on_rst(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_parameter_on_rst(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:121 - `BRepBlend_SurfRstEvolRad::IsTangencyPoint()`
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_is_tangency_point(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:123 - `BRepBlend_SurfRstEvolRad::TangentOnS()`
     pub fn tangent_on_s(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_tangent_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:125 - `BRepBlend_SurfRstEvolRad::Tangent2dOnS()`
     pub fn tangent2d_on_s(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_s(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_tangent2d_on_s(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:127 - `BRepBlend_SurfRstEvolRad::TangentOnRst()`
     pub fn tangent_on_rst(&self) -> &crate::gp::Vec {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_tangent_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_tangent_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:129 - `BRepBlend_SurfRstEvolRad::Tangent2dOnRst()`
     pub fn tangent2d_on_rst(&self) -> &crate::gp::Vec2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_tangent2d_on_rst(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_tangent2d_on_rst(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7509,19 +8314,24 @@ impl SurfRstEvolRad {
     /// specifique a la fonction.
     pub fn decroch(
         &self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         NS: &mut crate::gp::Vec,
         TgS: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_decroch(self as *const Self, Sol, NS, TgS)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_decroch(
+                self as *const Self,
+                Sol,
+                NS,
+                TgS,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:137 - `BRepBlend_SurfRstEvolRad::Set()`
     pub fn set_int(&mut self, Choix: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_set_int(self as *mut Self, Choix)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_set_int(self as *mut Self, Choix)
         })
     }
 
@@ -7530,7 +8340,7 @@ impl SurfRstEvolRad {
     /// approximations.
     pub fn set_sectionshape(&mut self, TypeSection: crate::blend_func::SectionShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_set_sectionshape(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_set_sectionshape(
                 self as *mut Self,
                 TypeSection.into(),
             )
@@ -7549,7 +8359,7 @@ impl SurfRstEvolRad {
         C: &mut crate::gp::Circ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_section_real6_circ(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_section_real6_circ(
                 self as *mut Self,
                 Param,
                 U,
@@ -7566,7 +8376,7 @@ impl SurfRstEvolRad {
     /// Returns  if the section is rational
     pub fn is_rational(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_is_rational(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_is_rational(self as *const Self)
         })
     }
 
@@ -7574,16 +8384,21 @@ impl SurfRstEvolRad {
     /// Returns the length of the maximum section
     pub fn get_section_size(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_section_size(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_section_size(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:159 - `BRepBlend_SurfRstEvolRad::GetMinimalWeight()`
     /// Compute the minimal value of weight for each poles
     /// of all sections.
-    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_minimal_weight(&self, Weigths: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_minimal_weight(self as *const Self, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_minimal_weight(
+                self as *const Self,
+                Weigths,
+            )
         })
     }
 
@@ -7592,7 +8407,10 @@ impl SurfRstEvolRad {
     /// <S>. May be one if Continuity(me) >= <S>
     pub fn nb_intervals(&self, S: crate::geom_abs::Shape) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_nb_intervals(self as *const Self, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_nb_intervals(
+                self as *const Self,
+                S.into(),
+            )
         })
     }
 
@@ -7601,9 +8419,17 @@ impl SurfRstEvolRad {
     /// of continuity <S>.
     /// The array must provide  enough room to  accommodate
     /// for the parameters. i.e. T.Length() > NbIntervals()
-    pub fn intervals(&self, T: &mut crate::ffi::TColStd_Array1OfReal, S: crate::geom_abs::Shape) {
+    pub fn intervals(
+        &self,
+        T: &mut crate::ffi_types::TColStd_Array1OfReal,
+        S: crate::geom_abs::Shape,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_intervals(self as *const Self, T, S.into())
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_intervals(
+                self as *const Self,
+                T,
+                S.into(),
+            )
         })
     }
 
@@ -7616,7 +8442,7 @@ impl SurfRstEvolRad {
         NbPoles2d: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_shape(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_shape(
                 self as *mut Self,
                 NbPoles,
                 NbKnots,
@@ -7637,11 +8463,11 @@ impl SurfRstEvolRad {
         BoundTol: f64,
         SurfTol: f64,
         AngleTol: f64,
-        Tol3d: &mut crate::ffi::math_Vector,
-        Tol1D: &mut crate::ffi::math_Vector,
+        Tol3d: &mut crate::ffi_types::math_Vector,
+        Tol1D: &mut crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_get_tolerance_real3_vector2(
                 self as *const Self,
                 BoundTol,
                 SurfTol,
@@ -7653,16 +8479,16 @@ impl SurfRstEvolRad {
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:188 - `BRepBlend_SurfRstEvolRad::Knots()`
-    pub fn knots(&mut self, TKnots: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn knots(&mut self, TKnots: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_knots(self as *mut Self, TKnots)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_knots(self as *mut Self, TKnots)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:190 - `BRepBlend_SurfRstEvolRad::Mults()`
-    pub fn mults(&mut self, TMults: &mut crate::ffi::TColStd_Array1OfInteger) {
+    pub fn mults(&mut self, TMults: &mut crate::ffi_types::TColStd_Array1OfInteger) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_mults(self as *mut Self, TMults)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_mults(self as *mut Self, TMults)
         })
     }
 
@@ -7671,15 +8497,15 @@ impl SurfRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec_array1ofpnt2d_array1ofvec2d_array1ofreal2(self as *mut Self, P, Poles, DPoles, Poles2d, DPoles2d, Weigths, DWeigths)
         })
     }
 
@@ -7690,18 +8516,18 @@ impl SurfRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        DPoles: &mut crate::ffi::TColgp_Array1OfVec,
-        D2Poles: &mut crate::ffi::TColgp_Array1OfVec,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        DPoles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        D2Poles2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
-        DWeigths: &mut crate::ffi::TColStd_Array1OfReal,
-        D2Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        DPoles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        D2Poles: &mut crate::ffi_types::TColgp_Array1OfVec,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        DPoles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        D2Poles2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        DWeigths: &mut crate::ffi_types::TColStd_Array1OfReal,
+        D2Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofvec2_array1ofpnt2d_array1ofvec2d2_array1ofreal3(self as *mut Self, P, Poles, DPoles, D2Poles, Poles2d, DPoles2d, D2Poles2d, Weigths, DWeigths, D2Weigths)
         })
     }
 
@@ -7709,19 +8535,19 @@ impl SurfRstEvolRad {
     pub fn section_point_array1ofpnt_array1ofpnt2d_array1ofreal(
         &mut self,
         P: &crate::blend::Point,
-        Poles: &mut crate::ffi::TColgp_Array1OfPnt,
-        Poles2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        Weigths: &mut crate::ffi::TColStd_Array1OfReal,
+        Poles: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        Poles2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        Weigths: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_section_point_array1ofpnt_array1ofpnt2d_array1ofreal(self as *mut Self, P, Poles, Poles2d, Weigths)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstEvolRad.hxx`:220 - `BRepBlend_SurfRstEvolRad::Resolution()`
     pub fn resolution(&self, IC2d: i32, Tol: f64, TolU: &mut f64, TolV: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_resolution(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_resolution(
                 self as *const Self,
                 IC2d,
                 Tol,
@@ -7734,9 +8560,11 @@ impl SurfRstEvolRad {
     /// Upcast to Blend_SurfRstFunction
     pub fn as_blend_surf_rst_function(&self) -> &crate::blend::SurfRstFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7744,7 +8572,7 @@ impl SurfRstEvolRad {
     pub fn as_blend_surf_rst_function_mut(&mut self) -> &mut crate::blend::SurfRstFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction_mut(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_Blend_SurfRstFunction_mut(
                     self as *mut Self,
                 ),
             )
@@ -7754,9 +8582,11 @@ impl SurfRstEvolRad {
     /// Upcast to Blend_AppFunction
     pub fn as_blend_app_function(&self) -> &crate::blend::AppFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7764,7 +8594,9 @@ impl SurfRstEvolRad {
     pub fn as_blend_app_function_mut(&mut self) -> &mut crate::blend::AppFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_Blend_AppFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7774,11 +8606,7 @@ impl SurfRstEvolRad {
         &self,
     ) -> &crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives(self as *const Self))
         }
     }
 
@@ -7787,61 +8615,70 @@ impl SurfRstEvolRad {
         &mut self,
     ) -> &mut crate::math::FunctionSetWithDerivatives {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_math_FunctionSetWithDerivatives_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to math_FunctionSet (mutable)
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:111 - `Blend_SurfRstFunction::Pnt1()`
     pub fn pnt1(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_inherited_Pnt1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_SurfRstFunction.hxx`:114 - `Blend_SurfRstFunction::Pnt2()`
     pub fn pnt2(&self) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Pnt2(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_inherited_Pnt2(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Blend_AppFunction.hxx`:195 - `Blend_AppFunction::Parameter()`
     pub fn parameter(&self, P: &crate::blend::Point) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_inherited_Parameter(self as *const Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_inherited_Parameter(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstEvolRad_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstEvolRad_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -7879,25 +8716,25 @@ impl SurfRstEvolRad {
 /// guaranteed, the criteria of correct repartition of sections
 /// before smoothing are not respected. The resulting Line
 /// is f(t) oriented.
-pub use crate::ffi::BRepBlend_SurfRstLineBuilder as SurfRstLineBuilder;
+pub use crate::ffi_types::BRepBlend_SurfRstLineBuilder as SurfRstLineBuilder;
 
 unsafe impl crate::CppDeletable for SurfRstLineBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_SurfRstLineBuilder_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_destructor(ptr);
     }
 }
 
 impl SurfRstLineBuilder {
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:70 - `BRepBlend_SurfRstLineBuilder::BRepBlend_SurfRstLineBuilder()`
     pub fn new_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
-        Rst: &crate::ffi::HandleAdaptor2dCurve2d,
-        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Rst: &crate::ffi_types::HandleAdaptor2dCurve2d,
+        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_SurfRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Domain1, Surf2, Rst, Domain2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_ctor_handleadaptor3dsurface_handleadaptor3dtopoltool_handleadaptor3dsurface_handleadaptor2dcurve2d_handleadaptor3dtopoltool(Surf1, Domain1, Surf2, Rst, Domain2)))
         }
     }
 
@@ -7914,12 +8751,12 @@ impl SurfRstLineBuilder {
         Tol3d: f64,
         Tol2d: f64,
         TolGuide: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Fleche: f64,
         Appro: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_perform(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_perform(
                 self as *mut Self,
                 Func,
                 Finv,
@@ -7947,7 +8784,7 @@ impl SurfRstLineBuilder {
         FinvC: &mut crate::blend::SurfCurvFuncInv,
         Pdep: f64,
         Pmax: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Tol3d: f64,
         Tol2d: f64,
         TolGuide: f64,
@@ -7955,10 +8792,10 @@ impl SurfRstLineBuilder {
         RecP: bool,
         RecS: bool,
         Psol: &mut f64,
-        ParSol: &mut crate::ffi::math_Vector,
+        ParSol: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_perform_first_section(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_perform_first_section(
                 self as *mut Self,
                 Func,
                 Finv,
@@ -7989,7 +8826,7 @@ impl SurfRstLineBuilder {
         Pmin: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_complete(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_complete(
                 self as *mut Self,
                 Func,
                 Finv,
@@ -8003,14 +8840,14 @@ impl SurfRstLineBuilder {
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:112 - `BRepBlend_SurfRstLineBuilder::ArcToRecadre()`
     pub fn arc_to_recadre(
         &mut self,
-        Sol: &crate::ffi::math_Vector,
+        Sol: &crate::ffi_types::math_Vector,
         PrevIndex: i32,
         pt2d: &mut crate::gp::Pnt2d,
         lastpt2d: &mut crate::gp::Pnt2d,
         ponarc: &mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_arc_to_recadre(
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_arc_to_recadre(
                 self as *mut Self,
                 Sol,
                 PrevIndex,
@@ -8024,14 +8861,14 @@ impl SurfRstLineBuilder {
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:118 - `BRepBlend_SurfRstLineBuilder::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_is_done(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:120 - `BRepBlend_SurfRstLineBuilder::Line()`
-    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
+    pub fn line(&self) -> &crate::ffi_types::HandleBRepBlendLine {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepBlend_SurfRstLineBuilder_line(
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_line(
                 self as *const Self,
             )))
         }
@@ -8040,14 +8877,18 @@ impl SurfRstLineBuilder {
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:122 - `BRepBlend_SurfRstLineBuilder::DecrochStart()`
     pub fn decroch_start(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_start(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_decroch_start(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `BRepBlend_SurfRstLineBuilder.hxx`:124 - `BRepBlend_SurfRstLineBuilder::DecrochEnd()`
     pub fn decroch_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_SurfRstLineBuilder_decroch_end(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_SurfRstLineBuilder_decroch_end(
+                self as *const Self,
+            )
         })
     }
 }
@@ -8057,25 +8898,25 @@ impl SurfRstLineBuilder {
 // ========================
 
 /// **Source:** `BRepBlend_Walking.hxx`:45 - `BRepBlend_Walking`
-pub use crate::ffi::BRepBlend_Walking as Walking;
+pub use crate::ffi_types::BRepBlend_Walking as Walking;
 
 unsafe impl crate::CppDeletable for Walking {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepBlend_Walking_destructor(ptr);
+        crate::ffi_extern_TKFillet::BRepBlend_Walking_destructor(ptr);
     }
 }
 
 impl Walking {
     /// **Source:** `BRepBlend_Walking.hxx`:50 - `BRepBlend_Walking::BRepBlend_Walking()`
     pub fn new_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(
-        Surf1: &crate::ffi::HandleAdaptor3dSurface,
-        Surf2: &crate::ffi::HandleAdaptor3dSurface,
-        Domain1: &crate::ffi::HandleAdaptor3dTopolTool,
-        Domain2: &crate::ffi::HandleAdaptor3dTopolTool,
-        HGuide: &crate::ffi::HandleChFiDSElSpine,
+        Surf1: &crate::ffi_types::HandleAdaptor3dSurface,
+        Surf2: &crate::ffi_types::HandleAdaptor3dSurface,
+        Domain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        Domain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        HGuide: &crate::ffi_types::HandleChFiDSElSpine,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepBlend_Walking_ctor_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(Surf1, Surf2, Domain1, Domain2, HGuide)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Walking_ctor_handleadaptor3dsurface2_handleadaptor3dtopoltool2_handlechfidselspine(Surf1, Surf2, Domain1, Domain2, HGuide)))
         }
     }
 
@@ -8083,11 +8924,11 @@ impl Walking {
     /// To define different domains for control and clipping.
     pub fn set_domains_to_recadre(
         &mut self,
-        RecDomain1: &crate::ffi::HandleAdaptor3dTopolTool,
-        RecDomain2: &crate::ffi::HandleAdaptor3dTopolTool,
+        RecDomain1: &crate::ffi_types::HandleAdaptor3dTopolTool,
+        RecDomain2: &crate::ffi_types::HandleAdaptor3dTopolTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_set_domains_to_recadre(
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_set_domains_to_recadre(
                 self as *mut Self,
                 RecDomain1,
                 RecDomain2,
@@ -8099,7 +8940,7 @@ impl Walking {
     /// To define singular points computed before walking.
     pub fn add_singular_point(&mut self, P: &crate::blend::Point) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_add_singular_point(self as *mut Self, P)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_add_singular_point(self as *mut Self, P)
         })
     }
 
@@ -8113,12 +8954,12 @@ impl Walking {
         MaxStep: f64,
         Tol3d: f64,
         TolGuide: f64,
-        Soldep: &crate::ffi::math_Vector,
+        Soldep: &crate::ffi_types::math_Vector,
         Fleche: f64,
         Appro: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_perform(
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_perform(
                 self as *mut Self,
                 F,
                 FInv,
@@ -8139,7 +8980,7 @@ impl Walking {
         &mut self,
         F: &mut crate::blend::Function,
         Pdep: f64,
-        ParDep: &mut crate::ffi::math_Vector,
+        ParDep: &mut crate::ffi_types::math_Vector,
         Tol3d: f64,
         TolGuide: f64,
         Pos1: &mut crate::top_abs::State,
@@ -8148,16 +8989,7 @@ impl Walking {
         let mut Pos1_i32_: i32 = (*Pos1).into();
         let mut Pos2_i32_: i32 = (*Pos2).into();
         let result_ = crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_perform_first_section_function_real_vector_real2_state2(
-                self as *mut Self,
-                F,
-                Pdep,
-                ParDep,
-                Tol3d,
-                TolGuide,
-                &mut Pos1_i32_,
-                &mut Pos2_i32_,
-            )
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_perform_first_section_function_real_vector_real2_state2(self as *mut Self, F, Pdep, ParDep, Tol3d, TolGuide, &mut Pos1_i32_, &mut Pos2_i32_)
         });
         *Pos1 = crate::top_abs::State::try_from(Pos1_i32_).unwrap();
         *Pos2 = crate::top_abs::State::try_from(Pos2_i32_).unwrap();
@@ -8171,16 +9003,16 @@ impl Walking {
         FInv: &mut crate::blend::FuncInv,
         Pdep: f64,
         Pmax: f64,
-        ParDep: &crate::ffi::math_Vector,
+        ParDep: &crate::ffi_types::math_Vector,
         Tol3d: f64,
         TolGuide: f64,
         RecOnS1: bool,
         RecOnS2: bool,
         Psol: &mut f64,
-        ParSol: &mut crate::ffi::math_Vector,
+        ParSol: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_perform_first_section_function_funcinv_real2_vector_real2_bool2_real_vector(self as *mut Self, F, FInv, Pdep, Pmax, ParDep, Tol3d, TolGuide, RecOnS1, RecOnS2, Psol, ParSol)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_perform_first_section_function_funcinv_real2_vector_real2_bool2_real_vector(self as *mut Self, F, FInv, Pdep, Pmax, ParDep, Tol3d, TolGuide, RecOnS1, RecOnS2, Psol, ParSol)
         })
     }
 
@@ -8192,7 +9024,7 @@ impl Walking {
         P: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_continu_function_funcinv_real(
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_continu_function_funcinv_real(
                 self as *mut Self,
                 F,
                 FInv,
@@ -8210,7 +9042,7 @@ impl Walking {
         OnS1: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_continu_function_funcinv_real_bool(
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_continu_function_funcinv_real_bool(
                 self as *mut Self,
                 F,
                 FInv,
@@ -8228,59 +9060,65 @@ impl Walking {
         Pmin: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_complete(self as *mut Self, F, FInv, Pmin)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_complete(self as *mut Self, F, FInv, Pmin)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:107 - `BRepBlend_Walking::ClassificationOnS1()`
     pub fn classification_on_s1(&mut self, C: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_classification_on_s1(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_classification_on_s1(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:109 - `BRepBlend_Walking::ClassificationOnS2()`
     pub fn classification_on_s2(&mut self, C: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_classification_on_s2(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_classification_on_s2(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:111 - `BRepBlend_Walking::Check2d()`
     pub fn check2d(&mut self, C: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_check2d(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_check2d(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:113 - `BRepBlend_Walking::Check()`
     pub fn check(&mut self, C: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepBlend_Walking_check(self as *mut Self, C)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_check(self as *mut Self, C)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:115 - `BRepBlend_Walking::TwistOnS1()`
     pub fn twist_on_s1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_twist_on_s1(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_twist_on_s1(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:117 - `BRepBlend_Walking::TwistOnS2()`
     pub fn twist_on_s2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepBlend_Walking_twist_on_s2(self as *const Self)
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_twist_on_s2(self as *const Self)
         })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:119 - `BRepBlend_Walking::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepBlend_Walking_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKFillet::BRepBlend_Walking_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepBlend_Walking.hxx`:121 - `BRepBlend_Walking::Line()`
-    pub fn line(&self) -> &crate::ffi::HandleBRepBlendLine {
-        unsafe { &*(crate::check_result(crate::ffi::BRepBlend_Walking_line(self as *const Self))) }
+    pub fn line(&self) -> &crate::ffi_types::HandleBRepBlendLine {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKFillet::BRepBlend_Walking_line(
+                self as *const Self,
+            )))
+        }
     }
 }

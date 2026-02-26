@@ -9,52 +9,47 @@
 /// **Source:** `BinMXCAFDoc.hxx`:32 - `BinMXCAFDoc::AddDrivers`
 /// Adds the attribute drivers to <theDriverTable>.
 pub fn add_drivers_handlebinmdfadrivertable_handlemessagemessenger_7(
-    theDriverTable: &crate::ffi::HandleBinMDFADriverTable,
-    theMsgDrv: &crate::ffi::HandleMessageMessenger,
+    theDriverTable: &crate::ffi_types::HandleBinMDFADriverTable,
+    theMsgDrv: &crate::ffi_types::HandleMessageMessenger,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::BinMXCAFDoc_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_7(
-            theDriverTable,
-            theMsgDrv,
-        )
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_add_drivers_handlebinmdfadrivertable_handlemessagemessenger_7(theDriverTable, theMsgDrv)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleBinMDFADriver, HandleStandardTransient};
+pub use crate::ffi_types::{HandleBinMDFADriver, HandleStandardTransient};
 
 // ========================
 // From BinMXCAFDoc_AssemblyItemRefDriver.hxx
 // ========================
 
 /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:33 - `BinMXCAFDoc_AssemblyItemRefDriver`
-pub use crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver as AssemblyItemRefDriver;
+pub use crate::ffi_types::BinMXCAFDoc_AssemblyItemRefDriver as AssemblyItemRefDriver;
 
 unsafe impl crate::CppDeletable for AssemblyItemRefDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_destructor(ptr);
     }
 }
 
 impl AssemblyItemRefDriver {
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:36 - `BinMXCAFDoc_AssemblyItemRefDriver::BinMXCAFDoc_AssemblyItemRefDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_ctor_handlemessagemessenger(
-                    theMsgDriver,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_ctor_handlemessagemessenger(theMsgDriver)))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:38 - `BinMXCAFDoc_AssemblyItemRefDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -63,32 +58,34 @@ impl AssemblyItemRefDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:45 - `BinMXCAFDoc_AssemblyItemRefDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -96,7 +93,7 @@ impl AssemblyItemRefDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -104,10 +101,11 @@ impl AssemblyItemRefDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_AssemblyItemRefDriver.hxx`:49 - `BinMXCAFDoc_AssemblyItemRefDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_get_type_descriptor(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -115,9 +113,295 @@ impl AssemblyItemRefDriver {
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_as_BinMDF_ADriver(
-                self as *const Self,
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver (mutable)
+    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_as_BinMDF_ADriver_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocAssemblyItemRefDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_to_handle(
+                    obj.into_raw(),
+                ),
             ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_MessageDriver(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IncrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_DecrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_AssemblyItemRefDriver_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleBinMXCAFDocAssemblyItemRefDriver;
+
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocAssemblyItemRefDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocAssemblyItemRefDriver_destructor(ptr);
+    }
+}
+
+impl HandleBinMXCAFDocAssemblyItemRefDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_AssemblyItemRefDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_AssemblyItemRefDriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocAssemblyItemRefDriver_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_AssemblyItemRefDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_AssemblyItemRefDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocAssemblyItemRefDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<BinMDF_ADriver>
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleBinMDFADriver(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From BinMXCAFDoc_CentroidDriver.hxx
+// ========================
+
+/// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:31 - `BinMXCAFDoc_CentroidDriver`
+pub use crate::ffi_types::BinMXCAFDoc_CentroidDriver as CentroidDriver;
+
+unsafe impl crate::CppDeletable for CentroidDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_destructor(ptr);
+    }
+}
+
+impl CentroidDriver {
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:35 - `BinMXCAFDoc_CentroidDriver::BinMXCAFDoc_CentroidDriver()`
+    pub fn new_handlemessagemessenger(
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:37 - `BinMXCAFDoc_CentroidDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_new_empty(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:39 - `BinMXCAFDoc_CentroidDriver::Paste()`
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
+        &self,
+        theSource: &crate::bin_obj_mgt::Persistent,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:44 - `BinMXCAFDoc_CentroidDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver
+    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -125,7 +409,7 @@ impl AssemblyItemRefDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_as_BinMDF_ADriver_mut(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_as_BinMDF_ADriver_mut(
                     self as *mut Self,
                 ),
             )
@@ -136,7 +420,7 @@ impl AssemblyItemRefDriver {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -147,7 +431,7 @@ impl AssemblyItemRefDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -157,19 +441,19 @@ impl AssemblyItemRefDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocCentroidDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_SourceType(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_SourceType(
                     self as *const Self,
                 ),
             ))
@@ -180,7 +464,7 @@ impl AssemblyItemRefDriver {
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_TypeName(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_TypeName(
                     self as *const Self,
                 ),
             ))
@@ -188,10 +472,10 @@ impl AssemblyItemRefDriver {
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -199,9 +483,9 @@ impl AssemblyItemRefDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -209,9 +493,9 @@ impl AssemblyItemRefDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IsKind(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -222,7 +506,9 @@ impl AssemblyItemRefDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -235,14 +521,16 @@ impl AssemblyItemRefDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -251,7 +539,7 @@ impl AssemblyItemRefDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -260,312 +548,47 @@ impl AssemblyItemRefDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver;
-
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocAssemblyItemRefDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver_destructor(ptr);
-    }
-}
-
-impl HandleBinMXCAFDocAssemblyItemRefDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_AssemblyItemRefDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver_get(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_CentroidDriver_inherited_Delete(
                 self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_AssemblyItemRefDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_AssemblyItemRefDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_AssemblyItemRefDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocAssemblyItemRefDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From BinMXCAFDoc_CentroidDriver.hxx
-// ========================
-
-/// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:31 - `BinMXCAFDoc_CentroidDriver`
-pub use crate::ffi::BinMXCAFDoc_CentroidDriver as CentroidDriver;
-
-unsafe impl crate::CppDeletable for CentroidDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_CentroidDriver_destructor(ptr);
-    }
-}
-
-impl CentroidDriver {
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:35 - `BinMXCAFDoc_CentroidDriver::BinMXCAFDoc_CentroidDriver()`
-    pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_CentroidDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:37 - `BinMXCAFDoc_CentroidDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_CentroidDriver_new_empty(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:39 - `BinMXCAFDoc_CentroidDriver::Paste()`
-    pub fn paste_persistent_handletdfattribute_rrelocationtable(
-        &self,
-        theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
-        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:44 - `BinMXCAFDoc_CentroidDriver::Paste()`
-    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
-        &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
-        theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_CentroidDriver_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `BinMXCAFDoc_CentroidDriver.hxx`:49 - `BinMXCAFDoc_CentroidDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver
-    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver (mutable)
-    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_CentroidDriver_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocCentroidDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_CentroidDriver_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_SourceType(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
-    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_TypeName(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_IsInstance(
-                self as *const Self,
-                theType,
             )
         })
     }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_CentroidDriver_inherited_Delete(self as *const Self)
-        })
-    }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocCentroidDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocCentroidDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocCentroidDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocCentroidDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocCentroidDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocCentroidDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_CentroidDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_CentroidDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_CentroidDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocCentroidDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocCentroidDriver_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_CentroidDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_CentroidDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_CentroidDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocCentroidDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocCentroidDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_CentroidDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocCentroidDriver_to_HandleBinMDFADriver(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocCentroidDriver_to_HandleBinMDFADriver(
                     self as *const Self,
                 ),
             ))
@@ -573,13 +596,11 @@ impl HandleBinMXCAFDocCentroidDriver {
     }
 
     /// Upcast Handle<BinMXCAFDoc_CentroidDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocCentroidDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocCentroidDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -589,31 +610,33 @@ impl HandleBinMXCAFDocCentroidDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:31 - `BinMXCAFDoc_ColorDriver`
-pub use crate::ffi::BinMXCAFDoc_ColorDriver as ColorDriver;
+pub use crate::ffi_types::BinMXCAFDoc_ColorDriver as ColorDriver;
 
 unsafe impl crate::CppDeletable for ColorDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_ColorDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_destructor(ptr);
     }
 }
 
 impl ColorDriver {
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:35 - `BinMXCAFDoc_ColorDriver::BinMXCAFDoc_ColorDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_ColorDriver_ctor_handlemessagemessenger(theMsgDriver),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
             ))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:37 - `BinMXCAFDoc_ColorDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_ColorDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_new_empty(self as *const Self),
             ))
         }
     }
@@ -622,37 +645,34 @@ impl ColorDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:44 - `BinMXCAFDoc_ColorDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -660,7 +680,7 @@ impl ColorDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_ColorDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -668,817 +688,22 @@ impl ColorDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_ColorDriver.hxx`:49 - `BinMXCAFDoc_ColorDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver (mutable)
-    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_ColorDriver_as_Standard_Transient_mut(self as *mut Self),
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
             )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocColorDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_ColorDriver_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_inherited_SourceType(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
-    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_inherited_TypeName(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_ColorDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_ColorDriver_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_ColorDriver_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleBinMXCAFDocColorDriver;
-
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocColorDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocColorDriver_destructor(ptr);
-    }
-}
-
-impl HandleBinMXCAFDocColorDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_ColorDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_ColorDriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocColorDriver_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_ColorDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_ColorDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocColorDriver_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocColorDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocColorDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From BinMXCAFDoc_DatumDriver.hxx
-// ========================
-
-/// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:31 - `BinMXCAFDoc_DatumDriver`
-pub use crate::ffi::BinMXCAFDoc_DatumDriver as DatumDriver;
-
-unsafe impl crate::CppDeletable for DatumDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_DatumDriver_destructor(ptr);
-    }
-}
-
-impl DatumDriver {
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:35 - `BinMXCAFDoc_DatumDriver::BinMXCAFDoc_DatumDriver()`
-    pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DatumDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:37 - `BinMXCAFDoc_DatumDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DatumDriver_new_empty(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:39 - `BinMXCAFDoc_DatumDriver::Paste()`
-    pub fn paste_persistent_handletdfattribute_rrelocationtable(
-        &self,
-        theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
-        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:44 - `BinMXCAFDoc_DatumDriver::Paste()`
-    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
-        &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
-        theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DatumDriver_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver
-    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver (mutable)
-    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_DatumDriver_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocDatumDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DatumDriver_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_inherited_SourceType(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
-    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_inherited_TypeName(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DatumDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_DatumDriver_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DatumDriver_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleBinMXCAFDocDatumDriver;
-
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocDatumDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocDatumDriver_destructor(ptr);
-    }
-}
-
-impl HandleBinMXCAFDocDatumDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_DatumDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_DatumDriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocDatumDriver_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_DatumDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_DatumDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocDatumDriver_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocDatumDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocDatumDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From BinMXCAFDoc_DimTolDriver.hxx
-// ========================
-
-/// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:31 - `BinMXCAFDoc_DimTolDriver`
-pub use crate::ffi::BinMXCAFDoc_DimTolDriver as DimTolDriver;
-
-unsafe impl crate::CppDeletable for DimTolDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_DimTolDriver_destructor(ptr);
-    }
-}
-
-impl DimTolDriver {
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:35 - `BinMXCAFDoc_DimTolDriver::BinMXCAFDoc_DimTolDriver()`
-    pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DimTolDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:37 - `BinMXCAFDoc_DimTolDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DimTolDriver_new_empty(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:39 - `BinMXCAFDoc_DimTolDriver::Paste()`
-    pub fn paste_persistent_handletdfattribute_rrelocationtable(
-        &self,
-        theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
-        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:44 - `BinMXCAFDoc_DimTolDriver::Paste()`
-    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
-        &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
-        theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DimTolDriver_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver
-    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver (mutable)
-    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_DimTolDriver_as_Standard_Transient_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocDimTolDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_DimTolDriver_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_SourceType(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
-    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_TypeName(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_IsInstance(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_IncrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_DecrementRefCounter(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_DimTolDriver_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleBinMXCAFDocDimTolDriver;
-
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocDimTolDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocDimTolDriver_destructor(ptr);
-    }
-}
-
-impl HandleBinMXCAFDocDimTolDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_DimTolDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_DimTolDriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocDimTolDriver_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_DimTolDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_DimTolDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocDimTolDriver_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocDimTolDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocDimTolDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From BinMXCAFDoc_GraphNodeDriver.hxx
-// ========================
-
-/// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:31 - `BinMXCAFDoc_GraphNodeDriver`
-pub use crate::ffi::BinMXCAFDoc_GraphNodeDriver as GraphNodeDriver;
-
-unsafe impl crate::CppDeletable for GraphNodeDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_GraphNodeDriver_destructor(ptr);
-    }
-}
-
-impl GraphNodeDriver {
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:35 - `BinMXCAFDoc_GraphNodeDriver::BinMXCAFDoc_GraphNodeDriver()`
-    pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:37 - `BinMXCAFDoc_GraphNodeDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_new_empty(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:39 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
-    pub fn paste_persistent_handletdfattribute_rrelocationtable(
-        &self,
-        theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
-        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:44 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
-    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
-        &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
-        theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver
-    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
         }
     }
 
@@ -1486,7 +711,9 @@ impl GraphNodeDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_as_BinMDF_ADriver_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1494,9 +721,11 @@ impl GraphNodeDriver {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1504,7 +733,7 @@ impl GraphNodeDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -1514,37 +743,41 @@ impl GraphNodeDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocGraphNodeDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocColorDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -1552,9 +785,9 @@ impl GraphNodeDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1562,9 +795,12 @@ impl GraphNodeDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1572,7 +808,9 @@ impl GraphNodeDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1585,78 +823,990 @@ impl GraphNodeDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_GraphNodeDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_ColorDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocGraphNodeDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocColorDriver;
 
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocGraphNodeDriver {
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocColorDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocGraphNodeDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocColorDriver_destructor(ptr);
     }
 }
 
-impl HandleBinMXCAFDocGraphNodeDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_GraphNodeDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_GraphNodeDriver {
+impl HandleBinMXCAFDocColorDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_ColorDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_ColorDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocGraphNodeDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocColorDriver_get(
                 self as *const Self,
             ))
         }
     }
 
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_GraphNodeDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_GraphNodeDriver {
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_ColorDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_ColorDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocGraphNodeDriver_get_mut(
-                self as *mut Self,
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocColorDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<BinMDF_ADriver>
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocColorDriver_to_HandleBinMDFADriver(
+                    self as *const Self,
+                ),
             ))
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_ColorDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocColorDriver_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From BinMXCAFDoc_DatumDriver.hxx
+// ========================
+
+/// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:31 - `BinMXCAFDoc_DatumDriver`
+pub use crate::ffi_types::BinMXCAFDoc_DatumDriver as DatumDriver;
+
+unsafe impl crate::CppDeletable for DatumDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_destructor(ptr);
+    }
+}
+
+impl DatumDriver {
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:35 - `BinMXCAFDoc_DatumDriver::BinMXCAFDoc_DatumDriver()`
+    pub fn new_handlemessagemessenger(
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:37 - `BinMXCAFDoc_DatumDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_new_empty(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:39 - `BinMXCAFDoc_DatumDriver::Paste()`
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
+        &self,
+        theSource: &crate::bin_obj_mgt::Persistent,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:44 - `BinMXCAFDoc_DatumDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `BinMXCAFDoc_DatumDriver.hxx`:49 - `BinMXCAFDoc_DatumDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver
+    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver (mutable)
+    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocDatumDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DatumDriver_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleBinMXCAFDocDatumDriver;
+
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocDatumDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDatumDriver_destructor(ptr);
+    }
+}
+
+impl HandleBinMXCAFDocDatumDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_DatumDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_DatumDriver {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDatumDriver_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_DatumDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_DatumDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDatumDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<BinMDF_ADriver>
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDatumDriver_to_HandleBinMDFADriver(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_DatumDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDatumDriver_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From BinMXCAFDoc_DimTolDriver.hxx
+// ========================
+
+/// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:31 - `BinMXCAFDoc_DimTolDriver`
+pub use crate::ffi_types::BinMXCAFDoc_DimTolDriver as DimTolDriver;
+
+unsafe impl crate::CppDeletable for DimTolDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_destructor(ptr);
+    }
+}
+
+impl DimTolDriver {
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:35 - `BinMXCAFDoc_DimTolDriver::BinMXCAFDoc_DimTolDriver()`
+    pub fn new_handlemessagemessenger(
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:37 - `BinMXCAFDoc_DimTolDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_new_empty(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:39 - `BinMXCAFDoc_DimTolDriver::Paste()`
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
+        &self,
+        theSource: &crate::bin_obj_mgt::Persistent,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:44 - `BinMXCAFDoc_DimTolDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `BinMXCAFDoc_DimTolDriver.hxx`:49 - `BinMXCAFDoc_DimTolDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver
+    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver (mutable)
+    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocDimTolDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_DimTolDriver_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleBinMXCAFDocDimTolDriver;
+
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocDimTolDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDimTolDriver_destructor(ptr);
+    }
+}
+
+impl HandleBinMXCAFDocDimTolDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_DimTolDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_DimTolDriver {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDimTolDriver_get(
+                self as *const Self,
+            ))
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_DimTolDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_DimTolDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDimTolDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<BinMDF_ADriver>
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDimTolDriver_to_HandleBinMDFADriver(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_DimTolDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocDimTolDriver_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From BinMXCAFDoc_GraphNodeDriver.hxx
+// ========================
+
+/// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:31 - `BinMXCAFDoc_GraphNodeDriver`
+pub use crate::ffi_types::BinMXCAFDoc_GraphNodeDriver as GraphNodeDriver;
+
+unsafe impl crate::CppDeletable for GraphNodeDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_destructor(ptr);
+    }
+}
+
+impl GraphNodeDriver {
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:35 - `BinMXCAFDoc_GraphNodeDriver::BinMXCAFDoc_GraphNodeDriver()`
+    pub fn new_handlemessagemessenger(
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_ctor_handlemessagemessenger(theMsgDriver)))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:37 - `BinMXCAFDoc_GraphNodeDriver::NewEmpty()`
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_new_empty(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:39 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
+        &self,
+        theSource: &crate::bin_obj_mgt::Persistent,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:44 - `BinMXCAFDoc_GraphNodeDriver::Paste()`
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `BinMXCAFDoc_GraphNodeDriver.hxx`:49 - `BinMXCAFDoc_GraphNodeDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver
+    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver (mutable)
+    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocGraphNodeDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_GraphNodeDriver_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleBinMXCAFDocGraphNodeDriver;
+
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocGraphNodeDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocGraphNodeDriver_destructor(ptr);
+    }
+}
+
+impl HandleBinMXCAFDocGraphNodeDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_GraphNodeDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_GraphNodeDriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocGraphNodeDriver_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_GraphNodeDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_GraphNodeDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocGraphNodeDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_GraphNodeDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocGraphNodeDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocGraphNodeDriver_to_HandleBinMDFADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_GraphNodeDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocGraphNodeDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocGraphNodeDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1667,31 +1817,31 @@ impl HandleBinMXCAFDocGraphNodeDriver {
 
 /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:30 - `BinMXCAFDoc_LengthUnitDriver`
 /// Attribute Driver.
-pub use crate::ffi::BinMXCAFDoc_LengthUnitDriver as LengthUnitDriver;
+pub use crate::ffi_types::BinMXCAFDoc_LengthUnitDriver as LengthUnitDriver;
 
 unsafe impl crate::CppDeletable for LengthUnitDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_LengthUnitDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_destructor(ptr);
     }
 }
 
 impl LengthUnitDriver {
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:34 - `BinMXCAFDoc_LengthUnitDriver::BinMXCAFDoc_LengthUnitDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_ctor_handlemessagemessenger(theMsgDriver)))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:36 - `BinMXCAFDoc_LengthUnitDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1700,32 +1850,34 @@ impl LengthUnitDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:43 - `BinMXCAFDoc_LengthUnitDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1733,7 +1885,7 @@ impl LengthUnitDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1741,18 +1893,22 @@ impl LengthUnitDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_LengthUnitDriver.hxx`:48 - `BinMXCAFDoc_LengthUnitDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1760,7 +1916,9 @@ impl LengthUnitDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_as_BinMDF_ADriver_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1768,9 +1926,11 @@ impl LengthUnitDriver {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1778,7 +1938,7 @@ impl LengthUnitDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_as_Standard_Transient_mut(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -1788,37 +1948,41 @@ impl LengthUnitDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocLengthUnitDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocLengthUnitDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -1826,9 +1990,9 @@ impl LengthUnitDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1836,9 +2000,12 @@ impl LengthUnitDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1846,7 +2013,9 @@ impl LengthUnitDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1859,14 +2028,16 @@ impl LengthUnitDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -1875,7 +2046,7 @@ impl LengthUnitDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -1884,57 +2055,57 @@ impl LengthUnitDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LengthUnitDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LengthUnitDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocLengthUnitDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocLengthUnitDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocLengthUnitDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocLengthUnitDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLengthUnitDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocLengthUnitDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_LengthUnitDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_LengthUnitDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_LengthUnitDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocLengthUnitDriver_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLengthUnitDriver_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_LengthUnitDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_LengthUnitDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_LengthUnitDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocLengthUnitDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLengthUnitDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_LengthUnitDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocLengthUnitDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLengthUnitDriver_to_HandleBinMDFADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_LengthUnitDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocLengthUnitDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLengthUnitDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1944,31 +2115,35 @@ impl HandleBinMXCAFDocLengthUnitDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:34 - `BinMXCAFDoc_LocationDriver`
-pub use crate::ffi::BinMXCAFDoc_LocationDriver as LocationDriver;
+pub use crate::ffi_types::BinMXCAFDoc_LocationDriver as LocationDriver;
 
 unsafe impl crate::CppDeletable for LocationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_LocationDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_destructor(ptr);
     }
 }
 
 impl LocationDriver {
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:38 - `BinMXCAFDoc_LocationDriver::BinMXCAFDoc_LocationDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LocationDriver_ctor_handlemessagemessenger(theMsgDriver),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
             ))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:40 - `BinMXCAFDoc_LocationDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LocationDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1977,23 +2152,23 @@ impl LocationDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:47 - `BinMXCAFDoc_LocationDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
@@ -2005,12 +2180,7 @@ impl LocationDriver {
         theMap: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_translate_persistent_location_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theLoc,
-                theMap,
-            )
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_translate_persistent_location_rrelocationtable(self as *const Self, theSource, theLoc, theMap)
         })
     }
 
@@ -2020,26 +2190,34 @@ impl LocationDriver {
         &self,
         theLoc: &crate::top_loc::Location,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theMap: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theMap: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_translate_location_persistent_indexedmapoftransient(self as *const Self, theLoc, theTarget, theMap)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_translate_location_persistent_indexedmapoftransient(self as *const Self, theLoc, theTarget, theMap)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:61 - `BinMXCAFDoc_LocationDriver::SetNSDriver()`
-    pub fn set_ns_driver(&mut self, theNSDriver: &crate::ffi::HandleBinMNamingNamedShapeDriver) {
+    pub fn set_ns_driver(
+        &mut self,
+        theNSDriver: &crate::ffi_types::HandleBinMNamingNamedShapeDriver,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_set_ns_driver(self as *mut Self, theNSDriver)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_set_ns_driver(
+                self as *mut Self,
+                theNSDriver,
+            )
         })
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2047,7 +2225,7 @@ impl LocationDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LocationDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2055,36 +2233,44 @@ impl LocationDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_LocationDriver.hxx`:66 - `BinMXCAFDoc_LocationDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2092,7 +2278,9 @@ impl LocationDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_LocationDriver_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2100,45 +2288,51 @@ impl LocationDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocLocationDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocLocationDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_LocationDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_LocationDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2146,9 +2340,12 @@ impl LocationDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2156,7 +2353,9 @@ impl LocationDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_LocationDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2169,64 +2368,74 @@ impl LocationDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_LocationDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_LocationDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocLocationDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocLocationDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocLocationDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocLocationDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLocationDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocLocationDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_LocationDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_LocationDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_LocationDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocLocationDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLocationDriver_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_LocationDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_LocationDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_LocationDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocLocationDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLocationDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_LocationDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocLocationDriver_to_HandleBinMDFADriver(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLocationDriver_to_HandleBinMDFADriver(
                     self as *const Self,
                 ),
             ))
@@ -2234,13 +2443,11 @@ impl HandleBinMXCAFDocLocationDriver {
     }
 
     /// Upcast Handle<BinMXCAFDoc_LocationDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocLocationDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocLocationDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2250,31 +2457,35 @@ impl HandleBinMXCAFDocLocationDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:31 - `BinMXCAFDoc_MaterialDriver`
-pub use crate::ffi::BinMXCAFDoc_MaterialDriver as MaterialDriver;
+pub use crate::ffi_types::BinMXCAFDoc_MaterialDriver as MaterialDriver;
 
 unsafe impl crate::CppDeletable for MaterialDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_MaterialDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_destructor(ptr);
     }
 }
 
 impl MaterialDriver {
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:35 - `BinMXCAFDoc_MaterialDriver::BinMXCAFDoc_MaterialDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_MaterialDriver_ctor_handlemessagemessenger(theMsgDriver),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_ctor_handlemessagemessenger(
+                    theMsgDriver,
+                ),
             ))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:37 - `BinMXCAFDoc_MaterialDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_MaterialDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2283,32 +2494,34 @@ impl MaterialDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:44 - `BinMXCAFDoc_MaterialDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2316,7 +2529,7 @@ impl MaterialDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_MaterialDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2324,36 +2537,44 @@ impl MaterialDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_MaterialDriver.hxx`:49 - `BinMXCAFDoc_MaterialDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2361,7 +2582,9 @@ impl MaterialDriver {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_MaterialDriver_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2369,45 +2592,51 @@ impl MaterialDriver {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocMaterialDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocMaterialDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_MaterialDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2415,9 +2644,12 @@ impl MaterialDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2425,7 +2657,9 @@ impl MaterialDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2438,64 +2672,74 @@ impl MaterialDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_MaterialDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_MaterialDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocMaterialDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocMaterialDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocMaterialDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocMaterialDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocMaterialDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocMaterialDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_MaterialDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_MaterialDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_MaterialDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocMaterialDriver_get(
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocMaterialDriver_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_MaterialDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_MaterialDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_MaterialDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocMaterialDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocMaterialDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_MaterialDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocMaterialDriver_to_HandleBinMDFADriver(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocMaterialDriver_to_HandleBinMDFADriver(
                     self as *const Self,
                 ),
             ))
@@ -2503,13 +2747,11 @@ impl HandleBinMXCAFDocMaterialDriver {
     }
 
     /// Upcast Handle<BinMXCAFDoc_MaterialDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocMaterialDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocMaterialDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2519,31 +2761,31 @@ impl HandleBinMXCAFDocMaterialDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:24 - `BinMXCAFDoc_NoteBinDataDriver`
-pub use crate::ffi::BinMXCAFDoc_NoteBinDataDriver as NoteBinDataDriver;
+pub use crate::ffi_types::BinMXCAFDoc_NoteBinDataDriver as NoteBinDataDriver;
 
 unsafe impl crate::CppDeletable for NoteBinDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_NoteBinDataDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_destructor(ptr);
     }
 }
 
 impl NoteBinDataDriver {
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:27 - `BinMXCAFDoc_NoteBinDataDriver::BinMXCAFDoc_NoteBinDataDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_ctor_handlemessagemessenger(theMsgDriver)))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:29 - `BinMXCAFDoc_NoteBinDataDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2552,32 +2794,34 @@ impl NoteBinDataDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:36 - `BinMXCAFDoc_NoteBinDataDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2585,7 +2829,7 @@ impl NoteBinDataDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2593,40 +2837,36 @@ impl NoteBinDataDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteBinDataDriver.hxx`:40 - `BinMXCAFDoc_NoteBinDataDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMXCAFDoc_NoteDriver
     pub fn as_note_driver(&self) -> &NoteDriver {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_BinMXCAFDoc_NoteDriver(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_BinMXCAFDoc_NoteDriver(self as *const Self))
         }
     }
 
     /// Upcast to BinMXCAFDoc_NoteDriver (mutable)
     pub fn as_note_driver_mut(&mut self) -> &mut NoteDriver {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_BinMXCAFDoc_NoteDriver_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_BinMXCAFDoc_NoteDriver_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2634,7 +2874,9 @@ impl NoteBinDataDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_BinMDF_ADriver_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2642,57 +2884,61 @@ impl NoteBinDataDriver {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteBinDataDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteBinDataDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -2700,9 +2946,9 @@ impl NoteBinDataDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2710,9 +2956,12 @@ impl NoteBinDataDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2720,7 +2969,9 @@ impl NoteBinDataDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2733,14 +2984,16 @@ impl NoteBinDataDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2749,7 +3002,7 @@ impl NoteBinDataDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2758,70 +3011,66 @@ impl NoteBinDataDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteBinDataDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteBinDataDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocNoteBinDataDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocNoteBinDataDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocNoteBinDataDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocNoteBinDataDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_NoteBinDataDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_NoteBinDataDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_NoteBinDataDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_NoteBinDataDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_NoteBinDataDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_NoteBinDataDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<BinMXCAFDoc_NoteDriver>
     pub fn to_handle_note_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMXCAFDocNoteDriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMXCAFDocNoteDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_to_HandleBinMDFADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteBinDataDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteBinDataDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteBinDataDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2831,31 +3080,31 @@ impl HandleBinMXCAFDocNoteBinDataDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:24 - `BinMXCAFDoc_NoteCommentDriver`
-pub use crate::ffi::BinMXCAFDoc_NoteCommentDriver as NoteCommentDriver;
+pub use crate::ffi_types::BinMXCAFDoc_NoteCommentDriver as NoteCommentDriver;
 
 unsafe impl crate::CppDeletable for NoteCommentDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_NoteCommentDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_destructor(ptr);
     }
 }
 
 impl NoteCommentDriver {
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:27 - `BinMXCAFDoc_NoteCommentDriver::BinMXCAFDoc_NoteCommentDriver()`
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_ctor_handlemessagemessenger(theMsgDriver)))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:29 - `BinMXCAFDoc_NoteCommentDriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2864,32 +3113,34 @@ impl NoteCommentDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:36 - `BinMXCAFDoc_NoteCommentDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2897,7 +3148,7 @@ impl NoteCommentDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2905,40 +3156,36 @@ impl NoteCommentDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteCommentDriver.hxx`:40 - `BinMXCAFDoc_NoteCommentDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to BinMXCAFDoc_NoteDriver
     pub fn as_note_driver(&self) -> &NoteDriver {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_BinMXCAFDoc_NoteDriver(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_BinMXCAFDoc_NoteDriver(self as *const Self))
         }
     }
 
     /// Upcast to BinMXCAFDoc_NoteDriver (mutable)
     pub fn as_note_driver_mut(&mut self) -> &mut NoteDriver {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_BinMXCAFDoc_NoteDriver_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_BinMXCAFDoc_NoteDriver_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2946,7 +3193,9 @@ impl NoteCommentDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_BinMDF_ADriver_mut(self as *mut Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2954,57 +3203,61 @@ impl NoteCommentDriver {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteCommentDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteCommentDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -3012,9 +3265,9 @@ impl NoteCommentDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3022,9 +3275,12 @@ impl NoteCommentDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3032,7 +3288,9 @@ impl NoteCommentDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3045,14 +3303,16 @@ impl NoteCommentDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3061,7 +3321,7 @@ impl NoteCommentDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3070,70 +3330,66 @@ impl NoteCommentDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteCommentDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteCommentDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocNoteCommentDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocNoteCommentDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocNoteCommentDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocNoteCommentDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocNoteCommentDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_NoteCommentDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_NoteCommentDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_NoteCommentDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocNoteCommentDriver_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_NoteCommentDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_NoteCommentDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_NoteCommentDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocNoteCommentDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<BinMXCAFDoc_NoteDriver>
     pub fn to_handle_note_driver(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteDriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMXCAFDocNoteDriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMXCAFDocNoteDriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_to_HandleBinMDFADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteCommentDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteCommentDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteCommentDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3143,11 +3399,11 @@ impl HandleBinMXCAFDocNoteCommentDriver {
 // ========================
 
 /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:33 - `BinMXCAFDoc_NoteDriver`
-pub use crate::ffi::BinMXCAFDoc_NoteDriver as NoteDriver;
+pub use crate::ffi_types::BinMXCAFDoc_NoteDriver as NoteDriver;
 
 unsafe impl crate::CppDeletable for NoteDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_NoteDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_destructor(ptr);
     }
 }
 
@@ -3156,37 +3412,34 @@ impl NoteDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_paste_persistent_handletdfattribute_rrelocationtable(
-                self as *const Self,
-                theSource,
-                theTarget,
-                theRelocTable,
-            )
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:41 - `BinMXCAFDoc_NoteDriver::Paste()`
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
     /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3194,7 +3447,7 @@ impl NoteDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3202,93 +3455,119 @@ impl NoteDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_NoteDriver.hxx`:45 - `BinMXCAFDoc_NoteDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BinMDF_ADriver (mutable)
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_as_BinMDF_ADriver_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_as_BinMDF_ADriver_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:37 - `BinMDF_ADriver::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_NoteDriver_inherited_NewEmpty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_NewEmpty(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_inherited_SourceType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_inherited_TypeName(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_NoteDriver_inherited_MessageDriver(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_MessageDriver(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3296,7 +3575,9 @@ impl NoteDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_NoteDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3309,71 +3590,85 @@ impl NoteDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_NoteDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_NoteDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocNoteDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocNoteDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocNoteDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocNoteDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocNoteDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_NoteDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_NoteDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_NoteDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocNoteDriver_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_NoteDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_NoteDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocNoteDriver_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_NoteDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_NoteDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<BinMXCAFDoc_NoteDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteDriver_to_HandleBinMDFADriver(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_to_HandleBinMDFADriver(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_NoteDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocNoteDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3385,11 +3680,9 @@ impl HandleBinMXCAFDocNoteDriver {
     /// Returns `None` if the handle does not point to a `BinMXCAFDoc_NoteBinDataDriver` (or subclass).
     pub fn downcast_to_note_bin_data_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteBinDataDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteBinDataDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteBinDataDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteBinDataDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3403,11 +3696,9 @@ impl HandleBinMXCAFDocNoteDriver {
     /// Returns `None` if the handle does not point to a `BinMXCAFDoc_NoteCommentDriver` (or subclass).
     pub fn downcast_to_note_comment_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocNoteCommentDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocNoteCommentDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteCommentDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocNoteDriver_downcast_to_HandleBinMXCAFDocNoteCommentDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3423,11 +3714,11 @@ impl HandleBinMXCAFDocNoteDriver {
 
 /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:25 - `BinMXCAFDoc_VisMaterialDriver`
 /// Binary persistence driver for XCAFDoc_VisMaterial attribute.
-pub use crate::ffi::BinMXCAFDoc_VisMaterialDriver as VisMaterialDriver;
+pub use crate::ffi_types::BinMXCAFDoc_VisMaterialDriver as VisMaterialDriver;
 
 unsafe impl crate::CppDeletable for VisMaterialDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_VisMaterialDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_destructor(ptr);
     }
 }
 
@@ -3435,30 +3726,32 @@ impl VisMaterialDriver {
     /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:42 - `BinMXCAFDoc_VisMaterialDriver::BinMXCAFDoc_VisMaterialDriver()`
     /// Main constructor.
     pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_ctor_handlemessagemessenger(theMsgDriver),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_ctor_handlemessagemessenger(theMsgDriver)))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:45 - `BinMXCAFDoc_VisMaterialDriver::NewEmpty()`
     /// Create new instance of XCAFDoc_VisMaterial.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_new_empty(self as *const Self),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_new_empty(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3468,11 +3761,11 @@ impl VisMaterialDriver {
     pub fn paste_persistent_handletdfattribute_rrelocationtable(
         &self,
         theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
         theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
@@ -3480,12 +3773,12 @@ impl VisMaterialDriver {
     /// Paste attribute from document into persistence.
     pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
         &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
         theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
         })
     }
 
@@ -3493,7 +3786,7 @@ impl VisMaterialDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_get_type_name(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3501,294 +3794,10 @@ impl VisMaterialDriver {
     }
 
     /// **Source:** `BinMXCAFDoc_VisMaterialDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver
-    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to BinMDF_ADriver (mutable)
-    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_as_BinMDF_ADriver_mut(self as *mut Self),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocVisMaterialDriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_SourceType(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
-    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_TypeName(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_MessageDriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialDriver_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleBinMXCAFDocVisMaterialDriver;
-
-unsafe impl crate::CppDeletable for HandleBinMXCAFDocVisMaterialDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocVisMaterialDriver_destructor(ptr);
-    }
-}
-
-impl HandleBinMXCAFDocVisMaterialDriver {
-    /// Dereference this Handle to access the underlying BinMXCAFDoc_VisMaterialDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_VisMaterialDriver {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocVisMaterialDriver_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_VisMaterialDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_VisMaterialDriver {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocVisMaterialDriver_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocVisMaterialDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocVisMaterialDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From BinMXCAFDoc_VisMaterialToolDriver.hxx
-// ========================
-
-/// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:22 - `BinMXCAFDoc_VisMaterialToolDriver`
-/// Binary persistence driver for XCAFDoc_VisMaterialTool attribute.
-pub use crate::ffi::BinMXCAFDoc_VisMaterialToolDriver as VisMaterialToolDriver;
-
-unsafe impl crate::CppDeletable for VisMaterialToolDriver {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_destructor(ptr);
-    }
-}
-
-impl VisMaterialToolDriver {
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialToolDriver::BinMXCAFDoc_VisMaterialToolDriver()`
-    /// Main constructor.
-    pub fn new_handlemessagemessenger(
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
-    ) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_ctor_handlemessagemessenger(
-                    theMsgDriver,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:30 - `BinMXCAFDoc_VisMaterialToolDriver::NewEmpty()`
-    /// Create new instance of XCAFDoc_VisMaterialTool.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_new_empty(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:33 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
-    /// Paste attribute from persistence into document.
-    pub fn paste_persistent_handletdfattribute_rrelocationtable(
-        &self,
-        theSource: &crate::bin_obj_mgt::Persistent,
-        theTarget: &crate::ffi::HandleTDFAttribute,
-        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
-    ) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:39 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
-    /// Paste attribute from document into persistence.
-    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
-        &self,
-        theSource: &crate::ffi::HandleTDFAttribute,
-        theTarget: &mut crate::bin_obj_mgt::Persistent,
-        theRelocTable: &mut crate::ffi::TColStd_IndexedMapOfTransient,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
-        })
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_get_type_descriptor(),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_get_type_descriptor(),
             ))
         }
     }
@@ -3796,9 +3805,11 @@ impl VisMaterialToolDriver {
     /// Upcast to BinMDF_ADriver
     pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
         unsafe {
-            &*crate::check_result(crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_as_BinMDF_ADriver(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3806,7 +3817,7 @@ impl VisMaterialToolDriver {
     pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_as_BinMDF_ADriver_mut(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_as_BinMDF_ADriver_mut(
                     self as *mut Self,
                 ),
             )
@@ -3817,7 +3828,7 @@ impl VisMaterialToolDriver {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -3827,30 +3838,28 @@ impl VisMaterialToolDriver {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocVisMaterialDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
-    pub fn source_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_SourceType(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_SourceType(
                     self as *const Self,
                 ),
             ))
@@ -3861,7 +3870,7 @@ impl VisMaterialToolDriver {
     pub fn type_name(&self) -> &crate::t_collection::AsciiString {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_TypeName(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_TypeName(
                     self as *const Self,
                 ),
             ))
@@ -3869,10 +3878,10 @@ impl VisMaterialToolDriver {
     }
 
     /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
-    pub fn message_driver(&self) -> &crate::ffi::HandleMessageMessenger {
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_MessageDriver(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_MessageDriver(
                     self as *const Self,
                 ),
             ))
@@ -3880,9 +3889,9 @@ impl VisMaterialToolDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_IsInstance(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3890,9 +3899,9 @@ impl VisMaterialToolDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_IsKind(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -3903,7 +3912,9 @@ impl VisMaterialToolDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3916,14 +3927,16 @@ impl VisMaterialToolDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3932,7 +3945,7 @@ impl VisMaterialToolDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3941,57 +3954,343 @@ impl VisMaterialToolDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BinMXCAFDoc_VisMaterialToolDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver;
+pub use crate::ffi_types::HandleBinMXCAFDocVisMaterialDriver;
+
+unsafe impl crate::CppDeletable for HandleBinMXCAFDocVisMaterialDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialDriver_destructor(ptr);
+    }
+}
+
+impl HandleBinMXCAFDocVisMaterialDriver {
+    /// Dereference this Handle to access the underlying BinMXCAFDoc_VisMaterialDriver
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_VisMaterialDriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialDriver_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_VisMaterialDriver
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_VisMaterialDriver {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<BinMDF_ADriver>
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialDriver_to_HandleBinMDFADriver(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<BinMXCAFDoc_VisMaterialDriver> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialDriver_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From BinMXCAFDoc_VisMaterialToolDriver.hxx
+// ========================
+
+/// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:22 - `BinMXCAFDoc_VisMaterialToolDriver`
+/// Binary persistence driver for XCAFDoc_VisMaterialTool attribute.
+pub use crate::ffi_types::BinMXCAFDoc_VisMaterialToolDriver as VisMaterialToolDriver;
+
+unsafe impl crate::CppDeletable for VisMaterialToolDriver {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_destructor(ptr);
+    }
+}
+
+impl VisMaterialToolDriver {
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:27 - `BinMXCAFDoc_VisMaterialToolDriver::BinMXCAFDoc_VisMaterialToolDriver()`
+    /// Main constructor.
+    pub fn new_handlemessagemessenger(
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
+    ) -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_ctor_handlemessagemessenger(theMsgDriver)))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:30 - `BinMXCAFDoc_VisMaterialToolDriver::NewEmpty()`
+    /// Create new instance of XCAFDoc_VisMaterialTool.
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_new_empty(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:33 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
+    /// Paste attribute from persistence into document.
+    pub fn paste_persistent_handletdfattribute_rrelocationtable(
+        &self,
+        theSource: &crate::bin_obj_mgt::Persistent,
+        theTarget: &crate::ffi_types::HandleTDFAttribute,
+        theRelocTable: &mut crate::bin_obj_mgt::RRelocationTable,
+    ) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_paste_persistent_handletdfattribute_rrelocationtable(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:39 - `BinMXCAFDoc_VisMaterialToolDriver::Paste()`
+    /// Paste attribute from document into persistence.
+    pub fn paste_handletdfattribute_persistent_indexedmapoftransient(
+        &self,
+        theSource: &crate::ffi_types::HandleTDFAttribute,
+        theTarget: &mut crate::bin_obj_mgt::Persistent,
+        theRelocTable: &mut crate::ffi_types::TColStd_IndexedMapOfTransient,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_paste_handletdfattribute_persistent_indexedmapoftransient(self as *const Self, theSource, theTarget, theRelocTable)
+        })
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `BinMXCAFDoc_VisMaterialToolDriver.hxx`:24 - `BinMXCAFDoc_VisMaterialToolDriver::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_get_type_descriptor(
+                ),
+            ))
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver
+    pub fn as_bin_mdf_a_driver(&self) -> &crate::bin_mdf::ADriver {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_as_BinMDF_ADriver(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to BinMDF_ADriver (mutable)
+    pub fn as_bin_mdf_a_driver_mut(&mut self) -> &mut crate::bin_mdf::ADriver {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_as_BinMDF_ADriver_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleBinMXCAFDocVisMaterialToolDriver> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_to_handle(
+                    obj.into_raw(),
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:41 - `BinMDF_ADriver::SourceType()`
+    pub fn source_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_SourceType(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:44 - `BinMDF_ADriver::TypeName()`
+    pub fn type_name(&self) -> &crate::t_collection::AsciiString {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_TypeName(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `BinMDF_ADriver.hxx`:61 - `BinMDF_ADriver::MessageDriver()`
+    pub fn message_driver(&self) -> &crate::ffi_types::HandleMessageMessenger {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_MessageDriver(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_IncrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_DecrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKBinXCAF::BinMXCAFDoc_VisMaterialToolDriver_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleBinMXCAFDocVisMaterialToolDriver;
 
 unsafe impl crate::CppDeletable for HandleBinMXCAFDocVisMaterialToolDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver_destructor(ptr);
+        crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialToolDriver_destructor(ptr);
     }
 }
 
 impl HandleBinMXCAFDocVisMaterialToolDriver {
     /// Dereference this Handle to access the underlying BinMXCAFDoc_VisMaterialToolDriver
-    pub fn get(&self) -> &crate::ffi::BinMXCAFDoc_VisMaterialToolDriver {
+    pub fn get(&self) -> &crate::ffi_types::BinMXCAFDoc_VisMaterialToolDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialToolDriver_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying BinMXCAFDoc_VisMaterialToolDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::BinMXCAFDoc_VisMaterialToolDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::BinMXCAFDoc_VisMaterialToolDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialToolDriver_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_VisMaterialToolDriver> to Handle<BinMDF_ADriver>
-    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi::HandleBinMDFADriver> {
+    pub fn to_handle_a_driver(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBinMDFADriver> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver_to_HandleBinMDFADriver(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialToolDriver_to_HandleBinMDFADriver(self as *const Self)))
         }
     }
 
     /// Upcast Handle<BinMXCAFDoc_VisMaterialToolDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleBinMXCAFDocVisMaterialToolDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKBinXCAF::HandleBinMXCAFDocVisMaterialToolDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }

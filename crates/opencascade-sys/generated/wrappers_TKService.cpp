@@ -57,7 +57,7 @@
 #include <Aspect_XRSession.hxx>
 #include <Aspect_XRTrackedDeviceRole.hxx>
 #include <BVH_Types.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Font_FTFont.hxx>
 #include <Font_FTLibrary.hxx>
@@ -168,6 +168,7 @@
 #include <Graphic3d_TransModeFlags.hxx>
 #include <Graphic3d_TransformPers.hxx>
 #include <Graphic3d_TransformPersScaledAbove.hxx>
+#include <Graphic3d_TransformUtils.hxx>
 #include <Graphic3d_TypeOfBackfacingModel.hxx>
 #include <Graphic3d_TypeOfBackground.hxx>
 #include <Graphic3d_TypeOfConnection.hxx>
@@ -211,7 +212,7 @@
 #include <Media_Scaler.hxx>
 #include <Media_Timer.hxx>
 #include <MoniTool_DataMapOfShapeTransient.hxx>
-#include <MoniTool_ValueInterpret.hxx>
+#include <MoniTool_ValueSatisfies.hxx>
 #include <NCollection_BaseAllocator.hxx>
 #include <NCollection_BaseSequence.hxx>
 #include <NCollection_Buffer.hxx>

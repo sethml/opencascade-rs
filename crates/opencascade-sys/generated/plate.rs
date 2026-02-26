@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From Plate_D1.hxx
@@ -16,11 +16,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// **Source:** `Plate_D1.hxx`:28 - `Plate_D1`
 /// define an order 1 derivatives of a 3d valued
 /// function of a 2d variable
-pub use crate::ffi::Plate_D1 as D1;
+pub use crate::ffi_types::Plate_D1 as D1;
 
 unsafe impl crate::CppDeletable for D1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_D1_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_D1_destructor(ptr);
     }
 }
 
@@ -28,26 +28,32 @@ impl D1 {
     /// **Source:** `Plate_D1.hxx`:33 - `Plate_D1::Plate_D1()`
     pub fn new_xyz2(du: &crate::gp::XYZ, dv: &crate::gp::XYZ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D1_ctor_xyz2(du, dv)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D1_ctor_xyz2(du, dv),
+            ))
         }
     }
 
     /// **Source:** `Plate_D1.hxx`:37 - `Plate_D1::DU()`
     pub fn du(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Plate_D1_du(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D1_du(self as *const Self)))
+        }
     }
 
     /// **Source:** `Plate_D1.hxx`:39 - `Plate_D1::DV()`
     pub fn dv(&self) -> &crate::gp::XYZ {
-        unsafe { &*(crate::check_result(crate::ffi::Plate_D1_dv(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_D1_dv(self as *const Self)))
+        }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D1_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D1_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -59,11 +65,11 @@ impl D1 {
 /// **Source:** `Plate_D2.hxx`:28 - `Plate_D2`
 /// define an order 2 derivatives of a 3d valued
 /// function of a 2d variable
-pub use crate::ffi::Plate_D2 as D2;
+pub use crate::ffi_types::Plate_D2 as D2;
 
 unsafe impl crate::CppDeletable for D2 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_D2_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_D2_destructor(ptr);
     }
 }
 
@@ -75,18 +81,18 @@ impl D2 {
         dvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D2_ctor_xyz3(
-                duu, duv, dvv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D2_ctor_xyz3(duu, duv, dvv),
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D2_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D2_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -98,11 +104,11 @@ impl D2 {
 /// **Source:** `Plate_D3.hxx`:28 - `Plate_D3`
 /// define an order 3 derivatives of a 3d valued
 /// function of a 2d variable
-pub use crate::ffi::Plate_D3 as D3;
+pub use crate::ffi_types::Plate_D3 as D3;
 
 unsafe impl crate::CppDeletable for D3 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_D3_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_D3_destructor(ptr);
     }
 }
 
@@ -115,18 +121,18 @@ impl D3 {
         dvvv: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D3_ctor_xyz4(
-                duuu, duuv, duvv, dvvv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D3_ctor_xyz4(duuu, duuv, duvv, dvvv),
+            ))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_D3_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_D3_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -138,11 +144,11 @@ impl D3 {
 /// **Source:** `Plate_FreeGtoCConstraint.hxx`:32 - `Plate_FreeGtoCConstraint`
 /// define a G1, G2 or G3 constraint on the Plate using weaker
 /// constraint than GtoCConstraint
-pub use crate::ffi::Plate_FreeGtoCConstraint as FreeGtoCConstraint;
+pub use crate::ffi_types::Plate_FreeGtoCConstraint as FreeGtoCConstraint;
 
 unsafe impl crate::CppDeletable for FreeGtoCConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_FreeGtoCConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_destructor(ptr);
     }
 }
 
@@ -157,7 +163,7 @@ impl FreeGtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_real_int(
+                crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_ctor_xy_d12_real_int(
                     point2d,
                     D1S,
                     D1T,
@@ -180,7 +186,7 @@ impl FreeGtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_real_int(
+                crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_real_int(
                     point2d,
                     D1S,
                     D1T,
@@ -207,7 +213,7 @@ impl FreeGtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_d32_real_int(
+                crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_ctor_xy_d12_d22_d32_real_int(
                     point2d,
                     D1S,
                     D1T,
@@ -290,7 +296,7 @@ impl FreeGtoCConstraint {
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:61 - `Plate_FreeGtoCConstraint::nb_PPC()`
     pub fn nb_ppc(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_FreeGtoCConstraint_nb_ppc(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_nb_ppc(
                 self as *const Self,
             )))
         }
@@ -299,7 +305,7 @@ impl FreeGtoCConstraint {
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:63 - `Plate_FreeGtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_FreeGtoCConstraint_get_ppc(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_get_ppc(
                 self as *const Self,
                 Index,
             )))
@@ -309,7 +315,7 @@ impl FreeGtoCConstraint {
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:65 - `Plate_FreeGtoCConstraint::nb_LSC()`
     pub fn nb_lsc(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_FreeGtoCConstraint_nb_lsc(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_nb_lsc(
                 self as *const Self,
             )))
         }
@@ -318,7 +324,7 @@ impl FreeGtoCConstraint {
     /// **Source:** `Plate_FreeGtoCConstraint.hxx`:67 - `Plate_FreeGtoCConstraint::LSC()`
     pub fn lsc(&self, Index: i32) -> &LinearScalarConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_FreeGtoCConstraint_lsc(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_FreeGtoCConstraint_lsc(
                 self as *const Self,
                 Index,
             )))
@@ -332,20 +338,24 @@ impl FreeGtoCConstraint {
 
 /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:28 - `Plate_GlobalTranslationConstraint`
 /// force a set of UV points to translate without deformation
-pub use crate::ffi::Plate_GlobalTranslationConstraint as GlobalTranslationConstraint;
+pub use crate::ffi_types::Plate_GlobalTranslationConstraint as GlobalTranslationConstraint;
 
 unsafe impl crate::CppDeletable for GlobalTranslationConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_GlobalTranslationConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_GlobalTranslationConstraint_destructor(ptr);
     }
 }
 
 impl GlobalTranslationConstraint {
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:33 - `Plate_GlobalTranslationConstraint::Plate_GlobalTranslationConstraint()`
-    pub fn new_sequenceofxy(SOfXY: &crate::ffi::TColgp_SequenceOfXY) -> crate::OwnedPtr<Self> {
+    pub fn new_sequenceofxy(
+        SOfXY: &crate::ffi_types::TColgp_SequenceOfXY,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(SOfXY),
+                crate::ffi_extern_TKGeomAlgo::Plate_GlobalTranslationConstraint_ctor_sequenceofxy(
+                    SOfXY,
+                ),
             ))
         }
     }
@@ -353,9 +363,11 @@ impl GlobalTranslationConstraint {
     /// **Source:** `Plate_GlobalTranslationConstraint.hxx`:35 - `Plate_GlobalTranslationConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &LinearXYZConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_GlobalTranslationConstraint_lxyzc(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_GlobalTranslationConstraint_lxyzc(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -366,11 +378,11 @@ impl GlobalTranslationConstraint {
 
 /// **Source:** `Plate_GtoCConstraint.hxx`:32 - `Plate_GtoCConstraint`
 /// define a G1, G2  or G3 constraint on the Plate
-pub use crate::ffi::Plate_GtoCConstraint as GtoCConstraint;
+pub use crate::ffi_types::Plate_GtoCConstraint as GtoCConstraint;
 
 unsafe impl crate::CppDeletable for GtoCConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_GtoCConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_destructor(ptr);
     }
 }
 
@@ -379,7 +391,7 @@ impl GtoCConstraint {
     pub fn new_xy_d12(point2d: &crate::gp::XY, D1S: &D1, D1T: &D1) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12(point2d, D1S, D1T),
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12(point2d, D1S, D1T),
             ))
         }
     }
@@ -393,7 +405,9 @@ impl GtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_xyz(point2d, D1S, D1T, nP),
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12_xyz(
+                    point2d, D1S, D1T, nP,
+                ),
             ))
         }
     }
@@ -408,7 +422,9 @@ impl GtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22(point2d, D1S, D1T, D2S, D2T),
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12_d22(
+                    point2d, D1S, D1T, D2S, D2T,
+                ),
             ))
         }
     }
@@ -424,7 +440,7 @@ impl GtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_xyz(
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12_d22_xyz(
                     point2d, D1S, D1T, D2S, D2T, nP,
                 ),
             ))
@@ -443,7 +459,7 @@ impl GtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32(
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12_d22_d32(
                     point2d, D1S, D1T, D2S, D2T, D3S, D3T,
                 ),
             ))
@@ -463,7 +479,7 @@ impl GtoCConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_ctor_xy_d12_d22_d32_xyz(
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_ctor_xy_d12_d22_d32_xyz(
                     point2d, D1S, D1T, D2S, D2T, D3S, D3T, nP,
                 ),
             ))
@@ -473,14 +489,16 @@ impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:78 - `Plate_GtoCConstraint::nb_PPC()`
     pub fn nb_ppc(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_GtoCConstraint_nb_ppc(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_nb_ppc(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Plate_GtoCConstraint.hxx`:80 - `Plate_GtoCConstraint::GetPPC()`
     pub fn get_ppc(&self, Index: i32) -> &PinpointConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_GtoCConstraint_get_ppc(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_get_ppc(
                 self as *const Self,
                 Index,
             )))
@@ -490,9 +508,11 @@ impl GtoCConstraint {
     /// **Source:** `Plate_GtoCConstraint.hxx`:82 - `Plate_GtoCConstraint::D1SurfInit()`
     pub fn d1_surf_init(&self) -> &D1 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_GtoCConstraint_d1_surf_init(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_d1_surf_init(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -500,7 +520,7 @@ impl GtoCConstraint {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_GtoCConstraint_to_owned(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Plate_GtoCConstraint_to_owned(self as *const Self),
             ))
         }
     }
@@ -511,11 +531,11 @@ impl GtoCConstraint {
 // ========================
 
 /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint`
-pub use crate::ffi::Plate_HArray1OfPinpointConstraint as HArray1OfPinpointConstraint;
+pub use crate::ffi_types::Plate_HArray1OfPinpointConstraint as HArray1OfPinpointConstraint;
 
 unsafe impl crate::CppDeletable for HArray1OfPinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_HArray1OfPinpointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_destructor(ptr);
     }
 }
 
@@ -524,7 +544,7 @@ impl HArray1OfPinpointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_ctor(),
             ))
         }
     }
@@ -533,7 +553,9 @@ impl HArray1OfPinpointConstraint {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -545,11 +567,7 @@ impl HArray1OfPinpointConstraint {
         theValue: &PinpointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_ctor_int2_pinpointconstraint(theLower, theUpper, theValue)))
         }
     }
 
@@ -561,51 +579,49 @@ impl HArray1OfPinpointConstraint {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_ctor_pinpointconstraint_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Plate_HArray1OfPinpointConstraint()`
     pub fn new_array1ofpinpointconstraint(
-        theOther: &crate::ffi::Plate_Array1OfPinpointConstraint,
+        theOther: &crate::ffi_types::Plate_Array1OfPinpointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(
-                    theOther,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_ctor_array1ofpinpointconstraint(theOther)))
+        }
+    }
+
+    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Array1()`
+    pub fn array1(&self) -> &crate::ffi_types::Plate_Array1OfPinpointConstraint {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_array1(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::Array1()`
-    pub fn array1(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
-        unsafe {
-            &*(crate::check_result(crate::ffi::Plate_HArray1OfPinpointConstraint_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::Plate_Array1OfPinpointConstraint {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::Plate_Array1OfPinpointConstraint {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_change_array1(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_HArray1OfPinpointConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -613,7 +629,7 @@ impl HArray1OfPinpointConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -621,10 +637,11 @@ impl HArray1OfPinpointConstraint {
     }
 
     /// **Source:** `Plate_HArray1OfPinpointConstraint.hxx`:24 - `Plate_HArray1OfPinpointConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_get_type_descriptor(),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -632,40 +649,34 @@ impl HArray1OfPinpointConstraint {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePlateHArray1OfPinpointConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePlateHArray1OfPinpointConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_HArray1OfPinpointConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -673,9 +684,9 @@ impl HArray1OfPinpointConstraint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IsKind(
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -686,7 +697,9 @@ impl HArray1OfPinpointConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -699,71 +712,73 @@ impl HArray1OfPinpointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_HArray1OfPinpointConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Plate_HArray1OfPinpointConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandlePlateHArray1OfPinpointConstraint;
+pub use crate::ffi_types::HandlePlateHArray1OfPinpointConstraint;
 
 unsafe impl crate::CppDeletable for HandlePlateHArray1OfPinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePlateHArray1OfPinpointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_destructor(ptr);
     }
 }
 
 impl HandlePlateHArray1OfPinpointConstraint {
     /// Dereference this Handle to access the underlying Plate_HArray1OfPinpointConstraint
-    pub fn get(&self) -> &crate::ffi::Plate_HArray1OfPinpointConstraint {
+    pub fn get(&self) -> &crate::ffi_types::Plate_HArray1OfPinpointConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying Plate_HArray1OfPinpointConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::Plate_HArray1OfPinpointConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::Plate_HArray1OfPinpointConstraint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePlateHArray1OfPinpointConstraint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<Plate_HArray1OfPinpointConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandlePlateHArray1OfPinpointConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -774,11 +789,11 @@ impl HandlePlateHArray1OfPinpointConstraint {
 
 /// **Source:** `Plate_LineConstraint.hxx`:29 - `Plate_LineConstraint`
 /// constraint a point to belong to a straight line
-pub use crate::ffi::Plate_LineConstraint as LineConstraint;
+pub use crate::ffi_types::Plate_LineConstraint as LineConstraint;
 
 unsafe impl crate::CppDeletable for LineConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_LineConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_LineConstraint_destructor(ptr);
     }
 }
 
@@ -792,7 +807,9 @@ impl LineConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LineConstraint_ctor_xy_lin_int2(point2d, lin, iu, iv),
+                crate::ffi_extern_TKGeomAlgo::Plate_LineConstraint_ctor_xy_lin_int2(
+                    point2d, lin, iu, iv,
+                ),
             ))
         }
     }
@@ -814,7 +831,9 @@ impl LineConstraint {
     /// **Source:** `Plate_LineConstraint.hxx`:39 - `Plate_LineConstraint::LSC()`
     pub fn lsc(&self) -> &LinearScalarConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_LineConstraint_lsc(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LineConstraint_lsc(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -826,11 +845,11 @@ impl LineConstraint {
 /// **Source:** `Plate_LinearScalarConstraint.hxx`:35 - `Plate_LinearScalarConstraint`
 /// define on or several constraints  as linear combination of
 /// the X,Y and Z components of a set of PinPointConstraint
-pub use crate::ffi::Plate_LinearScalarConstraint as LinearScalarConstraint;
+pub use crate::ffi_types::Plate_LinearScalarConstraint as LinearScalarConstraint;
 
 unsafe impl crate::CppDeletable for LinearScalarConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_LinearScalarConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_destructor(ptr);
     }
 }
 
@@ -839,7 +858,7 @@ impl LinearScalarConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearScalarConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_ctor(),
             ))
         }
     }
@@ -850,31 +869,27 @@ impl LinearScalarConstraint {
         theCoeff: &crate::gp::XYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearScalarConstraint_ctor_pinpointconstraint_xyz(
-                    thePPC1, theCoeff,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_ctor_pinpointconstraint_xyz(thePPC1, theCoeff)))
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:45 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new_array1ofpinpointconstraint_array1ofxyz(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColgp_Array1OfXYZ,
+        thePPC: &crate::ffi_types::Plate_Array1OfPinpointConstraint,
+        theCoeff: &crate::ffi_types::TColgp_Array1OfXYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(thePPC, theCoeff)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array1ofxyz(thePPC, theCoeff)))
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:48 - `Plate_LinearScalarConstraint::Plate_LinearScalarConstraint()`
     pub fn new_array1ofpinpointconstraint_array2ofxyz(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColgp_Array2OfXYZ,
+        thePPC: &crate::ffi_types::Plate_Array1OfPinpointConstraint,
+        theCoeff: &crate::ffi_types::TColgp_Array2OfXYZ,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(thePPC, theCoeff)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_ctor_array1ofpinpointconstraint_array2ofxyz(thePPC, theCoeff)))
         }
     }
 
@@ -882,26 +897,32 @@ impl LinearScalarConstraint {
     pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearScalarConstraint_ctor_int2(ColLen, RowLen),
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_ctor_int2(
+                    ColLen, RowLen,
+                ),
             ))
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:54 - `Plate_LinearScalarConstraint::GetPPC()`
-    pub fn get_ppc(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
+    pub fn get_ppc(&self) -> &crate::ffi_types::Plate_Array1OfPinpointConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_LinearScalarConstraint_get_ppc(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_get_ppc(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Plate_LinearScalarConstraint.hxx`:56 - `Plate_LinearScalarConstraint::Coeff()`
-    pub fn coeff(&self) -> &crate::ffi::TColgp_Array2OfXYZ {
+    pub fn coeff(&self) -> &crate::ffi_types::TColgp_Array2OfXYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_LinearScalarConstraint_coeff(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_coeff(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -911,7 +932,11 @@ impl LinearScalarConstraint {
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_LinearScalarConstraint_set_ppc(self as *mut Self, Index, Value)
+            crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_set_ppc(
+                self as *mut Self,
+                Index,
+                Value,
+            )
         })
     }
 
@@ -921,7 +946,12 @@ impl LinearScalarConstraint {
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: &crate::gp::XYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_LinearScalarConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+            crate::ffi_extern_TKGeomAlgo::Plate_LinearScalarConstraint_set_coeff(
+                self as *mut Self,
+                Row,
+                Col,
+                Value,
+            )
         })
     }
 }
@@ -934,11 +964,11 @@ impl LinearScalarConstraint {
 /// define on or several constraints as linear combination of
 /// PinPointConstraint unlike the LinearScalarConstraint, usage
 /// of this kind of constraint preserve the X,Y and Z uncoupling.
-pub use crate::ffi::Plate_LinearXYZConstraint as LinearXYZConstraint;
+pub use crate::ffi_types::Plate_LinearXYZConstraint as LinearXYZConstraint;
 
 unsafe impl crate::CppDeletable for LinearXYZConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_LinearXYZConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_destructor(ptr);
     }
 }
 
@@ -947,36 +977,28 @@ impl LinearXYZConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearXYZConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_ctor(),
             ))
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:43 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
     pub fn new_array1ofpinpointconstraint_array1ofreal(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColStd_Array1OfReal,
+        thePPC: &crate::ffi_types::Plate_Array1OfPinpointConstraint,
+        theCoeff: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(
-                    thePPC, theCoeff,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array1ofreal(thePPC, theCoeff)))
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:46 - `Plate_LinearXYZConstraint::Plate_LinearXYZConstraint()`
     pub fn new_array1ofpinpointconstraint_array2ofreal(
-        thePPC: &crate::ffi::Plate_Array1OfPinpointConstraint,
-        theCoeff: &crate::ffi::TColStd_Array2OfReal,
+        thePPC: &crate::ffi_types::Plate_Array1OfPinpointConstraint,
+        theCoeff: &crate::ffi_types::TColStd_Array2OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(
-                    thePPC, theCoeff,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_ctor_array1ofpinpointconstraint_array2ofreal(thePPC, theCoeff)))
         }
     }
 
@@ -984,24 +1006,26 @@ impl LinearXYZConstraint {
     pub fn new_int2(ColLen: i32, RowLen: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_LinearXYZConstraint_ctor_int2(ColLen, RowLen),
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_ctor_int2(ColLen, RowLen),
             ))
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:52 - `Plate_LinearXYZConstraint::GetPPC()`
-    pub fn get_ppc(&self) -> &crate::ffi::Plate_Array1OfPinpointConstraint {
+    pub fn get_ppc(&self) -> &crate::ffi_types::Plate_Array1OfPinpointConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_LinearXYZConstraint_get_ppc(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_get_ppc(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Plate_LinearXYZConstraint.hxx`:54 - `Plate_LinearXYZConstraint::Coeff()`
-    pub fn coeff(&self) -> &crate::ffi::TColStd_Array2OfReal {
+    pub fn coeff(&self) -> &crate::ffi_types::TColStd_Array2OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_LinearXYZConstraint_coeff(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_coeff(
                 self as *const Self,
             )))
         }
@@ -1013,7 +1037,11 @@ impl LinearXYZConstraint {
     /// PPC or the Row length of coeff or lower  than 1
     pub fn set_ppc(&mut self, Index: i32, Value: &PinpointConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_LinearXYZConstraint_set_ppc(self as *mut Self, Index, Value)
+            crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_set_ppc(
+                self as *mut Self,
+                Index,
+                Value,
+            )
         })
     }
 
@@ -1023,7 +1051,12 @@ impl LinearXYZConstraint {
     /// Row (respectively Column) length of coeff
     pub fn set_coeff(&mut self, Row: i32, Col: i32, Value: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_LinearXYZConstraint_set_coeff(self as *mut Self, Row, Col, Value)
+            crate::ffi_extern_TKGeomAlgo::Plate_LinearXYZConstraint_set_coeff(
+                self as *mut Self,
+                Row,
+                Col,
+                Value,
+            )
         })
     }
 }
@@ -1034,11 +1067,11 @@ impl LinearXYZConstraint {
 
 /// **Source:** `Plate_PinpointConstraint.hxx`:28 - `Plate_PinpointConstraint`
 /// define a constraint on the Plate
-pub use crate::ffi::Plate_PinpointConstraint as PinpointConstraint;
+pub use crate::ffi_types::Plate_PinpointConstraint as PinpointConstraint;
 
 unsafe impl crate::CppDeletable for PinpointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_PinpointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_destructor(ptr);
     }
 }
 
@@ -1047,7 +1080,7 @@ impl PinpointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_PinpointConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_ctor(),
             ))
         }
     }
@@ -1061,7 +1094,7 @@ impl PinpointConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_PinpointConstraint_ctor_xy_xyz_int2(
+                crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_ctor_xy_xyz_int2(
                     point2d,
                     ImposedValue,
                     iu,
@@ -1091,28 +1124,36 @@ impl PinpointConstraint {
     /// **Source:** `Plate_PinpointConstraint.hxx`:40 - `Plate_PinpointConstraint::Pnt2d()`
     pub fn pnt2d(&self) -> &crate::gp::XY {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_PinpointConstraint_pnt2d(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_pnt2d(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:42 - `Plate_PinpointConstraint::Idu()`
     pub fn idu(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_PinpointConstraint_idu(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_idu(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:44 - `Plate_PinpointConstraint::Idv()`
     pub fn idv(&self) -> &i32 {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_PinpointConstraint_idv(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_idv(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `Plate_PinpointConstraint.hxx`:46 - `Plate_PinpointConstraint::Value()`
     pub fn value(&self) -> &crate::gp::XYZ {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_PinpointConstraint_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_PinpointConstraint_value(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1123,11 +1164,11 @@ impl PinpointConstraint {
 
 /// **Source:** `Plate_PlaneConstraint.hxx`:29 - `Plate_PlaneConstraint`
 /// constraint a point to belong to a Plane
-pub use crate::ffi::Plate_PlaneConstraint as PlaneConstraint;
+pub use crate::ffi_types::Plate_PlaneConstraint as PlaneConstraint;
 
 unsafe impl crate::CppDeletable for PlaneConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_PlaneConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_PlaneConstraint_destructor(ptr);
     }
 }
 
@@ -1141,7 +1182,9 @@ impl PlaneConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_PlaneConstraint_ctor_xy_pln_int2(point2d, pln, iu, iv),
+                crate::ffi_extern_TKGeomAlgo::Plate_PlaneConstraint_ctor_xy_pln_int2(
+                    point2d, pln, iu, iv,
+                ),
             ))
         }
     }
@@ -1163,7 +1206,9 @@ impl PlaneConstraint {
     /// **Source:** `Plate_PlaneConstraint.hxx`:39 - `Plate_PlaneConstraint::LSC()`
     pub fn lsc(&self) -> &LinearScalarConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_PlaneConstraint_lsc(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_PlaneConstraint_lsc(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -1176,18 +1221,22 @@ impl PlaneConstraint {
 /// This class implement a variational spline algorithm able
 /// to define a two variable function satisfying some constraints
 /// and minimizing an energy like criterion.
-pub use crate::ffi::Plate_Plate as Plate;
+pub use crate::ffi_types::Plate_Plate as Plate;
 
 unsafe impl crate::CppDeletable for Plate {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_Plate_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_Plate_destructor(ptr);
     }
 }
 
 impl Plate {
     /// **Source:** `Plate_Plate.hxx`:53 - `Plate_Plate::Plate_Plate()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_Plate_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_Plate_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:57 - `Plate_Plate::Copy()`
@@ -1198,69 +1247,98 @@ impl Plate {
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn copy(&mut self, Ref: &Plate) -> &mut Plate {
-        unsafe { &mut *(crate::check_result(crate::ffi::Plate_Plate_copy(self as *mut Self, Ref))) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_Plate_copy(
+                self as *mut Self,
+                Ref,
+            )))
+        }
     }
 
     /// **Source:** `Plate_Plate.hxx`:61 - `Plate_Plate::Load()`
     pub fn load_pinpointconstraint(&mut self, PConst: &PinpointConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_pinpointconstraint(self as *mut Self, PConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_pinpointconstraint(
+                self as *mut Self,
+                PConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:63 - `Plate_Plate::Load()`
     pub fn load_linearxyzconstraint(&mut self, LXYZConst: &LinearXYZConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_linearxyzconstraint(self as *mut Self, LXYZConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_linearxyzconstraint(
+                self as *mut Self,
+                LXYZConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:65 - `Plate_Plate::Load()`
     pub fn load_linearscalarconstraint(&mut self, LScalarConst: &LinearScalarConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_linearscalarconstraint(self as *mut Self, LScalarConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_linearscalarconstraint(
+                self as *mut Self,
+                LScalarConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:67 - `Plate_Plate::Load()`
     pub fn load_globaltranslationconstraint(&mut self, GTConst: &GlobalTranslationConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_globaltranslationconstraint(self as *mut Self, GTConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_globaltranslationconstraint(
+                self as *mut Self,
+                GTConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:69 - `Plate_Plate::Load()`
     pub fn load_lineconstraint(&mut self, LConst: &LineConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_lineconstraint(self as *mut Self, LConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_lineconstraint(self as *mut Self, LConst)
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:71 - `Plate_Plate::Load()`
     pub fn load_planeconstraint(&mut self, PConst: &PlaneConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_planeconstraint(self as *mut Self, PConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_planeconstraint(
+                self as *mut Self,
+                PConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:73 - `Plate_Plate::Load()`
     pub fn load_sampledcurveconstraint(&mut self, SCConst: &SampledCurveConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_sampledcurveconstraint(self as *mut Self, SCConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_sampledcurveconstraint(
+                self as *mut Self,
+                SCConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:75 - `Plate_Plate::Load()`
     pub fn load_gtocconstraint(&mut self, GtoCConst: &GtoCConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_gtocconstraint(self as *mut Self, GtoCConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_gtocconstraint(
+                self as *mut Self,
+                GtoCConst,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:77 - `Plate_Plate::Load()`
     pub fn load_freegtocconstraint(&mut self, FGtoCConst: &FreeGtoCConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_load_freegtocconstraint(self as *mut Self, FGtoCConst)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_load_freegtocconstraint(
+                self as *mut Self,
+                FGtoCConst,
+            )
         })
     }
 
@@ -1272,35 +1350,45 @@ impl Plate {
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_solve_ti(self as *mut Self, ord, anisotropie, theProgress)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_solve_ti(
+                self as *mut Self,
+                ord,
+                anisotropie,
+                theProgress,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:84 - `Plate_Plate::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Plate_Plate_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Plate_Plate.hxx`:86 - `Plate_Plate::destroy()`
     pub fn destroy(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Plate_Plate_destroy(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_destroy(self as *mut Self)
+        })
     }
 
     /// **Source:** `Plate_Plate.hxx`:92 - `Plate_Plate::Init()`
     /// reset the Plate in the initial state
     /// ( same as after Create())
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Plate_Plate_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `Plate_Plate.hxx`:94 - `Plate_Plate::Evaluate()`
     pub fn evaluate(&self, point2d: &crate::gp::XY) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_Plate_evaluate(
-                self as *const Self,
-                point2d,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_Plate_evaluate(self as *const Self, point2d),
+            ))
         }
     }
 
@@ -1313,50 +1401,66 @@ impl Plate {
     ) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_Plate_evaluate_derivative(self as *const Self, point2d, iu, iv),
+                crate::ffi_extern_TKGeomAlgo::Plate_Plate_evaluate_derivative(
+                    self as *const Self,
+                    point2d,
+                    iu,
+                    iv,
+                ),
             ))
         }
     }
 
     /// **Source:** `Plate_Plate.hxx`:100 - `Plate_Plate::CoefPol()`
-    pub fn coef_pol(&self, Coefs: &mut crate::ffi::HandleTColgpHArray2OfXYZ) {
+    pub fn coef_pol(&self, Coefs: &mut crate::ffi_types::HandleTColgpHArray2OfXYZ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_coef_pol(self as *const Self, Coefs)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_coef_pol(self as *const Self, Coefs)
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:102 - `Plate_Plate::SetPolynomialPartOnly()`
     pub fn set_polynomial_part_only(&mut self, PPOnly: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_set_polynomial_part_only(self as *mut Self, PPOnly)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_set_polynomial_part_only(
+                self as *mut Self,
+                PPOnly,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:104 - `Plate_Plate::Continuity()`
     pub fn continuity(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::Plate_Plate_continuity(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_continuity(self as *const Self)
+        })
     }
 
     /// **Source:** `Plate_Plate.hxx`:106 - `Plate_Plate::UVBox()`
     pub fn uv_box(&self, UMin: &mut f64, UMax: &mut f64, VMin: &mut f64, VMax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_uv_box(self as *const Self, UMin, UMax, VMin, VMax)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_uv_box(
+                self as *const Self,
+                UMin,
+                UMax,
+                VMin,
+                VMax,
+            )
         })
     }
 
     /// **Source:** `Plate_Plate.hxx`:111 - `Plate_Plate::UVConstraints()`
-    pub fn uv_constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
+    pub fn uv_constraints(&self, Seq: &mut crate::ffi_types::TColgp_SequenceOfXY) {
         crate::check_void_result(unsafe {
-            crate::ffi::Plate_Plate_uv_constraints(self as *const Self, Seq)
+            crate::ffi_extern_TKGeomAlgo::Plate_Plate_uv_constraints(self as *const Self, Seq)
         })
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Plate_Plate_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_Plate_to_owned(self as *const Self),
+            ))
         }
     }
 }
@@ -1367,35 +1471,33 @@ impl Plate {
 
 /// **Source:** `Plate_SampledCurveConstraint.hxx`:28 - `Plate_SampledCurveConstraint`
 /// define m PinPointConstraint driven by m unknown
-pub use crate::ffi::Plate_SampledCurveConstraint as SampledCurveConstraint;
+pub use crate::ffi_types::Plate_SampledCurveConstraint as SampledCurveConstraint;
 
 unsafe impl crate::CppDeletable for SampledCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Plate_SampledCurveConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Plate_SampledCurveConstraint_destructor(ptr);
     }
 }
 
 impl SampledCurveConstraint {
     /// **Source:** `Plate_SampledCurveConstraint.hxx`:33 - `Plate_SampledCurveConstraint::Plate_SampledCurveConstraint()`
     pub fn new_sequenceofpinpointconstraint_int(
-        SOPPC: &crate::ffi::Plate_SequenceOfPinpointConstraint,
+        SOPPC: &crate::ffi_types::Plate_SequenceOfPinpointConstraint,
         n: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Plate_SampledCurveConstraint_ctor_sequenceofpinpointconstraint_int(
-                    SOPPC, n,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::Plate_SampledCurveConstraint_ctor_sequenceofpinpointconstraint_int(SOPPC, n)))
         }
     }
 
     /// **Source:** `Plate_SampledCurveConstraint.hxx`:36 - `Plate_SampledCurveConstraint::LXYZC()`
     pub fn lxyzc(&self) -> &LinearXYZConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Plate_SampledCurveConstraint_lxyzc(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Plate_SampledCurveConstraint_lxyzc(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -1404,7 +1506,7 @@ impl SampledCurveConstraint {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     Plate_Array1OfPinpointConstraint as Array1OfPinpointConstraint,
     Plate_SequenceOfPinpointConstraint as SequenceOfPinpointConstraint,
 };

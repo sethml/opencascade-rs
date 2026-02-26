@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From FEmTool_Assembly.hxx
@@ -15,26 +15,22 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `FEmTool_Assembly.hxx`:35 - `FEmTool_Assembly`
 /// Assemble and solve system from (one dimensional) Finite Elements
-pub use crate::ffi::FEmTool_Assembly as Assembly;
+pub use crate::ffi_types::FEmTool_Assembly as Assembly;
 
 unsafe impl crate::CppDeletable for Assembly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_Assembly_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_Assembly_destructor(ptr);
     }
 }
 
 impl Assembly {
     /// **Source:** `FEmTool_Assembly.hxx`:40 - `FEmTool_Assembly::FEmTool_Assembly()`
     pub fn new_array2ofinteger_handlefemtoolhassemblytable(
-        Dependence: &crate::ffi::TColStd_Array2OfInteger,
-        Table: &crate::ffi::HandleFEmToolHAssemblyTable,
+        Dependence: &crate::ffi_types::TColStd_Array2OfInteger,
+        Table: &crate::ffi_types::HandleFEmToolHAssemblyTable,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_Assembly_ctor_array2ofinteger_handlefemtoolhassemblytable(
-                    Dependence, Table,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_Assembly_ctor_array2ofinteger_handlefemtoolhassemblytable(Dependence, Table)))
         }
     }
 
@@ -42,7 +38,7 @@ impl Assembly {
     /// Nullify all Matrix 's Coefficient
     pub fn nullify_matrix(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_nullify_matrix(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_nullify_matrix(self as *mut Self)
         })
     }
 
@@ -57,7 +53,7 @@ impl Assembly {
         Mat: &crate::math::Matrix,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_add_matrix(
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_add_matrix(
                 self as *mut Self,
                 Element,
                 Dimension1,
@@ -71,15 +67,25 @@ impl Assembly {
     /// Nullify  all  Coordinate of  assembly  Vector (second member)
     pub fn nullify_vector(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_nullify_vector(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_nullify_vector(self as *mut Self)
         })
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:57 - `FEmTool_Assembly::AddVector()`
     /// Add an elementary Vector in the assembly Vector (second member)
-    pub fn add_vector(&mut self, Element: i32, Dimension: i32, Vec: &crate::ffi::math_Vector) {
+    pub fn add_vector(
+        &mut self,
+        Element: i32,
+        Dimension: i32,
+        Vec: &crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_add_vector(self as *mut Self, Element, Dimension, Vec)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_add_vector(
+                self as *mut Self,
+                Element,
+                Dimension,
+                Vec,
+            )
         })
     }
 
@@ -87,7 +93,7 @@ impl Assembly {
     /// Delete all Constraints.
     pub fn reset_constraint(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_reset_constraint(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_reset_constraint(self as *mut Self)
         })
     }
 
@@ -95,7 +101,7 @@ impl Assembly {
     /// Nullify all Constraints.
     pub fn nullify_constraint(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_nullify_constraint(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_nullify_constraint(self as *mut Self)
         })
     }
 
@@ -105,11 +111,11 @@ impl Assembly {
         IndexofConstraint: i32,
         Element: i32,
         Dimension: i32,
-        LinearForm: &crate::ffi::math_Vector,
+        LinearForm: &crate::ffi_types::math_Vector,
         Value: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_add_constraint(
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_add_constraint(
                 self as *mut Self,
                 IndexofConstraint,
                 Element,
@@ -124,27 +130,32 @@ impl Assembly {
     /// Solve the assembly system
     /// Returns Standard_False if the computation failed.
     pub fn solve(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FEmTool_Assembly_solve(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_solve(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:77 - `FEmTool_Assembly::Solution()`
-    pub fn solution(&self, Solution: &mut crate::ffi::math_Vector) {
+    pub fn solution(&self, Solution: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_solution(self as *const Self, Solution)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_solution(self as *const Self, Solution)
         })
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:79 - `FEmTool_Assembly::NbGlobVar()`
     pub fn nb_glob_var(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Assembly_nb_glob_var(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_nb_glob_var(self as *const Self)
         })
     }
 
     /// **Source:** `FEmTool_Assembly.hxx`:81 - `FEmTool_Assembly::GetAssemblyTable()`
-    pub fn get_assembly_table(&self, AssTable: &mut crate::ffi::HandleFEmToolHAssemblyTable) {
+    pub fn get_assembly_table(&self, AssTable: &mut crate::ffi_types::HandleFEmToolHAssemblyTable) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Assembly_get_assembly_table(self as *const Self, AssTable)
+            crate::ffi_extern_TKGeomBase::FEmTool_Assembly_get_assembly_table(
+                self as *const Self,
+                AssTable,
+            )
         })
     }
 }
@@ -155,11 +166,11 @@ impl Assembly {
 
 /// **Source:** `FEmTool_Curve.hxx`:36 - `FEmTool_Curve`
 /// Curve defined by Polynomial Elements.
-pub use crate::ffi::FEmTool_Curve as Curve;
+pub use crate::ffi_types::FEmTool_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_Curve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_Curve_destructor(ptr);
     }
 }
 
@@ -168,12 +179,12 @@ impl Curve {
     pub fn new_int2_handleplibbase_real(
         Dimension: i32,
         NbElements: i32,
-        TheBase: &crate::ffi::HandlePLibBase,
+        TheBase: &crate::ffi_types::HandlePLibBase,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_Curve_ctor_int2_handleplibbase_real(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_ctor_int2_handleplibbase_real(
                     Dimension, NbElements, TheBase, Tolerance,
                 ),
             ))
@@ -181,36 +192,59 @@ impl Curve {
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:45 - `FEmTool_Curve::Knots()`
-    pub fn knots(&mut self) -> &mut crate::ffi::TColStd_Array1OfReal {
-        unsafe { &mut *(crate::check_result(crate::ffi::FEmTool_Curve_knots(self as *mut Self))) }
+    pub fn knots(&mut self) -> &mut crate::ffi_types::TColStd_Array1OfReal {
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_Curve_knots(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:47 - `FEmTool_Curve::SetElement()`
-    pub fn set_element(&mut self, IndexOfElement: i32, Coeffs: &crate::ffi::TColStd_Array2OfReal) {
+    pub fn set_element(
+        &mut self,
+        IndexOfElement: i32,
+        Coeffs: &crate::ffi_types::TColStd_Array2OfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_set_element(self as *mut Self, IndexOfElement, Coeffs)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_set_element(
+                self as *mut Self,
+                IndexOfElement,
+                Coeffs,
+            )
         })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:50 - `FEmTool_Curve::D0()`
-    pub fn d0(&mut self, U: f64, Pnt: &mut crate::ffi::TColStd_Array1OfReal) {
-        crate::check_void_result(unsafe { crate::ffi::FEmTool_Curve_d0(self as *mut Self, U, Pnt) })
+    pub fn d0(&mut self, U: f64, Pnt: &mut crate::ffi_types::TColStd_Array1OfReal) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_d0(self as *mut Self, U, Pnt)
+        })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:52 - `FEmTool_Curve::D1()`
-    pub fn d1(&mut self, U: f64, Vec: &mut crate::ffi::TColStd_Array1OfReal) {
-        crate::check_void_result(unsafe { crate::ffi::FEmTool_Curve_d1(self as *mut Self, U, Vec) })
+    pub fn d1(&mut self, U: f64, Vec: &mut crate::ffi_types::TColStd_Array1OfReal) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_d1(self as *mut Self, U, Vec)
+        })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:54 - `FEmTool_Curve::D2()`
-    pub fn d2(&mut self, U: f64, Vec: &mut crate::ffi::TColStd_Array1OfReal) {
-        crate::check_void_result(unsafe { crate::ffi::FEmTool_Curve_d2(self as *mut Self, U, Vec) })
+    pub fn d2(&mut self, U: f64, Vec: &mut crate::ffi_types::TColStd_Array1OfReal) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_d2(self as *mut Self, U, Vec)
+        })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:56 - `FEmTool_Curve::Length()`
     pub fn length(&mut self, FirstU: f64, LastU: f64, Length: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_length(self as *mut Self, FirstU, LastU, Length)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_length(
+                self as *mut Self,
+                FirstU,
+                LastU,
+                Length,
+            )
         })
     }
 
@@ -218,51 +252,63 @@ impl Curve {
     pub fn get_element(
         &mut self,
         IndexOfElement: i32,
-        Coeffs: &mut crate::ffi::TColStd_Array2OfReal,
+        Coeffs: &mut crate::ffi_types::TColStd_Array2OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_get_element(self as *mut Self, IndexOfElement, Coeffs)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_get_element(
+                self as *mut Self,
+                IndexOfElement,
+                Coeffs,
+            )
         })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:64 - `FEmTool_Curve::GetPolynom()`
     /// returns  coefficients  of  all  elements  in  canonical  base.
-    pub fn get_polynom(&mut self, Coeffs: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn get_polynom(&mut self, Coeffs: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_get_polynom(self as *mut Self, Coeffs)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_get_polynom(self as *mut Self, Coeffs)
         })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:66 - `FEmTool_Curve::NbElements()`
     pub fn nb_elements(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FEmTool_Curve_nb_elements(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_nb_elements(self as *const Self)
+        })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:68 - `FEmTool_Curve::Dimension()`
     pub fn dimension(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::FEmTool_Curve_dimension(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_dimension(self as *const Self)
+        })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:70 - `FEmTool_Curve::Base()`
-    pub fn base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
+    pub fn base(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePLibBase> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FEmTool_Curve_base(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_base(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:72 - `FEmTool_Curve::Degree()`
     pub fn degree(&self, IndexOfElement: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Curve_degree(self as *const Self, IndexOfElement)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_degree(self as *const Self, IndexOfElement)
         })
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:74 - `FEmTool_Curve::SetDegree()`
     pub fn set_degree(&mut self, IndexOfElement: i32, Degree: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_set_degree(self as *mut Self, IndexOfElement, Degree)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_set_degree(
+                self as *mut Self,
+                IndexOfElement,
+                Degree,
+            )
         })
     }
 
@@ -275,7 +321,7 @@ impl Curve {
         MaxError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_reduce_degree(
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_reduce_degree(
                 self as *mut Self,
                 IndexOfElement,
                 Tol,
@@ -286,66 +332,84 @@ impl Curve {
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_Curve_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_Curve_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::FEmTool_Curve_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `FEmTool_Curve.hxx`:82 - `FEmTool_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_Curve_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_Curve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_Curve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::FEmTool_Curve_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -353,7 +417,7 @@ impl Curve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_Curve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -366,58 +430,72 @@ impl Curve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_Curve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_Curve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolCurve;
+pub use crate::ffi_types::HandleFEmToolCurve;
 
 unsafe impl crate::CppDeletable for HandleFEmToolCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_destructor(ptr);
     }
 }
 
 impl HandleFEmToolCurve {
     /// Dereference this Handle to access the underlying FEmTool_Curve
-    pub fn get(&self) -> &crate::ffi::FEmTool_Curve {
-        unsafe { &*crate::check_result(crate::ffi::HandleFEmToolCurve_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_Curve {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_Curve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_Curve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolCurve_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<FEmTool_Curve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolCurve_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleFEmToolCurve_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -429,11 +507,11 @@ impl HandleFEmToolCurve {
 
 /// **Source:** `FEmTool_ElementaryCriterion.hxx`:34 - `FEmTool_ElementaryCriterion`
 /// defined J Criteria to used in minimisation
-pub use crate::ffi::FEmTool_ElementaryCriterion as ElementaryCriterion;
+pub use crate::ffi_types::FEmTool_ElementaryCriterion as ElementaryCriterion;
 
 unsafe impl crate::CppDeletable for ElementaryCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_ElementaryCriterion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_destructor(ptr);
     }
 }
 
@@ -442,10 +520,10 @@ impl ElementaryCriterion {
     /// Set the coefficient of the Element (the  Curve)
     pub fn set_handletcolstdharray2ofreal(
         &mut self,
-        Coeff: &crate::ffi::HandleTColStdHArray2OfReal,
+        Coeff: &crate::ffi_types::HandleTColStdHArray2OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_set_handletcolstdharray2ofreal(
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_set_handletcolstdharray2ofreal(
                 self as *mut Self,
                 Coeff,
             )
@@ -456,7 +534,7 @@ impl ElementaryCriterion {
     /// Set the definition interval of the Element
     pub fn set_real2(&mut self, FirstKnot: f64, LastKnot: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_set_real2(
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_set_real2(
                 self as *mut Self,
                 FirstKnot,
                 LastKnot,
@@ -466,10 +544,14 @@ impl ElementaryCriterion {
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:48 - `FEmTool_ElementaryCriterion::DependenceTable()`
     /// To know if two dimension are independent.
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_ElementaryCriterion_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -478,7 +560,7 @@ impl ElementaryCriterion {
     /// To Compute J(E) where E  is the current Element
     pub fn value(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_value(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_value(self as *mut Self)
         })
     }
 
@@ -489,25 +571,36 @@ impl ElementaryCriterion {
     /// If DependenceTable(Dimension1,Dimension2) is False
     pub fn hessian(&mut self, Dim1: i32, Dim2: i32, H: &mut crate::math::Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_hessian(self as *mut Self, Dim1, Dim2, H)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_hessian(
+                self as *mut Self,
+                Dim1,
+                Dim2,
+                H,
+            )
         })
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:63 - `FEmTool_ElementaryCriterion::Gradient()`
     /// To Compute the  coefficients in the dimension <dim>
     /// of  the  J(E)'s  Gradient where E  is  the current  Element
-    pub fn gradient(&mut self, Dim: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(&mut self, Dim: i32, G: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_gradient(self as *mut Self, Dim, G)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_gradient(
+                self as *mut Self,
+                Dim,
+                G,
+            )
         })
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_ElementaryCriterion_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -515,7 +608,7 @@ impl ElementaryCriterion {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_ElementaryCriterion_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -523,18 +616,22 @@ impl ElementaryCriterion {
     }
 
     /// **Source:** `FEmTool_ElementaryCriterion.hxx`:65 - `FEmTool_ElementaryCriterion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_ElementaryCriterion_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -542,7 +639,7 @@ impl ElementaryCriterion {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FEmTool_ElementaryCriterion_as_Standard_Transient_mut(
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -550,9 +647,9 @@ impl ElementaryCriterion {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -560,9 +657,12 @@ impl ElementaryCriterion {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -570,7 +670,9 @@ impl ElementaryCriterion {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_ElementaryCriterion_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -583,67 +685,77 @@ impl ElementaryCriterion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ElementaryCriterion_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementaryCriterion_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolElementaryCriterion;
+pub use crate::ffi_types::HandleFEmToolElementaryCriterion;
 
 unsafe impl crate::CppDeletable for HandleFEmToolElementaryCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolElementaryCriterion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_destructor(ptr);
     }
 }
 
 impl HandleFEmToolElementaryCriterion {
     /// Dereference this Handle to access the underlying FEmTool_ElementaryCriterion
-    pub fn get(&self) -> &crate::ffi::FEmTool_ElementaryCriterion {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_ElementaryCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolElementaryCriterion_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_ElementaryCriterion
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_ElementaryCriterion {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_ElementaryCriterion {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolElementaryCriterion_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_ElementaryCriterion> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolElementaryCriterion_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -652,11 +764,9 @@ impl HandleFEmToolElementaryCriterion {
     /// Returns `None` if the handle does not point to a `FEmTool_LinearFlexion` (or subclass).
     pub fn downcast_to_linear_flexion(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearFlexion>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearFlexion>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearFlexion(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearFlexion(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -670,11 +780,9 @@ impl HandleFEmToolElementaryCriterion {
     /// Returns `None` if the handle does not point to a `FEmTool_LinearJerk` (or subclass).
     pub fn downcast_to_linear_jerk(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearJerk>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearJerk>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearJerk(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearJerk(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -688,11 +796,9 @@ impl HandleFEmToolElementaryCriterion {
     /// Returns `None` if the handle does not point to a `FEmTool_LinearTension` (or subclass).
     pub fn downcast_to_linear_tension(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolLinearTension>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearTension>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearTension(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleFEmToolElementaryCriterion_downcast_to_HandleFEmToolLinearTension(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -714,23 +820,25 @@ impl HandleFEmToolElementaryCriterion {
 /// Pi(u)''*Pj(u)''  or  Pi(u)'''*Pj(u)'''  for  each  i  and  j,
 /// where  Pi(u)  is  i-th  basis  function  of  expansion  and
 /// (')  means  derivative.
-pub use crate::ffi::FEmTool_ElementsOfRefMatrix as ElementsOfRefMatrix;
+pub use crate::ffi_types::FEmTool_ElementsOfRefMatrix as ElementsOfRefMatrix;
 
 unsafe impl crate::CppDeletable for ElementsOfRefMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_ElementsOfRefMatrix_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_destructor(ptr);
     }
 }
 
 impl ElementsOfRefMatrix {
     /// **Source:** `FEmTool_ElementsOfRefMatrix.hxx`:41 - `FEmTool_ElementsOfRefMatrix::FEmTool_ElementsOfRefMatrix()`
     pub fn new_handleplibbase_int(
-        TheBase: &crate::ffi::HandlePLibBase,
+        TheBase: &crate::ffi_types::HandlePLibBase,
         DerOrder: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_ElementsOfRefMatrix_ctor_handleplibbase_int(TheBase, DerOrder),
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_ctor_handleplibbase_int(
+                    TheBase, DerOrder,
+                ),
             ))
         }
     }
@@ -740,7 +848,9 @@ impl ElementsOfRefMatrix {
     /// It  is  supposed  that  NbVariables  =  1.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementsOfRefMatrix_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -748,7 +858,9 @@ impl ElementsOfRefMatrix {
     /// returns the number of equations of the function.
     pub fn nb_equations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementsOfRefMatrix_nb_equations(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_nb_equations(
+                self as *const Self,
+            )
         })
     }
 
@@ -760,18 +872,24 @@ impl ElementsOfRefMatrix {
     /// F  contains  results  only  for  i<=j  in  following  order:
     /// P0*P0,  P0*P1,  P0*P2...  P1*P1,  P1*P2,...  (upper  triangle of
     /// matrix  {PiPj})
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut crate::ffi::math_Vector) -> bool {
+    pub fn value(
+        &mut self,
+        X: &crate::ffi_types::math_Vector,
+        F: &mut crate::ffi_types::math_Vector,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementsOfRefMatrix_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_value(self as *mut Self, X, F)
         })
     }
 
     /// Upcast to math_FunctionSet
     pub fn as_math_function_set(&self) -> &crate::math::FunctionSet {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -779,7 +897,9 @@ impl ElementsOfRefMatrix {
     pub fn as_math_function_set_mut(&mut self) -> &mut crate::math::FunctionSet {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_as_math_FunctionSet_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -787,7 +907,9 @@ impl ElementsOfRefMatrix {
     /// Inherited: **Source:** `math_FunctionSet.hxx`:59 - `math_FunctionSet::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ElementsOfRefMatrix_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ElementsOfRefMatrix_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -797,11 +919,11 @@ impl ElementsOfRefMatrix {
 // ========================
 
 /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable`
-pub use crate::ffi::FEmTool_HAssemblyTable as HAssemblyTable;
+pub use crate::ffi_types::FEmTool_HAssemblyTable as HAssemblyTable;
 
 unsafe impl crate::CppDeletable for HAssemblyTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_HAssemblyTable_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_destructor(ptr);
     }
 }
 
@@ -815,7 +937,7 @@ impl HAssemblyTable {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_HAssemblyTable_ctor_int4(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_ctor_int4(
                     theRowLow, theRowUpp, theColLow, theColUpp,
                 ),
             ))
@@ -828,50 +950,52 @@ impl HAssemblyTable {
         theRowUpp: i32,
         theColLow: i32,
         theColUpp: i32,
-        theValue: &crate::ffi::HandleTColStdHArray1OfInteger,
+        theValue: &crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_HAssemblyTable_ctor_int4_handletcolstdharray1ofinteger(
-                    theRowLow, theRowUpp, theColLow, theColUpp, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_ctor_int4_handletcolstdharray1ofinteger(theRowLow, theRowUpp, theColLow, theColUpp, theValue)))
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::FEmTool_HAssemblyTable()`
     pub fn new_assemblytable(
-        theOther: &crate::ffi::FEmTool_AssemblyTable,
+        theOther: &crate::ffi_types::FEmTool_AssemblyTable,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_HAssemblyTable_ctor_assemblytable(theOther),
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_ctor_assemblytable(theOther),
             ))
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::Array2()`
-    pub fn array2(&self) -> &crate::ffi::FEmTool_AssemblyTable {
+    pub fn array2(&self) -> &crate::ffi_types::FEmTool_AssemblyTable {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_HAssemblyTable_array2(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_array2(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::ChangeArray2()`
-    pub fn change_array2(&mut self) -> &mut crate::ffi::FEmTool_AssemblyTable {
+    pub fn change_array2(&mut self) -> &mut crate::ffi_types::FEmTool_AssemblyTable {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FEmTool_HAssemblyTable_change_array2(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_change_array2(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_HAssemblyTable_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -879,7 +1003,7 @@ impl HAssemblyTable {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_HAssemblyTable_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -887,50 +1011,64 @@ impl HAssemblyTable {
     }
 
     /// **Source:** `FEmTool_HAssemblyTable.hxx`:24 - `FEmTool_HAssemblyTable::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_HAssemblyTable_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_HAssemblyTable_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolHAssemblyTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_HAssemblyTable_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -938,7 +1076,9 @@ impl HAssemblyTable {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_HAssemblyTable_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -951,65 +1091,75 @@ impl HAssemblyTable {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_HAssemblyTable_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_HAssemblyTable_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolHAssemblyTable;
+pub use crate::ffi_types::HandleFEmToolHAssemblyTable;
 
 unsafe impl crate::CppDeletable for HandleFEmToolHAssemblyTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolHAssemblyTable_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_destructor(ptr);
     }
 }
 
 impl HandleFEmToolHAssemblyTable {
     /// Dereference this Handle to access the underlying FEmTool_HAssemblyTable
-    pub fn get(&self) -> &crate::ffi::FEmTool_HAssemblyTable {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_HAssemblyTable {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolHAssemblyTable_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_HAssemblyTable
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_HAssemblyTable {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_HAssemblyTable {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolHAssemblyTable_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_HAssemblyTable> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolHAssemblyTable_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolHAssemblyTable_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1020,11 +1170,11 @@ impl HandleFEmToolHAssemblyTable {
 
 /// **Source:** `FEmTool_LinearFlexion.hxx`:34 - `FEmTool_LinearFlexion`
 /// Criterium of LinearFlexion To Hermit-Jacobi  elements
-pub use crate::ffi::FEmTool_LinearFlexion as LinearFlexion;
+pub use crate::ffi_types::FEmTool_LinearFlexion as LinearFlexion;
 
 unsafe impl crate::CppDeletable for LinearFlexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_LinearFlexion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_destructor(ptr);
     }
 }
 
@@ -1036,7 +1186,7 @@ impl LinearFlexion {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearFlexion_ctor_int_shape(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_ctor_int_shape(
                     WorkDegree,
                     ConstraintOrder.into(),
                 ),
@@ -1045,39 +1195,56 @@ impl LinearFlexion {
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:41 - `FEmTool_LinearFlexion::DependenceTable()`
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearFlexion_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:44 - `FEmTool_LinearFlexion::Value()`
     pub fn value(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FEmTool_LinearFlexion_value(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_value(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:46 - `FEmTool_LinearFlexion::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_hessian(self as *mut Self, Dimension1, Dimension2, H)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_hessian(
+                self as *mut Self,
+                Dimension1,
+                Dimension2,
+                H,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:50 - `FEmTool_LinearFlexion::Gradient()`
-    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_gradient(self as *mut Self, Dimension, G)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_gradient(
+                self as *mut Self,
+                Dimension,
+                G,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_LinearFlexion_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1085,7 +1252,7 @@ impl LinearFlexion {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_LinearFlexion_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1093,77 +1260,92 @@ impl LinearFlexion {
     }
 
     /// **Source:** `FEmTool_LinearFlexion.hxx`:53 - `FEmTool_LinearFlexion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_LinearFlexion_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion (mutable)
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_as_FEmTool_ElementaryCriterion_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_LinearFlexion_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearFlexion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearFlexion> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearFlexion_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
-    pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
+    pub fn set(&mut self, Coeff: &crate::ffi_types::HandleTColStdHArray2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_Set(self as *mut Self, Coeff)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_Set(
+                self as *mut Self,
+                Coeff,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1171,7 +1353,9 @@ impl LinearFlexion {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_LinearFlexion_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1184,75 +1368,83 @@ impl LinearFlexion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearFlexion_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearFlexion_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolLinearFlexion;
+pub use crate::ffi_types::HandleFEmToolLinearFlexion;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearFlexion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolLinearFlexion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_destructor(ptr);
     }
 }
 
 impl HandleFEmToolLinearFlexion {
     /// Dereference this Handle to access the underlying FEmTool_LinearFlexion
-    pub fn get(&self) -> &crate::ffi::FEmTool_LinearFlexion {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearFlexion {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolLinearFlexion_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearFlexion
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearFlexion {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_LinearFlexion {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolLinearFlexion_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_LinearFlexion> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolElementaryCriterion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearFlexion_to_HandleFEmToolElementaryCriterion(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_to_HandleFEmToolElementaryCriterion(self as *const Self)))
         }
     }
 
     /// Upcast Handle<FEmTool_LinearFlexion> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearFlexion_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearFlexion_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1266,11 +1458,11 @@ impl HandleFEmToolLinearFlexion {
 
 /// **Source:** `FEmTool_LinearJerk.hxx`:34 - `FEmTool_LinearJerk`
 /// Criterion of LinearJerk To Hermit-Jacobi  elements
-pub use crate::ffi::FEmTool_LinearJerk as LinearJerk;
+pub use crate::ffi_types::FEmTool_LinearJerk as LinearJerk;
 
 unsafe impl crate::CppDeletable for LinearJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_LinearJerk_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_destructor(ptr);
     }
 }
 
@@ -1282,43 +1474,61 @@ impl LinearJerk {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearJerk_ctor_int_shape(WorkDegree, ConstraintOrder.into()),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_ctor_int_shape(
+                    WorkDegree,
+                    ConstraintOrder.into(),
+                ),
             ))
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:41 - `FEmTool_LinearJerk::DependenceTable()`
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearJerk_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:44 - `FEmTool_LinearJerk::Value()`
     pub fn value(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FEmTool_LinearJerk_value(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_value(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:46 - `FEmTool_LinearJerk::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_hessian(self as *mut Self, Dimension1, Dimension2, H)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_hessian(
+                self as *mut Self,
+                Dimension1,
+                Dimension2,
+                H,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:50 - `FEmTool_LinearJerk::Gradient()`
-    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_gradient(self as *mut Self, Dimension, G)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_gradient(
+                self as *mut Self,
+                Dimension,
+                G,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_LinearJerk_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1328,7 +1538,7 @@ impl LinearJerk {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_LinearJerk_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1336,16 +1546,22 @@ impl LinearJerk {
     }
 
     /// **Source:** `FEmTool_LinearJerk.hxx`:53 - `FEmTool_LinearJerk::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_LinearJerk_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1353,7 +1569,7 @@ impl LinearJerk {
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion_mut(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_as_FEmTool_ElementaryCriterion_mut(
                     self as *mut Self,
                 ),
             )
@@ -1363,50 +1579,60 @@ impl LinearJerk {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearJerk_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_LinearJerk_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearJerk> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearJerk> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearJerk_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
-    pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
+    pub fn set(&mut self, Coeff: &crate::ffi_types::HandleTColStdHArray2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_Set(self as *mut Self, Coeff)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_Set(self as *mut Self, Coeff)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1414,7 +1640,7 @@ impl LinearJerk {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_LinearJerk_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1427,75 +1653,83 @@ impl LinearJerk {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearJerk_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearJerk_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolLinearJerk;
+pub use crate::ffi_types::HandleFEmToolLinearJerk;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearJerk {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolLinearJerk_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_destructor(ptr);
     }
 }
 
 impl HandleFEmToolLinearJerk {
     /// Dereference this Handle to access the underlying FEmTool_LinearJerk
-    pub fn get(&self) -> &crate::ffi::FEmTool_LinearJerk {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearJerk {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolLinearJerk_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearJerk
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearJerk {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_LinearJerk {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolLinearJerk_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_LinearJerk> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolElementaryCriterion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearJerk_to_HandleFEmToolElementaryCriterion(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_to_HandleFEmToolElementaryCriterion(self as *const Self)))
         }
     }
 
     /// Upcast Handle<FEmTool_LinearJerk> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearJerk_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearJerk_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1507,11 +1741,11 @@ impl HandleFEmToolLinearJerk {
 
 /// **Source:** `FEmTool_LinearTension.hxx`:34 - `FEmTool_LinearTension`
 /// Criterium of LinearTension To Hermit-Jacobi  elements
-pub use crate::ffi::FEmTool_LinearTension as LinearTension;
+pub use crate::ffi_types::FEmTool_LinearTension as LinearTension;
 
 unsafe impl crate::CppDeletable for LinearTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_LinearTension_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_destructor(ptr);
     }
 }
 
@@ -1523,7 +1757,7 @@ impl LinearTension {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearTension_ctor_int_shape(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_ctor_int_shape(
                     WorkDegree,
                     ConstraintOrder.into(),
                 ),
@@ -1532,39 +1766,56 @@ impl LinearTension {
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:41 - `FEmTool_LinearTension::DependenceTable()`
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearTension_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:44 - `FEmTool_LinearTension::Value()`
     pub fn value(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::FEmTool_LinearTension_value(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_value(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:46 - `FEmTool_LinearTension::Hessian()`
     pub fn hessian(&mut self, Dimension1: i32, Dimension2: i32, H: &mut crate::math::Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_hessian(self as *mut Self, Dimension1, Dimension2, H)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_hessian(
+                self as *mut Self,
+                Dimension1,
+                Dimension2,
+                H,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:50 - `FEmTool_LinearTension::Gradient()`
-    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(&mut self, Dimension: i32, G: &mut crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_gradient(self as *mut Self, Dimension, G)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_gradient(
+                self as *mut Self,
+                Dimension,
+                G,
+            )
         })
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_LinearTension_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1572,7 +1823,7 @@ impl LinearTension {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_LinearTension_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1580,77 +1831,92 @@ impl LinearTension {
     }
 
     /// **Source:** `FEmTool_LinearTension.hxx`:53 - `FEmTool_LinearTension::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_LinearTension_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion
     pub fn as_elementary_criterion(&self) -> &ElementaryCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to FEmTool_ElementaryCriterion (mutable)
     pub fn as_elementary_criterion_mut(&mut self) -> &mut ElementaryCriterion {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_as_FEmTool_ElementaryCriterion_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_LinearTension_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_LinearTension_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolLinearTension> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolLinearTension> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_LinearTension_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `FEmTool_ElementaryCriterion.hxx`:42 - `FEmTool_ElementaryCriterion::Set()`
-    pub fn set(&mut self, Coeff: &crate::ffi::HandleTColStdHArray2OfReal) {
+    pub fn set(&mut self, Coeff: &crate::ffi_types::HandleTColStdHArray2OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_Set(self as *mut Self, Coeff)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_Set(
+                self as *mut Self,
+                Coeff,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1658,7 +1924,9 @@ impl LinearTension {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_LinearTension_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1671,75 +1939,83 @@ impl LinearTension {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_LinearTension_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_LinearTension_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolLinearTension;
+pub use crate::ffi_types::HandleFEmToolLinearTension;
 
 unsafe impl crate::CppDeletable for HandleFEmToolLinearTension {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolLinearTension_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_destructor(ptr);
     }
 }
 
 impl HandleFEmToolLinearTension {
     /// Dereference this Handle to access the underlying FEmTool_LinearTension
-    pub fn get(&self) -> &crate::ffi::FEmTool_LinearTension {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_LinearTension {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolLinearTension_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_LinearTension
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_LinearTension {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_LinearTension {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolLinearTension_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_LinearTension> to Handle<FEmTool_ElementaryCriterion>
     pub fn to_handle_elementary_criterion(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolElementaryCriterion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolElementaryCriterion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearTension_to_HandleFEmToolElementaryCriterion(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_to_HandleFEmToolElementaryCriterion(self as *const Self)))
         }
     }
 
     /// Upcast Handle<FEmTool_LinearTension> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolLinearTension_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolLinearTension_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1754,22 +2030,24 @@ impl HandleFEmToolLinearTension {
 /// **Source:** `FEmTool_ProfileMatrix.hxx`:36 - `FEmTool_ProfileMatrix`
 /// Symmetric Sparse ProfileMatrix useful  for 1D Finite
 /// Element methods
-pub use crate::ffi::FEmTool_ProfileMatrix as ProfileMatrix;
+pub use crate::ffi_types::FEmTool_ProfileMatrix as ProfileMatrix;
 
 unsafe impl crate::CppDeletable for ProfileMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_ProfileMatrix_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_destructor(ptr);
     }
 }
 
 impl ProfileMatrix {
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:40 - `FEmTool_ProfileMatrix::FEmTool_ProfileMatrix()`
     pub fn new_array1ofinteger(
-        FirstIndexes: &crate::ffi::TColStd_Array1OfInteger,
+        FirstIndexes: &crate::ffi_types::TColStd_Array1OfInteger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_ProfileMatrix_ctor_array1ofinteger(FirstIndexes),
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_ctor_array1ofinteger(
+                    FirstIndexes,
+                ),
             ))
         }
     }
@@ -1777,18 +2055,20 @@ impl ProfileMatrix {
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:42 - `FEmTool_ProfileMatrix::Init()`
     pub fn init(&mut self, Value: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_init(self as *mut Self, Value)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_init(self as *mut Self, Value)
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:44 - `FEmTool_ProfileMatrix::ChangeValue()`
     pub fn change_value(&mut self, I: i32, J: i32) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FEmTool_ProfileMatrix_change_value(
-                self as *mut Self,
-                I,
-                J,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_change_value(
+                    self as *mut Self,
+                    I,
+                    J,
+                ),
+            ))
         }
     }
 
@@ -1796,37 +2076,47 @@ impl ProfileMatrix {
     /// To make a Factorization of <me>
     pub fn decompose(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_decompose(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_decompose(self as *mut Self)
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:51 - `FEmTool_ProfileMatrix::Solve()`
     /// Direct Solve of AX = B
-    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+    pub fn solve_vector2(
+        &self,
+        B: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_solve_vector2(self as *const Self, B, X)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_solve_vector2(
+                self as *const Self,
+                B,
+                X,
+            )
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:54 - `FEmTool_ProfileMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FEmTool_ProfileMatrix_prepare(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_prepare(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:57 - `FEmTool_ProfileMatrix::Solve()`
     /// Iterative solve  of AX = B
     pub fn solve_vector4_real_int(
         &self,
-        B: &crate::ffi::math_Vector,
-        Init: &crate::ffi::math_Vector,
-        X: &mut crate::ffi::math_Vector,
-        Residual: &mut crate::ffi::math_Vector,
+        B: &crate::ffi_types::math_Vector,
+        Init: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
+        Residual: &mut crate::ffi_types::math_Vector,
         Tolerance: f64,
         NbIterations: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_solve_vector4_real_int(
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_solve_vector4_real_int(
                 self as *const Self,
                 B,
                 Init,
@@ -1841,9 +2131,17 @@ impl ProfileMatrix {
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:66 - `FEmTool_ProfileMatrix::Multiplied()`
     /// returns the product of a SparseMatrix by a vector.
     /// An exception is raised if the dimensions are different
-    pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
+    pub fn multiplied(
+        &self,
+        X: &crate::ffi_types::math_Vector,
+        MX: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_multiplied(self as *const Self, X, MX)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_multiplied(
+                self as *const Self,
+                X,
+                MX,
+            )
         })
     }
 
@@ -1851,7 +2149,7 @@ impl ProfileMatrix {
     /// returns the row range of a matrix.
     pub fn row_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_row_number(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_row_number(self as *const Self)
         })
     }
 
@@ -1859,37 +2157,43 @@ impl ProfileMatrix {
     /// returns the column range of the matrix.
     pub fn col_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_col_number(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_col_number(self as *const Self)
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:74 - `FEmTool_ProfileMatrix::IsInProfile()`
     pub fn is_in_profile(&self, i: i32, j: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_is_in_profile(self as *const Self, i, j)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_is_in_profile(
+                self as *const Self,
+                i,
+                j,
+            )
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:77 - `FEmTool_ProfileMatrix::OutM()`
     pub fn out_m(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_out_m(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_out_m(self as *const Self)
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:79 - `FEmTool_ProfileMatrix::OutS()`
     pub fn out_s(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_out_s(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_out_s(self as *const Self)
         })
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_ProfileMatrix_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1897,7 +2201,7 @@ impl ProfileMatrix {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_ProfileMatrix_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1905,16 +2209,22 @@ impl ProfileMatrix {
     }
 
     /// **Source:** `FEmTool_ProfileMatrix.hxx`:81 - `FEmTool_ProfileMatrix::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_ProfileMatrix_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to FEmTool_SparseMatrix
     pub fn as_sparse_matrix(&self) -> &SparseMatrix {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1922,7 +2232,9 @@ impl ProfileMatrix {
     pub fn as_sparse_matrix_mut(&mut self) -> &mut SparseMatrix {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_as_FEmTool_SparseMatrix_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1930,43 +2242,53 @@ impl ProfileMatrix {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_ProfileMatrix_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolProfileMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolProfileMatrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::FEmTool_ProfileMatrix_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1974,7 +2296,9 @@ impl ProfileMatrix {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_ProfileMatrix_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1987,75 +2311,83 @@ impl ProfileMatrix {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_ProfileMatrix_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_ProfileMatrix_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolProfileMatrix;
+pub use crate::ffi_types::HandleFEmToolProfileMatrix;
 
 unsafe impl crate::CppDeletable for HandleFEmToolProfileMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolProfileMatrix_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_destructor(ptr);
     }
 }
 
 impl HandleFEmToolProfileMatrix {
     /// Dereference this Handle to access the underlying FEmTool_ProfileMatrix
-    pub fn get(&self) -> &crate::ffi::FEmTool_ProfileMatrix {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_ProfileMatrix {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolProfileMatrix_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying FEmTool_ProfileMatrix
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_ProfileMatrix {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_ProfileMatrix {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolProfileMatrix_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<FEmTool_ProfileMatrix> to Handle<FEmTool_SparseMatrix>
     pub fn to_handle_sparse_matrix(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleFEmToolSparseMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolSparseMatrix> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolProfileMatrix_to_HandleFEmToolSparseMatrix(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_to_HandleFEmToolSparseMatrix(self as *const Self)))
         }
     }
 
     /// Upcast Handle<FEmTool_ProfileMatrix> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolProfileMatrix_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolProfileMatrix_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2069,11 +2401,11 @@ impl HandleFEmToolProfileMatrix {
 
 /// **Source:** `FEmTool_SparseMatrix.hxx`:31 - `FEmTool_SparseMatrix`
 /// Sparse Matrix definition
-pub use crate::ffi::FEmTool_SparseMatrix as SparseMatrix;
+pub use crate::ffi_types::FEmTool_SparseMatrix as SparseMatrix;
 
 unsafe impl crate::CppDeletable for SparseMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::FEmTool_SparseMatrix_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_destructor(ptr);
     }
 }
 
@@ -2081,18 +2413,20 @@ impl SparseMatrix {
     /// **Source:** `FEmTool_SparseMatrix.hxx`:35 - `FEmTool_SparseMatrix::Init()`
     pub fn init(&mut self, Value: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_init(self as *mut Self, Value)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_init(self as *mut Self, Value)
         })
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:37 - `FEmTool_SparseMatrix::ChangeValue()`
     pub fn change_value(&mut self, I: i32, J: i32) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::FEmTool_SparseMatrix_change_value(
-                self as *mut Self,
-                I,
-                J,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_change_value(
+                    self as *mut Self,
+                    I,
+                    J,
+                ),
+            ))
         }
     }
 
@@ -2100,37 +2434,47 @@ impl SparseMatrix {
     /// To make a Factorization of <me>
     pub fn decompose(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_decompose(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_decompose(self as *mut Self)
         })
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:44 - `FEmTool_SparseMatrix::Solve()`
     /// Direct Solve of AX = B
-    pub fn solve_vector2(&self, B: &crate::ffi::math_Vector, X: &mut crate::ffi::math_Vector) {
+    pub fn solve_vector2(
+        &self,
+        B: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_solve_vector2(self as *const Self, B, X)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_solve_vector2(
+                self as *const Self,
+                B,
+                X,
+            )
         })
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:47 - `FEmTool_SparseMatrix::Prepare()`
     /// Make Preparation to iterative solve
     pub fn prepare(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::FEmTool_SparseMatrix_prepare(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_prepare(self as *mut Self)
+        })
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:50 - `FEmTool_SparseMatrix::Solve()`
     /// Iterative solve  of AX = B
     pub fn solve_vector4_real_int(
         &self,
-        B: &crate::ffi::math_Vector,
-        Init: &crate::ffi::math_Vector,
-        X: &mut crate::ffi::math_Vector,
-        Residual: &mut crate::ffi::math_Vector,
+        B: &crate::ffi_types::math_Vector,
+        Init: &crate::ffi_types::math_Vector,
+        X: &mut crate::ffi_types::math_Vector,
+        Residual: &mut crate::ffi_types::math_Vector,
         Tolerance: f64,
         NbIterations: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_solve_vector4_real_int(
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_solve_vector4_real_int(
                 self as *const Self,
                 B,
                 Init,
@@ -2145,9 +2489,17 @@ impl SparseMatrix {
     /// **Source:** `FEmTool_SparseMatrix.hxx`:59 - `FEmTool_SparseMatrix::Multiplied()`
     /// returns the product of a SparseMatrix by a vector.
     /// An exception is raised if the dimensions are different
-    pub fn multiplied(&self, X: &crate::ffi::math_Vector, MX: &mut crate::ffi::math_Vector) {
+    pub fn multiplied(
+        &self,
+        X: &crate::ffi_types::math_Vector,
+        MX: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_multiplied(self as *const Self, X, MX)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_multiplied(
+                self as *const Self,
+                X,
+                MX,
+            )
         })
     }
 
@@ -2155,7 +2507,7 @@ impl SparseMatrix {
     /// returns the row range of a matrix.
     pub fn row_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_row_number(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_row_number(self as *const Self)
         })
     }
 
@@ -2163,16 +2515,18 @@ impl SparseMatrix {
     /// returns the column range of the matrix.
     pub fn col_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_col_number(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_col_number(self as *const Self)
         })
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::FEmTool_SparseMatrix_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2180,7 +2534,7 @@ impl SparseMatrix {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::FEmTool_SparseMatrix_get_type_name(),
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2188,39 +2542,53 @@ impl SparseMatrix {
     }
 
     /// **Source:** `FEmTool_SparseMatrix.hxx`:67 - `FEmTool_SparseMatrix::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::FEmTool_SparseMatrix_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::FEmTool_SparseMatrix_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2228,7 +2596,9 @@ impl SparseMatrix {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::FEmTool_SparseMatrix_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2241,62 +2611,72 @@ impl SparseMatrix {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::FEmTool_SparseMatrix_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::FEmTool_SparseMatrix_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleFEmToolSparseMatrix;
+pub use crate::ffi_types::HandleFEmToolSparseMatrix;
 
 unsafe impl crate::CppDeletable for HandleFEmToolSparseMatrix {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleFEmToolSparseMatrix_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_destructor(ptr);
     }
 }
 
 impl HandleFEmToolSparseMatrix {
     /// Dereference this Handle to access the underlying FEmTool_SparseMatrix
-    pub fn get(&self) -> &crate::ffi::FEmTool_SparseMatrix {
+    pub fn get(&self) -> &crate::ffi_types::FEmTool_SparseMatrix {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleFEmToolSparseMatrix_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying FEmTool_SparseMatrix
-    pub fn get_mut(&mut self) -> &mut crate::ffi::FEmTool_SparseMatrix {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleFEmToolSparseMatrix_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying FEmTool_SparseMatrix
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::FEmTool_SparseMatrix {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<FEmTool_SparseMatrix> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleFEmToolSparseMatrix_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2308,11 +2688,9 @@ impl HandleFEmToolSparseMatrix {
     /// Returns `None` if the handle does not point to a `FEmTool_ProfileMatrix` (or subclass).
     pub fn downcast_to_profile_matrix(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleFEmToolProfileMatrix>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleFEmToolProfileMatrix>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleFEmToolSparseMatrix_downcast_to_HandleFEmToolProfileMatrix(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleFEmToolSparseMatrix_downcast_to_HandleFEmToolProfileMatrix(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2326,4 +2704,4 @@ impl HandleFEmToolSparseMatrix {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::FEmTool_AssemblyTable as AssemblyTable;
+pub use crate::ffi_types::FEmTool_AssemblyTable as AssemblyTable;

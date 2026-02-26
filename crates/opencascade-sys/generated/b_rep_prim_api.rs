@@ -29,11 +29,11 @@
 /// component projected onto the global coordinate
 /// system less than or equal to Precision::Confusion().
 /// In these cases, the box would be flat.
-pub use crate::ffi::BRepPrimAPI_MakeBox as MakeBox;
+pub use crate::ffi_types::BRepPrimAPI_MakeBox as MakeBox;
 
 unsafe impl crate::CppDeletable for MakeBox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeBox_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_destructor(ptr);
     }
 }
 
@@ -42,7 +42,9 @@ impl MakeBox {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_ctor(),
+            ))
         }
     }
 
@@ -51,7 +53,7 @@ impl MakeBox {
     pub fn new_real3(dx: f64, dy: f64, dz: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_ctor_real3(dx, dy, dz),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_ctor_real3(dx, dy, dz),
             ))
         }
     }
@@ -61,7 +63,7 @@ impl MakeBox {
     pub fn new_pnt_real3(P: &crate::gp::Pnt, dx: f64, dy: f64, dz: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_ctor_pnt_real3(P, dx, dy, dz),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_ctor_pnt_real3(P, dx, dy, dz),
             ))
         }
     }
@@ -71,7 +73,7 @@ impl MakeBox {
     pub fn new_pnt2(P1: &crate::gp::Pnt, P2: &crate::gp::Pnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_ctor_pnt2(P1, P2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_ctor_pnt2(P1, P2),
             ))
         }
     }
@@ -86,7 +88,7 @@ impl MakeBox {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_ctor_ax2_real3(Axes, dx, dy, dz),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_ctor_ax2_real3(Axes, dx, dy, dz),
             ))
         }
     }
@@ -95,7 +97,12 @@ impl MakeBox {
     /// Init a box with a corner at 0,0,0 and the other theDX, theDY, theDZ
     pub fn init_real3(&mut self, theDX: f64, theDY: f64, theDZ: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_init_real3(self as *mut Self, theDX, theDY, theDZ)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_init_real3(
+                self as *mut Self,
+                theDX,
+                theDY,
+                theDZ,
+            )
         })
     }
 
@@ -103,7 +110,7 @@ impl MakeBox {
     /// Init a box with a corner at thePnt and size theDX, theDY, theDZ.
     pub fn init_pnt_real3(&mut self, thePnt: &crate::gp::Pnt, theDX: f64, theDY: f64, theDZ: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_init_pnt_real3(
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_init_pnt_real3(
                 self as *mut Self,
                 thePnt,
                 theDX,
@@ -117,7 +124,11 @@ impl MakeBox {
     /// Init a box with corners thePnt1, thePnt2.
     pub fn init_pnt2(&mut self, thePnt1: &crate::gp::Pnt, thePnt2: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_init_pnt2(self as *mut Self, thePnt1, thePnt2)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_init_pnt2(
+                self as *mut Self,
+                thePnt1,
+                thePnt2,
+            )
         })
     }
 
@@ -125,7 +136,7 @@ impl MakeBox {
     /// Init a box with Ax2 (the left corner and the theAxes) and size theDX, theDY, theDZ.
     pub fn init_ax2_real3(&mut self, theAxes: &crate::gp::Ax2, theDX: f64, theDY: f64, theDZ: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_init_ax2_real3(
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_init_ax2_real3(
                 self as *mut Self,
                 theAxes,
                 theDX,
@@ -139,7 +150,9 @@ impl MakeBox {
     /// Returns the internal algorithm.
     pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_wedge(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_wedge(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -147,27 +160,37 @@ impl MakeBox {
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_build(self as *mut Self, theRange)
         })
     }
 
     /// **Source:** `BRepPrimAPI_MakeBox.hxx`:106 - `BRepPrimAPI_MakeBox::Shell()`
     /// Returns the constructed box as a shell.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
-        unsafe { &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_shell(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_shell(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepPrimAPI_MakeBox.hxx`:110 - `BRepPrimAPI_MakeBox::Solid()`
     /// Returns the constructed box as a solid.
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
-        unsafe { &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_solid(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_solid(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `BRepPrimAPI_MakeBox.hxx`:114 - `BRepPrimAPI_MakeBox::BottomFace()`
     /// Returns ZMin face
     pub fn bottom_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_bottom_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_bottom_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -175,7 +198,9 @@ impl MakeBox {
     /// Returns XMin face
     pub fn back_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_back_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_back_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -183,7 +208,9 @@ impl MakeBox {
     /// Returns XMax face
     pub fn front_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_front_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_front_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -191,7 +218,9 @@ impl MakeBox {
     /// Returns YMin face
     pub fn left_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_left_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_left_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -199,7 +228,9 @@ impl MakeBox {
     /// Returns YMax face
     pub fn right_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_right_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_right_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -207,16 +238,20 @@ impl MakeBox {
     /// Returns ZMax face
     pub fn top_face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_top_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_top_face(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -226,7 +261,9 @@ impl MakeBox {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_MakeShape_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -234,9 +271,11 @@ impl MakeBox {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -244,7 +283,9 @@ impl MakeBox {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -252,7 +293,7 @@ impl MakeBox {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeBox_inherited_Shape(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_inherited_Shape(
                 self as *mut Self,
             )))
         }
@@ -261,21 +302,21 @@ impl MakeBox {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_inherited_IsDeleted(self as *mut Self, S)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeBox_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeBox_inherited_Check(self as *const Self)
         })
     }
 }
@@ -290,11 +331,11 @@ impl MakeBox {
 /// -   defining the construction of a cone,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeCone as MakeCone;
+pub use crate::ffi_types::BRepPrimAPI_MakeCone as MakeCone;
 
 unsafe impl crate::CppDeletable for MakeCone {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeCone_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_destructor(ptr);
     }
 }
 
@@ -307,7 +348,7 @@ impl MakeCone {
     pub fn new_real3(R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_ctor_real3(R1, R2, H),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_ctor_real3(R1, R2, H),
             ))
         }
     }
@@ -321,7 +362,7 @@ impl MakeCone {
     pub fn new_real4(R1: f64, R2: f64, H: f64, angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_ctor_real4(R1, R2, H, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_ctor_real4(R1, R2, H, angle),
             ))
         }
     }
@@ -335,7 +376,7 @@ impl MakeCone {
     pub fn new_ax2_real3(Axes: &crate::gp::Ax2, R1: f64, R2: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_ctor_ax2_real3(Axes, R1, R2, H),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_ctor_ax2_real3(Axes, R1, R2, H),
             ))
         }
     }
@@ -381,7 +422,9 @@ impl MakeCone {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_ctor_ax2_real4(Axes, R1, R2, H, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_ctor_ax2_real4(
+                    Axes, R1, R2, H, angle,
+                ),
             ))
         }
     }
@@ -389,23 +432,29 @@ impl MakeCone {
     /// **Source:** `BRepPrimAPI_MakeCone.hxx`:104 - `BRepPrimAPI_MakeCone::OneAxis()`
     /// Returns the algorithm.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
-        crate::check_result(unsafe { crate::ffi::BRepPrimAPI_MakeCone_one_axis(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_one_axis(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepPrimAPI_MakeCone.hxx`:107 - `BRepPrimAPI_MakeCone::Cone()`
     /// Returns the algorithm.
     pub fn cone(&mut self) -> &mut crate::b_rep_prim::Cone {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_cone(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_cone(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Upcast to BRepPrimAPI_MakeOneAxis
     pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -413,7 +462,9 @@ impl MakeCone {
     pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepPrimAPI_MakeOneAxis_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -421,9 +472,11 @@ impl MakeCone {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -433,7 +486,9 @@ impl MakeCone {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_MakeShape_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -441,9 +496,11 @@ impl MakeCone {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -451,7 +508,9 @@ impl MakeCone {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -459,14 +518,17 @@ impl MakeCone {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCone_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_inherited_Face(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Face(
                 self as *mut Self,
             )))
         }
@@ -475,7 +537,7 @@ impl MakeCone {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_inherited_Shell(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Shell(
                 self as *mut Self,
             )))
         }
@@ -484,7 +546,7 @@ impl MakeCone {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_inherited_Solid(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Solid(
                 self as *mut Self,
             )))
         }
@@ -493,7 +555,7 @@ impl MakeCone {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCone_inherited_Shape(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Shape(
                 self as *mut Self,
             )))
         }
@@ -502,21 +564,21 @@ impl MakeCone {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCone_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_IsDeleted(self as *mut Self, S)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCone_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCone_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCone_inherited_Check(self as *const Self)
         })
     }
 }
@@ -531,11 +593,11 @@ impl MakeCone {
 /// -   defining the construction of a cylinder,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeCylinder as MakeCylinder;
+pub use crate::ffi_types::BRepPrimAPI_MakeCylinder as MakeCylinder;
 
 unsafe impl crate::CppDeletable for MakeCylinder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeCylinder_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_destructor(ptr);
     }
 }
 
@@ -547,7 +609,7 @@ impl MakeCylinder {
     pub fn new_real2(R: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_ctor_real2(R, H),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_ctor_real2(R, H),
             ))
         }
     }
@@ -560,7 +622,7 @@ impl MakeCylinder {
     pub fn new_real3(R: f64, H: f64, Angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_ctor_real3(R, H, Angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_ctor_real3(R, H, Angle),
             ))
         }
     }
@@ -573,7 +635,7 @@ impl MakeCylinder {
     pub fn new_ax2_real2(Axes: &crate::gp::Ax2, R: f64, H: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_ctor_ax2_real2(Axes, R, H),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_ctor_ax2_real2(Axes, R, H),
             ))
         }
     }
@@ -613,7 +675,9 @@ impl MakeCylinder {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_ctor_ax2_real3(Axes, R, H, Angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_ctor_ax2_real3(
+                    Axes, R, H, Angle,
+                ),
             ))
         }
     }
@@ -622,7 +686,7 @@ impl MakeCylinder {
     /// Returns the algorithm.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCylinder_one_axis(self as *mut Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_one_axis(self as *mut Self)
         })
     }
 
@@ -630,18 +694,20 @@ impl MakeCylinder {
     /// Returns the algorithm.
     pub fn cylinder(&mut self) -> &mut crate::b_rep_prim::Cylinder {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_cylinder(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_cylinder(self as *mut Self),
+            ))
         }
     }
 
     /// Upcast to BRepPrimAPI_MakeOneAxis
     pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -649,7 +715,7 @@ impl MakeCylinder {
     pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepPrimAPI_MakeOneAxis_mut(
                     self as *mut Self,
                 ),
             )
@@ -659,9 +725,11 @@ impl MakeCylinder {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -671,7 +739,7 @@ impl MakeCylinder {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -681,9 +749,11 @@ impl MakeCylinder {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -691,7 +761,7 @@ impl MakeCylinder {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -701,64 +771,78 @@ impl MakeCylinder {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Face(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Face(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Shell(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Shell(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Solid(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Solid(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCylinder_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeCylinder_inherited_Check(self as *const Self)
         })
     }
 }
@@ -778,11 +862,11 @@ impl MakeCylinder {
 /// A MakeHalfSpace object provides a framework for:
 /// -   defining and implementing the construction of a half-space, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeHalfSpace as MakeHalfSpace;
+pub use crate::ffi_types::BRepPrimAPI_MakeHalfSpace as MakeHalfSpace;
 
 unsafe impl crate::CppDeletable for MakeHalfSpace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeHalfSpace_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_destructor(ptr);
     }
 }
 
@@ -795,7 +879,7 @@ impl MakeHalfSpace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeHalfSpace_ctor_face_pnt(Face, RefPnt),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_ctor_face_pnt(Face, RefPnt),
             ))
         }
     }
@@ -808,7 +892,7 @@ impl MakeHalfSpace {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeHalfSpace_ctor_shell_pnt(Shell, RefPnt),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_ctor_shell_pnt(Shell, RefPnt),
             ))
         }
     }
@@ -817,7 +901,7 @@ impl MakeHalfSpace {
     /// Returns the constructed half-space as a solid.
     pub fn solid(&self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeHalfSpace_solid(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_solid(
                 self as *const Self,
             )))
         }
@@ -827,7 +911,7 @@ impl MakeHalfSpace {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -840,7 +924,7 @@ impl MakeHalfSpace {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -850,9 +934,11 @@ impl MakeHalfSpace {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -860,7 +946,7 @@ impl MakeHalfSpace {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -870,37 +956,47 @@ impl MakeHalfSpace {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeHalfSpace_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeHalfSpace_inherited_Check(self as *const Self)
         })
     }
 }
@@ -912,11 +1008,11 @@ impl MakeHalfSpace {
 /// **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:30 - `BRepPrimAPI_MakeOneAxis`
 /// The abstract class MakeOneAxis is the root class of
 /// algorithms used to construct rotational primitives.
-pub use crate::ffi::BRepPrimAPI_MakeOneAxis as MakeOneAxis;
+pub use crate::ffi_types::BRepPrimAPI_MakeOneAxis as MakeOneAxis;
 
 unsafe impl crate::CppDeletable for MakeOneAxis {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeOneAxis_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_destructor(ptr);
     }
 }
 
@@ -926,7 +1022,7 @@ impl MakeOneAxis {
     /// Returned as a pointer.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeOneAxis_one_axis(self as *mut Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_one_axis(self as *mut Self)
         })
     }
 
@@ -934,7 +1030,7 @@ impl MakeOneAxis {
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeOneAxis_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_build(self as *mut Self, theRange)
         })
     }
 
@@ -942,7 +1038,9 @@ impl MakeOneAxis {
     /// Returns the lateral face of the rotational primitive.
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_face(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_face(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -950,7 +1048,9 @@ impl MakeOneAxis {
     /// Returns the constructed rotational primitive as a shell.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_shell(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_shell(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -958,16 +1058,20 @@ impl MakeOneAxis {
     /// Returns the constructed rotational primitive as a solid.
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_solid(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_solid(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -977,7 +1081,7 @@ impl MakeOneAxis {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -987,9 +1091,11 @@ impl MakeOneAxis {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -997,7 +1103,7 @@ impl MakeOneAxis {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -1007,30 +1113,35 @@ impl MakeOneAxis {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeOneAxis_inherited_Check(self as *const Self)
         })
     }
 }
@@ -1057,11 +1168,11 @@ impl MakeOneAxis {
 /// -   defining the construction of a prism,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakePrism as MakePrism;
+pub use crate::ffi_types::BRepPrimAPI_MakePrism as MakePrism;
 
 unsafe impl crate::CppDeletable for MakePrism {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakePrism_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_destructor(ptr);
     }
 }
 
@@ -1078,7 +1189,9 @@ impl MakePrism {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_vec_bool2(S, V, Copy, Canonize),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_ctor_shape_vec_bool2(
+                    S, V, Copy, Canonize,
+                ),
             ))
         }
     }
@@ -1099,7 +1212,9 @@ impl MakePrism {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(S, D, Inf, Copy, Canonize),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_ctor_shape_dir_bool3(
+                    S, D, Inf, Copy, Canonize,
+                ),
             ))
         }
     }
@@ -1170,7 +1285,9 @@ impl MakePrism {
     /// Returns the internal sweeping algorithm.
     pub fn prism(&self) -> &crate::b_rep_sweep::Prism {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_prism(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_prism(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1178,7 +1295,7 @@ impl MakePrism {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakePrism_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_build(self as *mut Self, theRange)
         })
     }
 
@@ -1187,7 +1304,7 @@ impl MakePrism {
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_first_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_first_shape(self as *mut Self),
             ))
         }
     }
@@ -1202,7 +1319,7 @@ impl MakePrism {
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_last_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_last_shape(self as *mut Self),
             ))
         }
     }
@@ -1218,9 +1335,9 @@ impl MakePrism {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_generated(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_generated(
                 self as *mut Self,
                 S,
             )))
@@ -1231,7 +1348,7 @@ impl MakePrism {
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakePrism_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_is_deleted(self as *mut Self, S)
         })
     }
 
@@ -1244,7 +1361,10 @@ impl MakePrism {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_first_shape_shape(self as *mut Self, theShape),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_first_shape_shape(
+                    self as *mut Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1258,7 +1378,10 @@ impl MakePrism {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_last_shape_shape(self as *mut Self, theShape),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_last_shape_shape(
+                    self as *mut Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1266,9 +1389,11 @@ impl MakePrism {
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_make_sweep(&self) -> &MakeSweep {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1276,7 +1401,9 @@ impl MakePrism {
     pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepPrimAPI_MakeSweep_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1284,9 +1411,11 @@ impl MakePrism {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1296,7 +1425,7 @@ impl MakePrism {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -1306,9 +1435,11 @@ impl MakePrism {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1316,7 +1447,9 @@ impl MakePrism {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1324,23 +1457,23 @@ impl MakePrism {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakePrism_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakePrism_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakePrism_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakePrism_inherited_Check(self as *const Self)
         })
     }
 }
@@ -1381,11 +1514,11 @@ impl MakePrism {
 /// Sweeping a Compound sweeps  the elements  of the
 /// compound  and creates    a  compound with    the
 /// results.
-pub use crate::ffi::BRepPrimAPI_MakeRevol as MakeRevol;
+pub use crate::ffi_types::BRepPrimAPI_MakeRevol as MakeRevol;
 
 unsafe impl crate::CppDeletable for MakeRevol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeRevol_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_destructor(ptr);
     }
 }
 
@@ -1401,7 +1534,9 @@ impl MakeRevol {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_real_bool(S, A, D, Copy),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_ctor_shape_ax1_real_bool(
+                    S, A, D, Copy,
+                ),
             ))
         }
     }
@@ -1416,7 +1551,7 @@ impl MakeRevol {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(S, A, Copy),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_ctor_shape_ax1_bool(S, A, Copy),
             ))
         }
     }
@@ -1443,7 +1578,9 @@ impl MakeRevol {
     /// Returns the internal sweeping algorithm.
     pub fn revol(&self) -> &crate::b_rep_sweep::Revol {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_revol(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_revol(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1451,7 +1588,7 @@ impl MakeRevol {
     /// Builds the resulting shape (redefined from MakeShape).
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevol_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_build(self as *mut Self, theRange)
         })
     }
 
@@ -1461,7 +1598,7 @@ impl MakeRevol {
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_first_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_first_shape(self as *mut Self),
             ))
         }
     }
@@ -1471,7 +1608,7 @@ impl MakeRevol {
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_last_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_last_shape(self as *mut Self),
             ))
         }
     }
@@ -1489,9 +1626,9 @@ impl MakeRevol {
     pub unsafe fn generated(
         &mut self,
         S: &crate::topo_ds::Shape,
-    ) -> &crate::ffi::TopTools_ListOfShape {
+    ) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_generated(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_generated(
                 self as *mut Self,
                 S,
             )))
@@ -1502,7 +1639,7 @@ impl MakeRevol {
     /// Returns true if the shape S has been deleted.
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevol_is_deleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_is_deleted(self as *mut Self, S)
         })
     }
 
@@ -1515,7 +1652,10 @@ impl MakeRevol {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_first_shape_shape(self as *mut Self, theShape),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_first_shape_shape(
+                    self as *mut Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1529,7 +1669,10 @@ impl MakeRevol {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_last_shape_shape(self as *mut Self, theShape),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_last_shape_shape(
+                    self as *mut Self,
+                    theShape,
+                ),
             ))
         }
     }
@@ -1538,15 +1681,15 @@ impl MakeRevol {
     /// Check if there are degenerated edges in the result.
     pub fn has_degenerated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevol_has_degenerated(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_has_degenerated(self as *const Self)
         })
     }
 
     /// **Source:** `BRepPrimAPI_MakeRevol.hxx`:115 - `BRepPrimAPI_MakeRevol::Degenerated()`
     /// Returns the list of degenerated edges
-    pub fn degenerated(&self) -> &crate::ffi::TopTools_ListOfShape {
+    pub fn degenerated(&self) -> &crate::ffi_types::TopTools_ListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_degenerated(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_degenerated(
                 self as *const Self,
             )))
         }
@@ -1555,9 +1698,11 @@ impl MakeRevol {
     /// Upcast to BRepPrimAPI_MakeSweep
     pub fn as_make_sweep(&self) -> &MakeSweep {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1565,7 +1710,9 @@ impl MakeRevol {
     pub fn as_make_sweep_mut(&mut self) -> &mut MakeSweep {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepPrimAPI_MakeSweep_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1573,9 +1720,11 @@ impl MakeRevol {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1585,7 +1734,7 @@ impl MakeRevol {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -1595,9 +1744,11 @@ impl MakeRevol {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1605,7 +1756,9 @@ impl MakeRevol {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1613,23 +1766,23 @@ impl MakeRevol {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevol_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevol_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevol_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevol_inherited_Check(self as *const Self)
         })
     }
 }
@@ -1644,21 +1797,23 @@ impl MakeRevol {
 /// -   defining the construction of a revolved shape,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeRevolution as MakeRevolution;
+pub use crate::ffi_types::BRepPrimAPI_MakeRevolution as MakeRevolution;
 
 unsafe impl crate::CppDeletable for MakeRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeRevolution_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_destructor(ptr);
     }
 }
 
 impl MakeRevolution {
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:40 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
-    pub fn new_handlegeomcurve(Meridian: &crate::ffi::HandleGeomCurve) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomcurve(
+        Meridian: &crate::ffi_types::HandleGeomCurve,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve(Meridian),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve(Meridian),
             ))
         }
     }
@@ -1666,12 +1821,14 @@ impl MakeRevolution {
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:43 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real(
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real(Meridian, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real(
+                    Meridian, angle,
+                ),
             ))
         }
     }
@@ -1679,13 +1836,13 @@ impl MakeRevolution {
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:47 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real2(
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         VMin: f64,
         VMax: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real2(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real2(
                     Meridian, VMin, VMax,
                 ),
             ))
@@ -1695,14 +1852,14 @@ impl MakeRevolution {
     /// **Source:** `BRepPrimAPI_MakeRevolution.hxx`:52 - `BRepPrimAPI_MakeRevolution::BRepPrimAPI_MakeRevolution()`
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_handlegeomcurve_real3(
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         VMin: f64,
         VMax: f64,
         angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real3(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_handlegeomcurve_real3(
                     Meridian, VMin, VMax, angle,
                 ),
             ))
@@ -1713,11 +1870,13 @@ impl MakeRevolution {
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve(
         Axes: &crate::gp::Ax2,
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve(Axes, Meridian),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve(
+                    Axes, Meridian,
+                ),
             ))
         }
     }
@@ -1726,12 +1885,12 @@ impl MakeRevolution {
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve_real(
         Axes: &crate::gp::Ax2,
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real(
                     Axes, Meridian, angle,
                 ),
             ))
@@ -1742,13 +1901,13 @@ impl MakeRevolution {
     /// Make a revolution body by rotating a curve around Z.
     pub fn new_ax2_handlegeomcurve_real2(
         Axes: &crate::gp::Ax2,
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         VMin: f64,
         VMax: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real2(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real2(
                     Axes, Meridian, VMin, VMax,
                 ),
             ))
@@ -1767,14 +1926,14 @@ impl MakeRevolution {
     /// planar faces to close the shape (in the planes u = 0 and u = angle).
     pub fn new_ax2_handlegeomcurve_real3(
         Axes: &crate::gp::Ax2,
-        Meridian: &crate::ffi::HandleGeomCurve,
+        Meridian: &crate::ffi_types::HandleGeomCurve,
         VMin: f64,
         VMax: f64,
         angle: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real3(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_ctor_ax2_handlegeomcurve_real3(
                     Axes, Meridian, VMin, VMax, angle,
                 ),
             ))
@@ -1785,7 +1944,7 @@ impl MakeRevolution {
     /// Returns the algorithm.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevolution_one_axis(self as *mut Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_one_axis(self as *mut Self)
         })
     }
 
@@ -1793,9 +1952,9 @@ impl MakeRevolution {
     /// Returns the algorithm.
     pub fn revolution(&mut self) -> &mut crate::b_rep_prim::Revolution {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_revolution(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_revolution(self as *mut Self),
+            ))
         }
     }
 
@@ -1803,7 +1962,7 @@ impl MakeRevolution {
     pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis(
                     self as *const Self,
                 ),
             )
@@ -1814,7 +1973,7 @@ impl MakeRevolution {
     pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepPrimAPI_MakeOneAxis_mut(
                     self as *mut Self,
                 ),
             )
@@ -1825,7 +1984,7 @@ impl MakeRevolution {
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
             &*crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape(
                     self as *const Self,
                 ),
             )
@@ -1837,20 +1996,18 @@ impl MakeRevolution {
         &mut self,
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_MakeShape_mut(self as *mut Self))
         }
     }
 
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1858,7 +2015,7 @@ impl MakeRevolution {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_as_BRepBuilderAPI_Command_mut(
                     self as *mut Self,
                 ),
             )
@@ -1868,64 +2025,82 @@ impl MakeRevolution {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Face(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Face(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shell(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Shell(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Solid(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Solid(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Shape(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevolution_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeRevolution_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeRevolution_inherited_Check(
+                self as *const Self,
+            )
         })
     }
 }
@@ -1940,11 +2115,11 @@ impl MakeRevolution {
 /// -   defining the construction of a sphere,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeSphere as MakeSphere;
+pub use crate::ffi_types::BRepPrimAPI_MakeSphere as MakeSphere;
 
 unsafe impl crate::CppDeletable for MakeSphere {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeSphere_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_destructor(ptr);
     }
 }
 
@@ -1955,7 +2130,7 @@ impl MakeSphere {
     pub fn new_real(R: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_real(R),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_real(R),
             ))
         }
     }
@@ -1967,7 +2142,7 @@ impl MakeSphere {
     pub fn new_real2(R: f64, angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_real2(R, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_real2(R, angle),
             ))
         }
     }
@@ -1980,7 +2155,7 @@ impl MakeSphere {
     pub fn new_real3(R: f64, angle1: f64, angle2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_real3(R, angle1, angle2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_real3(R, angle1, angle2),
             ))
         }
     }
@@ -1994,7 +2169,9 @@ impl MakeSphere {
     pub fn new_real4(R: f64, angle1: f64, angle2: f64, angle3: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_real4(R, angle1, angle2, angle3),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_real4(
+                    R, angle1, angle2, angle3,
+                ),
             ))
         }
     }
@@ -2006,7 +2183,7 @@ impl MakeSphere {
     pub fn new_pnt_real(Center: &crate::gp::Pnt, R: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_pnt_real(Center, R),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_pnt_real(Center, R),
             ))
         }
     }
@@ -2019,7 +2196,7 @@ impl MakeSphere {
     pub fn new_pnt_real2(Center: &crate::gp::Pnt, R: f64, angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_pnt_real2(Center, R, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_pnt_real2(Center, R, angle),
             ))
         }
     }
@@ -2038,7 +2215,9 @@ impl MakeSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_pnt_real3(Center, R, angle1, angle2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_pnt_real3(
+                    Center, R, angle1, angle2,
+                ),
             ))
         }
     }
@@ -2059,7 +2238,7 @@ impl MakeSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_pnt_real4(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_pnt_real4(
                     Center, R, angle1, angle2, angle3,
                 ),
             ))
@@ -2073,7 +2252,7 @@ impl MakeSphere {
     pub fn new_ax2_real(Axis: &crate::gp::Ax2, R: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_ax2_real(Axis, R),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_ax2_real(Axis, R),
             ))
         }
     }
@@ -2086,7 +2265,7 @@ impl MakeSphere {
     pub fn new_ax2_real2(Axis: &crate::gp::Ax2, R: f64, angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_ax2_real2(Axis, R, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_ax2_real2(Axis, R, angle),
             ))
         }
     }
@@ -2105,7 +2284,9 @@ impl MakeSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_ax2_real3(Axis, R, angle1, angle2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_ax2_real3(
+                    Axis, R, angle1, angle2,
+                ),
             ))
         }
     }
@@ -2130,7 +2311,9 @@ impl MakeSphere {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_ctor_ax2_real4(Axis, R, angle1, angle2, angle3),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_ctor_ax2_real4(
+                    Axis, R, angle1, angle2, angle3,
+                ),
             ))
         }
     }
@@ -2139,7 +2322,7 @@ impl MakeSphere {
     /// Returns the algorithm.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSphere_one_axis(self as *mut Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_one_axis(self as *mut Self)
         })
     }
 
@@ -2147,7 +2330,7 @@ impl MakeSphere {
     /// Returns the algorithm.
     pub fn sphere(&mut self) -> &mut crate::b_rep_prim::Sphere {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_sphere(
+            &mut *(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_sphere(
                 self as *mut Self,
             )))
         }
@@ -2156,9 +2339,11 @@ impl MakeSphere {
     /// Upcast to BRepPrimAPI_MakeOneAxis
     pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2166,7 +2351,7 @@ impl MakeSphere {
     pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepPrimAPI_MakeOneAxis_mut(
                     self as *mut Self,
                 ),
             )
@@ -2176,9 +2361,11 @@ impl MakeSphere {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2188,7 +2375,7 @@ impl MakeSphere {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -2198,9 +2385,11 @@ impl MakeSphere {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2208,7 +2397,9 @@ impl MakeSphere {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2216,64 +2407,70 @@ impl MakeSphere {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSphere_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Face(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Face(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Shell(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Shell(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Solid(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Solid(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeSphere_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSphere_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSphere_inherited_Check(self as *const Self)
         })
     }
 }
@@ -2299,11 +2496,11 @@ impl MakeSphere {
 /// -      The rotational sweep    called a Revol
 /// Swept constructions along complex profiles such as BSpline curves
 /// are also available in the BRepOffsetAPI package..
-pub use crate::ffi::BRepPrimAPI_MakeSweep as MakeSweep;
+pub use crate::ffi_types::BRepPrimAPI_MakeSweep as MakeSweep;
 
 unsafe impl crate::CppDeletable for MakeSweep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeSweep_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_destructor(ptr);
     }
 }
 
@@ -2313,7 +2510,7 @@ impl MakeSweep {
     pub fn first_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSweep_first_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_first_shape(self as *mut Self),
             ))
         }
     }
@@ -2323,7 +2520,7 @@ impl MakeSweep {
     pub fn last_shape(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSweep_last_shape(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_last_shape(self as *mut Self),
             ))
         }
     }
@@ -2331,9 +2528,11 @@ impl MakeSweep {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2343,7 +2542,7 @@ impl MakeSweep {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -2353,9 +2552,11 @@ impl MakeSweep {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2363,7 +2564,9 @@ impl MakeSweep {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2371,37 +2574,43 @@ impl MakeSweep {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:41 - `BRepBuilderAPI_MakeShape::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSweep_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeSweep_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSweep_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSweep_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeSweep_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeSweep_inherited_Check(self as *const Self)
         })
     }
 }
@@ -2416,11 +2625,11 @@ impl MakeSweep {
 /// -   defining the construction of a torus,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeTorus as MakeTorus;
+pub use crate::ffi_types::BRepPrimAPI_MakeTorus as MakeTorus;
 
 unsafe impl crate::CppDeletable for MakeTorus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeTorus_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_destructor(ptr);
     }
 }
 
@@ -2432,7 +2641,7 @@ impl MakeTorus {
     pub fn new_real2(R1: f64, R2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_real2(R1, R2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_real2(R1, R2),
             ))
         }
     }
@@ -2445,7 +2654,7 @@ impl MakeTorus {
     pub fn new_real3(R1: f64, R2: f64, angle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_real3(R1, R2, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_real3(R1, R2, angle),
             ))
         }
     }
@@ -2459,7 +2668,7 @@ impl MakeTorus {
     pub fn new_real4(R1: f64, R2: f64, angle1: f64, angle2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_real4(R1, R2, angle1, angle2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_real4(R1, R2, angle1, angle2),
             ))
         }
     }
@@ -2480,7 +2689,9 @@ impl MakeTorus {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_real5(R1, R2, angle1, angle2, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_real5(
+                    R1, R2, angle1, angle2, angle,
+                ),
             ))
         }
     }
@@ -2493,7 +2704,7 @@ impl MakeTorus {
     pub fn new_ax2_real2(Axes: &crate::gp::Ax2, R1: f64, R2: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_ax2_real2(Axes, R1, R2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_ax2_real2(Axes, R1, R2),
             ))
         }
     }
@@ -2512,7 +2723,7 @@ impl MakeTorus {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_ax2_real3(Axes, R1, R2, angle),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_ax2_real3(Axes, R1, R2, angle),
             ))
         }
     }
@@ -2533,7 +2744,9 @@ impl MakeTorus {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_ax2_real4(Axes, R1, R2, angle1, angle2),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_ax2_real4(
+                    Axes, R1, R2, angle1, angle2,
+                ),
             ))
         }
     }
@@ -2569,7 +2782,7 @@ impl MakeTorus {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_ctor_ax2_real5(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_ctor_ax2_real5(
                     Axes, R1, R2, angle1, angle2, angle,
                 ),
             ))
@@ -2580,7 +2793,7 @@ impl MakeTorus {
     /// Returns the algorithm.
     pub unsafe fn one_axis(&mut self) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeTorus_one_axis(self as *mut Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_one_axis(self as *mut Self)
         })
     }
 
@@ -2588,16 +2801,20 @@ impl MakeTorus {
     /// Returns the algorithm.
     pub fn torus(&mut self) -> &mut crate::b_rep_prim::Torus {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_torus(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_torus(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Upcast to BRepPrimAPI_MakeOneAxis
     pub fn as_make_one_axis(&self) -> &MakeOneAxis {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2605,7 +2822,9 @@ impl MakeTorus {
     pub fn as_make_one_axis_mut(&mut self) -> &mut MakeOneAxis {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepPrimAPI_MakeOneAxis_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2613,9 +2832,11 @@ impl MakeTorus {
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2625,7 +2846,7 @@ impl MakeTorus {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -2635,9 +2856,11 @@ impl MakeTorus {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2645,7 +2868,9 @@ impl MakeTorus {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2653,14 +2878,17 @@ impl MakeTorus {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:40 - `BRepPrimAPI_MakeOneAxis::Build()`
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeTorus_inherited_Build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Build(
+                self as *mut Self,
+                theRange,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:44 - `BRepPrimAPI_MakeOneAxis::Face()`
     pub fn face(&mut self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Face(
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Face(
                 self as *mut Self,
             )))
         }
@@ -2669,48 +2897,51 @@ impl MakeTorus {
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:48 - `BRepPrimAPI_MakeOneAxis::Shell()`
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Shell(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Shell(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepPrimAPI_MakeOneAxis.hxx`:52 - `BRepPrimAPI_MakeOneAxis::Solid()`
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Solid(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Solid(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeTorus_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeTorus_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeTorus_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeTorus_inherited_Check(self as *const Self)
         })
     }
 }
@@ -2725,11 +2956,11 @@ impl MakeTorus {
 /// -   defining the construction of a wedge,
 /// -   implementing the construction algorithm, and
 /// -   consulting the result.
-pub use crate::ffi::BRepPrimAPI_MakeWedge as MakeWedge;
+pub use crate::ffi_types::BRepPrimAPI_MakeWedge as MakeWedge;
 
 unsafe impl crate::CppDeletable for MakeWedge {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepPrimAPI_MakeWedge_destructor(ptr);
+        crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_destructor(ptr);
     }
 }
 
@@ -2739,7 +2970,7 @@ impl MakeWedge {
     pub fn new_real4(dx: f64, dy: f64, dz: f64, ltx: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_ctor_real4(dx, dy, dz, ltx),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_ctor_real4(dx, dy, dz, ltx),
             ))
         }
     }
@@ -2755,7 +2986,9 @@ impl MakeWedge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_ctor_ax2_real4(Axes, dx, dy, dz, ltx),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_ctor_ax2_real4(
+                    Axes, dx, dy, dz, ltx,
+                ),
             ))
         }
     }
@@ -2773,7 +3006,9 @@ impl MakeWedge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_ctor_real7(dx, dy, dz, xmin, zmin, xmax, zmax),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_ctor_real7(
+                    dx, dy, dz, xmin, zmin, xmax, zmax,
+                ),
             ))
         }
     }
@@ -2792,7 +3027,7 @@ impl MakeWedge {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_ctor_ax2_real7(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_ctor_ax2_real7(
                     Axes, dx, dy, dz, xmin, zmin, xmax, zmax,
                 ),
             ))
@@ -2803,7 +3038,9 @@ impl MakeWedge {
     /// Returns the internal algorithm.
     pub fn wedge(&mut self) -> &mut crate::b_rep_prim::Wedge {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_wedge(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_wedge(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2811,7 +3048,7 @@ impl MakeWedge {
     /// Stores the solid in myShape.
     pub fn build(&mut self, theRange: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeWedge_build(self as *mut Self, theRange)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_build(self as *mut Self, theRange)
         })
     }
 
@@ -2819,7 +3056,9 @@ impl MakeWedge {
     /// Returns the constructed box in the form of a shell.
     pub fn shell(&mut self) -> &crate::topo_ds::Shell {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_shell(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_shell(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2827,16 +3066,20 @@ impl MakeWedge {
     /// Returns the constructed box in the form of a solid.
     pub fn solid(&mut self) -> &crate::topo_ds::Solid {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_solid(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_solid(
+                self as *mut Self,
+            )))
         }
     }
 
     /// Upcast to BRepBuilderAPI_MakeShape
     pub fn as_b_rep_builder_api_make_shape(&self) -> &crate::b_rep_builder_api::MakeShape {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2846,7 +3089,7 @@ impl MakeWedge {
     ) -> &mut crate::b_rep_builder_api::MakeShape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape_mut(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_MakeShape_mut(
                     self as *mut Self,
                 ),
             )
@@ -2856,9 +3099,11 @@ impl MakeWedge {
     /// Upcast to BRepBuilderAPI_Command
     pub fn as_b_rep_builder_api_command(&self) -> &crate::b_rep_builder_api::Command {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2866,7 +3111,9 @@ impl MakeWedge {
     pub fn as_b_rep_builder_api_command_mut(&mut self) -> &mut crate::b_rep_builder_api::Command {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command_mut(self as *mut Self),
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_as_BRepBuilderAPI_Command_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2874,30 +3121,33 @@ impl MakeWedge {
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:46 - `BRepBuilderAPI_MakeShape::Shape()`
     pub fn shape(&mut self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepPrimAPI_MakeWedge_inherited_Shape(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_inherited_Shape(self as *mut Self),
+            ))
         }
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_MakeShape.hxx`:58 - `BRepBuilderAPI_MakeShape::IsDeleted()`
     pub fn is_deleted(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDeleted(self as *mut Self, S)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_inherited_IsDeleted(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:42 - `BRepBuilderAPI_Command::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeWedge_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepBuilderAPI_Command.hxx`:45 - `BRepBuilderAPI_Command::Check()`
     pub fn check(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepPrimAPI_MakeWedge_inherited_Check(self as *const Self)
+            crate::ffi_extern_TKPrim::BRepPrimAPI_MakeWedge_inherited_Check(self as *const Self)
         })
     }
 }

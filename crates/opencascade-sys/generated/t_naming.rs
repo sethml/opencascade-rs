@@ -12,10 +12,10 @@
 pub fn substitute(
     labelsource: &crate::tdf::Label,
     labelcible: &crate::tdf::Label,
-    mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+    mapOldNew: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TNaming_substitute(labelsource, labelcible, mapOldNew)
+        crate::ffi_extern_TKCAF::TNaming_substitute(labelsource, labelcible, mapOldNew)
     })
 }
 /// **Source:** `TNaming.hxx`:115 - `TNaming::Update`
@@ -28,23 +28,28 @@ pub fn substitute(
 /// ci ne sont pas associees a des sous-labels de <Label>.
 pub fn update_label_datamapofshapeshape(
     label: &crate::tdf::Label,
-    mapOldNew: &mut crate::ffi::TopTools_DataMapOfShapeShape,
+    mapOldNew: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TNaming_update_label_datamapofshapeshape(label, mapOldNew)
+        crate::ffi_extern_TKCAF::TNaming_update_label_datamapofshapeshape(label, mapOldNew)
     })
 }
 /// **Source:** `TNaming.hxx`:120 - `TNaming::Displace`
 /// Application de la Location sur les shapes du label
 /// et  de   ses   sous   labels.
 pub fn displace(label: &crate::tdf::Label, aLocation: &crate::top_loc::Location, WithOld: bool) {
-    crate::check_void_result(unsafe { crate::ffi::TNaming_displace(label, aLocation, WithOld) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_displace(label, aLocation, WithOld)
+    })
 }
 /// **Source:** `TNaming.hxx`:126 - `TNaming::ChangeShapes`
 /// Remplace  les  shapes du label et  des sous-labels
 /// par des copies.
-pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_DataMapOfShapeShape) {
-    crate::check_void_result(unsafe { crate::ffi::TNaming_change_shapes(label, M) })
+pub fn change_shapes(
+    label: &crate::tdf::Label,
+    M: &mut crate::ffi_types::TopTools_DataMapOfShapeShape,
+) {
+    crate::check_void_result(unsafe { crate::ffi_extern_TKCAF::TNaming_change_shapes(label, M) })
 }
 /// **Source:** `TNaming.hxx`:133 - `TNaming::Transform`
 /// Application de la transformation sur les shapes du
@@ -53,19 +58,21 @@ pub fn change_shapes(label: &crate::tdf::Label, M: &mut crate::ffi::TopTools_Dat
 /// les    attributs  qui  le contiennent meme si ceux
 /// ci ne sont pas associees a des sous-labels de <Label>.
 pub fn transform(label: &crate::tdf::Label, aTransformation: &crate::gp::Trsf) {
-    crate::check_void_result(unsafe { crate::ffi::TNaming_transform(label, aTransformation) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_transform(label, aTransformation)
+    })
 }
 /// **Source:** `TNaming.hxx`:138 - `TNaming::Replicate`
 /// Replicates the named shape with the transformation <T>
 /// on the label <L> (and sub-labels if necessary)
 /// (TNaming_GENERATED is set)
 pub fn replicate_handletnamingnamedshape_trsf_label(
-    NS: &crate::ffi::HandleTNamingNamedShape,
+    NS: &crate::ffi_types::HandleTNamingNamedShape,
     T: &crate::gp::Trsf,
     L: &crate::tdf::Label,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L)
+        crate::ffi_extern_TKCAF::TNaming_replicate_handletnamingnamedshape_trsf_label(NS, T, L)
     })
 }
 /// **Source:** `TNaming.hxx`:145 - `TNaming::Replicate`
@@ -77,12 +84,20 @@ pub fn replicate_shape_trsf_label(
     T: &crate::gp::Trsf,
     L: &crate::tdf::Label,
 ) {
-    crate::check_void_result(unsafe { crate::ffi::TNaming_replicate_shape_trsf_label(SH, T, L) })
+    crate::check_void_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_replicate_shape_trsf_label(SH, T, L)
+    })
 }
 /// **Source:** `TNaming.hxx`:150 - `TNaming::MakeShape`
 /// Builds shape from map content
-pub fn make_shape(MS: &crate::ffi::TopTools_MapOfShape) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_make_shape(MS))) }
+pub fn make_shape(
+    MS: &crate::ffi_types::TopTools_MapOfShape,
+) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_make_shape(
+            MS,
+        )))
+    }
 }
 /// **Source:** `TNaming.hxx`:153 - `TNaming::FindUniqueContext`
 /// Find unique context of shape <S>
@@ -91,9 +106,9 @@ pub fn find_unique_context(
     Context: &crate::topo_ds::Shape,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_find_unique_context(
-            S, Context,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKCAF::TNaming_find_unique_context(S, Context),
+        ))
     }
 }
 /// **Source:** `TNaming.hxx`:159 - `TNaming::FindUniqueContextSet`
@@ -103,12 +118,12 @@ pub fn find_unique_context(
 pub fn find_unique_context_set(
     S: &crate::topo_ds::Shape,
     Context: &crate::topo_ds::Shape,
-    Arr: &mut crate::ffi::HandleTopToolsHArray1OfShape,
+    Arr: &mut crate::ffi_types::HandleTopToolsHArray1OfShape,
 ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
     unsafe {
-        crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_find_unique_context_set(
-            S, Context, Arr,
-        )))
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKCAF::TNaming_find_unique_context_set(S, Context, Arr),
+        ))
     }
 }
 /// **Source:** `TNaming.hxx`:164 - `TNaming::SubstituteSShape`
@@ -118,7 +133,9 @@ pub fn substitute_s_shape(
     From: &crate::topo_ds::Shape,
     To: &mut crate::topo_ds::Shape,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::TNaming_substitute_s_shape(accesslabel, From, To) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_substitute_s_shape(accesslabel, From, To)
+    })
 }
 /// **Source:** `TNaming.hxx`:169 - `TNaming::OuterWire`
 /// Returns True if outer wire is found and the found wire in <theWire>.
@@ -126,7 +143,9 @@ pub fn outer_wire_face_wire(
     theFace: &crate::topo_ds::Face,
     theWire: &mut crate::topo_ds::Wire,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::TNaming_outer_wire_face_wire(theFace, theWire) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_outer_wire_face_wire(theFace, theWire)
+    })
 }
 /// **Source:** `TNaming.hxx`:175 - `TNaming::OuterShell`
 /// Returns True if outer Shell is found and the found shell in <theShell>.
@@ -136,17 +155,22 @@ pub fn outer_shell_solid_shell(
     theSolid: &crate::topo_ds::Solid,
     theShell: &mut crate::topo_ds::Shell,
 ) -> bool {
-    crate::check_result(unsafe { crate::ffi::TNaming_outer_shell_solid_shell(theSolid, theShell) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKCAF::TNaming_outer_shell_solid_shell(theSolid, theShell)
+    })
 }
 /// **Source:** `TNaming.hxx`:185 - `TNaming::Print`
 /// Prints the  evolution  <EVOL> as  a String on  the
 /// Stream <S> and returns <S>.
 pub fn print_evolution_ostream(
     EVOL: crate::t_naming::Evolution,
-    S: &mut crate::ffi::Standard_OStream,
-) -> &mut crate::ffi::Standard_OStream {
+    S: &mut crate::ffi_types::Standard_OStream,
+) -> &mut crate::ffi_types::Standard_OStream {
     unsafe {
-        &mut *(crate::check_result(crate::ffi::TNaming_print_evolution_ostream(EVOL.into(), S)))
+        &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_print_evolution_ostream(
+            EVOL.into(),
+            S,
+        )))
     }
 }
 /// **Source:** `TNaming.hxx`:189 - `TNaming::Print`
@@ -154,10 +178,13 @@ pub fn print_evolution_ostream(
 /// the Stream <S> and returns <S>.
 pub fn print_nametype_ostream(
     NAME: crate::t_naming::NameType,
-    S: &mut crate::ffi::Standard_OStream,
-) -> &mut crate::ffi::Standard_OStream {
+    S: &mut crate::ffi_types::Standard_OStream,
+) -> &mut crate::ffi_types::Standard_OStream {
     unsafe {
-        &mut *(crate::check_result(crate::ffi::TNaming_print_nametype_ostream(NAME.into(), S)))
+        &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_print_nametype_ostream(
+            NAME.into(),
+            S,
+        )))
     }
 }
 /// **Source:** `TNaming.hxx`:193 - `TNaming::Print`
@@ -171,9 +198,11 @@ pub fn print_nametype_ostream(
 /// it actually borrows from.
 pub unsafe fn print_label_ostream<'a>(
     ACCESS: &'a crate::tdf::Label,
-    S: &'a mut crate::ffi::Standard_OStream,
-) -> &'a mut crate::ffi::Standard_OStream {
-    unsafe { &mut *(crate::check_result(crate::ffi::TNaming_print_label_ostream(ACCESS, S))) }
+    S: &'a mut crate::ffi_types::Standard_OStream,
+) -> &'a mut crate::ffi_types::Standard_OStream {
+    unsafe {
+        &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_print_label_ostream(ACCESS, S)))
+    }
 }
 
 /// Defines the type of evolution in old shape - new shape pairs.
@@ -290,7 +319,7 @@ impl TryFrom<i32> for NameType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleStandardTransient, HandleTDFAttribute, HandleTDFAttributeDelta,
     HandleTDFDeltaOnModification, HandleTDFDeltaOnRemoval,
 };
@@ -307,11 +336,11 @@ pub use crate::ffi::{
 /// shape" pairs with the specified evolution to this
 /// named shape. One evolution type per one
 /// builder must be used.
-pub use crate::ffi::TNaming_Builder as Builder;
+pub use crate::ffi_types::TNaming_Builder as Builder;
 
 unsafe impl crate::CppDeletable for Builder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Builder_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Builder_destructor(ptr);
     }
 }
 
@@ -321,9 +350,9 @@ impl Builder {
     /// Warning:  Before Addition copies the current Value, and clear
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Builder_ctor_label(
-                aLabel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Builder_ctor_label(aLabel),
+            ))
         }
     }
 
@@ -334,7 +363,7 @@ impl Builder {
     /// generated in construction of a box.
     pub fn generated_shape(&mut self, newShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Builder_generated_shape(self as *mut Self, newShape)
+            crate::ffi_extern_TKCAF::TNaming_Builder_generated_shape(self as *mut Self, newShape)
         })
     }
 
@@ -349,7 +378,11 @@ impl Builder {
         newShape: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Builder_generated_shape2(self as *mut Self, oldShape, newShape)
+            crate::ffi_extern_TKCAF::TNaming_Builder_generated_shape2(
+                self as *mut Self,
+                oldShape,
+                newShape,
+            )
         })
     }
 
@@ -358,7 +391,7 @@ impl Builder {
     /// As an example, consider the case of a face removed by a Boolean operation.
     pub fn delete(&mut self, oldShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Builder_delete(self as *mut Self, oldShape)
+            crate::ffi_extern_TKCAF::TNaming_Builder_delete(self as *mut Self, oldShape)
         })
     }
 
@@ -369,7 +402,7 @@ impl Builder {
     /// or merged in a Boolean operation.
     pub fn modify(&mut self, oldShape: &crate::topo_ds::Shape, newShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Builder_modify(self as *mut Self, oldShape, newShape)
+            crate::ffi_extern_TKCAF::TNaming_Builder_modify(self as *mut Self, oldShape, newShape)
         })
     }
 
@@ -379,17 +412,17 @@ impl Builder {
     /// of shapes under a label.
     pub fn select(&mut self, aShape: &crate::topo_ds::Shape, inShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Builder_select(self as *mut Self, aShape, inShape)
+            crate::ffi_extern_TKCAF::TNaming_Builder_select(self as *mut Self, aShape, inShape)
         })
     }
 
     /// **Source:** `TNaming_Builder.hxx`:74 - `TNaming_Builder::NamedShape()`
     /// Returns the NamedShape which has been built or is under construction.
-    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Builder_named_shape(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Builder_named_shape(self as *const Self),
+            ))
         }
     }
 }
@@ -399,11 +432,11 @@ impl Builder {
 // ========================
 
 /// **Source:** `TNaming_CopyShape.hxx`:28 - `TNaming_CopyShape`
-pub use crate::ffi::TNaming_CopyShape as CopyShape;
+pub use crate::ffi_types::TNaming_CopyShape as CopyShape;
 
 unsafe impl crate::CppDeletable for CopyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_CopyShape_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_CopyShape_destructor(ptr);
     }
 }
 
@@ -412,7 +445,9 @@ impl CopyShape {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_CopyShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_CopyShape_ctor(),
+            ))
         }
     }
 
@@ -420,11 +455,11 @@ impl CopyShape {
     /// Makes  copy  a  set  of  shape(s),  using the  aMap
     pub fn copy_tool(
         aShape: &crate::topo_ds::Shape,
-        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        aMap: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
         aResult: &mut crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_CopyShape_copy_tool(aShape, aMap, aResult)
+            crate::ffi_extern_TKCAF::TNaming_CopyShape_copy_tool(aShape, aMap, aResult)
         })
     }
 
@@ -432,12 +467,12 @@ impl CopyShape {
     /// Translates  a  Transient  shape(s)  to  Transient
     pub fn translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(
         aShape: &crate::topo_ds::Shape,
-        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        aMap: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
         aResult: &mut crate::topo_ds::Shape,
-        TrTool: &crate::ffi::HandleTNamingTranslateTool,
+        TrTool: &crate::ffi_types::HandleTNamingTranslateTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_CopyShape_translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(aShape, aMap, aResult, TrTool)
+            crate::ffi_extern_TKCAF::TNaming_CopyShape_translate_shape_indexeddatamapoftransienttransient_shape_handletnamingtranslatetool(aShape, aMap, aResult, TrTool)
         })
     }
 
@@ -446,14 +481,10 @@ impl CopyShape {
     /// Location
     pub fn translate_location_indexeddatamapoftransienttransient(
         L: &crate::top_loc::Location,
-        aMap: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        aMap: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
     ) -> crate::OwnedPtr<crate::top_loc::Location> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_CopyShape_translate_location_indexeddatamapoftransienttransient(
-                    L, aMap,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_CopyShape_translate_location_indexeddatamapoftransienttransient(L, aMap)))
         }
     }
 }
@@ -468,11 +499,11 @@ impl CopyShape {
 ///
 /// Applying this AttributeDelta means GOING BACK to
 /// the attribute previously registered state.
-pub use crate::ffi::TNaming_DeltaOnModification as DeltaOnModification;
+pub use crate::ffi_types::TNaming_DeltaOnModification as DeltaOnModification;
 
 unsafe impl crate::CppDeletable for DeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_DeltaOnModification_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_destructor(ptr);
     }
 }
 
@@ -480,11 +511,13 @@ impl DeltaOnModification {
     /// **Source:** `TNaming_DeltaOnModification.hxx`:40 - `TNaming_DeltaOnModification::TNaming_DeltaOnModification()`
     /// Initializes a TDF_DeltaOnModification.
     pub fn new_handletnamingnamedshape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_ctor_handletnamingnamedshape(NS),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_ctor_handletnamingnamedshape(
+                    NS,
+                ),
             ))
         }
     }
@@ -493,16 +526,18 @@ impl DeltaOnModification {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_apply(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_apply(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_DeltaOnModification_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -510,7 +545,7 @@ impl DeltaOnModification {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_get_type_name(),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -518,9 +553,11 @@ impl DeltaOnModification {
     }
 
     /// **Source:** `TNaming_DeltaOnModification.hxx`:45 - `TNaming_DeltaOnModification::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_DeltaOnModification_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_get_type_descriptor(),
+            ))
         }
     }
 
@@ -528,7 +565,7 @@ impl DeltaOnModification {
     pub fn as_tdf_delta_on_modification(&self) -> &crate::tdf::DeltaOnModification {
         unsafe {
             &*crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_TDF_DeltaOnModification(
                     self as *const Self,
                 ),
             )
@@ -539,7 +576,7 @@ impl DeltaOnModification {
     pub fn as_tdf_delta_on_modification_mut(&mut self) -> &mut crate::tdf::DeltaOnModification {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_DeltaOnModification_mut(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_TDF_DeltaOnModification_mut(
                     self as *mut Self,
                 ),
             )
@@ -549,9 +586,11 @@ impl DeltaOnModification {
     /// Upcast to TDF_AttributeDelta
     pub fn as_tdf_attribute_delta(&self) -> &crate::tdf::AttributeDelta {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_TDF_AttributeDelta(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -559,7 +598,7 @@ impl DeltaOnModification {
     pub fn as_tdf_attribute_delta_mut(&mut self) -> &mut crate::tdf::AttributeDelta {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_as_TDF_AttributeDelta_mut(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_TDF_AttributeDelta_mut(
                     self as *mut Self,
                 ),
             )
@@ -569,9 +608,11 @@ impl DeltaOnModification {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -579,7 +620,7 @@ impl DeltaOnModification {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_as_Standard_Transient_mut(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -589,10 +630,10 @@ impl DeltaOnModification {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -601,16 +642,20 @@ impl DeltaOnModification {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_Label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::Attribute()`
-    pub fn attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_inherited_Attribute(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_Attribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -619,15 +664,17 @@ impl DeltaOnModification {
     pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnModification_inherited_ID(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_ID(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_IsInstance(
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -635,9 +682,12 @@ impl DeltaOnModification {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -645,7 +695,9 @@ impl DeltaOnModification {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_DeltaOnModification_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -658,93 +710,93 @@ impl DeltaOnModification {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnModification_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnModification_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingDeltaOnModification;
+pub use crate::ffi_types::HandleTNamingDeltaOnModification;
 
 unsafe impl crate::CppDeletable for HandleTNamingDeltaOnModification {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingDeltaOnModification_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_destructor(ptr);
     }
 }
 
 impl HandleTNamingDeltaOnModification {
     /// Dereference this Handle to access the underlying TNaming_DeltaOnModification
-    pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnModification {
+    pub fn get(&self) -> &crate::ffi_types::TNaming_DeltaOnModification {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTNamingDeltaOnModification_get(
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnModification
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnModification {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_DeltaOnModification {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingDeltaOnModification_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_DeltaOnModification>
     pub fn to_handle_delta_on_modification(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_to_HandleTDFDeltaOnModification(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttributeDelta> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_to_HandleTDFAttributeDelta(self as *const Self)))
         }
     }
 
     /// Upcast Handle<TNaming_DeltaOnModification> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnModification_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnModification_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -754,11 +806,11 @@ impl HandleTNamingDeltaOnModification {
 // ========================
 
 /// **Source:** `TNaming_DeltaOnRemoval.hxx`:30 - `TNaming_DeltaOnRemoval`
-pub use crate::ffi::TNaming_DeltaOnRemoval as DeltaOnRemoval;
+pub use crate::ffi_types::TNaming_DeltaOnRemoval as DeltaOnRemoval;
 
 unsafe impl crate::CppDeletable for DeltaOnRemoval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_DeltaOnRemoval_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_destructor(ptr);
     }
 }
 
@@ -766,11 +818,11 @@ impl DeltaOnRemoval {
     /// **Source:** `TNaming_DeltaOnRemoval.hxx`:35 - `TNaming_DeltaOnRemoval::TNaming_DeltaOnRemoval()`
     /// Initializes a TDF_DeltaOnModification.
     pub fn new_handletnamingnamedshape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_ctor_handletnamingnamedshape(NS),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_ctor_handletnamingnamedshape(NS),
             ))
         }
     }
@@ -779,14 +831,14 @@ impl DeltaOnRemoval {
     /// Applies the delta to the attribute.
     pub fn apply(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_apply(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_apply(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -796,7 +848,7 @@ impl DeltaOnRemoval {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_get_type_name(),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -804,71 +856,87 @@ impl DeltaOnRemoval {
     }
 
     /// **Source:** `TNaming_DeltaOnRemoval.hxx`:40 - `TNaming_DeltaOnRemoval::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_DeltaOnRemoval
     pub fn as_tdf_delta_on_removal(&self) -> &crate::tdf::DeltaOnRemoval {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TDF_DeltaOnRemoval (mutable)
     pub fn as_tdf_delta_on_removal_mut(&mut self) -> &mut crate::tdf::DeltaOnRemoval {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_TDF_DeltaOnRemoval_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TDF_AttributeDelta
     pub fn as_tdf_attribute_delta(&self) -> &crate::tdf::AttributeDelta {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to TDF_AttributeDelta (mutable)
     pub fn as_tdf_attribute_delta_mut(&mut self) -> &mut crate::tdf::AttributeDelta {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_TDF_AttributeDelta_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_DeltaOnRemoval_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingDeltaOnRemoval> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -877,16 +945,20 @@ impl DeltaOnRemoval {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_Label(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_AttributeDelta.hxx`:53 - `TDF_AttributeDelta::Attribute()`
-    pub fn attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_inherited_Attribute(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_Attribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -895,22 +967,28 @@ impl DeltaOnRemoval {
     pub fn id(&self) -> crate::OwnedPtr<crate::standard::GUID> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_DeltaOnRemoval_inherited_ID(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_ID(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -918,7 +996,7 @@ impl DeltaOnRemoval {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_DeltaOnRemoval_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -931,52 +1009,60 @@ impl DeltaOnRemoval {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_DeltaOnRemoval_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_DeltaOnRemoval_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingDeltaOnRemoval;
+pub use crate::ffi_types::HandleTNamingDeltaOnRemoval;
 
 unsafe impl crate::CppDeletable for HandleTNamingDeltaOnRemoval {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingDeltaOnRemoval_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_destructor(ptr);
     }
 }
 
 impl HandleTNamingDeltaOnRemoval {
     /// Dereference this Handle to access the underlying TNaming_DeltaOnRemoval
-    pub fn get(&self) -> &crate::ffi::TNaming_DeltaOnRemoval {
+    pub fn get(&self) -> &crate::ffi_types::TNaming_DeltaOnRemoval {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTNamingDeltaOnRemoval_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_DeltaOnRemoval
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_DeltaOnRemoval {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_DeltaOnRemoval {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingDeltaOnRemoval_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_get_mut(
                 self as *mut Self,
             ))
         }
@@ -985,10 +1071,10 @@ impl HandleTNamingDeltaOnRemoval {
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_DeltaOnRemoval>
     pub fn to_handle_delta_on_removal(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
+                crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_to_HandleTDFDeltaOnRemoval(
                     self as *const Self,
                 ),
             ))
@@ -998,10 +1084,10 @@ impl HandleTNamingDeltaOnRemoval {
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<TDF_AttributeDelta>
     pub fn to_handle_attribute_delta(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFAttributeDelta> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttributeDelta> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(
+                crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_to_HandleTDFAttributeDelta(
                     self as *const Self,
                 ),
             ))
@@ -1009,10 +1095,12 @@ impl HandleTNamingDeltaOnRemoval {
     }
 
     /// Upcast Handle<TNaming_DeltaOnRemoval> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingDeltaOnRemoval_to_HandleStandardTransient(
+                crate::ffi_extern_TKCAF::HandleTNamingDeltaOnRemoval_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1025,11 +1113,11 @@ impl HandleTNamingDeltaOnRemoval {
 // ========================
 
 /// **Source:** `TNaming_Identifier.hxx`:31 - `TNaming_Identifier`
-pub use crate::ffi::TNaming_Identifier as Identifier;
+pub use crate::ffi_types::TNaming_Identifier as Identifier;
 
 unsafe impl crate::CppDeletable for Identifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Identifier_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Identifier_destructor(ptr);
     }
 }
 
@@ -1043,7 +1131,9 @@ impl Identifier {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_ctor_label_shape2_bool(Lab, S, Context, Geom),
+                crate::ffi_extern_TKCAF::TNaming_Identifier_ctor_label_shape2_bool(
+                    Lab, S, Context, Geom,
+                ),
             ))
         }
     }
@@ -1052,78 +1142,78 @@ impl Identifier {
     pub fn new_label_shape_handletnamingnamedshape_bool(
         Lab: &crate::tdf::Label,
         S: &crate::topo_ds::Shape,
-        ContextNS: &crate::ffi::HandleTNamingNamedShape,
+        ContextNS: &crate::ffi_types::HandleTNamingNamedShape,
         Geom: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_ctor_label_shape_handletnamingnamedshape_bool(
-                    Lab, S, ContextNS, Geom,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Identifier_ctor_label_shape_handletnamingnamedshape_bool(Lab, S, ContextNS, Geom)))
         }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:46 - `TNaming_Identifier::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Identifier_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Identifier_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:48 - `TNaming_Identifier::Type()`
     pub fn type_(&self) -> crate::t_naming::NameType {
         crate::t_naming::NameType::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_Identifier_type_(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:50 - `TNaming_Identifier::IsFeature()`
     pub fn is_feature(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Identifier_is_feature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Identifier_is_feature(self as *mut Self)
+        })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:52 - `TNaming_Identifier::Feature()`
-    pub fn feature(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn feature(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Identifier_feature(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Identifier_feature(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:54 - `TNaming_Identifier::InitArgs()`
     pub fn init_args(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_init_args(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_init_args(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:56 - `TNaming_Identifier::MoreArgs()`
     pub fn more_args(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Identifier_more_args(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_more_args(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:58 - `TNaming_Identifier::NextArg()`
     pub fn next_arg(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_next_arg(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_next_arg(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:60 - `TNaming_Identifier::ArgIsFeature()`
     pub fn arg_is_feature(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Identifier_arg_is_feature(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_arg_is_feature(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_Identifier.hxx`:62 - `TNaming_Identifier::FeatureArg()`
-    pub fn feature_arg(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn feature_arg(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_feature_arg(self as *mut Self),
+                crate::ffi_extern_TKCAF::TNaming_Identifier_feature_arg(self as *mut Self),
             ))
         }
     }
@@ -1132,7 +1222,7 @@ impl Identifier {
     pub fn shape_arg(&mut self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_shape_arg(self as *mut Self),
+                crate::ffi_extern_TKCAF::TNaming_Identifier_shape_arg(self as *mut Self),
             ))
         }
     }
@@ -1141,7 +1231,7 @@ impl Identifier {
     pub fn shape_context(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_shape_context(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Identifier_shape_context(self as *const Self),
             ))
         }
     }
@@ -1149,10 +1239,12 @@ impl Identifier {
     /// **Source:** `TNaming_Identifier.hxx`:68 - `TNaming_Identifier::NamedShapeOfGeneration()`
     pub fn named_shape_of_generation(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Identifier_named_shape_of_generation(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Identifier_named_shape_of_generation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1164,7 +1256,7 @@ impl Identifier {
         Context: &crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_ancestor_identification(
+            crate::ffi_extern_TKCAF::TNaming_Identifier_ancestor_identification(
                 self as *mut Self,
                 Localizer,
                 Context,
@@ -1176,10 +1268,10 @@ impl Identifier {
     pub fn primitive_identification(
         &mut self,
         Localizer: &mut Localizer,
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_primitive_identification(
+            crate::ffi_extern_TKCAF::TNaming_Identifier_primitive_identification(
                 self as *mut Self,
                 Localizer,
                 NS,
@@ -1191,10 +1283,10 @@ impl Identifier {
     pub fn generated_identification(
         &mut self,
         Localizer: &mut Localizer,
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_generated_identification(
+            crate::ffi_extern_TKCAF::TNaming_Identifier_generated_identification(
                 self as *mut Self,
                 Localizer,
                 NS,
@@ -1206,10 +1298,14 @@ impl Identifier {
     pub fn identification(
         &mut self,
         Localizer: &mut Localizer,
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Identifier_identification(self as *mut Self, Localizer, NS)
+            crate::ffi_extern_TKCAF::TNaming_Identifier_identification(
+                self as *mut Self,
+                Localizer,
+                NS,
+            )
         })
     }
 }
@@ -1228,11 +1324,11 @@ impl Identifier {
 /// are only interested in topological entities stored
 /// in the attribute, you can use the functions
 /// GetShape and CurrentShape in TNaming_Tool.
-pub use crate::ffi::TNaming_Iterator as Iterator;
+pub use crate::ffi_types::TNaming_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Iterator_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Iterator_destructor(ptr);
     }
 }
 
@@ -1241,11 +1337,11 @@ impl Iterator {
     /// Iterates on all  the history records in
     /// <anAtt>.
     pub fn new_handletnamingnamedshape(
-        anAtt: &crate::ffi::HandleTNamingNamedShape,
+        anAtt: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Iterator_ctor_handletnamingnamedshape(anAtt),
+                crate::ffi_extern_TKCAF::TNaming_Iterator_ctor_handletnamingnamedshape(anAtt),
             ))
         }
     }
@@ -1255,9 +1351,9 @@ impl Iterator {
     /// the current transaction
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Iterator_ctor_label(
-                aLabel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Iterator_ctor_label(aLabel),
+            ))
         }
     }
 
@@ -1267,7 +1363,7 @@ impl Iterator {
     pub fn new_label_int(aLabel: &crate::tdf::Label, aTrans: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Iterator_ctor_label_int(aLabel, aTrans),
+                crate::ffi_extern_TKCAF::TNaming_Iterator_ctor_label_int(aLabel, aTrans),
             ))
         }
     }
@@ -1276,13 +1372,17 @@ impl Iterator {
     /// Returns True if there is a current Item in
     /// the iteration.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Iterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Iterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Iterator.hxx`:66 - `TNaming_Iterator::Next()`
     /// Moves the iteration to the next Item
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_Iterator_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Iterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TNaming_Iterator.hxx`:70 - `TNaming_Iterator::OldShape()`
@@ -1290,7 +1390,9 @@ impl Iterator {
     /// This shape can be a null one.
     pub fn old_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Iterator_old_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Iterator_old_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1298,7 +1400,9 @@ impl Iterator {
     /// Returns the new shape in this iterator object.
     pub fn new_shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Iterator_new_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Iterator_new_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1307,14 +1411,14 @@ impl Iterator {
     /// fuse,etc...) of the old shape.
     pub fn is_modification(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Iterator_is_modification(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Iterator_is_modification(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_Iterator.hxx`:79 - `TNaming_Iterator::Evolution()`
     pub fn evolution(&self) -> crate::t_naming::Evolution {
         crate::t_naming::Evolution::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_Iterator_evolution(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Iterator_evolution(self as *const Self)
         }))
         .unwrap()
     }
@@ -1325,11 +1429,11 @@ impl Iterator {
 // ========================
 
 /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:31 - `TNaming_IteratorOnShapesSet`
-pub use crate::ffi::TNaming_IteratorOnShapesSet as IteratorOnShapesSet;
+pub use crate::ffi_types::TNaming_IteratorOnShapesSet as IteratorOnShapesSet;
 
 unsafe impl crate::CppDeletable for IteratorOnShapesSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_IteratorOnShapesSet_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_destructor(ptr);
     }
 }
 
@@ -1338,7 +1442,7 @@ impl IteratorOnShapesSet {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_IteratorOnShapesSet_ctor(),
+                crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_ctor(),
             ))
         }
     }
@@ -1347,7 +1451,7 @@ impl IteratorOnShapesSet {
     pub fn new_shapesset(S: &ShapesSet) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_IteratorOnShapesSet_ctor_shapesset(S),
+                crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_ctor_shapesset(S),
             ))
         }
     }
@@ -1356,7 +1460,7 @@ impl IteratorOnShapesSet {
     /// Initialize the iteration
     pub fn init(&mut self, S: &ShapesSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_IteratorOnShapesSet_init(self as *mut Self, S)
+            crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_init(self as *mut Self, S)
         })
     }
 
@@ -1365,7 +1469,7 @@ impl IteratorOnShapesSet {
     /// the iteration.
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_IteratorOnShapesSet_more(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_more(self as *const Self)
         })
     }
 
@@ -1373,14 +1477,14 @@ impl IteratorOnShapesSet {
     /// Move to the next Item
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_IteratorOnShapesSet_next(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_next(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_IteratorOnShapesSet.hxx`:50 - `TNaming_IteratorOnShapesSet::Value()`
     pub fn value(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_IteratorOnShapesSet_value(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_IteratorOnShapesSet_value(
                 self as *const Self,
             )))
         }
@@ -1392,11 +1496,11 @@ impl IteratorOnShapesSet {
 // ========================
 
 /// **Source:** `TNaming_Localizer.hxx`:39 - `TNaming_Localizer`
-pub use crate::ffi::TNaming_Localizer as Localizer;
+pub use crate::ffi_types::TNaming_Localizer as Localizer;
 
 unsafe impl crate::CppDeletable for Localizer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Localizer_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Localizer_destructor(ptr);
     }
 }
 
@@ -1404,14 +1508,16 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:44 - `TNaming_Localizer::TNaming_Localizer()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Localizer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Localizer_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:46 - `TNaming_Localizer::Init()`
-    pub fn init(&mut self, US: &crate::ffi::HandleTNamingUsedShapes, CurTrans: i32) {
+    pub fn init(&mut self, US: &crate::ffi_types::HandleTNamingUsedShapes, CurTrans: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_init(self as *mut Self, US, CurTrans)
+            crate::ffi_extern_TKCAF::TNaming_Localizer_init(self as *mut Self, US, CurTrans)
         })
     }
 
@@ -1426,9 +1532,9 @@ impl Localizer {
         &mut self,
         S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
-    ) -> &crate::ffi::TopTools_MapOfShape {
+    ) -> &crate::ffi_types::TopTools_MapOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Localizer_sub_shapes(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Localizer_sub_shapes(
                 self as *mut Self,
                 S,
                 Type.into(),
@@ -1447,9 +1553,9 @@ impl Localizer {
         &mut self,
         S: &crate::topo_ds::Shape,
         Type: crate::top_abs::ShapeEnum,
-    ) -> &crate::ffi::TopTools_IndexedDataMapOfShapeListOfShape {
+    ) -> &crate::ffi_types::TopTools_IndexedDataMapOfShapeListOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Localizer_ancestors(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Localizer_ancestors(
                 self as *mut Self,
                 S,
                 Type.into(),
@@ -1462,10 +1568,10 @@ impl Localizer {
         &mut self,
         S: &crate::topo_ds::Shape,
         In: &crate::topo_ds::Shape,
-        AncInFeatures: &mut crate::ffi::TopTools_MapOfShape,
+        AncInFeatures: &mut crate::ffi_types::TopTools_MapOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_find_features_in_ancestors(
+            crate::ffi_extern_TKCAF::TNaming_Localizer_find_features_in_ancestors(
                 self as *mut Self,
                 S,
                 In,
@@ -1480,11 +1586,11 @@ impl Localizer {
         S: &crate::topo_ds::Shape,
         Lab: &crate::tdf::Label,
         Evol: crate::t_naming::Evolution,
-        OldS: &mut crate::ffi::TopTools_ListOfShape,
-        OldLab: &mut crate::ffi::TNaming_ListOfNamedShape,
+        OldS: &mut crate::ffi_types::TopTools_ListOfShape,
+        OldLab: &mut crate::ffi_types::TNaming_ListOfNamedShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_go_back(
+            crate::ffi_extern_TKCAF::TNaming_Localizer_go_back(
                 self as *mut Self,
                 S,
                 Lab,
@@ -1498,13 +1604,13 @@ impl Localizer {
     /// **Source:** `TNaming_Localizer.hxx`:65 - `TNaming_Localizer::Backward()`
     pub fn backward(
         &mut self,
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
         S: &crate::topo_ds::Shape,
-        Primitives: &mut crate::ffi::TNaming_MapOfNamedShape,
-        ValidShapes: &mut crate::ffi::TopTools_MapOfShape,
+        Primitives: &mut crate::ffi_types::TNaming_MapOfNamedShape,
+        ValidShapes: &mut crate::ffi_types::TopTools_MapOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_backward(
+            crate::ffi_extern_TKCAF::TNaming_Localizer_backward(
                 self as *mut Self,
                 NS,
                 S,
@@ -1519,38 +1625,46 @@ impl Localizer {
         &mut self,
         Cont: &crate::topo_ds::Shape,
         S: &crate::topo_ds::Shape,
-        Neighbourg: &mut crate::ffi::TopTools_MapOfShape,
+        Neighbourg: &mut crate::ffi_types::TopTools_MapOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_find_neighbourg(self as *mut Self, Cont, S, Neighbourg)
+            crate::ffi_extern_TKCAF::TNaming_Localizer_find_neighbourg(
+                self as *mut Self,
+                Cont,
+                S,
+                Neighbourg,
+            )
         })
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:74 - `TNaming_Localizer::IsNew()`
-    pub fn is_new(S: &crate::topo_ds::Shape, NS: &crate::ffi::HandleTNamingNamedShape) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Localizer_is_new(S, NS) })
+    pub fn is_new(
+        S: &crate::topo_ds::Shape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+    ) -> bool {
+        crate::check_result(unsafe { crate::ffi_extern_TKCAF::TNaming_Localizer_is_new(S, NS) })
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:77 - `TNaming_Localizer::FindGenerator()`
     pub fn find_generator(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
         S: &crate::topo_ds::Shape,
-        theListOfGenerators: &mut crate::ffi::TopTools_ListOfShape,
+        theListOfGenerators: &mut crate::ffi_types::TopTools_ListOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_find_generator(NS, S, theListOfGenerators)
+            crate::ffi_extern_TKCAF::TNaming_Localizer_find_generator(NS, S, theListOfGenerators)
         })
     }
 
     /// **Source:** `TNaming_Localizer.hxx`:82 - `TNaming_Localizer::FindShapeContext()`
     /// Finds context of the shape <S>.
     pub fn find_shape_context(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
         theS: &crate::topo_ds::Shape,
         theSC: &mut crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Localizer_find_shape_context(NS, theS, theSC)
+            crate::ffi_extern_TKCAF::TNaming_Localizer_find_shape_context(NS, theS, theSC)
         })
     }
 }
@@ -1561,53 +1675,62 @@ impl Localizer {
 
 /// **Source:** `TNaming_Name.hxx`:36 - `TNaming_Name`
 /// store the arguments of Naming.
-pub use crate::ffi::TNaming_Name as Name;
+pub use crate::ffi_types::TNaming_Name as Name;
 
 unsafe impl crate::CppDeletable for Name {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Name_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Name_destructor(ptr);
     }
 }
 
 impl Name {
     /// **Source:** `TNaming_Name.hxx`:41 - `TNaming_Name::TNaming_Name()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Name_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Name_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TNaming_Name.hxx`:43 - `TNaming_Name::Type()`
     pub fn type_nametype(&mut self, aType: crate::t_naming::NameType) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_type_nametype(self as *mut Self, aType.into())
+            crate::ffi_extern_TKCAF::TNaming_Name_type_nametype(self as *mut Self, aType.into())
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:45 - `TNaming_Name::ShapeType()`
     pub fn shape_type_shapeenum(&mut self, aType: crate::top_abs::ShapeEnum) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_shape_type_shapeenum(self as *mut Self, aType.into())
+            crate::ffi_extern_TKCAF::TNaming_Name_shape_type_shapeenum(
+                self as *mut Self,
+                aType.into(),
+            )
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:47 - `TNaming_Name::Shape()`
     pub fn shape_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_shape_shape(self as *mut Self, theShape)
+            crate::ffi_extern_TKCAF::TNaming_Name_shape_shape(self as *mut Self, theShape)
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:49 - `TNaming_Name::Append()`
-    pub fn append(&mut self, arg: &crate::ffi::HandleTNamingNamedShape) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_Name_append(self as *mut Self, arg) })
+    pub fn append(&mut self, arg: &crate::ffi_types::HandleTNamingNamedShape) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Name_append(self as *mut Self, arg)
+        })
     }
 
     /// **Source:** `TNaming_Name.hxx`:51 - `TNaming_Name::StopNamedShape()`
     pub fn stop_named_shape_handletnamingnamedshape(
         &mut self,
-        arg: &crate::ffi::HandleTNamingNamedShape,
+        arg: &crate::ffi_types::HandleTNamingNamedShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_stop_named_shape_handletnamingnamedshape(
+            crate::ffi_extern_TKCAF::TNaming_Name_stop_named_shape_handletnamingnamedshape(
                 self as *mut Self,
                 arg,
             )
@@ -1617,21 +1740,21 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:53 - `TNaming_Name::Index()`
     pub fn index_int(&mut self, I: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_index_int(self as *mut Self, I)
+            crate::ffi_extern_TKCAF::TNaming_Name_index_int(self as *mut Self, I)
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:55 - `TNaming_Name::ContextLabel()`
     pub fn context_label_label(&mut self, theLab: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_context_label_label(self as *mut Self, theLab)
+            crate::ffi_extern_TKCAF::TNaming_Name_context_label_label(self as *mut Self, theLab)
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:57 - `TNaming_Name::Orientation()`
     pub fn orientation_orientation(&mut self, theOrientation: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_orientation_orientation(
+            crate::ffi_extern_TKCAF::TNaming_Name_orientation_orientation(
                 self as *mut Self,
                 theOrientation.into(),
             )
@@ -1641,7 +1764,7 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:59 - `TNaming_Name::Type()`
     pub fn type_(&self) -> crate::t_naming::NameType {
         crate::t_naming::NameType::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_Name_type_(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Name_type_(self as *const Self)
         }))
         .unwrap()
     }
@@ -1649,7 +1772,7 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:61 - `TNaming_Name::ShapeType()`
     pub fn shape_type(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_Name_shape_type(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Name_shape_type(self as *const Self)
         }))
         .unwrap()
     }
@@ -1657,57 +1780,65 @@ impl Name {
     /// **Source:** `TNaming_Name.hxx`:63 - `TNaming_Name::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Name_shape(
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Name_shape(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TNaming_Name.hxx`:65 - `TNaming_Name::Arguments()`
+    pub fn arguments(&self) -> &crate::ffi_types::TNaming_ListOfNamedShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Name_arguments(
                 self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TNaming_Name.hxx`:65 - `TNaming_Name::Arguments()`
-    pub fn arguments(&self) -> &crate::ffi::TNaming_ListOfNamedShape {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Name_arguments(self as *const Self))) }
-    }
-
     /// **Source:** `TNaming_Name.hxx`:67 - `TNaming_Name::StopNamedShape()`
-    pub fn stop_named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn stop_named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Name_stop_named_shape(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Name_stop_named_shape(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:69 - `TNaming_Name::Index()`
     pub fn index(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TNaming_Name_index(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Name_index(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Name.hxx`:71 - `TNaming_Name::ContextLabel()`
     pub fn context_label(&self) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Name_context_label(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Name_context_label(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TNaming_Name.hxx`:73 - `TNaming_Name::Orientation()`
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_Name_orientation(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Name_orientation(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `TNaming_Name.hxx`:75 - `TNaming_Name::Solve()`
-    pub fn solve(&self, aLab: &crate::tdf::Label, Valid: &crate::ffi::TDF_LabelMap) -> bool {
+    pub fn solve(&self, aLab: &crate::tdf::Label, Valid: &crate::ffi_types::TDF_LabelMap) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Name_solve(self as *const Self, aLab, Valid)
+            crate::ffi_extern_TKCAF::TNaming_Name_solve(self as *const Self, aLab, Valid)
         })
     }
 
     /// **Source:** `TNaming_Name.hxx`:77 - `TNaming_Name::Paste()`
-    pub fn paste(&self, into: &mut Name, RT: &crate::ffi::HandleTDFRelocationTable) {
+    pub fn paste(&self, into: &mut Name, RT: &crate::ffi_types::HandleTDFRelocationTable) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Name_paste(self as *const Self, into, RT)
+            crate::ffi_extern_TKCAF::TNaming_Name_paste(self as *const Self, into, RT)
         })
     }
 }
@@ -1725,11 +1856,11 @@ impl Name {
 /// -   A list of pairs of shapes called the "old"
 /// shape and the "new" shape. The meaning
 /// depends on the type of evolution.
-pub use crate::ffi::TNaming_NamedShape as NamedShape;
+pub use crate::ffi_types::TNaming_NamedShape as NamedShape;
 
 unsafe impl crate::CppDeletable for NamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_NamedShape_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_NamedShape_destructor(ptr);
     }
 }
 
@@ -1737,13 +1868,17 @@ impl NamedShape {
     /// **Source:** `TNaming_NamedShape.hxx`:56 - `TNaming_NamedShape::TNaming_NamedShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_NamedShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:58 - `TNaming_NamedShape::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_NamedShape_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:62 - `TNaming_NamedShape::Get()`
@@ -1751,9 +1886,9 @@ impl NamedShape {
     /// shape if IsEmpty.
     pub fn get(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_NamedShape_get(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_get(self as *const Self),
+            ))
         }
     }
 
@@ -1761,7 +1896,7 @@ impl NamedShape {
     /// Returns the Evolution of the attribute.
     pub fn evolution(&self) -> crate::t_naming::Evolution {
         crate::t_naming::Evolution::try_from(crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_evolution(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_evolution(self as *const Self)
         }))
         .unwrap()
     }
@@ -1769,35 +1904,43 @@ impl NamedShape {
     /// **Source:** `TNaming_NamedShape.hxx`:68 - `TNaming_NamedShape::Version()`
     /// Returns the Version of the attribute.
     pub fn version(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TNaming_NamedShape_version(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_version(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:71 - `TNaming_NamedShape::SetVersion()`
     /// Set the Version of the attribute.
     pub fn set_version(&mut self, version: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_set_version(self as *mut Self, version)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_set_version(self as *mut Self, version)
         })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:73 - `TNaming_NamedShape::Clear()`
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_NamedShape_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:78 - `TNaming_NamedShape::ID()`
     /// Returns the ID of the attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_NamedShape_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:82 - `TNaming_NamedShape::BackupCopy()`
     /// Copies  the attribute  contents into  a  new other
     /// attribute. It is used by Backup().
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_backup_copy(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_backup_copy(self as *const Self),
             ))
         }
     }
@@ -1805,9 +1948,9 @@ impl NamedShape {
     /// **Source:** `TNaming_NamedShape.hxx`:86 - `TNaming_NamedShape::Restore()`
     /// Restores the contents from <anAttribute> into this
     /// one. It is used when aborting a transaction.
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, anAttribute: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_restore(self as *mut Self, anAttribute)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_restore(self as *mut Self, anAttribute)
         })
     }
 
@@ -1816,15 +1959,10 @@ impl NamedShape {
     /// <anOldAttribute.
     pub fn delta_on_modification_handletdfattribute(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_delta_on_modification_handletdfattribute(
-                    self as *const Self,
-                    anOldAttribute,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_delta_on_modification_handletdfattribute(self as *const Self, anOldAttribute)))
         }
     }
 
@@ -1832,23 +1970,20 @@ impl NamedShape {
     /// Applies a DeltaOnModification to <me>.
     pub fn delta_on_modification_handletdfdeltaonmodification(
         &mut self,
-        aDelta: &crate::ffi::HandleTDFDeltaOnModification,
+        aDelta: &crate::ffi_types::HandleTDFDeltaOnModification,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_delta_on_modification_handletdfdeltaonmodification(
-                self as *mut Self,
-                aDelta,
-            )
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_delta_on_modification_handletdfdeltaonmodification(self as *mut Self, aDelta)
         })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:99 - `TNaming_NamedShape::DeltaOnRemoval()`
     /// Makes a DeltaOnRemoval on <me> because <me> has
     /// disappeared from the DS.
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_delta_on_removal(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_delta_on_removal(self as *const Self),
             ))
         }
     }
@@ -1856,10 +1991,10 @@ impl NamedShape {
     /// **Source:** `TNaming_NamedShape.hxx`:103 - `TNaming_NamedShape::NewEmpty()`
     /// Returns an new empty attribute from the good end
     /// type. It is used by the copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_new_empty(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_new_empty(self as *const Self),
             ))
         }
     }
@@ -1874,11 +2009,11 @@ impl NamedShape {
     /// of the previous one.
     pub fn paste(
         &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
+        intoAttribute: &crate::ffi_types::HandleTDFAttribute,
+        aRelocTationable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_paste(
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_paste(
                 self as *const Self,
                 intoAttribute,
                 aRelocTationable,
@@ -1890,16 +2025,16 @@ impl NamedShape {
     /// Adds the directly referenced attributes and labels
     /// to <aDataSet>. "Directly" means we have only to
     /// look at the first level of references.
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_references(self as *const Self, aDataSet)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_references(self as *const Self, aDataSet)
         })
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:122 - `TNaming_NamedShape::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_before_removal(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_before_removal(self as *mut Self)
         })
     }
 
@@ -1907,11 +2042,15 @@ impl NamedShape {
     /// Something to do before applying <anAttDelta>
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_before_undo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_before_undo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
@@ -1919,11 +2058,15 @@ impl NamedShape {
     /// Something to do after applying <anAttDelta>.
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_after_undo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_after_undo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
@@ -1937,10 +2080,10 @@ impl NamedShape {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_NamedShape_dump(
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_dump(
                 self as *mut Self,
                 anOS,
             )))
@@ -1948,9 +2091,9 @@ impl NamedShape {
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_NamedShape_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1961,14 +2104,14 @@ impl NamedShape {
     /// ============
     /// Returns the GUID for named shapes.
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_NamedShape_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_get_id())) }
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TNaming_NamedShape_get_type_name(),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1976,14 +2119,18 @@ impl NamedShape {
     }
 
     /// **Source:** `TNaming_NamedShape.hxx`:146 - `TNaming_NamedShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_NamedShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_NamedShape_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKCAF::TNaming_NamedShape_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -1992,37 +2139,41 @@ impl NamedShape {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_NamedShape_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_as_TDF_Attribute_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_NamedShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_NamedShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -2030,7 +2181,7 @@ impl NamedShape {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -2038,7 +2189,7 @@ impl NamedShape {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -2046,42 +2197,47 @@ impl NamedShape {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -2089,10 +2245,10 @@ impl NamedShape {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_FindAttribute(
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -2101,23 +2257,29 @@ impl NamedShape {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -2127,75 +2289,86 @@ impl NamedShape {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NamedShape_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2203,12 +2376,12 @@ impl NamedShape {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_ExtendedDump(
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -2220,21 +2393,30 @@ impl NamedShape {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2242,7 +2424,7 @@ impl NamedShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_NamedShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2255,71 +2437,83 @@ impl NamedShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamedShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NamedShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingNamedShape;
+pub use crate::ffi_types::HandleTNamingNamedShape;
 
 unsafe impl crate::CppDeletable for HandleTNamingNamedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingNamedShape_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingNamedShape_destructor(ptr);
     }
 }
 
 impl HandleTNamingNamedShape {
     /// Dereference this Handle to access the underlying TNaming_NamedShape
-    pub fn get(&self) -> &crate::ffi::TNaming_NamedShape {
+    pub fn get(&self) -> &crate::ffi_types::TNaming_NamedShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTNamingNamedShape_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNamedShape_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_NamedShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_NamedShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_NamedShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingNamedShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNamedShape_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TNaming_NamedShape> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingNamedShape_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingNamedShape_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TNaming_NamedShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingNamedShape_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingNamedShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2335,42 +2529,54 @@ impl HandleTNamingNamedShape {
 /// attached to a specific label. This class is also used
 /// to solve  it when  the argumentsof the  toipological
 /// naming are modified.
-pub use crate::ffi::TNaming_Naming as Naming;
+pub use crate::ffi_types::TNaming_Naming as Naming;
 
 unsafe impl crate::CppDeletable for Naming {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Naming_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Naming_destructor(ptr);
     }
 }
 
 impl Naming {
     /// **Source:** `TNaming_Naming.hxx`:73 - `TNaming_Naming::TNaming_Naming()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Naming_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:75 - `TNaming_Naming::IsDefined()`
     pub fn is_defined(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Naming_is_defined(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Naming_is_defined(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:77 - `TNaming_Naming::GetName()`
     pub fn get_name(&self) -> &Name {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Naming_get_name(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_get_name(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:79 - `TNaming_Naming::ChangeName()`
     pub fn change_name(&mut self) -> &mut Name {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_Naming_change_name(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_change_name(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:82 - `TNaming_Naming::Regenerate()`
     /// regenerate only the Name associated to me
-    pub fn regenerate(&mut self, scope: &mut crate::ffi::TDF_LabelMap) -> bool {
+    pub fn regenerate(&mut self, scope: &mut crate::ffi_types::TDF_LabelMap) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_regenerate(self as *mut Self, scope)
+            crate::ffi_extern_TKCAF::TNaming_Naming_regenerate(self as *mut Self, scope)
         })
     }
 
@@ -2378,48 +2584,52 @@ impl Naming {
     /// Regenerate recursively the  whole name with scope.  If
     /// scope  is empty it  means that  all the labels  of the
     /// framework are valid.
-    pub fn solve(&mut self, scope: &mut crate::ffi::TDF_LabelMap) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Naming_solve(self as *mut Self, scope) })
+    pub fn solve(&mut self, scope: &mut crate::ffi_types::TDF_LabelMap) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Naming_solve(self as *mut Self, scope)
+        })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:91 - `TNaming_Naming::ID()`
     /// Deferred methods from TDF_Attribute
     /// ===================================
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Naming_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_id(self as *const Self)))
+        }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:93 - `TNaming_Naming::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Naming_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_new_empty(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:95 - `TNaming_Naming::Restore()`
-    pub fn restore(&mut self, With: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, With: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_restore(self as *mut Self, With)
+            crate::ffi_extern_TKCAF::TNaming_Naming_restore(self as *mut Self, With)
         })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:97 - `TNaming_Naming::Paste()`
     pub fn paste(
         &self,
-        Into: &crate::ffi::HandleTDFAttribute,
-        RT: &crate::ffi::HandleTDFRelocationTable,
+        Into: &crate::ffi_types::HandleTDFAttribute,
+        RT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_paste(self as *const Self, Into, RT)
+            crate::ffi_extern_TKCAF::TNaming_Naming_paste(self as *const Self, Into, RT)
         })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:100 - `TNaming_Naming::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_references(self as *const Self, aDataSet)
+            crate::ffi_extern_TKCAF::TNaming_Naming_references(self as *const Self, aDataSet)
         })
     }
 
@@ -2432,29 +2642,39 @@ impl Naming {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_Naming_dump(self as *mut Self, anOS)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_dump(
+                self as *mut Self,
+                anOS,
+            )))
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:105 - `TNaming_Naming::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_extended_dump(self as *const Self, anOS, aFilter, aMap)
+            crate::ffi_extern_TKCAF::TNaming_Naming_extended_dump(
+                self as *const Self,
+                anOS,
+                aFilter,
+                aMap,
+            )
         })
     }
 
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Naming_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2462,13 +2682,17 @@ impl Naming {
     /// following code from TDesignStd
     /// ==============================
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Naming_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_get_id())) }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:52 - `TNaming_Naming::Insert()`
-    pub fn insert(under: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
+    pub fn insert(
+        under: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNaming> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Naming_insert(under)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_insert(under),
+            ))
         }
     }
 
@@ -2491,46 +2715,52 @@ impl Naming {
         Geometry: bool,
         KeepOrientation: bool,
         BNproblem: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Naming_name(
-                where_,
-                Selection,
-                Context,
-                Geometry,
-                KeepOrientation,
-                BNproblem,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_name(
+                    where_,
+                    Selection,
+                    Context,
+                    Geometry,
+                    KeepOrientation,
+                    BNproblem,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::TNaming_Naming_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `TNaming_Naming.hxx`:113 - `TNaming_Naming::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Naming_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_Naming_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_Naming_as_TDF_Attribute_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_as_TDF_Attribute_mut(
                 self as *mut Self,
             ))
         }
@@ -2539,7 +2769,7 @@ impl Naming {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_Naming_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCAF::TNaming_Naming_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2548,27 +2778,29 @@ impl Naming {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_Naming_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNaming> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNaming> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Naming_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Naming_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -2576,7 +2808,7 @@ impl Naming {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -2584,42 +2816,42 @@ impl Naming {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_UntilTransaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsAttribute(self as *const Self, anID)
         })
     }
 
@@ -2627,10 +2859,10 @@ impl Naming {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_FindAttribute(
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -2639,23 +2871,29 @@ impl Naming {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -2665,113 +2903,132 @@ impl Naming {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2779,11 +3036,11 @@ impl Naming {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_DeltaOnModification(
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -2792,10 +3049,12 @@ impl Naming {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Naming_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2803,21 +3062,27 @@ impl Naming {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -2825,7 +3090,7 @@ impl Naming {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_Naming_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_Naming_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2838,67 +3103,79 @@ impl Naming {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Naming_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_Naming_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingNaming;
+pub use crate::ffi_types::HandleTNamingNaming;
 
 unsafe impl crate::CppDeletable for HandleTNamingNaming {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingNaming_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingNaming_destructor(ptr);
     }
 }
 
 impl HandleTNamingNaming {
     /// Dereference this Handle to access the underlying TNaming_Naming
-    pub fn get(&self) -> &crate::ffi::TNaming_Naming {
-        unsafe { &*crate::check_result(crate::ffi::HandleTNamingNaming_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TNaming_Naming {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNaming_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_Naming
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_Naming {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_Naming {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingNaming_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingNaming_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TNaming_Naming> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingNaming_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingNaming_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TNaming_Naming> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingNaming_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingNaming_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2909,11 +3186,11 @@ impl HandleTNamingNaming {
 // ========================
 
 /// **Source:** `TNaming_NamingTool.hxx`:29 - `TNaming_NamingTool`
-pub use crate::ffi::TNaming_NamingTool as NamingTool;
+pub use crate::ffi_types::TNaming_NamingTool as NamingTool;
 
 unsafe impl crate::CppDeletable for NamingTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_NamingTool_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_NamingTool_destructor(ptr);
     }
 }
 
@@ -2922,42 +3199,46 @@ impl NamingTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_NamingTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_NamingTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_NamingTool.hxx`:34 - `TNaming_NamingTool::CurrentShape()`
     pub fn current_shape(
-        Valid: &crate::ffi::TDF_LabelMap,
-        Forbiden: &crate::ffi::TDF_LabelMap,
-        NS: &crate::ffi::HandleTNamingNamedShape,
-        MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
+        Valid: &crate::ffi_types::TDF_LabelMap,
+        Forbiden: &crate::ffi_types::TDF_LabelMap,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+        MS: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamingTool_current_shape(Valid, Forbiden, NS, MS)
+            crate::ffi_extern_TKCAF::TNaming_NamingTool_current_shape(Valid, Forbiden, NS, MS)
         })
     }
 
     /// **Source:** `TNaming_NamingTool.hxx`:39 - `TNaming_NamingTool::CurrentShapeFromShape()`
     pub fn current_shape_from_shape(
-        Valid: &crate::ffi::TDF_LabelMap,
-        Forbiden: &crate::ffi::TDF_LabelMap,
+        Valid: &crate::ffi_types::TDF_LabelMap,
+        Forbiden: &crate::ffi_types::TDF_LabelMap,
         Acces: &crate::tdf::Label,
         S: &crate::topo_ds::Shape,
-        MS: &mut crate::ffi::TopTools_IndexedMapOfShape,
+        MS: &mut crate::ffi_types::TopTools_IndexedMapOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamingTool_current_shape_from_shape(Valid, Forbiden, Acces, S, MS)
+            crate::ffi_extern_TKCAF::TNaming_NamingTool_current_shape_from_shape(
+                Valid, Forbiden, Acces, S, MS,
+            )
         })
     }
 
     /// **Source:** `TNaming_NamingTool.hxx`:45 - `TNaming_NamingTool::BuildDescendants()`
     pub fn build_descendants(
-        NS: &crate::ffi::HandleTNamingNamedShape,
-        Labels: &mut crate::ffi::TDF_LabelMap,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+        Labels: &mut crate::ffi_types::TDF_LabelMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NamingTool_build_descendants(NS, Labels)
+            crate::ffi_extern_TKCAF::TNaming_NamingTool_build_descendants(NS, Labels)
         })
     }
 }
@@ -2968,11 +3249,11 @@ impl NamingTool {
 
 /// **Source:** `TNaming_NewShapeIterator.hxx`:38 - `TNaming_NewShapeIterator`
 /// Iterates on all the descendants of a shape
-pub use crate::ffi::TNaming_NewShapeIterator as NewShapeIterator;
+pub use crate::ffi_types::TNaming_NewShapeIterator as NewShapeIterator;
 
 unsafe impl crate::CppDeletable for NewShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_NewShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_destructor(ptr);
     }
 }
 
@@ -2985,7 +3266,7 @@ impl NewShapeIterator {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_ctor_shape_int_label(
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_ctor_shape_int_label(
                     aShape,
                     Transaction,
                     access,
@@ -3001,7 +3282,7 @@ impl NewShapeIterator {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_ctor_shape_label(aShape, access),
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_ctor_shape_label(aShape, access),
             ))
         }
     }
@@ -3011,7 +3292,7 @@ impl NewShapeIterator {
     pub fn new_iterator(anIterator: &Iterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_ctor_iterator(anIterator),
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_ctor_iterator(anIterator),
             ))
         }
     }
@@ -3019,14 +3300,14 @@ impl NewShapeIterator {
     /// **Source:** `TNaming_NewShapeIterator.hxx`:55 - `TNaming_NewShapeIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NewShapeIterator_more(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:57 - `TNaming_NewShapeIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_NewShapeIterator_next(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_next(self as *mut Self)
         })
     }
 
@@ -3034,16 +3315,16 @@ impl NewShapeIterator {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_label(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TNaming_NewShapeIterator.hxx`:61 - `TNaming_NewShapeIterator::NamedShape()`
-    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_named_shape(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_named_shape(self as *const Self),
             ))
         }
     }
@@ -3052,7 +3333,9 @@ impl NewShapeIterator {
     /// Warning! Can be a Null Shape if a descendant is deleted.
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_NewShapeIterator_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3061,7 +3344,7 @@ impl NewShapeIterator {
     /// fuse,etc...) of the old shape.
     pub fn is_modification(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_NewShapeIterator_is_modification(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_is_modification(self as *const Self)
         })
     }
 
@@ -3069,7 +3352,7 @@ impl NewShapeIterator {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_NewShapeIterator_to_owned(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_NewShapeIterator_to_owned(self as *const Self),
             ))
         }
     }
@@ -3081,11 +3364,11 @@ impl NewShapeIterator {
 
 /// **Source:** `TNaming_OldShapeIterator.hxx`:38 - `TNaming_OldShapeIterator`
 /// Iterates on all the ascendants of a shape
-pub use crate::ffi::TNaming_OldShapeIterator as OldShapeIterator;
+pub use crate::ffi_types::TNaming_OldShapeIterator as OldShapeIterator;
 
 unsafe impl crate::CppDeletable for OldShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_OldShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_destructor(ptr);
     }
 }
 
@@ -3098,7 +3381,7 @@ impl OldShapeIterator {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_ctor_shape_int_label(
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_ctor_shape_int_label(
                     aShape,
                     Transaction,
                     access,
@@ -3114,7 +3397,7 @@ impl OldShapeIterator {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_ctor_shape_label(aShape, access),
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_ctor_shape_label(aShape, access),
             ))
         }
     }
@@ -3124,7 +3407,7 @@ impl OldShapeIterator {
     pub fn new_iterator(anIterator: &Iterator) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_ctor_iterator(anIterator),
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_ctor_iterator(anIterator),
             ))
         }
     }
@@ -3132,14 +3415,14 @@ impl OldShapeIterator {
     /// **Source:** `TNaming_OldShapeIterator.hxx`:55 - `TNaming_OldShapeIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_OldShapeIterator_more(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:57 - `TNaming_OldShapeIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_OldShapeIterator_next(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_next(self as *mut Self)
         })
     }
 
@@ -3147,16 +3430,16 @@ impl OldShapeIterator {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_label(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TNaming_OldShapeIterator.hxx`:61 - `TNaming_OldShapeIterator::NamedShape()`
-    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_named_shape(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_named_shape(self as *const Self),
             ))
         }
     }
@@ -3164,7 +3447,9 @@ impl OldShapeIterator {
     /// **Source:** `TNaming_OldShapeIterator.hxx`:63 - `TNaming_OldShapeIterator::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_OldShapeIterator_shape(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_shape(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3173,7 +3458,7 @@ impl OldShapeIterator {
     /// fuse,etc...) of the old shape.
     pub fn is_modification(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_OldShapeIterator_is_modification(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_is_modification(self as *const Self)
         })
     }
 
@@ -3181,7 +3466,7 @@ impl OldShapeIterator {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_OldShapeIterator_to_owned(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_OldShapeIterator_to_owned(self as *const Self),
             ))
         }
     }
@@ -3192,11 +3477,11 @@ impl OldShapeIterator {
 // ========================
 
 /// **Source:** `TNaming_RefShape.hxx`:30 - `TNaming_RefShape`
-pub use crate::ffi::TNaming_RefShape as RefShape;
+pub use crate::ffi_types::TNaming_RefShape as RefShape;
 
 unsafe impl crate::CppDeletable for RefShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_RefShape_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_RefShape_destructor(ptr);
     }
 }
 
@@ -3204,45 +3489,51 @@ impl RefShape {
     /// **Source:** `TNaming_RefShape.hxx`:35 - `TNaming_RefShape::TNaming_RefShape()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_RefShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_RefShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:37 - `TNaming_RefShape::TNaming_RefShape()`
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_RefShape_ctor_shape(
-                S,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_RefShape_ctor_shape(S),
+            ))
         }
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:39 - `TNaming_RefShape::Shape()`
     pub fn shape_shape(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_RefShape_shape_shape(self as *mut Self, S)
+            crate::ffi_extern_TKCAF::TNaming_RefShape_shape_shape(self as *mut Self, S)
         })
     }
 
     /// **Source:** `TNaming_RefShape.hxx`:45 - `TNaming_RefShape::Shape()`
     pub fn shape(&self) -> &crate::topo_ds::Shape {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_RefShape_shape(self as *const Self))) }
-    }
-
-    /// **Source:** `TNaming_RefShape.hxx`:47 - `TNaming_RefShape::Label()`
-    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_RefShape_label(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_RefShape_shape(
                 self as *const Self,
             )))
         }
     }
 
-    /// **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape()`
-    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    /// **Source:** `TNaming_RefShape.hxx`:47 - `TNaming_RefShape::Label()`
+    pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_RefShape_named_shape(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_RefShape_label(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `TNaming_RefShape.hxx`:49 - `TNaming_RefShape::NamedShape()`
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_RefShape_named_shape(self as *const Self),
             ))
         }
     }
@@ -3265,11 +3556,11 @@ impl RefShape {
 /// **Source:** `TNaming_SameShapeIterator.hxx`:34 - `TNaming_SameShapeIterator`
 /// To iterate on   all  the label which contained  a
 /// given shape.
-pub use crate::ffi::TNaming_SameShapeIterator as SameShapeIterator;
+pub use crate::ffi_types::TNaming_SameShapeIterator as SameShapeIterator;
 
 unsafe impl crate::CppDeletable for SameShapeIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_SameShapeIterator_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_destructor(ptr);
     }
 }
 
@@ -3281,7 +3572,7 @@ impl SameShapeIterator {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_SameShapeIterator_ctor_shape_label(aShape, access),
+                crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_ctor_shape_label(aShape, access),
             ))
         }
     }
@@ -3289,14 +3580,14 @@ impl SameShapeIterator {
     /// **Source:** `TNaming_SameShapeIterator.hxx`:41 - `TNaming_SameShapeIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_SameShapeIterator_more(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `TNaming_SameShapeIterator.hxx`:43 - `TNaming_SameShapeIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_SameShapeIterator_next(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_next(self as *mut Self)
         })
     }
 
@@ -3304,7 +3595,7 @@ impl SameShapeIterator {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_SameShapeIterator_label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_SameShapeIterator_label(self as *const Self),
             ))
         }
     }
@@ -3317,11 +3608,11 @@ impl SameShapeIterator {
 /// **Source:** `TNaming_Scope.hxx`:31 - `TNaming_Scope`
 /// this class manage a scope of labels
 /// ===================================
-pub use crate::ffi::TNaming_Scope as Scope;
+pub use crate::ffi_types::TNaming_Scope as Scope;
 
 unsafe impl crate::CppDeletable for Scope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Scope_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Scope_destructor(ptr);
     }
 }
 
@@ -3329,7 +3620,11 @@ impl Scope {
     /// **Source:** `TNaming_Scope.hxx`:37 - `TNaming_Scope::TNaming_Scope()`
     /// WithValid = FALSE
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Scope_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Scope_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:41 - `TNaming_Scope::TNaming_Scope()`
@@ -3337,79 +3632,93 @@ impl Scope {
     /// on the whole framework.
     pub fn new_bool(WithValid: bool) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Scope_ctor_bool(
-                WithValid,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Scope_ctor_bool(WithValid),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:44 - `TNaming_Scope::TNaming_Scope()`
     /// create a scope with a map. WithValid = TRUE.
-    pub fn new_labelmap(valid: &mut crate::ffi::TDF_LabelMap) -> crate::OwnedPtr<Self> {
+    pub fn new_labelmap(valid: &mut crate::ffi_types::TDF_LabelMap) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Scope_ctor_labelmap(
-                valid,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Scope_ctor_labelmap(valid),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:46 - `TNaming_Scope::WithValid()`
     pub fn with_valid(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Scope_with_valid(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Scope_with_valid(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:48 - `TNaming_Scope::WithValid()`
     pub fn with_valid_bool(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Scope_with_valid_bool(self as *mut Self, mode)
+            crate::ffi_extern_TKCAF::TNaming_Scope_with_valid_bool(self as *mut Self, mode)
         })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:50 - `TNaming_Scope::ClearValid()`
     pub fn clear_valid(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Scope_clear_valid(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Scope_clear_valid(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:52 - `TNaming_Scope::Valid()`
     pub fn valid(&mut self, L: &crate::tdf::Label) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_Scope_valid(self as *mut Self, L) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Scope_valid(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:54 - `TNaming_Scope::ValidChildren()`
     pub fn valid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Scope_valid_children(self as *mut Self, L, withroot)
+            crate::ffi_extern_TKCAF::TNaming_Scope_valid_children(self as *mut Self, L, withroot)
         })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:57 - `TNaming_Scope::Unvalid()`
     pub fn unvalid(&mut self, L: &crate::tdf::Label) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_Scope_unvalid(self as *mut Self, L) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Scope_unvalid(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:59 - `TNaming_Scope::UnvalidChildren()`
     pub fn unvalid_children(&mut self, L: &crate::tdf::Label, withroot: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Scope_unvalid_children(self as *mut Self, L, withroot)
+            crate::ffi_extern_TKCAF::TNaming_Scope_unvalid_children(self as *mut Self, L, withroot)
         })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:62 - `TNaming_Scope::IsValid()`
     pub fn is_valid(&self, L: &crate::tdf::Label) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Scope_is_valid(self as *const Self, L) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Scope_is_valid(self as *const Self, L)
+        })
     }
 
     /// **Source:** `TNaming_Scope.hxx`:64 - `TNaming_Scope::GetValid()`
-    pub fn get_valid(&self) -> &crate::ffi::TDF_LabelMap {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_Scope_get_valid(self as *const Self))) }
+    pub fn get_valid(&self) -> &crate::ffi_types::TDF_LabelMap {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Scope_get_valid(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TNaming_Scope.hxx`:66 - `TNaming_Scope::ChangeValid()`
-    pub fn change_valid(&mut self) -> &mut crate::ffi::TDF_LabelMap {
+    pub fn change_valid(&mut self) -> &mut crate::ffi_types::TDF_LabelMap {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_Scope_change_valid(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Scope_change_valid(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -3418,13 +3727,12 @@ impl Scope {
     /// Valid Scope.
     pub fn current_shape(
         &self,
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Scope_current_shape(
-                self as *const Self,
-                NS,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Scope_current_shape(self as *const Self, NS),
+            ))
         }
     }
 }
@@ -3467,11 +3775,11 @@ impl Scope {
 /// value    of the selected    Named  Shape  use the
 /// TNaming_Tool::GetShape    method,    as  for  any
 /// NamedShape attribute.
-pub use crate::ffi::TNaming_Selector as Selector;
+pub use crate::ffi_types::TNaming_Selector as Selector;
 
 unsafe impl crate::CppDeletable for Selector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Selector_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Selector_destructor(ptr);
     }
 }
 
@@ -3482,9 +3790,9 @@ impl Selector {
     /// ==================
     pub fn new_label(aLabel: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Selector_ctor_label(
-                aLabel,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Selector_ctor_label(aLabel),
+            ))
         }
     }
 
@@ -3506,7 +3814,7 @@ impl Selector {
         KeepOrientatation: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Selector_select_shape2_bool2(
+            crate::ffi_extern_TKCAF::TNaming_Selector_select_shape2_bool2(
                 self as *const Self,
                 Selection,
                 Context,
@@ -3530,7 +3838,7 @@ impl Selector {
         KeepOrientatation: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Selector_select_shape_bool2(
+            crate::ffi_extern_TKCAF::TNaming_Selector_select_shape_bool2(
                 self as *const Self,
                 Selection,
                 Geometry,
@@ -3545,28 +3853,28 @@ impl Selector {
     /// The underlying shape returned in the method
     /// NamedShape is updated.
     /// To read this shape, use the method TNaming_Tool::GetShape
-    pub fn solve(&self, Valid: &mut crate::ffi::TDF_LabelMap) -> bool {
+    pub fn solve(&self, Valid: &mut crate::ffi_types::TDF_LabelMap) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Selector_solve(self as *const Self, Valid)
+            crate::ffi_extern_TKCAF::TNaming_Selector_solve(self as *const Self, Valid)
         })
     }
 
     /// **Source:** `TNaming_Selector.hxx`:125 - `TNaming_Selector::Arguments()`
     /// Returns the attribute list args.
     /// This list contains the named shape on which the topological naming was built.
-    pub fn arguments(&self, args: &mut crate::ffi::TDF_AttributeMap) {
+    pub fn arguments(&self, args: &mut crate::ffi_types::TDF_AttributeMap) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Selector_arguments(self as *const Self, args)
+            crate::ffi_extern_TKCAF::TNaming_Selector_arguments(self as *const Self, args)
         })
     }
 
     /// **Source:** `TNaming_Selector.hxx`:129 - `TNaming_Selector::NamedShape()`
     /// Returns the NamedShape build or under construction,
     /// which contains the topological naming..
-    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    pub fn named_shape(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Selector_named_shape(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_Selector_named_shape(self as *const Self),
             ))
         }
     }
@@ -3586,11 +3894,11 @@ impl Selector {
     pub fn is_identified(
         access: &crate::tdf::Label,
         selection: &crate::topo_ds::Shape,
-        NS: &mut crate::ffi::HandleTNamingNamedShape,
+        NS: &mut crate::ffi_types::HandleTNamingNamedShape,
         Geometry: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_Selector_is_identified(access, selection, NS, Geometry)
+            crate::ffi_extern_TKCAF::TNaming_Selector_is_identified(access, selection, NS, Geometry)
         })
     }
 }
@@ -3600,11 +3908,11 @@ impl Selector {
 // ========================
 
 /// **Source:** `TNaming_ShapesSet.hxx`:28 - `TNaming_ShapesSet`
-pub use crate::ffi::TNaming_ShapesSet as ShapesSet;
+pub use crate::ffi_types::TNaming_ShapesSet as ShapesSet;
 
 unsafe impl crate::CppDeletable for ShapesSet {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_ShapesSet_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_ShapesSet_destructor(ptr);
     }
 }
 
@@ -3612,7 +3920,9 @@ impl ShapesSet {
     /// **Source:** `TNaming_ShapesSet.hxx`:33 - `TNaming_ShapesSet::TNaming_ShapesSet()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_ShapesSet_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_ShapesSet_ctor(),
+            ))
         }
     }
 
@@ -3623,7 +3933,7 @@ impl ShapesSet {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_ShapesSet_ctor_shape_shapeenum(S, Type.into()),
+                crate::ffi_extern_TKCAF::TNaming_ShapesSet_ctor_shape_shapeenum(S, Type.into()),
             ))
         }
     }
@@ -3631,14 +3941,16 @@ impl ShapesSet {
     /// **Source:** `TNaming_ShapesSet.hxx`:39 - `TNaming_ShapesSet::Clear()`
     /// Removes all Shapes
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_ShapesSet_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:42 - `TNaming_ShapesSet::Add()`
     /// Adds the Shape <S>
     pub fn add_shape(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_add_shape(self as *mut Self, S)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_add_shape(self as *mut Self, S)
         })
     }
 
@@ -3646,7 +3958,7 @@ impl ShapesSet {
     /// Returns True  if <S> is in <me>
     pub fn contains(&self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_contains(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_contains(self as *const Self, S)
         })
     }
 
@@ -3654,7 +3966,7 @@ impl ShapesSet {
     /// Removes <S> in <me>.
     pub fn remove_shape(&mut self, S: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_remove_shape(self as *mut Self, S)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_remove_shape(self as *mut Self, S)
         })
     }
 
@@ -3662,7 +3974,7 @@ impl ShapesSet {
     /// Adds the shapes contained in <Shapes>.
     pub fn add_shapesset(&mut self, Shapes: &ShapesSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_add_shapesset(self as *mut Self, Shapes)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_add_shapesset(self as *mut Self, Shapes)
         })
     }
 
@@ -3671,7 +3983,7 @@ impl ShapesSet {
     /// contained in <Shapes>
     pub fn filter(&mut self, Shapes: &ShapesSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_filter(self as *mut Self, Shapes)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_filter(self as *mut Self, Shapes)
         })
     }
 
@@ -3679,30 +3991,40 @@ impl ShapesSet {
     /// Removes in <me> the shapes contained in <Shapes>
     pub fn remove_shapesset(&mut self, Shapes: &ShapesSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_ShapesSet_remove_shapesset(self as *mut Self, Shapes)
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_remove_shapesset(self as *mut Self, Shapes)
         })
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:60 - `TNaming_ShapesSet::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_ShapesSet_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:62 - `TNaming_ShapesSet::NbShapes()`
     pub fn nb_shapes(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TNaming_ShapesSet_nb_shapes(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_ShapesSet_nb_shapes(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:64 - `TNaming_ShapesSet::ChangeMap()`
-    pub fn change_map(&mut self) -> &mut crate::ffi::TopTools_MapOfShape {
+    pub fn change_map(&mut self) -> &mut crate::ffi_types::TopTools_MapOfShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_ShapesSet_change_map(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_ShapesSet_change_map(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TNaming_ShapesSet.hxx`:66 - `TNaming_ShapesSet::Map()`
-    pub fn map(&self) -> &crate::ffi::TopTools_MapOfShape {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_ShapesSet_map(self as *const Self))) }
+    pub fn map(&self) -> &crate::ffi_types::TopTools_MapOfShape {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_ShapesSet_map(
+                self as *const Self,
+            )))
+        }
     }
 }
 
@@ -3716,11 +4038,11 @@ impl ShapesSet {
 /// This information is typically a TopoDS_Shape object.
 /// Using this tool, relations between named shapes
 /// are also accessible.
-pub use crate::ffi::TNaming_Tool as Tool;
+pub use crate::ffi_types::TNaming_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Tool_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Tool_destructor(ptr);
     }
 }
 
@@ -3728,7 +4050,11 @@ impl Tool {
     /// **Source:** `TNaming_Tool.hxx` - `TNaming_Tool::TNaming_Tool()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:51 - `TNaming_Tool::CurrentShape()`
@@ -3739,11 +4065,11 @@ impl Tool {
     /// if they have been modified in other attributes of the same data structure.
     /// Each call to this function creates a new compound.
     pub fn current_shape_handletnamingnamedshape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape(NS),
+                crate::ffi_extern_TKCAF::TNaming_Tool_current_shape_handletnamingnamedshape(NS),
             ))
         }
     }
@@ -3758,15 +4084,11 @@ impl Tool {
     /// Warning
     /// Only the contents of Updated are searched.R
     pub fn current_shape_handletnamingnamedshape_labelmap(
-        NS: &crate::ffi::HandleTNamingNamedShape,
-        Updated: &crate::ffi::TDF_LabelMap,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+        Updated: &crate::ffi_types::TDF_LabelMap,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Tool_current_shape_handletnamingnamedshape_labelmap(
-                    NS, Updated,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Tool_current_shape_handletnamingnamedshape_labelmap(NS, Updated)))
         }
     }
 
@@ -3774,26 +4096,24 @@ impl Tool {
     /// Returns the NamedShape of the last Modification of <NS>.
     /// This shape is identified by a label.
     pub fn current_named_shape_handletnamingnamedshape_labelmap(
-        NS: &crate::ffi::HandleTNamingNamedShape,
-        Updated: &crate::ffi::TDF_LabelMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+        Updated: &crate::ffi_types::TDF_LabelMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Tool_current_named_shape_handletnamingnamedshape_labelmap(
-                    NS, Updated,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Tool_current_named_shape_handletnamingnamedshape_labelmap(NS, Updated)))
         }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:71 - `TNaming_Tool::CurrentNamedShape()`
     /// Returns NamedShape the last Modification of <NS>.
     pub fn current_named_shape_handletnamingnamedshape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Tool_current_named_shape_handletnamingnamedshape(NS),
+                crate::ffi_extern_TKCAF::TNaming_Tool_current_named_shape_handletnamingnamedshape(
+                    NS,
+                ),
             ))
         }
     }
@@ -3840,11 +4160,11 @@ impl Tool {
     pub fn named_shape(
         aShape: &crate::topo_ds::Shape,
         anAcces: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingNamedShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingNamedShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_named_shape(
-                aShape, anAcces,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_named_shape(aShape, anAcces),
+            ))
         }
     }
 
@@ -3855,22 +4175,24 @@ impl Tool {
     /// This compound is made out of all the new shapes found.
     /// Each call to this function creates a new compound.
     pub fn get_shape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_get_shape(NS)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_get_shape(NS),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:123 - `TNaming_Tool::OriginalShape()`
     /// Returns the shape contained as OldShape in <NS>
     pub fn original_shape(
-        NS: &crate::ffi::HandleTNamingNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_original_shape(
-                NS,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_original_shape(NS),
+            ))
         }
     }
 
@@ -3880,28 +4202,32 @@ impl Tool {
     /// shape Generation.
     pub fn generated_shape(
         S: &crate::topo_ds::Shape,
-        Generation: &crate::ffi::HandleTNamingNamedShape,
+        Generation: &crate::ffi_types::HandleTNamingNamedShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Tool_generated_shape(S, Generation),
+                crate::ffi_extern_TKCAF::TNaming_Tool_generated_shape(S, Generation),
             ))
         }
     }
 
     /// **Source:** `TNaming_Tool.hxx`:131 - `TNaming_Tool::Collect()`
     pub fn collect(
-        NS: &crate::ffi::HandleTNamingNamedShape,
-        Labels: &mut crate::ffi::TNaming_MapOfNamedShape,
+        NS: &crate::ffi_types::HandleTNamingNamedShape,
+        Labels: &mut crate::ffi_types::TNaming_MapOfNamedShape,
         OnlyModif: bool,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::TNaming_Tool_collect(NS, Labels, OnlyModif) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Tool_collect(NS, Labels, OnlyModif)
+        })
     }
 
     /// **Source:** `TNaming_Tool.hxx`:136 - `TNaming_Tool::HasLabel()`
     /// Returns True if <aShape> appears under a label.(DP)
     pub fn has_label(access: &crate::tdf::Label, aShape: &crate::topo_ds::Shape) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Tool_has_label(access, aShape) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Tool_has_label(access, aShape)
+        })
     }
 
     /// **Source:** `TNaming_Tool.hxx`:142 - `TNaming_Tool::Label()`
@@ -3914,9 +4240,9 @@ impl Tool {
         TransDef: &mut i32,
     ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_label(
-                access, aShape, TransDef,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_label(access, aShape, TransDef),
+            ))
         }
     }
 
@@ -3926,12 +4252,12 @@ impl Tool {
     pub fn initial_shape(
         aShape: &crate::topo_ds::Shape,
         anAcces: &crate::tdf::Label,
-        Labels: &mut crate::ffi::TDF_LabelList,
+        Labels: &mut crate::ffi_types::TDF_LabelList,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Tool_initial_shape(
-                aShape, anAcces, Labels,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Tool_initial_shape(aShape, anAcces, Labels),
+            ))
         }
     }
 
@@ -3939,7 +4265,7 @@ impl Tool {
     /// Returns the last transaction where the creation of S
     /// is valid.
     pub fn valid_until(access: &crate::tdf::Label, S: &crate::topo_ds::Shape) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TNaming_Tool_valid_until(access, S) })
+        crate::check_result(unsafe { crate::ffi_extern_TKCAF::TNaming_Tool_valid_until(access, S) })
     }
 
     /// **Source:** `TNaming_Tool.hxx`:160 - `TNaming_Tool::FindShape()`
@@ -3947,13 +4273,13 @@ impl Tool {
     /// from the shapes of the argument named shape.
     /// It is used for IDENTITY name type computation.
     pub fn find_shape(
-        Valid: &crate::ffi::TDF_LabelMap,
-        Forbiden: &crate::ffi::TDF_LabelMap,
-        Arg: &crate::ffi::HandleTNamingNamedShape,
+        Valid: &crate::ffi_types::TDF_LabelMap,
+        Forbiden: &crate::ffi_types::TDF_LabelMap,
+        Arg: &crate::ffi_types::HandleTNamingNamedShape,
         S: &mut crate::topo_ds::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S)
+            crate::ffi_extern_TKCAF::TNaming_Tool_find_shape(Valid, Forbiden, Arg, S)
         })
     }
 }
@@ -3967,11 +4293,11 @@ impl Tool {
 /// The TranslateTool class is provided to support the
 /// translation of topological data structures  Transient
 /// to  Transient.
-pub use crate::ffi::TNaming_TranslateTool as TranslateTool;
+pub use crate::ffi_types::TNaming_TranslateTool as TranslateTool;
 
 unsafe impl crate::CppDeletable for TranslateTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_TranslateTool_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_TranslateTool_destructor(ptr);
     }
 }
 
@@ -3980,70 +4306,72 @@ impl TranslateTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_TranslateTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:38 - `TNaming_TranslateTool::Add()`
     pub fn add(&self, S1: &mut crate::topo_ds::Shape, S2: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_add(self as *const Self, S1, S2)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_add(self as *const Self, S1, S2)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:40 - `TNaming_TranslateTool::MakeVertex()`
     pub fn make_vertex(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_vertex(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_vertex(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:42 - `TNaming_TranslateTool::MakeEdge()`
     pub fn make_edge(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_edge(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_edge(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:44 - `TNaming_TranslateTool::MakeWire()`
     pub fn make_wire(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_wire(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_wire(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:46 - `TNaming_TranslateTool::MakeFace()`
     pub fn make_face(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_face(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_face(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:48 - `TNaming_TranslateTool::MakeShell()`
     pub fn make_shell(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_shell(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_shell(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:50 - `TNaming_TranslateTool::MakeSolid()`
     pub fn make_solid(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_solid(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_solid(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:52 - `TNaming_TranslateTool::MakeCompSolid()`
     pub fn make_comp_solid(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_comp_solid(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_comp_solid(self as *const Self, S)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:54 - `TNaming_TranslateTool::MakeCompound()`
     pub fn make_compound(&self, S: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_make_compound(self as *const Self, S)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_make_compound(self as *const Self, S)
         })
     }
 
@@ -4052,10 +4380,15 @@ impl TranslateTool {
         &self,
         S1: &crate::topo_ds::Shape,
         S2: &mut crate::topo_ds::Shape,
-        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        M: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_update_vertex(self as *const Self, S1, S2, M)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_vertex(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
         })
     }
 
@@ -4064,10 +4397,15 @@ impl TranslateTool {
         &self,
         S1: &crate::topo_ds::Shape,
         S2: &mut crate::topo_ds::Shape,
-        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        M: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_update_edge(self as *const Self, S1, S2, M)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_edge(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
         })
     }
 
@@ -4076,24 +4414,29 @@ impl TranslateTool {
         &self,
         S1: &crate::topo_ds::Shape,
         S2: &mut crate::topo_ds::Shape,
-        M: &mut crate::ffi::TColStd_IndexedDataMapOfTransientTransient,
+        M: &mut crate::ffi_types::TColStd_IndexedDataMapOfTransientTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_update_face(self as *const Self, S1, S2, M)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_face(
+                self as *const Self,
+                S1,
+                S2,
+                M,
+            )
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:68 - `TNaming_TranslateTool::UpdateShape()`
     pub fn update_shape(&self, S1: &crate::topo_ds::Shape, S2: &mut crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_update_shape(self as *const Self, S1, S2)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_update_shape(self as *const Self, S1, S2)
         })
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_TranslateTool_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_TranslateTool_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4103,7 +4446,7 @@ impl TranslateTool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TNaming_TranslateTool_get_type_name(),
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4111,50 +4454,64 @@ impl TranslateTool {
     }
 
     /// **Source:** `TNaming_TranslateTool.hxx`:70 - `TNaming_TranslateTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_TranslateTool_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_TranslateTool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_TranslateTool_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingTranslateTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingTranslateTool> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_TranslateTool_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4162,7 +4519,7 @@ impl TranslateTool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_TranslateTool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4175,62 +4532,72 @@ impl TranslateTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_TranslateTool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_TranslateTool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingTranslateTool;
+pub use crate::ffi_types::HandleTNamingTranslateTool;
 
 unsafe impl crate::CppDeletable for HandleTNamingTranslateTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingTranslateTool_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_destructor(ptr);
     }
 }
 
 impl HandleTNamingTranslateTool {
     /// Dereference this Handle to access the underlying TNaming_TranslateTool
-    pub fn get(&self) -> &crate::ffi::TNaming_TranslateTool {
+    pub fn get(&self) -> &crate::ffi_types::TNaming_TranslateTool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTNamingTranslateTool_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_TranslateTool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_TranslateTool {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_TranslateTool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingTranslateTool_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TNaming_TranslateTool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingTranslateTool_to_HandleStandardTransient(
+                crate::ffi_extern_TKCAF::HandleTNamingTranslateTool_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4244,11 +4611,11 @@ impl HandleTNamingTranslateTool {
 
 /// **Source:** `TNaming_Translator.hxx`:28 - `TNaming_Translator`
 /// only  for  Shape  Copy  test - to move in DNaming
-pub use crate::ffi::TNaming_Translator as Translator;
+pub use crate::ffi_types::TNaming_Translator as Translator;
 
 unsafe impl crate::CppDeletable for Translator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_Translator_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_Translator_destructor(ptr);
     }
 }
 
@@ -4256,27 +4623,31 @@ impl Translator {
     /// **Source:** `TNaming_Translator.hxx`:33 - `TNaming_Translator::TNaming_Translator()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TNaming_Translator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_Translator_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:35 - `TNaming_Translator::Add()`
     pub fn add(&mut self, aShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Translator_add(self as *mut Self, aShape)
+            crate::ffi_extern_TKCAF::TNaming_Translator_add(self as *mut Self, aShape)
         })
     }
 
     /// **Source:** `TNaming_Translator.hxx`:37 - `TNaming_Translator::Perform()`
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Translator_perform(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_Translator_perform(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_Translator.hxx`:39 - `TNaming_Translator::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TNaming_Translator_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCAF::TNaming_Translator_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `TNaming_Translator.hxx`:42 - `TNaming_Translator::Copied()`
@@ -4287,23 +4658,28 @@ impl Translator {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_Translator_copied_shape(self as *const Self, aShape),
+                crate::ffi_extern_TKCAF::TNaming_Translator_copied_shape(
+                    self as *const Self,
+                    aShape,
+                ),
             ))
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:45 - `TNaming_Translator::Copied()`
     /// returns  DataMap  of  results;  (shape <-> copied  shape)
-    pub fn copied(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+    pub fn copied(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_Translator_copied(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_Translator_copied(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TNaming_Translator.hxx`:47 - `TNaming_Translator::DumpMap()`
     pub fn dump_map(&self, isWrite: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_Translator_dump_map(self as *const Self, isWrite)
+            crate::ffi_extern_TKCAF::TNaming_Translator_dump_map(self as *const Self, isWrite)
         })
     }
 }
@@ -4318,11 +4694,11 @@ impl Translator {
 /// Set of Shapes Used in a Data from TDF
 /// Only one instance by Data, it always
 /// Stored as Attribute of The Root.
-pub use crate::ffi::TNaming_UsedShapes as UsedShapes;
+pub use crate::ffi_types::TNaming_UsedShapes as UsedShapes;
 
 unsafe impl crate::CppDeletable for UsedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TNaming_UsedShapes_destructor(ptr);
+        crate::ffi_extern_TKCAF::TNaming_UsedShapes_destructor(ptr);
     }
 }
 
@@ -4330,30 +4706,36 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:45 - `TNaming_UsedShapes::Destroy()`
     pub fn destroy(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_destroy(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_destroy(self as *mut Self)
         })
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:49 - `TNaming_UsedShapes::Map()`
-    pub fn map(&mut self) -> &mut crate::ffi::TNaming_DataMapOfShapePtrRefShape {
+    pub fn map(&mut self) -> &mut crate::ffi_types::TNaming_DataMapOfShapePtrRefShape {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_UsedShapes_map(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_map(
+                self as *mut Self,
+            )))
         }
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:52 - `TNaming_UsedShapes::ID()`
     /// Returns the ID of the attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_UsedShapes_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:59 - `TNaming_UsedShapes::BackupCopy()`
     /// Copies  the attribute  contents into  a  new other
     /// attribute. It is used by Backup().
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_backup_copy(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_backup_copy(self as *const Self),
             ))
         }
     }
@@ -4361,9 +4743,9 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:63 - `TNaming_UsedShapes::Restore()`
     /// Restores the contents from <anAttribute> into this
     /// one. It is used when aborting a transaction.
-    pub fn restore(&mut self, anAttribute: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, anAttribute: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_restore(self as *mut Self, anAttribute)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_restore(self as *mut Self, anAttribute)
         })
     }
 
@@ -4371,7 +4753,7 @@ impl UsedShapes {
     /// Clears the table.
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_before_removal(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_before_removal(self as *mut Self)
         })
     }
 
@@ -4379,30 +4761,34 @@ impl UsedShapes {
     /// Something to do after applying <anAttDelta>.
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_after_undo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_after_undo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:74 - `TNaming_UsedShapes::DeltaOnAddition()`
     /// this method returns a null handle (no delta).
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_delta_on_addition(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_delta_on_addition(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:77 - `TNaming_UsedShapes::DeltaOnRemoval()`
     /// this method returns a null handle (no delta).
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_delta_on_removal(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_delta_on_removal(self as *const Self),
             ))
         }
     }
@@ -4410,10 +4796,10 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:81 - `TNaming_UsedShapes::NewEmpty()`
     /// Returns an new empty attribute from the good end
     /// type. It is used by the copy algorithm.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_new_empty(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_new_empty(self as *const Self),
             ))
         }
     }
@@ -4428,11 +4814,11 @@ impl UsedShapes {
     /// of the previous one.
     pub fn paste(
         &self,
-        intoAttribute: &crate::ffi::HandleTDFAttribute,
-        aRelocTationable: &crate::ffi::HandleTDFRelocationTable,
+        intoAttribute: &crate::ffi_types::HandleTDFAttribute,
+        aRelocTationable: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_paste(
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_paste(
                 self as *const Self,
                 intoAttribute,
                 aRelocTationable,
@@ -4448,9 +4834,9 @@ impl UsedShapes {
     /// For this, use only the AddLabel() & AddAttribute()
     /// from DataSet and do not try to modify information
     /// previously stored in <aDataSet>.
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_references(self as *const Self, aDataSet)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_references(self as *const Self, aDataSet)
         })
     }
 
@@ -4464,10 +4850,10 @@ impl UsedShapes {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TNaming_UsedShapes_dump(
+            &mut *(crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_dump(
                 self as *mut Self,
                 anOS,
             )))
@@ -4475,9 +4861,9 @@ impl UsedShapes {
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TNaming_UsedShapes_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -4486,14 +4872,14 @@ impl UsedShapes {
     /// **Source:** `TNaming_UsedShapes.hxx`:55 - `TNaming_UsedShapes::GetID()`
     /// Returns the ID: 2a96b614-ec8b-11d0-bee7-080009dc3333.
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_UsedShapes_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_get_id())) }
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_get_type_name(),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4501,14 +4887,18 @@ impl UsedShapes {
     }
 
     /// **Source:** `TNaming_UsedShapes.hxx`:113 - `TNaming_UsedShapes::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TNaming_UsedShapes_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_UsedShapes_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKCAF::TNaming_UsedShapes_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -4517,37 +4907,41 @@ impl UsedShapes {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_UsedShapes_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_as_TDF_Attribute_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TNaming_UsedShapes_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TNaming_UsedShapes_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTNamingUsedShapes> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTNamingUsedShapes> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4555,7 +4949,7 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -4563,7 +4957,7 @@ impl UsedShapes {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -4571,42 +4965,47 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -4614,10 +5013,10 @@ impl UsedShapes {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_FindAttribute(
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -4626,23 +5025,29 @@ impl UsedShapes {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -4652,39 +5057,42 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_BeforeUndo(
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -4695,38 +5103,44 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4734,11 +5148,11 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TNaming_UsedShapes_inherited_DeltaOnModification(
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -4749,12 +5163,12 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_ExtendedDump(
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -4766,21 +5180,30 @@ impl UsedShapes {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4788,7 +5211,7 @@ impl UsedShapes {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TNaming_UsedShapes_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4801,71 +5224,83 @@ impl UsedShapes {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TNaming_UsedShapes_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCAF::TNaming_UsedShapes_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTNamingUsedShapes;
+pub use crate::ffi_types::HandleTNamingUsedShapes;
 
 unsafe impl crate::CppDeletable for HandleTNamingUsedShapes {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTNamingUsedShapes_destructor(ptr);
+        crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_destructor(ptr);
     }
 }
 
 impl HandleTNamingUsedShapes {
     /// Dereference this Handle to access the underlying TNaming_UsedShapes
-    pub fn get(&self) -> &crate::ffi::TNaming_UsedShapes {
+    pub fn get(&self) -> &crate::ffi_types::TNaming_UsedShapes {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTNamingUsedShapes_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TNaming_UsedShapes
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TNaming_UsedShapes {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TNaming_UsedShapes {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTNamingUsedShapes_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TNaming_UsedShapes> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingUsedShapes_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TNaming_UsedShapes> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTNamingUsedShapes_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCAF::HandleTNamingUsedShapes_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4875,7 +5310,7 @@ impl HandleTNamingUsedShapes {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TNaming_DataMapOfShapePtrRefShape as DataMapOfShapePtrRefShape,
     TNaming_ListOfNamedShape as ListOfNamedShape, TNaming_MapOfNamedShape as MapOfNamedShape,
     TNaming_Node as Node,

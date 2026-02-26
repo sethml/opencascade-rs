@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleBRepFillCurveConstraint, HandleGeomGeometry, HandleGeomSurface, HandleStandardTransient,
 };
 
@@ -17,26 +17,30 @@ pub use crate::ffi::{
 
 /// **Source:** `GeomPlate_Aij.hxx`:27 - `GeomPlate_Aij`
 /// A structure containing indexes of two normals and its cross product
-pub use crate::ffi::GeomPlate_Aij as Aij;
+pub use crate::ffi_types::GeomPlate_Aij as Aij;
 
 unsafe impl crate::CppDeletable for Aij {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_Aij_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_Aij_destructor(ptr);
     }
 }
 
 impl Aij {
     /// **Source:** `GeomPlate_Aij.hxx`:32 - `GeomPlate_Aij::GeomPlate_Aij()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Aij_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Aij_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `GeomPlate_Aij.hxx`:34 - `GeomPlate_Aij::GeomPlate_Aij()`
     pub fn new_int2_vec(anInd1: i32, anInd2: i32, aVec: &crate::gp::Vec) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Aij_ctor_int2_vec(
-                anInd1, anInd2, aVec,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Aij_ctor_int2_vec(anInd1, anInd2, aVec),
+            ))
         }
     }
 }
@@ -50,11 +54,11 @@ impl Aij {
 /// array of points.
 /// Computes the initial surface (average plane) in the cases
 /// when the initial surface is not given.
-pub use crate::ffi::GeomPlate_BuildAveragePlane as BuildAveragePlane;
+pub use crate::ffi_types::GeomPlate_BuildAveragePlane as BuildAveragePlane;
 
 unsafe impl crate::CppDeletable for BuildAveragePlane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_BuildAveragePlane_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_destructor(ptr);
     }
 }
 
@@ -67,56 +71,46 @@ impl BuildAveragePlane {
     /// if NOption = 1 : the average plane is the inertial plane.
     /// if NOption = 2 : the average plane is the plane of max. flux.
     pub fn new_handletcolgpharray1ofpnt_int_real_int2(
-        Pts: &crate::ffi::HandleTColgpHArray1OfPnt,
+        Pts: &crate::ffi_types::HandleTColgpHArray1OfPnt,
         NbBoundPoints: i32,
         Tol: f64,
         POption: i32,
         NOption: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildAveragePlane_ctor_handletcolgpharray1ofpnt_int_real_int2(
-                    Pts,
-                    NbBoundPoints,
-                    Tol,
-                    POption,
-                    NOption,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_ctor_handletcolgpharray1ofpnt_int_real_int2(Pts, NbBoundPoints, Tol, POption, NOption)))
         }
     }
 
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:55 - `GeomPlate_BuildAveragePlane::GeomPlate_BuildAveragePlane()`
     /// Creates the plane from the "best vector"
     pub fn new_sequenceofvec_handletcolgpharray1ofpnt(
-        Normals: &crate::ffi::TColgp_SequenceOfVec,
-        Pts: &crate::ffi::HandleTColgpHArray1OfPnt,
+        Normals: &crate::ffi_types::TColgp_SequenceOfVec,
+        Pts: &crate::ffi_types::HandleTColgpHArray1OfPnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildAveragePlane_ctor_sequenceofvec_handletcolgpharray1ofpnt(
-                    Normals, Pts,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_ctor_sequenceofvec_handletcolgpharray1ofpnt(Normals, Pts)))
         }
     }
 
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:59 - `GeomPlate_BuildAveragePlane::Plane()`
     /// Return the average Plane.
-    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlane> {
+    pub fn plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlane> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildAveragePlane_plane(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_plane(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:62 - `GeomPlate_BuildAveragePlane::Line()`
     /// Return a Line when 2 eigenvalues are null.
-    pub fn line(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomLine> {
+    pub fn line(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildAveragePlane_line(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_line(self as *const Self),
             ))
         }
     }
@@ -125,7 +119,7 @@ impl BuildAveragePlane {
     /// return OK if is a plane.
     pub fn is_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildAveragePlane_is_plane(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_is_plane(self as *const Self)
         })
     }
 
@@ -133,7 +127,7 @@ impl BuildAveragePlane {
     /// return OK if is a line.
     pub fn is_line(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildAveragePlane_is_line(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_is_line(self as *const Self)
         })
     }
 
@@ -142,7 +136,7 @@ impl BuildAveragePlane {
     /// projection points of the initial array  on the plane.
     pub fn min_max_box(&self, Umin: &mut f64, Umax: &mut f64, Vmin: &mut f64, Vmax: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildAveragePlane_min_max_box(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_min_max_box(
                 self as *const Self,
                 Umin,
                 Umax,
@@ -154,14 +148,14 @@ impl BuildAveragePlane {
 
     /// **Source:** `GeomPlate_BuildAveragePlane.hxx`:77 - `GeomPlate_BuildAveragePlane::HalfSpace()`
     pub fn half_space(
-        NewNormals: &crate::ffi::TColgp_SequenceOfVec,
-        Normals: &mut crate::ffi::TColgp_SequenceOfVec,
-        Bset: &mut crate::ffi::GeomPlate_SequenceOfAij,
+        NewNormals: &crate::ffi_types::TColgp_SequenceOfVec,
+        Normals: &mut crate::ffi_types::TColgp_SequenceOfVec,
+        Bset: &mut crate::ffi_types::GeomPlate_SequenceOfAij,
         LinTol: f64,
         AngTol: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildAveragePlane_half_space(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildAveragePlane_half_space(
                 NewNormals, Normals, Bset, LinTol, AngTol,
             )
         })
@@ -182,11 +176,11 @@ impl BuildAveragePlane {
 /// -   defining or setting constraints
 /// -   implementing the construction algorithm
 /// -   consulting the result.
-pub use crate::ffi::GeomPlate_BuildPlateSurface as BuildPlateSurface;
+pub use crate::ffi_types::GeomPlate_BuildPlateSurface as BuildPlateSurface;
 
 unsafe impl crate::CppDeletable for BuildPlateSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_BuildPlateSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_destructor(ptr);
     }
 }
 
@@ -203,9 +197,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
@@ -215,13 +209,13 @@ impl BuildPlateSurface {
         Anisotropie: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_BuildPlateSurface_ctor_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_ctor_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie)))
         }
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4_bool(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -232,19 +226,7 @@ impl BuildPlateSurface {
         Anisotropie: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_ctor_handlegeomsurface_int3_real4_bool(
-                    Surf,
-                    Degree,
-                    NbPtsOnCur,
-                    NbIter,
-                    Tol2d,
-                    Tol3d,
-                    TolAng,
-                    TolCurv,
-                    Anisotropie,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_ctor_handlegeomsurface_int3_real4_bool(Surf, Degree, NbPtsOnCur, NbIter, Tol2d, Tol3d, TolAng, TolCurv, Anisotropie)))
         }
     }
 
@@ -287,7 +269,7 @@ impl BuildPlateSurface {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_ctor_int3_real4_bool(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_ctor_int3_real4_bool(
                     Degree,
                     NbPtsOnCur,
                     NbIter,
@@ -313,9 +295,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
@@ -338,9 +320,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real3(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
@@ -362,9 +344,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real2(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
@@ -385,9 +367,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
         Tol2d: f64,
@@ -407,9 +389,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
         NbIter: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -428,9 +410,9 @@ impl BuildPlateSurface {
     /// identical points in the 2d space are identical in 3d space TolAng is used to compare the angle
     /// between normal of two identical points in the 2d space Raises  ConstructionError;
     pub fn new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int(
-        NPoints: &crate::ffi::HandleTColStdHArray1OfInteger,
-        TabCurve: &crate::ffi::HandleGeomPlateHArray1OfHCurve,
-        Tang: &crate::ffi::HandleTColStdHArray1OfInteger,
+        NPoints: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        TabCurve: &crate::ffi_types::HandleGeomPlateHArray1OfHCurve,
+        Tang: &crate::ffi_types::HandleTColStdHArray1OfInteger,
         Degree: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handletcolstdharray1ofinteger_handlegeomplateharray1ofhcurve_handletcolstdharray1ofinteger_int2_real4_bool(NPoints, TabCurve, Tang, Degree, 3, 0.00001, 0.0001, 0.01, 0.1, false)
@@ -438,7 +420,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real4(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -454,7 +436,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real3(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -469,7 +451,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real2(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -483,7 +465,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3_real(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -496,7 +478,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int3(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
         NbIter: i32,
@@ -508,7 +490,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int2(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
         NbPtsOnCur: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -519,7 +501,7 @@ impl BuildPlateSurface {
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
     pub fn new_handlegeomsurface_int(
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Degree: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_int3_real4_bool(
@@ -528,7 +510,9 @@ impl BuildPlateSurface {
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:79 - `GeomPlate_BuildPlateSurface::GeomPlate_BuildPlateSurface()`
-    pub fn new_handlegeomsurface(Surf: &crate::ffi::HandleGeomSurface) -> crate::OwnedPtr<Self> {
+    pub fn new_handlegeomsurface(
+        Surf: &crate::ffi_types::HandleGeomSurface,
+    ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeomsurface_int3_real4_bool(
             Surf, 3, 10, 3, 0.00001, 0.0001, 0.01, 0.1, false,
         )
@@ -812,15 +796,18 @@ impl BuildPlateSurface {
     /// Resets all constraints
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_init(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_init(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:128 - `GeomPlate_BuildPlateSurface::LoadInitSurface()`
     /// Loads the initial Surface
-    pub fn load_init_surface(&mut self, Surf: &crate::ffi::HandleGeomSurface) {
+    pub fn load_init_surface(&mut self, Surf: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_load_init_surface(self as *mut Self, Surf)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_load_init_surface(
+                self as *mut Self,
+                Surf,
+            )
         })
     }
 
@@ -828,20 +815,20 @@ impl BuildPlateSurface {
     /// Adds the linear constraint cont.
     pub fn add_handlegeomplatecurveconstraint(
         &mut self,
-        Cont: &crate::ffi::HandleGeomPlateCurveConstraint,
+        Cont: &crate::ffi_types::HandleGeomPlateCurveConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_add_handlegeomplatecurveconstraint(
-                self as *mut Self,
-                Cont,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_add_handlegeomplatecurveconstraint(self as *mut Self, Cont)
         })
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:133 - `GeomPlate_BuildPlateSurface::SetNbBounds()`
     pub fn set_nb_bounds(&mut self, NbBounds: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_set_nb_bounds(self as *mut Self, NbBounds)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_set_nb_bounds(
+                self as *mut Self,
+                NbBounds,
+            )
         })
     }
 
@@ -849,13 +836,10 @@ impl BuildPlateSurface {
     /// Adds the point constraint cont.
     pub fn add_handlegeomplatepointconstraint(
         &mut self,
-        Cont: &crate::ffi::HandleGeomPlatePointConstraint,
+        Cont: &crate::ffi_types::HandleGeomPlatePointConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_add_handlegeomplatepointconstraint(
-                self as *mut Self,
-                Cont,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_add_handlegeomplatepointconstraint(self as *mut Self, Cont)
         })
     }
 
@@ -868,7 +852,10 @@ impl BuildPlateSurface {
     /// null or if plate is not done.
     pub fn perform(&mut self, theProgress: &crate::message::ProgressRange) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_perform(self as *mut Self, theProgress)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_perform(
+                self as *mut Self,
+                theProgress,
+            )
         })
     }
 
@@ -877,10 +864,10 @@ impl BuildPlateSurface {
     pub fn curve_constraint(
         &self,
         order: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateCurveConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateCurveConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_curve_constraint(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_curve_constraint(
                     self as *const Self,
                     order,
                 ),
@@ -893,10 +880,10 @@ impl BuildPlateSurface {
     pub fn point_constraint(
         &self,
         order: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlatePointConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlatePointConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_point_constraint(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_point_constraint(
                     self as *const Self,
                     order,
                 ),
@@ -905,9 +892,13 @@ impl BuildPlateSurface {
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:154 - `GeomPlate_BuildPlateSurface::Disc2dContour()`
-    pub fn disc2d_contour(&mut self, nbp: i32, Seq2d: &mut crate::ffi::TColgp_SequenceOfXY) {
+    pub fn disc2d_contour(&mut self, nbp: i32, Seq2d: &mut crate::ffi_types::TColgp_SequenceOfXY) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_disc2d_contour(self as *mut Self, nbp, Seq2d)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_disc2d_contour(
+                self as *mut Self,
+                nbp,
+                Seq2d,
+            )
         })
     }
 
@@ -916,10 +907,10 @@ impl BuildPlateSurface {
         &mut self,
         nbp: i32,
         iordre: i32,
-        Seq3d: &mut crate::ffi::TColgp_SequenceOfXYZ,
+        Seq3d: &mut crate::ffi_types::TColgp_SequenceOfXYZ,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_disc3d_contour(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_disc3d_contour(
                 self as *mut Self,
                 nbp,
                 iordre,
@@ -932,7 +923,7 @@ impl BuildPlateSurface {
     /// Tests whether computation of the plate has been completed.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_is_done(self as *const Self)
         })
     }
 
@@ -940,20 +931,24 @@ impl BuildPlateSurface {
     /// Returns the result of the computation. This surface can
     /// then be used by GeomPlate_MakeApprox for
     /// converting the resulting surface into a BSpline.
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_surface(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:169 - `GeomPlate_BuildPlateSurface::SurfInit()`
     /// Returns the initial surface
-    pub fn surf_init(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn surf_init(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_surf_init(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_surf_init(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -965,10 +960,12 @@ impl BuildPlateSurface {
     /// Curves2d. Computation changes the orientation of
     /// these curves. Consequently, this method returns the
     /// orientation prior to computation.
-    pub fn sense(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfInteger> {
+    pub fn sense(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_sense(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_sense(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -976,10 +973,12 @@ impl BuildPlateSurface {
     /// **Source:** `GeomPlate_BuildPlateSurface.hxx`:181 - `GeomPlate_BuildPlateSurface::Curves2d()`
     /// Extracts the array of curves on the plate surface which
     /// correspond to the curve constraints set in Add.
-    pub fn curves2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColGeom2dHArray1OfCurve> {
+    pub fn curves2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColGeom2dHArray1OfCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_curves2d(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_curves2d(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -989,10 +988,12 @@ impl BuildPlateSurface {
     /// Curves2d. Computation changes this order.
     /// Consequently, this method returns the order of the
     /// curves prior to computation.
-    pub fn order(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfInteger> {
+    pub fn order(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_BuildPlateSurface_order(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_order(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1001,7 +1002,7 @@ impl BuildPlateSurface {
     /// Returns the max distance between the result and the constraints
     pub fn g0_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g0_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g0_error(self as *const Self)
         })
     }
 
@@ -1009,7 +1010,7 @@ impl BuildPlateSurface {
     /// Returns  the max angle between the result and the constraints
     pub fn g1_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g1_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g1_error(self as *const Self)
         })
     }
 
@@ -1017,7 +1018,7 @@ impl BuildPlateSurface {
     /// Returns  the max difference of curvature between the result and the constraints
     pub fn g2_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g2_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g2_error(self as *const Self)
         })
     }
 
@@ -1025,7 +1026,10 @@ impl BuildPlateSurface {
     /// Returns   the max distance between the result and the constraint Index
     pub fn g0_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g0_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g0_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -1033,7 +1037,10 @@ impl BuildPlateSurface {
     /// Returns the max angle between the result and the constraint Index
     pub fn g1_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g1_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g1_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 
@@ -1041,7 +1048,10 @@ impl BuildPlateSurface {
     /// Returns the max difference of curvature between the result and the constraint Index
     pub fn g2_error_int(&mut self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_BuildPlateSurface_g2_error_int(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_BuildPlateSurface_g2_error_int(
+                self as *mut Self,
+                Index,
+            )
         })
     }
 }
@@ -1052,11 +1062,11 @@ impl BuildPlateSurface {
 
 /// **Source:** `GeomPlate_CurveConstraint.hxx`:32 - `GeomPlate_CurveConstraint`
 /// Defines curves as constraints to be used to deform a surface.
-pub use crate::ffi::GeomPlate_CurveConstraint as CurveConstraint;
+pub use crate::ffi_types::GeomPlate_CurveConstraint as CurveConstraint;
 
 unsafe impl crate::CppDeletable for CurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_CurveConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_destructor(ptr);
     }
 }
 
@@ -1066,7 +1076,7 @@ impl CurveConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_ctor(),
             ))
         }
     }
@@ -1082,7 +1092,7 @@ impl CurveConstraint {
     /// These errors can be replaced by laws of criterion.
     /// Raises    ConstructionError if Order is not -1 , 0,  1,  2
     pub fn new_handleadaptor3dcurve_int2_real3(
-        Boundary: &crate::ffi::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1090,11 +1100,7 @@ impl CurveConstraint {
         TolCurv: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_ctor_handleadaptor3dcurve_int2_real3(
-                    Boundary, Order, NPt, TolDist, TolAng, TolCurv,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_ctor_handleadaptor3dcurve_int2_real3(Boundary, Order, NPt, TolDist, TolAng, TolCurv)))
         }
     }
 
@@ -1109,7 +1115,7 @@ impl CurveConstraint {
     /// These errors can be replaced by laws of criterion.
     /// Raises    ConstructionError if Order is not -1 , 0,  1,  2
     pub fn new_handleadaptor3dcurve_int2_real2(
-        Boundary: &crate::ffi::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1129,7 +1135,7 @@ impl CurveConstraint {
     /// These errors can be replaced by laws of criterion.
     /// Raises    ConstructionError if Order is not -1 , 0,  1,  2
     pub fn new_handleadaptor3dcurve_int2_real(
-        Boundary: &crate::ffi::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
         Order: i32,
         NPt: i32,
         TolDist: f64,
@@ -1148,7 +1154,7 @@ impl CurveConstraint {
     /// These errors can be replaced by laws of criterion.
     /// Raises    ConstructionError if Order is not -1 , 0,  1,  2
     pub fn new_handleadaptor3dcurve_int2(
-        Boundary: &crate::ffi::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
         Order: i32,
         NPt: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1166,7 +1172,7 @@ impl CurveConstraint {
     /// These errors can be replaced by laws of criterion.
     /// Raises    ConstructionError if Order is not -1 , 0,  1,  2
     pub fn new_handleadaptor3dcurve_int(
-        Boundary: &crate::ffi::HandleAdaptor3dCurve,
+        Boundary: &crate::ffi_types::HandleAdaptor3dCurve,
         Order: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handleadaptor3dcurve_int2_real3(Boundary, Order, 10, 0.0001, 0.01, 0.1)
@@ -1178,7 +1184,10 @@ impl CurveConstraint {
     /// respectively by G0Criterion G1Criterion and G2Criterion.
     pub fn set_order(&mut self, Order: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_order(self as *mut Self, Order)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_order(
+                self as *mut Self,
+                Order,
+            )
         })
     }
 
@@ -1186,7 +1195,7 @@ impl CurveConstraint {
     /// Returns the order of constraint, one of G0, G1 or G2.
     pub fn order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_order(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_order(self as *const Self)
         })
     }
 
@@ -1197,7 +1206,7 @@ impl CurveConstraint {
     /// the number of points.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_nb_points(self as *const Self)
         })
     }
 
@@ -1208,7 +1217,10 @@ impl CurveConstraint {
     /// the number of points.
     pub fn set_nb_points(&mut self, NewNb: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_nb_points(self as *mut Self, NewNb)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_nb_points(
+                self as *mut Self,
+                NewNb,
+            )
         })
     }
 
@@ -1218,9 +1230,12 @@ impl CurveConstraint {
     /// constraint and the target surface for each point of the
     /// constraint. If this criterion is not set, TolDist, the
     /// distance tolerance from the constructor, is used.
-    pub fn set_g0_criterion(&mut self, G0Crit: &crate::ffi::HandleLawFunction) {
+    pub fn set_g0_criterion(&mut self, G0Crit: &crate::ffi_types::HandleLawFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_g0_criterion(self as *mut Self, G0Crit)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_g0_criterion(
+                self as *mut Self,
+                G0Crit,
+            )
         })
     }
 
@@ -1230,16 +1245,22 @@ impl CurveConstraint {
     /// constraint and the target surface. If this criterion is not
     /// set, TolAng, the angular tolerance from the constructor, is used.
     /// Raises  ConstructionError if  the  curve  is  not  on  a  surface
-    pub fn set_g1_criterion(&mut self, G1Crit: &crate::ffi::HandleLawFunction) {
+    pub fn set_g1_criterion(&mut self, G1Crit: &crate::ffi_types::HandleLawFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_g1_criterion(self as *mut Self, G1Crit)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_g1_criterion(
+                self as *mut Self,
+                G1Crit,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:89 - `GeomPlate_CurveConstraint::SetG2Criterion()`
-    pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi::HandleLawFunction) {
+    pub fn set_g2_criterion(&mut self, G2Crit: &crate::ffi_types::HandleLawFunction) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_g2_criterion(self as *mut Self, G2Crit)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_g2_criterion(
+                self as *mut Self,
+                G2Crit,
+            )
         })
     }
 
@@ -1249,7 +1270,10 @@ impl CurveConstraint {
     /// the constraint and the target surface at U.
     pub fn g0_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_g0_criterion(self as *const Self, U)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_g0_criterion(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -1260,7 +1284,10 @@ impl CurveConstraint {
     /// Raises  ConstructionError if  the  curve  is  not  on  a  surface
     pub fn g1_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_g1_criterion(self as *const Self, U)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_g1_criterion(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -1271,45 +1298,54 @@ impl CurveConstraint {
     /// Raises  ConstructionError if  the  curve  is  not  on  a  surface
     pub fn g2_criterion(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_g2_criterion(self as *const Self, U)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_g2_criterion(
+                self as *const Self,
+                U,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:108 - `GeomPlate_CurveConstraint::FirstParameter()`
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_first_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_first_parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:110 - `GeomPlate_CurveConstraint::LastParameter()`
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_last_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_last_parameter(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:112 - `GeomPlate_CurveConstraint::Length()`
     pub fn length(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_length(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_length(self as *const Self)
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:114 - `GeomPlate_CurveConstraint::LPropSurf()`
     pub fn l_prop_surf(&mut self, U: f64) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomPlate_CurveConstraint_l_prop_surf(
-                self as *mut Self,
-                U,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_l_prop_surf(
+                    self as *mut Self,
+                    U,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:116 - `GeomPlate_CurveConstraint::D0()`
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_d0(self as *const Self, U, P)
         })
     }
 
@@ -1322,7 +1358,13 @@ impl CurveConstraint {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_d1(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_d1(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+            )
         })
     }
 
@@ -1338,33 +1380,49 @@ impl CurveConstraint {
         V5: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_d2(self as *const Self, U, P, V1, V2, V3, V4, V5)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_d2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+                V4,
+                V5,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:128 - `GeomPlate_CurveConstraint::Curve3d()`
-    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor3dCurve> {
+    pub fn curve3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor3dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_curve3d(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_curve3d(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:131 - `GeomPlate_CurveConstraint::SetCurve2dOnSurf()`
     /// loads a 2d curve associated the surface resulting of the constraints
-    pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi::HandleGeom2dCurve) {
+    pub fn set_curve2d_on_surf(&mut self, Curve2d: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_curve2d_on_surf(self as *mut Self, Curve2d)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_curve2d_on_surf(
+                self as *mut Self,
+                Curve2d,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:134 - `GeomPlate_CurveConstraint::Curve2dOnSurf()`
     /// Returns a 2d curve associated the surface resulting of the constraints
-    pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn curve2d_on_surf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_curve2d_on_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_curve2d_on_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1374,12 +1432,12 @@ impl CurveConstraint {
     /// the curve on the initial surface
     pub fn set_projected_curve(
         &mut self,
-        Curve2d: &crate::ffi::HandleAdaptor2dCurve2d,
+        Curve2d: &crate::ffi_types::HandleAdaptor2dCurve2d,
         TolU: f64,
         TolV: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_set_projected_curve(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_set_projected_curve(
                 self as *mut Self,
                 Curve2d,
                 TolU,
@@ -1391,20 +1449,24 @@ impl CurveConstraint {
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:144 - `GeomPlate_CurveConstraint::ProjectedCurve()`
     /// Returns the projected curve resulting from the normal projection of the
     /// curve on the initial surface
-    pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleAdaptor2dCurve2d> {
+    pub fn projected_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleAdaptor2dCurve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_projected_curve(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_projected_curve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_CurveConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1412,7 +1474,7 @@ impl CurveConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1420,18 +1482,22 @@ impl CurveConstraint {
     }
 
     /// **Source:** `GeomPlate_CurveConstraint.hxx`:146 - `GeomPlate_CurveConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_CurveConstraint_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_CurveConstraint_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1439,7 +1505,9 @@ impl CurveConstraint {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1447,25 +1515,31 @@ impl CurveConstraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateCurveConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateCurveConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_CurveConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1473,7 +1547,9 @@ impl CurveConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_CurveConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1486,67 +1562,75 @@ impl CurveConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_CurveConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_CurveConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateCurveConstraint;
+pub use crate::ffi_types::HandleGeomPlateCurveConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateCurveConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateCurveConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_CurveConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_CurveConstraint {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_CurveConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateCurveConstraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_CurveConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_CurveConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_CurveConstraint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomPlateCurveConstraint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomPlate_CurveConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateCurveConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -1555,11 +1639,9 @@ impl HandleGeomPlateCurveConstraint {
     /// Returns `None` if the handle does not point to a `BRepFill_CurveConstraint` (or subclass).
     pub fn downcast_to_curve_constraint(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBRepFillCurveConstraint>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBRepFillCurveConstraint>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomPlateCurveConstraint_downcast_to_HandleBRepFillCurveConstraint(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::HandleGeomPlateCurveConstraint_downcast_to_HandleBRepFillCurveConstraint(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1574,11 +1656,11 @@ impl HandleGeomPlateCurveConstraint {
 // ========================
 
 /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve`
-pub use crate::ffi::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
+pub use crate::ffi_types::GeomPlate_HArray1OfHCurve as HArray1OfHCurve;
 
 unsafe impl crate::CppDeletable for HArray1OfHCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HArray1OfHCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_destructor(ptr);
     }
 }
 
@@ -1587,7 +1669,7 @@ impl HArray1OfHCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_ctor(),
             ))
         }
     }
@@ -1596,7 +1678,9 @@ impl HArray1OfHCurve {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -1605,68 +1689,66 @@ impl HArray1OfHCurve {
     pub fn new_int2_handleadaptor3dcurve(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleAdaptor3dCurve,
+        theValue: &crate::ffi_types::HandleAdaptor3dCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_int2_handleadaptor3dcurve(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_ctor_int2_handleadaptor3dcurve(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new_handleadaptor3dcurve_int2_bool(
-        theBegin: &crate::ffi::HandleAdaptor3dCurve,
+        theBegin: &crate::ffi_types::HandleAdaptor3dCurve,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_handleadaptor3dcurve_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_ctor_handleadaptor3dcurve_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::GeomPlate_HArray1OfHCurve()`
     pub fn new_array1ofhcurve(
-        theOther: &crate::ffi::GeomPlate_Array1OfHCurve,
+        theOther: &crate::ffi_types::GeomPlate_Array1OfHCurve,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(theOther),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_ctor_array1ofhcurve(
+                    theOther,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::Array1()`
-    pub fn array1(&self) -> &crate::ffi::GeomPlate_Array1OfHCurve {
+    pub fn array1(&self) -> &crate::ffi_types::GeomPlate_Array1OfHCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HArray1OfHCurve_array1(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_array1(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomPlate_Array1OfHCurve {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::GeomPlate_Array1OfHCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomPlate_HArray1OfHCurve_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HArray1OfHCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1674,7 +1756,7 @@ impl HArray1OfHCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1682,18 +1764,22 @@ impl HArray1OfHCurve {
     }
 
     /// **Source:** `GeomPlate_HArray1OfHCurve.hxx`:23 - `GeomPlate_HArray1OfHCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HArray1OfHCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_HArray1OfHCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1701,7 +1787,9 @@ impl HArray1OfHCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1709,25 +1797,31 @@ impl HArray1OfHCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfHCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateHArray1OfHCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfHCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1735,7 +1829,9 @@ impl HArray1OfHCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_HArray1OfHCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1748,67 +1844,75 @@ impl HArray1OfHCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfHCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfHCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateHArray1OfHCurve;
+pub use crate::ffi_types::HandleGeomPlateHArray1OfHCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfHCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateHArray1OfHCurve {
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfHCurve
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfHCurve {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfHCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateHArray1OfHCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfHCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfHCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_HArray1OfHCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomPlateHArray1OfHCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomPlate_HArray1OfHCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateHArray1OfHCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfHCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1818,11 +1922,11 @@ impl HandleGeomPlateHArray1OfHCurve {
 // ========================
 
 /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal`
-pub use crate::ffi::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequenceOfReal;
+pub use crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal as HArray1OfSequenceOfReal;
 
 unsafe impl crate::CppDeletable for HArray1OfSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_destructor(ptr);
     }
 }
 
@@ -1831,7 +1935,7 @@ impl HArray1OfSequenceOfReal {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_ctor(),
             ))
         }
     }
@@ -1840,7 +1944,9 @@ impl HArray1OfSequenceOfReal {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -1849,11 +1955,11 @@ impl HArray1OfSequenceOfReal {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::GeomPlate_Array1OfSequenceOfReal_value_type,
+        theValue: &crate::ffi_types::GeomPlate_Array1OfSequenceOfReal_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_int2_type(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_ctor_int2_type(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -1862,14 +1968,14 @@ impl HArray1OfSequenceOfReal {
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::GeomPlate_Array1OfSequenceOfReal_value_type,
+        theBegin: &crate::ffi_types::GeomPlate_Array1OfSequenceOfReal_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_type_int2_bool(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_ctor_type_int2_bool(
                     theBegin, theLower, theUpper, arg3,
                 ),
             ))
@@ -1878,39 +1984,43 @@ impl HArray1OfSequenceOfReal {
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::GeomPlate_HArray1OfSequenceOfReal()`
     pub fn new_array1ofsequenceofreal(
-        theOther: &crate::ffi::GeomPlate_Array1OfSequenceOfReal,
+        theOther: &crate::ffi_types::GeomPlate_Array1OfSequenceOfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_ctor_array1ofsequenceofreal(theOther)))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::Array1()`
-    pub fn array1(&self) -> &crate::ffi::GeomPlate_Array1OfSequenceOfReal {
+    pub fn array1(&self) -> &crate::ffi_types::GeomPlate_Array1OfSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::GeomPlate_Array1OfSequenceOfReal {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::GeomPlate_Array1OfSequenceOfReal {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_change_array1(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HArray1OfSequenceOfReal_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1918,7 +2028,7 @@ impl HArray1OfSequenceOfReal {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1926,10 +2036,11 @@ impl HArray1OfSequenceOfReal {
     }
 
     /// **Source:** `GeomPlate_HArray1OfSequenceOfReal.hxx`:24 - `GeomPlate_HArray1OfSequenceOfReal::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -1937,40 +2048,34 @@ impl HArray1OfSequenceOfReal {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateHArray1OfSequenceOfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1978,9 +2083,9 @@ impl HArray1OfSequenceOfReal {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_IsKind(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1991,7 +2096,9 @@ impl HArray1OfSequenceOfReal {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2004,71 +2111,73 @@ impl HArray1OfSequenceOfReal {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HArray1OfSequenceOfReal_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HArray1OfSequenceOfReal_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal;
+pub use crate::ffi_types::HandleGeomPlateHArray1OfSequenceOfReal;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHArray1OfSequenceOfReal {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateHArray1OfSequenceOfReal {
     /// Dereference this Handle to access the underlying GeomPlate_HArray1OfSequenceOfReal
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_HArray1OfSequenceOfReal
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HArray1OfSequenceOfReal {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_HArray1OfSequenceOfReal {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomPlate_HArray1OfSequenceOfReal> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateHArray1OfSequenceOfReal_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHArray1OfSequenceOfReal_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2078,11 +2187,11 @@ impl HandleGeomPlateHArray1OfSequenceOfReal {
 // ========================
 
 /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint`
-pub use crate::ffi::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCurveConstraint;
+pub use crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint as HSequenceOfCurveConstraint;
 
 unsafe impl crate::CppDeletable for HSequenceOfCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_destructor(ptr);
     }
 }
 
@@ -2091,74 +2200,72 @@ impl HSequenceOfCurveConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_ctor(),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::GeomPlate_HSequenceOfCurveConstraint()`
     pub fn new_sequenceofcurveconstraint(
-        theOther: &crate::ffi::GeomPlate_SequenceOfCurveConstraint,
+        theOther: &crate::ffi_types::GeomPlate_SequenceOfCurveConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(
-                    theOther,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_ctor_sequenceofcurveconstraint(theOther)))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::GeomPlate_SequenceOfCurveConstraint {
+    pub fn sequence(&self) -> &crate::ffi_types::GeomPlate_SequenceOfCurveConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_sequence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_sequence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
     pub fn append_handlegeomplatecurveconstraint(
         &mut self,
-        theItem: &crate::ffi::HandleGeomPlateCurveConstraint,
+        theItem: &crate::ffi_types::HandleGeomPlateCurveConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_handlegeomplatecurveconstraint(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_append_handlegeomplatecurveconstraint(self as *mut Self, theItem)
         })
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::Append()`
     pub fn append_sequenceofcurveconstraint(
         &mut self,
-        theSequence: &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint,
+        theSequence: &mut crate::ffi_types::GeomPlate_SequenceOfCurveConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_append_sequenceofcurveconstraint(
-                self as *mut Self,
-                theSequence,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_append_sequenceofcurveconstraint(self as *mut Self, theSequence)
         })
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomPlate_SequenceOfCurveConstraint {
+    pub fn change_sequence(
+        &mut self,
+    ) -> &mut crate::ffi_types::GeomPlate_SequenceOfCurveConstraint {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_change_sequence(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_change_sequence(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HSequenceOfCurveConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2166,7 +2273,7 @@ impl HSequenceOfCurveConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2174,51 +2281,43 @@ impl HSequenceOfCurveConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfCurveConstraint.hxx`:24 - `GeomPlate_HSequenceOfCurveConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateHSequenceOfCurveConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2226,9 +2325,9 @@ impl HSequenceOfCurveConstraint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_IsKind(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -2239,7 +2338,9 @@ impl HSequenceOfCurveConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2252,7 +2353,7 @@ impl HSequenceOfCurveConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_GetRefCount(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -2261,64 +2362,64 @@ impl HSequenceOfCurveConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfCurveConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfCurveConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint;
+pub use crate::ffi_types::HandleGeomPlateHSequenceOfCurveConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfCurveConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateHSequenceOfCurveConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfCurveConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfCurveConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfCurveConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_HSequenceOfCurveConstraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_get_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<GeomPlate_HSequenceOfCurveConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateHSequenceOfCurveConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfCurveConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2328,11 +2429,11 @@ impl HandleGeomPlateHSequenceOfCurveConstraint {
 // ========================
 
 /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint`
-pub use crate::ffi::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPointConstraint;
+pub use crate::ffi_types::GeomPlate_HSequenceOfPointConstraint as HSequenceOfPointConstraint;
 
 unsafe impl crate::CppDeletable for HSequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_destructor(ptr);
     }
 }
 
@@ -2341,74 +2442,72 @@ impl HSequenceOfPointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_ctor(),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::GeomPlate_HSequenceOfPointConstraint()`
     pub fn new_sequenceofpointconstraint(
-        theOther: &crate::ffi::GeomPlate_SequenceOfPointConstraint,
+        theOther: &crate::ffi_types::GeomPlate_SequenceOfPointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(
-                    theOther,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_ctor_sequenceofpointconstraint(theOther)))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::GeomPlate_SequenceOfPointConstraint {
+    pub fn sequence(&self) -> &crate::ffi_types::GeomPlate_SequenceOfPointConstraint {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HSequenceOfPointConstraint_sequence(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_sequence(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
     pub fn append_handlegeomplatepointconstraint(
         &mut self,
-        theItem: &crate::ffi::HandleGeomPlatePointConstraint,
+        theItem: &crate::ffi_types::HandleGeomPlatePointConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_handlegeomplatepointconstraint(
-                self as *mut Self,
-                theItem,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_append_handlegeomplatepointconstraint(self as *mut Self, theItem)
         })
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::Append()`
     pub fn append_sequenceofpointconstraint(
         &mut self,
-        theSequence: &mut crate::ffi::GeomPlate_SequenceOfPointConstraint,
+        theSequence: &mut crate::ffi_types::GeomPlate_SequenceOfPointConstraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_append_sequenceofpointconstraint(
-                self as *mut Self,
-                theSequence,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_append_sequenceofpointconstraint(self as *mut Self, theSequence)
         })
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::GeomPlate_SequenceOfPointConstraint {
+    pub fn change_sequence(
+        &mut self,
+    ) -> &mut crate::ffi_types::GeomPlate_SequenceOfPointConstraint {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_change_sequence(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_change_sequence(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_HSequenceOfPointConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2416,7 +2515,7 @@ impl HSequenceOfPointConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2424,51 +2523,43 @@ impl HSequenceOfPointConstraint {
     }
 
     /// **Source:** `GeomPlate_HSequenceOfPointConstraint.hxx`:23 - `GeomPlate_HSequenceOfPointConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateHSequenceOfPointConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateHSequenceOfPointConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_IsInstance(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2476,9 +2567,9 @@ impl HSequenceOfPointConstraint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_IsKind(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -2489,7 +2580,9 @@ impl HSequenceOfPointConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2502,7 +2595,7 @@ impl HSequenceOfPointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_GetRefCount(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -2511,64 +2604,64 @@ impl HSequenceOfPointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_HSequenceOfPointConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_HSequenceOfPointConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateHSequenceOfPointConstraint;
+pub use crate::ffi_types::HandleGeomPlateHSequenceOfPointConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateHSequenceOfPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateHSequenceOfPointConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_HSequenceOfPointConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_HSequenceOfPointConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_HSequenceOfPointConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_HSequenceOfPointConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_HSequenceOfPointConstraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_get_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<GeomPlate_HSequenceOfPointConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateHSequenceOfPointConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateHSequenceOfPointConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2579,11 +2672,11 @@ impl HandleGeomPlateHSequenceOfPointConstraint {
 
 /// **Source:** `GeomPlate_MakeApprox.hxx`:31 - `GeomPlate_MakeApprox`
 /// Allows you to convert a GeomPlate surface into a BSpline.
-pub use crate::ffi::GeomPlate_MakeApprox as MakeApprox;
+pub use crate::ffi_types::GeomPlate_MakeApprox as MakeApprox;
 
 unsafe impl crate::CppDeletable for MakeApprox {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_MakeApprox_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_destructor(ptr);
     }
 }
 
@@ -2594,7 +2687,7 @@ impl MakeApprox {
     /// and an approximation error < Tol3d if possible
     /// the criterion CritPlate is satisfied if possible
     pub fn new_handlegeomplatesurface_criterion_real_int2_shape_real(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        SurfPlate: &crate::ffi_types::HandleGeomPlateSurface,
         PlateCrit: &crate::adv_app2_var::Criterion,
         Tol3d: f64,
         Nbmax: i32,
@@ -2603,7 +2696,7 @@ impl MakeApprox {
         EnlargeCoeff: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_criterion_real_int2_shape_real(SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity.into(), EnlargeCoeff)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_criterion_real_int2_shape_real(SurfPlate, PlateCrit, Tol3d, Nbmax, dgmax, Continuity.into(), EnlargeCoeff)))
         }
     }
 
@@ -2617,7 +2710,7 @@ impl MakeApprox {
     /// WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate
     /// are used to evaluate the value of the criterion
     pub fn new_handlegeomplatesurface_real_int2_real_int_shape_real(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        SurfPlate: &crate::ffi_types::HandleGeomPlateSurface,
         Tol3d: f64,
         Nbmax: i32,
         dgmax: i32,
@@ -2627,7 +2720,7 @@ impl MakeApprox {
         EnlargeCoeff: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_real_int2_real_int_shape_real(SurfPlate, Tol3d, Nbmax, dgmax, dmax, CritOrder, Continuity.into(), EnlargeCoeff)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_ctor_handlegeomplatesurface_real_int2_real_int_shape_real(SurfPlate, Tol3d, Nbmax, dgmax, dmax, CritOrder, Continuity.into(), EnlargeCoeff)))
         }
     }
 
@@ -2637,7 +2730,7 @@ impl MakeApprox {
     /// and an approximation error < Tol3d if possible
     /// the criterion CritPlate is satisfied if possible
     pub fn new_handlegeomplatesurface_criterion_real_int2_shape(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        SurfPlate: &crate::ffi_types::HandleGeomPlateSurface,
         PlateCrit: &crate::adv_app2_var::Criterion,
         Tol3d: f64,
         Nbmax: i32,
@@ -2659,7 +2752,7 @@ impl MakeApprox {
     /// WARNING : for CritOrder = 0 or 1, only the constraints points of SurfPlate
     /// are used to evaluate the value of the criterion
     pub fn new_handlegeomplatesurface_real_int2_real_int_shape(
-        SurfPlate: &crate::ffi::HandleGeomPlateSurface,
+        SurfPlate: &crate::ffi_types::HandleGeomPlateSurface,
         Tol3d: f64,
         Nbmax: i32,
         dgmax: i32,
@@ -2675,10 +2768,10 @@ impl MakeApprox {
     /// **Source:** `GeomPlate_MakeApprox.hxx`:67 - `GeomPlate_MakeApprox::Surface()`
     /// Returns the BSpline surface extracted from the
     /// GeomPlate_MakeApprox object.
-    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_MakeApprox_surface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_surface(self as *const Self),
             ))
         }
     }
@@ -2690,7 +2783,7 @@ impl MakeApprox {
     /// generated by BuildPlateSurface and converted by GeomPlate_Surface.
     pub fn approx_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_MakeApprox_approx_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_approx_error(self as *const Self)
         })
     }
 
@@ -2700,7 +2793,7 @@ impl MakeApprox {
     /// curve and point constraints only.
     pub fn criterion_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_MakeApprox_criterion_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_MakeApprox_criterion_error(self as *const Self)
         })
     }
 }
@@ -2711,73 +2804,82 @@ impl MakeApprox {
 
 /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:32 - `GeomPlate_PlateG0Criterion`
 /// this class contains a specific G0 criterion for GeomPlate_MakeApprox
-pub use crate::ffi::GeomPlate_PlateG0Criterion as PlateG0Criterion;
+pub use crate::ffi_types::GeomPlate_PlateG0Criterion as PlateG0Criterion;
 
 unsafe impl crate::CppDeletable for PlateG0Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_PlateG0Criterion_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_destructor(ptr);
     }
 }
 
 impl PlateG0Criterion {
     /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:37 - `GeomPlate_PlateG0Criterion::GeomPlate_PlateG0Criterion()`
     pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
-        Data: &crate::ffi::TColgp_SequenceOfXY,
-        G0Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Data: &crate::ffi_types::TColgp_SequenceOfXY,
+        G0Data: &crate::ffi_types::TColgp_SequenceOfXYZ,
         Maximum: f64,
         Type: crate::adv_app2_var::CriterionType,
         Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G0Data, Maximum, Type.into(), Repart.into())))
         }
     }
 
     /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:44 - `GeomPlate_PlateG0Criterion::Value()`
     pub fn value(&self, P: &mut crate::adv_app2_var::Patch, C: &crate::adv_app2_var::Context) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PlateG0Criterion_value(self as *const Self, P, C)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_value(
+                self as *const Self,
+                P,
+                C,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_PlateG0Criterion.hxx`:47 - `GeomPlate_PlateG0Criterion::IsSatisfied()`
     pub fn is_satisfied(&self, P: &crate::adv_app2_var::Patch) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG0Criterion_is_satisfied(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_is_satisfied(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to AdvApp2Var_Criterion (mutable)
     pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_as_AdvApp2Var_Criterion_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
     pub fn max_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG0Criterion_inherited_MaxValue(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_inherited_MaxValue(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
     pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         crate::adv_app2_var::CriterionType::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG0Criterion_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_inherited_Type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2785,7 +2887,9 @@ impl PlateG0Criterion {
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
     pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
         crate::adv_app2_var::CriterionRepartition::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG0Criterion_inherited_Repartition(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG0Criterion_inherited_Repartition(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2797,73 +2901,82 @@ impl PlateG0Criterion {
 
 /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:32 - `GeomPlate_PlateG1Criterion`
 /// this class contains a specific G1 criterion for GeomPlate_MakeApprox
-pub use crate::ffi::GeomPlate_PlateG1Criterion as PlateG1Criterion;
+pub use crate::ffi_types::GeomPlate_PlateG1Criterion as PlateG1Criterion;
 
 unsafe impl crate::CppDeletable for PlateG1Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_PlateG1Criterion_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_destructor(ptr);
     }
 }
 
 impl PlateG1Criterion {
     /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:37 - `GeomPlate_PlateG1Criterion::GeomPlate_PlateG1Criterion()`
     pub fn new_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(
-        Data: &crate::ffi::TColgp_SequenceOfXY,
-        G1Data: &crate::ffi::TColgp_SequenceOfXYZ,
+        Data: &crate::ffi_types::TColgp_SequenceOfXY,
+        G1Data: &crate::ffi_types::TColgp_SequenceOfXYZ,
         Maximum: f64,
         Type: crate::adv_app2_var::CriterionType,
         Repart: crate::adv_app2_var::CriterionRepartition,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_ctor_sequenceofxy_sequenceofxyz_real_criteriontype_criterionrepartition(Data, G1Data, Maximum, Type.into(), Repart.into())))
         }
     }
 
     /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:44 - `GeomPlate_PlateG1Criterion::Value()`
     pub fn value(&self, P: &mut crate::adv_app2_var::Patch, C: &crate::adv_app2_var::Context) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PlateG1Criterion_value(self as *const Self, P, C)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_value(
+                self as *const Self,
+                P,
+                C,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_PlateG1Criterion.hxx`:47 - `GeomPlate_PlateG1Criterion::IsSatisfied()`
     pub fn is_satisfied(&self, P: &crate::adv_app2_var::Patch) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG1Criterion_is_satisfied(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_is_satisfied(
+                self as *const Self,
+                P,
+            )
         })
     }
 
     /// Upcast to AdvApp2Var_Criterion
     pub fn as_adv_app2_var_criterion(&self) -> &crate::adv_app2_var::Criterion {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to AdvApp2Var_Criterion (mutable)
     pub fn as_adv_app2_var_criterion_mut(&mut self) -> &mut crate::adv_app2_var::Criterion {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_as_AdvApp2Var_Criterion_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
     pub fn max_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG1Criterion_inherited_MaxValue(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_inherited_MaxValue(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
     pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         crate::adv_app2_var::CriterionType::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG1Criterion_inherited_Type(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_inherited_Type(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2871,7 +2984,9 @@ impl PlateG1Criterion {
     /// Inherited: **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
     pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
         crate::adv_app2_var::CriterionRepartition::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PlateG1Criterion_inherited_Repartition(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PlateG1Criterion_inherited_Repartition(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2883,11 +2998,11 @@ impl PlateG1Criterion {
 
 /// **Source:** `GeomPlate_PointConstraint.hxx`:35 - `GeomPlate_PointConstraint`
 /// Defines points as constraints to be used to deform a surface.
-pub use crate::ffi::GeomPlate_PointConstraint as PointConstraint;
+pub use crate::ffi_types::GeomPlate_PointConstraint as PointConstraint;
 
 unsafe impl crate::CppDeletable for PointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_PointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_destructor(ptr);
     }
 }
 
@@ -2913,7 +3028,9 @@ impl PointConstraint {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_ctor_pnt_int_real(Pt, Order, TolDist),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_ctor_pnt_int_real(
+                    Pt, Order, TolDist,
+                ),
             ))
         }
     }
@@ -2939,18 +3056,14 @@ impl PointConstraint {
     pub fn new_real2_handlegeomsurface_int_real3(
         U: f64,
         V: f64,
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Order: i32,
         TolDist: f64,
         TolAng: f64,
         TolCurv: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_ctor_real2_handlegeomsurface_int_real3(
-                    U, V, Surf, Order, TolDist, TolAng, TolCurv,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_ctor_real2_handlegeomsurface_int_real3(U, V, Surf, Order, TolDist, TolAng, TolCurv)))
         }
     }
 
@@ -2993,7 +3106,7 @@ impl PointConstraint {
     pub fn new_real2_handlegeomsurface_int_real2(
         U: f64,
         V: f64,
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Order: i32,
         TolDist: f64,
         TolAng: f64,
@@ -3022,7 +3135,7 @@ impl PointConstraint {
     pub fn new_real2_handlegeomsurface_int_real(
         U: f64,
         V: f64,
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Order: i32,
         TolDist: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -3050,7 +3163,7 @@ impl PointConstraint {
     pub fn new_real2_handlegeomsurface_int(
         U: f64,
         V: f64,
-        Surf: &crate::ffi::HandleGeomSurface,
+        Surf: &crate::ffi_types::HandleGeomSurface,
         Order: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_real2_handlegeomsurface_int_real3(U, V, Surf, Order, 0.0001, 0.01, 0.1)
@@ -3059,7 +3172,10 @@ impl PointConstraint {
     /// **Source:** `GeomPlate_PointConstraint.hxx`:81 - `GeomPlate_PointConstraint::SetOrder()`
     pub fn set_order(&mut self, Order: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_set_order(self as *mut Self, Order)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_set_order(
+                self as *mut Self,
+                Order,
+            )
         })
     }
 
@@ -3068,7 +3184,7 @@ impl PointConstraint {
     /// controlled respectively by G0Criterion G1Criterion and G2Criterion.
     pub fn order(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_order(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_order(self as *const Self)
         })
     }
 
@@ -3079,7 +3195,10 @@ impl PointConstraint {
     /// set, {TolDist, the distance tolerance from the constructor, is used
     pub fn set_g0_criterion(&mut self, TolDist: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_set_g0_criterion(self as *mut Self, TolDist)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_set_g0_criterion(
+                self as *mut Self,
+                TolDist,
+            )
         })
     }
 
@@ -3091,7 +3210,10 @@ impl PointConstraint {
     /// Raises   ConstructionError  if  the  point  is  not  on  the  surface
     pub fn set_g1_criterion(&mut self, TolAng: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_set_g1_criterion(self as *mut Self, TolAng)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_set_g1_criterion(
+                self as *mut Self,
+                TolAng,
+            )
         })
     }
 
@@ -3104,7 +3226,10 @@ impl PointConstraint {
     /// Raises   ConstructionError if  the  point  is  not  on  the  surface
     pub fn set_g2_criterion(&mut self, TolCurv: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_set_g2_criterion(self as *mut Self, TolCurv)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_set_g2_criterion(
+                self as *mut Self,
+                TolCurv,
+            )
         })
     }
 
@@ -3113,7 +3238,9 @@ impl PointConstraint {
     /// allowed between the constraint and the target surface.
     pub fn g0_criterion(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_g0_criterion(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_g0_criterion(
+                self as *const Self,
+            )
         })
     }
 
@@ -3123,7 +3250,9 @@ impl PointConstraint {
     /// Raises   ConstructionError if  the  point  is  not  on  the  surface.
     pub fn g1_criterion(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_g1_criterion(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_g1_criterion(
+                self as *const Self,
+            )
         })
     }
 
@@ -3133,21 +3262,28 @@ impl PointConstraint {
     /// Raises   ConstructionError if  the  point  is  not  on  the  surface
     pub fn g2_criterion(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_g2_criterion(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_g2_criterion(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:122 - `GeomPlate_PointConstraint::D0()`
     pub fn d0(&self, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_d0(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_d0(self as *const Self, P)
         })
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:124 - `GeomPlate_PointConstraint::D1()`
     pub fn d1(&self, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec, V2: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_d1(self as *const Self, P, V1, V2)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_d1(
+                self as *const Self,
+                P,
+                V1,
+                V2,
+            )
         })
     }
 
@@ -3162,21 +3298,34 @@ impl PointConstraint {
         V5: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_d2(self as *const Self, P, V1, V2, V3, V4, V5)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_d2(
+                self as *const Self,
+                P,
+                V1,
+                V2,
+                V3,
+                V4,
+                V5,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:129 - `GeomPlate_PointConstraint::HasPnt2dOnSurf()`
     pub fn has_pnt2d_on_surf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_has_pnt2d_on_surf(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_has_pnt2d_on_surf(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:131 - `GeomPlate_PointConstraint::SetPnt2dOnSurf()`
     pub fn set_pnt2d_on_surf(&mut self, Pnt: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_set_pnt2d_on_surf(self as *mut Self, Pnt)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_set_pnt2d_on_surf(
+                self as *mut Self,
+                Pnt,
+            )
         })
     }
 
@@ -3184,7 +3333,9 @@ impl PointConstraint {
     pub fn pnt2d_on_surf(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_pnt2d_on_surf(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_pnt2d_on_surf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3192,18 +3343,22 @@ impl PointConstraint {
     /// **Source:** `GeomPlate_PointConstraint.hxx`:135 - `GeomPlate_PointConstraint::LPropSurf()`
     pub fn l_prop_surf(&mut self) -> &mut crate::geom_l_prop::SLProps {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::GeomPlate_PointConstraint_l_prop_surf(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_l_prop_surf(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_PointConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3211,7 +3366,7 @@ impl PointConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3219,18 +3374,22 @@ impl PointConstraint {
     }
 
     /// **Source:** `GeomPlate_PointConstraint.hxx`:137 - `GeomPlate_PointConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_PointConstraint_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_PointConstraint_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3238,7 +3397,9 @@ impl PointConstraint {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3246,25 +3407,31 @@ impl PointConstraint {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlatePointConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlatePointConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_PointConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3272,7 +3439,9 @@ impl PointConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_PointConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3285,67 +3454,75 @@ impl PointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_PointConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_PointConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlatePointConstraint;
+pub use crate::ffi_types::HandleGeomPlatePointConstraint;
 
 unsafe impl crate::CppDeletable for HandleGeomPlatePointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlatePointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_destructor(ptr);
     }
 }
 
 impl HandleGeomPlatePointConstraint {
     /// Dereference this Handle to access the underlying GeomPlate_PointConstraint
-    pub fn get(&self) -> &crate::ffi::GeomPlate_PointConstraint {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_PointConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlatePointConstraint_get(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_PointConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_PointConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_PointConstraint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomPlatePointConstraint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomPlate_PointConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlatePointConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlatePointConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3363,23 +3540,25 @@ impl HandleGeomPlatePointConstraint {
 /// you want to use the resulting surface as the support for
 /// a shape. The algorithmically generated surface cannot
 /// fill this function as is, and as a result must be converted first.
-pub use crate::ffi::GeomPlate_Surface as Surface;
+pub use crate::ffi_types::GeomPlate_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomPlate_Surface_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_destructor(ptr);
     }
 }
 
 impl Surface {
     /// **Source:** `GeomPlate_Surface.hxx`:50 - `GeomPlate_Surface::GeomPlate_Surface()`
     pub fn new_handlegeomsurface_plate(
-        Surfinit: &crate::ffi::HandleGeomSurface,
+        Surfinit: &crate::ffi_types::HandleGeomSurface,
         Surfinter: &crate::plate::Plate,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_ctor_handlegeomsurface_plate(Surfinit, Surfinter),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_ctor_handlegeomsurface_plate(
+                    Surfinit, Surfinter,
+                ),
             ))
         }
     }
@@ -3389,7 +3568,7 @@ impl Surface {
     /// The bounds of the surface are not modified.
     pub fn u_reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_u_reverse(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_u_reverse(self as *mut Self)
         })
     }
 
@@ -3405,7 +3584,10 @@ impl Surface {
     /// @endcode
     pub fn u_reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_u_reversed_parameter(self as *const Self, U)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_u_reversed_parameter(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -3414,7 +3596,7 @@ impl Surface {
     /// The bounds of the surface are not modified.
     pub fn v_reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_v_reverse(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_v_reverse(self as *mut Self)
         })
     }
 
@@ -3430,7 +3612,10 @@ impl Surface {
     /// @endcode
     pub fn v_reversed_parameter(&self, V: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_v_reversed_parameter(self as *const Self, V)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_v_reversed_parameter(
+                self as *const Self,
+                V,
+            )
         })
     }
 
@@ -3454,7 +3639,12 @@ impl Surface {
     /// Cylinder, Cone, Revolved and Extruded surfaces.
     pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_transform_parameters(self as *const Self, U, V, T)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_transform_parameters(
+                self as *const Self,
+                U,
+                V,
+                T,
+            )
         })
     }
 
@@ -3483,7 +3673,10 @@ impl Surface {
     ) -> crate::OwnedPtr<crate::gp::GTrsf2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_parametric_transformation(self as *const Self, T),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_parametric_transformation(
+                    self as *const Self,
+                    T,
+                ),
             ))
         }
     }
@@ -3491,7 +3684,13 @@ impl Surface {
     /// **Source:** `GeomPlate_Surface.hxx`:125 - `GeomPlate_Surface::Bounds()`
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_bounds(self as *const Self, U1, U2, V1, V2)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_bounds(
+                self as *const Self,
+                U1,
+                U2,
+                V1,
+                V2,
+            )
         })
     }
 
@@ -3503,7 +3702,7 @@ impl Surface {
     /// are the parametric bounds in the U direction.
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_u_closed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_u_closed(self as *const Self)
         })
     }
 
@@ -3515,7 +3714,7 @@ impl Surface {
     /// are the parametric bounds in the V direction.
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_v_closed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_v_closed(self as *const Self)
         })
     }
 
@@ -3531,7 +3730,7 @@ impl Surface {
     /// and must be a constant.
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_u_periodic(self as *const Self)
         })
     }
 
@@ -3539,7 +3738,9 @@ impl Surface {
     /// returns the Uperiod.
     /// raises if the surface is not uperiodic.
     pub fn u_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomPlate_Surface_u_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_u_period(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:168 - `GeomPlate_Surface::IsVPeriodic()`
@@ -3554,7 +3755,7 @@ impl Surface {
     /// and must be a constant.
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_v_periodic(self as *const Self)
         })
     }
 
@@ -3562,28 +3763,28 @@ impl Surface {
     /// returns the Vperiod.
     /// raises if the surface is not vperiodic.
     pub fn v_period(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomPlate_Surface_v_period(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_v_period(self as *const Self)
+        })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:175 - `GeomPlate_Surface::UIso()`
     /// Computes the U isoparametric curve.
-    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Surface_u_iso(
-                self as *const Self,
-                U,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_u_iso(self as *const Self, U),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:178 - `GeomPlate_Surface::VIso()`
     /// Computes the V isoparametric curve.
-    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Surface_v_iso(
-                self as *const Self,
-                V,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_v_iso(self as *const Self, V),
+            ))
         }
     }
 
@@ -3601,7 +3802,7 @@ impl Surface {
     /// in the U parametric direction Shape = C1.
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_continuity(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -3612,7 +3813,7 @@ impl Surface {
     /// Raised if N < 0.
     pub fn is_c_nu(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_c_nu(self as *const Self, N)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_c_nu(self as *const Self, N)
         })
     }
 
@@ -3622,7 +3823,7 @@ impl Surface {
     /// Raised if N < 0.
     pub fn is_c_nv(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_is_c_nv(self as *const Self, N)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_is_c_nv(self as *const Self, N)
         })
     }
 
@@ -3633,7 +3834,7 @@ impl Surface {
     /// compute the current point.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_d0(self as *const Self, U, V, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_d0(self as *const Self, U, V, P)
         })
     }
 
@@ -3650,7 +3851,14 @@ impl Surface {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_d1(self as *const Self, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_d1(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+            )
         })
     }
 
@@ -3670,7 +3878,17 @@ impl Surface {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_d2(self as *const Self, U, V, P, D1U, D1V, D2U, D2V, D2UV)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_d2(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+                D2U,
+                D2V,
+                D2UV,
+            )
         })
     }
 
@@ -3694,7 +3912,7 @@ impl Surface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_d3(
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_d3(
                 self as *const Self,
                 U,
                 V,
@@ -3722,22 +3940,24 @@ impl Surface {
     /// Raised if Nu + Nv < 1 or Nu < 0 or Nv < 0.
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Surface_dn(
-                self as *const Self,
-                U,
-                V,
-                Nu,
-                Nv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_dn(
+                    self as *const Self,
+                    U,
+                    V,
+                    Nu,
+                    Nv,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:260 - `GeomPlate_Surface::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Surface_copy(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_copy(self as *const Self),
+            ))
         }
     }
 
@@ -3749,15 +3969,15 @@ impl Surface {
     /// (see class Transformation of the package Geom).
     pub fn transform(&mut self, T: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_transform(self as *mut Self, T)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_transform(self as *mut Self, T)
         })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:269 - `GeomPlate_Surface::CallSurfinit()`
-    pub fn call_surfinit(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn call_surfinit(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_call_surfinit(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_call_surfinit(self as *const Self),
             ))
         }
     }
@@ -3765,28 +3985,42 @@ impl Surface {
     /// **Source:** `GeomPlate_Surface.hxx`:271 - `GeomPlate_Surface::SetBounds()`
     pub fn set_bounds(&mut self, Umin: f64, Umax: f64, Vmin: f64, Vmax: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_set_bounds(self as *mut Self, Umin, Umax, Vmin, Vmax)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_set_bounds(
+                self as *mut Self,
+                Umin,
+                Umax,
+                Vmin,
+                Vmax,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:276 - `GeomPlate_Surface::RealBounds()`
     pub fn real_bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_real_bounds(self as *const Self, U1, U2, V1, V2)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_real_bounds(
+                self as *const Self,
+                U1,
+                U2,
+                V1,
+                V2,
+            )
         })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:281 - `GeomPlate_Surface::Constraints()`
-    pub fn constraints(&self, Seq: &mut crate::ffi::TColgp_SequenceOfXY) {
+    pub fn constraints(&self, Seq: &mut crate::ffi_types::TColgp_SequenceOfXY) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_constraints(self as *const Self, Seq)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_constraints(self as *const Self, Seq)
         })
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomPlate_Surface_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3794,7 +4028,7 @@ impl Surface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomPlate_Surface_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3802,14 +4036,18 @@ impl Surface {
     }
 
     /// **Source:** `GeomPlate_Surface.hxx`:283 - `GeomPlate_Surface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomPlate_Surface_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Geom_Surface
     pub fn as_geom_surface(&self) -> &crate::geom::Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_Surface_as_Geom_Surface(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Geom_Surface(
                 self as *const Self,
             ))
         }
@@ -3818,16 +4056,18 @@ impl Surface {
     /// Upcast to Geom_Surface (mutable)
     pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomPlate_Surface_as_Geom_Surface_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Geom_Surface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_Surface_as_Geom_Geometry(
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Geom_Geometry(
                 self as *const Self,
             ))
         }
@@ -3836,55 +4076,65 @@ impl Surface {
     /// Upcast to Geom_Geometry (mutable)
     pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomPlate_Surface_as_Geom_Geometry_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Geom_Geometry_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomPlate_Surface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomPlate_Surface_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomPlateSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomPlateSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomPlate_Surface_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_UReversed(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_UReversed(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_VReversed(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_VReversed(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3893,7 +4143,11 @@ impl Surface {
     pub fn value(&self, U: f64, V: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Value(self as *const Self, U, V),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Value(
+                    self as *const Self,
+                    U,
+                    V,
+                ),
             ))
         }
     }
@@ -3901,36 +4155,49 @@ impl Surface {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_Mirror(self as *mut Self, P)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Mirror(self as *mut Self, P)
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_Rotate(self as *mut Self, A1, Ang)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Rotate(
+                self as *mut Self,
+                A1,
+                Ang,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_Scale(self as *mut Self, P, S)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Scale(self as *mut Self, P, S)
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_Translate(self as *mut Self, V)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Translate(
+                self as *mut Self,
+                V,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn mirrored(
+        &self,
+        P: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Mirrored(self as *const Self, P),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Mirrored(
+                    self as *const Self,
+                    P,
+                ),
             ))
         }
     }
@@ -3940,10 +4207,14 @@ impl Surface {
         &self,
         A1: &crate::gp::Ax1,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Rotated(self as *const Self, A1, Ang),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Rotated(
+                    self as *const Self,
+                    A1,
+                    Ang,
+                ),
             ))
         }
     }
@@ -3953,10 +4224,14 @@ impl Surface {
         &self,
         P: &crate::gp::Pnt,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Scaled(self as *const Self, P, S),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Scaled(
+                    self as *const Self,
+                    P,
+                    S,
+                ),
             ))
         }
     }
@@ -3965,10 +4240,13 @@ impl Surface {
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Transformed(self as *const Self, T),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Transformed(
+                    self as *const Self,
+                    T,
+                ),
             ))
         }
     }
@@ -3977,25 +4255,34 @@ impl Surface {
     pub fn translated(
         &self,
         V: &crate::gp::Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomPlate_Surface_inherited_Translated(self as *const Self, V),
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Translated(
+                    self as *const Self,
+                    V,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4003,7 +4290,7 @@ impl Surface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomPlate_Surface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -4016,78 +4303,96 @@ impl Surface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomPlate_Surface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::GeomPlate_Surface_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomPlateSurface;
+pub use crate::ffi_types::HandleGeomPlateSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomPlateSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomPlateSurface_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_destructor(ptr);
     }
 }
 
 impl HandleGeomPlateSurface {
     /// Dereference this Handle to access the underlying GeomPlate_Surface
-    pub fn get(&self) -> &crate::ffi::GeomPlate_Surface {
+    pub fn get(&self) -> &crate::ffi_types::GeomPlate_Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomPlateSurface_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomPlate_Surface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomPlate_Surface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomPlate_Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomPlateSurface_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateSurface_to_HandleGeomSurface(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_to_HandleGeomSurface(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomPlate_Surface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateSurface_to_HandleGeomGeometry(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_to_HandleGeomGeometry(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<GeomPlate_Surface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomPlateSurface_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::HandleGeomPlateSurface_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4097,7 +4402,7 @@ impl HandleGeomPlateSurface {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     GeomPlate_Array1OfHCurve as Array1OfHCurve,
     GeomPlate_Array1OfSequenceOfReal as Array1OfSequenceOfReal,
     GeomPlate_SequenceOfAij as SequenceOfAij,

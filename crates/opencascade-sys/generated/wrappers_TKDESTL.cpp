@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <DESTL_ConfigurationNode.hxx>
 #include <DESTL_Provider.hxx>
 #include <DE_ConfigurationContext.hxx>

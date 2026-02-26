@@ -14,11 +14,11 @@
 /// TheEdgeFaceTransition is an algorithm to   compute
 /// the  cumulated  transition for interferences on an
 /// edge.
-pub use crate::ffi::TopCnx_EdgeFaceTransition as EdgeFaceTransition;
+pub use crate::ffi_types::TopCnx_EdgeFaceTransition as EdgeFaceTransition;
 
 unsafe impl crate::CppDeletable for EdgeFaceTransition {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TopCnx_EdgeFaceTransition_destructor(ptr);
+        crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_destructor(ptr);
     }
 }
 
@@ -28,7 +28,7 @@ impl EdgeFaceTransition {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TopCnx_EdgeFaceTransition_ctor(),
+                crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_ctor(),
             ))
         }
     }
@@ -38,7 +38,7 @@ impl EdgeFaceTransition {
     /// description of the edge.
     pub fn reset_dir2_real(&mut self, Tgt: &crate::gp::Dir, Norm: &crate::gp::Dir, Curv: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_reset_dir2_real(
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_reset_dir2_real(
                 self as *mut Self,
                 Tgt,
                 Norm,
@@ -51,7 +51,7 @@ impl EdgeFaceTransition {
     /// Initialize the algorithm with a linear Edge.
     pub fn reset_dir(&mut self, Tgt: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt)
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_reset_dir(self as *mut Self, Tgt)
         })
     }
 
@@ -72,7 +72,7 @@ impl EdgeFaceTransition {
         BTr: crate::top_abs::Orientation,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_add_interference(
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_add_interference(
                 self as *mut Self,
                 Tole,
                 Tang,
@@ -89,7 +89,7 @@ impl EdgeFaceTransition {
     /// Returns the current cumulated transition.
     pub fn transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_transition(self as *const Self)
         }))
         .unwrap()
     }
@@ -98,7 +98,9 @@ impl EdgeFaceTransition {
     /// Returns the current cumulated BoundaryTransition.
     pub fn boundary_transition(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::TopCnx_EdgeFaceTransition_boundary_transition(self as *const Self)
+            crate::ffi_extern_TKHLR::TopCnx_EdgeFaceTransition_boundary_transition(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }

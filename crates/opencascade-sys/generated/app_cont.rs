@@ -13,11 +13,11 @@
 /// **Source:** `AppCont_Function.hxx`:27 - `AppCont_Function`
 /// Class describing a continuous 3d and/or function f(u).
 /// This class must be provided by the user to use the approximation algorithm FittingCurve.
-pub use crate::ffi::AppCont_Function as Function;
+pub use crate::ffi_types::AppCont_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppCont_Function_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppCont_Function_destructor(ptr);
     }
 }
 
@@ -26,7 +26,7 @@ impl Function {
     /// Get number of 3d and 2d points returned by "Value" and "D1" functions.
     pub fn get_number_of_points(&self, theNbPnt: &mut i32, theNbPnt2d: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppCont_Function_get_number_of_points(
+            crate::ffi_extern_TKGeomBase::AppCont_Function_get_number_of_points(
                 self as *const Self,
                 theNbPnt,
                 theNbPnt2d,
@@ -38,7 +38,7 @@ impl Function {
     /// Get number of 3d points returned by "Value" and "D1" functions.
     pub fn get_nb_of3d_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_get_nb_of3d_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_get_nb_of3d_points(self as *const Self)
         })
     }
 
@@ -46,7 +46,7 @@ impl Function {
     /// Get number of 2d points returned by "Value" and "D1" functions.
     pub fn get_nb_of2d_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_get_nb_of2d_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_get_nb_of2d_points(self as *const Self)
         })
     }
 
@@ -54,7 +54,7 @@ impl Function {
     /// Returns the first parameter of the function.
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_first_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_first_parameter(self as *const Self)
         })
     }
 
@@ -62,7 +62,7 @@ impl Function {
     /// Returns the last parameter of the function.
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_last_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_last_parameter(self as *const Self)
         })
     }
 
@@ -71,11 +71,16 @@ impl Function {
     pub fn value(
         &self,
         theU: f64,
-        thePnt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
-        thePnt: &mut crate::ffi::TColgp_Array1OfPnt,
+        thePnt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
+        thePnt: &mut crate::ffi_types::TColgp_Array1OfPnt,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_value(self as *const Self, theU, thePnt2d, thePnt)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_value(
+                self as *const Self,
+                theU,
+                thePnt2d,
+                thePnt,
+            )
         })
     }
 
@@ -84,11 +89,16 @@ impl Function {
     pub fn d1(
         &self,
         theU: f64,
-        theVec2d: &mut crate::ffi::TColgp_Array1OfVec2d,
-        theVec: &mut crate::ffi::TColgp_Array1OfVec,
+        theVec2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
+        theVec: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppCont_Function_d1(self as *const Self, theU, theVec2d, theVec)
+            crate::ffi_extern_TKGeomBase::AppCont_Function_d1(
+                self as *const Self,
+                theU,
+                theVec2d,
+                theVec,
+            )
         })
     }
 
@@ -98,7 +108,7 @@ impl Function {
     /// myNbPnt2d.
     pub fn period_information(&self, arg0: i32, IsPeriodic: &mut bool, thePeriod: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppCont_Function_period_information(
+            crate::ffi_extern_TKGeomBase::AppCont_Function_period_information(
                 self as *const Self,
                 arg0,
                 IsPeriodic,
@@ -113,20 +123,20 @@ impl Function {
 // ========================
 
 /// **Source:** `AppCont_LeastSquare.hxx`:27 - `PeriodicityInfo`
-pub use crate::ffi::PeriodicityInfo;
+pub use crate::ffi_types::PeriodicityInfo;
 
 unsafe impl crate::CppDeletable for PeriodicityInfo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PeriodicityInfo_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::PeriodicityInfo_destructor(ptr);
     }
 }
 
 /// **Source:** `AppCont_LeastSquare.hxx`:33 - `AppCont_LeastSquare`
-pub use crate::ffi::AppCont_LeastSquare as LeastSquare;
+pub use crate::ffi_types::AppCont_LeastSquare as LeastSquare;
 
 unsafe impl crate::CppDeletable for LeastSquare {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppCont_LeastSquare_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_destructor(ptr);
     }
 }
 
@@ -142,34 +152,35 @@ impl LeastSquare {
         NbPoints: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppCont_LeastSquare_ctor_function_real2_constraint2_int2(
-                    SSP,
-                    U0,
-                    U1,
-                    FirstCons.into(),
-                    LastCons.into(),
-                    Deg,
-                    NbPoints,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_ctor_function_real2_constraint2_int2(SSP, U0, U1, FirstCons.into(), LastCons.into(), Deg, NbPoints)))
         }
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:44 - `AppCont_LeastSquare::Value()`
     pub fn value(&mut self) -> &crate::app_par_curves::MultiCurve {
-        unsafe { &*(crate::check_result(crate::ffi::AppCont_LeastSquare_value(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_value(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:46 - `AppCont_LeastSquare::Error()`
     pub fn error(&self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppCont_LeastSquare_error(self as *const Self, F, MaxE3d, MaxE2d)
+            crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_error(
+                self as *const Self,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
         })
     }
 
     /// **Source:** `AppCont_LeastSquare.hxx`:48 - `AppCont_LeastSquare::IsDone()`
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AppCont_LeastSquare_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppCont_LeastSquare_is_done(self as *const Self)
+        })
     }
 }

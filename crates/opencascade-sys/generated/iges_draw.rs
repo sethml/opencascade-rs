@@ -9,16 +9,20 @@
 /// **Source:** `IGESDraw.hxx`:35 - `IGESDraw::Init`
 /// Prepares dynamic data (Protocol, Modules) for this package
 pub fn init() {
-    crate::check_void_result(unsafe { crate::ffi::IGESDraw_init() })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKDEIGES::IGESDraw_init() })
 }
 /// **Source:** `IGESDraw.hxx`:38 - `IGESDraw::Protocol`
 /// Returns the Protocol for this Package
-pub fn protocol() -> crate::OwnedPtr<crate::ffi::HandleIGESDrawProtocol> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_protocol())) }
+pub fn protocol() -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawProtocol> {
+    unsafe {
+        crate::OwnedPtr::from_raw(crate::check_result(
+            crate::ffi_extern_TKDEIGES::IGESDraw_protocol(),
+        ))
+    }
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleIGESDataGeneralModule, HandleIGESDataIGESEntity, HandleIGESDataLabelDisplayEntity,
     HandleIGESDataProtocol, HandleIGESDataReadWriteModule, HandleIGESDataSpecificModule,
     HandleIGESDataViewKindEntity, HandleInterfaceGeneralModule, HandleInterfaceProtocol,
@@ -36,11 +40,11 @@ pub use crate::ffi::{
 /// Used to produce copies of object called the base entity,
 /// arranging them around the edge of an imaginary circle
 /// whose center and radius are specified
-pub use crate::ffi::IGESDraw_CircArraySubfigure as CircArraySubfigure;
+pub use crate::ffi_types::IGESDraw_CircArraySubfigure as CircArraySubfigure;
 
 unsafe impl crate::CppDeletable for CircArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_CircArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_destructor(ptr);
     }
 }
 
@@ -49,7 +53,7 @@ impl CircArraySubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_ctor(),
             ))
         }
     }
@@ -68,17 +72,17 @@ impl CircArraySubfigure {
     /// - allNumPos : All position to be or not to be processed
     pub fn init(
         &mut self,
-        aBase: &crate::ffi::HandleIGESDataIGESEntity,
+        aBase: &crate::ffi_types::HandleIGESDataIGESEntity,
         aNumLocs: i32,
         aCenter: &crate::gp::XYZ,
         aRadius: f64,
         aStAngle: f64,
         aDelAngle: f64,
         aFlag: i32,
-        allNumPos: &crate::ffi::HandleTColStdHArray1OfInteger,
+        allNumPos: &crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_init(
                 self as *mut Self,
                 aBase,
                 aNumLocs,
@@ -94,10 +98,12 @@ impl CircArraySubfigure {
 
     /// **Source:** `IGESDraw_CircArraySubfigure.hxx`:65 - `IGESDraw_CircArraySubfigure::BaseEntity()`
     /// returns the base entity, copies of which are produced
-    pub fn base_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn base_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_base_entity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_base_entity(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -106,7 +112,9 @@ impl CircArraySubfigure {
     /// returns total number of possible instance locations
     pub fn nb_locations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_nb_locations(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_nb_locations(
+                self as *const Self,
+            )
         })
     }
 
@@ -115,7 +123,9 @@ impl CircArraySubfigure {
     pub fn center_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_center_point(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_center_point(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -125,7 +135,7 @@ impl CircArraySubfigure {
     pub fn transformed_center_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_transformed_center_point(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_transformed_center_point(
                     self as *const Self,
                 ),
             ))
@@ -136,7 +146,9 @@ impl CircArraySubfigure {
     /// returns the radius of the imaginary circle
     pub fn circle_radius(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_circle_radius(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_circle_radius(
+                self as *const Self,
+            )
         })
     }
 
@@ -144,7 +156,7 @@ impl CircArraySubfigure {
     /// returns the start angle in radians
     pub fn start_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_start_angle(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_start_angle(self as *const Self)
         })
     }
 
@@ -152,7 +164,7 @@ impl CircArraySubfigure {
     /// returns the delta angle in radians
     pub fn delta_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_delta_angle(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_delta_angle(self as *const Self)
         })
     }
 
@@ -160,7 +172,7 @@ impl CircArraySubfigure {
     /// returns 0 if all elements to be displayed
     pub fn list_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_list_count(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_list_count(self as *const Self)
         })
     }
 
@@ -168,7 +180,9 @@ impl CircArraySubfigure {
     /// returns True if (ListCount = 0) all elements are to be displayed
     pub fn display_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_display_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_display_flag(
+                self as *const Self,
+            )
         })
     }
 
@@ -177,7 +191,9 @@ impl CircArraySubfigure {
     /// 1 if half or more of the elements are defined
     pub fn do_dont_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_do_dont_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_do_dont_flag(
+                self as *const Self,
+            )
         })
     }
 
@@ -188,7 +204,10 @@ impl CircArraySubfigure {
     /// raises exception if Index <= 0 or Index > ListCount().
     pub fn position_num(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_position_num(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_position_num(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -197,16 +216,21 @@ impl CircArraySubfigure {
     /// raises exception if Index <= 0 or Index > ListCount().
     pub fn list_position(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_list_position(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_list_position(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_CircArraySubfigure.hxx`:105 - `IGESDraw_CircArraySubfigure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_CircArraySubfigure_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -214,7 +238,7 @@ impl CircArraySubfigure {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -222,18 +246,22 @@ impl CircArraySubfigure {
     }
 
     /// **Source:** `IGESDraw_CircArraySubfigure.hxx`:105 - `IGESDraw_CircArraySubfigure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_CircArraySubfigure_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_CircArraySubfigure_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -241,7 +269,7 @@ impl CircArraySubfigure {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_as_IGESData_IGESEntity_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_as_IGESData_IGESEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -251,9 +279,11 @@ impl CircArraySubfigure {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_CircArraySubfigure_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -261,7 +291,7 @@ impl CircArraySubfigure {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_as_Standard_Transient_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -271,10 +301,10 @@ impl CircArraySubfigure {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawCircArraySubfigure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawCircArraySubfigure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -283,7 +313,9 @@ impl CircArraySubfigure {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -291,14 +323,18 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -306,10 +342,10 @@ impl CircArraySubfigure {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -320,15 +356,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -336,7 +376,9 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -344,15 +386,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -360,7 +406,9 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -368,15 +416,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -384,34 +436,42 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -419,15 +479,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -435,15 +499,21 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -451,49 +521,63 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -501,15 +585,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -517,15 +605,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -533,7 +625,7 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -542,7 +634,9 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -550,10 +644,10 @@ impl CircArraySubfigure {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -562,23 +656,33 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -587,16 +691,20 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -607,7 +715,7 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -618,9 +726,9 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -631,12 +739,12 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -648,15 +756,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -665,7 +777,9 @@ impl CircArraySubfigure {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -674,7 +788,7 @@ impl CircArraySubfigure {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -685,7 +799,7 @@ impl CircArraySubfigure {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -695,15 +809,19 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -711,16 +829,16 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -728,7 +846,7 @@ impl CircArraySubfigure {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -736,9 +854,9 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -748,36 +866,37 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -786,7 +905,9 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -794,15 +915,17 @@ impl CircArraySubfigure {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -812,12 +935,12 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -827,23 +950,29 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -853,9 +982,9 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -863,9 +992,12 @@ impl CircArraySubfigure {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -873,7 +1005,9 @@ impl CircArraySubfigure {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_CircArraySubfigure_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -886,78 +1020,84 @@ impl CircArraySubfigure {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_CircArraySubfigure_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_CircArraySubfigure_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawCircArraySubfigure;
+pub use crate::ffi_types::HandleIGESDrawCircArraySubfigure;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawCircArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawCircArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawCircArraySubfigure {
     /// Dereference this Handle to access the underlying IGESDraw_CircArraySubfigure
-    pub fn get(&self) -> &crate::ffi::IGESDraw_CircArraySubfigure {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_CircArraySubfigure {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawCircArraySubfigure_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_CircArraySubfigure
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_CircArraySubfigure {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_CircArraySubfigure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawCircArraySubfigure_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_CircArraySubfigure> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawCircArraySubfigure_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_CircArraySubfigure> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawCircArraySubfigure_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawCircArraySubfigure_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -974,11 +1114,11 @@ impl HandleIGESDrawCircArraySubfigure {
 /// zero, one or more entities. Its referenced from Composite
 /// curve, or Network Subfigure Definition/Instance, or Flow
 /// Associative Instance, or it may stand alone.
-pub use crate::ffi::IGESDraw_ConnectPoint as ConnectPoint;
+pub use crate::ffi_types::IGESDraw_ConnectPoint as ConnectPoint;
 
 unsafe impl crate::CppDeletable for ConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ConnectPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_destructor(ptr);
     }
 }
 
@@ -986,7 +1126,9 @@ impl ConnectPoint {
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:44 - `IGESDraw_ConnectPoint::IGESDraw_ConnectPoint()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ConnectPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_ctor(),
+            ))
         }
     }
 
@@ -1008,20 +1150,20 @@ impl ConnectPoint {
     pub fn init(
         &mut self,
         aPoint: &crate::gp::XYZ,
-        aDisplaySymbol: &crate::ffi::HandleIGESDataIGESEntity,
+        aDisplaySymbol: &crate::ffi_types::HandleIGESDataIGESEntity,
         aTypeFlag: i32,
         aFunctionFlag: i32,
-        aFunctionIdentifier: &crate::ffi::HandleTCollectionHAsciiString,
-        anIdentifierTemplate: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
-        aFunctionName: &crate::ffi::HandleTCollectionHAsciiString,
-        aFunctionTemplate: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
+        aFunctionIdentifier: &crate::ffi_types::HandleTCollectionHAsciiString,
+        anIdentifierTemplate: &crate::ffi_types::HandleIGESGraphTextDisplayTemplate,
+        aFunctionName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aFunctionTemplate: &crate::ffi_types::HandleIGESGraphTextDisplayTemplate,
         aPointIdentifier: i32,
         aFunctionCode: i32,
         aSwapFlag: i32,
-        anOwnerSubfigure: &crate::ffi::HandleIGESDataIGESEntity,
+        anOwnerSubfigure: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_init(
                 self as *mut Self,
                 aPoint,
                 aDisplaySymbol,
@@ -1043,9 +1185,9 @@ impl ConnectPoint {
     /// returns the coordinate of the connection point
     pub fn point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ConnectPoint_point(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_point(self as *const Self),
+            ))
         }
     }
 
@@ -1054,7 +1196,9 @@ impl ConnectPoint {
     pub fn transformed_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_transformed_point(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_transformed_point(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1064,17 +1208,21 @@ impl ConnectPoint {
     /// else returns False
     pub fn has_display_symbol(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_has_display_symbol(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_has_display_symbol(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:85 - `IGESDraw_ConnectPoint::DisplaySymbol()`
     /// if display symbol specified returns display symbol geometric entity
     /// else returns NULL Handle
-    pub fn display_symbol(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn display_symbol(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_display_symbol(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_display_symbol(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1094,7 +1242,7 @@ impl ConnectPoint {
     /// 5001-9999 : Implementor defined.
     pub fn type_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_type_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_type_flag(self as *const Self)
         })
     }
 
@@ -1106,7 +1254,7 @@ impl ConnectPoint {
     /// = 2 : Fluid flow Signal
     pub fn function_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_function_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_function_flag(self as *const Self)
         })
     }
 
@@ -1114,10 +1262,12 @@ impl ConnectPoint {
     /// return HAsciiString identifying Pin Number or Nozzle Label etc.
     pub fn function_identifier(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_function_identifier(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_function_identifier(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1127,7 +1277,9 @@ impl ConnectPoint {
     /// else returns False
     pub fn has_identifier_template(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_has_identifier_template(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_has_identifier_template(
+                self as *const Self,
+            )
         })
     }
 
@@ -1137,20 +1289,26 @@ impl ConnectPoint {
     /// else returns NULL Handle
     pub fn identifier_template(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphTextDisplayTemplate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_identifier_template(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_identifier_template(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:121 - `IGESDraw_ConnectPoint::FunctionName()`
     /// returns Connection Point Function Name
-    pub fn function_name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn function_name(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_function_name(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_function_name(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1160,7 +1318,9 @@ impl ConnectPoint {
     /// else returns False
     pub fn has_function_template(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_has_function_template(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_has_function_template(
+                self as *const Self,
+            )
         })
     }
 
@@ -1170,10 +1330,12 @@ impl ConnectPoint {
     /// else returns NULL Handle
     pub fn function_template(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphTextDisplayTemplate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_function_template(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_function_template(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1182,7 +1344,7 @@ impl ConnectPoint {
     /// returns the Unique Connect Point Identifier
     pub fn point_identifier(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_point_identifier(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_point_identifier(self as *const Self)
         })
     }
 
@@ -1190,7 +1352,7 @@ impl ConnectPoint {
     /// returns the Connect Point Function Code
     pub fn function_code(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_function_code(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_function_code(self as *const Self)
         })
     }
 
@@ -1199,7 +1361,7 @@ impl ConnectPoint {
     /// = 1 : Connect point may not be swapped
     pub fn swap_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_swap_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_swap_flag(self as *const Self)
         })
     }
 
@@ -1209,25 +1371,29 @@ impl ConnectPoint {
     /// else returns False
     pub fn has_owner_subfigure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_has_owner_subfigure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_has_owner_subfigure(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:149 - `IGESDraw_ConnectPoint::OwnerSubfigure()`
     /// returns "owner" Network Subfigure Instance Entity,
     /// or Network Subfigure Definition Entity, or NULL Handle.
-    pub fn owner_subfigure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn owner_subfigure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_owner_subfigure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_owner_subfigure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:151 - `IGESDraw_ConnectPoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ConnectPoint_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1237,7 +1403,7 @@ impl ConnectPoint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1245,53 +1411,65 @@ impl ConnectPoint {
     }
 
     /// **Source:** `IGESDraw_ConnectPoint.hxx`:151 - `IGESDraw_ConnectPoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_ConnectPoint_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ConnectPoint_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_ConnectPoint_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ConnectPoint_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_ConnectPoint_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawConnectPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawConnectPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1300,7 +1478,9 @@ impl ConnectPoint {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1308,14 +1488,18 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -1323,10 +1507,10 @@ impl ConnectPoint {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -1337,15 +1521,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1353,7 +1541,9 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1361,15 +1551,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1377,7 +1571,9 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1385,15 +1581,17 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1401,34 +1599,40 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1436,15 +1640,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1452,15 +1660,21 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1468,49 +1682,61 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1518,15 +1744,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1534,15 +1764,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1550,14 +1784,18 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -1565,10 +1803,10 @@ impl ConnectPoint {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -1577,44 +1815,66 @@ impl ConnectPoint {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -1625,21 +1885,25 @@ impl ConnectPoint {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -1651,15 +1915,19 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1668,7 +1936,9 @@ impl ConnectPoint {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1677,7 +1947,9 @@ impl ConnectPoint {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1686,7 +1958,9 @@ impl ConnectPoint {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1694,15 +1968,17 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1710,7 +1986,7 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_ArePresentAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_ArePresentAssociativities(
                 self as *const Self,
             )
         })
@@ -1719,7 +1995,9 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -1727,15 +2005,17 @@ impl ConnectPoint {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -1745,11 +2025,11 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -1758,30 +2038,40 @@ impl ConnectPoint {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -1789,15 +2079,17 @@ impl ConnectPoint {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -1807,12 +2099,12 @@ impl ConnectPoint {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ConnectPoint_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -1822,23 +2114,29 @@ impl ConnectPoint {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -1848,16 +2146,22 @@ impl ConnectPoint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1865,7 +2169,9 @@ impl ConnectPoint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_ConnectPoint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1878,62 +2184,72 @@ impl ConnectPoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ConnectPoint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ConnectPoint_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawConnectPoint;
+pub use crate::ffi_types::HandleIGESDrawConnectPoint;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawConnectPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawConnectPoint {
     /// Dereference this Handle to access the underlying IGESDraw_ConnectPoint
-    pub fn get(&self) -> &crate::ffi::IGESDraw_ConnectPoint {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_ConnectPoint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawConnectPoint_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying IGESDraw_ConnectPoint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_ConnectPoint {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawConnectPoint_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying IGESDraw_ConnectPoint
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_ConnectPoint {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<IGESDraw_ConnectPoint> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawConnectPoint_to_HandleIGESDataIGESEntity(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_to_HandleIGESDataIGESEntity(
                     self as *const Self,
                 ),
             ))
@@ -1941,10 +2257,12 @@ impl HandleIGESDrawConnectPoint {
     }
 
     /// Upcast Handle<IGESDraw_ConnectPoint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawConnectPoint_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawConnectPoint_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1963,11 +2281,11 @@ impl HandleIGESDrawConnectPoint {
 /// Specifies a drawing as a collection of annotation entities
 /// defined in drawing space, and views which together
 /// constitute a single representation of a part
-pub use crate::ffi::IGESDraw_Drawing as Drawing;
+pub use crate::ffi_types::IGESDraw_Drawing as Drawing;
 
 unsafe impl crate::CppDeletable for Drawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_Drawing_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_destructor(ptr);
     }
 }
 
@@ -1975,7 +2293,9 @@ impl Drawing {
     /// **Source:** `IGESDraw_Drawing.hxx`:46 - `IGESDraw_Drawing::IGESDraw_Drawing()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Drawing_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_ctor(),
+            ))
         }
     }
 
@@ -1989,12 +2309,12 @@ impl Drawing {
     /// not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allViewOrigins: &crate::ffi::HandleTColgpHArray1OfXY,
-        allAnnotations: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allViews: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allViewOrigins: &crate::ffi_types::HandleTColgpHArray1OfXY,
+        allAnnotations: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_init(
                 self as *mut Self,
                 allViews,
                 allViewOrigins,
@@ -2006,7 +2326,9 @@ impl Drawing {
     /// **Source:** `IGESDraw_Drawing.hxx`:60 - `IGESDraw_Drawing::NbViews()`
     /// returns the number of view pointers in <me>
     pub fn nb_views(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_Drawing_nb_views(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_nb_views(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_Drawing.hxx`:64 - `IGESDraw_Drawing::ViewItem()`
@@ -2015,12 +2337,14 @@ impl Drawing {
     pub fn view_item(
         &self,
         ViewIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Drawing_view_item(
-                self as *const Self,
-                ViewIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_view_item(
+                    self as *const Self,
+                    ViewIndex,
+                ),
+            ))
         }
     }
 
@@ -2031,7 +2355,10 @@ impl Drawing {
     pub fn view_origin(&self, TViewIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_view_origin(self as *const Self, TViewIndex),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_view_origin(
+                    self as *const Self,
+                    TViewIndex,
+                ),
             ))
         }
     }
@@ -2040,7 +2367,7 @@ impl Drawing {
     /// returns the number of Annotation entities in <me>
     pub fn nb_annotations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_nb_annotations(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_nb_annotations(self as *const Self)
         })
     }
 
@@ -2052,12 +2379,14 @@ impl Drawing {
     pub fn annotation(
         &self,
         AnnotationIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Drawing_annotation(
-                self as *const Self,
-                AnnotationIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_annotation(
+                    self as *const Self,
+                    AnnotationIndex,
+                ),
+            ))
         }
     }
 
@@ -2069,7 +2398,7 @@ impl Drawing {
     ) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_view_to_drawing(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_view_to_drawing(
                     self as *const Self,
                     NumView,
                     ViewCoords,
@@ -2085,7 +2414,7 @@ impl Drawing {
     /// unit to consider is then the model unit in GlobalSection
     pub fn drawing_unit(&self, value: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_drawing_unit(self as *const Self, value)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_drawing_unit(self as *const Self, value)
         })
     }
 
@@ -2096,14 +2425,16 @@ impl Drawing {
     /// unit to consider is then the model unit in GlobalSection
     pub fn drawing_size(&self, X: &mut f64, Y: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_drawing_size(self as *const Self, X, Y)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_drawing_size(self as *const Self, X, Y)
         })
     }
 
     /// **Source:** `IGESDraw_Drawing.hxx`:96 - `IGESDraw_Drawing::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_Drawing_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2111,7 +2442,7 @@ impl Drawing {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2119,54 +2450,66 @@ impl Drawing {
     }
 
     /// **Source:** `IGESDraw_Drawing.hxx`:96 - `IGESDraw_Drawing::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_Drawing_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Drawing_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Drawing_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Drawing_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Drawing_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawing> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawDrawing> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Drawing_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_to_handle(obj.into_raw()),
+            ))
         }
     }
 
@@ -2174,7 +2517,9 @@ impl Drawing {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2182,14 +2527,14 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_TypeNumber(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_FormNumber(self as *const Self)
         })
     }
 
@@ -2197,10 +2542,10 @@ impl Drawing {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -2211,15 +2556,17 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasStructure(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2227,7 +2574,7 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DefLineFont(self as *const Self)
         }))
         .unwrap()
     }
@@ -2235,15 +2582,17 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_RankLineFont(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2251,7 +2600,7 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DefLevel(self as *const Self)
         }))
         .unwrap()
     }
@@ -2259,15 +2608,17 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2275,34 +2626,38 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_View(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2310,15 +2665,15 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasTransf(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Transf(self as *const Self),
             ))
         }
     }
@@ -2326,15 +2681,21 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2342,49 +2703,55 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_BlankStatus(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_LineWeight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DefColor(self as *const Self)
         }))
         .unwrap()
     }
@@ -2392,15 +2759,15 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_RankColor(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Color(self as *const Self),
             ))
         }
     }
@@ -2408,15 +2775,19 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2424,14 +2795,18 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -2439,10 +2814,10 @@ impl Drawing {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -2451,44 +2826,63 @@ impl Drawing {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitView(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -2499,36 +2893,47 @@ impl Drawing {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasOneParent(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2537,7 +2942,9 @@ impl Drawing {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2546,7 +2953,9 @@ impl Drawing {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2555,7 +2964,9 @@ impl Drawing {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2563,15 +2974,17 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2579,14 +2992,18 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_ArePresentAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -2594,15 +3011,17 @@ impl Drawing {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -2612,11 +3031,11 @@ impl Drawing {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -2625,30 +3044,38 @@ impl Drawing {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_NbProperties(self as *const Self)
         })
     }
 
@@ -2656,27 +3083,32 @@ impl Drawing {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_NbTypedProperties(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Drawing_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -2686,23 +3118,29 @@ impl Drawing {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -2712,16 +3150,22 @@ impl Drawing {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2729,7 +3173,7 @@ impl Drawing {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_Drawing_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2742,67 +3186,85 @@ impl Drawing {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Drawing_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Drawing_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawDrawing;
+pub use crate::ffi_types::HandleIGESDrawDrawing;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawDrawing_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawDrawing {
     /// Dereference this Handle to access the underlying IGESDraw_Drawing
-    pub fn get(&self) -> &crate::ffi::IGESDraw_Drawing {
-        unsafe { &*crate::check_result(crate::ffi::HandleIGESDrawDrawing_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_Drawing {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_Drawing
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_Drawing {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_Drawing {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawDrawing_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Drawing> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawDrawing_to_HandleIGESDataIGESEntity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Drawing> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawDrawing_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawing_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2818,11 +3280,11 @@ impl HandleIGESDrawDrawing {
 ///
 /// Permits rotation, in addition to transformation and
 /// scaling, between the view and drawing coordinate systems
-pub use crate::ffi::IGESDraw_DrawingWithRotation as DrawingWithRotation;
+pub use crate::ffi_types::IGESDraw_DrawingWithRotation as DrawingWithRotation;
 
 unsafe impl crate::CppDeletable for DrawingWithRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_DrawingWithRotation_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_destructor(ptr);
     }
 }
 
@@ -2831,7 +3293,7 @@ impl DrawingWithRotation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_ctor(),
             ))
         }
     }
@@ -2847,13 +3309,13 @@ impl DrawingWithRotation {
     /// allOrientationAngles are not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allViewOrigins: &crate::ffi::HandleTColgpHArray1OfXY,
-        allOrientationAngles: &crate::ffi::HandleTColStdHArray1OfReal,
-        allAnnotations: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allViews: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allViewOrigins: &crate::ffi_types::HandleTColgpHArray1OfXY,
+        allOrientationAngles: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        allAnnotations: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_init(
                 self as *mut Self,
                 allViews,
                 allViewOrigins,
@@ -2867,7 +3329,7 @@ impl DrawingWithRotation {
     /// returns the number of view pointers in <me>
     pub fn nb_views(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_nb_views(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_nb_views(self as *const Self)
         })
     }
 
@@ -2877,10 +3339,13 @@ impl DrawingWithRotation {
     pub fn view_item(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_view_item(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_view_item(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2892,7 +3357,10 @@ impl DrawingWithRotation {
     pub fn view_origin(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_view_origin(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_view_origin(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2903,7 +3371,10 @@ impl DrawingWithRotation {
     /// raises an exception if Index <= 0 or Index > NbViews().
     pub fn orientation_angle(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_orientation_angle(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_orientation_angle(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -2911,17 +3382,25 @@ impl DrawingWithRotation {
     /// returns the number of Annotation entities in <me>
     pub fn nb_annotations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_nb_annotations(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_nb_annotations(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:83 - `IGESDraw_DrawingWithRotation::Annotation()`
     /// returns the Annotation entity in this Drawing, indicated by Index
     /// raises an exception if Index <= 0 or Index > NbAnnotations().
-    pub fn annotation(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn annotation(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_annotation(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_annotation(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -2934,7 +3413,7 @@ impl DrawingWithRotation {
     ) -> crate::OwnedPtr<crate::gp::XY> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_view_to_drawing(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_view_to_drawing(
                     self as *const Self,
                     NumView,
                     ViewCoords,
@@ -2950,7 +3429,10 @@ impl DrawingWithRotation {
     /// unit to consider is then the model unit in GlobalSection
     pub fn drawing_unit(&self, value: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_drawing_unit(self as *const Self, value)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_drawing_unit(
+                self as *const Self,
+                value,
+            )
         })
     }
 
@@ -2961,16 +3443,22 @@ impl DrawingWithRotation {
     /// unit to consider is then the model unit in GlobalSection
     pub fn drawing_size(&self, X: &mut f64, Y: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_drawing_size(self as *const Self, X, Y)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_drawing_size(
+                self as *const Self,
+                X,
+                Y,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:100 - `IGESDraw_DrawingWithRotation::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_DrawingWithRotation_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2978,7 +3466,7 @@ impl DrawingWithRotation {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2986,18 +3474,22 @@ impl DrawingWithRotation {
     }
 
     /// **Source:** `IGESDraw_DrawingWithRotation.hxx`:100 - `IGESDraw_DrawingWithRotation::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_DrawingWithRotation_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_DrawingWithRotation_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3005,7 +3497,7 @@ impl DrawingWithRotation {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_as_IGESData_IGESEntity_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_as_IGESData_IGESEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -3015,9 +3507,11 @@ impl DrawingWithRotation {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_DrawingWithRotation_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3025,7 +3519,7 @@ impl DrawingWithRotation {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_as_Standard_Transient_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -3035,10 +3529,10 @@ impl DrawingWithRotation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawDrawingWithRotation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawDrawingWithRotation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -3047,7 +3541,9 @@ impl DrawingWithRotation {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3055,14 +3551,18 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -3070,10 +3570,10 @@ impl DrawingWithRotation {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -3084,15 +3584,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3100,7 +3604,9 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3108,15 +3614,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3124,7 +3634,9 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3132,15 +3644,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3148,34 +3664,42 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3183,15 +3707,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3199,15 +3727,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_LabelDisplay(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_LabelDisplay(
                     self as *const Self,
                 ),
             ))
@@ -3217,14 +3749,16 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_SubordinateStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_SubordinateStatus(
                 self as *const Self,
             )
         })
@@ -3233,35 +3767,45 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -3269,15 +3813,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3285,15 +3833,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3301,7 +3853,7 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -3310,7 +3862,9 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -3318,10 +3872,10 @@ impl DrawingWithRotation {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -3330,23 +3884,33 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -3355,9 +3919,9 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitLevel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitLevel(
                 self as *mut Self,
                 ent,
                 val,
@@ -3366,9 +3930,9 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -3379,7 +3943,7 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -3390,9 +3954,9 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -3403,12 +3967,12 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -3420,15 +3984,17 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_UniqueParent(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_UniqueParent(
                     self as *const Self,
                 ),
             ))
@@ -3439,7 +4005,9 @@ impl DrawingWithRotation {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3448,7 +4016,7 @@ impl DrawingWithRotation {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -3459,7 +4027,7 @@ impl DrawingWithRotation {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -3469,15 +4037,19 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3485,16 +4057,14 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_NbAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_NbAssociativities(
                 self as *const Self,
             )
         })
@@ -3504,7 +4074,7 @@ impl DrawingWithRotation {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -3512,48 +4082,46 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_NbTypedAssociativities(
-                self as *const Self,
-                atype,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_NbTypedAssociativities(self as *const Self, atype)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -3562,7 +4130,9 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -3570,15 +4140,17 @@ impl DrawingWithRotation {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -3588,12 +4160,12 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -3603,16 +4175,19 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_RemoveProperty(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_RemoveProperty(
                 self as *mut Self,
                 ent,
             )
@@ -3622,7 +4197,7 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -3632,9 +4207,9 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3642,9 +4217,12 @@ impl DrawingWithRotation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3652,7 +4230,9 @@ impl DrawingWithRotation {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_DrawingWithRotation_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3665,14 +4245,16 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3681,7 +4263,7 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3690,57 +4272,59 @@ impl DrawingWithRotation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_DrawingWithRotation_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_DrawingWithRotation_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawDrawingWithRotation;
+pub use crate::ffi_types::HandleIGESDrawDrawingWithRotation;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawDrawingWithRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawDrawingWithRotation_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawDrawingWithRotation {
     /// Dereference this Handle to access the underlying IGESDraw_DrawingWithRotation
-    pub fn get(&self) -> &crate::ffi::IGESDraw_DrawingWithRotation {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_DrawingWithRotation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawDrawingWithRotation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_DrawingWithRotation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_DrawingWithRotation {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_DrawingWithRotation {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawDrawingWithRotation_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_DrawingWithRotation> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawDrawingWithRotation_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_DrawingWithRotation> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawDrawingWithRotation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawDrawingWithRotation_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3752,11 +4336,11 @@ impl HandleIGESDrawDrawingWithRotation {
 /// **Source:** `IGESDraw_GeneralModule.hxx`:38 - `IGESDraw_GeneralModule`
 /// Definition of General Services for IGESDraw (specific part)
 /// This Services comprise : Shared & Implied Lists, Copy, Check
-pub use crate::ffi::IGESDraw_GeneralModule as GeneralModule;
+pub use crate::ffi_types::IGESDraw_GeneralModule as GeneralModule;
 
 unsafe impl crate::CppDeletable for GeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_GeneralModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_destructor(ptr);
     }
 }
 
@@ -3765,9 +4349,9 @@ impl GeneralModule {
     /// Creates a GeneralModule from IGESDraw and puts it into GeneralLib
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::IGESDraw_GeneralModule_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_ctor(),
+            ))
         }
     }
 
@@ -3777,11 +4361,16 @@ impl GeneralModule {
     pub fn own_shared_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_shared_case(self as *const Self, CN, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_shared_case(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -3791,11 +4380,16 @@ impl GeneralModule {
     pub fn own_implied_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_implied_case(self as *const Self, CN, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_implied_case(
+                self as *const Self,
+                CN,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -3806,11 +4400,15 @@ impl GeneralModule {
     pub fn dir_checker(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_dir_checker(self as *const Self, CN, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_dir_checker(
+                    self as *const Self,
+                    CN,
+                    ent,
+                ),
             ))
         }
     }
@@ -3820,12 +4418,12 @@ impl GeneralModule {
     pub fn own_check_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_check_case(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_check_case(
                 self as *const Self,
                 CN,
                 ent,
@@ -3837,9 +4435,13 @@ impl GeneralModule {
 
     /// **Source:** `IGESDraw_GeneralModule.hxx`:73 - `IGESDraw_GeneralModule::NewVoid()`
     /// Specific creation of a new void entity
-    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi::HandleStandardTransient) -> bool {
+    pub fn new_void(&self, CN: i32, entto: &mut crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_new_void(self as *const Self, CN, entto)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_new_void(
+                self as *const Self,
+                CN,
+                entto,
+            )
         })
     }
 
@@ -3848,12 +4450,12 @@ impl GeneralModule {
     pub fn own_copy_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
-        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        entfrom: &crate::ffi_types::HandleIGESDataIGESEntity,
+        entto: &crate::ffi_types::HandleIGESDataIGESEntity,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_copy_case(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_copy_case(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -3870,12 +4472,12 @@ impl GeneralModule {
     pub fn own_renew_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleIGESDataIGESEntity,
-        entto: &crate::ffi::HandleIGESDataIGESEntity,
+        entfrom: &crate::ffi_types::HandleIGESDataIGESEntity,
+        entto: &crate::ffi_types::HandleIGESDataIGESEntity,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_renew_case(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_renew_case(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -3888,9 +4490,13 @@ impl GeneralModule {
     /// **Source:** `IGESDraw_GeneralModule.hxx`:91 - `IGESDraw_GeneralModule::OwnDeleteCase()`
     /// Clears parameters with can cause looping structures :
     /// redefined for ViewsVisible ... (clears the implied ref.s)
-    pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn own_delete_case(&self, CN: i32, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_own_delete_case(self as *const Self, CN, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_own_delete_case(
+                self as *const Self,
+                CN,
+                ent,
+            )
         })
     }
 
@@ -3902,20 +4508,27 @@ impl GeneralModule {
     pub fn category_number(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_category_number(self as *const Self, CN, ent, shares)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_category_number(
+                self as *const Self,
+                CN,
+                ent,
+                shares,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_GeneralModule.hxx`:104 - `IGESDraw_GeneralModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_GeneralModule_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3923,7 +4536,7 @@ impl GeneralModule {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3931,16 +4544,22 @@ impl GeneralModule {
     }
 
     /// **Source:** `IGESDraw_GeneralModule.hxx`:104 - `IGESDraw_GeneralModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_GeneralModule_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_GeneralModule
     pub fn as_iges_data_general_module(&self) -> &crate::iges_data::GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_GeneralModule_as_IGESData_GeneralModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_IGESData_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3948,7 +4567,9 @@ impl GeneralModule {
     pub fn as_iges_data_general_module_mut(&mut self) -> &mut crate::iges_data::GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_as_IGESData_GeneralModule_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_IGESData_GeneralModule_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3956,9 +4577,11 @@ impl GeneralModule {
     /// Upcast to Interface_GeneralModule
     pub fn as_interface_general_module(&self) -> &crate::interface::GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_GeneralModule_as_Interface_GeneralModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_Interface_GeneralModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3966,7 +4589,7 @@ impl GeneralModule {
     pub fn as_interface_general_module_mut(&mut self) -> &mut crate::interface::GeneralModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_as_Interface_GeneralModule_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_Interface_GeneralModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -3976,28 +4599,32 @@ impl GeneralModule {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_GeneralModule_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_GeneralModule_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawGeneralModule> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -4006,11 +4633,11 @@ impl GeneralModule {
     pub fn fill_shared_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_FillSharedCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_FillSharedCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -4023,11 +4650,11 @@ impl GeneralModule {
     pub fn list_implied_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_ListImpliedCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_ListImpliedCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -4040,12 +4667,12 @@ impl GeneralModule {
     pub fn check_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_CheckCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_CheckCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -4056,9 +4683,13 @@ impl GeneralModule {
     }
 
     /// Inherited: **Source:** `IGESData_GeneralModule.hxx`:97 - `IGESData_GeneralModule::CanCopy()`
-    pub fn can_copy(&self, CN: i32, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn can_copy(&self, CN: i32, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_CanCopy(self as *const Self, CN, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_CanCopy(
+                self as *const Self,
+                CN,
+                ent,
+            )
         })
     }
 
@@ -4066,12 +4697,12 @@ impl GeneralModule {
     pub fn copy_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_CopyCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_CopyCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -4085,12 +4716,12 @@ impl GeneralModule {
     pub fn renew_implied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &crate::ffi_types::HandleStandardTransient,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_RenewImpliedCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_RenewImpliedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -4104,11 +4735,11 @@ impl GeneralModule {
     pub fn when_delete_case(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         dispatched: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_WhenDeleteCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_WhenDeleteCase(
                 self as *const Self,
                 CN,
                 ent,
@@ -4121,12 +4752,12 @@ impl GeneralModule {
     pub fn name(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         shares: &crate::interface::ShareTool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_GeneralModule_inherited_Name(
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_Name(
                     self as *const Self,
                     CN,
                     ent,
@@ -4139,13 +4770,13 @@ impl GeneralModule {
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:52 - `Interface_GeneralModule::FillShared()`
     pub fn fill_shared(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_FillShared(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_FillShared(
                 self as *const Self,
                 model,
                 CN,
@@ -4159,23 +4790,27 @@ impl GeneralModule {
     pub fn share(
         &self,
         iter: &mut crate::interface::EntityIterator,
-        shared: &crate::ffi::HandleStandardTransient,
+        shared: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_Share(self as *const Self, iter, shared)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_Share(
+                self as *const Self,
+                iter,
+                shared,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_GeneralModule.hxx`:76 - `Interface_GeneralModule::ListImplied()`
     pub fn list_implied(
         &self,
-        model: &crate::ffi::HandleInterfaceInterfaceModel,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
         CN: i32,
-        ent: &crate::ffi::HandleStandardTransient,
+        ent: &crate::ffi_types::HandleStandardTransient,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_ListImplied(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_ListImplied(
                 self as *const Self,
                 model,
                 CN,
@@ -4189,12 +4824,12 @@ impl GeneralModule {
     pub fn dispatch(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_Dispatch(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_Dispatch(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -4208,12 +4843,12 @@ impl GeneralModule {
     pub fn new_copied_case(
         &self,
         CN: i32,
-        entfrom: &crate::ffi::HandleStandardTransient,
-        entto: &mut crate::ffi::HandleStandardTransient,
+        entfrom: &crate::ffi_types::HandleStandardTransient,
+        entto: &mut crate::ffi_types::HandleStandardTransient,
         TC: &mut crate::interface::CopyTool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_NewCopiedCase(
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_NewCopiedCase(
                 self as *const Self,
                 CN,
                 entfrom,
@@ -4224,16 +4859,22 @@ impl GeneralModule {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4241,7 +4882,9 @@ impl GeneralModule {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_GeneralModule_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4254,88 +4897,90 @@ impl GeneralModule {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_GeneralModule_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_GeneralModule_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawGeneralModule;
+pub use crate::ffi_types::HandleIGESDrawGeneralModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawGeneralModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawGeneralModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawGeneralModule {
     /// Dereference this Handle to access the underlying IGESDraw_GeneralModule
-    pub fn get(&self) -> &crate::ffi::IGESDraw_GeneralModule {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_GeneralModule {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawGeneralModule_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_GeneralModule
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_GeneralModule {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_GeneralModule {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawGeneralModule_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_GeneralModule> to Handle<IGESData_GeneralModule>
     pub fn to_handle_iges_data_general_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataGeneralModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawGeneralModule_to_HandleIGESDataGeneralModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_to_HandleIGESDataGeneralModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_GeneralModule> to Handle<Interface_GeneralModule>
     pub fn to_handle_interface_general_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceGeneralModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceGeneralModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawGeneralModule_to_HandleInterfaceGeneralModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_to_HandleInterfaceGeneralModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_GeneralModule> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawGeneralModule_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawGeneralModule_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -4348,11 +4993,11 @@ impl HandleIGESDrawGeneralModule {
 // ========================
 
 /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint`
-pub use crate::ffi::IGESDraw_HArray1OfConnectPoint as HArray1OfConnectPoint;
+pub use crate::ffi_types::IGESDraw_HArray1OfConnectPoint as HArray1OfConnectPoint;
 
 unsafe impl crate::CppDeletable for HArray1OfConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_HArray1OfConnectPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_destructor(ptr);
     }
 }
 
@@ -4361,7 +5006,7 @@ impl HArray1OfConnectPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_ctor(),
             ))
         }
     }
@@ -4370,7 +5015,9 @@ impl HArray1OfConnectPoint {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -4379,64 +5026,64 @@ impl HArray1OfConnectPoint {
     pub fn new_int2_handleigesdrawconnectpoint(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleIGESDrawConnectPoint,
+        theValue: &crate::ffi_types::HandleIGESDrawConnectPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_int2_handleigesdrawconnectpoint(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_ctor_int2_handleigesdrawconnectpoint(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::IGESDraw_HArray1OfConnectPoint()`
     pub fn new_handleigesdrawconnectpoint_int2_bool(
-        theBegin: &crate::ffi::HandleIGESDrawConnectPoint,
+        theBegin: &crate::ffi_types::HandleIGESDrawConnectPoint,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_handleigesdrawconnectpoint_int2_bool(theBegin, theLower, theUpper, arg3)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_ctor_handleigesdrawconnectpoint_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::IGESDraw_HArray1OfConnectPoint()`
     pub fn new_array1ofconnectpoint(
-        theOther: &crate::ffi::IGESDraw_Array1OfConnectPoint,
+        theOther: &crate::ffi_types::IGESDraw_Array1OfConnectPoint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_ctor_array1ofconnectpoint(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_ctor_array1ofconnectpoint(theOther)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::Array1()`
-    pub fn array1(&self) -> &crate::ffi::IGESDraw_Array1OfConnectPoint {
+    pub fn array1(&self) -> &crate::ffi_types::IGESDraw_Array1OfConnectPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESDraw_Array1OfConnectPoint {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::IGESDraw_Array1OfConnectPoint {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4444,7 +5091,7 @@ impl HArray1OfConnectPoint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4452,47 +5099,49 @@ impl HArray1OfConnectPoint {
     }
 
     /// **Source:** `IGESDraw_HArray1OfConnectPoint.hxx`:23 - `IGESDraw_HArray1OfConnectPoint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_HArray1OfConnectPoint_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawHArray1OfConnectPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawHArray1OfConnectPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4500,9 +5149,9 @@ impl HArray1OfConnectPoint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_IsKind(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -4513,7 +5162,9 @@ impl HArray1OfConnectPoint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4526,14 +5177,16 @@ impl HArray1OfConnectPoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -4542,7 +5195,7 @@ impl HArray1OfConnectPoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -4551,46 +5204,50 @@ impl HArray1OfConnectPoint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfConnectPoint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfConnectPoint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawHArray1OfConnectPoint;
+pub use crate::ffi_types::HandleIGESDrawHArray1OfConnectPoint;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawHArray1OfConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawHArray1OfConnectPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawHArray1OfConnectPoint {
     /// Dereference this Handle to access the underlying IGESDraw_HArray1OfConnectPoint
-    pub fn get(&self) -> &crate::ffi::IGESDraw_HArray1OfConnectPoint {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_HArray1OfConnectPoint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawHArray1OfConnectPoint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_HArray1OfConnectPoint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_HArray1OfConnectPoint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_HArray1OfConnectPoint {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawHArray1OfConnectPoint_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_HArray1OfConnectPoint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawHArray1OfConnectPoint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfConnectPoint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4600,11 +5257,11 @@ impl HandleIGESDrawHArray1OfConnectPoint {
 // ========================
 
 /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity`
-pub use crate::ffi::IGESDraw_HArray1OfViewKindEntity as HArray1OfViewKindEntity;
+pub use crate::ffi_types::IGESDraw_HArray1OfViewKindEntity as HArray1OfViewKindEntity;
 
 unsafe impl crate::CppDeletable for HArray1OfViewKindEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_HArray1OfViewKindEntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_destructor(ptr);
     }
 }
 
@@ -4613,7 +5270,7 @@ impl HArray1OfViewKindEntity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_ctor(),
             ))
         }
     }
@@ -4622,7 +5279,9 @@ impl HArray1OfViewKindEntity {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -4631,64 +5290,64 @@ impl HArray1OfViewKindEntity {
     pub fn new_int2_handleigesdataviewkindentity(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::HandleIGESDataViewKindEntity,
+        theValue: &crate::ffi_types::HandleIGESDataViewKindEntity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_int2_handleigesdataviewkindentity(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_ctor_int2_handleigesdataviewkindentity(theLower, theUpper, theValue)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::IGESDraw_HArray1OfViewKindEntity()`
     pub fn new_handleigesdataviewkindentity_int2_bool(
-        theBegin: &crate::ffi::HandleIGESDataViewKindEntity,
+        theBegin: &crate::ffi_types::HandleIGESDataViewKindEntity,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_handleigesdataviewkindentity_int2_bool(theBegin, theLower, theUpper, arg3)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_ctor_handleigesdataviewkindentity_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::IGESDraw_HArray1OfViewKindEntity()`
     pub fn new_array1ofviewkindentity(
-        theOther: &crate::ffi::IGESDraw_Array1OfViewKindEntity,
+        theOther: &crate::ffi_types::IGESDraw_Array1OfViewKindEntity,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_ctor_array1ofviewkindentity(theOther),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_ctor_array1ofviewkindentity(theOther)))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::Array1()`
-    pub fn array1(&self) -> &crate::ffi::IGESDraw_Array1OfViewKindEntity {
+    pub fn array1(&self) -> &crate::ffi_types::IGESDraw_Array1OfViewKindEntity {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_HArray1OfViewKindEntity_array1(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_array1(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::IGESDraw_Array1OfViewKindEntity {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::IGESDraw_Array1OfViewKindEntity {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::IGESDraw_HArray1OfViewKindEntity_change_array1(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_change_array1(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_HArray1OfViewKindEntity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4696,7 +5355,7 @@ impl HArray1OfViewKindEntity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4704,10 +5363,10 @@ impl HArray1OfViewKindEntity {
     }
 
     /// **Source:** `IGESDraw_HArray1OfViewKindEntity.hxx`:23 - `IGESDraw_HArray1OfViewKindEntity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_get_type_descriptor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_get_type_descriptor(),
             ))
         }
     }
@@ -4716,7 +5375,7 @@ impl HArray1OfViewKindEntity {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_as_Standard_Transient(
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -4726,29 +5385,27 @@ impl HArray1OfViewKindEntity {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawHArray1OfViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4756,9 +5413,9 @@ impl HArray1OfViewKindEntity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_IsKind(
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -4769,7 +5426,9 @@ impl HArray1OfViewKindEntity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4782,71 +5441,73 @@ impl HArray1OfViewKindEntity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_HArray1OfViewKindEntity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_HArray1OfViewKindEntity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawHArray1OfViewKindEntity;
+pub use crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawHArray1OfViewKindEntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawHArray1OfViewKindEntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawHArray1OfViewKindEntity {
     /// Dereference this Handle to access the underlying IGESDraw_HArray1OfViewKindEntity
-    pub fn get(&self) -> &crate::ffi::IGESDraw_HArray1OfViewKindEntity {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_HArray1OfViewKindEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawHArray1OfViewKindEntity_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_HArray1OfViewKindEntity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_HArray1OfViewKindEntity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_HArray1OfViewKindEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawHArray1OfViewKindEntity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_HArray1OfViewKindEntity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawHArray1OfViewKindEntity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawHArray1OfViewKindEntity_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4861,11 +5522,11 @@ impl HandleIGESDrawHArray1OfViewKindEntity {
 ///
 /// Permits one or more displays for the
 /// entity labels of an entity
-pub use crate::ffi::IGESDraw_LabelDisplay as LabelDisplay;
+pub use crate::ffi_types::IGESDraw_LabelDisplay as LabelDisplay;
 
 unsafe impl crate::CppDeletable for LabelDisplay {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_LabelDisplay_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_destructor(ptr);
     }
 }
 
@@ -4873,7 +5534,9 @@ impl LabelDisplay {
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:47 - `IGESDraw_LabelDisplay::IGESDraw_LabelDisplay()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_LabelDisplay_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_ctor(),
+            ))
         }
     }
 
@@ -4890,14 +5553,14 @@ impl LabelDisplay {
     /// not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allTextLocations: &crate::ffi::HandleTColgpHArray1OfXYZ,
-        allLeaderEntities: &crate::ffi::HandleIGESDimenHArray1OfLeaderArrow,
-        allLabelLevels: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allDisplayedEntities: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allViews: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allTextLocations: &crate::ffi_types::HandleTColgpHArray1OfXYZ,
+        allLeaderEntities: &crate::ffi_types::HandleIGESDimenHArray1OfLeaderArrow,
+        allLabelLevels: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allDisplayedEntities: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_init(
                 self as *mut Self,
                 allViews,
                 allTextLocations,
@@ -4912,7 +5575,7 @@ impl LabelDisplay {
     /// returns the number of label placements in <me>
     pub fn nb_labels(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_nb_labels(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_nb_labels(self as *const Self)
         })
     }
 
@@ -4922,10 +5585,13 @@ impl LabelDisplay {
     pub fn view_item(
         &self,
         ViewIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_view_item(self as *const Self, ViewIndex),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_view_item(
+                    self as *const Self,
+                    ViewIndex,
+                ),
             ))
         }
     }
@@ -4937,7 +5603,10 @@ impl LabelDisplay {
     pub fn text_location(&self, ViewIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_text_location(self as *const Self, ViewIndex),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_text_location(
+                    self as *const Self,
+                    ViewIndex,
+                ),
             ))
         }
     }
@@ -4948,10 +5617,13 @@ impl LabelDisplay {
     pub fn leader_entity(
         &self,
         ViewIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDimenLeaderArrow> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDimenLeaderArrow> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_leader_entity(self as *const Self, ViewIndex),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_leader_entity(
+                    self as *const Self,
+                    ViewIndex,
+                ),
             ))
         }
     }
@@ -4962,7 +5634,10 @@ impl LabelDisplay {
     /// raises an exception if ViewIndex <= 0 or ViewIndex > NbLabels().
     pub fn label_level(&self, ViewIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_label_level(self as *const Self, ViewIndex)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_label_level(
+                self as *const Self,
+                ViewIndex,
+            )
         })
     }
 
@@ -4972,10 +5647,10 @@ impl LabelDisplay {
     pub fn displayed_entity(
         &self,
         EntityIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_displayed_entity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_displayed_entity(
                     self as *const Self,
                     EntityIndex,
                 ),
@@ -4990,7 +5665,7 @@ impl LabelDisplay {
     pub fn transformed_text_location(&self, ViewIndex: i32) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_transformed_text_location(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_transformed_text_location(
                     self as *const Self,
                     ViewIndex,
                 ),
@@ -4999,9 +5674,9 @@ impl LabelDisplay {
     }
 
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:97 - `IGESDraw_LabelDisplay::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_LabelDisplay_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -5011,7 +5686,7 @@ impl LabelDisplay {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5019,16 +5694,22 @@ impl LabelDisplay {
     }
 
     /// **Source:** `IGESDraw_LabelDisplay.hxx`:97 - `IGESDraw_LabelDisplay::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_LabelDisplay_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_LabelDisplayEntity
     pub fn as_iges_data_label_display_entity(&self) -> &crate::iges_data::LabelDisplayEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_LabelDisplay_as_IGESData_LabelDisplayEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_IGESData_LabelDisplayEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5037,57 +5718,61 @@ impl LabelDisplay {
         &mut self,
     ) -> &mut crate::iges_data::LabelDisplayEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_as_IGESData_LabelDisplayEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_IGESData_LabelDisplayEntity_mut(self as *mut Self))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_LabelDisplay_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_LabelDisplay_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_LabelDisplay_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_LabelDisplay_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawLabelDisplay> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawLabelDisplay> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -5096,7 +5781,9 @@ impl LabelDisplay {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5104,14 +5791,18 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -5119,10 +5810,10 @@ impl LabelDisplay {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -5133,15 +5824,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5149,7 +5844,9 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5157,15 +5854,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5173,7 +5874,9 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5181,15 +5884,17 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5197,34 +5902,40 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5232,15 +5943,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5248,15 +5963,21 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5264,49 +5985,61 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -5314,15 +6047,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5330,15 +6067,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5346,14 +6087,18 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -5361,10 +6106,10 @@ impl LabelDisplay {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -5373,44 +6118,66 @@ impl LabelDisplay {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -5421,21 +6188,25 @@ impl LabelDisplay {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -5447,15 +6218,19 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5464,7 +6239,9 @@ impl LabelDisplay {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5473,7 +6250,9 @@ impl LabelDisplay {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5482,7 +6261,9 @@ impl LabelDisplay {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5490,15 +6271,17 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5506,7 +6289,7 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_ArePresentAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_ArePresentAssociativities(
                 self as *const Self,
             )
         })
@@ -5515,7 +6298,9 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -5523,15 +6308,17 @@ impl LabelDisplay {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -5541,11 +6328,11 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -5554,30 +6341,40 @@ impl LabelDisplay {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -5585,15 +6382,17 @@ impl LabelDisplay {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -5603,12 +6402,12 @@ impl LabelDisplay {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_LabelDisplay_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -5618,23 +6417,29 @@ impl LabelDisplay {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -5644,16 +6449,22 @@ impl LabelDisplay {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -5661,7 +6472,9 @@ impl LabelDisplay {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_LabelDisplay_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -5674,75 +6487,81 @@ impl LabelDisplay {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_LabelDisplay_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_LabelDisplay_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawLabelDisplay;
+pub use crate::ffi_types::HandleIGESDrawLabelDisplay;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawLabelDisplay {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawLabelDisplay_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawLabelDisplay {
     /// Dereference this Handle to access the underlying IGESDraw_LabelDisplay
-    pub fn get(&self) -> &crate::ffi::IGESDraw_LabelDisplay {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_LabelDisplay {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawLabelDisplay_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_LabelDisplay
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_LabelDisplay {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_LabelDisplay {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawLabelDisplay_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_LabelDisplay> to Handle<IGESData_LabelDisplayEntity>
     pub fn to_handle_label_display_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawLabelDisplay_to_HandleIGESDataLabelDisplayEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_to_HandleIGESDataLabelDisplayEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_LabelDisplay> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawLabelDisplay_to_HandleIGESDataIGESEntity(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_to_HandleIGESDataIGESEntity(
                     self as *const Self,
                 ),
             ))
@@ -5750,10 +6569,12 @@ impl HandleIGESDrawLabelDisplay {
     }
 
     /// Upcast Handle<IGESDraw_LabelDisplay> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawLabelDisplay_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawLabelDisplay_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -5771,11 +6592,11 @@ impl HandleIGESDrawLabelDisplay {
 ///
 /// Used to specify each instance of Network Subfigure
 /// Definition Entity (Type 320, Form 0).
-pub use crate::ffi::IGESDraw_NetworkSubfigure as NetworkSubfigure;
+pub use crate::ffi_types::IGESDraw_NetworkSubfigure as NetworkSubfigure;
 
 unsafe impl crate::CppDeletable for NetworkSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_NetworkSubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_destructor(ptr);
     }
 }
 
@@ -5784,7 +6605,7 @@ impl NetworkSubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_ctor(),
             ))
         }
     }
@@ -5803,16 +6624,16 @@ impl NetworkSubfigure {
     /// - allConnectPoints : Associated Connect Point Entities
     pub fn init(
         &mut self,
-        aDefinition: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        aDefinition: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         aTranslation: &crate::gp::XYZ,
         aScaleFactor: &crate::gp::XYZ,
         aTypeFlag: i32,
-        aDesignator: &crate::ffi::HandleTCollectionHAsciiString,
-        aTemplate: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
-        allConnectPoints: &crate::ffi::HandleIGESDrawHArray1OfConnectPoint,
+        aDesignator: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aTemplate: &crate::ffi_types::HandleIGESGraphTextDisplayTemplate,
+        allConnectPoints: &crate::ffi_types::HandleIGESDrawHArray1OfConnectPoint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_init(
                 self as *mut Self,
                 aDefinition,
                 aTranslation,
@@ -5829,10 +6650,12 @@ impl NetworkSubfigure {
     /// returns Network Subfigure Definition Entity specified by this entity
     pub fn subfigure_definition(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigureDef> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawNetworkSubfigureDef> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_subfigure_definition(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_subfigure_definition(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5843,7 +6666,9 @@ impl NetworkSubfigure {
     pub fn translation(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_translation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_translation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5854,7 +6679,9 @@ impl NetworkSubfigure {
     pub fn transformed_translation(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_transformed_translation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_transformed_translation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5864,7 +6691,9 @@ impl NetworkSubfigure {
     pub fn scale_factors(&self) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_scale_factors(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_scale_factors(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5877,7 +6706,7 @@ impl NetworkSubfigure {
     /// = 2 : Physical
     pub fn type_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_type_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_type_flag(self as *const Self)
         })
     }
 
@@ -5885,10 +6714,12 @@ impl NetworkSubfigure {
     /// returns the primary reference designator
     pub fn reference_designator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_reference_designator(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_reference_designator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5898,7 +6729,9 @@ impl NetworkSubfigure {
     /// else False
     pub fn has_designator_template(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_has_designator_template(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_has_designator_template(
+                self as *const Self,
+            )
         })
     }
 
@@ -5907,10 +6740,12 @@ impl NetworkSubfigure {
     /// or null. If null, no Text Display Template Entity specified
     pub fn designator_template(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphTextDisplayTemplate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_designator_template(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_designator_template(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5919,7 +6754,9 @@ impl NetworkSubfigure {
     /// returns the number of associated Connect Point Entities
     pub fn nb_connect_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_nb_connect_points(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_nb_connect_points(
+                self as *const Self,
+            )
         })
     }
 
@@ -5929,20 +6766,25 @@ impl NetworkSubfigure {
     pub fn connect_point(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawConnectPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawConnectPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_connect_point(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_connect_point(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigure.hxx`:104 - `IGESDraw_NetworkSubfigure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_NetworkSubfigure_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5950,7 +6792,7 @@ impl NetworkSubfigure {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -5958,18 +6800,22 @@ impl NetworkSubfigure {
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigure.hxx`:104 - `IGESDraw_NetworkSubfigure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_NetworkSubfigure_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_NetworkSubfigure_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5977,7 +6823,9 @@ impl NetworkSubfigure {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_as_IGESData_IGESEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -5985,9 +6833,11 @@ impl NetworkSubfigure {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_NetworkSubfigure_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -5995,7 +6845,9 @@ impl NetworkSubfigure {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6003,10 +6855,10 @@ impl NetworkSubfigure {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawNetworkSubfigure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -6015,7 +6867,9 @@ impl NetworkSubfigure {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6023,14 +6877,18 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -6038,10 +6896,10 @@ impl NetworkSubfigure {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -6052,15 +6910,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6068,7 +6930,9 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6076,15 +6940,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6092,7 +6960,9 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6100,15 +6970,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6116,34 +6990,42 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6151,15 +7033,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6167,15 +7053,21 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6183,49 +7075,63 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -6233,15 +7139,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6249,15 +7159,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6265,14 +7179,18 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -6280,10 +7198,10 @@ impl NetworkSubfigure {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -6292,23 +7210,33 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -6317,23 +7245,31 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -6344,21 +7280,25 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -6370,15 +7310,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6387,7 +7331,9 @@ impl NetworkSubfigure {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6396,7 +7342,9 @@ impl NetworkSubfigure {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6405,7 +7353,7 @@ impl NetworkSubfigure {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -6415,15 +7363,19 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6431,16 +7383,16 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -6448,7 +7400,7 @@ impl NetworkSubfigure {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -6456,9 +7408,9 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -6468,11 +7420,11 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -6481,23 +7433,29 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -6506,7 +7464,9 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -6514,15 +7474,17 @@ impl NetworkSubfigure {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -6532,12 +7494,12 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -6547,23 +7509,29 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -6573,16 +7541,22 @@ impl NetworkSubfigure {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6590,7 +7564,9 @@ impl NetworkSubfigure {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_NetworkSubfigure_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6603,78 +7579,84 @@ impl NetworkSubfigure {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigure_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigure_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawNetworkSubfigure;
+pub use crate::ffi_types::HandleIGESDrawNetworkSubfigure;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawNetworkSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawNetworkSubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawNetworkSubfigure {
     /// Dereference this Handle to access the underlying IGESDraw_NetworkSubfigure
-    pub fn get(&self) -> &crate::ffi::IGESDraw_NetworkSubfigure {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_NetworkSubfigure {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawNetworkSubfigure_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_NetworkSubfigure
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_NetworkSubfigure {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_NetworkSubfigure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawNetworkSubfigure_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_NetworkSubfigure> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawNetworkSubfigure_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_NetworkSubfigure> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawNetworkSubfigure_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigure_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -6696,11 +7678,11 @@ impl HandleIGESDrawNetworkSubfigure {
 /// in the Network Subfigure Definition, their order must
 /// be identical, and any unused points of connection in
 /// the instance must be indicated by a null(zero) pointer.
-pub use crate::ffi::IGESDraw_NetworkSubfigureDef as NetworkSubfigureDef;
+pub use crate::ffi_types::IGESDraw_NetworkSubfigureDef as NetworkSubfigureDef;
 
 unsafe impl crate::CppDeletable for NetworkSubfigureDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_NetworkSubfigureDef_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_destructor(ptr);
     }
 }
 
@@ -6709,7 +7691,7 @@ impl NetworkSubfigureDef {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_ctor(),
             ))
         }
     }
@@ -6731,15 +7713,15 @@ impl NetworkSubfigureDef {
     pub fn init(
         &mut self,
         aDepth: i32,
-        aName: &crate::ffi::HandleTCollectionHAsciiString,
-        allEntities: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        aName: &crate::ffi_types::HandleTCollectionHAsciiString,
+        allEntities: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
         aTypeFlag: i32,
-        aDesignator: &crate::ffi::HandleTCollectionHAsciiString,
-        aTemplate: &crate::ffi::HandleIGESGraphTextDisplayTemplate,
-        allPointEntities: &crate::ffi::HandleIGESDrawHArray1OfConnectPoint,
+        aDesignator: &crate::ffi_types::HandleTCollectionHAsciiString,
+        aTemplate: &crate::ffi_types::HandleIGESGraphTextDisplayTemplate,
+        allPointEntities: &crate::ffi_types::HandleIGESDrawHArray1OfConnectPoint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_init(
                 self as *mut Self,
                 aDepth,
                 aName,
@@ -6759,16 +7741,16 @@ impl NetworkSubfigureDef {
     /// Thus, the two may be nested.
     pub fn depth(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_depth(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_depth(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:79 - `IGESDraw_NetworkSubfigureDef::Name()`
     /// returns the Subfigure Name
-    pub fn name(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_name(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_name(self as *const Self),
             ))
         }
     }
@@ -6778,7 +7760,9 @@ impl NetworkSubfigureDef {
     /// of primary reference designator and Control Points
     pub fn nb_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_nb_entities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_nb_entities(
+                self as *const Self,
+            )
         })
     }
 
@@ -6786,10 +7770,16 @@ impl NetworkSubfigureDef {
     /// returns the Index'th IGESEntity in subfigure exclusive of primary
     /// reference designator and Control Points
     /// raises exception if Index  <=0 or Index > NbEntities()
-    pub fn entity(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn entity(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_entity(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_entity(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -6800,16 +7790,18 @@ impl NetworkSubfigureDef {
     /// = 2 : Physical design
     pub fn type_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_type_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_type_flag(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:96 - `IGESDraw_NetworkSubfigureDef::Designator()`
     /// returns Primary Reference Designator
-    pub fn designator(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn designator(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_designator(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_designator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6819,7 +7811,9 @@ impl NetworkSubfigureDef {
     /// primary designator else returns False
     pub fn has_designator_template(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_has_designator_template(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_has_designator_template(
+                self as *const Self,
+            )
         })
     }
 
@@ -6828,10 +7822,12 @@ impl NetworkSubfigureDef {
     /// else return NULL Handle
     pub fn designator_template(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphTextDisplayTemplate> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphTextDisplayTemplate> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_designator_template(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_designator_template(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6840,7 +7836,9 @@ impl NetworkSubfigureDef {
     /// returns the Number Of Associated(child) Connect Point Entities
     pub fn nb_point_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_nb_point_entities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_nb_point_entities(
+                self as *const Self,
+            )
         })
     }
 
@@ -6850,7 +7848,10 @@ impl NetworkSubfigureDef {
     /// raises exception if Index is out of bound
     pub fn has_point_entity(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_has_point_entity(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_has_point_entity(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -6860,20 +7861,25 @@ impl NetworkSubfigureDef {
     pub fn point_entity(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawConnectPoint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawConnectPoint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_point_entity(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_point_entity(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:118 - `IGESDraw_NetworkSubfigureDef::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_NetworkSubfigureDef_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6881,7 +7887,7 @@ impl NetworkSubfigureDef {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6889,18 +7895,22 @@ impl NetworkSubfigureDef {
     }
 
     /// **Source:** `IGESDraw_NetworkSubfigureDef.hxx`:118 - `IGESDraw_NetworkSubfigureDef::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_NetworkSubfigureDef_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_NetworkSubfigureDef_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6908,7 +7918,7 @@ impl NetworkSubfigureDef {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_as_IGESData_IGESEntity_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_as_IGESData_IGESEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -6918,9 +7928,11 @@ impl NetworkSubfigureDef {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_NetworkSubfigureDef_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6928,7 +7940,7 @@ impl NetworkSubfigureDef {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_as_Standard_Transient_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -6938,10 +7950,10 @@ impl NetworkSubfigureDef {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawNetworkSubfigureDef> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawNetworkSubfigureDef> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -6950,7 +7962,9 @@ impl NetworkSubfigureDef {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6958,14 +7972,18 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -6973,10 +7991,10 @@ impl NetworkSubfigureDef {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -6987,15 +8005,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7003,7 +8025,9 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -7011,15 +8035,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7027,7 +8055,9 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -7035,15 +8065,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7051,34 +8085,42 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7086,15 +8128,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7102,15 +8148,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_LabelDisplay(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_LabelDisplay(
                     self as *const Self,
                 ),
             ))
@@ -7120,14 +8170,16 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_SubordinateStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_SubordinateStatus(
                 self as *const Self,
             )
         })
@@ -7136,35 +8188,45 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -7172,15 +8234,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7188,15 +8254,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7204,7 +8274,7 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -7213,7 +8283,9 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -7221,10 +8293,10 @@ impl NetworkSubfigureDef {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -7233,23 +8305,33 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -7258,9 +8340,9 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitLevel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitLevel(
                 self as *mut Self,
                 ent,
                 val,
@@ -7269,9 +8351,9 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -7282,7 +8364,7 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -7293,9 +8375,9 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -7306,12 +8388,12 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -7323,15 +8405,17 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_UniqueParent(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_UniqueParent(
                     self as *const Self,
                 ),
             ))
@@ -7342,7 +8426,9 @@ impl NetworkSubfigureDef {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7351,7 +8437,7 @@ impl NetworkSubfigureDef {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -7362,7 +8448,7 @@ impl NetworkSubfigureDef {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -7372,15 +8458,19 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7388,16 +8478,14 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_NbAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_NbAssociativities(
                 self as *const Self,
             )
         })
@@ -7407,7 +8495,7 @@ impl NetworkSubfigureDef {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -7415,48 +8503,46 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_NbTypedAssociativities(
-                self as *const Self,
-                atype,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_NbTypedAssociativities(self as *const Self, atype)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -7465,7 +8551,9 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -7473,15 +8561,17 @@ impl NetworkSubfigureDef {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -7491,12 +8581,12 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -7506,16 +8596,19 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_RemoveProperty(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_RemoveProperty(
                 self as *mut Self,
                 ent,
             )
@@ -7525,7 +8618,7 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -7535,9 +8628,9 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -7545,9 +8638,12 @@ impl NetworkSubfigureDef {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7555,7 +8651,9 @@ impl NetworkSubfigureDef {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7568,14 +8666,16 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -7584,7 +8684,7 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -7593,57 +8693,59 @@ impl NetworkSubfigureDef {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_NetworkSubfigureDef_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_NetworkSubfigureDef_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawNetworkSubfigureDef;
+pub use crate::ffi_types::HandleIGESDrawNetworkSubfigureDef;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawNetworkSubfigureDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawNetworkSubfigureDef_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawNetworkSubfigureDef {
     /// Dereference this Handle to access the underlying IGESDraw_NetworkSubfigureDef
-    pub fn get(&self) -> &crate::ffi::IGESDraw_NetworkSubfigureDef {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_NetworkSubfigureDef {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawNetworkSubfigureDef_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_NetworkSubfigureDef
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_NetworkSubfigureDef {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_NetworkSubfigureDef {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawNetworkSubfigureDef_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_NetworkSubfigureDef> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawNetworkSubfigureDef_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_NetworkSubfigureDef> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawNetworkSubfigureDef_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawNetworkSubfigureDef_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -7667,11 +8769,11 @@ impl HandleIGESDrawNetworkSubfigureDef {
 /// A perspective view is formed by all projectors that
 /// emanate from the Centre-of-Projection and pass
 /// through the view plane.
-pub use crate::ffi::IGESDraw_PerspectiveView as PerspectiveView;
+pub use crate::ffi_types::IGESDraw_PerspectiveView as PerspectiveView;
 
 unsafe impl crate::CppDeletable for PerspectiveView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_PerspectiveView_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_destructor(ptr);
     }
 }
 
@@ -7680,7 +8782,7 @@ impl PerspectiveView {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_ctor(),
             ))
         }
     }
@@ -7716,7 +8818,7 @@ impl PerspectiveView {
         aFrontPlaneDistance: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_init(
                 self as *mut Self,
                 aViewNumber,
                 aScaleFactor,
@@ -7738,7 +8840,7 @@ impl PerspectiveView {
     /// Returns True (for a single view)
     pub fn is_single(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_is_single(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_is_single(self as *const Self)
         })
     }
 
@@ -7746,16 +8848,22 @@ impl PerspectiveView {
     /// Returns 1 (single view)
     pub fn nb_views(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_nb_views(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_nb_views(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_PerspectiveView.hxx`:89 - `IGESDraw_PerspectiveView::ViewItem()`
     /// For a single view, returns <me> whatever <num>
-    pub fn view_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_item(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_view_item(self as *const Self, num),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_item(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -7764,7 +8872,7 @@ impl PerspectiveView {
     /// returns the view number associated with <me>
     pub fn view_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_view_number(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_number(self as *const Self)
         })
     }
 
@@ -7772,7 +8880,7 @@ impl PerspectiveView {
     /// returns the scale factor associated with <me>
     pub fn scale_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_scale_factor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_scale_factor(self as *const Self)
         })
     }
 
@@ -7781,7 +8889,9 @@ impl PerspectiveView {
     pub fn view_normal_vector(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_view_normal_vector(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_normal_vector(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7791,7 +8901,9 @@ impl PerspectiveView {
     pub fn view_reference_point(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_view_reference_point(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_reference_point(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7801,7 +8913,9 @@ impl PerspectiveView {
     pub fn center_of_projection(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_center_of_projection(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_center_of_projection(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7811,7 +8925,9 @@ impl PerspectiveView {
     pub fn view_up_vector(&self) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_view_up_vector(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_up_vector(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7820,7 +8936,9 @@ impl PerspectiveView {
     /// returns the View plane distance (model space)
     pub fn view_plane_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_view_plane_distance(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_plane_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -7829,7 +8947,7 @@ impl PerspectiveView {
     pub fn top_left(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_top_left(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_top_left(self as *const Self),
             ))
         }
     }
@@ -7839,7 +8957,9 @@ impl PerspectiveView {
     pub fn bottom_right(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_bottom_right(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_bottom_right(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7852,7 +8972,7 @@ impl PerspectiveView {
     /// 3 = Back and front clipping planes ON
     pub fn depth_clip(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_depth_clip(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_depth_clip(self as *const Self)
         })
     }
 
@@ -7861,7 +8981,9 @@ impl PerspectiveView {
     /// the back clipping plane
     pub fn back_plane_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_back_plane_distance(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_back_plane_distance(
+                self as *const Self,
+            )
         })
     }
 
@@ -7870,16 +8992,20 @@ impl PerspectiveView {
     /// the front clipping plane
     pub fn front_plane_distance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_front_plane_distance(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_front_plane_distance(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_PerspectiveView.hxx`:135 - `IGESDraw_PerspectiveView::ViewMatrix()`
     /// returns the Transformation Matrix
-    pub fn view_matrix(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn view_matrix(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_view_matrix(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_view_matrix(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -7890,17 +9016,22 @@ impl PerspectiveView {
     pub fn model_to_view(&self, coords: &crate::gp::XYZ) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_model_to_view(self as *const Self, coords),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_model_to_view(
+                    self as *const Self,
+                    coords,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_PerspectiveView.hxx`:141 - `IGESDraw_PerspectiveView::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_PerspectiveView_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7908,7 +9039,7 @@ impl PerspectiveView {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7916,18 +9047,22 @@ impl PerspectiveView {
     }
 
     /// **Source:** `IGESDraw_PerspectiveView.hxx`:141 - `IGESDraw_PerspectiveView::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_PerspectiveView_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity
     pub fn as_iges_data_view_kind_entity(&self) -> &crate::iges_data::ViewKindEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_PerspectiveView_as_IGESData_ViewKindEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_IGESData_ViewKindEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7935,7 +9070,7 @@ impl PerspectiveView {
     pub fn as_iges_data_view_kind_entity_mut(&mut self) -> &mut crate::iges_data::ViewKindEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_as_IGESData_ViewKindEntity_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_IGESData_ViewKindEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -7945,9 +9080,11 @@ impl PerspectiveView {
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_PerspectiveView_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7955,7 +9092,9 @@ impl PerspectiveView {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_as_IGESData_IGESEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7963,9 +9102,11 @@ impl PerspectiveView {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_PerspectiveView_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7973,7 +9114,9 @@ impl PerspectiveView {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7981,10 +9124,10 @@ impl PerspectiveView {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawPerspectiveView> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawPerspectiveView> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -7993,7 +9136,9 @@ impl PerspectiveView {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8001,14 +9146,18 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -8016,10 +9165,10 @@ impl PerspectiveView {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -8030,15 +9179,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8046,7 +9199,9 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -8054,15 +9209,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8070,7 +9229,9 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -8078,15 +9239,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8094,34 +9259,42 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8129,15 +9302,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8145,15 +9322,21 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8161,49 +9344,63 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -8211,15 +9408,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8227,15 +9428,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8243,14 +9448,18 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -8258,10 +9467,10 @@ impl PerspectiveView {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -8270,23 +9479,33 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -8295,23 +9514,31 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -8322,21 +9549,25 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -8348,15 +9579,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8365,7 +9600,9 @@ impl PerspectiveView {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8374,7 +9611,9 @@ impl PerspectiveView {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8383,7 +9622,7 @@ impl PerspectiveView {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -8393,15 +9632,19 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8409,7 +9652,7 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_ArePresentAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_ArePresentAssociativities(
                 self as *const Self,
             )
         })
@@ -8418,7 +9661,9 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -8426,15 +9671,17 @@ impl PerspectiveView {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -8444,11 +9691,11 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -8457,30 +9704,40 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -8488,15 +9745,17 @@ impl PerspectiveView {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -8506,12 +9765,12 @@ impl PerspectiveView {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_PerspectiveView_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -8521,23 +9780,29 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -8547,16 +9812,22 @@ impl PerspectiveView {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8564,7 +9835,9 @@ impl PerspectiveView {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_PerspectiveView_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8577,91 +9850,93 @@ impl PerspectiveView {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_PerspectiveView_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_PerspectiveView_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawPerspectiveView;
+pub use crate::ffi_types::HandleIGESDrawPerspectiveView;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawPerspectiveView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawPerspectiveView_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawPerspectiveView {
     /// Dereference this Handle to access the underlying IGESDraw_PerspectiveView
-    pub fn get(&self) -> &crate::ffi::IGESDraw_PerspectiveView {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_PerspectiveView {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawPerspectiveView_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_PerspectiveView
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_PerspectiveView {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_PerspectiveView {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawPerspectiveView_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_PerspectiveView> to Handle<IGESData_ViewKindEntity>
     pub fn to_handle_view_kind_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawPerspectiveView_to_HandleIGESDataViewKindEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_to_HandleIGESDataViewKindEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_PerspectiveView> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawPerspectiveView_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_PerspectiveView> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawPerspectiveView_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPerspectiveView_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8676,11 +9951,11 @@ impl HandleIGESDrawPerspectiveView {
 ///
 /// Indicates that a collection of entities is coplanar.The
 /// entities may be geometric, annotative, and/or structural.
-pub use crate::ffi::IGESDraw_Planar as Planar;
+pub use crate::ffi_types::IGESDraw_Planar as Planar;
 
 unsafe impl crate::CppDeletable for Planar {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_Planar_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_Planar_destructor(ptr);
     }
 }
 
@@ -8688,7 +9963,9 @@ impl Planar {
     /// **Source:** `IGESDraw_Planar.hxx`:39 - `IGESDraw_Planar::IGESDraw_Planar()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Planar_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_ctor(),
+            ))
         }
     }
 
@@ -8700,11 +9977,11 @@ impl Planar {
     pub fn init(
         &mut self,
         nbMats: i32,
-        aTransformationMatrix: &crate::ffi::HandleIGESGeomTransformationMatrix,
-        allEntities: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        aTransformationMatrix: &crate::ffi_types::HandleIGESGeomTransformationMatrix,
+        allEntities: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_init(
                 self as *mut Self,
                 nbMats,
                 aTransformationMatrix,
@@ -8716,14 +9993,18 @@ impl Planar {
     /// **Source:** `IGESDraw_Planar.hxx`:50 - `IGESDraw_Planar::NbMatrices()`
     /// returns the number of Transformation matrices in <me>
     pub fn nb_matrices(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_Planar_nb_matrices(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_nb_matrices(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_Planar.hxx`:54 - `IGESDraw_Planar::NbEntities()`
     /// returns the number of Entities in the plane pointed to by this
     /// associativity
     pub fn nb_entities(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_Planar_nb_entities(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_nb_entities(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_Planar.hxx`:58 - `IGESDraw_Planar::IsIdentityMatrix()`
@@ -8731,7 +10012,7 @@ impl Planar {
     /// i.e:- No Matrix defined.
     pub fn is_identity_matrix(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_is_identity_matrix(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_is_identity_matrix(self as *const Self)
         })
     }
 
@@ -8740,10 +10021,10 @@ impl Planar {
     /// into space or zero
     pub fn transform_matrix(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomTransformationMatrix> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomTransformationMatrix> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_transform_matrix(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_transform_matrix(self as *const Self),
             ))
         }
     }
@@ -8755,19 +10036,23 @@ impl Planar {
     pub fn entity(
         &self,
         EntityIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Planar_entity(
-                self as *const Self,
-                EntityIndex,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_entity(
+                    self as *const Self,
+                    EntityIndex,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_Planar.hxx`:69 - `IGESDraw_Planar::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_Planar_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_Planar_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -8775,7 +10060,7 @@ impl Planar {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_Planar_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8783,54 +10068,66 @@ impl Planar {
     }
 
     /// **Source:** `IGESDraw_Planar.hxx`:69 - `IGESDraw_Planar::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_Planar_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Planar_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Planar_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Planar_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Planar_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawPlanar> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawPlanar> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Planar_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_to_handle(obj.into_raw()),
+            ))
         }
     }
 
@@ -8838,7 +10135,7 @@ impl Planar {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_IGESType(self as *const Self),
             ))
         }
     }
@@ -8846,14 +10143,14 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_TypeNumber(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_FormNumber(self as *const Self)
         })
     }
 
@@ -8861,10 +10158,13 @@ impl Planar {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_DirFieldEntity(self as *const Self, fieldnum),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
             ))
         }
     }
@@ -8872,15 +10172,17 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasStructure(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8888,7 +10190,7 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DefLineFont(self as *const Self)
         }))
         .unwrap()
     }
@@ -8896,15 +10198,15 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_RankLineFont(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_LineFont(self as *const Self),
             ))
         }
     }
@@ -8912,7 +10214,7 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DefLevel(self as *const Self)
         }))
         .unwrap()
     }
@@ -8920,15 +10222,17 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -8936,34 +10240,36 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_View(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_ViewList(self as *const Self),
             ))
         }
     }
@@ -8971,15 +10277,15 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasTransf(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Transf(self as *const Self),
             ))
         }
     }
@@ -8987,15 +10293,21 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9003,49 +10315,55 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_BlankStatus(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_LineWeight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DefColor(self as *const Self)
         }))
         .unwrap()
     }
@@ -9053,15 +10371,15 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_RankColor(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Color(self as *const Self),
             ))
         }
     }
@@ -9069,15 +10387,17 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasShortLabel(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9085,14 +10405,18 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -9100,10 +10424,10 @@ impl Planar {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -9112,44 +10436,60 @@ impl Planar {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitTransf(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitView(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -9160,36 +10500,47 @@ impl Planar {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasOneParent(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9198,7 +10549,7 @@ impl Planar {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Location(self as *const Self),
             ))
         }
     }
@@ -9207,7 +10558,9 @@ impl Planar {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9216,7 +10569,9 @@ impl Planar {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9224,15 +10579,17 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9240,14 +10597,18 @@ impl Planar {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_ArePresentAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -9255,26 +10616,31 @@ impl Planar {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_NbTypedAssociativities(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -9283,30 +10649,38 @@ impl Planar {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_NbProperties(self as *const Self)
         })
     }
 
@@ -9314,27 +10688,32 @@ impl Planar {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_NbTypedProperties(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Planar_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -9344,23 +10723,29 @@ impl Planar {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -9370,16 +10755,22 @@ impl Planar {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9387,7 +10778,7 @@ impl Planar {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_Planar_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9400,67 +10791,85 @@ impl Planar {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Planar_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Planar_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawPlanar;
+pub use crate::ffi_types::HandleIGESDrawPlanar;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawPlanar {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawPlanar_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawPlanar {
     /// Dereference this Handle to access the underlying IGESDraw_Planar
-    pub fn get(&self) -> &crate::ffi::IGESDraw_Planar {
-        unsafe { &*crate::check_result(crate::ffi::HandleIGESDrawPlanar_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_Planar {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_Planar
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_Planar {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_Planar {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawPlanar_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Planar> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawPlanar_to_HandleIGESDataIGESEntity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Planar> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawPlanar_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawPlanar_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9472,11 +10881,11 @@ impl HandleIGESDrawPlanar {
 
 /// **Source:** `IGESDraw_Protocol.hxx`:31 - `IGESDraw_Protocol`
 /// Description of Protocol for IGESDraw
-pub use crate::ffi::IGESDraw_Protocol as Protocol;
+pub use crate::ffi_types::IGESDraw_Protocol as Protocol;
 
 unsafe impl crate::CppDeletable for Protocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_Protocol_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_destructor(ptr);
     }
 }
 
@@ -9484,7 +10893,9 @@ impl Protocol {
     /// **Source:** `IGESDraw_Protocol.hxx`:35 - `IGESDraw_Protocol::IGESDraw_Protocol()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Protocol_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_ctor(),
+            ))
         }
     }
 
@@ -9493,18 +10904,17 @@ impl Protocol {
     /// (Protocol from IGESDimen)
     pub fn nb_resources(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_nb_resources(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_nb_resources(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_Protocol.hxx`:42 - `IGESDraw_Protocol::Resource()`
     /// Returns a Resource, given a rank.
-    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    pub fn resource(&self, num: i32) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Protocol_resource(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_resource(self as *const Self, num),
+            ))
         }
     }
 
@@ -9514,16 +10924,18 @@ impl Protocol {
     /// Modules attached to this class of Protocol must use them
     /// in accordance (for a given value of TypeNumber, they must
     /// consider the same Type as the Protocol defines)
-    pub fn type_number(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn type_number(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_type_number(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_type_number(self as *const Self, atype)
         })
     }
 
     /// **Source:** `IGESDraw_Protocol.hxx`:53 - `IGESDraw_Protocol::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_Protocol_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -9531,7 +10943,7 @@ impl Protocol {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_Protocol_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9539,137 +10951,179 @@ impl Protocol {
     }
 
     /// **Source:** `IGESDraw_Protocol.hxx`:53 - `IGESDraw_Protocol::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_Protocol_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_Protocol
     pub fn as_iges_data_protocol(&self) -> &crate::iges_data::Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Protocol_as_IGESData_Protocol(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_IGESData_Protocol(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_Protocol (mutable)
     pub fn as_iges_data_protocol_mut(&mut self) -> &mut crate::iges_data::Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Protocol_as_IGESData_Protocol_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_IGESData_Protocol_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_Protocol
     pub fn as_interface_protocol(&self) -> &crate::interface::Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Protocol_as_Interface_Protocol(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_Interface_Protocol(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Interface_Protocol (mutable)
     pub fn as_interface_protocol_mut(&mut self) -> &mut crate::interface::Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Protocol_as_Interface_Protocol_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_Interface_Protocol_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_Protocol_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_Protocol_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawProtocol> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_Protocol_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_Protocol.hxx`:53 - `IGESData_Protocol::NewModel()`
-    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi::HandleInterfaceInterfaceModel> {
+    pub fn new_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceInterfaceModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Protocol_inherited_NewModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_NewModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_Protocol.hxx`:57 - `IGESData_Protocol::IsSuitableModel()`
-    pub fn is_suitable_model(&self, model: &crate::ffi::HandleInterfaceInterfaceModel) -> bool {
+    pub fn is_suitable_model(
+        &self,
+        model: &crate::ffi_types::HandleInterfaceInterfaceModel,
+    ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IsSuitableModel(self as *const Self, model)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IsSuitableModel(
+                self as *const Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_Protocol.hxx`:60 - `IGESData_Protocol::UnknownEntity()`
-    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn unknown_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Protocol_inherited_UnknownEntity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_UnknownEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_Protocol.hxx`:65 - `IGESData_Protocol::IsUnknownEntity()`
-    pub fn is_unknown_entity(&self, ent: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_unknown_entity(&self, ent: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IsUnknownEntity(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IsUnknownEntity(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:64 - `Interface_Protocol::CaseNumber()`
-    pub fn case_number(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn case_number(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_CaseNumber(self as *const Self, obj)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_CaseNumber(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:68 - `Interface_Protocol::IsDynamicType()`
-    pub fn is_dynamic_type(&self, obj: &crate::ffi::HandleStandardTransient) -> bool {
+    pub fn is_dynamic_type(&self, obj: &crate::ffi_types::HandleStandardTransient) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IsDynamicType(self as *const Self, obj)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IsDynamicType(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:75 - `Interface_Protocol::NbTypes()`
-    pub fn nb_types(&self, obj: &crate::ffi::HandleStandardTransient) -> i32 {
+    pub fn nb_types(&self, obj: &crate::ffi_types::HandleStandardTransient) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_NbTypes(self as *const Self, obj)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_NbTypes(
+                self as *const Self,
+                obj,
+            )
         })
     }
 
     /// Inherited: **Source:** `Interface_Protocol.hxx`:81 - `Interface_Protocol::Type()`
     pub fn type_(
         &self,
-        obj: &crate::ffi::HandleStandardTransient,
+        obj: &crate::ffi_types::HandleStandardTransient,
         nt: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardType> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_Protocol_inherited_Type(self as *const Self, obj, nt),
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_Type(
+                    self as *const Self,
+                    obj,
+                    nt,
+                ),
             ))
         }
     }
@@ -9678,24 +11132,34 @@ impl Protocol {
     pub fn global_check(
         &self,
         G: &crate::interface::Graph,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_GlobalCheck(self as *const Self, G, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_GlobalCheck(
+                self as *const Self,
+                G,
+                ach,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9703,7 +11167,7 @@ impl Protocol {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_Protocol_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -9716,62 +11180,72 @@ impl Protocol {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_Protocol_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_Protocol_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawProtocol;
+pub use crate::ffi_types::HandleIGESDrawProtocol;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawProtocol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawProtocol_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawProtocol {
     /// Dereference this Handle to access the underlying IGESDraw_Protocol
-    pub fn get(&self) -> &crate::ffi::IGESDraw_Protocol {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_Protocol {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawProtocol_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_Protocol
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_Protocol {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_Protocol {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawProtocol_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Protocol> to Handle<IGESData_Protocol>
     pub fn to_handle_iges_data_protocol(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawProtocol_to_HandleIGESDataProtocol(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_to_HandleIGESDataProtocol(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9779,19 +11253,25 @@ impl HandleIGESDrawProtocol {
     /// Upcast Handle<IGESDraw_Protocol> to Handle<Interface_Protocol>
     pub fn to_handle_interface_protocol(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceProtocol> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceProtocol> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawProtocol_to_HandleInterfaceProtocol(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_to_HandleInterfaceProtocol(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<IGESDraw_Protocol> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawProtocol_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawProtocol_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -9805,11 +11285,11 @@ impl HandleIGESDrawProtocol {
 /// Defines Draw File Access Module for IGESDraw (specific parts)
 /// Specific actions concern : Read and Write Own Parameters of
 /// an IGESEntity.
-pub use crate::ffi::IGESDraw_ReadWriteModule as ReadWriteModule;
+pub use crate::ffi_types::IGESDraw_ReadWriteModule as ReadWriteModule;
 
 unsafe impl crate::CppDeletable for ReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ReadWriteModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_destructor(ptr);
     }
 }
 
@@ -9819,7 +11299,7 @@ impl ReadWriteModule {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_ctor(),
             ))
         }
     }
@@ -9828,7 +11308,11 @@ impl ReadWriteModule {
     /// Defines Case Numbers for Entities of IGESDraw
     pub fn case_iges(&self, typenum: i32, formnum: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_case_iges(self as *const Self, typenum, formnum)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_case_iges(
+                self as *const Self,
+                typenum,
+                formnum,
+            )
         })
     }
 
@@ -9837,12 +11321,12 @@ impl ReadWriteModule {
     pub fn read_own_params(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_read_own_params(
                 self as *const Self,
                 CN,
                 ent,
@@ -9857,20 +11341,27 @@ impl ReadWriteModule {
     pub fn write_own_params(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_write_own_params(self as *const Self, CN, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_write_own_params(
+                self as *const Self,
+                CN,
+                ent,
+                IW,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ReadWriteModule.hxx`:58 - `IGESDraw_ReadWriteModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ReadWriteModule_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9878,7 +11369,7 @@ impl ReadWriteModule {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9886,38 +11377,40 @@ impl ReadWriteModule {
     }
 
     /// **Source:** `IGESDraw_ReadWriteModule.hxx`:58 - `IGESDraw_ReadWriteModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ReadWriteModule_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_ReadWriteModule
     pub fn as_iges_data_read_write_module(&self) -> &crate::iges_data::ReadWriteModule {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ReadWriteModule_as_IGESData_ReadWriteModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_IGESData_ReadWriteModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_ReadWriteModule (mutable)
     pub fn as_iges_data_read_write_module_mut(&mut self) -> &mut crate::iges_data::ReadWriteModule {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_as_IGESData_ReadWriteModule_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_IGESData_ReadWriteModule_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Interface_ReaderModule
     pub fn as_interface_reader_module(&self) -> &crate::interface::ReaderModule {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ReadWriteModule_as_Interface_ReaderModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_Interface_ReaderModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9925,7 +11418,7 @@ impl ReadWriteModule {
     pub fn as_interface_reader_module_mut(&mut self) -> &mut crate::interface::ReaderModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_as_Interface_ReaderModule_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_Interface_ReaderModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -9935,9 +11428,11 @@ impl ReadWriteModule {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ReadWriteModule_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -9945,7 +11440,9 @@ impl ReadWriteModule {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -9953,18 +11450,26 @@ impl ReadWriteModule {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawReadWriteModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawReadWriteModule> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ReadWriteModule_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_ReadWriteModule.hxx`:62 - `IGESData_ReadWriteModule::CaseNum()`
-    pub fn case_num(&self, data: &crate::ffi::HandleInterfaceFileReaderData, num: i32) -> i32 {
+    pub fn case_num(
+        &self,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
+        num: i32,
+    ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_CaseNum(self as *const Self, data, num)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_CaseNum(
+                self as *const Self,
+                data,
+                num,
+            )
         })
     }
 
@@ -9972,13 +11477,13 @@ impl ReadWriteModule {
     pub fn read(
         &self,
         CN: i32,
-        data: &crate::ffi::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_Read(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_Read(
                 self as *const Self,
                 CN,
                 data,
@@ -9993,13 +11498,13 @@ impl ReadWriteModule {
     pub fn new_read(
         &self,
         casenum: i32,
-        data: &crate::ffi::HandleInterfaceFileReaderData,
+        data: &crate::ffi_types::HandleInterfaceFileReaderData,
         num: i32,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
-        ent: &mut crate::ffi::HandleStandardTransient,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
+        ent: &mut crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_NewRead(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_NewRead(
                 self as *const Self,
                 casenum,
                 data,
@@ -10011,16 +11516,22 @@ impl ReadWriteModule {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10028,7 +11539,9 @@ impl ReadWriteModule {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_ReadWriteModule_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10041,93 +11554,93 @@ impl ReadWriteModule {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ReadWriteModule_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ReadWriteModule_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawReadWriteModule;
+pub use crate::ffi_types::HandleIGESDrawReadWriteModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawReadWriteModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawReadWriteModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawReadWriteModule {
     /// Dereference this Handle to access the underlying IGESDraw_ReadWriteModule
-    pub fn get(&self) -> &crate::ffi::IGESDraw_ReadWriteModule {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_ReadWriteModule {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawReadWriteModule_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_ReadWriteModule
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_ReadWriteModule {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_ReadWriteModule {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawReadWriteModule_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_ReadWriteModule> to Handle<IGESData_ReadWriteModule>
     pub fn to_handle_read_write_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataReadWriteModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataReadWriteModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawReadWriteModule_to_HandleIGESDataReadWriteModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_to_HandleIGESDataReadWriteModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_ReadWriteModule> to Handle<Interface_ReaderModule>
     pub fn to_handle_reader_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleInterfaceReaderModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleInterfaceReaderModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawReadWriteModule_to_HandleInterfaceReaderModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_to_HandleInterfaceReaderModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_ReadWriteModule> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawReadWriteModule_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawReadWriteModule_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -10141,11 +11654,11 @@ impl HandleIGESDrawReadWriteModule {
 /// Type <412> Form Number <0> in package IGESDraw
 /// Used to produce copies of object called the base entity,
 /// arranging them in equally spaced rows and columns
-pub use crate::ffi::IGESDraw_RectArraySubfigure as RectArraySubfigure;
+pub use crate::ffi_types::IGESDraw_RectArraySubfigure as RectArraySubfigure;
 
 unsafe impl crate::CppDeletable for RectArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_RectArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_destructor(ptr);
     }
 }
 
@@ -10154,7 +11667,7 @@ impl RectArraySubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_ctor(),
             ))
         }
     }
@@ -10176,7 +11689,7 @@ impl RectArraySubfigure {
     /// displayed
     pub fn init(
         &mut self,
-        aBase: &crate::ffi::HandleIGESDataIGESEntity,
+        aBase: &crate::ffi_types::HandleIGESDataIGESEntity,
         aScale: f64,
         aCorner: &crate::gp::XYZ,
         nbCols: i32,
@@ -10185,10 +11698,10 @@ impl RectArraySubfigure {
         vtDisp: f64,
         rotationAngle: f64,
         doDont: i32,
-        allNumPos: &crate::ffi::HandleTColStdHArray1OfInteger,
+        allNumPos: &crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_init(
                 self as *mut Self,
                 aBase,
                 aScale,
@@ -10206,10 +11719,12 @@ impl RectArraySubfigure {
 
     /// **Source:** `IGESDraw_RectArraySubfigure.hxx`:68 - `IGESDraw_RectArraySubfigure::BaseEntity()`
     /// returns the base entity, copies of which are produced
-    pub fn base_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn base_entity(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_base_entity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_base_entity(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10218,7 +11733,9 @@ impl RectArraySubfigure {
     /// returns the scale factor
     pub fn scale_factor(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_scale_factor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_scale_factor(
+                self as *const Self,
+            )
         })
     }
 
@@ -10227,7 +11744,9 @@ impl RectArraySubfigure {
     pub fn lower_left_corner(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_lower_left_corner(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_lower_left_corner(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10236,11 +11755,7 @@ impl RectArraySubfigure {
     /// returns Transformed coordinates of lower left corner for the array
     pub fn transformed_lower_left_corner(&self) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_transformed_lower_left_corner(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_transformed_lower_left_corner(self as *const Self)))
         }
     }
 
@@ -10248,7 +11763,7 @@ impl RectArraySubfigure {
     /// returns number of columns in the array
     pub fn nb_columns(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_nb_columns(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_nb_columns(self as *const Self)
         })
     }
 
@@ -10256,7 +11771,7 @@ impl RectArraySubfigure {
     /// returns number of rows in the array
     pub fn nb_rows(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_nb_rows(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_nb_rows(self as *const Self)
         })
     }
 
@@ -10264,7 +11779,9 @@ impl RectArraySubfigure {
     /// returns horizontal distance between columns
     pub fn column_separation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_column_separation(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_column_separation(
+                self as *const Self,
+            )
         })
     }
 
@@ -10272,7 +11789,9 @@ impl RectArraySubfigure {
     /// returns vertical distance between rows
     pub fn row_separation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_row_separation(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_row_separation(
+                self as *const Self,
+            )
         })
     }
 
@@ -10280,7 +11799,9 @@ impl RectArraySubfigure {
     /// returns rotation angle in radians
     pub fn rotation_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_rotation_angle(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_rotation_angle(
+                self as *const Self,
+            )
         })
     }
 
@@ -10288,7 +11809,9 @@ impl RectArraySubfigure {
     /// returns True if (ListCount = 0) i.e., all elements to be displayed
     pub fn display_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_display_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_display_flag(
+                self as *const Self,
+            )
         })
     }
 
@@ -10296,7 +11819,7 @@ impl RectArraySubfigure {
     /// returns 0 if all replicated entities to be displayed
     pub fn list_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_list_count(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_list_count(self as *const Self)
         })
     }
 
@@ -10305,7 +11828,9 @@ impl RectArraySubfigure {
     /// 1 if half or more of the elements are defined
     pub fn do_dont_flag(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_do_dont_flag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_do_dont_flag(
+                self as *const Self,
+            )
         })
     }
 
@@ -10315,7 +11840,10 @@ impl RectArraySubfigure {
     /// if (ListCount = 0) return theDoDontFlag
     pub fn position_num(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_position_num(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_position_num(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -10324,16 +11852,21 @@ impl RectArraySubfigure {
     /// raises exception if Index <= 0 or Index > ListCount()
     pub fn list_position(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_list_position(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_list_position(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_RectArraySubfigure.hxx`:113 - `IGESDraw_RectArraySubfigure::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_RectArraySubfigure_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10341,7 +11874,7 @@ impl RectArraySubfigure {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10349,18 +11882,22 @@ impl RectArraySubfigure {
     }
 
     /// **Source:** `IGESDraw_RectArraySubfigure.hxx`:113 - `IGESDraw_RectArraySubfigure::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_RectArraySubfigure_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_RectArraySubfigure_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10368,7 +11905,7 @@ impl RectArraySubfigure {
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_as_IGESData_IGESEntity_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_as_IGESData_IGESEntity_mut(
                     self as *mut Self,
                 ),
             )
@@ -10378,9 +11915,11 @@ impl RectArraySubfigure {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_RectArraySubfigure_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -10388,7 +11927,7 @@ impl RectArraySubfigure {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_as_Standard_Transient_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -10398,10 +11937,10 @@ impl RectArraySubfigure {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawRectArraySubfigure> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawRectArraySubfigure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -10410,7 +11949,9 @@ impl RectArraySubfigure {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10418,14 +11959,18 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -10433,10 +11978,10 @@ impl RectArraySubfigure {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -10447,15 +11992,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10463,7 +12012,9 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -10471,15 +12022,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10487,7 +12042,9 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -10495,15 +12052,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10511,34 +12072,42 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10546,15 +12115,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10562,15 +12135,21 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10578,49 +12157,63 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -10628,15 +12221,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10644,15 +12241,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10660,7 +12261,7 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -10669,7 +12270,9 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -10677,10 +12280,10 @@ impl RectArraySubfigure {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -10689,23 +12292,33 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -10714,16 +12327,20 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -10734,7 +12351,7 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -10745,9 +12362,9 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -10758,12 +12375,12 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -10775,15 +12392,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10792,7 +12413,9 @@ impl RectArraySubfigure {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10801,7 +12424,7 @@ impl RectArraySubfigure {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -10812,7 +12435,7 @@ impl RectArraySubfigure {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_CompoundLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_CompoundLocation(
                     self as *const Self,
                 ),
             ))
@@ -10822,15 +12445,19 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10838,16 +12465,16 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -10855,7 +12482,7 @@ impl RectArraySubfigure {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -10863,9 +12490,9 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -10875,36 +12502,37 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -10913,7 +12541,9 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -10921,15 +12551,17 @@ impl RectArraySubfigure {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -10939,12 +12571,12 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -10954,23 +12586,29 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -10980,9 +12618,9 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -10990,9 +12628,12 @@ impl RectArraySubfigure {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11000,7 +12641,9 @@ impl RectArraySubfigure {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_RectArraySubfigure_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11013,78 +12656,84 @@ impl RectArraySubfigure {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_RectArraySubfigure_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_RectArraySubfigure_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawRectArraySubfigure;
+pub use crate::ffi_types::HandleIGESDrawRectArraySubfigure;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawRectArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawRectArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawRectArraySubfigure {
     /// Dereference this Handle to access the underlying IGESDraw_RectArraySubfigure
-    pub fn get(&self) -> &crate::ffi::IGESDraw_RectArraySubfigure {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_RectArraySubfigure {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawRectArraySubfigure_get(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_RectArraySubfigure
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_RectArraySubfigure {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_RectArraySubfigure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawRectArraySubfigure_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_RectArraySubfigure> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawRectArraySubfigure_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_RectArraySubfigure> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawRectArraySubfigure_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawRectArraySubfigure_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -11099,11 +12748,11 @@ impl HandleIGESDrawRectArraySubfigure {
 ///
 /// Permits the association of display parameters with the
 /// segments of curves in a given view
-pub use crate::ffi::IGESDraw_SegmentedViewsVisible as SegmentedViewsVisible;
+pub use crate::ffi_types::IGESDraw_SegmentedViewsVisible as SegmentedViewsVisible;
 
 unsafe impl crate::CppDeletable for SegmentedViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_SegmentedViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_destructor(ptr);
     }
 }
 
@@ -11112,7 +12761,7 @@ impl SegmentedViewsVisible {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_ctor(),
             ))
         }
     }
@@ -11134,17 +12783,17 @@ impl SegmentedViewsVisible {
     /// are not same.
     pub fn init(
         &mut self,
-        allViews: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allBreakpointParameters: &crate::ffi::HandleTColStdHArray1OfReal,
-        allDisplayFlags: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allColorValues: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allColorDefinitions: &crate::ffi::HandleIGESGraphHArray1OfColor,
-        allLineFontValues: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allLineFontDefinitions: &crate::ffi::HandleIGESBasicHArray1OfLineFontEntity,
-        allLineWeights: &crate::ffi::HandleTColStdHArray1OfInteger,
+        allViews: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allBreakpointParameters: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        allDisplayFlags: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allColorValues: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allColorDefinitions: &crate::ffi_types::HandleIGESGraphHArray1OfColor,
+        allLineFontValues: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allLineFontDefinitions: &crate::ffi_types::HandleIGESBasicHArray1OfLineFontEntity,
+        allLineWeights: &crate::ffi_types::HandleTColStdHArray1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_init(
                 self as *mut Self,
                 allViews,
                 allBreakpointParameters,
@@ -11162,7 +12811,9 @@ impl SegmentedViewsVisible {
     /// Returns False (for a complex view)
     pub fn is_single(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_is_single(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_is_single(
+                self as *const Self,
+            )
         })
     }
 
@@ -11170,7 +12821,7 @@ impl SegmentedViewsVisible {
     /// Returns the count of Views referenced by <me> (inherited)
     pub fn nb_views(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_nb_views(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_nb_views(self as *const Self)
         })
     }
 
@@ -11179,7 +12830,9 @@ impl SegmentedViewsVisible {
     /// Similar to NbViews but has a more general significance
     pub fn nb_segment_blocks(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_nb_segment_blocks(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_nb_segment_blocks(
+                self as *const Self,
+            )
         })
     }
 
@@ -11190,10 +12843,10 @@ impl SegmentedViewsVisible {
     pub fn view_item(
         &self,
         ViewIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_view_item(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_view_item(
                     self as *const Self,
                     ViewIndex,
                 ),
@@ -11208,7 +12861,7 @@ impl SegmentedViewsVisible {
     /// BreakpointIndex > NbSegmentBlocks().
     pub fn breakpoint_parameter(&self, BreakpointIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_breakpoint_parameter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_breakpoint_parameter(
                 self as *const Self,
                 BreakpointIndex,
             )
@@ -11221,7 +12874,10 @@ impl SegmentedViewsVisible {
     /// FlagIndex > NbSegmentBlocks().
     pub fn display_flag(&self, FlagIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_display_flag(self as *const Self, FlagIndex)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_display_flag(
+                self as *const Self,
+                FlagIndex,
+            )
         })
     }
 
@@ -11232,7 +12888,7 @@ impl SegmentedViewsVisible {
     /// ColorIndex > NbSegmentBlocks().
     pub fn is_color_definition(&self, ColorIndex: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_is_color_definition(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_is_color_definition(
                 self as *const Self,
                 ColorIndex,
             )
@@ -11245,7 +12901,10 @@ impl SegmentedViewsVisible {
     /// ColorIndex > NbSegmentBlocks().
     pub fn color_value(&self, ColorIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_color_value(self as *const Self, ColorIndex)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_color_value(
+                self as *const Self,
+                ColorIndex,
+            )
         })
     }
 
@@ -11256,10 +12915,10 @@ impl SegmentedViewsVisible {
     pub fn color_definition(
         &self,
         ColorIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphColor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_color_definition(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_color_definition(
                     self as *const Self,
                     ColorIndex,
                 ),
@@ -11274,7 +12933,7 @@ impl SegmentedViewsVisible {
     /// FontIndex > NbSegmentBlocks().
     pub fn is_font_definition(&self, FontIndex: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_is_font_definition(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_is_font_definition(
                 self as *const Self,
                 FontIndex,
             )
@@ -11287,7 +12946,7 @@ impl SegmentedViewsVisible {
     /// FontIndex > NbSegmentBlocks().
     pub fn line_font_value(&self, FontIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_line_font_value(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_line_font_value(
                 self as *const Self,
                 FontIndex,
             )
@@ -11301,10 +12960,10 @@ impl SegmentedViewsVisible {
     pub fn line_font_definition(
         &self,
         FontIndex: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_line_font_definition(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_line_font_definition(
                     self as *const Self,
                     FontIndex,
                 ),
@@ -11318,7 +12977,7 @@ impl SegmentedViewsVisible {
     /// WeightIndex > NbSegmentBlocks().
     pub fn line_weight_item(&self, WeightIndex: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_line_weight_item(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_line_weight_item(
                 self as *const Self,
                 WeightIndex,
             )
@@ -11326,11 +12985,13 @@ impl SegmentedViewsVisible {
     }
 
     /// **Source:** `IGESDraw_SegmentedViewsVisible.hxx`:135 - `IGESDraw_SegmentedViewsVisible::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_SegmentedViewsVisible_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11338,7 +12999,7 @@ impl SegmentedViewsVisible {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11346,31 +13007,25 @@ impl SegmentedViewsVisible {
     }
 
     /// **Source:** `IGESDraw_SegmentedViewsVisible.hxx`:135 - `IGESDraw_SegmentedViewsVisible::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_SegmentedViewsVisible_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity
     pub fn as_iges_data_view_kind_entity(&self) -> &crate::iges_data::ViewKindEntity {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_as_IGESData_ViewKindEntity(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_IGESData_ViewKindEntity(self as *const Self))
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity (mutable)
     pub fn as_iges_data_view_kind_entity_mut(&mut self) -> &mut crate::iges_data::ViewKindEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_as_IGESData_ViewKindEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_IGESData_ViewKindEntity_mut(self as *mut Self))
         }
     }
 
@@ -11378,7 +13033,7 @@ impl SegmentedViewsVisible {
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
             &*crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_as_IGESData_IGESEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_IGESData_IGESEntity(
                     self as *const Self,
                 ),
             )
@@ -11388,41 +13043,37 @@ impl SegmentedViewsVisible {
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_IGESData_IGESEntity_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_SegmentedViewsVisible_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawSegmentedViewsVisible> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawSegmentedViewsVisible> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
@@ -11431,7 +13082,9 @@ impl SegmentedViewsVisible {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11439,14 +13092,18 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -11454,10 +13111,10 @@ impl SegmentedViewsVisible {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -11468,15 +13125,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11484,7 +13145,9 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -11492,15 +13155,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11508,7 +13175,9 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -11516,15 +13185,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11532,25 +13205,29 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_SingleView(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_SingleView(
                     self as *const Self,
                 ),
             ))
@@ -11558,10 +13235,12 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11569,15 +13248,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11585,17 +13268,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasLabelDisplay(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasLabelDisplay(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_LabelDisplay(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_LabelDisplay(
                     self as *const Self,
                 ),
             ))
@@ -11605,14 +13290,16 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_SubordinateStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_SubordinateStatus(
                 self as *const Self,
             )
         })
@@ -11621,14 +13308,16 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HierarchyStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HierarchyStatus(
                 self as *const Self,
             )
         })
@@ -11637,7 +13326,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_LineWeightNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_LineWeightNumber(
                 self as *const Self,
             )
         })
@@ -11646,14 +13335,18 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -11661,15 +13354,19 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11677,15 +13374,17 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_ShortLabel(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_ShortLabel(
                     self as *const Self,
                 ),
             ))
@@ -11695,7 +13394,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -11704,7 +13403,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_SubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_SubScriptNumber(
                 self as *const Self,
             )
         })
@@ -11714,10 +13413,10 @@ impl SegmentedViewsVisible {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -11726,23 +13425,33 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -11751,9 +13460,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitLevel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitLevel(
                 self as *mut Self,
                 ent,
                 val,
@@ -11762,9 +13471,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -11775,7 +13484,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -11786,9 +13495,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -11799,12 +13508,12 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -11816,15 +13525,17 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_UniqueParent(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_UniqueParent(
                     self as *const Self,
                 ),
             ))
@@ -11835,7 +13546,9 @@ impl SegmentedViewsVisible {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11844,7 +13557,7 @@ impl SegmentedViewsVisible {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -11854,26 +13567,26 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_CompoundLocation(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_CompoundLocation(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11881,16 +13594,14 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_NbAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_NbAssociativities(
                 self as *const Self,
             )
         })
@@ -11899,50 +13610,41 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:280 - `IGESData_IGESEntity::Associativities()`
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Associativities(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Associativities(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_NbTypedAssociativities(
-                self as *const Self,
-                atype,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_NbTypedAssociativities(self as *const Self, atype)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Dissociate(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Dissociate(
                 self as *const Self,
                 ent,
             )
@@ -11952,16 +13654,16 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_ArePresentProperties(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_ArePresentProperties(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -11969,7 +13671,7 @@ impl SegmentedViewsVisible {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Properties(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Properties(
                     self as *const Self,
                 ),
             ))
@@ -11977,9 +13679,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -11989,12 +13691,12 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -12004,16 +13706,19 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_RemoveProperty(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_RemoveProperty(
                 self as *mut Self,
                 ent,
             )
@@ -12023,7 +13728,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -12033,9 +13738,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -12043,9 +13748,9 @@ impl SegmentedViewsVisible {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_IsKind(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -12056,7 +13761,9 @@ impl SegmentedViewsVisible {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -12069,14 +13776,16 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -12085,7 +13794,7 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -12094,70 +13803,68 @@ impl SegmentedViewsVisible {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SegmentedViewsVisible_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SegmentedViewsVisible_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawSegmentedViewsVisible;
+pub use crate::ffi_types::HandleIGESDrawSegmentedViewsVisible;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawSegmentedViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawSegmentedViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawSegmentedViewsVisible {
     /// Dereference this Handle to access the underlying IGESDraw_SegmentedViewsVisible
-    pub fn get(&self) -> &crate::ffi::IGESDraw_SegmentedViewsVisible {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_SegmentedViewsVisible {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawSegmentedViewsVisible_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_SegmentedViewsVisible
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_SegmentedViewsVisible {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_SegmentedViewsVisible {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawSegmentedViewsVisible_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_SegmentedViewsVisible> to Handle<IGESData_ViewKindEntity>
     pub fn to_handle_view_kind_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawSegmentedViewsVisible_to_HandleIGESDataViewKindEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_to_HandleIGESDataViewKindEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_SegmentedViewsVisible> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawSegmentedViewsVisible_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_SegmentedViewsVisible> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawSegmentedViewsVisible_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSegmentedViewsVisible_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -12169,11 +13876,11 @@ impl HandleIGESDrawSegmentedViewsVisible {
 /// **Source:** `IGESDraw_SpecificModule.hxx`:33 - `IGESDraw_SpecificModule`
 /// Defines Services attached to IGES Entities :
 /// Dump & OwnCorrect, for IGESDraw
-pub use crate::ffi::IGESDraw_SpecificModule as SpecificModule;
+pub use crate::ffi_types::IGESDraw_SpecificModule as SpecificModule;
 
 unsafe impl crate::CppDeletable for SpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_SpecificModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_destructor(ptr);
     }
 }
 
@@ -12183,7 +13890,7 @@ impl SpecificModule {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SpecificModule_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_ctor(),
             ))
         }
     }
@@ -12193,13 +13900,13 @@ impl SpecificModule {
     pub fn own_dump(
         &self,
         CN: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_own_dump(
                 self as *const Self,
                 CN,
                 ent,
@@ -12213,18 +13920,24 @@ impl SpecificModule {
     /// **Source:** `IGESDraw_SpecificModule.hxx`:49 - `IGESDraw_SpecificModule::OwnCorrect()`
     /// Performs non-ambiguous Corrections on Entities which support
     /// them (Planar)
-    pub fn own_correct(&self, CN: i32, ent: &crate::ffi::HandleIGESDataIGESEntity) -> bool {
+    pub fn own_correct(&self, CN: i32, ent: &crate::ffi_types::HandleIGESDataIGESEntity) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_own_correct(self as *const Self, CN, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_own_correct(
+                self as *const Self,
+                CN,
+                ent,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_SpecificModule.hxx`:53 - `IGESDraw_SpecificModule::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_SpecificModule_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -12232,7 +13945,7 @@ impl SpecificModule {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_SpecificModule_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -12240,18 +13953,22 @@ impl SpecificModule {
     }
 
     /// **Source:** `IGESDraw_SpecificModule.hxx`:53 - `IGESDraw_SpecificModule::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_SpecificModule_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_SpecificModule
     pub fn as_iges_data_specific_module(&self) -> &crate::iges_data::SpecificModule {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_SpecificModule_as_IGESData_SpecificModule(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_as_IGESData_SpecificModule(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12259,7 +13976,7 @@ impl SpecificModule {
     pub fn as_iges_data_specific_module_mut(&mut self) -> &mut crate::iges_data::SpecificModule {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_SpecificModule_as_IGESData_SpecificModule_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_as_IGESData_SpecificModule_mut(
                     self as *mut Self,
                 ),
             )
@@ -12269,9 +13986,11 @@ impl SpecificModule {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_SpecificModule_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -12279,7 +13998,9 @@ impl SpecificModule {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_SpecificModule_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -12287,25 +14008,31 @@ impl SpecificModule {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawSpecificModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawSpecificModule> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_SpecificModule_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -12313,7 +14040,9 @@ impl SpecificModule {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_SpecificModule_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -12326,75 +14055,83 @@ impl SpecificModule {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_SpecificModule_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_SpecificModule_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawSpecificModule;
+pub use crate::ffi_types::HandleIGESDrawSpecificModule;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawSpecificModule {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawSpecificModule_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawSpecificModule {
     /// Dereference this Handle to access the underlying IGESDraw_SpecificModule
-    pub fn get(&self) -> &crate::ffi::IGESDraw_SpecificModule {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_SpecificModule {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawSpecificModule_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_SpecificModule
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_SpecificModule {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_SpecificModule {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawSpecificModule_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_SpecificModule> to Handle<IGESData_SpecificModule>
     pub fn to_handle_specific_module(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataSpecificModule> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataSpecificModule> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawSpecificModule_to_HandleIGESDataSpecificModule(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_to_HandleIGESDataSpecificModule(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_SpecificModule> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawSpecificModule_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawSpecificModule_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -12409,11 +14146,11 @@ impl HandleIGESDrawSpecificModule {
 /// **Source:** `IGESDraw_ToolCircArraySubfigure.hxx`:38 - `IGESDraw_ToolCircArraySubfigure`
 /// Tool to work on a CircArraySubfigure. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolCircArraySubfigure as ToolCircArraySubfigure;
+pub use crate::ffi_types::IGESDraw_ToolCircArraySubfigure as ToolCircArraySubfigure;
 
 unsafe impl crate::CppDeletable for ToolCircArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolCircArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_destructor(ptr);
     }
 }
 
@@ -12423,7 +14160,7 @@ impl ToolCircArraySubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolCircArraySubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_ctor(),
             ))
         }
     }
@@ -12433,12 +14170,12 @@ impl ToolCircArraySubfigure {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -12451,11 +14188,11 @@ impl ToolCircArraySubfigure {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -12468,11 +14205,15 @@ impl ToolCircArraySubfigure {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -12480,11 +14221,14 @@ impl ToolCircArraySubfigure {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolCircArraySubfigure_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -12493,12 +14237,12 @@ impl ToolCircArraySubfigure {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -12511,12 +14255,12 @@ impl ToolCircArraySubfigure {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawCircArraySubfigure,
-        entto: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        entfrom: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
+        entto: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -12529,13 +14273,13 @@ impl ToolCircArraySubfigure {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawCircArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawCircArraySubfigure,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolCircArraySubfigure_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolCircArraySubfigure_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -12553,11 +14297,11 @@ impl ToolCircArraySubfigure {
 /// **Source:** `IGESDraw_ToolConnectPoint.hxx`:38 - `IGESDraw_ToolConnectPoint`
 /// Tool to work on a ConnectPoint. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolConnectPoint as ToolConnectPoint;
+pub use crate::ffi_types::IGESDraw_ToolConnectPoint as ToolConnectPoint;
 
 unsafe impl crate::CppDeletable for ToolConnectPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolConnectPoint_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_destructor(ptr);
     }
 }
 
@@ -12567,7 +14311,7 @@ impl ToolConnectPoint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolConnectPoint_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_ctor(),
             ))
         }
     }
@@ -12577,12 +14321,17 @@ impl ToolConnectPoint {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -12590,11 +14339,15 @@ impl ToolConnectPoint {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -12603,11 +14356,15 @@ impl ToolConnectPoint {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -12615,11 +14372,14 @@ impl ToolConnectPoint {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolConnectPoint_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -12628,12 +14388,17 @@ impl ToolConnectPoint {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -12641,12 +14406,17 @@ impl ToolConnectPoint {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawConnectPoint,
-        entto: &crate::ffi::HandleIGESDrawConnectPoint,
+        entfrom: &crate::ffi_types::HandleIGESDrawConnectPoint,
+        entto: &crate::ffi_types::HandleIGESDrawConnectPoint,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -12654,13 +14424,19 @@ impl ToolConnectPoint {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawConnectPoint,
+        ent: &crate::ffi_types::HandleIGESDrawConnectPoint,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolConnectPoint_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolConnectPoint_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 }
@@ -12672,11 +14448,11 @@ impl ToolConnectPoint {
 /// **Source:** `IGESDraw_ToolDrawing.hxx`:38 - `IGESDraw_ToolDrawing`
 /// Tool to work on a Drawing. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolDrawing as ToolDrawing;
+pub use crate::ffi_types::IGESDraw_ToolDrawing as ToolDrawing;
 
 unsafe impl crate::CppDeletable for ToolDrawing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolDrawing_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_destructor(ptr);
     }
 }
 
@@ -12685,7 +14461,9 @@ impl ToolDrawing {
     /// Returns a ToolDrawing, ready to work
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ToolDrawing_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_ctor(),
+            ))
         }
     }
 
@@ -12694,12 +14472,17 @@ impl ToolDrawing {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -12707,11 +14490,15 @@ impl ToolDrawing {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -12720,20 +14507,24 @@ impl ToolDrawing {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ToolDrawing.hxx`:63 - `IGESDraw_ToolDrawing::OwnCorrect()`
     /// Sets automatic unambiguous Correction on a Drawing
     /// (Null Views are removed from list)
-    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESDrawDrawing) -> bool {
+    pub fn own_correct(&self, ent: &crate::ffi_types::HandleIGESDrawDrawing) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_own_correct(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_own_correct(self as *const Self, ent)
         })
     }
 
@@ -12741,11 +14532,14 @@ impl ToolDrawing {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolDrawing_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -12754,12 +14548,17 @@ impl ToolDrawing {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -12767,12 +14566,17 @@ impl ToolDrawing {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawDrawing,
-        entto: &crate::ffi::HandleIGESDrawDrawing,
+        entfrom: &crate::ffi_types::HandleIGESDrawDrawing,
+        entto: &crate::ffi_types::HandleIGESDrawDrawing,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -12780,13 +14584,19 @@ impl ToolDrawing {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawing,
+        ent: &crate::ffi_types::HandleIGESDrawDrawing,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawing_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawing_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 }
@@ -12798,11 +14608,11 @@ impl ToolDrawing {
 /// **Source:** `IGESDraw_ToolDrawingWithRotation.hxx`:38 - `IGESDraw_ToolDrawingWithRotation`
 /// Tool to work on a DrawingWithRotation. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolDrawingWithRotation as ToolDrawingWithRotation;
+pub use crate::ffi_types::IGESDraw_ToolDrawingWithRotation as ToolDrawingWithRotation;
 
 unsafe impl crate::CppDeletable for ToolDrawingWithRotation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolDrawingWithRotation_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_destructor(ptr);
     }
 }
 
@@ -12812,7 +14622,7 @@ impl ToolDrawingWithRotation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolDrawingWithRotation_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_ctor(),
             ))
         }
     }
@@ -12822,12 +14632,12 @@ impl ToolDrawingWithRotation {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -12840,11 +14650,11 @@ impl ToolDrawingWithRotation {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -12857,20 +14667,27 @@ impl ToolDrawingWithRotation {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ToolDrawingWithRotation.hxx`:64 - `IGESDraw_ToolDrawingWithRotation::OwnCorrect()`
     /// Sets automatic unambiguous Correction on a DrawingWithRotation
     /// (Null Views are removed from list)
-    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESDrawDrawingWithRotation) -> bool {
+    pub fn own_correct(&self, ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_correct(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_own_correct(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -12878,11 +14695,14 @@ impl ToolDrawingWithRotation {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolDrawingWithRotation_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -12891,12 +14711,12 @@ impl ToolDrawingWithRotation {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -12909,12 +14729,12 @@ impl ToolDrawingWithRotation {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawDrawingWithRotation,
-        entto: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        entfrom: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
+        entto: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -12927,13 +14747,13 @@ impl ToolDrawingWithRotation {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawDrawingWithRotation,
+        ent: &crate::ffi_types::HandleIGESDrawDrawingWithRotation,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolDrawingWithRotation_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolDrawingWithRotation_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -12951,11 +14771,11 @@ impl ToolDrawingWithRotation {
 /// **Source:** `IGESDraw_ToolLabelDisplay.hxx`:38 - `IGESDraw_ToolLabelDisplay`
 /// Tool to work on a LabelDisplay. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolLabelDisplay as ToolLabelDisplay;
+pub use crate::ffi_types::IGESDraw_ToolLabelDisplay as ToolLabelDisplay;
 
 unsafe impl crate::CppDeletable for ToolLabelDisplay {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolLabelDisplay_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_destructor(ptr);
     }
 }
 
@@ -12965,7 +14785,7 @@ impl ToolLabelDisplay {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolLabelDisplay_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_ctor(),
             ))
         }
     }
@@ -12975,12 +14795,17 @@ impl ToolLabelDisplay {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -12988,11 +14813,15 @@ impl ToolLabelDisplay {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -13001,11 +14830,15 @@ impl ToolLabelDisplay {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -13013,11 +14846,14 @@ impl ToolLabelDisplay {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolLabelDisplay_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13026,12 +14862,17 @@ impl ToolLabelDisplay {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -13039,12 +14880,17 @@ impl ToolLabelDisplay {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawLabelDisplay,
-        entto: &crate::ffi::HandleIGESDrawLabelDisplay,
+        entfrom: &crate::ffi_types::HandleIGESDrawLabelDisplay,
+        entto: &crate::ffi_types::HandleIGESDrawLabelDisplay,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -13052,13 +14898,19 @@ impl ToolLabelDisplay {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawLabelDisplay,
+        ent: &crate::ffi_types::HandleIGESDrawLabelDisplay,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolLabelDisplay_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolLabelDisplay_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 }
@@ -13070,11 +14922,11 @@ impl ToolLabelDisplay {
 /// **Source:** `IGESDraw_ToolNetworkSubfigure.hxx`:38 - `IGESDraw_ToolNetworkSubfigure`
 /// Tool to work on a NetworkSubfigure. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolNetworkSubfigure as ToolNetworkSubfigure;
+pub use crate::ffi_types::IGESDraw_ToolNetworkSubfigure as ToolNetworkSubfigure;
 
 unsafe impl crate::CppDeletable for ToolNetworkSubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolNetworkSubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_destructor(ptr);
     }
 }
 
@@ -13084,7 +14936,7 @@ impl ToolNetworkSubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolNetworkSubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_ctor(),
             ))
         }
     }
@@ -13094,12 +14946,12 @@ impl ToolNetworkSubfigure {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -13112,11 +14964,15 @@ impl ToolNetworkSubfigure {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -13125,11 +14981,15 @@ impl ToolNetworkSubfigure {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -13137,11 +14997,14 @@ impl ToolNetworkSubfigure {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolNetworkSubfigure_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13150,12 +15013,12 @@ impl ToolNetworkSubfigure {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -13168,12 +15031,12 @@ impl ToolNetworkSubfigure {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawNetworkSubfigure,
-        entto: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        entfrom: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
+        entto: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -13186,13 +15049,13 @@ impl ToolNetworkSubfigure {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigure,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigure_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigure_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -13210,11 +15073,11 @@ impl ToolNetworkSubfigure {
 /// **Source:** `IGESDraw_ToolNetworkSubfigureDef.hxx`:38 - `IGESDraw_ToolNetworkSubfigureDef`
 /// Tool to work on a NetworkSubfigureDef. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolNetworkSubfigureDef as ToolNetworkSubfigureDef;
+pub use crate::ffi_types::IGESDraw_ToolNetworkSubfigureDef as ToolNetworkSubfigureDef;
 
 unsafe impl crate::CppDeletable for ToolNetworkSubfigureDef {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolNetworkSubfigureDef_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_destructor(ptr);
     }
 }
 
@@ -13224,7 +15087,7 @@ impl ToolNetworkSubfigureDef {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolNetworkSubfigureDef_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_ctor(),
             ))
         }
     }
@@ -13234,12 +15097,12 @@ impl ToolNetworkSubfigureDef {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -13252,11 +15115,11 @@ impl ToolNetworkSubfigureDef {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -13269,11 +15132,15 @@ impl ToolNetworkSubfigureDef {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -13281,11 +15148,14 @@ impl ToolNetworkSubfigureDef {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolNetworkSubfigureDef_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13294,12 +15164,12 @@ impl ToolNetworkSubfigureDef {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -13312,12 +15182,12 @@ impl ToolNetworkSubfigureDef {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
-        entto: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        entfrom: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
+        entto: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -13330,13 +15200,13 @@ impl ToolNetworkSubfigureDef {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawNetworkSubfigureDef,
+        ent: &crate::ffi_types::HandleIGESDrawNetworkSubfigureDef,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolNetworkSubfigureDef_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolNetworkSubfigureDef_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -13354,11 +15224,11 @@ impl ToolNetworkSubfigureDef {
 /// **Source:** `IGESDraw_ToolPerspectiveView.hxx`:38 - `IGESDraw_ToolPerspectiveView`
 /// Tool to work on a PerspectiveView. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolPerspectiveView as ToolPerspectiveView;
+pub use crate::ffi_types::IGESDraw_ToolPerspectiveView as ToolPerspectiveView;
 
 unsafe impl crate::CppDeletable for ToolPerspectiveView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolPerspectiveView_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_destructor(ptr);
     }
 }
 
@@ -13368,7 +15238,7 @@ impl ToolPerspectiveView {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolPerspectiveView_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_ctor(),
             ))
         }
     }
@@ -13378,12 +15248,12 @@ impl ToolPerspectiveView {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -13396,11 +15266,15 @@ impl ToolPerspectiveView {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -13409,11 +15283,15 @@ impl ToolPerspectiveView {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -13421,11 +15299,14 @@ impl ToolPerspectiveView {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolPerspectiveView_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13434,12 +15315,12 @@ impl ToolPerspectiveView {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -13452,12 +15333,12 @@ impl ToolPerspectiveView {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawPerspectiveView,
-        entto: &crate::ffi::HandleIGESDrawPerspectiveView,
+        entfrom: &crate::ffi_types::HandleIGESDrawPerspectiveView,
+        entto: &crate::ffi_types::HandleIGESDrawPerspectiveView,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -13470,13 +15351,13 @@ impl ToolPerspectiveView {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPerspectiveView,
+        ent: &crate::ffi_types::HandleIGESDrawPerspectiveView,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPerspectiveView_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPerspectiveView_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -13494,11 +15375,11 @@ impl ToolPerspectiveView {
 /// **Source:** `IGESDraw_ToolPlanar.hxx`:38 - `IGESDraw_ToolPlanar`
 /// Tool to work on a Planar. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolPlanar as ToolPlanar;
+pub use crate::ffi_types::IGESDraw_ToolPlanar as ToolPlanar;
 
 unsafe impl crate::CppDeletable for ToolPlanar {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolPlanar_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_destructor(ptr);
     }
 }
 
@@ -13507,7 +15388,9 @@ impl ToolPlanar {
     /// Returns a ToolPlanar, ready to work
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ToolPlanar_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_ctor(),
+            ))
         }
     }
 
@@ -13516,12 +15399,17 @@ impl ToolPlanar {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -13529,11 +15417,15 @@ impl ToolPlanar {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -13542,20 +15434,24 @@ impl ToolPlanar {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ToolPlanar.hxx`:63 - `IGESDraw_ToolPlanar::OwnCorrect()`
     /// Sets automatic unambiguous Correction on a Planar
     /// (NbMatrices forced to 1)
-    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESDrawPlanar) -> bool {
+    pub fn own_correct(&self, ent: &crate::ffi_types::HandleIGESDrawPlanar) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_own_correct(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_own_correct(self as *const Self, ent)
         })
     }
 
@@ -13563,11 +15459,14 @@ impl ToolPlanar {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolPlanar_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13576,12 +15475,17 @@ impl ToolPlanar {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -13589,12 +15493,17 @@ impl ToolPlanar {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawPlanar,
-        entto: &crate::ffi::HandleIGESDrawPlanar,
+        entfrom: &crate::ffi_types::HandleIGESDrawPlanar,
+        entto: &crate::ffi_types::HandleIGESDrawPlanar,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -13602,13 +15511,19 @@ impl ToolPlanar {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawPlanar,
+        ent: &crate::ffi_types::HandleIGESDrawPlanar,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolPlanar_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolPlanar_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 }
@@ -13620,11 +15535,11 @@ impl ToolPlanar {
 /// **Source:** `IGESDraw_ToolRectArraySubfigure.hxx`:38 - `IGESDraw_ToolRectArraySubfigure`
 /// Tool to work on a RectArraySubfigure. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolRectArraySubfigure as ToolRectArraySubfigure;
+pub use crate::ffi_types::IGESDraw_ToolRectArraySubfigure as ToolRectArraySubfigure;
 
 unsafe impl crate::CppDeletable for ToolRectArraySubfigure {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolRectArraySubfigure_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_destructor(ptr);
     }
 }
 
@@ -13634,7 +15549,7 @@ impl ToolRectArraySubfigure {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolRectArraySubfigure_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_ctor(),
             ))
         }
     }
@@ -13644,12 +15559,12 @@ impl ToolRectArraySubfigure {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -13662,11 +15577,11 @@ impl ToolRectArraySubfigure {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -13679,11 +15594,15 @@ impl ToolRectArraySubfigure {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -13691,11 +15610,14 @@ impl ToolRectArraySubfigure {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolRectArraySubfigure_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -13704,12 +15626,12 @@ impl ToolRectArraySubfigure {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -13722,12 +15644,12 @@ impl ToolRectArraySubfigure {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawRectArraySubfigure,
-        entto: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        entfrom: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
+        entto: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -13740,13 +15662,13 @@ impl ToolRectArraySubfigure {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawRectArraySubfigure,
+        ent: &crate::ffi_types::HandleIGESDrawRectArraySubfigure,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolRectArraySubfigure_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolRectArraySubfigure_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -13764,11 +15686,11 @@ impl ToolRectArraySubfigure {
 /// **Source:** `IGESDraw_ToolSegmentedViewsVisible.hxx`:38 - `IGESDraw_ToolSegmentedViewsVisible`
 /// Tool to work on a SegmentedViewsVisible. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolSegmentedViewsVisible as ToolSegmentedViewsVisible;
+pub use crate::ffi_types::IGESDraw_ToolSegmentedViewsVisible as ToolSegmentedViewsVisible;
 
 unsafe impl crate::CppDeletable for ToolSegmentedViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolSegmentedViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_destructor(ptr);
     }
 }
 
@@ -13778,7 +15700,7 @@ impl ToolSegmentedViewsVisible {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolSegmentedViewsVisible_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_ctor(),
             ))
         }
     }
@@ -13788,12 +15710,12 @@ impl ToolSegmentedViewsVisible {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -13806,11 +15728,11 @@ impl ToolSegmentedViewsVisible {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -13823,11 +15745,11 @@ impl ToolSegmentedViewsVisible {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_own_shared(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_own_shared(
                 self as *const Self,
                 ent,
                 iter,
@@ -13839,11 +15761,11 @@ impl ToolSegmentedViewsVisible {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolSegmentedViewsVisible_dir_checker(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_dir_checker(
                     self as *const Self,
                     ent,
                 ),
@@ -13855,12 +15777,12 @@ impl ToolSegmentedViewsVisible {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -13873,12 +15795,12 @@ impl ToolSegmentedViewsVisible {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
-        entto: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        entfrom: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
+        entto: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -13891,13 +15813,13 @@ impl ToolSegmentedViewsVisible {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawSegmentedViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawSegmentedViewsVisible,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolSegmentedViewsVisible_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolSegmentedViewsVisible_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -13915,11 +15837,11 @@ impl ToolSegmentedViewsVisible {
 /// **Source:** `IGESDraw_ToolView.hxx`:38 - `IGESDraw_ToolView`
 /// Tool to work on a View. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolView as ToolView;
+pub use crate::ffi_types::IGESDraw_ToolView as ToolView;
 
 unsafe impl crate::CppDeletable for ToolView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolView_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_destructor(ptr);
     }
 }
 
@@ -13928,7 +15850,9 @@ impl ToolView {
     /// Returns a ToolView, ready to work
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ToolView_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_ctor(),
+            ))
         }
     }
 
@@ -13937,12 +15861,17 @@ impl ToolView {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawView,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -13950,11 +15879,15 @@ impl ToolView {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
+        ent: &crate::ffi_types::HandleIGESDrawView,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -13963,11 +15896,11 @@ impl ToolView {
     /// its specific (own) parameters
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
+        ent: &crate::ffi_types::HandleIGESDrawView,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_own_shared(self as *const Self, ent, iter)
         })
     }
 
@@ -13975,11 +15908,11 @@ impl ToolView {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
+        ent: &crate::ffi_types::HandleIGESDrawView,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolView_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_dir_checker(self as *const Self, ent),
             ))
         }
     }
@@ -13988,12 +15921,17 @@ impl ToolView {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
+        ent: &crate::ffi_types::HandleIGESDrawView,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -14001,12 +15939,17 @@ impl ToolView {
     /// Copies Specific Parameters
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawView,
-        entto: &crate::ffi::HandleIGESDrawView,
+        entfrom: &crate::ffi_types::HandleIGESDrawView,
+        entto: &crate::ffi_types::HandleIGESDrawView,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -14014,13 +15957,19 @@ impl ToolView {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawView,
+        ent: &crate::ffi_types::HandleIGESDrawView,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolView_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolView_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 }
@@ -14032,11 +15981,11 @@ impl ToolView {
 /// **Source:** `IGESDraw_ToolViewsVisible.hxx`:38 - `IGESDraw_ToolViewsVisible`
 /// Tool to work on a ViewsVisible. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolViewsVisible as ToolViewsVisible;
+pub use crate::ffi_types::IGESDraw_ToolViewsVisible as ToolViewsVisible;
 
 unsafe impl crate::CppDeletable for ToolViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_destructor(ptr);
     }
 }
 
@@ -14046,7 +15995,7 @@ impl ToolViewsVisible {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolViewsVisible_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_ctor(),
             ))
         }
     }
@@ -14056,12 +16005,17 @@ impl ToolViewsVisible {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_read_own_params(self as *const Self, ent, IR, PR)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_read_own_params(
+                self as *const Self,
+                ent,
+                IR,
+                PR,
+            )
         })
     }
 
@@ -14069,11 +16023,15 @@ impl ToolViewsVisible {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_write_own_params(self as *const Self, ent, IW)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_write_own_params(
+                self as *const Self,
+                ent,
+                IW,
+            )
         })
     }
 
@@ -14082,11 +16040,15 @@ impl ToolViewsVisible {
     /// its specific (own) parameters shared not implied (the Views)
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -14095,11 +16057,15 @@ impl ToolViewsVisible {
     /// its specific (own) implied parameters : the Displayed Entities
     pub fn own_implied(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_implied(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_implied(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -14107,11 +16073,14 @@ impl ToolViewsVisible {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolViewsVisible_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -14120,12 +16089,17 @@ impl ToolViewsVisible {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_check(self as *const Self, ent, shares, ach)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_check(
+                self as *const Self,
+                ent,
+                shares,
+                ach,
+            )
         })
     }
 
@@ -14134,12 +16108,17 @@ impl ToolViewsVisible {
     /// the Displayed Entities
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawViewsVisible,
-        entto: &crate::ffi::HandleIGESDrawViewsVisible,
+        entfrom: &crate::ffi_types::HandleIGESDrawViewsVisible,
+        entto: &crate::ffi_types::HandleIGESDrawViewsVisible,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_copy(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_copy(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
@@ -14148,21 +16127,29 @@ impl ToolViewsVisible {
     /// which have already been copied
     pub fn own_renew(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawViewsVisible,
-        entto: &crate::ffi::HandleIGESDrawViewsVisible,
+        entfrom: &crate::ffi_types::HandleIGESDrawViewsVisible,
+        entto: &crate::ffi_types::HandleIGESDrawViewsVisible,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_renew(self as *const Self, entfrom, entto, TC)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_renew(
+                self as *const Self,
+                entfrom,
+                entto,
+                TC,
+            )
         })
     }
 
     /// **Source:** `IGESDraw_ToolViewsVisible.hxx`:88 - `IGESDraw_ToolViewsVisible::OwnWhenDelete()`
     /// Clears specific implied parameters, which cause looping
     /// structures; required for deletion
-    pub fn own_when_delete(&self, ent: &crate::ffi::HandleIGESDrawViewsVisible) {
+    pub fn own_when_delete(&self, ent: &crate::ffi_types::HandleIGESDrawViewsVisible) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_when_delete(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_when_delete(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -14170,13 +16157,19 @@ impl ToolViewsVisible {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisible,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisible,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_dump(self as *const Self, ent, dumper, S, own)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_dump(
+                self as *const Self,
+                ent,
+                dumper,
+                S,
+                own,
+            )
         })
     }
 
@@ -14184,9 +16177,12 @@ impl ToolViewsVisible {
     /// Sets automatic unambiguous Correction on a ViewsVisible
     /// (all displayed entities must refer to <ent> in directory part,
     /// else the list is cleared)
-    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESDrawViewsVisible) -> bool {
+    pub fn own_correct(&self, ent: &crate::ffi_types::HandleIGESDrawViewsVisible) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisible_own_correct(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisible_own_correct(
+                self as *const Self,
+                ent,
+            )
         })
     }
 }
@@ -14198,11 +16194,11 @@ impl ToolViewsVisible {
 /// **Source:** `IGESDraw_ToolViewsVisibleWithAttr.hxx`:38 - `IGESDraw_ToolViewsVisibleWithAttr`
 /// Tool to work on a ViewsVisibleWithAttr. Called by various Modules
 /// (ReadWriteModule, GeneralModule, SpecificModule)
-pub use crate::ffi::IGESDraw_ToolViewsVisibleWithAttr as ToolViewsVisibleWithAttr;
+pub use crate::ffi_types::IGESDraw_ToolViewsVisibleWithAttr as ToolViewsVisibleWithAttr;
 
 unsafe impl crate::CppDeletable for ToolViewsVisibleWithAttr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_destructor(ptr);
     }
 }
 
@@ -14212,7 +16208,7 @@ impl ToolViewsVisibleWithAttr {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_ctor(),
             ))
         }
     }
@@ -14222,12 +16218,12 @@ impl ToolViewsVisibleWithAttr {
     /// <IR> detains parameter types and values
     pub fn read_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
-        IR: &crate::ffi::HandleIGESDataIGESReaderData,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
+        IR: &crate::ffi_types::HandleIGESDataIGESReaderData,
         PR: &mut crate::iges_data::ParamReader,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_read_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_read_own_params(
                 self as *const Self,
                 ent,
                 IR,
@@ -14240,11 +16236,11 @@ impl ToolViewsVisibleWithAttr {
     /// Writes own parameters to IGESWriter
     pub fn write_own_params(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         IW: &mut crate::iges_data::IGESWriter,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_write_own_params(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_write_own_params(
                 self as *const Self,
                 ent,
                 IW,
@@ -14258,11 +16254,15 @@ impl ToolViewsVisibleWithAttr {
     /// the Displayed Entities
     pub fn own_shared(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_shared(self as *const Self, ent, iter)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_shared(
+                self as *const Self,
+                ent,
+                iter,
+            )
         })
     }
 
@@ -14271,11 +16271,11 @@ impl ToolViewsVisibleWithAttr {
     /// its specific (own) implied parameters : the Displayed Entities
     pub fn own_implied(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         iter: &mut crate::interface::EntityIterator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_implied(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_implied(
                 self as *const Self,
                 ent,
                 iter,
@@ -14287,11 +16287,14 @@ impl ToolViewsVisibleWithAttr {
     /// Returns specific DirChecker
     pub fn dir_checker(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
     ) -> crate::OwnedPtr<crate::iges_data::DirChecker> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_dir_checker(self as *const Self, ent),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_dir_checker(
+                    self as *const Self,
+                    ent,
+                ),
             ))
         }
     }
@@ -14300,12 +16303,12 @@ impl ToolViewsVisibleWithAttr {
     /// Performs Specific Semantic Check
     pub fn own_check(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         shares: &crate::interface::ShareTool,
-        ach: &mut crate::ffi::HandleInterfaceCheck,
+        ach: &mut crate::ffi_types::HandleInterfaceCheck,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_check(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_check(
                 self as *const Self,
                 ent,
                 shares,
@@ -14319,12 +16322,12 @@ impl ToolViewsVisibleWithAttr {
     /// the Displayed Entities
     pub fn own_copy(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
-        entto: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        entfrom: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
+        entto: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         TC: &mut crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_copy(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_copy(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -14338,12 +16341,12 @@ impl ToolViewsVisibleWithAttr {
     /// which have already been copied
     pub fn own_renew(
         &self,
-        entfrom: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
-        entto: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        entfrom: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
+        entto: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         TC: &crate::interface::CopyTool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_renew(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_renew(
                 self as *const Self,
                 entfrom,
                 entto,
@@ -14355,9 +16358,12 @@ impl ToolViewsVisibleWithAttr {
     /// **Source:** `IGESDraw_ToolViewsVisibleWithAttr.hxx`:90 - `IGESDraw_ToolViewsVisibleWithAttr::OwnWhenDelete()`
     /// Clears specific implied parameters, which cause looping
     /// structures; required for deletion
-    pub fn own_when_delete(&self, ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr) {
+    pub fn own_when_delete(&self, ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_when_delete(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_when_delete(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
@@ -14365,13 +16371,13 @@ impl ToolViewsVisibleWithAttr {
     /// Dump of Specific Parameters
     pub fn own_dump(
         &self,
-        ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr,
+        ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr,
         dumper: &crate::iges_data::IGESDumper,
-        S: &mut crate::ffi::Standard_OStream,
+        S: &mut crate::ffi_types::Standard_OStream,
         own: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_dump(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_dump(
                 self as *const Self,
                 ent,
                 dumper,
@@ -14385,9 +16391,12 @@ impl ToolViewsVisibleWithAttr {
     /// Sets automatic unambiguous Correction on a ViewsVisibleWithAttr
     /// (all displayed entities must refer to <ent> in directory part,
     /// else the list is cleared)
-    pub fn own_correct(&self, ent: &crate::ffi::HandleIGESDrawViewsVisibleWithAttr) -> bool {
+    pub fn own_correct(&self, ent: &crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ToolViewsVisibleWithAttr_own_correct(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ToolViewsVisibleWithAttr_own_correct(
+                self as *const Self,
+                ent,
+            )
         })
     }
 }
@@ -14405,18 +16414,22 @@ impl ToolViewsVisibleWithAttr {
 /// space (X,Y,Z). The framework is also used to support
 /// the projection of all or part of model space onto a
 /// view volume.
-pub use crate::ffi::IGESDraw_View as View;
+pub use crate::ffi_types::IGESDraw_View as View;
 
 unsafe impl crate::CppDeletable for View {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_View_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_View_destructor(ptr);
     }
 }
 
 impl View {
     /// **Source:** `IGESDraw_View.hxx`:44 - `IGESDraw_View::IGESDraw_View()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:55 - `IGESDraw_View::Init()`
@@ -14433,15 +16446,15 @@ impl View {
         &mut self,
         aViewNum: i32,
         aScale: f64,
-        aLeftPlane: &crate::ffi::HandleIGESGeomPlane,
-        aTopPlane: &crate::ffi::HandleIGESGeomPlane,
-        aRightPlane: &crate::ffi::HandleIGESGeomPlane,
-        aBottomPlane: &crate::ffi::HandleIGESGeomPlane,
-        aBackPlane: &crate::ffi::HandleIGESGeomPlane,
-        aFrontPlane: &crate::ffi::HandleIGESGeomPlane,
+        aLeftPlane: &crate::ffi_types::HandleIGESGeomPlane,
+        aTopPlane: &crate::ffi_types::HandleIGESGeomPlane,
+        aRightPlane: &crate::ffi_types::HandleIGESGeomPlane,
+        aBottomPlane: &crate::ffi_types::HandleIGESGeomPlane,
+        aBackPlane: &crate::ffi_types::HandleIGESGeomPlane,
+        aFrontPlane: &crate::ffi_types::HandleIGESGeomPlane,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_init(
                 self as *mut Self,
                 aViewNum,
                 aScale,
@@ -14458,69 +16471,81 @@ impl View {
     /// **Source:** `IGESDraw_View.hxx`:65 - `IGESDraw_View::IsSingle()`
     /// Returns True (for a single view)
     pub fn is_single(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_View_is_single(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_is_single(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:68 - `IGESDraw_View::NbViews()`
     /// Returns 1 (single view)
     pub fn nb_views(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_View_nb_views(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_nb_views(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:71 - `IGESDraw_View::ViewItem()`
     /// For a single view, returns <me> whatever <num>
-    pub fn view_item(&self, num: i32) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_item(
+        &self,
+        num: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_view_item(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_view_item(self as *const Self, num),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:75 - `IGESDraw_View::ViewNumber()`
     /// returns integer number identifying view orientation
     pub fn view_number(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_View_view_number(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_view_number(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:78 - `IGESDraw_View::ScaleFactor()`
     /// returns the scale factor(Default = 1.0)
     pub fn scale_factor(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_View_scale_factor(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_scale_factor(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:81 - `IGESDraw_View::HasLeftPlane()`
     /// returns False if left side of view volume is not present
     pub fn has_left_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_has_left_plane(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_left_plane(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:84 - `IGESDraw_View::LeftPlane()`
     /// returns the left side of view volume, or null handle
-    pub fn left_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn left_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_left_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_left_plane(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:87 - `IGESDraw_View::HasTopPlane()`
     /// returns False if top of view volume is not present
     pub fn has_top_plane(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::IGESDraw_View_has_top_plane(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_top_plane(self as *const Self)
+        })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:90 - `IGESDraw_View::TopPlane()`
     /// returns the top of view volume, or null handle
-    pub fn top_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn top_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_top_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_top_plane(self as *const Self),
+            ))
         }
     }
 
@@ -14528,17 +16553,17 @@ impl View {
     /// returns False if right side of view volume is not present
     pub fn has_right_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_has_right_plane(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_right_plane(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:96 - `IGESDraw_View::RightPlane()`
     /// returns the right side of view volume, or null handle
-    pub fn right_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn right_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_right_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_right_plane(self as *const Self),
+            ))
         }
     }
 
@@ -14546,17 +16571,17 @@ impl View {
     /// returns False if bottom of view volume is not present
     pub fn has_bottom_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_has_bottom_plane(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_bottom_plane(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:102 - `IGESDraw_View::BottomPlane()`
     /// returns the bottom of view volume, or null handle
-    pub fn bottom_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn bottom_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_bottom_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_bottom_plane(self as *const Self),
+            ))
         }
     }
 
@@ -14564,17 +16589,17 @@ impl View {
     /// returns False if back of view volume is not present
     pub fn has_back_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_has_back_plane(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_back_plane(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:108 - `IGESDraw_View::BackPlane()`
     /// returns the back of view volume, or null handle
-    pub fn back_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn back_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_back_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_back_plane(self as *const Self),
+            ))
         }
     }
 
@@ -14582,27 +16607,27 @@ impl View {
     /// returns False if front of view volume is not present
     pub fn has_front_plane(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_has_front_plane(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_has_front_plane(self as *const Self)
         })
     }
 
     /// **Source:** `IGESDraw_View.hxx`:114 - `IGESDraw_View::FrontPlane()`
     /// returns the front of view volume, or null handle
-    pub fn front_plane(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESGeomPlane> {
+    pub fn front_plane(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGeomPlane> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_front_plane(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_front_plane(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:117 - `IGESDraw_View::ViewMatrix()`
     /// returns the Transformation Matrix
-    pub fn view_matrix(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn view_matrix(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_view_matrix(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_view_matrix(self as *const Self),
+            ))
         }
     }
 
@@ -14611,56 +16636,68 @@ impl View {
     /// applying the View Matrix
     pub fn model_to_view(&self, coords: &crate::gp::XYZ) -> crate::OwnedPtr<crate::gp::XYZ> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_model_to_view(
-                self as *const Self,
-                coords,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_model_to_view(
+                    self as *const Self,
+                    coords,
+                ),
+            ))
         }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:123 - `IGESDraw_View::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_View_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_View_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `IGESDraw_View.hxx`:123 - `IGESDraw_View::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::IGESDraw_View_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `IGESDraw_View.hxx`:123 - `IGESDraw_View::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_View_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_View_get_type_descriptor()))
+        }
     }
 
     /// Upcast to IGESData_ViewKindEntity
     pub fn as_iges_data_view_kind_entity(&self) -> &crate::iges_data::ViewKindEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_View_as_IGESData_ViewKindEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_as_IGESData_ViewKindEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity (mutable)
     pub fn as_iges_data_view_kind_entity_mut(&mut self) -> &mut crate::iges_data::ViewKindEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_View_as_IGESData_ViewKindEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_as_IGESData_ViewKindEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_View_as_IGESData_IGESEntity(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_View_as_IGESData_IGESEntity(
                 self as *const Self,
             ))
         }
@@ -14669,16 +16706,18 @@ impl View {
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_View_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_View_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_View_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -14687,20 +16726,22 @@ impl View {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_View_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawView> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawView> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_View_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_to_handle(obj.into_raw()),
+            ))
         }
     }
 
@@ -14708,7 +16749,7 @@ impl View {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_IGESType(self as *const Self),
             ))
         }
     }
@@ -14716,14 +16757,14 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_TypeNumber(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_FormNumber(self as *const Self)
         })
     }
 
@@ -14731,10 +16772,13 @@ impl View {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_DirFieldEntity(self as *const Self, fieldnum),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DirFieldEntity(
+                    self as *const Self,
+                    fieldnum,
+                ),
             ))
         }
     }
@@ -14742,15 +16786,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasStructure(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Structure(self as *const Self),
             ))
         }
     }
@@ -14758,7 +16802,7 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DefLineFont(self as *const Self)
         }))
         .unwrap()
     }
@@ -14766,15 +16810,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_RankLineFont(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_LineFont(self as *const Self),
             ))
         }
     }
@@ -14782,7 +16826,7 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DefLevel(self as *const Self)
         }))
         .unwrap()
     }
@@ -14790,15 +16834,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_LevelList(self as *const Self),
             ))
         }
     }
@@ -14806,34 +16850,34 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_View(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_SingleView(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_ViewList(self as *const Self),
             ))
         }
     }
@@ -14841,15 +16885,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasTransf(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Transf(self as *const Self),
             ))
         }
     }
@@ -14857,15 +16901,19 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasLabelDisplay(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -14873,49 +16921,53 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_BlankStatus(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HierarchyStatus(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_LineWeight(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DefColor(self as *const Self)
         }))
         .unwrap()
     }
@@ -14923,15 +16975,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_RankColor(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Color(self as *const Self),
             ))
         }
     }
@@ -14939,15 +16991,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasShortLabel(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_ShortLabel(self as *const Self),
             ))
         }
     }
@@ -14955,14 +17007,16 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_SubScriptNumber(self as *const Self)
         })
     }
 
@@ -14970,52 +17024,72 @@ impl View {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitDirFieldEntity(self as *mut Self, fieldnum, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitDirFieldEntity(
+                self as *mut Self,
+                fieldnum,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitTransf(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitView(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -15026,36 +17100,47 @@ impl View {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_InitMisc(self as *mut Self, str, lab, weightnum)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_InitMisc(
+                self as *mut Self,
+                str,
+                lab,
+                weightnum,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasOneParent(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15064,7 +17149,7 @@ impl View {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Location(self as *const Self),
             ))
         }
     }
@@ -15073,7 +17158,9 @@ impl View {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15082,7 +17169,9 @@ impl View {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15090,15 +17179,15 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_NameValue(self as *const Self),
             ))
         }
     }
@@ -15106,14 +17195,18 @@ impl View {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_ArePresentAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_ArePresentAssociativities(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -15121,55 +17214,65 @@ impl View {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_NbTypedAssociativities(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_NbTypedAssociativities(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_TypedAssociativity(self as *const Self, atype),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_TypedAssociativity(
+                    self as *const Self,
+                    atype,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Associate(self as *const Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Dissociate(self as *const Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_NbProperties(self as *const Self)
         })
     }
 
@@ -15177,63 +17280,81 @@ impl View {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Properties(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_NbTypedProperties(self as *const Self, atype)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_NbTypedProperties(
+                self as *const Self,
+                atype,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_View_inherited_TypedProperty(self as *const Self, atype, anum),
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_TypedProperty(
+                    self as *const Self,
+                    atype,
+                    anum,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_AddProperty(self as *mut Self, ent)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_SetLineWeight(self as *mut Self, defw, maxw, gradw)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_SetLineWeight(
+                self as *mut Self,
+                defw,
+                maxw,
+                gradw,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -15241,7 +17362,7 @@ impl View {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_View_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -15254,78 +17375,98 @@ impl View {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_View_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_View_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawView;
+pub use crate::ffi_types::HandleIGESDrawView;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawView {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawView_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawView_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawView {
     /// Dereference this Handle to access the underlying IGESDraw_View
-    pub fn get(&self) -> &crate::ffi::IGESDraw_View {
-        unsafe { &*crate::check_result(crate::ffi::HandleIGESDrawView_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_View {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawView_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_View
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_View {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_View {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawView_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawView_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<IGESDraw_View> to Handle<IGESData_ViewKindEntity>
     pub fn to_handle_view_kind_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawView_to_HandleIGESDataViewKindEntity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawView_to_HandleIGESDataViewKindEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<IGESDraw_View> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawView_to_HandleIGESDataIGESEntity(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawView_to_HandleIGESDataIGESEntity(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<IGESDraw_View> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawView_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawView_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15342,11 +17483,11 @@ impl HandleIGESDrawView {
 /// If an entity is to be displayed in more than one views,
 /// this class instance is used, which contains the Visible
 /// views and the associated entity Displays.
-pub use crate::ffi::IGESDraw_ViewsVisible as ViewsVisible;
+pub use crate::ffi_types::IGESDraw_ViewsVisible as ViewsVisible;
 
 unsafe impl crate::CppDeletable for ViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_destructor(ptr);
     }
 }
 
@@ -15354,7 +17495,9 @@ impl ViewsVisible {
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:41 - `IGESDraw_ViewsVisible::IGESDraw_ViewsVisible()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::IGESDraw_ViewsVisible_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_ctor(),
+            ))
         }
     }
 
@@ -15365,11 +17508,11 @@ impl ViewsVisible {
     /// - allDisplayEntity : All entities whose display is specified
     pub fn init(
         &mut self,
-        allViewEntities: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allDisplayEntity: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allViewEntities: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allDisplayEntity: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_init(
                 self as *mut Self,
                 allViewEntities,
                 allDisplayEntity,
@@ -15381,10 +17524,13 @@ impl ViewsVisible {
     /// Changes only the list of Displayed Entities (Null allowed)
     pub fn init_implied(
         &mut self,
-        allDisplayEntity: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allDisplayEntity: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_init_implied(self as *mut Self, allDisplayEntity)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_init_implied(
+                self as *mut Self,
+                allDisplayEntity,
+            )
         })
     }
 
@@ -15392,7 +17538,7 @@ impl ViewsVisible {
     /// Returns False (for a complex view)
     pub fn is_single(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_is_single(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_is_single(self as *const Self)
         })
     }
 
@@ -15400,7 +17546,7 @@ impl ViewsVisible {
     /// returns the Number of views visible
     pub fn nb_views(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_nb_views(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_nb_views(self as *const Self)
         })
     }
 
@@ -15409,7 +17555,9 @@ impl ViewsVisible {
     /// no Entities specified in these Views
     pub fn nb_displayed_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_nb_displayed_entities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_nb_displayed_entities(
+                self as *const Self,
+            )
         })
     }
 
@@ -15419,10 +17567,13 @@ impl ViewsVisible {
     pub fn view_item(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_view_item(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_view_item(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -15434,18 +17585,21 @@ impl ViewsVisible {
     pub fn displayed_entity(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_displayed_entity(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_displayed_entity(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
 
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:73 - `IGESDraw_ViewsVisible::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ViewsVisible_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -15455,7 +17609,7 @@ impl ViewsVisible {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -15463,16 +17617,22 @@ impl ViewsVisible {
     }
 
     /// **Source:** `IGESDraw_ViewsVisible.hxx`:73 - `IGESDraw_ViewsVisible::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IGESDraw_ViewsVisible_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to IGESData_ViewKindEntity
     pub fn as_iges_data_view_kind_entity(&self) -> &crate::iges_data::ViewKindEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ViewsVisible_as_IGESData_ViewKindEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_IGESData_ViewKindEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -15480,7 +17640,9 @@ impl ViewsVisible {
     pub fn as_iges_data_view_kind_entity_mut(&mut self) -> &mut crate::iges_data::ViewKindEntity {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_as_IGESData_ViewKindEntity_mut(self as *mut Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_IGESData_ViewKindEntity_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -15488,46 +17650,54 @@ impl ViewsVisible {
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ViewsVisible_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_ViewsVisible_as_IGESData_IGESEntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_IGESData_IGESEntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ViewsVisible_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IGESDraw_ViewsVisible_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisible> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawViewsVisible> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -15536,7 +17706,9 @@ impl ViewsVisible {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15544,14 +17716,18 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -15559,10 +17735,10 @@ impl ViewsVisible {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -15573,15 +17749,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15589,7 +17769,9 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -15597,15 +17779,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15613,7 +17799,9 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -15621,15 +17809,17 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Level(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15637,34 +17827,40 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DefView(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15672,15 +17868,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15688,15 +17888,21 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_LabelDisplay(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_LabelDisplay(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15704,49 +17910,61 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_SubordinateStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_SubordinateStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_UseFlag(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_LineWeightNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_LineWeightNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -15754,15 +17972,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15770,15 +17992,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15786,14 +18012,18 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasSubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasSubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -15801,10 +18031,10 @@ impl ViewsVisible {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -15813,44 +18043,66 @@ impl ViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitLineFont(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitLineFont(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitLevel(self as *mut Self, ent, val)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitLevel(
+                self as *mut Self,
+                ent,
+                val,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitColor(self as *mut Self, ent, rank)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitColor(
+                self as *mut Self,
+                ent,
+                rank,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -15861,21 +18113,25 @@ impl ViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_SetLabel(self as *mut Self, label, sub)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_SetLabel(
+                self as *mut Self,
+                label,
+                sub,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -15887,15 +18143,19 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_UniqueParent(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_UniqueParent(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15904,7 +18164,9 @@ impl ViewsVisible {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15913,7 +18175,9 @@ impl ViewsVisible {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_VectorLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_VectorLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15922,7 +18186,9 @@ impl ViewsVisible {
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_CompoundLocation(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_CompoundLocation(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15930,15 +18196,17 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_HasName(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -15946,7 +18214,7 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_ArePresentAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_ArePresentAssociativities(
                 self as *const Self,
             )
         })
@@ -15955,7 +18223,9 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_NbAssociativities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_NbAssociativities(
+                self as *const Self,
+            )
         })
     }
 
@@ -15963,15 +18233,17 @@ impl ViewsVisible {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Associativities(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Associativities(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_NbTypedAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_NbTypedAssociativities(
                 self as *const Self,
                 atype,
             )
@@ -15981,11 +18253,11 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_TypedAssociativity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_TypedAssociativity(
                     self as *const Self,
                     atype,
                 ),
@@ -15994,30 +18266,40 @@ impl ViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_ArePresentProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_ArePresentProperties(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -16025,15 +18307,17 @@ impl ViewsVisible {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -16043,12 +18327,12 @@ impl ViewsVisible {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisible_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -16058,23 +18342,29 @@ impl ViewsVisible {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_RemoveProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_RemoveProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -16084,16 +18374,22 @@ impl ViewsVisible {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -16101,7 +18397,9 @@ impl ViewsVisible {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_ViewsVisible_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -16114,75 +18412,81 @@ impl ViewsVisible {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisible_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisible_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawViewsVisible;
+pub use crate::ffi_types::HandleIGESDrawViewsVisible;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawViewsVisible {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawViewsVisible_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawViewsVisible {
     /// Dereference this Handle to access the underlying IGESDraw_ViewsVisible
-    pub fn get(&self) -> &crate::ffi::IGESDraw_ViewsVisible {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_ViewsVisible {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawViewsVisible_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_ViewsVisible
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_ViewsVisible {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_ViewsVisible {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawViewsVisible_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisible> to Handle<IGESData_ViewKindEntity>
     pub fn to_handle_view_kind_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisible_to_HandleIGESDataViewKindEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_to_HandleIGESDataViewKindEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisible> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisible_to_HandleIGESDataIGESEntity(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_to_HandleIGESDataIGESEntity(
                     self as *const Self,
                 ),
             ))
@@ -16190,10 +18494,12 @@ impl HandleIGESDrawViewsVisible {
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisible> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisible_to_HandleStandardTransient(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisible_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -16213,11 +18519,11 @@ impl HandleIGESDrawViewsVisible {
 /// for those entities that are visible in multiple views, but
 /// must have a different line font, color number, or
 /// line weight in each view.
-pub use crate::ffi::IGESDraw_ViewsVisibleWithAttr as ViewsVisibleWithAttr;
+pub use crate::ffi_types::IGESDraw_ViewsVisibleWithAttr as ViewsVisibleWithAttr;
 
 unsafe impl crate::CppDeletable for ViewsVisibleWithAttr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IGESDraw_ViewsVisibleWithAttr_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_destructor(ptr);
     }
 }
 
@@ -16226,7 +18532,7 @@ impl ViewsVisibleWithAttr {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_ctor(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_ctor(),
             ))
         }
     }
@@ -16247,16 +18553,16 @@ impl ViewsVisibleWithAttr {
     /// allColorValues,allColorDefinitions, allLineWeights are not same
     pub fn init(
         &mut self,
-        allViewEntities: &crate::ffi::HandleIGESDrawHArray1OfViewKindEntity,
-        allLineFonts: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allLineDefinitions: &crate::ffi::HandleIGESBasicHArray1OfLineFontEntity,
-        allColorValues: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allColorDefinitions: &crate::ffi::HandleIGESGraphHArray1OfColor,
-        allLineWeights: &crate::ffi::HandleTColStdHArray1OfInteger,
-        allDisplayEntities: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allViewEntities: &crate::ffi_types::HandleIGESDrawHArray1OfViewKindEntity,
+        allLineFonts: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allLineDefinitions: &crate::ffi_types::HandleIGESBasicHArray1OfLineFontEntity,
+        allColorValues: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allColorDefinitions: &crate::ffi_types::HandleIGESGraphHArray1OfColor,
+        allLineWeights: &crate::ffi_types::HandleTColStdHArray1OfInteger,
+        allDisplayEntities: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_init(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_init(
                 self as *mut Self,
                 allViewEntities,
                 allLineFonts,
@@ -16273,10 +18579,10 @@ impl ViewsVisibleWithAttr {
     /// Changes only the list of Displayed Entities (Null allowed)
     pub fn init_implied(
         &mut self,
-        allDisplayEntity: &crate::ffi::HandleIGESDataHArray1OfIGESEntity,
+        allDisplayEntity: &crate::ffi_types::HandleIGESDataHArray1OfIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_init_implied(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_init_implied(
                 self as *mut Self,
                 allDisplayEntity,
             )
@@ -16287,7 +18593,7 @@ impl ViewsVisibleWithAttr {
     /// Returns False (for a complex view)
     pub fn is_single(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_is_single(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_is_single(self as *const Self)
         })
     }
 
@@ -16296,7 +18602,7 @@ impl ViewsVisibleWithAttr {
     /// color number, and line weight information
     pub fn nb_views(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_nb_views(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_nb_views(self as *const Self)
         })
     }
 
@@ -16305,7 +18611,9 @@ impl ViewsVisibleWithAttr {
     /// display characteristic, or zero if no Entities specified
     pub fn nb_displayed_entities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_nb_displayed_entities(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_nb_displayed_entities(
+                self as *const Self,
+            )
         })
     }
 
@@ -16315,10 +18623,13 @@ impl ViewsVisibleWithAttr {
     pub fn view_item(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_view_item(self as *const Self, Index),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_view_item(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -16328,7 +18639,10 @@ impl ViewsVisibleWithAttr {
     /// raises exception if Index <= 0 or Index > NbViews()
     pub fn line_font_value(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_line_font_value(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_line_font_value(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -16338,7 +18652,10 @@ impl ViewsVisibleWithAttr {
     /// raises exception if Index <= 0 or Index > NbViews()
     pub fn is_font_definition(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_is_font_definition(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_is_font_definition(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -16348,10 +18665,10 @@ impl ViewsVisibleWithAttr {
     pub fn font_definition(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_font_definition(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_font_definition(
                     self as *const Self,
                     Index,
                 ),
@@ -16364,7 +18681,10 @@ impl ViewsVisibleWithAttr {
     /// raises exception if Index <= 0 or Index > NbViews()
     pub fn color_value(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_color_value(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_color_value(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -16374,7 +18694,7 @@ impl ViewsVisibleWithAttr {
     /// raises exception if Index <= 0 or Index > NbViews()
     pub fn is_color_definition(&self, Index: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_is_color_definition(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_is_color_definition(
                 self as *const Self,
                 Index,
             )
@@ -16387,10 +18707,10 @@ impl ViewsVisibleWithAttr {
     pub fn color_definition(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESGraphColor> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESGraphColor> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_color_definition(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_color_definition(
                     self as *const Self,
                     Index,
                 ),
@@ -16403,7 +18723,10 @@ impl ViewsVisibleWithAttr {
     /// raises exception if Index <= 0 or Index > NbViews()
     pub fn line_weight_item(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_line_weight_item(self as *const Self, Index)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_line_weight_item(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -16413,10 +18736,10 @@ impl ViewsVisibleWithAttr {
     pub fn displayed_entity(
         &self,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_displayed_entity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_displayed_entity(
                     self as *const Self,
                     Index,
                 ),
@@ -16425,11 +18748,13 @@ impl ViewsVisibleWithAttr {
     }
 
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:124 - `IGESDraw_ViewsVisibleWithAttr::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ViewsVisibleWithAttr_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -16437,7 +18762,7 @@ impl ViewsVisibleWithAttr {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_get_type_name(),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -16445,60 +18770,54 @@ impl ViewsVisibleWithAttr {
     }
 
     /// **Source:** `IGESDraw_ViewsVisibleWithAttr.hxx`:124 - `IGESDraw_ViewsVisibleWithAttr::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IGESDraw_ViewsVisibleWithAttr_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity
     pub fn as_iges_data_view_kind_entity(&self) -> &crate::iges_data::ViewKindEntity {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_IGESData_ViewKindEntity(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_IGESData_ViewKindEntity(self as *const Self))
         }
     }
 
     /// Upcast to IGESData_ViewKindEntity (mutable)
     pub fn as_iges_data_view_kind_entity_mut(&mut self) -> &mut crate::iges_data::ViewKindEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_IGESData_ViewKindEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_IGESData_ViewKindEntity_mut(self as *mut Self))
         }
     }
 
     /// Upcast to IGESData_IGESEntity
     pub fn as_iges_data_iges_entity(&self) -> &crate::iges_data::IGESEntity {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_IGESData_IGESEntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_IGESData_IGESEntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IGESData_IGESEntity (mutable)
     pub fn as_iges_data_iges_entity_mut(&mut self) -> &mut crate::iges_data::IGESEntity {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_IGESData_IGESEntity_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_IGESData_IGESEntity_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -16506,7 +18825,7 @@ impl ViewsVisibleWithAttr {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_as_Standard_Transient_mut(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -16516,10 +18835,10 @@ impl ViewsVisibleWithAttr {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDrawViewsVisibleWithAttr> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -16528,7 +18847,9 @@ impl ViewsVisibleWithAttr {
     pub fn iges_type(&self) -> crate::OwnedPtr<crate::iges_data::IGESType> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_IGESType(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_IGESType(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16536,14 +18857,18 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:54 - `IGESData_IGESEntity::TypeNumber()`
     pub fn type_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_TypeNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_TypeNumber(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:58 - `IGESData_IGESEntity::FormNumber()`
     pub fn form_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_FormNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_FormNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -16551,10 +18876,10 @@ impl ViewsVisibleWithAttr {
     pub fn dir_field_entity(
         &self,
         fieldnum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DirFieldEntity(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DirFieldEntity(
                     self as *const Self,
                     fieldnum,
                 ),
@@ -16565,15 +18890,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:70 - `IGESData_IGESEntity::HasStructure()`
     pub fn has_structure(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasStructure(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasStructure(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:74 - `IGESData_IGESEntity::Structure()`
-    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn structure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Structure(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Structure(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16581,7 +18910,9 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:77 - `IGESData_IGESEntity::DefLineFont()`
     pub fn def_line_font(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DefLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DefLineFont(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -16589,15 +18920,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:81 - `IGESData_IGESEntity::RankLineFont()`
     pub fn rank_line_font(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_RankLineFont(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_RankLineFont(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:85 - `IGESData_IGESEntity::LineFont()`
-    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLineFontEntity> {
+    pub fn line_font(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLineFontEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_LineFont(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_LineFont(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16605,7 +18940,9 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:88 - `IGESData_IGESEntity::DefLevel()`
     pub fn def_level(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DefLevel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DefLevel(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -16613,15 +18950,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:92 - `IGESData_IGESEntity::Level()`
     pub fn level(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Level(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Level(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:96 - `IGESData_IGESEntity::LevelList()`
-    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLevelListEntity> {
+    pub fn level_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLevelListEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_LevelList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_LevelList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16629,34 +18970,42 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:100 - `IGESData_IGESEntity::DefView()`
     pub fn def_view(&self) -> crate::iges_data::DefList {
         crate::iges_data::DefList::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DefView(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DefView(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:105 - `IGESData_IGESEntity::View()`
-    pub fn view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_View(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_View(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:110 - `IGESData_IGESEntity::SingleView()`
-    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn single_view(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_SingleView(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_SingleView(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:115 - `IGESData_IGESEntity::ViewList()`
-    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    pub fn view_list(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_ViewList(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_ViewList(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16664,15 +19013,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:118 - `IGESData_IGESEntity::HasTransf()`
     pub fn has_transf(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasTransf(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasTransf(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:123 - `IGESData_IGESEntity::Transf()`
-    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataTransfEntity> {
+    pub fn transf(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataTransfEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Transf(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Transf(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16680,15 +19033,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:126 - `IGESData_IGESEntity::HasLabelDisplay()`
     pub fn has_label_display(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasLabelDisplay(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasLabelDisplay(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:130 - `IGESData_IGESEntity::LabelDisplay()`
-    pub fn label_display(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataLabelDisplayEntity> {
+    pub fn label_display(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataLabelDisplayEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_LabelDisplay(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_LabelDisplay(
                     self as *const Self,
                 ),
             ))
@@ -16698,14 +19055,16 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:133 - `IGESData_IGESEntity::BlankStatus()`
     pub fn blank_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_BlankStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_BlankStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:136 - `IGESData_IGESEntity::SubordinateStatus()`
     pub fn subordinate_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_SubordinateStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_SubordinateStatus(
                 self as *const Self,
             )
         })
@@ -16714,21 +19073,25 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:139 - `IGESData_IGESEntity::UseFlag()`
     pub fn use_flag(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_UseFlag(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_UseFlag(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:142 - `IGESData_IGESEntity::HierarchyStatus()`
     pub fn hierarchy_status(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HierarchyStatus(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HierarchyStatus(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:145 - `IGESData_IGESEntity::LineWeightNumber()`
     pub fn line_weight_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_LineWeightNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_LineWeightNumber(
                 self as *const Self,
             )
         })
@@ -16737,14 +19100,18 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:149 - `IGESData_IGESEntity::LineWeight()`
     pub fn line_weight(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_LineWeight(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_LineWeight(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:152 - `IGESData_IGESEntity::DefColor()`
     pub fn def_color(&self) -> crate::iges_data::DefType {
         crate::iges_data::DefType::try_from(crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DefColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DefColor(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -16752,15 +19119,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:157 - `IGESData_IGESEntity::RankColor()`
     pub fn rank_color(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_RankColor(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_RankColor(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:162 - `IGESData_IGESEntity::Color()`
-    pub fn color(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataColorEntity> {
+    pub fn color(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataColorEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Color(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Color(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16768,15 +19139,19 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:174 - `IGESData_IGESEntity::HasShortLabel()`
     pub fn has_short_label(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasShortLabel(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasShortLabel(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:178 - `IGESData_IGESEntity::ShortLabel()`
-    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn short_label(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_ShortLabel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_ShortLabel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16784,7 +19159,7 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:182 - `IGESData_IGESEntity::HasSubScriptNumber()`
     pub fn has_sub_script_number(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasSubScriptNumber(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasSubScriptNumber(
                 self as *const Self,
             )
         })
@@ -16793,7 +19168,9 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:186 - `IGESData_IGESEntity::SubScriptNumber()`
     pub fn sub_script_number(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_SubScriptNumber(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_SubScriptNumber(
+                self as *const Self,
+            )
         })
     }
 
@@ -16801,10 +19178,10 @@ impl ViewsVisibleWithAttr {
     pub fn init_dir_field_entity(
         &mut self,
         fieldnum: i32,
-        ent: &crate::ffi::HandleIGESDataIGESEntity,
+        ent: &crate::ffi_types::HandleIGESDataIGESEntity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitDirFieldEntity(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitDirFieldEntity(
                 self as *mut Self,
                 fieldnum,
                 ent,
@@ -16813,23 +19190,33 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:194 - `IGESData_IGESEntity::InitTransf()`
-    pub fn init_transf(&mut self, ent: &crate::ffi::HandleIGESDataTransfEntity) {
+    pub fn init_transf(&mut self, ent: &crate::ffi_types::HandleIGESDataTransfEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitTransf(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitTransf(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:197 - `IGESData_IGESEntity::InitView()`
-    pub fn init_view(&mut self, ent: &crate::ffi::HandleIGESDataViewKindEntity) {
+    pub fn init_view(&mut self, ent: &crate::ffi_types::HandleIGESDataViewKindEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitView(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitView(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:201 - `IGESData_IGESEntity::InitLineFont()`
-    pub fn init_line_font(&mut self, ent: &crate::ffi::HandleIGESDataLineFontEntity, rank: i32) {
+    pub fn init_line_font(
+        &mut self,
+        ent: &crate::ffi_types::HandleIGESDataLineFontEntity,
+        rank: i32,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitLineFont(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitLineFont(
                 self as *mut Self,
                 ent,
                 rank,
@@ -16838,9 +19225,9 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:206 - `IGESData_IGESEntity::InitLevel()`
-    pub fn init_level(&mut self, ent: &crate::ffi::HandleIGESDataLevelListEntity, val: i32) {
+    pub fn init_level(&mut self, ent: &crate::ffi_types::HandleIGESDataLevelListEntity, val: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitLevel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitLevel(
                 self as *mut Self,
                 ent,
                 val,
@@ -16849,9 +19236,9 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:211 - `IGESData_IGESEntity::InitColor()`
-    pub fn init_color(&mut self, ent: &crate::ffi::HandleIGESDataColorEntity, rank: i32) {
+    pub fn init_color(&mut self, ent: &crate::ffi_types::HandleIGESDataColorEntity, rank: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitColor(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitColor(
                 self as *mut Self,
                 ent,
                 rank,
@@ -16862,7 +19249,7 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:215 - `IGESData_IGESEntity::InitStatus()`
     pub fn init_status(&mut self, blank: i32, subordinate: i32, useflag: i32, hierarchy: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitStatus(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitStatus(
                 self as *mut Self,
                 blank,
                 subordinate,
@@ -16873,9 +19260,9 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:223 - `IGESData_IGESEntity::SetLabel()`
-    pub fn set_label(&mut self, label: &crate::ffi::HandleTCollectionHAsciiString, sub: i32) {
+    pub fn set_label(&mut self, label: &crate::ffi_types::HandleTCollectionHAsciiString, sub: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_SetLabel(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_SetLabel(
                 self as *mut Self,
                 label,
                 sub,
@@ -16886,12 +19273,12 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:230 - `IGESData_IGESEntity::InitMisc()`
     pub fn init_misc(
         &mut self,
-        str: &crate::ffi::HandleIGESDataIGESEntity,
-        lab: &crate::ffi::HandleIGESDataLabelDisplayEntity,
+        str: &crate::ffi_types::HandleIGESDataIGESEntity,
+        lab: &crate::ffi_types::HandleIGESDataLabelDisplayEntity,
         weightnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_InitMisc(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_InitMisc(
                 self as *mut Self,
                 str,
                 lab,
@@ -16903,15 +19290,17 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:238 - `IGESData_IGESEntity::HasOneParent()`
     pub fn has_one_parent(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasOneParent(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasOneParent(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:242 - `IGESData_IGESEntity::UniqueParent()`
-    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn unique_parent(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_UniqueParent(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_UniqueParent(
                     self as *const Self,
                 ),
             ))
@@ -16922,7 +19311,9 @@ impl ViewsVisibleWithAttr {
     pub fn location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Location(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Location(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16931,7 +19322,7 @@ impl ViewsVisibleWithAttr {
     pub fn vector_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_VectorLocation(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_VectorLocation(
                     self as *const Self,
                 ),
             ))
@@ -16941,26 +19332,26 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:260 - `IGESData_IGESEntity::CompoundLocation()`
     pub fn compound_location(&self) -> crate::OwnedPtr<crate::gp::GTrsf> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_CompoundLocation(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_CompoundLocation(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:264 - `IGESData_IGESEntity::HasName()`
     pub fn has_name(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_HasName(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_HasName(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:269 - `IGESData_IGESEntity::NameValue()`
-    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn name_value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_NameValue(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_NameValue(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -16968,16 +19359,14 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:274 - `IGESData_IGESEntity::ArePresentAssociativities()`
     pub fn are_present_associativities(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_ArePresentAssociativities(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_ArePresentAssociativities(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:277 - `IGESData_IGESEntity::NbAssociativities()`
     pub fn nb_associativities(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_NbAssociativities(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_NbAssociativities(
                 self as *const Self,
             )
         })
@@ -16987,7 +19376,7 @@ impl ViewsVisibleWithAttr {
     pub fn associativities(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Associativities(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Associativities(
                     self as *const Self,
                 ),
             ))
@@ -16995,48 +19384,46 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:283 - `IGESData_IGESEntity::NbTypedAssociativities()`
-    pub fn nb_typed_associativities(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_associativities(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_NbTypedAssociativities(
-                self as *const Self,
-                atype,
-            )
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_NbTypedAssociativities(self as *const Self, atype)
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:287 - `IGESData_IGESEntity::TypedAssociativity()`
     pub fn typed_associativity(
         &self,
-        atype: &crate::ffi::HandleStandardType,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+        atype: &crate::ffi_types::HandleStandardType,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_TypedAssociativity(
-                    self as *const Self,
-                    atype,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_TypedAssociativity(self as *const Self, atype)))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:291 - `IGESData_IGESEntity::Associate()`
-    pub fn associate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn associate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Associate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Associate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:294 - `IGESData_IGESEntity::Dissociate()`
-    pub fn dissociate(&self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn dissociate(&self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Dissociate(self as *const Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Dissociate(
+                self as *const Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:299 - `IGESData_IGESEntity::ArePresentProperties()`
     pub fn are_present_properties(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_ArePresentProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_ArePresentProperties(
                 self as *const Self,
             )
         })
@@ -17045,7 +19432,9 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:302 - `IGESData_IGESEntity::NbProperties()`
     pub fn nb_properties(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_NbProperties(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_NbProperties(
+                self as *const Self,
+            )
         })
     }
 
@@ -17053,15 +19442,17 @@ impl ViewsVisibleWithAttr {
     pub fn properties(&self) -> crate::OwnedPtr<crate::interface::EntityIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Properties(self as *const Self),
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Properties(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:308 - `IGESData_IGESEntity::NbTypedProperties()`
-    pub fn nb_typed_properties(&self, atype: &crate::ffi::HandleStandardType) -> i32 {
+    pub fn nb_typed_properties(&self, atype: &crate::ffi_types::HandleStandardType) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_NbTypedProperties(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_NbTypedProperties(
                 self as *const Self,
                 atype,
             )
@@ -17071,12 +19462,12 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:312 - `IGESData_IGESEntity::TypedProperty()`
     pub fn typed_property(
         &self,
-        atype: &crate::ffi::HandleStandardType,
+        atype: &crate::ffi_types::HandleStandardType,
         anum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_TypedProperty(
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_TypedProperty(
                     self as *const Self,
                     atype,
                     anum,
@@ -17086,16 +19477,19 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:316 - `IGESData_IGESEntity::AddProperty()`
-    pub fn add_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn add_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_AddProperty(self as *mut Self, ent)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_AddProperty(
+                self as *mut Self,
+                ent,
+            )
         })
     }
 
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:319 - `IGESData_IGESEntity::RemoveProperty()`
-    pub fn remove_property(&mut self, ent: &crate::ffi::HandleIGESDataIGESEntity) {
+    pub fn remove_property(&mut self, ent: &crate::ffi_types::HandleIGESDataIGESEntity) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_RemoveProperty(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_RemoveProperty(
                 self as *mut Self,
                 ent,
             )
@@ -17105,7 +19499,7 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `IGESData_IGESEntity.hxx`:324 - `IGESData_IGESEntity::SetLineWeight()`
     pub fn set_line_weight(&mut self, defw: f64, maxw: f64, gradw: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_SetLineWeight(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_SetLineWeight(
                 self as *mut Self,
                 defw,
                 maxw,
@@ -17115,9 +19509,9 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_IsInstance(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -17125,9 +19519,12 @@ impl ViewsVisibleWithAttr {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -17135,7 +19532,9 @@ impl ViewsVisibleWithAttr {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_This(self as *const Self)
+                crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -17148,14 +19547,16 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -17164,7 +19565,7 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -17173,70 +19574,68 @@ impl ViewsVisibleWithAttr {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IGESDraw_ViewsVisibleWithAttr_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKDEIGES::IGESDraw_ViewsVisibleWithAttr_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleIGESDrawViewsVisibleWithAttr;
+pub use crate::ffi_types::HandleIGESDrawViewsVisibleWithAttr;
 
 unsafe impl crate::CppDeletable for HandleIGESDrawViewsVisibleWithAttr {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIGESDrawViewsVisibleWithAttr_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_destructor(ptr);
     }
 }
 
 impl HandleIGESDrawViewsVisibleWithAttr {
     /// Dereference this Handle to access the underlying IGESDraw_ViewsVisibleWithAttr
-    pub fn get(&self) -> &crate::ffi::IGESDraw_ViewsVisibleWithAttr {
+    pub fn get(&self) -> &crate::ffi_types::IGESDraw_ViewsVisibleWithAttr {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIGESDrawViewsVisibleWithAttr_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying IGESDraw_ViewsVisibleWithAttr
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IGESDraw_ViewsVisibleWithAttr {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IGESDraw_ViewsVisibleWithAttr {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIGESDrawViewsVisibleWithAttr_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisibleWithAttr> to Handle<IGESData_ViewKindEntity>
     pub fn to_handle_view_kind_entity(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataViewKindEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataViewKindEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisibleWithAttr_to_HandleIGESDataViewKindEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_to_HandleIGESDataViewKindEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisibleWithAttr> to Handle<IGESData_IGESEntity>
-    pub fn to_handle_iges_entity(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    pub fn to_handle_iges_entity(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisibleWithAttr_to_HandleIGESDataIGESEntity(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_to_HandleIGESDataIGESEntity(self as *const Self)))
         }
     }
 
     /// Upcast Handle<IGESDraw_ViewsVisibleWithAttr> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIGESDrawViewsVisibleWithAttr_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::HandleIGESDrawViewsVisibleWithAttr_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -17245,7 +19644,7 @@ impl HandleIGESDrawViewsVisibleWithAttr {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     IGESDraw_Array1OfConnectPoint as Array1OfConnectPoint,
     IGESDraw_Array1OfViewKindEntity as Array1OfViewKindEntity,
 };

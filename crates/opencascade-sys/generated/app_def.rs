@@ -7,18 +7,18 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx
 // ========================
 
 /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:33 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute`
-pub use crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute as BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
+pub use crate::ffi_types::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute as BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -26,21 +26,21 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
     /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:38 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute.hxx`:38 - `AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -61,39 +61,32 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -101,63 +94,52 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_IsDone(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Location(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Minimum(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Gradient(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_NbIterations(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Dump(
-                self as *const Self,
-                o,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute_inherited_Dump(self as *const Self, o)
         })
     }
 }
@@ -167,11 +149,11 @@ impl BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:41 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute`
-pub use crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute as BSpParFunctionOfMyBSplGradientOfBSplineCompute;
+pub use crate::ffi_types::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute as BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -183,14 +165,14 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, NbPol)))
         }
     }
 
@@ -199,9 +181,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_nb_variables(self as *const Self)
         })
     }
 
@@ -210,13 +190,9 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_value(
-                self as *mut Self,
-                X,
-                F,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_value(self as *mut Self, X, F)
         })
     }
 
@@ -225,15 +201,11 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_gradient(
-                self as *mut Self,
-                X,
-                G,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -242,29 +214,20 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_values(
-                self as *mut Self,
-                X,
-                F,
-                G,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_values(self as *mut Self, X, F, G)
         })
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:78 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_new_parameters(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_new_parameters(self as *const Self)))
         }
     }
 
@@ -273,11 +236,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_curve_value(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_curve_value(self as *mut Self)))
         }
     }
 
@@ -286,11 +245,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// IPoint and the curve CurveIndex.
     pub fn error(&mut self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_error(
-                self as *mut Self,
-                IPoint,
-                CurveIndex,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_error(self as *mut Self, IPoint, CurveIndex)
         })
     }
 
@@ -299,9 +254,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// and the MultiBSpCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error3d(self as *const Self)
         })
     }
 
@@ -310,9 +263,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// and the MultiBSpCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_max_error2d(self as *const Self)
         })
     }
 
@@ -321,11 +272,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// multiline.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_function_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_function_matrix(self as *const Self)))
         }
     }
 
@@ -334,7 +281,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// multiline.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -343,65 +290,41 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_index(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_index(self as *const Self)))
         }
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:112 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_first_constraint(
-                self as *const Self,
-                TheConstraints,
-                FirstPoint,
-            )
-        }))
-        .unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:116 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_last_constraint(
-                self as *const Self,
-                TheConstraints,
-                LastPoint,
-            )
-        }))
-        .unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:119 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetFirstLambda()`
     pub fn set_first_lambda(&mut self, l1: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_first_lambda(
-                self as *mut Self,
-                l1,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_first_lambda(self as *mut Self, l1)
         })
     }
 
     /// **Source:** `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute.hxx`:121 - `AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute::SetLastLambda()`
     pub fn set_last_lambda(&mut self, l2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_last_lambda(
-                self as *mut Self,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_set_last_lambda(self as *mut Self, l2)
         })
     }
 
@@ -410,7 +333,7 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -419,28 +342,28 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -450,11 +373,11 @@ impl BSpParFunctionOfMyBSplGradientOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:44 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute`
-pub use crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute as BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
+pub use crate::ffi_types::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute as BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -482,11 +405,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -501,7 +424,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -523,17 +446,17 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// parameter, only the vector B changes).
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -541,8 +464,8 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -550,27 +473,29 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:122 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector(self as *mut Self, Parameters)
         })
     }
 
     /// **Source:** `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute.hxx`:125 - `AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -580,14 +505,14 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -599,16 +524,16 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -616,9 +541,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_is_done(self as *const Self)
         })
     }
 
@@ -628,11 +551,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_bezier_value(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_bezier_value(self as *mut Self)))
         }
     }
 
@@ -642,11 +561,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_b_spline_value(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -655,7 +570,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_function_matrix(self as *const Self)))
         }
     }
 
@@ -664,7 +579,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -675,19 +590,13 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -696,11 +605,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_distance(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_distance(self as *mut Self)))
         }
     }
 
@@ -710,12 +615,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error(
-                self as *mut Self,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_error(self as *mut Self, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -724,9 +624,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_first_lambda(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_first_lambda(self as *const Self)
         })
     }
 
@@ -735,9 +633,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_last_lambda(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_last_lambda(self as *const Self)
         })
     }
 
@@ -745,11 +641,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_points(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_points(self as *const Self)))
         }
     }
 
@@ -757,11 +649,7 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_poles(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_poles(self as *const Self)))
         }
     }
 
@@ -770,13 +658,9 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_k_index(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute_k_index(self as *const Self)))
         }
     }
 }
@@ -786,11 +670,11 @@ impl BSpParLeastSquareOfMyBSplGradientOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_BSplineCompute.hxx`:49 - `AppDef_BSplineCompute`
-pub use crate::ffi::AppDef_BSplineCompute as BSplineCompute;
+pub use crate::ffi_types::AppDef_BSplineCompute as BSplineCompute;
 
 unsafe impl crate::CppDeletable for BSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_BSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_destructor(ptr);
     }
 }
 
@@ -817,7 +701,7 @@ impl BSplineCompute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_BSplineCompute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -830,7 +714,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int_bool2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -840,26 +724,14 @@ impl BSplineCompute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_BSplineCompute_ctor_multiline_vector_int2_real2_int_bool2(
-                    Line,
-                    Parameters,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_ctor_multiline_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -869,18 +741,7 @@ impl BSplineCompute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_BSplineCompute_ctor_vector_int2_real2_int_bool2(
-                    Parameters,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_ctor_vector_int2_real2_int_bool2(Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
@@ -897,18 +758,7 @@ impl BSplineCompute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_BSplineCompute_ctor_int2_real2_int_bool_parametrizationtype_bool(
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    parametrization.into(),
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -954,7 +804,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int_bool(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -984,7 +834,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1013,7 +863,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1041,7 +891,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1068,7 +918,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1086,7 +936,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector_int(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiline_vector_int2_real2_int_bool2(
@@ -1103,7 +953,7 @@ impl BSplineCompute {
     /// no iteration at all.
     pub fn new_multiline_vector(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiline_vector_int2_real2_int_bool2(
             Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
@@ -1113,7 +963,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1136,7 +986,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1158,7 +1008,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1179,7 +1029,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1199,7 +1049,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1211,7 +1061,7 @@ impl BSplineCompute {
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(
@@ -1221,7 +1071,7 @@ impl BSplineCompute {
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:91 - `AppDef_BSplineCompute::AppDef_BSplineCompute()`
     /// Initializes the fields of the algorithm.
-    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+    pub fn new_vector(Parameters: &crate::ffi_types::math_Vector) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
@@ -1253,7 +1103,7 @@ impl BSplineCompute {
     /// The result will be a C2 curve of degree 3.
     pub fn interpol(&mut self, Line: &MultiLine) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_interpol(self as *mut Self, Line)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_interpol(self as *mut Self, Line)
         })
     }
 
@@ -1271,7 +1121,7 @@ impl BSplineCompute {
         Squares: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_init(
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_init(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -1289,16 +1139,19 @@ impl BSplineCompute {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_perform(self as *mut Self, Line)
         })
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:130 - `AppDef_BSplineCompute::SetParameters()`
     /// The approximation will begin with the
     /// set of  parameters <ThePar>.
-    pub fn set_parameters(&mut self, ThePar: &crate::ffi::math_Vector) {
+    pub fn set_parameters(&mut self, ThePar: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_parameters(self as *mut Self, ThePar)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_parameters(
+                self as *mut Self,
+                ThePar,
+            )
         })
     }
 
@@ -1306,9 +1159,9 @@ impl BSplineCompute {
     /// The approximation will be done with the
     /// set of knots <Knots>. The multiplicities will be set
     /// with the degree and the desired continuity.
-    pub fn set_knots(&mut self, Knots: &crate::ffi::TColStd_Array1OfReal) {
+    pub fn set_knots(&mut self, Knots: &crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_knots(self as *mut Self, Knots)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_knots(self as *mut Self, Knots)
         })
     }
 
@@ -1317,11 +1170,11 @@ impl BSplineCompute {
     /// set of knots <Knots> and the multiplicities <Mults>.
     pub fn set_knots_and_multiplicities(
         &mut self,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_knots_and_multiplicities(
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_knots_and_multiplicities(
                 self as *mut Self,
                 Knots,
                 Mults,
@@ -1333,7 +1186,11 @@ impl BSplineCompute {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_degrees(self as *mut Self, degreemin, degreemax)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
         })
     }
 
@@ -1341,7 +1198,7 @@ impl BSplineCompute {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_tolerances(
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_tolerances(
                 self as *mut Self,
                 Tolerance3d,
                 Tolerance2d,
@@ -1354,7 +1211,7 @@ impl BSplineCompute {
     /// if C = 2, the spline will be C2.
     pub fn set_continuity(&mut self, C: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_continuity(self as *mut Self, C)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_continuity(self as *mut Self, C)
         })
     }
 
@@ -1366,7 +1223,7 @@ impl BSplineCompute {
         lastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_constraints(
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_constraints(
                 self as *mut Self,
                 firstC.into(),
                 lastC.into(),
@@ -1381,7 +1238,10 @@ impl BSplineCompute {
     /// Multiline must be closed.
     pub fn set_periodic(&mut self, thePeriodic: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_set_periodic(self as *mut Self, thePeriodic)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_set_periodic(
+                self as *mut Self,
+                thePeriodic,
+            )
         })
     }
 
@@ -1391,7 +1251,9 @@ impl BSplineCompute {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_is_all_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_is_all_approximated(
+                self as *const Self,
+            )
         })
     }
 
@@ -1399,7 +1261,9 @@ impl BSplineCompute {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_is_tolerance_reached(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_is_tolerance_reached(
+                self as *const Self,
+            )
         })
     }
 
@@ -1407,7 +1271,11 @@ impl BSplineCompute {
     /// returns the tolerances 2d and 3d of the MultiBSpCurve.
     pub fn error(&self, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_BSplineCompute_error(self as *const Self, tol3d, tol2d)
+            crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_error(
+                self as *const Self,
+                tol3d,
+                tol2d,
+            )
         })
     }
 
@@ -1415,7 +1283,9 @@ impl BSplineCompute {
     /// returns the result of the approximation.
     pub fn value(&self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSplineCompute_value(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_value(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1423,18 +1293,18 @@ impl BSplineCompute {
     /// returns the result of the approximation.
     pub fn change_value(&mut self) -> &mut crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppDef_BSplineCompute_change_value(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_change_value(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `AppDef_BSplineCompute.hxx`:183 - `AppDef_BSplineCompute::Parameters()`
     /// returns the new parameters of the approximation
     /// corresponding to the points of the MultiBSpCurve.
-    pub fn parameters(&self) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn parameters(&self) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_BSplineCompute_parameters(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_BSplineCompute_parameters(
                 self as *const Self,
             )))
         }
@@ -1446,11 +1316,11 @@ impl BSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_Compute.hxx`:46 - `AppDef_Compute`
-pub use crate::ffi::AppDef_Compute as Compute;
+pub use crate::ffi_types::AppDef_Compute as Compute;
 
 unsafe impl crate::CppDeletable for Compute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_Compute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_Compute_destructor(ptr);
     }
 }
 
@@ -1474,7 +1344,7 @@ impl Compute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Compute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_ctor_multiline_int2_real2_int_bool_parametrizationtype_bool(Line, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -1487,7 +1357,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int_bool2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1497,26 +1367,14 @@ impl Compute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_Compute_ctor_multiline_vector_int2_real2_int_bool2(
-                    Line,
-                    Parameters,
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_ctor_multiline_vector_int2_real2_int_bool2(Line, Parameters, degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, Squares)))
         }
     }
 
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1527,7 +1385,7 @@ impl Compute {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_Compute_ctor_vector_int2_real2_int_bool2(
+                crate::ffi_extern_TKGeomBase::AppDef_Compute_ctor_vector_int2_real2_int_bool2(
                     Parameters,
                     degreemin,
                     degreemax,
@@ -1554,18 +1412,7 @@ impl Compute {
         Squares: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_Compute_ctor_int2_real2_int_bool_parametrizationtype_bool(
-                    degreemin,
-                    degreemax,
-                    Tolerance3d,
-                    Tolerance2d,
-                    NbIterations,
-                    cutting,
-                    parametrization.into(),
-                    Squares,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_ctor_int2_real2_int_bool_parametrizationtype_bool(degreemin, degreemax, Tolerance3d, Tolerance2d, NbIterations, cutting, parametrization.into(), Squares)))
         }
     }
 
@@ -1608,7 +1455,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int_bool(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1638,7 +1485,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2_int(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1667,7 +1514,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1695,7 +1542,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2_real(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1722,7 +1569,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int2(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1740,7 +1587,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector_int(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiline_vector_int2_real2_int_bool2(
@@ -1757,7 +1604,7 @@ impl Compute {
     /// no iteration at all.
     pub fn new_multiline_vector(
         Line: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
     ) -> crate::OwnedPtr<Self> {
         Self::new_multiline_vector_int2_real2_int_bool2(
             Line, Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false,
@@ -1767,7 +1614,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int_bool(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1790,7 +1637,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1812,7 +1659,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1833,7 +1680,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2_real(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
         Tolerance3d: f64,
@@ -1853,7 +1700,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int2(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
         degreemax: i32,
     ) -> crate::OwnedPtr<Self> {
@@ -1865,7 +1712,7 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
     pub fn new_vector_int(
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         degreemin: i32,
     ) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(
@@ -1875,7 +1722,7 @@ impl Compute {
 
     /// **Source:** `AppDef_Compute.hxx`:85 - `AppDef_Compute::AppDef_Compute()`
     /// Initializes the fields of the algorithm.
-    pub fn new_vector(Parameters: &crate::ffi::math_Vector) -> crate::OwnedPtr<Self> {
+    pub fn new_vector(Parameters: &crate::ffi_types::math_Vector) -> crate::OwnedPtr<Self> {
         Self::new_vector_int2_real2_int_bool2(Parameters, 4, 8, 1.0e-03, 1.0e-06, 5, true, false)
     }
 
@@ -1916,7 +1763,7 @@ impl Compute {
         Squares: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_init(
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_init(
                 self as *mut Self,
                 degreemin,
                 degreemax,
@@ -1934,7 +1781,7 @@ impl Compute {
     /// runs the algorithm after having initialized the fields.
     pub fn perform(&mut self, Line: &MultiLine) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_perform(self as *mut Self, Line)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_perform(self as *mut Self, Line)
         })
     }
 
@@ -1942,7 +1789,11 @@ impl Compute {
     /// changes the degrees of the approximation.
     pub fn set_degrees(&mut self, degreemin: i32, degreemax: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_set_degrees(self as *mut Self, degreemin, degreemax)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_set_degrees(
+                self as *mut Self,
+                degreemin,
+                degreemax,
+            )
         })
     }
 
@@ -1950,7 +1801,11 @@ impl Compute {
     /// Changes the tolerances of the approximation.
     pub fn set_tolerances(&mut self, Tolerance3d: f64, Tolerance2d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_set_tolerances(self as *mut Self, Tolerance3d, Tolerance2d)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_set_tolerances(
+                self as *mut Self,
+                Tolerance3d,
+                Tolerance2d,
+            )
         })
     }
 
@@ -1962,7 +1817,7 @@ impl Compute {
         lastC: crate::app_par_curves::Constraint,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_set_constraints(
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_set_constraints(
                 self as *mut Self,
                 firstC.into(),
                 lastC.into(),
@@ -1976,7 +1831,7 @@ impl Compute {
     /// when more points were needed.
     pub fn is_all_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Compute_is_all_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_is_all_approximated(self as *const Self)
         })
     }
 
@@ -1984,7 +1839,7 @@ impl Compute {
     /// returns False if the status NoPointsAdded has been sent.
     pub fn is_tolerance_reached(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Compute_is_tolerance_reached(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_is_tolerance_reached(self as *const Self)
         })
     }
 
@@ -1992,7 +1847,12 @@ impl Compute {
     /// returns the tolerances 2d and 3d of the <Index> MultiCurve.
     pub fn error(&self, Index: i32, tol3d: &mut f64, tol2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Compute_error(self as *const Self, Index, tol3d, tol2d)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_error(
+                self as *const Self,
+                Index,
+                tol3d,
+                tol2d,
+            )
         })
     }
 
@@ -2001,7 +1861,7 @@ impl Compute {
     /// of the MultiLine.
     pub fn nb_multi_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Compute_nb_multi_curves(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_nb_multi_curves(self as *const Self)
         })
     }
 
@@ -2009,7 +1869,10 @@ impl Compute {
     /// returns the result of the approximation.
     pub fn value(&self, Index: i32) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_Compute_value(self as *const Self, Index)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_value(
+                self as *const Self,
+                Index,
+            )))
         }
     }
 
@@ -2017,7 +1880,7 @@ impl Compute {
     /// returns the result of the approximation.
     pub fn change_value(&mut self, Index: i32) -> &mut crate::app_par_curves::MultiCurve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppDef_Compute_change_value(
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_change_value(
                 self as *mut Self,
                 Index,
             )))
@@ -2028,7 +1891,9 @@ impl Compute {
     /// returns the result of the approximation.
     pub fn spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_Compute_spline_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_spline_value(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2036,7 +1901,7 @@ impl Compute {
     /// returns the type  of  parametrization
     pub fn parametrization(&self) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_Compute_parametrization(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Compute_parametrization(self as *const Self)
         }))
         .unwrap()
     }
@@ -2044,9 +1909,9 @@ impl Compute {
     /// **Source:** `AppDef_Compute.hxx`:161 - `AppDef_Compute::Parameters()`
     /// returns the new parameters of the approximation
     /// corresponding to the points of the multicurve <Index>.
-    pub fn parameters(&self, Index: i32) -> &crate::ffi::TColStd_Array1OfReal {
+    pub fn parameters(&self, Index: i32) -> &crate::ffi_types::TColStd_Array1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_Compute_parameters(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Compute_parameters(
                 self as *const Self,
                 Index,
             )))
@@ -2059,11 +1924,11 @@ impl Compute {
 // ========================
 
 /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:34 - `AppDef_Gradient_BFGSOfMyGradientOfCompute`
-pub use crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute as Gradient_BFGSOfMyGradientOfCompute;
+pub use crate::ffi_types::AppDef_Gradient_BFGSOfMyGradientOfCompute as Gradient_BFGSOfMyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_destructor(ptr);
     }
 }
 
@@ -2071,21 +1936,21 @@ impl Gradient_BFGSOfMyGradientOfCompute {
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientOfCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientOfCompute::AppDef_Gradient_BFGSOfMyGradientOfCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -2106,47 +1971,32 @@ impl Gradient_BFGSOfMyGradientOfCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_SetBoundary(
-                self as *mut Self,
-                theLeftBorder,
-                theRightBorder,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -2154,70 +2004,54 @@ impl Gradient_BFGSOfMyGradientOfCompute {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_IsDone(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_IsDone(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Location(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Minimum(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Gradient(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_NbIterations(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Dump(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientOfCompute_inherited_Dump(
                 self as *const Self,
                 o,
             )
@@ -2230,11 +2064,11 @@ impl Gradient_BFGSOfMyGradientOfCompute {
 // ========================
 
 /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:34 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute`
-pub use crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute as Gradient_BFGSOfMyGradientbisOfBSplineCompute;
+pub use crate::ffi_types::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute as Gradient_BFGSOfMyGradientbisOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -2242,21 +2076,21 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -2277,47 +2111,32 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_is_solution_reached(
-                self as *const Self,
-                F,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_is_solution_reached(self as *const Self, F)
         })
     }
 
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS(self as *const Self))
         }
     }
 
     /// Upcast to math_BFGS (mutable)
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_as_math_BFGS_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_SetBoundary(
-                self as *mut Self,
-                theLeftBorder,
-                theRightBorder,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_SetBoundary(self as *mut Self, theLeftBorder, theRightBorder)
         })
     }
 
@@ -2325,73 +2144,52 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Perform(
-                self as *mut Self,
-                F,
-                StartingPoint,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Perform(self as *mut Self, F, StartingPoint)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_IsDone(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_IsDone(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Location(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Location(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Minimum(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Minimum(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Gradient(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Gradient(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_NbIterations(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_NbIterations(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Dump(
-                self as *const Self,
-                o,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute_inherited_Dump(self as *const Self, o)
         })
     }
 }
@@ -2401,11 +2199,11 @@ impl Gradient_BFGSOfMyGradientbisOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:34 - `AppDef_Gradient_BFGSOfTheGradient`
-pub use crate::ffi::AppDef_Gradient_BFGSOfTheGradient as Gradient_BFGSOfTheGradient;
+pub use crate::ffi_types::AppDef_Gradient_BFGSOfTheGradient as Gradient_BFGSOfTheGradient;
 
 unsafe impl crate::CppDeletable for Gradient_BFGSOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_Gradient_BFGSOfTheGradient_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_destructor(ptr);
     }
 }
 
@@ -2413,21 +2211,21 @@ impl Gradient_BFGSOfTheGradient {
     /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:39 - `AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3_int(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_ctor_multiplevarfunctionwithgradient_vector_real3_int(F, StartingPoint, Tolerance3d, Tolerance2d, Eps, NbIterations)))
         }
     }
 
     /// **Source:** `AppDef_Gradient_BFGSOfTheGradient.hxx`:39 - `AppDef_Gradient_BFGSOfTheGradient::AppDef_Gradient_BFGSOfTheGradient()`
     pub fn new_multiplevarfunctionwithgradient_vector_real3(
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
         Tolerance3d: f64,
         Tolerance2d: f64,
         Eps: f64,
@@ -2448,7 +2246,7 @@ impl Gradient_BFGSOfTheGradient {
         F: &mut crate::math::MultipleVarFunctionWithGradient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_is_solution_reached(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_is_solution_reached(
                 self as *const Self,
                 F,
             )
@@ -2458,9 +2256,11 @@ impl Gradient_BFGSOfTheGradient {
     /// Upcast to math_BFGS
     pub fn as_math_bfgs(&self) -> &crate::math::BFGS {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2468,7 +2268,9 @@ impl Gradient_BFGSOfTheGradient {
     pub fn as_math_bfgs_mut(&mut self) -> &mut crate::math::BFGS {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_as_math_BFGS_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2476,11 +2278,11 @@ impl Gradient_BFGSOfTheGradient {
     /// Inherited: **Source:** `math_BFGS.hxx`:58 - `math_BFGS::SetBoundary()`
     pub fn set_boundary(
         &mut self,
-        theLeftBorder: &crate::ffi::math_Vector,
-        theRightBorder: &crate::ffi::math_Vector,
+        theLeftBorder: &crate::ffi_types::math_Vector,
+        theRightBorder: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_SetBoundary(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_SetBoundary(
                 self as *mut Self,
                 theLeftBorder,
                 theRightBorder,
@@ -2492,10 +2294,10 @@ impl Gradient_BFGSOfTheGradient {
     pub fn perform(
         &mut self,
         F: &mut crate::math::MultipleVarFunctionWithGradient,
-        StartingPoint: &crate::ffi::math_Vector,
+        StartingPoint: &crate::ffi_types::math_Vector,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Perform(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_Perform(
                 self as *mut Self,
                 F,
                 StartingPoint,
@@ -2506,15 +2308,17 @@ impl Gradient_BFGSOfTheGradient {
     /// Inherited: **Source:** `math_BFGS.hxx`:78 - `math_BFGS::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:82 - `math_BFGS::Location()`
-    pub fn location(&self) -> &crate::ffi::math_Vector {
+    pub fn location(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Location(
+                crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_Location(
                     self as *const Self,
                 ),
             ))
@@ -2524,15 +2328,17 @@ impl Gradient_BFGSOfTheGradient {
     /// Inherited: **Source:** `math_BFGS.hxx`:92 - `math_BFGS::Minimum()`
     pub fn minimum(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Minimum(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_Minimum(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:96 - `math_BFGS::Gradient()`
-    pub fn gradient(&self) -> &crate::ffi::math_Vector {
+    pub fn gradient(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Gradient(
+                crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_Gradient(
                     self as *const Self,
                 ),
             ))
@@ -2542,16 +2348,19 @@ impl Gradient_BFGSOfTheGradient {
     /// Inherited: **Source:** `math_BFGS.hxx`:107 - `math_BFGS::NbIterations()`
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_NbIterations(
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_NbIterations(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `math_BFGS.hxx`:112 - `math_BFGS::Dump()`
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Gradient_BFGSOfTheGradient_inherited_Dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppDef_Gradient_BFGSOfTheGradient_inherited_Dump(
+                self as *const Self,
+                o,
+            )
         })
     }
 }
@@ -2561,11 +2370,11 @@ impl Gradient_BFGSOfTheGradient {
 // ========================
 
 /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint`
-pub use crate::ffi::AppDef_HArray1OfMultiPointConstraint as HArray1OfMultiPointConstraint;
+pub use crate::ffi_types::AppDef_HArray1OfMultiPointConstraint as HArray1OfMultiPointConstraint;
 
 unsafe impl crate::CppDeletable for HArray1OfMultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_HArray1OfMultiPointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_destructor(ptr);
     }
 }
 
@@ -2574,7 +2383,7 @@ impl HArray1OfMultiPointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor(),
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_ctor(),
             ))
         }
     }
@@ -2583,7 +2392,9 @@ impl HArray1OfMultiPointConstraint {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -2595,11 +2406,7 @@ impl HArray1OfMultiPointConstraint {
         theValue: &MultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_int2_multipointconstraint(
-                    theLower, theUpper, theValue,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_ctor_int2_multipointconstraint(theLower, theUpper, theValue)))
         }
     }
 
@@ -2611,47 +2418,49 @@ impl HArray1OfMultiPointConstraint {
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_multipointconstraint_int2_bool(theBegin, theLower, theUpper, arg3)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_ctor_multipointconstraint_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::AppDef_HArray1OfMultiPointConstraint()`
     pub fn new_array1ofmultipointconstraint(
-        theOther: &crate::ffi::AppDef_Array1OfMultiPointConstraint,
+        theOther: &crate::ffi_types::AppDef_Array1OfMultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_ctor_array1ofmultipointconstraint(
-                    theOther,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_ctor_array1ofmultipointconstraint(theOther)))
+        }
+    }
+
+    /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::Array1()`
+    pub fn array1(&self) -> &crate::ffi_types::AppDef_Array1OfMultiPointConstraint {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_array1(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::Array1()`
-    pub fn array1(&self) -> &crate::ffi::AppDef_Array1OfMultiPointConstraint {
-        unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_HArray1OfMultiPointConstraint_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::AppDef_Array1OfMultiPointConstraint {
+    pub fn change_array1(&mut self) -> &mut crate::ffi_types::AppDef_Array1OfMultiPointConstraint {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_change_array1(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_HArray1OfMultiPointConstraint_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2659,7 +2468,7 @@ impl HArray1OfMultiPointConstraint {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2667,51 +2476,43 @@ impl HArray1OfMultiPointConstraint {
     }
 
     /// **Source:** `AppDef_HArray1OfMultiPointConstraint.hxx`:24 - `AppDef_HArray1OfMultiPointConstraint::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppDefHArray1OfMultiPointConstraint> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppDefHArray1OfMultiPointConstraint> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsInstance(
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2719,9 +2520,9 @@ impl HArray1OfMultiPointConstraint {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IsKind(
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -2732,7 +2533,9 @@ impl HArray1OfMultiPointConstraint {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2745,7 +2548,7 @@ impl HArray1OfMultiPointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_GetRefCount(
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -2754,64 +2557,64 @@ impl HArray1OfMultiPointConstraint {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_HArray1OfMultiPointConstraint_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_HArray1OfMultiPointConstraint_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppDefHArray1OfMultiPointConstraint;
+pub use crate::ffi_types::HandleAppDefHArray1OfMultiPointConstraint;
 
 unsafe impl crate::CppDeletable for HandleAppDefHArray1OfMultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_destructor(ptr);
     }
 }
 
 impl HandleAppDefHArray1OfMultiPointConstraint {
     /// Dereference this Handle to access the underlying AppDef_HArray1OfMultiPointConstraint
-    pub fn get(&self) -> &crate::ffi::AppDef_HArray1OfMultiPointConstraint {
+    pub fn get(&self) -> &crate::ffi_types::AppDef_HArray1OfMultiPointConstraint {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_HArray1OfMultiPointConstraint
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_HArray1OfMultiPointConstraint {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppDef_HArray1OfMultiPointConstraint {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_get_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<AppDef_HArray1OfMultiPointConstraint> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppDefHArray1OfMultiPointConstraint_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefHArray1OfMultiPointConstraint_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2823,11 +2626,11 @@ impl HandleAppDefHArray1OfMultiPointConstraint {
 /// **Source:** `AppDef_LinearCriteria.hxx`:38 - `AppDef_LinearCriteria`
 /// defined an Linear Criteria to used in variational
 /// Smoothing of points.
-pub use crate::ffi::AppDef_LinearCriteria as LinearCriteria;
+pub use crate::ffi_types::AppDef_LinearCriteria as LinearCriteria;
 
 unsafe impl crate::CppDeletable for LinearCriteria {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_LinearCriteria_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_destructor(ptr);
     }
 }
 
@@ -2840,69 +2643,90 @@ impl LinearCriteria {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_ctor_multiline_int2(SSP, FirstPoint, LastPoint),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_ctor_multiline_int2(
+                    SSP, FirstPoint, LastPoint,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:46 - `AppDef_LinearCriteria::SetParameters()`
-    pub fn set_parameters(&mut self, Parameters: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn set_parameters(&mut self, Parameters: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_parameters(self as *mut Self, Parameters)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_set_parameters(
+                self as *mut Self,
+                Parameters,
+            )
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:49 - `AppDef_LinearCriteria::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleFEmToolCurve) {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleFEmToolCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:51 - `AppDef_LinearCriteria::GetCurve()`
-    pub fn get_curve(&self, C: &mut crate::ffi::HandleFEmToolCurve) {
+    pub fn get_curve(&self, C: &mut crate::ffi_types::HandleFEmToolCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_get_curve(self as *const Self, C)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_get_curve(self as *const Self, C)
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:53 - `AppDef_LinearCriteria::SetEstimation()`
     pub fn set_estimation(&mut self, E1: f64, E2: f64, E3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_estimation(self as *mut Self, E1, E2, E3)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_set_estimation(
+                self as *mut Self,
+                E1,
+                E2,
+                E3,
+            )
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:57 - `AppDef_LinearCriteria::EstLength()`
     pub fn est_length(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppDef_LinearCriteria_est_length(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_est_length(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:59 - `AppDef_LinearCriteria::GetEstimation()`
     pub fn get_estimation(&self, E1: &mut f64, E2: &mut f64, E3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_get_estimation(self as *const Self, E1, E2, E3)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_get_estimation(
+                self as *const Self,
+                E1,
+                E2,
+                E3,
+            )
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:63 - `AppDef_LinearCriteria::AssemblyTable()`
-    pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
+    pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolHAssemblyTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_assembly_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_assembly_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:65 - `AppDef_LinearCriteria::DependenceTable()`
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2918,7 +2742,7 @@ impl LinearCriteria {
         J3: &mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_quality_values(
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_quality_values(
                 self as *mut Self,
                 J1min,
                 J2min,
@@ -2938,7 +2762,7 @@ impl LinearCriteria {
         AverageError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_error_values(
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_error_values(
                 self as *mut Self,
                 MaxError,
                 QuadraticError,
@@ -2956,7 +2780,7 @@ impl LinearCriteria {
         H: &mut crate::math::Matrix,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_hessian(
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_hessian(
                 self as *mut Self,
                 Element,
                 Dimension1,
@@ -2967,9 +2791,19 @@ impl LinearCriteria {
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:83 - `AppDef_LinearCriteria::Gradient()`
-    pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(
+        &mut self,
+        Element: i32,
+        Dimension: i32,
+        G: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_gradient(self as *mut Self, Element, Dimension, G)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_gradient(
+                self as *mut Self,
+                Element,
+                Dimension,
+                G,
+            )
         })
     }
 
@@ -2977,11 +2811,15 @@ impl LinearCriteria {
     /// Convert the assembly Vector in an Curve;
     pub fn input_vector(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
+        X: &crate::ffi_types::math_Vector,
+        AssTable: &crate::ffi_types::HandleFEmToolHAssemblyTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_input_vector(self as *mut Self, X, AssTable)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_input_vector(
+                self as *mut Self,
+                X,
+                AssTable,
+            )
         })
     }
 
@@ -2995,7 +2833,7 @@ impl LinearCriteria {
         percentJ3: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_weight_real5(
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_set_weight_real5(
                 self as *mut Self,
                 QuadraticWeight,
                 QualityWeight,
@@ -3009,7 +2847,7 @@ impl LinearCriteria {
     /// **Source:** `AppDef_LinearCriteria.hxx`:98 - `AppDef_LinearCriteria::GetWeight()`
     pub fn get_weight(&self, QuadraticWeight: &mut f64, QualityWeight: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_get_weight(
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_get_weight(
                 self as *const Self,
                 QuadraticWeight,
                 QualityWeight,
@@ -3018,18 +2856,23 @@ impl LinearCriteria {
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:101 - `AppDef_LinearCriteria::SetWeight()`
-    pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi::TColStd_Array1OfReal) {
+    pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_set_weight_array1ofreal(self as *mut Self, Weight)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_set_weight_array1ofreal(
+                self as *mut Self,
+                Weight,
+            )
         })
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_LinearCriteria_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3037,7 +2880,7 @@ impl LinearCriteria {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3045,16 +2888,22 @@ impl LinearCriteria {
     }
 
     /// **Source:** `AppDef_LinearCriteria.hxx`:103 - `AppDef_LinearCriteria::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::AppDef_LinearCriteria_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to AppDef_SmoothCriterion
     pub fn as_smooth_criterion(&self) -> &SmoothCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_as_AppDef_SmoothCriterion(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3062,7 +2911,9 @@ impl LinearCriteria {
     pub fn as_smooth_criterion_mut(&mut self) -> &mut SmoothCriterion {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_as_AppDef_SmoothCriterion_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_as_AppDef_SmoothCriterion_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3070,43 +2921,53 @@ impl LinearCriteria {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_LinearCriteria_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_LinearCriteria_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppDefLinearCriteria> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppDefLinearCriteria> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_LinearCriteria_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3114,7 +2975,9 @@ impl LinearCriteria {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppDef_LinearCriteria_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3127,75 +2990,83 @@ impl LinearCriteria {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_LinearCriteria_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_LinearCriteria_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppDefLinearCriteria;
+pub use crate::ffi_types::HandleAppDefLinearCriteria;
 
 unsafe impl crate::CppDeletable for HandleAppDefLinearCriteria {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppDefLinearCriteria_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_destructor(ptr);
     }
 }
 
 impl HandleAppDefLinearCriteria {
     /// Dereference this Handle to access the underlying AppDef_LinearCriteria
-    pub fn get(&self) -> &crate::ffi::AppDef_LinearCriteria {
+    pub fn get(&self) -> &crate::ffi_types::AppDef_LinearCriteria {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppDefLinearCriteria_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_LinearCriteria
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_LinearCriteria {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppDef_LinearCriteria {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAppDefLinearCriteria_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<AppDef_LinearCriteria> to Handle<AppDef_SmoothCriterion>
     pub fn to_handle_smooth_criterion(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAppDefSmoothCriterion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAppDefSmoothCriterion> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppDefLinearCriteria_to_HandleAppDefSmoothCriterion(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_to_HandleAppDefSmoothCriterion(self as *const Self)))
         }
     }
 
     /// Upcast Handle<AppDef_LinearCriteria> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppDefLinearCriteria_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomBase::HandleAppDefLinearCriteria_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3229,11 +3100,11 @@ impl HandleAppDefLinearCriteria {
 /// (P1, Q1, ...R1), ...(Pn, Qn, ...Rn) n= 1,...NbMult are
 /// MultiPointConstraints.
 /// There are NbPoints points in each MultiPointConstraint.
-pub use crate::ffi::AppDef_MultiLine as MultiLine;
+pub use crate::ffi_types::AppDef_MultiLine as MultiLine;
 
 unsafe impl crate::CppDeletable for MultiLine {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MultiLine_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MultiLine_destructor(ptr);
     }
 }
 
@@ -3242,7 +3113,9 @@ impl MultiLine {
     /// creates an undefined MultiLine.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MultiLine_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_ctor(),
+            ))
         }
     }
 
@@ -3254,20 +3127,22 @@ impl MultiLine {
     /// An exception is raised if NbMult < 0.
     pub fn new_int(NbMult: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MultiLine_ctor_int(
-                NbMult,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_ctor_int(NbMult),
+            ))
         }
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:69 - `AppDef_MultiLine::AppDef_MultiLine()`
     /// Constructs a MultiLine with an array of MultiPointConstraints.
     pub fn new_array1ofmultipointconstraint(
-        tabMultiP: &crate::ffi::AppDef_Array1OfMultiPointConstraint,
+        tabMultiP: &crate::ffi_types::AppDef_Array1OfMultiPointConstraint,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiLine_ctor_array1ofmultipointconstraint(tabMultiP),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_ctor_array1ofmultipointconstraint(
+                    tabMultiP,
+                ),
             ))
         }
     }
@@ -3275,10 +3150,10 @@ impl MultiLine {
     /// **Source:** `AppDef_MultiLine.hxx`:73 - `AppDef_MultiLine::AppDef_MultiLine()`
     /// The MultiLine constructed will have one line of
     /// 3d points without their tangencies.
-    pub fn new_array1ofpnt(tabP3d: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt(tabP3d: &crate::ffi_types::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiLine_ctor_array1ofpnt(tabP3d),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_ctor_array1ofpnt(tabP3d),
             ))
         }
     }
@@ -3286,10 +3161,12 @@ impl MultiLine {
     /// **Source:** `AppDef_MultiLine.hxx`:77 - `AppDef_MultiLine::AppDef_MultiLine()`
     /// The MultiLine constructed will have one line of
     /// 2d points without their tangencies.
-    pub fn new_array1ofpnt2d(tabP2d: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt2d(
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiLine_ctor_array1ofpnt2d(tabP2d),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_ctor_array1ofpnt2d(tabP2d),
             ))
         }
     }
@@ -3299,7 +3176,7 @@ impl MultiLine {
     /// MultiLine.
     pub fn nb_multi_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiLine_nb_multi_points(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_nb_multi_points(self as *const Self)
         })
     }
 
@@ -3307,7 +3184,9 @@ impl MultiLine {
     /// returns the number of Points from MultiPoints composing
     /// the MultiLine.
     pub fn nb_points(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AppDef_MultiLine_nb_points(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_nb_points(self as *const Self)
+        })
     }
 
     /// **Source:** `AppDef_MultiLine.hxx`:93 - `AppDef_MultiLine::SetParameter()`
@@ -3319,7 +3198,11 @@ impl MultiLine {
     /// of Multipoint constraints in the MultiLine.
     pub fn set_parameter(&mut self, Index: i32, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiLine_set_parameter(self as *mut Self, Index, U)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_set_parameter(
+                self as *mut Self,
+                Index,
+                U,
+            )
         })
     }
 
@@ -3331,7 +3214,11 @@ impl MultiLine {
     /// MultiPoints are different.
     pub fn set_value(&mut self, Index: i32, MPoint: &MultiPointConstraint) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiLine_set_value(self as *mut Self, Index, MPoint)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_set_value(
+                self as *mut Self,
+                Index,
+                MPoint,
+            )
         })
     }
 
@@ -3340,10 +3227,9 @@ impl MultiLine {
     /// An exception is raised if Index<0 or Index>MPoint.
     pub fn value(&self, Index: i32) -> crate::OwnedPtr<MultiPointConstraint> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MultiLine_value(
-                self as *const Self,
-                Index,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MultiLine_value(self as *const Self, Index),
+            ))
         }
     }
 
@@ -3351,9 +3237,9 @@ impl MultiLine {
     /// Prints on the stream o information on the current
     /// state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiLine_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiLine_dump(self as *const Self, o)
         })
     }
 }
@@ -3377,11 +3263,11 @@ impl MultiLine {
 /// all points, including the parameter.
 /// -   If a MultiPointConstraint is a "tangency"
 /// point, the point is also a "passing" point.
-pub use crate::ffi::AppDef_MultiPointConstraint as MultiPointConstraint;
+pub use crate::ffi_types::AppDef_MultiPointConstraint as MultiPointConstraint;
 
 unsafe impl crate::CppDeletable for MultiPointConstraint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MultiPointConstraint_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_destructor(ptr);
     }
 }
 
@@ -3391,7 +3277,7 @@ impl MultiPointConstraint {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor(),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor(),
             ))
         }
     }
@@ -3403,27 +3289,31 @@ impl MultiPointConstraint {
     pub fn new_int2(NbPoints: i32, NbPoints2d: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_int2(NbPoints, NbPoints2d),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_int2(
+                    NbPoints, NbPoints2d,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:62 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
     /// creates a MultiPoint only composed of 3D points.
-    pub fn new_array1ofpnt(tabP: &crate::ffi::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt(tabP: &crate::ffi_types::TColgp_Array1OfPnt) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt(tabP),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt(tabP),
             ))
         }
     }
 
     /// **Source:** `AppDef_MultiPointConstraint.hxx`:65 - `AppDef_MultiPointConstraint::AppDef_MultiPointConstraint()`
     /// creates a MultiPoint only composed of 2D points.
-    pub fn new_array1ofpnt2d(tabP: &crate::ffi::TColgp_Array1OfPnt2d) -> crate::OwnedPtr<Self> {
+    pub fn new_array1ofpnt2d(
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt2d,
+    ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d(tabP),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt2d(tabP),
             ))
         }
     }
@@ -3433,15 +3323,11 @@ impl MultiPointConstraint {
     /// These Points can be of 2 or 3 dimensions.
     /// Points will be initialized with SetPoint and SetPoint2d.
     pub fn new_array1ofpnt_array1ofpnt2d(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d(
-                    tabP, tabP2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d(tabP, tabP2d)))
         }
     }
 
@@ -3453,15 +3339,15 @@ impl MultiPointConstraint {
     /// from (length of <tabVec> + length of <tabVec2d> ) or
     /// from (length of <tabCur> + length of <tabCur2d> )
     pub fn new_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d_array1ofvec_array1ofvec2d(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
-        tabVec: &crate::ffi::TColgp_Array1OfVec,
-        tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
-        tabCur: &crate::ffi::TColgp_Array1OfVec,
-        tabCur2d: &crate::ffi::TColgp_Array1OfVec2d,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        tabVec: &crate::ffi_types::TColgp_Array1OfVec,
+        tabVec2d: &crate::ffi_types::TColgp_Array1OfVec2d,
+        tabCur: &crate::ffi_types::TColgp_Array1OfVec,
+        tabCur2d: &crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d, tabCur, tabCur2d)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d, tabCur, tabCur2d)))
         }
     }
 
@@ -3472,13 +3358,13 @@ impl MultiPointConstraint {
     /// (length of <tabP> + length of <tabP2d> ) is different
     /// from (length of <tabVec> + length of <tabVec2d> )
     pub fn new_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
-        tabVec: &crate::ffi::TColgp_Array1OfVec,
-        tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        tabVec: &crate::ffi_types::TColgp_Array1OfVec,
+        tabVec2d: &crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofpnt2d_array1ofvec_array1ofvec2d(tabP, tabP2d, tabVec, tabVec2d)))
         }
     }
 
@@ -3488,16 +3374,12 @@ impl MultiPointConstraint {
     /// An exception is raised if the length of tabP is different
     /// from the length of tabVec or from tabCur.
     pub fn new_array1ofpnt_array1ofvec2(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabVec: &crate::ffi::TColgp_Array1OfVec,
-        tabCur: &crate::ffi::TColgp_Array1OfVec,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabVec: &crate::ffi_types::TColgp_Array1OfVec,
+        tabCur: &crate::ffi_types::TColgp_Array1OfVec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec2(
-                    tabP, tabVec, tabCur,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec2(tabP, tabVec, tabCur)))
         }
     }
 
@@ -3507,13 +3389,11 @@ impl MultiPointConstraint {
     /// An exception is raised if the length of tabP is different
     /// from the length of tabVec.
     pub fn new_array1ofpnt_array1ofvec(
-        tabP: &crate::ffi::TColgp_Array1OfPnt,
-        tabVec: &crate::ffi::TColgp_Array1OfVec,
+        tabP: &crate::ffi_types::TColgp_Array1OfPnt,
+        tabVec: &crate::ffi_types::TColgp_Array1OfVec,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec(tabP, tabVec),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt_array1ofvec(tabP, tabVec)))
         }
     }
 
@@ -3523,15 +3403,11 @@ impl MultiPointConstraint {
     /// An exception is raised if the length of tabP is different
     /// from the length of tabVec2d.
     pub fn new_array1ofpnt2d_array1ofvec2d(
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
-        tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        tabVec2d: &crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d(
-                    tabP2d, tabVec2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d(tabP2d, tabVec2d)))
         }
     }
 
@@ -3541,16 +3417,12 @@ impl MultiPointConstraint {
     /// An exception is raised if the length of tabP is different
     /// from the length of tabVec2d or from tabCur2d.
     pub fn new_array1ofpnt2d_array1ofvec2d2(
-        tabP2d: &crate::ffi::TColgp_Array1OfPnt2d,
-        tabVec2d: &crate::ffi::TColgp_Array1OfVec2d,
-        tabCur2d: &crate::ffi::TColgp_Array1OfVec2d,
+        tabP2d: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        tabVec2d: &crate::ffi_types::TColgp_Array1OfVec2d,
+        tabCur2d: &crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d2(
-                    tabP2d, tabVec2d, tabCur2d,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_ctor_array1ofpnt2d_array1ofvec2d2(tabP2d, tabVec2d, tabCur2d)))
         }
     }
 
@@ -3563,7 +3435,11 @@ impl MultiPointConstraint {
     /// dimensions.
     pub fn set_tang(&mut self, Index: i32, Tang: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_tang(self as *mut Self, Index, Tang)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_set_tang(
+                self as *mut Self,
+                Index,
+                Tang,
+            )
         })
     }
 
@@ -3574,7 +3450,10 @@ impl MultiPointConstraint {
     pub fn tang(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_tang(self as *const Self, Index),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_tang(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -3588,7 +3467,11 @@ impl MultiPointConstraint {
     /// dimensions.
     pub fn set_tang2d(&mut self, Index: i32, Tang2d: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_tang2d(self as *mut Self, Index, Tang2d)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_set_tang2d(
+                self as *mut Self,
+                Index,
+                Tang2d,
+            )
         })
     }
 
@@ -3599,7 +3482,10 @@ impl MultiPointConstraint {
     pub fn tang2d(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_tang2d(self as *const Self, Index),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_tang2d(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -3614,7 +3500,11 @@ impl MultiPointConstraint {
     /// dimensions.
     pub fn set_curv(&mut self, Index: i32, Curv: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_curv(self as *mut Self, Index, Curv)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_set_curv(
+                self as *mut Self,
+                Index,
+                Curv,
+            )
         })
     }
 
@@ -3625,7 +3515,10 @@ impl MultiPointConstraint {
     pub fn curv(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_curv(self as *const Self, Index),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_curv(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -3640,7 +3533,11 @@ impl MultiPointConstraint {
     /// dimensions.
     pub fn set_curv2d(&mut self, Index: i32, Curv2d: &crate::gp::Vec2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_set_curv2d(self as *mut Self, Index, Curv2d)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_set_curv2d(
+                self as *mut Self,
+                Index,
+                Curv2d,
+            )
         })
     }
 
@@ -3651,7 +3548,10 @@ impl MultiPointConstraint {
     pub fn curv2d(&self, Index: i32) -> crate::OwnedPtr<crate::gp::Vec2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_curv2d(self as *const Self, Index),
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_curv2d(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -3660,7 +3560,9 @@ impl MultiPointConstraint {
     /// returns True if the MultiPoint has a tangency value.
     pub fn is_tangency_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_is_tangency_point(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_is_tangency_point(
+                self as *const Self,
+            )
         })
     }
 
@@ -3668,7 +3570,9 @@ impl MultiPointConstraint {
     /// returns True if the MultiPoint has a curvature value.
     pub fn is_curvature_point(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_is_curvature_point(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_is_curvature_point(
+                self as *const Self,
+            )
         })
     }
 
@@ -3676,38 +3580,30 @@ impl MultiPointConstraint {
     /// Prints on the stream o information on the current
     /// state of the object.
     /// Is used to redefine the operator <<.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_dump(self as *const Self, o)
         })
     }
 
     /// Upcast to AppParCurves_MultiPoint
     pub fn as_app_par_curves_multi_point(&self) -> &crate::app_par_curves::MultiPoint {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint(self as *const Self))
         }
     }
 
     /// Upcast to AppParCurves_MultiPoint (mutable)
     pub fn as_app_par_curves_multi_point_mut(&mut self) -> &mut crate::app_par_curves::MultiPoint {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_as_AppParCurves_MultiPoint_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:75 - `AppParCurves_MultiPoint::SetPoint()`
     pub fn set_point(&mut self, Index: i32, Point: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint(
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_SetPoint(
                 self as *mut Self,
                 Index,
                 Point,
@@ -3718,17 +3614,19 @@ impl MultiPointConstraint {
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:80 - `AppParCurves_MultiPoint::Point()`
     pub fn point(&self, Index: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_MultiPointConstraint_inherited_Point(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_Point(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:85 - `AppParCurves_MultiPoint::SetPoint2d()`
     pub fn set_point2d(&mut self, Index: i32, Point: &crate::gp::Pnt2d) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_SetPoint2d(
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_SetPoint2d(
                 self as *mut Self,
                 Index,
                 Point,
@@ -3739,38 +3637,47 @@ impl MultiPointConstraint {
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:90 - `AppParCurves_MultiPoint::Point2d()`
     pub fn point2d(&self, Index: i32) -> &crate::gp::Pnt2d {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_MultiPointConstraint_inherited_Point2d(
-                self as *const Self,
-                Index,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_Point2d(
+                    self as *const Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:94 - `AppParCurves_MultiPoint::Dimension()`
     pub fn dimension(&self, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Dimension(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_Dimension(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:97 - `AppParCurves_MultiPoint::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:100 - `AppParCurves_MultiPoint::NbPoints2d()`
     pub fn nb_points2d(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_NbPoints2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_NbPoints2d(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:107 - `AppParCurves_MultiPoint::Transform()`
     pub fn transform(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64, z: f64, dz: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Transform(
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_Transform(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -3786,7 +3693,7 @@ impl MultiPointConstraint {
     /// Inherited: **Source:** `AppParCurves_MultiPoint.hxx`:119 - `AppParCurves_MultiPoint::Transform2d()`
     pub fn transform2d(&mut self, CuIndex: i32, x: f64, dx: f64, y: f64, dy: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MultiPointConstraint_inherited_Transform2d(
+            crate::ffi_extern_TKGeomBase::AppDef_MultiPointConstraint_inherited_Transform2d(
                 self as *mut Self,
                 CuIndex,
                 x,
@@ -3803,11 +3710,11 @@ impl MultiPointConstraint {
 // ========================
 
 /// **Source:** `AppDef_MyBSplGradientOfBSplineCompute.hxx`:40 - `AppDef_MyBSplGradientOfBSplineCompute`
-pub use crate::ffi::AppDef_MyBSplGradientOfBSplineCompute as MyBSplGradientOfBSplineCompute;
+pub use crate::ffi_types::AppDef_MyBSplGradientOfBSplineCompute as MyBSplGradientOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for MyBSplGradientOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -3823,17 +3730,17 @@ impl MyBSplGradientOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -3848,10 +3755,10 @@ impl MyBSplGradientOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -3860,7 +3767,7 @@ impl MyBSplGradientOfBSplineCompute {
         lambda2: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_array1ofreal_array1ofinteger_int_real2_int_real2(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Knots, Mults, Deg, Tol3d, Tol2d, NbIterations, lambda1, lambda2)))
         }
     }
 
@@ -3875,10 +3782,10 @@ impl MyBSplGradientOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -3890,7 +3797,9 @@ impl MyBSplGradientOfBSplineCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -3900,7 +3809,9 @@ impl MyBSplGradientOfBSplineCompute {
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_value(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_value(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3912,7 +3823,10 @@ impl MyBSplGradientOfBSplineCompute {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_error(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -3921,7 +3835,9 @@ impl MyBSplGradientOfBSplineCompute {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
@@ -3930,7 +3846,9 @@ impl MyBSplGradientOfBSplineCompute {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_max_error2d(
+                self as *const Self,
+            )
         })
     }
 
@@ -3939,7 +3857,9 @@ impl MyBSplGradientOfBSplineCompute {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyBSplGradientOfBSplineCompute_average_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyBSplGradientOfBSplineCompute_average_error(
+                self as *const Self,
+            )
         })
     }
 }
@@ -3949,11 +3869,11 @@ impl MyBSplGradientOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_MyGradientOfCompute.hxx`:39 - `AppDef_MyGradientOfCompute`
-pub use crate::ffi::AppDef_MyGradientOfCompute as MyGradientOfCompute;
+pub use crate::ffi_types::AppDef_MyGradientOfCompute as MyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for MyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MyGradientOfCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_destructor(ptr);
     }
 }
 
@@ -3969,15 +3889,15 @@ impl MyGradientOfCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -3992,8 +3912,8 @@ impl MyGradientOfCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -4015,7 +3935,7 @@ impl MyGradientOfCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientOfCompute_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_is_done(self as *const Self)
         })
     }
 
@@ -4025,7 +3945,7 @@ impl MyGradientOfCompute {
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MyGradientOfCompute_value(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_value(self as *const Self),
             ))
         }
     }
@@ -4037,7 +3957,10 @@ impl MyGradientOfCompute {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientOfCompute_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_error(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -4046,7 +3969,9 @@ impl MyGradientOfCompute {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientOfCompute_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4055,7 +3980,9 @@ impl MyGradientOfCompute {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientOfCompute_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_max_error2d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4064,7 +3991,9 @@ impl MyGradientOfCompute {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientOfCompute_average_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientOfCompute_average_error(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4074,11 +4003,11 @@ impl MyGradientOfCompute {
 // ========================
 
 /// **Source:** `AppDef_MyGradientbisOfBSplineCompute.hxx`:39 - `AppDef_MyGradientbisOfBSplineCompute`
-pub use crate::ffi::AppDef_MyGradientbisOfBSplineCompute as MyGradientbisOfBSplineCompute;
+pub use crate::ffi_types::AppDef_MyGradientbisOfBSplineCompute as MyGradientbisOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for MyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MyGradientbisOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -4094,15 +4023,15 @@ impl MyGradientbisOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -4117,8 +4046,8 @@ impl MyGradientbisOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -4140,7 +4069,9 @@ impl MyGradientbisOfBSplineCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -4150,7 +4081,9 @@ impl MyGradientbisOfBSplineCompute {
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MyGradientbisOfBSplineCompute_value(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_value(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4162,7 +4095,10 @@ impl MyGradientbisOfBSplineCompute {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_error(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
@@ -4171,7 +4107,9 @@ impl MyGradientbisOfBSplineCompute {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4180,7 +4118,9 @@ impl MyGradientbisOfBSplineCompute {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_max_error2d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4189,7 +4129,9 @@ impl MyGradientbisOfBSplineCompute {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyGradientbisOfBSplineCompute_average_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_MyGradientbisOfBSplineCompute_average_error(
+                self as *const Self,
+            )
         })
     }
 }
@@ -4201,11 +4143,11 @@ impl MyGradientbisOfBSplineCompute {
 /// **Source:** `AppDef_MyLineTool.hxx`:33 - `AppDef_MyLineTool`
 /// Example of MultiLine tool corresponding to the tools of the packages AppParCurves and Approx.
 /// For Approx, the tool will not add points if the algorithms want some.
-pub use crate::ffi::AppDef_MyLineTool as MyLineTool;
+pub use crate::ffi_types::AppDef_MyLineTool as MyLineTool;
 
 unsafe impl crate::CppDeletable for MyLineTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_MyLineTool_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_destructor(ptr);
     }
 }
 
@@ -4214,32 +4156,38 @@ impl MyLineTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_MyLineTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:39 - `AppDef_MyLineTool::FirstPoint()`
     /// Returns the first index of multipoints of the MultiLine.
     pub fn first_point(ML: &MultiLine) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AppDef_MyLineTool_first_point(ML) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_first_point(ML)
+        })
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:42 - `AppDef_MyLineTool::LastPoint()`
     /// Returns the last index of multipoints of the MultiLine.
     pub fn last_point(ML: &MultiLine) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AppDef_MyLineTool_last_point(ML) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_last_point(ML)
+        })
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:45 - `AppDef_MyLineTool::NbP2d()`
     /// Returns the number of 2d points of a MultiLine.
     pub fn nb_p2d(ML: &MultiLine) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AppDef_MyLineTool_nb_p2d(ML) })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_nb_p2d(ML) })
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:48 - `AppDef_MyLineTool::NbP3d()`
     /// Returns the number of 3d points of a MultiLine.
     pub fn nb_p3d(ML: &MultiLine) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AppDef_MyLineTool_nb_p3d(ML) })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_nb_p3d(ML) })
     }
 
     /// **Source:** `AppDef_MyLineTool.hxx`:52 - `AppDef_MyLineTool::Value()`
@@ -4248,10 +4196,14 @@ impl MyLineTool {
     pub fn value_multiline_int_array1ofpnt(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt(ML, MPointIndex, tabPt)
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_value_multiline_int_array1ofpnt(
+                ML,
+                MPointIndex,
+                tabPt,
+            )
         })
     }
 
@@ -4261,10 +4213,10 @@ impl MyLineTool {
     pub fn value_multiline_int_array1ofpnt2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt2d(
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_value_multiline_int_array1ofpnt2d(
                 ML,
                 MPointIndex,
                 tabPt2d,
@@ -4278,16 +4230,11 @@ impl MyLineTool {
     pub fn value_multiline_int_array1ofpnt_array1ofpnt2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabPt: &mut crate::ffi::TColgp_Array1OfPnt,
-        tabPt2d: &mut crate::ffi::TColgp_Array1OfPnt2d,
+        tabPt: &mut crate::ffi_types::TColgp_Array1OfPnt,
+        tabPt2d: &mut crate::ffi_types::TColgp_Array1OfPnt2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_value_multiline_int_array1ofpnt_array1ofpnt2d(
-                ML,
-                MPointIndex,
-                tabPt,
-                tabPt2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_value_multiline_int_array1ofpnt_array1ofpnt2d(ML, MPointIndex, tabPt, tabPt2d)
         })
     }
 
@@ -4297,10 +4244,14 @@ impl MyLineTool {
     pub fn tangency_multiline_int_array1ofvec(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec(ML, MPointIndex, tabV)
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_tangency_multiline_int_array1ofvec(
+                ML,
+                MPointIndex,
+                tabV,
+            )
         })
     }
 
@@ -4310,10 +4261,10 @@ impl MyLineTool {
     pub fn tangency_multiline_int_array1ofvec2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec2d(
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_tangency_multiline_int_array1ofvec2d(
                 ML,
                 MPointIndex,
                 tabV2d,
@@ -4327,16 +4278,11 @@ impl MyLineTool {
     pub fn tangency_multiline_int_array1ofvec_array1ofvec2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_tangency_multiline_int_array1ofvec_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV,
-                tabV2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_tangency_multiline_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
         })
     }
 
@@ -4346,10 +4292,14 @@ impl MyLineTool {
     pub fn curvature_multiline_int_array1ofvec(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec(ML, MPointIndex, tabV)
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_curvature_multiline_int_array1ofvec(
+                ML,
+                MPointIndex,
+                tabV,
+            )
         })
     }
 
@@ -4359,10 +4309,10 @@ impl MyLineTool {
     pub fn curvature_multiline_int_array1ofvec2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec2d(
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_curvature_multiline_int_array1ofvec2d(
                 ML,
                 MPointIndex,
                 tabV2d,
@@ -4376,16 +4326,11 @@ impl MyLineTool {
     pub fn curvature_multiline_int_array1ofvec_array1ofvec2d(
         ML: &MultiLine,
         MPointIndex: i32,
-        tabV: &mut crate::ffi::TColgp_Array1OfVec,
-        tabV2d: &mut crate::ffi::TColgp_Array1OfVec2d,
+        tabV: &mut crate::ffi_types::TColgp_Array1OfVec,
+        tabV2d: &mut crate::ffi_types::TColgp_Array1OfVec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_curvature_multiline_int_array1ofvec_array1ofvec2d(
-                ML,
-                MPointIndex,
-                tabV,
-                tabV2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_curvature_multiline_int_array1ofvec_array1ofvec2d(ML, MPointIndex, tabV, tabV2d)
         })
     }
 
@@ -4393,7 +4338,7 @@ impl MyLineTool {
     /// returns NoPointsAdded
     pub fn what_status(ML: &MultiLine, I1: i32, I2: i32) -> crate::approx::Status {
         crate::approx::Status::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_what_status(ML, I1, I2)
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_what_status(ML, I1, I2)
         }))
         .unwrap()
     }
@@ -4409,7 +4354,7 @@ impl MyLineTool {
     ) -> crate::OwnedPtr<MultiLine> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_MyLineTool_make_ml_between(ML, I1, I2, NbPMin),
+                crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_make_ml_between(ML, I1, I2, NbPMin),
             ))
         }
     }
@@ -4425,7 +4370,9 @@ impl MyLineTool {
         OtherLine: &mut MultiLine,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_MyLineTool_make_ml_one_more_point(ML, I1, I2, indbad, OtherLine)
+            crate::ffi_extern_TKGeomBase::AppDef_MyLineTool_make_ml_one_more_point(
+                ML, I1, I2, indbad, OtherLine,
+            )
         })
     }
 }
@@ -4435,11 +4382,11 @@ impl MyLineTool {
 // ========================
 
 /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:38 - `AppDef_ParFunctionOfMyGradientOfCompute`
-pub use crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute as ParFunctionOfMyGradientOfCompute;
+pub use crate::ffi_types::AppDef_ParFunctionOfMyGradientOfCompute as ParFunctionOfMyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_destructor(ptr);
     }
 }
 
@@ -4451,12 +4398,12 @@ impl ParFunctionOfMyGradientOfCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -4465,7 +4412,9 @@ impl ParFunctionOfMyGradientOfCompute {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -4474,9 +4423,13 @@ impl ParFunctionOfMyGradientOfCompute {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -4485,11 +4438,15 @@ impl ParFunctionOfMyGradientOfCompute {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
@@ -4498,24 +4455,25 @@ impl ParFunctionOfMyGradientOfCompute {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_values(self as *mut Self, X, F, G)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
         })
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:72 - `AppDef_ParFunctionOfMyGradientOfCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_new_parameters(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_new_parameters(self as *const Self)))
         }
     }
 
@@ -4525,7 +4483,9 @@ impl ParFunctionOfMyGradientOfCompute {
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_curve_value(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_curve_value(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -4535,7 +4495,7 @@ impl ParFunctionOfMyGradientOfCompute {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_error(
                 self as *const Self,
                 IPoint,
                 CurveIndex,
@@ -4548,7 +4508,9 @@ impl ParFunctionOfMyGradientOfCompute {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4557,18 +4519,20 @@ impl ParFunctionOfMyGradientOfCompute {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_max_error2d(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:92 - `AppDef_ParFunctionOfMyGradientOfCompute::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_first_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_first_constraint(
                 self as *const Self,
                 TheConstraints,
                 FirstPoint,
@@ -4580,11 +4544,11 @@ impl ParFunctionOfMyGradientOfCompute {
     /// **Source:** `AppDef_ParFunctionOfMyGradientOfCompute.hxx`:96 - `AppDef_ParFunctionOfMyGradientOfCompute::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_last_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_last_constraint(
                 self as *const Self,
                 TheConstraints,
                 LastPoint,
@@ -4598,7 +4562,7 @@ impl ParFunctionOfMyGradientOfCompute {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -4607,38 +4571,28 @@ impl ParFunctionOfMyGradientOfCompute {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientOfCompute_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientOfCompute_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -4648,11 +4602,13 @@ impl ParFunctionOfMyGradientOfCompute {
 // ========================
 
 /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:38 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute`
-pub use crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute as ParFunctionOfMyGradientbisOfBSplineCompute;
+pub use crate::ffi_types::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute as ParFunctionOfMyGradientbisOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for ParFunctionOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_destructor(
+            ptr,
+        );
     }
 }
 
@@ -4664,12 +4620,12 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -4678,9 +4634,7 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_nb_variables(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_nb_variables(self as *const Self)
         })
     }
 
@@ -4689,9 +4643,9 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_value(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_value(
                 self as *mut Self,
                 X,
                 F,
@@ -4704,11 +4658,11 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_gradient(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_gradient(
                 self as *mut Self,
                 X,
                 G,
@@ -4721,12 +4675,12 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_values(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_values(
                 self as *mut Self,
                 X,
                 F,
@@ -4737,13 +4691,9 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:73 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_new_parameters(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_new_parameters(self as *const Self)))
         }
     }
 
@@ -4752,11 +4702,7 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_curve_value(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_curve_value(self as *mut Self)))
         }
     }
 
@@ -4765,7 +4711,7 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_error(
                 self as *const Self,
                 IPoint,
                 CurveIndex,
@@ -4778,9 +4724,7 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error3d(self as *const Self)
         })
     }
 
@@ -4789,42 +4733,26 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_max_error2d(self as *const Self)
         })
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:93 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_first_constraint(
-                self as *const Self,
-                TheConstraints,
-                FirstPoint,
-            )
-        }))
-        .unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_first_constraint(self as *const Self, TheConstraints, FirstPoint) })).unwrap()
     }
 
     /// **Source:** `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute.hxx`:97 - `AppDef_ParFunctionOfMyGradientbisOfBSplineCompute::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
-        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_last_constraint(
-                self as *const Self,
-                TheConstraints,
-                LastPoint,
-            )
-        }))
-        .unwrap()
+        crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_last_constraint(self as *const Self, TheConstraints, LastPoint) })).unwrap()
     }
 
     /// Upcast to math_MultipleVarFunctionWithGradient
@@ -4832,7 +4760,7 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -4841,30 +4769,28 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_inherited_GetStateNumber(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfMyGradientbisOfBSplineCompute_inherited_GetStateNumber(self as *mut Self)
         })
     }
 }
@@ -4874,11 +4800,11 @@ impl ParFunctionOfMyGradientbisOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:38 - `AppDef_ParFunctionOfTheGradient`
-pub use crate::ffi::AppDef_ParFunctionOfTheGradient as ParFunctionOfTheGradient;
+pub use crate::ffi_types::AppDef_ParFunctionOfTheGradient as ParFunctionOfTheGradient;
 
 unsafe impl crate::CppDeletable for ParFunctionOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParFunctionOfTheGradient_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_destructor(ptr);
     }
 }
 
@@ -4890,12 +4816,12 @@ impl ParFunctionOfTheGradient {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParFunctionOfTheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -4904,7 +4830,9 @@ impl ParFunctionOfTheGradient {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_nb_variables(
+                self as *const Self,
+            )
         })
     }
 
@@ -4913,9 +4841,13 @@ impl ParFunctionOfTheGradient {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_value(
+                self as *mut Self,
+                X,
+                F,
+            )
         })
     }
 
@@ -4924,11 +4856,15 @@ impl ParFunctionOfTheGradient {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_gradient(
+                self as *mut Self,
+                X,
+                G,
+            )
         })
     }
 
@@ -4937,22 +4873,29 @@ impl ParFunctionOfTheGradient {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_values(self as *mut Self, X, F, G)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_values(
+                self as *mut Self,
+                X,
+                F,
+                G,
+            )
         })
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:72 - `AppDef_ParFunctionOfTheGradient::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParFunctionOfTheGradient_new_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_new_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4961,9 +4904,11 @@ impl ParFunctionOfTheGradient {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParFunctionOfTheGradient_curve_value(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_curve_value(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -4972,7 +4917,7 @@ impl ParFunctionOfTheGradient {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_error(
                 self as *const Self,
                 IPoint,
                 CurveIndex,
@@ -4985,7 +4930,9 @@ impl ParFunctionOfTheGradient {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_max_error3d(
+                self as *const Self,
+            )
         })
     }
 
@@ -4994,18 +4941,20 @@ impl ParFunctionOfTheGradient {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_max_error2d(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:92 - `AppDef_ParFunctionOfTheGradient::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_first_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_first_constraint(
                 self as *const Self,
                 TheConstraints,
                 FirstPoint,
@@ -5017,11 +4966,11 @@ impl ParFunctionOfTheGradient {
     /// **Source:** `AppDef_ParFunctionOfTheGradient.hxx`:96 - `AppDef_ParFunctionOfTheGradient::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_last_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_last_constraint(
                 self as *const Self,
                 TheConstraints,
                 LastPoint,
@@ -5035,11 +4984,7 @@ impl ParFunctionOfTheGradient {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -5048,36 +4993,30 @@ impl ParFunctionOfTheGradient {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction(self as *const Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction (mutable)
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_as_math_MultipleVarFunction_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParFunctionOfTheGradient_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParFunctionOfTheGradient_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -5087,11 +5026,11 @@ impl ParFunctionOfTheGradient {
 // ========================
 
 /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:45 - `AppDef_ParLeastSquareOfMyGradientOfCompute`
-pub use crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute as ParLeastSquareOfMyGradientOfCompute;
+pub use crate::ffi_types::AppDef_ParLeastSquareOfMyGradientOfCompute as ParLeastSquareOfMyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_destructor(ptr);
     }
 }
 
@@ -5119,11 +5058,11 @@ impl ParLeastSquareOfMyGradientOfCompute {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5138,7 +5077,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -5160,17 +5099,17 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// parameter, only the vector B changes).
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5178,8 +5117,8 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -5187,16 +5126,16 @@ impl ParLeastSquareOfMyGradientOfCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector(
                 self as *mut Self,
                 Parameters,
             )
@@ -5205,14 +5144,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientOfCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientOfCompute::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -5222,21 +5161,14 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -5248,25 +5180,16 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -5274,7 +5197,9 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -5284,11 +5209,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_bezier_value(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_bezier_value(self as *mut Self)))
         }
     }
 
@@ -5298,11 +5219,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_b_spline_value(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -5311,11 +5228,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_function_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_function_matrix(self as *const Self)))
         }
     }
 
@@ -5324,11 +5237,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_derivative_function_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -5339,13 +5248,13 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error_gradient(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_error_gradient(
                 self as *mut Self,
                 Grad,
                 F,
@@ -5361,7 +5270,9 @@ impl ParLeastSquareOfMyGradientOfCompute {
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_distance(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_distance(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -5372,7 +5283,7 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_error(
                 self as *mut Self,
                 F,
                 MaxE3d,
@@ -5386,7 +5297,9 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_first_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_first_lambda(
+                self as *const Self,
+            )
         })
     }
 
@@ -5395,7 +5308,9 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_last_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_last_lambda(
+                self as *const Self,
+            )
         })
     }
 
@@ -5403,9 +5318,11 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_points(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_points(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5413,9 +5330,11 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_poles(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_poles(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -5424,11 +5343,13 @@ impl ParLeastSquareOfMyGradientOfCompute {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientOfCompute_k_index(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientOfCompute_k_index(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -5438,11 +5359,11 @@ impl ParLeastSquareOfMyGradientOfCompute {
 // ========================
 
 /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:45 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute`
-pub use crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute as ParLeastSquareOfMyGradientbisOfBSplineCompute;
+pub use crate::ffi_types::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute as ParLeastSquareOfMyGradientbisOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -5470,11 +5391,11 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5489,7 +5410,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -5511,17 +5432,17 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// parameter, only the vector B changes).
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5529,8 +5450,8 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -5538,32 +5459,29 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:123 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector(
-                self as *mut Self,
-                Parameters,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector(self as *mut Self, Parameters)
         })
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute.hxx`:126 - `AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector_real2(
-                self as *mut Self,
-                Parameters,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector_real2(self as *mut Self, Parameters, l1, l2)
         })
     }
 
@@ -5573,21 +5491,14 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector3_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector3_real2(self as *mut Self, Parameters, V1t, V2t, l1, l2)
         })
     }
 
@@ -5599,25 +5510,16 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector5_real2(
-                self as *mut Self,
-                Parameters,
-                V1t,
-                V2t,
-                V1c,
-                V2c,
-                l1,
-                l2,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_perform_vector5_real2(self as *mut Self, Parameters, V1t, V2t, V1c, V2c, l1, l2)
         })
     }
 
@@ -5625,9 +5527,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_is_done(self as *const Self)
         })
     }
 
@@ -5637,11 +5537,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// An exception is raised if NotDone.
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_bezier_value(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_bezier_value(self as *mut Self)))
         }
     }
 
@@ -5651,11 +5547,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_b_spline_value(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_b_spline_value(self as *mut Self)))
         }
     }
 
@@ -5664,11 +5556,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_function_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_function_matrix(self as *const Self)))
         }
     }
 
@@ -5677,7 +5565,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_derivative_function_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -5688,19 +5576,13 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error_gradient(
-                self as *mut Self,
-                Grad,
-                F,
-                MaxE3d,
-                MaxE2d,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error_gradient(self as *mut Self, Grad, F, MaxE3d, MaxE2d)
         })
     }
 
@@ -5709,11 +5591,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_distance(
-                    self as *mut Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_distance(self as *mut Self)))
         }
     }
 
@@ -5723,7 +5601,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_error(
                 self as *mut Self,
                 F,
                 MaxE3d,
@@ -5737,9 +5615,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_first_lambda(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_first_lambda(self as *const Self)
         })
     }
 
@@ -5748,9 +5624,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_last_lambda(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_last_lambda(self as *const Self)
         })
     }
 
@@ -5758,11 +5632,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_points(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_points(self as *const Self)))
         }
     }
 
@@ -5770,11 +5640,7 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_poles(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_poles(self as *const Self)))
         }
     }
 
@@ -5783,13 +5649,9 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_k_index(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute_k_index(self as *const Self)))
         }
     }
 }
@@ -5799,11 +5661,11 @@ impl ParLeastSquareOfMyGradientbisOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:45 - `AppDef_ParLeastSquareOfTheGradient`
-pub use crate::ffi::AppDef_ParLeastSquareOfTheGradient as ParLeastSquareOfTheGradient;
+pub use crate::ffi_types::AppDef_ParLeastSquareOfTheGradient as ParLeastSquareOfTheGradient;
 
 unsafe impl crate::CppDeletable for ParLeastSquareOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ParLeastSquareOfTheGradient_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_destructor(ptr);
     }
 }
 
@@ -5831,11 +5693,11 @@ impl ParLeastSquareOfTheGradient {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5850,16 +5712,7 @@ impl ParLeastSquareOfTheGradient {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_int(
-                    SSP,
-                    FirstPoint,
-                    LastPoint,
-                    FirstCons.into(),
-                    LastCons.into(),
-                    NbPol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -5881,17 +5734,17 @@ impl ParLeastSquareOfTheGradient {
     /// parameter, only the vector B changes).
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -5899,8 +5752,8 @@ impl ParLeastSquareOfTheGradient {
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -5908,16 +5761,16 @@ impl ParLeastSquareOfTheGradient {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:119 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_perform_vector(
                 self as *mut Self,
                 Parameters,
             )
@@ -5926,9 +5779,14 @@ impl ParLeastSquareOfTheGradient {
 
     /// **Source:** `AppDef_ParLeastSquareOfTheGradient.hxx`:122 - `AppDef_ParLeastSquareOfTheGradient::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_perform_vector_real2(
                 self as *mut Self,
                 Parameters,
                 l1,
@@ -5943,14 +5801,14 @@ impl ParLeastSquareOfTheGradient {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector3_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_perform_vector3_real2(
                 self as *mut Self,
                 Parameters,
                 V1t,
@@ -5969,16 +5827,16 @@ impl ParLeastSquareOfTheGradient {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_perform_vector5_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_perform_vector5_real2(
                 self as *mut Self,
                 Parameters,
                 V1t,
@@ -5995,7 +5853,9 @@ impl ParLeastSquareOfTheGradient {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -6006,7 +5866,9 @@ impl ParLeastSquareOfTheGradient {
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfTheGradient_bezier_value(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_bezier_value(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -6017,9 +5879,11 @@ impl ParLeastSquareOfTheGradient {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_b_spline_value(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_b_spline_value(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6028,9 +5892,11 @@ impl ParLeastSquareOfTheGradient {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_function_matrix(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_function_matrix(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6039,11 +5905,7 @@ impl ParLeastSquareOfTheGradient {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ParLeastSquareOfTheGradient_derivative_function_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_derivative_function_matrix(self as *const Self)))
         }
     }
 
@@ -6054,13 +5916,13 @@ impl ParLeastSquareOfTheGradient {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_error_gradient(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_error_gradient(
                 self as *mut Self,
                 Grad,
                 F,
@@ -6075,9 +5937,11 @@ impl ParLeastSquareOfTheGradient {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_distance(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_distance(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -6087,7 +5951,7 @@ impl ParLeastSquareOfTheGradient {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_error(
                 self as *mut Self,
                 F,
                 MaxE3d,
@@ -6101,7 +5965,9 @@ impl ParLeastSquareOfTheGradient {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_first_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_first_lambda(
+                self as *const Self,
+            )
         })
     }
 
@@ -6110,7 +5976,9 @@ impl ParLeastSquareOfTheGradient {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ParLeastSquareOfTheGradient_last_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_last_lambda(
+                self as *const Self,
+            )
         })
     }
 
@@ -6118,9 +5986,11 @@ impl ParLeastSquareOfTheGradient {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_points(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_points(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6128,9 +5998,11 @@ impl ParLeastSquareOfTheGradient {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_poles(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_poles(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6139,11 +6011,13 @@ impl ParLeastSquareOfTheGradient {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ParLeastSquareOfTheGradient_k_index(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ParLeastSquareOfTheGradient_k_index(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -6153,11 +6027,11 @@ impl ParLeastSquareOfTheGradient {
 // ========================
 
 /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:36 - `AppDef_ResConstraintOfMyGradientOfCompute`
-pub use crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute as ResConstraintOfMyGradientOfCompute;
+pub use crate::ffi_types::AppDef_ResConstraintOfMyGradientOfCompute as ResConstraintOfMyGradientOfCompute;
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientOfCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_destructor(ptr);
     }
 }
 
@@ -6178,13 +6052,13 @@ impl ResConstraintOfMyGradientOfCompute {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -6204,7 +6078,7 @@ impl ResConstraintOfMyGradientOfCompute {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -6224,7 +6098,9 @@ impl ResConstraintOfMyGradientOfCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -6233,28 +6109,28 @@ impl ResConstraintOfMyGradientOfCompute {
     /// and the given points.
     pub fn error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_error(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:68 - `AppDef_ResConstraintOfMyGradientOfCompute::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_constraint_matrix(self as *const Self)))
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientOfCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientOfCompute::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_duale(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_duale(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6269,20 +6145,12 @@ impl ResConstraintOfMyGradientOfCompute {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_constraint_derivative(
-                    self as *mut Self,
-                    SSP,
-                    Parameters,
-                    Deg,
-                    DA,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
         }
     }
 
@@ -6291,11 +6159,7 @@ impl ResConstraintOfMyGradientOfCompute {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientOfCompute_inverse_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientOfCompute_inverse_matrix(self as *const Self)))
         }
     }
 }
@@ -6305,11 +6169,11 @@ impl ResConstraintOfMyGradientOfCompute {
 // ========================
 
 /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:36 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute`
-pub use crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute as ResConstraintOfMyGradientbisOfBSplineCompute;
+pub use crate::ffi_types::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute as ResConstraintOfMyGradientbisOfBSplineCompute;
 
 unsafe impl crate::CppDeletable for ResConstraintOfMyGradientbisOfBSplineCompute {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_destructor(ptr);
     }
 }
 
@@ -6330,13 +6194,13 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -6356,7 +6220,7 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -6376,9 +6240,7 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_is_done(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_is_done(self as *const Self)
         })
     }
 
@@ -6387,7 +6249,7 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// and the given points.
     pub fn error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_error(
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_error(
                 self as *const Self,
             )
         })
@@ -6396,23 +6258,15 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:68 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_matrix(self as *const Self)))
         }
     }
 
     /// **Source:** `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute.hxx`:71 - `AppDef_ResConstraintOfMyGradientbisOfBSplineCompute::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_duale(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_duale(self as *const Self)))
         }
     }
 
@@ -6427,12 +6281,12 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
         }
     }
 
@@ -6441,11 +6295,7 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_inverse_matrix(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfMyGradientbisOfBSplineCompute_inverse_matrix(self as *const Self)))
         }
     }
 }
@@ -6455,11 +6305,11 @@ impl ResConstraintOfMyGradientbisOfBSplineCompute {
 // ========================
 
 /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:36 - `AppDef_ResConstraintOfTheGradient`
-pub use crate::ffi::AppDef_ResConstraintOfTheGradient as ResConstraintOfTheGradient;
+pub use crate::ffi_types::AppDef_ResConstraintOfTheGradient as ResConstraintOfTheGradient;
 
 unsafe impl crate::CppDeletable for ResConstraintOfTheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_ResConstraintOfTheGradient_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_destructor(ptr);
     }
 }
 
@@ -6480,13 +6330,13 @@ impl ResConstraintOfTheGradient {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_ResConstraintOfTheGradient_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -6506,7 +6356,7 @@ impl ResConstraintOfTheGradient {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -6526,7 +6376,9 @@ impl ResConstraintOfTheGradient {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfTheGradient_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_is_done(
+                self as *const Self,
+            )
         })
     }
 
@@ -6535,7 +6387,9 @@ impl ResConstraintOfTheGradient {
     /// and the given points.
     pub fn error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_ResConstraintOfTheGradient_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_error(
+                self as *const Self,
+            )
         })
     }
 
@@ -6543,7 +6397,7 @@ impl ResConstraintOfTheGradient {
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_matrix(
+                crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_constraint_matrix(
                     self as *const Self,
                 ),
             ))
@@ -6552,11 +6406,13 @@ impl ResConstraintOfTheGradient {
 
     /// **Source:** `AppDef_ResConstraintOfTheGradient.hxx`:71 - `AppDef_ResConstraintOfTheGradient::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ResConstraintOfTheGradient_duale(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_duale(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6571,20 +6427,12 @@ impl ResConstraintOfTheGradient {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::AppDef_ResConstraintOfTheGradient_constraint_derivative(
-                    self as *mut Self,
-                    SSP,
-                    Parameters,
-                    Deg,
-                    DA,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_constraint_derivative(self as *mut Self, SSP, Parameters, Deg, DA)))
         }
     }
 
@@ -6593,9 +6441,11 @@ impl ResConstraintOfTheGradient {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_ResConstraintOfTheGradient_inverse_matrix(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_ResConstraintOfTheGradient_inverse_matrix(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 }
@@ -6606,73 +6456,92 @@ impl ResConstraintOfTheGradient {
 
 /// **Source:** `AppDef_SmoothCriterion.hxx`:37 - `AppDef_SmoothCriterion`
 /// defined criterion to smooth  points in  curve
-pub use crate::ffi::AppDef_SmoothCriterion as SmoothCriterion;
+pub use crate::ffi_types::AppDef_SmoothCriterion as SmoothCriterion;
 
 unsafe impl crate::CppDeletable for SmoothCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_SmoothCriterion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_destructor(ptr);
     }
 }
 
 impl SmoothCriterion {
     /// **Source:** `AppDef_SmoothCriterion.hxx`:41 - `AppDef_SmoothCriterion::SetParameters()`
-    pub fn set_parameters(&mut self, Parameters: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn set_parameters(&mut self, Parameters: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_parameters(self as *mut Self, Parameters)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_set_parameters(
+                self as *mut Self,
+                Parameters,
+            )
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:43 - `AppDef_SmoothCriterion::SetCurve()`
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleFEmToolCurve) {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleFEmToolCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:45 - `AppDef_SmoothCriterion::GetCurve()`
-    pub fn get_curve(&self, C: &mut crate::ffi::HandleFEmToolCurve) {
+    pub fn get_curve(&self, C: &mut crate::ffi_types::HandleFEmToolCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_get_curve(self as *const Self, C)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_get_curve(self as *const Self, C)
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:47 - `AppDef_SmoothCriterion::SetEstimation()`
     pub fn set_estimation(&mut self, E1: f64, E2: f64, E3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_estimation(self as *mut Self, E1, E2, E3)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_set_estimation(
+                self as *mut Self,
+                E1,
+                E2,
+                E3,
+            )
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:51 - `AppDef_SmoothCriterion::EstLength()`
     pub fn est_length(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AppDef_SmoothCriterion_est_length(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_est_length(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:53 - `AppDef_SmoothCriterion::GetEstimation()`
     pub fn get_estimation(&self, E1: &mut f64, E2: &mut f64, E3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_get_estimation(self as *const Self, E1, E2, E3)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_get_estimation(
+                self as *const Self,
+                E1,
+                E2,
+                E3,
+            )
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:57 - `AppDef_SmoothCriterion::AssemblyTable()`
-    pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi::HandleFEmToolHAssemblyTable> {
+    pub fn assembly_table(&self) -> crate::OwnedPtr<crate::ffi_types::HandleFEmToolHAssemblyTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_SmoothCriterion_assembly_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_assembly_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:59 - `AppDef_SmoothCriterion::DependenceTable()`
-    pub fn dependence_table(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfInteger> {
+    pub fn dependence_table(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfInteger> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_SmoothCriterion_dependence_table(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_dependence_table(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -6688,7 +6557,7 @@ impl SmoothCriterion {
         J3: &mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_quality_values(
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_quality_values(
                 self as *mut Self,
                 J1min,
                 J2min,
@@ -6708,7 +6577,7 @@ impl SmoothCriterion {
         AverageError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_error_values(
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_error_values(
                 self as *mut Self,
                 MaxError,
                 QuadraticError,
@@ -6726,7 +6595,7 @@ impl SmoothCriterion {
         H: &mut crate::math::Matrix,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_hessian(
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_hessian(
                 self as *mut Self,
                 Element,
                 Dimension1,
@@ -6737,9 +6606,19 @@ impl SmoothCriterion {
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:77 - `AppDef_SmoothCriterion::Gradient()`
-    pub fn gradient(&mut self, Element: i32, Dimension: i32, G: &mut crate::ffi::math_Vector) {
+    pub fn gradient(
+        &mut self,
+        Element: i32,
+        Dimension: i32,
+        G: &mut crate::ffi_types::math_Vector,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_gradient(self as *mut Self, Element, Dimension, G)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_gradient(
+                self as *mut Self,
+                Element,
+                Dimension,
+                G,
+            )
         })
     }
 
@@ -6747,11 +6626,15 @@ impl SmoothCriterion {
     /// Convert the assembly Vector in an Curve;
     pub fn input_vector(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        AssTable: &crate::ffi::HandleFEmToolHAssemblyTable,
+        X: &crate::ffi_types::math_Vector,
+        AssTable: &crate::ffi_types::HandleFEmToolHAssemblyTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_input_vector(self as *mut Self, X, AssTable)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_input_vector(
+                self as *mut Self,
+                X,
+                AssTable,
+            )
         })
     }
 
@@ -6765,7 +6648,7 @@ impl SmoothCriterion {
         percentJ3: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_weight_real5(
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_set_weight_real5(
                 self as *mut Self,
                 QuadraticWeight,
                 QualityWeight,
@@ -6779,7 +6662,7 @@ impl SmoothCriterion {
     /// **Source:** `AppDef_SmoothCriterion.hxx`:91 - `AppDef_SmoothCriterion::GetWeight()`
     pub fn get_weight(&self, QuadraticWeight: &mut f64, QualityWeight: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_get_weight(
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_get_weight(
                 self as *const Self,
                 QuadraticWeight,
                 QualityWeight,
@@ -6788,18 +6671,23 @@ impl SmoothCriterion {
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:94 - `AppDef_SmoothCriterion::SetWeight()`
-    pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi::TColStd_Array1OfReal) {
+    pub fn set_weight_array1ofreal(&mut self, Weight: &crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_set_weight_array1ofreal(self as *mut Self, Weight)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_set_weight_array1ofreal(
+                self as *mut Self,
+                Weight,
+            )
         })
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_SmoothCriterion_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6807,7 +6695,7 @@ impl SmoothCriterion {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AppDef_SmoothCriterion_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6815,39 +6703,53 @@ impl SmoothCriterion {
     }
 
     /// **Source:** `AppDef_SmoothCriterion.hxx`:96 - `AppDef_SmoothCriterion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::AppDef_SmoothCriterion_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AppDef_SmoothCriterion_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -6855,7 +6757,9 @@ impl SmoothCriterion {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AppDef_SmoothCriterion_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -6868,65 +6772,75 @@ impl SmoothCriterion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_SmoothCriterion_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_SmoothCriterion_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleAppDefSmoothCriterion;
+pub use crate::ffi_types::HandleAppDefSmoothCriterion;
 
 unsafe impl crate::CppDeletable for HandleAppDefSmoothCriterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAppDefSmoothCriterion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_destructor(ptr);
     }
 }
 
 impl HandleAppDefSmoothCriterion {
     /// Dereference this Handle to access the underlying AppDef_SmoothCriterion
-    pub fn get(&self) -> &crate::ffi::AppDef_SmoothCriterion {
+    pub fn get(&self) -> &crate::ffi_types::AppDef_SmoothCriterion {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleAppDefSmoothCriterion_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying AppDef_SmoothCriterion
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AppDef_SmoothCriterion {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AppDef_SmoothCriterion {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAppDefSmoothCriterion_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<AppDef_SmoothCriterion> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAppDefSmoothCriterion_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -6935,11 +6849,9 @@ impl HandleAppDefSmoothCriterion {
     /// Returns `None` if the handle does not point to a `AppDef_LinearCriteria` (or subclass).
     pub fn downcast_to_linear_criteria(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleAppDefLinearCriteria>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleAppDefLinearCriteria>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleAppDefSmoothCriterion_downcast_to_HandleAppDefLinearCriteria(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKGeomBase::HandleAppDefSmoothCriterion_downcast_to_HandleAppDefLinearCriteria(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -6954,11 +6866,11 @@ impl HandleAppDefSmoothCriterion {
 // ========================
 
 /// **Source:** `AppDef_TheFunction.hxx`:38 - `AppDef_TheFunction`
-pub use crate::ffi::AppDef_TheFunction as TheFunction;
+pub use crate::ffi_types::AppDef_TheFunction as TheFunction;
 
 unsafe impl crate::CppDeletable for TheFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_TheFunction_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_TheFunction_destructor(ptr);
     }
 }
 
@@ -6970,12 +6882,12 @@ impl TheFunction {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheFunction_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheFunction_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg)))
         }
     }
 
@@ -6984,7 +6896,7 @@ impl TheFunction {
     /// corresponds to the number of MultiPoints.
     pub fn nb_variables(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_nb_variables(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_nb_variables(self as *const Self)
         })
     }
 
@@ -6993,9 +6905,9 @@ impl TheFunction {
     /// MultiLine
     /// SSP and calculates F = sum (||Pui - Bi*Pi||2) for each
     /// point of the MultiLine.
-    pub fn value(&mut self, X: &crate::ffi::math_Vector, F: &mut f64) -> bool {
+    pub fn value(&mut self, X: &crate::ffi_types::math_Vector, F: &mut f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_value(self as *mut Self, X, F)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_value(self as *mut Self, X, F)
         })
     }
 
@@ -7004,11 +6916,11 @@ impl TheFunction {
     /// parameters Xi.
     pub fn gradient(
         &mut self,
-        X: &crate::ffi::math_Vector,
-        G: &mut crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_gradient(self as *mut Self, X, G)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_gradient(self as *mut Self, X, G)
         })
     }
 
@@ -7017,22 +6929,24 @@ impl TheFunction {
     /// returns the value G = grad(F) for the parameters Xi.
     pub fn values(
         &mut self,
-        X: &crate::ffi::math_Vector,
+        X: &crate::ffi_types::math_Vector,
         F: &mut f64,
-        G: &mut crate::ffi::math_Vector,
+        G: &mut crate::ffi_types::math_Vector,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_values(self as *mut Self, X, F, G)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_values(self as *mut Self, X, F, G)
         })
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:72 - `AppDef_TheFunction::NewParameters()`
     /// returns the new parameters of the MultiLine.
-    pub fn new_parameters(&self) -> &crate::ffi::math_Vector {
+    pub fn new_parameters(&self) -> &crate::ffi_types::math_Vector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheFunction_new_parameters(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheFunction_new_parameters(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7041,7 +6955,9 @@ impl TheFunction {
     /// computing the value F or Grad(F).
     pub fn curve_value(&mut self) -> &crate::app_par_curves::MultiCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheFunction_curve_value(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheFunction_curve_value(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7050,7 +6966,11 @@ impl TheFunction {
     /// IPoint and the curve CurveIndex.
     pub fn error(&self, IPoint: i32, CurveIndex: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_error(self as *const Self, IPoint, CurveIndex)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_error(
+                self as *const Self,
+                IPoint,
+                CurveIndex,
+            )
         })
     }
 
@@ -7059,7 +6979,7 @@ impl TheFunction {
     /// and the MultiCurve.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_max_error3d(self as *const Self)
         })
     }
 
@@ -7068,18 +6988,18 @@ impl TheFunction {
     /// and the MultiCurve.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_max_error2d(self as *const Self)
         })
     }
 
     /// **Source:** `AppDef_TheFunction.hxx`:92 - `AppDef_TheFunction::FirstConstraint()`
     pub fn first_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         FirstPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_first_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_first_constraint(
                 self as *const Self,
                 TheConstraints,
                 FirstPoint,
@@ -7091,11 +7011,11 @@ impl TheFunction {
     /// **Source:** `AppDef_TheFunction.hxx`:96 - `AppDef_TheFunction::LastConstraint()`
     pub fn last_constraint(
         &self,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         LastPoint: i32,
     ) -> crate::app_par_curves::Constraint {
         crate::app_par_curves::Constraint::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_last_constraint(
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_last_constraint(
                 self as *const Self,
                 TheConstraints,
                 LastPoint,
@@ -7109,11 +7029,7 @@ impl TheFunction {
         &self,
     ) -> &crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient(self as *const Self))
         }
     }
 
@@ -7122,20 +7038,18 @@ impl TheFunction {
         &mut self,
     ) -> &mut crate::math::MultipleVarFunctionWithGradient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheFunction_as_math_MultipleVarFunctionWithGradient_mut(self as *mut Self))
         }
     }
 
     /// Upcast to math_MultipleVarFunction
     pub fn as_math_multiple_var_function(&self) -> &crate::math::MultipleVarFunction {
         unsafe {
-            &*crate::check_result(crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheFunction_as_math_MultipleVarFunction(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7143,7 +7057,9 @@ impl TheFunction {
     pub fn as_math_multiple_var_function_mut(&mut self) -> &mut crate::math::MultipleVarFunction {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::AppDef_TheFunction_as_math_MultipleVarFunction_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_TheFunction_as_math_MultipleVarFunction_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7151,7 +7067,9 @@ impl TheFunction {
     /// Inherited: **Source:** `math_MultipleVarFunction.hxx`:55 - `math_MultipleVarFunction::GetStateNumber()`
     pub fn get_state_number(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheFunction_inherited_GetStateNumber(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheFunction_inherited_GetStateNumber(
+                self as *mut Self,
+            )
         })
     }
 }
@@ -7161,11 +7079,11 @@ impl TheFunction {
 // ========================
 
 /// **Source:** `AppDef_TheGradient.hxx`:39 - `AppDef_TheGradient`
-pub use crate::ffi::AppDef_TheGradient as TheGradient;
+pub use crate::ffi_types::AppDef_TheGradient as TheGradient;
 
 unsafe impl crate::CppDeletable for TheGradient {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_TheGradient_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_TheGradient_destructor(ptr);
     }
 }
 
@@ -7181,15 +7099,15 @@ impl TheGradient {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheGradient_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_vector_int_real2_int(SSP, FirstPoint, LastPoint, TheConstraints, Parameters, Deg, Tol3d, Tol2d, NbIterations)))
         }
     }
 
@@ -7204,8 +7122,8 @@ impl TheGradient {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
-        Parameters: &mut crate::ffi::math_Vector,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
+        Parameters: &mut crate::ffi_types::math_Vector,
         Deg: i32,
         Tol3d: f64,
         Tol2d: f64,
@@ -7226,7 +7144,9 @@ impl TheGradient {
     /// **Source:** `AppDef_TheGradient.hxx`:62 - `AppDef_TheGradient::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AppDef_TheGradient_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `AppDef_TheGradient.hxx`:66 - `AppDef_TheGradient::Value()`
@@ -7234,9 +7154,9 @@ impl TheGradient {
     /// MultiLine SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheGradient_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheGradient_value(self as *const Self),
+            ))
         }
     }
 
@@ -7247,7 +7167,7 @@ impl TheGradient {
     /// An exception is raised if Index<1 or Index>NbParameters.
     pub fn error(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheGradient_error(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_error(self as *const Self, Index)
         })
     }
 
@@ -7256,7 +7176,7 @@ impl TheGradient {
     /// new approximation.
     pub fn max_error3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheGradient_max_error3d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_max_error3d(self as *const Self)
         })
     }
 
@@ -7265,7 +7185,7 @@ impl TheGradient {
     /// new approximation.
     pub fn max_error2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheGradient_max_error2d(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_max_error2d(self as *const Self)
         })
     }
 
@@ -7274,7 +7194,7 @@ impl TheGradient {
     /// new approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheGradient_average_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheGradient_average_error(self as *const Self)
         })
     }
 }
@@ -7284,11 +7204,11 @@ impl TheGradient {
 // ========================
 
 /// **Source:** `AppDef_TheLeastSquares.hxx`:45 - `AppDef_TheLeastSquares`
-pub use crate::ffi::AppDef_TheLeastSquares as TheLeastSquares;
+pub use crate::ffi_types::AppDef_TheLeastSquares as TheLeastSquares;
 
 unsafe impl crate::CppDeletable for TheLeastSquares {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_TheLeastSquares_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_destructor(ptr);
     }
 }
 
@@ -7316,21 +7236,11 @@ impl TheLeastSquares {
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_vector_int(
-                    SSP,
-                    FirstPoint,
-                    LastPoint,
-                    FirstCons.into(),
-                    LastCons.into(),
-                    Parameters,
-                    NbPol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_vector_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -7345,16 +7255,7 @@ impl TheLeastSquares {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_int(
-                    SSP,
-                    FirstPoint,
-                    LastPoint,
-                    FirstCons.into(),
-                    LastCons.into(),
-                    NbPol,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_ctor_multiline_int2_constraint2_int(SSP, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
@@ -7376,17 +7277,17 @@ impl TheLeastSquares {
     /// parameter, only the vector B changes).
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
         LastCons: crate::app_par_curves::Constraint,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_vector_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), Parameters, NbPol)))
         }
     }
 
@@ -7394,8 +7295,8 @@ impl TheLeastSquares {
     /// Initializes the fields of the object.
     pub fn new_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(
         SSP: &MultiLine,
-        Knots: &crate::ffi::TColStd_Array1OfReal,
-        Mults: &crate::ffi::TColStd_Array1OfInteger,
+        Knots: &crate::ffi_types::TColStd_Array1OfReal,
+        Mults: &crate::ffi_types::TColStd_Array1OfInteger,
         FirstPoint: i32,
         LastPoint: i32,
         FirstCons: crate::app_par_curves::Constraint,
@@ -7403,24 +7304,32 @@ impl TheLeastSquares {
         NbPol: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_ctor_multiline_array1ofreal_array1ofinteger_int2_constraint2_int(SSP, Knots, Mults, FirstPoint, LastPoint, FirstCons.into(), LastCons.into(), NbPol)))
         }
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:119 - `AppDef_TheLeastSquares::Perform()`
     /// Is used after having initialized the fields.
     /// The case "CurvaturePoint" is not treated in this method.
-    pub fn perform_vector(&mut self, Parameters: &crate::ffi::math_Vector) {
+    pub fn perform_vector(&mut self, Parameters: &crate::ffi_types::math_Vector) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector(self as *mut Self, Parameters)
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_perform_vector(
+                self as *mut Self,
+                Parameters,
+            )
         })
     }
 
     /// **Source:** `AppDef_TheLeastSquares.hxx`:122 - `AppDef_TheLeastSquares::Perform()`
     /// Is used after having initialized the fields.
-    pub fn perform_vector_real2(&mut self, Parameters: &crate::ffi::math_Vector, l1: f64, l2: f64) {
+    pub fn perform_vector_real2(
+        &mut self,
+        Parameters: &crate::ffi_types::math_Vector,
+        l1: f64,
+        l2: f64,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_perform_vector_real2(
                 self as *mut Self,
                 Parameters,
                 l1,
@@ -7435,14 +7344,14 @@ impl TheLeastSquares {
     /// <V2t> is the tangent vector at the last point.
     pub fn perform_vector3_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector3_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_perform_vector3_real2(
                 self as *mut Self,
                 Parameters,
                 V1t,
@@ -7461,16 +7370,16 @@ impl TheLeastSquares {
     /// <V2c> is the tangent vector at the last point.
     pub fn perform_vector5_real2(
         &mut self,
-        Parameters: &crate::ffi::math_Vector,
-        V1t: &crate::ffi::math_Vector,
-        V2t: &crate::ffi::math_Vector,
-        V1c: &crate::ffi::math_Vector,
-        V2c: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
+        V1t: &crate::ffi_types::math_Vector,
+        V2t: &crate::ffi_types::math_Vector,
+        V1c: &crate::ffi_types::math_Vector,
+        V2c: &crate::ffi_types::math_Vector,
         l1: f64,
         l2: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_perform_vector5_real2(
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_perform_vector5_real2(
                 self as *mut Self,
                 Parameters,
                 V1t,
@@ -7487,7 +7396,7 @@ impl TheLeastSquares {
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_is_done(self as *const Self)
         })
     }
 
@@ -7498,7 +7407,9 @@ impl TheLeastSquares {
     pub fn bezier_value(&mut self) -> crate::OwnedPtr<crate::app_par_curves::MultiCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AppDef_TheLeastSquares_bezier_value(self as *mut Self),
+                crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_bezier_value(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -7509,9 +7420,11 @@ impl TheLeastSquares {
     /// An exception is raised if NotDone.
     pub fn b_spline_value(&mut self) -> &crate::app_par_curves::MultiBSpCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_b_spline_value(
-                self as *mut Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_b_spline_value(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -7520,9 +7433,11 @@ impl TheLeastSquares {
     /// set.
     pub fn function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_function_matrix(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_function_matrix(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7531,9 +7446,11 @@ impl TheLeastSquares {
     /// to approximate the set.
     pub fn derivative_function_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_derivative_function_matrix(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_derivative_function_matrix(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7544,13 +7461,13 @@ impl TheLeastSquares {
     /// function F.
     pub fn error_gradient(
         &mut self,
-        Grad: &mut crate::ffi::math_Vector,
+        Grad: &mut crate::ffi_types::math_Vector,
         F: &mut f64,
         MaxE3d: &mut f64,
         MaxE2d: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_error_gradient(
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_error_gradient(
                 self as *mut Self,
                 Grad,
                 F,
@@ -7565,7 +7482,9 @@ impl TheLeastSquares {
     /// multiline and the approximation curves.
     pub fn distance(&mut self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_distance(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_distance(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -7575,7 +7494,12 @@ impl TheLeastSquares {
     /// distances.
     pub fn error(&mut self, F: &mut f64, MaxE3d: &mut f64, MaxE2d: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_error(self as *mut Self, F, MaxE3d, MaxE2d)
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_error(
+                self as *mut Self,
+                F,
+                MaxE3d,
+                MaxE2d,
+            )
         })
     }
 
@@ -7584,7 +7508,7 @@ impl TheLeastSquares {
     /// was a tangency point.
     pub fn first_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_first_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_first_lambda(self as *const Self)
         })
     }
 
@@ -7593,7 +7517,7 @@ impl TheLeastSquares {
     /// was a tangency point.
     pub fn last_lambda(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_TheLeastSquares_last_lambda(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_last_lambda(self as *const Self)
         })
     }
 
@@ -7601,7 +7525,9 @@ impl TheLeastSquares {
     /// returns the matrix of points value.
     pub fn points(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_points(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_points(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7609,7 +7535,9 @@ impl TheLeastSquares {
     /// returns the matrix of resulting control points value.
     pub fn poles(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_poles(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_poles(
+                self as *const Self,
+            )))
         }
     }
 
@@ -7618,9 +7546,11 @@ impl TheLeastSquares {
     /// A and DA.
     /// The values are non null from Index(ieme point) +1
     /// to Index(ieme point) + degree +1.
-    pub fn k_index(&self) -> &crate::ffi::math_IntegerVector {
+    pub fn k_index(&self) -> &crate::ffi_types::math_IntegerVector {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheLeastSquares_k_index(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheLeastSquares_k_index(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -7630,11 +7560,11 @@ impl TheLeastSquares {
 // ========================
 
 /// **Source:** `AppDef_TheResol.hxx`:36 - `AppDef_TheResol`
-pub use crate::ffi::AppDef_TheResol as TheResol;
+pub use crate::ffi_types::AppDef_TheResol as TheResol;
 
 unsafe impl crate::CppDeletable for TheResol {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_TheResol_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_TheResol_destructor(ptr);
     }
 }
 
@@ -7655,13 +7585,13 @@ impl TheResol {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
         Tolerance: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_TheResol_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheResol_ctor_multiline_multicurve_int2_handleappparcurvesharray1ofconstraintcouple_matrix2_real(SSP, SCurv, FirstPoint, LastPoint, Constraints, Bern, DerivativeBern, Tolerance)))
         }
     }
 
@@ -7681,7 +7611,7 @@ impl TheResol {
         SCurv: &mut crate::app_par_curves::MultiCurve,
         FirstPoint: i32,
         LastPoint: i32,
-        Constraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        Constraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         Bern: &crate::math::Matrix,
         DerivativeBern: &crate::math::Matrix,
     ) -> crate::OwnedPtr<Self> {
@@ -7700,29 +7630,39 @@ impl TheResol {
     /// **Source:** `AppDef_TheResol.hxx`:61 - `AppDef_TheResol::IsDone()`
     /// returns True if all has been correctly done.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AppDef_TheResol_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheResol_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:65 - `AppDef_TheResol::Error()`
     /// returns the maximum difference value between the curve
     /// and the given points.
     pub fn error(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AppDef_TheResol_error(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_TheResol_error(self as *const Self)
+        })
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:67 - `AppDef_TheResol::ConstraintMatrix()`
     pub fn constraint_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheResol_constraint_matrix(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheResol_constraint_matrix(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:70 - `AppDef_TheResol::Duale()`
     /// returns the duale variables of the system.
-    pub fn duale(&self) -> &crate::ffi::math_Vector {
-        unsafe { &*(crate::check_result(crate::ffi::AppDef_TheResol_duale(self as *const Self))) }
+    pub fn duale(&self) -> &crate::ffi_types::math_Vector {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheResol_duale(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `AppDef_TheResol.hxx`:73 - `AppDef_TheResol::ConstraintDerivative()`
@@ -7736,18 +7676,20 @@ impl TheResol {
     pub unsafe fn constraint_derivative(
         &mut self,
         SSP: &MultiLine,
-        Parameters: &crate::ffi::math_Vector,
+        Parameters: &crate::ffi_types::math_Vector,
         Deg: i32,
         DA: &crate::math::Matrix,
     ) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheResol_constraint_derivative(
-                self as *mut Self,
-                SSP,
-                Parameters,
-                Deg,
-                DA,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_TheResol_constraint_derivative(
+                    self as *mut Self,
+                    SSP,
+                    Parameters,
+                    Deg,
+                    DA,
+                ),
+            ))
         }
     }
 
@@ -7756,7 +7698,9 @@ impl TheResol {
     /// Cont is the constraint matrix for the algorithm.
     pub fn inverse_matrix(&self) -> &crate::math::Matrix {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_TheResol_inverse_matrix(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_TheResol_inverse_matrix(
+                self as *const Self,
+            )))
         }
     }
 }
@@ -7771,11 +7715,11 @@ impl TheResol {
 /// variational criterium in order to obtain " fair Curve "
 /// Computes the approximation of a Multiline by
 /// Variational optimization.
-pub use crate::ffi::AppDef_Variational as Variational;
+pub use crate::ffi_types::AppDef_Variational as Variational;
 
 unsafe impl crate::CppDeletable for Variational {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AppDef_Variational_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AppDef_Variational_destructor(ptr);
     }
 }
 
@@ -7798,7 +7742,7 @@ impl Variational {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         MaxDegree: i32,
         MaxSegment: i32,
         Continuity: crate::geom_abs::Shape,
@@ -7808,7 +7752,7 @@ impl Variational {
         NbIterations: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Variational_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_int2_shape_bool2_real_int(SSP, FirstPoint, LastPoint, TheConstraints, MaxDegree, MaxSegment, Continuity.into(), WithMinMax, WithCutting, Tolerance, NbIterations)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Variational_ctor_multiline_int2_handleappparcurvesharray1ofconstraintcouple_int2_shape_bool2_real_int(SSP, FirstPoint, LastPoint, TheConstraints, MaxDegree, MaxSegment, Continuity.into(), WithMinMax, WithCutting, Tolerance, NbIterations)))
         }
     }
 
@@ -7830,7 +7774,7 @@ impl Variational {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         MaxDegree: i32,
         MaxSegment: i32,
         Continuity: crate::geom_abs::Shape,
@@ -7859,7 +7803,7 @@ impl Variational {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         MaxDegree: i32,
         MaxSegment: i32,
         Continuity: crate::geom_abs::Shape,
@@ -7887,7 +7831,7 @@ impl Variational {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         MaxDegree: i32,
         MaxSegment: i32,
         Continuity: crate::geom_abs::Shape,
@@ -7914,7 +7858,7 @@ impl Variational {
         SSP: &MultiLine,
         FirstPoint: i32,
         LastPoint: i32,
-        TheConstraints: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        TheConstraints: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
         MaxDegree: i32,
         MaxSegment: i32,
         Continuity: crate::geom_abs::Shape,
@@ -7926,7 +7870,7 @@ impl Variational {
     /// Makes the approximation with the current fields.
     pub fn approximate(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_approximate(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_approximate(self as *mut Self)
         })
     }
 
@@ -7935,7 +7879,7 @@ impl Variational {
     /// and correspond  to the current fields.
     pub fn is_created(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_is_created(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_is_created(self as *const Self)
         })
     }
 
@@ -7943,7 +7887,9 @@ impl Variational {
     /// returns True if the  approximation is ok
     /// and correspond  to the current fields.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AppDef_Variational_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `AppDef_Variational.hxx`:88 - `AppDef_Variational::IsOverConstrained()`
@@ -7951,7 +7897,9 @@ impl Variational {
     /// in this case, approximation cannot be done.
     pub fn is_over_constrained(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_is_over_constrained(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_is_over_constrained(
+                self as *const Self,
+            )
         })
     }
 
@@ -7960,9 +7908,9 @@ impl Variational {
     /// MultiLine from AppDef SSP after minimization of the parameter.
     pub fn value(&self) -> crate::OwnedPtr<crate::app_par_curves::MultiBSpCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AppDef_Variational_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AppDef_Variational_value(self as *const Self),
+            ))
         }
     }
 
@@ -7972,7 +7920,7 @@ impl Variational {
     /// curves.
     pub fn max_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_max_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_max_error(self as *const Self)
         })
     }
 
@@ -7980,7 +7928,7 @@ impl Variational {
     /// returns the index of the MultiPoint of ErrorMax
     pub fn max_error_index(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_max_error_index(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_max_error_index(self as *const Self)
         })
     }
 
@@ -7990,7 +7938,7 @@ impl Variational {
     /// curves.
     pub fn quadratic_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_quadratic_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_quadratic_error(self as *const Self)
         })
     }
 
@@ -7999,7 +7947,7 @@ impl Variational {
     /// multiline and the approximation curves.
     pub fn distance(&mut self, mat: &mut crate::math::Matrix) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_distance(self as *mut Self, mat)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_distance(self as *mut Self, mat)
         })
     }
 
@@ -8008,23 +7956,27 @@ impl Variational {
     /// the MultiLine from AppDef and the approximation.
     pub fn average_error(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_average_error(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_average_error(self as *const Self)
         })
     }
 
     /// **Source:** `AppDef_Variational.hxx`:116 - `AppDef_Variational::Parameters()`
     /// returns the parameters uses to the approximations
-    pub fn parameters(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    pub fn parameters(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_Variational_parameters(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Variational_parameters(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `AppDef_Variational.hxx`:119 - `AppDef_Variational::Knots()`
     /// returns the knots uses to the approximations
-    pub fn knots(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    pub fn knots(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AppDef_Variational_knots(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AppDef_Variational_knots(
+                self as *const Self,
+            )))
         }
     }
 
@@ -8032,7 +7984,7 @@ impl Variational {
     /// returns the values of the quality criterium.
     pub fn criterium(&self, VFirstOrder: &mut f64, VSecondOrder: &mut f64, VThirdOrder: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_criterium(
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_criterium(
                 self as *const Self,
                 VFirstOrder,
                 VSecondOrder,
@@ -8046,7 +7998,7 @@ impl Variational {
     /// the  optimization.
     pub fn criterium_weight(&self, Percent1: &mut f64, Percent2: &mut f64, Percent3: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_criterium_weight(
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_criterium_weight(
                 self as *const Self,
                 Percent1,
                 Percent2,
@@ -8059,7 +8011,7 @@ impl Variational {
     /// returns the Maximum Degree used in the approximation
     pub fn max_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_max_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_max_degree(self as *const Self)
         })
     }
 
@@ -8067,7 +8019,7 @@ impl Variational {
     /// returns the Maximum of segment used in the approximation
     pub fn max_segment(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_max_segment(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_max_segment(self as *const Self)
         })
     }
 
@@ -8075,7 +8027,7 @@ impl Variational {
     /// returns the Continuity used in the approximation
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_continuity(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -8085,7 +8037,7 @@ impl Variational {
     /// maximum Error or not.
     pub fn with_min_max(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_with_min_max(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_with_min_max(self as *const Self)
         })
     }
 
@@ -8093,7 +8045,7 @@ impl Variational {
     /// returns if the  approximation can insert new Knots or not.
     pub fn with_cutting(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_with_cutting(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_with_cutting(self as *const Self)
         })
     }
 
@@ -8101,7 +8053,7 @@ impl Variational {
     /// returns the tolerance used in the approximation.
     pub fn tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_tolerance(self as *const Self)
         })
     }
 
@@ -8109,7 +8061,7 @@ impl Variational {
     /// returns the number of iterations used in the approximation.
     pub fn nb_iterations(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_nb_iterations(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_nb_iterations(self as *const Self)
         })
     }
 
@@ -8118,9 +8070,9 @@ impl Variational {
     /// of the object.
     /// MaxError,MaxErrorIndex,AverageError,QuadraticError,Criterium
     /// Distances,Degre,Nombre de poles, parametres, noeuds
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_dump(self as *const Self, o)
         })
     }
 
@@ -8130,18 +8082,24 @@ impl Variational {
     /// this method modify nothing and returns false
     pub fn set_constraints(
         &mut self,
-        aConstrainst: &crate::ffi::HandleAppParCurvesHArray1OfConstraintCouple,
+        aConstrainst: &crate::ffi_types::HandleAppParCurvesHArray1OfConstraintCouple,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_constraints(self as *mut Self, aConstrainst)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_constraints(
+                self as *mut Self,
+                aConstrainst,
+            )
         })
     }
 
     /// **Source:** `AppDef_Variational.hxx`:167 - `AppDef_Variational::SetParameters()`
     /// Defines the parameters used by the approximations.
-    pub fn set_parameters(&mut self, param: &crate::ffi::HandleTColStdHArray1OfReal) {
+    pub fn set_parameters(&mut self, param: &crate::ffi_types::HandleTColStdHArray1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_parameters(self as *mut Self, param)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_parameters(
+                self as *mut Self,
+                param,
+            )
         })
     }
 
@@ -8149,9 +8107,9 @@ impl Variational {
     /// Defines the knots used by the approximations
     /// If this value is incompatible with the others fields
     /// this method modify nothing and returns false
-    pub fn set_knots(&mut self, knots: &crate::ffi::HandleTColStdHArray1OfReal) -> bool {
+    pub fn set_knots(&mut self, knots: &crate::ffi_types::HandleTColStdHArray1OfReal) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_knots(self as *mut Self, knots)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_knots(self as *mut Self, knots)
         })
     }
 
@@ -8161,7 +8119,10 @@ impl Variational {
     /// this method modify nothing and returns false
     pub fn set_max_degree(&mut self, Degree: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_max_degree(self as *mut Self, Degree)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_max_degree(
+                self as *mut Self,
+                Degree,
+            )
         })
     }
 
@@ -8171,7 +8132,10 @@ impl Variational {
     /// this method modify nothing and returns false
     pub fn set_max_segment(&mut self, NbSegment: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_max_segment(self as *mut Self, NbSegment)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_max_segment(
+                self as *mut Self,
+                NbSegment,
+            )
         })
     }
 
@@ -8181,7 +8145,10 @@ impl Variational {
     /// this method modify nothing and returns false
     pub fn set_continuity(&mut self, C: crate::geom_abs::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_continuity(self as *mut Self, C.into())
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_continuity(
+                self as *mut Self,
+                C.into(),
+            )
         })
     }
 
@@ -8190,7 +8157,10 @@ impl Variational {
     /// maximum Error or not.
     pub fn set_with_min_max(&mut self, MinMax: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_with_min_max(self as *mut Self, MinMax)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_with_min_max(
+                self as *mut Self,
+                MinMax,
+            )
         })
     }
 
@@ -8200,7 +8170,10 @@ impl Variational {
     /// this method modify nothing and returns false
     pub fn set_with_cutting(&mut self, Cutting: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AppDef_Variational_set_with_cutting(self as *mut Self, Cutting)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_with_cutting(
+                self as *mut Self,
+                Cutting,
+            )
         })
     }
 
@@ -8211,7 +8184,7 @@ impl Variational {
     /// if Percent <= 0
     pub fn set_criterium_weight_real3(&mut self, Percent1: f64, Percent2: f64, Percent3: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_criterium_weight_real3(
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_criterium_weight_real3(
                 self as *mut Self,
                 Percent1,
                 Percent2,
@@ -8228,7 +8201,7 @@ impl Variational {
     /// if Order < 1 or Order > 3
     pub fn set_criterium_weight_int_real(&mut self, Order: i32, Percent: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_criterium_weight_int_real(
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_criterium_weight_int_real(
                 self as *mut Self,
                 Order,
                 Percent,
@@ -8240,7 +8213,7 @@ impl Variational {
     /// define the tolerance used in the approximation.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_tolerance(self as *mut Self, Tol)
         })
     }
 
@@ -8249,7 +8222,10 @@ impl Variational {
     /// if Iter < 1
     pub fn set_nb_iterations(&mut self, Iter: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AppDef_Variational_set_nb_iterations(self as *mut Self, Iter)
+            crate::ffi_extern_TKGeomBase::AppDef_Variational_set_nb_iterations(
+                self as *mut Self,
+                Iter,
+            )
         })
     }
 }
@@ -8258,4 +8234,4 @@ impl Variational {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::AppDef_Array1OfMultiPointConstraint as Array1OfMultiPointConstraint;
+pub use crate::ffi_types::AppDef_Array1OfMultiPointConstraint as Array1OfMultiPointConstraint;

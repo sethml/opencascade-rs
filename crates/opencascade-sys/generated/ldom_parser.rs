@@ -11,26 +11,30 @@
 // ========================
 
 /// **Source:** `LDOMParser.hxx`:31 - `LDOMParser`
-pub use crate::ffi::LDOMParser;
+pub use crate::ffi_types::LDOMParser;
 
 unsafe impl crate::CppDeletable for LDOMParser {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOMParser_destructor(ptr);
+        crate::ffi_extern_misc::LDOMParser_destructor(ptr);
     }
 }
 
 impl LDOMParser {
     /// **Source:** `LDOMParser.hxx`:36 - `LDOMParser::LDOMParser()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi_extern_misc::LDOMParser_ctor()),
+            )
+        }
     }
 
     /// **Source:** `LDOMParser.hxx`:47 - `LDOMParser::getDocument()`
     pub fn get_document(&mut self) -> crate::OwnedPtr<crate::ldom::Document> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_get_document(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMParser_get_document(self as *mut Self),
+            ))
         }
     }
 
@@ -38,19 +42,22 @@ impl LDOMParser {
     pub fn parse_charptr(&mut self, aFileName: &str) -> bool {
         let c_aFileName = std::ffi::CString::new(aFileName).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::LDOMParser_parse_charptr(self as *mut Self, c_aFileName.as_ptr())
+            crate::ffi_extern_misc::LDOMParser_parse_charptr(
+                self as *mut Self,
+                c_aFileName.as_ptr(),
+            )
         })
     }
 
     /// **Source:** `LDOMParser.hxx`:54 - `LDOMParser::parse()`
     pub fn parse_istream_bool2(
         &mut self,
-        anInput: &mut crate::ffi::Standard_IStream,
+        anInput: &mut crate::ffi_types::Standard_IStream,
         theTagPerStep: bool,
         theWithoutRoot: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LDOMParser_parse_istream_bool2(
+            crate::ffi_extern_misc::LDOMParser_parse_istream_bool2(
                 self as *mut Self,
                 anInput,
                 theTagPerStep,
@@ -71,16 +78,19 @@ impl LDOMParser {
         aData: &mut crate::t_collection::AsciiString,
     ) -> &crate::t_collection::AsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOMParser_get_error(self as *const Self, aData)))
+            &*(crate::check_result(crate::ffi_extern_misc::LDOMParser_get_error(
+                self as *const Self,
+                aData,
+            )))
         }
     }
 
     /// **Source:** `LDOMParser.hxx`:70 - `LDOMParser::GetBOM()`
-    pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi::LDOM_OSStream_BOMType> {
+    pub fn get_bom(&self) -> crate::OwnedPtr<crate::ffi_types::LDOM_OSStream_BOMType> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMParser_get_bom(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMParser_get_bom(self as *const Self),
+            ))
         }
     }
 }

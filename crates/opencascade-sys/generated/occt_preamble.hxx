@@ -74,8 +74,8 @@ static const char* occt_make_exception(const char* type_name, const char* messag
 #include <Graphic3d_CView.hxx>
 #include <Graphic3d_FrameStatsData.hxx>
 #include <Graphic3d_Layer.hxx>
+#include <Graphic3d_ShaderVariable.hxx>
 #include <Graphic3d_Structure.hxx>
-#include <Graphic3d_Vec2.hxx>
 #include <Graphic3d_Vec3.hxx>
 #include <HLRAlgo_PolyData.hxx>
 #include <HLRAlgo_PolyShellData.hxx>
@@ -103,8 +103,8 @@ static const char* occt_make_exception(const char* type_name, const char* messag
 #include <Select3D_SensitiveEntity.hxx>
 #include <SelectMgr_SensitiveEntity.hxx>
 #include <SelectMgr_VectorTypes.hxx>
-#include <Standard_ThreadId.hxx>
 #include <Standard_Transient.hxx>
+#include <Standard_TypeDef.hxx>
 #include <StdObjMgt_Persistent.hxx>
 #include <StdObject_Shape.hxx>
 #include <StepVisual_TessellatedCurveSet.hxx>

@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From GeomEvaluator_Curve.hxx
@@ -16,11 +16,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// **Source:** `GeomEvaluator_Curve.hxx`:26 - `GeomEvaluator_Curve`
 /// Interface for calculation of values and derivatives for different kinds of curves in 3D.
 /// Works both with adaptors and curves.
-pub use crate::ffi::GeomEvaluator_Curve as Curve;
+pub use crate::ffi_types::GeomEvaluator_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_Curve_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_Curve_destructor(ptr);
     }
 }
 
@@ -29,7 +29,7 @@ impl Curve {
     /// Value of 3D curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_d0(self as *const Self, theU, theValue)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_d0(self as *const Self, theU, theValue)
         })
     }
 
@@ -37,7 +37,12 @@ impl Curve {
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt, theD1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_d1(self as *const Self, theU, theValue, theD1)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_d1(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+            )
         })
     }
 
@@ -51,7 +56,13 @@ impl Curve {
         theD2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_d2(self as *const Self, theU, theValue, theD1, theD2)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_d2(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+                theD2,
+            )
         })
     }
 
@@ -66,7 +77,7 @@ impl Curve {
         theD3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_d3(
                 self as *const Self,
                 theU,
                 theValue,
@@ -81,27 +92,25 @@ impl Curve {
     /// Calculates N-th derivatives of curve, where N = theDerU. Raises if N < 1
     pub fn dn(&self, theU: f64, theDerU: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomEvaluator_Curve_dn(
-                self as *const Self,
-                theU,
-                theDerU,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_dn(self as *const Self, theU, theDerU),
+            ))
         }
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:49 - `GeomEvaluator_Curve::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_Curve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_shallow_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_Curve_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_Curve_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -111,7 +120,7 @@ impl Curve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_Curve_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -119,39 +128,53 @@ impl Curve {
     }
 
     /// **Source:** `GeomEvaluator_Curve.hxx`:51 - `GeomEvaluator_Curve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomEvaluator_Curve_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_Curve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomEvaluator_Curve_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -159,7 +182,7 @@ impl Curve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_Curve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -172,62 +195,70 @@ impl Curve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Curve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Curve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorCurve;
+pub use crate::ffi_types::HandleGeomEvaluatorCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorCurve {
     /// Dereference this Handle to access the underlying GeomEvaluator_Curve
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_Curve {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorCurve_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_Curve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_Curve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorCurve_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GeomEvaluator_Curve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -239,11 +270,9 @@ impl HandleGeomEvaluatorCurve {
     /// Returns `None` if the handle does not point to a `GeomEvaluator_OffsetCurve` (or subclass).
     pub fn downcast_to_offset_curve(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetCurve>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorOffsetCurve>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomEvaluatorCurve_downcast_to_HandleGeomEvaluatorOffsetCurve(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorCurve_downcast_to_HandleGeomEvaluatorOffsetCurve(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -259,11 +288,11 @@ impl HandleGeomEvaluatorCurve {
 
 /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:23 - `GeomEvaluator_OffsetCurve`
 /// Allows to calculate values and derivatives for offset curves in 3D
-pub use crate::ffi::GeomEvaluator_OffsetCurve as OffsetCurve;
+pub use crate::ffi_types::GeomEvaluator_OffsetCurve as OffsetCurve;
 
 unsafe impl crate::CppDeletable for OffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_OffsetCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_destructor(ptr);
     }
 }
 
@@ -271,13 +300,13 @@ impl OffsetCurve {
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:27 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve
     pub fn new_handlegeomcurve_real_dir(
-        theBase: &crate::ffi::HandleGeomCurve,
+        theBase: &crate::ffi_types::HandleGeomCurve,
         theOffset: f64,
         theDirection: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_ctor_handlegeomcurve_real_dir(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_ctor_handlegeomcurve_real_dir(
                     theBase,
                     theOffset,
                     theDirection,
@@ -289,18 +318,12 @@ impl OffsetCurve {
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:31 - `GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve()`
     /// Initialize evaluator by curve adaptor
     pub fn new_handlegeomadaptorcurve_real_dir(
-        theBase: &crate::ffi::HandleGeomAdaptorCurve,
+        theBase: &crate::ffi_types::HandleGeomAdaptorCurve,
         theOffset: f64,
         theDirection: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_ctor_handlegeomadaptorcurve_real_dir(
-                    theBase,
-                    theOffset,
-                    theDirection,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_ctor_handlegeomadaptorcurve_real_dir(theBase, theOffset, theDirection)))
         }
     }
 
@@ -308,14 +331,17 @@ impl OffsetCurve {
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_set_offset_value(self as *mut Self, theOffset)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_set_offset_value(
+                self as *mut Self,
+                theOffset,
+            )
         })
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:38 - `GeomEvaluator_OffsetCurve::SetOffsetDirection()`
     pub fn set_offset_direction(&mut self, theDirection: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_set_offset_direction(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_set_offset_direction(
                 self as *mut Self,
                 theDirection,
             )
@@ -326,7 +352,11 @@ impl OffsetCurve {
     /// Value of curve
     pub fn d0(&self, theU: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_d0(self as *const Self, theU, theValue)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_d0(
+                self as *const Self,
+                theU,
+                theValue,
+            )
         })
     }
 
@@ -334,7 +364,12 @@ impl OffsetCurve {
     /// Value and first derivatives of curve
     pub fn d1(&self, theU: f64, theValue: &mut crate::gp::Pnt, theD1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_d1(self as *const Self, theU, theValue, theD1)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_d1(
+                self as *const Self,
+                theU,
+                theValue,
+                theD1,
+            )
         })
     }
 
@@ -348,7 +383,7 @@ impl OffsetCurve {
         theD2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_d2(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_d2(
                 self as *const Self,
                 theU,
                 theValue,
@@ -369,7 +404,7 @@ impl OffsetCurve {
         theD3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_d3(
                 self as *const Self,
                 theU,
                 theValue,
@@ -385,26 +420,34 @@ impl OffsetCurve {
     pub fn dn(&self, theU: f64, theDeriv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_dn(self as *const Self, theU, theDeriv),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_dn(
+                    self as *const Self,
+                    theU,
+                    theDeriv,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:61 - `GeomEvaluator_OffsetCurve::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_shallow_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_OffsetCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -412,7 +455,7 @@ impl OffsetCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -420,18 +463,22 @@ impl OffsetCurve {
     }
 
     /// **Source:** `GeomEvaluator_OffsetCurve.hxx`:63 - `GeomEvaluator_OffsetCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_OffsetCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomEvaluator_Curve
     pub fn as_curve(&self) -> &Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -439,7 +486,9 @@ impl OffsetCurve {
     pub fn as_curve_mut(&mut self) -> &mut Curve {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve_mut(self as *mut Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_as_GeomEvaluator_Curve_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -447,9 +496,11 @@ impl OffsetCurve {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_OffsetCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -457,7 +508,9 @@ impl OffsetCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -465,25 +518,31 @@ impl OffsetCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorOffsetCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -491,7 +550,9 @@ impl OffsetCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_OffsetCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -504,64 +565,70 @@ impl OffsetCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetCurve_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorOffsetCurve;
+pub use crate::ffi_types::HandleGeomEvaluatorOffsetCurve;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorOffsetCurve_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorOffsetCurve {
     /// Dereference this Handle to access the underlying GeomEvaluator_OffsetCurve
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_OffsetCurve {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_OffsetCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorOffsetCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_OffsetCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_OffsetCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_OffsetCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorOffsetCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<GeomEvaluator_OffsetCurve> to Handle<GeomEvaluator_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorOffsetCurve_to_HandleGeomEvaluatorCurve(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_to_HandleGeomEvaluatorCurve(
                     self as *const Self,
                 ),
             ))
@@ -569,10 +636,12 @@ impl HandleGeomEvaluatorOffsetCurve {
     }
 
     /// Upcast Handle<GeomEvaluator_OffsetCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorOffsetCurve_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetCurve_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -586,11 +655,11 @@ impl HandleGeomEvaluatorOffsetCurve {
 
 /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:24 - `GeomEvaluator_OffsetSurface`
 /// Allows to calculate values and derivatives for offset surfaces
-pub use crate::ffi::GeomEvaluator_OffsetSurface as OffsetSurface;
+pub use crate::ffi_types::GeomEvaluator_OffsetSurface as OffsetSurface;
 
 unsafe impl crate::CppDeletable for OffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_OffsetSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_destructor(ptr);
     }
 }
 
@@ -598,24 +667,24 @@ impl OffsetSurface {
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:28 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface()`
     /// Initialize evaluator by surface
     pub fn new_handlegeomsurface_real_handlegeomosculatingsurface(
-        theBase: &crate::ffi::HandleGeomSurface,
+        theBase: &crate::ffi_types::HandleGeomSurface,
         theOffset: f64,
-        theOscSurf: &crate::ffi::HandleGeomOsculatingSurface,
+        theOscSurf: &crate::ffi_types::HandleGeomOsculatingSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_ctor_handlegeomsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_ctor_handlegeomsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf)))
         }
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:33 - `GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface()`
     /// Initialize evaluator by surface adaptor
     pub fn new_handlegeomadaptorsurface_real_handlegeomosculatingsurface(
-        theBase: &crate::ffi::HandleGeomAdaptorSurface,
+        theBase: &crate::ffi_types::HandleGeomAdaptorSurface,
         theOffset: f64,
-        theOscSurf: &crate::ffi::HandleGeomOsculatingSurface,
+        theOscSurf: &crate::ffi_types::HandleGeomOsculatingSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_ctor_handlegeomadaptorsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_ctor_handlegeomadaptorsurface_real_handlegeomosculatingsurface(theBase, theOffset, theOscSurf)))
         }
     }
 
@@ -623,7 +692,10 @@ impl OffsetSurface {
     /// Change the offset value
     pub fn set_offset_value(&mut self, theOffset: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_set_offset_value(self as *mut Self, theOffset)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_set_offset_value(
+                self as *mut Self,
+                theOffset,
+            )
         })
     }
 
@@ -631,7 +703,12 @@ impl OffsetSurface {
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_d0(self as *const Self, theU, theV, theValue)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_d0(
+                self as *const Self,
+                theU,
+                theV,
+                theValue,
+            )
         })
     }
 
@@ -646,7 +723,7 @@ impl OffsetSurface {
         theD1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_d1(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_d1(
                 self as *const Self,
                 theU,
                 theV,
@@ -671,7 +748,7 @@ impl OffsetSurface {
         theD2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_d2(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_d2(
                 self as *const Self,
                 theU,
                 theV,
@@ -703,7 +780,7 @@ impl OffsetSurface {
         theD3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_d3(
                 self as *const Self,
                 theU,
                 theV,
@@ -734,7 +811,7 @@ impl OffsetSurface {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_dn(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_dn(
                     self as *const Self,
                     theU,
                     theV,
@@ -746,20 +823,24 @@ impl OffsetSurface {
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:81 - `GeomEvaluator_OffsetSurface::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_shallow_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -767,7 +848,7 @@ impl OffsetSurface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -775,18 +856,22 @@ impl OffsetSurface {
     }
 
     /// **Source:** `GeomEvaluator_OffsetSurface.hxx`:83 - `GeomEvaluator_OffsetSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to GeomEvaluator_Surface
     pub fn as_surface(&self) -> &Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -794,7 +879,7 @@ impl OffsetSurface {
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface_mut(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_as_GeomEvaluator_Surface_mut(
                     self as *mut Self,
                 ),
             )
@@ -804,9 +889,11 @@ impl OffsetSurface {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_OffsetSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -814,7 +901,7 @@ impl OffsetSurface {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_as_Standard_Transient_mut(
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -824,18 +911,18 @@ impl OffsetSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorOffsetSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_OffsetSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_IsInstance(
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -843,9 +930,12 @@ impl OffsetSurface {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -853,7 +943,9 @@ impl OffsetSurface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_OffsetSurface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -866,78 +958,84 @@ impl OffsetSurface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_OffsetSurface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_OffsetSurface_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorOffsetSurface;
+pub use crate::ffi_types::HandleGeomEvaluatorOffsetSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorOffsetSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorOffsetSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorOffsetSurface {
     /// Dereference this Handle to access the underlying GeomEvaluator_OffsetSurface
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_OffsetSurface {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_OffsetSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorOffsetSurface_get(
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_OffsetSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_OffsetSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_OffsetSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorOffsetSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomEvaluator_OffsetSurface> to Handle<GeomEvaluator_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn to_handle_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorOffsetSurface_to_HandleGeomEvaluatorSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_to_HandleGeomEvaluatorSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomEvaluator_OffsetSurface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorOffsetSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorOffsetSurface_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -949,11 +1047,11 @@ impl HandleGeomEvaluatorOffsetSurface {
 /// **Source:** `GeomEvaluator_Surface.hxx`:26 - `GeomEvaluator_Surface`
 /// Interface for calculation of values and derivatives for different kinds of surfaces.
 /// Works both with adaptors and surfaces.
-pub use crate::ffi::GeomEvaluator_Surface as Surface;
+pub use crate::ffi_types::GeomEvaluator_Surface as Surface;
 
 unsafe impl crate::CppDeletable for Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_Surface_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_Surface_destructor(ptr);
     }
 }
 
@@ -962,7 +1060,12 @@ impl Surface {
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_d0(self as *const Self, theU, theV, theValue)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_d0(
+                self as *const Self,
+                theU,
+                theV,
+                theValue,
+            )
         })
     }
 
@@ -977,7 +1080,7 @@ impl Surface {
         theD1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_d1(
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_d1(
                 self as *const Self,
                 theU,
                 theV,
@@ -1002,7 +1105,7 @@ impl Surface {
         theD2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_d2(
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_d2(
                 self as *const Self,
                 theU,
                 theV,
@@ -1034,7 +1137,7 @@ impl Surface {
         theD3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_d3(
                 self as *const Self,
                 theU,
                 theV,
@@ -1064,29 +1167,31 @@ impl Surface {
         theDerV: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomEvaluator_Surface_dn(
-                self as *const Self,
-                theU,
-                theV,
-                theDerU,
-                theDerV,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_dn(
+                    self as *const Self,
+                    theU,
+                    theV,
+                    theDerU,
+                    theDerV,
+                ),
+            ))
         }
     }
 
     /// **Source:** `GeomEvaluator_Surface.hxx`:69 - `GeomEvaluator_Surface::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_Surface_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_shallow_copy(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_Surface_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_Surface_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1096,7 +1201,7 @@ impl Surface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_Surface_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1104,39 +1209,53 @@ impl Surface {
     }
 
     /// **Source:** `GeomEvaluator_Surface.hxx`:71 - `GeomEvaluator_Surface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::GeomEvaluator_Surface_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::GeomEvaluator_Surface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::GeomEvaluator_Surface_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1144,7 +1263,7 @@ impl Surface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_Surface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1157,62 +1276,72 @@ impl Surface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_Surface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_Surface_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorSurface;
+pub use crate::ffi_types::HandleGeomEvaluatorSurface;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorSurface_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorSurface {
     /// Dereference this Handle to access the underlying GeomEvaluator_Surface
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_Surface {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorSurface_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_Surface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_Surface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorSurface_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<GeomEvaluator_Surface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorSurface_to_HandleStandardTransient(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1224,11 +1353,9 @@ impl HandleGeomEvaluatorSurface {
     /// Returns `None` if the handle does not point to a `GeomEvaluator_OffsetSurface` (or subclass).
     pub fn downcast_to_offset_surface(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorOffsetSurface>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorOffsetSurface>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorOffsetSurface(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorOffsetSurface(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1242,11 +1369,9 @@ impl HandleGeomEvaluatorSurface {
     /// Returns `None` if the handle does not point to a `GeomEvaluator_SurfaceOfExtrusion` (or subclass).
     pub fn downcast_to_surface_of_extrusion(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurfaceOfExtrusion>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfExtrusion(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfExtrusion(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1260,9 +1385,9 @@ impl HandleGeomEvaluatorSurface {
     /// Returns `None` if the handle does not point to a `GeomEvaluator_SurfaceOfRevolution` (or subclass).
     pub fn downcast_to_surface_of_revolution(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurfaceOfRevolution>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfRevolution(self as *const Self)
+            crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurface_downcast_to_HandleGeomEvaluatorSurfaceOfRevolution(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1278,11 +1403,11 @@ impl HandleGeomEvaluatorSurface {
 
 /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:24 - `GeomEvaluator_SurfaceOfExtrusion`
 /// Allows to calculate values and derivatives for surfaces of linear extrusion
-pub use crate::ffi::GeomEvaluator_SurfaceOfExtrusion as SurfaceOfExtrusion;
+pub use crate::ffi_types::GeomEvaluator_SurfaceOfExtrusion as SurfaceOfExtrusion;
 
 unsafe impl crate::CppDeletable for SurfaceOfExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_SurfaceOfExtrusion_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_destructor(ptr);
     }
 }
 
@@ -1290,12 +1415,12 @@ impl SurfaceOfExtrusion {
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:28 - `GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion()`
     /// Initialize evaluator by surface
     pub fn new_handlegeomcurve_dir(
-        theBase: &crate::ffi::HandleGeomCurve,
+        theBase: &crate::ffi_types::HandleGeomCurve,
         theExtrusionDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_ctor_handlegeomcurve_dir(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_ctor_handlegeomcurve_dir(
                     theBase,
                     theExtrusionDir,
                 ),
@@ -1306,16 +1431,11 @@ impl SurfaceOfExtrusion {
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:31 - `GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion()`
     /// Initialize evaluator by surface adaptor
     pub fn new_handleadaptor3dcurve_dir(
-        theBase: &crate::ffi::HandleAdaptor3dCurve,
+        theBase: &crate::ffi_types::HandleAdaptor3dCurve,
         theExtrusionDir: &crate::gp::Dir,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_ctor_handleadaptor3dcurve_dir(
-                    theBase,
-                    theExtrusionDir,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_ctor_handleadaptor3dcurve_dir(theBase, theExtrusionDir)))
         }
     }
 
@@ -1323,7 +1443,7 @@ impl SurfaceOfExtrusion {
     /// ! Changes the direction of extrusion
     pub fn set_direction(&mut self, theDirection: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_set_direction(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_set_direction(
                 self as *mut Self,
                 theDirection,
             )
@@ -1334,7 +1454,7 @@ impl SurfaceOfExtrusion {
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d0(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_d0(
                 self as *const Self,
                 theU,
                 theV,
@@ -1354,7 +1474,7 @@ impl SurfaceOfExtrusion {
         theD1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d1(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_d1(
                 self as *const Self,
                 theU,
                 theV,
@@ -1379,7 +1499,7 @@ impl SurfaceOfExtrusion {
         theD2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d2(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_d2(
                 self as *const Self,
                 theU,
                 theV,
@@ -1411,7 +1531,7 @@ impl SurfaceOfExtrusion {
         theD3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_d3(
                 self as *const Self,
                 theU,
                 theV,
@@ -1442,7 +1562,7 @@ impl SurfaceOfExtrusion {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_dn(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_dn(
                     self as *const Self,
                     theU,
                     theV,
@@ -1454,20 +1574,24 @@ impl SurfaceOfExtrusion {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:77 - `GeomEvaluator_SurfaceOfExtrusion::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_shallow_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_SurfaceOfExtrusion_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1475,7 +1599,7 @@ impl SurfaceOfExtrusion {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1483,10 +1607,10 @@ impl SurfaceOfExtrusion {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfExtrusion.hxx`:79 - `GeomEvaluator_SurfaceOfExtrusion::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_get_type_descriptor(),
             ))
         }
     }
@@ -1495,7 +1619,7 @@ impl SurfaceOfExtrusion {
     pub fn as_surface(&self) -> &Surface {
         unsafe {
             &*crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface(
                     self as *const Self,
                 ),
             )
@@ -1505,11 +1629,7 @@ impl SurfaceOfExtrusion {
     /// Upcast to GeomEvaluator_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_as_GeomEvaluator_Surface_mut(self as *mut Self))
         }
     }
 
@@ -1517,7 +1637,7 @@ impl SurfaceOfExtrusion {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_Standard_Transient(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -1528,7 +1648,7 @@ impl SurfaceOfExtrusion {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_as_Standard_Transient_mut(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -1538,18 +1658,18 @@ impl SurfaceOfExtrusion {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurfaceOfExtrusion> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_IsInstance(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1557,9 +1677,9 @@ impl SurfaceOfExtrusion {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_IsKind(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1570,7 +1690,9 @@ impl SurfaceOfExtrusion {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1583,14 +1705,16 @@ impl SurfaceOfExtrusion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -1599,7 +1723,7 @@ impl SurfaceOfExtrusion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -1608,57 +1732,59 @@ impl SurfaceOfExtrusion {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfExtrusion_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfExtrusion_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion;
+pub use crate::ffi_types::HandleGeomEvaluatorSurfaceOfExtrusion;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfExtrusion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorSurfaceOfExtrusion {
     /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfExtrusion
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_SurfaceOfExtrusion {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_SurfaceOfExtrusion {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_SurfaceOfExtrusion
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_SurfaceOfExtrusion {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_SurfaceOfExtrusion {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomEvaluator_SurfaceOfExtrusion> to Handle<GeomEvaluator_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn to_handle_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_to_HandleGeomEvaluatorSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_to_HandleGeomEvaluatorSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomEvaluator_SurfaceOfExtrusion> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorSurfaceOfExtrusion_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfExtrusion_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1669,11 +1795,11 @@ impl HandleGeomEvaluatorSurfaceOfExtrusion {
 
 /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:26 - `GeomEvaluator_SurfaceOfRevolution`
 /// Allows to calculate values and derivatives for surfaces of revolution
-pub use crate::ffi::GeomEvaluator_SurfaceOfRevolution as SurfaceOfRevolution;
+pub use crate::ffi_types::GeomEvaluator_SurfaceOfRevolution as SurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for SurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomEvaluator_SurfaceOfRevolution_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_destructor(ptr);
     }
 }
 
@@ -1681,36 +1807,24 @@ impl SurfaceOfRevolution {
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:30 - `GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution()`
     /// Initialize evaluator by revolved curve, the axis of revolution and the location
     pub fn new_handlegeomcurve_dir_pnt(
-        theBase: &crate::ffi::HandleGeomCurve,
+        theBase: &crate::ffi_types::HandleGeomCurve,
         theRevolDir: &crate::gp::Dir,
         theRevolLoc: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_ctor_handlegeomcurve_dir_pnt(
-                    theBase,
-                    theRevolDir,
-                    theRevolLoc,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_ctor_handlegeomcurve_dir_pnt(theBase, theRevolDir, theRevolLoc)))
         }
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:34 - `GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution()`
     /// Initialize evaluator by adaptor of the revolved curve, the axis of revolution and the location
     pub fn new_handleadaptor3dcurve_dir_pnt(
-        theBase: &crate::ffi::HandleAdaptor3dCurve,
+        theBase: &crate::ffi_types::HandleAdaptor3dCurve,
         theRevolDir: &crate::gp::Dir,
         theRevolLoc: &crate::gp::Pnt,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_ctor_handleadaptor3dcurve_dir_pnt(
-                    theBase,
-                    theRevolDir,
-                    theRevolLoc,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_ctor_handleadaptor3dcurve_dir_pnt(theBase, theRevolDir, theRevolLoc)))
         }
     }
 
@@ -1718,7 +1832,7 @@ impl SurfaceOfRevolution {
     /// Change direction of the axis of revolution
     pub fn set_direction(&mut self, theDirection: &crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_direction(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_set_direction(
                 self as *mut Self,
                 theDirection,
             )
@@ -1729,7 +1843,7 @@ impl SurfaceOfRevolution {
     /// Change location of the axis of revolution
     pub fn set_location(&mut self, theLocation: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_location(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_set_location(
                 self as *mut Self,
                 theLocation,
             )
@@ -1740,7 +1854,10 @@ impl SurfaceOfRevolution {
     /// Change the axis of revolution
     pub fn set_axis(&mut self, theAxis: &crate::gp::Ax1) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_set_axis(self as *mut Self, theAxis)
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_set_axis(
+                self as *mut Self,
+                theAxis,
+            )
         })
     }
 
@@ -1748,7 +1865,7 @@ impl SurfaceOfRevolution {
     /// Value of surface
     pub fn d0(&self, theU: f64, theV: f64, theValue: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_d0(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_d0(
                 self as *const Self,
                 theU,
                 theV,
@@ -1768,7 +1885,7 @@ impl SurfaceOfRevolution {
         theD1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_d1(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_d1(
                 self as *const Self,
                 theU,
                 theV,
@@ -1793,7 +1910,7 @@ impl SurfaceOfRevolution {
         theD2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_d2(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_d2(
                 self as *const Self,
                 theU,
                 theV,
@@ -1825,7 +1942,7 @@ impl SurfaceOfRevolution {
         theD3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_d3(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_d3(
                 self as *const Self,
                 theU,
                 theV,
@@ -1856,7 +1973,7 @@ impl SurfaceOfRevolution {
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_dn(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_dn(
                     self as *const Self,
                     theU,
                     theV,
@@ -1868,20 +1985,24 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:87 - `GeomEvaluator_SurfaceOfRevolution::ShallowCopy()`
-    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn shallow_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_shallow_copy(self as *const Self),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_shallow_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::GeomEvaluator_SurfaceOfRevolution_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1889,7 +2010,7 @@ impl SurfaceOfRevolution {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_name(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1897,10 +2018,10 @@ impl SurfaceOfRevolution {
     }
 
     /// **Source:** `GeomEvaluator_SurfaceOfRevolution.hxx`:89 - `GeomEvaluator_SurfaceOfRevolution::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_get_type_descriptor(),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_get_type_descriptor(),
             ))
         }
     }
@@ -1909,7 +2030,7 @@ impl SurfaceOfRevolution {
     pub fn as_surface(&self) -> &Surface {
         unsafe {
             &*crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface(
                     self as *const Self,
                 ),
             )
@@ -1919,11 +2040,7 @@ impl SurfaceOfRevolution {
     /// Upcast to GeomEvaluator_Surface (mutable)
     pub fn as_surface_mut(&mut self) -> &mut Surface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_as_GeomEvaluator_Surface_mut(self as *mut Self))
         }
     }
 
@@ -1931,7 +2048,7 @@ impl SurfaceOfRevolution {
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
             &*crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_Standard_Transient(
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_as_Standard_Transient(
                     self as *const Self,
                 ),
             )
@@ -1941,29 +2058,27 @@ impl SurfaceOfRevolution {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurfaceOfRevolution> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_IsInstance(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1971,9 +2086,9 @@ impl SurfaceOfRevolution {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_IsKind(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1984,7 +2099,9 @@ impl SurfaceOfRevolution {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_This(self as *const Self)
+                crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1997,14 +2114,16 @@ impl SurfaceOfRevolution {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2013,7 +2132,7 @@ impl SurfaceOfRevolution {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2022,57 +2141,59 @@ impl SurfaceOfRevolution {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomEvaluator_SurfaceOfRevolution_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKG3d::GeomEvaluator_SurfaceOfRevolution_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution;
+pub use crate::ffi_types::HandleGeomEvaluatorSurfaceOfRevolution;
 
 unsafe impl crate::CppDeletable for HandleGeomEvaluatorSurfaceOfRevolution {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_destructor(ptr);
+        crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_destructor(ptr);
     }
 }
 
 impl HandleGeomEvaluatorSurfaceOfRevolution {
     /// Dereference this Handle to access the underlying GeomEvaluator_SurfaceOfRevolution
-    pub fn get(&self) -> &crate::ffi::GeomEvaluator_SurfaceOfRevolution {
+    pub fn get(&self) -> &crate::ffi_types::GeomEvaluator_SurfaceOfRevolution {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying GeomEvaluator_SurfaceOfRevolution
-    pub fn get_mut(&mut self) -> &mut crate::ffi::GeomEvaluator_SurfaceOfRevolution {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::GeomEvaluator_SurfaceOfRevolution {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<GeomEvaluator_SurfaceOfRevolution> to Handle<GeomEvaluator_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomEvaluatorSurface> {
+    pub fn to_handle_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomEvaluatorSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_to_HandleGeomEvaluatorSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_to_HandleGeomEvaluatorSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<GeomEvaluator_SurfaceOfRevolution> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleGeomEvaluatorSurfaceOfRevolution_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKG3d::HandleGeomEvaluatorSurfaceOfRevolution_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }

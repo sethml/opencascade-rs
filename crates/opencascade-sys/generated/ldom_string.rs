@@ -11,24 +11,30 @@
 // ========================
 
 /// **Source:** `LDOMString.hxx`:30 - `LDOMString`
-pub use crate::ffi::LDOMString;
+pub use crate::ffi_types::LDOMString;
 
 unsafe impl crate::CppDeletable for LDOMString {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LDOMString_destructor(ptr);
+        crate::ffi_extern_misc::LDOMString_destructor(ptr);
     }
 }
 
 impl LDOMString {
     /// **Source:** `LDOMString.hxx`:35 - `LDOMString::LDOMString()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(
+                crate::check_result(crate::ffi_extern_misc::LDOMString_ctor()),
+            )
+        }
     }
 
     /// **Source:** `LDOMString.hxx`:50 - `LDOMString::LDOMString()`
     pub fn new_int(aValue: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor_int(aValue)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMString_ctor_int(aValue),
+            ))
         }
     }
 
@@ -36,25 +42,27 @@ impl LDOMString {
     pub fn new_charptr(aValue: &str) -> crate::OwnedPtr<Self> {
         let c_aValue = std::ffi::CString::new(aValue).unwrap();
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_ctor_charptr(
-                c_aValue.as_ptr(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMString_ctor_charptr(c_aValue.as_ptr()),
+            ))
         }
     }
 
     /// **Source:** `LDOMString.hxx`:68 - `LDOMString::getOwnerDocument()`
     pub fn get_owner_document(&self) -> &crate::ldom::MemManager {
         unsafe {
-            &*(crate::check_result(crate::ffi::LDOMString_get_owner_document(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_misc::LDOMString_get_owner_document(
+                self as *const Self,
+            )))
         }
     }
 
     /// Clone into a new OwnedPtr via copy constructor
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LDOMString_to_owned(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_misc::LDOMString_to_owned(self as *const Self),
+            ))
         }
     }
 }

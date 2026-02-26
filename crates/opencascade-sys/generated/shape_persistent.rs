@@ -33,18 +33,18 @@ impl TryFrom<i32> for TriangleMode {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardTransient, HandleStdObjMgtPersistent};
+pub use crate::ffi_types::{HandleStandardTransient, HandleStdObjMgtPersistent};
 
 // ========================
 // From ShapePersistent_BRep.hxx
 // ========================
 
 /// **Source:** `ShapePersistent_BRep.hxx`:36 - `ShapePersistent_BRep`
-pub use crate::ffi::ShapePersistent_BRep as BRep;
+pub use crate::ffi_types::ShapePersistent_BRep as BRep;
 
 unsafe impl crate::CppDeletable for BRep {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_destructor(ptr);
     }
 }
 
@@ -53,7 +53,9 @@ impl BRep {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_ctor(),
+            ))
         }
     }
 
@@ -61,12 +63,12 @@ impl BRep {
     /// Create a persistent object for a point on a 3D curve
     pub fn translate_real_handlegeomcurve_location_transientpersistentmap(
         theParam: f64,
-        theCurve: &crate::ffi::HandleGeomCurve,
+        theCurve: &crate::ffi_types::HandleGeomCurve,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurve> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_real_handlegeomcurve_location_transientpersistentmap(theParam, theCurve, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_real_handlegeomcurve_location_transientpersistentmap(theParam, theCurve, theLoc, theMap)))
         }
     }
 
@@ -74,13 +76,13 @@ impl BRep {
     /// Create a persistent object for a point on a 3D curve on a surface
     pub fn translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(
         theParam: f64,
-        theCurve: &crate::ffi::HandleGeom2dCurve,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        theCurve: &crate::ffi_types::HandleGeom2dCurve,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnCurveOnSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(theParam, theCurve, theSurf, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_real_handlegeom2dcurve_handlegeomsurface_location_transientpersistentmap(theParam, theCurve, theSurf, theLoc, theMap)))
         }
     }
 
@@ -89,148 +91,151 @@ impl BRep {
     pub fn translate_real2_handlegeomsurface_location_transientpersistentmap(
         theParam: f64,
         theParam2: f64,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_real2_handlegeomsurface_location_transientpersistentmap(theParam, theParam2, theSurf, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_real2_handlegeomsurface_location_transientpersistentmap(theParam, theParam2, theSurf, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:536 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a curve on a surface
     pub fn translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dCurve,
+        theCurve: &crate::ffi_types::HandleGeom2dCurve,
         theFirstParam: f64,
         theLastParam: f64,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOnSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theSurf, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlegeom2dcurve_real2_handlegeomsurface_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theSurf, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:543 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a curve on a closed surface
     pub fn translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dCurve,
-        theCurve2: &crate::ffi::HandleGeom2dCurve,
+        theCurve: &crate::ffi_types::HandleGeom2dCurve,
+        theCurve2: &crate::ffi_types::HandleGeom2dCurve,
         theFirstParam: f64,
         theLastParam: f64,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
         theContinuity: crate::geom_abs::Shape,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOnClosedSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(theCurve, theCurve2, theFirstParam, theLastParam, theSurf, theLoc, theContinuity.into(), theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlegeom2dcurve2_real2_handlegeomsurface_location_shape_transientpersistentmap(theCurve, theCurve2, theFirstParam, theLastParam, theSurf, theLoc, theContinuity.into(), theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:553 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a curve on two surfaces
     pub fn translate_handlegeomsurface2_location2_shape_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomSurface,
-        theSurf2: &crate::ffi::HandleGeomSurface,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theSurf2: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
         theLoc2: &crate::top_loc::Location,
         theContinuity: crate::geom_abs::Shape,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOn2Surfaces> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_transientpersistentmap(theSurf, theSurf2, theLoc, theLoc2, theContinuity.into(), theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlegeomsurface2_location2_shape_transientpersistentmap(theSurf, theSurf2, theLoc, theLoc2, theContinuity.into(), theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:561 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a 3D curve
     pub fn translate_handlegeomcurve_real2_location_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomCurve,
+        theCurve: &crate::ffi_types::HandleGeomCurve,
         theFirstParam: f64,
         theLastParam: f64,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurve3D> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurve3D> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlegeomcurve_real2_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlegeomcurve_real2_location_transientpersistentmap(theCurve, theFirstParam, theLastParam, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:567 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a 3D polygon
     pub fn translate_handlepolypolygon3d_location_transientpersistentmap(
-        thePoly: &crate::ffi::HandlePolyPolygon3D,
+        thePoly: &crate::ffi_types::HandlePolyPolygon3D,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygon3D> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygon3D> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon3d_location_transientpersistentmap(thePoly, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlepolypolygon3d_location_transientpersistentmap(thePoly, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:571 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a polygon on a closed surface
     pub fn translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(
-        thePoly: &crate::ffi::HandlePolyPolygon2D,
-        thePoly2: &crate::ffi::HandlePolyPolygon2D,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        thePoly: &crate::ffi_types::HandlePolyPolygon2D,
+        thePoly2: &crate::ffi_types::HandlePolyPolygon2D,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(thePoly, thePoly2, theSurf, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlepolypolygon2d2_handlegeomsurface_location_transientpersistentmap(thePoly, thePoly2, theSurf, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:578 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a polygon on a surface
     pub fn translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(
-        thePoly: &crate::ffi::HandlePolyPolygon2D,
-        theSurf: &crate::ffi::HandleGeomSurface,
+        thePoly: &crate::ffi_types::HandlePolyPolygon2D,
+        theSurf: &crate::ffi_types::HandleGeomSurface,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnSurface> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(thePoly, theSurf, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlepolypolygon2d_handlegeomsurface_location_transientpersistentmap(thePoly, theSurf, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:584 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a polygon on a surface
     pub fn translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(
-        thePolyOnTriang: &crate::ffi::HandlePolyPolygonOnTriangulation,
-        thePolyOnTriang2: &crate::ffi::HandlePolyPolygonOnTriangulation,
-        thePolyTriang: &crate::ffi::HandlePolyTriangulation,
+        thePolyOnTriang: &crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        thePolyOnTriang2: &crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        thePolyTriang: &crate::ffi_types::HandlePolyTriangulation,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedTriangulation>
+    {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyOnTriang2, thePolyTriang, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlepolypolygonontriangulation2_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyOnTriang2, thePolyTriang, theLoc, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:591 - `ShapePersistent_BRep::Translate()`
     /// Create a persistent object for a polygon on a surface
     pub fn translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(
-        thePolyOnTriang: &crate::ffi::HandlePolyPolygonOnTriangulation,
-        thePolyTriang: &crate::ffi::HandlePolyTriangulation,
+        thePolyOnTriang: &crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        thePolyTriang: &crate::ffi_types::HandlePolyTriangulation,
         theLoc: &crate::top_loc::Location,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation> {
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnTriangulation> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyTriang, theLoc, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_translate_handlepolypolygonontriangulation_handlepolytriangulation_location_transientpersistentmap(thePolyOnTriang, thePolyTriang, theLoc, theMap)))
         }
     }
 
     /// Upcast to ShapePersistent_TopoDS
     pub fn as_topo_ds(&self) -> &TopoDS {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_BRep_as_ShapePersistent_TopoDS(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_as_ShapePersistent_TopoDS(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -238,7 +243,9 @@ impl BRep {
     pub fn as_topo_ds_mut(&mut self) -> &mut TopoDS {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_BRep_as_ShapePersistent_TopoDS_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_as_ShapePersistent_TopoDS_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -262,11 +269,11 @@ impl BRep {
 //
 
 /// **Source:** `ShapePersistent_BRep.hxx`:39 - `ShapePersistent_BRep_PointRepresentation`
-pub use crate::ffi::ShapePersistent_BRep_PointRepresentation as BRep_PointRepresentation;
+pub use crate::ffi_types::ShapePersistent_BRep_PointRepresentation as BRep_PointRepresentation;
 
 unsafe impl crate::CppDeletable for BRep_PointRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PointRepresentation_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_destructor(ptr);
     }
 }
 
@@ -276,7 +283,7 @@ impl BRep_PointRepresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_ctor(),
             ))
         }
     }
@@ -285,7 +292,7 @@ impl BRep_PointRepresentation {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -296,7 +303,7 @@ impl BRep_PointRepresentation {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -307,10 +314,10 @@ impl BRep_PointRepresentation {
     /// Gets persistent child objects
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -322,7 +329,9 @@ impl BRep_PointRepresentation {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -331,9 +340,9 @@ impl BRep_PointRepresentation {
 
     /// **Source:** `ShapePersistent_BRep.hxx`:61 - `ShapePersistent_BRep_PointRepresentation::Import()`
     /// Import transient object from the persistent data.
-    pub fn import(&self, thePoints: &mut crate::ffi::BRep_ListOfPointRepresentation) {
+    pub fn import(&self, thePoints: &mut crate::ffi_types::BRep_ListOfPointRepresentation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_import(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_import(
                 self as *const Self,
                 thePoints,
             )
@@ -343,126 +352,96 @@ impl BRep_PointRepresentation {
     /// Upcast to StdObjMgt_Persistent
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent(self as *const Self))
         }
     }
 
     /// Upcast to StdObjMgt_Persistent (mutable)
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_as_StdObjMgt_Persistent_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
-    pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_ImportDocument(
-                self as *const Self,
-                theDocument,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_ImportDocument(self as *const Self, theDocument)
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_CreateAttribute(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_CreateAttribute(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_GetAttribute(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_GetAttribute(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_ImportAttribute(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_ImportAttribute(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_AsciiString(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_AsciiString(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
-    pub fn ext_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_ExtString(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_ExtString(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
-    pub fn label(&self, theDF: &crate::ffi::HandleTDFData) -> crate::OwnedPtr<crate::tdf::Label> {
+    pub fn label(
+        &self,
+        theDF: &crate::ffi_types::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_Label(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_Label(
                     self as *const Self,
                     theDF,
                 ),
@@ -473,7 +452,7 @@ impl BRep_PointRepresentation {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_TypeNum(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_TypeNum(
                 self as *const Self,
             )
         })
@@ -482,27 +461,23 @@ impl BRep_PointRepresentation {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_RefNum(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_RefNum(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_DynamicType(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_DynamicType(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_IsInstance(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -510,9 +485,9 @@ impl BRep_PointRepresentation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_IsKind(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -523,7 +498,7 @@ impl BRep_PointRepresentation {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_This(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_This(
                     self as *const Self,
                 )
             });
@@ -538,7 +513,7 @@ impl BRep_PointRepresentation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_GetRefCount(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -547,83 +522,83 @@ impl BRep_PointRepresentation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointRepresentation_inherited_Delete(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointRepresentation_inherited_Delete(
                 self as *const Self,
             )
         })
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPointRepresentation;
+pub use crate::ffi_types::HandleShapePersistentBRepPointRepresentation;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPointRepresentation_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPointRepresentation {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointRepresentation
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointRepresentation {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointRepresentation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPointRepresentation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointRepresentation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointRepresentation {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_PointRepresentation {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPointRepresentation_get_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<ShapePersistent_BRep_PointRepresentation> to Handle<StdObjMgt_Persistent>
-    pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
+    pub fn to_handle_persistent(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapePersistentBRepPointRepresentation_to_HandleStdObjMgtPersistent(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_to_HandleStdObjMgtPersistent(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapePersistent_BRep_PointRepresentation> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPointRepresentation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepPointRepresentation_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:74 - `ShapePersistent_BRep_PointOnCurve`
-pub use crate::ffi::ShapePersistent_BRep_PointOnCurve as BRep_PointOnCurve;
+pub use crate::ffi_types::ShapePersistent_BRep_PointOnCurve as BRep_PointOnCurve;
 
 unsafe impl crate::CppDeletable for BRep_PointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PointOnCurve_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_destructor(ptr);
     }
 }
 
@@ -633,7 +608,7 @@ impl BRep_PointOnCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurve_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_ctor(),
             ))
         }
     }
@@ -641,24 +616,30 @@ impl BRep_PointOnCurve {
     /// **Source:** `ShapePersistent_BRep.hxx`:79 - `ShapePersistent_BRep_PointOnCurve::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurve_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:80 - `ShapePersistent_BRep_PointOnCurve::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurve_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:81 - `ShapePersistent_BRep_PointOnCurve::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurve_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -669,7 +650,9 @@ impl BRep_PointOnCurve {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurve_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -677,10 +660,12 @@ impl BRep_PointOnCurve {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:85 - `ShapePersistent_BRep_PointOnCurve::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepPointRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurve_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -688,49 +673,55 @@ impl BRep_PointOnCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurve_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPointOnCurve;
+pub use crate::ffi_types::HandleShapePersistentBRepPointOnCurve;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPointOnCurve_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurve_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPointOnCurve {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurve
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnCurve {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPointOnCurve_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurve_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_PointOnCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentBRepPointOnCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:91 - `ShapePersistent_BRep_PointsOnSurface`
-pub use crate::ffi::ShapePersistent_BRep_PointsOnSurface as BRep_PointsOnSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_PointsOnSurface as BRep_PointsOnSurface;
 
 unsafe impl crate::CppDeletable for BRep_PointsOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PointsOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_destructor(ptr);
     }
 }
 
@@ -740,7 +731,7 @@ impl BRep_PointsOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointsOnSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_ctor(),
             ))
         }
     }
@@ -748,14 +739,17 @@ impl BRep_PointsOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:96 - `ShapePersistent_BRep_PointsOnSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointsOnSurface_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:97 - `ShapePersistent_BRep_PointsOnSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointsOnSurface_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -765,10 +759,10 @@ impl BRep_PointsOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:98 - `ShapePersistent_BRep_PointsOnSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointsOnSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -779,7 +773,9 @@ impl BRep_PointsOnSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointsOnSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointsOnSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -788,11 +784,11 @@ impl BRep_PointsOnSurface {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:106 - `ShapePersistent_BRep_PointOnCurveOnSurface`
-pub use crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface as BRep_PointOnCurveOnSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_PointOnCurveOnSurface as BRep_PointOnCurveOnSurface;
 
 unsafe impl crate::CppDeletable for BRep_PointOnCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_destructor(ptr);
     }
 }
 
@@ -802,7 +798,7 @@ impl BRep_PointOnCurveOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_ctor(),
             ))
         }
     }
@@ -810,7 +806,7 @@ impl BRep_PointOnCurveOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:111 - `ShapePersistent_BRep_PointOnCurveOnSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -820,7 +816,7 @@ impl BRep_PointOnCurveOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:112 - `ShapePersistent_BRep_PointOnCurveOnSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -830,10 +826,10 @@ impl BRep_PointOnCurveOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:113 - `ShapePersistent_BRep_PointOnCurveOnSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -844,7 +840,9 @@ impl BRep_PointOnCurveOnSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -852,10 +850,12 @@ impl BRep_PointOnCurveOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:117 - `ShapePersistent_BRep_PointOnCurveOnSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepPointRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -863,38 +863,42 @@ impl BRep_PointOnCurveOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnCurveOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnCurveOnSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepPointOnCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurveOnSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPointOnCurveOnSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnCurveOnSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnCurveOnSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurveOnSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnCurveOnSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnCurveOnSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_PointOnCurveOnSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPointOnCurveOnSurface_get_mut(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnCurveOnSurface_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -903,11 +907,11 @@ impl HandleShapePersistentBRepPointOnCurveOnSurface {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:123 - `ShapePersistent_BRep_PointOnSurface`
-pub use crate::ffi::ShapePersistent_BRep_PointOnSurface as BRep_PointOnSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_PointOnSurface as BRep_PointOnSurface;
 
 unsafe impl crate::CppDeletable for BRep_PointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PointOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_destructor(ptr);
     }
 }
 
@@ -916,7 +920,7 @@ impl BRep_PointOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_ctor(),
             ))
         }
     }
@@ -924,14 +928,20 @@ impl BRep_PointOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:133 - `ShapePersistent_BRep_PointOnSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnSurface_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:134 - `ShapePersistent_BRep_PointOnSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PointOnSurface_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
@@ -939,7 +949,9 @@ impl BRep_PointOnSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -947,10 +959,12 @@ impl BRep_PointOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:138 - `ShapePersistent_BRep_PointOnSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepPointRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepPointRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -958,49 +972,55 @@ impl BRep_PointOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPointOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPointOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PointOnSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PointOnSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPointOnSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepPointOnSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPointOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPointOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPointOnSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PointOnSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PointOnSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PointOnSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPointOnSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PointOnSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PointOnSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_PointOnSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentBRepPointOnSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPointOnSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:144 - `ShapePersistent_BRep_CurveRepresentation`
-pub use crate::ffi::ShapePersistent_BRep_CurveRepresentation as BRep_CurveRepresentation;
+pub use crate::ffi_types::ShapePersistent_BRep_CurveRepresentation as BRep_CurveRepresentation;
 
 unsafe impl crate::CppDeletable for BRep_CurveRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_CurveRepresentation_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_destructor(ptr);
     }
 }
 
@@ -1010,7 +1030,7 @@ impl BRep_CurveRepresentation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_ctor(),
             ))
         }
     }
@@ -1019,7 +1039,7 @@ impl BRep_CurveRepresentation {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -1030,7 +1050,7 @@ impl BRep_CurveRepresentation {
     /// Write persistent data from a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -1041,10 +1061,10 @@ impl BRep_CurveRepresentation {
     /// Gets persistent child objects
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -1056,7 +1076,9 @@ impl BRep_CurveRepresentation {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -1065,9 +1087,9 @@ impl BRep_CurveRepresentation {
 
     /// **Source:** `ShapePersistent_BRep.hxx`:160 - `ShapePersistent_BRep_CurveRepresentation::Import()`
     /// Import transient object from the persistent data.
-    pub fn import(&self, theCurves: &mut crate::ffi::BRep_ListOfCurveRepresentation) {
+    pub fn import(&self, theCurves: &mut crate::ffi_types::BRep_ListOfCurveRepresentation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_import(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_import(
                 self as *const Self,
                 theCurves,
             )
@@ -1077,126 +1099,96 @@ impl BRep_CurveRepresentation {
     /// Upcast to StdObjMgt_Persistent
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent(self as *const Self))
         }
     }
 
     /// Upcast to StdObjMgt_Persistent (mutable)
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_as_StdObjMgt_Persistent_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveRepresentation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
-    pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_ImportDocument(
-                self as *const Self,
-                theDocument,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_ImportDocument(self as *const Self, theDocument)
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_CreateAttribute(
-                    self as *mut Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_CreateAttribute(self as *mut Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_GetAttribute(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_GetAttribute(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_ImportAttribute(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_ImportAttribute(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_AsciiString(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_AsciiString(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
-    pub fn ext_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_ExtString(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_ExtString(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
-    pub fn label(&self, theDF: &crate::ffi::HandleTDFData) -> crate::OwnedPtr<crate::tdf::Label> {
+    pub fn label(
+        &self,
+        theDF: &crate::ffi_types::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_Label(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_Label(
                     self as *const Self,
                     theDF,
                 ),
@@ -1207,7 +1199,7 @@ impl BRep_CurveRepresentation {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_TypeNum(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_TypeNum(
                 self as *const Self,
             )
         })
@@ -1216,27 +1208,23 @@ impl BRep_CurveRepresentation {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_RefNum(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_RefNum(
                 self as *const Self,
             )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_DynamicType(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_DynamicType(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_IsInstance(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1244,9 +1232,9 @@ impl BRep_CurveRepresentation {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_IsKind(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1257,7 +1245,7 @@ impl BRep_CurveRepresentation {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_This(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_This(
                     self as *const Self,
                 )
             });
@@ -1272,7 +1260,7 @@ impl BRep_CurveRepresentation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_GetRefCount(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -1281,83 +1269,83 @@ impl BRep_CurveRepresentation {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveRepresentation_inherited_Delete(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveRepresentation_inherited_Delete(
                 self as *const Self,
             )
         })
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepCurveRepresentation;
+pub use crate::ffi_types::HandleShapePersistentBRepCurveRepresentation;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveRepresentation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepCurveRepresentation_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepCurveRepresentation {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveRepresentation
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveRepresentation {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveRepresentation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepCurveRepresentation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveRepresentation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveRepresentation {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_CurveRepresentation {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepCurveRepresentation_get_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<ShapePersistent_BRep_CurveRepresentation> to Handle<StdObjMgt_Persistent>
-    pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
+    pub fn to_handle_persistent(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapePersistentBRepCurveRepresentation_to_HandleStdObjMgtPersistent(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_to_HandleStdObjMgtPersistent(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapePersistent_BRep_CurveRepresentation> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentBRepCurveRepresentation_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveRepresentation_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:172 - `ShapePersistent_BRep_GCurve`
-pub use crate::ffi::ShapePersistent_BRep_GCurve as BRep_GCurve;
+pub use crate::ffi_types::ShapePersistent_BRep_GCurve as BRep_GCurve;
 
 unsafe impl crate::CppDeletable for BRep_GCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_GCurve_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_GCurve_destructor(ptr);
     }
 }
 
@@ -1366,7 +1354,7 @@ impl BRep_GCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_GCurve_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_GCurve_ctor(),
             ))
         }
     }
@@ -1374,14 +1362,20 @@ impl BRep_GCurve {
     /// **Source:** `ShapePersistent_BRep.hxx`:183 - `ShapePersistent_BRep_GCurve::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_GCurve_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_GCurve_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:184 - `ShapePersistent_BRep_GCurve::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_GCurve_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_GCurve_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
@@ -1389,7 +1383,7 @@ impl BRep_GCurve {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_GCurve_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_GCurve_p_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -1398,11 +1392,11 @@ impl BRep_GCurve {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:193 - `ShapePersistent_BRep_Curve3D`
-pub use crate::ffi::ShapePersistent_BRep_Curve3D as BRep_Curve3D;
+pub use crate::ffi_types::ShapePersistent_BRep_Curve3D as BRep_Curve3D;
 
 unsafe impl crate::CppDeletable for BRep_Curve3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_Curve3D_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_destructor(ptr);
     }
 }
 
@@ -1412,7 +1406,7 @@ impl BRep_Curve3D {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Curve3D_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_ctor(),
             ))
         }
     }
@@ -1420,24 +1414,33 @@ impl BRep_Curve3D {
     /// **Source:** `ShapePersistent_BRep.hxx`:198 - `ShapePersistent_BRep_Curve3D::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Curve3D_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:199 - `ShapePersistent_BRep_Curve3D::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Curve3D_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:200 - `ShapePersistent_BRep_Curve3D::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Curve3D_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_p_children(
+                self as *const Self,
+                theChildren,
+            )
         })
     }
 
@@ -1445,7 +1448,7 @@ impl BRep_Curve3D {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Curve3D_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_p_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -1453,10 +1456,10 @@ impl BRep_Curve3D {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:204 - `ShapePersistent_BRep_Curve3D::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Curve3D_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_import(self as *const Self),
             ))
         }
     }
@@ -1464,49 +1467,51 @@ impl BRep_Curve3D {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurve3D> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurve3D> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Curve3D_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Curve3D_to_handle(obj.into_raw()),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepCurve3D;
+pub use crate::ffi_types::HandleShapePersistentBRepCurve3D;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurve3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepCurve3D_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepCurve3D_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepCurve3D {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_Curve3D
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_Curve3D {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_Curve3D {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepCurve3D_get(
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepCurve3D_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_Curve3D
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_Curve3D {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_Curve3D {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentBRepCurve3D_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurve3D_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:210 - `ShapePersistent_BRep_CurveOnSurface`
-pub use crate::ffi::ShapePersistent_BRep_CurveOnSurface as BRep_CurveOnSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_CurveOnSurface as BRep_CurveOnSurface;
 
 unsafe impl crate::CppDeletable for BRep_CurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_CurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_destructor(ptr);
     }
 }
 
@@ -1516,7 +1521,7 @@ impl BRep_CurveOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_ctor(),
             ))
         }
     }
@@ -1524,24 +1529,30 @@ impl BRep_CurveOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:215 - `ShapePersistent_BRep_CurveOnSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnSurface_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:216 - `ShapePersistent_BRep_CurveOnSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnSurface_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:217 - `ShapePersistent_BRep_CurveOnSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -1552,7 +1563,9 @@ impl BRep_CurveOnSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -1560,10 +1573,12 @@ impl BRep_CurveOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:221 - `ShapePersistent_BRep_CurveOnSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1571,49 +1586,55 @@ impl BRep_CurveOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepCurveOnSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepCurveOnSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepCurveOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepCurveOnSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOnSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOnSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepCurveOnSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOnSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOnSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_CurveOnSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentBRepCurveOnSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:230 - `ShapePersistent_BRep_CurveOnClosedSurface`
-pub use crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface as BRep_CurveOnClosedSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_CurveOnClosedSurface as BRep_CurveOnClosedSurface;
 
 unsafe impl crate::CppDeletable for BRep_CurveOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_destructor(ptr);
     }
 }
 
@@ -1622,7 +1643,7 @@ impl BRep_CurveOnClosedSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_ctor(),
             ))
         }
     }
@@ -1630,7 +1651,7 @@ impl BRep_CurveOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:240 - `ShapePersistent_BRep_CurveOnClosedSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -1640,7 +1661,7 @@ impl BRep_CurveOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:241 - `ShapePersistent_BRep_CurveOnClosedSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -1650,10 +1671,10 @@ impl BRep_CurveOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:242 - `ShapePersistent_BRep_CurveOnClosedSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -1664,7 +1685,9 @@ impl BRep_CurveOnClosedSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -1672,10 +1695,12 @@ impl BRep_CurveOnClosedSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:246 - `ShapePersistent_BRep_CurveOnClosedSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1683,38 +1708,42 @@ impl BRep_CurveOnClosedSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOnClosedSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOnClosedSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepCurveOnClosedSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnClosedSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepCurveOnClosedSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOnClosedSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOnClosedSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnClosedSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOnClosedSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOnClosedSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_CurveOnClosedSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepCurveOnClosedSurface_get_mut(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOnClosedSurface_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1723,11 +1752,11 @@ impl HandleShapePersistentBRepCurveOnClosedSurface {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:255 - `ShapePersistent_BRep_Polygon3D`
-pub use crate::ffi::ShapePersistent_BRep_Polygon3D as BRep_Polygon3D;
+pub use crate::ffi_types::ShapePersistent_BRep_Polygon3D as BRep_Polygon3D;
 
 unsafe impl crate::CppDeletable for BRep_Polygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_Polygon3D_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_destructor(ptr);
     }
 }
 
@@ -1737,7 +1766,7 @@ impl BRep_Polygon3D {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Polygon3D_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_ctor(),
             ))
         }
     }
@@ -1745,24 +1774,33 @@ impl BRep_Polygon3D {
     /// **Source:** `ShapePersistent_BRep.hxx`:260 - `ShapePersistent_BRep_Polygon3D::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Polygon3D_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:261 - `ShapePersistent_BRep_Polygon3D::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Polygon3D_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:262 - `ShapePersistent_BRep_Polygon3D::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_Polygon3D_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_p_children(
+                self as *const Self,
+                theChildren,
+            )
         })
     }
 
@@ -1770,7 +1808,7 @@ impl BRep_Polygon3D {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Polygon3D_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_p_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -1778,10 +1816,10 @@ impl BRep_Polygon3D {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:266 - `ShapePersistent_BRep_Polygon3D::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Polygon3D_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_import(self as *const Self),
             ))
         }
     }
@@ -1789,49 +1827,51 @@ impl BRep_Polygon3D {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygon3D> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygon3D> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_Polygon3D_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_Polygon3D_to_handle(obj.into_raw()),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPolygon3D;
+pub use crate::ffi_types::HandleShapePersistentBRepPolygon3D;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygon3D {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPolygon3D_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygon3D_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPolygon3D {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_Polygon3D
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_Polygon3D {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_Polygon3D {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPolygon3D_get(
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygon3D_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_Polygon3D
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_Polygon3D {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_Polygon3D {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentBRepPolygon3D_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygon3D_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:272 - `ShapePersistent_BRep_PolygonOnTriangulation`
-pub use crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation as BRep_PolygonOnTriangulation;
+pub use crate::ffi_types::ShapePersistent_BRep_PolygonOnTriangulation as BRep_PolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for BRep_PolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_destructor(ptr);
     }
 }
 
@@ -1841,7 +1881,7 @@ impl BRep_PolygonOnTriangulation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_ctor(),
             ))
         }
     }
@@ -1849,7 +1889,7 @@ impl BRep_PolygonOnTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:277 - `ShapePersistent_BRep_PolygonOnTriangulation::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -1859,7 +1899,7 @@ impl BRep_PolygonOnTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:278 - `ShapePersistent_BRep_PolygonOnTriangulation::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -1869,10 +1909,10 @@ impl BRep_PolygonOnTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:279 - `ShapePersistent_BRep_PolygonOnTriangulation::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -1883,7 +1923,9 @@ impl BRep_PolygonOnTriangulation {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -1891,10 +1933,12 @@ impl BRep_PolygonOnTriangulation {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:283 - `ShapePersistent_BRep_PolygonOnTriangulation::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1902,38 +1946,44 @@ impl BRep_PolygonOnTriangulation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnTriangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnTriangulation_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation;
+pub use crate::ffi_types::HandleShapePersistentBRepPolygonOnTriangulation;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnTriangulation_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPolygonOnTriangulation {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnTriangulation
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnTriangulation {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnTriangulation_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnTriangulation
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnTriangulation {
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::ShapePersistent_BRep_PolygonOnTriangulation {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPolygonOnTriangulation_get_mut(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnTriangulation_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -1942,11 +1992,11 @@ impl HandleShapePersistentBRepPolygonOnTriangulation {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:290 - `ShapePersistent_BRep_PolygonOnClosedTriangulation`
-pub use crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation as BRep_PolygonOnClosedTriangulation;
+pub use crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedTriangulation as BRep_PolygonOnClosedTriangulation;
 
 unsafe impl crate::CppDeletable for BRep_PolygonOnClosedTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_destructor(ptr);
     }
 }
 
@@ -1956,7 +2006,7 @@ impl BRep_PolygonOnClosedTriangulation {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_ctor(),
             ))
         }
     }
@@ -1964,7 +2014,7 @@ impl BRep_PolygonOnClosedTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:295 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -1974,7 +2024,7 @@ impl BRep_PolygonOnClosedTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:296 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -1984,10 +2034,10 @@ impl BRep_PolygonOnClosedTriangulation {
     /// **Source:** `ShapePersistent_BRep.hxx`:297 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -1998,7 +2048,7 @@ impl BRep_PolygonOnClosedTriangulation {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_p_name(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_p_name(
                     self as *const Self,
                 ),
             ))
@@ -2008,10 +2058,10 @@ impl BRep_PolygonOnClosedTriangulation {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:301 - `ShapePersistent_BRep_PolygonOnClosedTriangulation::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_import(
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_import(
                     self as *const Self,
                 ),
             ))
@@ -2021,31 +2071,30 @@ impl BRep_PolygonOnClosedTriangulation {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedTriangulation>
+    {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation_to_handle(
-                    obj.into_raw(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedTriangulation_to_handle(obj.into_raw())))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation;
+pub use crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedTriangulation;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnClosedTriangulation {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedTriangulation_destructor(
+            ptr,
+        );
     }
 }
 
 impl HandleShapePersistentBRepPolygonOnClosedTriangulation {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedTriangulation
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedTriangulation {
         unsafe {
             &*crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedTriangulation_get(
                     self as *const Self,
                 ),
             )
@@ -2055,23 +2104,19 @@ impl HandleShapePersistentBRepPolygonOnClosedTriangulation {
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnClosedTriangulation
     pub fn get_mut(
         &mut self,
-    ) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnClosedTriangulation {
+    ) -> &mut crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedTriangulation {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPolygonOnClosedTriangulation_get_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedTriangulation_get_mut(self as *mut Self))
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:307 - `ShapePersistent_BRep_PolygonOnSurface`
-pub use crate::ffi::ShapePersistent_BRep_PolygonOnSurface as BRep_PolygonOnSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_PolygonOnSurface as BRep_PolygonOnSurface;
 
 unsafe impl crate::CppDeletable for BRep_PolygonOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PolygonOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_destructor(ptr);
     }
 }
 
@@ -2081,7 +2126,7 @@ impl BRep_PolygonOnSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_ctor(),
             ))
         }
     }
@@ -2089,14 +2134,17 @@ impl BRep_PolygonOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:312 - `ShapePersistent_BRep_PolygonOnSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnSurface_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:313 - `ShapePersistent_BRep_PolygonOnSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnSurface_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -2106,10 +2154,10 @@ impl BRep_PolygonOnSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:314 - `ShapePersistent_BRep_PolygonOnSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -2120,7 +2168,9 @@ impl BRep_PolygonOnSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -2128,10 +2178,12 @@ impl BRep_PolygonOnSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:318 - `ShapePersistent_BRep_PolygonOnSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2139,49 +2191,55 @@ impl BRep_PolygonOnSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPolygonOnSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepPolygonOnSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPolygonOnSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPolygonOnSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPolygonOnSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_PolygonOnSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPolygonOnSurface_get_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnSurface_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:325 - `ShapePersistent_BRep_PolygonOnClosedSurface`
-pub use crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface as BRep_PolygonOnClosedSurface;
+pub use crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedSurface as BRep_PolygonOnClosedSurface;
 
 unsafe impl crate::CppDeletable for BRep_PolygonOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_destructor(ptr);
     }
 }
 
@@ -2191,7 +2249,7 @@ impl BRep_PolygonOnClosedSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_ctor(),
             ))
         }
     }
@@ -2199,7 +2257,7 @@ impl BRep_PolygonOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:330 - `ShapePersistent_BRep_PolygonOnClosedSurface::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_read(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_read(
                 self as *mut Self,
                 theReadData,
             )
@@ -2209,7 +2267,7 @@ impl BRep_PolygonOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:331 - `ShapePersistent_BRep_PolygonOnClosedSurface::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -2219,10 +2277,10 @@ impl BRep_PolygonOnClosedSurface {
     /// **Source:** `ShapePersistent_BRep.hxx`:332 - `ShapePersistent_BRep_PolygonOnClosedSurface::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -2233,7 +2291,9 @@ impl BRep_PolygonOnClosedSurface {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -2241,10 +2301,12 @@ impl BRep_PolygonOnClosedSurface {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:336 - `ShapePersistent_BRep_PolygonOnClosedSurface::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2252,38 +2314,44 @@ impl BRep_PolygonOnClosedSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_PolygonOnClosedSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface;
+pub use crate::ffi_types::HandleShapePersistentBRepPolygonOnClosedSurface;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepPolygonOnClosedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedSurface_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepPolygonOnClosedSurface {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_PolygonOnClosedSurface
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_PolygonOnClosedSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_PolygonOnClosedSurface {
+    pub fn get_mut(
+        &mut self,
+    ) -> &mut crate::ffi_types::ShapePersistent_BRep_PolygonOnClosedSurface {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepPolygonOnClosedSurface_get_mut(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepPolygonOnClosedSurface_get_mut(
                     self as *mut Self,
                 ),
             )
@@ -2292,11 +2360,11 @@ impl HandleShapePersistentBRepPolygonOnClosedSurface {
 }
 
 /// **Source:** `ShapePersistent_BRep.hxx`:342 - `ShapePersistent_BRep_CurveOn2Surfaces`
-pub use crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces as BRep_CurveOn2Surfaces;
+pub use crate::ffi_types::ShapePersistent_BRep_CurveOn2Surfaces as BRep_CurveOn2Surfaces;
 
 unsafe impl crate::CppDeletable for BRep_CurveOn2Surfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_destructor(ptr);
     }
 }
 
@@ -2305,7 +2373,7 @@ impl BRep_CurveOn2Surfaces {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_ctor(),
             ))
         }
     }
@@ -2313,14 +2381,17 @@ impl BRep_CurveOn2Surfaces {
     /// **Source:** `ShapePersistent_BRep.hxx`:352 - `ShapePersistent_BRep_CurveOn2Surfaces::Read()`
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:353 - `ShapePersistent_BRep_CurveOn2Surfaces::Write()`
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_write(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_write(
                 self as *const Self,
                 theWriteData,
             )
@@ -2330,10 +2401,10 @@ impl BRep_CurveOn2Surfaces {
     /// **Source:** `ShapePersistent_BRep.hxx`:354 - `ShapePersistent_BRep_CurveOn2Surfaces::PChildren()`
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_p_children(
+            crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_p_children(
                 self as *const Self,
                 theChildren,
             )
@@ -2344,7 +2415,9 @@ impl BRep_CurveOn2Surfaces {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_p_name(
+                    self as *const Self,
+                ),
             ))
         }
         .to_string_lossy()
@@ -2352,10 +2425,12 @@ impl BRep_CurveOn2Surfaces {
     }
 
     /// **Source:** `ShapePersistent_BRep.hxx`:358 - `ShapePersistent_BRep_CurveOn2Surfaces::import()`
-    pub fn import(&self) -> crate::OwnedPtr<crate::ffi::HandleBRepCurveRepresentation> {
+    pub fn import(&self) -> crate::OwnedPtr<crate::ffi_types::HandleBRepCurveRepresentation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_import(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2363,38 +2438,44 @@ impl BRep_CurveOn2Surfaces {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentBRepCurveOn2Surfaces> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_BRep_CurveOn2Surfaces_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 }
 
-pub use crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces;
+pub use crate::ffi_types::HandleShapePersistentBRepCurveOn2Surfaces;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentBRepCurveOn2Surfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOn2Surfaces_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentBRepCurveOn2Surfaces {
     /// Dereference this Handle to access the underlying ShapePersistent_BRep_CurveOn2Surfaces
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_BRep_CurveOn2Surfaces {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOn2Surfaces_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_BRep_CurveOn2Surfaces
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_BRep_CurveOn2Surfaces {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_BRep_CurveOn2Surfaces {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapePersistentBRepCurveOn2Surfaces_get_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::HandleShapePersistentBRepCurveOn2Surfaces_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2405,11 +2486,11 @@ impl HandleShapePersistentBRepCurveOn2Surfaces {
 // ========================
 
 /// **Source:** `ShapePersistent_Geom.hxx`:35 - `ShapePersistent_Geom`
-pub use crate::ffi::ShapePersistent_Geom as Geom;
+pub use crate::ffi_types::ShapePersistent_Geom as Geom;
 
 unsafe impl crate::CppDeletable for Geom {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom_destructor(ptr);
     }
 }
 
@@ -2418,47 +2499,41 @@ impl Geom {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom.hxx`:181 - `ShapePersistent_Geom::Translate()`
     /// Create a persistent object for a curve
     pub fn translate_handlegeomcurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_translate_handlegeomcurve_transientpersistentmap(
-                    theCurve, theMap,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_translate_handlegeomcurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom.hxx`:184 - `ShapePersistent_Geom::Translate()`
     /// Create a persistent object for a curve
     pub fn translate_handlegeomsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_translate_handlegeomsurface_transientpersistentmap(
-                    theSurf, theMap,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_translate_handlegeomsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 }
 
 /// **Source:** `ShapePersistent_Geom.hxx`:38 - `ShapePersistent_Geom_Geometry`
-pub use crate::ffi::ShapePersistent_Geom_Geometry as Geom_Geometry;
+pub use crate::ffi_types::ShapePersistent_Geom_Geometry as Geom_Geometry;
 
 unsafe impl crate::CppDeletable for Geom_Geometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom_Geometry_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_destructor(ptr);
     }
 }
 
@@ -2468,7 +2543,7 @@ impl Geom_Geometry {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_ctor(),
             ))
         }
     }
@@ -2477,7 +2552,10 @@ impl Geom_Geometry {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
@@ -2485,7 +2563,10 @@ impl Geom_Geometry {
     /// Write persistent data to a file.
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
@@ -2493,10 +2574,13 @@ impl Geom_Geometry {
     /// Gets persistent objects
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_p_children(
+                self as *const Self,
+                theChildren,
+            )
         })
     }
 
@@ -2505,7 +2589,7 @@ impl Geom_Geometry {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_p_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -2516,7 +2600,7 @@ impl Geom_Geometry {
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
         unsafe {
             &*crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_as_StdObjMgt_Persistent(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_as_StdObjMgt_Persistent(
                     self as *const Self,
                 ),
             )
@@ -2527,7 +2611,7 @@ impl Geom_Geometry {
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_as_StdObjMgt_Persistent_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_as_StdObjMgt_Persistent_mut(
                     self as *mut Self,
                 ),
             )
@@ -2537,9 +2621,11 @@ impl Geom_Geometry {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_Geom_Geometry_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2547,7 +2633,7 @@ impl Geom_Geometry {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_as_Standard_Transient_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -2557,18 +2643,18 @@ impl Geom_Geometry {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
-    pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_ImportDocument(
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_ImportDocument(
                 self as *const Self,
                 theDocument,
             )
@@ -2576,10 +2662,10 @@ impl Geom_Geometry {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_CreateAttribute(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_CreateAttribute(
                     self as *mut Self,
                 ),
             ))
@@ -2587,10 +2673,10 @@ impl Geom_Geometry {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_GetAttribute(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_GetAttribute(
                     self as *const Self,
                 ),
             ))
@@ -2600,15 +2686,17 @@ impl Geom_Geometry {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_ImportAttribute(self as *mut Self)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_ImportAttribute(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_AsciiString(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_AsciiString(
                     self as *const Self,
                 ),
             ))
@@ -2616,19 +2704,26 @@ impl Geom_Geometry {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
-    pub fn ext_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_ExtString(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_ExtString(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
-    pub fn label(&self, theDF: &crate::ffi::HandleTDFData) -> crate::OwnedPtr<crate::tdf::Label> {
+    pub fn label(
+        &self,
+        theDF: &crate::ffi_types::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_Label(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_Label(
                     self as *const Self,
                     theDF,
                 ),
@@ -2639,22 +2734,26 @@ impl Geom_Geometry {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_TypeNum(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_TypeNum(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_RefNum(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_RefNum(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_DynamicType(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_DynamicType(
                     self as *const Self,
                 ),
             ))
@@ -2662,9 +2761,9 @@ impl Geom_Geometry {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_IsInstance(
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2672,9 +2771,12 @@ impl Geom_Geometry {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2682,7 +2784,9 @@ impl Geom_Geometry {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapePersistent_Geom_Geometry_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2695,14 +2799,16 @@ impl Geom_Geometry {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2711,7 +2817,7 @@ impl Geom_Geometry {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2720,57 +2826,57 @@ impl Geom_Geometry {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_Geom_Geometry_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_Geom_Geometry_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapePersistentGeomGeometry;
+pub use crate::ffi_types::HandleShapePersistentGeomGeometry;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentGeomGeometry {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentGeomGeometry_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentGeomGeometry {
     /// Dereference this Handle to access the underlying ShapePersistent_Geom_Geometry
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_Geom_Geometry {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_Geom_Geometry {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentGeomGeometry_get(
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_Geom_Geometry
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_Geom_Geometry {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_Geom_Geometry {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentGeomGeometry_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapePersistent_Geom_Geometry> to Handle<StdObjMgt_Persistent>
-    pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
+    pub fn to_handle_persistent(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentGeomGeometry_to_HandleStdObjMgtPersistent(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_to_HandleStdObjMgtPersistent(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapePersistent_Geom_Geometry> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentGeomGeometry_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentGeomGeometry_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2780,11 +2886,11 @@ impl HandleShapePersistentGeomGeometry {
 // ========================
 
 /// **Source:** `ShapePersistent_Geom2d.hxx`:26 - `ShapePersistent_Geom2d`
-pub use crate::ffi::ShapePersistent_Geom2d as Geom2d;
+pub use crate::ffi_types::ShapePersistent_Geom2d as Geom2d;
 
 unsafe impl crate::CppDeletable for Geom2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom2d_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom2d_destructor(ptr);
     }
 }
 
@@ -2793,21 +2899,21 @@ impl Geom2d {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::ShapePersistent_Geom2d_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d.hxx`:49 - `ShapePersistent_Geom2d::Translate()`
     /// Create a persistent object for a curve
     pub fn translate(
-        theCurve: &crate::ffi::HandleGeom2dCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_translate(theCurve, theMap),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_translate(theCurve, theMap),
             ))
         }
     }
@@ -2815,9 +2921,11 @@ impl Geom2d {
     /// Upcast to ShapePersistent_Geom
     pub fn as_geom(&self) -> &Geom {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_Geom2d_as_ShapePersistent_Geom(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_as_ShapePersistent_Geom(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2825,7 +2933,9 @@ impl Geom2d {
     pub fn as_geom_mut(&mut self) -> &mut Geom {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_as_ShapePersistent_Geom_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_as_ShapePersistent_Geom_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2836,11 +2946,11 @@ impl Geom2d {
 // ========================
 
 /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:36 - `ShapePersistent_Geom2d_Curve`
-pub use crate::ffi::ShapePersistent_Geom2d_Curve as Geom2d_Curve;
+pub use crate::ffi_types::ShapePersistent_Geom2d_Curve as Geom2d_Curve;
 
 unsafe impl crate::CppDeletable for Geom2d_Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom2d_Curve_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_destructor(ptr);
     }
 }
 
@@ -2850,7 +2960,7 @@ impl Geom2d_Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_Curve_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_ctor(),
             ))
         }
     }
@@ -2858,99 +2968,99 @@ impl Geom2d_Curve {
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:212 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a line
     pub fn translate_handlegeom2dline_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dLine,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dLine,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dline_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:215 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a circle
     pub fn translate_handlegeom2dcircle_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dCircle,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dCircle,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dcircle_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:218 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a ellipse
     pub fn translate_handlegeom2dellipse_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dEllipse,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dEllipse,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dellipse_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:221 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a hyperbola
     pub fn translate_handlegeom2dhyperbola_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dHyperbola,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dHyperbola,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dhyperbola_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:224 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a parabola
     pub fn translate_handlegeom2dparabola_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dParabola,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dParabola,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dparabola_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:227 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a Bezier curve
     pub fn translate_handlegeom2dbeziercurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dBezierCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dBezierCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbeziercurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:230 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a BSpline curve
     pub fn translate_handlegeom2dbsplinecurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dBSplineCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dBSplineCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dbsplinecurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:233 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for a trimmed curve
     pub fn translate_handlegeom2dtrimmedcurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dTrimmedCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dTrimmedCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2dtrimmedcurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom2d_Curve.hxx`:236 - `ShapePersistent_Geom2d_Curve::Translate()`
     /// Create a persistent object for an offset curve
     pub fn translate_handlegeom2doffsetcurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeom2dOffsetCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeom2dCurve> {
+        theCurve: &crate::ffi_types::HandleGeom2dOffsetCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_translate_handlegeom2doffsetcurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
@@ -2958,7 +3068,7 @@ impl Geom2d_Curve {
     pub fn as_geom2d(&self) -> &Geom2d {
         unsafe {
             &*crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d(
                     self as *const Self,
                 ),
             )
@@ -2969,7 +3079,7 @@ impl Geom2d_Curve {
     pub fn as_geom2d_mut(&mut self) -> &mut Geom2d {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom2d_mut(
                     self as *mut Self,
                 ),
             )
@@ -2979,9 +3089,11 @@ impl Geom2d_Curve {
     /// Upcast to ShapePersistent_Geom
     pub fn as_geom(&self) -> &Geom {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2989,7 +3101,7 @@ impl Geom2d_Curve {
     pub fn as_geom_mut(&mut self) -> &mut Geom {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_Geom2d_Curve_as_ShapePersistent_Geom_mut(
                     self as *mut Self,
                 ),
             )
@@ -3002,11 +3114,11 @@ impl Geom2d_Curve {
 // ========================
 
 /// **Source:** `ShapePersistent_Geom_Curve.hxx`:38 - `ShapePersistent_Geom_Curve`
-pub use crate::ffi::ShapePersistent_Geom_Curve as Geom_Curve;
+pub use crate::ffi_types::ShapePersistent_Geom_Curve as Geom_Curve;
 
 unsafe impl crate::CppDeletable for Geom_Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom_Curve_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_destructor(ptr);
     }
 }
 
@@ -3016,7 +3128,7 @@ impl Geom_Curve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Curve_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_ctor(),
             ))
         }
     }
@@ -3024,99 +3136,99 @@ impl Geom_Curve {
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:215 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a line
     pub fn translate_handlegeomline_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomLine,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomLine,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomline_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomline_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:218 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a circle
     pub fn translate_handlegeomcircle_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomCircle,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomCircle,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomcircle_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomcircle_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:221 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a ellipse
     pub fn translate_handlegeomellipse_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomEllipse,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomEllipse,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomellipse_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomellipse_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:224 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a hyperbola
     pub fn translate_handlegeomhyperbola_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomHyperbola,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomHyperbola,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomhyperbola_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:227 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a parabola
     pub fn translate_handlegeomparabola_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomParabola,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomParabola,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomparabola_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomparabola_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:230 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a Bezier curve
     pub fn translate_handlegeombeziercurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomBezierCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomBezierCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeombeziercurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:233 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a BSpline curve
     pub fn translate_handlegeombsplinecurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomBSplineCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomBSplineCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeombsplinecurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:236 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for a trimmed curve
     pub fn translate_handlegeomtrimmedcurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomTrimmedCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomTrimmedCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomtrimmedcurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Curve.hxx`:239 - `ShapePersistent_Geom_Curve::Translate()`
     /// Create a persistent object for an offset curve
     pub fn translate_handlegeomoffsetcurve_transientpersistentmap(
-        theCurve: &crate::ffi::HandleGeomOffsetCurve,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomCurve> {
+        theCurve: &crate::ffi_types::HandleGeomOffsetCurve,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_transientpersistentmap(theCurve, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Curve_translate_handlegeomoffsetcurve_transientpersistentmap(theCurve, theMap)))
         }
     }
 }
@@ -3126,11 +3238,11 @@ impl Geom_Curve {
 // ========================
 
 /// **Source:** `ShapePersistent_Geom_Surface.hxx`:39 - `ShapePersistent_Geom_Surface`
-pub use crate::ffi::ShapePersistent_Geom_Surface as Geom_Surface;
+pub use crate::ffi_types::ShapePersistent_Geom_Surface as Geom_Surface;
 
 unsafe impl crate::CppDeletable for Geom_Surface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Geom_Surface_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_destructor(ptr);
     }
 }
 
@@ -3140,7 +3252,7 @@ impl Geom_Surface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_Geom_Surface_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_ctor(),
             ))
         }
     }
@@ -3148,121 +3260,121 @@ impl Geom_Surface {
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:311 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a plane
     pub fn translate_handlegeomplane_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomPlane,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomPlane,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomplane_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomplane_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:314 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a cylinder
     pub fn translate_handlegeomcylindricalsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomCylindricalSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomCylindricalSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomcylindricalsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:317 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a cone
     pub fn translate_handlegeomconicalsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomConicalSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomConicalSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomconicalsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:320 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a sphere
     pub fn translate_handlegeomsphericalsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomSphericalSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomSphericalSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomsphericalsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:323 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a torus
     pub fn translate_handlegeomtoroidalsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomToroidalSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomToroidalSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomtoroidalsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:326 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a surface of linear extrusion
     pub fn translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomSurfaceOfLinearExtrusion,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomSurfaceOfLinearExtrusion,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceoflinearextrusion_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:330 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a surface of evolution
     pub fn translate_handlegeomsurfaceofrevolution_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomSurfaceOfRevolution,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomSurfaceOfRevolution,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomsurfaceofrevolution_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:333 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a Bezier surface
     pub fn translate_handlegeombeziersurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomBezierSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomBezierSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeombeziersurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:336 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a BSpline surface
     pub fn translate_handlegeombsplinesurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomBSplineSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomBSplineSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeombsplinesurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:339 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for a rectangylar trimmed surface
     pub fn translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomRectangularTrimmedSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomRectangularTrimmedSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomrectangulartrimmedsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 
     /// **Source:** `ShapePersistent_Geom_Surface.hxx`:343 - `ShapePersistent_Geom_Surface::Translate()`
     /// Create a persistent object for an offset surface
     pub fn translate_handlegeomoffsetsurface_transientpersistentmap(
-        theSurf: &crate::ffi::HandleGeomOffsetSurface,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentGeomSurface> {
+        theSurf: &crate::ffi_types::HandleGeomOffsetSurface,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_transientpersistentmap(theSurf, theMap)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::ShapePersistent_Geom_Surface_translate_handlegeomoffsetsurface_transientpersistentmap(theSurf, theMap)))
         }
     }
 }
@@ -3272,11 +3384,11 @@ impl Geom_Surface {
 // ========================
 
 /// **Source:** `ShapePersistent_Poly.hxx`:26 - `ShapePersistent_Poly`
-pub use crate::ffi::ShapePersistent_Poly as Poly;
+pub use crate::ffi_types::ShapePersistent_Poly as Poly;
 
 unsafe impl crate::CppDeletable for Poly {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_Poly_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_Poly_destructor(ptr);
     }
 }
 
@@ -3285,7 +3397,9 @@ impl Poly {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapePersistent_Poly_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_Poly_ctor(),
+            ))
         }
     }
 }
@@ -3317,11 +3431,11 @@ impl Poly {
 // ========================
 
 /// **Source:** `ShapePersistent_TopoDS.hxx`:30 - `ShapePersistent_TopoDS`
-pub use crate::ffi::ShapePersistent_TopoDS as TopoDS;
+pub use crate::ffi_types::ShapePersistent_TopoDS as TopoDS;
 
 unsafe impl crate::CppDeletable for TopoDS {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_TopoDS_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_TopoDS_destructor(ptr);
     }
 }
 
@@ -3330,9 +3444,9 @@ impl TopoDS {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::ShapePersistent_TopoDS_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_ctor(),
+            ))
         }
     }
 
@@ -3340,12 +3454,12 @@ impl TopoDS {
     /// Create a persistent object for a shape
     pub fn translate(
         theShape: &crate::topo_ds::Shape,
-        theMap: &mut crate::ffi::StdObjMgt_TransientPersistentMap,
+        theMap: &mut crate::ffi_types::StdObjMgt_TransientPersistentMap,
         theTriangleMode: crate::shape_persistent::TriangleMode,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentTopoDSHShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentTopoDSHShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_translate(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_translate(
                     theShape,
                     theMap,
                     theTriangleMode.into(),
@@ -3356,11 +3470,11 @@ impl TopoDS {
 }
 
 /// **Source:** `ShapePersistent_TopoDS.hxx`:33 - `ShapePersistent_TopoDS_HShape`
-pub use crate::ffi::ShapePersistent_TopoDS_HShape as TopoDS_HShape;
+pub use crate::ffi_types::ShapePersistent_TopoDS_HShape as TopoDS_HShape;
 
 unsafe impl crate::CppDeletable for TopoDS_HShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapePersistent_TopoDS_HShape_destructor(ptr);
+        crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_destructor(ptr);
     }
 }
 
@@ -3370,7 +3484,7 @@ impl TopoDS_HShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_ctor(),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_ctor(),
             ))
         }
     }
@@ -3379,7 +3493,10 @@ impl TopoDS_HShape {
     /// Read persistent data from a file.
     pub fn read(&mut self, theReadData: &mut crate::std_obj_mgt::ReadData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_read(self as *mut Self, theReadData)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_read(
+                self as *mut Self,
+                theReadData,
+            )
         })
     }
 
@@ -3387,7 +3504,10 @@ impl TopoDS_HShape {
     /// Write persistent data to a file
     pub fn write(&self, theWriteData: &mut crate::std_obj_mgt::WriteData) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_write(self as *const Self, theWriteData)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_write(
+                self as *const Self,
+                theWriteData,
+            )
         })
     }
 
@@ -3395,10 +3515,13 @@ impl TopoDS_HShape {
     /// Gets persistent child objects
     pub fn p_children(
         &self,
-        theChildren: &mut crate::ffi::StdObjMgt_Persistent_SequenceOfPersistent,
+        theChildren: &mut crate::ffi_types::StdObjMgt_Persistent_SequenceOfPersistent,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_p_children(self as *const Self, theChildren)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_p_children(
+                self as *const Self,
+                theChildren,
+            )
         })
     }
 
@@ -3407,7 +3530,7 @@ impl TopoDS_HShape {
     pub fn p_name(&self) -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_p_name(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_p_name(self as *const Self),
             ))
         }
         .to_string_lossy()
@@ -3418,7 +3541,7 @@ impl TopoDS_HShape {
     pub fn as_std_obj_mgt_persistent(&self) -> &crate::std_obj_mgt::Persistent {
         unsafe {
             &*crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_as_StdObjMgt_Persistent(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_StdObjMgt_Persistent(
                     self as *const Self,
                 ),
             )
@@ -3429,7 +3552,7 @@ impl TopoDS_HShape {
     pub fn as_std_obj_mgt_persistent_mut(&mut self) -> &mut crate::std_obj_mgt::Persistent {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_as_StdObjMgt_Persistent_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_StdObjMgt_Persistent_mut(
                     self as *mut Self,
                 ),
             )
@@ -3439,9 +3562,11 @@ impl TopoDS_HShape {
     /// Upcast to StdObject_Shape
     pub fn as_std_object_shape(&self) -> &crate::std_object::Shape {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_TopoDS_HShape_as_StdObject_Shape(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_StdObject_Shape(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3449,7 +3574,9 @@ impl TopoDS_HShape {
     pub fn as_std_object_shape_mut(&mut self) -> &mut crate::std_object::Shape {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_as_StdObject_Shape_mut(self as *mut Self),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_StdObject_Shape_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3457,9 +3584,11 @@ impl TopoDS_HShape {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapePersistent_TopoDS_HShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3467,7 +3596,7 @@ impl TopoDS_HShape {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_as_Standard_Transient_mut(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -3477,18 +3606,18 @@ impl TopoDS_HShape {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapePersistentTopoDSHShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapePersistentTopoDSHShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:66 - `StdObjMgt_Persistent::ImportDocument()`
-    pub fn import_document(&self, theDocument: &crate::ffi::HandleTDocStdDocument) {
+    pub fn import_document(&self, theDocument: &crate::ffi_types::HandleTDocStdDocument) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_ImportDocument(
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_ImportDocument(
                 self as *const Self,
                 theDocument,
             )
@@ -3496,10 +3625,10 @@ impl TopoDS_HShape {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:71 - `StdObjMgt_Persistent::CreateAttribute()`
-    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn create_attribute(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_CreateAttribute(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_CreateAttribute(
                     self as *mut Self,
                 ),
             ))
@@ -3507,10 +3636,10 @@ impl TopoDS_HShape {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:76 - `StdObjMgt_Persistent::GetAttribute()`
-    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn get_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_GetAttribute(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_GetAttribute(
                     self as *const Self,
                 ),
             ))
@@ -3520,15 +3649,17 @@ impl TopoDS_HShape {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:81 - `StdObjMgt_Persistent::ImportAttribute()`
     pub fn import_attribute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_ImportAttribute(self as *mut Self)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_ImportAttribute(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:86 - `StdObjMgt_Persistent::AsciiString()`
-    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHAsciiString> {
+    pub fn ascii_string(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHAsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_AsciiString(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_AsciiString(
                     self as *const Self,
                 ),
             ))
@@ -3536,19 +3667,26 @@ impl TopoDS_HShape {
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:91 - `StdObjMgt_Persistent::ExtString()`
-    pub fn ext_string(&self) -> crate::OwnedPtr<crate::ffi::HandleTCollectionHExtendedString> {
+    pub fn ext_string(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTCollectionHExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_ExtString(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_ExtString(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:96 - `StdObjMgt_Persistent::Label()`
-    pub fn label(&self, theDF: &crate::ffi::HandleTDFData) -> crate::OwnedPtr<crate::tdf::Label> {
+    pub fn label(
+        &self,
+        theDF: &crate::ffi_types::HandleTDFData,
+    ) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_Label(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_Label(
                     self as *const Self,
                     theDF,
                 ),
@@ -3559,14 +3697,18 @@ impl TopoDS_HShape {
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:99 - `StdObjMgt_Persistent::TypeNum()`
     pub fn type_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_TypeNum(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_TypeNum(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `StdObjMgt_Persistent.hxx`:105 - `StdObjMgt_Persistent::RefNum()`
     pub fn ref_num(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_RefNum(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_RefNum(
+                self as *const Self,
+            )
         })
     }
 
@@ -3574,16 +3716,18 @@ impl TopoDS_HShape {
     pub fn import(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_Import(self as *const Self),
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_Import(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_DynamicType(
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_DynamicType(
                     self as *const Self,
                 ),
             ))
@@ -3591,9 +3735,9 @@ impl TopoDS_HShape {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_IsInstance(
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3601,9 +3745,12 @@ impl TopoDS_HShape {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3611,7 +3758,9 @@ impl TopoDS_HShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapePersistent_TopoDS_HShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3624,14 +3773,16 @@ impl TopoDS_HShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3640,7 +3791,7 @@ impl TopoDS_HShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -3649,57 +3800,57 @@ impl TopoDS_HShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapePersistent_TopoDS_HShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::ShapePersistent_TopoDS_HShape_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapePersistentTopoDSHShape;
+pub use crate::ffi_types::HandleShapePersistentTopoDSHShape;
 
 unsafe impl crate::CppDeletable for HandleShapePersistentTopoDSHShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapePersistentTopoDSHShape_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_destructor(ptr);
     }
 }
 
 impl HandleShapePersistentTopoDSHShape {
     /// Dereference this Handle to access the underlying ShapePersistent_TopoDS_HShape
-    pub fn get(&self) -> &crate::ffi::ShapePersistent_TopoDS_HShape {
+    pub fn get(&self) -> &crate::ffi_types::ShapePersistent_TopoDS_HShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapePersistentTopoDSHShape_get(
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapePersistent_TopoDS_HShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapePersistent_TopoDS_HShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapePersistent_TopoDS_HShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapePersistentTopoDSHShape_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapePersistent_TopoDS_HShape> to Handle<StdObjMgt_Persistent>
-    pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
+    pub fn to_handle_persistent(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentTopoDSHShape_to_HandleStdObjMgtPersistent(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_to_HandleStdObjMgtPersistent(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapePersistent_TopoDS_HShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapePersistentTopoDSHShape_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleShapePersistentTopoDSHShape_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }

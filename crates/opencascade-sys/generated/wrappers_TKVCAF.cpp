@@ -5,7 +5,7 @@
 
 #include <AIS_InteractiveContext.hxx>
 #include <AIS_ListOfInteractive.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Graphic3d_NameOfMaterial.hxx>
 #include <Quantity_NameOfColor.hxx>
 #include <Standard_GUID.hxx>
@@ -18,7 +18,6 @@
 #include <TDF_AttributeDelta.hxx>
 #include <TDF_AttributeDeltaList.hxx>
 #include <TDF_AttributeIndexedMap.hxx>
-#include <TDF_AttributeMap.hxx>
 #include <TDF_IDFilter.hxx>
 #include <TDF_RelocationTable.hxx>
 #include <TDataXtd_Constraint.hxx>

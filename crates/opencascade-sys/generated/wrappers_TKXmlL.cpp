@@ -3,7 +3,7 @@
 
 #include "occt_preamble.hxx"
 
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <CDM_Application.hxx>
 #include <CDM_Document.hxx>
 #include <CDM_ListOfDocument.hxx>
@@ -26,7 +26,7 @@
 #include <Storage_HeaderData.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeMap.hxx>
+#include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <XmlDrivers_DocumentRetrievalDriver.hxx>

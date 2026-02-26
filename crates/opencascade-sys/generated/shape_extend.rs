@@ -10,17 +10,21 @@
 /// Inits using of ShapeExtend.
 /// Currently, loads messages output by ShapeHealing algorithms.
 pub fn init() {
-    crate::check_void_result(unsafe { crate::ffi::ShapeExtend_init() })
+    crate::check_void_result(unsafe { crate::ffi_extern_TKShHealing::ShapeExtend_init() })
 }
 /// **Source:** `ShapeExtend.hxx`:52 - `ShapeExtend::EncodeStatus`
 /// Encodes status (enumeration) to a bit flag
 pub fn encode_status(status: crate::shape_extend::Status) -> i32 {
-    crate::check_result(unsafe { crate::ffi::ShapeExtend_encode_status(status.into()) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKShHealing::ShapeExtend_encode_status(status.into())
+    })
 }
 /// **Source:** `ShapeExtend.hxx`:55 - `ShapeExtend::DecodeStatus`
 /// Tells if a bit flag contains bit corresponding to enumerated status
 pub fn decode_status(flag: i32, status: crate::shape_extend::Status) -> bool {
-    crate::check_result(unsafe { crate::ffi::ShapeExtend_decode_status(flag, status.into()) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKShHealing::ShapeExtend_decode_status(flag, status.into())
+    })
 }
 
 /// Defines kind of global parametrisation on the composite surface
@@ -155,7 +159,7 @@ impl TryFrom<i32> for Status {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleGeomCurve, HandleGeomGeometry, HandleGeomSurface, HandleStandardTransient,
 };
 
@@ -173,11 +177,11 @@ pub use crate::ffi::{
 /// The methods of this class are empty and redefined, for instance,
 /// in the classes for Data Exchange processors for attaching
 /// messages to interface file entities or CAS.CADE shapes.
-pub use crate::ffi::ShapeExtend_BasicMsgRegistrator as BasicMsgRegistrator;
+pub use crate::ffi_types::ShapeExtend_BasicMsgRegistrator as BasicMsgRegistrator;
 
 unsafe impl crate::CppDeletable for BasicMsgRegistrator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_BasicMsgRegistrator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_destructor(ptr);
     }
 }
 
@@ -187,7 +191,7 @@ impl BasicMsgRegistrator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_ctor(),
             ))
         }
     }
@@ -197,17 +201,12 @@ impl BasicMsgRegistrator {
     /// Object can be of any type interpreted by redefined MsgRegistrator.
     pub fn send_handlestandardtransient_msg_gravity(
         &mut self,
-        object: &crate::ffi::HandleStandardTransient,
+        object: &crate::ffi_types::HandleStandardTransient,
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_handlestandardtransient_msg_gravity(
-                self as *mut Self,
-                object,
-                message,
-                gravity.into(),
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_send_handlestandardtransient_msg_gravity(self as *mut Self, object, message, gravity.into())
         })
     }
 
@@ -220,7 +219,7 @@ impl BasicMsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_shape_msg_gravity(
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_send_shape_msg_gravity(
                 self as *mut Self,
                 shape,
                 message,
@@ -237,7 +236,7 @@ impl BasicMsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_send_msg_gravity(
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_send_msg_gravity(
                 self as *mut Self,
                 message,
                 gravity.into(),
@@ -246,11 +245,13 @@ impl BasicMsgRegistrator {
     }
 
     /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_BasicMsgRegistrator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -258,7 +259,7 @@ impl BasicMsgRegistrator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -266,10 +267,11 @@ impl BasicMsgRegistrator {
     }
 
     /// **Source:** `ShapeExtend_BasicMsgRegistrator.hxx`:60 - `ShapeExtend_BasicMsgRegistrator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_get_type_descriptor(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -277,40 +279,34 @@ impl BasicMsgRegistrator {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -318,9 +314,9 @@ impl BasicMsgRegistrator {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -331,7 +327,9 @@ impl BasicMsgRegistrator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -344,71 +342,73 @@ impl BasicMsgRegistrator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_BasicMsgRegistrator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_BasicMsgRegistrator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeExtendBasicMsgRegistrator;
+pub use crate::ffi_types::HandleShapeExtendBasicMsgRegistrator;
 
 unsafe impl crate::CppDeletable for HandleShapeExtendBasicMsgRegistrator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeExtendBasicMsgRegistrator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_destructor(ptr);
     }
 }
 
 impl HandleShapeExtendBasicMsgRegistrator {
     /// Dereference this Handle to access the underlying ShapeExtend_BasicMsgRegistrator
-    pub fn get(&self) -> &crate::ffi::ShapeExtend_BasicMsgRegistrator {
+    pub fn get(&self) -> &crate::ffi_types::ShapeExtend_BasicMsgRegistrator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeExtendBasicMsgRegistrator_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_BasicMsgRegistrator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_BasicMsgRegistrator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeExtend_BasicMsgRegistrator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeExtendBasicMsgRegistrator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeExtend_BasicMsgRegistrator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendBasicMsgRegistrator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -417,9 +417,9 @@ impl HandleShapeExtendBasicMsgRegistrator {
     /// Returns `None` if the handle does not point to a `ShapeExtend_MsgRegistrator` (or subclass).
     pub fn downcast_to_msg_registrator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeExtendMsgRegistrator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeExtendBasicMsgRegistrator_downcast_to_HandleShapeExtendMsgRegistrator(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeExtendBasicMsgRegistrator_downcast_to_HandleShapeExtendMsgRegistrator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -436,11 +436,11 @@ impl HandleShapeExtendBasicMsgRegistrator {
 /// **Source:** `ShapeExtend_ComplexCurve.hxx`:35 - `ShapeExtend_ComplexCurve`
 /// Defines a curve which consists of several segments.
 /// Implements basic interface to it.
-pub use crate::ffi::ShapeExtend_ComplexCurve as ComplexCurve;
+pub use crate::ffi_types::ShapeExtend_ComplexCurve as ComplexCurve;
 
 unsafe impl crate::CppDeletable for ComplexCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_ComplexCurve_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_destructor(ptr);
     }
 }
 
@@ -449,15 +449,15 @@ impl ComplexCurve {
     /// Returns number of curves
     pub fn nb_curves(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_nb_curves(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_nb_curves(self as *const Self)
         })
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:43 - `ShapeExtend_ComplexCurve::Curve()`
     /// Returns curve given by its index
-    pub fn curve(&self, index: i32) -> &crate::ffi::HandleGeomCurve {
+    pub fn curve(&self, index: i32) -> &crate::ffi_types::HandleGeomCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_curve(
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_curve(
                 self as *const Self,
                 index,
             )))
@@ -469,7 +469,11 @@ impl ComplexCurve {
     /// and local parameter UOut for the found curve
     pub fn locate_parameter(&self, U: f64, UOut: &mut f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_locate_parameter(self as *const Self, U, UOut)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_locate_parameter(
+                self as *const Self,
+                U,
+                UOut,
+            )
         })
     }
 
@@ -478,7 +482,11 @@ impl ComplexCurve {
     /// to the segment and local parameter on it
     pub fn local_to_global(&self, index: i32, Ulocal: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_local_to_global(self as *const Self, index, Ulocal)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_local_to_global(
+                self as *const Self,
+                index,
+                Ulocal,
+            )
         })
     }
 
@@ -486,7 +494,7 @@ impl ComplexCurve {
     /// Applies transformation to each curve
     pub fn transform(&mut self, T: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_transform(self as *mut Self, T)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_transform(self as *mut Self, T)
         })
     }
 
@@ -494,7 +502,10 @@ impl ComplexCurve {
     /// Returns 1 - U
     pub fn reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_reversed_parameter(self as *const Self, U)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_reversed_parameter(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -502,7 +513,9 @@ impl ComplexCurve {
     /// Returns 0
     pub fn first_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_first_parameter(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_first_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -510,7 +523,9 @@ impl ComplexCurve {
     /// Returns 1
     pub fn last_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_last_parameter(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_last_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -518,7 +533,7 @@ impl ComplexCurve {
     /// Returns True if the curve is closed
     pub fn is_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_is_closed(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_is_closed(self as *const Self)
         })
     }
 
@@ -526,7 +541,7 @@ impl ComplexCurve {
     /// Returns False
     pub fn is_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_is_periodic(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_is_periodic(self as *const Self)
         })
     }
 
@@ -534,7 +549,7 @@ impl ComplexCurve {
     /// Returns GeomAbs_C0
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_continuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_continuity(self as *const Self)
         }))
         .unwrap()
     }
@@ -543,7 +558,7 @@ impl ComplexCurve {
     /// Returns False if N > 0
     pub fn is_cn(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_is_cn(self as *const Self, N)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_is_cn(self as *const Self, N)
         })
     }
 
@@ -552,14 +567,19 @@ impl ComplexCurve {
     /// Finds appropriate curve and local parameter on it.
     pub fn d0(&self, U: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_d0(self as *const Self, U, P)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_d0(self as *const Self, U, P)
         })
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:83 - `ShapeExtend_ComplexCurve::D1()`
     pub fn d1(&self, U: f64, P: &mut crate::gp::Pnt, V1: &mut crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_d1(self as *const Self, U, P, V1)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_d1(
+                self as *const Self,
+                U,
+                P,
+                V1,
+            )
         })
     }
 
@@ -572,7 +592,13 @@ impl ComplexCurve {
         V2: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_d2(self as *const Self, U, P, V1, V2)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_d2(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+            )
         })
     }
 
@@ -586,18 +612,27 @@ impl ComplexCurve {
         V3: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_d3(self as *const Self, U, P, V1, V2, V3)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_d3(
+                self as *const Self,
+                U,
+                P,
+                V1,
+                V2,
+                V3,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:98 - `ShapeExtend_ComplexCurve::DN()`
     pub fn dn(&self, U: f64, N: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_dn(
-                self as *const Self,
-                U,
-                N,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_dn(
+                    self as *const Self,
+                    U,
+                    N,
+                ),
+            ))
         }
     }
 
@@ -605,7 +640,10 @@ impl ComplexCurve {
     /// Returns scale factor for recomputing of deviatives.
     pub fn get_scale_factor(&self, ind: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_get_scale_factor(self as *const Self, ind)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_get_scale_factor(
+                self as *const Self,
+                ind,
+            )
         })
     }
 
@@ -614,16 +652,21 @@ impl ComplexCurve {
     /// closure (sets fields myClosed)
     pub fn check_connectivity(&mut self, Preci: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_check_connectivity(self as *mut Self, Preci)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_check_connectivity(
+                self as *mut Self,
+                Preci,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -631,7 +674,7 @@ impl ComplexCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -639,54 +682,66 @@ impl ComplexCurve {
     }
 
     /// **Source:** `ShapeExtend_ComplexCurve.hxx`:108 - `ShapeExtend_ComplexCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Geom_Curve
     pub fn as_geom_curve(&self) -> &crate::geom::Curve {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Geom_Curve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Curve (mutable)
     pub fn as_geom_curve_mut(&mut self) -> &mut crate::geom::Curve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Curve_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Geom_Curve_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Geom_Geometry(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Geometry (mutable)
     pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Geom_Geometry_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -694,7 +749,9 @@ impl ComplexCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -702,14 +759,16 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Geom_Curve.hxx`:69 - `Geom_Curve::Reverse()`
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Reverse(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Reverse(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:93 - `Geom_Curve::TransformedParameter()`
     pub fn transformed_parameter(&self, U: f64, T: &crate::gp::Trsf) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_TransformedParameter(
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_TransformedParameter(
                 self as *const Self,
                 U,
                 T,
@@ -720,18 +779,17 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Geom_Curve.hxx`:109 - `Geom_Curve::ParametricTransformation()`
     pub fn parametric_transformation(&self, T: &crate::gp::Trsf) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_ParametricTransformation(
-                self as *const Self,
-                T,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_ParametricTransformation(self as *const Self, T)
         })
     }
 
     /// Inherited: **Source:** `Geom_Curve.hxx`:112 - `Geom_Curve::Reversed()`
-    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Reversed(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Reversed(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -739,7 +797,9 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Geom_Curve.hxx`:155 - `Geom_Curve::Period()`
     pub fn period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Period(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Period(
+                self as *const Self,
+            )
         })
     }
 
@@ -747,7 +807,10 @@ impl ComplexCurve {
     pub fn value(&self, U: f64) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Value(self as *const Self, U),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Value(
+                    self as *const Self,
+                    U,
+                ),
             ))
         }
     }
@@ -755,36 +818,56 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirror(self as *mut Self, P)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Mirror(
+                self as *mut Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotate(self as *mut Self, A1, Ang)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Rotate(
+                self as *mut Self,
+                A1,
+                Ang,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Scale(self as *mut Self, P, S)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Scale(
+                self as *mut Self,
+                P,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Translate(self as *mut Self, V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Translate(
+                self as *mut Self,
+                V,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn mirrored(
+        &self,
+        P: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Mirrored(self as *const Self, P),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Mirrored(
+                    self as *const Self,
+                    P,
+                ),
             ))
         }
     }
@@ -794,10 +877,10 @@ impl ComplexCurve {
         &self,
         A1: &crate::gp::Ax1,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Rotated(
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Rotated(
                     self as *const Self,
                     A1,
                     Ang,
@@ -811,10 +894,14 @@ impl ComplexCurve {
         &self,
         P: &crate::gp::Pnt,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Scaled(self as *const Self, P, S),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Scaled(
+                    self as *const Self,
+                    P,
+                    S,
+                ),
             ))
         }
     }
@@ -823,10 +910,13 @@ impl ComplexCurve {
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Transformed(self as *const Self, T),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Transformed(
+                    self as *const Self,
+                    T,
+                ),
             ))
         }
     }
@@ -835,34 +925,45 @@ impl ComplexCurve {
     pub fn translated(
         &self,
         V: &crate::gp::Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Translated(self as *const Self, V),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Translated(
+                    self as *const Self,
+                    V,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:110 - `Geom_Geometry::Copy()`
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_Copy(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -870,7 +971,9 @@ impl ComplexCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeExtend_ComplexCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -883,73 +986,85 @@ impl ComplexCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_ComplexCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_ComplexCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeExtendComplexCurve;
+pub use crate::ffi_types::HandleShapeExtendComplexCurve;
 
 unsafe impl crate::CppDeletable for HandleShapeExtendComplexCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeExtendComplexCurve_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_destructor(ptr);
     }
 }
 
 impl HandleShapeExtendComplexCurve {
     /// Dereference this Handle to access the underlying ShapeExtend_ComplexCurve
-    pub fn get(&self) -> &crate::ffi::ShapeExtend_ComplexCurve {
+    pub fn get(&self) -> &crate::ffi_types::ShapeExtend_ComplexCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeExtendComplexCurve_get(
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_ComplexCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_ComplexCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeExtend_ComplexCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeExtendComplexCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Curve>
-    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn to_handle_curve(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomCurve(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_to_HandleGeomCurve(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleGeomGeometry(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_to_HandleGeomGeometry(
                     self as *const Self,
                 ),
             ))
@@ -957,13 +1072,11 @@ impl HandleShapeExtendComplexCurve {
     }
 
     /// Upcast Handle<ShapeExtend_ComplexCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendComplexCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendComplexCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1004,11 +1117,11 @@ impl HandleShapeExtendComplexCurve {
 /// this type is not known to them.
 /// NOTE 2: Not all the inherited methods are implemented, and some are
 /// implemented not in the full form.
-pub use crate::ffi::ShapeExtend_CompositeSurface as CompositeSurface;
+pub use crate::ffi_types::ShapeExtend_CompositeSurface as CompositeSurface;
 
 unsafe impl crate::CppDeletable for CompositeSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_CompositeSurface_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_destructor(ptr);
     }
 }
 
@@ -1018,7 +1131,7 @@ impl CompositeSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor(),
             ))
         }
     }
@@ -1026,23 +1139,23 @@ impl CompositeSurface {
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:80 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
     /// Initializes by a grid of surfaces (calls Init()).
     pub fn new_handletcolgeomharray2ofsurface_parametrisation(
-        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        GridSurf: &crate::ffi_types::HandleTColGeomHArray2OfSurface,
         param: crate::shape_extend::Parametrisation,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_parametrisation(GridSurf, param.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_parametrisation(GridSurf, param.into())))
         }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:85 - `ShapeExtend_CompositeSurface::ShapeExtend_CompositeSurface()`
     /// Initializes by a grid of surfaces (calls Init()).
     pub fn new_handletcolgeomharray2ofsurface_array1ofreal2(
-        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
-        UJoints: &crate::ffi::TColStd_Array1OfReal,
-        VJoints: &crate::ffi::TColStd_Array1OfReal,
+        GridSurf: &crate::ffi_types::HandleTColGeomHArray2OfSurface,
+        UJoints: &crate::ffi_types::TColStd_Array1OfReal,
+        VJoints: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_array1ofreal2(GridSurf, UJoints, VJoints)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_ctor_handletcolgeomharray2ofsurface_array1ofreal2(GridSurf, UJoints, VJoints)))
         }
     }
 
@@ -1061,11 +1174,11 @@ impl CompositeSurface {
     /// ShapeExtend_Unitary: Ui = (i-1)/Nu, Vi = (j-1)/Nv
     pub fn init_handletcolgeomharray2ofsurface_parametrisation(
         &mut self,
-        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
+        GridSurf: &crate::ffi_types::HandleTColGeomHArray2OfSurface,
         param: crate::shape_extend::Parametrisation,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_parametrisation(self as *mut Self, GridSurf, param.into())
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_parametrisation(self as *mut Self, GridSurf, param.into())
         })
     }
 
@@ -1082,12 +1195,12 @@ impl CompositeSurface {
     /// However, class is initialized even in that case.
     pub fn init_handletcolgeomharray2ofsurface_array1ofreal2(
         &mut self,
-        GridSurf: &crate::ffi::HandleTColGeomHArray2OfSurface,
-        UJoints: &crate::ffi::TColStd_Array1OfReal,
-        VJoints: &crate::ffi::TColStd_Array1OfReal,
+        GridSurf: &crate::ffi_types::HandleTColGeomHArray2OfSurface,
+        UJoints: &crate::ffi_types::TColStd_Array1OfReal,
+        VJoints: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_array1ofreal2(self as *mut Self, GridSurf, UJoints, VJoints)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_init_handletcolgeomharray2ofsurface_array1ofreal2(self as *mut Self, GridSurf, UJoints, VJoints)
         })
     }
 
@@ -1095,7 +1208,9 @@ impl CompositeSurface {
     /// Returns number of patches in U direction.
     pub fn nb_u_patches(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_nb_u_patches(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_nb_u_patches(
+                self as *const Self,
+            )
         })
     }
 
@@ -1103,29 +1218,35 @@ impl CompositeSurface {
     /// Returns number of patches in V direction.
     pub fn nb_v_patches(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_nb_v_patches(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_nb_v_patches(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:126 - `ShapeExtend_CompositeSurface::Patch()`
     /// Returns one surface patch
-    pub fn patch_int2(&self, i: i32, j: i32) -> &crate::ffi::HandleGeomSurface {
+    pub fn patch_int2(&self, i: i32, j: i32) -> &crate::ffi_types::HandleGeomSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_patch_int2(
-                self as *const Self,
-                i,
-                j,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_patch_int2(
+                    self as *const Self,
+                    i,
+                    j,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:130 - `ShapeExtend_CompositeSurface::Patches()`
     /// Returns grid of surfaces
-    pub fn patches(&self) -> &crate::ffi::HandleTColGeomHArray2OfSurface {
+    pub fn patches(&self) -> &crate::ffi_types::HandleTColGeomHArray2OfSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_patches(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_patches(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1133,10 +1254,12 @@ impl CompositeSurface {
     /// Returns the array of U values corresponding to joint
     /// points between patches as well as to start and end points,
     /// which define global parametrisation of the surface
-    pub fn u_joint_values(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn u_joint_values(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_u_joint_values(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_joint_values(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1145,10 +1268,12 @@ impl CompositeSurface {
     /// Returns the array of V values corresponding to joint
     /// points between patches as well as to start and end points,
     /// which define global parametrisation of the surface
-    pub fn v_joint_values(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn v_joint_values(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_v_joint_values(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_joint_values(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1159,7 +1284,10 @@ impl CompositeSurface {
     /// on the composite surface)
     pub fn u_joint_value(&self, i: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_u_joint_value(self as *const Self, i)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_joint_value(
+                self as *const Self,
+                i,
+            )
         })
     }
 
@@ -1169,7 +1297,10 @@ impl CompositeSurface {
     /// on the composite surface)
     pub fn v_joint_value(&self, j: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_v_joint_value(self as *const Self, j)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_joint_value(
+                self as *const Self,
+                j,
+            )
         })
     }
 
@@ -1179,9 +1310,12 @@ impl CompositeSurface {
     /// Number of values in array should be equal to NbUPatches()+1.
     /// All the values should be sorted in increasing order.
     /// If this is not satisfied, does nothing and returns False.
-    pub fn set_u_joint_values(&mut self, UJoints: &crate::ffi::TColStd_Array1OfReal) -> bool {
+    pub fn set_u_joint_values(&mut self, UJoints: &crate::ffi_types::TColStd_Array1OfReal) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_set_u_joint_values(self as *mut Self, UJoints)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_set_u_joint_values(
+                self as *mut Self,
+                UJoints,
+            )
         })
     }
 
@@ -1191,9 +1325,12 @@ impl CompositeSurface {
     /// Number of values in array should be equal to NbVPatches()+1.
     /// All the values should be sorted in increasing order.
     /// If this is not satisfied, does nothing and returns False.
-    pub fn set_v_joint_values(&mut self, VJoints: &crate::ffi::TColStd_Array1OfReal) -> bool {
+    pub fn set_v_joint_values(&mut self, VJoints: &crate::ffi_types::TColStd_Array1OfReal) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_set_v_joint_values(self as *mut Self, VJoints)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_set_v_joint_values(
+                self as *mut Self,
+                VJoints,
+            )
         })
     }
 
@@ -1202,7 +1339,10 @@ impl CompositeSurface {
     /// other joint values are shifted accordingly)
     pub fn set_u_first_value(&mut self, UFirst: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_set_u_first_value(self as *mut Self, UFirst)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_set_u_first_value(
+                self as *mut Self,
+                UFirst,
+            )
         })
     }
 
@@ -1211,7 +1351,10 @@ impl CompositeSurface {
     /// other joint values are shifted accordingly)
     pub fn set_v_first_value(&mut self, VFirst: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_set_v_first_value(self as *mut Self, VFirst)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_set_v_first_value(
+                self as *mut Self,
+                VFirst,
+            )
         })
     }
 
@@ -1219,7 +1362,10 @@ impl CompositeSurface {
     /// Returns number of col that contains given (global) parameter
     pub fn locate_u_parameter(&self, U: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_locate_u_parameter(self as *const Self, U)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_locate_u_parameter(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -1227,7 +1373,10 @@ impl CompositeSurface {
     /// Returns number of row that contains given (global) parameter
     pub fn locate_v_parameter(&self, V: f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_locate_v_parameter(self as *const Self, V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_locate_v_parameter(
+                self as *const Self,
+                V,
+            )
         })
     }
 
@@ -1236,19 +1385,26 @@ impl CompositeSurface {
     /// given point
     pub fn locate_uv_point(&self, pnt: &crate::gp::Pnt2d, i: &mut i32, j: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_locate_uv_point(self as *const Self, pnt, i, j)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_locate_uv_point(
+                self as *const Self,
+                pnt,
+                i,
+                j,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:187 - `ShapeExtend_CompositeSurface::Patch()`
     /// Returns one surface patch that contains given (global) parameters
-    pub fn patch_real2(&self, U: f64, V: f64) -> &crate::ffi::HandleGeomSurface {
+    pub fn patch_real2(&self, U: f64, V: f64) -> &crate::ffi_types::HandleGeomSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_patch_real2(
-                self as *const Self,
-                U,
-                V,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_patch_real2(
+                    self as *const Self,
+                    U,
+                    V,
+                ),
+            ))
         }
     }
 
@@ -1260,12 +1416,17 @@ impl CompositeSurface {
     /// It is not known whether the returned reference borrows from `self` or from one
     /// of the reference parameters. The caller must ensure the returned reference does
     /// not outlive whichever source it actually borrows from.
-    pub unsafe fn patch_pnt2d(&self, pnt: &crate::gp::Pnt2d) -> &crate::ffi::HandleGeomSurface {
+    pub unsafe fn patch_pnt2d(
+        &self,
+        pnt: &crate::gp::Pnt2d,
+    ) -> &crate::ffi_types::HandleGeomSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_patch_pnt2d(
-                self as *const Self,
-                pnt,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_patch_pnt2d(
+                    self as *const Self,
+                    pnt,
+                ),
+            ))
         }
     }
 
@@ -1273,7 +1434,12 @@ impl CompositeSurface {
     /// Converts local parameter u on patch i,j to global parameter U
     pub fn u_local_to_global(&self, i: i32, j: i32, u: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_u_local_to_global(self as *const Self, i, j, u)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_local_to_global(
+                self as *const Self,
+                i,
+                j,
+                u,
+            )
         })
     }
 
@@ -1281,7 +1447,12 @@ impl CompositeSurface {
     /// Converts local parameter v on patch i,j to global parameter V
     pub fn v_local_to_global(&self, i: i32, j: i32, v: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_v_local_to_global(self as *const Self, i, j, v)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_local_to_global(
+                self as *const Self,
+                i,
+                j,
+                v,
+            )
         })
     }
 
@@ -1295,7 +1466,7 @@ impl CompositeSurface {
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_local_to_global(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_local_to_global(
                     self as *const Self,
                     i,
                     j,
@@ -1309,7 +1480,12 @@ impl CompositeSurface {
     /// Converts global parameter U to local parameter u on patch i,j
     pub fn u_global_to_local(&self, i: i32, j: i32, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_u_global_to_local(self as *const Self, i, j, U)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_global_to_local(
+                self as *const Self,
+                i,
+                j,
+                U,
+            )
         })
     }
 
@@ -1317,7 +1493,12 @@ impl CompositeSurface {
     /// Converts global parameter V to local parameter v on patch i,j
     pub fn v_global_to_local(&self, i: i32, j: i32, V: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_v_global_to_local(self as *const Self, i, j, V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_global_to_local(
+                self as *const Self,
+                i,
+                j,
+                V,
+            )
         })
     }
 
@@ -1331,7 +1512,7 @@ impl CompositeSurface {
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_global_to_local(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_global_to_local(
                     self as *const Self,
                     i,
                     j,
@@ -1356,13 +1537,7 @@ impl CompositeSurface {
         Trsf: &mut crate::gp::Trsf2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_global_to_local_transformation(
-                self as *const Self,
-                i,
-                j,
-                uFact,
-                Trsf,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_global_to_local_transformation(self as *const Self, i, j, uFact, Trsf)
         })
     }
 
@@ -1370,16 +1545,21 @@ impl CompositeSurface {
     /// Applies transformation to all the patches
     pub fn transform(&mut self, T: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_transform(self as *mut Self, T)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_transform(
+                self as *mut Self,
+                T,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:238 - `ShapeExtend_CompositeSurface::Copy()`
     /// Returns a copy of the surface
-    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_copy(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_copy(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1388,7 +1568,7 @@ impl CompositeSurface {
     /// NOT IMPLEMENTED (does nothing)
     pub fn u_reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_u_reverse(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_reverse(self as *mut Self)
         })
     }
 
@@ -1396,7 +1576,10 @@ impl CompositeSurface {
     /// Returns U
     pub fn u_reversed_parameter(&self, U: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_u_reversed_parameter(self as *const Self, U)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_reversed_parameter(
+                self as *const Self,
+                U,
+            )
         })
     }
 
@@ -1404,7 +1587,7 @@ impl CompositeSurface {
     /// NOT IMPLEMENTED (does nothing)
     pub fn v_reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_v_reverse(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_reverse(self as *mut Self)
         })
     }
 
@@ -1412,7 +1595,10 @@ impl CompositeSurface {
     /// Returns V
     pub fn v_reversed_parameter(&self, V: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_v_reversed_parameter(self as *const Self, V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_reversed_parameter(
+                self as *const Self,
+                V,
+            )
         })
     }
 
@@ -1420,7 +1606,13 @@ impl CompositeSurface {
     /// Returns the parametric bounds of grid
     pub fn bounds(&self, U1: &mut f64, U2: &mut f64, V1: &mut f64, V2: &mut f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_bounds(self as *const Self, U1, U2, V1, V2)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_bounds(
+                self as *const Self,
+                U1,
+                U2,
+                V1,
+                V2,
+            )
         })
     }
 
@@ -1429,7 +1621,9 @@ impl CompositeSurface {
     /// (i.e. connected with Precision::Confusion)
     pub fn is_u_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_u_closed(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_u_closed(
+                self as *const Self,
+            )
         })
     }
 
@@ -1438,7 +1632,9 @@ impl CompositeSurface {
     /// (i.e. connected with Precision::Confusion)
     pub fn is_v_closed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_v_closed(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_v_closed(
+                self as *const Self,
+            )
         })
     }
 
@@ -1446,7 +1642,9 @@ impl CompositeSurface {
     /// Returns False
     pub fn is_u_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_u_periodic(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_u_periodic(
+                self as *const Self,
+            )
         })
     }
 
@@ -1454,26 +1652,34 @@ impl CompositeSurface {
     /// Returns False
     pub fn is_v_periodic(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_v_periodic(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_v_periodic(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:275 - `ShapeExtend_CompositeSurface::UIso()`
     /// NOT IMPLEMENTED (returns Null curve)
-    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn u_iso(&self, U: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_u_iso(self as *const Self, U),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_u_iso(
+                    self as *const Self,
+                    U,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:278 - `ShapeExtend_CompositeSurface::VIso()`
     /// NOT IMPLEMENTED (returns Null curve)
-    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi::HandleGeomCurve> {
+    pub fn v_iso(&self, V: f64) -> crate::OwnedPtr<crate::ffi_types::HandleGeomCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_v_iso(self as *const Self, V),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_v_iso(
+                    self as *const Self,
+                    V,
+                ),
             ))
         }
     }
@@ -1482,7 +1688,9 @@ impl CompositeSurface {
     /// returns C0
     pub fn continuity(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_continuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_continuity(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1491,7 +1699,10 @@ impl CompositeSurface {
     /// returns True if N <=0
     pub fn is_c_nu(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_c_nu(self as *const Self, N)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_c_nu(
+                self as *const Self,
+                N,
+            )
         })
     }
 
@@ -1499,7 +1710,10 @@ impl CompositeSurface {
     /// returns True if N <=0
     pub fn is_c_nv(&self, N: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_is_c_nv(self as *const Self, N)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_is_c_nv(
+                self as *const Self,
+                N,
+            )
         })
     }
 
@@ -1507,7 +1721,12 @@ impl CompositeSurface {
     /// Computes the point of parameter U,V on the grid.
     pub fn d0(&self, U: f64, V: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_d0(self as *const Self, U, V, P)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_d0(
+                self as *const Self,
+                U,
+                V,
+                P,
+            )
         })
     }
 
@@ -1523,7 +1742,14 @@ impl CompositeSurface {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_d1(self as *const Self, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_d1(
+                self as *const Self,
+                U,
+                V,
+                P,
+                D1U,
+                D1V,
+            )
         })
     }
 
@@ -1542,7 +1768,7 @@ impl CompositeSurface {
         D2UV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_d2(
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_d2(
                 self as *const Self,
                 U,
                 V,
@@ -1575,7 +1801,7 @@ impl CompositeSurface {
         D3UVV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_d3(
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_d3(
                 self as *const Self,
                 U,
                 V,
@@ -1599,7 +1825,13 @@ impl CompositeSurface {
     pub fn dn(&self, U: f64, V: f64, Nu: i32, Nv: i32) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_dn(self as *const Self, U, V, Nu, Nv),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_dn(
+                    self as *const Self,
+                    U,
+                    V,
+                    Nu,
+                    Nv,
+                ),
             ))
         }
     }
@@ -1609,7 +1841,10 @@ impl CompositeSurface {
     pub fn value(&self, pnt: &crate::gp::Pnt2d) -> crate::OwnedPtr<crate::gp::Pnt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_value(self as *const Self, pnt),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_value(
+                    self as *const Self,
+                    pnt,
+                ),
             ))
         }
     }
@@ -1618,7 +1853,7 @@ impl CompositeSurface {
     /// Computes Joint values according to parameter
     pub fn compute_joint_values(&mut self, param: crate::shape_extend::Parametrisation) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_compute_joint_values(
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_compute_joint_values(
                 self as *mut Self,
                 param.into(),
             )
@@ -1630,16 +1865,21 @@ impl CompositeSurface {
     /// closedness (sets fields muUClosed and myVClosed)
     pub fn check_connectivity(&mut self, prec: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_check_connectivity(self as *mut Self, prec)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_check_connectivity(
+                self as *mut Self,
+                prec,
+            )
         })
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1647,7 +1887,7 @@ impl CompositeSurface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1655,36 +1895,44 @@ impl CompositeSurface {
     }
 
     /// **Source:** `ShapeExtend_CompositeSurface.hxx`:346 - `ShapeExtend_CompositeSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Geom_Surface
     pub fn as_geom_surface(&self) -> &crate::geom::Surface {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Geom_Surface(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Surface (mutable)
     pub fn as_geom_surface_mut(&mut self) -> &mut crate::geom::Surface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Geom_Surface_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom_Geometry
     pub fn as_geom_geometry(&self) -> &crate::geom::Geometry {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Geom_Geometry(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1692,7 +1940,9 @@ impl CompositeSurface {
     pub fn as_geom_geometry_mut(&mut self) -> &mut crate::geom::Geometry {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Geom_Geometry_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1700,48 +1950,52 @@ impl CompositeSurface {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendCompositeSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:63 - `Geom_Surface::UReversed()`
-    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn u_reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_UReversed(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_UReversed(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:83 - `Geom_Surface::VReversed()`
-    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn v_reversed(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_VReversed(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_VReversed(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1749,12 +2003,7 @@ impl CompositeSurface {
     /// Inherited: **Source:** `Geom_Surface.hxx`:113 - `Geom_Surface::TransformParameters()`
     pub fn transform_parameters(&self, U: &mut f64, V: &mut f64, T: &crate::gp::Trsf) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_TransformParameters(
-                self as *const Self,
-                U,
-                V,
-                T,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_TransformParameters(self as *const Self, U, V, T)
         })
     }
 
@@ -1764,62 +2013,81 @@ impl CompositeSurface {
         T: &crate::gp::Trsf,
     ) -> crate::OwnedPtr<crate::gp::GTrsf2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_ParametricTransformation(
-                    self as *const Self,
-                    T,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_ParametricTransformation(self as *const Self, T)))
         }
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:172 - `Geom_Surface::UPeriod()`
     pub fn u_period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_UPeriod(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_UPeriod(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Surface.hxx`:186 - `Geom_Surface::VPeriod()`
     pub fn v_period(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_VPeriod(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_VPeriod(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:58 - `Geom_Geometry::Mirror()`
     pub fn mirror(&mut self, P: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirror(self as *mut Self, P)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Mirror(
+                self as *mut Self,
+                P,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:72 - `Geom_Geometry::Rotate()`
     pub fn rotate(&mut self, A1: &crate::gp::Ax1, Ang: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_Rotate(self as *mut Self, A1, Ang)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Rotate(
+                self as *mut Self,
+                A1,
+                Ang,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:75 - `Geom_Geometry::Scale()`
     pub fn scale(&mut self, P: &crate::gp::Pnt, S: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_Scale(self as *mut Self, P, S)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Scale(
+                self as *mut Self,
+                P,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:78 - `Geom_Geometry::Translate()`
     pub fn translate(&mut self, V: &crate::gp::Vec) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_Translate(self as *mut Self, V)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Translate(
+                self as *mut Self,
+                V,
+            )
         })
     }
 
     /// Inherited: **Source:** `Geom_Geometry.hxx`:90 - `Geom_Geometry::Mirrored()`
-    pub fn mirrored(&self, P: &crate::gp::Pnt) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn mirrored(
+        &self,
+        P: &crate::gp::Pnt,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_Mirrored(self as *const Self, P),
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Mirrored(
+                    self as *const Self,
+                    P,
+                ),
             ))
         }
     }
@@ -1829,10 +2097,10 @@ impl CompositeSurface {
         &self,
         A1: &crate::gp::Ax1,
         Ang: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_Rotated(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Rotated(
                     self as *const Self,
                     A1,
                     Ang,
@@ -1846,10 +2114,10 @@ impl CompositeSurface {
         &self,
         P: &crate::gp::Pnt,
         S: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_Scaled(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Scaled(
                     self as *const Self,
                     P,
                     S,
@@ -1862,10 +2130,10 @@ impl CompositeSurface {
     pub fn transformed(
         &self,
         T: &crate::gp::Trsf,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_Transformed(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Transformed(
                     self as *const Self,
                     T,
                 ),
@@ -1877,10 +2145,10 @@ impl CompositeSurface {
     pub fn translated(
         &self,
         V: &crate::gp::Vec,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_Translated(
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Translated(
                     self as *const Self,
                     V,
                 ),
@@ -1889,9 +2157,9 @@ impl CompositeSurface {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1899,9 +2167,12 @@ impl CompositeSurface {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1909,7 +2180,9 @@ impl CompositeSurface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeExtend_CompositeSurface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1922,93 +2195,87 @@ impl CompositeSurface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_CompositeSurface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_CompositeSurface_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeExtendCompositeSurface;
+pub use crate::ffi_types::HandleShapeExtendCompositeSurface;
 
 unsafe impl crate::CppDeletable for HandleShapeExtendCompositeSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeExtendCompositeSurface_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_destructor(ptr);
     }
 }
 
 impl HandleShapeExtendCompositeSurface {
     /// Dereference this Handle to access the underlying ShapeExtend_CompositeSurface
-    pub fn get(&self) -> &crate::ffi::ShapeExtend_CompositeSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapeExtend_CompositeSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeExtendCompositeSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_CompositeSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_CompositeSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeExtend_CompositeSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeExtendCompositeSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Surface>
-    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomSurface> {
+    pub fn to_handle_surface(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_to_HandleGeomSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Geom_Geometry>
-    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi::HandleGeomGeometry> {
+    pub fn to_handle_geometry(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeomGeometry> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_to_HandleGeomGeometry(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeExtend_CompositeSurface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendCompositeSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendCompositeSurface_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2024,11 +2291,11 @@ impl HandleShapeExtendCompositeSurface {
 /// - obtaining type of the shapes in context of TopoDS_Compound,
 /// - exploring shapes in context of  TopoDS_Compound,
 /// - converting different representations of shapes (list, sequence, compound).
-pub use crate::ffi::ShapeExtend_Explorer as Explorer;
+pub use crate::ffi_types::ShapeExtend_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_Explorer_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_destructor(ptr);
     }
 }
 
@@ -2037,7 +2304,9 @@ impl Explorer {
     /// Creates an object Explorer
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_Explorer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_ctor(),
+            ))
         }
     }
 
@@ -2045,11 +2314,14 @@ impl Explorer {
     /// Converts a sequence of Shapes to a Compound
     pub fn compound_from_seq(
         &self,
-        seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
+        seqval: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_Explorer_compound_from_seq(self as *const Self, seqval),
+                crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_compound_from_seq(
+                    self as *const Self,
+                    seqval,
+                ),
             ))
         }
     }
@@ -2065,10 +2337,10 @@ impl Explorer {
         &self,
         comp: &crate::topo_ds::Shape,
         expcomp: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_Explorer_seq_from_compound(
+                crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_seq_from_compound(
                     self as *const Self,
                     comp,
                     expcomp,
@@ -2083,12 +2355,12 @@ impl Explorer {
     /// else, the list is cumulated
     pub fn list_from_seq(
         &self,
-        seqval: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        lisval: &mut crate::ffi::TopTools_ListOfShape,
+        seqval: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        lisval: &mut crate::ffi_types::TopTools_ListOfShape,
         clear: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_Explorer_list_from_seq(
+            crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_list_from_seq(
                 self as *const Self,
                 seqval,
                 lisval,
@@ -2101,11 +2373,14 @@ impl Explorer {
     /// Converts a List of Shapes to a Sequence of Shapes
     pub fn seq_from_list(
         &self,
-        lisval: &crate::ffi::TopTools_ListOfShape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+        lisval: &crate::ffi_types::TopTools_ListOfShape,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_Explorer_seq_from_list(self as *const Self, lisval),
+                crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_seq_from_list(
+                    self as *const Self,
+                    lisval,
+                ),
             ))
         }
     }
@@ -2122,7 +2397,11 @@ impl Explorer {
         compound: bool,
     ) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_Explorer_shape_type(self as *const Self, shape, compound)
+            crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_shape_type(
+                self as *const Self,
+                shape,
+                compound,
+            )
         }))
         .unwrap()
     }
@@ -2148,7 +2427,7 @@ impl Explorer {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_Explorer_sorted_compound(
+                crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_sorted_compound(
                     self as *const Self,
                     shape,
                     type_.into(),
@@ -2166,18 +2445,18 @@ impl Explorer {
     /// else, new items are appended to the already existing ones
     pub fn dispatch_list(
         &self,
-        list: &crate::ffi::HandleTopToolsHSequenceOfShape,
-        vertices: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        edges: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        wires: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        faces: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        shells: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        solids: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        compsols: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
-        compounds: &mut crate::ffi::HandleTopToolsHSequenceOfShape,
+        list: &crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        vertices: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        edges: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        wires: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        faces: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        shells: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        solids: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        compsols: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
+        compounds: &mut crate::ffi_types::HandleTopToolsHSequenceOfShape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_Explorer_dispatch_list(
+            crate::ffi_extern_TKShHealing::ShapeExtend_Explorer_dispatch_list(
                 self as *const Self,
                 list,
                 vertices,
@@ -2206,11 +2485,11 @@ impl Explorer {
 /// Messages are added to the Maps (stored as a field) that can be
 /// used, for instance, by Data Exchange processors to attach those
 /// messages to initial file entities.
-pub use crate::ffi::ShapeExtend_MsgRegistrator as MsgRegistrator;
+pub use crate::ffi_types::ShapeExtend_MsgRegistrator as MsgRegistrator;
 
 unsafe impl crate::CppDeletable for MsgRegistrator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_MsgRegistrator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_destructor(ptr);
     }
 }
 
@@ -2220,7 +2499,7 @@ impl MsgRegistrator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_ctor(),
             ))
         }
     }
@@ -2231,17 +2510,12 @@ impl MsgRegistrator {
     /// list, otherwise the object is firstly added to the map.
     pub fn send_handlestandardtransient_msg_gravity(
         &mut self,
-        object: &crate::ffi::HandleStandardTransient,
+        object: &crate::ffi_types::HandleStandardTransient,
         message: &crate::message::Msg,
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_send_handlestandardtransient_msg_gravity(
-                self as *mut Self,
-                object,
-                message,
-                gravity.into(),
-            )
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_send_handlestandardtransient_msg_gravity(self as *mut Self, object, message, gravity.into())
         })
     }
 
@@ -2256,7 +2530,7 @@ impl MsgRegistrator {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_send_shape_msg_gravity(
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_send_shape_msg_gravity(
                 self as *mut Self,
                 shape,
                 message,
@@ -2267,30 +2541,36 @@ impl MsgRegistrator {
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:63 - `ShapeExtend_MsgRegistrator::MapTransient()`
     /// Returns a Map of objects and message list
-    pub fn map_transient(&self) -> &crate::ffi::ShapeExtend_DataMapOfTransientListOfMsg {
+    pub fn map_transient(&self) -> &crate::ffi_types::ShapeExtend_DataMapOfTransientListOfMsg {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_MsgRegistrator_map_transient(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_map_transient(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:66 - `ShapeExtend_MsgRegistrator::MapShape()`
     /// Returns a Map of shapes and message list
-    pub fn map_shape(&self) -> &crate::ffi::ShapeExtend_DataMapOfShapeListOfMsg {
+    pub fn map_shape(&self) -> &crate::ffi_types::ShapeExtend_DataMapOfShapeListOfMsg {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_MsgRegistrator_map_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_map_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_MsgRegistrator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2298,7 +2578,7 @@ impl MsgRegistrator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2306,40 +2586,36 @@ impl MsgRegistrator {
     }
 
     /// **Source:** `ShapeExtend_MsgRegistrator.hxx`:68 - `ShapeExtend_MsgRegistrator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_MsgRegistrator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeExtend_BasicMsgRegistrator
     pub fn as_basic_msg_registrator(&self) -> &BasicMsgRegistrator {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator(self as *const Self))
         }
     }
 
     /// Upcast to ShapeExtend_BasicMsgRegistrator (mutable)
     pub fn as_basic_msg_registrator_mut(&mut self) -> &mut BasicMsgRegistrator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_as_ShapeExtend_BasicMsgRegistrator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2347,7 +2623,9 @@ impl MsgRegistrator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2355,18 +2633,18 @@ impl MsgRegistrator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_MsgRegistrator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2374,9 +2652,12 @@ impl MsgRegistrator {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2384,7 +2665,9 @@ impl MsgRegistrator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeExtend_MsgRegistrator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2397,80 +2680,86 @@ impl MsgRegistrator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_MsgRegistrator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_MsgRegistrator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeExtendMsgRegistrator;
+pub use crate::ffi_types::HandleShapeExtendMsgRegistrator;
 
 unsafe impl crate::CppDeletable for HandleShapeExtendMsgRegistrator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeExtendMsgRegistrator_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_destructor(ptr);
     }
 }
 
 impl HandleShapeExtendMsgRegistrator {
     /// Dereference this Handle to access the underlying ShapeExtend_MsgRegistrator
-    pub fn get(&self) -> &crate::ffi::ShapeExtend_MsgRegistrator {
+    pub fn get(&self) -> &crate::ffi_types::ShapeExtend_MsgRegistrator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeExtendMsgRegistrator_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeExtend_MsgRegistrator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_MsgRegistrator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeExtend_MsgRegistrator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeExtendMsgRegistrator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeExtend_MsgRegistrator> to Handle<ShapeExtend_BasicMsgRegistrator>
     pub fn to_handle_basic_msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_to_HandleShapeExtendBasicMsgRegistrator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeExtend_MsgRegistrator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendMsgRegistrator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendMsgRegistrator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2504,11 +2793,11 @@ impl HandleShapeExtendMsgRegistrator {
 /// Moreover, this class is stored as a field in other classes which are
 /// they returned as results of functions, storing only a handle to
 /// ShapeExtend_WireData saves time and memory.
-pub use crate::ffi::ShapeExtend_WireData as WireData;
+pub use crate::ffi_types::ShapeExtend_WireData as WireData;
 
 unsafe impl crate::CppDeletable for WireData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeExtend_WireData_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeExtend_WireData_destructor(ptr);
     }
 }
 
@@ -2517,7 +2806,9 @@ impl WireData {
     /// Empty constructor, creates empty wire with no edges
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_WireData_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_ctor(),
+            ))
         }
     }
 
@@ -2530,7 +2821,11 @@ impl WireData {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_ctor_wire_bool2(wire, chained, theManifoldMode),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_ctor_wire_bool2(
+                    wire,
+                    chained,
+                    theManifoldMode,
+                ),
             ))
         }
     }
@@ -2551,10 +2846,10 @@ impl WireData {
     /// Copies data from another WireData
     pub fn init_handleshapeextendwiredata(
         &mut self,
-        other: &crate::ffi::HandleShapeExtendWireData,
+        other: &crate::ffi_types::HandleShapeExtendWireData,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_init_handleshapeextendwiredata(
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_init_handleshapeextendwiredata(
                 self as *mut Self,
                 other,
             )
@@ -2579,7 +2874,7 @@ impl WireData {
         theManifoldMode: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_init_wire_bool2(
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_init_wire_bool2(
                 self as *mut Self,
                 wire,
                 chained,
@@ -2592,7 +2887,7 @@ impl WireData {
     /// Clears data about Wire.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_clear(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_clear(self as *mut Self)
         })
     }
 
@@ -2607,7 +2902,10 @@ impl WireData {
     /// must be set in first
     pub fn compute_seams(&mut self, enforce: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_compute_seams(self as *mut Self, enforce)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_compute_seams(
+                self as *mut Self,
+                enforce,
+            )
         })
     }
 
@@ -2615,7 +2913,7 @@ impl WireData {
     /// Does a circular permutation in order to set <num>th edge last
     pub fn set_last(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_set_last(self as *mut Self, num)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_set_last(self as *mut Self, num)
         })
     }
 
@@ -2628,7 +2926,9 @@ impl WireData {
     /// chained.
     pub fn set_degenerated_last(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_set_degenerated_last(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_set_degenerated_last(
+                self as *mut Self,
+            )
         })
     }
 
@@ -2641,7 +2941,11 @@ impl WireData {
     /// Remark : Null Edge is simply ignored
     pub fn add_edge_int(&mut self, edge: &crate::topo_ds::Edge, atnum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_edge_int(self as *mut Self, edge, atnum)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_edge_int(
+                self as *mut Self,
+                edge,
+                atnum,
+            )
         })
     }
 
@@ -2651,7 +2955,11 @@ impl WireData {
     /// is used)
     pub fn add_wire_int(&mut self, wire: &crate::topo_ds::Wire, atnum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_wire_int(self as *mut Self, wire, atnum)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_wire_int(
+                self as *mut Self,
+                wire,
+                atnum,
+            )
         })
     }
 
@@ -2659,11 +2967,11 @@ impl WireData {
     /// Adds a wire in the form of WireData
     pub fn add_handleshapeextendwiredata_int(
         &mut self,
-        wire: &crate::ffi::HandleShapeExtendWireData,
+        wire: &crate::ffi_types::HandleShapeExtendWireData,
         atnum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_handleshapeextendwiredata_int(
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_handleshapeextendwiredata_int(
                 self as *mut Self,
                 wire,
                 atnum,
@@ -2675,7 +2983,11 @@ impl WireData {
     /// Adds an edge or a wire invoking corresponding method Add
     pub fn add_shape_int(&mut self, shape: &crate::topo_ds::Shape, atnum: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_shape_int(self as *mut Self, shape, atnum)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_shape_int(
+                self as *mut Self,
+                shape,
+                atnum,
+            )
         })
     }
 
@@ -2688,7 +3000,11 @@ impl WireData {
     /// < 0: no adding
     pub fn add_oriented_edge_int(&mut self, edge: &crate::topo_ds::Edge, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_oriented_edge_int(self as *mut Self, edge, mode)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_oriented_edge_int(
+                self as *mut Self,
+                edge,
+                mode,
+            )
         })
     }
 
@@ -2701,7 +3017,11 @@ impl WireData {
     /// < 0: no adding
     pub fn add_oriented_wire_int(&mut self, wire: &crate::topo_ds::Wire, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_oriented_wire_int(self as *mut Self, wire, mode)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_oriented_wire_int(
+                self as *mut Self,
+                wire,
+                mode,
+            )
         })
     }
 
@@ -2710,7 +3030,11 @@ impl WireData {
     /// AddOriented
     pub fn add_oriented_shape_int(&mut self, shape: &crate::topo_ds::Shape, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_add_oriented_shape_int(self as *mut Self, shape, mode)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_add_oriented_shape_int(
+                self as *mut Self,
+                shape,
+                mode,
+            )
         })
     }
 
@@ -2718,7 +3042,7 @@ impl WireData {
     /// Removes an Edge, given its rank. By default removes the last edge.
     pub fn remove(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_remove(self as *mut Self, num)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_remove(self as *mut Self, num)
         })
     }
 
@@ -2727,7 +3051,7 @@ impl WireData {
     /// rank number <num> with new one. Default is last edge (<num> = 0).
     pub fn set(&mut self, edge: &crate::topo_ds::Edge, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_set(self as *mut Self, edge, num)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_set(self as *mut Self, edge, num)
         })
     }
 
@@ -2737,7 +3061,7 @@ impl WireData {
     /// or face is not available
     pub fn reverse(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_reverse(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_reverse(self as *mut Self)
         })
     }
 
@@ -2749,7 +3073,10 @@ impl WireData {
     /// If face is NULL, no swapping is performed
     pub fn reverse_face(&mut self, face: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_reverse_face(self as *mut Self, face)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_reverse_face(
+                self as *mut Self,
+                face,
+            )
         })
     }
 
@@ -2757,7 +3084,7 @@ impl WireData {
     /// Returns the count of currently recorded edges
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_nb_edges(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_nb_edges(self as *const Self)
         })
     }
 
@@ -2765,7 +3092,9 @@ impl WireData {
     /// Returns the count of currently recorded non-manifold edges
     pub fn nb_non_manifold_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_nb_non_manifold_edges(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_nb_non_manifold_edges(
+                self as *const Self,
+            )
         })
     }
 
@@ -2774,7 +3103,10 @@ impl WireData {
     pub fn nonmanifold_edge(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_nonmanifold_edge(self as *const Self, num),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_nonmanifold_edge(
+                    self as *const Self,
+                    num,
+                ),
             ))
         }
     }
@@ -2783,10 +3115,14 @@ impl WireData {
     /// Returns sequence of non-manifold edges
     /// This sequence can be not empty if wire data set in manifold mode but
     /// initial wire has INTERNAL orientation or contains INTERNAL edges
-    pub fn nonmanifold_edges(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+    pub fn nonmanifold_edges(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_nonmanifold_edges(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_nonmanifold_edges(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2799,9 +3135,11 @@ impl WireData {
     /// else non-manifold edges will consider during operations
     pub fn manifold_mode(&mut self) -> &mut bool {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeExtend_WireData_manifold_mode(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_manifold_mode(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -2809,10 +3147,9 @@ impl WireData {
     /// Returns <num>th Edge
     pub fn edge(&self, num: i32) -> crate::OwnedPtr<crate::topo_ds::Edge> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_WireData_edge(
-                self as *const Self,
-                num,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_edge(self as *const Self, num),
+            ))
         }
     }
 
@@ -2822,7 +3159,7 @@ impl WireData {
     /// Returns 0 if the edge is not found in the list
     pub fn index(&mut self, edge: &crate::topo_ds::Edge) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_index(self as *mut Self, edge)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_index(self as *mut Self, edge)
         })
     }
 
@@ -2832,7 +3169,7 @@ impl WireData {
     /// the edge list, once as FORWARD and once as REVERSED.
     pub fn is_seam(&mut self, num: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_is_seam(self as *mut Self, num)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_is_seam(self as *mut Self, num)
         })
     }
 
@@ -2846,9 +3183,9 @@ impl WireData {
     /// vertices the resulting TopoDS_Wire will be invalid.
     pub fn wire(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeExtend_WireData_wire(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_wire(self as *const Self),
+            ))
         }
     }
 
@@ -2861,17 +3198,21 @@ impl WireData {
     pub fn wire_api_make(&self) -> crate::OwnedPtr<crate::topo_ds::Wire> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_wire_api_make(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_wire_api_make(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeExtend_WireData_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2879,7 +3220,7 @@ impl WireData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2887,50 +3228,64 @@ impl WireData {
     }
 
     /// **Source:** `ShapeExtend_WireData.hxx`:221 - `ShapeExtend_WireData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeExtend_WireData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeExtend_WireData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeExtend_WireData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendWireData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendWireData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeExtend_WireData_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2938,7 +3293,9 @@ impl WireData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeExtend_WireData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2951,62 +3308,74 @@ impl WireData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeExtend_WireData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeExtend_WireData_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeExtendWireData;
+pub use crate::ffi_types::HandleShapeExtendWireData;
 
 unsafe impl crate::CppDeletable for HandleShapeExtendWireData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeExtendWireData_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_destructor(ptr);
     }
 }
 
 impl HandleShapeExtendWireData {
     /// Dereference this Handle to access the underlying ShapeExtend_WireData
-    pub fn get(&self) -> &crate::ffi::ShapeExtend_WireData {
+    pub fn get(&self) -> &crate::ffi_types::ShapeExtend_WireData {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeExtendWireData_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeExtend_WireData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeExtend_WireData {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeExtendWireData_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying ShapeExtend_WireData
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeExtend_WireData {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<ShapeExtend_WireData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeExtendWireData_to_HandleStandardTransient(
+                crate::ffi_extern_TKShHealing::HandleShapeExtendWireData_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -3018,7 +3387,7 @@ impl HandleShapeExtendWireData {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     ShapeExtend_DataMapOfShapeListOfMsg as DataMapOfShapeListOfMsg,
     ShapeExtend_DataMapOfTransientListOfMsg as DataMapOfTransientListOfMsg,
 };

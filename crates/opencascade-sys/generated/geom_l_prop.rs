@@ -14,8 +14,8 @@
 /// tl and ta are the linear and angular tolerance used two
 /// compare the derivative.
 pub fn continuity_handlegeomcurve2_real2_bool2_real2(
-    C1: &crate::ffi::HandleGeomCurve,
-    C2: &crate::ffi::HandleGeomCurve,
+    C1: &crate::ffi_types::HandleGeomCurve,
+    C2: &crate::ffi_types::HandleGeomCurve,
     u1: f64,
     u2: f64,
     r1: bool,
@@ -24,7 +24,7 @@ pub fn continuity_handlegeomcurve2_real2_bool2_real2(
     ta: f64,
 ) -> crate::geom_abs::Shape {
     crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-        crate::ffi::GeomLProp_continuity_handlegeomcurve2_real2_bool2_real2(
+        crate::ffi_extern_TKG3d::GeomLProp_continuity_handlegeomcurve2_real2_bool2_real2(
             C1, C2, u1, u2, r1, r2, tl, ta,
         )
     }))
@@ -34,15 +34,17 @@ pub fn continuity_handlegeomcurve2_real2_bool2_real2(
 /// The  same  as  preceding   but   using  the   standard
 /// tolerances from package Precision.
 pub fn continuity_handlegeomcurve2_real2_bool2(
-    C1: &crate::ffi::HandleGeomCurve,
-    C2: &crate::ffi::HandleGeomCurve,
+    C1: &crate::ffi_types::HandleGeomCurve,
+    C2: &crate::ffi_types::HandleGeomCurve,
     u1: f64,
     u2: f64,
     r1: bool,
     r2: bool,
 ) -> crate::geom_abs::Shape {
     crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-        crate::ffi::GeomLProp_continuity_handlegeomcurve2_real2_bool2(C1, C2, u1, u2, r1, r2)
+        crate::ffi_extern_TKG3d::GeomLProp_continuity_handlegeomcurve2_real2_bool2(
+            C1, C2, u1, u2, r1, r2,
+        )
     }))
     .unwrap()
 }
@@ -52,11 +54,11 @@ pub fn continuity_handlegeomcurve2_real2_bool2(
 // ========================
 
 /// **Source:** `GeomLProp_CLProps.hxx`:41 - `GeomLProp_CLProps`
-pub use crate::ffi::GeomLProp_CLProps as CLProps;
+pub use crate::ffi_types::GeomLProp_CLProps as CLProps;
 
 unsafe impl crate::CppDeletable for CLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomLProp_CLProps_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomLProp_CLProps_destructor(ptr);
     }
 }
 
@@ -72,13 +74,15 @@ impl CLProps {
     /// <Resolution> is the linear tolerance (it is used to test
     /// if a vector is null).
     pub fn new_handlegeomcurve_int_real(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_CLProps_ctor_handlegeomcurve_int_real(C, N, Resolution),
+                crate::ffi_extern_TKG3d::GeomLProp_CLProps_ctor_handlegeomcurve_int_real(
+                    C, N, Resolution,
+                ),
             ))
         }
     }
@@ -88,14 +92,14 @@ impl CLProps {
     /// set to the value <U>.
     /// All the computations done will be related to <C> and <U>.
     pub fn new_handlegeomcurve_real_int_real(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         U: f64,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_CLProps_ctor_handlegeomcurve_real_int_real(
+                crate::ffi_extern_TKG3d::GeomLProp_CLProps_ctor_handlegeomcurve_real_int_real(
                     C, U, N, Resolution,
                 ),
             ))
@@ -112,7 +116,7 @@ impl CLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_CLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKG3d::GeomLProp_CLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -122,44 +126,60 @@ impl CLProps {
     /// for the parameter value <U>.
     pub fn set_parameter(&mut self, U: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_set_parameter(self as *mut Self, U)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_set_parameter(self as *mut Self, U)
         })
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:81 - `GeomLProp_CLProps::SetCurve()`
     /// Initializes the local properties of the curve
     /// for the new curve.
-    pub fn set_curve(&mut self, C: &crate::ffi::HandleGeomCurve) {
+    pub fn set_curve(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_set_curve(self as *mut Self, C)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_set_curve(self as *mut Self, C)
         })
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:84 - `GeomLProp_CLProps::Value()`
     /// Returns the Point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_CLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_CLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:88 - `GeomLProp_CLProps::D1()`
     /// Returns the first derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_CLProps_d1(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_CLProps_d1(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:92 - `GeomLProp_CLProps::D2()`
     /// Returns the second derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_CLProps_d2(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_CLProps_d2(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:96 - `GeomLProp_CLProps::D3()`
     /// Returns the third derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d3(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_CLProps_d3(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_CLProps_d3(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:101 - `GeomLProp_CLProps::IsTangentDefined()`
@@ -168,7 +188,7 @@ impl CLProps {
     /// three first derivatives are all null.
     pub fn is_tangent_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_is_tangent_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_is_tangent_defined(self as *mut Self)
         })
     }
 
@@ -176,21 +196,23 @@ impl CLProps {
     /// output  the tangent direction <D>
     pub fn tangent(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_tangent(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_tangent(self as *mut Self, D)
         })
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:107 - `GeomLProp_CLProps::Curvature()`
     /// Returns the curvature.
     pub fn curvature(&mut self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_CLProps_curvature(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_curvature(self as *mut Self)
+        })
     }
 
     /// **Source:** `GeomLProp_CLProps.hxx`:110 - `GeomLProp_CLProps::Normal()`
     /// Returns the normal direction <N>.
     pub fn normal(&mut self, N: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_normal(self as *mut Self, N)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_normal(self as *mut Self, N)
         })
     }
 
@@ -198,7 +220,7 @@ impl CLProps {
     /// Returns the centre of curvature <P>.
     pub fn centre_of_curvature(&mut self, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_CLProps_centre_of_curvature(self as *mut Self, P)
+            crate::ffi_extern_TKG3d::GeomLProp_CLProps_centre_of_curvature(self as *mut Self, P)
         })
     }
 }
@@ -208,11 +230,11 @@ impl CLProps {
 // ========================
 
 /// **Source:** `GeomLProp_CurveTool.hxx`:29 - `GeomLProp_CurveTool`
-pub use crate::ffi::GeomLProp_CurveTool as CurveTool;
+pub use crate::ffi_types::GeomLProp_CurveTool as CurveTool;
 
 unsafe impl crate::CppDeletable for CurveTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomLProp_CurveTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomLProp_CurveTool_destructor(ptr);
     }
 }
 
@@ -221,39 +243,47 @@ impl CurveTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLProp_CurveTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomLProp_CurveTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:35 - `GeomLProp_CurveTool::Value()`
     /// Computes the point <P> of parameter <U> on the curve <C>.
-    pub fn value(C: &crate::ffi::HandleGeomCurve, U: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::GeomLProp_CurveTool_value(C, U, P) })
+    pub fn value(C: &crate::ffi_types::HandleGeomCurve, U: f64, P: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_value(C, U, P)
+        })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:39 - `GeomLProp_CurveTool::D1()`
     /// Computes the point <P> and first derivative <V1> of
     /// parameter <U> on the curve <C>.
     pub fn d1(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::GeomLProp_CurveTool_d1(C, U, P, V1) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_d1(C, U, P, V1)
+        })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:46 - `GeomLProp_CurveTool::D2()`
     /// Computes the point <P>, the first derivative <V1> and second
     /// derivative <V2> of parameter <U> on the curve <C>.
     pub fn d2(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::GeomLProp_CurveTool_d2(C, U, P, V1, V2) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_d2(C, U, P, V1, V2)
+        })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:55 - `GeomLProp_CurveTool::D3()`
@@ -261,14 +291,16 @@ impl CurveTool {
     /// second derivative <V2> and third derivative <V3> of
     /// parameter <U> on the curve <C>.
     pub fn d3(
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         U: f64,
         P: &mut crate::gp::Pnt,
         V1: &mut crate::gp::Vec,
         V2: &mut crate::gp::Vec,
         V3: &mut crate::gp::Vec,
     ) {
-        crate::check_void_result(unsafe { crate::ffi::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_d3(C, U, P, V1, V2, V3)
+        })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:66 - `GeomLProp_CurveTool::Continuity()`
@@ -276,21 +308,25 @@ impl CurveTool {
     /// returns 1 : first derivative only is computable
     /// returns 2 : first and second derivative only are computable.
     /// returns 3 : first, second and third are computable.
-    pub fn continuity(C: &crate::ffi::HandleGeomCurve) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_CurveTool_continuity(C) })
+    pub fn continuity(C: &crate::ffi_types::HandleGeomCurve) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKG3d::GeomLProp_CurveTool_continuity(C) })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:69 - `GeomLProp_CurveTool::FirstParameter()`
     /// returns the first parameter bound of the curve.
-    pub fn first_parameter(C: &crate::ffi::HandleGeomCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_CurveTool_first_parameter(C) })
+    pub fn first_parameter(C: &crate::ffi_types::HandleGeomCurve) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_first_parameter(C)
+        })
     }
 
     /// **Source:** `GeomLProp_CurveTool.hxx`:73 - `GeomLProp_CurveTool::LastParameter()`
     /// returns the last parameter bound of the curve.
     /// FirstParameter must be less than LastParamenter.
-    pub fn last_parameter(C: &crate::ffi::HandleGeomCurve) -> f64 {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_CurveTool_last_parameter(C) })
+    pub fn last_parameter(C: &crate::ffi_types::HandleGeomCurve) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_CurveTool_last_parameter(C)
+        })
     }
 }
 
@@ -299,11 +335,11 @@ impl CurveTool {
 // ========================
 
 /// **Source:** `GeomLProp_SLProps.hxx`:39 - `GeomLProp_SLProps`
-pub use crate::ffi::GeomLProp_SLProps as SLProps;
+pub use crate::ffi_types::GeomLProp_SLProps as SLProps;
 
 unsafe impl crate::CppDeletable for SLProps {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomLProp_SLProps_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomLProp_SLProps_destructor(ptr);
     }
 }
 
@@ -320,7 +356,7 @@ impl SLProps {
     /// <Resolution> is the linear tolerance (it is used to test
     /// if a vector is null).
     pub fn new_handlegeomsurface_real2_int_real(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         U: f64,
         V: f64,
         N: i32,
@@ -328,7 +364,7 @@ impl SLProps {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_SLProps_ctor_handlegeomsurface_real2_int_real(
+                crate::ffi_extern_TKG3d::GeomLProp_SLProps_ctor_handlegeomsurface_real2_int_real(
                     S, U, V, N, Resolution,
                 ),
             ))
@@ -339,13 +375,15 @@ impl SLProps {
     /// idem as previous constructor but without setting the value
     /// of parameters <U> and <V>.
     pub fn new_handlegeomsurface_int_real(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         N: i32,
         Resolution: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_SLProps_ctor_handlegeomsurface_int_real(S, N, Resolution),
+                crate::ffi_extern_TKG3d::GeomLProp_SLProps_ctor_handlegeomsurface_int_real(
+                    S, N, Resolution,
+                ),
             ))
         }
     }
@@ -357,7 +395,7 @@ impl SLProps {
     pub fn new_int_real(N: i32, Resolution: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::GeomLProp_SLProps_ctor_int_real(N, Resolution),
+                crate::ffi_extern_TKG3d::GeomLProp_SLProps_ctor_int_real(N, Resolution),
             ))
         }
     }
@@ -365,9 +403,9 @@ impl SLProps {
     /// **Source:** `GeomLProp_SLProps.hxx`:73 - `GeomLProp_SLProps::SetSurface()`
     /// Initializes the local properties of the surface S
     /// for the new surface.
-    pub fn set_surface(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_set_surface(self as *mut Self, S)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_set_surface(self as *mut Self, S)
         })
     }
 
@@ -376,49 +414,73 @@ impl SLProps {
     /// for the new parameter values (<U>, <V>).
     pub fn set_parameters(&mut self, U: f64, V: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_set_parameters(self as *mut Self, U, V)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_set_parameters(self as *mut Self, U, V)
         })
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:80 - `GeomLProp_SLProps::Value()`
     /// Returns the point.
     pub fn value(&self) -> &crate::gp::Pnt {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:84 - `GeomLProp_SLProps::D1U()`
     /// Returns the first U derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_d1u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_d1u(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:88 - `GeomLProp_SLProps::D1V()`
     /// Returns the first V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d1v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_d1v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_d1v(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:92 - `GeomLProp_SLProps::D2U()`
     /// Returns the second U derivatives
     /// The derivative is computed if it has not been yet.
     pub fn d2u(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_d2u(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_d2u(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:96 - `GeomLProp_SLProps::D2V()`
     /// Returns the second V derivative.
     /// The derivative is computed if it has not been yet.
     pub fn d2v(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_d2v(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_d2v(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:100 - `GeomLProp_SLProps::DUV()`
     /// Returns the second UV cross-derivative.
     /// The derivative is computed if it has not been yet.
     pub fn duv(&mut self) -> &crate::gp::Vec {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_duv(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_duv(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:105 - `GeomLProp_SLProps::IsTangentUDefined()`
@@ -427,7 +489,7 @@ impl SLProps {
     /// two first U derivatives are null.
     pub fn is_tangent_u_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_is_tangent_u_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_is_tangent_u_defined(self as *mut Self)
         })
     }
 
@@ -435,7 +497,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_u(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_tangent_u(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_tangent_u(self as *mut Self, D)
         })
     }
 
@@ -445,7 +507,7 @@ impl SLProps {
     /// two first V derivatives are null.
     pub fn is_tangent_v_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_is_tangent_v_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_is_tangent_v_defined(self as *mut Self)
         })
     }
 
@@ -453,7 +515,7 @@ impl SLProps {
     /// Returns the tangent direction <D> on the iso-V.
     pub fn tangent_v(&mut self, D: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_tangent_v(self as *mut Self, D)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_tangent_v(self as *mut Self, D)
         })
     }
 
@@ -461,21 +523,25 @@ impl SLProps {
     /// Tells if the normal is defined.
     pub fn is_normal_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_is_normal_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_is_normal_defined(self as *mut Self)
         })
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:122 - `GeomLProp_SLProps::Normal()`
     /// Returns the normal direction.
     pub fn normal(&mut self) -> &crate::gp::Dir {
-        unsafe { &*(crate::check_result(crate::ffi::GeomLProp_SLProps_normal(self as *mut Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKG3d::GeomLProp_SLProps_normal(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:125 - `GeomLProp_SLProps::IsCurvatureDefined()`
     /// returns True if the curvature is defined.
     pub fn is_curvature_defined(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_is_curvature_defined(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_is_curvature_defined(self as *mut Self)
         })
     }
 
@@ -483,14 +549,16 @@ impl SLProps {
     /// returns True if the point is umbilic (i.e. if the
     /// curvature is constant).
     pub fn is_umbilic(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_SLProps_is_umbilic(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_is_umbilic(self as *mut Self)
+        })
     }
 
     /// **Source:** `GeomLProp_SLProps.hxx`:132 - `GeomLProp_SLProps::MaxCurvature()`
     /// Returns the maximum curvature
     pub fn max_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_max_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_max_curvature(self as *mut Self)
         })
     }
 
@@ -498,7 +566,7 @@ impl SLProps {
     /// Returns the minimum curvature
     pub fn min_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_min_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_min_curvature(self as *mut Self)
         })
     }
 
@@ -507,7 +575,11 @@ impl SLProps {
     /// <MaxD> and <MinD>
     pub fn curvature_directions(&mut self, MaxD: &mut crate::gp::Dir, MinD: &mut crate::gp::Dir) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_curvature_directions(self as *mut Self, MaxD, MinD)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_curvature_directions(
+                self as *mut Self,
+                MaxD,
+                MinD,
+            )
         })
     }
 
@@ -515,7 +587,7 @@ impl SLProps {
     /// Returns the mean curvature.
     pub fn mean_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_mean_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_mean_curvature(self as *mut Self)
         })
     }
 
@@ -523,7 +595,7 @@ impl SLProps {
     /// Returns the Gaussian curvature
     pub fn gaussian_curvature(&mut self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::GeomLProp_SLProps_gaussian_curvature(self as *mut Self)
+            crate::ffi_extern_TKG3d::GeomLProp_SLProps_gaussian_curvature(self as *mut Self)
         })
     }
 }
@@ -533,11 +605,11 @@ impl SLProps {
 // ========================
 
 /// **Source:** `GeomLProp_SurfaceTool.hxx`:29 - `GeomLProp_SurfaceTool`
-pub use crate::ffi::GeomLProp_SurfaceTool as SurfaceTool;
+pub use crate::ffi_types::GeomLProp_SurfaceTool as SurfaceTool;
 
 unsafe impl crate::CppDeletable for SurfaceTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::GeomLProp_SurfaceTool_destructor(ptr);
+        crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_destructor(ptr);
     }
 }
 
@@ -546,22 +618,26 @@ impl SurfaceTool {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLProp_SurfaceTool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:36 - `GeomLProp_SurfaceTool::Value()`
     /// Computes the point <P> of parameter <U> and <V> on the
     /// Surface <S>.
-    pub fn value(S: &crate::ffi::HandleGeomSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
-        crate::check_void_result(unsafe { crate::ffi::GeomLProp_SurfaceTool_value(S, U, V, P) })
+    pub fn value(S: &crate::ffi_types::HandleGeomSurface, U: f64, V: f64, P: &mut crate::gp::Pnt) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_value(S, U, V, P)
+        })
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:43 - `GeomLProp_SurfaceTool::D1()`
     /// Computes the point <P> and first derivative <D1*> of
     /// parameter <U> and <V> on the Surface <S>.
     pub fn d1(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -569,7 +645,7 @@ impl SurfaceTool {
         D1V: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V)
+            crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_d1(S, U, V, P, D1U, D1V)
         })
     }
 
@@ -577,7 +653,7 @@ impl SurfaceTool {
     /// Computes the point <P>, the first derivative <D1*> and second
     /// derivative <D2*> of parameter <U> and <V> on the Surface <S>.
     pub fn d2(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         U: f64,
         V: f64,
         P: &mut crate::gp::Pnt,
@@ -588,22 +664,22 @@ impl SurfaceTool {
         DUV: &mut crate::gp::Vec,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV)
+            crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_d2(S, U, V, P, D1U, D1V, D2U, D2V, DUV)
         })
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:62 - `GeomLProp_SurfaceTool::DN()`
     pub fn dn(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         U: f64,
         V: f64,
         IU: i32,
         IV: i32,
     ) -> crate::OwnedPtr<crate::gp::Vec> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::GeomLProp_SurfaceTool_dn(
-                S, U, V, IU, IV,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_dn(S, U, V, IU, IV),
+            ))
         }
     }
 
@@ -611,21 +687,21 @@ impl SurfaceTool {
     /// returns the order of continuity of the Surface <S>.
     /// returns 1 : first derivative only is computable
     /// returns 2 : first and second derivative only are computable.
-    pub fn continuity(S: &crate::ffi::HandleGeomSurface) -> i32 {
-        crate::check_result(unsafe { crate::ffi::GeomLProp_SurfaceTool_continuity(S) })
+    pub fn continuity(S: &crate::ffi_types::HandleGeomSurface) -> i32 {
+        crate::check_result(unsafe { crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_continuity(S) })
     }
 
     /// **Source:** `GeomLProp_SurfaceTool.hxx`:74 - `GeomLProp_SurfaceTool::Bounds()`
     /// returns the bounds of the Surface.
     pub fn bounds(
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         U1: &mut f64,
         V1: &mut f64,
         U2: &mut f64,
         V2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::GeomLProp_SurfaceTool_bounds(S, U1, V1, U2, V2)
+            crate::ffi_extern_TKG3d::GeomLProp_SurfaceTool_bounds(S, U1, V1, U2, V2)
         })
     }
 }

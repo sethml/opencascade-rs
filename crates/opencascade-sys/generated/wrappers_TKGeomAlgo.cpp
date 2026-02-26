@@ -22,10 +22,11 @@
 #include <ApproxInt_SvSurfaces.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
 #include <Approx_ParametrizationType.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <Approx_Status.hxx>
 #include <Approx_SweepFunction.hxx>
 #include <BRepFill_CurveConstraint.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_BoundSortBox.hxx>
 #include <Bnd_Box.hxx>
 #include <Bnd_Box2d.hxx>
@@ -477,7 +478,6 @@
 #include <TColGeom_Array1OfBezierCurve.hxx>
 #include <TColGeom_Array2OfBezierSurface.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
@@ -501,9 +501,9 @@
 #include <TColgp_SequenceOfXY.hxx>
 #include <TColgp_SequenceOfXYZ.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_State.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <TopTrans_CurveTransition.hxx>
 #include <TopTrans_SurfaceTransition.hxx>
 #include <gp_Ax1.hxx>

@@ -12,11 +12,11 @@
 
 /// **Source:** `BRepToIGES_BREntity.hxx`:34 - `BRepToIGES_BREntity`
 /// provides methods to transfer BRep entity from CASCADE to IGES.
-pub use crate::ffi::BRepToIGES_BREntity as BREntity;
+pub use crate::ffi_types::BRepToIGES_BREntity as BREntity;
 
 unsafe impl crate::CppDeletable for BREntity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepToIGES_BREntity_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_destructor(ptr);
     }
 }
 
@@ -25,7 +25,9 @@ impl BREntity {
     /// Creates a tool BREntity
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BREntity_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_ctor(),
+            ))
         }
     }
 
@@ -33,23 +35,25 @@ impl BREntity {
     /// Initializes the field of the tool BREntity with
     /// default creating values.
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepToIGES_BREntity_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
     /// Set the value of "TheModel"
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_set_model(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_set_model(self as *mut Self, model)
         })
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
     /// Returns the value of "TheModel"
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BREntity_get_model(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_model(self as *const Self),
             ))
         }
     }
@@ -59,24 +63,31 @@ impl BREntity {
     /// in meters.
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_get_unit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_unit(self as *const Self)
         })
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
     /// Set the value of "TheMap"
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_set_transfer_process(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_set_transfer_process(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
     /// Returns the value of "TheMap"
-    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BREntity_get_transfer_process(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_transfer_process(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -88,10 +99,10 @@ impl BREntity {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BREntity_transfer_shape(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_transfer_shape(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -105,7 +116,7 @@ impl BREntity {
     pub fn add_fail_shape_charptr(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_fail_shape_charptr(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_add_fail_shape_charptr(
                 self as *mut Self,
                 start,
                 c_amess.as_ptr(),
@@ -118,7 +129,7 @@ impl BREntity {
     pub fn add_warning_shape_charptr(&mut self, start: &crate::topo_ds::Shape, amess: &str) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_warning_shape_charptr(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_add_warning_shape_charptr(
                 self as *mut Self,
                 start,
                 c_amess.as_ptr(),
@@ -130,12 +141,12 @@ impl BREntity {
     /// Records a new Fail message
     pub fn add_fail_handlestandardtransient_charptr(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amess: &str,
     ) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_fail_handlestandardtransient_charptr(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_add_fail_handlestandardtransient_charptr(
                 self as *mut Self,
                 start,
                 c_amess.as_ptr(),
@@ -147,16 +158,12 @@ impl BREntity {
     /// Records a new Warning message
     pub fn add_warning_handlestandardtransient_charptr(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
         amess: &str,
     ) {
         let c_amess = std::ffi::CString::new(amess).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_add_warning_handlestandardtransient_charptr(
-                self as *mut Self,
-                start,
-                c_amess.as_ptr(),
-            )
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_add_warning_handlestandardtransient_charptr(self as *mut Self, start, c_amess.as_ptr())
         })
     }
 
@@ -165,7 +172,10 @@ impl BREntity {
     /// else returns False.
     pub fn has_shape_result_shape(&self, start: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_has_shape_result_shape(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_has_shape_result_shape(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -175,10 +185,13 @@ impl BREntity {
     pub fn get_shape_result_shape(
         &self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BREntity_get_shape_result_shape(self as *const Self, start),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_shape_result_shape(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -188,14 +201,10 @@ impl BREntity {
     pub fn set_shape_result_shape_handlestandardtransient(
         &mut self,
         start: &crate::topo_ds::Shape,
-        result: &crate::ffi::HandleStandardTransient,
+        result: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_set_shape_result_shape_handlestandardtransient(
-                self as *mut Self,
-                start,
-                result,
-            )
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_set_shape_result_shape_handlestandardtransient(self as *mut Self, start, result)
         })
     }
 
@@ -204,10 +213,10 @@ impl BREntity {
     /// else returns False.
     pub fn has_shape_result_handlestandardtransient(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_has_shape_result_handlestandardtransient(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_has_shape_result_handlestandardtransient(
                 self as *const Self,
                 start,
             )
@@ -219,15 +228,10 @@ impl BREntity {
     /// in "TheMap" . (if HasShapeResult is True).
     pub fn get_shape_result_handlestandardtransient(
         &self,
-        start: &crate::ffi::HandleStandardTransient,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+        start: &crate::ffi_types::HandleStandardTransient,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BREntity_get_shape_result_handlestandardtransient(
-                    self as *const Self,
-                    start,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_shape_result_handlestandardtransient(self as *const Self, start)))
         }
     }
 
@@ -235,15 +239,11 @@ impl BREntity {
     /// set in "TheMap" the result of the transfer of the Transient "start".
     pub fn set_shape_result_handlestandardtransient2(
         &mut self,
-        start: &crate::ffi::HandleStandardTransient,
-        result: &crate::ffi::HandleStandardTransient,
+        start: &crate::ffi_types::HandleStandardTransient,
+        result: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_set_shape_result_handlestandardtransient2(
-                self as *mut Self,
-                start,
-                result,
-            )
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_set_shape_result_handlestandardtransient2(self as *mut Self, start, result)
         })
     }
 
@@ -252,7 +252,9 @@ impl BREntity {
     /// (value of parameter write.convertsurface.mode)
     pub fn get_convert_surface_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_get_convert_surface_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_convert_surface_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -261,7 +263,7 @@ impl BREntity {
     /// (value of parameter write.surfacecurve.mode)
     pub fn get_p_curve_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BREntity_get_p_curve_mode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BREntity_get_p_curve_mode(self as *const Self)
         })
     }
 }
@@ -276,11 +278,11 @@ impl BREntity {
 /// . Vertex
 /// . Edge
 /// . Wire
-pub use crate::ffi::BRepToIGES_BRShell as BRShell;
+pub use crate::ffi_types::BRepToIGES_BRShell as BRShell;
 
 unsafe impl crate::CppDeletable for BRShell {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepToIGES_BRShell_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_destructor(ptr);
     }
 }
 
@@ -288,7 +290,9 @@ impl BRShell {
     /// **Source:** `BRepToIGES_BRShell.hxx`:42 - `BRepToIGES_BRShell::BRepToIGES_BRShell()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BRShell_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_ctor(),
+            ))
         }
     }
 
@@ -296,7 +300,7 @@ impl BRShell {
     pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_ctor_brentity(BR),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_ctor_brentity(BR),
             ))
         }
     }
@@ -309,10 +313,10 @@ impl BRShell {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_transfer_shell_shape_progressrange(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_transfer_shell_shape_progressrange(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -328,10 +332,10 @@ impl BRShell {
         &mut self,
         start: &crate::topo_ds::Shell,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_transfer_shell_shell_progressrange(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_transfer_shell_shell_progressrange(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -347,10 +351,14 @@ impl BRShell {
         &mut self,
         start: &crate::topo_ds::Face,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_transfer_face(self as *mut Self, start, theProgress),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_transfer_face(
+                    self as *mut Self,
+                    start,
+                    theProgress,
+                ),
             ))
         }
     }
@@ -358,40 +366,49 @@ impl BRShell {
     /// Upcast to BRepToIGES_BREntity
     pub fn as_br_entity(&self) -> &BREntity {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepToIGES_BRShell_as_BRepToIGES_BREntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_as_BRepToIGES_BREntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepToIGES_BREntity (mutable)
     pub fn as_br_entity_mut(&mut self) -> &mut BREntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepToIGES_BRShell_as_BRepToIGES_BREntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_as_BRepToIGES_BREntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -399,22 +416,29 @@ impl BRShell {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetUnit(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
-    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -424,10 +448,10 @@ impl BRShell {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_inherited_TransferShape(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_TransferShape(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -439,7 +463,10 @@ impl BRShell {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -447,10 +474,13 @@ impl BRShell {
     pub fn get_shape_result(
         &self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRShell_inherited_GetShapeResult(self as *const Self, start),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetShapeResult(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -459,10 +489,10 @@ impl BRShell {
     pub fn set_shape_result(
         &mut self,
         start: &crate::topo_ds::Shape,
-        result: &crate::ffi::HandleStandardTransient,
+        result: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -473,14 +503,18 @@ impl BRShell {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:109 - `BRepToIGES_BREntity::GetConvertSurfaceMode()`
     pub fn get_convert_surface_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_GetConvertSurfaceMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetConvertSurfaceMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:113 - `BRepToIGES_BREntity::GetPCurveMode()`
     pub fn get_p_curve_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRShell_inherited_GetPCurveMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRShell_inherited_GetPCurveMode(
+                self as *const Self,
+            )
         })
     }
 }
@@ -495,11 +529,11 @@ impl BRShell {
 /// . Vertex
 /// . Edge
 /// . Wire
-pub use crate::ffi::BRepToIGES_BRSolid as BRSolid;
+pub use crate::ffi_types::BRepToIGES_BRSolid as BRSolid;
 
 unsafe impl crate::CppDeletable for BRSolid {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepToIGES_BRSolid_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_destructor(ptr);
     }
 }
 
@@ -507,7 +541,9 @@ impl BRSolid {
     /// **Source:** `BRepToIGES_BRSolid.hxx`:41 - `BRepToIGES_BRSolid::BRepToIGES_BRSolid()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BRSolid_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_ctor(),
+            ))
         }
     }
 
@@ -515,7 +551,7 @@ impl BRSolid {
     pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_ctor_brentity(BR),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_ctor_brentity(BR),
             ))
         }
     }
@@ -528,10 +564,10 @@ impl BRSolid {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_transfer_solid_shape_progressrange(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_transfer_solid_shape_progressrange(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -547,10 +583,10 @@ impl BRSolid {
         &mut self,
         start: &crate::topo_ds::Solid,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_transfer_solid_solid_progressrange(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_transfer_solid_solid_progressrange(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -566,10 +602,10 @@ impl BRSolid {
         &mut self,
         start: &crate::topo_ds::CompSolid,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_transfer_comp_solid(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_transfer_comp_solid(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -585,10 +621,10 @@ impl BRSolid {
         &mut self,
         start: &crate::topo_ds::Compound,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_transfer_compound(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_transfer_compound(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -600,40 +636,49 @@ impl BRSolid {
     /// Upcast to BRepToIGES_BREntity
     pub fn as_br_entity(&self) -> &BREntity {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepToIGES_BRSolid_as_BRepToIGES_BREntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_as_BRepToIGES_BREntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepToIGES_BREntity (mutable)
     pub fn as_br_entity_mut(&mut self) -> &mut BREntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepToIGES_BRSolid_as_BRepToIGES_BREntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_as_BRepToIGES_BREntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -641,22 +686,29 @@ impl BRSolid {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetUnit(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
-    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -666,10 +718,10 @@ impl BRSolid {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_inherited_TransferShape(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_TransferShape(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -681,7 +733,10 @@ impl BRSolid {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -689,10 +744,13 @@ impl BRSolid {
     pub fn get_shape_result(
         &self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRSolid_inherited_GetShapeResult(self as *const Self, start),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetShapeResult(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -701,10 +759,10 @@ impl BRSolid {
     pub fn set_shape_result(
         &mut self,
         start: &crate::topo_ds::Shape,
-        result: &crate::ffi::HandleStandardTransient,
+        result: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_SetShapeResult(
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_SetShapeResult(
                 self as *mut Self,
                 start,
                 result,
@@ -715,14 +773,18 @@ impl BRSolid {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:109 - `BRepToIGES_BREntity::GetConvertSurfaceMode()`
     pub fn get_convert_surface_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_GetConvertSurfaceMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetConvertSurfaceMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:113 - `BRepToIGES_BREntity::GetPCurveMode()`
     pub fn get_p_curve_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRSolid_inherited_GetPCurveMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRSolid_inherited_GetPCurveMode(
+                self as *const Self,
+            )
         })
     }
 }
@@ -737,11 +799,11 @@ impl BRSolid {
 /// . Vertex
 /// . Edge
 /// . Wire
-pub use crate::ffi::BRepToIGES_BRWire as BRWire;
+pub use crate::ffi_types::BRepToIGES_BRWire as BRWire;
 
 unsafe impl crate::CppDeletable for BRWire {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepToIGES_BRWire_destructor(ptr);
+        crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_destructor(ptr);
     }
 }
 
@@ -749,7 +811,9 @@ impl BRWire {
     /// **Source:** `BRepToIGES_BRWire.hxx`:47 - `BRepToIGES_BRWire::BRepToIGES_BRWire()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BRWire_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_ctor(),
+            ))
         }
     }
 
@@ -757,7 +821,7 @@ impl BRWire {
     pub fn new_brentity(BR: &BREntity) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_ctor_brentity(BR),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_ctor_brentity(BR),
             ))
         }
     }
@@ -770,10 +834,13 @@ impl BRWire {
     pub fn transfer_wire_shape(
         &mut self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_wire_shape(self as *mut Self, start),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_wire_shape(
+                    self as *mut Self,
+                    start,
+                ),
             ))
         }
     }
@@ -785,10 +852,13 @@ impl BRWire {
     pub fn transfer_vertex_vertex(
         &mut self,
         myvertex: &crate::topo_ds::Vertex,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex(self as *mut Self, myvertex),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_vertex_vertex(
+                    self as *mut Self,
+                    myvertex,
+                ),
             ))
         }
     }
@@ -803,10 +873,10 @@ impl BRWire {
         myvertex: &crate::topo_ds::Vertex,
         myedge: &crate::topo_ds::Edge,
         parameter: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex_edge_real(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_vertex_vertex_edge_real(
                     self as *mut Self,
                     myvertex,
                     myedge,
@@ -829,10 +899,10 @@ impl BRWire {
         myedge: &crate::topo_ds::Edge,
         myface: &crate::topo_ds::Face,
         parameter: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex_edge_face_real(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_vertex_vertex_edge_face_real(
                     self as *mut Self,
                     myvertex,
                     myedge,
@@ -854,12 +924,12 @@ impl BRWire {
         &mut self,
         myvertex: &crate::topo_ds::Vertex,
         myedge: &crate::topo_ds::Edge,
-        mysurface: &crate::ffi::HandleGeomSurface,
+        mysurface: &crate::ffi_types::HandleGeomSurface,
         myloc: &crate::top_loc::Location,
         parameter: &mut f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex_edge_handlegeomsurface_location_real(self as *mut Self, myvertex, myedge, mysurface, myloc, parameter)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_vertex_vertex_edge_handlegeomsurface_location_real(self as *mut Self, myvertex, myedge, mysurface, myloc, parameter)))
         }
     }
 
@@ -873,10 +943,10 @@ impl BRWire {
         myvertex: &crate::topo_ds::Vertex,
         myface: &crate::topo_ds::Face,
         mypoint: &mut crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_vertex_vertex_face_pnt2d(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_vertex_vertex_face_pnt2d(
                     self as *mut Self,
                     myvertex,
                     myface,
@@ -897,18 +967,11 @@ impl BRWire {
     pub fn transfer_edge_edge_datamapofshapeshape_bool(
         &mut self,
         theEdge: &crate::topo_ds::Edge,
-        theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
+        theOriginMap: &crate::ffi_types::TopTools_DataMapOfShapeShape,
         theIsBRepMode: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_edge_edge_datamapofshapeshape_bool(
-                    self as *mut Self,
-                    theEdge,
-                    theOriginMap,
-                    theIsBRepMode,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_edge_edge_datamapofshapeshape_bool(self as *mut Self, theEdge, theOriginMap, theIsBRepMode)))
         }
     }
 
@@ -925,21 +988,12 @@ impl BRWire {
         &mut self,
         theEdge: &crate::topo_ds::Edge,
         theFace: &crate::topo_ds::Face,
-        theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
+        theOriginMap: &crate::ffi_types::TopTools_DataMapOfShapeShape,
         theLength: f64,
         theIsBRepMode: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_edge_edge_face_datamapofshapeshape_real_bool(
-                    self as *mut Self,
-                    theEdge,
-                    theFace,
-                    theOriginMap,
-                    theLength,
-                    theIsBRepMode,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_edge_edge_face_datamapofshapeshape_real_bool(self as *mut Self, theEdge, theFace, theOriginMap, theLength, theIsBRepMode)))
         }
     }
 
@@ -950,10 +1004,13 @@ impl BRWire {
     pub fn transfer_wire_wire(
         &mut self,
         mywire: &crate::topo_ds::Wire,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_transfer_wire_wire(self as *mut Self, mywire),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_wire_wire(
+                    self as *mut Self,
+                    mywire,
+                ),
             ))
         }
     }
@@ -972,52 +1029,61 @@ impl BRWire {
         &mut self,
         theWire: &crate::topo_ds::Wire,
         theFace: &crate::topo_ds::Face,
-        theOriginMap: &crate::ffi::TopTools_DataMapOfShapeShape,
-        theCurve2d: &mut crate::ffi::HandleIGESDataIGESEntity,
+        theOriginMap: &crate::ffi_types::TopTools_DataMapOfShapeShape,
+        theCurve2d: &mut crate::ffi_types::HandleIGESDataIGESEntity,
         theLength: f64,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepToIGES_BRWire_transfer_wire_wire_face_datamapofshapeshape_handleigesdataigesentity_real(self as *mut Self, theWire, theFace, theOriginMap, theCurve2d, theLength)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_transfer_wire_wire_face_datamapofshapeshape_handleigesdataigesentity_real(self as *mut Self, theWire, theFace, theOriginMap, theCurve2d, theLength)))
         }
     }
 
     /// Upcast to BRepToIGES_BREntity
     pub fn as_br_entity(&self) -> &BREntity {
         unsafe {
-            &*crate::check_result(crate::ffi::BRepToIGES_BRWire_as_BRepToIGES_BREntity(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_as_BRepToIGES_BREntity(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to BRepToIGES_BREntity (mutable)
     pub fn as_br_entity_mut(&mut self) -> &mut BREntity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::BRepToIGES_BRWire_as_BRepToIGES_BREntity_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_as_BRepToIGES_BREntity_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:44 - `BRepToIGES_BREntity::Init()`
     pub fn init(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_Init(self as *mut Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_Init(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:47 - `BRepToIGES_BREntity::SetModel()`
-    pub fn set_model(&mut self, model: &crate::ffi::HandleIGESDataIGESModel) {
+    pub fn set_model(&mut self, model: &crate::ffi_types::HandleIGESDataIGESModel) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_SetModel(self as *mut Self, model)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_SetModel(
+                self as *mut Self,
+                model,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:50 - `BRepToIGES_BREntity::GetModel()`
-    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESModel> {
+    pub fn get_model(&self) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESModel> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_inherited_GetModel(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetModel(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1025,22 +1091,29 @@ impl BRWire {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:54 - `BRepToIGES_BREntity::GetUnit()`
     pub fn get_unit(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_GetUnit(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetUnit(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:57 - `BRepToIGES_BREntity::SetTransferProcess()`
-    pub fn set_transfer_process(&mut self, TP: &crate::ffi::HandleTransferFinderProcess) {
+    pub fn set_transfer_process(&mut self, TP: &crate::ffi_types::HandleTransferFinderProcess) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_SetTransferProcess(self as *mut Self, TP)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_SetTransferProcess(
+                self as *mut Self,
+                TP,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:60 - `BRepToIGES_BREntity::GetTransferProcess()`
-    pub fn get_transfer_process(&self) -> crate::OwnedPtr<crate::ffi::HandleTransferFinderProcess> {
+    pub fn get_transfer_process(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTransferFinderProcess> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_inherited_GetTransferProcess(self as *const Self),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetTransferProcess(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1050,10 +1123,10 @@ impl BRWire {
         &mut self,
         start: &crate::topo_ds::Shape,
         theProgress: &crate::message::ProgressRange,
-    ) -> crate::OwnedPtr<crate::ffi::HandleIGESDataIGESEntity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleIGESDataIGESEntity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_inherited_TransferShape(
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_TransferShape(
                     self as *mut Self,
                     start,
                     theProgress,
@@ -1065,7 +1138,10 @@ impl BRWire {
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:84 - `BRepToIGES_BREntity::HasShapeResult()`
     pub fn has_shape_result(&self, start: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_HasShapeResult(self as *const Self, start)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_HasShapeResult(
+                self as *const Self,
+                start,
+            )
         })
     }
 
@@ -1073,10 +1149,13 @@ impl BRWire {
     pub fn get_shape_result(
         &self,
         start: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepToIGES_BRWire_inherited_GetShapeResult(self as *const Self, start),
+                crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetShapeResult(
+                    self as *const Self,
+                    start,
+                ),
             ))
         }
     }
@@ -1085,24 +1164,32 @@ impl BRWire {
     pub fn set_shape_result(
         &mut self,
         start: &crate::topo_ds::Shape,
-        result: &crate::ffi::HandleStandardTransient,
+        result: &crate::ffi_types::HandleStandardTransient,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_SetShapeResult(self as *mut Self, start, result)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_SetShapeResult(
+                self as *mut Self,
+                start,
+                result,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:109 - `BRepToIGES_BREntity::GetConvertSurfaceMode()`
     pub fn get_convert_surface_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_GetConvertSurfaceMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetConvertSurfaceMode(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `BRepToIGES_BREntity.hxx`:113 - `BRepToIGES_BREntity::GetPCurveMode()`
     pub fn get_p_curve_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepToIGES_BRWire_inherited_GetPCurveMode(self as *const Self)
+            crate::ffi_extern_TKDEIGES::BRepToIGES_BRWire_inherited_GetPCurveMode(
+                self as *const Self,
+            )
         })
     }
 }

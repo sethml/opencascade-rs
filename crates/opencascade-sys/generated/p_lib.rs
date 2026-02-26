@@ -9,7 +9,7 @@
 /// **Source:** `PLib.hxx`:83 - `PLib::Bin`
 /// Returns the Binomial Cnp. N should be <= BSplCLib::MaxDegree().
 pub fn bin(N: i32, P: i32) -> f64 {
-    crate::check_result(unsafe { crate::ffi::PLib_bin(N, P) })
+    crate::check_result(unsafe { crate::ffi_extern_TKMath::PLib_bin(N, P) })
 }
 /// **Source:** `PLib.hxx`:116 - `PLib::RationalDerivative`
 /// Computes the derivatives of a ratio at order
@@ -52,7 +52,9 @@ pub fn rational_derivative_int3_real2_bool(
     All: bool,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_rational_derivative_int3_real2_bool(Degree, N, Dimension, Ders, RDers, All)
+        crate::ffi_extern_TKMath::PLib_rational_derivative_int3_real2_bool(
+            Degree, N, Dimension, Ders, RDers, All,
+        )
     })
 }
 /// **Source:** `PLib.hxx`:152 - `PLib::RationalDerivatives`
@@ -93,7 +95,7 @@ pub fn rational_derivatives(
     RationalDerivates: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_rational_derivatives(
+        crate::ffi_extern_TKMath::PLib_rational_derivatives(
             DerivativesRequest,
             Dimension,
             PolesDerivatives,
@@ -138,7 +140,7 @@ pub fn eval_polynomial(
     Results: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_eval_polynomial(
+        crate::ffi_extern_TKMath::PLib_eval_polynomial(
             U,
             DerivativeOrder,
             Degree,
@@ -159,7 +161,7 @@ pub fn no_derivative_eval_polynomial(
     Results: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_no_derivative_eval_polynomial(
+        crate::ffi_extern_TKMath::PLib_no_derivative_eval_polynomial(
             U,
             Degree,
             Dimension,
@@ -219,7 +221,7 @@ pub fn eval_poly2_var(
     Results: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_eval_poly2_var(
+        crate::ffi_extern_TKMath::PLib_eval_poly2_var(
             U,
             V,
             UDerivativeOrder,
@@ -254,7 +256,7 @@ pub fn eval_lagrange(
     Results: &mut f64,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::PLib_eval_lagrange(
+        crate::ffi_extern_TKMath::PLib_eval_lagrange(
             U,
             DerivativeOrder,
             Degree,
@@ -312,7 +314,7 @@ pub fn eval_cubic_hermite(
     Results: &mut f64,
 ) -> i32 {
     crate::check_result(unsafe {
-        crate::ffi::PLib_eval_cubic_hermite(
+        crate::ffi_extern_TKMath::PLib_eval_cubic_hermite(
             U,
             DerivativeOrder,
             Dimension,
@@ -350,7 +352,7 @@ pub fn hermite_coefficients(
     MatrixCoefs: &mut crate::math::Matrix,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::PLib_hermite_coefficients(
+        crate::ffi_extern_TKMath::PLib_hermite_coefficients(
             FirstParameter,
             LastParameter,
             FirstOrder,
@@ -382,7 +384,7 @@ pub fn jacobi_parameters(
     WorkDegree: &mut i32,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_jacobi_parameters(
+        crate::ffi_extern_TKMath::PLib_jacobi_parameters(
             ConstraintOrder.into(),
             MaxDegree,
             Code,
@@ -394,13 +396,15 @@ pub fn jacobi_parameters(
 /// **Source:** `PLib.hxx`:427 - `PLib::NivConstr`
 /// translates from GeomAbs_Shape to Integer
 pub fn niv_constr(ConstraintOrder: crate::geom_abs::Shape) -> i32 {
-    crate::check_result(unsafe { crate::ffi::PLib_niv_constr(ConstraintOrder.into()) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKMath::PLib_niv_constr(ConstraintOrder.into())
+    })
 }
 /// **Source:** `PLib.hxx`:430 - `PLib::ConstraintOrder`
 /// translates from Integer to GeomAbs_Shape
 pub fn constraint_order(NivConstr: i32) -> crate::geom_abs::Shape {
     crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-        crate::ffi::PLib_constraint_order(NivConstr)
+        crate::ffi_extern_TKMath::PLib_constraint_order(NivConstr)
     }))
     .unwrap()
 }
@@ -414,7 +418,14 @@ pub fn eval_length_int2_real4(
     Length: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_eval_length_int2_real4(Degree, Dimension, PolynomialCoeff, U1, U2, Length)
+        crate::ffi_extern_TKMath::PLib_eval_length_int2_real4(
+            Degree,
+            Dimension,
+            PolynomialCoeff,
+            U1,
+            U2,
+            Length,
+        )
     })
 }
 /// **Source:** `PLib.hxx`:439 - `PLib::EvalLength`
@@ -429,7 +440,7 @@ pub fn eval_length_int2_real6(
     Error: &mut f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::PLib_eval_length_int2_real6(
+        crate::ffi_extern_TKMath::PLib_eval_length_int2_real6(
             Degree,
             Dimension,
             PolynomialCoeff,
@@ -443,7 +454,7 @@ pub fn eval_length_int2_real6(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From PLib_Base.hxx
@@ -451,11 +462,11 @@ pub use crate::ffi::HandleStandardTransient;
 
 /// **Source:** `PLib_Base.hxx`:32 - `PLib_Base`
 /// To work with different polynomial's Bases
-pub use crate::ffi::PLib_Base as Base;
+pub use crate::ffi_types::PLib_Base as Base;
 
 unsafe impl crate::CppDeletable for Base {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PLib_Base_destructor(ptr);
+        crate::ffi_extern_TKMath::PLib_Base_destructor(ptr);
     }
 }
 
@@ -466,11 +477,11 @@ impl Base {
         &self,
         Dimension: i32,
         Degree: i32,
-        CoeffinBase: &crate::ffi::TColStd_Array1OfReal,
-        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+        CoeffinBase: &crate::ffi_types::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_to_coefficients(
+            crate::ffi_extern_TKMath::PLib_Base_to_coefficients(
                 self as *const Self,
                 Dimension,
                 Degree,
@@ -482,9 +493,9 @@ impl Base {
 
     /// **Source:** `PLib_Base.hxx`:43 - `PLib_Base::D0()`
     /// Compute the values of the basis functions in u
-    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_d0(self as *mut Self, U, BasisValue)
+            crate::ffi_extern_TKMath::PLib_Base_d0(self as *mut Self, U, BasisValue)
         })
     }
 
@@ -494,11 +505,11 @@ impl Base {
     pub fn d1(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_d1(self as *mut Self, U, BasisValue, BasisD1)
+            crate::ffi_extern_TKMath::PLib_Base_d1(self as *mut Self, U, BasisValue, BasisD1)
         })
     }
 
@@ -508,12 +519,18 @@ impl Base {
     pub fn d2(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+            crate::ffi_extern_TKMath::PLib_Base_d2(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+            )
         })
     }
 
@@ -523,20 +540,29 @@ impl Base {
     pub fn d3(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_d3(self as *mut Self, U, BasisValue, BasisD1, BasisD2, BasisD3)
+            crate::ffi_extern_TKMath::PLib_Base_d3(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+                BasisD3,
+            )
         })
     }
 
     /// **Source:** `PLib_Base.hxx`:67 - `PLib_Base::WorkDegree()`
     /// returns WorkDegree
     pub fn work_degree(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::PLib_Base_work_degree(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKMath::PLib_Base_work_degree(self as *const Self)
+        })
     }
 
     /// **Source:** `PLib_Base.hxx`:74 - `PLib_Base::ReduceDegree()`
@@ -555,7 +581,7 @@ impl Base {
         MaxError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_reduce_degree(
+            crate::ffi_extern_TKMath::PLib_Base_reduce_degree(
                 self as *const Self,
                 Dimension,
                 MaxDegree,
@@ -568,51 +594,61 @@ impl Base {
     }
 
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PLib_Base_dynamic_type(self as *const Self))) }
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::PLib_Base_dynamic_type(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::PLib_Base_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKMath::PLib_Base_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `PLib_Base.hxx`:81 - `PLib_Base::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PLib_Base_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKMath::PLib_Base_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PLib_Base_as_Standard_Transient(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::PLib_Base_as_Standard_Transient(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PLib_Base_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::PLib_Base_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_Base_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_Base_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -620,7 +656,7 @@ impl Base {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PLib_Base_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::PLib_Base_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -633,56 +669,66 @@ impl Base {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_Base_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_Base_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_Base_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_Base_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePLibBase;
+pub use crate::ffi_types::HandlePLibBase;
 
 unsafe impl crate::CppDeletable for HandlePLibBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePLibBase_destructor(ptr);
+        crate::ffi_extern_TKMath::HandlePLibBase_destructor(ptr);
     }
 }
 
 impl HandlePLibBase {
     /// Dereference this Handle to access the underlying PLib_Base
-    pub fn get(&self) -> &crate::ffi::PLib_Base {
-        unsafe { &*crate::check_result(crate::ffi::HandlePLibBase_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PLib_Base {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKMath::HandlePLibBase_get(self as *const Self))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_Base
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_Base {
-        unsafe { &mut *crate::check_result(crate::ffi::HandlePLibBase_get_mut(self as *mut Self)) }
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PLib_Base {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandlePLibBase_get_mut(
+                self as *mut Self,
+            ))
+        }
     }
 
     /// Upcast Handle<PLib_Base> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePLibBase_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandlePLibBase_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -692,9 +738,11 @@ impl HandlePLibBase {
     /// Returns `None` if the handle does not point to a `PLib_HermitJacobi` (or subclass).
     pub fn downcast_to_hermit_jacobi(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePLibHermitJacobi>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePLibBase_downcast_to_HandlePLibHermitJacobi(self as *const Self)
+            crate::ffi_extern_TKMath::HandlePLibBase_downcast_to_HandlePLibHermitJacobi(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -708,9 +756,11 @@ impl HandlePLibBase {
     /// Returns `None` if the handle does not point to a `PLib_JacobiPolynomial` (or subclass).
     pub fn downcast_to_jacobi_polynomial(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePLibJacobiPolynomial>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePLibBase_downcast_to_HandlePLibJacobiPolynomial(self as *const Self)
+            crate::ffi_extern_TKMath::HandlePLibBase_downcast_to_HandlePLibJacobiPolynomial(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -725,11 +775,11 @@ impl HandlePLibBase {
 // ========================
 
 /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:28 - `PLib_DoubleJacobiPolynomial`
-pub use crate::ffi::PLib_DoubleJacobiPolynomial as DoubleJacobiPolynomial;
+pub use crate::ffi_types::PLib_DoubleJacobiPolynomial as DoubleJacobiPolynomial;
 
 unsafe impl crate::CppDeletable for DoubleJacobiPolynomial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PLib_DoubleJacobiPolynomial_destructor(ptr);
+        crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_destructor(ptr);
     }
 }
 
@@ -738,22 +788,18 @@ impl DoubleJacobiPolynomial {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_ctor(),
+                crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_ctor(),
             ))
         }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:35 - `PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial()`
     pub fn new_handleplibjacobipolynomial2(
-        JacPolU: &crate::ffi::HandlePLibJacobiPolynomial,
-        JacPolV: &crate::ffi::HandlePLibJacobiPolynomial,
+        JacPolU: &crate::ffi_types::HandlePLibJacobiPolynomial,
+        JacPolV: &crate::ffi_types::HandlePLibJacobiPolynomial,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_ctor_handleplibjacobipolynomial2(
-                    JacPolU, JacPolV,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_ctor_handleplibjacobipolynomial2(JacPolU, JacPolV)))
         }
     }
 
@@ -764,10 +810,10 @@ impl DoubleJacobiPolynomial {
         DegreeU: i32,
         DegreeV: i32,
         dJacCoeff: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_max_error_u(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_max_error_u(
                 self as *const Self,
                 Dimension,
                 DegreeU,
@@ -785,10 +831,10 @@ impl DoubleJacobiPolynomial {
         DegreeU: i32,
         DegreeV: i32,
         dJacCoeff: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_max_error_v(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_max_error_v(
                 self as *const Self,
                 Dimension,
                 DegreeU,
@@ -808,11 +854,11 @@ impl DoubleJacobiPolynomial {
         MinDegreeV: i32,
         MaxDegreeV: i32,
         dJacCoeff: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
         Error: f64,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_max_error(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_max_error(
                 self as *const Self,
                 Dimension,
                 MinDegreeU,
@@ -835,14 +881,14 @@ impl DoubleJacobiPolynomial {
         MinDegreeV: i32,
         MaxDegreeV: i32,
         dJacCoeff: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
         EpmsCut: f64,
         MaxError: &mut f64,
         NewDegreeU: &mut i32,
         NewDegreeV: &mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_reduce_degree(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_reduce_degree(
                 self as *const Self,
                 Dimension,
                 MinDegreeU,
@@ -866,10 +912,10 @@ impl DoubleJacobiPolynomial {
         DegreeU: i32,
         DegreeV: i32,
         dJacCoeff: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_average_error(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_average_error(
                 self as *const Self,
                 Dimension,
                 DegreeU,
@@ -886,11 +932,11 @@ impl DoubleJacobiPolynomial {
         Dimension: i32,
         DegreeU: i32,
         DegreeV: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
-        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_DoubleJacobiPolynomial_w_double_jacobi_to_coefficients(
+            crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_w_double_jacobi_to_coefficients(
                 self as *const Self,
                 Dimension,
                 DegreeU,
@@ -903,40 +949,44 @@ impl DoubleJacobiPolynomial {
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:84 - `PLib_DoubleJacobiPolynomial::U()`
     /// returns myJacPolU;
-    pub fn u(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+    pub fn u(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePLibJacobiPolynomial> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_u(self as *const Self),
+                crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_u(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:87 - `PLib_DoubleJacobiPolynomial::V()`
     /// returns myJacPolV;
-    pub fn v(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+    pub fn v(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePLibJacobiPolynomial> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_v(self as *const Self),
+                crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_v(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:90 - `PLib_DoubleJacobiPolynomial::TabMaxU()`
     /// returns myTabMaxU;
-    pub fn tab_max_u(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn tab_max_u(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_tab_max_u(self as *const Self),
+                crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_tab_max_u(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `PLib_DoubleJacobiPolynomial.hxx`:93 - `PLib_DoubleJacobiPolynomial::TabMaxV()`
     /// returns myTabMaxV;
-    pub fn tab_max_v(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn tab_max_v(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_DoubleJacobiPolynomial_tab_max_v(self as *const Self),
+                crate::ffi_extern_TKMath::PLib_DoubleJacobiPolynomial_tab_max_v(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -978,11 +1028,11 @@ impl DoubleJacobiPolynomial {
 /// @code
 /// Q(t) = c2*iordre+2  J0(t) + ...+ cDegree JDegree-2*iordre-2
 /// @endcode
-pub use crate::ffi::PLib_HermitJacobi as HermitJacobi;
+pub use crate::ffi_types::PLib_HermitJacobi as HermitJacobi;
 
 unsafe impl crate::CppDeletable for HermitJacobi {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PLib_HermitJacobi_destructor(ptr);
+        crate::ffi_extern_TKMath::PLib_HermitJacobi_destructor(ptr);
     }
 }
 
@@ -999,7 +1049,10 @@ impl HermitJacobi {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_HermitJacobi_ctor_int_shape(WorkDegree, ConstraintOrder.into()),
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_ctor_int_shape(
+                    WorkDegree,
+                    ConstraintOrder.into(),
+                ),
             ))
         }
     }
@@ -1010,7 +1063,7 @@ impl HermitJacobi {
     /// NewDegree +1 to Degree
     pub fn max_error(&self, Dimension: i32, HermJacCoeff: &mut f64, NewDegree: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_max_error(
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_max_error(
                 self as *const Self,
                 Dimension,
                 HermJacCoeff,
@@ -1035,7 +1088,7 @@ impl HermitJacobi {
         MaxError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_reduce_degree(
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_reduce_degree(
                 self as *const Self,
                 Dimension,
                 MaxDegree,
@@ -1050,7 +1103,7 @@ impl HermitJacobi {
     /// **Source:** `PLib_HermitJacobi.hxx`:95 - `PLib_HermitJacobi::AverageError()`
     pub fn average_error(&self, Dimension: i32, HermJacCoeff: &mut f64, NewDegree: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_average_error(
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_average_error(
                 self as *const Self,
                 Dimension,
                 HermJacCoeff,
@@ -1065,11 +1118,11 @@ impl HermitJacobi {
         &self,
         Dimension: i32,
         Degree: i32,
-        HermJacCoeff: &crate::ffi::TColStd_Array1OfReal,
-        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+        HermJacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_to_coefficients(
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_to_coefficients(
                 self as *const Self,
                 Dimension,
                 Degree,
@@ -1081,9 +1134,9 @@ impl HermitJacobi {
 
     /// **Source:** `PLib_HermitJacobi.hxx`:106 - `PLib_HermitJacobi::D0()`
     /// Compute the values of the basis functions in u
-    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_d0(self as *mut Self, U, BasisValue)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_d0(self as *mut Self, U, BasisValue)
         })
     }
 
@@ -1093,11 +1146,16 @@ impl HermitJacobi {
     pub fn d1(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_d1(self as *mut Self, U, BasisValue, BasisD1)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_d1(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+            )
         })
     }
 
@@ -1107,12 +1165,18 @@ impl HermitJacobi {
     pub fn d2(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_d2(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+            )
         })
     }
 
@@ -1122,13 +1186,13 @@ impl HermitJacobi {
     pub fn d3(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_d3(
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_d3(
                 self as *mut Self,
                 U,
                 BasisValue,
@@ -1143,7 +1207,7 @@ impl HermitJacobi {
     /// returns WorkDegree
     pub fn work_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_work_degree(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_work_degree(self as *const Self)
         })
     }
 
@@ -1151,14 +1215,16 @@ impl HermitJacobi {
     /// returns NivConstr
     pub fn niv_constr(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_niv_constr(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_niv_constr(self as *const Self)
         })
     }
 
     /// **Source:** `PLib_HermitJacobi.hxx`:136 - `PLib_HermitJacobi::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PLib_HermitJacobi_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKMath::PLib_HermitJacobi_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1166,7 +1232,7 @@ impl HermitJacobi {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PLib_HermitJacobi_get_type_name(),
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1174,21 +1240,27 @@ impl HermitJacobi {
     }
 
     /// **Source:** `PLib_HermitJacobi.hxx`:136 - `PLib_HermitJacobi::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PLib_HermitJacobi_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to PLib_Base
     pub fn as_base(&self) -> &Base {
         unsafe {
-            &*crate::check_result(crate::ffi::PLib_HermitJacobi_as_PLib_Base(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::PLib_HermitJacobi_as_PLib_Base(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PLib_HermitJacobi_as_PLib_Base_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::PLib_HermitJacobi_as_PLib_Base_mut(
                 self as *mut Self,
             ))
         }
@@ -1197,43 +1269,53 @@ impl HermitJacobi {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PLib_HermitJacobi_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PLib_HermitJacobi_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePLibHermitJacobi> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePLibHermitJacobi> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PLib_HermitJacobi_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1241,7 +1323,7 @@ impl HermitJacobi {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PLib_HermitJacobi_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1254,69 +1336,83 @@ impl HermitJacobi {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_HermitJacobi_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_HermitJacobi_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePLibHermitJacobi;
+pub use crate::ffi_types::HandlePLibHermitJacobi;
 
 unsafe impl crate::CppDeletable for HandlePLibHermitJacobi {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePLibHermitJacobi_destructor(ptr);
+        crate::ffi_extern_TKMath::HandlePLibHermitJacobi_destructor(ptr);
     }
 }
 
 impl HandlePLibHermitJacobi {
     /// Dereference this Handle to access the underlying PLib_HermitJacobi
-    pub fn get(&self) -> &crate::ffi::PLib_HermitJacobi {
+    pub fn get(&self) -> &crate::ffi_types::PLib_HermitJacobi {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePLibHermitJacobi_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandlePLibHermitJacobi_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_HermitJacobi
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_HermitJacobi {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PLib_HermitJacobi {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePLibHermitJacobi_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandlePLibHermitJacobi_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PLib_HermitJacobi> to Handle<PLib_Base>
-    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
+    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePLibBase> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePLibHermitJacobi_to_HandlePLibBase(self as *const Self),
+                crate::ffi_extern_TKMath::HandlePLibHermitJacobi_to_HandlePLibBase(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PLib_HermitJacobi> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePLibHermitJacobi_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKMath::HandlePLibHermitJacobi_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1353,11 +1449,11 @@ impl HandlePLibHermitJacobi {
 /// The following coefficients represents the part of the
 /// polynomial in the Jacobi base ie Q(t)
 /// Q(t) = c2*iordre+2  J0(t) + ...+ cDegree JDegree-2*iordre-2
-pub use crate::ffi::PLib_JacobiPolynomial as JacobiPolynomial;
+pub use crate::ffi_types::PLib_JacobiPolynomial as JacobiPolynomial;
 
 unsafe impl crate::CppDeletable for JacobiPolynomial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PLib_JacobiPolynomial_destructor(ptr);
+        crate::ffi_extern_TKMath::PLib_JacobiPolynomial_destructor(ptr);
     }
 }
 
@@ -1374,7 +1470,7 @@ impl JacobiPolynomial {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_JacobiPolynomial_ctor_int_shape(
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_ctor_int_shape(
                     WorkDegree,
                     ConstraintOrder.into(),
                 ),
@@ -1392,9 +1488,17 @@ impl JacobiPolynomial {
     /// The possible values for NbGaussPoints are : 8, 10,
     /// 15, 20, 25, 30, 35, 40, 50, 61
     /// NbGaussPoints must be greater than Degree
-    pub fn points(&self, NbGaussPoints: i32, TabPoints: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn points(
+        &self,
+        NbGaussPoints: i32,
+        TabPoints: &mut crate::ffi_types::TColStd_Array1OfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_points(self as *const Self, NbGaussPoints, TabPoints)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_points(
+                self as *const Self,
+                NbGaussPoints,
+                TabPoints,
+            )
         })
     }
 
@@ -1408,9 +1512,13 @@ impl JacobiPolynomial {
     /// TabWeights (0,.) are only loaded for the odd values of NbGaussPoints
     /// The possible values for NbGaussPoints are : 8 , 10 , 15 ,20 ,25 , 30,
     /// 35 , 40 , 50 , 61 NbGaussPoints must be greater than Degree
-    pub fn weights(&self, NbGaussPoints: i32, TabWeights: &mut crate::ffi::TColStd_Array2OfReal) {
+    pub fn weights(
+        &self,
+        NbGaussPoints: i32,
+        TabWeights: &mut crate::ffi_types::TColStd_Array2OfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_weights(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_weights(
                 self as *const Self,
                 NbGaussPoints,
                 TabWeights,
@@ -1423,9 +1531,9 @@ impl JacobiPolynomial {
     /// abs ( W(t)*Jk(t) )for t bellonging to [-1,1]
     /// This values are loaded is the array TabMax(0,myWorkDegree-2*(myNivConst+1))
     /// MaxValue ( me ; TabMaxPointer : in  out  Real );
-    pub fn max_value(&self, TabMax: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn max_value(&self, TabMax: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_max_value(self as *const Self, TabMax)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_max_value(self as *const Self, TabMax)
         })
     }
 
@@ -1435,7 +1543,7 @@ impl JacobiPolynomial {
     /// NewDegree +1 to Degree
     pub fn max_error(&self, Dimension: i32, JacCoeff: &mut f64, NewDegree: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_max_error(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_max_error(
                 self as *const Self,
                 Dimension,
                 JacCoeff,
@@ -1460,7 +1568,7 @@ impl JacobiPolynomial {
         MaxError: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_reduce_degree(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_reduce_degree(
                 self as *const Self,
                 Dimension,
                 MaxDegree,
@@ -1475,7 +1583,7 @@ impl JacobiPolynomial {
     /// **Source:** `PLib_JacobiPolynomial.hxx`:120 - `PLib_JacobiPolynomial::AverageError()`
     pub fn average_error(&self, Dimension: i32, JacCoeff: &mut f64, NewDegree: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_average_error(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_average_error(
                 self as *const Self,
                 Dimension,
                 JacCoeff,
@@ -1490,11 +1598,11 @@ impl JacobiPolynomial {
         &self,
         Dimension: i32,
         Degree: i32,
-        JacCoeff: &crate::ffi::TColStd_Array1OfReal,
-        Coefficients: &mut crate::ffi::TColStd_Array1OfReal,
+        JacCoeff: &crate::ffi_types::TColStd_Array1OfReal,
+        Coefficients: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_to_coefficients(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_to_coefficients(
                 self as *const Self,
                 Dimension,
                 Degree,
@@ -1506,9 +1614,9 @@ impl JacobiPolynomial {
 
     /// **Source:** `PLib_JacobiPolynomial.hxx`:131 - `PLib_JacobiPolynomial::D0()`
     /// Compute the values of the basis functions in u
-    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi::TColStd_Array1OfReal) {
+    pub fn d0(&mut self, U: f64, BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_d0(self as *mut Self, U, BasisValue)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_d0(self as *mut Self, U, BasisValue)
         })
     }
 
@@ -1518,11 +1626,16 @@ impl JacobiPolynomial {
     pub fn d1(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_d1(self as *mut Self, U, BasisValue, BasisD1)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_d1(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+            )
         })
     }
 
@@ -1532,12 +1645,18 @@ impl JacobiPolynomial {
     pub fn d2(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_d2(self as *mut Self, U, BasisValue, BasisD1, BasisD2)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_d2(
+                self as *mut Self,
+                U,
+                BasisValue,
+                BasisD1,
+                BasisD2,
+            )
         })
     }
 
@@ -1547,13 +1666,13 @@ impl JacobiPolynomial {
     pub fn d3(
         &mut self,
         U: f64,
-        BasisValue: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD1: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD2: &mut crate::ffi::TColStd_Array1OfReal,
-        BasisD3: &mut crate::ffi::TColStd_Array1OfReal,
+        BasisValue: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD1: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD2: &mut crate::ffi_types::TColStd_Array1OfReal,
+        BasisD3: &mut crate::ffi_types::TColStd_Array1OfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_d3(
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_d3(
                 self as *mut Self,
                 U,
                 BasisValue,
@@ -1568,7 +1687,7 @@ impl JacobiPolynomial {
     /// returns WorkDegree
     pub fn work_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_work_degree(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_work_degree(self as *const Self)
         })
     }
 
@@ -1576,14 +1695,14 @@ impl JacobiPolynomial {
     /// returns NivConstr
     pub fn niv_constr(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_niv_constr(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_niv_constr(self as *const Self)
         })
     }
 
     /// **Source:** `PLib_JacobiPolynomial.hxx`:161 - `PLib_JacobiPolynomial::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PLib_JacobiPolynomial_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKMath::PLib_JacobiPolynomial_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1593,7 +1712,7 @@ impl JacobiPolynomial {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PLib_JacobiPolynomial_get_type_name(),
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1601,14 +1720,18 @@ impl JacobiPolynomial {
     }
 
     /// **Source:** `PLib_JacobiPolynomial.hxx`:161 - `PLib_JacobiPolynomial::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PLib_JacobiPolynomial_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to PLib_Base
     pub fn as_base(&self) -> &Base {
         unsafe {
-            &*crate::check_result(crate::ffi::PLib_JacobiPolynomial_as_PLib_Base(
+            &*crate::check_result(crate::ffi_extern_TKMath::PLib_JacobiPolynomial_as_PLib_Base(
                 self as *const Self,
             ))
         }
@@ -1617,52 +1740,62 @@ impl JacobiPolynomial {
     /// Upcast to PLib_Base (mutable)
     pub fn as_base_mut(&mut self) -> &mut Base {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PLib_JacobiPolynomial_as_PLib_Base_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_as_PLib_Base_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PLib_JacobiPolynomial_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePLibJacobiPolynomial> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePLibJacobiPolynomial> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PLib_JacobiPolynomial_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1670,7 +1803,7 @@ impl JacobiPolynomial {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PLib_JacobiPolynomial_inherited_This(self as *const Self)
+                crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1683,71 +1816,83 @@ impl JacobiPolynomial {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PLib_JacobiPolynomial_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKMath::PLib_JacobiPolynomial_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePLibJacobiPolynomial;
+pub use crate::ffi_types::HandlePLibJacobiPolynomial;
 
 unsafe impl crate::CppDeletable for HandlePLibJacobiPolynomial {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePLibJacobiPolynomial_destructor(ptr);
+        crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_destructor(ptr);
     }
 }
 
 impl HandlePLibJacobiPolynomial {
     /// Dereference this Handle to access the underlying PLib_JacobiPolynomial
-    pub fn get(&self) -> &crate::ffi::PLib_JacobiPolynomial {
+    pub fn get(&self) -> &crate::ffi_types::PLib_JacobiPolynomial {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePLibJacobiPolynomial_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PLib_JacobiPolynomial
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PLib_JacobiPolynomial {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PLib_JacobiPolynomial {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePLibJacobiPolynomial_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<PLib_JacobiPolynomial> to Handle<PLib_Base>
-    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi::HandlePLibBase> {
+    pub fn to_handle_base(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePLibBase> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePLibJacobiPolynomial_to_HandlePLibBase(self as *const Self),
+                crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_to_HandlePLibBase(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PLib_JacobiPolynomial> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePLibJacobiPolynomial_to_HandleStandardTransient(
+                crate::ffi_extern_TKMath::HandlePLibJacobiPolynomial_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))

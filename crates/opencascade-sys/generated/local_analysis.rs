@@ -13,20 +13,20 @@
 /// This function gives information about a variable CurveContinuity
 pub fn dump_surfacecontinuity_ostream(
     surfconti: &SurfaceContinuity,
-    o: &mut crate::ffi::Standard_OStream,
+    o: &mut crate::ffi_types::Standard_OStream,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::LocalAnalysis_dump_surfacecontinuity_ostream(surfconti, o)
+        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_dump_surfacecontinuity_ostream(surfconti, o)
     })
 }
 /// **Source:** `LocalAnalysis.hxx`:43 - `LocalAnalysis::Dump`
 /// This function gives information about a variable SurfaceContinuity
 pub fn dump_curvecontinuity_ostream(
     curvconti: &CurveContinuity,
-    o: &mut crate::ffi::Standard_OStream,
+    o: &mut crate::ffi_types::Standard_OStream,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::LocalAnalysis_dump_curvecontinuity_ostream(curvconti, o)
+        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_dump_curvecontinuity_ostream(curvconti, o)
     })
 }
 
@@ -69,11 +69,11 @@ impl TryFrom<i32> for StatusErrorType {
 /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:31 - `LocalAnalysis_CurveContinuity`
 /// This class gives tools to check local continuity C0
 /// C1 C2 G1 G2 between  two points situated on two curves
-pub use crate::ffi::LocalAnalysis_CurveContinuity as CurveContinuity;
+pub use crate::ffi_types::LocalAnalysis_CurveContinuity as CurveContinuity;
 
 unsafe impl crate::CppDeletable for CurveContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocalAnalysis_CurveContinuity_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_destructor(ptr);
     }
 }
 
@@ -169,9 +169,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real8(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -184,7 +184,7 @@ impl CurveContinuity {
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_CurveContinuity_ctor_handlegeomcurve_real_handlegeomcurve_real_shape_real8(Curv1, u1, Curv2, u2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, EpsG2, Percent, Maxlen)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_ctor_handlegeomcurve_real_handlegeomcurve_real_shape_real8(Curv1, u1, Curv2, u2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, EpsG2, Percent, Maxlen)))
         }
     }
 
@@ -279,9 +279,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real7(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -389,9 +389,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real6(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -497,9 +497,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real5(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -604,9 +604,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real4(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -710,9 +710,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real3(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -815,9 +815,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real2(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -919,9 +919,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape_real(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
@@ -1022,9 +1022,9 @@ impl CurveContinuity {
     /// where curvat1 is the curvature at the first point
     /// and curvat2 the curvature at the second point
     pub fn new_handlegeomcurve_real_handlegeomcurve_real_shape(
-        Curv1: &crate::ffi::HandleGeomCurve,
+        Curv1: &crate::ffi_types::HandleGeomCurve,
         u1: f64,
-        Curv2: &crate::ffi::HandleGeomCurve,
+        Curv2: &crate::ffi_types::HandleGeomCurve,
         u2: f64,
         Order: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
@@ -1036,14 +1036,16 @@ impl CurveContinuity {
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:139 - `LocalAnalysis_CurveContinuity::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:141 - `LocalAnalysis_CurveContinuity::StatusError()`
     pub fn status_error(&self) -> crate::local_analysis::StatusErrorType {
         crate::local_analysis::StatusErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_status_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_status_error(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1051,7 +1053,9 @@ impl CurveContinuity {
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:143 - `LocalAnalysis_CurveContinuity::ContinuityStatus()`
     pub fn continuity_status(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_continuity_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_continuity_status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -1059,91 +1063,107 @@ impl CurveContinuity {
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:145 - `LocalAnalysis_CurveContinuity::C0Value()`
     pub fn c0_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_c0_value(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_c0_value(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:147 - `LocalAnalysis_CurveContinuity::C1Angle()`
     pub fn c1_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_c1_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_c1_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:149 - `LocalAnalysis_CurveContinuity::C1Ratio()`
     pub fn c1_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_c1_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_c1_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:151 - `LocalAnalysis_CurveContinuity::C2Angle()`
     pub fn c2_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_c2_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_c2_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:153 - `LocalAnalysis_CurveContinuity::C2Ratio()`
     pub fn c2_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_c2_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_c2_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:155 - `LocalAnalysis_CurveContinuity::G1Angle()`
     pub fn g1_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_g1_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_g1_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:157 - `LocalAnalysis_CurveContinuity::G2Angle()`
     pub fn g2_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_g2_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_g2_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:159 - `LocalAnalysis_CurveContinuity::G2CurvatureVariation()`
     pub fn g2_curvature_variation(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_g2_curvature_variation(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_g2_curvature_variation(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:161 - `LocalAnalysis_CurveContinuity::IsC0()`
     pub fn is_c0(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_c0(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_c0(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:163 - `LocalAnalysis_CurveContinuity::IsC1()`
     pub fn is_c1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_c1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_c1(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:165 - `LocalAnalysis_CurveContinuity::IsC2()`
     pub fn is_c2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_c2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_c2(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:167 - `LocalAnalysis_CurveContinuity::IsG1()`
     pub fn is_g1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_g1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_g1(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_CurveContinuity.hxx`:169 - `LocalAnalysis_CurveContinuity::IsG2()`
     pub fn is_g2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_CurveContinuity_is_g2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_CurveContinuity_is_g2(self as *const Self)
         })
     }
 }
@@ -1155,11 +1175,11 @@ impl CurveContinuity {
 /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:32 - `LocalAnalysis_SurfaceContinuity`
 /// This class gives tools to check local continuity C0
 /// C1 C2 G1 G2 between  two points situated on two surfaces
-pub use crate::ffi::LocalAnalysis_SurfaceContinuity as SurfaceContinuity;
+pub use crate::ffi_types::LocalAnalysis_SurfaceContinuity as SurfaceContinuity;
 
 unsafe impl crate::CppDeletable for SurfaceContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::LocalAnalysis_SurfaceContinuity_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_destructor(ptr);
     }
 }
 
@@ -1249,10 +1269,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1265,17 +1285,17 @@ impl SurfaceContinuity {
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(Surf1, u1, v1, Surf2, u2, v2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_ctor_handlegeomsurface_real2_handlegeomsurface_real2_shape_real7(Surf1, u1, v1, Surf2, u2, v2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
         }
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -1286,7 +1306,7 @@ impl SurfaceContinuity {
         Maxlen: f64,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(curv1, curv2, U, Surf1, Surf2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_ctor_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(curv1, curv2, U, Surf1, Surf2, Order.into(), EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen)))
         }
     }
 
@@ -1304,7 +1324,7 @@ impl SurfaceContinuity {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::LocalAnalysis_SurfaceContinuity_ctor_real7(
+                crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_ctor_real7(
                     EpsNul, EpsC0, EpsC1, EpsC2, EpsG1, Percent, Maxlen,
                 ),
             ))
@@ -1396,10 +1416,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real6(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1501,10 +1521,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real5(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1604,10 +1624,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real4(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1706,10 +1726,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real3(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1807,10 +1827,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real2(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -1907,10 +1927,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape_real(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -2006,10 +2026,10 @@ impl SurfaceContinuity {
     /// - the maximum  normal curvature gap between the two
     /// points
     pub fn new_handlegeomsurface_real2_handlegeomsurface_real2_shape(
-        Surf1: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
         u1: f64,
         v1: f64,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         u2: f64,
         v2: f64,
         Order: crate::geom_abs::Shape,
@@ -2021,11 +2041,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real6(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2042,11 +2062,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real5(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2061,11 +2081,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real4(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2079,11 +2099,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real3(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2096,11 +2116,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real2(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
         EpsC0: f64,
@@ -2112,11 +2132,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
         EpsNul: f64,
     ) -> crate::OwnedPtr<Self> {
@@ -2127,11 +2147,11 @@ impl SurfaceContinuity {
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:135 - `LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity()`
     pub fn new_handlegeom2dcurve2_real_handlegeomsurface2_shape(
-        curv1: &crate::ffi::HandleGeom2dCurve,
-        curv2: &crate::ffi::HandleGeom2dCurve,
+        curv1: &crate::ffi_types::HandleGeom2dCurve,
+        curv2: &crate::ffi_types::HandleGeom2dCurve,
         U: f64,
-        Surf1: &crate::ffi::HandleGeomSurface,
-        Surf2: &crate::ffi::HandleGeomSurface,
+        Surf1: &crate::ffi_types::HandleGeomSurface,
+        Surf2: &crate::ffi_types::HandleGeomSurface,
         Order: crate::geom_abs::Shape,
     ) -> crate::OwnedPtr<Self> {
         Self::new_handlegeom2dcurve2_real_handlegeomsurface2_shape_real7(
@@ -2209,7 +2229,7 @@ impl SurfaceContinuity {
         Order: crate::geom_abs::Shape,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_compute_analysis(
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_compute_analysis(
                 self as *mut Self,
                 Surf1,
                 Surf2,
@@ -2221,14 +2241,18 @@ impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:163 - `LocalAnalysis_SurfaceContinuity::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_done(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:165 - `LocalAnalysis_SurfaceContinuity::ContinuityStatus()`
     pub fn continuity_status(&self) -> crate::geom_abs::Shape {
         crate::geom_abs::Shape::try_from(crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_continuity_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_continuity_status(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2236,7 +2260,9 @@ impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:167 - `LocalAnalysis_SurfaceContinuity::StatusError()`
     pub fn status_error(&self) -> crate::local_analysis::StatusErrorType {
         crate::local_analysis::StatusErrorType::try_from(crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_status_error(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_status_error(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -2244,112 +2270,134 @@ impl SurfaceContinuity {
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:169 - `LocalAnalysis_SurfaceContinuity::C0Value()`
     pub fn c0_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c0_value(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c0_value(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:171 - `LocalAnalysis_SurfaceContinuity::C1UAngle()`
     pub fn c1u_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c1u_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:173 - `LocalAnalysis_SurfaceContinuity::C1URatio()`
     pub fn c1u_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c1u_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c1u_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:175 - `LocalAnalysis_SurfaceContinuity::C1VAngle()`
     pub fn c1v_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c1v_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:177 - `LocalAnalysis_SurfaceContinuity::C1VRatio()`
     pub fn c1v_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c1v_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c1v_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:179 - `LocalAnalysis_SurfaceContinuity::C2UAngle()`
     pub fn c2u_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c2u_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:181 - `LocalAnalysis_SurfaceContinuity::C2URatio()`
     pub fn c2u_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c2u_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c2u_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:183 - `LocalAnalysis_SurfaceContinuity::C2VAngle()`
     pub fn c2v_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c2v_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:185 - `LocalAnalysis_SurfaceContinuity::C2VRatio()`
     pub fn c2v_ratio(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_c2v_ratio(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_c2v_ratio(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:187 - `LocalAnalysis_SurfaceContinuity::G1Angle()`
     pub fn g1_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_g1_angle(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_g1_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:189 - `LocalAnalysis_SurfaceContinuity::G2CurvatureGap()`
     pub fn g2_curvature_gap(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_g2_curvature_gap(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_g2_curvature_gap(
+                self as *const Self,
+            )
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:191 - `LocalAnalysis_SurfaceContinuity::IsC0()`
     pub fn is_c0(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c0(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_c0(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:193 - `LocalAnalysis_SurfaceContinuity::IsC1()`
     pub fn is_c1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_c1(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:195 - `LocalAnalysis_SurfaceContinuity::IsC2()`
     pub fn is_c2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_c2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_c2(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:197 - `LocalAnalysis_SurfaceContinuity::IsG1()`
     pub fn is_g1(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_g1(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_g1(self as *const Self)
         })
     }
 
     /// **Source:** `LocalAnalysis_SurfaceContinuity.hxx`:199 - `LocalAnalysis_SurfaceContinuity::IsG2()`
     pub fn is_g2(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::LocalAnalysis_SurfaceContinuity_is_g2(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::LocalAnalysis_SurfaceContinuity_is_g2(self as *const Self)
         })
     }
 }

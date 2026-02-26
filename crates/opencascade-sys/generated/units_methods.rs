@@ -11,14 +11,16 @@
 /// (integer value denoting unit, as described in IGES
 /// standard) in millimeters by default
 pub fn get_length_factor_value(theUnit: i32) -> f64 {
-    crate::check_result(unsafe { crate::ffi::UnitsMethods_get_length_factor_value(theUnit) })
+    crate::check_result(unsafe {
+        crate::ffi_extern_TKernel::UnitsMethods_get_length_factor_value(theUnit)
+    })
 }
 /// **Source:** `UnitsMethods.hxx`:35 - `UnitsMethods::GetCasCadeLengthUnit`
 /// Returns value of current internal unit for CASCADE
 /// in millemeters by default
 pub fn get_cas_cade_length_unit(theBaseUnit: crate::units_methods::LengthUnit) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into())
+        crate::ffi_extern_TKernel::UnitsMethods_get_cas_cade_length_unit(theBaseUnit.into())
     })
 }
 /// **Source:** `UnitsMethods.hxx`:39 - `UnitsMethods::SetCasCadeLengthUnit`
@@ -28,7 +30,7 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
     theBaseUnit: crate::units_methods::LengthUnit,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
+        crate::ffi_extern_TKernel::UnitsMethods_set_cas_cade_length_unit_real_lengthunit(
             theUnitValue,
             theBaseUnit.into(),
         )
@@ -40,7 +42,7 @@ pub fn set_cas_cade_length_unit_real_lengthunit(
 /// as described in IGES standard)
 pub fn set_cas_cade_length_unit_int(theUnit: i32) {
     crate::check_void_result(unsafe {
-        crate::ffi::UnitsMethods_set_cas_cade_length_unit_int(theUnit)
+        crate::ffi_extern_TKernel::UnitsMethods_set_cas_cade_length_unit_int(theUnit)
     })
 }
 /// **Source:** `UnitsMethods.hxx`:49 - `UnitsMethods::GetLengthUnitScale`
@@ -50,7 +52,10 @@ pub fn get_length_unit_scale(
     theToUnit: crate::units_methods::LengthUnit,
 ) -> f64 {
     crate::check_result(unsafe {
-        crate::ffi::UnitsMethods_get_length_unit_scale(theFromUnit.into(), theToUnit.into())
+        crate::ffi_extern_TKernel::UnitsMethods_get_length_unit_scale(
+            theFromUnit.into(),
+            theToUnit.into(),
+        )
     })
 }
 /// **Source:** `UnitsMethods.hxx`:53 - `UnitsMethods::GetLengthUnitByFactorValue`
@@ -60,7 +65,10 @@ pub fn get_length_unit_by_factor_value(
     theBaseUnit: crate::units_methods::LengthUnit,
 ) -> crate::units_methods::LengthUnit {
     crate::units_methods::LengthUnit::try_from(crate::check_result(unsafe {
-        crate::ffi::UnitsMethods_get_length_unit_by_factor_value(theFactorValue, theBaseUnit.into())
+        crate::ffi_extern_TKernel::UnitsMethods_get_length_unit_by_factor_value(
+            theFactorValue,
+            theBaseUnit.into(),
+        )
     }))
     .unwrap()
 }
@@ -72,7 +80,7 @@ pub fn dump_length_unit_real_lengthunit(
 ) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::check_result(
-            crate::ffi::UnitsMethods_dump_length_unit_real_lengthunit(
+            crate::ffi_extern_TKernel::UnitsMethods_dump_length_unit_real_lengthunit(
                 theScaleFactor,
                 theBaseUnit.into(),
             ),
@@ -88,7 +96,7 @@ pub fn dump_length_unit_lengthunit(
 ) -> std::string::String {
     unsafe {
         std::ffi::CStr::from_ptr(crate::check_result(
-            crate::ffi::UnitsMethods_dump_length_unit_lengthunit(theUnit.into()),
+            crate::ffi_extern_TKernel::UnitsMethods_dump_length_unit_lengthunit(theUnit.into()),
         ))
     }
     .to_string_lossy()
@@ -102,7 +110,10 @@ pub fn length_unit_from_string(
 ) -> crate::units_methods::LengthUnit {
     let c_theStr = std::ffi::CString::new(theStr).unwrap();
     crate::units_methods::LengthUnit::try_from(crate::check_result(unsafe {
-        crate::ffi::UnitsMethods_length_unit_from_string(c_theStr.as_ptr(), theCaseSensitive)
+        crate::ffi_extern_TKernel::UnitsMethods_length_unit_from_string(
+            c_theStr.as_ptr(),
+            theCaseSensitive,
+        )
     }))
     .unwrap()
 }

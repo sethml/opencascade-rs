@@ -21,11 +21,11 @@
 ///
 /// For more details look at:
 /// Anshuman Razdan - Knot Placement for B-Spline curve Approximation.
-pub use crate::ffi::ApproxInt_KnotTools as KnotTools;
+pub use crate::ffi_types::ApproxInt_KnotTools as KnotTools;
 
 unsafe impl crate::CppDeletable for KnotTools {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ApproxInt_KnotTools_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_destructor(ptr);
     }
 }
 
@@ -34,7 +34,9 @@ impl KnotTools {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ApproxInt_KnotTools_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_ctor(),
+            ))
         }
     }
 
@@ -51,18 +53,18 @@ impl KnotTools {
     /// @param theMinNbPnts - Minimal number of points per knot interval.
     /// @param theKnots - output knots sequence.
     pub fn build_knots(
-        thePntsXYZ: &crate::ffi::TColgp_Array1OfPnt,
-        thePntsU1V1: &crate::ffi::TColgp_Array1OfPnt2d,
-        thePntsU2V2: &crate::ffi::TColgp_Array1OfPnt2d,
-        thePars: &crate::ffi::math_Vector,
+        thePntsXYZ: &crate::ffi_types::TColgp_Array1OfPnt,
+        thePntsU1V1: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        thePntsU2V2: &crate::ffi_types::TColgp_Array1OfPnt2d,
+        thePars: &crate::ffi_types::math_Vector,
         theApproxXYZ: bool,
         theApproxU1V1: bool,
         theApproxU2V2: bool,
         theMinNbPnts: i32,
-        theKnots: &mut crate::ffi::NCollection_Vector_Standard_Integer,
+        theKnots: &mut crate::ffi_types::NCollection_Vector_Standard_Integer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ApproxInt_KnotTools_build_knots(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_build_knots(
                 thePntsXYZ,
                 thePntsU1V1,
                 thePntsU2V2,
@@ -79,14 +81,14 @@ impl KnotTools {
     /// **Source:** `ApproxInt_KnotTools.hxx`:75 - `ApproxInt_KnotTools::BuildCurvature()`
     /// Builds discrete curvature
     pub fn build_curvature(
-        theCoords: &crate::ffi::NCollection_LocalArray_Standard_Real,
+        theCoords: &crate::ffi_types::NCollection_LocalArray_Standard_Real,
         theDim: i32,
-        thePars: &crate::ffi::math_Vector,
-        theCurv: &mut crate::ffi::TColStd_Array1OfReal,
+        thePars: &crate::ffi_types::math_Vector,
+        theCurv: &mut crate::ffi_types::TColStd_Array1OfReal,
         theMaxCurv: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ApproxInt_KnotTools_build_curvature(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_build_curvature(
                 theCoords, theDim, thePars, theCurv, theMaxCurv,
             )
         })
@@ -95,7 +97,7 @@ impl KnotTools {
     /// **Source:** `ApproxInt_KnotTools.hxx`:82 - `ApproxInt_KnotTools::DefineParType()`
     /// Defines preferable parametrization type for theWL
     pub fn define_par_type(
-        theWL: &crate::ffi::HandleIntPatchWLine,
+        theWL: &crate::ffi_types::HandleIntPatchWLine,
         theFpar: i32,
         theLpar: i32,
         theApproxXYZ: bool,
@@ -103,7 +105,7 @@ impl KnotTools {
         theApproxU2V2: bool,
     ) -> crate::approx::ParametrizationType {
         crate::approx::ParametrizationType::try_from(crate::check_result(unsafe {
-            crate::ffi::ApproxInt_KnotTools_define_par_type(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_KnotTools_define_par_type(
                 theWL,
                 theFpar,
                 theLpar,
@@ -131,11 +133,11 @@ impl KnotTools {
 /// the solver used in intersection algorithm and required values are calculated.
 /// if myUseSolver = false, u1, v1, u2, v2 are considered as "exact" intersection points on two
 /// surfaces and required values are calculated directly using u1, v1, u2, v2
-pub use crate::ffi::ApproxInt_SvSurfaces as SvSurfaces;
+pub use crate::ffi_types::ApproxInt_SvSurfaces as SvSurfaces;
 
 unsafe impl crate::CppDeletable for SvSurfaces {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ApproxInt_SvSurfaces_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_destructor(ptr);
     }
 }
 
@@ -154,7 +156,7 @@ impl SvSurfaces {
         Tguv2: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_compute(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_compute(
                 self as *mut Self,
                 u1,
                 v1,
@@ -171,7 +173,14 @@ impl SvSurfaces {
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:61 - `ApproxInt_SvSurfaces::Pnt()`
     pub fn pnt(&mut self, u1: f64, v1: f64, u2: f64, v2: f64, P: &mut crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_pnt(self as *mut Self, u1, v1, u2, v2, P)
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_pnt(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                P,
+            )
         })
     }
 
@@ -186,7 +195,14 @@ impl SvSurfaces {
         Point: &mut crate::int_surf::PntOn2S,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_seek_point(self as *mut Self, u1, v1, u2, v2, Point)
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_seek_point(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Point,
+            )
         })
     }
 
@@ -200,7 +216,14 @@ impl SvSurfaces {
         Tg: &mut crate::gp::Vec,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_tangency(self as *mut Self, u1, v1, u2, v2, Tg)
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_tangency(
+                self as *mut Self,
+                u1,
+                v1,
+                u2,
+                v2,
+                Tg,
+            )
         })
     }
 
@@ -214,7 +237,7 @@ impl SvSurfaces {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf1(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_tangency_on_surf1(
                 self as *mut Self,
                 u1,
                 v1,
@@ -235,7 +258,7 @@ impl SvSurfaces {
         Tg: &mut crate::gp::Vec2d,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_tangency_on_surf2(
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_tangency_on_surf2(
                 self as *mut Self,
                 u1,
                 v1,
@@ -249,14 +272,17 @@ impl SvSurfaces {
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:93 - `ApproxInt_SvSurfaces::SetUseSolver()`
     pub fn set_use_solver(&mut self, theUseSol: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_set_use_solver(self as *mut Self, theUseSol)
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_set_use_solver(
+                self as *mut Self,
+                theUseSol,
+            )
         })
     }
 
     /// **Source:** `ApproxInt_SvSurfaces.hxx`:95 - `ApproxInt_SvSurfaces::GetUseSolver()`
     pub fn get_use_solver(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ApproxInt_SvSurfaces_get_use_solver(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::ApproxInt_SvSurfaces_get_use_solver(self as *const Self)
         })
     }
 }

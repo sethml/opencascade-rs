@@ -7,7 +7,7 @@
 #![allow(non_snake_case)]
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From IntStart_SITopolTool.hxx
@@ -17,11 +17,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// template class for a topological tool.
 /// This tool is linked with the surface on which
 /// the classification has to be made.
-pub use crate::ffi::IntStart_SITopolTool as SITopolTool;
+pub use crate::ffi_types::IntStart_SITopolTool as SITopolTool;
 
 unsafe impl crate::CppDeletable for SITopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::IntStart_SITopolTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_destructor(ptr);
     }
 }
 
@@ -29,17 +29,19 @@ impl SITopolTool {
     /// **Source:** `IntStart_SITopolTool.hxx`:38 - `IntStart_SITopolTool::Classify()`
     pub fn classify(&mut self, P: &crate::gp::Pnt2d, Tol: f64) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_classify(self as *mut Self, P, Tol)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_classify(self as *mut Self, P, Tol)
         }))
         .unwrap()
     }
 
     /// **Source:** `IntStart_SITopolTool.hxx`:40 - `IntStart_SITopolTool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::IntStart_SITopolTool_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -47,7 +49,7 @@ impl SITopolTool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::IntStart_SITopolTool_get_type_name(),
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -55,39 +57,53 @@ impl SITopolTool {
     }
 
     /// **Source:** `IntStart_SITopolTool.hxx`:40 - `IntStart_SITopolTool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::IntStart_SITopolTool_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::IntStart_SITopolTool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::IntStart_SITopolTool_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -95,7 +111,9 @@ impl SITopolTool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::IntStart_SITopolTool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -108,62 +126,72 @@ impl SITopolTool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::IntStart_SITopolTool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::IntStart_SITopolTool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleIntStartSITopolTool;
+pub use crate::ffi_types::HandleIntStartSITopolTool;
 
 unsafe impl crate::CppDeletable for HandleIntStartSITopolTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleIntStartSITopolTool_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_destructor(ptr);
     }
 }
 
 impl HandleIntStartSITopolTool {
     /// Dereference this Handle to access the underlying IntStart_SITopolTool
-    pub fn get(&self) -> &crate::ffi::IntStart_SITopolTool {
+    pub fn get(&self) -> &crate::ffi_types::IntStart_SITopolTool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleIntStartSITopolTool_get(self as *const Self))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying IntStart_SITopolTool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::IntStart_SITopolTool {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleIntStartSITopolTool_get_mut(
-                self as *mut Self,
+            &*crate::check_result(crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_get(
+                self as *const Self,
             ))
         }
     }
 
+    /// Dereference this Handle to mutably access the underlying IntStart_SITopolTool
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::IntStart_SITopolTool {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_get_mut(self as *mut Self),
+            )
+        }
+    }
+
     /// Upcast Handle<IntStart_SITopolTool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleIntStartSITopolTool_to_HandleStandardTransient(
+                crate::ffi_extern_TKGeomAlgo::HandleIntStartSITopolTool_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))

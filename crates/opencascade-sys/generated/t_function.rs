@@ -39,7 +39,7 @@ impl TryFrom<i32> for ExecutionStatus {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{HandleStandardTransient, HandleTDFAttribute};
+pub use crate::ffi_types::{HandleStandardTransient, HandleTDFAttribute};
 
 // ========================
 // From TFunction_Driver.hxx
@@ -57,11 +57,11 @@ pub use crate::ffi::{HandleStandardTransient, HandleTDFAttribute};
 /// attributes of sub-labels of a model.
 /// A single instance of this class and each of its
 /// subclasses is built for the whole session.
-pub use crate::ffi::TFunction_Driver as Driver;
+pub use crate::ffi_types::TFunction_Driver as Driver;
 
 unsafe impl crate::CppDeletable for Driver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_Driver_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_Driver_destructor(ptr);
     }
 }
 
@@ -69,16 +69,18 @@ impl Driver {
     /// **Source:** `TFunction_Driver.hxx`:47 - `TFunction_Driver::Init()`
     /// Initializes the label L for this function prior to its  execution.
     pub fn init(&mut self, L: &crate::tdf::Label) {
-        crate::check_void_result(unsafe { crate::ffi::TFunction_Driver_init(self as *mut Self, L) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Driver_init(self as *mut Self, L)
+        })
     }
 
     /// **Source:** `TFunction_Driver.hxx`:50 - `TFunction_Driver::Label()`
     /// Returns the label of the driver for this function.
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Driver_label(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Driver_label(self as *const Self),
+            ))
         }
     }
 
@@ -90,9 +92,9 @@ impl Driver {
     /// method even if the function is not executed.
     /// execution of function
     /// =====================
-    pub fn validate(&self, log: &mut crate::ffi::HandleTFunctionLogbook) {
+    pub fn validate(&self, log: &mut crate::ffi_types::HandleTFunctionLogbook) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Driver_validate(self as *const Self, log)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_validate(self as *const Self, log)
         })
     }
 
@@ -100,9 +102,9 @@ impl Driver {
     /// Analyzes the labels in the logbook log.
     /// Returns true if attributes have been modified.
     /// If the function label itself has been modified, the function must be executed.
-    pub fn must_execute(&self, log: &crate::ffi::HandleTFunctionLogbook) -> bool {
+    pub fn must_execute(&self, log: &crate::ffi_types::HandleTFunctionLogbook) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_must_execute(self as *const Self, log)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_must_execute(self as *const Self, log)
         })
     }
 
@@ -111,34 +113,36 @@ impl Driver {
     /// puts the impacted labels in the logbook log.
     /// arguments & results of functions
     /// ================================
-    pub fn execute(&self, log: &mut crate::ffi::HandleTFunctionLogbook) -> i32 {
+    pub fn execute(&self, log: &mut crate::ffi_types::HandleTFunctionLogbook) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_execute(self as *const Self, log)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_execute(self as *const Self, log)
         })
     }
 
     /// **Source:** `TFunction_Driver.hxx`:74 - `TFunction_Driver::Arguments()`
     /// The method fills-in the list by labels,
     /// where the arguments of the function are located.
-    pub fn arguments(&self, args: &mut crate::ffi::TDF_LabelList) {
+    pub fn arguments(&self, args: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Driver_arguments(self as *const Self, args)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_arguments(self as *const Self, args)
         })
     }
 
     /// **Source:** `TFunction_Driver.hxx`:78 - `TFunction_Driver::Results()`
     /// The method fills-in the list by labels,
     /// where the results of the function are located.
-    pub fn results(&self, res: &mut crate::ffi::TDF_LabelList) {
+    pub fn results(&self, res: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Driver_results(self as *const Self, res)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_results(self as *const Self, res)
         })
     }
 
     /// **Source:** `TFunction_Driver.hxx`:80 - `TFunction_Driver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Driver_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Driver_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -146,7 +150,7 @@ impl Driver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_Driver_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_Driver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -154,14 +158,16 @@ impl Driver {
     }
 
     /// **Source:** `TFunction_Driver.hxx`:80 - `TFunction_Driver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Driver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Driver_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Driver_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Driver_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -170,23 +176,31 @@ impl Driver {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Driver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Driver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -194,7 +208,7 @@ impl Driver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_Driver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -207,58 +221,72 @@ impl Driver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Driver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Driver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionDriver;
+pub use crate::ffi_types::HandleTFunctionDriver;
 
 unsafe impl crate::CppDeletable for HandleTFunctionDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionDriver_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionDriver_destructor(ptr);
     }
 }
 
 impl HandleTFunctionDriver {
     /// Dereference this Handle to access the underlying TFunction_Driver
-    pub fn get(&self) -> &crate::ffi::TFunction_Driver {
-        unsafe { &*crate::check_result(crate::ffi::HandleTFunctionDriver_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TFunction_Driver {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriver_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_Driver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Driver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_Driver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionDriver_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriver_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TFunction_Driver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionDriver_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionDriver_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -272,11 +300,11 @@ impl HandleTFunctionDriver {
 /// A container for instances of drivers.
 /// You create a new instance of TFunction_Driver
 /// and use the method AddDriver to load it into the driver table.
-pub use crate::ffi::TFunction_DriverTable as DriverTable;
+pub use crate::ffi_types::TFunction_DriverTable as DriverTable;
 
 unsafe impl crate::CppDeletable for DriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_DriverTable_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_DriverTable_destructor(ptr);
     }
 }
 
@@ -285,7 +313,9 @@ impl DriverTable {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_DriverTable_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_ctor(),
+            ))
         }
     }
 
@@ -294,11 +324,16 @@ impl DriverTable {
     pub fn add_driver(
         &mut self,
         guid: &crate::standard::GUID,
-        driver: &crate::ffi::HandleTFunctionDriver,
+        driver: &crate::ffi_types::HandleTFunctionDriver,
         thread: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_add_driver(self as *mut Self, guid, driver, thread)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_add_driver(
+                self as *mut Self,
+                guid,
+                driver,
+                thread,
+            )
         })
     }
 
@@ -306,7 +341,11 @@ impl DriverTable {
     /// Returns true if the driver exists in the driver table.
     pub fn has_driver(&self, guid: &crate::standard::GUID, thread: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_has_driver(self as *const Self, guid, thread)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_has_driver(
+                self as *const Self,
+                guid,
+                thread,
+            )
         })
     }
 
@@ -315,11 +354,16 @@ impl DriverTable {
     pub fn find_driver(
         &self,
         guid: &crate::standard::GUID,
-        driver: &mut crate::ffi::HandleTFunctionDriver,
+        driver: &mut crate::ffi_types::HandleTFunctionDriver,
         thread: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_find_driver(self as *const Self, guid, driver, thread)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_find_driver(
+                self as *const Self,
+                guid,
+                driver,
+                thread,
+            )
         })
     }
 
@@ -332,10 +376,10 @@ impl DriverTable {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_DriverTable_dump(
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_DriverTable_dump(
                 self as *mut Self,
                 anOS,
             )))
@@ -347,7 +391,11 @@ impl DriverTable {
     /// Returns true if the driver has been removed successfully.
     pub fn remove_driver(&mut self, guid: &crate::standard::GUID, thread: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_remove_driver(self as *mut Self, guid, thread)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_remove_driver(
+                self as *mut Self,
+                guid,
+                thread,
+            )
         })
     }
 
@@ -355,14 +403,14 @@ impl DriverTable {
     /// Removes all drivers. Returns true if the driver has been removed successfully.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_DriverTable_clear(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `TFunction_DriverTable.hxx`:73 - `TFunction_DriverTable::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_DriverTable_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_DriverTable_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -370,9 +418,11 @@ impl DriverTable {
 
     /// **Source:** `TFunction_DriverTable.hxx`:42 - `TFunction_DriverTable::Get()`
     /// Returns the driver table. If a driver does not exist, creates it.
-    pub fn get() -> crate::OwnedPtr<crate::ffi::HandleTFunctionDriverTable> {
+    pub fn get() -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionDriverTable> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_DriverTable_get()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_get(),
+            ))
         }
     }
 
@@ -380,7 +430,7 @@ impl DriverTable {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_DriverTable_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -388,50 +438,64 @@ impl DriverTable {
     }
 
     /// **Source:** `TFunction_DriverTable.hxx`:73 - `TFunction_DriverTable::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_DriverTable_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_DriverTable_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_DriverTable_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionDriverTable> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionDriverTable> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_DriverTable_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -439,7 +503,7 @@ impl DriverTable {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_DriverTable_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -452,62 +516,72 @@ impl DriverTable {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_DriverTable_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_DriverTable_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionDriverTable;
+pub use crate::ffi_types::HandleTFunctionDriverTable;
 
 unsafe impl crate::CppDeletable for HandleTFunctionDriverTable {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionDriverTable_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_destructor(ptr);
     }
 }
 
 impl HandleTFunctionDriverTable {
     /// Dereference this Handle to access the underlying TFunction_DriverTable
-    pub fn get(&self) -> &crate::ffi::TFunction_DriverTable {
+    pub fn get(&self) -> &crate::ffi_types::TFunction_DriverTable {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTFunctionDriverTable_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_DriverTable
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_DriverTable {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_DriverTable {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionDriverTable_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TFunction_DriverTable> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionDriverTable_to_HandleStandardTransient(
+                crate::ffi_extern_TKLCAF::HandleTFunctionDriverTable_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -524,11 +598,11 @@ impl HandleTFunctionDriverTable {
 /// -   a link to an evaluation driver
 /// -   the means of providing a link between a
 /// function and an evaluation driver.
-pub use crate::ffi::TFunction_Function as Function;
+pub use crate::ffi_types::TFunction_Function as Function;
 
 unsafe impl crate::CppDeletable for Function {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_Function_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_Function_destructor(ptr);
     }
 }
 
@@ -536,7 +610,9 @@ impl Function {
     /// **Source:** `TFunction_Function.hxx`:60 - `TFunction_Function::TFunction_Function()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Function_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Function_ctor(),
+            ))
         }
     }
 
@@ -544,7 +620,7 @@ impl Function {
     /// Returns the GUID for this function's driver.
     pub fn get_driver_guid(&self) -> &crate::standard::GUID {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Function_get_driver_guid(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_get_driver_guid(
                 self as *const Self,
             )))
         }
@@ -555,21 +631,23 @@ impl Function {
     /// identified by the GUID guid.
     pub fn set_driver_guid(&mut self, guid: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_set_driver_guid(self as *mut Self, guid)
+            crate::ffi_extern_TKLCAF::TFunction_Function_set_driver_guid(self as *mut Self, guid)
         })
     }
 
     /// **Source:** `TFunction_Function.hxx`:70 - `TFunction_Function::Failed()`
     /// Returns true if the execution failed
     pub fn failed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_Function_failed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Function_failed(self as *const Self)
+        })
     }
 
     /// **Source:** `TFunction_Function.hxx`:73 - `TFunction_Function::SetFailure()`
     /// Sets the failed index.
     pub fn set_failure(&mut self, mode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_set_failure(self as *mut Self, mode)
+            crate::ffi_extern_TKLCAF::TFunction_Function_set_failure(self as *mut Self, mode)
         })
     }
 
@@ -580,46 +658,50 @@ impl Function {
     /// ===================================
     pub fn get_failure(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_get_failure(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_get_failure(self as *const Self)
         })
     }
 
     /// **Source:** `TFunction_Function.hxx`:81 - `TFunction_Function::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Function_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TFunction_Function.hxx`:83 - `TFunction_Function::Restore()`
-    pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_restore(self as *mut Self, with)
+            crate::ffi_extern_TKLCAF::TFunction_Function_restore(self as *mut Self, with)
         })
     }
 
     /// **Source:** `TFunction_Function.hxx`:85 - `TFunction_Function::Paste()`
     pub fn paste(
         &self,
-        into: &crate::ffi::HandleTDFAttribute,
-        RT: &crate::ffi::HandleTDFRelocationTable,
+        into: &crate::ffi_types::HandleTDFAttribute,
+        RT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_paste(self as *const Self, into, RT)
+            crate::ffi_extern_TKLCAF::TFunction_Function_paste(self as *const Self, into, RT)
         })
     }
 
     /// **Source:** `TFunction_Function.hxx`:88 - `TFunction_Function::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_new_empty(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_new_empty(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TFunction_Function.hxx`:90 - `TFunction_Function::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_references(self as *const Self, aDataSet)
+            crate::ffi_extern_TKLCAF::TFunction_Function_references(self as *const Self, aDataSet)
         })
     }
 
@@ -632,10 +714,10 @@ impl Function {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_Function_dump(
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_dump(
                 self as *mut Self,
                 anOS,
             )))
@@ -643,9 +725,9 @@ impl Function {
     }
 
     /// **Source:** `TFunction_Function.hxx`:99 - `TFunction_Function::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Function_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -658,10 +740,10 @@ impl Function {
     /// Returns the function attribute.
     pub fn set_label(
         L: &crate::tdf::Label,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_set_label(L),
+                crate::ffi_extern_TKLCAF::TFunction_Function_set_label(L),
             ))
         }
     }
@@ -673,10 +755,10 @@ impl Function {
     pub fn set_label_guid(
         L: &crate::tdf::Label,
         DriverID: &crate::standard::GUID,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_set_label_guid(L, DriverID),
+                crate::ffi_extern_TKLCAF::TFunction_Function_set_label_guid(L, DriverID),
             ))
         }
     }
@@ -687,14 +769,14 @@ impl Function {
     /// Instance methods:
     /// ================
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Function_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_get_id())) }
     }
 
     /// **Source:** `TFunction_Function.hxx`:99 - `TFunction_Function::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_Function_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_Function_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -702,14 +784,18 @@ impl Function {
     }
 
     /// **Source:** `TFunction_Function.hxx`:99 - `TFunction_Function::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Function_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Function_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Function_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Function_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -718,37 +804,43 @@ impl Function {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Function_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Function_as_TDF_Attribute_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Function_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Function_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Function_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Function_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionFunction> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionFunction> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKLCAF::TFunction_Function_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -756,7 +848,7 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -764,7 +856,7 @@ impl Function {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -772,42 +864,47 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -815,10 +912,10 @@ impl Function {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_FindAttribute(
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -827,23 +924,29 @@ impl Function {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -853,46 +956,49 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_BeforeUndo(
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -903,11 +1009,11 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_AfterUndo(
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_AfterUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -918,56 +1024,66 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_BackupCopy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -975,11 +1091,11 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_DeltaOnModification(
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -988,10 +1104,12 @@ impl Function {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Function_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -999,12 +1117,12 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_ExtendedDump(
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -1016,21 +1134,30 @@ impl Function {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1038,7 +1165,7 @@ impl Function {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_Function_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_Function_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1051,71 +1178,83 @@ impl Function {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Function_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Function_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionFunction;
+pub use crate::ffi_types::HandleTFunctionFunction;
 
 unsafe impl crate::CppDeletable for HandleTFunctionFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionFunction_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionFunction_destructor(ptr);
     }
 }
 
 impl HandleTFunctionFunction {
     /// Dereference this Handle to access the underlying TFunction_Function
-    pub fn get(&self) -> &crate::ffi::TFunction_Function {
+    pub fn get(&self) -> &crate::ffi_types::TFunction_Function {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTFunctionFunction_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionFunction_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_Function
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Function {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_Function {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionFunction_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionFunction_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TFunction_Function> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionFunction_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionFunction_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TFunction_Function> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionFunction_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionFunction_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1127,11 +1266,11 @@ impl HandleTFunctionFunction {
 
 /// **Source:** `TFunction_GraphNode.hxx`:36 - `TFunction_GraphNode`
 /// Provides links between functions.
-pub use crate::ffi::TFunction_GraphNode as GraphNode;
+pub use crate::ffi_types::TFunction_GraphNode as GraphNode;
 
 unsafe impl crate::CppDeletable for GraphNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_GraphNode_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_GraphNode_destructor(ptr);
     }
 }
 
@@ -1139,7 +1278,9 @@ impl GraphNode {
     /// **Source:** `TFunction_GraphNode.hxx`:52 - `TFunction_GraphNode::TFunction_GraphNode()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_GraphNode_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_ctor(),
+            ))
         }
     }
 
@@ -1147,7 +1288,10 @@ impl GraphNode {
     /// Defines a reference to the function as a previous one.
     pub fn add_previous_int(&mut self, funcID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_add_previous_int(self as *mut Self, funcID)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_add_previous_int(
+                self as *mut Self,
+                funcID,
+            )
         })
     }
 
@@ -1155,7 +1299,10 @@ impl GraphNode {
     /// Defines a reference to the function as a previous one.
     pub fn add_previous_label(&mut self, func: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_add_previous_label(self as *mut Self, func)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_add_previous_label(
+                self as *mut Self,
+                func,
+            )
         })
     }
 
@@ -1163,7 +1310,10 @@ impl GraphNode {
     /// Removes a reference to the function as a previous one.
     pub fn remove_previous_int(&mut self, funcID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_previous_int(self as *mut Self, funcID)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_previous_int(
+                self as *mut Self,
+                funcID,
+            )
         })
     }
 
@@ -1171,15 +1321,18 @@ impl GraphNode {
     /// Removes a reference to the function as a previous one.
     pub fn remove_previous_label(&mut self, func: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_previous_label(self as *mut Self, func)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_previous_label(
+                self as *mut Self,
+                func,
+            )
         })
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:67 - `TFunction_GraphNode::GetPrevious()`
     /// Returns a map of previous functions.
-    pub fn get_previous(&self) -> &crate::ffi::TColStd_MapOfInteger {
+    pub fn get_previous(&self) -> &crate::ffi_types::TColStd_MapOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_GraphNode_get_previous(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_previous(
                 self as *const Self,
             )))
         }
@@ -1189,7 +1342,7 @@ impl GraphNode {
     /// Clears a map of previous functions.
     pub fn remove_all_previous(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_all_previous(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_all_previous(self as *mut Self)
         })
     }
 
@@ -1197,7 +1350,7 @@ impl GraphNode {
     /// Defines a reference to the function as a next one.
     pub fn add_next_int(&mut self, funcID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_add_next_int(self as *mut Self, funcID)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_add_next_int(self as *mut Self, funcID)
         })
     }
 
@@ -1205,7 +1358,7 @@ impl GraphNode {
     /// Defines a reference to the function as a next one.
     pub fn add_next_label(&mut self, func: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_add_next_label(self as *mut Self, func)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_add_next_label(self as *mut Self, func)
         })
     }
 
@@ -1213,7 +1366,7 @@ impl GraphNode {
     /// Removes a reference to the function as a next one.
     pub fn remove_next_int(&mut self, funcID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_next_int(self as *mut Self, funcID)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_next_int(self as *mut Self, funcID)
         })
     }
 
@@ -1221,15 +1374,17 @@ impl GraphNode {
     /// Removes a reference to the function as a next one.
     pub fn remove_next_label(&mut self, func: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_next_label(self as *mut Self, func)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_next_label(self as *mut Self, func)
         })
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:85 - `TFunction_GraphNode::GetNext()`
     /// Returns a map of next functions.
-    pub fn get_next(&self) -> &crate::ffi::TColStd_MapOfInteger {
+    pub fn get_next(&self) -> &crate::ffi_types::TColStd_MapOfInteger {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_GraphNode_get_next(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_next(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1237,7 +1392,7 @@ impl GraphNode {
     /// Clears a map of next functions.
     pub fn remove_all_next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_remove_all_next(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_remove_all_next(self as *mut Self)
         })
     }
 
@@ -1245,7 +1400,7 @@ impl GraphNode {
     /// Returns the execution status of the function.
     pub fn get_status(&self) -> crate::t_function::ExecutionStatus {
         crate::t_function::ExecutionStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_get_status(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1256,46 +1411,53 @@ impl GraphNode {
     /// ===================================
     pub fn set_status(&mut self, status: crate::t_function::ExecutionStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_set_status(self as *mut Self, status.into())
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_set_status(
+                self as *mut Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:98 - `TFunction_GraphNode::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_GraphNode_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:100 - `TFunction_GraphNode::Restore()`
-    pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_restore(self as *mut Self, with)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_restore(self as *mut Self, with)
         })
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:102 - `TFunction_GraphNode::Paste()`
     pub fn paste(
         &self,
-        into: &crate::ffi::HandleTDFAttribute,
-        RT: &crate::ffi::HandleTDFRelocationTable,
+        into: &crate::ffi_types::HandleTDFAttribute,
+        RT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_paste(self as *const Self, into, RT)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_paste(self as *const Self, into, RT)
         })
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:105 - `TFunction_GraphNode::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_new_empty(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_new_empty(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:107 - `TFunction_GraphNode::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_references(self as *const Self, aDataSet)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_references(self as *const Self, aDataSet)
         })
     }
 
@@ -1308,10 +1470,10 @@ impl GraphNode {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_GraphNode_dump(
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_dump(
                 self as *mut Self,
                 anOS,
             )))
@@ -1319,9 +1481,9 @@ impl GraphNode {
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:112 - `TFunction_GraphNode::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_GraphNode_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1332,9 +1494,13 @@ impl GraphNode {
     /// ==============
     /// Finds or Creates a graph node attribute at the label <L>.
     /// Returns the attribute.
-    pub fn set(L: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+    pub fn set(
+        L: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionGraphNode> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_GraphNode_set(L)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_set(L),
+            ))
         }
     }
 
@@ -1344,14 +1510,14 @@ impl GraphNode {
     /// ===============
     /// Constructor (empty).
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_GraphNode_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_id())) }
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:112 - `TFunction_GraphNode::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_GraphNode_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1359,14 +1525,18 @@ impl GraphNode {
     }
 
     /// **Source:** `TFunction_GraphNode.hxx`:112 - `TFunction_GraphNode::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_GraphNode_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_GraphNode_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_GraphNode_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -1375,37 +1545,43 @@ impl GraphNode {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_GraphNode_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_as_TDF_Attribute_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_GraphNode_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_GraphNode_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionGraphNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_to_handle(obj.into_raw()),
             ))
         }
     }
@@ -1413,7 +1589,7 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -1421,7 +1597,7 @@ impl GraphNode {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -1429,42 +1605,47 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -1472,10 +1653,10 @@ impl GraphNode {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_FindAttribute(
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -1484,23 +1665,29 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -1510,46 +1697,49 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_BeforeUndo(
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -1560,11 +1750,11 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_AfterUndo(
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_AfterUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -1575,56 +1765,66 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_BackupCopy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1632,11 +1832,11 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_DeltaOnModification(
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -1645,10 +1845,12 @@ impl GraphNode {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_GraphNode_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1656,12 +1858,12 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_ExtendedDump(
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -1673,21 +1875,30 @@ impl GraphNode {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1695,7 +1906,7 @@ impl GraphNode {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_GraphNode_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1708,71 +1919,81 @@ impl GraphNode {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_GraphNode_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_GraphNode_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionGraphNode;
+pub use crate::ffi_types::HandleTFunctionGraphNode;
 
 unsafe impl crate::CppDeletable for HandleTFunctionGraphNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionGraphNode_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_destructor(ptr);
     }
 }
 
 impl HandleTFunctionGraphNode {
     /// Dereference this Handle to access the underlying TFunction_GraphNode
-    pub fn get(&self) -> &crate::ffi::TFunction_GraphNode {
+    pub fn get(&self) -> &crate::ffi_types::TFunction_GraphNode {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTFunctionGraphNode_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_GraphNode
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_GraphNode {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_GraphNode {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionGraphNode_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<TFunction_GraphNode> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionGraphNode_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TFunction_GraphNode> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionGraphNode_to_HandleStandardTransient(
+                crate::ffi_extern_TKLCAF::HandleTFunctionGraphNode_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1785,11 +2006,11 @@ impl HandleTFunctionGraphNode {
 // ========================
 
 /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver`
-pub use crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver as HArray1OfDataMapOfGUIDDriver;
+pub use crate::ffi_types::TFunction_HArray1OfDataMapOfGUIDDriver as HArray1OfDataMapOfGUIDDriver;
 
 unsafe impl crate::CppDeletable for HArray1OfDataMapOfGUIDDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_destructor(ptr);
     }
 }
 
@@ -1798,7 +2019,7 @@ impl HArray1OfDataMapOfGUIDDriver {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor(),
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_ctor(),
             ))
         }
     }
@@ -1807,7 +2028,9 @@ impl HArray1OfDataMapOfGUIDDriver {
     pub fn new_int2(theLower: i32, theUpper: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2(theLower, theUpper),
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2(
+                    theLower, theUpper,
+                ),
             ))
         }
     }
@@ -1816,11 +2039,11 @@ impl HArray1OfDataMapOfGUIDDriver {
     pub fn new_int2_type(
         theLower: i32,
         theUpper: i32,
-        theValue: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
+        theValue: &crate::ffi_types::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2_type(
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_int2_type(
                     theLower, theUpper, theValue,
                 ),
             ))
@@ -1829,56 +2052,54 @@ impl HArray1OfDataMapOfGUIDDriver {
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
     pub fn new_type_int2_bool(
-        theBegin: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
+        theBegin: &crate::ffi_types::TFunction_Array1OfDataMapOfGUIDDriver_value_type,
         theLower: i32,
         theUpper: i32,
         arg3: bool,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_type_int2_bool(
-                    theBegin, theLower, theUpper, arg3,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_type_int2_bool(theBegin, theLower, theUpper, arg3)))
         }
     }
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::TFunction_HArray1OfDataMapOfGUIDDriver()`
     pub fn new_array1ofdatamapofguiddriver(
-        theOther: &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver,
+        theOther: &crate::ffi_types::TFunction_Array1OfDataMapOfGUIDDriver,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_array1ofdatamapofguiddriver(
-                    theOther,
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_ctor_array1ofdatamapofguiddriver(theOther)))
+        }
+    }
+
+    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::Array1()`
+    pub fn array1(&self) -> &crate::ffi_types::TFunction_Array1OfDataMapOfGUIDDriver {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_array1(
+                    self as *const Self,
                 ),
             ))
         }
     }
 
-    /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::Array1()`
-    pub fn array1(&self) -> &crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver {
-        unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_array1(
-                self as *const Self,
-            )))
-        }
-    }
-
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::ChangeArray1()`
-    pub fn change_array1(&mut self) -> &mut crate::ffi::TFunction_Array1OfDataMapOfGUIDDriver {
+    pub fn change_array1(
+        &mut self,
+    ) -> &mut crate::ffi_types::TFunction_Array1OfDataMapOfGUIDDriver {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_change_array1(self as *mut Self),
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_change_array1(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_dynamic_type(
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_dynamic_type(
                     self as *const Self,
                 ),
             ))
@@ -1889,7 +2110,7 @@ impl HArray1OfDataMapOfGUIDDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1897,51 +2118,43 @@ impl HArray1OfDataMapOfGUIDDriver {
     }
 
     /// **Source:** `TFunction_HArray1OfDataMapOfGUIDDriver.hxx`:23 - `TFunction_HArray1OfDataMapOfGUIDDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_get_type_descriptor()))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionHArray1OfDataMapOfGUIDDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsInstance(
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -1949,9 +2162,9 @@ impl HArray1OfDataMapOfGUIDDriver {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsKind(
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1962,7 +2175,7 @@ impl HArray1OfDataMapOfGUIDDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_This(
+                crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_This(
                     self as *const Self,
                 )
             });
@@ -1977,7 +2190,7 @@ impl HArray1OfDataMapOfGUIDDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_GetRefCount(
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -1986,64 +2199,64 @@ impl HArray1OfDataMapOfGUIDDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_HArray1OfDataMapOfGUIDDriver_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver;
+pub use crate::ffi_types::HandleTFunctionHArray1OfDataMapOfGUIDDriver;
 
 unsafe impl crate::CppDeletable for HandleTFunctionHArray1OfDataMapOfGUIDDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_destructor(ptr);
     }
 }
 
 impl HandleTFunctionHArray1OfDataMapOfGUIDDriver {
     /// Dereference this Handle to access the underlying TFunction_HArray1OfDataMapOfGUIDDriver
-    pub fn get(&self) -> &crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver {
+    pub fn get(&self) -> &crate::ffi_types::TFunction_HArray1OfDataMapOfGUIDDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_HArray1OfDataMapOfGUIDDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_HArray1OfDataMapOfGUIDDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_HArray1OfDataMapOfGUIDDriver {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get_mut(self as *mut Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_get_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
 
     /// Upcast Handle<TFunction_HArray1OfDataMapOfGUIDDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionHArray1OfDataMapOfGUIDDriver_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionHArray1OfDataMapOfGUIDDriver_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2054,11 +2267,11 @@ impl HandleTFunctionHArray1OfDataMapOfGUIDDriver {
 
 /// **Source:** `TFunction_IFunction.hxx`:34 - `TFunction_IFunction`
 /// Interface class for usage of Function Mechanism
-pub use crate::ffi::TFunction_IFunction as IFunction;
+pub use crate::ffi_types::TFunction_IFunction as IFunction;
 
 unsafe impl crate::CppDeletable for IFunction {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_IFunction_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_IFunction_destructor(ptr);
     }
 }
 
@@ -2066,7 +2279,9 @@ impl IFunction {
     /// **Source:** `TFunction_IFunction.hxx`:56 - `TFunction_IFunction::TFunction_IFunction()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_IFunction_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_ctor(),
+            ))
         }
     }
 
@@ -2076,7 +2291,7 @@ impl IFunction {
     pub fn new_label(L: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_IFunction_ctor_label(L),
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_ctor_label(L),
             ))
         }
     }
@@ -2085,7 +2300,7 @@ impl IFunction {
     /// Initializes the interface by the label of function.
     pub fn init(&mut self, L: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_init(self as *mut Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_init(self as *mut Self, L)
         })
     }
 
@@ -2093,7 +2308,9 @@ impl IFunction {
     /// Returns a label of the function.
     pub fn label(&self) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_IFunction_label(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_IFunction_label(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2101,41 +2318,41 @@ impl IFunction {
     /// Updates the dependencies of this function only.
     pub fn update_dependencies(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_IFunction_update_dependencies(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_update_dependencies(self as *const Self)
         })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:73 - `TFunction_IFunction::Arguments()`
     /// The method fills-in the list by labels,
     /// where the arguments of the function are located.
-    pub fn arguments(&self, args: &mut crate::ffi::TDF_LabelList) {
+    pub fn arguments(&self, args: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_arguments(self as *const Self, args)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_arguments(self as *const Self, args)
         })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:77 - `TFunction_IFunction::Results()`
     /// The method fills-in the list by labels,
     /// where the results of the function are located.
-    pub fn results(&self, res: &mut crate::ffi::TDF_LabelList) {
+    pub fn results(&self, res: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_results(self as *const Self, res)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_results(self as *const Self, res)
         })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:80 - `TFunction_IFunction::GetPrevious()`
     /// Returns a list of previous functions.
-    pub fn get_previous(&self, prev: &mut crate::ffi::TDF_LabelList) {
+    pub fn get_previous(&self, prev: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_get_previous(self as *const Self, prev)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_get_previous(self as *const Self, prev)
         })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:83 - `TFunction_IFunction::GetNext()`
     /// Returns a list of next functions.
-    pub fn get_next(&self, prev: &mut crate::ffi::TDF_LabelList) {
+    pub fn get_next(&self, prev: &mut crate::ffi_types::TDF_LabelList) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_get_next(self as *const Self, prev)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_get_next(self as *const Self, prev)
         })
     }
 
@@ -2143,7 +2360,7 @@ impl IFunction {
     /// Returns the execution status of the function.
     pub fn get_status(&self) -> crate::t_function::ExecutionStatus {
         crate::t_function::ExecutionStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TFunction_IFunction_get_status(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_get_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -2152,46 +2369,57 @@ impl IFunction {
     /// Defines an execution status for a function.
     pub fn set_status(&self, status: crate::t_function::ExecutionStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_IFunction_set_status(self as *const Self, status.into())
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_set_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:92 - `TFunction_IFunction::GetAllFunctions()`
     /// Returns the scope of all functions.
-    pub fn get_all_functions(&self) -> &crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+    pub fn get_all_functions(&self) -> &crate::ffi_types::TFunction_DoubleMapOfIntegerLabel {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_IFunction_get_all_functions(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_get_all_functions(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:95 - `TFunction_IFunction::GetLogbook()`
     /// Returns the Logbook - keeper of modifications.
-    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionLogbook> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_IFunction_get_logbook(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_get_logbook(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:98 - `TFunction_IFunction::GetDriver()`
     /// Returns a driver of the function.
-    pub fn get_driver(&self, thread: i32) -> crate::OwnedPtr<crate::ffi::HandleTFunctionDriver> {
+    pub fn get_driver(
+        &self,
+        thread: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_IFunction_get_driver(self as *const Self, thread),
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_get_driver(
+                    self as *const Self,
+                    thread,
+                ),
             ))
         }
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:101 - `TFunction_IFunction::GetGraphNode()`
     /// Returns a graph node of the function.
-    pub fn get_graph_node(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionGraphNode> {
+    pub fn get_graph_node(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionGraphNode> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_IFunction_get_graph_node(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_IFunction_get_graph_node(self as *const Self),
             ))
         }
     }
@@ -2203,7 +2431,9 @@ impl IFunction {
     /// the status equal to TFunction_ES_WrongDefinition.
     /// It registers the function in the scope of functions for this document.
     pub fn new_function(L: &crate::tdf::Label, ID: &crate::standard::GUID) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_IFunction_new_function(L, ID) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_new_function(L, ID)
+        })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:49 - `TFunction_IFunction::DeleteFunction()`
@@ -2211,7 +2441,9 @@ impl IFunction {
     /// It deletes a TFunction_Function attribute and a TFunction_GraphNode.
     /// It deletes the functions from the scope of function of this document.
     pub fn delete_function(L: &crate::tdf::Label) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_IFunction_delete_function(L) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_delete_function(L)
+        })
     }
 
     /// **Source:** `TFunction_IFunction.hxx`:54 - `TFunction_IFunction::UpdateDependencies()`
@@ -2220,7 +2452,7 @@ impl IFunction {
     /// An empty constructor.
     pub fn update_dependencies_label(Access: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_IFunction_update_dependencies_label(Access)
+            crate::ffi_extern_TKLCAF::TFunction_IFunction_update_dependencies_label(Access)
         })
     }
 }
@@ -2231,11 +2463,11 @@ impl IFunction {
 
 /// **Source:** `TFunction_Iterator.hxx`:32 - `TFunction_Iterator`
 /// Iterator of the graph of functions
-pub use crate::ffi::TFunction_Iterator as Iterator;
+pub use crate::ffi_types::TFunction_Iterator as Iterator;
 
 unsafe impl crate::CppDeletable for Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_Iterator_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_Iterator_destructor(ptr);
     }
 }
 
@@ -2244,7 +2476,9 @@ impl Iterator {
     /// An empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Iterator_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Iterator_ctor(),
+            ))
         }
     }
 
@@ -2254,7 +2488,7 @@ impl Iterator {
     pub fn new_label(Access: &crate::tdf::Label) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Iterator_ctor_label(Access),
+                crate::ffi_extern_TKLCAF::TFunction_Iterator_ctor_label(Access),
             ))
         }
     }
@@ -2263,7 +2497,7 @@ impl Iterator {
     /// Initializes the Iterator.
     pub fn init(&mut self, Access: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Iterator_init(self as *mut Self, Access)
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_init(self as *mut Self, Access)
         })
     }
 
@@ -2277,7 +2511,10 @@ impl Iterator {
     /// following their dependencies and ignoring the execution status.
     pub fn set_usage_of_execution_status(&mut self, usage: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Iterator_set_usage_of_execution_status(self as *mut Self, usage)
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_set_usage_of_execution_status(
+                self as *mut Self,
+                usage,
+            )
         })
     }
 
@@ -2285,7 +2522,9 @@ impl Iterator {
     /// Returns usage of execution status by the iterator.
     pub fn get_usage_of_execution_status(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Iterator_get_usage_of_execution_status(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_get_usage_of_execution_status(
+                self as *const Self,
+            )
         })
     }
 
@@ -2294,7 +2533,7 @@ impl Iterator {
     /// maximum number of threads may be used to calculate the model.
     pub fn get_max_nb_threads(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Iterator_get_max_nb_threads(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_get_max_nb_threads(self as *const Self)
         })
     }
 
@@ -2303,22 +2542,28 @@ impl Iterator {
     /// If the iterator uses the execution status,
     /// the returned list contains only the functions
     /// with "not executed" status.
-    pub fn current(&self) -> &crate::ffi::TDF_LabelList {
+    pub fn current(&self) -> &crate::ffi_types::TDF_LabelList {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Iterator_current(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Iterator_current(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Iterator.hxx`:70 - `TFunction_Iterator::More()`
     /// Returns false if the graph of functions is fully iterated.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_Iterator_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_more(self as *const Self)
+        })
     }
 
     /// **Source:** `TFunction_Iterator.hxx`:73 - `TFunction_Iterator::Next()`
     /// Switches the iterator to the next list of current functions.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TFunction_Iterator_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `TFunction_Iterator.hxx`:77 - `TFunction_Iterator::GetStatus()`
@@ -2326,7 +2571,7 @@ impl Iterator {
     /// It calls TFunction_GraphNode::GetStatus() inside.
     pub fn get_status(&self, func: &crate::tdf::Label) -> crate::t_function::ExecutionStatus {
         crate::t_function::ExecutionStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::TFunction_Iterator_get_status(self as *const Self, func)
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_get_status(self as *const Self, func)
         }))
         .unwrap()
     }
@@ -2336,7 +2581,11 @@ impl Iterator {
     /// It calls TFunction_GraphNode::SetStatus() inside.
     pub fn set_status(&self, func: &crate::tdf::Label, status: crate::t_function::ExecutionStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Iterator_set_status(self as *const Self, func, status.into())
+            crate::ffi_extern_TKLCAF::TFunction_Iterator_set_status(
+                self as *const Self,
+                func,
+                status.into(),
+            )
         })
     }
 
@@ -2349,10 +2598,13 @@ impl Iterator {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        OS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        OS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_Iterator_dump(self as *mut Self, OS)))
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Iterator_dump(
+                self as *mut Self,
+                OS,
+            )))
         }
     }
 }
@@ -2369,11 +2621,11 @@ impl Iterator {
 /// * Touched Labels  (modified by the end user),
 /// * Impacted Labels (modified during execution of the function),
 /// * Valid Labels    (within the valid label scope).
-pub use crate::ffi::TFunction_Logbook as Logbook;
+pub use crate::ffi_types::TFunction_Logbook as Logbook;
 
 unsafe impl crate::CppDeletable for Logbook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_Logbook_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_Logbook_destructor(ptr);
     }
 }
 
@@ -2382,19 +2634,25 @@ impl Logbook {
     /// Constructor (empty).
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Logbook_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_ctor(),
+            ))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:59 - `TFunction_Logbook::Clear()`
     /// Clears this logbook to its default, empty state.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::TFunction_Logbook_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:60 - `TFunction_Logbook::IsEmpty()`
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_Logbook_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:64 - `TFunction_Logbook::SetTouched()`
@@ -2402,7 +2660,7 @@ impl Logbook {
     /// In other words, L is understood to have been modified by the end user.
     pub fn set_touched(&mut self, L: &crate::tdf::Label) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_set_touched(self as *mut Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_set_touched(self as *mut Self, L)
         })
     }
 
@@ -2411,7 +2669,11 @@ impl Logbook {
     /// This method is called by execution of the function driver.
     pub fn set_impacted(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_set_impacted(self as *mut Self, L, WithChildren)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_set_impacted(
+                self as *mut Self,
+                L,
+                WithChildren,
+            )
         })
     }
 
@@ -2419,14 +2681,18 @@ impl Logbook {
     /// Sets the label L as a valid label in this logbook.
     pub fn set_valid_label_bool(&mut self, L: &crate::tdf::Label, WithChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_set_valid_label_bool(self as *mut Self, L, WithChildren)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_set_valid_label_bool(
+                self as *mut Self,
+                L,
+                WithChildren,
+            )
         })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:74 - `TFunction_Logbook::SetValid()`
-    pub fn set_valid_labelmap(&mut self, Ls: &crate::ffi::TDF_LabelMap) {
+    pub fn set_valid_labelmap(&mut self, Ls: &crate::ffi_types::TDF_LabelMap) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_set_valid_labelmap(self as *mut Self, Ls)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_set_valid_labelmap(self as *mut Self, Ls)
         })
     }
 
@@ -2437,39 +2703,49 @@ impl Logbook {
     /// all the sublabels of <L> too.
     pub fn is_modified(&self, L: &crate::tdf::Label, WithChildren: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_is_modified(self as *const Self, L, WithChildren)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_is_modified(
+                self as *const Self,
+                L,
+                WithChildren,
+            )
         })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:85 - `TFunction_Logbook::GetTouched()`
     /// Returns the map of touched labels in this logbook.
     /// A touched label is the one modified by the end user.
-    pub fn get_touched(&self) -> &crate::ffi::TDF_LabelMap {
+    pub fn get_touched(&self) -> &crate::ffi_types::TDF_LabelMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Logbook_get_touched(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_get_touched(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:88 - `TFunction_Logbook::GetImpacted()`
     /// Returns the map of impacted labels contained in this logbook.
-    pub fn get_impacted(&self) -> &crate::ffi::TDF_LabelMap {
+    pub fn get_impacted(&self) -> &crate::ffi_types::TDF_LabelMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Logbook_get_impacted(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_get_impacted(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:91 - `TFunction_Logbook::GetValid()`
     /// Returns the map of valid labels in this logbook.
-    pub fn get_valid(&self) -> &crate::ffi::TDF_LabelMap {
+    pub fn get_valid(&self) -> &crate::ffi_types::TDF_LabelMap {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Logbook_get_valid(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_get_valid(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:92 - `TFunction_Logbook::GetValid()`
-    pub fn get_valid_labelmap(&self, Ls: &mut crate::ffi::TDF_LabelMap) {
+    pub fn get_valid_labelmap(&self, Ls: &mut crate::ffi_types::TDF_LabelMap) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_get_valid_labelmap(self as *const Self, Ls)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_get_valid_labelmap(self as *const Self, Ls)
         })
     }
 
@@ -2477,27 +2753,33 @@ impl Logbook {
     /// Sets status of execution.
     pub fn done(&mut self, status: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_done(self as *mut Self, status)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_done(self as *mut Self, status)
         })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:98 - `TFunction_Logbook::IsDone()`
     /// Returns status of execution.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::TFunction_Logbook_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:104 - `TFunction_Logbook::ID()`
     /// Returns the ID of the attribute.
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Logbook_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:107 - `TFunction_Logbook::Restore()`
     /// Undos (and redos) the attribute.
-    pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_restore(self as *mut Self, with)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_restore(self as *mut Self, with)
         })
     }
 
@@ -2505,21 +2787,21 @@ impl Logbook {
     /// Pastes the attribute to another label.
     pub fn paste(
         &self,
-        into: &crate::ffi::HandleTDFAttribute,
-        RT: &crate::ffi::HandleTDFRelocationTable,
+        into: &crate::ffi_types::HandleTDFAttribute,
+        RT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_paste(self as *const Self, into, RT)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_paste(self as *const Self, into, RT)
         })
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:114 - `TFunction_Logbook::NewEmpty()`
     /// Returns a new empty instance of the attribute.
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Logbook_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_new_empty(self as *const Self),
+            ))
         }
     }
 
@@ -2533,34 +2815,39 @@ impl Logbook {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_Logbook_dump(self as *mut Self, anOS)))
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_dump(
+                self as *mut Self,
+                anOS,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:46 - `TFunction_Logbook::Set()`
     /// Finds or Creates a TFunction_Logbook attribute at the root label accessed by <Access>.
     /// Returns the attribute.
-    pub fn set(Access: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+    pub fn set(
+        Access: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionLogbook> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Logbook_set(
-                Access,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_set(Access),
+            ))
         }
     }
 
     /// **Source:** `TFunction_Logbook.hxx`:49 - `TFunction_Logbook::GetID()`
     /// Returns the GUID for logbook attribute.
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Logbook_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_get_id())) }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Logbook_as_TDF_Attribute(
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Logbook_as_TDF_Attribute(
                 self as *const Self,
             ))
         }
@@ -2569,45 +2856,49 @@ impl Logbook {
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Logbook_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_as_TDF_Attribute_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Logbook_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Logbook_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionLogbook> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Logbook_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -2615,7 +2906,7 @@ impl Logbook {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -2623,42 +2914,47 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -2666,10 +2962,10 @@ impl Logbook {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_FindAttribute(
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -2678,23 +2974,29 @@ impl Logbook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -2704,46 +3006,49 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_BeforeUndo(
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_BeforeUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -2754,11 +3059,11 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_AfterUndo(
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_AfterUndo(
                 self as *mut Self,
                 anAttDelta,
                 forceIt,
@@ -2769,56 +3074,66 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_BackupCopy(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2826,11 +3141,11 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_DeltaOnModification(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -2839,30 +3154,35 @@ impl Logbook {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Logbook_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_ExtendedDump(
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -2874,30 +3194,41 @@ impl Logbook {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:386 - `TDF_Attribute::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Logbook_inherited_DynamicType(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DynamicType(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2905,7 +3236,7 @@ impl Logbook {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_Logbook_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2918,69 +3249,83 @@ impl Logbook {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Logbook_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Logbook_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionLogbook;
+pub use crate::ffi_types::HandleTFunctionLogbook;
 
 unsafe impl crate::CppDeletable for HandleTFunctionLogbook {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionLogbook_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_destructor(ptr);
     }
 }
 
 impl HandleTFunctionLogbook {
     /// Dereference this Handle to access the underlying TFunction_Logbook
-    pub fn get(&self) -> &crate::ffi::TFunction_Logbook {
+    pub fn get(&self) -> &crate::ffi_types::TFunction_Logbook {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleTFunctionLogbook_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_Logbook
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Logbook {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_Logbook {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionLogbook_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TFunction_Logbook> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionLogbook_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TFunction_Logbook> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionLogbook_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionLogbook_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2992,11 +3337,11 @@ impl HandleTFunctionLogbook {
 
 /// **Source:** `TFunction_Scope.hxx`:36 - `TFunction_Scope`
 /// Keeps a scope of functions.
-pub use crate::ffi::TFunction_Scope as Scope;
+pub use crate::ffi_types::TFunction_Scope as Scope;
 
 unsafe impl crate::CppDeletable for Scope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::TFunction_Scope_destructor(ptr);
+        crate::ffi_extern_TKLCAF::TFunction_Scope_destructor(ptr);
     }
 }
 
@@ -3004,7 +3349,9 @@ impl Scope {
     /// **Source:** `TFunction_Scope.hxx`:52 - `TFunction_Scope::TFunction_Scope()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Scope_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_ctor(),
+            ))
         }
     }
 
@@ -3012,7 +3359,7 @@ impl Scope {
     /// Adds a function to the scope of functions.
     pub fn add_function(&mut self, L: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_add_function(self as *mut Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_add_function(self as *mut Self, L)
         })
     }
 
@@ -3020,7 +3367,7 @@ impl Scope {
     /// Removes a function from the scope of functions.
     pub fn remove_function_label(&mut self, L: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_remove_function_label(self as *mut Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_remove_function_label(self as *mut Self, L)
         })
     }
 
@@ -3028,7 +3375,7 @@ impl Scope {
     /// Removes a function from the scope of functions.
     pub fn remove_function_int(&mut self, ID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_remove_function_int(self as *mut Self, ID)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_remove_function_int(self as *mut Self, ID)
         })
     }
 
@@ -3036,7 +3383,7 @@ impl Scope {
     /// Removes all functions from the scope of functions.
     pub fn remove_all_functions(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_remove_all_functions(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_remove_all_functions(self as *mut Self)
         })
     }
 
@@ -3044,7 +3391,7 @@ impl Scope {
     /// Returns true if the function exists with such an ID.
     pub fn has_function_int(&self, ID: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_has_function_int(self as *const Self, ID)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_has_function_int(self as *const Self, ID)
         })
     }
 
@@ -3052,7 +3399,7 @@ impl Scope {
     /// Returns true if the label contains a function of this scope.
     pub fn has_function_label(&self, L: &crate::tdf::Label) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_has_function_label(self as *const Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_has_function_label(self as *const Self, L)
         })
     }
 
@@ -3060,7 +3407,7 @@ impl Scope {
     /// Returns an ID of the function.
     pub fn get_function_label(&self, L: &crate::tdf::Label) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_get_function_label(self as *const Self, L)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_get_function_label(self as *const Self, L)
         })
     }
 
@@ -3068,7 +3415,7 @@ impl Scope {
     /// Returns the label of the function with this ID.
     pub fn get_function_int(&self, ID: i32) -> &crate::tdf::Label {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Scope_get_function_int(
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_get_function_int(
                 self as *const Self,
                 ID,
             )))
@@ -3079,43 +3426,47 @@ impl Scope {
     /// Returns the Logbook used in TFunction_Driver methods.
     /// Implementation of Attribute methods
     /// ===================================
-    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi::HandleTFunctionLogbook> {
+    pub fn get_logbook(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionLogbook> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Scope_get_logbook(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_get_logbook(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:83 - `TFunction_Scope::ID()`
     pub fn id(&self) -> &crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Scope_id(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_id(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:85 - `TFunction_Scope::Restore()`
-    pub fn restore(&mut self, with: &crate::ffi::HandleTDFAttribute) {
+    pub fn restore(&mut self, with: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_restore(self as *mut Self, with)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_restore(self as *mut Self, with)
         })
     }
 
     /// **Source:** `TFunction_Scope.hxx`:87 - `TFunction_Scope::Paste()`
     pub fn paste(
         &self,
-        into: &crate::ffi::HandleTDFAttribute,
-        RT: &crate::ffi::HandleTDFRelocationTable,
+        into: &crate::ffi_types::HandleTDFAttribute,
+        RT: &crate::ffi_types::HandleTDFRelocationTable,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_paste(self as *const Self, into, RT)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_paste(self as *const Self, into, RT)
         })
     }
 
     /// **Source:** `TFunction_Scope.hxx`:90 - `TFunction_Scope::NewEmpty()`
-    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn new_empty(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Scope_new_empty(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_new_empty(self as *const Self),
+            ))
         }
     }
 
@@ -3128,27 +3479,32 @@ impl Scope {
     /// not outlive whichever source it actually borrows from.
     pub unsafe fn dump(
         &mut self,
-        anOS: &mut crate::ffi::Standard_OStream,
-    ) -> &mut crate::ffi::Standard_OStream {
+        anOS: &mut crate::ffi_types::Standard_OStream,
+    ) -> &mut crate::ffi_types::Standard_OStream {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_Scope_dump(self as *mut Self, anOS)))
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_dump(
+                self as *mut Self,
+                anOS,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:95 - `TFunction_Scope::GetFunctions()`
     /// Returns the scope of functions.
-    pub fn get_functions(&self) -> &crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+    pub fn get_functions(&self) -> &crate::ffi_types::TFunction_DoubleMapOfIntegerLabel {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Scope_get_functions(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_get_functions(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:99 - `TFunction_Scope::ChangeFunctions()`
     /// Returns the scope of functions for modification.
     /// Warning: Don't use this method if You are not sure what You do!
-    pub fn change_functions(&mut self) -> &mut crate::ffi::TFunction_DoubleMapOfIntegerLabel {
+    pub fn change_functions(&mut self) -> &mut crate::ffi_types::TFunction_DoubleMapOfIntegerLabel {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::TFunction_Scope_change_functions(
+            &mut *(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_change_functions(
                 self as *mut Self,
             )))
         }
@@ -3157,19 +3513,23 @@ impl Scope {
     /// **Source:** `TFunction_Scope.hxx`:101 - `TFunction_Scope::SetFreeID()`
     pub fn set_free_id(&mut self, ID: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_set_free_id(self as *mut Self, ID)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_set_free_id(self as *mut Self, ID)
         })
     }
 
     /// **Source:** `TFunction_Scope.hxx`:103 - `TFunction_Scope::GetFreeID()`
     pub fn get_free_id(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::TFunction_Scope_get_free_id(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKLCAF::TFunction_Scope_get_free_id(self as *const Self)
+        })
     }
 
     /// **Source:** `TFunction_Scope.hxx`:105 - `TFunction_Scope::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::TFunction_Scope_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -3178,9 +3538,13 @@ impl Scope {
     /// ==============
     /// Finds or Creates a TFunction_Scope attribute at the root label accessed by <Access>.
     /// Returns the attribute.
-    pub fn set(Access: &crate::tdf::Label) -> crate::OwnedPtr<crate::ffi::HandleTFunctionScope> {
+    pub fn set(
+        Access: &crate::tdf::Label,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionScope> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Scope_set(Access)))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_set(Access),
+            ))
         }
     }
 
@@ -3190,14 +3554,14 @@ impl Scope {
     /// ===============
     /// Constructor (empty).
     pub fn get_id() -> &'static crate::standard::GUID {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Scope_get_id())) }
+        unsafe { &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_get_id())) }
     }
 
     /// **Source:** `TFunction_Scope.hxx`:105 - `TFunction_Scope::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::TFunction_Scope_get_type_name(),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3205,30 +3569,34 @@ impl Scope {
     }
 
     /// **Source:** `TFunction_Scope.hxx`:105 - `TFunction_Scope::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::TFunction_Scope_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_get_type_descriptor()))
+        }
     }
 
     /// Upcast to TDF_Attribute
     pub fn as_tdf_attribute(&self) -> &crate::tdf::Attribute {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Scope_as_TDF_Attribute(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_as_TDF_Attribute(
+                self as *const Self,
+            ))
         }
     }
 
     /// Upcast to TDF_Attribute (mutable)
     pub fn as_tdf_attribute_mut(&mut self) -> &mut crate::tdf::Attribute {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Scope_as_TDF_Attribute_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_as_TDF_Attribute_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::TFunction_Scope_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKLCAF::TFunction_Scope_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3237,27 +3605,29 @@ impl Scope {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::TFunction_Scope_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTFunctionScope> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTFunctionScope> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::TFunction_Scope_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:138 - `TDF_Attribute::SetID()`
     pub fn set_id(&mut self, arg0: &crate::standard::GUID) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_SetID(self as *mut Self, arg0)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_SetID(self as *mut Self, arg0)
         })
     }
 
@@ -3265,7 +3635,7 @@ impl Scope {
     pub fn label(&self) -> crate::OwnedPtr<crate::tdf::Label> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_Label(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_Label(self as *const Self),
             ))
         }
     }
@@ -3273,42 +3643,47 @@ impl Scope {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:154 - `TDF_Attribute::Transaction()`
     pub fn transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_Transaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_Transaction(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:160 - `TDF_Attribute::UntilTransaction()`
     pub fn until_transaction(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_UntilTransaction(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_UntilTransaction(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:164 - `TDF_Attribute::IsValid()`
     pub fn is_valid(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsValid(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsValid(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:167 - `TDF_Attribute::IsNew()`
     pub fn is_new(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsNew(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsNew(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:174 - `TDF_Attribute::IsForgotten()`
     pub fn is_forgotten(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsForgotten(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsForgotten(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:178 - `TDF_Attribute::IsAttribute()`
     pub fn is_attribute(&self, anID: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsAttribute(self as *const Self, anID)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsAttribute(
+                self as *const Self,
+                anID,
+            )
         })
     }
 
@@ -3316,10 +3691,10 @@ impl Scope {
     pub fn find_attribute(
         &self,
         anID: &crate::standard::GUID,
-        anAttribute: &mut crate::ffi::HandleTDFAttribute,
+        anAttribute: &mut crate::ffi_types::HandleTDFAttribute,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_FindAttribute(
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_FindAttribute(
                 self as *const Self,
                 anID,
                 anAttribute,
@@ -3328,23 +3703,29 @@ impl Scope {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:199 - `TDF_Attribute::AddAttribute()`
-    pub fn add_attribute(&self, other: &crate::ffi::HandleTDFAttribute) {
+    pub fn add_attribute(&self, other: &crate::ffi_types::HandleTDFAttribute) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_AddAttribute(self as *const Self, other)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_AddAttribute(
+                self as *const Self,
+                other,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:206 - `TDF_Attribute::ForgetAttribute()`
     pub fn forget_attribute(&self, aguid: &crate::standard::GUID) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_ForgetAttribute(self as *const Self, aguid)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_ForgetAttribute(
+                self as *const Self,
+                aguid,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:214 - `TDF_Attribute::ForgetAllAttributes()`
     pub fn forget_all_attributes(&self, clearChildren: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_ForgetAllAttributes(
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_ForgetAllAttributes(
                 self as *const Self,
                 clearChildren,
             )
@@ -3354,113 +3735,132 @@ impl Scope {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:218 - `TDF_Attribute::AfterAddition()`
     pub fn after_addition(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_AfterAddition(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_AfterAddition(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:222 - `TDF_Attribute::BeforeRemoval()`
     pub fn before_removal(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_BeforeRemoval(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_BeforeRemoval(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:226 - `TDF_Attribute::BeforeForget()`
     pub fn before_forget(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_BeforeForget(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_BeforeForget(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:230 - `TDF_Attribute::AfterResume()`
     pub fn after_resume(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_AfterResume(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_AfterResume(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:239 - `TDF_Attribute::AfterRetrieval()`
     pub fn after_retrieval(&mut self, forceIt: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_AfterRetrieval(self as *mut Self, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_AfterRetrieval(
+                self as *mut Self,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:248 - `TDF_Attribute::BeforeUndo()`
     pub fn before_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_BeforeUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_BeforeUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:258 - `TDF_Attribute::AfterUndo()`
     pub fn after_undo(
         &mut self,
-        anAttDelta: &crate::ffi::HandleTDFAttributeDelta,
+        anAttDelta: &crate::ffi_types::HandleTDFAttributeDelta,
         forceIt: bool,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_AfterUndo(self as *mut Self, anAttDelta, forceIt)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_AfterUndo(
+                self as *mut Self,
+                anAttDelta,
+                forceIt,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:265 - `TDF_Attribute::BeforeCommitTransaction()`
     pub fn before_commit_transaction(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_BeforeCommitTransaction(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_BeforeCommitTransaction(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:277 - `TDF_Attribute::Backup()`
     pub fn backup(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_Backup(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_Backup(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:282 - `TDF_Attribute::IsBackuped()`
     pub fn is_backuped(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsBackuped(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsBackuped(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:286 - `TDF_Attribute::BackupCopy()`
-    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn backup_copy(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_BackupCopy(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_BackupCopy(self as *const Self),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:296 - `TDF_Attribute::DeltaOnAddition()`
-    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnAddition> {
+    pub fn delta_on_addition(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnAddition> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_DeltaOnAddition(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DeltaOnAddition(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:300 - `TDF_Attribute::DeltaOnForget()`
-    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnForget> {
+    pub fn delta_on_forget(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnForget> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_DeltaOnForget(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DeltaOnForget(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:304 - `TDF_Attribute::DeltaOnResume()`
-    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnResume> {
+    pub fn delta_on_resume(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnResume> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_DeltaOnResume(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DeltaOnResume(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3468,11 +3868,11 @@ impl Scope {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:308 - `TDF_Attribute::DeltaOnModification()`
     pub fn delta_on_modification(
         &self,
-        anOldAttribute: &crate::ffi::HandleTDFAttribute,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnModification> {
+        anOldAttribute: &crate::ffi_types::HandleTDFAttribute,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnModification> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_DeltaOnModification(
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DeltaOnModification(
                     self as *const Self,
                     anOldAttribute,
                 ),
@@ -3481,30 +3881,35 @@ impl Scope {
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:316 - `TDF_Attribute::DeltaOnRemoval()`
-    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFDeltaOnRemoval> {
+    pub fn delta_on_removal(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFDeltaOnRemoval> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::TFunction_Scope_inherited_DeltaOnRemoval(self as *const Self),
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DeltaOnRemoval(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:345 - `TDF_Attribute::References()`
-    pub fn references(&self, aDataSet: &crate::ffi::HandleTDFDataSet) {
+    pub fn references(&self, aDataSet: &crate::ffi_types::HandleTDFDataSet) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_References(self as *const Self, aDataSet)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_References(
+                self as *const Self,
+                aDataSet,
+            )
         })
     }
 
     /// Inherited: **Source:** `TDF_Attribute.hxx`:358 - `TDF_Attribute::ExtendedDump()`
     pub fn extended_dump(
         &self,
-        anOS: &mut crate::ffi::Standard_OStream,
+        anOS: &mut crate::ffi_types::Standard_OStream,
         aFilter: &crate::tdf::IDFilter,
-        aMap: &mut crate::ffi::TDF_AttributeIndexedMap,
+        aMap: &mut crate::ffi_types::TDF_AttributeIndexedMap,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_ExtendedDump(
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_ExtendedDump(
                 self as *const Self,
                 anOS,
                 aFilter,
@@ -3516,21 +3921,27 @@ impl Scope {
     /// Inherited: **Source:** `TDF_Attribute.hxx`:374 - `TDF_Attribute::Forget()`
     pub fn forget(&mut self, aTransaction: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_Forget(self as *mut Self, aTransaction)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_Forget(
+                self as *mut Self,
+                aTransaction,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -3538,7 +3949,7 @@ impl Scope {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::TFunction_Scope_inherited_This(self as *const Self)
+                crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3551,67 +3962,83 @@ impl Scope {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::TFunction_Scope_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKLCAF::TFunction_Scope_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleTFunctionScope;
+pub use crate::ffi_types::HandleTFunctionScope;
 
 unsafe impl crate::CppDeletable for HandleTFunctionScope {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleTFunctionScope_destructor(ptr);
+        crate::ffi_extern_TKLCAF::HandleTFunctionScope_destructor(ptr);
     }
 }
 
 impl HandleTFunctionScope {
     /// Dereference this Handle to access the underlying TFunction_Scope
-    pub fn get(&self) -> &crate::ffi::TFunction_Scope {
-        unsafe { &*crate::check_result(crate::ffi::HandleTFunctionScope_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::TFunction_Scope {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionScope_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying TFunction_Scope
-    pub fn get_mut(&mut self) -> &mut crate::ffi::TFunction_Scope {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::TFunction_Scope {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleTFunctionScope_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKLCAF::HandleTFunctionScope_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<TFunction_Scope> to Handle<TDF_Attribute>
-    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi::HandleTDFAttribute> {
+    pub fn to_handle_attribute(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTDFAttribute> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionScope_to_HandleTDFAttribute(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionScope_to_HandleTDFAttribute(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<TFunction_Scope> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleTFunctionScope_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKLCAF::HandleTFunctionScope_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3621,7 +4048,7 @@ impl HandleTFunctionScope {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     TFunction_Array1OfDataMapOfGUIDDriver as Array1OfDataMapOfGUIDDriver,
     TFunction_DoubleMapOfIntegerLabel as DoubleMapOfIntegerLabel,
 };

@@ -69,7 +69,7 @@ impl TryFrom<i32> for CriterionType {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From AdvApp2Var_ApproxAFunc2Var.hxx
@@ -122,11 +122,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// with the tolerances given in the create function and the
 /// results will be given in that order as well that is :
 /// Surface(n) will correspond to the nth entry described by Num3DSS
-pub use crate::ffi::AdvApp2Var_ApproxAFunc2Var as ApproxAFunc2Var;
+pub use crate::ffi_types::AdvApp2Var_ApproxAFunc2Var as ApproxAFunc2Var;
 
 unsafe impl crate::CppDeletable for ApproxAFunc2Var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_ApproxAFunc2Var_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_destructor(ptr);
     }
 }
 
@@ -136,12 +136,12 @@ impl ApproxAFunc2Var {
         Num1DSS: i32,
         Num2DSS: i32,
         Num3DSS: i32,
-        OneDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        TwoDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        ThreeDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        OneDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
-        TwoDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
-        ThreeDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
+        OneDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TwoDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        ThreeDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        OneDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        TwoDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        ThreeDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
         FirstInU: f64,
         LastInU: f64,
         FirstInV: f64,
@@ -158,7 +158,7 @@ impl ApproxAFunc2Var {
         VChoice: &mut crate::adv_approx::Cutting,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, UChoice, VChoice)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, UChoice, VChoice)))
         }
     }
 
@@ -167,12 +167,12 @@ impl ApproxAFunc2Var {
         Num1DSS: i32,
         Num2DSS: i32,
         Num3DSS: i32,
-        OneDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        TwoDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        ThreeDTol: &crate::ffi::HandleTColStdHArray1OfReal,
-        OneDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
-        TwoDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
-        ThreeDTolFr: &crate::ffi::HandleTColStdHArray2OfReal,
+        OneDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        TwoDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        ThreeDTol: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        OneDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        TwoDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        ThreeDTolFr: &crate::ffi_types::HandleTColStdHArray2OfReal,
         FirstInU: f64,
         LastInU: f64,
         FirstInV: f64,
@@ -190,7 +190,7 @@ impl ApproxAFunc2Var {
         VChoice: &mut crate::adv_approx::Cutting,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_criterion_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, Crit, UChoice, VChoice)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_ctor_int3_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3_real4_isotype_shape2_int4_evaluatorfunc2var_criterion_cutting2(Num1DSS, Num2DSS, Num3DSS, OneDTol, TwoDTol, ThreeDTol, OneDTolFr, TwoDTolFr, ThreeDTolFr, FirstInU, LastInU, FirstInV, LastInV, FavorIso.into(), ContInU.into(), ContInV.into(), PrecisCode, MaxDegInU, MaxDegInV, MaxPatch, Func, Crit, UChoice, VChoice)))
         }
     }
 
@@ -199,7 +199,7 @@ impl ApproxAFunc2Var {
     /// tolerances and the wished continuities
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_is_done(self as *const Self)
         })
     }
 
@@ -209,16 +209,22 @@ impl ApproxAFunc2Var {
     /// that is not recognized with the wished continuities
     pub fn has_result(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_has_result(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_has_result(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:148 - `AdvApp2Var_ApproxAFunc2Var::Surface()`
     /// returns the BSplineSurface of range Index
-    pub fn surface(&self, Index: i32) -> crate::OwnedPtr<crate::ffi::HandleGeomBSplineSurface> {
+    pub fn surface(
+        &self,
+        Index: i32,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeomBSplineSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_ApproxAFunc2Var_surface(self as *const Self, Index),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_surface(
+                    self as *const Self,
+                    Index,
+                ),
             ))
         }
     }
@@ -226,21 +232,24 @@ impl ApproxAFunc2Var {
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:150 - `AdvApp2Var_ApproxAFunc2Var::UDegree()`
     pub fn u_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_u_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_u_degree(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:152 - `AdvApp2Var_ApproxAFunc2Var::VDegree()`
     pub fn v_degree(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_v_degree(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_v_degree(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:154 - `AdvApp2Var_ApproxAFunc2Var::NumSubSpaces()`
     pub fn num_sub_spaces(&self, Dimension: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_num_sub_spaces(self as *const Self, Dimension)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_num_sub_spaces(
+                self as *const Self,
+                Dimension,
+            )
         })
     }
 
@@ -249,10 +258,10 @@ impl ApproxAFunc2Var {
     pub fn max_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_ApproxAFunc2Var_max_error_int(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_max_error_int(
                     self as *const Self,
                     Dimension,
                 ),
@@ -265,10 +274,10 @@ impl ApproxAFunc2Var {
     pub fn average_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_ApproxAFunc2Var_average_error_int(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_average_error_int(
                     self as *const Self,
                     Dimension,
                 ),
@@ -283,10 +292,10 @@ impl ApproxAFunc2Var {
     pub fn u_front_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_ApproxAFunc2Var_u_front_error_int(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_u_front_error_int(
                     self as *const Self,
                     Dimension,
                 ),
@@ -301,10 +310,10 @@ impl ApproxAFunc2Var {
     pub fn v_front_error_int(
         &self,
         Dimension: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_ApproxAFunc2Var_v_front_error_int(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_v_front_error_int(
                     self as *const Self,
                     Dimension,
                 ),
@@ -316,7 +325,7 @@ impl ApproxAFunc2Var {
     /// returns the error max of the BSplineSurface of range Index
     pub fn max_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_max_error_int2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_max_error_int2(
                 self as *const Self,
                 Dimension,
                 Index,
@@ -328,7 +337,7 @@ impl ApproxAFunc2Var {
     /// returns the average error of the BSplineSurface of range Index
     pub fn average_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_average_error_int2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_average_error_int2(
                 self as *const Self,
                 Dimension,
                 Index,
@@ -340,7 +349,7 @@ impl ApproxAFunc2Var {
     /// returns the error max of the BSplineSurface of range Index on a UFrontier
     pub fn u_front_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_u_front_error_int2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_u_front_error_int2(
                 self as *const Self,
                 Dimension,
                 Index,
@@ -352,7 +361,7 @@ impl ApproxAFunc2Var {
     /// returns the error max of the BSplineSurface of range Index on a VFrontier
     pub fn v_front_error_int2(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_v_front_error_int2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_v_front_error_int2(
                 self as *const Self,
                 Dimension,
                 Index,
@@ -363,16 +372,20 @@ impl ApproxAFunc2Var {
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:189 - `AdvApp2Var_ApproxAFunc2Var::CritError()`
     pub fn crit_error(&self, Dimension: i32, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_crit_error(self as *const Self, Dimension, Index)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_crit_error(
+                self as *const Self,
+                Dimension,
+                Index,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_ApproxAFunc2Var.hxx`:194 - `AdvApp2Var_ApproxAFunc2Var::Dump()`
     /// Prints on the stream 'o' information on the current state
     /// of the object.
-    pub fn dump(&self, o: &mut crate::ffi::Standard_OStream) {
+    pub fn dump(&self, o: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxAFunc2Var_dump(self as *const Self, o)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxAFunc2Var_dump(self as *const Self, o)
         })
     }
 }
@@ -382,11 +395,11 @@ impl ApproxAFunc2Var {
 // ========================
 
 /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:28 - `AdvApp2Var_ApproxF2var`
-pub use crate::ffi::AdvApp2Var_ApproxF2var as ApproxF2var;
+pub use crate::ffi_types::AdvApp2Var_ApproxF2var as ApproxF2var;
 
 unsafe impl crate::CppDeletable for ApproxF2var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_ApproxF2var_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_destructor(ptr);
     }
 }
 
@@ -395,9 +408,9 @@ impl ApproxF2var {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::AdvApp2Var_ApproxF2var_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_ctor(),
+            ))
         }
     }
 
@@ -431,7 +444,7 @@ impl ApproxF2var {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2fnc(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2fnc(
                 ndimen, nbsesp, ndimse, uvfonc, foncnp, tconst, isofav, nbroot, rootlg, iordre,
                 ideriv, ndgjac, nbcrmx, ncflim, epsapr, ncoeff, courbe, nbcrbe, somtab, diftab,
                 contr1, contr2, tabdec, errmax, errmoy, iercod,
@@ -447,14 +460,16 @@ impl ApproxF2var {
         vrootl: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2roo(nbpntu, nbpntv, urootl, vrootl)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2roo(
+                nbpntu, nbpntv, urootl, vrootl,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:63 - `AdvApp2Var_ApproxF2var::mma2jmx_()`
     pub unsafe fn mma2jmx(ndgjac: *mut i32, iordre: *mut i32, xjacmx: *mut f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2jmx(ndgjac, iordre, xjacmx)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2jmx(ndgjac, iordre, xjacmx)
         })
     }
 
@@ -467,7 +482,9 @@ impl ApproxF2var {
         arg4: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mmapptt(arg0, arg1, arg2, arg3, arg4)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mmapptt(
+                arg0, arg1, arg2, arg3, arg4,
+            )
         })
     }
 
@@ -499,7 +516,7 @@ impl ApproxF2var {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2cdi(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2cdi(
                 ndimen, nbpntu, urootl, nbpntv, vrootl, iordru, iordrv, contr1, contr2, contr3,
                 contr4, sotbu1, sotbu2, ditbu1, ditbu2, sotbv1, sotbv2, ditbv1, ditbv2, sosotb,
                 soditb, disotb, diditb, iercod,
@@ -527,7 +544,7 @@ impl ApproxF2var {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2ds1(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2ds1(
                 ndimen, uintfn, vintfn, foncnp, nbpntu, nbpntv, urootb, vrootb, isofav, sosotb,
                 disotb, soditb, diditb, fpntab, ttable, iercod,
             )
@@ -564,7 +581,7 @@ impl ApproxF2var {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2ce1(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2ce1(
                 numdec, ndimen, nbsesp, ndimse, ndminu, ndminv, ndguli, ndgvli, ndjacu, ndjacv,
                 iordru, iordrv, nbpntu, nbpntv, epsapr, sosotb, disotb, soditb, diditb, patjac,
                 errmax, errmoy, ndegpu, ndegpv, itydec, iercod,
@@ -587,7 +604,7 @@ impl ApproxF2var {
         arg10: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2can(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2can(
                 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
             )
         })
@@ -595,7 +612,9 @@ impl ApproxF2var {
 
     /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:152 - `AdvApp2Var_ApproxF2var::mma1her_()`
     pub unsafe fn mma1her(arg0: *const i32, arg1: *mut f64, arg2: *mut i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_ApproxF2var_mma1her(arg0, arg1, arg2) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma1her(arg0, arg1, arg2)
+        })
     }
 
     /// **Source:** `AdvApp2Var_ApproxF2var.hxx`:154 - `AdvApp2Var_ApproxF2var::mma2ac2_()`
@@ -613,7 +632,7 @@ impl ApproxF2var {
         arg10: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2ac2(
                 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
             )
         })
@@ -634,7 +653,7 @@ impl ApproxF2var {
         arg10: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac3(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2ac3(
                 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10,
             )
         })
@@ -656,7 +675,7 @@ impl ApproxF2var {
         arg11: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2ac1(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2ac1(
                 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11,
             )
         })
@@ -681,7 +700,7 @@ impl ApproxF2var {
         ncoefv: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_ApproxF2var_mma2fx6(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_ApproxF2var_mma2fx6(
                 ncfmxu, ncfmxv, ndimen, nbsesp, ndimse, nbupat, nbvpat, iordru, iordrv, epsapr,
                 epsfro, patcan, errmax, ncoefu, ncoefv,
             )
@@ -696,11 +715,11 @@ impl ApproxF2var {
 /// **Source:** `AdvApp2Var_Context.hxx`:30 - `AdvApp2Var_Context`
 /// contains  all the  parameters  for approximation
 /// ( tolerancy, computing option, ...)
-pub use crate::ffi::AdvApp2Var_Context as Context;
+pub use crate::ffi_types::AdvApp2Var_Context as Context;
 
 unsafe impl crate::CppDeletable for Context {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Context_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_destructor(ptr);
     }
 }
 
@@ -708,7 +727,9 @@ impl Context {
     /// **Source:** `AdvApp2Var_Context.hxx`:35 - `AdvApp2Var_Context::AdvApp2Var_Context()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_ctor(),
+            ))
         }
     }
 
@@ -723,151 +744,159 @@ impl Context {
         nb1Dss: i32,
         nb2Dss: i32,
         nb3Dss: i32,
-        tol1D: &crate::ffi::HandleTColStdHArray1OfReal,
-        tol2D: &crate::ffi::HandleTColStdHArray1OfReal,
-        tol3D: &crate::ffi::HandleTColStdHArray1OfReal,
-        tof1D: &crate::ffi::HandleTColStdHArray2OfReal,
-        tof2D: &crate::ffi::HandleTColStdHArray2OfReal,
-        tof3D: &crate::ffi::HandleTColStdHArray2OfReal,
+        tol1D: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        tol2D: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        tol3D: &crate::ffi_types::HandleTColStdHArray1OfReal,
+        tof1D: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        tof2D: &crate::ffi_types::HandleTColStdHArray2OfReal,
+        tof3D: &crate::ffi_types::HandleTColStdHArray2OfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_ctor_int9_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3(ifav, iu, iv, nlimu, nlimv, iprecis, nb1Dss, nb2Dss, nb3Dss, tol1D, tol2D, tol3D, tof1D, tof2D, tof3D)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_ctor_int9_handletcolstdharray1ofreal3_handletcolstdharray2ofreal3(ifav, iu, iv, nlimu, nlimv, iprecis, nb1Dss, nb2Dss, nb3Dss, tol1D, tol2D, tol3D, tof1D, tof2D, tof3D)))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:53 - `AdvApp2Var_Context::TotalDimension()`
     pub fn total_dimension(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Context_total_dimension(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_total_dimension(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:55 - `AdvApp2Var_Context::TotalNumberSSP()`
     pub fn total_number_ssp(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Context_total_number_ssp(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_total_number_ssp(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:57 - `AdvApp2Var_Context::FavorIso()`
     pub fn favor_iso(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Context_favor_iso(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_favor_iso(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:59 - `AdvApp2Var_Context::UOrder()`
     pub fn u_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Context_u_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:61 - `AdvApp2Var_Context::VOrder()`
     pub fn v_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Context_v_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:63 - `AdvApp2Var_Context::ULimit()`
     pub fn u_limit(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Context_u_limit(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:65 - `AdvApp2Var_Context::VLimit()`
     pub fn v_limit(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Context_v_limit(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_limit(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:67 - `AdvApp2Var_Context::UJacDeg()`
     pub fn u_jac_deg(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Context_u_jac_deg(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_jac_deg(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:69 - `AdvApp2Var_Context::VJacDeg()`
     pub fn v_jac_deg(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Context_v_jac_deg(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_jac_deg(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:71 - `AdvApp2Var_Context::UJacMax()`
-    pub fn u_jac_max(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn u_jac_max(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Context_u_jac_max(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_jac_max(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:73 - `AdvApp2Var_Context::VJacMax()`
-    pub fn v_jac_max(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn v_jac_max(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Context_v_jac_max(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_jac_max(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:75 - `AdvApp2Var_Context::URoots()`
-    pub fn u_roots(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn u_roots(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_u_roots(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_roots(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:77 - `AdvApp2Var_Context::VRoots()`
-    pub fn v_roots(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn v_roots(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_v_roots(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_roots(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:79 - `AdvApp2Var_Context::UGauss()`
-    pub fn u_gauss(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn u_gauss(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_u_gauss(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_u_gauss(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:81 - `AdvApp2Var_Context::VGauss()`
-    pub fn v_gauss(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn v_gauss(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_v_gauss(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_v_gauss(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:83 - `AdvApp2Var_Context::IToler()`
-    pub fn i_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn i_toler(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_i_toler(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_i_toler(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:85 - `AdvApp2Var_Context::FToler()`
-    pub fn f_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+    pub fn f_toler(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_f_toler(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_f_toler(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Context.hxx`:87 - `AdvApp2Var_Context::CToler()`
-    pub fn c_toler(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+    pub fn c_toler(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Context_c_toler(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Context_c_toler(self as *const Self),
+            ))
         }
     }
 }
@@ -878,11 +907,11 @@ impl Context {
 
 /// **Source:** `AdvApp2Var_Criterion.hxx`:32 - `AdvApp2Var_Criterion`
 /// this class contains a given criterion to be satisfied
-pub use crate::ffi::AdvApp2Var_Criterion as Criterion;
+pub use crate::ffi_types::AdvApp2Var_Criterion as Criterion;
 
 unsafe impl crate::CppDeletable for Criterion {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Criterion_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_destructor(ptr);
     }
 }
 
@@ -890,28 +919,28 @@ impl Criterion {
     /// **Source:** `AdvApp2Var_Criterion.hxx`:39 - `AdvApp2Var_Criterion::Value()`
     pub fn value(&self, P: &mut Patch, C: &Context) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Criterion_value(self as *const Self, P, C)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_value(self as *const Self, P, C)
         })
     }
 
     /// **Source:** `AdvApp2Var_Criterion.hxx`:41 - `AdvApp2Var_Criterion::IsSatisfied()`
     pub fn is_satisfied(&self, P: &Patch) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Criterion_is_satisfied(self as *const Self, P)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_is_satisfied(self as *const Self, P)
         })
     }
 
     /// **Source:** `AdvApp2Var_Criterion.hxx`:43 - `AdvApp2Var_Criterion::MaxValue()`
     pub fn max_value(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Criterion_max_value(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_max_value(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Criterion.hxx`:45 - `AdvApp2Var_Criterion::Type()`
     pub fn type_(&self) -> crate::adv_app2_var::CriterionType {
         crate::adv_app2_var::CriterionType::try_from(crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Criterion_type_(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_type_(self as *const Self)
         }))
         .unwrap()
     }
@@ -919,7 +948,7 @@ impl Criterion {
     /// **Source:** `AdvApp2Var_Criterion.hxx`:47 - `AdvApp2Var_Criterion::Repartition()`
     pub fn repartition(&self) -> crate::adv_app2_var::CriterionRepartition {
         crate::adv_app2_var::CriterionRepartition::try_from(crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Criterion_repartition(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Criterion_repartition(self as *const Self)
         }))
         .unwrap()
     }
@@ -930,38 +959,38 @@ impl Criterion {
 // ========================
 
 /// **Source:** `AdvApp2Var_Data.hxx`:21 - `mdnombr_1_`
-pub use crate::ffi::mdnombr_1_;
+pub use crate::ffi_types::mdnombr_1_;
 
 unsafe impl crate::CppDeletable for mdnombr_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mdnombr_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mdnombr_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:27 - `minombr_1_`
-pub use crate::ffi::minombr_1_;
+pub use crate::ffi_types::minombr_1_;
 
 unsafe impl crate::CppDeletable for minombr_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::minombr_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::minombr_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:33 - `maovpar_1_`
-pub use crate::ffi::maovpar_1_;
+pub use crate::ffi_types::maovpar_1_;
 
 unsafe impl crate::CppDeletable for maovpar_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::maovpar_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::maovpar_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:42 - `maovpch_1_`
-pub use crate::ffi::maovpch_1_;
+pub use crate::ffi_types::maovpch_1_;
 
 unsafe impl crate::CppDeletable for maovpch_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::maovpch_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::maovpch_1__destructor(ptr);
     }
 }
 
@@ -969,80 +998,84 @@ impl maovpch_1_ {
     /// **Source:** `AdvApp2Var_Data.hxx` - `maovpch_1_::maovpch_1_()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::maovpch_1__ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::maovpch_1__ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:48 - `mlgdrtl_1_`
-pub use crate::ffi::mlgdrtl_1_;
+pub use crate::ffi_types::mlgdrtl_1_;
 
 unsafe impl crate::CppDeletable for mlgdrtl_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mlgdrtl_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mlgdrtl_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:56 - `mmjcobi_1_`
-pub use crate::ffi::mmjcobi_1_;
+pub use crate::ffi_types::mmjcobi_1_;
 
 unsafe impl crate::CppDeletable for mmjcobi_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmjcobi_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmjcobi_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:63 - `mmcmcnp_1_`
-pub use crate::ffi::mmcmcnp_1_;
+pub use crate::ffi_types::mmcmcnp_1_;
 
 unsafe impl crate::CppDeletable for mmcmcnp_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmcmcnp_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmcmcnp_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:69 - `mmapgss_1_`
-pub use crate::ffi::mmapgss_1_;
+pub use crate::ffi_types::mmapgss_1_;
 
 unsafe impl crate::CppDeletable for mmapgss_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmapgss_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmapgss_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:75 - `mmapgs0_1_`
-pub use crate::ffi::mmapgs0_1_;
+pub use crate::ffi_types::mmapgs0_1_;
 
 unsafe impl crate::CppDeletable for mmapgs0_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmapgs0_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmapgs0_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:81 - `mmapgs1_1_`
-pub use crate::ffi::mmapgs1_1_;
+pub use crate::ffi_types::mmapgs1_1_;
 
 unsafe impl crate::CppDeletable for mmapgs1_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmapgs1_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmapgs1_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:87 - `mmapgs2_1_`
-pub use crate::ffi::mmapgs2_1_;
+pub use crate::ffi_types::mmapgs2_1_;
 
 unsafe impl crate::CppDeletable for mmapgs2_1_ {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::mmapgs2_1__destructor(ptr);
+        crate::ffi_extern_TKGeomBase::mmapgs2_1__destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data.hxx`:93 - `AdvApp2Var_Data`
 /// /
-pub use crate::ffi::AdvApp2Var_Data as Data;
+pub use crate::ffi_types::AdvApp2Var_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Data_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_destructor(ptr);
     }
 }
 
@@ -1051,63 +1084,87 @@ impl Data {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Data_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:96 - `AdvApp2Var_Data::Getmdnombr()`
     pub fn getmdnombr() -> &'static mut mdnombr_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmdnombr())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmdnombr()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:97 - `AdvApp2Var_Data::Getminombr()`
     pub fn getminombr() -> &'static mut minombr_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getminombr())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getminombr()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:98 - `AdvApp2Var_Data::Getmaovpar()`
     pub fn getmaovpar() -> &'static mut maovpar_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmaovpar())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmaovpar()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:99 - `AdvApp2Var_Data::Getmaovpch()`
     pub fn getmaovpch() -> &'static mut maovpch_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmaovpch())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmaovpch()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:100 - `AdvApp2Var_Data::Getmlgdrtl()`
     pub fn getmlgdrtl() -> &'static mut mlgdrtl_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmlgdrtl())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmlgdrtl()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:101 - `AdvApp2Var_Data::Getmmjcobi()`
     pub fn getmmjcobi() -> &'static mut mmjcobi_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmjcobi())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmjcobi()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:102 - `AdvApp2Var_Data::Getmmcmcnp()`
     pub fn getmmcmcnp() -> &'static mut mmcmcnp_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmcmcnp())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmcmcnp()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:103 - `AdvApp2Var_Data::Getmmapgss()`
     pub fn getmmapgss() -> &'static mut mmapgss_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmapgss())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmapgss()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:104 - `AdvApp2Var_Data::Getmmapgs0()`
     pub fn getmmapgs0() -> &'static mut mmapgs0_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmapgs0())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmapgs0()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:105 - `AdvApp2Var_Data::Getmmapgs1()`
     pub fn getmmapgs1() -> &'static mut mmapgs1_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmapgs1())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmapgs1()))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Data.hxx`:106 - `AdvApp2Var_Data::Getmmapgs2()`
     pub fn getmmapgs2() -> &'static mut mmapgs2_1_ {
-        unsafe { &mut *(crate::check_result(crate::ffi::AdvApp2Var_Data_getmmapgs2())) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Data_getmmapgs2()))
+        }
     }
 }
 
@@ -1116,29 +1173,29 @@ impl Data {
 // ========================
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:29 - `complex`
-pub use crate::ffi::complex;
+pub use crate::ffi_types::complex;
 
 unsafe impl crate::CppDeletable for complex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::complex_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::complex_destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:34 - `doublecomplex`
-pub use crate::ffi::doublecomplex;
+pub use crate::ffi_types::doublecomplex;
 
 unsafe impl crate::CppDeletable for doublecomplex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::doublecomplex_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::doublecomplex_destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:72 - `cilist`
-pub use crate::ffi::cilist;
+pub use crate::ffi_types::cilist;
 
 unsafe impl crate::CppDeletable for cilist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::cilist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::cilist_destructor(ptr);
     }
 }
 
@@ -1146,16 +1203,20 @@ impl cilist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `cilist::cilist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::cilist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::cilist_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:82 - `icilist`
-pub use crate::ffi::icilist;
+pub use crate::ffi_types::icilist;
 
 unsafe impl crate::CppDeletable for icilist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::icilist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::icilist_destructor(ptr);
     }
 }
 
@@ -1163,16 +1224,20 @@ impl icilist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `icilist::icilist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::icilist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::icilist_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:93 - `olist`
-pub use crate::ffi::olist;
+pub use crate::ffi_types::olist;
 
 unsafe impl crate::CppDeletable for olist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::olist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::olist_destructor(ptr);
     }
 }
 
@@ -1180,16 +1245,20 @@ impl olist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `olist::olist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::olist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::olist_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:107 - `cllist`
-pub use crate::ffi::cllist;
+pub use crate::ffi_types::cllist;
 
 unsafe impl crate::CppDeletable for cllist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::cllist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::cllist_destructor(ptr);
     }
 }
 
@@ -1197,25 +1266,29 @@ impl cllist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `cllist::cllist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::cllist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::cllist_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:115 - `alist`
-pub use crate::ffi::alist;
+pub use crate::ffi_types::alist;
 
 unsafe impl crate::CppDeletable for alist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::alist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::alist_destructor(ptr);
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:122 - `inlist`
-pub use crate::ffi::inlist;
+pub use crate::ffi_types::inlist;
 
 unsafe impl crate::CppDeletable for inlist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::inlist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::inlist_destructor(ptr);
     }
 }
 
@@ -1223,16 +1296,20 @@ impl inlist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `inlist::inlist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::inlist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::inlist_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:169 - `Vardesc`
-pub use crate::ffi::Vardesc;
+pub use crate::ffi_types::Vardesc;
 
 unsafe impl crate::CppDeletable for Vardesc {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Vardesc_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Vardesc_destructor(ptr);
     }
 }
 
@@ -1240,16 +1317,20 @@ impl Vardesc {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `Vardesc::Vardesc()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Vardesc_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Vardesc_ctor(),
+            ))
+        }
     }
 }
 
 /// **Source:** `AdvApp2Var_Data_f2c.hxx`:178 - `Namelist`
-pub use crate::ffi::Namelist;
+pub use crate::ffi_types::Namelist;
 
 unsafe impl crate::CppDeletable for Namelist {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Namelist_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::Namelist_destructor(ptr);
     }
 }
 
@@ -1257,7 +1338,11 @@ impl Namelist {
     /// **Source:** `AdvApp2Var_Data_f2c.hxx` - `Namelist::Namelist()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Namelist_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::Namelist_ctor(),
+            ))
+        }
     }
 }
 
@@ -1266,11 +1351,11 @@ impl Namelist {
 // ========================
 
 /// **Source:** `AdvApp2Var_EvaluatorFunc2Var.hxx`:24 - `AdvApp2Var_EvaluatorFunc2Var`
-pub use crate::ffi::AdvApp2Var_EvaluatorFunc2Var as EvaluatorFunc2Var;
+pub use crate::ffi_types::AdvApp2Var_EvaluatorFunc2Var as EvaluatorFunc2Var;
 
 unsafe impl crate::CppDeletable for EvaluatorFunc2Var {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_EvaluatorFunc2Var_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_EvaluatorFunc2Var_destructor(ptr);
     }
 }
 
@@ -1292,7 +1377,7 @@ impl EvaluatorFunc2Var {
         theErrorCode: *mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_EvaluatorFunc2Var_evaluate(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_EvaluatorFunc2Var_evaluate(
                 self as *const Self,
                 theDimension,
                 theUStartEnd,
@@ -1315,11 +1400,11 @@ impl EvaluatorFunc2Var {
 // ========================
 
 /// **Source:** `AdvApp2Var_Framework.hxx`:34 - `AdvApp2Var_Framework`
-pub use crate::ffi::AdvApp2Var_Framework as Framework;
+pub use crate::ffi_types::AdvApp2Var_Framework as Framework;
 
 unsafe impl crate::CppDeletable for Framework {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Framework_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_destructor(ptr);
     }
 }
 
@@ -1327,22 +1412,20 @@ impl Framework {
     /// **Source:** `AdvApp2Var_Framework.hxx`:39 - `AdvApp2Var_Framework::AdvApp2Var_Framework()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Framework_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:41 - `AdvApp2Var_Framework::AdvApp2Var_Framework()`
     pub fn new_sequenceofnode_sequenceofstrip2(
-        Frame: &crate::ffi::AdvApp2Var_SequenceOfNode,
-        UFrontier: &crate::ffi::AdvApp2Var_SequenceOfStrip,
-        VFrontier: &crate::ffi::AdvApp2Var_SequenceOfStrip,
+        Frame: &crate::ffi_types::AdvApp2Var_SequenceOfNode,
+        UFrontier: &crate::ffi_types::AdvApp2Var_SequenceOfStrip,
+        VFrontier: &crate::ffi_types::AdvApp2Var_SequenceOfStrip,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Framework_ctor_sequenceofnode_sequenceofstrip2(
-                    Frame, UFrontier, VFrontier,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_ctor_sequenceofnode_sequenceofstrip2(Frame, UFrontier, VFrontier)))
         }
     }
 
@@ -1353,10 +1436,10 @@ impl Framework {
         &self,
         IndexIso: &mut i32,
         IndexStrip: &mut i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarIso> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdvApp2VarIso> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Framework_first_not_approx(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_first_not_approx(
                     self as *const Self,
                     IndexIso,
                     IndexStrip,
@@ -1373,7 +1456,7 @@ impl Framework {
         IndexStrip: i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Framework_first_node(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_first_node(
                 self as *const Self,
                 Type.into(),
                 IndexIso,
@@ -1385,7 +1468,7 @@ impl Framework {
     /// **Source:** `AdvApp2Var_Framework.hxx`:54 - `AdvApp2Var_Framework::LastNode()`
     pub fn last_node(&self, Type: crate::geom_abs::IsoType, IndexIso: i32, IndexStrip: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Framework_last_node(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_last_node(
                 self as *const Self,
                 Type.into(),
                 IndexIso,
@@ -1399,10 +1482,10 @@ impl Framework {
         &mut self,
         IndexIso: i32,
         IndexStrip: i32,
-        anIso: &crate::ffi::HandleAdvApp2VarIso,
+        anIso: &crate::ffi_types::HandleAdvApp2VarIso,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Framework_change_iso(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_change_iso(
                 self as *mut Self,
                 IndexIso,
                 IndexStrip,
@@ -1412,9 +1495,9 @@ impl Framework {
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:62 - `AdvApp2Var_Framework::Node()`
-    pub fn node_int(&self, IndexNode: i32) -> &crate::ffi::HandleAdvApp2VarNode {
+    pub fn node_int(&self, IndexNode: i32) -> &crate::ffi_types::HandleAdvApp2VarNode {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_node_int(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_node_int(
                 self as *const Self,
                 IndexNode,
             )))
@@ -1422,9 +1505,9 @@ impl Framework {
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:67 - `AdvApp2Var_Framework::Node()`
-    pub fn node_real2(&self, U: f64, V: f64) -> &crate::ffi::HandleAdvApp2VarNode {
+    pub fn node_real2(&self, U: f64, V: f64) -> &crate::ffi_types::HandleAdvApp2VarNode {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_node_real2(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_node_real2(
                 self as *const Self,
                 U,
                 V,
@@ -1435,7 +1518,7 @@ impl Framework {
     /// **Source:** `AdvApp2Var_Framework.hxx`:70 - `AdvApp2Var_Framework::IsoU()`
     pub fn iso_u(&self, U: f64, V0: f64, V1: f64) -> &Iso {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_iso_u(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_iso_u(
                 self as *const Self,
                 U,
                 V0,
@@ -1447,7 +1530,7 @@ impl Framework {
     /// **Source:** `AdvApp2Var_Framework.hxx`:74 - `AdvApp2Var_Framework::IsoV()`
     pub fn iso_v(&self, U0: f64, U1: f64, V: f64) -> &Iso {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_iso_v(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_iso_v(
                 self as *const Self,
                 U0,
                 U1,
@@ -1459,14 +1542,20 @@ impl Framework {
     /// **Source:** `AdvApp2Var_Framework.hxx`:78 - `AdvApp2Var_Framework::UpdateInU()`
     pub fn update_in_u(&mut self, CuttingValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Framework_update_in_u(self as *mut Self, CuttingValue)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_update_in_u(
+                self as *mut Self,
+                CuttingValue,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Framework.hxx`:80 - `AdvApp2Var_Framework::UpdateInV()`
     pub fn update_in_v(&mut self, CuttingValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Framework_update_in_v(self as *mut Self, CuttingValue)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_update_in_v(
+                self as *mut Self,
+                CuttingValue,
+            )
         })
     }
 
@@ -1475,9 +1564,9 @@ impl Framework {
         &self,
         IndexIso: i32,
         IndexStrip: i32,
-    ) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    ) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_u_equation(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_u_equation(
                 self as *const Self,
                 IndexIso,
                 IndexStrip,
@@ -1490,9 +1579,9 @@ impl Framework {
         &self,
         IndexIso: i32,
         IndexStrip: i32,
-    ) -> &crate::ffi::HandleTColStdHArray1OfReal {
+    ) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Framework_v_equation(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Framework_v_equation(
                 self as *const Self,
                 IndexIso,
                 IndexStrip,
@@ -1507,18 +1596,22 @@ impl Framework {
 
 /// **Source:** `AdvApp2Var_Iso.hxx`:35 - `AdvApp2Var_Iso`
 /// used to store constraints on a line U = Ui or V = Vj
-pub use crate::ffi::AdvApp2Var_Iso as Iso;
+pub use crate::ffi_types::AdvApp2Var_Iso as Iso;
 
 unsafe impl crate::CppDeletable for Iso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Iso_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_destructor(ptr);
     }
 }
 
 impl Iso {
     /// **Source:** `AdvApp2Var_Iso.hxx`:39 - `AdvApp2Var_Iso::AdvApp2Var_Iso()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:41 - `AdvApp2Var_Iso::AdvApp2Var_Iso()`
@@ -1529,7 +1622,11 @@ impl Iso {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Iso_ctor_isotype_int2(type_.into(), iu, iv),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_ctor_isotype_int2(
+                    type_.into(),
+                    iu,
+                    iv,
+                ),
             ))
         }
     }
@@ -1548,7 +1645,7 @@ impl Iso {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Iso_ctor_isotype_real5_int3(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_ctor_isotype_real5_int3(
                     type_.into(),
                     cte,
                     Ufirst,
@@ -1564,22 +1661,26 @@ impl Iso {
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:37 - `AdvApp2Var_Iso::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Iso_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:55 - `AdvApp2Var_Iso::IsApproximated()`
     pub fn is_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_is_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_is_approximated(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:57 - `AdvApp2Var_Iso::HasResult()`
     pub fn has_result(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_has_result(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:59 - `AdvApp2Var_Iso::MakeApprox()`
@@ -1595,7 +1696,7 @@ impl Iso {
         NodeEnd: &mut Node,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_make_approx(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_make_approx(
                 self as *mut Self,
                 Conditions,
                 a,
@@ -1612,205 +1713,255 @@ impl Iso {
     /// **Source:** `AdvApp2Var_Iso.hxx`:68 - `AdvApp2Var_Iso::ChangeDomain()`
     pub fn change_domain_real2(&mut self, a: f64, b: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_change_domain_real2(self as *mut Self, a, b)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_change_domain_real2(
+                self as *mut Self,
+                a,
+                b,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:70 - `AdvApp2Var_Iso::ChangeDomain()`
     pub fn change_domain_real4(&mut self, a: f64, b: f64, c: f64, d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_change_domain_real4(self as *mut Self, a, b, c, d)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_change_domain_real4(
+                self as *mut Self,
+                a,
+                b,
+                c,
+                d,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:75 - `AdvApp2Var_Iso::SetConstante()`
     pub fn set_constante(&mut self, newcte: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_set_constante(self as *mut Self, newcte)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_set_constante(self as *mut Self, newcte)
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:77 - `AdvApp2Var_Iso::SetPosition()`
     pub fn set_position(&mut self, newpos: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_set_position(self as *mut Self, newpos)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_set_position(self as *mut Self, newpos)
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:79 - `AdvApp2Var_Iso::ResetApprox()`
     pub fn reset_approx(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_reset_approx(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_reset_approx(self as *mut Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:81 - `AdvApp2Var_Iso::OverwriteApprox()`
     pub fn overwrite_approx(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_overwrite_approx(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_overwrite_approx(self as *mut Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:83 - `AdvApp2Var_Iso::Type()`
     pub fn type_(&self) -> crate::geom_abs::IsoType {
         crate::geom_abs::IsoType::try_from(crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_type_(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_type_(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:85 - `AdvApp2Var_Iso::Constante()`
     pub fn constante(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_constante(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_constante(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:87 - `AdvApp2Var_Iso::T0()`
     pub fn t0(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_t0(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_t0(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:89 - `AdvApp2Var_Iso::T1()`
     pub fn t1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_t1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_t1(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:91 - `AdvApp2Var_Iso::U0()`
     pub fn u0(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_u0(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_u0(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:93 - `AdvApp2Var_Iso::U1()`
     pub fn u1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_u1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_u1(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:95 - `AdvApp2Var_Iso::V0()`
     pub fn v0(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_v0(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_v0(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:97 - `AdvApp2Var_Iso::V1()`
     pub fn v1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_v1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_v1(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:99 - `AdvApp2Var_Iso::UOrder()`
     pub fn u_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_u_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_u_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:101 - `AdvApp2Var_Iso::VOrder()`
     pub fn v_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_v_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_v_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:103 - `AdvApp2Var_Iso::Position()`
     pub fn position(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_position(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_position(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:105 - `AdvApp2Var_Iso::NbCoeff()`
     pub fn nb_coeff(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Iso_nb_coeff(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_nb_coeff(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:107 - `AdvApp2Var_Iso::Polynom()`
-    pub fn polynom(&self) -> &crate::ffi::HandleTColStdHArray1OfReal {
-        unsafe { &*(crate::check_result(crate::ffi::AdvApp2Var_Iso_polynom(self as *const Self))) }
+    pub fn polynom(&self) -> &crate::ffi_types::HandleTColStdHArray1OfReal {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_polynom(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:109 - `AdvApp2Var_Iso::SomTab()`
-    pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn som_tab(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_som_tab(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_som_tab(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:111 - `AdvApp2Var_Iso::DifTab()`
-    pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn dif_tab(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_dif_tab(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_dif_tab(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:113 - `AdvApp2Var_Iso::MaxErrors()`
-    pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+    pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_max_errors(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_max_errors(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:115 - `AdvApp2Var_Iso::MoyErrors()`
-    pub fn moy_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+    pub fn moy_errors(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_moy_errors(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_moy_errors(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:37 - `AdvApp2Var_Iso::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(
-                crate::check_result(crate::ffi::AdvApp2Var_Iso_get_type_name()),
-            )
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `AdvApp2Var_Iso.hxx`:37 - `AdvApp2Var_Iso::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::AdvApp2Var_Iso_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::AdvApp2Var_Iso_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AdvApp2Var_Iso_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarIso> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdvApp2VarIso> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Iso_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1818,7 +1969,7 @@ impl Iso {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AdvApp2Var_Iso_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1831,58 +1982,72 @@ impl Iso {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Iso_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Iso_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdvApp2VarIso;
+pub use crate::ffi_types::HandleAdvApp2VarIso;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdvApp2VarIso_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_destructor(ptr);
     }
 }
 
 impl HandleAdvApp2VarIso {
     /// Dereference this Handle to access the underlying AdvApp2Var_Iso
-    pub fn get(&self) -> &crate::ffi::AdvApp2Var_Iso {
-        unsafe { &*crate::check_result(crate::ffi::HandleAdvApp2VarIso_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Iso {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Iso
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Iso {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AdvApp2Var_Iso {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdvApp2VarIso_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<AdvApp2Var_Iso> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdvApp2VarIso_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleAdvApp2VarIso_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1893,11 +2058,11 @@ impl HandleAdvApp2VarIso {
 // ========================
 
 /// **Source:** `AdvApp2Var_MathBase.hxx`:21 - `AdvApp2Var_MathBase`
-pub use crate::ffi::AdvApp2Var_MathBase as MathBase;
+pub use crate::ffi_types::AdvApp2Var_MathBase as MathBase;
 
 unsafe impl crate::CppDeletable for MathBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_MathBase_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_destructor(ptr);
     }
 }
 
@@ -1906,7 +2071,9 @@ impl MathBase {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_MathBase_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_ctor(),
+            ))
         }
     }
 
@@ -1919,7 +2086,7 @@ impl MathBase {
         arg4: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmapcmp(arg0, arg1, arg2, arg3, arg4)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmapcmp(arg0, arg1, arg2, arg3, arg4)
         })
     }
 
@@ -1933,7 +2100,9 @@ impl MathBase {
         arg5: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmdrc11(arg0, arg1, arg2, arg3, arg4, arg5)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmdrc11(
+                arg0, arg1, arg2, arg3, arg4, arg5,
+            )
         })
     }
 
@@ -1949,7 +2118,9 @@ impl MathBase {
         arg7: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmfmca9(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmfmca9(
+                arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7,
+            )
         })
     }
 
@@ -1966,7 +2137,7 @@ impl MathBase {
         arg8: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmfmcb5(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmfmcb5(
                 arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8,
             )
         })
@@ -1982,7 +2153,9 @@ impl MathBase {
         arg5: *mut i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmwprcs(arg0, arg1, arg2, arg3, arg4, arg5)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmwprcs(
+                arg0, arg1, arg2, arg3, arg4, arg5,
+            )
         })
     }
 
@@ -2000,7 +2173,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmcglc1(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmcglc1(
                 ndimax, ndimen, ncoeff, courbe, tdebut, tfinal, epsiln, xlongc, erreur, iercod,
             )
         })
@@ -2014,7 +2187,9 @@ impl MathBase {
         numcle: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmbulld(nbcoln, nblign, dtabtr, numcle)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmbulld(
+                nbcoln, nblign, dtabtr, numcle,
+            )
         })
     }
 
@@ -2028,7 +2203,9 @@ impl MathBase {
         crvdrv: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmcdriv(ndimen, ncoeff, courbe, ideriv, ncofdv, crvdrv)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmcdriv(
+                ndimen, ncoeff, courbe, ideriv, ncofdv, crvdrv,
+            )
         })
     }
 
@@ -2044,7 +2221,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmcvctx(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmcvctx(
                 ndimen, ncofmx, nderiv, ctrtes, crvres, tabaux, xmatri, iercod,
             )
         })
@@ -2058,7 +2235,9 @@ impl MathBase {
         distan: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mdsptpt(ndimen, point1, point2, distan)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mdsptpt(
+                ndimen, point1, point2, distan,
+            )
         })
     }
 
@@ -2075,7 +2254,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmaperx(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmaperx(
                 ncofmx, ndimen, ncoeff, iordre, crvjac, ncfnew, ycvmax, errmax, iercod,
             )
         })
@@ -2091,13 +2270,17 @@ impl MathBase {
         pntcrb: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmdrvck(ncoeff, ndimen, courbe, ideriv, tparam, pntcrb)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmdrvck(
+                ncoeff, ndimen, courbe, ideriv, tparam, pntcrb,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:114 - `AdvApp2Var_MathBase::mmeps1_()`
     pub unsafe fn mmeps1(epsilo: *mut f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_mmeps1(epsilo) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmeps1(epsilo)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:116 - `AdvApp2Var_MathBase::mmfmca8_()`
@@ -2112,7 +2295,7 @@ impl MathBase {
         tabres: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmfmca8(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmfmca8(
                 ndimen, ncoefu, ncoefv, ndimax, ncfumx, ncfvmx, tabini, tabres,
             )
         })
@@ -2133,7 +2316,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmfmcar(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmfmcar(
                 ndimen, ncofmx, ncoefu, ncoefv, patold, upara1, upara2, vpara1, vpara2, patnew,
                 iercod,
             )
@@ -2153,7 +2336,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmfmtb1(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmfmtb1(
                 maxsz1, table1, isize1, jsize1, maxsz2, table2, isize2, jsize2, iercod,
             )
         })
@@ -2172,7 +2355,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmhjcan(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmhjcan(
                 ndimen, ncourb, ncftab, orcont, ncflim, tcbold, tdecop, tcbnew, iercod,
             )
         })
@@ -2190,7 +2373,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mminltt(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mminltt(
                 ncolmx, nlgnmx, tabtri, nbrcol, nbrlgn, ajoute, epseg, iercod,
             )
         })
@@ -2206,7 +2389,9 @@ impl MathBase {
         crvcan: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmjaccv(ncoef, ndim, ider, crvlgd, polaux, crvcan)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmjaccv(
+                ncoef, ndim, ider, crvlgd, polaux, crvcan,
+            )
         })
     }
 
@@ -2220,7 +2405,9 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmpobas(tparam, iordre, ncoeff, nderiv, valbas, iercod)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmpobas(
+                tparam, iordre, ncoeff, nderiv, valbas, iercod,
+            )
         })
     }
 
@@ -2234,7 +2421,9 @@ impl MathBase {
         tabval: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmmpocur(ncofmx, ndim, ndeg, courbe, tparam, tabval)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmmpocur(
+                ncofmx, ndim, ndeg, courbe, tparam, tabval,
+            )
         })
     }
 
@@ -2247,7 +2436,9 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmposui(dimmat, nistoc, aposit, posuiv, iercod)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmposui(
+                dimmat, nistoc, aposit, posuiv, iercod,
+            )
         })
     }
 
@@ -2271,7 +2462,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmresol(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmresol(
                 hdimen, gdimen, hnstoc, gnstoc, mnstoc, matsyh, matsyg, vecsyh, vecsyg, hposit,
                 hposui, gposit, mmposui, mposit, vecsol, iercod,
             )
@@ -2280,7 +2471,9 @@ impl MathBase {
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:225 - `AdvApp2Var_MathBase::mmrtptt_()`
     pub unsafe fn mmrtptt(ndglgd: *mut i32, rtlegd: *mut f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_mmrtptt(ndglgd, rtlegd) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmrtptt(ndglgd, rtlegd)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:227 - `AdvApp2Var_MathBase::mmsrre2_()`
@@ -2294,7 +2487,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmsrre2(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmsrre2(
                 tparam, nbrval, tablev, epsil, numint, itypen, iercod,
             )
         })
@@ -2313,7 +2506,7 @@ impl MathBase {
         ncfnew: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmtrpjj(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmtrpjj(
                 ncofmx, ndimen, ncoeff, epsi3d, iordre, crvlgd, ycvmax, errmax, ncfnew,
             )
         })
@@ -2328,7 +2521,9 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmunivt(ndimen, vector, vecnrm, epsiln, iercod)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmunivt(
+                ndimen, vector, vecnrm, epsiln, iercod,
+            )
         })
     }
 
@@ -2340,18 +2535,22 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmvncol(ndimen, vecin, vecout, iercod)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmvncol(ndimen, vecin, vecout, iercod)
         })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:256 - `AdvApp2Var_MathBase::msc_()`
     pub unsafe fn msc(ndimen: *mut i32, vecte1: *mut f64, vecte2: *mut f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_msc(ndimen, vecte1, vecte2) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_msc(ndimen, vecte1, vecte2)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:258 - `AdvApp2Var_MathBase::mvsheld_()`
     pub unsafe fn mvsheld(n: *mut i32, is: *mut i32, dtab: *mut f64, icle: *mut i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_mvsheld(n, is, dtab, icle) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mvsheld(n, is, dtab, icle)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:260 - `AdvApp2Var_MathBase::mmarcin_()`
@@ -2366,7 +2565,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmarcin(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmarcin(
                 ndimax, ndim, ncoeff, crvold, u0, u1, crvnew, iercod,
             )
         })
@@ -2381,7 +2580,9 @@ impl MathBase {
         curve: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmcvinv(ndimax, ncoef, ndim, curveo, curve)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmcvinv(
+                ndimax, ncoef, ndim, curveo, curve,
+            )
         })
     }
 
@@ -2393,7 +2594,7 @@ impl MathBase {
         polcan: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmjacan(ideriv, ndeg, poljac, polcan)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmjacan(ideriv, ndeg, poljac, polcan)
         })
     }
 
@@ -2407,7 +2608,9 @@ impl MathBase {
         pntcrb: *mut f64,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmpocrb(ndimax, ncoeff, courbe, ndim, tparam, pntcrb)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmpocrb(
+                ndimax, ncoeff, courbe, ndim, tparam, pntcrb,
+            )
         })
     }
 
@@ -2424,7 +2627,7 @@ impl MathBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_MathBase_mmmrslwd(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmmrslwd(
                 normax, nordre, ndim, amat, bmat, epspiv, aaux, xmat, iercod,
             )
         })
@@ -2432,17 +2635,23 @@ impl MathBase {
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:297 - `AdvApp2Var_MathBase::mmveps3_()`
     pub unsafe fn mmveps3(eps03: *mut f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_mmveps3(eps03) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mmveps3(eps03)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:299 - `AdvApp2Var_MathBase::pow__di()`
     pub unsafe fn pow_di(x: *mut f64, n: *mut i32) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_pow_di(x, n) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_pow_di(x, n)
+        })
     }
 
     /// **Source:** `AdvApp2Var_MathBase.hxx`:301 - `AdvApp2Var_MathBase::mzsnorm_()`
     pub unsafe fn mzsnorm(ndimen: *mut i32, vecteu: *mut f64) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_MathBase_mzsnorm(ndimen, vecteu) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_MathBase_mzsnorm(ndimen, vecteu)
+        })
     }
 }
 
@@ -2457,11 +2666,11 @@ impl MathBase {
 // ========================
 
 /// **Source:** `AdvApp2Var_Network.hxx`:29 - `AdvApp2Var_Network`
-pub use crate::ffi::AdvApp2Var_Network as Network;
+pub use crate::ffi_types::AdvApp2Var_Network as Network;
 
 unsafe impl crate::CppDeletable for Network {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Network_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_destructor(ptr);
     }
 }
 
@@ -2469,22 +2678,20 @@ impl Network {
     /// **Source:** `AdvApp2Var_Network.hxx`:34 - `AdvApp2Var_Network::AdvApp2Var_Network()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Network_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:36 - `AdvApp2Var_Network::AdvApp2Var_Network()`
     pub fn new_sequenceofpatch_sequenceofreal2(
-        Net: &crate::ffi::AdvApp2Var_SequenceOfPatch,
-        TheU: &crate::ffi::TColStd_SequenceOfReal,
-        TheV: &crate::ffi::TColStd_SequenceOfReal,
+        Net: &crate::ffi_types::AdvApp2Var_SequenceOfPatch,
+        TheU: &crate::ffi_types::TColStd_SequenceOfReal,
+        TheV: &crate::ffi_types::TColStd_SequenceOfReal,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Network_ctor_sequenceofpatch_sequenceofreal2(
-                    Net, TheU, TheV,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_ctor_sequenceofpatch_sequenceofreal2(Net, TheU, TheV)))
         }
     }
 
@@ -2493,78 +2700,97 @@ impl Network {
     /// if all Patches are approximated Standard_False is returned
     pub fn first_not_approx(&self, Index: &mut i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_first_not_approx(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_first_not_approx(
+                self as *const Self,
+                Index,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:44 - `AdvApp2Var_Network::ChangePatch()`
     pub fn change_patch(&mut self, Index: i32) -> &mut Patch {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::AdvApp2Var_Network_change_patch(
-                self as *mut Self,
-                Index,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_change_patch(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:48 - `AdvApp2Var_Network::UpdateInU()`
     pub fn update_in_u(&mut self, CuttingValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_update_in_u(self as *mut Self, CuttingValue)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_update_in_u(
+                self as *mut Self,
+                CuttingValue,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:50 - `AdvApp2Var_Network::UpdateInV()`
     pub fn update_in_v(&mut self, CuttingValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_update_in_v(self as *mut Self, CuttingValue)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_update_in_v(
+                self as *mut Self,
+                CuttingValue,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:52 - `AdvApp2Var_Network::SameDegree()`
     pub fn same_degree(&mut self, iu: i32, iv: i32, ncfu: &mut i32, ncfv: &mut i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_same_degree(self as *mut Self, iu, iv, ncfu, ncfv)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_same_degree(
+                self as *mut Self,
+                iu,
+                iv,
+                ncfu,
+                ncfv,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:57 - `AdvApp2Var_Network::NbPatch()`
     pub fn nb_patch(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Network_nb_patch(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_nb_patch(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:59 - `AdvApp2Var_Network::NbPatchInU()`
     pub fn nb_patch_in_u(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_nb_patch_in_u(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_nb_patch_in_u(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:61 - `AdvApp2Var_Network::NbPatchInV()`
     pub fn nb_patch_in_v(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_nb_patch_in_v(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_nb_patch_in_v(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:63 - `AdvApp2Var_Network::UParameter()`
     pub fn u_parameter(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_u_parameter(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_u_parameter(self as *const Self, Index)
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:65 - `AdvApp2Var_Network::VParameter()`
     pub fn v_parameter(&self, Index: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Network_v_parameter(self as *const Self, Index)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_v_parameter(self as *const Self, Index)
         })
     }
 
     /// **Source:** `AdvApp2Var_Network.hxx`:67 - `AdvApp2Var_Network::Patch()`
     pub fn patch(&self, UIndex: i32, VIndex: i32) -> &Patch {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Network_patch(
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Network_patch(
                 self as *const Self,
                 UIndex,
                 VIndex,
@@ -2579,11 +2805,11 @@ impl Network {
 
 /// **Source:** `AdvApp2Var_Node.hxx`:27 - `AdvApp2Var_Node`
 /// used to store constraints on a (Ui,Vj) point
-pub use crate::ffi::AdvApp2Var_Node as Node;
+pub use crate::ffi_types::AdvApp2Var_Node as Node;
 
 unsafe impl crate::CppDeletable for Node {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Node_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_destructor(ptr);
     }
 }
 
@@ -2591,16 +2817,18 @@ impl Node {
     /// **Source:** `AdvApp2Var_Node.hxx`:31 - `AdvApp2Var_Node::AdvApp2Var_Node()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Node_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:33 - `AdvApp2Var_Node::AdvApp2Var_Node()`
     pub fn new_int2(iu: i32, iv: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Node_ctor_int2(
-                iu, iv,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_ctor_int2(iu, iv),
+            ))
         }
     }
 
@@ -2608,49 +2836,59 @@ impl Node {
     pub fn new_xy_int2(UV: &crate::gp::XY, iu: i32, iv: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Node_ctor_xy_int2(UV, iu, iv),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_ctor_xy_int2(UV, iu, iv),
             ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:29 - `AdvApp2Var_Node::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Node_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:40 - `AdvApp2Var_Node::Coord()`
     /// Returns the coordinates (U,V) of the node
     pub fn coord(&self) -> &crate::gp::XY {
-        unsafe { &*(crate::check_result(crate::ffi::AdvApp2Var_Node_coord(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_coord(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:43 - `AdvApp2Var_Node::SetCoord()`
     /// changes the coordinates (U,V) to (x1,x2)
     pub fn set_coord(&mut self, x1: f64, x2: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_set_coord(self as *mut Self, x1, x2)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_set_coord(self as *mut Self, x1, x2)
         })
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:50 - `AdvApp2Var_Node::UOrder()`
     /// returns the continuity order in U of the node
     pub fn u_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Node_u_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_u_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:53 - `AdvApp2Var_Node::VOrder()`
     /// returns the continuity order in V of the node
     pub fn v_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Node_v_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_v_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:56 - `AdvApp2Var_Node::SetPoint()`
     /// affects the value F(U,V) or its derivates on the node (U,V)
     pub fn set_point(&mut self, iu: i32, iv: i32, Pt: &crate::gp::Pnt) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_set_point(self as *mut Self, iu, iv, Pt)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_set_point(self as *mut Self, iu, iv, Pt)
         })
     }
 
@@ -2658,7 +2896,11 @@ impl Node {
     /// returns the value F(U,V) or its derivates on the node (U,V)
     pub fn point(&self, iu: i32, iv: i32) -> &crate::gp::Pnt {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Node_point(self as *const Self, iu, iv)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_point(
+                self as *const Self,
+                iu,
+                iv,
+            )))
         }
     }
 
@@ -2666,7 +2908,12 @@ impl Node {
     /// affects the error between F(U,V) and its approximation
     pub fn set_error(&mut self, iu: i32, iv: i32, error: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_set_error(self as *mut Self, iu, iv, error)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_set_error(
+                self as *mut Self,
+                iu,
+                iv,
+                error,
+            )
         })
     }
 
@@ -2674,7 +2921,7 @@ impl Node {
     /// returns the error between F(U,V) and its approximation
     pub fn error(&self, iu: i32, iv: i32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_error(self as *const Self, iu, iv)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_error(self as *const Self, iu, iv)
         })
     }
 
@@ -2682,7 +2929,7 @@ impl Node {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AdvApp2Var_Node_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2690,50 +2937,64 @@ impl Node {
     }
 
     /// **Source:** `AdvApp2Var_Node.hxx`:29 - `AdvApp2Var_Node::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::AdvApp2Var_Node_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::AdvApp2Var_Node_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AdvApp2Var_Node_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarNode> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdvApp2VarNode> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Node_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2741,7 +3002,7 @@ impl Node {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AdvApp2Var_Node_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2754,58 +3015,72 @@ impl Node {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Node_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Node_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdvApp2VarNode;
+pub use crate::ffi_types::HandleAdvApp2VarNode;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarNode {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdvApp2VarNode_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_destructor(ptr);
     }
 }
 
 impl HandleAdvApp2VarNode {
     /// Dereference this Handle to access the underlying AdvApp2Var_Node
-    pub fn get(&self) -> &crate::ffi::AdvApp2Var_Node {
-        unsafe { &*crate::check_result(crate::ffi::HandleAdvApp2VarNode_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Node {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Node
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Node {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AdvApp2Var_Node {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdvApp2VarNode_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<AdvApp2Var_Node> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdvApp2VarNode_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleAdvApp2VarNode_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2817,11 +3092,11 @@ impl HandleAdvApp2VarNode {
 
 /// **Source:** `AdvApp2Var_Patch.hxx`:35 - `AdvApp2Var_Patch`
 /// used to store results on a domain [Ui,Ui+1]x[Vj,Vj+1]
-pub use crate::ffi::AdvApp2Var_Patch as Patch;
+pub use crate::ffi_types::AdvApp2Var_Patch as Patch;
 
 unsafe impl crate::CppDeletable for Patch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_Patch_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_destructor(ptr);
     }
 }
 
@@ -2829,7 +3104,9 @@ impl Patch {
     /// **Source:** `AdvApp2Var_Patch.hxx`:39 - `AdvApp2Var_Patch::AdvApp2Var_Patch()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Patch_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_ctor(),
+            ))
         }
     }
 
@@ -2844,22 +3121,26 @@ impl Patch {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Patch_ctor_real4_int2(U0, U1, V0, V1, iu, iv),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_ctor_real4_int2(
+                    U0, U1, V0, V1, iu, iv,
+                ),
             ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:37 - `AdvApp2Var_Patch::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::AdvApp2Var_Patch_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:48 - `AdvApp2Var_Patch::IsDiscretised()`
     pub fn is_discretised(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_is_discretised(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_is_discretised(self as *const Self)
         })
     }
 
@@ -2871,7 +3152,7 @@ impl Patch {
         func: &EvaluatorFunc2Var,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_discretise(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_discretise(
                 self as *mut Self,
                 Conditions,
                 Constraints,
@@ -2883,19 +3164,21 @@ impl Patch {
     /// **Source:** `AdvApp2Var_Patch.hxx`:54 - `AdvApp2Var_Patch::IsApproximated()`
     pub fn is_approximated(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_is_approximated(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_is_approximated(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:56 - `AdvApp2Var_Patch::HasResult()`
     pub fn has_result(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_has_result(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_has_result(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:58 - `AdvApp2Var_Patch::MakeApprox()`
     pub fn make_approx(&mut self, Conditions: &Context, Constraints: &Framework, NumDec: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_make_approx(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_make_approx(
                 self as *mut Self,
                 Conditions,
                 Constraints,
@@ -2907,98 +3190,133 @@ impl Patch {
     /// **Source:** `AdvApp2Var_Patch.hxx`:62 - `AdvApp2Var_Patch::AddConstraints()`
     pub fn add_constraints(&mut self, Conditions: &Context, Constraints: &Framework) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_add_constraints(self as *mut Self, Conditions, Constraints)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_add_constraints(
+                self as *mut Self,
+                Conditions,
+                Constraints,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:65 - `AdvApp2Var_Patch::AddErrors()`
     pub fn add_errors(&mut self, Constraints: &Framework) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_add_errors(self as *mut Self, Constraints)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_add_errors(
+                self as *mut Self,
+                Constraints,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:67 - `AdvApp2Var_Patch::ChangeDomain()`
     pub fn change_domain(&mut self, a: f64, b: f64, c: f64, d: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_change_domain(self as *mut Self, a, b, c, d)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_change_domain(
+                self as *mut Self,
+                a,
+                b,
+                c,
+                d,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:72 - `AdvApp2Var_Patch::ResetApprox()`
     pub fn reset_approx(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_reset_approx(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_reset_approx(self as *mut Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:74 - `AdvApp2Var_Patch::OverwriteApprox()`
     pub fn overwrite_approx(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_overwrite_approx(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_overwrite_approx(self as *mut Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:76 - `AdvApp2Var_Patch::U0()`
     pub fn u0(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_u0(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_u0(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:78 - `AdvApp2Var_Patch::U1()`
     pub fn u1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_u1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_u1(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:80 - `AdvApp2Var_Patch::V0()`
     pub fn v0(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_v0(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_v0(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:82 - `AdvApp2Var_Patch::V1()`
     pub fn v1(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_v1(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_v1(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:84 - `AdvApp2Var_Patch::UOrder()`
     pub fn u_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_u_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_u_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:86 - `AdvApp2Var_Patch::VOrder()`
     pub fn v_order(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_v_order(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_v_order(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:88 - `AdvApp2Var_Patch::CutSense()`
     pub fn cut_sense(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_cut_sense(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_cut_sense(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:90 - `AdvApp2Var_Patch::CutSense()`
     pub fn cut_sense_criterion_int(&self, Crit: &Criterion, NumDec: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_cut_sense_criterion_int(self as *const Self, Crit, NumDec)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_cut_sense_criterion_int(
+                self as *const Self,
+                Crit,
+                NumDec,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:93 - `AdvApp2Var_Patch::NbCoeffInU()`
     pub fn nb_coeff_in_u(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_nb_coeff_in_u(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_nb_coeff_in_u(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:95 - `AdvApp2Var_Patch::NbCoeffInV()`
     pub fn nb_coeff_in_v(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_nb_coeff_in_v(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_nb_coeff_in_v(self as *const Self)
         })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:97 - `AdvApp2Var_Patch::ChangeNbCoeff()`
     pub fn change_nb_coeff(&mut self, NbCoeffU: i32, NbCoeffV: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_change_nb_coeff(self as *mut Self, NbCoeffU, NbCoeffV)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_change_nb_coeff(
+                self as *mut Self,
+                NbCoeffU,
+                NbCoeffV,
+            )
         })
     }
 
@@ -3007,13 +3325,15 @@ impl Patch {
         &self,
         SSPIndex: i32,
         Conditions: &Context,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColgpHArray2OfPnt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColgpHArray2OfPnt> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Patch_poles(
-                self as *const Self,
-                SSPIndex,
-                Conditions,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_poles(
+                    self as *const Self,
+                    SSPIndex,
+                    Conditions,
+                ),
+            ))
         }
     }
 
@@ -3022,10 +3342,10 @@ impl Patch {
         &self,
         SSPIndex: i32,
         Conditions: &Context,
-    ) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Patch_coefficients(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_coefficients(
                     self as *const Self,
                     SSPIndex,
                     Conditions,
@@ -3035,41 +3355,43 @@ impl Patch {
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:107 - `AdvApp2Var_Patch::MaxErrors()`
-    pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn max_errors(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Patch_max_errors(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_max_errors(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:109 - `AdvApp2Var_Patch::AverageErrors()`
-    pub fn average_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray1OfReal> {
+    pub fn average_errors(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray1OfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::AdvApp2Var_Patch_average_errors(self as *const Self),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_average_errors(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:111 - `AdvApp2Var_Patch::IsoErrors()`
-    pub fn iso_errors(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHArray2OfReal> {
+    pub fn iso_errors(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHArray2OfReal> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Patch_iso_errors(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_iso_errors(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:113 - `AdvApp2Var_Patch::CritValue()`
     pub fn crit_value(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_Patch_crit_value(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_crit_value(self as *const Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:115 - `AdvApp2Var_Patch::SetCritValue()`
     pub fn set_crit_value(&mut self, dist: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_set_crit_value(self as *mut Self, dist)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_set_crit_value(self as *mut Self, dist)
         })
     }
 
@@ -3077,7 +3399,7 @@ impl Patch {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::AdvApp2Var_Patch_get_type_name(),
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3085,50 +3407,64 @@ impl Patch {
     }
 
     /// **Source:** `AdvApp2Var_Patch.hxx`:37 - `AdvApp2Var_Patch::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::AdvApp2Var_Patch_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::AdvApp2Var_Patch_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::AdvApp2Var_Patch_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleAdvApp2VarPatch> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleAdvApp2VarPatch> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_Patch_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3136,7 +3472,7 @@ impl Patch {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::AdvApp2Var_Patch_inherited_This(self as *const Self)
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3149,58 +3485,74 @@ impl Patch {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::AdvApp2Var_Patch_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_Patch_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleAdvApp2VarPatch;
+pub use crate::ffi_types::HandleAdvApp2VarPatch;
 
 unsafe impl crate::CppDeletable for HandleAdvApp2VarPatch {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleAdvApp2VarPatch_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_destructor(ptr);
     }
 }
 
 impl HandleAdvApp2VarPatch {
     /// Dereference this Handle to access the underlying AdvApp2Var_Patch
-    pub fn get(&self) -> &crate::ffi::AdvApp2Var_Patch {
-        unsafe { &*crate::check_result(crate::ffi::HandleAdvApp2VarPatch_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::AdvApp2Var_Patch {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying AdvApp2Var_Patch
-    pub fn get_mut(&mut self) -> &mut crate::ffi::AdvApp2Var_Patch {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::AdvApp2Var_Patch {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleAdvApp2VarPatch_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<AdvApp2Var_Patch> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleAdvApp2VarPatch_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKGeomBase::HandleAdvApp2VarPatch_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3211,11 +3563,11 @@ impl HandleAdvApp2VarPatch {
 // ========================
 
 /// **Source:** `AdvApp2Var_SysBase.hxx`:21 - `AdvApp2Var_SysBase`
-pub use crate::ffi::AdvApp2Var_SysBase as SysBase;
+pub use crate::ffi_types::AdvApp2Var_SysBase as SysBase;
 
 unsafe impl crate::CppDeletable for SysBase {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::AdvApp2Var_SysBase_destructor(ptr);
+        crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_destructor(ptr);
     }
 }
 
@@ -3223,13 +3575,17 @@ impl SysBase {
     /// **Source:** `AdvApp2Var_SysBase.hxx`:24 - `AdvApp2Var_SysBase::AdvApp2Var_SysBase()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::AdvApp2Var_SysBase_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_ctor(),
+            ))
         }
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:28 - `AdvApp2Var_SysBase::mainial_()`
     pub fn mainial(&mut self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_mainial(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mainial(self as *mut Self)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:32 - `AdvApp2Var_SysBase::mcrdelt_()`
@@ -3242,7 +3598,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_mcrdelt(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mcrdelt(
                 self as *mut Self,
                 iunit,
                 isize,
@@ -3263,7 +3619,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_mcrrqst(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mcrrqst(
                 self as *mut Self,
                 iunit,
                 isize,
@@ -3284,7 +3640,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_macrai4(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_macrai4(
                 self as *mut Self,
                 nbelem,
                 maxelm,
@@ -3305,7 +3661,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_macrar8(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_macrar8(
                 self as *mut Self,
                 nbelem,
                 maxelm,
@@ -3326,7 +3682,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_macrdi4(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_macrdi4(
                 self as *mut Self,
                 nbelem,
                 maxelm,
@@ -3347,7 +3703,7 @@ impl SysBase {
         iercod: *mut i32,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_macrdr8(
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_macrdr8(
                 self as *mut Self,
                 nbelem,
                 maxelm,
@@ -3360,7 +3716,9 @@ impl SysBase {
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:30 - `AdvApp2Var_SysBase::macinit_()`
     pub unsafe fn macinit(arg0: *mut i32, arg1: *mut i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_macinit(arg0, arg1) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_macinit(arg0, arg1)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:38 - `AdvApp2Var_SysBase::mcrfill_()`
@@ -3369,47 +3727,57 @@ impl SysBase {
         tin: *mut std::ffi::c_void,
         tout: *mut std::ffi::c_void,
     ) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_mcrfill(size, tin, tout) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mcrfill(size, tin, tout)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:45 - `AdvApp2Var_SysBase::mnfndeb_()`
     pub fn mnfndeb() -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_mnfndeb() })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mnfndeb() })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:47 - `AdvApp2Var_SysBase::do__fio()`
     pub fn do_fio() -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_do_fio() })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_do_fio() })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:48 - `AdvApp2Var_SysBase::do__lio()`
     pub fn do_lio() -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_do_lio() })
+        crate::check_result(unsafe { crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_do_lio() })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:70 - `AdvApp2Var_SysBase::maermsg_()`
     pub unsafe fn maermsg(cnompg: &str, icoder: *mut i32, cnompg_len: std::ffi::c_long) -> i32 {
         let c_cnompg = std::ffi::CString::new(cnompg).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_maermsg(c_cnompg.as_ptr(), icoder, cnompg_len)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_maermsg(
+                c_cnompg.as_ptr(),
+                icoder,
+                cnompg_len,
+            )
         })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:71 - `AdvApp2Var_SysBase::maitbr8_()`
     pub unsafe fn maitbr8(itaill: *mut i32, xtab: *mut f64, xval: *mut f64) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_maitbr8(itaill, xtab, xval) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_maitbr8(itaill, xtab, xval)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:72 - `AdvApp2Var_SysBase::maovsr8_()`
     pub unsafe fn maovsr8(ivalcs: *mut i32) -> i32 {
-        crate::check_result(unsafe { crate::ffi::AdvApp2Var_SysBase_maovsr8(ivalcs) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_maovsr8(ivalcs)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:73 - `AdvApp2Var_SysBase::mgenmsg_()`
     pub fn mgenmsg(nomprg: &str, nomprg_len: std::ffi::c_long) -> i32 {
         let c_nomprg = std::ffi::CString::new(nomprg).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_mgenmsg(c_nomprg.as_ptr(), nomprg_len)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mgenmsg(c_nomprg.as_ptr(), nomprg_len)
         })
     }
 
@@ -3417,26 +3785,28 @@ impl SysBase {
     pub fn mgsomsg(nomprg: &str, nomprg_len: std::ffi::c_long) -> i32 {
         let c_nomprg = std::ffi::CString::new(nomprg).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_mgsomsg(c_nomprg.as_ptr(), nomprg_len)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mgsomsg(c_nomprg.as_ptr(), nomprg_len)
         })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:76 - `AdvApp2Var_SysBase::miraz_()`
     pub unsafe fn miraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
-        crate::check_void_result(unsafe { crate::ffi::AdvApp2Var_SysBase_miraz(taille, adt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_miraz(taille, adt)
+        })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:77 - `AdvApp2Var_SysBase::msifill_()`
     pub unsafe fn msifill(nbintg: *mut i32, ivecin: *mut i32, ivecou: *mut i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_msifill(nbintg, ivecin, ivecou)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_msifill(nbintg, ivecin, ivecou)
         })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:78 - `AdvApp2Var_SysBase::msrfill_()`
     pub unsafe fn msrfill(nbreel: *mut i32, vecent: *mut f64, vecsor: *mut f64) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_msrfill(nbreel, vecent, vecsor)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_msrfill(nbreel, vecent, vecsor)
         })
     }
 
@@ -3444,13 +3814,15 @@ impl SysBase {
     pub fn mswrdbg(ctexte: &str, ctexte_len: std::ffi::c_long) -> i32 {
         let c_ctexte = std::ffi::CString::new(ctexte).unwrap();
         crate::check_result(unsafe {
-            crate::ffi::AdvApp2Var_SysBase_mswrdbg(c_ctexte.as_ptr(), ctexte_len)
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mswrdbg(c_ctexte.as_ptr(), ctexte_len)
         })
     }
 
     /// **Source:** `AdvApp2Var_SysBase.hxx`:80 - `AdvApp2Var_SysBase::mvriraz_()`
     pub unsafe fn mvriraz(taille: *mut i32, adt: *mut std::ffi::c_void) {
-        crate::check_void_result(unsafe { crate::ffi::AdvApp2Var_SysBase_mvriraz(taille, adt) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomBase::AdvApp2Var_SysBase_mvriraz(taille, adt)
+        })
     }
 }
 
@@ -3458,7 +3830,7 @@ impl SysBase {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     AdvApp2Var_SequenceOfNode as SequenceOfNode, AdvApp2Var_SequenceOfPatch as SequenceOfPatch,
     AdvApp2Var_SequenceOfStrip as SequenceOfStrip,
 };

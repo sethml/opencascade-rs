@@ -16,7 +16,6 @@
 #include <BinMDF_ReferenceDriver.hxx>
 #include <BinMDF_TagSourceDriver.hxx>
 #include <BinMDF_TypeADriverMap.hxx>
-#include <BinMDF_TypeIdMap.hxx>
 #include <BinMDataStd.hxx>
 #include <BinMDataStd_AsciiStringDriver.hxx>
 #include <BinMDataStd_BooleanArrayDriver.hxx>
@@ -104,7 +103,7 @@
 #include <TColStd_SequenceOfAsciiString.hxx>
 #include <TCollection_ExtendedString.hxx>
 #include <TDF_Attribute.hxx>
-#include <TDF_AttributeMap.hxx>
+#include <TDF_AttributeIndexedMap.hxx>
 #include <TDF_Data.hxx>
 #include <TDocStd_Application.hxx>
 #include <TDocStd_FormatVersion.hxx>

@@ -19,6 +19,7 @@
 #include <AdvApprox_PrefCutting.hxx>
 #include <AdvApprox_SimpleApprox.hxx>
 #include <Approx_Array1OfAdHSurface.hxx>
+#include <Approx_SequenceOfHArray1OfReal.hxx>
 #include <BRepAdaptor_CompCurve.hxx>
 #include <BRepAdaptor_Curve.hxx>
 #include <BRepAdaptor_Surface.hxx>
@@ -26,7 +27,7 @@
 #include <BRepTopAdaptor_TopolTool.hxx>
 #include <BiTgte_CurveOnEdge.hxx>
 #include <BiTgte_CurveOnVertex.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <ChFiDS_ElSpine.hxx>
 #include <ChFiKPart_RstMap.hxx>
 #include <GProp.hxx>
@@ -135,7 +136,6 @@
 #include <TColGeom_HSequenceOfCurve.hxx>
 #include <TColGeom_SequenceOfBoundedCurve.hxx>
 #include <TColGeom_SequenceOfCurve.hxx>
-#include <TColGeom_SequenceOfSurface.hxx>
 #include <TColStd_Array1OfInteger.hxx>
 #include <TColStd_Array1OfReal.hxx>
 #include <TColStd_Array2OfReal.hxx>
@@ -148,11 +148,11 @@
 #include <TColgp_HArray2OfPnt.hxx>
 #include <TColgp_HArray2OfPnt2d.hxx>
 #include <TDataStd_DataMapOfStringHArray1OfInteger.hxx>
-#include <TDataStd_DataMapOfStringHArray1OfReal.hxx>
 #include <TopAbs.hxx>
 #include <TopAbs_Orientation.hxx>
 #include <TopAbs_ShapeEnum.hxx>
 #include <TopAbs_State.hxx>
+#include <TopOpeBRepDS_ShapeSurface.hxx>
 #include <gp_Ax1.hxx>
 #include <gp_Ax2.hxx>
 #include <gp_Ax3.hxx>

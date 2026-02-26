@@ -9,11 +9,11 @@
 /// **Source:** `ShapeUpgrade.hxx`:43 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
 /// Unifies same domain faces and edges of specified shape
 pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(
-    BS: &crate::ffi::HandleGeomBSplineCurve,
-    seqBS: &mut crate::ffi::HandleTColGeomHSequenceOfBoundedCurve,
+    BS: &crate::ffi_types::HandleGeomBSplineCurve,
+    seqBS: &mut crate::ffi_types::HandleTColGeomHSequenceOfBoundedCurve,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(BS, seqBS)
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handletcolgeomhsequenceofboundedcurve(BS, seqBS)
     })
 }
 /// **Source:** `ShapeUpgrade.hxx`:53 - `ShapeUpgrade::C0BSplineToSequenceOfC1BSplineCurve`
@@ -24,27 +24,27 @@ pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeombsplinecurve_handlet
 /// Returns True if C0 B-Spline was successfully split,
 /// else returns False (if BS is C1 B-Spline).
 pub fn c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(
-    BS: &crate::ffi::HandleGeom2dBSplineCurve,
-    seqBS: &mut crate::ffi::HandleTColGeom2dHSequenceOfBoundedCurve,
+    BS: &crate::ffi_types::HandleGeom2dBSplineCurve,
+    seqBS: &mut crate::ffi_types::HandleTColGeom2dHSequenceOfBoundedCurve,
 ) -> bool {
     crate::check_result(unsafe {
-        crate::ffi::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(BS, seqBS)
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_c0b_spline_to_sequence_of_c1b_spline_curve_handlegeom2dbsplinecurve_handletcolgeom2dhsequenceofboundedcurve(BS, seqBS)
     })
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From ShapeUpgrade_ClosedEdgeDivide.hxx
 // ========================
 
 /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:28 - `ShapeUpgrade_ClosedEdgeDivide`
-pub use crate::ffi::ShapeUpgrade_ClosedEdgeDivide as ClosedEdgeDivide;
+pub use crate::ffi_types::ShapeUpgrade_ClosedEdgeDivide as ClosedEdgeDivide;
 
 unsafe impl crate::CppDeletable for ClosedEdgeDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ClosedEdgeDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_destructor(ptr);
     }
 }
 
@@ -54,7 +54,7 @@ impl ClosedEdgeDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_ctor(),
             ))
         }
     }
@@ -62,16 +62,21 @@ impl ClosedEdgeDivide {
     /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:35 - `ShapeUpgrade_ClosedEdgeDivide::Compute()`
     pub fn compute(&mut self, anEdge: &crate::topo_ds::Edge) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_compute(self as *mut Self, anEdge)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_compute(
+                self as *mut Self,
+                anEdge,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:37 - `ShapeUpgrade_ClosedEdgeDivide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -79,7 +84,7 @@ impl ClosedEdgeDivide {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -87,81 +92,73 @@ impl ClosedEdgeDivide {
     }
 
     /// **Source:** `ShapeUpgrade_ClosedEdgeDivide.hxx`:37 - `ShapeUpgrade_ClosedEdgeDivide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_EdgeDivide
     pub fn as_edge_divide(&self) -> &EdgeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_EdgeDivide (mutable)
     pub fn as_edge_divide_mut(&mut self) -> &mut EdgeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_EdgeDivide_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedEdgeDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
@@ -169,45 +166,58 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Clear(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
     pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(self as *mut Self, F)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetFace(
+                self as *mut Self,
+                F,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:46 - `ShapeUpgrade_EdgeDivide::HasCurve2d()`
     pub fn has_curve2d(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve2d(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve2d(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:48 - `ShapeUpgrade_EdgeDivide::HasCurve3d()`
     pub fn has_curve3d(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_HasCurve3d(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:50 - `ShapeUpgrade_EdgeDivide::Knots2d()`
-    pub fn knots2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+    pub fn knots2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots2d(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:52 - `ShapeUpgrade_EdgeDivide::Knots3d()`
-    pub fn knots3d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+    pub fn knots3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Knots3d(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -215,66 +225,55 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool()`
     pub fn set_split_curve2d_tool(
         &mut self,
-        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+        splitCurve2dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve2dTool(
-                self as *mut Self,
-                splitCurve2dTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve2dTool(self as *mut Self, splitCurve2dTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool()`
     pub fn set_split_curve3d_tool(
         &mut self,
-        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+        splitCurve3dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve3d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve3dTool(
-                self as *mut Self,
-                splitCurve3dTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetSplitCurve3dTool(self as *mut Self, splitCurve3dTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool()`
     pub fn get_split_curve2d_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve2dTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve2dTool(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool()`
     pub fn get_split_curve3d_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve3dTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_GetSplitCurve3dTool(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -282,10 +281,12 @@ impl ClosedEdgeDivide {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -293,7 +294,7 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetPrecision(
                 self as *mut Self,
                 preci,
             )
@@ -303,14 +304,16 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -320,14 +323,16 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -337,14 +342,16 @@ impl ClosedEdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_LimitTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
             )
@@ -352,9 +359,9 @@ impl ClosedEdgeDivide {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -362,833 +369,9 @@ impl ClosedEdgeDivide {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedEdgeDivide_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeUpgradeClosedEdgeDivide;
-
-unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedEdgeDivide {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeClosedEdgeDivide_destructor(ptr);
-    }
-}
-
-impl HandleShapeUpgradeClosedEdgeDivide {
-    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedEdgeDivide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedEdgeDivide {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeClosedEdgeDivide_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_EdgeDivide>
-    pub fn to_handle_edge_divide(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeUpgrade_ClosedFaceDivide.hxx
-// ========================
-
-/// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:33 - `ShapeUpgrade_ClosedFaceDivide`
-/// Divides a Face with one or more seam edge to avoid closed faces.
-/// Splitting is performed by U and V direction. The number of
-/// resulting faces can be defined by user.
-pub use crate::ffi::ShapeUpgrade_ClosedFaceDivide as ClosedFaceDivide;
-
-unsafe impl crate::CppDeletable for ClosedFaceDivide {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ClosedFaceDivide_destructor(ptr);
-    }
-}
-
-impl ClosedFaceDivide {
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:38 - `ShapeUpgrade_ClosedFaceDivide::ShapeUpgrade_ClosedFaceDivide()`
-    /// Creates empty  constructor.
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:41 - `ShapeUpgrade_ClosedFaceDivide::ShapeUpgrade_ClosedFaceDivide()`
-    /// Initialize by a Face.
-    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_ctor_face(F),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:45 - `ShapeUpgrade_ClosedFaceDivide::SplitSurface()`
-    /// Performs splitting of surface and computes the shell
-    /// from source face.
-    pub fn split_surface(&mut self, theArea: f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_split_surface(self as *mut Self, theArea)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:50 - `ShapeUpgrade_ClosedFaceDivide::SetNbSplitPoints()`
-    /// Sets the number of cutting lines by which closed face will be split.
-    /// The resulting faces will be num+1.
-    pub fn set_nb_split_points(&mut self, num: i32) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_set_nb_split_points(self as *mut Self, num)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:53 - `ShapeUpgrade_ClosedFaceDivide::GetNbSplitPoints()`
-    /// Returns the number of splitting points
-    pub fn get_nb_split_points(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_nb_split_points(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ClosedFaceDivide_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ClosedFaceDivide_get_type_descriptor()))
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_FaceDivide
-    pub fn as_face_divide(&self) -> &FaceDivide {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_FaceDivide (mutable)
-    pub fn as_face_divide_mut(&mut self) -> &mut FaceDivide {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_Tool
-    pub fn as_tool(&self) -> &Tool {
-        unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_Tool (mutable)
-    pub fn as_tool_mut(&mut self) -> &mut Tool {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
-    pub fn init(&mut self, F: &crate::topo_ds::Face) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Init(self as *mut Self, F)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
-    pub fn set_surface_segment_mode(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:76 - `ShapeUpgrade_FaceDivide::Perform()`
-    pub fn perform(&mut self, theArea: f64) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Perform(self as *mut Self, theArea)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:87 - `ShapeUpgrade_FaceDivide::SplitCurves()`
-    pub fn split_curves(&mut self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SplitCurves(self as *mut Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
-    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Result(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:99 - `ShapeUpgrade_FaceDivide::Status()`
-    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Status(
-                self as *const Self,
-                status.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:102 - `ShapeUpgrade_FaceDivide::SetSplitSurfaceTool()`
-    pub fn set_split_surface_tool(
-        &mut self,
-        splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(
-                self as *mut Self,
-                splitSurfaceTool,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
-    pub fn set_wire_divide_tool(
-        &mut self,
-        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetWireDivideTool(
-                self as *mut Self,
-                wireDivideTool,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
-    pub fn get_split_surface_tool(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetSplitSurfaceTool(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
-    pub fn get_wire_divide_tool(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetWireDivideTool(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Set(self as *mut Self, tool)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetContext(
-                self as *mut Self,
-                context,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Context(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
-    pub fn set_precision(&mut self, preci: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(
-                self as *mut Self,
-                preci,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
-    pub fn precision(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Precision(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
-    pub fn set_min_tolerance(&mut self, mintol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
-    pub fn min_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MinTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
-    pub fn set_max_tolerance(&mut self, maxtol: f64) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
-    pub fn max_tolerance(&self) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_MaxTolerance(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
-    pub fn limit_tolerance(&self, toler: f64) -> f64 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(
-                self as *const Self,
-                toler,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IsKind(self as *const Self, theType)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_GetRefCount(self as *const Self)
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ClosedFaceDivide_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeUpgradeClosedFaceDivide;
-
-unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedFaceDivide {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeClosedFaceDivide_destructor(ptr);
-    }
-}
-
-impl HandleShapeUpgradeClosedFaceDivide {
-    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ClosedFaceDivide {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeClosedFaceDivide_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedFaceDivide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ClosedFaceDivide {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeClosedFaceDivide_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_FaceDivide>
-    pub fn to_handle_face_divide(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeUpgrade_ConvertCurve2dToBezier.hxx
-// ========================
-
-/// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve2dToBezier`
-/// converts/splits a 2d curve to a list of beziers
-pub use crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier as ConvertCurve2dToBezier;
-
-unsafe impl crate::CppDeletable for ConvertCurve2dToBezier {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_destructor(ptr);
-    }
-}
-
-impl ConvertCurve2dToBezier {
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve2dToBezier::ShapeUpgrade_ConvertCurve2dToBezier()`
-    /// Empty constructor.
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:39 - `ShapeUpgrade_ConvertCurve2dToBezier::Compute()`
-    /// Converts curve into a list of beziers, and stores the
-    /// splitting parameters on original curve.
-    pub fn compute(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_compute(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:43 - `ShapeUpgrade_ConvertCurve2dToBezier::Build()`
-    /// Splits a list of beziers computed by Compute method according
-    /// the split values and splitting parameters.
-    pub fn build(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_build(self as *mut Self, Segment)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:46 - `ShapeUpgrade_ConvertCurve2dToBezier::SplitParams()`
-    /// Returns the list of split parameters in original curve parametrisation.
-    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_split_params(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve2d
-    pub fn as_split_curve2d(&self) -> &SplitCurve2d {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
-    pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve
-    pub fn as_split_curve(&self) -> &SplitCurve {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
-    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
-    pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(self as *mut Self, C)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(
-                self as *mut Self,
-                SplitValues,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SplitValues(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
-    pub fn perform(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Perform(
-                self as *mut Self,
-                Segment,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
-    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Status(
-                self as *const Self,
-                status.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -1199,830 +382,7 @@ impl ConvertCurve2dToBezier {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier;
-
-unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve2dToBezier {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_destructor(ptr);
-    }
-}
-
-impl HandleShapeUpgradeConvertCurve2dToBezier {
-    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve2dToBezier
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve2dToBezier
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve2dToBezier {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve2d>
-    pub fn to_handle_split_curve2d(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve>
-    pub fn to_handle_split_curve(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeUpgrade_ConvertCurve3dToBezier.hxx
-// ========================
-
-/// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve3dToBezier`
-/// converts/splits a 3d curve of any type to a list of beziers
-pub use crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier as ConvertCurve3dToBezier;
-
-unsafe impl crate::CppDeletable for ConvertCurve3dToBezier {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_destructor(ptr);
-    }
-}
-
-impl ConvertCurve3dToBezier {
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve3dToBezier::ShapeUpgrade_ConvertCurve3dToBezier()`
-    /// Empty constructor
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:38 - `ShapeUpgrade_ConvertCurve3dToBezier::SetLineMode()`
-    /// Sets mode for conversion Geom_Line to bezier.
-    pub fn set_line_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_line_mode(self as *mut Self, mode)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:41 - `ShapeUpgrade_ConvertCurve3dToBezier::GetLineMode()`
-    /// Returns the Geom_Line conversion mode.
-    pub fn get_line_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_line_mode(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:44 - `ShapeUpgrade_ConvertCurve3dToBezier::SetCircleMode()`
-    /// Sets mode for conversion Geom_Circle to bezier.
-    pub fn set_circle_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_circle_mode(self as *mut Self, mode)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:47 - `ShapeUpgrade_ConvertCurve3dToBezier::GetCircleMode()`
-    /// Returns the Geom_Circle conversion mode.
-    pub fn get_circle_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_circle_mode(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:50 - `ShapeUpgrade_ConvertCurve3dToBezier::SetConicMode()`
-    /// Returns the Geom_Conic conversion mode.
-    pub fn set_conic_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_set_conic_mode(self as *mut Self, mode)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:53 - `ShapeUpgrade_ConvertCurve3dToBezier::GetConicMode()`
-    /// Performs converting and computes the resulting shape.
-    pub fn get_conic_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_conic_mode(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:57 - `ShapeUpgrade_ConvertCurve3dToBezier::Compute()`
-    /// Converts curve into a list of beziers, and stores the
-    /// splitting parameters on original curve.
-    pub fn compute(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_compute(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:61 - `ShapeUpgrade_ConvertCurve3dToBezier::Build()`
-    /// Splits a list of beziers computed by Compute method according
-    /// the split values and splitting parameters.
-    pub fn build(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_build(self as *mut Self, Segment)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:64 - `ShapeUpgrade_ConvertCurve3dToBezier::SplitParams()`
-    /// Returns the list of split parameters in original curve parametrisation.
-    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_split_params(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_dynamic_type(
-                self as *const Self,
-            )))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve3d
-    pub fn as_split_curve3d(&self) -> &SplitCurve3d {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
-    pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve
-    pub fn as_split_curve(&self) -> &SplitCurve {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
-    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
-    pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(self as *mut Self, C)
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(
-                self as *mut Self,
-                SplitValues,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SplitValues(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
-    pub fn perform(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Perform(
-                self as *mut Self,
-                Segment,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
-    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Status(
-                self as *const Self,
-                status.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_This(self as *const Self)
-            });
-            if __val.is_null() {
-                None
-            } else {
-                Some(unsafe { &*__val })
-            }
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
-    pub fn get_ref_count(&self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetRefCount(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
-    pub fn increment_ref_counter(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
-    pub fn decrement_ref_counter(&mut self) -> i32 {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
-    pub fn delete(&self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Delete(self as *const Self)
-        })
-    }
-}
-
-pub use crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier;
-
-unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve3dToBezier {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_destructor(ptr);
-    }
-}
-
-impl HandleShapeUpgradeConvertCurve3dToBezier {
-    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
-        unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get(
-                self as *const Self,
-            ))
-        }
-    }
-
-    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve3dToBezier
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertCurve3dToBezier {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_get_mut(
-                self as *mut Self,
-            ))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve3d>
-    pub fn to_handle_split_curve3d(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve>
-    pub fn to_handle_split_curve(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
-        }
-    }
-
-    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-}
-
-// ========================
-// From ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx
-// ========================
-
-/// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:34 - `ShapeUpgrade_ConvertSurfaceToBezierBasis`
-/// Converts a plane, bspline surface, surface of revolution, surface
-/// of extrusion, offset surface to grid of bezier basis surface (
-/// bezier surface,
-/// surface of revolution based on bezier curve,
-/// offset surface based on any previous type).
-pub use crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis as ConvertSurfaceToBezierBasis;
-
-unsafe impl crate::CppDeletable for ConvertSurfaceToBezierBasis {
-    unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_destructor(ptr);
-    }
-}
-
-impl ConvertSurfaceToBezierBasis {
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:39 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::ShapeUpgrade_ConvertSurfaceToBezierBasis()`
-    /// Empty constructor.
-    pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor(),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:43 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Build()`
-    /// Splits a list of beziers computed by Compute method according
-    /// the split values and splitting parameters.
-    pub fn build(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_build(self as *mut Self, Segment)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:47 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Compute()`
-    /// Converts surface into a grid of bezier based surfaces, and
-    /// stores this grid.
-    pub fn compute(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_compute(self as *mut Self, Segment)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:51 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Segments()`
-    /// Returns the grid of bezier based surfaces correspondent to
-    /// original surface.
-    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendCompositeSurface> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_segments(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:54 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetPlaneMode()`
-    /// Sets mode for conversion Geom_Plane to Bezier
-    pub fn set_plane_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_plane_mode(
-                self as *mut Self,
-                mode,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:57 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetPlaneMode()`
-    /// Returns the Geom_Pline conversion mode.
-    pub fn get_plane_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_plane_mode(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:60 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetRevolutionMode()`
-    /// Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
-    pub fn set_revolution_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_revolution_mode(
-                self as *mut Self,
-                mode,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:63 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetRevolutionMode()`
-    /// Returns the Geom_SurfaceOfRevolution conversion mode.
-    pub fn get_revolution_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_revolution_mode(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:66 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetExtrusionMode()`
-    /// Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
-    pub fn set_extrusion_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_extrusion_mode(
-                self as *mut Self,
-                mode,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:69 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetExtrusionMode()`
-    /// Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
-    pub fn get_extrusion_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_extrusion_mode(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:72 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetBSplineMode()`
-    /// Sets mode for conversion Geom_BSplineSurface to Bezier
-    pub fn set_b_spline_mode(&mut self, mode: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_b_spline_mode(
-                self as *mut Self,
-                mode,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:75 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetBSplineMode()`
-    /// Returns the Geom_BSplineSurface conversion mode.
-    pub fn get_b_spline_mode(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_b_spline_mode(
-                self as *const Self,
-            )
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_dynamic_type(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_name()`
-    pub fn get_type_name() -> std::string::String {
-        unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name(),
-            ))
-        }
-        .to_string_lossy()
-        .into_owned()
-    }
-
-    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor(),
-            ))
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitSurface
-    pub fn as_split_surface(&self) -> &SplitSurface {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
-    pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
-        unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self))
-        }
-    }
-
-    /// Upcast to Standard_Transient
-    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
-        unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
-        }
-    }
-
-    /// Upcast to Standard_Transient (mutable)
-    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
-        unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
-        }
-    }
-
-    /// Wrap in a Handle (reference-counted smart pointer)
-    pub fn to_handle(
-        obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(obj.into_raw()),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
-    pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(
-                self as *mut Self,
-                S,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
-    pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(
-                self as *mut Self,
-                UValues,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
-    pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(
-                self as *mut Self,
-                VValues,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
-    pub fn perform(&mut self, Segment: bool) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(
-                self as *mut Self,
-                Segment,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
-    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
-    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
-    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Status(
-                self as *const Self,
-                status.into(),
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
-    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
-        unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_ResSurfaces(
-                    self as *const Self,
-                ),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsInstance(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsKind(
-                self as *const Self,
-                theType,
-            )
-        })
-    }
-
-    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
-    pub fn this(&self) -> Option<&crate::standard::Transient> {
-        {
-            let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_This(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_This(
                     self as *const Self,
                 )
             });
@@ -2037,7 +397,7 @@ impl ConvertSurfaceToBezierBasis {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_GetRefCount(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -2046,300 +406,374 @@ impl ConvertSurfaceToBezierBasis {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Delete(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedEdgeDivide_inherited_Delete(
                 self as *const Self,
             )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis;
+pub use crate::ffi_types::HandleShapeUpgradeClosedEdgeDivide;
 
-unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertSurfaceToBezierBasis {
+unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedEdgeDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_destructor(ptr);
     }
 }
 
-impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
-    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+impl HandleShapeUpgradeClosedEdgeDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedEdgeDivide
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedEdgeDivide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
-    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedEdgeDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_ClosedEdgeDivide {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_get_mut(
                     self as *mut Self,
                 ),
             )
         }
     }
 
-    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<ShapeUpgrade_SplitSurface>
-    pub fn to_handle_split_surface(
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_EdgeDivide>
+    pub fn to_handle_edge_divide(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeEdgeDivide> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeEdgeDivide(self as *const Self)))
         }
     }
 
-    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_to_HandleShapeUpgradeTool(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedEdgeDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedEdgeDivide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
 
 // ========================
-// From ShapeUpgrade_EdgeDivide.hxx
+// From ShapeUpgrade_ClosedFaceDivide.hxx
 // ========================
 
-/// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:32 - `ShapeUpgrade_EdgeDivide`
-pub use crate::ffi::ShapeUpgrade_EdgeDivide as EdgeDivide;
+/// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:33 - `ShapeUpgrade_ClosedFaceDivide`
+/// Divides a Face with one or more seam edge to avoid closed faces.
+/// Splitting is performed by U and V direction. The number of
+/// resulting faces can be defined by user.
+pub use crate::ffi_types::ShapeUpgrade_ClosedFaceDivide as ClosedFaceDivide;
 
-unsafe impl crate::CppDeletable for EdgeDivide {
+unsafe impl crate::CppDeletable for ClosedFaceDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_EdgeDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_destructor(ptr);
     }
 }
 
-impl EdgeDivide {
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:37 - `ShapeUpgrade_EdgeDivide::ShapeUpgrade_EdgeDivide()`
-    /// Empty constructor
+impl ClosedFaceDivide {
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:38 - `ShapeUpgrade_ClosedFaceDivide::ShapeUpgrade_ClosedFaceDivide()`
+    /// Creates empty  constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_ctor(),
             ))
         }
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
-    pub fn clear(&mut self) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_clear(self as *mut Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
-    /// Sets supporting surface by face
-    pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_set_face(self as *mut Self, F)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:44 - `ShapeUpgrade_EdgeDivide::Compute()`
-    pub fn compute(&mut self, E: &crate::topo_ds::Edge) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_compute(self as *mut Self, E)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:46 - `ShapeUpgrade_EdgeDivide::HasCurve2d()`
-    pub fn has_curve2d(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_has_curve2d(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:48 - `ShapeUpgrade_EdgeDivide::HasCurve3d()`
-    pub fn has_curve3d(&self) -> bool {
-        crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_has_curve3d(self as *const Self)
-        })
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:50 - `ShapeUpgrade_EdgeDivide::Knots2d()`
-    pub fn knots2d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:41 - `ShapeUpgrade_ClosedFaceDivide::ShapeUpgrade_ClosedFaceDivide()`
+    /// Initialize by a Face.
+    pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_knots2d(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_ctor_face(F),
             ))
         }
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:52 - `ShapeUpgrade_EdgeDivide::Knots3d()`
-    pub fn knots3d(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfReal> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_knots3d(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool()`
-    /// Sets the tool for splitting pcurves.
-    pub fn set_split_curve2d_tool(
-        &mut self,
-        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
-    ) {
-        crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve2d_tool(
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:45 - `ShapeUpgrade_ClosedFaceDivide::SplitSurface()`
+    /// Performs splitting of surface and computes the shell
+    /// from source face.
+    pub fn split_surface(&mut self, theArea: f64) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_split_surface(
                 self as *mut Self,
-                splitCurve2dTool,
+                theArea,
             )
         })
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool()`
-    /// Sets the tool for splitting 3D curves.
-    pub fn set_split_curve3d_tool(
-        &mut self,
-        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
-    ) {
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:50 - `ShapeUpgrade_ClosedFaceDivide::SetNbSplitPoints()`
+    /// Sets the number of cutting lines by which closed face will be split.
+    /// The resulting faces will be num+1.
+    pub fn set_nb_split_points(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_set_split_curve3d_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_set_nb_split_points(
                 self as *mut Self,
-                splitCurve3dTool,
+                num,
             )
         })
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool()`
-    /// Returns the tool for splitting pcurves.
-    pub fn get_split_curve2d_tool(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve2d_tool(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool()`
-    /// Returns the tool for splitting 3D curves.
-    pub fn get_split_curve3d_tool(
-        &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_get_split_curve3d_tool(self as *const Self),
-            ))
-        }
-    }
-
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
-        unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_EdgeDivide_dynamic_type(
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:53 - `ShapeUpgrade_ClosedFaceDivide::GetNbSplitPoints()`
+    /// Returns the number of splitting points
+    pub fn get_nb_split_points(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_get_nb_split_points(
                 self as *const Self,
-            )))
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::get_type_name()`
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_get_type_name(),
             ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
-    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    /// **Source:** `ShapeUpgrade_ClosedFaceDivide.hxx`:55 - `ShapeUpgrade_ClosedFaceDivide::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_EdgeDivide_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide
+    pub fn as_face_divide(&self) -> &FaceDivide {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_FaceDivide (mutable)
+    pub fn as_face_divide_mut(&mut self) -> &mut FaceDivide {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_FaceDivide_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_ShapeUpgrade_Tool_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(self as *mut Self),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedFaceDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
-    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
+    pub fn init(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Init(
+                self as *mut Self,
+                F,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
+    pub fn set_surface_segment_mode(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:76 - `ShapeUpgrade_FaceDivide::Perform()`
+    pub fn perform(&mut self, theArea: f64) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Perform(
+                self as *mut Self,
+                theArea,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:87 - `ShapeUpgrade_FaceDivide::SplitCurves()`
+    pub fn split_curves(&mut self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SplitCurves(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:90 - `ShapeUpgrade_FaceDivide::Result()`
+    pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Result(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:99 - `ShapeUpgrade_FaceDivide::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:102 - `ShapeUpgrade_FaceDivide::SetSplitSurfaceTool()`
+    pub fn set_split_surface_tool(
+        &mut self,
+        splitSurfaceTool: &crate::ffi_types::HandleShapeUpgradeSplitSurface,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetSplitSurfaceTool(self as *mut Self, splitSurfaceTool)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
+    pub fn set_wire_divide_tool(
+        &mut self,
+        wireDivideTool: &crate::ffi_types::HandleShapeUpgradeWireDivide,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetWireDivideTool(
+                self as *mut Self,
+                wireDivideTool,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
+    pub fn get_split_surface_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_GetSplitSurfaceTool(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
+    pub fn get_wire_divide_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeWireDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_GetWireDivideTool(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2347,63 +781,87 @@ impl EdgeDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2411,7 +869,9 @@ impl EdgeDivide {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_EdgeDivide_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2424,76 +884,1608 @@ impl EdgeDivide {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_EdgeDivide_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ClosedFaceDivide_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeEdgeDivide;
+pub use crate::ffi_types::HandleShapeUpgradeClosedFaceDivide;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeClosedFaceDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeClosedFaceDivide {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ClosedFaceDivide
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ClosedFaceDivide {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ClosedFaceDivide
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_ClosedFaceDivide {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_FaceDivide>
+    pub fn to_handle_face_divide(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeFaceDivide(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<ShapeUpgrade_Tool>
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_to_HandleShapeUpgradeTool(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ClosedFaceDivide> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeClosedFaceDivide_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ConvertCurve2dToBezier.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve2dToBezier`
+/// converts/splits a 2d curve to a list of beziers
+pub use crate::ffi_types::ShapeUpgrade_ConvertCurve2dToBezier as ConvertCurve2dToBezier;
+
+unsafe impl crate::CppDeletable for ConvertCurve2dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_destructor(ptr);
+    }
+}
+
+impl ConvertCurve2dToBezier {
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve2dToBezier::ShapeUpgrade_ConvertCurve2dToBezier()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:39 - `ShapeUpgrade_ConvertCurve2dToBezier::Compute()`
+    /// Converts curve into a list of beziers, and stores the
+    /// splitting parameters on original curve.
+    pub fn compute(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_compute(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:43 - `ShapeUpgrade_ConvertCurve2dToBezier::Build()`
+    /// Splits a list of beziers computed by Compute method according
+    /// the split values and splitting parameters.
+    pub fn build(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_build(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:46 - `ShapeUpgrade_ConvertCurve2dToBezier::SplitParams()`
+    /// Returns the list of split parameters in original curve parametrisation.
+    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_split_params(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve2dToBezier.hxx`:48 - `ShapeUpgrade_ConvertCurve2dToBezier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_get_type_descriptor()))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d
+    pub fn as_split_curve2d(&self) -> &SplitCurve2d {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
+    pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve2d_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve2dToBezier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_to_handle(
+                    obj.into_raw(),
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
+    pub fn init(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Init(
+                self as *mut Self,
+                C,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeom2dHArray1OfCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetCurves(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SetSplitValues(self as *mut Self, SplitValues)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_SplitValues(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_IncrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_DecrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve2dToBezier_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeUpgradeConvertCurve2dToBezier;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve2dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeConvertCurve2dToBezier {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve2dToBezier
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertCurve2dToBezier {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve2dToBezier
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_ConvertCurve2dToBezier {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve2d>
+    pub fn to_handle_split_curve2d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve2dToBezier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve2dToBezier_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ConvertCurve3dToBezier.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:30 - `ShapeUpgrade_ConvertCurve3dToBezier`
+/// converts/splits a 3d curve of any type to a list of beziers
+pub use crate::ffi_types::ShapeUpgrade_ConvertCurve3dToBezier as ConvertCurve3dToBezier;
+
+unsafe impl crate::CppDeletable for ConvertCurve3dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_destructor(ptr);
+    }
+}
+
+impl ConvertCurve3dToBezier {
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:35 - `ShapeUpgrade_ConvertCurve3dToBezier::ShapeUpgrade_ConvertCurve3dToBezier()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:38 - `ShapeUpgrade_ConvertCurve3dToBezier::SetLineMode()`
+    /// Sets mode for conversion Geom_Line to bezier.
+    pub fn set_line_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_set_line_mode(
+                self as *mut Self,
+                mode,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:41 - `ShapeUpgrade_ConvertCurve3dToBezier::GetLineMode()`
+    /// Returns the Geom_Line conversion mode.
+    pub fn get_line_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_get_line_mode(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:44 - `ShapeUpgrade_ConvertCurve3dToBezier::SetCircleMode()`
+    /// Sets mode for conversion Geom_Circle to bezier.
+    pub fn set_circle_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_set_circle_mode(
+                self as *mut Self,
+                mode,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:47 - `ShapeUpgrade_ConvertCurve3dToBezier::GetCircleMode()`
+    /// Returns the Geom_Circle conversion mode.
+    pub fn get_circle_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_get_circle_mode(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:50 - `ShapeUpgrade_ConvertCurve3dToBezier::SetConicMode()`
+    /// Returns the Geom_Conic conversion mode.
+    pub fn set_conic_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_set_conic_mode(
+                self as *mut Self,
+                mode,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:53 - `ShapeUpgrade_ConvertCurve3dToBezier::GetConicMode()`
+    /// Performs converting and computes the resulting shape.
+    pub fn get_conic_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_get_conic_mode(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:57 - `ShapeUpgrade_ConvertCurve3dToBezier::Compute()`
+    /// Converts curve into a list of beziers, and stores the
+    /// splitting parameters on original curve.
+    pub fn compute(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_compute(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:61 - `ShapeUpgrade_ConvertCurve3dToBezier::Build()`
+    /// Splits a list of beziers computed by Compute method according
+    /// the split values and splitting parameters.
+    pub fn build(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_build(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:64 - `ShapeUpgrade_ConvertCurve3dToBezier::SplitParams()`
+    /// Returns the list of split parameters in original curve parametrisation.
+    pub fn split_params(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_split_params(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertCurve3dToBezier.hxx`:66 - `ShapeUpgrade_ConvertCurve3dToBezier::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_get_type_descriptor()))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d
+    pub fn as_split_curve3d(&self) -> &SplitCurve3d {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
+    pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve3d_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve
+    pub fn as_split_curve(&self) -> &SplitCurve {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitCurve (mutable)
+    pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve3dToBezier> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_to_handle(
+                    obj.into_raw(),
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
+    pub fn init(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Init(
+                self as *mut Self,
+                C,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeomHArray1OfCurve {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetCurves(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SetSplitValues(self as *mut Self, SplitValues)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_SplitValues(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_IncrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_DecrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertCurve3dToBezier_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeUpgradeConvertCurve3dToBezier;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertCurve3dToBezier {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_destructor(ptr);
+    }
+}
+
+impl HandleShapeUpgradeConvertCurve3dToBezier {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertCurve3dToBezier
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertCurve3dToBezier {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertCurve3dToBezier
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_ConvertCurve3dToBezier {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_get_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve3d>
+    pub fn to_handle_split_curve3d(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<ShapeUpgrade_SplitCurve>
+    pub fn to_handle_split_curve(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertCurve3dToBezier> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertCurve3dToBezier_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:34 - `ShapeUpgrade_ConvertSurfaceToBezierBasis`
+/// Converts a plane, bspline surface, surface of revolution, surface
+/// of extrusion, offset surface to grid of bezier basis surface (
+/// bezier surface,
+/// surface of revolution based on bezier curve,
+/// offset surface based on any previous type).
+pub use crate::ffi_types::ShapeUpgrade_ConvertSurfaceToBezierBasis as ConvertSurfaceToBezierBasis;
+
+unsafe impl crate::CppDeletable for ConvertSurfaceToBezierBasis {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_destructor(ptr);
+    }
+}
+
+impl ConvertSurfaceToBezierBasis {
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:39 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::ShapeUpgrade_ConvertSurfaceToBezierBasis()`
+    /// Empty constructor.
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:43 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Build()`
+    /// Splits a list of beziers computed by Compute method according
+    /// the split values and splitting parameters.
+    pub fn build(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_build(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:47 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Compute()`
+    /// Converts surface into a grid of bezier based surfaces, and
+    /// stores this grid.
+    pub fn compute(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_compute(
+                self as *mut Self,
+                Segment,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:51 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::Segments()`
+    /// Returns the grid of bezier based surfaces correspondent to
+    /// original surface.
+    pub fn segments(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendCompositeSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_segments(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:54 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetPlaneMode()`
+    /// Sets mode for conversion Geom_Plane to Bezier
+    pub fn set_plane_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_plane_mode(
+                self as *mut Self,
+                mode,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:57 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetPlaneMode()`
+    /// Returns the Geom_Pline conversion mode.
+    pub fn get_plane_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_plane_mode(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:60 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetRevolutionMode()`
+    /// Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
+    pub fn set_revolution_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_revolution_mode(self as *mut Self, mode)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:63 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetRevolutionMode()`
+    /// Returns the Geom_SurfaceOfRevolution conversion mode.
+    pub fn get_revolution_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_revolution_mode(self as *const Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:66 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetExtrusionMode()`
+    /// Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
+    pub fn set_extrusion_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_extrusion_mode(self as *mut Self, mode)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:69 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetExtrusionMode()`
+    /// Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
+    pub fn get_extrusion_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_extrusion_mode(self as *const Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:72 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::SetBSplineMode()`
+    /// Sets mode for conversion Geom_BSplineSurface to Bezier
+    pub fn set_b_spline_mode(&mut self, mode: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_set_b_spline_mode(self as *mut Self, mode)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:75 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::GetBSplineMode()`
+    /// Returns the Geom_BSplineSurface conversion mode.
+    pub fn get_b_spline_mode(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_b_spline_mode(self as *const Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_dynamic_type(self as *const Self)))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe { std::ffi::CStr::from_ptr(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_name())) }.to_string_lossy().into_owned()
+    }
+
+    /// **Source:** `ShapeUpgrade_ConvertSurfaceToBezierBasis.hxx`:77 - `ShapeUpgrade_ConvertSurfaceToBezierBasis::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_get_type_descriptor()))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface
+    pub fn as_split_surface(&self) -> &SplitSurface {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface(self as *const Self))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_SplitSurface (mutable)
+    pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient(self as *const Self))
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_as_Standard_Transient_mut(self as *mut Self))
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertSurfaceToBezierBasis> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_to_handle(
+                    obj.into_raw(),
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
+    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Init(
+                self as *mut Self,
+                S,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
+    pub fn set_u_split_values(&mut self, UValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetUSplitValues(self as *mut Self, UValues)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
+    pub fn set_v_split_values(&mut self, VValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_SetVSplitValues(self as *mut Self, VValues)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
+    pub fn perform(&mut self, Segment: bool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Perform(self as *mut Self, Segment)
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
+    pub fn u_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_USplitValues(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
+    pub fn v_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_VSplitValues(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
+    pub fn status(&self, status: crate::shape_extend::Status) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Status(
+                self as *const Self,
+                status.into(),
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
+    pub fn res_surfaces(&self) -> &crate::ffi_types::HandleShapeExtendCompositeSurface {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_ResSurfaces(self as *const Self)))
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsInstance(self as *const Self, theType)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_This(self as *const Self)
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_GetRefCount(self as *const Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_IncrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_DecrementRefCounter(self as *mut Self)
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ConvertSurfaceToBezierBasis_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeUpgradeConvertSurfaceToBezierBasis;
+
+unsafe impl crate::CppDeletable for HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_destructor(
+            ptr,
+        );
+    }
+}
+
+impl HandleShapeUpgradeConvertSurfaceToBezierBasis {
+    /// Dereference this Handle to access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_get(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Dereference this Handle to mutably access the underlying ShapeUpgrade_ConvertSurfaceToBezierBasis
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_ConvertSurfaceToBezierBasis {
+        unsafe {
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_get_mut(self as *mut Self))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<ShapeUpgrade_SplitSurface>
+    pub fn to_handle_split_surface(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
+        }
+    }
+
+    /// Upcast Handle<ShapeUpgrade_ConvertSurfaceToBezierBasis> to Handle<Standard_Transient>
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeConvertSurfaceToBezierBasis_to_HandleStandardTransient(self as *const Self)))
+        }
+    }
+}
+
+// ========================
+// From ShapeUpgrade_EdgeDivide.hxx
+// ========================
+
+/// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:32 - `ShapeUpgrade_EdgeDivide`
+pub use crate::ffi_types::ShapeUpgrade_EdgeDivide as EdgeDivide;
+
+unsafe impl crate::CppDeletable for EdgeDivide {
+    unsafe fn cpp_delete(ptr: *mut Self) {
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_destructor(ptr);
+    }
+}
+
+impl EdgeDivide {
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:37 - `ShapeUpgrade_EdgeDivide::ShapeUpgrade_EdgeDivide()`
+    /// Empty constructor
+    pub fn new() -> crate::OwnedPtr<Self> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_ctor(),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:39 - `ShapeUpgrade_EdgeDivide::Clear()`
+    pub fn clear(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_clear(self as *mut Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:42 - `ShapeUpgrade_EdgeDivide::SetFace()`
+    /// Sets supporting surface by face
+    pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_set_face(self as *mut Self, F)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:44 - `ShapeUpgrade_EdgeDivide::Compute()`
+    pub fn compute(&mut self, E: &crate::topo_ds::Edge) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_compute(self as *mut Self, E)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:46 - `ShapeUpgrade_EdgeDivide::HasCurve2d()`
+    pub fn has_curve2d(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_has_curve2d(self as *const Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:48 - `ShapeUpgrade_EdgeDivide::HasCurve3d()`
+    pub fn has_curve3d(&self) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_has_curve3d(self as *const Self)
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:50 - `ShapeUpgrade_EdgeDivide::Knots2d()`
+    pub fn knots2d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_knots2d(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:52 - `ShapeUpgrade_EdgeDivide::Knots3d()`
+    pub fn knots3d(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfReal> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_knots3d(self as *const Self),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:55 - `ShapeUpgrade_EdgeDivide::SetSplitCurve2dTool()`
+    /// Sets the tool for splitting pcurves.
+    pub fn set_split_curve2d_tool(
+        &mut self,
+        splitCurve2dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve2d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_set_split_curve2d_tool(
+                self as *mut Self,
+                splitCurve2dTool,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:59 - `ShapeUpgrade_EdgeDivide::SetSplitCurve3dTool()`
+    /// Sets the tool for splitting 3D curves.
+    pub fn set_split_curve3d_tool(
+        &mut self,
+        splitCurve3dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve3d,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_set_split_curve3d_tool(
+                self as *mut Self,
+                splitCurve3dTool,
+            )
+        })
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:63 - `ShapeUpgrade_EdgeDivide::GetSplitCurve2dTool()`
+    /// Returns the tool for splitting pcurves.
+    pub fn get_split_curve2d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_get_split_curve2d_tool(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:66 - `ShapeUpgrade_EdgeDivide::GetSplitCurve3dTool()`
+    /// Returns the tool for splitting 3D curves.
+    pub fn get_split_curve3d_tool(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_get_split_curve3d_tool(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::DynamicType()`
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::get_type_name()`
+    pub fn get_type_name() -> std::string::String {
+        unsafe {
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_get_type_name(),
+            ))
+        }
+        .to_string_lossy()
+        .into_owned()
+    }
+
+    /// **Source:** `ShapeUpgrade_EdgeDivide.hxx`:68 - `ShapeUpgrade_EdgeDivide::get_type_descriptor()`
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_get_type_descriptor(),
+            ))
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_Tool
+    pub fn as_tool(&self) -> &Tool {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to ShapeUpgrade_Tool (mutable)
+    pub fn as_tool_mut(&mut self) -> &mut Tool {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_as_ShapeUpgrade_Tool_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient
+    pub fn as_standard_transient(&self) -> &crate::standard::Transient {
+        unsafe {
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
+        }
+    }
+
+    /// Upcast to Standard_Transient (mutable)
+    pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
+        unsafe {
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
+        }
+    }
+
+    /// Wrap in a Handle (reference-counted smart pointer)
+    pub fn to_handle(
+        obj: crate::OwnedPtr<Self>,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeEdgeDivide> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_to_handle(obj.into_raw()),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_Context(
+                    self as *const Self,
+                ),
+            ))
+        }
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
+    pub fn set_precision(&mut self, preci: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
+    pub fn precision(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_Precision(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
+    pub fn set_min_tolerance(&mut self, mintol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
+    pub fn min_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_MinTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
+    pub fn set_max_tolerance(&mut self, maxtol: f64) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
+    pub fn max_tolerance(&self) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_MaxTolerance(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
+    pub fn limit_tolerance(&self, toler: f64) -> f64 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:94 - `Standard_Transient::This()`
+    pub fn this(&self) -> Option<&crate::standard::Transient> {
+        {
+            let __val = crate::check_result(unsafe {
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_This(
+                    self as *const Self,
+                )
+            });
+            if __val.is_null() {
+                None
+            } else {
+                Some(unsafe { &*__val })
+            }
+        }
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
+    pub fn get_ref_count(&self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_GetRefCount(
+                self as *const Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
+    pub fn increment_ref_counter(&mut self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
+    pub fn decrement_ref_counter(&mut self) -> i32 {
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
+        })
+    }
+
+    /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
+    pub fn delete(&self) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_EdgeDivide_inherited_Delete(
+                self as *const Self,
+            )
+        })
+    }
+}
+
+pub use crate::ffi_types::HandleShapeUpgradeEdgeDivide;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeEdgeDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeEdgeDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeEdgeDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_EdgeDivide
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_EdgeDivide {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_EdgeDivide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeEdgeDivide_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_EdgeDivide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_EdgeDivide {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_EdgeDivide {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeEdgeDivide_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_EdgeDivide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -2502,11 +2494,9 @@ impl HandleShapeUpgradeEdgeDivide {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedEdgeDivide` (or subclass).
     pub fn downcast_to_closed_edge_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedEdgeDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeEdgeDivide_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeEdgeDivide_downcast_to_HandleShapeUpgradeClosedEdgeDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2535,11 +2525,11 @@ impl HandleShapeUpgradeEdgeDivide {
 ///
 /// All the modifications made during splitting are recorded in the
 /// external context (ShapeBuild_ReShape).
-pub use crate::ffi::ShapeUpgrade_FaceDivide as FaceDivide;
+pub use crate::ffi_types::ShapeUpgrade_FaceDivide as FaceDivide;
 
 unsafe impl crate::CppDeletable for FaceDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_FaceDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_destructor(ptr);
     }
 }
 
@@ -2549,7 +2539,7 @@ impl FaceDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_ctor(),
             ))
         }
     }
@@ -2559,7 +2549,7 @@ impl FaceDivide {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_ctor_face(F),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_ctor_face(F),
             ))
         }
     }
@@ -2568,7 +2558,7 @@ impl FaceDivide {
     /// Initialize by a Face.
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_init(self as *mut Self, F)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_init(self as *mut Self, F)
         })
     }
 
@@ -2577,7 +2567,10 @@ impl FaceDivide {
     /// wire UV bounds.
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_set_surface_segment_mode(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_set_surface_segment_mode(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
@@ -2591,7 +2584,10 @@ impl FaceDivide {
     /// splitting into N parts where N is user-defined.
     pub fn perform(&mut self, theArea: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_perform(self as *mut Self, theArea)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_perform(
+                self as *mut Self,
+                theArea,
+            )
         })
     }
 
@@ -2603,7 +2599,10 @@ impl FaceDivide {
     /// splitting into N parts where N is user-defined.
     pub fn split_surface(&mut self, theArea: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_split_surface(self as *mut Self, theArea)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_split_surface(
+                self as *mut Self,
+                theArea,
+            )
         })
     }
 
@@ -2612,7 +2611,7 @@ impl FaceDivide {
     /// shape and divides these edges.
     pub fn split_curves(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_split_curves(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_split_curves(self as *mut Self)
         })
     }
 
@@ -2621,7 +2620,7 @@ impl FaceDivide {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_result(self as *const Self),
             ))
         }
     }
@@ -2636,7 +2635,10 @@ impl FaceDivide {
     /// FAIL2: face cannot be split
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -2644,10 +2646,10 @@ impl FaceDivide {
     /// Sets the tool for splitting surfaces.
     pub fn set_split_surface_tool(
         &mut self,
-        splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
+        splitSurfaceTool: &crate::ffi_types::HandleShapeUpgradeSplitSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_set_split_surface_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_set_split_surface_tool(
                 self as *mut Self,
                 splitSurfaceTool,
             )
@@ -2658,10 +2660,10 @@ impl FaceDivide {
     /// Sets the tool for dividing edges on Face.
     pub fn set_wire_divide_tool(
         &mut self,
-        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
+        wireDivideTool: &crate::ffi_types::HandleShapeUpgradeWireDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_set_wire_divide_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_set_wire_divide_tool(
                 self as *mut Self,
                 wireDivideTool,
             )
@@ -2673,10 +2675,12 @@ impl FaceDivide {
     /// This tool must be already initialized.
     pub fn get_split_surface_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_get_split_surface_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_get_split_surface_tool(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2686,20 +2690,24 @@ impl FaceDivide {
     /// This tool must be already initialized.
     pub fn get_wire_divide_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeWireDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_get_wire_divide_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_get_wire_divide_tool(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:116 - `ShapeUpgrade_FaceDivide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivide_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2707,7 +2715,7 @@ impl FaceDivide {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2715,36 +2723,44 @@ impl FaceDivide {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivide.hxx`:116 - `ShapeUpgrade_FaceDivide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivide_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_as_ShapeUpgrade_Tool_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2752,7 +2768,9 @@ impl FaceDivide {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -2760,33 +2778,41 @@ impl FaceDivide {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivide_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2794,63 +2820,87 @@ impl FaceDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2858,7 +2908,9 @@ impl FaceDivide {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivide_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2871,76 +2923,82 @@ impl FaceDivide {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivide_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivide_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeFaceDivide;
+pub use crate::ffi_types::HandleShapeUpgradeFaceDivide;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeFaceDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeFaceDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivide
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivide {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FaceDivide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeFaceDivide_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivide {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_FaceDivide {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeFaceDivide_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -2949,11 +3007,9 @@ impl HandleShapeUpgradeFaceDivide {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedFaceDivide` (or subclass).
     pub fn downcast_to_closed_face_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedFaceDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeClosedFaceDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeClosedFaceDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2967,11 +3023,9 @@ impl HandleShapeUpgradeFaceDivide {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivideArea` (or subclass).
     pub fn downcast_to_face_divide_area(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivideArea>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeFaceDivideArea(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivide_downcast_to_HandleShapeUpgradeFaceDivideArea(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2987,11 +3041,11 @@ impl HandleShapeUpgradeFaceDivide {
 
 /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:29 - `ShapeUpgrade_FaceDivideArea`
 /// Divides face by max area criterium.
-pub use crate::ffi::ShapeUpgrade_FaceDivideArea as FaceDivideArea;
+pub use crate::ffi_types::ShapeUpgrade_FaceDivideArea as FaceDivideArea;
 
 unsafe impl crate::CppDeletable for FaceDivideArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_FaceDivideArea_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_destructor(ptr);
     }
 }
 
@@ -3001,7 +3055,7 @@ impl FaceDivideArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_ctor(),
             ))
         }
     }
@@ -3010,7 +3064,7 @@ impl FaceDivideArea {
     pub fn new_face(F: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_ctor_face(F),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_ctor_face(F),
             ))
         }
     }
@@ -3020,7 +3074,10 @@ impl FaceDivideArea {
     /// The context is used to keep track of former splittings
     pub fn perform(&mut self, theArea: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_perform(self as *mut Self, theArea)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_perform(
+                self as *mut Self,
+                theArea,
+            )
         })
     }
 
@@ -3028,9 +3085,11 @@ impl FaceDivideArea {
     /// Set max area allowed for faces
     pub fn max_area(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_max_area(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_max_area(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -3038,9 +3097,11 @@ impl FaceDivideArea {
     /// Set number of parts expected
     pub fn nb_parts(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_nb_parts(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_nb_parts(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -3049,7 +3110,7 @@ impl FaceDivideArea {
     /// Only for "Splitting By Numbers" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_set_numbers_uv_splits(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_set_numbers_uv_splits(
                 self as *mut Self,
                 theNbUsplits,
                 theNbVsplits,
@@ -3064,7 +3125,7 @@ impl FaceDivideArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_by_number(&mut self, theIsSplittingByNumber: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_set_splitting_by_number(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_set_splitting_by_number(
                 self as *mut Self,
                 theIsSplittingByNumber,
             )
@@ -3072,11 +3133,13 @@ impl FaceDivideArea {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:59 - `ShapeUpgrade_FaceDivideArea::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3084,7 +3147,7 @@ impl FaceDivideArea {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3092,40 +3155,36 @@ impl FaceDivideArea {
     }
 
     /// **Source:** `ShapeUpgrade_FaceDivideArea.hxx`:59 - `ShapeUpgrade_FaceDivideArea::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide
     pub fn as_face_divide(&self) -> &FaceDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_FaceDivide (mutable)
     pub fn as_face_divide_mut(&mut self) -> &mut FaceDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_FaceDivide_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -3133,7 +3192,9 @@ impl FaceDivideArea {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_ShapeUpgrade_Tool_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -3141,30 +3202,30 @@ impl FaceDivideArea {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivideArea> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
@@ -3172,24 +3233,24 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:63 - `ShapeUpgrade_FaceDivide::Init()`
     pub fn init(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Init(self as *mut Self, F)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Init(
+                self as *mut Self,
+                F,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:67 - `ShapeUpgrade_FaceDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:83 - `ShapeUpgrade_FaceDivide::SplitSurface()`
     pub fn split_surface(&mut self, theArea: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitSurface(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SplitSurface(
                 self as *mut Self,
                 theArea,
             )
@@ -3199,7 +3260,9 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:87 - `ShapeUpgrade_FaceDivide::SplitCurves()`
     pub fn split_curves(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SplitCurves(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SplitCurves(
+                self as *mut Self,
+            )
         })
     }
 
@@ -3207,7 +3270,9 @@ impl FaceDivideArea {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3215,7 +3280,7 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:99 - `ShapeUpgrade_FaceDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -3225,10 +3290,10 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:102 - `ShapeUpgrade_FaceDivide::SetSplitSurfaceTool()`
     pub fn set_split_surface_tool(
         &mut self,
-        splitSurfaceTool: &crate::ffi::HandleShapeUpgradeSplitSurface,
+        splitSurfaceTool: &crate::ffi_types::HandleShapeUpgradeSplitSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetSplitSurfaceTool(
                 self as *mut Self,
                 splitSurfaceTool,
             )
@@ -3238,10 +3303,10 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:106 - `ShapeUpgrade_FaceDivide::SetWireDivideTool()`
     pub fn set_wire_divide_tool(
         &mut self,
-        wireDivideTool: &crate::ffi::HandleShapeUpgradeWireDivide,
+        wireDivideTool: &crate::ffi_types::HandleShapeUpgradeWireDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetWireDivideTool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetWireDivideTool(
                 self as *mut Self,
                 wireDivideTool,
             )
@@ -3251,48 +3316,48 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:110 - `ShapeUpgrade_FaceDivide::GetSplitSurfaceTool()`
     pub fn get_split_surface_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetSplitSurfaceTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_GetSplitSurfaceTool(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FaceDivide.hxx`:114 - `ShapeUpgrade_FaceDivide::GetWireDivideTool()`
     pub fn get_wire_divide_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeWireDivide> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetWireDivideTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_GetWireDivideTool(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3300,21 +3365,26 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -3324,14 +3394,16 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -3341,14 +3413,16 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
             )
@@ -3356,9 +3430,9 @@ impl FaceDivideArea {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3366,9 +3440,12 @@ impl FaceDivideArea {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3376,7 +3453,9 @@ impl FaceDivideArea {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3389,91 +3468,93 @@ impl FaceDivideArea {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FaceDivideArea_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FaceDivideArea_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeFaceDivideArea;
+pub use crate::ffi_types::HandleShapeUpgradeFaceDivideArea;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFaceDivideArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeFaceDivideArea_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeFaceDivideArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FaceDivideArea
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FaceDivideArea {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FaceDivideArea {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeFaceDivideArea_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FaceDivideArea
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FaceDivideArea {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_FaceDivideArea {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeFaceDivideArea_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_FaceDivide>
     pub fn to_handle_face_divide(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivide> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeFaceDivide(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FaceDivideArea> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFaceDivideArea_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3483,11 +3564,11 @@ impl HandleShapeUpgradeFaceDivideArea {
 // ========================
 
 /// **Source:** `ShapeUpgrade_FixSmallBezierCurves.hxx`:29 - `ShapeUpgrade_FixSmallBezierCurves`
-pub use crate::ffi::ShapeUpgrade_FixSmallBezierCurves as FixSmallBezierCurves;
+pub use crate::ffi_types::ShapeUpgrade_FixSmallBezierCurves as FixSmallBezierCurves;
 
 unsafe impl crate::CppDeletable for FixSmallBezierCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_FixSmallBezierCurves_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_destructor(ptr);
     }
 }
 
@@ -3496,7 +3577,7 @@ impl FixSmallBezierCurves {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_ctor(),
             ))
         }
     }
@@ -3504,14 +3585,14 @@ impl FixSmallBezierCurves {
     /// **Source:** `ShapeUpgrade_FixSmallBezierCurves.hxx`:35 - `ShapeUpgrade_FixSmallBezierCurves::Approx()`
     pub fn approx(
         &mut self,
-        Curve3d: &mut crate::ffi::HandleGeomCurve,
-        Curve2d: &mut crate::ffi::HandleGeom2dCurve,
-        Curve2dR: &mut crate::ffi::HandleGeom2dCurve,
+        Curve3d: &mut crate::ffi_types::HandleGeomCurve,
+        Curve2d: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve2dR: &mut crate::ffi_types::HandleGeom2dCurve,
         First: &mut f64,
         Last: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_approx(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_approx(
                 self as *mut Self,
                 Curve3d,
                 Curve2d,
@@ -3523,11 +3604,13 @@ impl FixSmallBezierCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallBezierCurves.hxx`:41 - `ShapeUpgrade_FixSmallBezierCurves::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FixSmallBezierCurves_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3535,7 +3618,7 @@ impl FixSmallBezierCurves {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3543,87 +3626,63 @@ impl FixSmallBezierCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallBezierCurves.hxx`:41 - `ShapeUpgrade_FixSmallBezierCurves::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_get_type_descriptor()))
         }
     }
 
     /// Upcast to ShapeUpgrade_FixSmallCurves
     pub fn as_fix_small_curves(&self) -> &FixSmallCurves {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_FixSmallCurves (mutable)
     pub fn as_fix_small_curves_mut(&mut self) -> &mut FixSmallCurves {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_FixSmallCurves_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_ShapeUpgrade_Tool_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallBezierCurves> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
@@ -3631,7 +3690,7 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Init(
                 self as *mut Self,
                 theEdge,
                 theFace,
@@ -3642,33 +3701,27 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:55 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve3dTool()`
     pub fn set_split_curve3d_tool(
         &mut self,
-        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+        splitCurve3dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve3d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve3dTool(
-                self as *mut Self,
-                splitCurve3dTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve3dTool(self as *mut Self, splitCurve3dTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:59 - `ShapeUpgrade_FixSmallCurves::SetSplitCurve2dTool()`
     pub fn set_split_curve2d_tool(
         &mut self,
-        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+        splitCurve2dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve2dTool(
-                self as *mut Self,
-                splitCurve2dTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetSplitCurve2dTool(self as *mut Self, splitCurve2dTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:67 - `ShapeUpgrade_FixSmallCurves::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -3676,16 +3729,19 @@ impl FixSmallBezierCurves {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -3693,10 +3749,10 @@ impl FixSmallBezierCurves {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Context(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Context(
                     self as *const Self,
                 ),
             ))
@@ -3706,7 +3762,7 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetPrecision(
                 self as *mut Self,
                 preci,
             )
@@ -3716,24 +3772,23 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMinTolerance(self as *mut Self, mintol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_MinTolerance(
                 self as *const Self,
             )
         })
@@ -3742,17 +3797,14 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_MaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_MaxTolerance(
                 self as *const Self,
             )
         })
@@ -3761,17 +3813,14 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_LimitTolerance(
-                self as *const Self,
-                toler,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_LimitTolerance(self as *const Self, toler)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -3779,9 +3828,9 @@ impl FixSmallBezierCurves {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -3792,7 +3841,9 @@ impl FixSmallBezierCurves {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -3805,91 +3856,89 @@ impl FixSmallBezierCurves {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallBezierCurves_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallBezierCurves_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeFixSmallBezierCurves;
+pub use crate::ffi_types::HandleShapeUpgradeFixSmallBezierCurves;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallBezierCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeFixSmallBezierCurves {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallBezierCurves
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FixSmallBezierCurves {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallBezierCurves
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallBezierCurves {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_FixSmallBezierCurves {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_FixSmallCurves>
     pub fn to_handle_fix_small_curves(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallCurves> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeFixSmallCurves(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallBezierCurves> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallBezierCurves_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -3899,11 +3948,11 @@ impl HandleShapeUpgradeFixSmallBezierCurves {
 // ========================
 
 /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:40 - `ShapeUpgrade_FixSmallCurves`
-pub use crate::ffi::ShapeUpgrade_FixSmallCurves as FixSmallCurves;
+pub use crate::ffi_types::ShapeUpgrade_FixSmallCurves as FixSmallCurves;
 
 unsafe impl crate::CppDeletable for FixSmallCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_FixSmallCurves_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_destructor(ptr);
     }
 }
 
@@ -3912,7 +3961,7 @@ impl FixSmallCurves {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_ctor(),
             ))
         }
     }
@@ -3920,21 +3969,25 @@ impl FixSmallCurves {
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:46 - `ShapeUpgrade_FixSmallCurves::Init()`
     pub fn init(&mut self, theEdge: &crate::topo_ds::Edge, theFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_init(self as *mut Self, theEdge, theFace)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_init(
+                self as *mut Self,
+                theEdge,
+                theFace,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:48 - `ShapeUpgrade_FixSmallCurves::Approx()`
     pub fn approx(
         &mut self,
-        Curve3d: &mut crate::ffi::HandleGeomCurve,
-        Curve2d: &mut crate::ffi::HandleGeom2dCurve,
-        Curve2dR: &mut crate::ffi::HandleGeom2dCurve,
+        Curve3d: &mut crate::ffi_types::HandleGeomCurve,
+        Curve2d: &mut crate::ffi_types::HandleGeom2dCurve,
+        Curve2dR: &mut crate::ffi_types::HandleGeom2dCurve,
         First: &mut f64,
         Last: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_approx(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_approx(
                 self as *mut Self,
                 Curve3d,
                 Curve2d,
@@ -3949,10 +4002,10 @@ impl FixSmallCurves {
     /// Sets the tool for splitting 3D curves.
     pub fn set_split_curve3d_tool(
         &mut self,
-        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+        splitCurve3dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve3d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve3d_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_set_split_curve3d_tool(
                 self as *mut Self,
                 splitCurve3dTool,
             )
@@ -3963,10 +4016,10 @@ impl FixSmallCurves {
     /// Sets the tool for splitting pcurves.
     pub fn set_split_curve2d_tool(
         &mut self,
-        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+        splitCurve2dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_set_split_curve2d_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_set_split_curve2d_tool(
                 self as *mut Self,
                 splitCurve2dTool,
             )
@@ -3981,16 +4034,21 @@ impl FixSmallCurves {
     /// FAIL1:
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:69 - `ShapeUpgrade_FixSmallCurves::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FixSmallCurves_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -3998,7 +4056,7 @@ impl FixSmallCurves {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4006,18 +4064,22 @@ impl FixSmallCurves {
     }
 
     /// **Source:** `ShapeUpgrade_FixSmallCurves.hxx`:69 - `ShapeUpgrade_FixSmallCurves::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_FixSmallCurves_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -4025,7 +4087,9 @@ impl FixSmallCurves {
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_as_ShapeUpgrade_Tool_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -4033,53 +4097,61 @@ impl FixSmallCurves {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallCurves> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4087,21 +4159,26 @@ impl FixSmallCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -4111,14 +4188,16 @@ impl FixSmallCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -4128,14 +4207,16 @@ impl FixSmallCurves {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_LimitTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
             )
@@ -4143,9 +4224,9 @@ impl FixSmallCurves {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4153,9 +4234,12 @@ impl FixSmallCurves {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4163,7 +4247,9 @@ impl FixSmallCurves {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4176,78 +4262,84 @@ impl FixSmallCurves {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_FixSmallCurves_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_FixSmallCurves_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeFixSmallCurves;
+pub use crate::ffi_types::HandleShapeUpgradeFixSmallCurves;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeFixSmallCurves {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeFixSmallCurves_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeFixSmallCurves {
     /// Dereference this Handle to access the underlying ShapeUpgrade_FixSmallCurves
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_FixSmallCurves {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_FixSmallCurves {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeFixSmallCurves_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_FixSmallCurves
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_FixSmallCurves {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_FixSmallCurves {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeFixSmallCurves_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_FixSmallCurves> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -4256,9 +4348,9 @@ impl HandleShapeUpgradeFixSmallCurves {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallBezierCurves` (or subclass).
     pub fn downcast_to_fix_small_bezier_curves(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallBezierCurves>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeFixSmallCurves_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeFixSmallCurves_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -4274,11 +4366,11 @@ impl HandleShapeUpgradeFixSmallCurves {
 
 /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:39 - `ShapeUpgrade_RemoveInternalWires`
 /// Removes all internal wires having area less than specified min area
-pub use crate::ffi::ShapeUpgrade_RemoveInternalWires as RemoveInternalWires;
+pub use crate::ffi_types::ShapeUpgrade_RemoveInternalWires as RemoveInternalWires;
 
 unsafe impl crate::CppDeletable for RemoveInternalWires {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_RemoveInternalWires_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_destructor(ptr);
     }
 }
 
@@ -4288,7 +4380,7 @@ impl RemoveInternalWires {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_ctor(),
             ))
         }
     }
@@ -4297,7 +4389,9 @@ impl RemoveInternalWires {
     pub fn new_shape(theShape: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_ctor_shape(theShape),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_ctor_shape(
+                    theShape,
+                ),
             ))
         }
     }
@@ -4306,7 +4400,10 @@ impl RemoveInternalWires {
     /// Initialize by a Shape.
     pub fn init(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_init(self as *mut Self, theShape)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_init(
+                self as *mut Self,
+                theShape,
+            )
         })
     }
 
@@ -4314,7 +4411,9 @@ impl RemoveInternalWires {
     /// Removes all internal wires having area less than area specified as minimal allowed area
     pub fn perform(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_perform(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_perform(
+                self as *mut Self,
+            )
         })
     }
 
@@ -4325,10 +4424,10 @@ impl RemoveInternalWires {
     /// allowed min area.
     pub fn perform_sequenceofshape(
         &mut self,
-        theSeqShapes: &crate::ffi::TopTools_SequenceOfShape,
+        theSeqShapes: &crate::ffi_types::TopTools_SequenceOfShape,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_perform_sequenceofshape(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_perform_sequenceofshape(
                 self as *mut Self,
                 theSeqShapes,
             )
@@ -4340,7 +4439,9 @@ impl RemoveInternalWires {
     pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_get_result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_get_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4349,9 +4450,11 @@ impl RemoveInternalWires {
     /// Set min area allowed for holes( all holes having area less than mi area will be removed)
     pub fn min_area(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_RemoveInternalWires_min_area(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_min_area(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -4362,28 +4465,34 @@ impl RemoveInternalWires {
     pub fn remove_face_mode(&mut self) -> &mut bool {
         unsafe {
             &mut *(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_remove_face_mode(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_remove_face_mode(
+                    self as *mut Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:72 - `ShapeUpgrade_RemoveInternalWires::RemovedFaces()`
     /// Returns sequence of removed faces.
-    pub fn removed_faces(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+    pub fn removed_faces(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_RemoveInternalWires_removed_faces(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_removed_faces(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:75 - `ShapeUpgrade_RemoveInternalWires::RemovedWires()`
     /// Returns sequence of removed faces.
-    pub fn removed_wires(&self) -> &crate::ffi::TopTools_SequenceOfShape {
+    pub fn removed_wires(&self) -> &crate::ffi_types::TopTools_SequenceOfShape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_RemoveInternalWires_removed_wires(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_removed_wires(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4396,7 +4505,7 @@ impl RemoveInternalWires {
     /// :FAIL2 - specified sub-shape is not belonged to inotial shape.
     pub fn status(&self, theStatus: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_status(
                 self as *const Self,
                 theStatus.into(),
             )
@@ -4404,11 +4513,13 @@ impl RemoveInternalWires {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:85 - `ShapeUpgrade_RemoveInternalWires::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_RemoveInternalWires_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4416,7 +4527,7 @@ impl RemoveInternalWires {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4424,10 +4535,11 @@ impl RemoveInternalWires {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveInternalWires.hxx`:85 - `ShapeUpgrade_RemoveInternalWires::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_get_type_descriptor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_get_type_descriptor(
+                ),
             ))
         }
     }
@@ -4435,69 +4547,58 @@ impl RemoveInternalWires {
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_as_ShapeUpgrade_Tool_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeRemoveInternalWires> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -4505,10 +4606,12 @@ impl RemoveInternalWires {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4516,7 +4619,7 @@ impl RemoveInternalWires {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_SetPrecision(
                 self as *mut Self,
                 preci,
             )
@@ -4526,48 +4629,48 @@ impl RemoveInternalWires {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_SetMinTolerance(self as *mut Self, mintol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_LimitTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_LimitTolerance(
                 self as *const Self,
                 toler,
             )
@@ -4575,9 +4678,9 @@ impl RemoveInternalWires {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4585,9 +4688,9 @@ impl RemoveInternalWires {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -4598,7 +4701,9 @@ impl RemoveInternalWires {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4611,82 +4716,80 @@ impl RemoveInternalWires {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveInternalWires_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveInternalWires_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeRemoveInternalWires;
+pub use crate::ffi_types::HandleShapeUpgradeRemoveInternalWires;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveInternalWires {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeRemoveInternalWires_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeRemoveInternalWires {
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveInternalWires
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveInternalWires {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_RemoveInternalWires {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeRemoveInternalWires_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveInternalWires
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveInternalWires {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_RemoveInternalWires {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeRemoveInternalWires_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveInternalWires> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveInternalWires_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4697,11 +4800,11 @@ impl HandleShapeUpgradeRemoveInternalWires {
 
 /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:31 - `ShapeUpgrade_RemoveLocations`
 /// Removes all locations sub-shapes of specified shape
-pub use crate::ffi::ShapeUpgrade_RemoveLocations as RemoveLocations;
+pub use crate::ffi_types::ShapeUpgrade_RemoveLocations as RemoveLocations;
 
 unsafe impl crate::CppDeletable for RemoveLocations {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_RemoveLocations_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_destructor(ptr);
     }
 }
 
@@ -4711,7 +4814,7 @@ impl RemoveLocations {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_ctor(),
             ))
         }
     }
@@ -4720,7 +4823,10 @@ impl RemoveLocations {
     /// Removes all location correspondingly to RemoveLevel.
     pub fn remove(&mut self, theShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_remove(self as *mut Self, theShape)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_remove(
+                self as *mut Self,
+                theShape,
+            )
         })
     }
 
@@ -4729,7 +4835,9 @@ impl RemoveLocations {
     pub fn get_result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_get_result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_get_result(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -4740,7 +4848,7 @@ impl RemoveLocations {
     /// and if specified shape is TopAbs_COMPOUND for sub-shapes of first level.
     pub fn set_remove_level(&mut self, theLevel: crate::top_abs::ShapeEnum) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_set_remove_level(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_set_remove_level(
                 self as *mut Self,
                 theLevel.into(),
             )
@@ -4753,7 +4861,9 @@ impl RemoveLocations {
     /// In this case location will be removed for all shape types for exception of compound.
     pub fn remove_level(&self) -> crate::top_abs::ShapeEnum {
         crate::top_abs::ShapeEnum::try_from(crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_remove_level(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_remove_level(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -4766,7 +4876,7 @@ impl RemoveLocations {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_modified_shape(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_modified_shape(
                     self as *const Self,
                     theInitShape,
                 ),
@@ -4776,10 +4886,10 @@ impl RemoveLocations {
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:58 - `ShapeUpgrade_RemoveLocations::GetModifiedShapesMap()`
     /// Returns map of modified shapes.
-    pub fn get_modified_shapes_map(&self) -> &crate::ffi::TopTools_DataMapOfShapeShape {
+    pub fn get_modified_shapes_map(&self) -> &crate::ffi_types::TopTools_DataMapOfShapeShape {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_get_modified_shapes_map(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_get_modified_shapes_map(
                     self as *const Self,
                 ),
             ))
@@ -4787,11 +4897,13 @@ impl RemoveLocations {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:60 - `ShapeUpgrade_RemoveLocations::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_RemoveLocations_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -4799,7 +4911,7 @@ impl RemoveLocations {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -4807,47 +4919,49 @@ impl RemoveLocations {
     }
 
     /// **Source:** `ShapeUpgrade_RemoveLocations.hxx`:60 - `ShapeUpgrade_RemoveLocations::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_RemoveLocations_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveLocations> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeRemoveLocations> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_RemoveLocations_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -4855,9 +4969,12 @@ impl RemoveLocations {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -4865,7 +4982,9 @@ impl RemoveLocations {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_RemoveLocations_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -4878,71 +4997,73 @@ impl RemoveLocations {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_RemoveLocations_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_RemoveLocations_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeRemoveLocations;
+pub use crate::ffi_types::HandleShapeUpgradeRemoveLocations;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeRemoveLocations {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeRemoveLocations_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeRemoveLocations {
     /// Dereference this Handle to access the underlying ShapeUpgrade_RemoveLocations
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_RemoveLocations {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_RemoveLocations {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeRemoveLocations_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_RemoveLocations
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_RemoveLocations {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_RemoveLocations {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeRemoveLocations_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_RemoveLocations> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeRemoveLocations_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -4957,11 +5078,11 @@ impl HandleShapeUpgradeRemoveLocations {
 /// bezier surface,
 /// surface of revolution based on bezier curve,
 /// offset surface based on any previous type).
-pub use crate::ffi::ShapeUpgrade_ShapeConvertToBezier as ShapeConvertToBezier;
+pub use crate::ffi_types::ShapeUpgrade_ShapeConvertToBezier as ShapeConvertToBezier;
 
 unsafe impl crate::CppDeletable for ShapeConvertToBezier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeConvertToBezier_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_destructor(ptr);
     }
 }
 
@@ -4971,7 +5092,7 @@ impl ShapeConvertToBezier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_ctor(),
             ))
         }
     }
@@ -4981,7 +5102,7 @@ impl ShapeConvertToBezier {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_ctor_shape(S),
             ))
         }
     }
@@ -4990,7 +5111,10 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion 2D curves to bezier.
     pub fn set2d_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set2d_conversion(self as *mut Self, mode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set2d_conversion(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -4998,7 +5122,9 @@ impl ShapeConvertToBezier {
     /// Returns the 2D conversion mode.
     pub fn get2d_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get2d_conversion(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get2d_conversion(
+                self as *const Self,
+            )
         })
     }
 
@@ -5006,7 +5132,10 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion 3d curves to bezier.
     pub fn set3d_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_conversion(self as *mut Self, mode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set3d_conversion(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -5014,7 +5143,9 @@ impl ShapeConvertToBezier {
     /// Returns the 3D conversion mode.
     pub fn get3d_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get3d_conversion(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get3d_conversion(
+                self as *const Self,
+            )
         })
     }
 
@@ -5023,7 +5154,7 @@ impl ShapeConvertToBezier {
     /// bezier basis.
     pub fn set_surface_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_surface_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set_surface_conversion(
                 self as *mut Self,
                 mode,
             )
@@ -5034,7 +5165,7 @@ impl ShapeConvertToBezier {
     /// Returns the surface conversion mode.
     pub fn get_surface_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_surface_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get_surface_conversion(
                 self as *const Self,
             )
         })
@@ -5044,7 +5175,7 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Line to bezier.
     pub fn set3d_line_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_line_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set3d_line_conversion(
                 self as *mut Self,
                 mode,
             )
@@ -5055,7 +5186,9 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_Line conversion mode.
     pub fn get3d_line_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get3d_line_conversion(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get3d_line_conversion(
+                self as *const Self,
+            )
         })
     }
 
@@ -5063,7 +5196,7 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Circle to bezier.
     pub fn set3d_circle_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_circle_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set3d_circle_conversion(
                 self as *mut Self,
                 mode,
             )
@@ -5074,7 +5207,7 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_Circle conversion mode.
     pub fn get3d_circle_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get3d_circle_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get3d_circle_conversion(
                 self as *const Self,
             )
         })
@@ -5084,7 +5217,7 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Conic to bezier.
     pub fn set3d_conic_conversion(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set3d_conic_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set3d_conic_conversion(
                 self as *mut Self,
                 mode,
             )
@@ -5095,7 +5228,7 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_Conic conversion mode.
     pub fn get3d_conic_conversion(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get3d_conic_conversion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get3d_conic_conversion(
                 self as *const Self,
             )
         })
@@ -5105,7 +5238,10 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_Plane to Bezier
     pub fn set_plane_mode(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_plane_mode(self as *mut Self, mode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set_plane_mode(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -5113,7 +5249,9 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_Pline conversion mode.
     pub fn get_plane_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_plane_mode(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get_plane_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5121,7 +5259,7 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_SurfaceOfRevolution to Bezier
     pub fn set_revolution_mode(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_revolution_mode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set_revolution_mode(
                 self as *mut Self,
                 mode,
             )
@@ -5132,7 +5270,9 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_SurfaceOfRevolution conversion mode.
     pub fn get_revolution_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_revolution_mode(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get_revolution_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5140,7 +5280,7 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_SurfaceOfLinearExtrusion to Bezier
     pub fn set_extrusion_mode(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_extrusion_mode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set_extrusion_mode(
                 self as *mut Self,
                 mode,
             )
@@ -5151,7 +5291,9 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_SurfaceOfLinearExtrusion conversion mode.
     pub fn get_extrusion_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_extrusion_mode(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get_extrusion_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5159,7 +5301,10 @@ impl ShapeConvertToBezier {
     /// Sets mode for conversion Geom_BSplineSurface to Bezier
     pub fn set_b_spline_mode(&mut self, mode: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_set_b_spline_mode(self as *mut Self, mode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_set_b_spline_mode(
+                self as *mut Self,
+                mode,
+            )
         })
     }
 
@@ -5167,7 +5312,9 @@ impl ShapeConvertToBezier {
     /// Returns the Geom_BSplineSurface conversion mode.
     pub fn get_b_spline_mode(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_get_b_spline_mode(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_get_b_spline_mode(
+                self as *const Self,
+            )
         })
     }
 
@@ -5175,43 +5322,41 @@ impl ShapeConvertToBezier {
     /// Performs converting and computes the resulting shape
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_perform(self as *mut Self, newContext)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_perform(
+                self as *mut Self,
+                newContext,
+            )
         })
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetPrecision(
                 self as *mut Self,
                 Prec,
             )
@@ -5221,30 +5366,21 @@ impl ShapeConvertToBezier {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMinTolerance(self as *mut Self, mintol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
@@ -5252,26 +5388,24 @@ impl ShapeConvertToBezier {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Result(self as *const Self),
-            ))
-        }
-    }
-
-    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
-        unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_GetContext(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_Result(
                     self as *const Self,
                 ),
             ))
         }
     }
 
+    /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_GetContext(self as *const Self)))
+        }
+    }
+
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -5281,26 +5415,19 @@ impl ShapeConvertToBezier {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -5312,7 +5439,7 @@ impl ShapeConvertToBezier {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -5324,7 +5451,7 @@ impl ShapeConvertToBezier {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -5334,20 +5461,17 @@ impl ShapeConvertToBezier {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSplitFaceTool(
-                self as *mut Self,
-                splitFaceTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetSplitFaceTool(self as *mut Self, splitFaceTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeConvertToBezier_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeConvertToBezier_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -5361,11 +5485,11 @@ impl ShapeConvertToBezier {
 
 /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:39 - `ShapeUpgrade_ShapeDivide`
 /// Divides a all faces in shell with given criteria Shell.
-pub use crate::ffi::ShapeUpgrade_ShapeDivide as ShapeDivide;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivide as ShapeDivide;
 
 unsafe impl crate::CppDeletable for ShapeDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_destructor(ptr);
     }
 }
 
@@ -5374,7 +5498,7 @@ impl ShapeDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivide_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_ctor(),
             ))
         }
     }
@@ -5384,7 +5508,7 @@ impl ShapeDivide {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivide_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_ctor_shape(S),
             ))
         }
     }
@@ -5393,7 +5517,7 @@ impl ShapeDivide {
     /// Initialize by a Shape.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_init(self as *mut Self, S)
         })
     }
 
@@ -5401,7 +5525,10 @@ impl ShapeDivide {
     /// Defines the spatial precision used for splitting
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_precision(self as *mut Self, Prec)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_precision(
+                self as *mut Self,
+                Prec,
+            )
         })
     }
 
@@ -5409,7 +5536,10 @@ impl ShapeDivide {
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -5417,7 +5547,10 @@ impl ShapeDivide {
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -5426,7 +5559,7 @@ impl ShapeDivide {
     /// wire UV bounds.
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_surface_segment_mode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_surface_segment_mode(
                 self as *mut Self,
                 Segment,
             )
@@ -5440,7 +5573,10 @@ impl ShapeDivide {
     /// will be acting.
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_perform(self as *mut Self, newContext)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_perform(
+                self as *mut Self,
+                newContext,
+            )
         })
     }
 
@@ -5449,7 +5585,7 @@ impl ShapeDivide {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivide_result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_result(self as *const Self),
             ))
         }
     }
@@ -5457,10 +5593,12 @@ impl ShapeDivide {
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
     /// Returns context with all the modifications made during
     /// last call(s) to Perform() recorded
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivide_get_context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_get_context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5468,9 +5606,12 @@ impl ShapeDivide {
     /// **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
     /// Sets context with recorded modifications to be applied
     /// during next call(s) to Perform(shape,Standard_False)
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_context(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_context(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
@@ -5478,10 +5619,13 @@ impl ShapeDivide {
     /// Sets message registrator
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_msg_registrator(self as *mut Self, msgreg)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_msg_registrator(
+                self as *mut Self,
+                msgreg,
+            )
         })
     }
 
@@ -5489,10 +5633,12 @@ impl ShapeDivide {
     /// Returns message registrator
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivide_msg_registrator(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_msg_registrator(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -5507,7 +5653,7 @@ impl ShapeDivide {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_send_msg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_send_msg(
                 self as *const Self,
                 shape,
                 message,
@@ -5524,7 +5670,10 @@ impl ShapeDivide {
     /// FAIL1: some errors occurred
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -5532,10 +5681,10 @@ impl ShapeDivide {
     /// Sets the tool for splitting faces.
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_split_face_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_split_face_tool(
                 self as *mut Self,
                 splitFaceTool,
             )
@@ -5549,7 +5698,10 @@ impl ShapeDivide {
     /// 2 -  all curve 3d.
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivide_set_edge_mode(self as *mut Self, aEdgeMode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivide_set_edge_mode(
+                self as *mut Self,
+                aEdgeMode,
+            )
         })
     }
 }
@@ -5563,11 +5715,11 @@ impl ShapeDivide {
 /// conical, spherical surfaces in the given shape so that
 /// each resulting segment covers not more than defined number
 /// of degrees (to segments less than 90).
-pub use crate::ffi::ShapeUpgrade_ShapeDivideAngle as ShapeDivideAngle;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivideAngle as ShapeDivideAngle;
 
 unsafe impl crate::CppDeletable for ShapeDivideAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivideAngle_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_destructor(ptr);
     }
 }
 
@@ -5577,7 +5729,7 @@ impl ShapeDivideAngle {
     pub fn new_real(MaxAngle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real(MaxAngle),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_ctor_real(MaxAngle),
             ))
         }
     }
@@ -5587,7 +5739,9 @@ impl ShapeDivideAngle {
     pub fn new_real_shape(MaxAngle: f64, S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_ctor_real_shape(MaxAngle, S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_ctor_real_shape(
+                    MaxAngle, S,
+                ),
             ))
         }
     }
@@ -5596,7 +5750,10 @@ impl ShapeDivideAngle {
     /// Resets tool for splitting face with given angle
     pub fn init_tool(&mut self, MaxAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_init_tool(self as *mut Self, MaxAngle)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_init_tool(
+                self as *mut Self,
+                MaxAngle,
+            )
         })
     }
 
@@ -5604,7 +5761,10 @@ impl ShapeDivideAngle {
     /// Set maximal angle (calls InitTool)
     pub fn set_max_angle(&mut self, MaxAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_set_max_angle(self as *mut Self, MaxAngle)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_set_max_angle(
+                self as *mut Self,
+                MaxAngle,
+            )
         })
     }
 
@@ -5612,43 +5772,40 @@ impl ShapeDivideAngle {
     /// Returns maximal angle
     pub fn max_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_max_angle(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_max_angle(
+                self as *const Self,
+            )
         })
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetPrecision(
                 self as *mut Self,
                 Prec,
             )
@@ -5658,7 +5815,7 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -5668,7 +5825,7 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -5678,17 +5835,14 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_Perform(
                 self as *mut Self,
                 newContext,
             )
@@ -5699,24 +5853,28 @@ impl ShapeDivideAngle {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_Result(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_GetContext(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_GetContext(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -5726,10 +5884,10 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetMsgRegistrator(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetMsgRegistrator(
                 self as *mut Self,
                 msgreg,
             )
@@ -5739,13 +5897,9 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -5757,7 +5911,7 @@ impl ShapeDivideAngle {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -5769,7 +5923,7 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -5779,10 +5933,10 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetSplitFaceTool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetSplitFaceTool(
                 self as *mut Self,
                 splitFaceTool,
             )
@@ -5792,7 +5946,7 @@ impl ShapeDivideAngle {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideAngle_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideAngle_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -5806,11 +5960,11 @@ impl ShapeDivideAngle {
 
 /// **Source:** `ShapeUpgrade_ShapeDivideArea.hxx`:28 - `ShapeUpgrade_ShapeDivideArea`
 /// Divides faces from sprcified shape  by max area criterium.
-pub use crate::ffi::ShapeUpgrade_ShapeDivideArea as ShapeDivideArea;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivideArea as ShapeDivideArea;
 
 unsafe impl crate::CppDeletable for ShapeDivideArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivideArea_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_destructor(ptr);
     }
 }
 
@@ -5819,7 +5973,7 @@ impl ShapeDivideArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_ctor(),
             ))
         }
     }
@@ -5829,7 +5983,7 @@ impl ShapeDivideArea {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_ctor_shape(S),
             ))
         }
     }
@@ -5838,9 +5992,11 @@ impl ShapeDivideArea {
     /// Set max area allowed for faces
     pub fn max_area(&mut self) -> &mut f64 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_ShapeDivideArea_max_area(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_max_area(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -5849,9 +6005,11 @@ impl ShapeDivideArea {
     /// for the case of splitting by number
     pub fn nb_parts(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_ShapeDivideArea_nb_parts(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_nb_parts(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -5860,7 +6018,7 @@ impl ShapeDivideArea {
     /// Only for "Splitting By Numbers" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_set_numbers_uv_splits(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_set_numbers_uv_splits(
                 self as *mut Self,
                 theNbUsplits,
                 theNbVsplits,
@@ -5875,7 +6033,7 @@ impl ShapeDivideArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_by_number(&mut self, theIsSplittingByNumber: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_set_splitting_by_number(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_set_splitting_by_number(
                 self as *mut Self,
                 theIsSplittingByNumber,
             )
@@ -5885,43 +6043,41 @@ impl ShapeDivideArea {
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetPrecision(self as *mut Self, Prec)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetPrecision(
+                self as *mut Self,
+                Prec,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -5931,7 +6087,7 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -5941,17 +6097,14 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_Perform(
                 self as *mut Self,
                 newContext,
             )
@@ -5962,24 +6115,28 @@ impl ShapeDivideArea {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_Result(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_GetContext(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_GetContext(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -5989,10 +6146,10 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetMsgRegistrator(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetMsgRegistrator(
                 self as *mut Self,
                 msgreg,
             )
@@ -6002,13 +6159,9 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -6020,7 +6173,7 @@ impl ShapeDivideArea {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -6032,7 +6185,7 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -6042,10 +6195,10 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetSplitFaceTool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetSplitFaceTool(
                 self as *mut Self,
                 splitFaceTool,
             )
@@ -6055,7 +6208,7 @@ impl ShapeDivideArea {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideArea_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideArea_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -6070,11 +6223,11 @@ impl ShapeDivideArea {
 /// **Source:** `ShapeUpgrade_ShapeDivideClosed.hxx`:29 - `ShapeUpgrade_ShapeDivideClosed`
 /// Divides all closed faces in the shape. Class
 /// ShapeUpgrade_ClosedFaceDivide is used as divide tool.
-pub use crate::ffi::ShapeUpgrade_ShapeDivideClosed as ShapeDivideClosed;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivideClosed as ShapeDivideClosed;
 
 unsafe impl crate::CppDeletable for ShapeDivideClosed {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivideClosed_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_destructor(ptr);
     }
 }
 
@@ -6084,7 +6237,7 @@ impl ShapeDivideClosed {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_ctor_shape(S),
             ))
         }
     }
@@ -6094,43 +6247,41 @@ impl ShapeDivideClosed {
     /// The number of resulting faces will be num+1.
     pub fn set_nb_split_points(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_set_nb_split_points(self as *mut Self, num)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_set_nb_split_points(
+                self as *mut Self,
+                num,
+            )
         })
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetPrecision(
                 self as *mut Self,
                 Prec,
             )
@@ -6140,7 +6291,7 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetMaxTolerance(
                 self as *mut Self,
                 maxtol,
             )
@@ -6150,7 +6301,7 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetMinTolerance(
                 self as *mut Self,
                 mintol,
             )
@@ -6160,17 +6311,14 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_Perform(
                 self as *mut Self,
                 newContext,
             )
@@ -6181,16 +6329,18 @@ impl ShapeDivideClosed {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Result(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_Result(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_GetContext(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_GetContext(
                     self as *const Self,
                 ),
             ))
@@ -6198,9 +6348,9 @@ impl ShapeDivideClosed {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -6210,26 +6360,19 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -6241,7 +6384,7 @@ impl ShapeDivideClosed {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -6253,7 +6396,7 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -6263,10 +6406,10 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetSplitFaceTool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetSplitFaceTool(
                 self as *mut Self,
                 splitFaceTool,
             )
@@ -6276,7 +6419,7 @@ impl ShapeDivideClosed {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosed_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosed_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -6289,11 +6432,11 @@ impl ShapeDivideClosed {
 // ========================
 
 /// **Source:** `ShapeUpgrade_ShapeDivideClosedEdges.hxx`:26 - `ShapeUpgrade_ShapeDivideClosedEdges`
-pub use crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges as ShapeDivideClosedEdges;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivideClosedEdges as ShapeDivideClosedEdges;
 
 unsafe impl crate::CppDeletable for ShapeDivideClosedEdges {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_destructor(ptr);
     }
 }
 
@@ -6303,7 +6446,7 @@ impl ShapeDivideClosedEdges {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_ctor_shape(S),
             ))
         }
     }
@@ -6313,7 +6456,7 @@ impl ShapeDivideClosedEdges {
     /// The number of resulting faces will be num+1.
     pub fn set_nb_split_points(&mut self, num: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_set_nb_split_points(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_set_nb_split_points(
                 self as *mut Self,
                 num,
             )
@@ -6323,76 +6466,59 @@ impl ShapeDivideClosedEdges {
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetPrecision(
-                self as *mut Self,
-                Prec,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetPrecision(self as *mut Self, Prec)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMinTolerance(self as *mut Self, mintol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Perform(
                 self as *mut Self,
                 newContext,
             )
@@ -6403,7 +6529,7 @@ impl ShapeDivideClosedEdges {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Result(
                     self as *const Self,
                 ),
             ))
@@ -6411,20 +6537,16 @@ impl ShapeDivideClosedEdges {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_GetContext(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_GetContext(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -6434,26 +6556,19 @@ impl ShapeDivideClosedEdges {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -6465,7 +6580,7 @@ impl ShapeDivideClosedEdges {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -6477,7 +6592,7 @@ impl ShapeDivideClosedEdges {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -6487,20 +6602,17 @@ impl ShapeDivideClosedEdges {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSplitFaceTool(
-                self as *mut Self,
-                splitFaceTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetSplitFaceTool(self as *mut Self, splitFaceTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideClosedEdges_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -6514,11 +6626,11 @@ impl ShapeDivideClosedEdges {
 
 /// **Source:** `ShapeUpgrade_ShapeDivideContinuity.hxx`:30 - `ShapeUpgrade_ShapeDivideContinuity`
 /// API Tool for converting shapes with C0 geometry into C1 ones
-pub use crate::ffi::ShapeUpgrade_ShapeDivideContinuity as ShapeDivideContinuity;
+pub use crate::ffi_types::ShapeUpgrade_ShapeDivideContinuity as ShapeDivideContinuity;
 
 unsafe impl crate::CppDeletable for ShapeDivideContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShapeDivideContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_destructor(ptr);
     }
 }
 
@@ -6527,7 +6639,7 @@ impl ShapeDivideContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_ctor(),
             ))
         }
     }
@@ -6537,7 +6649,7 @@ impl ShapeDivideContinuity {
     pub fn new_shape(S: &crate::topo_ds::Shape) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_ctor_shape(S),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_ctor_shape(S),
             ))
         }
     }
@@ -6546,7 +6658,10 @@ impl ShapeDivideContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_set_tolerance(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
@@ -6554,7 +6669,10 @@ impl ShapeDivideContinuity {
     /// Sets tolerance.
     pub fn set_tolerance2d(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_tolerance2d(self as *mut Self, Tol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_set_tolerance2d(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
@@ -6567,7 +6685,7 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_boundary_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_set_boundary_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -6583,7 +6701,7 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_p_curve_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_set_p_curve_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -6599,7 +6717,7 @@ impl ShapeDivideContinuity {
     /// and G2 are not authorized.
     pub fn set_surface_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_set_surface_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -6609,36 +6727,31 @@ impl ShapeDivideContinuity {
     /// Upcast to ShapeUpgrade_ShapeDivide
     pub fn as_shape_divide(&self) -> &ShapeDivide {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_ShapeDivide (mutable)
     pub fn as_shape_divide_mut(&mut self) -> &mut ShapeDivide {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_as_ShapeUpgrade_ShapeDivide_mut(self as *mut Self))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:50 - `ShapeUpgrade_ShapeDivide::Init()`
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:55 - `ShapeUpgrade_ShapeDivide::SetPrecision()`
     pub fn set_precision(&mut self, Prec: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetPrecision(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetPrecision(
                 self as *mut Self,
                 Prec,
             )
@@ -6648,37 +6761,28 @@ impl ShapeDivideContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:58 - `ShapeUpgrade_ShapeDivide::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(
-                self as *mut Self,
-                maxtol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMaxTolerance(self as *mut Self, maxtol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:61 - `ShapeUpgrade_ShapeDivide::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(
-                self as *mut Self,
-                mintol,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMinTolerance(self as *mut Self, mintol)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:65 - `ShapeUpgrade_ShapeDivide::SetSurfaceSegmentMode()`
     pub fn set_surface_segment_mode(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(
-                self as *mut Self,
-                Segment,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSurfaceSegmentMode(self as *mut Self, Segment)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:71 - `ShapeUpgrade_ShapeDivide::Perform()`
     pub fn perform(&mut self, newContext: bool) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_Perform(
                 self as *mut Self,
                 newContext,
             )
@@ -6689,7 +6793,7 @@ impl ShapeDivideContinuity {
     pub fn result(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_Result(
                     self as *const Self,
                 ),
             ))
@@ -6697,20 +6801,16 @@ impl ShapeDivideContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:79 - `ShapeUpgrade_ShapeDivide::GetContext()`
-    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn get_context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_GetContext(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_GetContext(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:83 - `ShapeUpgrade_ShapeDivide::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetContext(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetContext(
                 self as *mut Self,
                 context,
             )
@@ -6720,26 +6820,19 @@ impl ShapeDivideContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:86 - `ShapeUpgrade_ShapeDivide::SetMsgRegistrator()`
     pub fn set_msg_registrator(
         &mut self,
-        msgreg: &crate::ffi::HandleShapeExtendBasicMsgRegistrator,
+        msgreg: &crate::ffi_types::HandleShapeExtendBasicMsgRegistrator,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMsgRegistrator(
-                self as *mut Self,
-                msgreg,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetMsgRegistrator(self as *mut Self, msgreg)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:90 - `ShapeUpgrade_ShapeDivide::MsgRegistrator()`
     pub fn msg_registrator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeExtendBasicMsgRegistrator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeExtendBasicMsgRegistrator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_MsgRegistrator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_MsgRegistrator(self as *const Self)))
         }
     }
 
@@ -6751,7 +6844,7 @@ impl ShapeDivideContinuity {
         gravity: crate::message::Gravity,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SendMsg(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SendMsg(
                 self as *const Self,
                 shape,
                 message,
@@ -6763,7 +6856,7 @@ impl ShapeDivideContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:103 - `ShapeUpgrade_ShapeDivide::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -6773,20 +6866,17 @@ impl ShapeDivideContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:106 - `ShapeUpgrade_ShapeDivide::SetSplitFaceTool()`
     pub fn set_split_face_tool(
         &mut self,
-        splitFaceTool: &crate::ffi::HandleShapeUpgradeFaceDivide,
+        splitFaceTool: &crate::ffi_types::HandleShapeUpgradeFaceDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSplitFaceTool(
-                self as *mut Self,
-                splitFaceTool,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetSplitFaceTool(self as *mut Self, splitFaceTool)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_ShapeDivide.hxx`:112 - `ShapeUpgrade_ShapeDivide::SetEdgeMode()`
     pub fn set_edge_mode(&mut self, aEdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_ShapeDivideContinuity_inherited_SetEdgeMode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_ShapeDivideContinuity_inherited_SetEdgeMode(
                 self as *mut Self,
                 aEdgeMode,
             )
@@ -6802,11 +6892,11 @@ impl ShapeDivideContinuity {
 /// This class provides a tool for applying sewing algorithm from
 /// BRepBuilderAPI: it takes a shape, calls sewing for each shell,
 /// and then replaces sewed shells with use of ShapeBuild_ReShape
-pub use crate::ffi::ShapeUpgrade_ShellSewing as ShellSewing;
+pub use crate::ffi_types::ShapeUpgrade_ShellSewing as ShellSewing;
 
 unsafe impl crate::CppDeletable for ShellSewing {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_ShellSewing_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_ShellSewing_destructor(ptr);
     }
 }
 
@@ -6816,7 +6906,7 @@ impl ShellSewing {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShellSewing_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShellSewing_ctor(),
             ))
         }
     }
@@ -6837,7 +6927,11 @@ impl ShellSewing {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_ShellSewing_apply_sewing(self as *mut Self, shape, tol),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_ShellSewing_apply_sewing(
+                    self as *mut Self,
+                    shape,
+                    tol,
+                ),
             ))
         }
     }
@@ -6849,11 +6943,11 @@ impl ShellSewing {
 
 /// **Source:** `ShapeUpgrade_SplitCurve.hxx`:37 - `ShapeUpgrade_SplitCurve`
 /// Splits a  curve with a  criterion.
-pub use crate::ffi::ShapeUpgrade_SplitCurve as SplitCurve;
+pub use crate::ffi_types::ShapeUpgrade_SplitCurve as SplitCurve;
 
 unsafe impl crate::CppDeletable for SplitCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitCurve_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_destructor(ptr);
     }
 }
 
@@ -6863,7 +6957,7 @@ impl SplitCurve {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_ctor(),
             ))
         }
     }
@@ -6872,15 +6966,25 @@ impl SplitCurve {
     /// Initializes with curve first and last parameters.
     pub fn init(&mut self, First: f64, Last: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_init(self as *mut Self, First, Last)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_init(
+                self as *mut Self,
+                First,
+                Last,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
     /// Sets the parameters where splitting has to be done.
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_set_split_values(self as *mut Self, SplitValues)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_set_split_values(
+                self as *mut Self,
+                SplitValues,
+            )
         })
     }
 
@@ -6891,7 +6995,7 @@ impl SplitCurve {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_build(self as *mut Self, Segment)
         })
     }
 
@@ -6899,11 +7003,13 @@ impl SplitCurve {
     /// returns all the splitting values including the
     /// First and Last parameters of the input curve
     /// Merges input split values and new ones into myGlobalKnots
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve_split_values(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_split_values(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6911,7 +7017,7 @@ impl SplitCurve {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_compute(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_compute(self as *mut Self)
         })
     }
 
@@ -6920,7 +7026,10 @@ impl SplitCurve {
     /// First defines splitting values by method Compute(), then calls method Build().
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
@@ -6932,16 +7041,21 @@ impl SplitCurve {
     /// DONE3 - geometric form of the curve or parametrisation is modified
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve.hxx`:75 - `ShapeUpgrade_SplitCurve::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -6949,7 +7063,7 @@ impl SplitCurve {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -6957,18 +7071,22 @@ impl SplitCurve {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve.hxx`:75 - `ShapeUpgrade_SplitCurve::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -6976,7 +7094,9 @@ impl SplitCurve {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -6984,25 +7104,31 @@ impl SplitCurve {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7010,7 +7136,9 @@ impl SplitCurve {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7023,65 +7151,75 @@ impl SplitCurve {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitCurve;
+pub use crate::ffi_types::HandleShapeUpgradeSplitCurve;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitCurve_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitCurve {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitCurve {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -7090,9 +7228,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve2dToBezier` (or subclass).
     pub fn downcast_to_convert_curve2d_to_bezier(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve2dToBezier>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7106,9 +7244,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve3dToBezier` (or subclass).
     pub fn downcast_to_convert_curve3d_to_bezier(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve3dToBezier>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7122,11 +7260,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2d` (or subclass).
     pub fn downcast_to_split_curve2d(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7140,9 +7276,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2dContinuity` (or subclass).
     pub fn downcast_to_split_curve2d_continuity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2dContinuity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7156,11 +7292,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3d` (or subclass).
     pub fn downcast_to_split_curve3d(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3d(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7174,9 +7308,9 @@ impl HandleShapeUpgradeSplitCurve {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3dContinuity` (or subclass).
     pub fn downcast_to_split_curve3d_continuity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3dContinuity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7192,11 +7326,11 @@ impl HandleShapeUpgradeSplitCurve {
 
 /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:31 - `ShapeUpgrade_SplitCurve2d`
 /// Splits a 2d curve with a criterion.
-pub use crate::ffi::ShapeUpgrade_SplitCurve2d as SplitCurve2d;
+pub use crate::ffi_types::ShapeUpgrade_SplitCurve2d as SplitCurve2d;
 
 unsafe impl crate::CppDeletable for SplitCurve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitCurve2d_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_destructor(ptr);
     }
 }
 
@@ -7206,16 +7340,19 @@ impl SplitCurve2d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2d_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_ctor(),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
     /// Initializes with pcurve with its first and last parameters.
-    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+    pub fn init_handlegeom2dcurve(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve(self as *mut Self, C)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
@@ -7223,12 +7360,12 @@ impl SplitCurve2d {
     /// Initializes with pcurve with its parameters.
     pub fn init_handlegeom2dcurve_real2(
         &mut self,
-        C: &crate::ffi::HandleGeom2dCurve,
+        C: &crate::ffi_types::HandleGeom2dCurve,
         First: f64,
         Last: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve_real2(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_init_handlegeom2dcurve_real2(
                 self as *mut Self,
                 C,
                 First,
@@ -7244,25 +7381,32 @@ impl SplitCurve2d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_build(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeom2dHArray1OfCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_get_curves(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_get_curves(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7270,7 +7414,7 @@ impl SplitCurve2d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7278,38 +7422,40 @@ impl SplitCurve2d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:54 - `ShapeUpgrade_SplitCurve2d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -7317,7 +7463,9 @@ impl SplitCurve2d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -7325,18 +7473,21 @@ impl SplitCurve2d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_SetSplitValues(
                 self as *mut Self,
                 SplitValues,
             )
@@ -7344,32 +7495,39 @@ impl SplitCurve2d {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_SplitValues(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_SplitValues(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Compute(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_Compute(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -7377,16 +7535,22 @@ impl SplitCurve2d {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -7394,7 +7558,9 @@ impl SplitCurve2d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7407,80 +7573,86 @@ impl SplitCurve2d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2d_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitCurve2d;
+pub use crate::ffi_types::HandleShapeUpgradeSplitCurve2d;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitCurve2d_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitCurve2d {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2d
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2d {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2d_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitCurve2d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2d_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -7489,9 +7661,9 @@ impl HandleShapeUpgradeSplitCurve2d {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve2dToBezier` (or subclass).
     pub fn downcast_to_convert_curve2d_to_bezier(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve2dToBezier>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve2dToBezier>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeConvertCurve2dToBezier(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7505,9 +7677,9 @@ impl HandleShapeUpgradeSplitCurve2d {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve2dContinuity` (or subclass).
     pub fn downcast_to_split_curve2d_continuity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2dContinuity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2d_downcast_to_HandleShapeUpgradeSplitCurve2dContinuity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -7526,11 +7698,11 @@ impl HandleShapeUpgradeSplitCurve2d {
 /// Tolerance is used to correct the curve at a knot that respects
 /// geometrically the criterion, in order to reduce the
 /// multiplicity of the knot.
-pub use crate::ffi::ShapeUpgrade_SplitCurve2dContinuity as SplitCurve2dContinuity;
+pub use crate::ffi_types::ShapeUpgrade_SplitCurve2dContinuity as SplitCurve2dContinuity;
 
 unsafe impl crate::CppDeletable for SplitCurve2dContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_destructor(ptr);
     }
 }
 
@@ -7540,7 +7712,7 @@ impl SplitCurve2dContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_ctor(),
             ))
         }
     }
@@ -7549,7 +7721,7 @@ impl SplitCurve2dContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_set_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -7560,7 +7732,10 @@ impl SplitCurve2dContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_set_tolerance(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
@@ -7568,16 +7743,20 @@ impl SplitCurve2dContinuity {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_compute(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_compute(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7585,7 +7764,7 @@ impl SplitCurve2dContinuity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7593,102 +7772,81 @@ impl SplitCurve2dContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve2dContinuity.hxx`:50 - `ShapeUpgrade_SplitCurve2dContinuity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_get_type_descriptor()))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d
     pub fn as_split_curve2d(&self) -> &SplitCurve2d {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve2d (mutable)
     pub fn as_split_curve2d_mut(&mut self) -> &mut SplitCurve2d {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve2d_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2dContinuity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:39 - `ShapeUpgrade_SplitCurve2d::Init()`
-    pub fn init(&mut self, C: &crate::ffi::HandleGeom2dCurve) {
+    pub fn init(&mut self, C: &crate::ffi_types::HandleGeom2dCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Init(self as *mut Self, C)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_Init(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:50 - `ShapeUpgrade_SplitCurve2d::Build()`
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_Build(
                 self as *mut Self,
                 Segment,
             )
@@ -7696,41 +7854,33 @@ impl SplitCurve2dContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve2d.hxx`:52 - `ShapeUpgrade_SplitCurve2d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeom2dHArray1OfCurve {
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeom2dHArray1OfCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetCurves(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(
-                self as *mut Self,
-                SplitValues,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_SetSplitValues(self as *mut Self, SplitValues)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_SplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_SplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_Perform(
                 self as *mut Self,
                 Segment,
             )
@@ -7740,7 +7890,7 @@ impl SplitCurve2dContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -7748,9 +7898,9 @@ impl SplitCurve2dContinuity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -7758,9 +7908,9 @@ impl SplitCurve2dContinuity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -7771,7 +7921,9 @@ impl SplitCurve2dContinuity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -7784,7 +7936,7 @@ impl SplitCurve2dContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetRefCount(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -7793,82 +7945,82 @@ impl SplitCurve2dContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve2dContinuity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve2dContinuity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity;
+pub use crate::ffi_types::HandleShapeUpgradeSplitCurve2dContinuity;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve2dContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitCurve2dContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve2dContinuity
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve2dContinuity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve2dContinuity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve2dContinuity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitCurve2dContinuity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve2d>
     pub fn to_handle_split_curve2d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve2d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve2d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve2d(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve2dContinuity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve2dContinuity_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -7879,11 +8031,11 @@ impl HandleShapeUpgradeSplitCurve2dContinuity {
 
 /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:31 - `ShapeUpgrade_SplitCurve3d`
 /// Splits a 3d curve with a criterion.
-pub use crate::ffi::ShapeUpgrade_SplitCurve3d as SplitCurve3d;
+pub use crate::ffi_types::ShapeUpgrade_SplitCurve3d as SplitCurve3d;
 
 unsafe impl crate::CppDeletable for SplitCurve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitCurve3d_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_destructor(ptr);
     }
 }
 
@@ -7893,16 +8045,19 @@ impl SplitCurve3d {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3d_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_ctor(),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
     /// Initializes with curve with its first and last parameters.
-    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi::HandleGeomCurve) {
+    pub fn init_handlegeomcurve(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve(self as *mut Self, C)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
@@ -7910,12 +8065,12 @@ impl SplitCurve3d {
     /// Initializes with curve with its parameters.
     pub fn init_handlegeomcurve_real2(
         &mut self,
-        C: &crate::ffi::HandleGeomCurve,
+        C: &crate::ffi_types::HandleGeomCurve,
         First: f64,
         Last: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve_real2(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_init_handlegeomcurve_real2(
                 self as *mut Self,
                 C,
                 First,
@@ -7931,25 +8086,32 @@ impl SplitCurve3d {
     /// Curves all based on the same complete curve.
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_build(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeomHArray1OfCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_get_curves(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_get_curves(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -7957,7 +8119,7 @@ impl SplitCurve3d {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -7965,38 +8127,40 @@ impl SplitCurve3d {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:54 - `ShapeUpgrade_SplitCurve3d::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8004,7 +8168,9 @@ impl SplitCurve3d {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8012,18 +8178,21 @@ impl SplitCurve3d {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3d_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_SetSplitValues(
                 self as *mut Self,
                 SplitValues,
             )
@@ -8031,32 +8200,39 @@ impl SplitCurve3d {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_SplitValues(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_SplitValues(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:62 - `ShapeUpgrade_SplitCurve::Compute()`
     pub fn compute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Compute(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_Compute(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -8064,16 +8240,22 @@ impl SplitCurve3d {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8081,7 +8263,9 @@ impl SplitCurve3d {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8094,80 +8278,86 @@ impl SplitCurve3d {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3d_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3d_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitCurve3d;
+pub use crate::ffi_types::HandleShapeUpgradeSplitCurve3d;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3d {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitCurve3d_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitCurve3d {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3d
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3d {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve3d {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3d_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3d
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3d {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitCurve3d {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3d_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3d> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -8176,9 +8366,9 @@ impl HandleShapeUpgradeSplitCurve3d {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertCurve3dToBezier` (or subclass).
     pub fn downcast_to_convert_curve3d_to_bezier(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertCurve3dToBezier>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertCurve3dToBezier>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeConvertCurve3dToBezier(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8192,9 +8382,9 @@ impl HandleShapeUpgradeSplitCurve3d {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitCurve3dContinuity` (or subclass).
     pub fn downcast_to_split_curve3d_continuity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3dContinuity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3d_downcast_to_HandleShapeUpgradeSplitCurve3dContinuity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8213,11 +8403,11 @@ impl HandleShapeUpgradeSplitCurve3d {
 /// Tolerance is used to correct the curve at a knot that respects
 /// geometrically the criterion, in order to reduce the
 /// multiplicity of the knot.
-pub use crate::ffi::ShapeUpgrade_SplitCurve3dContinuity as SplitCurve3dContinuity;
+pub use crate::ffi_types::ShapeUpgrade_SplitCurve3dContinuity as SplitCurve3dContinuity;
 
 unsafe impl crate::CppDeletable for SplitCurve3dContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_destructor(ptr);
     }
 }
 
@@ -8227,7 +8417,7 @@ impl SplitCurve3dContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_ctor(),
             ))
         }
     }
@@ -8236,7 +8426,7 @@ impl SplitCurve3dContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_set_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -8247,7 +8437,10 @@ impl SplitCurve3dContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_set_tolerance(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
@@ -8255,25 +8448,31 @@ impl SplitCurve3dContinuity {
     /// Calculates points for correction/splitting of the curve
     pub fn compute(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_compute(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_compute(
+                self as *mut Self,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:51 - `ShapeUpgrade_SplitCurve3dContinuity::GetCurve()`
-    pub fn get_curve(&self) -> &crate::ffi::HandleGeomCurve {
+    pub fn get_curve(&self) -> &crate::ffi_types::HandleGeomCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_curve(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_get_curve(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8281,7 +8480,7 @@ impl SplitCurve3dContinuity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8289,102 +8488,81 @@ impl SplitCurve3dContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitCurve3dContinuity.hxx`:53 - `ShapeUpgrade_SplitCurve3dContinuity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_get_type_descriptor()))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d
     pub fn as_split_curve3d(&self) -> &SplitCurve3d {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve3d (mutable)
     pub fn as_split_curve3d_mut(&mut self) -> &mut SplitCurve3d {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve3d_mut(self as *mut Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve
     pub fn as_split_curve(&self) -> &SplitCurve {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitCurve (mutable)
     pub fn as_split_curve_mut(&mut self) -> &mut SplitCurve {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_ShapeUpgrade_SplitCurve_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3dContinuity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:39 - `ShapeUpgrade_SplitCurve3d::Init()`
-    pub fn init(&mut self, C: &crate::ffi::HandleGeomCurve) {
+    pub fn init(&mut self, C: &crate::ffi_types::HandleGeomCurve) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Init(self as *mut Self, C)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_Init(
+                self as *mut Self,
+                C,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:50 - `ShapeUpgrade_SplitCurve3d::Build()`
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_Build(
                 self as *mut Self,
                 Segment,
             )
@@ -8392,41 +8570,33 @@ impl SplitCurve3dContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve3d.hxx`:52 - `ShapeUpgrade_SplitCurve3d::GetCurves()`
-    pub fn get_curves(&self) -> &crate::ffi::HandleTColGeomHArray1OfCurve {
+    pub fn get_curves(&self) -> &crate::ffi_types::HandleTColGeomHArray1OfCurve {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetCurves(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:48 - `ShapeUpgrade_SplitCurve::SetSplitValues()`
-    pub fn set_split_values(&mut self, SplitValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_split_values(
+        &mut self,
+        SplitValues: &crate::ffi_types::HandleTColStdHSequenceOfReal,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(
-                self as *mut Self,
-                SplitValues,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_SetSplitValues(self as *mut Self, SplitValues)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:59 - `ShapeUpgrade_SplitCurve::SplitValues()`
-    pub fn split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_SplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_SplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:66 - `ShapeUpgrade_SplitCurve::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_Perform(
                 self as *mut Self,
                 Segment,
             )
@@ -8436,7 +8606,7 @@ impl SplitCurve3dContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_SplitCurve.hxx`:73 - `ShapeUpgrade_SplitCurve::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -8444,9 +8614,9 @@ impl SplitCurve3dContinuity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -8454,9 +8624,9 @@ impl SplitCurve3dContinuity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -8467,7 +8637,9 @@ impl SplitCurve3dContinuity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8480,7 +8652,7 @@ impl SplitCurve3dContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetRefCount(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -8489,82 +8661,82 @@ impl SplitCurve3dContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitCurve3dContinuity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitCurve3dContinuity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity;
+pub use crate::ffi_types::HandleShapeUpgradeSplitCurve3dContinuity;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitCurve3dContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitCurve3dContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitCurve3dContinuity
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitCurve3dContinuity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitCurve3dContinuity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitCurve3dContinuity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitCurve3dContinuity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve3d>
     pub fn to_handle_split_curve3d(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve3d> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve3d> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve3d(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<ShapeUpgrade_SplitCurve>
     pub fn to_handle_split_curve(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitCurve> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleShapeUpgradeSplitCurve(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitCurve3dContinuity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitCurve3dContinuity_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -8575,11 +8747,11 @@ impl HandleShapeUpgradeSplitCurve3dContinuity {
 
 /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:39 - `ShapeUpgrade_SplitSurface`
 /// Splits a Surface with a criterion.
-pub use crate::ffi::ShapeUpgrade_SplitSurface as SplitSurface;
+pub use crate::ffi_types::ShapeUpgrade_SplitSurface as SplitSurface;
 
 unsafe impl crate::CppDeletable for SplitSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitSurface_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_destructor(ptr);
     }
 }
 
@@ -8589,16 +8761,19 @@ impl SplitSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurface_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_ctor(),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
     /// Initializes with single supporting surface.
-    pub fn init_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn init_handlegeomsurface(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_init_handlegeomsurface(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_init_handlegeomsurface(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
@@ -8606,7 +8781,7 @@ impl SplitSurface {
     /// Initializes with single supporting surface with bounding parameters.
     pub fn init_handlegeomsurface_real5(
         &mut self,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         UFirst: f64,
         ULast: f64,
         VFirst: f64,
@@ -8614,7 +8789,7 @@ impl SplitSurface {
         theArea: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_init_handlegeomsurface_real5(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_init_handlegeomsurface_real5(
                 self as *mut Self,
                 S,
                 UFirst,
@@ -8628,17 +8803,23 @@ impl SplitSurface {
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
     /// Sets U parameters where splitting has to be done
-    pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_u_split_values(&mut self, UValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_set_u_split_values(self as *mut Self, UValues)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_set_u_split_values(
+                self as *mut Self,
+                UValues,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
     /// Sets V parameters where splitting has to be done
-    pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_v_split_values(&mut self, VValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_set_v_split_values(self as *mut Self, VValues)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_set_v_split_values(
+                self as *mut Self,
+                VValues,
+            )
         })
     }
 
@@ -8655,7 +8836,10 @@ impl SplitSurface {
     /// specify the size of resulting grid of surfaces.
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_build(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
@@ -8663,7 +8847,10 @@ impl SplitSurface {
     /// Calculates points for correction/splitting of the surface.
     pub fn compute(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_compute(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_compute(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
@@ -8672,29 +8859,36 @@ impl SplitSurface {
     /// First defines splitting values by method Compute(), then calls method Build().
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
     /// returns all the U splitting values including the
     /// First and Last parameters of the input surface
-    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn u_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_u_split_values(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_u_split_values(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
     /// returns all the splitting V values including the
     /// First and Last parameters of the input surface
-    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn v_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_v_split_values(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_v_split_values(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8706,26 +8900,33 @@ impl SplitSurface {
     /// DONE3 - geometric form of the surface or parametrisation is modified
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
     /// Returns obtained surfaces after splitting as CompositeSurface
-    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+    pub fn res_surfaces(&self) -> &crate::ffi_types::HandleShapeExtendCompositeSurface {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_res_surfaces(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_res_surfaces(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:100 - `ShapeUpgrade_SplitSurface::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -8733,7 +8934,7 @@ impl SplitSurface {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurface_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -8741,18 +8942,22 @@ impl SplitSurface {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurface.hxx`:100 - `ShapeUpgrade_SplitSurface::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -8760,7 +8965,9 @@ impl SplitSurface {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -8768,25 +8975,31 @@ impl SplitSurface {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurface_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -8794,7 +9007,9 @@ impl SplitSurface {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurface_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -8807,67 +9022,77 @@ impl SplitSurface {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurface_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurface_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitSurface;
+pub use crate::ffi_types::HandleShapeUpgradeSplitSurface;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitSurface_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitSurface {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurface
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurface {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurface {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurface_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurface
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurface {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitSurface {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurface_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurface> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -8876,9 +9101,10 @@ impl HandleShapeUpgradeSplitSurface {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ConvertSurfaceToBezierBasis` (or subclass).
     pub fn downcast_to_convert_surface_to_bezier_basis(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeConvertSurfaceToBezierBasis>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeConvertSurfaceToBezierBasis>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeConvertSurfaceToBezierBasis(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeConvertSurfaceToBezierBasis(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8892,9 +9118,9 @@ impl HandleShapeUpgradeSplitSurface {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceAngle` (or subclass).
     pub fn downcast_to_split_surface_angle(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceAngle>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceAngle(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceAngle(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8908,9 +9134,9 @@ impl HandleShapeUpgradeSplitSurface {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceArea` (or subclass).
     pub fn downcast_to_split_surface_area(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceArea>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceArea(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceArea(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8924,9 +9150,9 @@ impl HandleShapeUpgradeSplitSurface {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_SplitSurfaceContinuity` (or subclass).
     pub fn downcast_to_split_surface_continuity(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceContinuity>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceContinuity(self as *const Self)
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurface_downcast_to_HandleShapeUpgradeSplitSurfaceContinuity(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -8944,11 +9170,11 @@ impl HandleShapeUpgradeSplitSurface {
 /// Splits a surfaces of revolution, cylindrical, toroidal,
 /// conical, spherical so that each resulting segment covers
 /// not more than defined number of degrees.
-pub use crate::ffi::ShapeUpgrade_SplitSurfaceAngle as SplitSurfaceAngle;
+pub use crate::ffi_types::ShapeUpgrade_SplitSurfaceAngle as SplitSurfaceAngle;
 
 unsafe impl crate::CppDeletable for SplitSurfaceAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitSurfaceAngle_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_destructor(ptr);
     }
 }
 
@@ -8958,7 +9184,7 @@ impl SplitSurfaceAngle {
     pub fn new_real(MaxAngle: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_ctor_real(MaxAngle),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_ctor_real(MaxAngle),
             ))
         }
     }
@@ -8967,7 +9193,10 @@ impl SplitSurfaceAngle {
     /// Set maximal angle
     pub fn set_max_angle(&mut self, MaxAngle: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_set_max_angle(self as *mut Self, MaxAngle)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_set_max_angle(
+                self as *mut Self,
+                MaxAngle,
+            )
         })
     }
 
@@ -8975,7 +9204,9 @@ impl SplitSurfaceAngle {
     /// Returns maximal angle
     pub fn max_angle(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_max_angle(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_max_angle(
+                self as *const Self,
+            )
         })
     }
 
@@ -8984,16 +9215,21 @@ impl SplitSurfaceAngle {
     /// First defines splitting values, then calls inherited method.
     pub fn compute(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_compute(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_compute(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceAngle.hxx`:48 - `ShapeUpgrade_SplitSurfaceAngle::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9001,7 +9237,7 @@ impl SplitSurfaceAngle {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9009,76 +9245,73 @@ impl SplitSurfaceAngle {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceAngle.hxx`:48 - `ShapeUpgrade_SplitSurfaceAngle::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceAngle> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceAngle> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
-    pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
-    pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_u_split_values(&mut self, UValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_SetUSplitValues(
                 self as *mut Self,
                 UValues,
             )
@@ -9086,9 +9319,9 @@ impl SplitSurfaceAngle {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
-    pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_v_split_values(&mut self, VValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_SetVSplitValues(
                 self as *mut Self,
                 VValues,
             )
@@ -9098,43 +9331,41 @@ impl SplitSurfaceAngle {
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_Build(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
-    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn u_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_USplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
-    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn v_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_VSplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -9142,10 +9373,10 @@ impl SplitSurfaceAngle {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
-    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+    pub fn res_surfaces(&self) -> &crate::ffi_types::HandleShapeExtendCompositeSurface {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_ResSurfaces(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_ResSurfaces(
                     self as *const Self,
                 ),
             ))
@@ -9153,9 +9384,9 @@ impl SplitSurfaceAngle {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9163,9 +9394,9 @@ impl SplitSurfaceAngle {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -9176,7 +9407,9 @@ impl SplitSurfaceAngle {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9189,84 +9422,82 @@ impl SplitSurfaceAngle {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceAngle_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceAngle_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitSurfaceAngle;
+pub use crate::ffi_types::HandleShapeUpgradeSplitSurfaceAngle;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceAngle {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitSurfaceAngle {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceAngle
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceAngle {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceAngle
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceAngle {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitSurfaceAngle {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceAngle> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceAngle_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9278,11 +9509,11 @@ impl HandleShapeUpgradeSplitSurfaceAngle {
 /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:30 - `ShapeUpgrade_SplitSurfaceArea`
 /// Split surface in the parametric space
 /// in according specified number of splits on the
-pub use crate::ffi::ShapeUpgrade_SplitSurfaceArea as SplitSurfaceArea;
+pub use crate::ffi_types::ShapeUpgrade_SplitSurfaceArea as SplitSurfaceArea;
 
 unsafe impl crate::CppDeletable for SplitSurfaceArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitSurfaceArea_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_destructor(ptr);
     }
 }
 
@@ -9292,7 +9523,7 @@ impl SplitSurfaceArea {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_ctor(),
             ))
         }
     }
@@ -9301,9 +9532,11 @@ impl SplitSurfaceArea {
     /// Set number of split for surfaces
     pub fn nb_parts(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceArea_nb_parts(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_nb_parts(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -9314,7 +9547,7 @@ impl SplitSurfaceArea {
     /// the parts are similar to squares in 2D.
     pub fn set_splitting_into_squares(&mut self, theIsSplittingIntoSquares: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_set_splitting_into_squares(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_set_splitting_into_squares(
                 self as *mut Self,
                 theIsSplittingIntoSquares,
             )
@@ -9326,7 +9559,7 @@ impl SplitSurfaceArea {
     /// Only for "Splitting Into Squares" mode
     pub fn set_numbers_uv_splits(&mut self, theNbUsplits: i32, theNbVsplits: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_set_numbers_uv_splits(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_set_numbers_uv_splits(
                 self as *mut Self,
                 theNbUsplits,
                 theNbVsplits,
@@ -9337,16 +9570,21 @@ impl SplitSurfaceArea {
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:50 - `ShapeUpgrade_SplitSurfaceArea::Compute()`
     pub fn compute(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_compute(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_compute(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:53 - `ShapeUpgrade_SplitSurfaceArea::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceArea_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9354,7 +9592,7 @@ impl SplitSurfaceArea {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9362,76 +9600,73 @@ impl SplitSurfaceArea {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceArea.hxx`:53 - `ShapeUpgrade_SplitSurfaceArea::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceArea_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceArea> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceArea> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
-    pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
-    pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_u_split_values(&mut self, UValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_SetUSplitValues(
                 self as *mut Self,
                 UValues,
             )
@@ -9439,9 +9674,9 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
-    pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_v_split_values(&mut self, VValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_SetVSplitValues(
                 self as *mut Self,
                 VValues,
             )
@@ -9451,22 +9686,28 @@ impl SplitSurfaceArea {
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Build(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_Build(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Perform(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_Perform(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
-    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn u_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_USplitValues(
                     self as *const Self,
                 ),
             ))
@@ -9474,10 +9715,10 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
-    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn v_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_VSplitValues(
                     self as *const Self,
                 ),
             ))
@@ -9487,7 +9728,7 @@ impl SplitSurfaceArea {
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -9495,10 +9736,10 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
-    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+    pub fn res_surfaces(&self) -> &crate::ffi_types::HandleShapeExtendCompositeSurface {
         unsafe {
             &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_ResSurfaces(
                     self as *const Self,
                 ),
             ))
@@ -9506,9 +9747,9 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9516,9 +9757,12 @@ impl SplitSurfaceArea {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -9526,7 +9770,9 @@ impl SplitSurfaceArea {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9539,84 +9785,82 @@ impl SplitSurfaceArea {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceArea_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceArea_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitSurfaceArea;
+pub use crate::ffi_types::HandleShapeUpgradeSplitSurfaceArea;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceArea {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitSurfaceArea_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitSurfaceArea {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceArea
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceArea {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceArea {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceArea
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceArea {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitSurfaceArea {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceArea_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceArea> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceArea_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9631,11 +9875,11 @@ impl HandleShapeUpgradeSplitSurfaceArea {
 /// This tool works with tolerance. If C0 surface can be corrected
 /// at a knot with given tolerance then the surface is corrected,
 /// otherwise it is spltted at that knot.
-pub use crate::ffi::ShapeUpgrade_SplitSurfaceContinuity as SplitSurfaceContinuity;
+pub use crate::ffi_types::ShapeUpgrade_SplitSurfaceContinuity as SplitSurfaceContinuity;
 
 unsafe impl crate::CppDeletable for SplitSurfaceContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_destructor(ptr);
     }
 }
 
@@ -9645,7 +9889,7 @@ impl SplitSurfaceContinuity {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_ctor(),
             ))
         }
     }
@@ -9654,7 +9898,7 @@ impl SplitSurfaceContinuity {
     /// Sets criterion for splitting.
     pub fn set_criterion(&mut self, Criterion: crate::geom_abs::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_set_criterion(
                 self as *mut Self,
                 Criterion.into(),
             )
@@ -9665,23 +9909,31 @@ impl SplitSurfaceContinuity {
     /// Sets tolerance.
     pub fn set_tolerance(&mut self, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_set_tolerance(self as *mut Self, Tol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_set_tolerance(
+                self as *mut Self,
+                Tol,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceContinuity.hxx`:48 - `ShapeUpgrade_SplitSurfaceContinuity::Compute()`
     pub fn compute(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_compute(self as *mut Self, Segment)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_compute(
+                self as *mut Self,
+                Segment,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceContinuity.hxx`:50 - `ShapeUpgrade_SplitSurfaceContinuity::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -9689,7 +9941,7 @@ impl SplitSurfaceContinuity {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -9697,100 +9949,81 @@ impl SplitSurfaceContinuity {
     }
 
     /// **Source:** `ShapeUpgrade_SplitSurfaceContinuity.hxx`:50 - `ShapeUpgrade_SplitSurfaceContinuity::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor(),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_get_type_descriptor()))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface
     pub fn as_split_surface(&self) -> &SplitSurface {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface(self as *const Self))
         }
     }
 
     /// Upcast to ShapeUpgrade_SplitSurface (mutable)
     pub fn as_split_surface_mut(&mut self) -> &mut SplitSurface {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_as_ShapeUpgrade_SplitSurface_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient(self as *const Self))
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurfaceContinuity> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:47 - `ShapeUpgrade_SplitSurface::Init()`
-    pub fn init(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn init(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_Init(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:58 - `ShapeUpgrade_SplitSurface::SetUSplitValues()`
-    pub fn set_u_split_values(&mut self, UValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_u_split_values(&mut self, UValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(
-                self as *mut Self,
-                UValues,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetUSplitValues(self as *mut Self, UValues)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:61 - `ShapeUpgrade_SplitSurface::SetVSplitValues()`
-    pub fn set_v_split_values(&mut self, VValues: &crate::ffi::HandleTColStdHSequenceOfReal) {
+    pub fn set_v_split_values(&mut self, VValues: &crate::ffi_types::HandleTColStdHSequenceOfReal) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(
-                self as *mut Self,
-                VValues,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_SetVSplitValues(self as *mut Self, VValues)
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:73 - `ShapeUpgrade_SplitSurface::Build()`
     pub fn build(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_Build(
                 self as *mut Self,
                 Segment,
             )
@@ -9800,7 +10033,7 @@ impl SplitSurfaceContinuity {
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:80 - `ShapeUpgrade_SplitSurface::Perform()`
     pub fn perform(&mut self, Segment: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_Perform(
                 self as *mut Self,
                 Segment,
             )
@@ -9808,31 +10041,23 @@ impl SplitSurfaceContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:84 - `ShapeUpgrade_SplitSurface::USplitValues()`
-    pub fn u_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn u_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_USplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:88 - `ShapeUpgrade_SplitSurface::VSplitValues()`
-    pub fn v_split_values(&self) -> &crate::ffi::HandleTColStdHSequenceOfReal {
+    pub fn v_split_values(&self) -> &crate::ffi_types::HandleTColStdHSequenceOfReal {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_VSplitValues(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:95 - `ShapeUpgrade_SplitSurface::Status()`
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_Status(
                 self as *const Self,
                 status.into(),
             )
@@ -9840,20 +10065,16 @@ impl SplitSurfaceContinuity {
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_SplitSurface.hxx`:98 - `ShapeUpgrade_SplitSurface::ResSurfaces()`
-    pub fn res_surfaces(&self) -> &crate::ffi::HandleShapeExtendCompositeSurface {
+    pub fn res_surfaces(&self) -> &crate::ffi_types::HandleShapeExtendCompositeSurface {
         unsafe {
-            &*(crate::check_result(
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_ResSurfaces(
-                    self as *const Self,
-                ),
-            ))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_ResSurfaces(self as *const Self)))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -9861,9 +10082,9 @@ impl SplitSurfaceContinuity {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsKind(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_IsKind(
                 self as *const Self,
                 theType,
             )
@@ -9874,7 +10095,9 @@ impl SplitSurfaceContinuity {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -9887,7 +10110,7 @@ impl SplitSurfaceContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_GetRefCount(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_GetRefCount(
                 self as *const Self,
             )
         })
@@ -9896,73 +10119,73 @@ impl SplitSurfaceContinuity {
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_SplitSurfaceContinuity_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_SplitSurfaceContinuity_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity;
+pub use crate::ffi_types::HandleShapeUpgradeSplitSurfaceContinuity;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeSplitSurfaceContinuity {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeSplitSurfaceContinuity {
     /// Dereference this Handle to access the underlying ShapeUpgrade_SplitSurfaceContinuity
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_SplitSurfaceContinuity {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_SplitSurfaceContinuity
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_SplitSurfaceContinuity {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_SplitSurfaceContinuity {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<ShapeUpgrade_SplitSurface>
     pub fn to_handle_split_surface(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeSplitSurface> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeSplitSurface> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleShapeUpgradeSplitSurface(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_SplitSurfaceContinuity> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeSplitSurfaceContinuity_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -9976,11 +10199,11 @@ impl HandleShapeUpgradeSplitSurfaceContinuity {
 /// Provides context for recording changes, basic
 /// precision value and limit (minimal and maximal)
 /// values for tolerances
-pub use crate::ffi::ShapeUpgrade_Tool as Tool;
+pub use crate::ffi_types::ShapeUpgrade_Tool as Tool;
 
 unsafe impl crate::CppDeletable for Tool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_Tool_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_destructor(ptr);
     }
 }
 
@@ -9989,33 +10212,35 @@ impl Tool {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeUpgrade_Tool_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_ctor(),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
     /// Copy all fields from another Root object
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_set(self as *mut Self, tool)
         })
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
     /// Sets context
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_set_context(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_set_context(self as *mut Self, context)
         })
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
     /// Returns context
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeUpgrade_Tool_context(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_context(self as *const Self),
+            ))
         }
     }
 
@@ -10023,21 +10248,26 @@ impl Tool {
     /// Sets basic precision value
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_set_precision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_set_precision(self as *mut Self, preci)
         })
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     /// Returns basic precision value
     pub fn precision(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::ShapeUpgrade_Tool_precision(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_precision(self as *const Self)
+        })
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     /// Sets minimal allowed tolerance
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_set_min_tolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_set_min_tolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
@@ -10045,7 +10275,7 @@ impl Tool {
     /// Returns minimal allowed tolerance
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_min_tolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_min_tolerance(self as *const Self)
         })
     }
 
@@ -10053,7 +10283,10 @@ impl Tool {
     /// Sets maximal allowed tolerance
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_set_max_tolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_set_max_tolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
@@ -10061,7 +10294,7 @@ impl Tool {
     /// Returns maximal allowed tolerance
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_max_tolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_max_tolerance(self as *const Self)
         })
     }
 
@@ -10069,14 +10302,19 @@ impl Tool {
     /// Returns tolerance limited by [myMinTol,myMaxTol]
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_limit_tolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_limit_tolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:70 - `ShapeUpgrade_Tool::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_Tool_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -10084,7 +10322,7 @@ impl Tool {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_Tool_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10092,50 +10330,64 @@ impl Tool {
     }
 
     /// **Source:** `ShapeUpgrade_Tool.hxx`:70 - `ShapeUpgrade_Tool::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::ShapeUpgrade_Tool_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeUpgrade_Tool_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::ShapeUpgrade_Tool_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10143,7 +10395,7 @@ impl Tool {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_Tool_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -10156,60 +10408,74 @@ impl Tool {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_Tool_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_Tool_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeTool;
+pub use crate::ffi_types::HandleShapeUpgradeTool;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeTool_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeTool {
     /// Dereference this Handle to access the underlying ShapeUpgrade_Tool
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_Tool {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeTool_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_Tool
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_Tool {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_Tool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeTool_get_mut(self as *mut Self))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_Tool> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeTool_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10219,11 +10485,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedEdgeDivide` (or subclass).
     pub fn downcast_to_closed_edge_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedEdgeDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedEdgeDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedEdgeDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedEdgeDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10237,11 +10501,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_ClosedFaceDivide` (or subclass).
     pub fn downcast_to_closed_face_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeClosedFaceDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeClosedFaceDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedFaceDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeClosedFaceDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10255,11 +10517,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_EdgeDivide` (or subclass).
     pub fn downcast_to_edge_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeEdgeDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeEdgeDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeEdgeDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10273,11 +10533,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivide` (or subclass).
     pub fn downcast_to_face_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10291,11 +10549,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FaceDivideArea` (or subclass).
     pub fn downcast_to_face_divide_area(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFaceDivideArea>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFaceDivideArea>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivideArea(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFaceDivideArea(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10309,11 +10565,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallBezierCurves` (or subclass).
     pub fn downcast_to_fix_small_bezier_curves(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallBezierCurves>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallBezierCurves>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallBezierCurves(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10327,11 +10581,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_FixSmallCurves` (or subclass).
     pub fn downcast_to_fix_small_curves(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallCurves>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallCurves(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeFixSmallCurves(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10345,11 +10597,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_RemoveInternalWires` (or subclass).
     pub fn downcast_to_remove_internal_wires(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeRemoveInternalWires>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeRemoveInternalWires>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeRemoveInternalWires(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeRemoveInternalWires(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10363,11 +10613,9 @@ impl HandleShapeUpgradeTool {
     /// Returns `None` if the handle does not point to a `ShapeUpgrade_WireDivide` (or subclass).
     pub fn downcast_to_wire_divide(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeWireDivide>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeWireDivide(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKShHealing::HandleShapeUpgradeTool_downcast_to_HandleShapeUpgradeWireDivide(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -10410,11 +10658,11 @@ impl HandleShapeUpgradeTool {
 /// The algorithm provides a place holder for the history and collects the
 /// history by default.
 /// To avoid collecting of the history the place holder should be set to null handle.
-pub use crate::ffi::ShapeUpgrade_UnifySameDomain as UnifySameDomain;
+pub use crate::ffi_types::ShapeUpgrade_UnifySameDomain as UnifySameDomain;
 
 unsafe impl crate::CppDeletable for UnifySameDomain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_UnifySameDomain_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_destructor(ptr);
     }
 }
 
@@ -10424,7 +10672,7 @@ impl UnifySameDomain {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_UnifySameDomain_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_ctor(),
             ))
         }
     }
@@ -10440,7 +10688,7 @@ impl UnifySameDomain {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_ctor_shape_bool3(
                     aShape,
                     UnifyEdges,
                     UnifyFaces,
@@ -10491,7 +10739,7 @@ impl UnifySameDomain {
         ConcatBSplines: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_initialize(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_initialize(
                 self as *mut Self,
                 aShape,
                 UnifyEdges,
@@ -10508,7 +10756,7 @@ impl UnifySameDomain {
     /// is forbidden. Default value is false.
     pub fn allow_internal_edges(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_allow_internal_edges(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_allow_internal_edges(
                 self as *mut Self,
                 theValue,
             )
@@ -10523,7 +10771,10 @@ impl UnifySameDomain {
     /// This method can be called several times to keep several shapes.
     pub fn keep_shape(&mut self, theShape: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_keep_shape(self as *mut Self, theShape)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_keep_shape(
+                self as *mut Self,
+                theShape,
+            )
         })
     }
 
@@ -10531,9 +10782,12 @@ impl UnifySameDomain {
     /// Sets the map of shapes for avoid merging of the faces/edges.
     /// It allows passing a ready to use map instead of calling many times
     /// the method KeepShape.
-    pub fn keep_shapes(&mut self, theShapes: &crate::ffi::TopTools_MapOfShape) {
+    pub fn keep_shapes(&mut self, theShapes: &crate::ffi_types::TopTools_MapOfShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_keep_shapes(self as *mut Self, theShapes)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_keep_shapes(
+                self as *mut Self,
+                theShapes,
+            )
         })
     }
 
@@ -10544,7 +10798,7 @@ impl UnifySameDomain {
     /// modified during modification process. Default value is true.
     pub fn set_safe_input_mode(&mut self, theValue: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_set_safe_input_mode(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_set_safe_input_mode(
                 self as *mut Self,
                 theValue,
             )
@@ -10556,7 +10810,7 @@ impl UnifySameDomain {
     /// taking decision about merging of shapes. Default value is Precision::Confusion().
     pub fn set_linear_tolerance(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_set_linear_tolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_set_linear_tolerance(
                 self as *mut Self,
                 theValue,
             )
@@ -10568,7 +10822,7 @@ impl UnifySameDomain {
     /// this value they will not be merged. Default value is Precision::Angular().
     pub fn set_angular_tolerance(&mut self, theValue: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_set_angular_tolerance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_set_angular_tolerance(
                 self as *mut Self,
                 theValue,
             )
@@ -10579,7 +10833,7 @@ impl UnifySameDomain {
     /// Performs unification and builds the resulting shape.
     pub fn build(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_build(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_build(self as *mut Self)
         })
     }
 
@@ -10587,38 +10841,46 @@ impl UnifySameDomain {
     /// Gives the resulting shape
     pub fn shape(&self) -> &crate::topo_ds::Shape {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_shape(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_shape(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:137 - `ShapeUpgrade_UnifySameDomain::History()`
     /// Returns the history of the processed shapes.
-    pub fn history(&self) -> &crate::ffi::HandleBRepToolsHistory {
+    pub fn history(&self) -> &crate::ffi_types::HandleBRepToolsHistory {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_history(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_history(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:140 - `ShapeUpgrade_UnifySameDomain::History()`
     /// Returns the history of the processed shapes.
-    pub fn history_mut(&mut self) -> &mut crate::ffi::HandleBRepToolsHistory {
+    pub fn history_mut(&mut self) -> &mut crate::ffi_types::HandleBRepToolsHistory {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_history_mut(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_history_mut(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:142 - `ShapeUpgrade_UnifySameDomain::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -10626,7 +10888,7 @@ impl UnifySameDomain {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -10634,47 +10896,49 @@ impl UnifySameDomain {
     }
 
     /// **Source:** `ShapeUpgrade_UnifySameDomain.hxx`:142 - `ShapeUpgrade_UnifySameDomain::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_as_Standard_Transient_mut(self as *mut Self))
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeUnifySameDomain> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeUnifySameDomain> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_UnifySameDomain_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_to_handle(
+                    obj.into_raw(),
+                ),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IsInstance(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -10682,9 +10946,12 @@ impl UnifySameDomain {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -10692,7 +10959,9 @@ impl UnifySameDomain {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -10705,71 +10974,73 @@ impl UnifySameDomain {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_IncrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_DecrementRefCounter(
-                self as *mut Self,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_UnifySameDomain_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_UnifySameDomain_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeUnifySameDomain;
+pub use crate::ffi_types::HandleShapeUpgradeUnifySameDomain;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeUnifySameDomain {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeUnifySameDomain_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeUnifySameDomain {
     /// Dereference this Handle to access the underlying ShapeUpgrade_UnifySameDomain
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_UnifySameDomain {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_UnifySameDomain {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeUnifySameDomain_get(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_get(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_UnifySameDomain
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_UnifySameDomain {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_UnifySameDomain {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeUnifySameDomain_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_UnifySameDomain> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeUnifySameDomain_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -10790,11 +11061,11 @@ impl HandleShapeUpgradeUnifySameDomain {
 /// The modifications made are recorded in external context
 /// (ShapeBuild_ReShape). This tool is applied to all edges
 /// before splitting them in order to keep sharing.
-pub use crate::ffi::ShapeUpgrade_WireDivide as WireDivide;
+pub use crate::ffi_types::ShapeUpgrade_WireDivide as WireDivide;
 
 unsafe impl crate::CppDeletable for WireDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::ShapeUpgrade_WireDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_destructor(ptr);
     }
 }
 
@@ -10804,7 +11075,7 @@ impl WireDivide {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_ctor(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_ctor(),
             ))
         }
     }
@@ -10813,7 +11084,11 @@ impl WireDivide {
     /// Initializes by wire and face
     pub fn init_wire_face(&mut self, W: &crate::topo_ds::Wire, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_init_wire_face(self as *mut Self, W, F)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_init_wire_face(
+                self as *mut Self,
+                W,
+                F,
+            )
         })
     }
 
@@ -10822,10 +11097,14 @@ impl WireDivide {
     pub fn init_wire_handlegeomsurface(
         &mut self,
         W: &crate::topo_ds::Wire,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_init_wire_handlegeomsurface(self as *mut Self, W, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_init_wire_handlegeomsurface(
+                self as *mut Self,
+                W,
+                S,
+            )
         })
     }
 
@@ -10833,7 +11112,7 @@ impl WireDivide {
     /// Loads working wire
     pub fn load_wire(&mut self, W: &crate::topo_ds::Wire) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_load_wire(self as *mut Self, W)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_load_wire(self as *mut Self, W)
         })
     }
 
@@ -10841,7 +11120,7 @@ impl WireDivide {
     /// Creates wire of one edge and calls Load for wire
     pub fn load_edge(&mut self, E: &crate::topo_ds::Edge) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_load_edge(self as *mut Self, E)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_load_edge(self as *mut Self, E)
         })
     }
 
@@ -10849,15 +11128,18 @@ impl WireDivide {
     /// Sets supporting surface by face
     pub fn set_face(&mut self, F: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_face(self as *mut Self, F)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_face(self as *mut Self, F)
         })
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:79 - `ShapeUpgrade_WireDivide::SetSurface()`
     /// Sets supporting surface
-    pub fn set_surface_handlegeomsurface(&mut self, S: &crate::ffi::HandleGeomSurface) {
+    pub fn set_surface_handlegeomsurface(&mut self, S: &crate::ffi_types::HandleGeomSurface) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface(self as *mut Self, S)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface(
+                self as *mut Self,
+                S,
+            )
         })
     }
 
@@ -10865,15 +11147,11 @@ impl WireDivide {
     /// Sets supporting surface with location
     pub fn set_surface_handlegeomsurface_location(
         &mut self,
-        S: &crate::ffi::HandleGeomSurface,
+        S: &crate::ffi_types::HandleGeomSurface,
         L: &crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface_location(
-                self as *mut Self,
-                S,
-                L,
-            )
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_surface_handlegeomsurface_location(self as *mut Self, S, L)
         })
     }
 
@@ -10887,7 +11165,7 @@ impl WireDivide {
     /// splitting criteria are used.
     pub fn perform(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_perform(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_perform(self as *mut Self)
         })
     }
 
@@ -10896,7 +11174,9 @@ impl WireDivide {
     /// or Null if not loaded)
     pub fn wire(&self) -> &crate::topo_ds::Wire {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_wire(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_wire(
+                self as *const Self,
+            )))
         }
     }
 
@@ -10908,7 +11188,10 @@ impl WireDivide {
     /// FAIL2 - some edges have no pcurve (skipped)
     pub fn status(&self, status: crate::shape_extend::Status) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_status(self as *const Self, status.into())
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_status(
+                self as *const Self,
+                status.into(),
+            )
         })
     }
 
@@ -10916,10 +11199,10 @@ impl WireDivide {
     /// Sets the tool for splitting 3D curves.
     pub fn set_split_curve3d_tool(
         &mut self,
-        splitCurve3dTool: &crate::ffi::HandleShapeUpgradeSplitCurve3d,
+        splitCurve3dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve3d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_split_curve3d_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_split_curve3d_tool(
                 self as *mut Self,
                 splitCurve3dTool,
             )
@@ -10930,10 +11213,10 @@ impl WireDivide {
     /// Sets the tool for splitting pcurves.
     pub fn set_split_curve2d_tool(
         &mut self,
-        splitCurve2dTool: &crate::ffi::HandleShapeUpgradeSplitCurve2d,
+        splitCurve2dTool: &crate::ffi_types::HandleShapeUpgradeSplitCurve2d,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_split_curve2d_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_split_curve2d_tool(
                 self as *mut Self,
                 splitCurve2dTool,
             )
@@ -10944,10 +11227,10 @@ impl WireDivide {
     /// Sets the tool for Transfer parameters between curves and pcurves.
     pub fn set_transfer_param_tool(
         &mut self,
-        TransferParam: &crate::ffi::HandleShapeAnalysisTransferParameters,
+        TransferParam: &crate::ffi_types::HandleShapeAnalysisTransferParameters,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_transfer_param_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_transfer_param_tool(
                 self as *mut Self,
                 TransferParam,
             )
@@ -10958,10 +11241,10 @@ impl WireDivide {
     /// Sets tool for splitting edge
     pub fn set_edge_divide_tool(
         &mut self,
-        edgeDivideTool: &crate::ffi::HandleShapeUpgradeEdgeDivide,
+        edgeDivideTool: &crate::ffi_types::HandleShapeUpgradeEdgeDivide,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_edge_divide_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_edge_divide_tool(
                 self as *mut Self,
                 edgeDivideTool,
             )
@@ -10972,10 +11255,12 @@ impl WireDivide {
     /// returns tool for splitting edges
     pub fn get_edge_divide_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeEdgeDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeEdgeDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_get_edge_divide_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_get_edge_divide_tool(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -10984,10 +11269,12 @@ impl WireDivide {
     /// Returns the tool for Transfer of parameters.
     pub fn get_transfer_param_tool(
         &mut self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeAnalysisTransferParameters> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeAnalysisTransferParameters> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_get_transfer_param_tool(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_get_transfer_param_tool(
+                    self as *mut Self,
+                ),
             ))
         }
     }
@@ -10999,7 +11286,10 @@ impl WireDivide {
     /// 2 -  all curve 3d.
     pub fn set_edge_mode(&mut self, EdgeMode: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_edge_mode(self as *mut Self, EdgeMode)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_edge_mode(
+                self as *mut Self,
+                EdgeMode,
+            )
         })
     }
 
@@ -11007,10 +11297,10 @@ impl WireDivide {
     /// Sets tool for fixing small curves with specified min tolerance;
     pub fn set_fix_small_curve_tool(
         &mut self,
-        FixSmallCurvesTool: &crate::ffi::HandleShapeUpgradeFixSmallCurves,
+        FixSmallCurvesTool: &crate::ffi_types::HandleShapeUpgradeFixSmallCurves,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_set_fix_small_curve_tool(
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_set_fix_small_curve_tool(
                 self as *mut Self,
                 FixSmallCurvesTool,
             )
@@ -11021,20 +11311,24 @@ impl WireDivide {
     /// Returns tool for fixing small curves
     pub fn get_fix_small_curve_tool(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeFixSmallCurves> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeFixSmallCurves> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_get_fix_small_curve_tool(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_get_fix_small_curve_tool(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:138 - `ShapeUpgrade_WireDivide::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -11042,7 +11336,7 @@ impl WireDivide {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_get_type_name(),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -11050,36 +11344,44 @@ impl WireDivide {
     }
 
     /// **Source:** `ShapeUpgrade_WireDivide.hxx`:138 - `ShapeUpgrade_WireDivide::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool
     pub fn as_tool(&self) -> &Tool {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to ShapeUpgrade_Tool (mutable)
     pub fn as_tool_mut(&mut self) -> &mut Tool {
         unsafe {
-            &mut *crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_as_ShapeUpgrade_Tool_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -11087,7 +11389,9 @@ impl WireDivide {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -11095,33 +11399,41 @@ impl WireDivide {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeWireDivide> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeWireDivide> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:41 - `ShapeUpgrade_Tool::Set()`
-    pub fn set(&mut self, tool: &crate::ffi::HandleShapeUpgradeTool) {
+    pub fn set(&mut self, tool: &crate::ffi_types::HandleShapeUpgradeTool) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_Set(self as *mut Self, tool)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_Set(
+                self as *mut Self,
+                tool,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:44 - `ShapeUpgrade_Tool::SetContext()`
-    pub fn set_context(&mut self, context: &crate::ffi::HandleShapeBuildReShape) {
+    pub fn set_context(&mut self, context: &crate::ffi_types::HandleShapeBuildReShape) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_SetContext(self as *mut Self, context)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_SetContext(
+                self as *mut Self,
+                context,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:47 - `ShapeUpgrade_Tool::Context()`
-    pub fn context(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeBuildReShape> {
+    pub fn context(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeBuildReShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::ShapeUpgrade_WireDivide_inherited_Context(self as *const Self),
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_Context(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -11129,63 +11441,87 @@ impl WireDivide {
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:50 - `ShapeUpgrade_Tool::SetPrecision()`
     pub fn set_precision(&mut self, preci: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_SetPrecision(self as *mut Self, preci)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_SetPrecision(
+                self as *mut Self,
+                preci,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:53 - `ShapeUpgrade_Tool::Precision()`
     pub fn precision(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_Precision(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_Precision(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:56 - `ShapeUpgrade_Tool::SetMinTolerance()`
     pub fn set_min_tolerance(&mut self, mintol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMinTolerance(self as *mut Self, mintol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_SetMinTolerance(
+                self as *mut Self,
+                mintol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:59 - `ShapeUpgrade_Tool::MinTolerance()`
     pub fn min_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_MinTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_MinTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:62 - `ShapeUpgrade_Tool::SetMaxTolerance()`
     pub fn set_max_tolerance(&mut self, maxtol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_SetMaxTolerance(self as *mut Self, maxtol)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_SetMaxTolerance(
+                self as *mut Self,
+                maxtol,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:65 - `ShapeUpgrade_Tool::MaxTolerance()`
     pub fn max_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_MaxTolerance(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_MaxTolerance(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `ShapeUpgrade_Tool.hxx`:68 - `ShapeUpgrade_Tool::LimitTolerance()`
     pub fn limit_tolerance(&self, toler: f64) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_LimitTolerance(self as *const Self, toler)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_LimitTolerance(
+                self as *const Self,
+                toler,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -11193,7 +11529,9 @@ impl WireDivide {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::ShapeUpgrade_WireDivide_inherited_This(self as *const Self)
+                crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -11206,76 +11544,82 @@ impl WireDivide {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::ShapeUpgrade_WireDivide_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKShHealing::ShapeUpgrade_WireDivide_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleShapeUpgradeWireDivide;
+pub use crate::ffi_types::HandleShapeUpgradeWireDivide;
 
 unsafe impl crate::CppDeletable for HandleShapeUpgradeWireDivide {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleShapeUpgradeWireDivide_destructor(ptr);
+        crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_destructor(ptr);
     }
 }
 
 impl HandleShapeUpgradeWireDivide {
     /// Dereference this Handle to access the underlying ShapeUpgrade_WireDivide
-    pub fn get(&self) -> &crate::ffi::ShapeUpgrade_WireDivide {
+    pub fn get(&self) -> &crate::ffi_types::ShapeUpgrade_WireDivide {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleShapeUpgradeWireDivide_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying ShapeUpgrade_WireDivide
-    pub fn get_mut(&mut self) -> &mut crate::ffi::ShapeUpgrade_WireDivide {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::ShapeUpgrade_WireDivide {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleShapeUpgradeWireDivide_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<ShapeUpgrade_Tool>
-    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi::HandleShapeUpgradeTool> {
+    pub fn to_handle_tool(&self) -> crate::OwnedPtr<crate::ffi_types::HandleShapeUpgradeTool> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_to_HandleShapeUpgradeTool(self as *const Self)))
         }
     }
 
     /// Upcast Handle<ShapeUpgrade_WireDivide> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleShapeUpgradeWireDivide_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKShHealing::HandleShapeUpgradeWireDivide_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }

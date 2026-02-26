@@ -10,13 +10,15 @@
 /// returns the correct spline a(u) which will
 /// be multiplicated with BS later.
 pub fn solution_handlegeombsplinecurve_real2(
-    BS: &crate::ffi::HandleGeomBSplineCurve,
+    BS: &crate::ffi_types::HandleGeomBSplineCurve,
     TolPoles: f64,
     TolKnots: f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::Hermit_solution_handlegeombsplinecurve_real2(BS, TolPoles, TolKnots),
+            crate::ffi_extern_TKGeomBase::Hermit_solution_handlegeombsplinecurve_real2(
+                BS, TolPoles, TolKnots,
+            ),
         ))
     }
 }
@@ -24,13 +26,15 @@ pub fn solution_handlegeombsplinecurve_real2(
 /// returns the correct spline a(u) which will
 /// be multiplicated with BS later.
 pub fn solution_handlegeom2dbsplinecurve_real2(
-    BS: &crate::ffi::HandleGeom2dBSplineCurve,
+    BS: &crate::ffi_types::HandleGeom2dBSplineCurve,
     TolPoles: f64,
     TolKnots: f64,
-) -> crate::OwnedPtr<crate::ffi::HandleGeom2dBSplineCurve> {
+) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dBSplineCurve> {
     unsafe {
         crate::OwnedPtr::from_raw(crate::check_result(
-            crate::ffi::Hermit_solution_handlegeom2dbsplinecurve_real2(BS, TolPoles, TolKnots),
+            crate::ffi_extern_TKGeomBase::Hermit_solution_handlegeom2dbsplinecurve_real2(
+                BS, TolPoles, TolKnots,
+            ),
         ))
     }
 }
@@ -39,13 +43,13 @@ pub fn solution_handlegeom2dbsplinecurve_real2(
 /// stay with a constant sign and in the
 /// tolerances.
 pub fn solutionbis(
-    BS: &crate::ffi::HandleGeomBSplineCurve,
+    BS: &crate::ffi_types::HandleGeomBSplineCurve,
     Knotmin: &mut f64,
     Knotmax: &mut f64,
     TolPoles: f64,
     TolKnots: f64,
 ) {
     crate::check_void_result(unsafe {
-        crate::ffi::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots)
+        crate::ffi_extern_TKGeomBase::Hermit_solutionbis(BS, Knotmin, Knotmax, TolPoles, TolKnots)
     })
 }

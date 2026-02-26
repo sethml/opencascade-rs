@@ -10,4 +10,4 @@
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::WNT_HIDSpaceMouse as HIDSpaceMouse;
+pub use crate::ffi_types::WNT_HIDSpaceMouse as HIDSpaceMouse;

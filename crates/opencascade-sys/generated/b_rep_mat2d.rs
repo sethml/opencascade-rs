@@ -45,11 +45,11 @@
 /// the figure described by the Explorer from BRepMAT2d.
 /// - The Arcs correspond to the bisectors.
 /// - The Nodes are the extremities of the arcs.
-pub use crate::ffi::BRepMAT2d_BisectingLocus as BisectingLocus;
+pub use crate::ffi_types::BRepMAT2d_BisectingLocus as BisectingLocus;
 
 unsafe impl crate::CppDeletable for BisectingLocus {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepMAT2d_BisectingLocus_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_destructor(ptr);
     }
 }
 
@@ -58,7 +58,7 @@ impl BisectingLocus {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_ctor(),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_ctor(),
             ))
         }
     }
@@ -77,7 +77,7 @@ impl BisectingLocus {
         IsOpenResult: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_BisectingLocus_compute(
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_compute(
                 self as *mut Self,
                 anExplo,
                 LineIndex,
@@ -92,16 +92,16 @@ impl BisectingLocus {
     /// Returns True if Compute has succeeded.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_BisectingLocus_is_done(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_is_done(self as *const Self)
         })
     }
 
     /// **Source:** `BRepMAT2d_BisectingLocus.hxx`:94 - `BRepMAT2d_BisectingLocus::Graph()`
     /// Returns <theGraph> of <me>.
-    pub fn graph(&self) -> crate::OwnedPtr<crate::ffi::HandleMATGraph> {
+    pub fn graph(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATGraph> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_graph(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_graph(self as *const Self),
             ))
         }
     }
@@ -110,7 +110,9 @@ impl BisectingLocus {
     /// Returns the number of contours.
     pub fn number_of_contours(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_BisectingLocus_number_of_contours(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_number_of_contours(
+                self as *const Self,
+            )
         })
     }
 
@@ -119,7 +121,10 @@ impl BisectingLocus {
     /// <IndLine>.
     pub fn number_of_elts(&self, IndLine: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_BisectingLocus_number_of_elts(self as *const Self, IndLine)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_number_of_elts(
+                self as *const Self,
+                IndLine,
+            )
         })
     }
 
@@ -129,7 +134,7 @@ impl BisectingLocus {
     /// given by anExplo.
     pub fn number_of_sections(&self, IndLine: i32, Index: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_BisectingLocus_number_of_sections(
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_number_of_sections(
                 self as *const Self,
                 IndLine,
                 Index,
@@ -145,10 +150,14 @@ impl BisectingLocus {
         &self,
         IndLine: i32,
         Index: i32,
-    ) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_basic_elt(self as *const Self, IndLine, Index),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_basic_elt(
+                    self as *const Self,
+                    IndLine,
+                    Index,
+                ),
             ))
         }
     }
@@ -157,11 +166,11 @@ impl BisectingLocus {
     /// Returns the geometry linked to the <BasicElt>.
     pub fn geom_elt_handlematbasicelt(
         &self,
-        aBasicElt: &crate::ffi::HandleMATBasicElt,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGeom2dGeometry> {
+        aBasicElt: &crate::ffi_types::HandleMATBasicElt,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dGeometry> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_geom_elt_handlematbasicelt(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_geom_elt_handlematbasicelt(
                     self as *const Self,
                     aBasicElt,
                 ),
@@ -174,11 +183,11 @@ impl BisectingLocus {
     /// the <Node>.
     pub fn geom_elt_handlematnode(
         &self,
-        aNode: &crate::ffi::HandleMATNode,
+        aNode: &crate::ffi_types::HandleMATNode,
     ) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_geom_elt_handlematnode(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_geom_elt_handlematnode(
                     self as *const Self,
                     aNode,
                 ),
@@ -193,12 +202,16 @@ impl BisectingLocus {
     /// correspond to the first point of geometry.
     pub fn geom_bis(
         &self,
-        anArc: &crate::ffi::HandleMATArc,
+        anArc: &crate::ffi_types::HandleMATArc,
         Reverse: &mut bool,
     ) -> crate::OwnedPtr<crate::bisector::Bisec> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_BisectingLocus_geom_bis(self as *const Self, anArc, Reverse),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_BisectingLocus_geom_bis(
+                    self as *const Self,
+                    anArc,
+                    Reverse,
+                ),
             ))
         }
     }
@@ -211,11 +224,11 @@ impl BisectingLocus {
 /// **Source:** `BRepMAT2d_Explorer.hxx`:36 - `BRepMAT2d_Explorer`
 /// Construct an explorer from wires, face, set of curves
 /// from Geom2d to compute the bisecting Locus.
-pub use crate::ffi::BRepMAT2d_Explorer as Explorer;
+pub use crate::ffi_types::BRepMAT2d_Explorer as Explorer;
 
 unsafe impl crate::CppDeletable for Explorer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepMAT2d_Explorer_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_destructor(ptr);
     }
 }
 
@@ -223,7 +236,9 @@ impl Explorer {
     /// **Source:** `BRepMAT2d_Explorer.hxx`:41 - `BRepMAT2d_Explorer::BRepMAT2d_Explorer()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepMAT2d_Explorer_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_ctor(),
+            ))
         }
     }
 
@@ -231,7 +246,7 @@ impl Explorer {
     pub fn new_face(aFace: &crate::topo_ds::Face) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_Explorer_ctor_face(aFace),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_ctor_face(aFace),
             ))
         }
     }
@@ -239,13 +254,15 @@ impl Explorer {
     /// **Source:** `BRepMAT2d_Explorer.hxx`:46 - `BRepMAT2d_Explorer::Clear()`
     /// Clear the contents of <me>.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepMAT2d_Explorer_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:48 - `BRepMAT2d_Explorer::Perform()`
     pub fn perform(&mut self, aFace: &crate::topo_ds::Face) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_Explorer_perform(self as *mut Self, aFace)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_perform(self as *mut Self, aFace)
         })
     }
 
@@ -253,7 +270,7 @@ impl Explorer {
     /// Returns the Number of contours.
     pub fn number_of_contours(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_Explorer_number_of_contours(self as *const Self)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_number_of_contours(self as *const Self)
         })
     }
 
@@ -262,7 +279,10 @@ impl Explorer {
     /// <IndexContour>.
     pub fn number_of_curves(&self, IndexContour: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_Explorer_number_of_curves(self as *const Self, IndexContour)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_number_of_curves(
+                self as *const Self,
+                IndexContour,
+            )
         })
     }
 
@@ -271,7 +291,7 @@ impl Explorer {
     /// the Contour number <IndexContour>.
     pub fn init(&mut self, IndexContour: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_Explorer_init(self as *mut Self, IndexContour)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_init(self as *mut Self, IndexContour)
         })
     }
 
@@ -279,38 +299,42 @@ impl Explorer {
     /// Return False if there is no more curves on the Contour
     /// initialised by the method Init.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepMAT2d_Explorer_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_more(self as *const Self)
+        })
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:66 - `BRepMAT2d_Explorer::Next()`
     /// Move to the next curve of the current Contour.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::BRepMAT2d_Explorer_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:69 - `BRepMAT2d_Explorer::Value()`
     /// Returns the current curve on the current Contour.
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleGeom2dCurve> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleGeom2dCurve> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepMAT2d_Explorer_value(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_value(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:71 - `BRepMAT2d_Explorer::Shape()`
     pub fn shape(&self) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::BRepMAT2d_Explorer_shape(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_shape(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:73 - `BRepMAT2d_Explorer::Contour()`
-    pub fn contour(&self, IndexContour: i32) -> &crate::ffi::TColGeom2d_SequenceOfCurve {
+    pub fn contour(&self, IndexContour: i32) -> &crate::ffi_types::TColGeom2d_SequenceOfCurve {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepMAT2d_Explorer_contour(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_contour(
                 self as *const Self,
                 IndexContour,
             )))
@@ -320,7 +344,7 @@ impl Explorer {
     /// **Source:** `BRepMAT2d_Explorer.hxx`:76 - `BRepMAT2d_Explorer::IsModified()`
     pub fn is_modified(&self, aShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::BRepMAT2d_Explorer_is_modified(self as *const Self, aShape)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_is_modified(self as *const Self, aShape)
         })
     }
 
@@ -332,15 +356,18 @@ impl Explorer {
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_Explorer_modified_shape(self as *const Self, aShape),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_modified_shape(
+                    self as *const Self,
+                    aShape,
+                ),
             ))
         }
     }
 
     /// **Source:** `BRepMAT2d_Explorer.hxx`:81 - `BRepMAT2d_Explorer::GetIsClosed()`
-    pub fn get_is_closed(&self) -> &crate::ffi::TColStd_SequenceOfBoolean {
+    pub fn get_is_closed(&self) -> &crate::ffi_types::TColStd_SequenceOfBoolean {
         unsafe {
-            &*(crate::check_result(crate::ffi::BRepMAT2d_Explorer_get_is_closed(
+            &*(crate::check_result(crate::ffi_extern_TKTopAlgo::BRepMAT2d_Explorer_get_is_closed(
                 self as *const Self,
             )))
         }
@@ -354,11 +381,11 @@ impl Explorer {
 /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:35 - `BRepMAT2d_LinkTopoBilo`
 /// Constructs links between the Wire or the Face of the explorer and
 /// the BasicElts contained in the bisecting locus.
-pub use crate::ffi::BRepMAT2d_LinkTopoBilo as LinkTopoBilo;
+pub use crate::ffi_types::BRepMAT2d_LinkTopoBilo as LinkTopoBilo;
 
 unsafe impl crate::CppDeletable for LinkTopoBilo {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::BRepMAT2d_LinkTopoBilo_destructor(ptr);
+        crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_destructor(ptr);
     }
 }
 
@@ -366,9 +393,9 @@ impl LinkTopoBilo {
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:40 - `BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::BRepMAT2d_LinkTopoBilo_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_ctor(),
+            ))
         }
     }
 
@@ -382,7 +409,9 @@ impl LinkTopoBilo {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(Explo, BiLo),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_ctor_explorer_bisectinglocus(
+                    Explo, BiLo,
+                ),
             ))
         }
     }
@@ -393,7 +422,11 @@ impl LinkTopoBilo {
     /// raises if <S> is not a face or a wire.
     pub fn perform(&mut self, Explo: &Explorer, BiLo: &BisectingLocus) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_LinkTopoBilo_perform(self as *mut Self, Explo, BiLo)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_perform(
+                self as *mut Self,
+                Explo,
+                BiLo,
+            )
         })
     }
 
@@ -404,30 +437,32 @@ impl LinkTopoBilo {
     /// raises if <S> is not an edge or a vertex.
     pub fn init(&mut self, S: &crate::topo_ds::Shape) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_LinkTopoBilo_init(self as *mut Self, S)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_init(self as *mut Self, S)
         })
     }
 
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:61 - `BRepMAT2d_LinkTopoBilo::More()`
     /// Returns True if there  is a current  BasicElt.
     pub fn more(&mut self) -> bool {
-        crate::check_result(unsafe { crate::ffi::BRepMAT2d_LinkTopoBilo_more(self as *mut Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_more(self as *mut Self)
+        })
     }
 
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:64 - `BRepMAT2d_LinkTopoBilo::Next()`
     /// Proceed to the next BasicElt.
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::BRepMAT2d_LinkTopoBilo_next(self as *mut Self)
+            crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_next(self as *mut Self)
         })
     }
 
     /// **Source:** `BRepMAT2d_LinkTopoBilo.hxx`:67 - `BRepMAT2d_LinkTopoBilo::Value()`
     /// Returns the current BasicElt.
-    pub fn value(&self) -> crate::OwnedPtr<crate::ffi::HandleMATBasicElt> {
+    pub fn value(&self) -> crate::OwnedPtr<crate::ffi_types::HandleMATBasicElt> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_LinkTopoBilo_value(self as *const Self),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_value(self as *const Self),
             ))
         }
     }
@@ -436,11 +471,14 @@ impl LinkTopoBilo {
     /// Returns the Shape linked to <aBE>.
     pub fn generating_shape(
         &self,
-        aBE: &crate::ffi::HandleMATBasicElt,
+        aBE: &crate::ffi_types::HandleMATBasicElt,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::BRepMAT2d_LinkTopoBilo_generating_shape(self as *const Self, aBE),
+                crate::ffi_extern_TKTopAlgo::BRepMAT2d_LinkTopoBilo_generating_shape(
+                    self as *const Self,
+                    aBE,
+                ),
             ))
         }
     }

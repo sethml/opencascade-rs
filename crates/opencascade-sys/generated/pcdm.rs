@@ -9,10 +9,10 @@
 /// **Source:** `PCDM.hxx`:28 - `PCDM::FileDriverType`
 pub fn file_driver_type_asciistring_handlestoragebasedriver(
     aFileName: &crate::t_collection::AsciiString,
-    aBaseDriver: &mut crate::ffi::HandleStorageBaseDriver,
+    aBaseDriver: &mut crate::ffi_types::HandleStorageBaseDriver,
 ) -> crate::pcdm::TypeOfFileDriver {
     crate::pcdm::TypeOfFileDriver::try_from(crate::check_result(unsafe {
-        crate::ffi::PCDM_file_driver_type_asciistring_handlestoragebasedriver(
+        crate::ffi_extern_TKCDF::PCDM_file_driver_type_asciistring_handlestoragebasedriver(
             aFileName,
             aBaseDriver,
         )
@@ -21,11 +21,14 @@ pub fn file_driver_type_asciistring_handlestoragebasedriver(
 }
 /// **Source:** `PCDM.hxx`:32 - `PCDM::FileDriverType`
 pub fn file_driver_type_istream_handlestoragebasedriver(
-    theIStream: &mut crate::ffi::Standard_IStream,
-    theBaseDriver: &mut crate::ffi::HandleStorageBaseDriver,
+    theIStream: &mut crate::ffi_types::Standard_IStream,
+    theBaseDriver: &mut crate::ffi_types::HandleStorageBaseDriver,
 ) -> crate::pcdm::TypeOfFileDriver {
     crate::pcdm::TypeOfFileDriver::try_from(crate::check_result(unsafe {
-        crate::ffi::PCDM_file_driver_type_istream_handlestoragebasedriver(theIStream, theBaseDriver)
+        crate::ffi_extern_TKCDF::PCDM_file_driver_type_istream_handlestoragebasedriver(
+            theIStream,
+            theBaseDriver,
+        )
     }))
     .unwrap()
 }
@@ -231,7 +234,7 @@ impl TryFrom<i32> for TypeOfFileDriver {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleBinDriversDocumentRetrievalDriver, HandleBinDriversDocumentStorageDriver,
     HandleBinLDriversDocumentRetrievalDriver, HandleBinLDriversDocumentStorageDriver,
     HandleBinTObjDriversDocumentRetrievalDriver, HandleBinTObjDriversDocumentStorageDriver,
@@ -249,11 +252,11 @@ pub use crate::ffi::{
 // ========================
 
 /// **Source:** `PCDM_DOMHeaderParser.hxx`:23 - `PCDM_DOMHeaderParser`
-pub use crate::ffi::PCDM_DOMHeaderParser as DOMHeaderParser;
+pub use crate::ffi_types::PCDM_DOMHeaderParser as DOMHeaderParser;
 
 unsafe impl crate::CppDeletable for DOMHeaderParser {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_DOMHeaderParser_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_destructor(ptr);
     }
 }
 
@@ -262,14 +265,16 @@ impl DOMHeaderParser {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_DOMHeaderParser_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_ctor(),
+            ))
         }
     }
 
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:28 - `PCDM_DOMHeaderParser::SetStartElementName()`
     pub fn set_start_element_name(&mut self, aStartElementName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DOMHeaderParser_set_start_element_name(
+            crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_set_start_element_name(
                 self as *mut Self,
                 aStartElementName,
             )
@@ -279,7 +284,7 @@ impl DOMHeaderParser {
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:31 - `PCDM_DOMHeaderParser::SetEndElementName()`
     pub fn set_end_element_name(&mut self, anEndElementName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DOMHeaderParser_set_end_element_name(
+            crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_set_end_element_name(
                 self as *mut Self,
                 anEndElementName,
             )
@@ -289,21 +294,21 @@ impl DOMHeaderParser {
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:34 - `PCDM_DOMHeaderParser::startElement()`
     pub fn start_element(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DOMHeaderParser_start_element(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_start_element(self as *mut Self)
         })
     }
 
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:38 - `PCDM_DOMHeaderParser::endElement()`
     pub fn end_element(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DOMHeaderParser_end_element(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_end_element(self as *mut Self)
         })
     }
 
     /// **Source:** `PCDM_DOMHeaderParser.hxx`:43 - `PCDM_DOMHeaderParser::GetElement()`
     pub fn get_element(&self) -> &crate::ldom::Element {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_DOMHeaderParser_get_element(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_DOMHeaderParser_get_element(
                 self as *const Self,
             )))
         }
@@ -315,11 +320,11 @@ impl DOMHeaderParser {
 // ========================
 
 /// **Source:** `PCDM_Document.hxx`:28 - `PCDM_Document`
-pub use crate::ffi::PCDM_Document as Document;
+pub use crate::ffi_types::PCDM_Document as Document;
 
 unsafe impl crate::CppDeletable for Document {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_Document_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_Document_destructor(ptr);
     }
 }
 
@@ -327,34 +332,44 @@ impl Document {
     /// **Source:** `PCDM_Document.hxx` - `PCDM_Document::PCDM_Document()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_Document_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Document_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_Document_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Document_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::PCDM_Document_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Document_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `PCDM_Document.hxx`:32 - `PCDM_Document::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_Document_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Document_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Persistent
     pub fn as_standard_persistent(&self) -> &crate::standard::Persistent {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_Document_as_Standard_Persistent(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_Document_as_Standard_Persistent(
                 self as *const Self,
             ))
         }
@@ -363,16 +378,18 @@ impl Document {
     /// Upcast to Standard_Persistent (mutable)
     pub fn as_standard_persistent_mut(&mut self) -> &mut crate::standard::Persistent {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_Document_as_Standard_Persistent_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Document_as_Standard_Persistent_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_Document_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_Document_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -381,43 +398,46 @@ impl Document {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_Document_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Document_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDocument> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDocument> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_Document_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Document_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Persistent.hxx`:35 - `Standard_Persistent::TypeNum()`
     pub fn type_num(&mut self) -> &mut i32 {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::PCDM_Document_inherited_TypeNum(
+            &mut *(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Document_inherited_TypeNum(
                 self as *mut Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -425,7 +445,7 @@ impl Document {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_Document_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_Document_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -438,67 +458,81 @@ impl Document {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Document_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Document_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMDocument;
+pub use crate::ffi_types::HandlePCDMDocument;
 
 unsafe impl crate::CppDeletable for HandlePCDMDocument {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMDocument_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMDocument_destructor(ptr);
     }
 }
 
 impl HandlePCDMDocument {
     /// Dereference this Handle to access the underlying PCDM_Document
-    pub fn get(&self) -> &crate::ffi::PCDM_Document {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMDocument_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_Document {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDocument_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Document
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Document {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_Document {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMDocument_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDocument_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Persistent>
-    pub fn to_handle_persistent(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardPersistent> {
+    pub fn to_handle_persistent(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardPersistent> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMDocument_to_HandleStandardPersistent(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMDocument_to_HandleStandardPersistent(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PCDM_Document> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMDocument_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMDocument_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -509,11 +543,11 @@ impl HandlePCDMDocument {
 // ========================
 
 /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError`
-pub use crate::ffi::PCDM_DriverError as DriverError;
+pub use crate::ffi_types::PCDM_DriverError as DriverError;
 
 unsafe impl crate::CppDeletable for DriverError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_DriverError_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_DriverError_destructor(ptr);
     }
 }
 
@@ -521,7 +555,9 @@ impl DriverError {
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::PCDM_DriverError()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_DriverError_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_ctor(),
+            ))
         }
     }
 
@@ -530,7 +566,7 @@ impl DriverError {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_DriverError_ctor_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKCDF::PCDM_DriverError_ctor_charptr(c_theMessage.as_ptr()),
             ))
         }
     }
@@ -541,7 +577,7 @@ impl DriverError {
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_DriverError_ctor_charptr2(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_ctor_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -550,9 +586,11 @@ impl DriverError {
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_DriverError_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_DriverError_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -560,23 +598,27 @@ impl DriverError {
     pub fn raise_charptr(theMessage: &str) {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_raise_charptr(c_theMessage.as_ptr())
+            crate::ffi_extern_TKCDF::PCDM_DriverError_raise_charptr(c_theMessage.as_ptr())
         })
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::Raise()`
-    pub fn raise_sstream(theMessage: &mut crate::ffi::Standard_SStream) {
-        crate::check_void_result(unsafe { crate::ffi::PCDM_DriverError_raise_sstream(theMessage) })
+    pub fn raise_sstream(theMessage: &mut crate::ffi_types::Standard_SStream) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_DriverError_raise_sstream(theMessage)
+        })
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::NewInstance()`
     pub fn new_instance_charptr(
         theMessage: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDriverError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDriverError> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_DriverError_new_instance_charptr(c_theMessage.as_ptr()),
+                crate::ffi_extern_TKCDF::PCDM_DriverError_new_instance_charptr(
+                    c_theMessage.as_ptr(),
+                ),
             ))
         }
     }
@@ -585,12 +627,12 @@ impl DriverError {
     pub fn new_instance_charptr2(
         theMessage: &str,
         theStackTrace: &str,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDriverError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDriverError> {
         let c_theMessage = std::ffi::CString::new(theMessage).unwrap();
         let c_theStackTrace = std::ffi::CString::new(theStackTrace).unwrap();
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_DriverError_new_instance_charptr2(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_new_instance_charptr2(
                     c_theMessage.as_ptr(),
                     c_theStackTrace.as_ptr(),
                 ),
@@ -602,7 +644,7 @@ impl DriverError {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_DriverError_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_DriverError_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -610,14 +652,16 @@ impl DriverError {
     }
 
     /// **Source:** `PCDM_DriverError.hxx`:36 - `PCDM_DriverError::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_DriverError_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_DriverError_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Failure
     pub fn as_standard_failure(&self) -> &crate::standard::Failure {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_DriverError_as_Standard_Failure(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_DriverError_as_Standard_Failure(
                 self as *const Self,
             ))
         }
@@ -626,16 +670,18 @@ impl DriverError {
     /// Upcast to Standard_Failure (mutable)
     pub fn as_standard_failure_mut(&mut self) -> &mut crate::standard::Failure {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_DriverError_as_Standard_Failure_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_as_Standard_Failure_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_DriverError_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_DriverError_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -644,55 +690,63 @@ impl DriverError {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_DriverError_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDriverError> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDriverError> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_DriverError_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_DriverError_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:58 - `Standard_Failure::Print()`
-    pub fn print(&self, theStream: &mut crate::ffi::Standard_OStream) {
+    pub fn print(&self, theStream: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_Print(self as *const Self, theStream)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_Print(
+                self as *const Self,
+                theStream,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:72 - `Standard_Failure::Reraise()`
     pub fn reraise(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_Reraise(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_Reraise(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Failure.hxx`:112 - `Standard_Failure::Jump()`
     pub fn jump(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_Jump(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_Jump(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -700,7 +754,7 @@ impl DriverError {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_DriverError_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -713,67 +767,83 @@ impl DriverError {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_DriverError_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_DriverError_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMDriverError;
+pub use crate::ffi_types::HandlePCDMDriverError;
 
 unsafe impl crate::CppDeletable for HandlePCDMDriverError {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMDriverError_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMDriverError_destructor(ptr);
     }
 }
 
 impl HandlePCDMDriverError {
     /// Dereference this Handle to access the underlying PCDM_DriverError
-    pub fn get(&self) -> &crate::ffi::PCDM_DriverError {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMDriverError_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_DriverError {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDriverError_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_DriverError
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_DriverError {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_DriverError {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMDriverError_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMDriverError_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Failure>
-    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardFailure> {
+    pub fn to_handle_failure(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStandardFailure> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMDriverError_to_HandleStandardFailure(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMDriverError_to_HandleStandardFailure(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PCDM_DriverError> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMDriverError_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMDriverError_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -784,11 +854,11 @@ impl HandlePCDMDriverError {
 // ========================
 
 /// **Source:** `PCDM_ReadWriter.hxx`:38 - `PCDM_ReadWriter`
-pub use crate::ffi::PCDM_ReadWriter as ReadWriter;
+pub use crate::ffi_types::PCDM_ReadWriter as ReadWriter;
 
 unsafe impl crate::CppDeletable for ReadWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_ReadWriter_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_ReadWriter_destructor(ptr);
     }
 }
 
@@ -797,20 +867,20 @@ impl ReadWriter {
     /// returns PCDM_ReadWriter_1.
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_version(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_version(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:45 - `PCDM_ReadWriter::WriteReferenceCounter()`
     pub fn write_reference_counter(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_write_reference_counter(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_write_reference_counter(
                 self as *const Self,
                 aData,
                 aDocument,
@@ -821,12 +891,12 @@ impl ReadWriter {
     /// **Source:** `PCDM_ReadWriter.hxx`:49 - `PCDM_ReadWriter::WriteReferences()`
     pub fn write_references(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         theReferencerFileName: &crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_write_references(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_write_references(
                 self as *const Self,
                 aData,
                 aDocument,
@@ -838,22 +908,30 @@ impl ReadWriter {
     /// **Source:** `PCDM_ReadWriter.hxx`:54 - `PCDM_ReadWriter::WriteExtensions()`
     pub fn write_extensions(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_write_extensions(self as *const Self, aData, aDocument)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_write_extensions(
+                self as *const Self,
+                aData,
+                aDocument,
+            )
         })
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:57 - `PCDM_ReadWriter::WriteVersion()`
     pub fn write_version(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_write_version(self as *const Self, aData, aDocument)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_write_version(
+                self as *const Self,
+                aData,
+                aDocument,
+            )
         })
     }
 
@@ -861,10 +939,10 @@ impl ReadWriter {
     pub fn read_reference_counter(
         &self,
         theFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_read_reference_counter(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_read_reference_counter(
                 self as *const Self,
                 theFileName,
                 theMsgDriver,
@@ -876,11 +954,11 @@ impl ReadWriter {
     pub fn read_references(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theReferences: &mut crate::ffi::PCDM_SequenceOfReference,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theReferences: &mut crate::ffi_types::PCDM_SequenceOfReference,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_read_references(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_read_references(
                 self as *const Self,
                 aFileName,
                 theReferences,
@@ -893,11 +971,11 @@ impl ReadWriter {
     pub fn read_extensions(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theExtensions: &mut crate::ffi::TColStd_SequenceOfExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theExtensions: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_read_extensions(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_read_extensions(
                 self as *const Self,
                 aFileName,
                 theExtensions,
@@ -910,10 +988,10 @@ impl ReadWriter {
     pub fn read_document_version(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_read_document_version(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_read_document_version(
                 self as *const Self,
                 aFileName,
                 theMsgDriver,
@@ -922,20 +1000,22 @@ impl ReadWriter {
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_ReadWriter_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:78 - `PCDM_ReadWriter::Open()`
     pub fn open(
-        aDriver: &crate::ffi::HandleStorageBaseDriver,
+        aDriver: &crate::ffi_types::HandleStorageBaseDriver,
         aFileName: &crate::t_collection::ExtendedString,
         anOpenMode: crate::storage::OpenMode,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_open(aDriver, aFileName, anOpenMode.into())
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_open(aDriver, aFileName, anOpenMode.into())
         })
     }
 
@@ -943,28 +1023,30 @@ impl ReadWriter {
     /// returns the convenient Reader for a File.
     pub fn reader(
         aFileName: &crate::t_collection::ExtendedString,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReadWriter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_reader(
-                aFileName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_reader(aFileName),
+            ))
         }
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:86 - `PCDM_ReadWriter::Writer()`
-    pub fn writer() -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
+    pub fn writer() -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReadWriter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_writer()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_writer(),
+            ))
         }
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:88 - `PCDM_ReadWriter::WriteFileFormat()`
     pub fn write_file_format(
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_write_file_format(aData, aDocument)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_write_file_format(aData, aDocument)
         })
     }
 
@@ -977,7 +1059,7 @@ impl ReadWriter {
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReadWriter_file_format_extendedstring(aFileName),
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_file_format_extendedstring(aFileName),
             ))
         }
     }
@@ -987,12 +1069,12 @@ impl ReadWriter {
     /// string if the file could not be read or does not have
     /// a FileFormat information.
     pub fn file_format_istream_handlestoragedata(
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theData: &mut crate::ffi::HandleStorageData,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theData: &mut crate::ffi_types::HandleStorageData,
     ) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReadWriter_file_format_istream_handlestoragedata(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_file_format_istream_handlestoragedata(
                     theIStream, theData,
                 ),
             ))
@@ -1003,7 +1085,7 @@ impl ReadWriter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_ReadWriter_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1011,14 +1093,16 @@ impl ReadWriter {
     }
 
     /// **Source:** `PCDM_ReadWriter.hxx`:103 - `PCDM_ReadWriter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_ReadWriter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_ReadWriter_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1027,23 +1111,28 @@ impl ReadWriter {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_ReadWriter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1051,7 +1140,7 @@ impl ReadWriter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_ReadWriter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1064,58 +1153,72 @@ impl ReadWriter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMReadWriter;
+pub use crate::ffi_types::HandlePCDMReadWriter;
 
 unsafe impl crate::CppDeletable for HandlePCDMReadWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMReadWriter_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMReadWriter_destructor(ptr);
     }
 }
 
 impl HandlePCDMReadWriter {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter
-    pub fn get(&self) -> &crate::ffi::PCDM_ReadWriter {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMReadWriter_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReadWriter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReadWriter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_ReadWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMReadWriter_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_ReadWriter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReadWriter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMReadWriter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1125,9 +1228,11 @@ impl HandlePCDMReadWriter {
     /// Returns `None` if the handle does not point to a `PCDM_ReadWriter_1` (or subclass).
     pub fn downcast_to_read_writer_1(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter1>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePCDMReadWriter1>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReadWriter_downcast_to_HandlePCDMReadWriter1(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMReadWriter_downcast_to_HandlePCDMReadWriter1(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1142,11 +1247,11 @@ impl HandlePCDMReadWriter {
 // ========================
 
 /// **Source:** `PCDM_ReadWriter_1.hxx`:36 - `PCDM_ReadWriter_1`
-pub use crate::ffi::PCDM_ReadWriter_1 as ReadWriter_1;
+pub use crate::ffi_types::PCDM_ReadWriter_1 as ReadWriter_1;
 
 unsafe impl crate::CppDeletable for ReadWriter_1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_ReadWriter_1_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_destructor(ptr);
     }
 }
 
@@ -1154,7 +1259,9 @@ impl ReadWriter_1 {
     /// **Source:** `PCDM_ReadWriter_1.hxx`:40 - `PCDM_ReadWriter_1::PCDM_ReadWriter_1()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_1_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_ctor(),
+            ))
         }
     }
 
@@ -1162,20 +1269,20 @@ impl ReadWriter_1 {
     /// returns PCDM_ReadWriter_1.
     pub fn version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_1_version(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_version(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `PCDM_ReadWriter_1.hxx`:45 - `PCDM_ReadWriter_1::WriteReferenceCounter()`
     pub fn write_reference_counter(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_write_reference_counter(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_write_reference_counter(
                 self as *const Self,
                 aData,
                 aDocument,
@@ -1186,12 +1293,12 @@ impl ReadWriter_1 {
     /// **Source:** `PCDM_ReadWriter_1.hxx`:49 - `PCDM_ReadWriter_1::WriteReferences()`
     pub fn write_references(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         theReferencerFileName: &crate::t_collection::ExtendedString,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_write_references(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_write_references(
                 self as *const Self,
                 aData,
                 aDocument,
@@ -1203,22 +1310,30 @@ impl ReadWriter_1 {
     /// **Source:** `PCDM_ReadWriter_1.hxx`:54 - `PCDM_ReadWriter_1::WriteExtensions()`
     pub fn write_extensions(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_write_extensions(self as *const Self, aData, aDocument)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_write_extensions(
+                self as *const Self,
+                aData,
+                aDocument,
+            )
         })
     }
 
     /// **Source:** `PCDM_ReadWriter_1.hxx`:58 - `PCDM_ReadWriter_1::WriteVersion()`
     pub fn write_version(
         &self,
-        aData: &crate::ffi::HandleStorageData,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aData: &crate::ffi_types::HandleStorageData,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_write_version(self as *const Self, aData, aDocument)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_write_version(
+                self as *const Self,
+                aData,
+                aDocument,
+            )
         })
     }
 
@@ -1226,10 +1341,10 @@ impl ReadWriter_1 {
     pub fn read_reference_counter(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_read_reference_counter(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_read_reference_counter(
                 self as *const Self,
                 aFileName,
                 theMsgDriver,
@@ -1241,11 +1356,11 @@ impl ReadWriter_1 {
     pub fn read_references(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theReferences: &mut crate::ffi::PCDM_SequenceOfReference,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theReferences: &mut crate::ffi_types::PCDM_SequenceOfReference,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_read_references(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_read_references(
                 self as *const Self,
                 aFileName,
                 theReferences,
@@ -1258,11 +1373,11 @@ impl ReadWriter_1 {
     pub fn read_extensions(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theExtensions: &mut crate::ffi::TColStd_SequenceOfExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theExtensions: &mut crate::ffi_types::TColStd_SequenceOfExtendedString,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_read_extensions(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_read_extensions(
                 self as *const Self,
                 aFileName,
                 theExtensions,
@@ -1275,10 +1390,10 @@ impl ReadWriter_1 {
     pub fn read_document_version(
         &self,
         aFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_read_document_version(
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_read_document_version(
                 self as *const Self,
                 aFileName,
                 theMsgDriver,
@@ -1287,9 +1402,11 @@ impl ReadWriter_1 {
     }
 
     /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_ReadWriter_1_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1297,7 +1414,7 @@ impl ReadWriter_1 {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_ReadWriter_1_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1305,14 +1422,16 @@ impl ReadWriter_1 {
     }
 
     /// **Source:** `PCDM_ReadWriter_1.hxx`:79 - `PCDM_ReadWriter_1::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_ReadWriter_1_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_get_type_descriptor()))
+        }
     }
 
     /// Upcast to PCDM_ReadWriter
     pub fn as_read_writer(&self) -> &ReadWriter {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_as_PCDM_ReadWriter(
                 self as *const Self,
             ))
         }
@@ -1321,16 +1440,18 @@ impl ReadWriter_1 {
     /// Upcast to PCDM_ReadWriter (mutable)
     pub fn as_read_writer_mut(&mut self) -> &mut ReadWriter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_ReadWriter_1_as_PCDM_ReadWriter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_as_PCDM_ReadWriter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1339,34 +1460,42 @@ impl ReadWriter_1 {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_ReadWriter_1_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter1> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReadWriter1> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReadWriter_1_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1374,7 +1503,7 @@ impl ReadWriter_1 {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_ReadWriter_1_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1387,67 +1516,83 @@ impl ReadWriter_1 {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReadWriter_1_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReadWriter_1_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMReadWriter1;
+pub use crate::ffi_types::HandlePCDMReadWriter1;
 
 unsafe impl crate::CppDeletable for HandlePCDMReadWriter1 {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMReadWriter1_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_destructor(ptr);
     }
 }
 
 impl HandlePCDMReadWriter1 {
     /// Dereference this Handle to access the underlying PCDM_ReadWriter_1
-    pub fn get(&self) -> &crate::ffi::PCDM_ReadWriter_1 {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMReadWriter1_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_ReadWriter_1 {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReadWriter_1
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReadWriter_1 {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_ReadWriter_1 {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMReadWriter1_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<PCDM_ReadWriter>
-    pub fn to_handle_read_writer(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMReadWriter> {
+    pub fn to_handle_read_writer(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReadWriter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReadWriter1_to_HandlePCDMReadWriter(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_to_HandlePCDMReadWriter(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PCDM_ReadWriter_1> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReadWriter1_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMReadWriter1_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1458,11 +1603,11 @@ impl HandlePCDMReadWriter1 {
 // ========================
 
 /// **Source:** `PCDM_Reader.hxx`:37 - `PCDM_Reader`
-pub use crate::ffi::PCDM_Reader as Reader;
+pub use crate::ffi_types::PCDM_Reader as Reader;
 
 unsafe impl crate::CppDeletable for Reader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_Reader_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_Reader_destructor(ptr);
     }
 }
 
@@ -1472,64 +1617,70 @@ impl Reader {
     pub fn read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         &mut self,
         aFileName: &crate::t_collection::ExtendedString,
-        aNewDocument: &crate::ffi::HandleCDMDocument,
-        anApplication: &crate::ffi::HandleCDMApplication,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        aNewDocument: &crate::ffi_types::HandleCDMDocument,
+        anApplication: &crate::ffi_types::HandleCDMApplication,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Reader_read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, aFileName, aNewDocument, anApplication, theFilter, theProgress)
+            crate::ffi_extern_TKCDF::PCDM_Reader_read_extendedstring_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, aFileName, aNewDocument, anApplication, theFilter, theProgress)
         })
     }
 
     /// **Source:** `PCDM_Reader.hxx`:49 - `PCDM_Reader::Read()`
     pub fn read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(
         &mut self,
-        theIStream: &mut crate::ffi::Standard_IStream,
-        theStorageData: &crate::ffi::HandleStorageData,
-        theDoc: &crate::ffi::HandleCDMDocument,
-        theApplication: &crate::ffi::HandleCDMApplication,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        theIStream: &mut crate::ffi_types::Standard_IStream,
+        theStorageData: &crate::ffi_types::HandleStorageData,
+        theDoc: &crate::ffi_types::HandleCDMDocument,
+        theApplication: &crate::ffi_types::HandleCDMApplication,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Reader_read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theStorageData, theDoc, theApplication, theFilter, theProgress)
+            crate::ffi_extern_TKCDF::PCDM_Reader_read_istream_handlestoragedata_handlecdmdocument_handlecdmapplication_handlepcdmreaderfilter_progressrange(self as *mut Self, theIStream, theStorageData, theDoc, theApplication, theFilter, theProgress)
         })
     }
 
     /// **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::PCDM_Reader_get_status(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Reader_get_status(self as *const Self)
         }))
         .unwrap()
     }
 
     /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_Reader_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Reader_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::PCDM_Reader_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Reader_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `PCDM_Reader.hxx`:59 - `PCDM_Reader::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_Reader_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Reader_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_Reader_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_Reader_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1538,23 +1689,23 @@ impl Reader {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_Reader_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Reader_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1562,7 +1713,7 @@ impl Reader {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_Reader_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_Reader_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1575,58 +1726,68 @@ impl Reader {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Reader_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Reader_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMReader;
+pub use crate::ffi_types::HandlePCDMReader;
 
 unsafe impl crate::CppDeletable for HandlePCDMReader {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMReader_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMReader_destructor(ptr);
     }
 }
 
 impl HandlePCDMReader {
     /// Dereference this Handle to access the underlying PCDM_Reader
-    pub fn get(&self) -> &crate::ffi::PCDM_Reader {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMReader_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_Reader {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReader_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Reader
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Reader {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMReader_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReader_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_Reader> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReader_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMReader_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1636,11 +1797,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `BinDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleBinDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleBinDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1654,11 +1813,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleBinLDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1672,11 +1829,10 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_t_obj_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinTObjDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1690,11 +1846,10 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_xcaf_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinXCAFDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1708,9 +1863,11 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `PCDM_RetrievalDriver` (or subclass).
     pub fn downcast_to_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePCDMRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandlePCDMRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandlePCDMRetrievalDriver(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1724,11 +1881,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `StdDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_std_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleStdDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleStdDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1742,11 +1897,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `StdLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_std_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleStdLDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleStdLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1760,11 +1913,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleXmlDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleXmlDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1778,11 +1929,9 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1796,11 +1945,10 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_t_obj_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlTObjDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1814,11 +1962,10 @@ impl HandlePCDMReader {
     /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_xcaf_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMReader_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMReader_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1839,11 +1986,11 @@ impl HandlePCDMReader {
 /// or attributes that must be retrieved only.
 /// In addition it is possible to define one or several subtrees (by entry) which must be
 /// retrieved during the reading. Other labels are created, but no one attribute on them.
-pub use crate::ffi::PCDM_ReaderFilter as ReaderFilter;
+pub use crate::ffi_types::PCDM_ReaderFilter as ReaderFilter;
 
 unsafe impl crate::CppDeletable for ReaderFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_ReaderFilter_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_ReaderFilter_destructor(ptr);
     }
 }
 
@@ -1852,18 +1999,20 @@ impl ReaderFilter {
     /// Creates an empty filter, so, all will be retrieved if nothing else is defined.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReaderFilter_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_ctor(),
+            ))
         }
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:50 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     /// Creates a filter to skip only one type of attributes.
     pub fn new_handlestandardtype(
-        theSkipped: &crate::ffi::HandleStandardType,
+        theSkipped: &crate::ffi_types::HandleStandardType,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReaderFilter_ctor_handlestandardtype(theSkipped),
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_ctor_handlestandardtype(theSkipped),
             ))
         }
     }
@@ -1876,7 +2025,7 @@ impl ReaderFilter {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReaderFilter_ctor_asciistring(theEntryToRead),
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_ctor_asciistring(theEntryToRead),
             ))
         }
     }
@@ -1884,20 +2033,23 @@ impl ReaderFilter {
     /// **Source:** `PCDM_ReaderFilter.hxx`:57 - `PCDM_ReaderFilter::PCDM_ReaderFilter()`
     /// Creates a filter to append the content of file to open to existing document.
     pub fn new_appendmode(
-        theAppend: &crate::ffi::PCDM_ReaderFilter_AppendMode,
+        theAppend: &crate::ffi_types::PCDM_ReaderFilter_AppendMode,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReaderFilter_ctor_appendmode(theAppend),
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_ctor_appendmode(theAppend),
             ))
         }
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:63 - `PCDM_ReaderFilter::AddSkipped()`
     /// Adds skipped attribute by type.
-    pub fn add_skipped_handlestandardtype(&mut self, theSkipped: &crate::ffi::HandleStandardType) {
+    pub fn add_skipped_handlestandardtype(
+        &mut self,
+        theSkipped: &crate::ffi_types::HandleStandardType,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_add_skipped_handlestandardtype(
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_add_skipped_handlestandardtype(
                 self as *mut Self,
                 theSkipped,
             )
@@ -1908,15 +2060,21 @@ impl ReaderFilter {
     /// Adds skipped attribute by type name.
     pub fn add_skipped_asciistring(&mut self, theSkipped: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_add_skipped_asciistring(self as *mut Self, theSkipped)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_add_skipped_asciistring(
+                self as *mut Self,
+                theSkipped,
+            )
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:75 - `PCDM_ReaderFilter::AddRead()`
     /// Adds attribute to read by type. Disables the skipped attributes added.
-    pub fn add_read_handlestandardtype(&mut self, theRead: &crate::ffi::HandleStandardType) {
+    pub fn add_read_handlestandardtype(&mut self, theRead: &crate::ffi_types::HandleStandardType) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_add_read_handlestandardtype(self as *mut Self, theRead)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_add_read_handlestandardtype(
+                self as *mut Self,
+                theRead,
+            )
         })
     }
 
@@ -1924,7 +2082,10 @@ impl ReaderFilter {
     /// Adds attribute to read by type name. Disables the skipped attributes added.
     pub fn add_read_asciistring(&mut self, theRead: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_add_read_asciistring(self as *mut Self, theRead)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_add_read_asciistring(
+                self as *mut Self,
+                theRead,
+            )
         })
     }
 
@@ -1932,24 +2093,26 @@ impl ReaderFilter {
     /// Adds sub-tree path (like "0:2").
     pub fn add_path(&mut self, theEntryToRead: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_add_path(self as *mut Self, theEntryToRead)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_add_path(self as *mut Self, theEntryToRead)
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:90 - `PCDM_ReaderFilter::Clear()`
     /// Makes filter pass all data.
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::PCDM_ReaderFilter_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:93 - `PCDM_ReaderFilter::IsPassed()`
     /// Returns true if attribute must be read.
     pub fn is_passed_handlestandardtype(
         &self,
-        theAttributeID: &crate::ffi::HandleStandardType,
+        theAttributeID: &crate::ffi_types::HandleStandardType,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_passed_handlestandardtype(
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_passed_handlestandardtype(
                 self as *const Self,
                 theAttributeID,
             )
@@ -1960,7 +2123,10 @@ impl ReaderFilter {
     /// Returns true if attribute must be read.
     pub fn is_passed_attr(&self, theAttributeType: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_passed_attr(self as *const Self, theAttributeType)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_passed_attr(
+                self as *const Self,
+                theAttributeType,
+            )
         })
     }
 
@@ -1968,7 +2134,10 @@ impl ReaderFilter {
     /// Returns true if content of the label must be read.
     pub fn is_passed_asciistring(&self, theEntry: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_passed_asciistring(self as *const Self, theEntry)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_passed_asciistring(
+                self as *const Self,
+                theEntry,
+            )
         })
     }
 
@@ -1976,7 +2145,10 @@ impl ReaderFilter {
     /// Returns true if some sub-label of the given label is passed.
     pub fn is_sub_passed_asciistring(&self, theEntry: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_sub_passed_asciistring(self as *const Self, theEntry)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_sub_passed_asciistring(
+                self as *const Self,
+                theEntry,
+            )
         })
     }
 
@@ -1984,15 +2156,17 @@ impl ReaderFilter {
     /// Returns true if only part of the document tree will be retrieved.
     pub fn is_part_tree(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_part_tree(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_part_tree(self as *mut Self)
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:107 - `PCDM_ReaderFilter::Mode()`
     /// Returns the append mode.
-    pub fn mode(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter_AppendMode {
+    pub fn mode(&mut self) -> &mut crate::ffi_types::PCDM_ReaderFilter_AppendMode {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::PCDM_ReaderFilter_mode(self as *mut Self)))
+            &mut *(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReaderFilter_mode(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -2000,7 +2174,7 @@ impl ReaderFilter {
     /// Returns true if appending to the document is performed.
     pub fn is_append_mode(&mut self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_append_mode(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_append_mode(self as *mut Self)
         })
     }
 
@@ -2010,42 +2184,48 @@ impl ReaderFilter {
     /// iteration start.
     pub fn start_iteration(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_start_iteration(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_start_iteration(self as *mut Self)
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:120 - `PCDM_ReaderFilter::Up()`
     /// Iteration to the child label.
     pub fn up(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::PCDM_ReaderFilter_up(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_up(self as *mut Self)
+        })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:122 - `PCDM_ReaderFilter::Down()`
     /// Iteration to the child with defined tag.
     pub fn down(&mut self, theTag: &i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_down(self as *mut Self, theTag)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_down(self as *mut Self, theTag)
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:124 - `PCDM_ReaderFilter::IsPassed()`
     /// Returns true if content of the currently iterated label must be read.
     pub fn is_passed(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::PCDM_ReaderFilter_is_passed(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_passed(self as *const Self)
+        })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:126 - `PCDM_ReaderFilter::IsSubPassed()`
     /// Returns true if some sub-label of the currently iterated label is passed.
     pub fn is_sub_passed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_is_sub_passed(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_is_sub_passed(self as *const Self)
         })
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_ReaderFilter_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReaderFilter_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2053,7 +2233,7 @@ impl ReaderFilter {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_ReaderFilter_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2061,14 +2241,16 @@ impl ReaderFilter {
     }
 
     /// **Source:** `PCDM_ReaderFilter.hxx`:128 - `PCDM_ReaderFilter::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_ReaderFilter_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReaderFilter_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_ReaderFilter_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReaderFilter_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -2077,34 +2259,42 @@ impl ReaderFilter {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_ReaderFilter_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReaderFilter> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReaderFilter> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_ReaderFilter_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2112,7 +2302,7 @@ impl ReaderFilter {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_ReaderFilter_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2125,60 +2315,72 @@ impl ReaderFilter {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReaderFilter_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReaderFilter_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMReaderFilter;
+pub use crate::ffi_types::HandlePCDMReaderFilter;
 
 unsafe impl crate::CppDeletable for HandlePCDMReaderFilter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMReaderFilter_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_destructor(ptr);
     }
 }
 
 impl HandlePCDMReaderFilter {
     /// Dereference this Handle to access the underlying PCDM_ReaderFilter
-    pub fn get(&self) -> &crate::ffi::PCDM_ReaderFilter {
+    pub fn get(&self) -> &crate::ffi_types::PCDM_ReaderFilter {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePCDMReaderFilter_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReaderFilter
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReaderFilter {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_ReaderFilter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMReaderFilter_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_ReaderFilter> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReaderFilter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMReaderFilter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -2189,18 +2391,22 @@ impl HandlePCDMReaderFilter {
 // ========================
 
 /// **Source:** `PCDM_Reference.hxx`:26 - `PCDM_Reference`
-pub use crate::ffi::PCDM_Reference as Reference;
+pub use crate::ffi_types::PCDM_Reference as Reference;
 
 unsafe impl crate::CppDeletable for Reference {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_Reference_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_Reference_destructor(ptr);
     }
 }
 
 impl Reference {
     /// **Source:** `PCDM_Reference.hxx`:31 - `PCDM_Reference::PCDM_Reference()`
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_Reference_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Reference_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `PCDM_Reference.hxx`:33 - `PCDM_Reference::PCDM_Reference()`
@@ -2211,7 +2417,7 @@ impl Reference {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_Reference_ctor_int_extendedstring_int(
+                crate::ffi_extern_TKCDF::PCDM_Reference_ctor_int_extendedstring_int(
                     aReferenceIdentifier,
                     aFileName,
                     aDocumentVersion,
@@ -2223,23 +2429,23 @@ impl Reference {
     /// **Source:** `PCDM_Reference.hxx`:37 - `PCDM_Reference::ReferenceIdentifier()`
     pub fn reference_identifier(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reference_reference_identifier(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Reference_reference_identifier(self as *const Self)
         })
     }
 
     /// **Source:** `PCDM_Reference.hxx`:39 - `PCDM_Reference::FileName()`
     pub fn file_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_Reference_file_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Reference_file_name(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `PCDM_Reference.hxx`:41 - `PCDM_Reference::DocumentVersion()`
     pub fn document_version(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Reference_document_version(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Reference_document_version(self as *const Self)
         })
     }
 }
@@ -2249,11 +2455,11 @@ impl Reference {
 // ========================
 
 /// **Source:** `PCDM_ReferenceIterator.hxx`:34 - `PCDM_ReferenceIterator`
-pub use crate::ffi::PCDM_ReferenceIterator as ReferenceIterator;
+pub use crate::ffi_types::PCDM_ReferenceIterator as ReferenceIterator;
 
 unsafe impl crate::CppDeletable for ReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_ReferenceIterator_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_destructor(ptr);
     }
 }
 
@@ -2261,11 +2467,13 @@ impl ReferenceIterator {
     /// **Source:** `PCDM_ReferenceIterator.hxx`:39 - `PCDM_ReferenceIterator::PCDM_ReferenceIterator()`
     /// Warning! The constructor does not initialization.
     pub fn new_handlemessagemessenger(
-        theMessageDriver: &crate::ffi::HandleMessageMessenger,
+        theMessageDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReferenceIterator_ctor_handlemessagemessenger(theMessageDriver),
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_ctor_handlemessagemessenger(
+                    theMessageDriver,
+                ),
             ))
         }
     }
@@ -2273,13 +2481,13 @@ impl ReferenceIterator {
     /// **Source:** `PCDM_ReferenceIterator.hxx`:41 - `PCDM_ReferenceIterator::LoadReferences()`
     pub fn load_references(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
-        aMetaData: &crate::ffi::HandleCDMMetaData,
-        anApplication: &crate::ffi::HandleCDMApplication,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
+        aMetaData: &crate::ffi_types::HandleCDMMetaData,
+        anApplication: &crate::ffi_types::HandleCDMApplication,
         UseStorageConfiguration: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_load_references(
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_load_references(
                 self as *mut Self,
                 aDocument,
                 aMetaData,
@@ -2290,16 +2498,16 @@ impl ReferenceIterator {
     }
 
     /// **Source:** `PCDM_ReferenceIterator.hxx`:46 - `PCDM_ReferenceIterator::Init()`
-    pub fn init(&mut self, aMetaData: &crate::ffi::HandleCDMMetaData) {
+    pub fn init(&mut self, aMetaData: &crate::ffi_types::HandleCDMMetaData) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_init(self as *mut Self, aMetaData)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_init(self as *mut Self, aMetaData)
         })
     }
 
     /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_ReferenceIterator_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2309,7 +2517,7 @@ impl ReferenceIterator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_ReferenceIterator_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2317,50 +2525,64 @@ impl ReferenceIterator {
     }
 
     /// **Source:** `PCDM_ReferenceIterator.hxx`:48 - `PCDM_ReferenceIterator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_ReferenceIterator_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_ReferenceIterator_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMReferenceIterator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReferenceIterator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_ReferenceIterator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2368,7 +2590,7 @@ impl ReferenceIterator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_ReferenceIterator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2381,62 +2603,72 @@ impl ReferenceIterator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_ReferenceIterator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_ReferenceIterator_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMReferenceIterator;
+pub use crate::ffi_types::HandlePCDMReferenceIterator;
 
 unsafe impl crate::CppDeletable for HandlePCDMReferenceIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMReferenceIterator_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_destructor(ptr);
     }
 }
 
 impl HandlePCDMReferenceIterator {
     /// Dereference this Handle to access the underlying PCDM_ReferenceIterator
-    pub fn get(&self) -> &crate::ffi::PCDM_ReferenceIterator {
+    pub fn get(&self) -> &crate::ffi_types::PCDM_ReferenceIterator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePCDMReferenceIterator_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_ReferenceIterator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_ReferenceIterator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_ReferenceIterator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMReferenceIterator_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<PCDM_ReferenceIterator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMReferenceIterator_to_HandleStandardTransient(
+                crate::ffi_extern_TKCDF::HandlePCDMReferenceIterator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2449,11 +2681,11 @@ impl HandlePCDMReferenceIterator {
 // ========================
 
 /// **Source:** `PCDM_RetrievalDriver.hxx`:33 - `PCDM_RetrievalDriver`
-pub use crate::ffi::PCDM_RetrievalDriver as RetrievalDriver;
+pub use crate::ffi_types::PCDM_RetrievalDriver as RetrievalDriver;
 
 unsafe impl crate::CppDeletable for RetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_RetrievalDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_destructor(ptr);
     }
 }
 
@@ -2461,7 +2693,7 @@ impl RetrievalDriver {
     /// **Source:** `PCDM_RetrievalDriver.hxx`:46 - `PCDM_RetrievalDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_set_format(self as *mut Self, aformat)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_set_format(self as *mut Self, aformat)
         })
     }
 
@@ -2469,15 +2701,15 @@ impl RetrievalDriver {
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_RetrievalDriver_get_format(self as *const Self),
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_get_format(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_RetrievalDriver_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -2486,20 +2718,26 @@ impl RetrievalDriver {
     /// **Source:** `PCDM_RetrievalDriver.hxx`:38 - `PCDM_RetrievalDriver::DocumentVersion()`
     pub fn document_version(
         theFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_document_version(theFileName, theMsgDriver)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_document_version(
+                theFileName,
+                theMsgDriver,
+            )
         })
     }
 
     /// **Source:** `PCDM_RetrievalDriver.hxx`:42 - `PCDM_RetrievalDriver::ReferenceCounter()`
     pub fn reference_counter(
         theFileName: &crate::t_collection::ExtendedString,
-        theMsgDriver: &crate::ffi::HandleMessageMessenger,
+        theMsgDriver: &crate::ffi_types::HandleMessageMessenger,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_reference_counter(theFileName, theMsgDriver)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_reference_counter(
+                theFileName,
+                theMsgDriver,
+            )
         })
     }
 
@@ -2507,7 +2745,7 @@ impl RetrievalDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_RetrievalDriver_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2515,14 +2753,18 @@ impl RetrievalDriver {
     }
 
     /// **Source:** `PCDM_RetrievalDriver.hxx`:50 - `PCDM_RetrievalDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_RetrievalDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to PCDM_Reader
     pub fn as_reader(&self) -> &Reader {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_as_PCDM_Reader(
                 self as *const Self,
             ))
         }
@@ -2531,27 +2773,31 @@ impl RetrievalDriver {
     /// Upcast to PCDM_Reader (mutable)
     pub fn as_reader_mut(&mut self) -> &mut Reader {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_RetrievalDriver_as_PCDM_Reader_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_as_PCDM_Reader_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_RetrievalDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
@@ -2559,13 +2805,13 @@ impl RetrievalDriver {
     pub fn read(
         &mut self,
         aFileName: &crate::t_collection::ExtendedString,
-        aNewDocument: &crate::ffi::HandleCDMDocument,
-        anApplication: &crate::ffi::HandleCDMApplication,
-        theFilter: &crate::ffi::HandlePCDMReaderFilter,
+        aNewDocument: &crate::ffi_types::HandleCDMDocument,
+        anApplication: &crate::ffi_types::HandleCDMApplication,
+        theFilter: &crate::ffi_types::HandlePCDMReaderFilter,
         theProgress: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_Read(
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_Read(
                 self as *mut Self,
                 aFileName,
                 aNewDocument,
@@ -2579,22 +2825,28 @@ impl RetrievalDriver {
     /// Inherited: **Source:** `PCDM_Reader.hxx`:57 - `PCDM_Reader::GetStatus()`
     pub fn get_status(&self) -> crate::pcdm::ReaderStatus {
         crate::pcdm::ReaderStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_GetStatus(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_GetStatus(self as *const Self)
         }))
         .unwrap()
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2602,7 +2854,7 @@ impl RetrievalDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_RetrievalDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -2615,71 +2867,81 @@ impl RetrievalDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_RetrievalDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_RetrievalDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMRetrievalDriver;
+pub use crate::ffi_types::HandlePCDMRetrievalDriver;
 
 unsafe impl crate::CppDeletable for HandlePCDMRetrievalDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMRetrievalDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_destructor(ptr);
     }
 }
 
 impl HandlePCDMRetrievalDriver {
     /// Dereference this Handle to access the underlying PCDM_RetrievalDriver
-    pub fn get(&self) -> &crate::ffi::PCDM_RetrievalDriver {
+    pub fn get(&self) -> &crate::ffi_types::PCDM_RetrievalDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePCDMRetrievalDriver_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_RetrievalDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_RetrievalDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_RetrievalDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMRetrievalDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<PCDM_Reader>
-    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMReader> {
+    pub fn to_handle_reader(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMReader> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMRetrievalDriver_to_HandlePCDMReader(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_to_HandlePCDMReader(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PCDM_RetrievalDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMRetrievalDriver_to_HandleStandardTransient(
+                crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2691,9 +2953,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `BinDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleBinDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2707,9 +2969,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleBinLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2723,9 +2985,10 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_t_obj_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinTObjDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleBinTObjDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2739,9 +3002,10 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_bin_xcaf_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinXCAFDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleBinXCAFDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2755,9 +3019,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `StdDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_std_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleStdDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2771,9 +3035,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `StdLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_std_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleStdLDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleStdLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2787,9 +3051,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleXmlDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2803,9 +3067,9 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_l_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentRetrievalDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleXmlLDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2819,9 +3083,10 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_t_obj_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlTObjDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleXmlTObjDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2835,9 +3100,10 @@ impl HandlePCDMRetrievalDriver {
     /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentRetrievalDriver` (or subclass).
     pub fn downcast_to_xml_xcaf_drivers_document_retrieval_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentRetrievalDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentRetrievalDriver>>
+    {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMRetrievalDriver_downcast_to_HandleXmlXCAFDriversDocumentRetrievalDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -2866,11 +3132,11 @@ impl HandlePCDMRetrievalDriver {
 /// CDMShape_Document.    This  means   that a   client
 /// application will already be able to extract a CDMShape_Document
 /// of the file, if the Shape Schema remains unchanged.
-pub use crate::ffi::PCDM_StorageDriver as StorageDriver;
+pub use crate::ffi_types::PCDM_StorageDriver as StorageDriver;
 
 unsafe impl crate::CppDeletable for StorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_StorageDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_StorageDriver_destructor(ptr);
     }
 }
 
@@ -2879,7 +3145,9 @@ impl StorageDriver {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::PCDM_StorageDriver_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_ctor(),
+            ))
         }
     }
 
@@ -2887,11 +3155,14 @@ impl StorageDriver {
     /// raises NotImplemented.
     pub fn make_handlecdmdocument(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMDocument> {
+        aDocument: &crate::ffi_types::HandleCDMDocument,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMDocument> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_StorageDriver_make_handlecdmdocument(self as *mut Self, aDocument),
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_make_handlecdmdocument(
+                    self as *mut Self,
+                    aDocument,
+                ),
             ))
         }
     }
@@ -2901,11 +3172,11 @@ impl StorageDriver {
     /// by the previous Make method.
     pub fn make_handlecdmdocument_sequenceofdocument(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
-        Documents: &mut crate::ffi::PCDM_SequenceOfDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
+        Documents: &mut crate::ffi_types::PCDM_SequenceOfDocument,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_make_handlecdmdocument_sequenceofdocument(
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_make_handlecdmdocument_sequenceofdocument(
                 self as *mut Self,
                 aDocument,
                 Documents,
@@ -2922,17 +3193,12 @@ impl StorageDriver {
     /// document and the Schema method to write the persistent document.
     pub fn write_handlecdmdocument_extendedstring_progressrange(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         aFileName: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(
-                self as *mut Self,
-                aDocument,
-                aFileName,
-                theRange,
-            )
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_write_handlecdmdocument_extendedstring_progressrange(self as *mut Self, aDocument, aFileName, theRange)
         })
     }
 
@@ -2940,24 +3206,19 @@ impl StorageDriver {
     /// Write <theDocument> to theOStream
     pub fn write_handlecdmdocument_ostream_progressrange(
         &mut self,
-        theDocument: &crate::ffi::HandleCDMDocument,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theDocument: &crate::ffi_types::HandleCDMDocument,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_write_handlecdmdocument_ostream_progressrange(
-                self as *mut Self,
-                theDocument,
-                theOStream,
-                theRange,
-            )
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_write_handlecdmdocument_ostream_progressrange(self as *mut Self, theDocument, theOStream, theRange)
         })
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:76 - `PCDM_StorageDriver::SetFormat()`
     pub fn set_format(&mut self, aformat: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_set_format(self as *mut Self, aformat)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_set_format(self as *mut Self, aformat)
         })
     }
 
@@ -2965,27 +3226,29 @@ impl StorageDriver {
     pub fn get_format(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_StorageDriver_get_format(self as *const Self),
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_get_format(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:80 - `PCDM_StorageDriver::IsError()`
     pub fn is_error(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::PCDM_StorageDriver_is_error(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_is_error(self as *const Self)
+        })
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:82 - `PCDM_StorageDriver::SetIsError()`
     pub fn set_is_error(&mut self, theIsError: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_set_is_error(self as *mut Self, theIsError)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_set_is_error(self as *mut Self, theIsError)
         })
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:84 - `PCDM_StorageDriver::GetStoreStatus()`
     pub fn get_store_status(&self) -> crate::pcdm::StoreStatus {
         crate::pcdm::StoreStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_get_store_status(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_get_store_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -2993,7 +3256,7 @@ impl StorageDriver {
     /// **Source:** `PCDM_StorageDriver.hxx`:86 - `PCDM_StorageDriver::SetStoreStatus()`
     pub fn set_store_status(&mut self, theStoreStatus: crate::pcdm::StoreStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_set_store_status(
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_set_store_status(
                 self as *mut Self,
                 theStoreStatus.into(),
             )
@@ -3001,9 +3264,9 @@ impl StorageDriver {
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_StorageDriver_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_StorageDriver_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -3013,7 +3276,7 @@ impl StorageDriver {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::PCDM_StorageDriver_get_type_name(),
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -3021,14 +3284,18 @@ impl StorageDriver {
     }
 
     /// **Source:** `PCDM_StorageDriver.hxx`:88 - `PCDM_StorageDriver::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_StorageDriver_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to PCDM_Writer
     pub fn as_writer(&self) -> &Writer {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_StorageDriver_as_PCDM_Writer(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_StorageDriver_as_PCDM_Writer(
                 self as *const Self,
             ))
         }
@@ -3037,52 +3304,62 @@ impl StorageDriver {
     /// Upcast to PCDM_Writer (mutable)
     pub fn as_writer_mut(&mut self) -> &mut Writer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_StorageDriver_as_PCDM_Writer_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_as_PCDM_Writer_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_StorageDriver_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_StorageDriver_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::PCDM_StorageDriver_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -3090,7 +3367,7 @@ impl StorageDriver {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_StorageDriver_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3103,71 +3380,83 @@ impl StorageDriver {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_StorageDriver_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_StorageDriver_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMStorageDriver;
+pub use crate::ffi_types::HandlePCDMStorageDriver;
 
 unsafe impl crate::CppDeletable for HandlePCDMStorageDriver {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMStorageDriver_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_destructor(ptr);
     }
 }
 
 impl HandlePCDMStorageDriver {
     /// Dereference this Handle to access the underlying PCDM_StorageDriver
-    pub fn get(&self) -> &crate::ffi::PCDM_StorageDriver {
+    pub fn get(&self) -> &crate::ffi_types::PCDM_StorageDriver {
         unsafe {
-            &*crate::check_result(crate::ffi::HandlePCDMStorageDriver_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_StorageDriver
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_StorageDriver {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_StorageDriver {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMStorageDriver_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<PCDM_StorageDriver> to Handle<PCDM_Writer>
-    pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi::HandlePCDMWriter> {
+    pub fn to_handle_writer(&self) -> crate::OwnedPtr<crate::ffi_types::HandlePCDMWriter> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMStorageDriver_to_HandlePCDMWriter(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_to_HandlePCDMWriter(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<PCDM_StorageDriver> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMStorageDriver_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3177,11 +3466,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `BinDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleBinDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3195,11 +3482,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_l_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinLDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinLDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleBinLDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3213,9 +3498,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_t_obj_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinTObjDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinTObjDriversDocumentStorageDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleBinTObjDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3229,9 +3514,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_xcaf_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinXCAFDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3245,11 +3530,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleXmlDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3263,11 +3546,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_l_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlLDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleXmlLDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3281,9 +3562,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_t_obj_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlTObjDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3297,9 +3578,9 @@ impl HandlePCDMStorageDriver {
     /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_xcaf_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMStorageDriver_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3314,11 +3595,11 @@ impl HandlePCDMStorageDriver {
 // ========================
 
 /// **Source:** `PCDM_Writer.hxx`:33 - `PCDM_Writer`
-pub use crate::ffi::PCDM_Writer as Writer;
+pub use crate::ffi_types::PCDM_Writer as Writer;
 
 unsafe impl crate::CppDeletable for Writer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::PCDM_Writer_destructor(ptr);
+        crate::ffi_extern_TKCDF::PCDM_Writer_destructor(ptr);
     }
 }
 
@@ -3326,17 +3607,12 @@ impl Writer {
     /// **Source:** `PCDM_Writer.hxx`:36 - `PCDM_Writer::Write()`
     pub fn write_handlecdmdocument_extendedstring_progressrange(
         &mut self,
-        aDocument: &crate::ffi::HandleCDMDocument,
+        aDocument: &crate::ffi_types::HandleCDMDocument,
         aFileName: &crate::t_collection::ExtendedString,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Writer_write_handlecdmdocument_extendedstring_progressrange(
-                self as *mut Self,
-                aDocument,
-                aFileName,
-                theRange,
-            )
+            crate::ffi_extern_TKCDF::PCDM_Writer_write_handlecdmdocument_extendedstring_progressrange(self as *mut Self, aDocument, aFileName, theRange)
         })
     }
 
@@ -3344,12 +3620,12 @@ impl Writer {
     /// Write <theDocument> to theOStream
     pub fn write_handlecdmdocument_ostream_progressrange(
         &mut self,
-        theDocument: &crate::ffi::HandleCDMDocument,
-        theOStream: &mut crate::ffi::Standard_OStream,
+        theDocument: &crate::ffi_types::HandleCDMDocument,
+        theOStream: &mut crate::ffi_types::Standard_OStream,
         theRange: &crate::message::ProgressRange,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Writer_write_handlecdmdocument_ostream_progressrange(
+            crate::ffi_extern_TKCDF::PCDM_Writer_write_handlecdmdocument_ostream_progressrange(
                 self as *mut Self,
                 theDocument,
                 theOStream,
@@ -3359,30 +3635,36 @@ impl Writer {
     }
 
     /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::PCDM_Writer_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Writer_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
-            std::ffi::CStr::from_ptr(crate::check_result(crate::ffi::PCDM_Writer_get_type_name()))
+            std::ffi::CStr::from_ptr(crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Writer_get_type_name(),
+            ))
         }
         .to_string_lossy()
         .into_owned()
     }
 
     /// **Source:** `PCDM_Writer.hxx`:47 - `PCDM_Writer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::PCDM_Writer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKCDF::PCDM_Writer_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::PCDM_Writer_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKCDF::PCDM_Writer_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -3391,23 +3673,23 @@ impl Writer {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::PCDM_Writer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKCDF::PCDM_Writer_as_Standard_Transient_mut(self as *mut Self),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_IsInstance(self as *const Self, theType)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -3415,7 +3697,7 @@ impl Writer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::PCDM_Writer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKCDF::PCDM_Writer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -3428,58 +3710,68 @@ impl Writer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_IncrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_DecrementRefCounter(self as *mut Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::PCDM_Writer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKCDF::PCDM_Writer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandlePCDMWriter;
+pub use crate::ffi_types::HandlePCDMWriter;
 
 unsafe impl crate::CppDeletable for HandlePCDMWriter {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandlePCDMWriter_destructor(ptr);
+        crate::ffi_extern_TKCDF::HandlePCDMWriter_destructor(ptr);
     }
 }
 
 impl HandlePCDMWriter {
     /// Dereference this Handle to access the underlying PCDM_Writer
-    pub fn get(&self) -> &crate::ffi::PCDM_Writer {
-        unsafe { &*crate::check_result(crate::ffi::HandlePCDMWriter_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::PCDM_Writer {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMWriter_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying PCDM_Writer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::PCDM_Writer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::PCDM_Writer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandlePCDMWriter_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKCDF::HandlePCDMWriter_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<PCDM_Writer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandlePCDMWriter_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKCDF::HandlePCDMWriter_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -3489,11 +3781,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `BinDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleBinDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleBinDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3507,11 +3797,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `BinLDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_l_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinLDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinLDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleBinLDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleBinLDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3525,11 +3813,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `BinTObjDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_t_obj_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinTObjDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinTObjDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleBinTObjDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleBinTObjDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3543,11 +3829,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `BinXCAFDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_bin_xcaf_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleBinXCAFDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleBinXCAFDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleBinXCAFDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3561,9 +3845,11 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `PCDM_StorageDriver` (or subclass).
     pub fn downcast_to_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandlePCDMStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandlePCDMStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandlePCDMStorageDriver(self as *const Self)
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandlePCDMStorageDriver(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -3577,11 +3863,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `XmlDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleXmlDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3595,11 +3879,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `XmlLDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_l_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlLDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlLDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlLDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleXmlLDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3613,11 +3895,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `XmlTObjDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_t_obj_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlTObjDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlTObjDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleXmlTObjDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3631,11 +3911,9 @@ impl HandlePCDMWriter {
     /// Returns `None` if the handle does not point to a `XmlXCAFDrivers_DocumentStorageDriver` (or subclass).
     pub fn downcast_to_xml_xcaf_drivers_document_storage_driver(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleXmlXCAFDriversDocumentStorageDriver>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleXmlXCAFDriversDocumentStorageDriver>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandlePCDMWriter_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKCDF::HandlePCDMWriter_downcast_to_HandleXmlXCAFDriversDocumentStorageDriver(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -3649,6 +3927,6 @@ impl HandlePCDMWriter {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     PCDM_SequenceOfDocument as SequenceOfDocument, PCDM_SequenceOfReference as SequenceOfReference,
 };

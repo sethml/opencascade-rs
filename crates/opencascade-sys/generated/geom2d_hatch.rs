@@ -11,11 +11,11 @@
 // ========================
 
 /// **Source:** `Geom2dHatch_Classifier.hxx`:34 - `Geom2dHatch_Classifier`
-pub use crate::ffi::Geom2dHatch_Classifier as Classifier;
+pub use crate::ffi_types::Geom2dHatch_Classifier as Classifier;
 
 unsafe impl crate::CppDeletable for Classifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Classifier_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_destructor(ptr);
     }
 }
 
@@ -24,9 +24,9 @@ impl Classifier {
     /// Empty constructor, undefined algorithm.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::Geom2dHatch_Classifier_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_ctor(),
+            ))
         }
     }
 
@@ -40,7 +40,9 @@ impl Classifier {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Classifier_ctor_elements_pnt2d_real(F, P, Tol),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_ctor_elements_pnt2d_real(
+                    F, P, Tol,
+                ),
             ))
         }
     }
@@ -50,7 +52,12 @@ impl Classifier {
     /// face described by <F>.
     pub fn perform(&mut self, F: &mut Elements, P: &crate::gp::Pnt2d, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_perform(self as *mut Self, F, P, Tol)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_perform(
+                self as *mut Self,
+                F,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -58,7 +65,7 @@ impl Classifier {
     /// Returns the result of the classification.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_state(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_state(self as *const Self)
         }))
         .unwrap()
     }
@@ -68,7 +75,7 @@ impl Classifier {
     /// rejection. The state is OUT.
     pub fn rejected(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_rejected(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_rejected(self as *const Self)
         })
     }
 
@@ -77,7 +84,7 @@ impl Classifier {
     /// state is IN.
     pub fn no_wires(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_no_wires(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_no_wires(self as *const Self)
         })
     }
 
@@ -87,7 +94,9 @@ impl Classifier {
     /// Edge containing the point.
     pub fn edge(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Classifier_edge(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_edge(
+                self as *const Self,
+            )))
         }
     }
 
@@ -96,7 +105,7 @@ impl Classifier {
     /// classification.
     pub fn edge_parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_edge_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_edge_parameter(self as *const Self)
         })
     }
 
@@ -105,7 +114,7 @@ impl Classifier {
     /// returned by Edge.
     pub fn position(&self) -> crate::int_res2d::Position {
         crate::int_res2d::Position::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Classifier_position(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Classifier_position(self as *const Self)
         }))
         .unwrap()
     }
@@ -116,11 +125,11 @@ impl Classifier {
 // ========================
 
 /// **Source:** `Geom2dHatch_Element.hxx`:27 - `Geom2dHatch_Element`
-pub use crate::ffi::Geom2dHatch_Element as Element;
+pub use crate::ffi_types::Geom2dHatch_Element as Element;
 
 unsafe impl crate::CppDeletable for Element {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Element_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_destructor(ptr);
     }
 }
 
@@ -128,7 +137,9 @@ impl Element {
     /// **Source:** `Geom2dHatch_Element.hxx`:32 - `Geom2dHatch_Element::Geom2dHatch_Element()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dHatch_Element_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_ctor(),
+            ))
         }
     }
 
@@ -140,7 +151,10 @@ impl Element {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Element_ctor_curve_orientation(Curve, Orientation.into()),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_ctor_curve_orientation(
+                    Curve,
+                    Orientation.into(),
+                ),
             ))
         }
     }
@@ -149,7 +163,9 @@ impl Element {
     /// Returns the curve associated to the element.
     pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Element_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -157,9 +173,9 @@ impl Element {
     /// Returns the curve associated to the element.
     pub fn change_curve(&mut self) -> &mut crate::geom2d_adaptor::Curve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_Element_change_curve(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_change_curve(self as *mut Self),
+            ))
         }
     }
 
@@ -167,7 +183,7 @@ impl Element {
     /// Sets the orientation of the element.
     pub fn orientation_orientation(&mut self, Orientation: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Element_orientation_orientation(
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_orientation_orientation(
                 self as *mut Self,
                 Orientation.into(),
             )
@@ -178,7 +194,7 @@ impl Element {
     /// Returns the orientation of the element.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Element_orientation(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Element_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -189,11 +205,11 @@ impl Element {
 // ========================
 
 /// **Source:** `Geom2dHatch_Elements.hxx`:33 - `Geom2dHatch_Elements`
-pub use crate::ffi::Geom2dHatch_Elements as Elements;
+pub use crate::ffi_types::Geom2dHatch_Elements as Elements;
 
 unsafe impl crate::CppDeletable for Elements {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Elements_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_destructor(ptr);
     }
 }
 
@@ -201,66 +217,73 @@ impl Elements {
     /// **Source:** `Geom2dHatch_Elements.hxx`:38 - `Geom2dHatch_Elements::Geom2dHatch_Elements()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dHatch_Elements_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_ctor(),
+            ))
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:42 - `Geom2dHatch_Elements::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_clear(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_clear(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:46 - `Geom2dHatch_Elements::Bind()`
     pub fn bind(&mut self, K: i32, I: &Element) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_bind(self as *mut Self, K, I)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_bind(self as *mut Self, K, I)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:48 - `Geom2dHatch_Elements::IsBound()`
     pub fn is_bound(&self, K: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_is_bound(self as *const Self, K)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_is_bound(self as *const Self, K)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:50 - `Geom2dHatch_Elements::UnBind()`
     pub fn un_bind(&mut self, K: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_un_bind(self as *mut Self, K)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_un_bind(self as *mut Self, K)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:52 - `Geom2dHatch_Elements::Find()`
     pub fn find(&self, K: i32) -> &Element {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Elements_find(self as *const Self, K)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_find(
+                self as *const Self,
+                K,
+            )))
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:56 - `Geom2dHatch_Elements::ChangeFind()`
     pub fn change_find(&mut self, K: i32) -> &mut Element {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_Elements_change_find(
-                self as *mut Self,
-                K,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_change_find(
+                    self as *mut Self,
+                    K,
+                ),
+            ))
         }
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:60 - `Geom2dHatch_Elements::CheckPoint()`
     pub fn check_point(&mut self, P: &mut crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_check_point(self as *mut Self, P)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_check_point(self as *mut Self, P)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:62 - `Geom2dHatch_Elements::Reject()`
     pub fn reject(&self, P: &crate::gp::Pnt2d) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_reject(self as *const Self, P)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_reject(self as *const Self, P)
         })
     }
 
@@ -272,7 +295,7 @@ impl Elements {
         Par: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_segment(self as *mut Self, P, L, Par)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_segment(self as *mut Self, P, L, Par)
         })
     }
 
@@ -284,63 +307,76 @@ impl Elements {
         Par: &mut f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_other_segment(self as *mut Self, P, L, Par)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_other_segment(
+                self as *mut Self,
+                P,
+                L,
+                Par,
+            )
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:68 - `Geom2dHatch_Elements::InitWires()`
     pub fn init_wires(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_init_wires(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_init_wires(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:70 - `Geom2dHatch_Elements::MoreWires()`
     pub fn more_wires(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_more_wires(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_more_wires(self as *const Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:72 - `Geom2dHatch_Elements::NextWire()`
     pub fn next_wire(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_next_wire(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_next_wire(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:74 - `Geom2dHatch_Elements::RejectWire()`
     pub fn reject_wire(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_reject_wire(self as *const Self, L, Par)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_reject_wire(
+                self as *const Self,
+                L,
+                Par,
+            )
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:76 - `Geom2dHatch_Elements::InitEdges()`
     pub fn init_edges(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_init_edges(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_init_edges(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:78 - `Geom2dHatch_Elements::MoreEdges()`
     pub fn more_edges(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_more_edges(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_more_edges(self as *const Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:80 - `Geom2dHatch_Elements::NextEdge()`
     pub fn next_edge(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_next_edge(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_next_edge(self as *mut Self)
         })
     }
 
     /// **Source:** `Geom2dHatch_Elements.hxx`:82 - `Geom2dHatch_Elements::RejectEdge()`
     pub fn reject_edge(&self, L: &crate::gp::Lin2d, Par: f64) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_reject_edge(self as *const Self, L, Par)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_reject_edge(
+                self as *const Self,
+                L,
+                Par,
+            )
         })
     }
 
@@ -352,7 +388,11 @@ impl Elements {
     ) {
         let mut Or_i32_: i32 = (*Or).into();
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Elements_current_edge(self as *const Self, E, &mut Or_i32_)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_current_edge(
+                self as *const Self,
+                E,
+                &mut Or_i32_,
+            )
         });
         *Or = crate::top_abs::Orientation::try_from(Or_i32_).unwrap();
     }
@@ -361,7 +401,7 @@ impl Elements {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Elements_to_owned(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Elements_to_owned(self as *const Self),
             ))
         }
     }
@@ -372,11 +412,11 @@ impl Elements {
 // ========================
 
 /// **Source:** `Geom2dHatch_FClass2dOfClassifier.hxx`:34 - `Geom2dHatch_FClass2dOfClassifier`
-pub use crate::ffi::Geom2dHatch_FClass2dOfClassifier as FClass2dOfClassifier;
+pub use crate::ffi_types::Geom2dHatch_FClass2dOfClassifier as FClass2dOfClassifier;
 
 unsafe impl crate::CppDeletable for FClass2dOfClassifier {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_FClass2dOfClassifier_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_destructor(ptr);
     }
 }
 
@@ -386,7 +426,7 @@ impl FClass2dOfClassifier {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_FClass2dOfClassifier_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_ctor(),
             ))
         }
     }
@@ -399,7 +439,12 @@ impl FClass2dOfClassifier {
     /// attached to the line segment in intersections.
     pub fn reset(&mut self, L: &crate::gp::Lin2d, P: f64, Tol: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_reset(self as *mut Self, L, P, Tol)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_reset(
+                self as *mut Self,
+                L,
+                P,
+                Tol,
+            )
         })
     }
 
@@ -408,7 +453,11 @@ impl FClass2dOfClassifier {
     /// <E> from the boundary.
     pub fn compare(&mut self, E: &crate::geom2d_adaptor::Curve, Or: crate::top_abs::Orientation) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_compare(self as *mut Self, E, Or.into())
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_compare(
+                self as *mut Self,
+                E,
+                Or.into(),
+            )
         })
     }
 
@@ -416,7 +465,9 @@ impl FClass2dOfClassifier {
     /// Returns the current value of the parameter.
     pub fn parameter(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_parameter(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_parameter(
+                self as *const Self,
+            )
         })
     }
 
@@ -424,9 +475,11 @@ impl FClass2dOfClassifier {
     /// Returns the intersecting algorithm.
     pub fn intersector(&mut self) -> &mut Intersector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_FClass2dOfClassifier_intersector(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_intersector(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -437,7 +490,9 @@ impl FClass2dOfClassifier {
     /// algorithm.
     pub fn closest_intersection(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_closest_intersection(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_closest_intersection(
+                self as *const Self,
+            )
         })
     }
 
@@ -445,7 +500,9 @@ impl FClass2dOfClassifier {
     /// Returns the current state of the point.
     pub fn state(&self) -> crate::top_abs::State {
         crate::top_abs::State::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_state(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_state(
+                self as *const Self,
+            )
         }))
         .unwrap()
     }
@@ -456,7 +513,9 @@ impl FClass2dOfClassifier {
     /// otherwise.
     pub fn is_head_or_end(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_FClass2dOfClassifier_is_head_or_end(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_FClass2dOfClassifier_is_head_or_end(
+                self as *const Self,
+            )
         })
     }
 }
@@ -466,11 +525,11 @@ impl FClass2dOfClassifier {
 // ========================
 
 /// **Source:** `Geom2dHatch_Hatcher.hxx`:37 - `Geom2dHatch_Hatcher`
-pub use crate::ffi::Geom2dHatch_Hatcher as Hatcher;
+pub use crate::ffi_types::Geom2dHatch_Hatcher as Hatcher;
 
 unsafe impl crate::CppDeletable for Hatcher {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Hatcher_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_destructor(ptr);
     }
 }
 
@@ -486,7 +545,7 @@ impl Hatcher {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Hatcher_ctor_intersector_real2_bool2(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_ctor_intersector_real2_bool2(
                     Intersector,
                     Confusion2d,
                     Confusion3d,
@@ -522,7 +581,10 @@ impl Hatcher {
     /// Sets the associated intersector.
     pub fn intersector_intersector(&mut self, Intersector: &Intersector) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_intersector_intersector(self as *mut Self, Intersector)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_intersector_intersector(
+                self as *mut Self,
+                Intersector,
+            )
         })
     }
 
@@ -530,7 +592,9 @@ impl Hatcher {
     /// Returns the associated intersector.
     pub fn intersector(&mut self) -> &Intersector {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_intersector(self as *mut Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_intersector(
+                self as *mut Self,
+            )))
         }
     }
 
@@ -538,9 +602,11 @@ impl Hatcher {
     /// Returns the associated intersector.
     pub fn change_intersector(&mut self) -> &mut Intersector {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_change_intersector(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_change_intersector(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
@@ -548,7 +614,10 @@ impl Hatcher {
     /// Sets the confusion tolerance.
     pub fn confusion2d_real(&mut self, Confusion: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_confusion2d_real(self as *mut Self, Confusion)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_confusion2d_real(
+                self as *mut Self,
+                Confusion,
+            )
         })
     }
 
@@ -558,7 +627,7 @@ impl Hatcher {
     /// parametric space of the hatching.
     pub fn confusion2d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_confusion2d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_confusion2d(self as *const Self)
         })
     }
 
@@ -566,7 +635,10 @@ impl Hatcher {
     /// Sets the confusion tolerance.
     pub fn confusion3d_real(&mut self, Confusion: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_confusion3d_real(self as *mut Self, Confusion)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_confusion3d_real(
+                self as *mut Self,
+                Confusion,
+            )
         })
     }
 
@@ -576,7 +648,7 @@ impl Hatcher {
     /// 3d space of the hatching.
     pub fn confusion3d(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_confusion3d(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_confusion3d(self as *const Self)
         })
     }
 
@@ -584,7 +656,10 @@ impl Hatcher {
     /// Sets the above flag.
     pub fn keep_points_bool(&mut self, Keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_keep_points_bool(self as *mut Self, Keep)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_keep_points_bool(
+                self as *mut Self,
+                Keep,
+            )
         })
     }
 
@@ -592,7 +667,7 @@ impl Hatcher {
     /// Returns the flag about the points consideration.
     pub fn keep_points(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_keep_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_keep_points(self as *const Self)
         })
     }
 
@@ -600,7 +675,10 @@ impl Hatcher {
     /// Sets the above flag.
     pub fn keep_segments_bool(&mut self, Keep: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_keep_segments_bool(self as *mut Self, Keep)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_keep_segments_bool(
+                self as *mut Self,
+                Keep,
+            )
         })
     }
 
@@ -608,7 +686,7 @@ impl Hatcher {
     /// Returns the flag about the segments consideration.
     pub fn keep_segments(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_keep_segments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_keep_segments(self as *const Self)
         })
     }
 
@@ -616,7 +694,7 @@ impl Hatcher {
     /// Removes all the hatchings and all the elements.
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_clear(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_clear(self as *mut Self)
         })
     }
 
@@ -624,10 +702,12 @@ impl Hatcher {
     /// Returns the curve associated to the IndE-th element.
     pub fn element_curve(&self, IndE: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_element_curve(
-                self as *const Self,
-                IndE,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_element_curve(
+                    self as *const Self,
+                    IndE,
+                ),
+            ))
         }
     }
 
@@ -639,7 +719,7 @@ impl Hatcher {
         Orientation: crate::top_abs::Orientation,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_add_element_curve_orientation(
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_add_element_curve_orientation(
                 self as *mut Self,
                 Curve,
                 Orientation.into(),
@@ -651,15 +731,11 @@ impl Hatcher {
     /// Adds an element to the hatcher and returns its index.
     pub fn add_element_handlegeom2dcurve_orientation(
         &mut self,
-        Curve: &crate::ffi::HandleGeom2dCurve,
+        Curve: &crate::ffi_types::HandleGeom2dCurve,
         Orientation: crate::top_abs::Orientation,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_add_element_handlegeom2dcurve_orientation(
-                self as *mut Self,
-                Curve,
-                Orientation.into(),
-            )
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_add_element_handlegeom2dcurve_orientation(self as *mut Self, Curve, Orientation.into())
         })
     }
 
@@ -667,7 +743,7 @@ impl Hatcher {
     /// Removes the IndE-th element from the hatcher.
     pub fn rem_element(&mut self, IndE: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_rem_element(self as *mut Self, IndE)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_rem_element(self as *mut Self, IndE)
         })
     }
 
@@ -675,7 +751,7 @@ impl Hatcher {
     /// Removes all the elements from the hatcher.
     pub fn clr_elements(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_clr_elements(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_clr_elements(self as *mut Self)
         })
     }
 
@@ -683,10 +759,12 @@ impl Hatcher {
     /// Returns the curve associated to the IndH-th hatching.
     pub fn hatching_curve(&self, IndH: i32) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_hatching_curve(
-                self as *const Self,
-                IndH,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_hatching_curve(
+                    self as *const Self,
+                    IndH,
+                ),
+            ))
         }
     }
 
@@ -694,7 +772,7 @@ impl Hatcher {
     /// Adds a hatching to the hatcher and returns its index.
     pub fn add_hatching(&mut self, Curve: &crate::geom2d_adaptor::Curve) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_add_hatching(self as *mut Self, Curve)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_add_hatching(self as *mut Self, Curve)
         })
     }
 
@@ -702,7 +780,7 @@ impl Hatcher {
     /// Removes the IndH-th hatching from the hatcher.
     pub fn rem_hatching(&mut self, IndH: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_rem_hatching(self as *mut Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_rem_hatching(self as *mut Self, IndH)
         })
     }
 
@@ -710,7 +788,7 @@ impl Hatcher {
     /// Removes all the hatchings from the hatcher.
     pub fn clr_hatchings(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_clr_hatchings(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_clr_hatchings(self as *mut Self)
         })
     }
 
@@ -719,7 +797,7 @@ impl Hatcher {
     /// the IndH-th hatching.
     pub fn nb_points(&self, IndH: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_nb_points(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_nb_points(self as *const Self, IndH)
         })
     }
 
@@ -728,7 +806,7 @@ impl Hatcher {
     /// IndH-th hatching.
     pub fn point(&self, IndH: i32, IndP: i32) -> &crate::hatch_gen::PointOnHatching {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_point(
                 self as *const Self,
                 IndH,
                 IndP,
@@ -740,7 +818,9 @@ impl Hatcher {
     /// Trims all the hatchings of the hatcher by all the
     /// elements of the hatcher.
     pub fn trim(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::Geom2dHatch_Hatcher_trim(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_trim(self as *mut Self)
+        })
     }
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:138 - `Geom2dHatch_Hatcher::Trim()`
@@ -748,7 +828,7 @@ impl Hatcher {
     /// the elements already given and returns its index.
     pub fn trim_curve(&mut self, Curve: &crate::geom2d_adaptor::Curve) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_trim_curve(self as *mut Self, Curve)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_trim_curve(self as *mut Self, Curve)
         })
     }
 
@@ -757,7 +837,7 @@ impl Hatcher {
     /// already given.
     pub fn trim_int(&mut self, IndH: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_trim_int(self as *mut Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_trim_int(self as *mut Self, IndH)
         })
     }
 
@@ -765,7 +845,7 @@ impl Hatcher {
     /// Computes the domains of all the hatchings.
     pub fn compute_domains(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_compute_domains(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_compute_domains(self as *mut Self)
         })
     }
 
@@ -773,7 +853,10 @@ impl Hatcher {
     /// Computes the domains of the IndH-th hatching.
     pub fn compute_domains_int(&mut self, IndH: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_compute_domains_int(self as *mut Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_compute_domains_int(
+                self as *mut Self,
+                IndH,
+            )
         })
     }
 
@@ -782,7 +865,7 @@ impl Hatcher {
     /// for the IndH-th hatching.
     pub fn trim_done(&self, IndH: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_trim_done(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_trim_done(self as *const Self, IndH)
         })
     }
 
@@ -791,7 +874,7 @@ impl Hatcher {
     /// for the IndH-th hatching.
     pub fn trim_failed(&self, IndH: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_trim_failed(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_trim_failed(self as *const Self, IndH)
         })
     }
 
@@ -799,7 +882,9 @@ impl Hatcher {
     /// Returns the fact that the domains were computed
     /// for all the hatchings.
     pub fn is_done(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::Geom2dHatch_Hatcher_is_done(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_is_done(self as *const Self)
+        })
     }
 
     /// **Source:** `Geom2dHatch_Hatcher.hxx`:164 - `Geom2dHatch_Hatcher::IsDone()`
@@ -807,7 +892,7 @@ impl Hatcher {
     /// for the IndH-th hatching.
     pub fn is_done_int(&self, IndH: i32) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_is_done_int(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_is_done_int(self as *const Self, IndH)
         })
     }
 
@@ -815,7 +900,7 @@ impl Hatcher {
     /// Returns the status about the IndH-th hatching.
     pub fn status(&self, IndH: i32) -> crate::hatch_gen::ErrorStatus {
         crate::hatch_gen::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_status(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_status(self as *const Self, IndH)
         }))
         .unwrap()
     }
@@ -826,7 +911,7 @@ impl Hatcher {
     /// fully included in the contour defined by the elements.
     pub fn nb_domains(&self, IndH: i32) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_nb_domains(self as *const Self, IndH)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_nb_domains(self as *const Self, IndH)
         })
     }
 
@@ -834,7 +919,7 @@ impl Hatcher {
     /// Returns the IDom-th domain of the IndH-th hatching.
     pub fn domain(&self, IndH: i32, IDom: i32) -> &crate::hatch_gen::Domain {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatcher_domain(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_domain(
                 self as *const Self,
                 IndH,
                 IDom,
@@ -846,7 +931,7 @@ impl Hatcher {
     /// Dump the hatcher.
     pub fn dump(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatcher_dump(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatcher_dump(self as *const Self)
         })
     }
 }
@@ -856,11 +941,11 @@ impl Hatcher {
 // ========================
 
 /// **Source:** `Geom2dHatch_Hatching.hxx`:37 - `Geom2dHatch_Hatching`
-pub use crate::ffi::Geom2dHatch_Hatching as Hatching;
+pub use crate::ffi_types::Geom2dHatch_Hatching as Hatching;
 
 unsafe impl crate::CppDeletable for Hatching {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Hatching_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_destructor(ptr);
     }
 }
 
@@ -868,7 +953,9 @@ impl Hatching {
     /// **Source:** `Geom2dHatch_Hatching.hxx`:42 - `Geom2dHatch_Hatching::Geom2dHatch_Hatching()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::Geom2dHatch_Hatching_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_ctor(),
+            ))
         }
     }
 
@@ -877,7 +964,7 @@ impl Hatching {
     pub fn new_curve(Curve: &crate::geom2d_adaptor::Curve) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Hatching_ctor_curve(Curve),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_ctor_curve(Curve),
             ))
         }
     }
@@ -886,7 +973,9 @@ impl Hatching {
     /// Returns the curve associated to the hatching.
     pub fn curve(&self) -> &crate::geom2d_adaptor::Curve {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatching_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -894,9 +983,9 @@ impl Hatching {
     /// Returns the curve associated to the hatching.
     pub fn change_curve(&mut self) -> &mut crate::geom2d_adaptor::Curve {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_Hatching_change_curve(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_change_curve(self as *mut Self),
+            ))
         }
     }
 
@@ -905,7 +994,10 @@ impl Hatching {
     /// given value.
     pub fn trim_done_bool(&mut self, Flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_trim_done_bool(self as *mut Self, Flag)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_trim_done_bool(
+                self as *mut Self,
+                Flag,
+            )
         })
     }
 
@@ -913,7 +1005,7 @@ impl Hatching {
     /// Returns the flag about the trimming computations.
     pub fn trim_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_trim_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_trim_done(self as *const Self)
         })
     }
 
@@ -922,7 +1014,10 @@ impl Hatching {
     /// given value.
     pub fn trim_failed_bool(&mut self, Flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_trim_failed_bool(self as *mut Self, Flag)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_trim_failed_bool(
+                self as *mut Self,
+                Flag,
+            )
         })
     }
 
@@ -930,7 +1025,7 @@ impl Hatching {
     /// Returns the flag about the trimming failure.
     pub fn trim_failed(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_trim_failed(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_trim_failed(self as *const Self)
         })
     }
 
@@ -939,7 +1034,7 @@ impl Hatching {
     /// given value.
     pub fn is_done_bool(&mut self, Flag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_is_done_bool(self as *mut Self, Flag)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_is_done_bool(self as *mut Self, Flag)
         })
     }
 
@@ -947,7 +1042,7 @@ impl Hatching {
     /// Returns the flag about the domains computation.
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_is_done(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_is_done(self as *const Self)
         })
     }
 
@@ -955,7 +1050,10 @@ impl Hatching {
     /// Sets the error status.
     pub fn status_errorstatus(&mut self, theStatus: crate::hatch_gen::ErrorStatus) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_status_errorstatus(self as *mut Self, theStatus.into())
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_status_errorstatus(
+                self as *mut Self,
+                theStatus.into(),
+            )
         })
     }
 
@@ -963,7 +1061,7 @@ impl Hatching {
     /// Returns the error status.
     pub fn status(&self) -> crate::hatch_gen::ErrorStatus {
         crate::hatch_gen::ErrorStatus::try_from(crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_status(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -972,7 +1070,11 @@ impl Hatching {
     /// Adds an intersection point to the hatching.
     pub fn add_point(&mut self, Point: &crate::hatch_gen::PointOnHatching, Confusion: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_add_point(self as *mut Self, Point, Confusion)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_add_point(
+                self as *mut Self,
+                Point,
+                Confusion,
+            )
         })
     }
 
@@ -981,7 +1083,7 @@ impl Hatching {
     /// of the hatching.
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_nb_points(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_nb_points(self as *const Self)
         })
     }
 
@@ -992,7 +1094,7 @@ impl Hatching {
     /// Index < 1 or Index > NbPoints.
     pub fn point(&self, Index: i32) -> &crate::hatch_gen::PointOnHatching {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatching_point(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_point(
                 self as *const Self,
                 Index,
             )))
@@ -1006,10 +1108,12 @@ impl Hatching {
     /// Index < 1 or Index > NbPoints.
     pub fn change_point(&mut self, Index: i32) -> &mut crate::hatch_gen::PointOnHatching {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::Geom2dHatch_Hatching_change_point(
-                self as *mut Self,
-                Index,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_change_point(
+                    self as *mut Self,
+                    Index,
+                ),
+            ))
         }
     }
 
@@ -1020,7 +1124,7 @@ impl Hatching {
     /// Index < 1 or Index > NbPoints.
     pub fn rem_point(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_rem_point(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_rem_point(self as *mut Self, Index)
         })
     }
 
@@ -1028,7 +1132,7 @@ impl Hatching {
     /// Removes all the intersection points of the hatching.
     pub fn clr_points(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_clr_points(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_clr_points(self as *mut Self)
         })
     }
 
@@ -1036,7 +1140,7 @@ impl Hatching {
     /// Adds a domain to the hatching.
     pub fn add_domain(&mut self, Domain: &crate::hatch_gen::Domain) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_add_domain(self as *mut Self, Domain)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_add_domain(self as *mut Self, Domain)
         })
     }
 
@@ -1044,7 +1148,7 @@ impl Hatching {
     /// Returns the number of domains of the hatching.
     pub fn nb_domains(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_nb_domains(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_nb_domains(self as *const Self)
         })
     }
 
@@ -1054,7 +1158,7 @@ impl Hatching {
     /// Index < 1 or Index > NbDomains.
     pub fn domain(&self, Index: i32) -> &crate::hatch_gen::Domain {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Hatching_domain(
+            &*(crate::check_result(crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_domain(
                 self as *const Self,
                 Index,
             )))
@@ -1067,7 +1171,7 @@ impl Hatching {
     /// Index < 1 or Index > NbDomains.
     pub fn rem_domain(&mut self, Index: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_rem_domain(self as *mut Self, Index)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_rem_domain(self as *mut Self, Index)
         })
     }
 
@@ -1075,7 +1179,7 @@ impl Hatching {
     /// Removes all the domains of the hatching.
     pub fn clr_domains(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Hatching_clr_domains(self as *mut Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_clr_domains(self as *mut Self)
         })
     }
 
@@ -1085,7 +1189,9 @@ impl Hatching {
     pub fn classification_point(&self) -> crate::OwnedPtr<crate::gp::Pnt2d> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Hatching_classification_point(self as *const Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Hatching_classification_point(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1096,11 +1202,11 @@ impl Hatching {
 // ========================
 
 /// **Source:** `Geom2dHatch_Intersector.hxx`:28 - `Geom2dHatch_Intersector`
-pub use crate::ffi::Geom2dHatch_Intersector as Intersector;
+pub use crate::ffi_types::Geom2dHatch_Intersector as Intersector;
 
 unsafe impl crate::CppDeletable for Intersector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::Geom2dHatch_Intersector_destructor(ptr);
+        crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_destructor(ptr);
     }
 }
 
@@ -1110,7 +1216,9 @@ impl Intersector {
     pub fn new_real2(Confusion: f64, Tangency: f64) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Intersector_ctor_real2(Confusion, Tangency),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_ctor_real2(
+                    Confusion, Tangency,
+                ),
             ))
         }
     }
@@ -1119,7 +1227,7 @@ impl Intersector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Intersector_ctor(),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_ctor(),
             ))
         }
     }
@@ -1129,7 +1237,9 @@ impl Intersector {
     /// intersector.
     pub fn confusion_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_confusion_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_confusion_tolerance(
+                self as *const Self,
+            )
         })
     }
 
@@ -1137,7 +1247,7 @@ impl Intersector {
     /// Sets the confusion tolerance of the intersector.
     pub fn set_confusion_tolerance(&mut self, Confusion: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_set_confusion_tolerance(
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_set_confusion_tolerance(
                 self as *mut Self,
                 Confusion,
             )
@@ -1149,7 +1259,9 @@ impl Intersector {
     /// intersector.
     pub fn tangency_tolerance(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_tangency_tolerance(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_tangency_tolerance(
+                self as *const Self,
+            )
         })
     }
 
@@ -1157,7 +1269,10 @@ impl Intersector {
     /// Sets the tangency tolerance of the intersector.
     pub fn set_tangency_tolerance(&mut self, Tangency: f64) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_set_tangency_tolerance(self as *mut Self, Tangency)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_set_tangency_tolerance(
+                self as *mut Self,
+                Tangency,
+            )
         })
     }
 
@@ -1172,7 +1287,11 @@ impl Intersector {
         C2: &crate::geom2d_adaptor::Curve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_intersect(self as *mut Self, C1, C2)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_intersect(
+                self as *mut Self,
+                C1,
+                C2,
+            )
         })
     }
 
@@ -1192,7 +1311,13 @@ impl Intersector {
         E: &crate::geom2d_adaptor::Curve,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_perform(self as *mut Self, L, P, Tol, E)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_perform(
+                self as *mut Self,
+                L,
+                P,
+                Tol,
+                E,
+            )
         })
     }
 
@@ -1209,34 +1334,47 @@ impl Intersector {
         C: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_local_geometry(self as *const Self, E, U, T, N, C)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_local_geometry(
+                self as *const Self,
+                E,
+                U,
+                T,
+                N,
+                C,
+            )
         })
     }
 
     /// Upcast to Geom2dInt_GInter
     pub fn as_geom2d_int_g_inter(&self) -> &crate::geom2d_int::GInter {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_as_Geom2dInt_GInter(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Geom2dInt_GInter (mutable)
     pub fn as_geom2d_int_g_inter_mut(&mut self) -> &mut crate::geom2d_int::GInter {
         unsafe {
-            &mut *crate::check_result(crate::ffi::Geom2dHatch_Intersector_as_Geom2dInt_GInter_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_as_Geom2dInt_GInter_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to IntRes2d_Intersection
     pub fn as_int_res2d_intersection(&self) -> &crate::int_res2d::Intersection {
         unsafe {
-            &*crate::check_result(crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_as_IntRes2d_Intersection(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1244,7 +1382,9 @@ impl Intersector {
     pub fn as_int_res2d_intersection_mut(&mut self) -> &mut crate::int_res2d::Intersection {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::Geom2dHatch_Intersector_as_IntRes2d_Intersection_mut(self as *mut Self),
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_as_IntRes2d_Intersection_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1257,7 +1397,7 @@ impl Intersector {
     ) -> crate::OwnedPtr<crate::int_res2d::Domain> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::Geom2dHatch_Intersector_inherited_ComputeDomain(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_ComputeDomain(
                     self as *const Self,
                     C1,
                     TolDomain,
@@ -1269,7 +1409,7 @@ impl Intersector {
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:135 - `Geom2dInt_GInter::SetMinNbSamples()`
     pub fn set_min_nb_samples(&mut self, theMinNbSamples: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_SetMinNbSamples(
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_SetMinNbSamples(
                 self as *mut Self,
                 theMinNbSamples,
             )
@@ -1279,62 +1419,76 @@ impl Intersector {
     /// Inherited: **Source:** `Geom2dInt_GInter.hxx`:136 - `Geom2dInt_GInter::GetMinNbSamples()`
     pub fn get_min_nb_samples(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_GetMinNbSamples(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_GetMinNbSamples(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:39 - `IntRes2d_Intersection::IsDone()`
     pub fn is_done(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_IsDone(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_IsDone(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:44 - `IntRes2d_Intersection::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_IsEmpty(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_IsEmpty(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:49 - `IntRes2d_Intersection::NbPoints()`
     pub fn nb_points(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_NbPoints(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_NbPoints(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:56 - `IntRes2d_Intersection::Point()`
     pub fn point(&self, N: i32) -> &crate::int_res2d::IntersectionPoint {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Intersector_inherited_Point(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_Point(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:61 - `IntRes2d_Intersection::NbSegments()`
     pub fn nb_segments(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_NbSegments(self as *const Self)
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_NbSegments(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:68 - `IntRes2d_Intersection::Segment()`
     pub fn segment(&self, N: i32) -> &crate::int_res2d::IntersectionSegment {
         unsafe {
-            &*(crate::check_result(crate::ffi::Geom2dHatch_Intersector_inherited_Segment(
-                self as *const Self,
-                N,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_Segment(
+                    self as *const Self,
+                    N,
+                ),
+            ))
         }
     }
 
     /// Inherited: **Source:** `IntRes2d_Intersection.hxx`:70 - `IntRes2d_Intersection::SetReversedParameters()`
     pub fn set_reversed_parameters(&mut self, Reverseflag: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::Geom2dHatch_Intersector_inherited_SetReversedParameters(
+            crate::ffi_extern_TKGeomAlgo::Geom2dHatch_Intersector_inherited_SetReversedParameters(
                 self as *mut Self,
                 Reverseflag,
             )

@@ -36,7 +36,7 @@ impl TryFrom<i32> for CellFilter_Action {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     HandleGraphic3dAttribBuffer, HandleGraphic3dBoundBuffer, HandleGraphic3dBuffer,
     HandleGraphic3dIndexBuffer, HandleGraphic3dMutableIndexBuffer, HandleImagePixMapData,
     HandleSelect3DBVHIndexBuffer, HandleStandardTransient,
@@ -65,11 +65,11 @@ pub use crate::ffi::{
 /// All pointers  returned by Allocate() are aligned to 4 byte boundaries.
 /// To  define  the size  of  memory  blocks  requested  from the OS,  use the
 /// parameter of the constructor (measured in bytes).
-pub use crate::ffi::NCollection_AccAllocator as AccAllocator;
+pub use crate::ffi_types::NCollection_AccAllocator as AccAllocator;
 
 unsafe impl crate::CppDeletable for AccAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_AccAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_AccAllocator_destructor(ptr);
     }
 }
 
@@ -79,7 +79,7 @@ impl AccAllocator {
     pub fn new_size(theBlockSize: usize) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_AccAllocator_ctor_size(theBlockSize),
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_ctor_size(theBlockSize),
             ))
         }
     }
@@ -88,7 +88,7 @@ impl AccAllocator {
     /// Allocate memory with given size
     pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_allocate(self as *mut Self, theSize)
         })
     }
 
@@ -96,7 +96,10 @@ impl AccAllocator {
     /// Allocate memory with given size
     pub unsafe fn allocate_optimal(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_allocate_optimal(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_allocate_optimal(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
@@ -105,16 +108,18 @@ impl AccAllocator {
     /// memory is returned to the OS when all allocations in some block are freed
     pub unsafe fn free(&mut self, theAddress: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_free(self as *mut Self, theAddress)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_free(self as *mut Self, theAddress)
         })
     }
 
     /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_AccAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -122,7 +127,7 @@ impl AccAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_AccAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -130,9 +135,11 @@ impl AccAllocator {
     }
 
     /// **Source:** `NCollection_AccAllocator.hxx`:205 - `NCollection_AccAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_AccAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_get_type_descriptor(),
+            ))
         }
     }
 
@@ -140,7 +147,7 @@ impl AccAllocator {
     pub fn as_base_allocator(&self) -> &BaseAllocator {
         unsafe {
             &*crate::check_result(
-                crate::ffi::NCollection_AccAllocator_as_NCollection_BaseAllocator(
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_as_NCollection_BaseAllocator(
                     self as *const Self,
                 ),
             )
@@ -150,20 +157,18 @@ impl AccAllocator {
     /// Upcast to NCollection_BaseAllocator (mutable)
     pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::NCollection_AccAllocator_as_NCollection_BaseAllocator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKernel::NCollection_AccAllocator_as_NCollection_BaseAllocator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_AccAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -171,7 +176,9 @@ impl AccAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_AccAllocator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -179,25 +186,31 @@ impl AccAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionAccAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionAccAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_AccAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -205,7 +218,9 @@ impl AccAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_AccAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -218,77 +233,83 @@ impl AccAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AccAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_AccAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionAccAllocator;
+pub use crate::ffi_types::HandleNCollectionAccAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionAccAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionAccAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionAccAllocator {
     /// Dereference this Handle to access the underlying NCollection_AccAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_AccAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_AccAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionAccAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_AccAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_AccAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_AccAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionAccAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_AccAllocator> to Handle<NCollection_BaseAllocator>
     pub fn to_handle_base_allocator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionAccAllocator_to_HandleNCollectionBaseAllocator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_to_HandleNCollectionBaseAllocator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NCollection_AccAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionAccAllocator_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::HandleNCollectionAccAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -302,11 +323,11 @@ impl HandleNCollectionAccAllocator {
 
 /// **Source:** `NCollection_AlignedAllocator.hxx`:23 - `NCollection_AlignedAllocator`
 /// NCollection allocator with managed memory alignment capabilities.
-pub use crate::ffi::NCollection_AlignedAllocator as AlignedAllocator;
+pub use crate::ffi_types::NCollection_AlignedAllocator as AlignedAllocator;
 
 unsafe impl crate::CppDeletable for AlignedAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_AlignedAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_AlignedAllocator_destructor(ptr);
     }
 }
 
@@ -318,7 +339,7 @@ impl AlignedAllocator {
     pub fn new_size(theAlignment: usize) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_ctor_size(theAlignment),
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_ctor_size(theAlignment),
             ))
         }
     }
@@ -327,7 +348,10 @@ impl AlignedAllocator {
     /// Allocate memory with given size. Returns NULL on failure.
     pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_allocate(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
@@ -335,7 +359,10 @@ impl AlignedAllocator {
     /// Allocate memory with given size. Returns NULL on failure.
     pub unsafe fn allocate_optimal(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_allocate_optimal(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_allocate_optimal(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
@@ -343,16 +370,18 @@ impl AlignedAllocator {
     /// Free a previously allocated memory.
     pub unsafe fn free(&mut self, thePtr: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_free(self as *mut Self, thePtr)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_free(self as *mut Self, thePtr)
         })
     }
 
     /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_AlignedAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -360,7 +389,7 @@ impl AlignedAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -368,40 +397,36 @@ impl AlignedAllocator {
     }
 
     /// **Source:** `NCollection_AlignedAllocator.hxx`:48 - `NCollection_AlignedAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_AlignedAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to NCollection_BaseAllocator
     pub fn as_base_allocator(&self) -> &BaseAllocator {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_as_NCollection_BaseAllocator(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKernel::NCollection_AlignedAllocator_as_NCollection_BaseAllocator(self as *const Self))
         }
     }
 
     /// Upcast to NCollection_BaseAllocator (mutable)
     pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_as_NCollection_BaseAllocator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKernel::NCollection_AlignedAllocator_as_NCollection_BaseAllocator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_AlignedAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -409,7 +434,7 @@ impl AlignedAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_as_Standard_Transient_mut(
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -419,18 +444,18 @@ impl AlignedAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionAlignedAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionAlignedAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_AlignedAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_IsInstance(
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -438,9 +463,12 @@ impl AlignedAllocator {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -448,7 +476,9 @@ impl AlignedAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_AlignedAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -461,14 +491,16 @@ impl AlignedAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -477,7 +509,7 @@ impl AlignedAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -486,59 +518,57 @@ impl AlignedAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_AlignedAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_AlignedAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionAlignedAllocator;
+pub use crate::ffi_types::HandleNCollectionAlignedAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionAlignedAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionAlignedAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionAlignedAllocator {
     /// Dereference this Handle to access the underlying NCollection_AlignedAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_AlignedAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_AlignedAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionAlignedAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_AlignedAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_AlignedAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_AlignedAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionAlignedAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_AlignedAllocator> to Handle<NCollection_BaseAllocator>
     pub fn to_handle_base_allocator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionAlignedAllocator_to_HandleNCollectionBaseAllocator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_to_HandleNCollectionBaseAllocator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NCollection_AlignedAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionAlignedAllocator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionAlignedAllocator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -559,11 +589,11 @@ impl HandleNCollectionAlignedAllocator {
 /// inaccessible.  To  create the  BaseAllocator use  the method
 /// CommonBaseAllocator.
 /// Note that this object is managed by Handle.
-pub use crate::ffi::NCollection_BaseAllocator as BaseAllocator;
+pub use crate::ffi_types::NCollection_BaseAllocator as BaseAllocator;
 
 unsafe impl crate::CppDeletable for BaseAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BaseAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BaseAllocator_destructor(ptr);
     }
 }
 
@@ -571,30 +601,38 @@ impl BaseAllocator {
     /// **Source:** `NCollection_BaseAllocator.hxx`:49 - `NCollection_BaseAllocator::Allocate()`
     pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_allocate(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
     /// **Source:** `NCollection_BaseAllocator.hxx`:50 - `NCollection_BaseAllocator::AllocateOptimal()`
     pub unsafe fn allocate_optimal(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_allocate_optimal(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_allocate_optimal(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
     /// **Source:** `NCollection_BaseAllocator.hxx`:51 - `NCollection_BaseAllocator::Free()`
     pub unsafe fn free(&mut self, theAddress: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_free(self as *mut Self, theAddress)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_free(self as *mut Self, theAddress)
         })
     }
 
     /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -603,9 +641,11 @@ impl BaseAllocator {
     /// This method is designed to have the only one BaseAllocator (to avoid
     /// useless copying of collections). However one can use operator new to
     /// create more BaseAllocators, but it is injurious.
-    pub fn common_base_allocator() -> &'static crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn common_base_allocator() -> &'static crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseAllocator_common_base_allocator()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_common_base_allocator(),
+            ))
         }
     }
 
@@ -613,7 +653,7 @@ impl BaseAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_BaseAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -621,18 +661,22 @@ impl BaseAllocator {
     }
 
     /// **Source:** `NCollection_BaseAllocator.hxx`:69 - `NCollection_BaseAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_BaseAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -640,7 +684,9 @@ impl BaseAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_BaseAllocator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -648,25 +694,31 @@ impl BaseAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BaseAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -674,7 +726,9 @@ impl BaseAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_BaseAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -687,67 +741,75 @@ impl BaseAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionBaseAllocator;
+pub use crate::ffi_types::HandleNCollectionBaseAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionBaseAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionBaseAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionBaseAllocator {
     /// Dereference this Handle to access the underlying NCollection_BaseAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_BaseAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_BaseAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionBaseAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_BaseAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_BaseAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_BaseAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionBaseAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_BaseAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionBaseAllocator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 
@@ -756,11 +818,9 @@ impl HandleNCollectionBaseAllocator {
     /// Returns `None` if the handle does not point to a `NCollection_AccAllocator` (or subclass).
     pub fn downcast_to_acc_allocator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionAccAllocator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNCollectionAccAllocator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAccAllocator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAccAllocator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -774,11 +834,9 @@ impl HandleNCollectionBaseAllocator {
     /// Returns `None` if the handle does not point to a `NCollection_AlignedAllocator` (or subclass).
     pub fn downcast_to_aligned_allocator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionAlignedAllocator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNCollectionAlignedAllocator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAlignedAllocator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionAlignedAllocator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -792,11 +850,9 @@ impl HandleNCollectionBaseAllocator {
     /// Returns `None` if the handle does not point to a `NCollection_HeapAllocator` (or subclass).
     pub fn downcast_to_heap_allocator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionHeapAllocator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNCollectionHeapAllocator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionHeapAllocator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionHeapAllocator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -810,11 +866,9 @@ impl HandleNCollectionBaseAllocator {
     /// Returns `None` if the handle does not point to a `NCollection_IncAllocator` (or subclass).
     pub fn downcast_to_inc_allocator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionIncAllocator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNCollectionIncAllocator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionIncAllocator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionIncAllocator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -828,11 +882,9 @@ impl HandleNCollectionBaseAllocator {
     /// Returns `None` if the handle does not point to a `NCollection_WinHeapAllocator` (or subclass).
     pub fn downcast_to_win_heap_allocator(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleNCollectionWinHeapAllocator>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleNCollectionWinHeapAllocator>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionWinHeapAllocator(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBaseAllocator_downcast_to_HandleNCollectionWinHeapAllocator(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -847,43 +899,47 @@ impl HandleNCollectionBaseAllocator {
 // ========================
 
 /// **Source:** `NCollection_BaseList.hxx`:36 - `NCollection_BaseList`
-pub use crate::ffi::NCollection_BaseList as BaseList;
+pub use crate::ffi_types::NCollection_BaseList as BaseList;
 
 unsafe impl crate::CppDeletable for BaseList {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BaseList_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BaseList_destructor(ptr);
     }
 }
 
 impl BaseList {
     /// **Source:** `NCollection_BaseList.hxx`:100 - `NCollection_BaseList::Extent()`
     pub fn extent(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::NCollection_BaseList_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseList_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `NCollection_BaseList.hxx`:104 - `NCollection_BaseList::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseList_is_empty(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseList_is_empty(self as *const Self)
         })
     }
 
     /// **Source:** `NCollection_BaseList.hxx`:108 - `NCollection_BaseList::Allocator()`
     /// Returns attached allocator
-    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseList_allocator(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKernel::NCollection_BaseList_allocator(
+                self as *const Self,
+            )))
         }
     }
 }
 
 /// **Source:** `NCollection_BaseList.hxx`:44 - `NCollection_BaseList_Iterator`
 /// Memory allocation
-pub use crate::ffi::NCollection_BaseList_Iterator as BaseList_Iterator;
+pub use crate::ffi_types::NCollection_BaseList_Iterator as BaseList_Iterator;
 
 unsafe impl crate::CppDeletable for BaseList_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BaseList_Iterator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_destructor(ptr);
     }
 }
 
@@ -892,7 +948,7 @@ impl BaseList_Iterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BaseList_Iterator_ctor(),
+                crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_ctor(),
             ))
         }
     }
@@ -901,7 +957,7 @@ impl BaseList_Iterator {
     pub fn new_baselist(theList: &BaseList) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BaseList_Iterator_ctor_baselist(theList),
+                crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_ctor_baselist(theList),
             ))
         }
     }
@@ -909,21 +965,27 @@ impl BaseList_Iterator {
     /// **Source:** `NCollection_BaseList.hxx`:62 - `NCollection_BaseList_Iterator::Init()`
     pub fn init(&mut self, theList: &BaseList) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseList_Iterator_init(self as *mut Self, theList)
+            crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_init(
+                self as *mut Self,
+                theList,
+            )
         })
     }
 
     /// **Source:** `NCollection_BaseList.hxx`:69 - `NCollection_BaseList_Iterator::Initialize()`
     pub fn initialize(&mut self, theList: &BaseList) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseList_Iterator_initialize(self as *mut Self, theList)
+            crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_initialize(
+                self as *mut Self,
+                theList,
+            )
         })
     }
 
     /// **Source:** `NCollection_BaseList.hxx`:72 - `NCollection_BaseList_Iterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseList_Iterator_more(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_more(self as *const Self)
         })
     }
 
@@ -931,7 +993,10 @@ impl BaseList_Iterator {
     /// Performs comparison of two iterators
     pub fn is_equal(&self, theOther: &BaseList_Iterator) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseList_Iterator_is_equal(self as *const Self, theOther)
+            crate::ffi_extern_TKernel::NCollection_BaseList_Iterator_is_equal(
+                self as *const Self,
+                theOther,
+            )
         })
     }
 }
@@ -949,55 +1014,59 @@ impl BaseList_Iterator {
 /// IndexedMap
 /// IndexedDataMap
 /// Provides utilitites for managing the buckets.
-pub use crate::ffi::NCollection_BaseMap as BaseMap;
+pub use crate::ffi_types::NCollection_BaseMap as BaseMap;
 
 impl BaseMap {
     /// **Source:** `NCollection_BaseMap.hxx`:140 - `NCollection_BaseMap::NbBuckets()`
     /// NbBuckets
     pub fn nb_buckets(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseMap_nb_buckets(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_nb_buckets(self as *const Self)
         })
     }
 
     /// **Source:** `NCollection_BaseMap.hxx`:143 - `NCollection_BaseMap::Extent()`
     /// Extent
     pub fn extent(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::NCollection_BaseMap_extent(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_BaseMap_extent(self as *const Self)
+        })
     }
 
     /// **Source:** `NCollection_BaseMap.hxx`:146 - `NCollection_BaseMap::IsEmpty()`
     /// IsEmpty
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseMap_is_empty(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_is_empty(self as *const Self)
         })
     }
 
     /// **Source:** `NCollection_BaseMap.hxx`:149 - `NCollection_BaseMap::Statistics()`
     /// Statistics
-    pub fn statistics(&self, S: &mut crate::ffi::Standard_OStream) {
+    pub fn statistics(&self, S: &mut crate::ffi_types::Standard_OStream) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseMap_statistics(self as *const Self, S)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_statistics(self as *const Self, S)
         })
     }
 
     /// **Source:** `NCollection_BaseMap.hxx`:152 - `NCollection_BaseMap::Allocator()`
     /// Returns attached allocator
-    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseMap_allocator(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKernel::NCollection_BaseMap_allocator(
+                self as *const Self,
+            )))
         }
     }
 }
 
 /// **Source:** `NCollection_BaseMap.hxx`:46 - `NCollection_BaseMap_Iterator`
 /// Memory allocation
-pub use crate::ffi::NCollection_BaseMap_Iterator as BaseMap_Iterator;
+pub use crate::ffi_types::NCollection_BaseMap_Iterator as BaseMap_Iterator;
 
 unsafe impl crate::CppDeletable for BaseMap_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BaseMap_Iterator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_destructor(ptr);
     }
 }
 
@@ -1006,7 +1075,10 @@ impl BaseMap_Iterator {
     /// Initialize
     pub fn initialize(&mut self, theMap: &BaseMap) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseMap_Iterator_initialize(self as *mut Self, theMap)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_initialize(
+                self as *mut Self,
+                theMap,
+            )
         })
     }
 
@@ -1014,7 +1086,7 @@ impl BaseMap_Iterator {
     /// Reset
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseMap_Iterator_reset(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_reset(self as *mut Self)
         })
     }
 
@@ -1022,7 +1094,10 @@ impl BaseMap_Iterator {
     /// Performs comparison of two iterators.
     pub fn is_equal(&self, theOther: &BaseMap_Iterator) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseMap_Iterator_is_equal(self as *const Self, theOther)
+            crate::ffi_extern_TKernel::NCollection_BaseMap_Iterator_is_equal(
+                self as *const Self,
+                theOther,
+            )
         })
     }
 }
@@ -1039,11 +1114,11 @@ impl BaseMap_Iterator {
 /// Control of processing values of pointers out-of-scope
 /// and should be controlled externally.
 /// Especially, copy operation should post-process elements of pointers to make deep copy.
-pub use crate::ffi::NCollection_BasePointerVector as BasePointerVector;
+pub use crate::ffi_types::NCollection_BasePointerVector as BasePointerVector;
 
 unsafe impl crate::CppDeletable for BasePointerVector {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BasePointerVector_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BasePointerVector_destructor(ptr);
     }
 }
 
@@ -1053,7 +1128,7 @@ impl BasePointerVector {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BasePointerVector_ctor(),
+                crate::ffi_extern_TKernel::NCollection_BasePointerVector_ctor(),
             ))
         }
     }
@@ -1062,7 +1137,7 @@ impl BasePointerVector {
     /// Checks for an empty status
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_is_empty(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_is_empty(self as *const Self)
         })
     }
 
@@ -1070,7 +1145,7 @@ impl BasePointerVector {
     /// Gets used size
     pub fn size(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_size(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_size(self as *const Self)
         })
     }
 
@@ -1078,7 +1153,7 @@ impl BasePointerVector {
     /// Gets available capacity
     pub fn capacity(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_capacity(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_capacity(self as *const Self)
         })
     }
 
@@ -1086,7 +1161,7 @@ impl BasePointerVector {
     /// Erases last element, decrements size.
     pub fn remove_last(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_remove_last(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_remove_last(self as *mut Self)
         })
     }
 
@@ -1094,7 +1169,10 @@ impl BasePointerVector {
     /// Resets the size
     pub fn clear(&mut self, theReleaseMemory: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_clear(self as *mut Self, theReleaseMemory)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_clear(
+                self as *mut Self,
+                theReleaseMemory,
+            )
         })
     }
 
@@ -1102,7 +1180,7 @@ impl BasePointerVector {
     /// Gets array, can be null
     pub unsafe fn get_array(&self) -> *mut *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_get_array(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_get_array(self as *const Self)
         })
     }
 
@@ -1110,7 +1188,10 @@ impl BasePointerVector {
     /// Gets value by index, no access validation
     pub unsafe fn value(&self, theInd: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_value(self as *const Self, theInd)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_value(
+                self as *const Self,
+                theInd,
+            )
         })
     }
 
@@ -1119,7 +1200,10 @@ impl BasePointerVector {
     /// if capacity is not enough, call resize.
     pub unsafe fn append(&mut self, thePnt: *const std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_append(self as *mut Self, thePnt)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_append(
+                self as *mut Self,
+                thePnt,
+            )
         })
     }
 
@@ -1129,7 +1213,11 @@ impl BasePointerVector {
     /// in this case capacity can be updated.
     pub unsafe fn set_value(&mut self, theInd: usize, thePnt: *const std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BasePointerVector_set_value(self as *mut Self, theInd, thePnt)
+            crate::ffi_extern_TKernel::NCollection_BasePointerVector_set_value(
+                self as *mut Self,
+                theInd,
+                thePnt,
+            )
         })
     }
 
@@ -1137,7 +1225,9 @@ impl BasePointerVector {
     pub fn to_owned(&self) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BasePointerVector_to_owned(self as *const Self),
+                crate::ffi_extern_TKernel::NCollection_BasePointerVector_to_owned(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1151,28 +1241,28 @@ impl BasePointerVector {
 ///
 /// Purpose:     This  is  a base  class  for  the  Sequence.  It  deals with
 /// an indexed bidirectional list of NCollection_SeqNode's.
-pub use crate::ffi::NCollection_BaseSequence as BaseSequence;
+pub use crate::ffi_types::NCollection_BaseSequence as BaseSequence;
 
 impl BaseSequence {
     /// **Source:** `NCollection_BaseSequence.hxx`:106 - `NCollection_BaseSequence::IsEmpty()`
     pub fn is_empty(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseSequence_is_empty(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseSequence_is_empty(self as *const Self)
         })
     }
 
     /// **Source:** `NCollection_BaseSequence.hxx`:108 - `NCollection_BaseSequence::Length()`
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_BaseSequence_length(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_BaseSequence_length(self as *const Self)
         })
     }
 
     /// **Source:** `NCollection_BaseSequence.hxx`:111 - `NCollection_BaseSequence::Allocator()`
     /// Returns attached allocator
-    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_BaseSequence_allocator(
+            &*(crate::check_result(crate::ffi_extern_TKernel::NCollection_BaseSequence_allocator(
                 self as *const Self,
             )))
         }
@@ -1181,11 +1271,11 @@ impl BaseSequence {
 
 /// **Source:** `NCollection_BaseSequence.hxx`:65 - `NCollection_BaseSequence_Iterator`
 /// Memory allocation
-pub use crate::ffi::NCollection_BaseSequence_Iterator as BaseSequence_Iterator;
+pub use crate::ffi_types::NCollection_BaseSequence_Iterator as BaseSequence_Iterator;
 
 unsafe impl crate::CppDeletable for BaseSequence_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_BaseSequence_Iterator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_destructor(ptr);
     }
 }
 
@@ -1195,7 +1285,7 @@ impl BaseSequence_Iterator {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BaseSequence_Iterator_ctor(),
+                crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_ctor(),
             ))
         }
     }
@@ -1205,7 +1295,7 @@ impl BaseSequence_Iterator {
     pub fn new_basesequence_bool(theSeq: &BaseSequence, isStart: bool) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_BaseSequence_Iterator_ctor_basesequence_bool(
+                crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_ctor_basesequence_bool(
                     theSeq, isStart,
                 ),
             ))
@@ -1216,7 +1306,11 @@ impl BaseSequence_Iterator {
     /// Initialisation
     pub fn init(&mut self, theSeq: &BaseSequence, isStart: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseSequence_Iterator_init(self as *mut Self, theSeq, isStart)
+            crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_init(
+                self as *mut Self,
+                theSeq,
+                isStart,
+            )
         })
     }
 
@@ -1224,7 +1318,7 @@ impl BaseSequence_Iterator {
     /// Switch to previous element; note that it will reset
     pub fn previous(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_BaseSequence_Iterator_previous(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_BaseSequence_Iterator_previous(self as *mut Self)
         })
     }
 }
@@ -1235,11 +1329,11 @@ impl BaseSequence_Iterator {
 
 /// **Source:** `NCollection_Buffer.hxx`:23 - `NCollection_Buffer`
 /// Low-level buffer object.
-pub use crate::ffi::NCollection_Buffer as Buffer;
+pub use crate::ffi_types::NCollection_Buffer as Buffer;
 
 unsafe impl crate::CppDeletable for Buffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_Buffer_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_Buffer_destructor(ptr);
     }
 }
 
@@ -1251,60 +1345,62 @@ impl Buffer {
     /// @param theSize  buffer size
     /// @param theData  buffer data allocated by theAlloc
     pub fn new_handlencollectionbaseallocator_size_u8ptr(
-        theAlloc: &crate::ffi::HandleNCollectionBaseAllocator,
+        theAlloc: &crate::ffi_types::HandleNCollectionBaseAllocator,
         theSize: usize,
         theData: Option<&mut u8>,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_Buffer_ctor_handlencollectionbaseallocator_size_u8ptr(
-                    theAlloc,
-                    theSize,
-                    theData.map_or(std::ptr::null_mut(), |r| r as *mut _),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::NCollection_Buffer_ctor_handlencollectionbaseallocator_size_u8ptr(theAlloc, theSize, theData.map_or(std::ptr::null_mut(), |r| r as *mut _))))
         }
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:54 - `NCollection_Buffer::Data()`
     /// @return buffer data
     pub unsafe fn data(&self) -> *const u8 {
-        crate::check_result(unsafe { crate::ffi::NCollection_Buffer_data(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_Buffer_data(self as *const Self)
+        })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:57 - `NCollection_Buffer::ChangeData()`
     /// @return buffer data
     pub unsafe fn change_data(&mut self) -> *mut u8 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_change_data(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_Buffer_change_data(self as *mut Self)
         })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:60 - `NCollection_Buffer::IsEmpty()`
     /// @return true if buffer is not allocated
     pub fn is_empty(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::NCollection_Buffer_is_empty(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_Buffer_is_empty(self as *const Self)
+        })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:63 - `NCollection_Buffer::Size()`
     /// Return buffer length in bytes.
     pub fn size(&self) -> usize {
-        crate::check_result(unsafe { crate::ffi::NCollection_Buffer_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_Buffer_size(self as *const Self)
+        })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:66 - `NCollection_Buffer::Allocator()`
     /// @return buffer allocator
-    pub fn allocator(&self) -> &crate::ffi::HandleNCollectionBaseAllocator {
+    pub fn allocator(&self) -> &crate::ffi_types::HandleNCollectionBaseAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_Buffer_allocator(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKernel::NCollection_Buffer_allocator(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:69 - `NCollection_Buffer::SetAllocator()`
     /// Assign new buffer allocator with de-allocation of buffer.
-    pub fn set_allocator(&mut self, theAlloc: &crate::ffi::HandleNCollectionBaseAllocator) {
+    pub fn set_allocator(&mut self, theAlloc: &crate::ffi_types::HandleNCollectionBaseAllocator) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_Buffer_set_allocator(self as *mut Self, theAlloc)
+            crate::ffi_extern_TKernel::NCollection_Buffer_set_allocator(self as *mut Self, theAlloc)
         })
     }
 
@@ -1313,20 +1409,22 @@ impl Buffer {
     /// @param theSize buffer length in bytes
     pub fn allocate(&mut self, theSize: usize) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_Buffer_allocate(self as *mut Self, theSize)
         })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:95 - `NCollection_Buffer::Free()`
     /// De-allocate buffer.
     pub fn free(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::NCollection_Buffer_free(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKernel::NCollection_Buffer_free(self as *mut Self)
+        })
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_Buffer_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKernel::NCollection_Buffer_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1336,7 +1434,7 @@ impl Buffer {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_Buffer_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_Buffer_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1344,50 +1442,64 @@ impl Buffer {
     }
 
     /// **Source:** `NCollection_Buffer.hxx`:120 - `NCollection_Buffer::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::NCollection_Buffer_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_Buffer_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_Buffer_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_Buffer_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::NCollection_Buffer_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_Buffer_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBuffer> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBuffer> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_Buffer_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_Buffer_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1395,7 +1507,7 @@ impl Buffer {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_Buffer_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_Buffer_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1408,62 +1520,72 @@ impl Buffer {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_Buffer_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_Buffer_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionBuffer;
+pub use crate::ffi_types::HandleNCollectionBuffer;
 
 unsafe impl crate::CppDeletable for HandleNCollectionBuffer {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionBuffer_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionBuffer_destructor(ptr);
     }
 }
 
 impl HandleNCollectionBuffer {
     /// Dereference this Handle to access the underlying NCollection_Buffer
-    pub fn get(&self) -> &crate::ffi::NCollection_Buffer {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_Buffer {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionBuffer_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBuffer_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_Buffer
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_Buffer {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_Buffer {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionBuffer_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionBuffer_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<NCollection_Buffer> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionBuffer_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKernel::HandleNCollectionBuffer_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1473,11 +1595,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Graphic3d_AttribBuffer` (or subclass).
     pub fn downcast_to_attrib_buffer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dAttribBuffer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGraphic3dAttribBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dAttribBuffer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleGraphic3dAttribBuffer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1491,11 +1611,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Graphic3d_BoundBuffer` (or subclass).
     pub fn downcast_to_bound_buffer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBoundBuffer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGraphic3dBoundBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBoundBuffer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBoundBuffer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1507,9 +1625,11 @@ impl HandleNCollectionBuffer {
     /// Downcast Handle<NCollection_Buffer> to Handle<Graphic3d_Buffer>
     ///
     /// Returns `None` if the handle does not point to a `Graphic3d_Buffer` (or subclass).
-    pub fn downcast_to_buffer(&self) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dBuffer>> {
+    pub fn downcast_to_buffer(
+        &self,
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGraphic3dBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBuffer(
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleGraphic3dBuffer(
                 self as *const Self,
             )
         });
@@ -1525,11 +1645,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Graphic3d_IndexBuffer` (or subclass).
     pub fn downcast_to_index_buffer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dIndexBuffer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGraphic3dIndexBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dIndexBuffer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleGraphic3dIndexBuffer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1543,11 +1661,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Graphic3d_MutableIndexBuffer` (or subclass).
     pub fn downcast_to_mutable_index_buffer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleGraphic3dMutableIndexBuffer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleGraphic3dMutableIndexBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleGraphic3dMutableIndexBuffer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleGraphic3dMutableIndexBuffer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1561,9 +1677,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Image_PixMapData` (or subclass).
     pub fn downcast_to_pix_map_data(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleImagePixMapData>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleImagePixMapData>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleImagePixMapData(
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleImagePixMapData(
                 self as *const Self,
             )
         });
@@ -1579,11 +1695,9 @@ impl HandleNCollectionBuffer {
     /// Returns `None` if the handle does not point to a `Select3D_BVHIndexBuffer` (or subclass).
     pub fn downcast_to_bvh_index_buffer(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleSelect3DBVHIndexBuffer>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleSelect3DBVHIndexBuffer>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleNCollectionBuffer_downcast_to_HandleSelect3DBVHIndexBuffer(
-                self as *const Self,
-            )
+            crate::ffi_extern_TKernel::HandleNCollectionBuffer_downcast_to_HandleSelect3DBVHIndexBuffer(self as *const Self)
         });
         if __val.is_null() {
             None
@@ -1600,11 +1714,11 @@ impl HandleNCollectionBuffer {
 /// **Source:** `NCollection_HeapAllocator.hxx`:25 - `NCollection_HeapAllocator`
 ///
 /// Allocator that uses the global dynamic heap (malloc / free).
-pub use crate::ffi::NCollection_HeapAllocator as HeapAllocator;
+pub use crate::ffi_types::NCollection_HeapAllocator as HeapAllocator;
 
 unsafe impl crate::CppDeletable for HeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_HeapAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_HeapAllocator_destructor(ptr);
     }
 }
 
@@ -1612,37 +1726,47 @@ impl HeapAllocator {
     /// **Source:** `NCollection_HeapAllocator.hxx`:29 - `NCollection_HeapAllocator::Allocate()`
     pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_allocate(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:31 - `NCollection_HeapAllocator::AllocateOptimal()`
     pub unsafe fn allocate_optimal(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_allocate_optimal(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_allocate_optimal(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:33 - `NCollection_HeapAllocator::Free()`
     pub unsafe fn free(&mut self, anAddress: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_free(self as *mut Self, anAddress)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_free(self as *mut Self, anAddress)
         })
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_HeapAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:35 - `NCollection_HeapAllocator::GlobalHeapAllocator()`
-    pub fn global_heap_allocator() -> &'static crate::ffi::HandleNCollectionHeapAllocator {
+    pub fn global_heap_allocator() -> &'static crate::ffi_types::HandleNCollectionHeapAllocator {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_HeapAllocator_global_heap_allocator()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_global_heap_allocator(),
+            ))
         }
     }
 
@@ -1650,7 +1774,7 @@ impl HeapAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_HeapAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1658,9 +1782,11 @@ impl HeapAllocator {
     }
 
     /// **Source:** `NCollection_HeapAllocator.hxx`:47 - `NCollection_HeapAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_HeapAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_get_type_descriptor(),
+            ))
         }
     }
 
@@ -1668,7 +1794,7 @@ impl HeapAllocator {
     pub fn as_base_allocator(&self) -> &BaseAllocator {
         unsafe {
             &*crate::check_result(
-                crate::ffi::NCollection_HeapAllocator_as_NCollection_BaseAllocator(
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_as_NCollection_BaseAllocator(
                     self as *const Self,
                 ),
             )
@@ -1678,20 +1804,18 @@ impl HeapAllocator {
     /// Upcast to NCollection_BaseAllocator (mutable)
     pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::NCollection_HeapAllocator_as_NCollection_BaseAllocator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKernel::NCollection_HeapAllocator_as_NCollection_BaseAllocator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_HeapAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1699,7 +1823,9 @@ impl HeapAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_HeapAllocator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1707,25 +1833,31 @@ impl HeapAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionHeapAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionHeapAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_HeapAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1733,7 +1865,9 @@ impl HeapAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_HeapAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -1746,80 +1880,84 @@ impl HeapAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_HeapAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_HeapAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionHeapAllocator;
+pub use crate::ffi_types::HandleNCollectionHeapAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionHeapAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionHeapAllocator {
     /// Dereference this Handle to access the underlying NCollection_HeapAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_HeapAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_HeapAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionHeapAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_HeapAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_HeapAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_HeapAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionHeapAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_HeapAllocator> to Handle<NCollection_BaseAllocator>
     pub fn to_handle_base_allocator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionHeapAllocator_to_HandleNCollectionBaseAllocator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_to_HandleNCollectionBaseAllocator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NCollection_HeapAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionHeapAllocator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionHeapAllocator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -1852,11 +1990,11 @@ impl HandleNCollectionHeapAllocator {
 /// Note that this allocator is most suitable for single-threaded algorithms
 /// (consider creating dedicated allocators per working thread),
 /// and thread-safety of allocations is DISABLED by default (see SetThreadSafe()).
-pub use crate::ffi::NCollection_IncAllocator as IncAllocator;
+pub use crate::ffi_types::NCollection_IncAllocator as IncAllocator;
 
 unsafe impl crate::CppDeletable for IncAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_IncAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_IncAllocator_destructor(ptr);
     }
 }
 
@@ -1874,7 +2012,7 @@ impl IncAllocator {
     pub fn new_size(theBlockSize: usize) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_IncAllocator_ctor_size(theBlockSize),
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_ctor_size(theBlockSize),
             ))
         }
     }
@@ -1883,7 +2021,10 @@ impl IncAllocator {
     /// Setup mutex for thread-safe allocations.
     pub fn set_thread_safe(&mut self, theIsThreadSafe: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_set_thread_safe(self as *mut Self, theIsThreadSafe)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_set_thread_safe(
+                self as *mut Self,
+                theIsThreadSafe,
+            )
         })
     }
 
@@ -1891,7 +2032,7 @@ impl IncAllocator {
     /// Allocate memory with given size. Returns NULL on failure
     pub unsafe fn allocate(&mut self, size: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_allocate(self as *mut Self, size)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_allocate(self as *mut Self, size)
         })
     }
 
@@ -1899,7 +2040,10 @@ impl IncAllocator {
     /// Allocate memory with given size. Returns NULL on failure
     pub unsafe fn allocate_optimal(&mut self, size: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_allocate_optimal(self as *mut Self, size)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_allocate_optimal(
+                self as *mut Self,
+                size,
+            )
         })
     }
 
@@ -1907,7 +2051,7 @@ impl IncAllocator {
     /// Free a previously allocated memory. Does nothing
     pub unsafe fn free(&mut self, arg0: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_free(self as *mut Self, arg0)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_free(self as *mut Self, arg0)
         })
     }
 
@@ -1921,16 +2065,21 @@ impl IncAllocator {
     /// for future allocations.
     pub fn reset(&mut self, theReleaseMemory: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_reset(self as *mut Self, theReleaseMemory)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_reset(
+                self as *mut Self,
+                theReleaseMemory,
+            )
         })
     }
 
     /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_IncAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -1938,7 +2087,7 @@ impl IncAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_IncAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1946,9 +2095,11 @@ impl IncAllocator {
     }
 
     /// **Source:** `NCollection_IncAllocator.hxx`:144 - `NCollection_IncAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_IncAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_get_type_descriptor(),
+            ))
         }
     }
 
@@ -1956,7 +2107,7 @@ impl IncAllocator {
     pub fn as_base_allocator(&self) -> &BaseAllocator {
         unsafe {
             &*crate::check_result(
-                crate::ffi::NCollection_IncAllocator_as_NCollection_BaseAllocator(
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_as_NCollection_BaseAllocator(
                     self as *const Self,
                 ),
             )
@@ -1966,20 +2117,18 @@ impl IncAllocator {
     /// Upcast to NCollection_BaseAllocator (mutable)
     pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::NCollection_IncAllocator_as_NCollection_BaseAllocator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKernel::NCollection_IncAllocator_as_NCollection_BaseAllocator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_IncAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -1987,7 +2136,9 @@ impl IncAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_IncAllocator_as_Standard_Transient_mut(self as *mut Self),
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
             )
         }
     }
@@ -1995,25 +2146,31 @@ impl IncAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionIncAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionIncAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_IncAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2021,7 +2178,9 @@ impl IncAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_IncAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2034,77 +2193,83 @@ impl IncAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_IncAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_IncAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionIncAllocator;
+pub use crate::ffi_types::HandleNCollectionIncAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionIncAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionIncAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionIncAllocator {
     /// Dereference this Handle to access the underlying NCollection_IncAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_IncAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_IncAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionIncAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_IncAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_IncAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_IncAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionIncAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_get_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_IncAllocator> to Handle<NCollection_BaseAllocator>
     pub fn to_handle_base_allocator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionIncAllocator_to_HandleNCollectionBaseAllocator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_to_HandleNCollectionBaseAllocator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NCollection_IncAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionIncAllocator_to_HandleStandardTransient(
+                crate::ffi_extern_TKernel::HandleNCollectionIncAllocator_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -2115,11 +2280,11 @@ impl HandleNCollectionIncAllocator {
 /// **Source:** `NCollection_IncAllocator.hxx`:98 - `NCollection_IncAllocator_IBlock`
 /// Forward list to keep multi-time allocated pointers.
 /// On Reset operation objects will be reused.
-pub use crate::ffi::NCollection_IncAllocator_IBlock as IncAllocator_IBlock;
+pub use crate::ffi_types::NCollection_IncAllocator_IBlock as IncAllocator_IBlock;
 
 unsafe impl crate::CppDeletable for IncAllocator_IBlock {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_IncAllocator_IBlock_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_IncAllocator_IBlock_destructor(ptr);
     }
 }
 
@@ -2131,7 +2296,9 @@ impl IncAllocator_IBlock {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_IncAllocator_IBlock_ctor_voidptr_size(thePointer, theSize),
+                crate::ffi_extern_TKernel::NCollection_IncAllocator_IBlock_ctor_voidptr_size(
+                    thePointer, theSize,
+                ),
             ))
         }
     }
@@ -2146,14 +2313,14 @@ impl IncAllocator_IBlock {
 /// Base class for NCollection_SparseArray;
 /// provides non-template implementation of general mechanics
 /// of block allocation, items creation / deletion etc.
-pub use crate::ffi::NCollection_SparseArrayBase as SparseArrayBase;
+pub use crate::ffi_types::NCollection_SparseArrayBase as SparseArrayBase;
 
 impl SparseArrayBase {
     /// **Source:** `NCollection_SparseArrayBase.hxx`:37 - `NCollection_SparseArrayBase::Clear()`
     /// Clears all the data
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_clear(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_clear(self as *mut Self)
         })
     }
 
@@ -2161,7 +2328,7 @@ impl SparseArrayBase {
     /// Returns number of currently contained items
     pub fn size(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_size(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_size(self as *const Self)
         })
     }
 
@@ -2169,7 +2336,10 @@ impl SparseArrayBase {
     /// Check whether the value at given index is set
     pub fn has_value(&self, theIndex: usize) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_has_value(self as *const Self, theIndex)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_has_value(
+                self as *const Self,
+                theIndex,
+            )
         })
     }
 
@@ -2178,7 +2348,10 @@ impl SparseArrayBase {
     /// returns True if that item was defined
     pub fn unset_value(&mut self, theIndex: usize) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_unset_value(self as *mut Self, theIndex)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_unset_value(
+                self as *mut Self,
+                theIndex,
+            )
         })
     }
 }
@@ -2186,11 +2359,11 @@ impl SparseArrayBase {
 /// **Source:** `NCollection_SparseArrayBase.hxx`:146 - `NCollection_SparseArrayBase_Iterator`
 ///
 /// Iterator
-pub use crate::ffi::NCollection_SparseArrayBase_Iterator as SparseArrayBase_Iterator;
+pub use crate::ffi_types::NCollection_SparseArrayBase_Iterator as SparseArrayBase_Iterator;
 
 unsafe impl crate::CppDeletable for SparseArrayBase_Iterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_SparseArrayBase_Iterator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_destructor(ptr);
     }
 }
 
@@ -2199,7 +2372,9 @@ impl SparseArrayBase_Iterator {
     /// Restart iterations on the same array
     pub fn restart(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_Iterator_restart(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_restart(
+                self as *mut Self,
+            )
         })
     }
 
@@ -2207,7 +2382,9 @@ impl SparseArrayBase_Iterator {
     /// Returns True if current item is available
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_Iterator_more(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_more(
+                self as *const Self,
+            )
         })
     }
 
@@ -2215,7 +2392,7 @@ impl SparseArrayBase_Iterator {
     /// Advances to the next item
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_Iterator_next(self as *mut Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_next(self as *mut Self)
         })
     }
 
@@ -2223,7 +2400,9 @@ impl SparseArrayBase_Iterator {
     /// Returns current index
     pub fn index(&self) -> usize {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_SparseArrayBase_Iterator_index(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_SparseArrayBase_Iterator_index(
+                self as *const Self,
+            )
         })
     }
 }
@@ -2246,11 +2425,11 @@ impl SparseArrayBase_Iterator {
 /// Notice that this also means that existing pointers will be broken
 /// and you should control that allocator is alive along all objects
 /// allocated with him.
-pub use crate::ffi::NCollection_WinHeapAllocator as WinHeapAllocator;
+pub use crate::ffi_types::NCollection_WinHeapAllocator as WinHeapAllocator;
 
 unsafe impl crate::CppDeletable for WinHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::NCollection_WinHeapAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_destructor(ptr);
     }
 }
 
@@ -2260,7 +2439,7 @@ impl WinHeapAllocator {
     pub fn new_size(theInitSizeBytes: usize) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_ctor_size(theInitSizeBytes),
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_ctor_size(theInitSizeBytes),
             ))
         }
     }
@@ -2269,7 +2448,10 @@ impl WinHeapAllocator {
     /// Allocate memory
     pub unsafe fn allocate(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_allocate(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_allocate(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
@@ -2277,7 +2459,10 @@ impl WinHeapAllocator {
     /// Allocate memory
     pub unsafe fn allocate_optimal(&mut self, theSize: usize) -> *mut std::ffi::c_void {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_allocate_optimal(self as *mut Self, theSize)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_allocate_optimal(
+                self as *mut Self,
+                theSize,
+            )
         })
     }
 
@@ -2285,16 +2470,21 @@ impl WinHeapAllocator {
     /// Release memory
     pub unsafe fn free(&mut self, theAddress: *mut std::ffi::c_void) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_free(self as *mut Self, theAddress)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_free(
+                self as *mut Self,
+                theAddress,
+            )
         })
     }
 
     /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_WinHeapAllocator_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -2302,7 +2492,7 @@ impl WinHeapAllocator {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_get_type_name(),
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -2310,40 +2500,36 @@ impl WinHeapAllocator {
     }
 
     /// **Source:** `NCollection_WinHeapAllocator.hxx`:53 - `NCollection_WinHeapAllocator::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::NCollection_WinHeapAllocator_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to NCollection_BaseAllocator
     pub fn as_base_allocator(&self) -> &BaseAllocator {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator(self as *const Self))
         }
     }
 
     /// Upcast to NCollection_BaseAllocator (mutable)
     pub fn as_base_allocator_mut(&mut self) -> &mut BaseAllocator {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_as_NCollection_BaseAllocator_mut(self as *mut Self))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::NCollection_WinHeapAllocator_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -2351,7 +2537,7 @@ impl WinHeapAllocator {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_as_Standard_Transient_mut(
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -2361,18 +2547,18 @@ impl WinHeapAllocator {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionWinHeapAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionWinHeapAllocator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::NCollection_WinHeapAllocator_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_IsInstance(
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -2380,9 +2566,12 @@ impl WinHeapAllocator {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -2390,7 +2579,9 @@ impl WinHeapAllocator {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::NCollection_WinHeapAllocator_inherited_This(self as *const Self)
+                crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -2403,14 +2594,16 @@ impl WinHeapAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_IncrementRefCounter(
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_IncrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2419,7 +2612,7 @@ impl WinHeapAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_DecrementRefCounter(
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_DecrementRefCounter(
                 self as *mut Self,
             )
         })
@@ -2428,59 +2621,57 @@ impl WinHeapAllocator {
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::NCollection_WinHeapAllocator_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKernel::NCollection_WinHeapAllocator_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleNCollectionWinHeapAllocator;
+pub use crate::ffi_types::HandleNCollectionWinHeapAllocator;
 
 unsafe impl crate::CppDeletable for HandleNCollectionWinHeapAllocator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleNCollectionWinHeapAllocator_destructor(ptr);
+        crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_destructor(ptr);
     }
 }
 
 impl HandleNCollectionWinHeapAllocator {
     /// Dereference this Handle to access the underlying NCollection_WinHeapAllocator
-    pub fn get(&self) -> &crate::ffi::NCollection_WinHeapAllocator {
+    pub fn get(&self) -> &crate::ffi_types::NCollection_WinHeapAllocator {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleNCollectionWinHeapAllocator_get(
+            &*crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying NCollection_WinHeapAllocator
-    pub fn get_mut(&mut self) -> &mut crate::ffi::NCollection_WinHeapAllocator {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::NCollection_WinHeapAllocator {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleNCollectionWinHeapAllocator_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<NCollection_WinHeapAllocator> to Handle<NCollection_BaseAllocator>
     pub fn to_handle_base_allocator(
         &self,
-    ) -> crate::OwnedPtr<crate::ffi::HandleNCollectionBaseAllocator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleNCollectionBaseAllocator> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionWinHeapAllocator_to_HandleNCollectionBaseAllocator(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_to_HandleNCollectionBaseAllocator(self as *const Self)))
         }
     }
 
     /// Upcast Handle<NCollection_WinHeapAllocator> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleNCollectionWinHeapAllocator_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKernel::HandleNCollectionWinHeapAllocator_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -2489,7 +2680,7 @@ impl HandleNCollectionWinHeapAllocator {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::{
+pub use crate::ffi_types::{
     NCollection_Array1_Graphic3d_FrameStatsData as Array1_Graphic3d_FrameStatsData,
     NCollection_Array1_Graphic3d_Vec3d as Array1_Graphic3d_Vec3d,
     NCollection_Array1_StdObject_Shape as Array1_StdObject_Shape,

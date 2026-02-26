@@ -55,7 +55,7 @@
 #include <BRepMesh_UVParamRangeSplitter.hxx>
 #include <BRepMesh_UndefinedRangeSplitter.hxx>
 #include <BRepMesh_VertexTool.hxx>
-#include <BinMDF_TypeIdMap.hxx>
+#include <BinMDF_TypeADriverMap.hxx>
 #include <Bnd_Box.hxx>
 #include <Geom2d_Curve.hxx>
 #include <GeomAbs_IsoType.hxx>

@@ -9,7 +9,11 @@
 /// **Source:** `StdStorage.hxx`:44 - `StdStorage::Version`
 /// Returns the version of Storage's read/write routines
 pub fn version() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
-    unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_version())) }
+    unsafe {
+        crate::OwnedPtr::from_raw(
+            crate::check_result(crate::ffi_extern_TKStd::StdStorage_version()),
+        )
+    }
 }
 /// **Source:** `StdStorage.hxx`:51 - `StdStorage::Read`
 /// Returns the data read from a file located at theFileName.
@@ -19,10 +23,13 @@ pub fn version() -> crate::OwnedPtr<crate::t_collection::AsciiString> {
 /// Note: - theData object will be created if it is null or cleared otherwise.
 pub fn read_asciistring_handlestdstoragedata(
     theFileName: &crate::t_collection::AsciiString,
-    theData: &mut crate::ffi::HandleStdStorageData,
+    theData: &mut crate::ffi_types::HandleStdStorageData,
 ) -> crate::storage::Error {
     crate::storage::Error::try_from(crate::check_result(unsafe {
-        crate::ffi::StdStorage_read_asciistring_handlestdstoragedata(theFileName, theData)
+        crate::ffi_extern_TKStd::StdStorage_read_asciistring_handlestdstoragedata(
+            theFileName,
+            theData,
+        )
     }))
     .unwrap()
 }
@@ -33,11 +40,13 @@ pub fn read_asciistring_handlestdstoragedata(
 /// browsed in order to extract the root objects from the container.
 /// Note: - theData object will be created if it is null or cleared otherwise.
 pub fn read_handlestoragebasedriver_handlestdstoragedata(
-    theDriver: &crate::ffi::HandleStorageBaseDriver,
-    theData: &mut crate::ffi::HandleStdStorageData,
+    theDriver: &crate::ffi_types::HandleStorageBaseDriver,
+    theData: &mut crate::ffi_types::HandleStdStorageData,
 ) -> crate::storage::Error {
     crate::storage::Error::try_from(crate::check_result(unsafe {
-        crate::ffi::StdStorage_read_handlestoragebasedriver_handlestdstoragedata(theDriver, theData)
+        crate::ffi_extern_TKStd::StdStorage_read_handlestoragebasedriver_handlestdstoragedata(
+            theDriver, theData,
+        )
     }))
     .unwrap()
 }
@@ -47,11 +56,11 @@ pub fn read_handlestoragebasedriver_handlestdstoragedata(
 /// Note: - theData may aggregate several root objects to be stored together.
 /// - createion date specified in the srorage header will be overwritten.
 pub fn write_handlestoragebasedriver_handlestdstoragedata(
-    theDriver: &crate::ffi::HandleStorageBaseDriver,
-    theData: &crate::ffi::HandleStdStorageData,
+    theDriver: &crate::ffi_types::HandleStorageBaseDriver,
+    theData: &crate::ffi_types::HandleStdStorageData,
 ) -> crate::storage::Error {
     crate::storage::Error::try_from(crate::check_result(unsafe {
-        crate::ffi::StdStorage_write_handlestoragebasedriver_handlestdstoragedata(
+        crate::ffi_extern_TKStd::StdStorage_write_handlestoragebasedriver_handlestdstoragedata(
             theDriver, theData,
         )
     }))
@@ -59,18 +68,18 @@ pub fn write_handlestoragebasedriver_handlestdstoragedata(
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From StdStorage_BacketOfPersistent.hxx
 // ========================
 
 /// **Source:** `StdStorage_BacketOfPersistent.hxx`:23 - `StdStorage_Bucket`
-pub use crate::ffi::StdStorage_Bucket as Bucket;
+pub use crate::ffi_types::StdStorage_Bucket as Bucket;
 
 unsafe impl crate::CppDeletable for Bucket {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_Bucket_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_Bucket_destructor(ptr);
     }
 }
 
@@ -78,31 +87,35 @@ impl Bucket {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:37 - `StdStorage_Bucket::StdStorage_Bucket()`
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Bucket_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Bucket_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:46 - `StdStorage_Bucket::StdStorage_Bucket()`
     pub fn new_int(theSpaceSize: i32) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Bucket_ctor_int(
-                theSpaceSize,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Bucket_ctor_int(theSpaceSize),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:55 - `StdStorage_Bucket::Clear()`
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StdStorage_Bucket_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKStd::StdStorage_Bucket_clear(self as *mut Self)
+        })
     }
 }
 
 /// **Source:** `StdStorage_BacketOfPersistent.hxx`:60 - `StdStorage_BucketOfPersistent`
-pub use crate::ffi::StdStorage_BucketOfPersistent as BucketOfPersistent;
+pub use crate::ffi_types::StdStorage_BucketOfPersistent as BucketOfPersistent;
 
 unsafe impl crate::CppDeletable for BucketOfPersistent {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_BucketOfPersistent_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_destructor(ptr);
     }
 }
 
@@ -111,7 +124,10 @@ impl BucketOfPersistent {
     pub fn new_int2(theBucketSize: i32, theBucketNumber: i32) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_BucketOfPersistent_ctor_int2(theBucketSize, theBucketNumber),
+                crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_ctor_int2(
+                    theBucketSize,
+                    theBucketNumber,
+                ),
             ))
         }
     }
@@ -129,14 +145,14 @@ impl BucketOfPersistent {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:75 - `StdStorage_BucketOfPersistent::Length()`
     pub fn length(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_BucketOfPersistent_length(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_length(self as *const Self)
         })
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:77 - `StdStorage_BucketOfPersistent::Append()`
-    pub fn append(&mut self, sp: &crate::ffi::HandleStdObjMgtPersistent) {
+    pub fn append(&mut self, sp: &crate::ffi_types::HandleStdObjMgtPersistent) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_BucketOfPersistent_append(self as *mut Self, sp)
+            crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_append(self as *mut Self, sp)
         })
     }
 
@@ -144,7 +160,10 @@ impl BucketOfPersistent {
     pub fn value(&mut self, theIndex: i32) -> Option<&mut crate::std_obj_mgt::Persistent> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_BucketOfPersistent_value(self as *mut Self, theIndex)
+                crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_value(
+                    self as *mut Self,
+                    theIndex,
+                )
             });
             if __val.is_null() {
                 None
@@ -157,17 +176,17 @@ impl BucketOfPersistent {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:81 - `StdStorage_BucketOfPersistent::Clear()`
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_BucketOfPersistent_clear(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_BucketOfPersistent_clear(self as *mut Self)
         })
     }
 }
 
 /// **Source:** `StdStorage_BacketOfPersistent.hxx`:86 - `StdStorage_BucketIterator`
-pub use crate::ffi::StdStorage_BucketIterator as BucketIterator;
+pub use crate::ffi_types::StdStorage_BucketIterator as BucketIterator;
 
 unsafe impl crate::CppDeletable for BucketIterator {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_BucketIterator_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_BucketIterator_destructor(ptr);
     }
 }
 
@@ -176,7 +195,9 @@ impl BucketIterator {
     pub fn new_bucketofpersistentptr(arg0: &mut BucketOfPersistent) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_BucketIterator_ctor_bucketofpersistentptr(arg0 as *mut _),
+                crate::ffi_extern_TKStd::StdStorage_BucketIterator_ctor_bucketofpersistentptr(
+                    arg0 as *mut _,
+                ),
             ))
         }
     }
@@ -184,14 +205,17 @@ impl BucketIterator {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:98 - `StdStorage_BucketIterator::Init()`
     pub fn init(&mut self, arg0: &mut BucketOfPersistent) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_BucketIterator_init(self as *mut Self, arg0 as *mut _)
+            crate::ffi_extern_TKStd::StdStorage_BucketIterator_init(
+                self as *mut Self,
+                arg0 as *mut _,
+            )
         })
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:99 - `StdStorage_BucketIterator::Reset()`
     pub fn reset(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_BucketIterator_reset(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_BucketIterator_reset(self as *mut Self)
         })
     }
 
@@ -199,7 +223,7 @@ impl BucketIterator {
     pub fn value(&self) -> Option<&crate::std_obj_mgt::Persistent> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_BucketIterator_value(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_BucketIterator_value(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -212,14 +236,14 @@ impl BucketIterator {
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:111 - `StdStorage_BucketIterator::More()`
     pub fn more(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_BucketIterator_more(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_BucketIterator_more(self as *const Self)
         })
     }
 
     /// **Source:** `StdStorage_BacketOfPersistent.hxx`:113 - `StdStorage_BucketIterator::Next()`
     pub fn next(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_BucketIterator_next(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_BucketIterator_next(self as *mut Self)
         })
     }
 }
@@ -257,11 +281,11 @@ impl BucketIterator {
 /// are not maintained by the storage/retrieval
 /// mechanism: external references are not
 /// supported by Storage_Schema algorithm
-pub use crate::ffi::StdStorage_Data as Data;
+pub use crate::ffi_types::StdStorage_Data as Data;
 
 unsafe impl crate::CppDeletable for Data {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_Data_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_Data_destructor(ptr);
     }
 }
 
@@ -280,50 +304,54 @@ impl Data {
     /// read container.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Data_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_Data.hxx`:71 - `StdStorage_Data::Clear()`
     /// Makes the container empty
     pub fn clear(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StdStorage_Data_clear(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKStd::StdStorage_Data_clear(self as *mut Self)
+        })
     }
 
     /// **Source:** `StdStorage_Data.hxx`:74 - `StdStorage_Data::HeaderData()`
     /// Returns the header data section
-    pub fn header_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHeaderData> {
+    pub fn header_data(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageHeaderData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Data_header_data(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_header_data(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_Data.hxx`:77 - `StdStorage_Data::TypeData()`
     /// Returns the type data section
-    pub fn type_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageTypeData> {
+    pub fn type_data(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageTypeData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Data_type_data(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_type_data(self as *mut Self),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_Data.hxx`:80 - `StdStorage_Data::RootData()`
     /// Returns the root data section
-    pub fn root_data(&mut self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRootData> {
+    pub fn root_data(&mut self) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageRootData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Data_root_data(
-                self as *mut Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_root_data(self as *mut Self),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_Data_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKStd::StdStorage_Data_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -332,43 +360,48 @@ impl Data {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdStorage_Data_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageData> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Data_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Data_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:71 - `Standard_Transient::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_Data_inherited_DynamicType(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_Data_inherited_DynamicType(
                 self as *const Self,
             )))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -376,7 +409,7 @@ impl Data {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_Data_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_Data_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -389,58 +422,72 @@ impl Data {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Data_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_Data_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageData;
+pub use crate::ffi_types::HandleStdStorageData;
 
 unsafe impl crate::CppDeletable for HandleStdStorageData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageData_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageData_destructor(ptr);
     }
 }
 
 impl HandleStdStorageData {
     /// Dereference this Handle to access the underlying StdStorage_Data
-    pub fn get(&self) -> &crate::ffi::StdStorage_Data {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdStorageData_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_Data {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageData_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_Data
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_Data {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_Data {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageData_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageData_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdStorage_Data> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageData_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKStd::HandleStdStorageData_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -451,11 +498,11 @@ impl HandleStdStorageData {
 // ========================
 
 /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots`
-pub use crate::ffi::StdStorage_HSequenceOfRoots as HSequenceOfRoots;
+pub use crate::ffi_types::StdStorage_HSequenceOfRoots as HSequenceOfRoots;
 
 unsafe impl crate::CppDeletable for HSequenceOfRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_HSequenceOfRoots_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_destructor(ptr);
     }
 }
 
@@ -464,35 +511,38 @@ impl HSequenceOfRoots {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HSequenceOfRoots_ctor(),
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_ctor(),
             ))
         }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::StdStorage_HSequenceOfRoots()`
     pub fn new_sequenceofroots(
-        theOther: &crate::ffi::StdStorage_SequenceOfRoots,
+        theOther: &crate::ffi_types::StdStorage_SequenceOfRoots,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HSequenceOfRoots_ctor_sequenceofroots(theOther),
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_ctor_sequenceofroots(theOther),
             ))
         }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Sequence()`
-    pub fn sequence(&self) -> &crate::ffi::StdStorage_SequenceOfRoots {
+    pub fn sequence(&self) -> &crate::ffi_types::StdStorage_SequenceOfRoots {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HSequenceOfRoots_sequence(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_sequence(
                 self as *const Self,
             )))
         }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
-    pub fn append_handlestdstorageroot(&mut self, theItem: &crate::ffi::HandleStdStorageRoot) {
+    pub fn append_handlestdstorageroot(
+        &mut self,
+        theItem: &crate::ffi_types::HandleStdStorageRoot,
+    ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_append_handlestdstorageroot(
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_append_handlestdstorageroot(
                 self as *mut Self,
                 theItem,
             )
@@ -502,10 +552,10 @@ impl HSequenceOfRoots {
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::Append()`
     pub fn append_sequenceofroots(
         &mut self,
-        theSequence: &mut crate::ffi::StdStorage_SequenceOfRoots,
+        theSequence: &mut crate::ffi_types::StdStorage_SequenceOfRoots,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_append_sequenceofroots(
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_append_sequenceofroots(
                 self as *mut Self,
                 theSequence,
             )
@@ -513,20 +563,24 @@ impl HSequenceOfRoots {
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::ChangeSequence()`
-    pub fn change_sequence(&mut self) -> &mut crate::ffi::StdStorage_SequenceOfRoots {
+    pub fn change_sequence(&mut self) -> &mut crate::ffi_types::StdStorage_SequenceOfRoots {
         unsafe {
-            &mut *(crate::check_result(crate::ffi::StdStorage_HSequenceOfRoots_change_sequence(
-                self as *mut Self,
-            )))
+            &mut *(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_change_sequence(
+                    self as *mut Self,
+                ),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HSequenceOfRoots_dynamic_type(
-                self as *const Self,
-            )))
+            &*(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_dynamic_type(
+                    self as *const Self,
+                ),
+            ))
         }
     }
 
@@ -534,7 +588,7 @@ impl HSequenceOfRoots {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdStorage_HSequenceOfRoots_get_type_name(),
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -542,18 +596,22 @@ impl HSequenceOfRoots {
     }
 
     /// **Source:** `StdStorage_HSequenceOfRoots.hxx`:20 - `StdStorage_HSequenceOfRoots::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HSequenceOfRoots_get_type_descriptor()))
+            &*(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_get_type_descriptor(),
+            ))
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
@@ -561,7 +619,7 @@ impl HSequenceOfRoots {
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
             &mut *crate::check_result(
-                crate::ffi::StdStorage_HSequenceOfRoots_as_Standard_Transient_mut(
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_as_Standard_Transient_mut(
                     self as *mut Self,
                 ),
             )
@@ -571,18 +629,18 @@ impl HSequenceOfRoots {
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHSequenceOfRoots> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageHSequenceOfRoots> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HSequenceOfRoots_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_IsInstance(
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_IsInstance(
                 self as *const Self,
                 theType,
             )
@@ -590,9 +648,12 @@ impl HSequenceOfRoots {
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -600,7 +661,9 @@ impl HSequenceOfRoots {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_HSequenceOfRoots_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_This(
+                    self as *const Self,
+                )
             });
             if __val.is_null() {
                 None
@@ -613,67 +676,75 @@ impl HSequenceOfRoots {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HSequenceOfRoots_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HSequenceOfRoots_inherited_Delete(
+                self as *const Self,
+            )
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageHSequenceOfRoots;
+pub use crate::ffi_types::HandleStdStorageHSequenceOfRoots;
 
 unsafe impl crate::CppDeletable for HandleStdStorageHSequenceOfRoots {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageHSequenceOfRoots_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageHSequenceOfRoots_destructor(ptr);
     }
 }
 
 impl HandleStdStorageHSequenceOfRoots {
     /// Dereference this Handle to access the underlying StdStorage_HSequenceOfRoots
-    pub fn get(&self) -> &crate::ffi::StdStorage_HSequenceOfRoots {
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_HSequenceOfRoots {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdStorageHSequenceOfRoots_get(
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageHSequenceOfRoots_get(
                 self as *const Self,
             ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_HSequenceOfRoots
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_HSequenceOfRoots {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_HSequenceOfRoots {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageHSequenceOfRoots_get_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::HandleStdStorageHSequenceOfRoots_get_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast Handle<StdStorage_HSequenceOfRoots> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageHSequenceOfRoots_to_HandleStandardTransient(
-                    self as *const Self,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageHSequenceOfRoots_to_HandleStandardTransient(self as *const Self)))
         }
     }
 }
@@ -686,19 +757,19 @@ impl HandleStdStorageHSequenceOfRoots {
 /// Storage header data section that contains some
 /// auxiliary information (application name, schema version,
 /// creation date, comments and so on...)
-pub use crate::ffi::StdStorage_HeaderData as HeaderData;
+pub use crate::ffi_types::StdStorage_HeaderData as HeaderData;
 
 unsafe impl crate::CppDeletable for HeaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_HeaderData_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_HeaderData_destructor(ptr);
     }
 }
 
 impl HeaderData {
     /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HeaderData_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_HeaderData_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -709,9 +780,9 @@ impl HeaderData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn read(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn read(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_read(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_read(self as *mut Self, theDriver)
         })
     }
 
@@ -720,9 +791,9 @@ impl HeaderData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn write(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn write(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_write(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_write(self as *mut Self, theDriver)
         })
     }
 
@@ -731,7 +802,7 @@ impl HeaderData {
     pub fn creation_date(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_creation_date(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_creation_date(self as *const Self),
             ))
         }
     }
@@ -741,7 +812,7 @@ impl HeaderData {
     pub fn storage_version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_storage_version(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_storage_version(self as *const Self),
             ))
         }
     }
@@ -751,7 +822,7 @@ impl HeaderData {
     pub fn schema_version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_schema_version(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_schema_version(self as *const Self),
             ))
         }
     }
@@ -760,7 +831,10 @@ impl HeaderData {
     /// Set the version of the application
     pub fn set_application_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_application_version(self as *mut Self, aVersion)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_application_version(
+                self as *mut Self,
+                aVersion,
+            )
         })
     }
 
@@ -769,7 +843,9 @@ impl HeaderData {
     pub fn application_version(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_application_version(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_application_version(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -778,7 +854,10 @@ impl HeaderData {
     /// Set the name of the application
     pub fn set_application_name(&mut self, aName: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_application_name(self as *mut Self, aName)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_application_name(
+                self as *mut Self,
+                aName,
+            )
         })
     }
 
@@ -787,7 +866,9 @@ impl HeaderData {
     pub fn application_name(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_application_name(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_application_name(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -796,7 +877,7 @@ impl HeaderData {
     /// Set the data type
     pub fn set_data_type(&mut self, aType: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_data_type(self as *mut Self, aType)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_data_type(self as *mut Self, aType)
         })
     }
 
@@ -805,7 +886,7 @@ impl HeaderData {
     pub fn data_type(&self) -> crate::OwnedPtr<crate::t_collection::ExtendedString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_data_type(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_data_type(self as *const Self),
             ))
         }
     }
@@ -814,15 +895,18 @@ impl HeaderData {
     /// Add <theUserInfo> to the user information
     pub fn add_to_user_info(&mut self, theUserInfo: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_add_to_user_info(self as *mut Self, theUserInfo)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_add_to_user_info(
+                self as *mut Self,
+                theUserInfo,
+            )
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:83 - `StdStorage_HeaderData::UserInfo()`
     /// Return the user information
-    pub fn user_info(&self) -> &crate::ffi::TColStd_SequenceOfAsciiString {
+    pub fn user_info(&self) -> &crate::ffi_types::TColStd_SequenceOfAsciiString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HeaderData_user_info(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_HeaderData_user_info(
                 self as *const Self,
             )))
         }
@@ -832,15 +916,20 @@ impl HeaderData {
     /// Add <theUserInfo> to the user information
     pub fn add_to_comments(&mut self, aComment: &crate::t_collection::ExtendedString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_add_to_comments(self as *mut Self, aComment)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_add_to_comments(
+                self as *mut Self,
+                aComment,
+            )
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:89 - `StdStorage_HeaderData::Comments()`
     /// Return the user information
-    pub fn comments(&self) -> &crate::ffi::TColStd_SequenceOfExtendedString {
+    pub fn comments(&self) -> &crate::ffi_types::TColStd_SequenceOfExtendedString {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_HeaderData_comments(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_HeaderData_comments(
+                self as *const Self,
+            )))
         }
     }
 
@@ -848,7 +937,7 @@ impl HeaderData {
     /// Returns the number of persistent objects
     pub fn number_of_objects(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_number_of_objects(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_number_of_objects(self as *const Self)
         })
     }
 
@@ -856,7 +945,7 @@ impl HeaderData {
     /// Returns a status of the latest call to Read / Write functions
     pub fn error_status(&self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_error_status(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -866,7 +955,9 @@ impl HeaderData {
     pub fn error_status_extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_error_status_extension(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_error_status_extension(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -875,14 +966,14 @@ impl HeaderData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_clear_error_status(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_clear_error_status(self as *mut Self)
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:103 - `StdStorage_HeaderData::SetNumberOfObjects()`
     pub fn set_number_of_objects(&mut self, anObjectNumber: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_number_of_objects(
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_number_of_objects(
                 self as *mut Self,
                 anObjectNumber,
             )
@@ -892,28 +983,37 @@ impl HeaderData {
     /// **Source:** `StdStorage_HeaderData.hxx`:105 - `StdStorage_HeaderData::SetStorageVersion()`
     pub fn set_storage_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_storage_version(self as *mut Self, aVersion)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_storage_version(
+                self as *mut Self,
+                aVersion,
+            )
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:107 - `StdStorage_HeaderData::SetCreationDate()`
     pub fn set_creation_date(&mut self, aDate: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_creation_date(self as *mut Self, aDate)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_creation_date(
+                self as *mut Self,
+                aDate,
+            )
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:109 - `StdStorage_HeaderData::SetSchemaVersion()`
     pub fn set_schema_version(&mut self, aVersion: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_schema_version(self as *mut Self, aVersion)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_schema_version(
+                self as *mut Self,
+                aVersion,
+            )
         })
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:111 - `StdStorage_HeaderData::SetSchemaName()`
     pub fn set_schema_name(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_set_schema_name(self as *mut Self, aName)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_set_schema_name(self as *mut Self, aName)
         })
     }
 
@@ -921,7 +1021,7 @@ impl HeaderData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_get_type_name(),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -929,50 +1029,64 @@ impl HeaderData {
     }
 
     /// **Source:** `StdStorage_HeaderData.hxx`:38 - `StdStorage_HeaderData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdStorage_HeaderData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_HeaderData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdStorage_HeaderData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHeaderData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageHeaderData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_HeaderData_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -980,7 +1094,7 @@ impl HeaderData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_HeaderData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -993,62 +1107,72 @@ impl HeaderData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_GetRefCount(
+                self as *const Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_HeaderData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_HeaderData_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageHeaderData;
+pub use crate::ffi_types::HandleStdStorageHeaderData;
 
 unsafe impl crate::CppDeletable for HandleStdStorageHeaderData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageHeaderData_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageHeaderData_destructor(ptr);
     }
 }
 
 impl HandleStdStorageHeaderData {
     /// Dereference this Handle to access the underlying StdStorage_HeaderData
-    pub fn get(&self) -> &crate::ffi::StdStorage_HeaderData {
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_HeaderData {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdStorageHeaderData_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageHeaderData_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_HeaderData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_HeaderData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_HeaderData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageHeaderData_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageHeaderData_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdStorage_HeaderData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageHeaderData_to_HandleStandardTransient(
+                crate::ffi_extern_TKStd::HandleStdStorageHeaderData_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1062,11 +1186,11 @@ impl HandleStdStorageHeaderData {
 
 /// **Source:** `StdStorage_Root.hxx`:28 - `StdStorage_Root`
 /// Describes a named persistent root
-pub use crate::ffi::StdStorage_Root as Root;
+pub use crate::ffi_types::StdStorage_Root as Root;
 
 unsafe impl crate::CppDeletable for Root {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_Root_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_Root_destructor(ptr);
     }
 }
 
@@ -1075,7 +1199,9 @@ impl Root {
     /// Creates an empty root
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Root_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_ctor(),
+            ))
         }
     }
 
@@ -1083,11 +1209,11 @@ impl Root {
     /// Creates a root for writing
     pub fn new_asciistring_handlestdobjmgtpersistent(
         theName: &crate::t_collection::AsciiString,
-        theObject: &crate::ffi::HandleStdObjMgtPersistent,
+        theObject: &crate::ffi_types::HandleStdObjMgtPersistent,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_Root_ctor_asciistring_handlestdobjmgtpersistent(
+                crate::ffi_extern_TKStd::StdStorage_Root_ctor_asciistring_handlestdobjmgtpersistent(
                     theName, theObject,
                 ),
             ))
@@ -1095,9 +1221,11 @@ impl Root {
     }
 
     /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_Root_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_Root_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1105,9 +1233,9 @@ impl Root {
     /// Returns a name of the root
     pub fn name(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Root_name(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_name(self as *const Self),
+            ))
         }
     }
 
@@ -1115,25 +1243,25 @@ impl Root {
     /// Sets a name to the root object
     pub fn set_name(&mut self, theName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Root_set_name(self as *mut Self, theName)
+            crate::ffi_extern_TKStd::StdStorage_Root_set_name(self as *mut Self, theName)
         })
     }
 
     /// **Source:** `StdStorage_Root.hxx`:49 - `StdStorage_Root::Object()`
     /// Returns a root's persistent object
-    pub fn object(&self) -> crate::OwnedPtr<crate::ffi::HandleStdObjMgtPersistent> {
+    pub fn object(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStdObjMgtPersistent> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Root_object(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_object(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StdStorage_Root.hxx`:52 - `StdStorage_Root::SetObject()`
     /// Sets a root's persistent object
-    pub fn set_object(&mut self, anObject: &crate::ffi::HandleStdObjMgtPersistent) {
+    pub fn set_object(&mut self, anObject: &crate::ffi_types::HandleStdObjMgtPersistent) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Root_set_object(self as *mut Self, anObject)
+            crate::ffi_extern_TKStd::StdStorage_Root_set_object(self as *mut Self, anObject)
         })
     }
 
@@ -1141,9 +1269,9 @@ impl Root {
     /// Returns a root's persistent type
     pub fn type_(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Root_type_(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_type_(self as *const Self),
+            ))
         }
     }
 
@@ -1151,21 +1279,23 @@ impl Root {
     /// Sets a root's persistent type
     pub fn set_type(&mut self, aType: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Root_set_type(self as *mut Self, aType)
+            crate::ffi_extern_TKStd::StdStorage_Root_set_type(self as *mut Self, aType)
         })
     }
 
     /// **Source:** `StdStorage_Root.hxx`:61 - `StdStorage_Root::Reference()`
     /// Returns root's position in the root data section
     pub fn reference(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StdStorage_Root_reference(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKStd::StdStorage_Root_reference(self as *const Self)
+        })
     }
 
     /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::get_type_name()`
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdStorage_Root_get_type_name(),
+                crate::ffi_extern_TKStd::StdStorage_Root_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1173,14 +1303,16 @@ impl Root {
     }
 
     /// **Source:** `StdStorage_Root.hxx`:33 - `StdStorage_Root::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdStorage_Root_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_Root_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_Root_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKStd::StdStorage_Root_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1189,34 +1321,39 @@ impl Root {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdStorage_Root_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageRoot> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_Root_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_Root_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1224,7 +1361,7 @@ impl Root {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_Root_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_Root_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1237,58 +1374,72 @@ impl Root {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_Root_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_Root_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageRoot;
+pub use crate::ffi_types::HandleStdStorageRoot;
 
 unsafe impl crate::CppDeletable for HandleStdStorageRoot {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageRoot_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageRoot_destructor(ptr);
     }
 }
 
 impl HandleStdStorageRoot {
     /// Dereference this Handle to access the underlying StdStorage_Root
-    pub fn get(&self) -> &crate::ffi::StdStorage_Root {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdStorageRoot_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_Root {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageRoot_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_Root
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_Root {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_Root {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageRoot_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageRoot_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdStorage_Root> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageRoot_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKStd::HandleStdStorageRoot_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1300,19 +1451,19 @@ impl HandleStdStorageRoot {
 
 /// **Source:** `StdStorage_RootData.hxx`:33 - `StdStorage_RootData`
 /// Storage root data section contains root persistent objects
-pub use crate::ffi::StdStorage_RootData as RootData;
+pub use crate::ffi_types::StdStorage_RootData as RootData;
 
 unsafe impl crate::CppDeletable for RootData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_RootData_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_RootData_destructor(ptr);
     }
 }
 
 impl RootData {
     /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_RootData_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_RootData_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1323,9 +1474,9 @@ impl RootData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn read(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn read(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_read(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_RootData_read(self as *mut Self, theDriver)
         })
     }
 
@@ -1334,9 +1485,9 @@ impl RootData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn write(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn write(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_write(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_RootData_write(self as *mut Self, theDriver)
         })
     }
 
@@ -1344,26 +1495,26 @@ impl RootData {
     /// Returns the number of roots.
     pub fn number_of_roots(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_number_of_roots(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_number_of_roots(self as *const Self)
         })
     }
 
     /// **Source:** `StdStorage_RootData.hxx`:57 - `StdStorage_RootData::AddRoot()`
     /// Add a root to <me>. If a root with same name is present, it
     /// will be replaced by <aRoot>.
-    pub fn add_root(&mut self, aRoot: &crate::ffi::HandleStdStorageRoot) {
+    pub fn add_root(&mut self, aRoot: &crate::ffi_types::HandleStdStorageRoot) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_add_root(self as *mut Self, aRoot)
+            crate::ffi_extern_TKStd::StdStorage_RootData_add_root(self as *mut Self, aRoot)
         })
     }
 
     /// **Source:** `StdStorage_RootData.hxx`:60 - `StdStorage_RootData::Roots()`
     /// Returns a sequence of all roots
-    pub fn roots(&self) -> crate::OwnedPtr<crate::ffi::HandleStdStorageHSequenceOfRoots> {
+    pub fn roots(&self) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageHSequenceOfRoots> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_RootData_roots(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_RootData_roots(self as *const Self),
+            ))
         }
     }
 
@@ -1372,12 +1523,11 @@ impl RootData {
     pub fn find(
         &self,
         aName: &crate::t_collection::AsciiString,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRoot> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageRoot> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_RootData_find(
-                self as *const Self,
-                aName,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_RootData_find(self as *const Self, aName),
+            ))
         }
     }
 
@@ -1385,7 +1535,7 @@ impl RootData {
     /// Returns Standard_True if <me> contains a root named <aName>
     pub fn is_root(&self, aName: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_is_root(self as *const Self, aName)
+            crate::ffi_extern_TKStd::StdStorage_RootData_is_root(self as *const Self, aName)
         })
     }
 
@@ -1393,7 +1543,7 @@ impl RootData {
     /// Removes the root named <aName>.
     pub fn remove_root(&mut self, aName: &crate::t_collection::AsciiString) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_remove_root(self as *mut Self, aName)
+            crate::ffi_extern_TKStd::StdStorage_RootData_remove_root(self as *mut Self, aName)
         })
     }
 
@@ -1401,7 +1551,7 @@ impl RootData {
     /// Returns a status of the latest call to Read / Write functions
     pub fn error_status(&self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_error_status(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1411,7 +1561,9 @@ impl RootData {
     pub fn error_status_extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_RootData_error_status_extension(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_RootData_error_status_extension(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1420,7 +1572,7 @@ impl RootData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_clear_error_status(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_clear_error_status(self as *mut Self)
         })
     }
 
@@ -1428,7 +1580,7 @@ impl RootData {
     /// Removes all persistent root objects
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_clear(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_clear(self as *mut Self)
         })
     }
 
@@ -1436,7 +1588,7 @@ impl RootData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdStorage_RootData_get_type_name(),
+                crate::ffi_extern_TKStd::StdStorage_RootData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1444,50 +1596,64 @@ impl RootData {
     }
 
     /// **Source:** `StdStorage_RootData.hxx`:38 - `StdStorage_RootData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdStorage_RootData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_RootData_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_RootData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_RootData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdStorage_RootData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_RootData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageRootData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageRootData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_RootData_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::StdStorage_RootData_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1495,7 +1661,7 @@ impl RootData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_RootData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_RootData_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1508,62 +1674,70 @@ impl RootData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_RootData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_RootData_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageRootData;
+pub use crate::ffi_types::HandleStdStorageRootData;
 
 unsafe impl crate::CppDeletable for HandleStdStorageRootData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageRootData_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageRootData_destructor(ptr);
     }
 }
 
 impl HandleStdStorageRootData {
     /// Dereference this Handle to access the underlying StdStorage_RootData
-    pub fn get(&self) -> &crate::ffi::StdStorage_RootData {
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_RootData {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdStorageRootData_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageRootData_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_RootData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_RootData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_RootData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageRootData_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageRootData_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdStorage_RootData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageRootData_to_HandleStandardTransient(
+                crate::ffi_extern_TKStd::HandleStdStorageRootData_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1578,19 +1752,19 @@ impl HandleStdStorageRootData {
 /// **Source:** `StdStorage_TypeData.hxx`:34 - `StdStorage_TypeData`
 /// Storage type data section keeps association between
 /// persistent textual types and their numbers
-pub use crate::ffi::StdStorage_TypeData as TypeData;
+pub use crate::ffi_types::StdStorage_TypeData as TypeData;
 
 unsafe impl crate::CppDeletable for TypeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdStorage_TypeData_destructor(ptr);
+        crate::ffi_extern_TKStd::StdStorage_TypeData_destructor(ptr);
     }
 }
 
 impl TypeData {
     /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdStorage_TypeData_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKStd::StdStorage_TypeData_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1601,9 +1775,9 @@ impl TypeData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn read(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn read(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_read(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_read(self as *mut Self, theDriver)
         })
     }
 
@@ -1612,9 +1786,9 @@ impl TypeData {
     /// Returns Standard_True in case of success. Otherwise, one need to get
     /// an error code and description using ErrorStatus and ErrorStatusExtension
     /// functions correspondingly.
-    pub fn write(&mut self, theDriver: &crate::ffi::HandleStorageBaseDriver) -> bool {
+    pub fn write(&mut self, theDriver: &crate::ffi_types::HandleStorageBaseDriver) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_write(self as *mut Self, theDriver)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_write(self as *mut Self, theDriver)
         })
     }
 
@@ -1622,7 +1796,7 @@ impl TypeData {
     /// Returns the number of registered types
     pub fn number_of_types(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_number_of_types(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_number_of_types(self as *const Self)
         })
     }
 
@@ -1634,7 +1808,7 @@ impl TypeData {
         aTypeNum: i32,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_TypeData_add_type_asciistring_int(
+            crate::ffi_extern_TKStd::StdStorage_TypeData_add_type_asciistring_int(
                 self as *mut Self,
                 aTypeName,
                 aTypeNum,
@@ -1646,10 +1820,10 @@ impl TypeData {
     /// Add a type of the persistent object in case of writing data
     pub fn add_type_handlestdobjmgtpersistent(
         &mut self,
-        aPObj: &crate::ffi::HandleStdObjMgtPersistent,
+        aPObj: &crate::ffi_types::HandleStdObjMgtPersistent,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_add_type_handlestdobjmgtpersistent(
+            crate::ffi_extern_TKStd::StdStorage_TypeData_add_type_handlestdobjmgtpersistent(
                 self as *mut Self,
                 aPObj,
             )
@@ -1661,7 +1835,10 @@ impl TypeData {
     pub fn type_int(&self, aTypeNum: i32) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_TypeData_type_int(self as *const Self, aTypeNum),
+                crate::ffi_extern_TKStd::StdStorage_TypeData_type_int(
+                    self as *const Self,
+                    aTypeNum,
+                ),
             ))
         }
     }
@@ -1670,7 +1847,10 @@ impl TypeData {
     /// Returns the name of the type with number <aTypeNum>
     pub fn type_asciistring(&self, aTypeName: &crate::t_collection::AsciiString) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_type_asciistring(self as *const Self, aTypeName)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_type_asciistring(
+                self as *const Self,
+                aTypeName,
+            )
         })
     }
 
@@ -1679,10 +1859,13 @@ impl TypeData {
     pub fn instantiator(
         &self,
         aTypeNum: i32,
-    ) -> crate::OwnedPtr<crate::ffi::StdObjMgt_Persistent_Instantiator> {
+    ) -> crate::OwnedPtr<crate::ffi_types::StdObjMgt_Persistent_Instantiator> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_TypeData_instantiator(self as *const Self, aTypeNum),
+                crate::ffi_extern_TKStd::StdStorage_TypeData_instantiator(
+                    self as *const Self,
+                    aTypeNum,
+                ),
             ))
         }
     }
@@ -1691,17 +1874,17 @@ impl TypeData {
     /// Checks if <aName> is a registered type
     pub fn is_type(&self, aName: &crate::t_collection::AsciiString) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_is_type(self as *const Self, aName)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_is_type(self as *const Self, aName)
         })
     }
 
     /// **Source:** `StdStorage_TypeData.hxx`:77 - `StdStorage_TypeData::Types()`
     /// Returns a sequence of all registered types
-    pub fn types(&self) -> crate::OwnedPtr<crate::ffi::HandleTColStdHSequenceOfAsciiString> {
+    pub fn types(&self) -> crate::OwnedPtr<crate::ffi_types::HandleTColStdHSequenceOfAsciiString> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdStorage_TypeData_types(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_TypeData_types(self as *const Self),
+            ))
         }
     }
 
@@ -1709,7 +1892,7 @@ impl TypeData {
     /// Returns a status of the latest call to Read / Write functions
     pub fn error_status(&self) -> crate::storage::Error {
         crate::storage::Error::try_from(crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_error_status(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_error_status(self as *const Self)
         }))
         .unwrap()
     }
@@ -1719,7 +1902,9 @@ impl TypeData {
     pub fn error_status_extension(&self) -> crate::OwnedPtr<crate::t_collection::AsciiString> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_TypeData_error_status_extension(self as *const Self),
+                crate::ffi_extern_TKStd::StdStorage_TypeData_error_status_extension(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1728,7 +1913,7 @@ impl TypeData {
     /// Clears error status
     pub fn clear_error_status(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_TypeData_clear_error_status(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_clear_error_status(self as *mut Self)
         })
     }
 
@@ -1736,7 +1921,7 @@ impl TypeData {
     /// Unregisters all types
     pub fn clear(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_TypeData_clear(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_clear(self as *mut Self)
         })
     }
 
@@ -1744,7 +1929,7 @@ impl TypeData {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdStorage_TypeData_get_type_name(),
+                crate::ffi_extern_TKStd::StdStorage_TypeData_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1752,50 +1937,64 @@ impl TypeData {
     }
 
     /// **Source:** `StdStorage_TypeData.hxx`:39 - `StdStorage_TypeData::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdStorage_TypeData_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_TypeData_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdStorage_TypeData_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_TypeData_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdStorage_TypeData_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKStd::StdStorage_TypeData_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdStorageTypeData> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdStorageTypeData> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdStorage_TypeData_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKStd::StdStorage_TypeData_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1803,7 +2002,7 @@ impl TypeData {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdStorage_TypeData_inherited_This(self as *const Self)
+                crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1816,62 +2015,70 @@ impl TypeData {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdStorage_TypeData_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKStd::StdStorage_TypeData_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdStorageTypeData;
+pub use crate::ffi_types::HandleStdStorageTypeData;
 
 unsafe impl crate::CppDeletable for HandleStdStorageTypeData {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdStorageTypeData_destructor(ptr);
+        crate::ffi_extern_TKStd::HandleStdStorageTypeData_destructor(ptr);
     }
 }
 
 impl HandleStdStorageTypeData {
     /// Dereference this Handle to access the underlying StdStorage_TypeData
-    pub fn get(&self) -> &crate::ffi::StdStorage_TypeData {
+    pub fn get(&self) -> &crate::ffi_types::StdStorage_TypeData {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdStorageTypeData_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageTypeData_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdStorage_TypeData
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdStorage_TypeData {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdStorage_TypeData {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdStorageTypeData_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKStd::HandleStdStorageTypeData_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdStorage_TypeData> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdStorageTypeData_to_HandleStandardTransient(
+                crate::ffi_extern_TKStd::HandleStdStorageTypeData_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1883,4 +2090,4 @@ impl HandleStdStorageTypeData {
 // Additional type re-exports
 // ========================
 
-pub use crate::ffi::StdStorage_SequenceOfRoots as SequenceOfRoots;
+pub use crate::ffi_types::StdStorage_SequenceOfRoots as SequenceOfRoots;

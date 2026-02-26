@@ -39,7 +39,7 @@ impl TryFrom<i32> for Volume {
 }
 
 // Handle type re-exports (targets of handle upcasts/downcasts)
-pub use crate::ffi::HandleStandardTransient;
+pub use crate::ffi_types::HandleStandardTransient;
 
 // ========================
 // From StdPrs_BRepFont.hxx
@@ -53,11 +53,11 @@ pub use crate::ffi::HandleStandardTransient;
 /// Please notice that this implementation uses mutex for thread-safety access,
 /// thus may lead to performance penalties in case of concurrent access.
 /// Although caching should eliminate this issue after rendering of sufficient number of glyphs.
-pub use crate::ffi::StdPrs_BRepFont as BRepFont;
+pub use crate::ffi_types::StdPrs_BRepFont as BRepFont;
 
 unsafe impl crate::CppDeletable for BRepFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_BRepFont_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_BRepFont_destructor(ptr);
     }
 }
 
@@ -66,7 +66,9 @@ impl BRepFont {
     /// Empty constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_BRepFont_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_ctor(),
+            ))
         }
     }
 
@@ -76,13 +78,13 @@ impl BRepFont {
     /// @param theSize     the face size in model units
     /// @param theFaceId   face id within the file (0 by default)
     pub fn new_utf8string_real_int(
-        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theFontPath: &crate::ffi_types::NCollection_Utf8String,
         theSize: f64,
         theFaceId: i32,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_BRepFont_ctor_utf8string_real_int(
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_ctor_utf8string_real_int(
                     theFontPath,
                     theSize,
                     theFaceId,
@@ -98,20 +100,13 @@ impl BRepFont {
     /// @param theSize        the face size in model units
     /// @param theStrictLevel search strict level for using aliases and fallback
     pub fn new_utf8string_fontaspect_real_strictlevel(
-        theFontName: &crate::ffi::NCollection_Utf8String,
+        theFontName: &crate::ffi_types::NCollection_Utf8String,
         theFontAspect: crate::font::FontAspect,
         theSize: f64,
         theStrictLevel: crate::font::StrictLevel,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_BRepFont_ctor_utf8string_fontaspect_real_strictlevel(
-                    theFontName,
-                    theFontAspect.into(),
-                    theSize,
-                    theStrictLevel.into(),
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_ctor_utf8string_fontaspect_real_strictlevel(theFontName, theFontAspect.into(), theSize, theStrictLevel.into())))
         }
     }
 
@@ -121,23 +116,27 @@ impl BRepFont {
     /// @param theSize     the face size in model units
     /// @param theFaceId   face id within the file (0 by default)
     pub fn new_utf8string_real(
-        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theFontPath: &crate::ffi_types::NCollection_Utf8String,
         theSize: f64,
     ) -> crate::OwnedPtr<Self> {
         Self::new_utf8string_real_int(theFontPath, theSize, 0)
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:42 - `StdPrs_BRepFont::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_BRepFont_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:78 - `StdPrs_BRepFont::Release()`
     /// Release currently loaded font.
     pub fn release(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StdPrs_BRepFont_release(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_release(self as *mut Self)
+        })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:85 - `StdPrs_BRepFont::Init()`
@@ -148,12 +147,12 @@ impl BRepFont {
     /// @return true on success
     pub fn init_utf8string_real_int(
         &mut self,
-        theFontPath: &crate::ffi::NCollection_Utf8String,
+        theFontPath: &crate::ffi_types::NCollection_Utf8String,
         theSize: f64,
         theFaceId: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_init_utf8string_real_int(
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_init_utf8string_real_int(
                 self as *mut Self,
                 theFontPath,
                 theSize,
@@ -181,7 +180,7 @@ impl BRepFont {
         theStrictLevel: crate::font::StrictLevel,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_find_and_init(
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_find_and_init(
                 self as *mut Self,
                 theFontName,
                 theFontAspect.into(),
@@ -193,8 +192,12 @@ impl BRepFont {
 
     /// **Source:** `StdPrs_BRepFont.hxx`:105 - `StdPrs_BRepFont::FTFont()`
     /// Return wrapper over FreeType font.
-    pub fn ft_font(&self) -> &crate::ffi::HandleFontFTFont {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_BRepFont_ft_font(self as *const Self))) }
+    pub fn ft_font(&self) -> &crate::ffi_types::HandleFontFTFont {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_ft_font(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:110 - `StdPrs_BRepFont::RenderGlyph()`
@@ -204,7 +207,7 @@ impl BRepFont {
     pub fn render_glyph(&mut self, theChar: &u32) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_BRepFont_render_glyph(self as *mut Self, theChar),
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_render_glyph(self as *mut Self, theChar),
             ))
         }
     }
@@ -218,7 +221,7 @@ impl BRepFont {
     /// Notice that altering this flag clears currently accumulated cache!
     pub fn set_composite_curve_mode(&mut self, theToConcatenate: bool) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_set_composite_curve_mode(
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_set_composite_curve_mode(
                 self as *mut Self,
                 theToConcatenate,
             )
@@ -230,34 +233,43 @@ impl BRepFont {
     /// By default glyphs are not scaled (scaling factor = 1.0)
     pub fn set_width_scaling(&mut self, theScaleFactor: f32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_set_width_scaling(self as *mut Self, theScaleFactor)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_set_width_scaling(
+                self as *mut Self,
+                theScaleFactor,
+            )
         })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:126 - `StdPrs_BRepFont::Ascender()`
     /// @return vertical distance from the horizontal baseline to the highest character coordinate.
     pub fn ascender(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StdPrs_BRepFont_ascender(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_ascender(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:129 - `StdPrs_BRepFont::Descender()`
     /// @return vertical distance from the horizontal baseline to the lowest character coordinate.
     pub fn descender(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StdPrs_BRepFont_descender(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_descender(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:132 - `StdPrs_BRepFont::LineSpacing()`
     /// @return default line spacing (the baseline-to-baseline distance).
     pub fn line_spacing(&self) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_line_spacing(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_line_spacing(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:138 - `StdPrs_BRepFont::PointSize()`
     /// Configured point size
     pub fn point_size(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StdPrs_BRepFont_point_size(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_point_size(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:142 - `StdPrs_BRepFont::AdvanceX()`
@@ -265,7 +277,7 @@ impl BRepFont {
     /// Assuming text rendered horizontally.
     pub fn advance_x_uint(&mut self, theUCharNext: u32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_advance_x_uint(self as *mut Self, theUCharNext)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_advance_x_uint(self as *mut Self, theUCharNext)
         })
     }
 
@@ -274,7 +286,11 @@ impl BRepFont {
     /// Assuming text rendered horizontally.
     pub fn advance_x_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_advance_x_uint2(self as *mut Self, theUChar, theUCharNext)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_advance_x_uint2(
+                self as *mut Self,
+                theUChar,
+                theUCharNext,
+            )
         })
     }
 
@@ -283,7 +299,7 @@ impl BRepFont {
     /// Assuming text rendered vertically.
     pub fn advance_y_uint(&mut self, theUCharNext: u32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_advance_y_uint(self as *mut Self, theUCharNext)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_advance_y_uint(self as *mut Self, theUCharNext)
         })
     }
 
@@ -292,20 +308,30 @@ impl BRepFont {
     /// Assuming text rendered vertically.
     pub fn advance_y_uint2(&mut self, theUChar: u32, theUCharNext: u32) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_advance_y_uint2(self as *mut Self, theUChar, theUCharNext)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_advance_y_uint2(
+                self as *mut Self,
+                theUChar,
+                theUCharNext,
+            )
         })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:169 - `StdPrs_BRepFont::Scale()`
     /// Returns scaling factor for current font size.
     pub fn scale(&self) -> f64 {
-        crate::check_result(unsafe { crate::ffi::StdPrs_BRepFont_scale(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_scale(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:172 - `StdPrs_BRepFont::Mutex()`
     /// Returns mutex.
     pub fn mutex(&mut self) -> &mut crate::standard::Mutex {
-        unsafe { &mut *(crate::check_result(crate::ffi::StdPrs_BRepFont_mutex(self as *mut Self))) }
+        unsafe {
+            &mut *(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_mutex(
+                self as *mut Self,
+            )))
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:177 - `StdPrs_BRepFont::Init()`
@@ -313,12 +339,12 @@ impl BRepFont {
     /// Alias for FindAndInit() for backward compatibility.
     pub fn init_utf8string_fontaspect_real(
         &mut self,
-        theFontName: &crate::ffi::NCollection_Utf8String,
+        theFontName: &crate::ffi_types::NCollection_Utf8String,
         theFontAspect: crate::font::FontAspect,
         theSize: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_init_utf8string_fontaspect_real(
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_init_utf8string_fontaspect_real(
                 self as *mut Self,
                 theFontName,
                 theFontAspect.into(),
@@ -331,7 +357,7 @@ impl BRepFont {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdPrs_BRepFont_get_type_name(),
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -339,8 +365,10 @@ impl BRepFont {
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:42 - `StdPrs_BRepFont::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_BRepFont_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_get_type_descriptor()))
+        }
     }
 
     /// **Source:** `StdPrs_BRepFont.hxx`:50 - `StdPrs_BRepFont::FindAndCreate()`
@@ -355,10 +383,10 @@ impl BRepFont {
         theFontAspect: crate::font::FontAspect,
         theSize: f64,
         theStrictLevel: crate::font::StrictLevel,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsBRepFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsBRepFont> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_BRepFont_find_and_create(
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_find_and_create(
                     theFontName,
                     theFontAspect.into(),
                     theSize,
@@ -371,7 +399,7 @@ impl BRepFont {
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_BRepFont_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepFont_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -380,34 +408,39 @@ impl BRepFont {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_BRepFont_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsBRepFont> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsBRepFont> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_BRepFont_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -415,7 +448,7 @@ impl BRepFont {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdPrs_BRepFont_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -428,58 +461,72 @@ impl BRepFont {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_BRepFont_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_BRepFont_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdPrsBRepFont;
+pub use crate::ffi_types::HandleStdPrsBRepFont;
 
 unsafe impl crate::CppDeletable for HandleStdPrsBRepFont {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdPrsBRepFont_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_destructor(ptr);
     }
 }
 
 impl HandleStdPrsBRepFont {
     /// Dereference this Handle to access the underlying StdPrs_BRepFont
-    pub fn get(&self) -> &crate::ffi::StdPrs_BRepFont {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdPrsBRepFont_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdPrs_BRepFont {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_BRepFont
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_BRepFont {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdPrs_BRepFont {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdPrsBRepFont_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdPrs_BRepFont> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsBRepFont_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdPrsBRepFont_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -491,11 +538,11 @@ impl HandleStdPrsBRepFont {
 
 /// **Source:** `StdPrs_BRepTextBuilder.hxx`:24 - `StdPrs_BRepTextBuilder`
 /// Represents class for applying text formatting.
-pub use crate::ffi::StdPrs_BRepTextBuilder as BRepTextBuilder;
+pub use crate::ffi_types::StdPrs_BRepTextBuilder as BRepTextBuilder;
 
 unsafe impl crate::CppDeletable for BRepTextBuilder {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_BRepTextBuilder_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_destructor(ptr);
     }
 }
 
@@ -504,9 +551,9 @@ impl BRepTextBuilder {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::StdPrs_BRepTextBuilder_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_ctor(),
+            ))
         }
     }
 
@@ -518,18 +565,11 @@ impl BRepTextBuilder {
     pub fn perform_brepfont_handlefonttextformatter_ax3(
         &mut self,
         theFont: &mut BRepFont,
-        theFormatter: &crate::ffi::HandleFontTextFormatter,
+        theFormatter: &crate::ffi_types::HandleFontTextFormatter,
         thePenLoc: &crate::gp::Ax3,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_BRepTextBuilder_perform_brepfont_handlefonttextformatter_ax3(
-                    self as *mut Self,
-                    theFont,
-                    theFormatter,
-                    thePenLoc,
-                ),
-            ))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_perform_brepfont_handlefonttextformatter_ax3(self as *mut Self, theFont, theFormatter, thePenLoc)))
         }
     }
 
@@ -543,13 +583,13 @@ impl BRepTextBuilder {
     pub fn perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(
         &mut self,
         theFont: &mut BRepFont,
-        theString: &crate::ffi::NCollection_Utf8String,
+        theString: &crate::ffi_types::NCollection_Utf8String,
         thePenLoc: &crate::gp::Ax3,
         theHAlign: crate::graphic3d::HorizontalTextAlignment,
         theVAlign: crate::graphic3d::VerticalTextAlignment,
     ) -> crate::OwnedPtr<crate::topo_ds::Shape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_BRepTextBuilder_perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(self as *mut Self, theFont, theString, thePenLoc, theHAlign.into(), theVAlign.into())))
+            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_BRepTextBuilder_perform_brepfont_utf8string_ax3_horizontaltextalignment_verticaltextalignment(self as *mut Self, theFont, theString, thePenLoc, theHAlign.into(), theVAlign.into())))
         }
     }
 }
@@ -562,11 +602,11 @@ impl BRepTextBuilder {
 /// A framework to define display of lines, arcs of circles
 /// and conic sections.
 /// This is done with a fixed number of points, which can be modified.
-pub use crate::ffi::StdPrs_Curve as Curve;
+pub use crate::ffi_types::StdPrs_Curve as Curve;
 
 unsafe impl crate::CppDeletable for Curve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_Curve_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_Curve_destructor(ptr);
     }
 }
 
@@ -574,7 +614,11 @@ impl Curve {
     /// **Source:** `StdPrs_Curve.hxx` - `StdPrs_Curve::StdPrs_Curve()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_Curve_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_Curve_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StdPrs_Curve.hxx`:39 - `StdPrs_Curve::Add()`
@@ -584,18 +628,13 @@ impl Curve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(
-                aPresentation,
-                aCurve,
-                aDrawer,
-                drawCurve,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(aPresentation, aCurve, aDrawer, drawCurve)
         })
     }
 
@@ -607,22 +646,15 @@ impl Curve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(
-                aPresentation,
-                aCurve,
-                U1,
-                U2,
-                aDrawer,
-                drawCurve,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(aPresentation, aCurve, U1, U2, aDrawer, drawCurve)
         })
     }
 
@@ -635,14 +667,14 @@ impl Curve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_handleprs3ddrawer_sequenceofpnt_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
-        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        Points: &mut crate::ffi_types::TColgp_SequenceOfPnt,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDrawer, Points, drawCurve)
+            crate::ffi_extern_TKV3d::StdPrs_Curve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDrawer, Points, drawCurve)
         })
     }
 
@@ -658,24 +690,16 @@ impl Curve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real2_sequenceofpnt_int_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+        Points: &mut crate::ffi_types::TColgp_SequenceOfPnt,
         aNbPoints: i32,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_sequenceofpnt_int_bool(
-                aPresentation,
-                aCurve,
-                U1,
-                U2,
-                Points,
-                aNbPoints,
-                drawCurve,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_Curve_add_handlegraphic3dstructure_curve_real2_sequenceofpnt_int_bool(aPresentation, aCurve, U1, U2, Points, aNbPoints, drawCurve)
         })
     }
 
@@ -688,10 +712,10 @@ impl Curve {
         Z: f64,
         aDistance: f64,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_Curve_match_real4_curve_handleprs3ddrawer(
+            crate::ffi_extern_TKV3d::StdPrs_Curve_match_real4_curve_handleprs3ddrawer(
                 X, Y, Z, aDistance, aCurve, aDrawer,
             )
         })
@@ -711,7 +735,7 @@ impl Curve {
         aNbPoints: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_Curve_match_real4_curve_real2_int(
+            crate::ffi_extern_TKV3d::StdPrs_Curve_match_real4_curve_real2_int(
                 X,
                 Y,
                 Z,
@@ -737,10 +761,10 @@ impl Curve {
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_Curve_match_real4_curve_real2_handleprs3ddrawer(
+            crate::ffi_extern_TKV3d::StdPrs_Curve_match_real4_curve_real2_handleprs3ddrawer(
                 X, Y, Z, aDistance, aCurve, U1, U2, aDrawer,
             )
         })
@@ -763,7 +787,7 @@ impl Curve {
         aNbPoints: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_Curve_match_real4_curve_real3_int(
+            crate::ffi_extern_TKV3d::StdPrs_Curve_match_real4_curve_real3_int(
                 X,
                 Y,
                 Z,
@@ -786,11 +810,11 @@ impl Curve {
 /// A framework to provide display of any curve with
 /// respect to the maximal chordal deviation defined in
 /// the Prs3d_Drawer attributes manager.
-pub use crate::ffi::StdPrs_DeflectionCurve as DeflectionCurve;
+pub use crate::ffi_types::StdPrs_DeflectionCurve as DeflectionCurve;
 
 unsafe impl crate::CppDeletable for DeflectionCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_DeflectionCurve_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_destructor(ptr);
     }
 }
 
@@ -799,9 +823,9 @@ impl DeflectionCurve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(
-                crate::check_result(crate::ffi::StdPrs_DeflectionCurve_ctor()),
-            )
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_ctor(),
+            ))
         }
     }
 
@@ -814,13 +838,13 @@ impl DeflectionCurve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &mut crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(aPresentation, aCurve, aDrawer, drawCurve)
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_handleprs3ddrawer_bool(aPresentation, aCurve, aDrawer, drawCurve)
         })
     }
 
@@ -834,15 +858,15 @@ impl DeflectionCurve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &mut crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(aPresentation, aCurve, U1, U2, aDrawer, drawCurve)
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real2_handleprs3ddrawer_bool(aPresentation, aCurve, U1, U2, aDrawer, drawCurve)
         })
     }
 
@@ -854,7 +878,7 @@ impl DeflectionCurve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real3_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &mut crate::adaptor3d::Curve,
         aDeflection: f64,
         aLimit: f64,
@@ -862,14 +886,7 @@ impl DeflectionCurve {
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_bool(
-                aPresentation,
-                aCurve,
-                aDeflection,
-                aLimit,
-                anAngle,
-                drawCurve,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_bool(aPresentation, aCurve, aDeflection, aLimit, anAngle, drawCurve)
         })
     }
 
@@ -882,15 +899,15 @@ impl DeflectionCurve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real_handleprs3ddrawer_sequenceofpnt_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &mut crate::adaptor3d::Curve,
         aDeflection: f64,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
-        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        Points: &mut crate::ffi_types::TColgp_SequenceOfPnt,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDeflection, aDrawer, Points, drawCurve)
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real_handleprs3ddrawer_sequenceofpnt_bool(aPresentation, aCurve, aDeflection, aDrawer, Points, drawCurve)
         })
     }
 
@@ -904,17 +921,17 @@ impl DeflectionCurve {
     /// it is used if the curve is a part of some shape and PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_curve_real3_sequenceofpnt_real_bool(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &mut crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
         aDeflection: f64,
-        Points: &mut crate::ffi::TColgp_SequenceOfPnt,
+        Points: &mut crate::ffi_types::TColgp_SequenceOfPnt,
         anAngle: f64,
         drawCurve: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_sequenceofpnt_real_bool(aPresentation, aCurve, U1, U2, aDeflection, Points, anAngle, drawCurve)
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_add_handlegraphic3dstructure_curve_real3_sequenceofpnt_real_bool(aPresentation, aCurve, U1, U2, aDeflection, Points, anAngle, drawCurve)
         })
     }
 
@@ -928,10 +945,10 @@ impl DeflectionCurve {
         Z: f64,
         aDistance: f64,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_match_real4_curve_handleprs3ddrawer(
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_match_real4_curve_handleprs3ddrawer(
                 X, Y, Z, aDistance, aCurve, aDrawer,
             )
         })
@@ -951,12 +968,10 @@ impl DeflectionCurve {
         aCurve: &crate::adaptor3d::Curve,
         U1: f64,
         U2: f64,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_match_real4_curve_real2_handleprs3ddrawer(
-                X, Y, Z, aDistance, aCurve, U1, U2, aDrawer,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_match_real4_curve_real2_handleprs3ddrawer(X, Y, Z, aDistance, aCurve, U1, U2, aDrawer)
         })
     }
 
@@ -975,7 +990,7 @@ impl DeflectionCurve {
         theAngle: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_match_real4_curve_real3(
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_match_real4_curve_real3(
                 theX,
                 theY,
                 theZ,
@@ -1004,7 +1019,7 @@ impl DeflectionCurve {
         theAngle: f64,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_DeflectionCurve_match_real4_curve_real4(
+            crate::ffi_extern_TKV3d::StdPrs_DeflectionCurve_match_real4_curve_real4(
                 theX,
                 theY,
                 theZ,
@@ -1031,11 +1046,11 @@ impl DeflectionCurve {
 /// When you use StdPrs_HLRShape, you obtain an exact result, whereas, when you use
 /// StdPrs_HLRPolyShape, you reduce computation time but obtain polygonal segments. The polygonal
 /// algorithm is used.
-pub use crate::ffi::StdPrs_HLRPolyShape as HLRPolyShape;
+pub use crate::ffi_types::StdPrs_HLRPolyShape as HLRPolyShape;
 
 unsafe impl crate::CppDeletable for HLRPolyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_HLRPolyShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_destructor(ptr);
     }
 }
 
@@ -1044,14 +1059,16 @@ impl HLRPolyShape {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_HLRPolyShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_HLRPolyShape.hxx`:31 - `StdPrs_HLRPolyShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_HLRPolyShape_dynamic_type(
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_dynamic_type(
                 self as *const Self,
             )))
         }
@@ -1061,13 +1078,13 @@ impl HLRPolyShape {
     /// Compute presentation for specified shape.
     pub fn compute_hlr(
         &self,
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theProjector: &crate::ffi::HandleGraphic3dCamera,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theProjector: &crate::ffi_types::HandleGraphic3dCamera,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_compute_hlr(
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_compute_hlr(
                 self as *const Self,
                 thePrs,
                 theShape,
@@ -1081,7 +1098,7 @@ impl HLRPolyShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdPrs_HLRPolyShape_get_type_name(),
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1089,14 +1106,18 @@ impl HLRPolyShape {
     }
 
     /// **Source:** `StdPrs_HLRPolyShape.hxx`:31 - `StdPrs_HLRPolyShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_HLRPolyShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_get_type_descriptor(),
+            ))
+        }
     }
 
     /// Upcast to StdPrs_HLRShapeI
     pub fn as_hlr_shape_i(&self) -> &HLRShapeI {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI(
                 self as *const Self,
             ))
         }
@@ -1105,52 +1126,64 @@ impl HLRPolyShape {
     /// Upcast to StdPrs_HLRShapeI (mutable)
     pub fn as_hlr_shape_i_mut(&mut self) -> &mut HLRShapeI {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_as_StdPrs_HLRShapeI_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient(
-                self as *const Self,
-            ))
+            &*crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_as_Standard_Transient(
+                    self as *const Self,
+                ),
+            )
         }
     }
 
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_HLRPolyShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRPolyShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRPolyShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_HLRPolyShape_to_handle(obj.into_raw()),
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_to_handle(obj.into_raw()),
             ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_IsKind(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
@@ -1158,7 +1191,7 @@ impl HLRPolyShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdPrs_HLRPolyShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1171,71 +1204,83 @@ impl HLRPolyShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRPolyShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRPolyShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdPrsHLRPolyShape;
+pub use crate::ffi_types::HandleStdPrsHLRPolyShape;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRPolyShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdPrsHLRPolyShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_destructor(ptr);
     }
 }
 
 impl HandleStdPrsHLRPolyShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRPolyShape
-    pub fn get(&self) -> &crate::ffi::StdPrs_HLRPolyShape {
+    pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRPolyShape {
         unsafe {
-            &*crate::check_result(crate::ffi::HandleStdPrsHLRPolyShape_get(self as *const Self))
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_get(
+                self as *const Self,
+            ))
         }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRPolyShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRPolyShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdPrs_HLRPolyShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdPrsHLRPolyShape_get_mut(
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_get_mut(
                 self as *mut Self,
             ))
         }
     }
 
     /// Upcast Handle<StdPrs_HLRPolyShape> to Handle<StdPrs_HLRShapeI>
-    pub fn to_handle_hlr_shape_i(&self) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShapeI> {
+    pub fn to_handle_hlr_shape_i(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRShapeI> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStdPrsHLRShapeI(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_to_HandleStdPrsHLRShapeI(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StdPrs_HLRPolyShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsHLRPolyShape_to_HandleStandardTransient(
+                crate::ffi_extern_TKV3d::HandleStdPrsHLRPolyShape_to_HandleStandardTransient(
                     self as *const Self,
                 ),
             ))
@@ -1250,11 +1295,11 @@ impl HandleStdPrsHLRPolyShape {
 /// **Source:** `StdPrs_HLRShape.hxx`:21 - `StdPrs_HLRShape`
 /// Computes the presentation of objects with removal of their hidden lines for a specific
 /// projector. The exact algorithm is used.
-pub use crate::ffi::StdPrs_HLRShape as HLRShape;
+pub use crate::ffi_types::StdPrs_HLRShape as HLRShape;
 
 unsafe impl crate::CppDeletable for HLRShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_HLRShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_HLRShape_destructor(ptr);
     }
 }
 
@@ -1263,14 +1308,18 @@ impl HLRShape {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_HLRShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_HLRShape.hxx`:23 - `StdPrs_HLRShape::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_HLRShape_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShape_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1278,13 +1327,13 @@ impl HLRShape {
     /// Compute presentation for specified shape.
     pub fn compute_hlr(
         &self,
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theProjector: &crate::ffi::HandleGraphic3dCamera,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theProjector: &crate::ffi_types::HandleGraphic3dCamera,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_compute_hlr(
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_compute_hlr(
                 self as *const Self,
                 thePrs,
                 theShape,
@@ -1298,7 +1347,7 @@ impl HLRShape {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdPrs_HLRShape_get_type_name(),
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1306,14 +1355,16 @@ impl HLRShape {
     }
 
     /// **Source:** `StdPrs_HLRShape.hxx`:23 - `StdPrs_HLRShape::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_HLRShape_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShape_get_type_descriptor()))
+        }
     }
 
     /// Upcast to StdPrs_HLRShapeI
     pub fn as_hlr_shape_i(&self) -> &HLRShapeI {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShape_as_StdPrs_HLRShapeI(
                 self as *const Self,
             ))
         }
@@ -1322,16 +1373,16 @@ impl HLRShape {
     /// Upcast to StdPrs_HLRShapeI (mutable)
     pub fn as_hlr_shape_i_mut(&mut self) -> &mut HLRShapeI {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_HLRShape_as_StdPrs_HLRShapeI_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_as_StdPrs_HLRShapeI_mut(self as *mut Self),
+            )
         }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_HLRShape_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShape_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1340,34 +1391,39 @@ impl HLRShape {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_HLRShape_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Wrap in a Handle (reference-counted smart pointer)
     pub fn to_handle(
         obj: crate::OwnedPtr<Self>,
-    ) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShape> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRShape> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_HLRShape_to_handle(
-                obj.into_raw(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_to_handle(obj.into_raw()),
+            ))
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1375,7 +1431,7 @@ impl HLRShape {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdPrs_HLRShape_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1388,67 +1444,85 @@ impl HLRShape {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShape_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShape_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdPrsHLRShape;
+pub use crate::ffi_types::HandleStdPrsHLRShape;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdPrsHLRShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_destructor(ptr);
     }
 }
 
 impl HandleStdPrsHLRShape {
     /// Dereference this Handle to access the underlying StdPrs_HLRShape
-    pub fn get(&self) -> &crate::ffi::StdPrs_HLRShape {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdPrsHLRShape_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRShape {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRShape
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRShape {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdPrs_HLRShape {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdPrsHLRShape_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdPrs_HLRShape> to Handle<StdPrs_HLRShapeI>
-    pub fn to_handle_hlr_shape_i(&self) -> crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShapeI> {
+    pub fn to_handle_hlr_shape_i(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRShapeI> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsHLRShape_to_HandleStdPrsHLRShapeI(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_to_HandleStdPrsHLRShapeI(
+                    self as *const Self,
+                ),
             ))
         }
     }
 
     /// Upcast Handle<StdPrs_HLRShape> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsHLRShape_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdPrsHLRShape_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1461,19 +1535,21 @@ impl HandleStdPrsHLRShape {
 /// **Source:** `StdPrs_HLRShapeI.hxx`:27 - `StdPrs_HLRShapeI`
 /// Computes the presentation of objects with removal of their hidden lines for a specific
 /// projector.
-pub use crate::ffi::StdPrs_HLRShapeI as HLRShapeI;
+pub use crate::ffi_types::StdPrs_HLRShapeI as HLRShapeI;
 
 unsafe impl crate::CppDeletable for HLRShapeI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_HLRShapeI_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_destructor(ptr);
     }
 }
 
 impl HLRShapeI {
     /// **Source:** `StdPrs_HLRShapeI.hxx`:29 - `StdPrs_HLRShapeI::DynamicType()`
-    pub fn dynamic_type(&self) -> &crate::ffi::HandleStandardType {
+    pub fn dynamic_type(&self) -> &crate::ffi_types::HandleStandardType {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_HLRShapeI_dynamic_type(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_dynamic_type(
+                self as *const Self,
+            )))
         }
     }
 
@@ -1481,13 +1557,13 @@ impl HLRShapeI {
     /// Compute presentation for specified shape.
     pub fn compute_hlr(
         &self,
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theProjector: &crate::ffi::HandleGraphic3dCamera,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theProjector: &crate::ffi_types::HandleGraphic3dCamera,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_compute_hlr(
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_compute_hlr(
                 self as *const Self,
                 thePrs,
                 theShape,
@@ -1501,7 +1577,7 @@ impl HLRShapeI {
     pub fn get_type_name() -> std::string::String {
         unsafe {
             std::ffi::CStr::from_ptr(crate::check_result(
-                crate::ffi::StdPrs_HLRShapeI_get_type_name(),
+                crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_get_type_name(),
             ))
         }
         .to_string_lossy()
@@ -1509,14 +1585,16 @@ impl HLRShapeI {
     }
 
     /// **Source:** `StdPrs_HLRShapeI.hxx`:29 - `StdPrs_HLRShapeI::get_type_descriptor()`
-    pub fn get_type_descriptor() -> &'static crate::ffi::HandleStandardType {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_HLRShapeI_get_type_descriptor())) }
+    pub fn get_type_descriptor() -> &'static crate::ffi_types::HandleStandardType {
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_get_type_descriptor()))
+        }
     }
 
     /// Upcast to Standard_Transient
     pub fn as_standard_transient(&self) -> &crate::standard::Transient {
         unsafe {
-            &*crate::check_result(crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient(
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_as_Standard_Transient(
                 self as *const Self,
             ))
         }
@@ -1525,23 +1603,28 @@ impl HLRShapeI {
     /// Upcast to Standard_Transient (mutable)
     pub fn as_standard_transient_mut(&mut self) -> &mut crate::standard::Transient {
         unsafe {
-            &mut *crate::check_result(crate::ffi::StdPrs_HLRShapeI_as_Standard_Transient_mut(
-                self as *mut Self,
-            ))
+            &mut *crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_as_Standard_Transient_mut(
+                    self as *mut Self,
+                ),
+            )
         }
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:75 - `Standard_Transient::IsInstance()`
-    pub fn is_instance(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_instance(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_IsInstance(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_IsInstance(
+                self as *const Self,
+                theType,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:83 - `Standard_Transient::IsKind()`
-    pub fn is_kind(&self, theType: &crate::ffi::HandleStandardType) -> bool {
+    pub fn is_kind(&self, theType: &crate::ffi_types::HandleStandardType) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_IsKind(self as *const Self, theType)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_IsKind(self as *const Self, theType)
         })
     }
 
@@ -1549,7 +1632,7 @@ impl HLRShapeI {
     pub fn this(&self) -> Option<&crate::standard::Transient> {
         {
             let __val = crate::check_result(unsafe {
-                crate::ffi::StdPrs_HLRShapeI_inherited_This(self as *const Self)
+                crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_This(self as *const Self)
             });
             if __val.is_null() {
                 None
@@ -1562,58 +1645,72 @@ impl HLRShapeI {
     /// Inherited: **Source:** `Standard_Transient.hxx`:100 - `Standard_Transient::GetRefCount()`
     pub fn get_ref_count(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_GetRefCount(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_GetRefCount(self as *const Self)
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:103 - `Standard_Transient::IncrementRefCounter()`
     pub fn increment_ref_counter(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_IncrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_IncrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:107 - `Standard_Transient::DecrementRefCounter()`
     pub fn decrement_ref_counter(&mut self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_DecrementRefCounter(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_DecrementRefCounter(
+                self as *mut Self,
+            )
         })
     }
 
     /// Inherited: **Source:** `Standard_Transient.hxx`:110 - `Standard_Transient::Delete()`
     pub fn delete(&self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRShapeI_inherited_Delete(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRShapeI_inherited_Delete(self as *const Self)
         })
     }
 }
 
-pub use crate::ffi::HandleStdPrsHLRShapeI;
+pub use crate::ffi_types::HandleStdPrsHLRShapeI;
 
 unsafe impl crate::CppDeletable for HandleStdPrsHLRShapeI {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::HandleStdPrsHLRShapeI_destructor(ptr);
+        crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_destructor(ptr);
     }
 }
 
 impl HandleStdPrsHLRShapeI {
     /// Dereference this Handle to access the underlying StdPrs_HLRShapeI
-    pub fn get(&self) -> &crate::ffi::StdPrs_HLRShapeI {
-        unsafe { &*crate::check_result(crate::ffi::HandleStdPrsHLRShapeI_get(self as *const Self)) }
+    pub fn get(&self) -> &crate::ffi_types::StdPrs_HLRShapeI {
+        unsafe {
+            &*crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_get(
+                self as *const Self,
+            ))
+        }
     }
 
     /// Dereference this Handle to mutably access the underlying StdPrs_HLRShapeI
-    pub fn get_mut(&mut self) -> &mut crate::ffi::StdPrs_HLRShapeI {
+    pub fn get_mut(&mut self) -> &mut crate::ffi_types::StdPrs_HLRShapeI {
         unsafe {
-            &mut *crate::check_result(crate::ffi::HandleStdPrsHLRShapeI_get_mut(self as *mut Self))
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_get_mut(
+                self as *mut Self,
+            ))
         }
     }
 
     /// Upcast Handle<StdPrs_HLRShapeI> to Handle<Standard_Transient>
-    pub fn to_handle_transient(&self) -> crate::OwnedPtr<crate::ffi::HandleStandardTransient> {
+    pub fn to_handle_transient(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleStandardTransient> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::HandleStdPrsHLRShapeI_to_HandleStandardTransient(self as *const Self),
+                crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_to_HandleStandardTransient(
+                    self as *const Self,
+                ),
             ))
         }
     }
@@ -1623,9 +1720,9 @@ impl HandleStdPrsHLRShapeI {
     /// Returns `None` if the handle does not point to a `StdPrs_HLRPolyShape` (or subclass).
     pub fn downcast_to_hlr_poly_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRPolyShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRPolyShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRPolyShape(
+            crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRPolyShape(
                 self as *const Self,
             )
         });
@@ -1641,9 +1738,11 @@ impl HandleStdPrsHLRShapeI {
     /// Returns `None` if the handle does not point to a `StdPrs_HLRShape` (or subclass).
     pub fn downcast_to_hlr_shape(
         &self,
-    ) -> Option<crate::OwnedPtr<crate::ffi::HandleStdPrsHLRShape>> {
+    ) -> Option<crate::OwnedPtr<crate::ffi_types::HandleStdPrsHLRShape>> {
         let __val = crate::check_result(unsafe {
-            crate::ffi::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRShape(self as *const Self)
+            crate::ffi_extern_TKV3d::HandleStdPrsHLRShapeI_downcast_to_HandleStdPrsHLRShape(
+                self as *const Self,
+            )
         });
         if __val.is_null() {
             None
@@ -1658,11 +1757,11 @@ impl HandleStdPrsHLRShapeI {
 // ========================
 
 /// **Source:** `StdPrs_HLRToolShape.hxx`:31 - `StdPrs_HLRToolShape`
-pub use crate::ffi::StdPrs_HLRToolShape as HLRToolShape;
+pub use crate::ffi_types::StdPrs_HLRToolShape as HLRToolShape;
 
 unsafe impl crate::CppDeletable for HLRToolShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_HLRToolShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_destructor(ptr);
     }
 }
 
@@ -1674,7 +1773,10 @@ impl HLRToolShape {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_HLRToolShape_ctor_shape_projector(TheShape, TheProjector),
+                crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_ctor_shape_projector(
+                    TheShape,
+                    TheProjector,
+                ),
             ))
         }
     }
@@ -1682,28 +1784,28 @@ impl HLRToolShape {
     /// **Source:** `StdPrs_HLRToolShape.hxx`:39 - `StdPrs_HLRToolShape::NbEdges()`
     pub fn nb_edges(&self) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_nb_edges(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_nb_edges(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:41 - `StdPrs_HLRToolShape::InitVisible()`
     pub fn init_visible(&mut self, EdgeNumber: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_init_visible(self as *mut Self, EdgeNumber)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_init_visible(self as *mut Self, EdgeNumber)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:43 - `StdPrs_HLRToolShape::MoreVisible()`
     pub fn more_visible(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_more_visible(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_more_visible(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:45 - `StdPrs_HLRToolShape::NextVisible()`
     pub fn next_visible(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_next_visible(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_next_visible(self as *mut Self)
         })
     }
 
@@ -1715,28 +1817,28 @@ impl HLRToolShape {
         U2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_visible(self as *mut Self, TheEdge, U1, U2)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_visible(self as *mut Self, TheEdge, U1, U2)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:49 - `StdPrs_HLRToolShape::InitHidden()`
     pub fn init_hidden(&mut self, EdgeNumber: i32) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_init_hidden(self as *mut Self, EdgeNumber)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_init_hidden(self as *mut Self, EdgeNumber)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:51 - `StdPrs_HLRToolShape::MoreHidden()`
     pub fn more_hidden(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_more_hidden(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_more_hidden(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_HLRToolShape.hxx`:53 - `StdPrs_HLRToolShape::NextHidden()`
     pub fn next_hidden(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_next_hidden(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_next_hidden(self as *mut Self)
         })
     }
 
@@ -1748,7 +1850,7 @@ impl HLRToolShape {
         U2: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_HLRToolShape_hidden(self as *mut Self, TheEdge, U1, U2)
+            crate::ffi_extern_TKV3d::StdPrs_HLRToolShape_hidden(self as *mut Self, TheEdge, U1, U2)
         })
     }
 }
@@ -1763,11 +1865,11 @@ impl HLRToolShape {
 /// by default) or on-triangulation isoline builder algorithm will be used.
 /// If the given shape is not triangulated, on-surface isoline builder will be applied
 /// regardless of Prs3d_Drawer flags.
-pub use crate::ffi::StdPrs_Isolines as Isolines;
+pub use crate::ffi_types::StdPrs_Isolines as Isolines;
 
 unsafe impl crate::CppDeletable for Isolines {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_Isolines_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_Isolines_destructor(ptr);
     }
 }
 
@@ -1776,7 +1878,9 @@ impl Isolines {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_Isolines_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_Isolines_ctor(),
+            ))
         }
     }
 
@@ -1790,18 +1894,13 @@ impl Isolines {
     /// @param[in] theDrawer  the display settings.
     /// @param[in] theDeflection  the deflection for isolines-on-surface version.
     pub fn add_handlegraphic3dstructure_face_handleprs3ddrawer_real(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theDeflection: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_handlegraphic3dstructure_face_handleprs3ddrawer_real(
-                thePresentation,
-                theFace,
-                theDrawer,
-                theDeflection,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_handlegraphic3dstructure_face_handleprs3ddrawer_real(thePresentation, theFace, theDrawer, theDeflection)
         })
     }
 
@@ -1815,19 +1914,13 @@ impl Isolines {
     /// @param[in] theDeflection  the deflection for isolines-on-surface version.
     pub fn add_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theDeflection: f64,
-        theUPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
-        theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
+        theUPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
+        theVPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(
-                theFace,
-                theDrawer,
-                theDeflection,
-                theUPolylines,
-                theVPolylines,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(theFace, theDrawer, theDeflection, theUPolylines, theVPolylines)
         })
     }
 
@@ -1837,12 +1930,12 @@ impl Isolines {
     /// @param[in] theFace  the face.
     /// @param[in] theDrawer  the display settings.
     pub fn add_on_triangulation_handlegraphic3dstructure_face_handleprs3ddrawer(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_face_handleprs3ddrawer(thePresentation, theFace, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_face_handleprs3ddrawer(thePresentation, theFace, theDrawer)
         })
     }
 
@@ -1854,12 +1947,12 @@ impl Isolines {
     /// @param[out] theVPolylines  the sequence of result polylines
     pub fn add_on_triangulation_face_handleprs3ddrawer_nlistofsequenceofpnt2(
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theUPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
-        theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theUPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
+        theVPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_triangulation_face_handleprs3ddrawer_nlistofsequenceofpnt2(theFace, theDrawer, theUPolylines, theVPolylines)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_triangulation_face_handleprs3ddrawer_nlistofsequenceofpnt2(theFace, theDrawer, theUPolylines, theVPolylines)
         })
     }
 
@@ -1877,16 +1970,16 @@ impl Isolines {
     /// @param[in] theUIsoParams  the parameters of u isolines to compute.
     /// @param[in] theVIsoParams  the parameters of v isolines to compute.
     pub fn add_on_triangulation_handlegraphic3dstructure_handlepolytriangulation_handlegeomsurface_location_handleprs3ddrawer_sequenceofreal2(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theTriangulation: &crate::ffi::HandlePolyTriangulation,
-        theSurface: &crate::ffi::HandleGeomSurface,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theTriangulation: &crate::ffi_types::HandlePolyTriangulation,
+        theSurface: &crate::ffi_types::HandleGeomSurface,
         theLocation: &crate::top_loc::Location,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theUIsoParams: &crate::ffi::TColStd_SequenceOfReal,
-        theVIsoParams: &crate::ffi::TColStd_SequenceOfReal,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theUIsoParams: &crate::ffi_types::TColStd_SequenceOfReal,
+        theVIsoParams: &crate::ffi_types::TColStd_SequenceOfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_handlepolytriangulation_handlegeomsurface_location_handleprs3ddrawer_sequenceofreal2(thePresentation, theTriangulation, theSurface, theLocation, theDrawer, theUIsoParams, theVIsoParams)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_triangulation_handlegraphic3dstructure_handlepolytriangulation_handlegeomsurface_location_handleprs3ddrawer_sequenceofreal2(thePresentation, theTriangulation, theSurface, theLocation, theDrawer, theUIsoParams, theVIsoParams)
         })
     }
 
@@ -1897,13 +1990,13 @@ impl Isolines {
     /// @param[in] theDrawer  the display settings.
     /// @param[in] theDeflection  the deflection value.
     pub fn add_on_surface_handlegraphic3dstructure_face_handleprs3ddrawer_real(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theDeflection: f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_face_handleprs3ddrawer_real(thePresentation, theFace, theDrawer, theDeflection)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_face_handleprs3ddrawer_real(thePresentation, theFace, theDrawer, theDeflection)
         })
     }
 
@@ -1916,13 +2009,13 @@ impl Isolines {
     /// @param[out] theVPolylines  the sequence of result polylines
     pub fn add_on_surface_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(
         theFace: &crate::topo_ds::Face,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theDeflection: f64,
-        theUPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
-        theVPolylines: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
+        theUPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
+        theVPolylines: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_surface_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(theFace, theDrawer, theDeflection, theUPolylines, theVPolylines)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_surface_face_handleprs3ddrawer_real_nlistofsequenceofpnt2(theFace, theDrawer, theDeflection, theUPolylines, theVPolylines)
         })
     }
 
@@ -1935,15 +2028,15 @@ impl Isolines {
     /// @param[in] theUIsoParams  the parameters of u isolines to compute.
     /// @param[in] theVIsoParams  the parameters of v isolines to compute.
     pub fn add_on_surface_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer_real_sequenceofreal2(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theSurface: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theSurface: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theDeflection: f64,
-        theUIsoParams: &crate::ffi::TColStd_SequenceOfReal,
-        theVIsoParams: &crate::ffi::TColStd_SequenceOfReal,
+        theUIsoParams: &crate::ffi_types::TColStd_SequenceOfReal,
+        theVIsoParams: &crate::ffi_types::TColStd_SequenceOfReal,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer_real_sequenceofreal2(thePresentation, theSurface, theDrawer, theDeflection, theUIsoParams, theVIsoParams)
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_add_on_surface_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer_real_sequenceofreal2(thePresentation, theSurface, theDrawer, theDeflection, theUIsoParams, theVIsoParams)
         })
     }
 
@@ -1964,15 +2057,15 @@ impl Isolines {
         theNbIsoU: i32,
         theNbIsoV: i32,
         theUVLimit: f64,
-        theUIsoParams: &mut crate::ffi::TColStd_SequenceOfReal,
-        theVIsoParams: &mut crate::ffi::TColStd_SequenceOfReal,
+        theUIsoParams: &mut crate::ffi_types::TColStd_SequenceOfReal,
+        theVIsoParams: &mut crate::ffi_types::TColStd_SequenceOfReal,
         theUmin: &mut f64,
         theUmax: &mut f64,
         theVmin: &mut f64,
         theVmax: &mut f64,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Isolines_uv_iso_parameters(
+            crate::ffi_extern_TKV3d::StdPrs_Isolines_uv_iso_parameters(
                 theFace,
                 theNbIsoU,
                 theNbIsoV,
@@ -1990,11 +2083,11 @@ impl Isolines {
 
 /// **Source:** `StdPrs_Isolines.hxx`:182 - `StdPrs_Isolines_PntOnIso`
 /// Auxiliary structure defining 3D point on isoline.
-pub use crate::ffi::StdPrs_Isolines_PntOnIso as Isolines_PntOnIso;
+pub use crate::ffi_types::StdPrs_Isolines_PntOnIso as Isolines_PntOnIso;
 
 unsafe impl crate::CppDeletable for Isolines_PntOnIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_Isolines_PntOnIso_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_Isolines_PntOnIso_destructor(ptr);
     }
 }
 
@@ -2004,7 +2097,7 @@ impl Isolines_PntOnIso {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_Isolines_PntOnIso_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_Isolines_PntOnIso_ctor(),
             ))
         }
     }
@@ -2012,11 +2105,11 @@ impl Isolines_PntOnIso {
 
 /// **Source:** `StdPrs_Isolines.hxx`:189 - `StdPrs_Isolines_SegOnIso`
 /// Auxiliary structure defining segment of isoline.
-pub use crate::ffi::StdPrs_Isolines_SegOnIso as Isolines_SegOnIso;
+pub use crate::ffi_types::StdPrs_Isolines_SegOnIso as Isolines_SegOnIso;
 
 unsafe impl crate::CppDeletable for Isolines_SegOnIso {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_Isolines_SegOnIso_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_Isolines_SegOnIso_destructor(ptr);
     }
 }
 
@@ -2026,7 +2119,7 @@ impl Isolines_SegOnIso {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_Isolines_SegOnIso_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_Isolines_SegOnIso_ctor(),
             ))
         }
     }
@@ -2038,11 +2131,11 @@ impl Isolines_SegOnIso {
 
 /// **Source:** `StdPrs_Plane.hxx`:26 - `StdPrs_Plane`
 /// A framework to display infinite planes.
-pub use crate::ffi::StdPrs_Plane as Plane;
+pub use crate::ffi_types::StdPrs_Plane as Plane;
 
 unsafe impl crate::CppDeletable for Plane {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_Plane_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_Plane_destructor(ptr);
     }
 }
 
@@ -2050,7 +2143,11 @@ impl Plane {
     /// **Source:** `StdPrs_Plane.hxx` - `StdPrs_Plane::StdPrs_Plane()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_Plane_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_Plane_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StdPrs_Plane.hxx`:35 - `StdPrs_Plane::Add()`
@@ -2059,12 +2156,12 @@ impl Plane {
     /// aPresentation, and the attributes of the display are
     /// defined by the attribute manager aDrawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aPlane: &crate::adaptor3d::Surface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_Plane_add(aPresentation, aPlane, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_Plane_add(aPresentation, aPlane, aDrawer)
         })
     }
 
@@ -2077,10 +2174,10 @@ impl Plane {
         Z: f64,
         aDistance: f64,
         aPlane: &crate::adaptor3d::Surface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_Plane_match_(X, Y, Z, aDistance, aPlane, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_Plane_match_(X, Y, Z, aDistance, aPlane, aDrawer)
         })
     }
 }
@@ -2092,11 +2189,11 @@ impl Plane {
 /// **Source:** `StdPrs_PoleCurve.hxx`:27 - `StdPrs_PoleCurve`
 /// A framework to provide display of Bezier or BSpline curves
 /// (by drawing a broken line linking the poles of the curve).
-pub use crate::ffi::StdPrs_PoleCurve as PoleCurve;
+pub use crate::ffi_types::StdPrs_PoleCurve as PoleCurve;
 
 unsafe impl crate::CppDeletable for PoleCurve {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_PoleCurve_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_PoleCurve_destructor(ptr);
     }
 }
 
@@ -2105,7 +2202,9 @@ impl PoleCurve {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_PoleCurve_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_PoleCurve_ctor(),
+            ))
         }
     }
 
@@ -2119,12 +2218,12 @@ impl PoleCurve {
     /// a Geom curve. This makes it possible to use the
     /// surface in a geometric algorithm.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_PoleCurve_add(aPresentation, aCurve, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_PoleCurve_add(aPresentation, aCurve, aDrawer)
         })
     }
 
@@ -2137,10 +2236,10 @@ impl PoleCurve {
         Z: f64,
         aDistance: f64,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_PoleCurve_match_(X, Y, Z, aDistance, aCurve, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_PoleCurve_match_(X, Y, Z, aDistance, aCurve, aDrawer)
         })
     }
 
@@ -2154,10 +2253,10 @@ impl PoleCurve {
         Z: f64,
         aDistance: f64,
         aCurve: &crate::adaptor3d::Curve,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> i32 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_PoleCurve_pick(X, Y, Z, aDistance, aCurve, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_PoleCurve_pick(X, Y, Z, aDistance, aCurve, aDrawer)
         })
     }
 }
@@ -2168,11 +2267,11 @@ impl PoleCurve {
 
 /// **Source:** `StdPrs_ShadedShape.hxx`:31 - `StdPrs_ShadedShape`
 /// Auxiliary procedures to prepare Shaded presentation of specified shape.
-pub use crate::ffi::StdPrs_ShadedShape as ShadedShape;
+pub use crate::ffi_types::StdPrs_ShadedShape as ShadedShape;
 
 unsafe impl crate::CppDeletable for ShadedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ShadedShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ShadedShape_destructor(ptr);
     }
 }
 
@@ -2181,7 +2280,9 @@ impl ShadedShape {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ShadedShape_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ShadedShape_ctor(),
+            ))
         }
     }
 
@@ -2191,14 +2292,14 @@ impl ShadedShape {
     /// activate back-face culling and capping plane algorithms), as Open volumes (shells or solids
     /// with holes) or to perform Autodetection (would split input shape into two groups)
     pub fn add_handlegraphic3dstructure_shape_handleprs3ddrawer_volume_handlegraphic3dgroup(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theVolume: crate::std_prs::Volume,
-        theGroup: &crate::ffi::HandleGraphic3dGroup,
+        theGroup: &crate::ffi_types::HandleGraphic3dGroup,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theVolume.into(), theGroup)
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theVolume.into(), theGroup)
         })
     }
 
@@ -2208,18 +2309,18 @@ impl ShadedShape {
     /// activate back-face culling and capping plane algorithms), as Open volumes (shells or solids
     /// with holes) or to perform Autodetection (would split input shape into two groups)
     pub fn add_handlegraphic3dstructure_shape_handleprs3ddrawer_bool_pnt2d3_volume_handlegraphic3dgroup(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theHasTexels: bool,
         theUVOrigin: &crate::gp::Pnt2d,
         theUVRepeat: &crate::gp::Pnt2d,
         theUVScale: &crate::gp::Pnt2d,
         theVolume: crate::std_prs::Volume,
-        theGroup: &crate::ffi::HandleGraphic3dGroup,
+        theGroup: &crate::ffi_types::HandleGraphic3dGroup,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_bool_pnt2d3_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theHasTexels, theUVOrigin, theUVRepeat, theUVScale, theVolume.into(), theGroup)
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_add_handlegraphic3dstructure_shape_handleprs3ddrawer_bool_pnt2d3_volume_handlegraphic3dgroup(thePresentation, theShape, theDrawer, theHasTexels, theUVOrigin, theUVRepeat, theUVScale, theVolume.into(), theGroup)
         })
     }
 
@@ -2234,7 +2335,7 @@ impl ShadedShape {
         theIgnore1DSubShape: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedShape_explore_solids(
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_explore_solids(
                 theShape,
                 theBuilder,
                 theClosed,
@@ -2247,12 +2348,12 @@ impl ShadedShape {
     /// **Source:** `StdPrs_ShadedShape.hxx`:67 - `StdPrs_ShadedShape::AddWireframeForFreeElements()`
     /// Computes wireframe presentation for free wires and vertices
     pub fn add_wireframe_for_free_elements(
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedShape_add_wireframe_for_free_elements(
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_add_wireframe_for_free_elements(
                 thePrs, theShape, theDrawer,
             )
         })
@@ -2261,12 +2362,12 @@ impl ShadedShape {
     /// **Source:** `StdPrs_ShadedShape.hxx`:72 - `StdPrs_ShadedShape::AddWireframeForFacesWithoutTriangles()`
     /// Computes special wireframe presentation for faces without triangulation.
     pub fn add_wireframe_for_faces_without_triangles(
-        thePrs: &crate::ffi::HandleGraphic3dStructure,
+        thePrs: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedShape_add_wireframe_for_faces_without_triangles(
+            crate::ffi_extern_TKV3d::StdPrs_ShadedShape_add_wireframe_for_faces_without_triangles(
                 thePrs, theShape, theDrawer,
             )
         })
@@ -2277,10 +2378,10 @@ impl ShadedShape {
     /// @param[in] theShape  the shape with precomputed triangulation
     pub fn fill_triangles_shape(
         theShape: &crate::topo_ds::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfTriangles> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShadedShape_fill_triangles_shape(theShape),
+                crate::ffi_extern_TKV3d::StdPrs_ShadedShape_fill_triangles_shape(theShape),
             ))
         }
     }
@@ -2299,10 +2400,10 @@ impl ShadedShape {
         theUVOrigin: &crate::gp::Pnt2d,
         theUVRepeat: &crate::gp::Pnt2d,
         theUVScale: &crate::gp::Pnt2d,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfTriangles> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfTriangles> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShadedShape_fill_triangles_shape_bool_pnt2d3(
+                crate::ffi_extern_TKV3d::StdPrs_ShadedShape_fill_triangles_shape_bool_pnt2d3(
                     theShape,
                     theHasTexels,
                     theUVOrigin,
@@ -2321,10 +2422,10 @@ impl ShadedShape {
     pub fn fill_face_boundaries(
         theShape: &crate::topo_ds::Shape,
         theUpperContinuity: crate::geom_abs::Shape,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfSegments> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfSegments> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShadedShape_fill_face_boundaries(
+                crate::ffi_extern_TKV3d::StdPrs_ShadedShape_fill_face_boundaries(
                     theShape,
                     theUpperContinuity.into(),
                 ),
@@ -2343,11 +2444,11 @@ impl ShadedShape {
 /// a maximal chordial deviation.
 /// The number of isoparametric curves to be drawn and their color are
 /// controlled by the furnished Drawer.
-pub use crate::ffi::StdPrs_ShadedSurface as ShadedSurface;
+pub use crate::ffi_types::StdPrs_ShadedSurface as ShadedSurface;
 
 unsafe impl crate::CppDeletable for ShadedSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ShadedSurface_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ShadedSurface_destructor(ptr);
     }
 }
 
@@ -2356,7 +2457,9 @@ impl ShadedSurface {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ShadedSurface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ShadedSurface_ctor(),
+            ))
         }
     }
 
@@ -2366,12 +2469,12 @@ impl ShadedSurface {
     /// The surface object from Adaptor3d provides data
     /// from a Geom surface in order to use the surface in an algorithm.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aSurface: &crate::adaptor3d::Surface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShadedSurface_add(aPresentation, aSurface, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_ShadedSurface_add(aPresentation, aSurface, aDrawer)
         })
     }
 }
@@ -2382,11 +2485,11 @@ impl ShadedSurface {
 
 /// **Source:** `StdPrs_ShapeTool.hxx`:34 - `StdPrs_ShapeTool`
 /// Describes the behaviour requested for a wireframe shape presentation.
-pub use crate::ffi::StdPrs_ShapeTool as ShapeTool;
+pub use crate::ffi_types::StdPrs_ShapeTool as ShapeTool;
 
 unsafe impl crate::CppDeletable for ShapeTool {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ShapeTool_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ShapeTool_destructor(ptr);
     }
 }
 
@@ -2402,7 +2505,7 @@ impl ShapeTool {
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShapeTool_ctor_shape_bool(theShape, theAllVertices),
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_ctor_shape_bool(theShape, theAllVertices),
             ))
         }
     }
@@ -2419,68 +2522,76 @@ impl ShapeTool {
     /// **Source:** `StdPrs_ShapeTool.hxx`:46 - `StdPrs_ShapeTool::InitFace()`
     pub fn init_face(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_init_face(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_init_face(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:48 - `StdPrs_ShapeTool::MoreFace()`
     pub fn more_face(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ShapeTool_more_face(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_more_face(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:50 - `StdPrs_ShapeTool::NextFace()`
     pub fn next_face(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_next_face(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_next_face(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:52 - `StdPrs_ShapeTool::GetFace()`
     pub fn get_face(&self) -> &crate::topo_ds::Face {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_ShapeTool_get_face(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ShapeTool_get_face(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:54 - `StdPrs_ShapeTool::FaceBound()`
     pub fn face_bound(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ShapeTool_face_bound(
-                self as *const Self,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_face_bound(self as *const Self),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:56 - `StdPrs_ShapeTool::IsPlanarFace()`
     pub fn is_planar_face(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_is_planar_face(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_is_planar_face(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:62 - `StdPrs_ShapeTool::InitCurve()`
     pub fn init_curve(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_init_curve(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_init_curve(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:64 - `StdPrs_ShapeTool::MoreCurve()`
     pub fn more_curve(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ShapeTool_more_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_more_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:66 - `StdPrs_ShapeTool::NextCurve()`
     pub fn next_curve(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_next_curve(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_next_curve(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:68 - `StdPrs_ShapeTool::GetCurve()`
     pub fn get_curve(&self) -> &crate::topo_ds::Edge {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_ShapeTool_get_curve(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ShapeTool_get_curve(
+                self as *const Self,
+            )))
         }
     }
 
@@ -2488,21 +2599,25 @@ impl ShapeTool {
     pub fn curve_bound(&self) -> crate::OwnedPtr<crate::bnd::Box> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShapeTool_curve_bound(self as *const Self),
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_curve_bound(self as *const Self),
             ))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:72 - `StdPrs_ShapeTool::Neighbours()`
     pub fn neighbours(&self) -> i32 {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ShapeTool_neighbours(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_neighbours(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:74 - `StdPrs_ShapeTool::FacesOfEdge()`
-    pub fn faces_of_edge(&self) -> crate::OwnedPtr<crate::ffi::HandleTopToolsHSequenceOfShape> {
+    pub fn faces_of_edge(
+        &self,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleTopToolsHSequenceOfShape> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShapeTool_faces_of_edge(self as *const Self),
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_faces_of_edge(self as *const Self),
             ))
         }
     }
@@ -2510,35 +2625,37 @@ impl ShapeTool {
     /// **Source:** `StdPrs_ShapeTool.hxx`:76 - `StdPrs_ShapeTool::InitVertex()`
     pub fn init_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_init_vertex(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_init_vertex(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:78 - `StdPrs_ShapeTool::MoreVertex()`
     pub fn more_vertex(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_more_vertex(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_more_vertex(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:80 - `StdPrs_ShapeTool::NextVertex()`
     pub fn next_vertex(&mut self) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_next_vertex(self as *mut Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_next_vertex(self as *mut Self)
         })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:82 - `StdPrs_ShapeTool::GetVertex()`
     pub fn get_vertex(&self) -> &crate::topo_ds::Vertex {
         unsafe {
-            &*(crate::check_result(crate::ffi::StdPrs_ShapeTool_get_vertex(self as *const Self)))
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ShapeTool_get_vertex(
+                self as *const Self,
+            )))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:84 - `StdPrs_ShapeTool::HasSurface()`
     pub fn has_surface(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_has_surface(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_has_surface(self as *const Self)
         })
     }
 
@@ -2546,28 +2663,33 @@ impl ShapeTool {
     pub fn current_triangulation(
         &self,
         l: &mut crate::top_loc::Location,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePolyTriangulation> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyTriangulation> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ShapeTool_current_triangulation(self as *const Self, l),
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_current_triangulation(
+                    self as *const Self,
+                    l,
+                ),
             ))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:88 - `StdPrs_ShapeTool::HasCurve()`
     pub fn has_curve(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ShapeTool_has_curve(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_has_curve(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:90 - `StdPrs_ShapeTool::PolygonOnTriangulation()`
     pub fn polygon_on_triangulation(
         &self,
-        Indices: &mut crate::ffi::HandlePolyPolygonOnTriangulation,
-        T: &mut crate::ffi::HandlePolyTriangulation,
+        Indices: &mut crate::ffi_types::HandlePolyPolygonOnTriangulation,
+        T: &mut crate::ffi_types::HandlePolyTriangulation,
         l: &mut crate::top_loc::Location,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ShapeTool_polygon_on_triangulation(
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_polygon_on_triangulation(
                 self as *const Self,
                 Indices,
                 T,
@@ -2580,18 +2702,19 @@ impl ShapeTool {
     pub fn polygon3_d(
         &self,
         l: &mut crate::top_loc::Location,
-    ) -> crate::OwnedPtr<crate::ffi::HandlePolyPolygon3D> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandlePolyPolygon3D> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ShapeTool_polygon3_d(
-                self as *const Self,
-                l,
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ShapeTool_polygon3_d(self as *const Self, l),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_ShapeTool.hxx`:97 - `StdPrs_ShapeTool::IsPlanarFace()`
     pub fn is_planar_face_face(theFace: &crate::topo_ds::Face) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ShapeTool_is_planar_face_face(theFace) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ShapeTool_is_planar_face_face(theFace)
+        })
     }
 }
 
@@ -2600,11 +2723,11 @@ impl ShapeTool {
 // ========================
 
 /// **Source:** `StdPrs_ToolPoint.hxx`:26 - `StdPrs_ToolPoint`
-pub use crate::ffi::StdPrs_ToolPoint as ToolPoint;
+pub use crate::ffi_types::StdPrs_ToolPoint as ToolPoint;
 
 unsafe impl crate::CppDeletable for ToolPoint {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ToolPoint_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ToolPoint_destructor(ptr);
     }
 }
 
@@ -2613,13 +2736,22 @@ impl ToolPoint {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ToolPoint_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ToolPoint_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_ToolPoint.hxx`:31 - `StdPrs_ToolPoint::Coord()`
-    pub fn coord(aPoint: &crate::ffi::HandleGeomPoint, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        crate::check_void_result(unsafe { crate::ffi::StdPrs_ToolPoint_coord(aPoint, X, Y, Z) })
+    pub fn coord(
+        aPoint: &crate::ffi_types::HandleGeomPoint,
+        X: &mut f64,
+        Y: &mut f64,
+        Z: &mut f64,
+    ) {
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolPoint_coord(aPoint, X, Y, Z)
+        })
     }
 }
 
@@ -2631,11 +2763,11 @@ impl ToolPoint {
 /// Iterator over 2D curves restricting a face (skipping internal/external edges).
 /// In addition, the algorithm skips NULL curves - IsInvalidGeometry() can be checked if this should
 /// be handled within algorithm.
-pub use crate::ffi::StdPrs_ToolRFace as ToolRFace;
+pub use crate::ffi_types::StdPrs_ToolRFace as ToolRFace;
 
 unsafe impl crate::CppDeletable for ToolRFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ToolRFace_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ToolRFace_destructor(ptr);
     }
 }
 
@@ -2644,18 +2776,20 @@ impl ToolRFace {
     /// Empty constructor.
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ToolRFace_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ToolRFace_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:40 - `StdPrs_ToolRFace::StdPrs_ToolRFace()`
     /// Constructor with initialization.
     pub fn new_handlebrepadaptorsurface(
-        aSurface: &crate::ffi::HandleBRepAdaptorSurface,
+        aSurface: &crate::ffi_types::HandleBRepAdaptorSurface,
     ) -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ToolRFace_ctor_handlebrepadaptorsurface(aSurface),
+                crate::ffi_extern_TKV3d::StdPrs_ToolRFace_ctor_handlebrepadaptorsurface(aSurface),
             ))
         }
     }
@@ -2664,45 +2798,59 @@ impl ToolRFace {
     /// Return TRUE indicating that iterator looks only for oriented edges.
     pub fn is_oriented(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolRFace_is_oriented(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_is_oriented(self as *const Self)
         })
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:46 - `StdPrs_ToolRFace::Init()`
     /// Move iterator to the first element.
     pub fn init(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StdPrs_ToolRFace_init(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_init(self as *mut Self)
+        })
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:53 - `StdPrs_ToolRFace::More()`
     /// Return TRUE if iterator points to the curve.
     pub fn more(&self) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ToolRFace_more(self as *const Self) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_more(self as *const Self)
+        })
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:56 - `StdPrs_ToolRFace::Next()`
     /// Go to the next curve in the face.
     pub fn next(&mut self) {
-        crate::check_void_result(unsafe { crate::ffi::StdPrs_ToolRFace_next(self as *mut Self) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_next(self as *mut Self)
+        })
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:63 - `StdPrs_ToolRFace::Value()`
     /// Return current curve.
     pub fn value(&self) -> &crate::adaptor2d::Curve2d {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_ToolRFace_value(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ToolRFace_value(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:66 - `StdPrs_ToolRFace::Edge()`
     /// Return current edge.
     pub fn edge(&self) -> &crate::topo_ds::Edge {
-        unsafe { &*(crate::check_result(crate::ffi::StdPrs_ToolRFace_edge(self as *const Self))) }
+        unsafe {
+            &*(crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ToolRFace_edge(
+                self as *const Self,
+            )))
+        }
     }
 
     /// **Source:** `StdPrs_ToolRFace.hxx`:69 - `StdPrs_ToolRFace::Orientation()`
     /// Return current edge orientation.
     pub fn orientation(&self) -> crate::top_abs::Orientation {
         crate::top_abs::Orientation::try_from(crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolRFace_orientation(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_orientation(self as *const Self)
         }))
         .unwrap()
     }
@@ -2711,7 +2859,7 @@ impl ToolRFace {
     /// Return TRUE if NULL curves have been skipped.
     pub fn is_invalid_geometry(&self) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolRFace_is_invalid_geometry(self as *const Self)
+            crate::ffi_extern_TKV3d::StdPrs_ToolRFace_is_invalid_geometry(self as *const Self)
         })
     }
 }
@@ -2721,11 +2869,11 @@ impl ToolRFace {
 // ========================
 
 /// **Source:** `StdPrs_ToolTriangulatedShape.hxx`:23 - `StdPrs_ToolTriangulatedShape`
-pub use crate::ffi::StdPrs_ToolTriangulatedShape as ToolTriangulatedShape;
+pub use crate::ffi_types::StdPrs_ToolTriangulatedShape as ToolTriangulatedShape;
 
 unsafe impl crate::CppDeletable for ToolTriangulatedShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ToolTriangulatedShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_destructor(ptr);
     }
 }
 
@@ -2735,7 +2883,7 @@ impl ToolTriangulatedShape {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_ToolTriangulatedShape_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_ctor(),
             ))
         }
     }
@@ -2745,7 +2893,7 @@ impl ToolTriangulatedShape {
     /// @return true if all faces within shape are triangulated.
     pub fn is_triangulated(theShape: &crate::topo_ds::Shape) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolTriangulatedShape_is_triangulated(theShape)
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_is_triangulated(theShape)
         })
     }
 
@@ -2753,7 +2901,9 @@ impl ToolTriangulatedShape {
     /// Checks back faces visibility for specified shape (to activate back-face culling). <br>
     /// @return true if shape is closed manifold Solid or compound of such Solids. <br>
     pub fn is_closed(theShape: &crate::topo_ds::Shape) -> bool {
-        crate::check_result(unsafe { crate::ffi::StdPrs_ToolTriangulatedShape_is_closed(theShape) })
+        crate::check_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_is_closed(theShape)
+        })
     }
 
     /// **Source:** `StdPrs_ToolTriangulatedShape.hxx`:46 - `StdPrs_ToolTriangulatedShape::GetDeflection()`
@@ -2771,10 +2921,12 @@ impl ToolTriangulatedShape {
     /// different representations of the shape and undesirable visual artifacts.
     pub fn get_deflection(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> f64 {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolTriangulatedShape_get_deflection(theShape, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_get_deflection(
+                theShape, theDrawer,
+            )
         })
     }
 
@@ -2784,10 +2936,12 @@ impl ToolTriangulatedShape {
     /// @param[in] theDrawer  the display settings.
     pub fn is_tessellated(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolTriangulatedShape_is_tessellated(theShape, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_is_tessellated(
+                theShape, theDrawer,
+            )
         })
     }
 
@@ -2798,10 +2952,10 @@ impl ToolTriangulatedShape {
     /// @return true if tessellation was recomputed and false otherwise.
     pub fn tessellate(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_ToolTriangulatedShape_tessellate(theShape, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_tessellate(theShape, theDrawer)
         })
     }
 
@@ -2816,11 +2970,11 @@ impl ToolTriangulatedShape {
     /// redundant recomputations
     pub fn clear_on_own_deflection_change(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theToResetCoeff: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_ToolTriangulatedShape_clear_on_own_deflection_change(
+            crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_clear_on_own_deflection_change(
                 theShape,
                 theDrawer,
                 theToResetCoeff,
@@ -2831,11 +2985,7 @@ impl ToolTriangulatedShape {
     /// Upcast to BRepLib_ToolTriangulatedShape
     pub fn as_b_rep_lib_tool_triangulated_shape(&self) -> &crate::b_rep_lib::ToolTriangulatedShape {
         unsafe {
-            &*crate::check_result(
-                crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape(
-                    self as *const Self,
-                ),
-            )
+            &*crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape(self as *const Self))
         }
     }
 
@@ -2844,11 +2994,7 @@ impl ToolTriangulatedShape {
         &mut self,
     ) -> &mut crate::b_rep_lib::ToolTriangulatedShape {
         unsafe {
-            &mut *crate::check_result(
-                crate::ffi::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape_mut(
-                    self as *mut Self,
-                ),
-            )
+            &mut *crate::check_result(crate::ffi_extern_TKV3d::StdPrs_ToolTriangulatedShape_as_BRepLib_ToolTriangulatedShape_mut(self as *mut Self))
         }
     }
 }
@@ -2858,11 +3004,11 @@ impl ToolTriangulatedShape {
 // ========================
 
 /// **Source:** `StdPrs_ToolVertex.hxx`:25 - `StdPrs_ToolVertex`
-pub use crate::ffi::StdPrs_ToolVertex as ToolVertex;
+pub use crate::ffi_types::StdPrs_ToolVertex as ToolVertex;
 
 unsafe impl crate::CppDeletable for ToolVertex {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_ToolVertex_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_ToolVertex_destructor(ptr);
     }
 }
 
@@ -2871,13 +3017,17 @@ impl ToolVertex {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_ToolVertex_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_ToolVertex_ctor(),
+            ))
         }
     }
 
     /// **Source:** `StdPrs_ToolVertex.hxx`:30 - `StdPrs_ToolVertex::Coord()`
     pub fn coord(aPoint: &crate::topo_ds::Vertex, X: &mut f64, Y: &mut f64, Z: &mut f64) {
-        crate::check_void_result(unsafe { crate::ffi::StdPrs_ToolVertex_coord(aPoint, X, Y, Z) })
+        crate::check_void_result(unsafe {
+            crate::ffi_extern_TKV3d::StdPrs_ToolVertex_coord(aPoint, X, Y, Z)
+        })
     }
 }
 
@@ -2894,11 +3044,11 @@ impl ToolVertex {
 /// V isoparametric curves. The isoparametric curves are
 /// drawn with respect to a maximal chordial deviation.
 /// The presentation includes the restriction curves.
-pub use crate::ffi::StdPrs_WFDeflectionRestrictedFace as WFDeflectionRestrictedFace;
+pub use crate::ffi_types::StdPrs_WFDeflectionRestrictedFace as WFDeflectionRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFDeflectionRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFDeflectionRestrictedFace_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_destructor(ptr);
     }
 }
 
@@ -2908,7 +3058,7 @@ impl WFDeflectionRestrictedFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_WFDeflectionRestrictedFace_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_ctor(),
             ))
         }
     }
@@ -2928,12 +3078,12 @@ impl WFDeflectionRestrictedFace {
     /// This is what allows the topological face to be treated
     /// as a geometric surface.
     pub fn add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(aPresentation, aFace, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(aPresentation, aFace, aDrawer)
         })
     }
 
@@ -2952,12 +3102,16 @@ impl WFDeflectionRestrictedFace {
     /// it. This is what allows the topological face to be
     /// treated as a geometric surface.
     pub fn add_u_iso(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_u_iso(aPresentation, aFace, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_add_u_iso(
+                aPresentation,
+                aFace,
+                aDrawer,
+            )
         })
     }
 
@@ -2976,12 +3130,16 @@ impl WFDeflectionRestrictedFace {
     /// it. This is what allows the topological face to be
     /// treated as a geometric surface.
     pub fn add_v_iso(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_v_iso(aPresentation, aFace, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_add_v_iso(
+                aPresentation,
+                aFace,
+                aDrawer,
+            )
         })
     }
 
@@ -3005,18 +3163,18 @@ impl WFDeflectionRestrictedFace {
     /// Curves give a sequence of face curves, it is used if the PrimitiveArray
     /// visualization approach is activated (it is activated by default).
     pub fn add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer_nlistofsequenceofpnt(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
         DrawUIso: bool,
         DrawVIso: bool,
         Deflection: f64,
         NBUiso: i32,
         NBViso: i32,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
-        Curves: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        Curves: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer_nlistofsequenceofpnt(aPresentation, aFace, DrawUIso, DrawVIso, Deflection, NBUiso, NBViso, aDrawer, Curves)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer_nlistofsequenceofpnt(aPresentation, aFace, DrawUIso, DrawVIso, Deflection, NBUiso, NBViso, aDrawer, Curves)
         })
     }
 
@@ -3026,11 +3184,11 @@ impl WFDeflectionRestrictedFace {
         Y: f64,
         Z: f64,
         aDistance: f64,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(X, Y, Z, aDistance, aFace, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(X, Y, Z, aDistance, aFace, aDrawer)
         })
     }
 
@@ -3040,11 +3198,11 @@ impl WFDeflectionRestrictedFace {
         Y: f64,
         Z: f64,
         aDistance: f64,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_u_iso(
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_match_u_iso(
                 X, Y, Z, aDistance, aFace, aDrawer,
             )
         })
@@ -3056,11 +3214,11 @@ impl WFDeflectionRestrictedFace {
         Y: f64,
         Z: f64,
         aDistance: f64,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_v_iso(
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_match_v_iso(
                 X, Y, Z, aDistance, aFace, aDrawer,
             )
         })
@@ -3072,8 +3230,8 @@ impl WFDeflectionRestrictedFace {
         Y: f64,
         Z: f64,
         aDistance: f64,
-        aFace: &crate::ffi::HandleBRepAdaptorSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         DrawUIso: bool,
         DrawVIso: bool,
         aDeflection: f64,
@@ -3081,7 +3239,7 @@ impl WFDeflectionRestrictedFace {
         NBViso: i32,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer_bool2_real_int2(X, Y, Z, aDistance, aFace, aDrawer, DrawUIso, DrawVIso, aDeflection, NBUiso, NBViso)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer_bool2_real_int2(X, Y, Z, aDistance, aFace, aDrawer, DrawUIso, DrawVIso, aDeflection, NBUiso, NBViso)
         })
     }
 }
@@ -3095,11 +3253,11 @@ impl WFDeflectionRestrictedFace {
 /// a maximal chordial deviation.
 /// The number of isoparametric curves to be drawn and their color are
 /// controlled by the furnished Drawer.
-pub use crate::ffi::StdPrs_WFDeflectionSurface as WFDeflectionSurface;
+pub use crate::ffi_types::StdPrs_WFDeflectionSurface as WFDeflectionSurface;
 
 unsafe impl crate::CppDeletable for WFDeflectionSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFDeflectionSurface_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFDeflectionSurface_destructor(ptr);
     }
 }
 
@@ -3109,7 +3267,7 @@ impl WFDeflectionSurface {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_WFDeflectionSurface_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_WFDeflectionSurface_ctor(),
             ))
         }
     }
@@ -3125,12 +3283,16 @@ impl WFDeflectionSurface {
     /// This makes it possible to use the surface in a geometric algorithm.
     /// Note that this surface object is manipulated by handles.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aSurface: &crate::ffi::HandleAdaptor3dSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFDeflectionSurface_add(aPresentation, aSurface, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFDeflectionSurface_add(
+                aPresentation,
+                aSurface,
+                aDrawer,
+            )
         })
     }
 }
@@ -3145,11 +3307,11 @@ impl WFDeflectionSurface {
 /// in the two parametric direction.
 /// The number of lines to be drawn is controlled
 /// by the NetworkNumber of the given Drawer.
-pub use crate::ffi::StdPrs_WFPoleSurface as WFPoleSurface;
+pub use crate::ffi_types::StdPrs_WFPoleSurface as WFPoleSurface;
 
 unsafe impl crate::CppDeletable for WFPoleSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFPoleSurface_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFPoleSurface_destructor(ptr);
     }
 }
 
@@ -3158,7 +3320,9 @@ impl WFPoleSurface {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_WFPoleSurface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_WFPoleSurface_ctor(),
+            ))
         }
     }
 
@@ -3169,12 +3333,12 @@ impl WFPoleSurface {
     /// Adaptor3d, and provides data from a Geom surface.
     /// This makes it possible to use the surface in a geometric algorithm.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
         aSurface: &crate::adaptor3d::Surface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFPoleSurface_add(aPresentation, aSurface, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFPoleSurface_add(aPresentation, aSurface, aDrawer)
         })
     }
 }
@@ -3184,11 +3348,11 @@ impl WFPoleSurface {
 // ========================
 
 /// **Source:** `StdPrs_WFRestrictedFace.hxx`:28 - `StdPrs_WFRestrictedFace`
-pub use crate::ffi::StdPrs_WFRestrictedFace as WFRestrictedFace;
+pub use crate::ffi_types::StdPrs_WFRestrictedFace as WFRestrictedFace;
 
 unsafe impl crate::CppDeletable for WFRestrictedFace {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFRestrictedFace_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_destructor(ptr);
     }
 }
 
@@ -3198,35 +3362,35 @@ impl WFRestrictedFace {
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_WFRestrictedFace_ctor(),
+                crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_ctor(),
             ))
         }
     }
 
     /// **Source:** `StdPrs_WFRestrictedFace.hxx`:33 - `StdPrs_WFRestrictedFace::Add()`
     pub fn add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_int2_handleprs3ddrawer_nlistofsequenceofpnt(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
         theDrawUIso: bool,
         theDrawVIso: bool,
         theNbUIso: i32,
         theNbVIso: i32,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-        theCurves: &mut crate::ffi::Prs3d_NListOfSequenceOfPnt,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+        theCurves: &mut crate::ffi_types::Prs3d_NListOfSequenceOfPnt,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_int2_handleprs3ddrawer_nlistofsequenceofpnt(thePresentation, theFace, theDrawUIso, theDrawVIso, theNbUIso, theNbVIso, theDrawer, theCurves)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_bool2_int2_handleprs3ddrawer_nlistofsequenceofpnt(thePresentation, theFace, theDrawUIso, theDrawVIso, theNbUIso, theNbVIso, theDrawer, theCurves)
         })
     }
 
     /// **Source:** `StdPrs_WFRestrictedFace.hxx`:42 - `StdPrs_WFRestrictedFace::Add()`
     pub fn add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(thePresentation, theFace, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_add_handlegraphic3dstructure_handlebrepadaptorsurface_handleprs3ddrawer(thePresentation, theFace, theDrawer)
         })
     }
 
@@ -3236,16 +3400,16 @@ impl WFRestrictedFace {
         theY: f64,
         theZ: f64,
         theDistance: f64,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
         theDrawUIso: bool,
         theDrawVIso: bool,
         theDeflection: f64,
         theNbUIso: i32,
         theNbVIso: i32,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawUIso, theDrawVIso, theDeflection, theNbUIso, theNbVIso, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_bool2_real_int2_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawUIso, theDrawVIso, theDeflection, theNbUIso, theNbVIso, theDrawer)
         })
     }
 
@@ -3255,11 +3419,11 @@ impl WFRestrictedFace {
         theY: f64,
         theZ: f64,
         theDistance: f64,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_match_real4_handlebrepadaptorsurface_handleprs3ddrawer(theX, theY, theZ, theDistance, theFace, theDrawer)
         })
     }
 
@@ -3269,11 +3433,11 @@ impl WFRestrictedFace {
         theY: f64,
         theZ: f64,
         theDistance: f64,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_match_u_iso(
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_match_u_iso(
                 theX,
                 theY,
                 theZ,
@@ -3290,11 +3454,11 @@ impl WFRestrictedFace {
         theY: f64,
         theZ: f64,
         theDistance: f64,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) -> bool {
         crate::check_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_match_v_iso(
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_match_v_iso(
                 theX,
                 theY,
                 theZ,
@@ -3307,23 +3471,31 @@ impl WFRestrictedFace {
 
     /// **Source:** `StdPrs_WFRestrictedFace.hxx`:79 - `StdPrs_WFRestrictedFace::AddUIso()`
     pub fn add_u_iso(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_add_u_iso(thePresentation, theFace, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_add_u_iso(
+                thePresentation,
+                theFace,
+                theDrawer,
+            )
         })
     }
 
     /// **Source:** `StdPrs_WFRestrictedFace.hxx`:83 - `StdPrs_WFRestrictedFace::AddVIso()`
     pub fn add_v_iso(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
-        theFace: &crate::ffi::HandleBRepAdaptorSurface,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        theFace: &crate::ffi_types::HandleBRepAdaptorSurface,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFRestrictedFace_add_v_iso(thePresentation, theFace, theDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFRestrictedFace_add_v_iso(
+                thePresentation,
+                theFace,
+                theDrawer,
+            )
         })
     }
 }
@@ -3334,11 +3506,11 @@ impl WFRestrictedFace {
 
 /// **Source:** `StdPrs_WFShape.hxx`:29 - `StdPrs_WFShape`
 /// Tool for computing wireframe presentation of a TopoDS_Shape.
-pub use crate::ffi::StdPrs_WFShape as WFShape;
+pub use crate::ffi_types::StdPrs_WFShape as WFShape;
 
 unsafe impl crate::CppDeletable for WFShape {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFShape_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFShape_destructor(ptr);
     }
 }
 
@@ -3346,7 +3518,11 @@ impl WFShape {
     /// **Source:** `StdPrs_WFShape.hxx` - `StdPrs_WFShape::StdPrs_WFShape()`
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
-        unsafe { crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_WFShape_ctor())) }
+        unsafe {
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_WFShape_ctor(),
+            ))
+        }
     }
 
     /// **Source:** `StdPrs_WFShape.hxx`:37 - `StdPrs_WFShape::Add()`
@@ -3356,13 +3532,18 @@ impl WFShape {
     /// @param[in] theDrawer  the draw settings.
     /// @param[in] theIsParallel  perform algorithm using multiple threads
     pub fn add(
-        thePresentation: &crate::ffi::HandleGraphic3dStructure,
+        thePresentation: &crate::ffi_types::HandleGraphic3dStructure,
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
         theIsParallel: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFShape_add(thePresentation, theShape, theDrawer, theIsParallel)
+            crate::ffi_extern_TKV3d::StdPrs_WFShape_add(
+                thePresentation,
+                theShape,
+                theDrawer,
+                theIsParallel,
+            )
         })
     }
 
@@ -3374,10 +3555,10 @@ impl WFShape {
     pub fn add_edges_on_triangulation_shape_bool(
         theShape: &crate::topo_ds::Shape,
         theToExcludeGeometric: bool,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfPrimitives> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_WFShape_add_edges_on_triangulation_shape_bool(
+                crate::ffi_extern_TKV3d::StdPrs_WFShape_add_edges_on_triangulation_shape_bool(
                     theShape,
                     theToExcludeGeometric,
                 ),
@@ -3392,16 +3573,12 @@ impl WFShape {
     /// @param[in] theToExcludeGeometric  flag indicating that Faces with defined Surface should be
     /// skipped
     pub fn add_edges_on_triangulation_sequenceofpnt_shape_bool(
-        theSegments: &mut crate::ffi::TColgp_SequenceOfPnt,
+        theSegments: &mut crate::ffi_types::TColgp_SequenceOfPnt,
         theShape: &crate::topo_ds::Shape,
         theToExcludeGeometric: bool,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFShape_add_edges_on_triangulation_sequenceofpnt_shape_bool(
-                theSegments,
-                theShape,
-                theToExcludeGeometric,
-            )
+            crate::ffi_extern_TKV3d::StdPrs_WFShape_add_edges_on_triangulation_sequenceofpnt_shape_bool(theSegments, theShape, theToExcludeGeometric)
         })
     }
 
@@ -3411,11 +3588,11 @@ impl WFShape {
     /// @param[in] theDrawer  the drawer settings (deviation angle and maximal parameter value)
     pub fn add_all_edges(
         theShape: &crate::topo_ds::Shape,
-        theDrawer: &crate::ffi::HandlePrs3dDrawer,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPrimitives> {
+        theDrawer: &crate::ffi_types::HandlePrs3dDrawer,
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfPrimitives> {
         unsafe {
             crate::OwnedPtr::from_raw(crate::check_result(
-                crate::ffi::StdPrs_WFShape_add_all_edges(theShape, theDrawer),
+                crate::ffi_extern_TKV3d::StdPrs_WFShape_add_all_edges(theShape, theDrawer),
             ))
         }
     }
@@ -3427,12 +3604,14 @@ impl WFShape {
     pub fn add_vertexes(
         theShape: &crate::topo_ds::Shape,
         theVertexMode: crate::prs3d::VertexDrawMode,
-    ) -> crate::OwnedPtr<crate::ffi::HandleGraphic3dArrayOfPoints> {
+    ) -> crate::OwnedPtr<crate::ffi_types::HandleGraphic3dArrayOfPoints> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_WFShape_add_vertexes(
-                theShape,
-                theVertexMode.into(),
-            )))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_WFShape_add_vertexes(
+                    theShape,
+                    theVertexMode.into(),
+                ),
+            ))
         }
     }
 }
@@ -3446,11 +3625,11 @@ impl WFShape {
 /// by displaying a given number of U and/or V isoparametric
 /// curves. The isoparametric curves are drawn with respect
 /// to a given number of points.
-pub use crate::ffi::StdPrs_WFSurface as WFSurface;
+pub use crate::ffi_types::StdPrs_WFSurface as WFSurface;
 
 unsafe impl crate::CppDeletable for WFSurface {
     unsafe fn cpp_delete(ptr: *mut Self) {
-        crate::ffi::StdPrs_WFSurface_destructor(ptr);
+        crate::ffi_extern_TKV3d::StdPrs_WFSurface_destructor(ptr);
     }
 }
 
@@ -3459,7 +3638,9 @@ impl WFSurface {
     /// Default constructor
     pub fn new() -> crate::OwnedPtr<Self> {
         unsafe {
-            crate::OwnedPtr::from_raw(crate::check_result(crate::ffi::StdPrs_WFSurface_ctor()))
+            crate::OwnedPtr::from_raw(crate::check_result(
+                crate::ffi_extern_TKV3d::StdPrs_WFSurface_ctor(),
+            ))
         }
     }
 
@@ -3469,12 +3650,12 @@ impl WFSurface {
     /// The number of isoparametric curves to be drawn and their color are
     /// controlled by the furnished Drawer.
     pub fn add(
-        aPresentation: &crate::ffi::HandleGraphic3dStructure,
-        aSurface: &crate::ffi::HandleAdaptor3dSurface,
-        aDrawer: &crate::ffi::HandlePrs3dDrawer,
+        aPresentation: &crate::ffi_types::HandleGraphic3dStructure,
+        aSurface: &crate::ffi_types::HandleAdaptor3dSurface,
+        aDrawer: &crate::ffi_types::HandlePrs3dDrawer,
     ) {
         crate::check_void_result(unsafe {
-            crate::ffi::StdPrs_WFSurface_add(aPresentation, aSurface, aDrawer)
+            crate::ffi_extern_TKV3d::StdPrs_WFSurface_add(aPresentation, aSurface, aDrawer)
         })
     }
 }
